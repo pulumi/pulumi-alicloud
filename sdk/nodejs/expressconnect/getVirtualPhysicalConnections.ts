@@ -34,7 +34,7 @@ export function getVirtualPhysicalConnections(args?: GetVirtualPhysicalConnectio
  */
 export interface GetVirtualPhysicalConnectionsArgs {
     /**
-     * The commercial status of the physical line. Value:
+     * (ForceNew,Optional) The commercial status of the physical line. Value:
      * - **Normal**: activated.
      * - **Financialized**: Arrears locked.
      * - **SecurityLocked**: locked for security reasons.
@@ -54,26 +54,26 @@ export interface GetVirtualPhysicalConnectionsArgs {
      */
     outputFile?: string;
     /**
-     * The ID of the instance of the physical connection.
+     * (ForceNew,Optional) The ID of the instance of the physical connection.
      */
     parentPhysicalConnectionId?: string;
     /**
-     * The ID of the hosted connection. You can specify multiple hosted connection IDs.
+     * (ForceNew,Optional) The ID of the hosted connection. You can specify multiple hosted connection IDs.
      */
     virtualPhysicalConnectionIds?: string[];
     /**
-     * The business status of the shared line. Value:
+     * (ForceNew,Optional) The business status of the shared line. Value:
      * - **Confirmed**: The shared line has been Confirmed to receive.
      * - **UnConfirmed**: The shared line has not been confirmed to be received.
      * - **Deleted**: The shared line has been Deleted.
      */
     virtualPhysicalConnectionStatus?: string;
     /**
-     * The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
+     * (ForceNew,Optional) The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
      */
     vlanIds?: number[];
     /**
-     * The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+     * (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
      */
     vpconnAliUid?: string;
 }
@@ -134,7 +134,7 @@ export function getVirtualPhysicalConnectionsOutput(args?: GetVirtualPhysicalCon
  */
 export interface GetVirtualPhysicalConnectionsOutputArgs {
     /**
-     * The commercial status of the physical line. Value:
+     * (ForceNew,Optional) The commercial status of the physical line. Value:
      * - **Normal**: activated.
      * - **Financialized**: Arrears locked.
      * - **SecurityLocked**: locked for security reasons.
@@ -154,26 +154,26 @@ export interface GetVirtualPhysicalConnectionsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of the instance of the physical connection.
+     * (ForceNew,Optional) The ID of the instance of the physical connection.
      */
     parentPhysicalConnectionId?: pulumi.Input<string>;
     /**
-     * The ID of the hosted connection. You can specify multiple hosted connection IDs.
+     * (ForceNew,Optional) The ID of the hosted connection. You can specify multiple hosted connection IDs.
      */
     virtualPhysicalConnectionIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The business status of the shared line. Value:
+     * (ForceNew,Optional) The business status of the shared line. Value:
      * - **Confirmed**: The shared line has been Confirmed to receive.
      * - **UnConfirmed**: The shared line has not been confirmed to be received.
      * - **Deleted**: The shared line has been Deleted.
      */
     virtualPhysicalConnectionStatus?: pulumi.Input<string>;
     /**
-     * The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
+     * (ForceNew,Optional) The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
      */
     vlanIds?: pulumi.Input<pulumi.Input<number>[]>;
     /**
-     * The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+     * (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
      */
     vpconnAliUid?: pulumi.Input<string>;
 }

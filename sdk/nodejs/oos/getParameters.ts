@@ -81,7 +81,7 @@ export interface GetParametersArgs {
      */
     outputFile?: string;
     /**
-     * The name of the common parameter.
+     * The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
      */
     parameterName?: string;
     /**
@@ -91,11 +91,11 @@ export interface GetParametersArgs {
     sortField?: string;
     sortOrder?: string;
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      */
     tags?: {[key: string]: any};
     /**
-     * The data type of the common parameter.
+     * The data type of the common parameter. Valid values: `String` and `StringList`.
      */
     type?: string;
 }
@@ -182,7 +182,7 @@ export interface GetParametersOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The name of the common parameter.
+     * The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
      */
     parameterName?: pulumi.Input<string>;
     /**
@@ -192,11 +192,11 @@ export interface GetParametersOutputArgs {
     sortField?: pulumi.Input<string>;
     sortOrder?: pulumi.Input<string>;
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The data type of the common parameter.
+     * The data type of the common parameter. Valid values: `String` and `StringList`.
      */
     type?: pulumi.Input<string>;
 }

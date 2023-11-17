@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetMetricRuleBlackListsList {
     /**
-     * @return Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
+     * @return (ForceNew,Optional) Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
      * 
      */
     private String category;
@@ -49,7 +49,7 @@ public final class GetMetricRuleBlackListsList {
      */
     private Boolean isEnable;
     /**
-     * @return The first ID of the resource
+     * @return (ForceNew,Optional) The first ID of the resource
      * 
      */
     private String metricRuleBlackListId;
@@ -64,7 +64,7 @@ public final class GetMetricRuleBlackListsList {
      */
     private List<GetMetricRuleBlackListsListMetric> metrics;
     /**
-     * @return The data namespace of the cloud service.
+     * @return (ForceNew,Optional) The data namespace of the cloud service.
      * 
      */
     private String namespace;
@@ -81,7 +81,7 @@ public final class GetMetricRuleBlackListsList {
 
     private GetMetricRuleBlackListsList() {}
     /**
-     * @return Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
+     * @return (ForceNew,Optional) Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
      * 
      */
     public String category() {
@@ -133,7 +133,7 @@ public final class GetMetricRuleBlackListsList {
         return this.isEnable;
     }
     /**
-     * @return The first ID of the resource
+     * @return (ForceNew,Optional) The first ID of the resource
      * 
      */
     public String metricRuleBlackListId() {
@@ -154,7 +154,7 @@ public final class GetMetricRuleBlackListsList {
         return this.metrics;
     }
     /**
-     * @return The data namespace of the cloud service.
+     * @return (ForceNew,Optional) The data namespace of the cloud service.
      * 
      */
     public String namespace() {

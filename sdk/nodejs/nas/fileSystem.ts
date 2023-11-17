@@ -125,8 +125,11 @@ export class FileSystem extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+     * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
      * * Valid values:
+     *   * `0` (Default): The file system is not encrypted.
+     *   * `1`: The file system is encrypted with a managed secret key.
+     *   * `2` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`): User management key.
      */
     public readonly encryptType!: pulumi.Output<number | undefined>;
     /**
@@ -150,8 +153,14 @@ export class FileSystem extends pulumi.CustomResource {
      */
     public readonly protocolType!: pulumi.Output<string>;
     /**
-     * The storage type of the file System. 
+     * The storage type of the file System.
      * * Valid values:
+     *   * `Performance` (Available when the `fileSystemType` is `standard`)
+     *   * `Capacity` (Available when the `fileSystemType` is `standard`)
+     *   * `standard` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+     *   * `advance` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+     *   * `advance100` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
+     *   * `advance200` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
      */
     public readonly storageType!: pulumi.Output<string>;
     /**
@@ -234,8 +243,11 @@ export interface FileSystemState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+     * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
      * * Valid values:
+     *   * `0` (Default): The file system is not encrypted.
+     *   * `1`: The file system is encrypted with a managed secret key.
+     *   * `2` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`): User management key.
      */
     encryptType?: pulumi.Input<number>;
     /**
@@ -259,8 +271,14 @@ export interface FileSystemState {
      */
     protocolType?: pulumi.Input<string>;
     /**
-     * The storage type of the file System. 
+     * The storage type of the file System.
      * * Valid values:
+     *   * `Performance` (Available when the `fileSystemType` is `standard`)
+     *   * `Capacity` (Available when the `fileSystemType` is `standard`)
+     *   * `standard` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+     *   * `advance` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+     *   * `advance100` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
+     *   * `advance200` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
      */
     storageType?: pulumi.Input<string>;
     /**
@@ -295,8 +313,11 @@ export interface FileSystemArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+     * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
      * * Valid values:
+     *   * `0` (Default): The file system is not encrypted.
+     *   * `1`: The file system is encrypted with a managed secret key.
+     *   * `2` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`): User management key.
      */
     encryptType?: pulumi.Input<number>;
     /**
@@ -320,8 +341,14 @@ export interface FileSystemArgs {
      */
     protocolType: pulumi.Input<string>;
     /**
-     * The storage type of the file System. 
+     * The storage type of the file System.
      * * Valid values:
+     *   * `Performance` (Available when the `fileSystemType` is `standard`)
+     *   * `Capacity` (Available when the `fileSystemType` is `standard`)
+     *   * `standard` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+     *   * `advance` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+     *   * `advance100` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
+     *   * `advance200` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
      */
     storageType: pulumi.Input<string>;
     /**

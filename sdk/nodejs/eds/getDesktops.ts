@@ -89,7 +89,7 @@ export function getDesktops(args?: GetDesktopsArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetDesktopsArgs {
     /**
-     * The desktop name of the Desktop.
+     * The desktop name.
      */
     desktopName?: string;
     /**
@@ -212,7 +212,7 @@ export function getDesktopsOutput(args?: GetDesktopsOutputArgs, opts?: pulumi.In
  */
 export interface GetDesktopsOutputArgs {
     /**
-     * The desktop name of the Desktop.
+     * The desktop name.
      */
     desktopName?: pulumi.Input<string>;
     /**

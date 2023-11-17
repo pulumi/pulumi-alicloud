@@ -288,7 +288,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The max num of topic can be creation of the instance.
+     * (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
      * It has been deprecated since version 1.194.0 and using `partition_num` instead.
      * Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
      * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
@@ -302,7 +302,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> topicQuota;
 
     /**
-     * @return The max num of topic can be creation of the instance.
+     * @return (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
      * It has been deprecated since version 1.194.0 and using `partition_num` instead.
      * Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
      * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
@@ -789,7 +789,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topicQuota The max num of topic can be creation of the instance.
+         * @param topicQuota (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
          * It has been deprecated since version 1.194.0 and using `partition_num` instead.
          * Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
          * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
@@ -807,7 +807,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topicQuota The max num of topic can be creation of the instance.
+         * @param topicQuota (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
          * It has been deprecated since version 1.194.0 and using `partition_num` instead.
          * Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
          * Therefore, you can update it by updating the `partition_num`, and it is the only updating path.

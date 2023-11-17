@@ -25,9 +25,6 @@ class DeliveryChannelArgs:
         The set of arguments for constructing a DeliveryChannel resource.
         :param pulumi.Input[str] delivery_channel_assume_role_arn: The Alibaba Cloud Resource Name (ARN) of the role to be assumed by the delivery method.
         :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
-               - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-               - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-               - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         :param pulumi.Input[str] delivery_channel_type: The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         :param pulumi.Input[str] delivery_channel_condition: The rule attached to the delivery method. This parameter is applicable only to delivery methods of the MNS type. Please refer to api [PutDeliveryChannel](https://www.alibabacloud.com/help/en/doc-detail/174253.htm) for example format.
         :param pulumi.Input[str] delivery_channel_name: The name of the delivery channel.
@@ -63,9 +60,6 @@ class DeliveryChannelArgs:
     def delivery_channel_target_arn(self) -> pulumi.Input[str]:
         """
         The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
-        - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-        - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-        - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         """
         return pulumi.get(self, "delivery_channel_target_arn")
 
@@ -150,9 +144,6 @@ class _DeliveryChannelState:
         :param pulumi.Input[str] delivery_channel_condition: The rule attached to the delivery method. This parameter is applicable only to delivery methods of the MNS type. Please refer to api [PutDeliveryChannel](https://www.alibabacloud.com/help/en/doc-detail/174253.htm) for example format.
         :param pulumi.Input[str] delivery_channel_name: The name of the delivery channel.
         :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
-               - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-               - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-               - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         :param pulumi.Input[str] delivery_channel_type: The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         :param pulumi.Input[str] description: The description of the delivery method.
         :param pulumi.Input[int] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
@@ -213,9 +204,6 @@ class _DeliveryChannelState:
     def delivery_channel_target_arn(self) -> Optional[pulumi.Input[str]]:
         """
         The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
-        - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-        - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-        - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         """
         return pulumi.get(self, "delivery_channel_target_arn")
 
@@ -288,9 +276,6 @@ class DeliveryChannel(pulumi.CustomResource):
         :param pulumi.Input[str] delivery_channel_condition: The rule attached to the delivery method. This parameter is applicable only to delivery methods of the MNS type. Please refer to api [PutDeliveryChannel](https://www.alibabacloud.com/help/en/doc-detail/174253.htm) for example format.
         :param pulumi.Input[str] delivery_channel_name: The name of the delivery channel.
         :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
-               - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-               - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-               - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         :param pulumi.Input[str] delivery_channel_type: The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         :param pulumi.Input[str] description: The description of the delivery method.
         :param pulumi.Input[int] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
@@ -382,9 +367,6 @@ class DeliveryChannel(pulumi.CustomResource):
         :param pulumi.Input[str] delivery_channel_condition: The rule attached to the delivery method. This parameter is applicable only to delivery methods of the MNS type. Please refer to api [PutDeliveryChannel](https://www.alibabacloud.com/help/en/doc-detail/174253.htm) for example format.
         :param pulumi.Input[str] delivery_channel_name: The name of the delivery channel.
         :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
-               - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-               - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-               - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         :param pulumi.Input[str] delivery_channel_type: The type of the delivery method. This parameter is required when you create a delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         :param pulumi.Input[str] description: The description of the delivery method.
         :param pulumi.Input[int] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled., `1`: The delivery destination is enabled. This is the default value.
@@ -431,9 +413,6 @@ class DeliveryChannel(pulumi.CustomResource):
     def delivery_channel_target_arn(self) -> pulumi.Output[str]:
         """
         The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
-        - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-        - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-        - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         """
         return pulumi.get(self, "delivery_channel_target_arn")
 

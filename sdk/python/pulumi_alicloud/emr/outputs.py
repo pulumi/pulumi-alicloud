@@ -706,10 +706,10 @@ class GetClustersClusterResult(dict):
         :param bool auto_scaling_spot_with_limit_allowed: Whether to allow the use of elastic scaling bidding instances.
         :param Sequence['GetClustersClusterBootstrapActionListArgs'] bootstrap_action_lists: List of boot actions.
         :param bool bootstrap_failed: The result of the boot operation.
-        :param str cluster_id: The ID of the associated cluster.
-        :param str cluster_name: The name of the associated cluster.
+        :param str cluster_id: The first ID of the resource.
+        :param str cluster_name: The ClusterName.
         :param str create_resource: Cluster tag, no need to pay attention.
-        :param str create_time: Creation time.
+        :param str create_time: The creation time of the resource.
         :param str create_type: How to create a cluster.
         :param str deposit_type: The hosting type of the cluster.
         :param bool eas_enable: High security cluster.
@@ -847,7 +847,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
         """
-        The ID of the associated cluster.
+        The first ID of the resource.
         """
         return pulumi.get(self, "cluster_id")
 
@@ -855,7 +855,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> str:
         """
-        The name of the associated cluster.
+        The ClusterName.
         """
         return pulumi.get(self, "cluster_name")
 
@@ -871,7 +871,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        Creation time.
+        The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
@@ -1140,6 +1140,8 @@ class GetClustersClusterAccessInfoResult(dict):
                  zk_links: Sequence['outputs.GetClustersClusterAccessInfoZkLinkResult']):
         """
         :param Sequence['GetClustersClusterAccessInfoZkLinkArgs'] zk_links: Link address information list of ZooKeeper.
+               * `link` - The access link address of ZooKeeper.
+               * `port` - The port of ZooKeeper.
         """
         pulumi.set(__self__, "zk_links", zk_links)
 
@@ -1148,6 +1150,8 @@ class GetClustersClusterAccessInfoResult(dict):
     def zk_links(self) -> Sequence['outputs.GetClustersClusterAccessInfoZkLinkResult']:
         """
         Link address information list of ZooKeeper.
+        * `link` - The access link address of ZooKeeper.
+        * `port` - The port of ZooKeeper.
         """
         return pulumi.get(self, "zk_links")
 
@@ -1157,27 +1161,17 @@ class GetClustersClusterAccessInfoZkLinkResult(dict):
     def __init__(__self__, *,
                  link: str,
                  port: str):
-        """
-        :param str link: The access link address of ZooKeeper.
-        :param str port: The port of ZooKeeper.
-        """
         pulumi.set(__self__, "link", link)
         pulumi.set(__self__, "port", port)
 
     @property
     @pulumi.getter
     def link(self) -> str:
-        """
-        The access link address of ZooKeeper.
-        """
         return pulumi.get(self, "link")
 
     @property
     @pulumi.getter
     def port(self) -> str:
-        """
-        The port of ZooKeeper.
-        """
         return pulumi.get(self, "port")
 
 
@@ -1189,7 +1183,7 @@ class GetClustersClusterBootstrapActionListResult(dict):
                  path: str):
         """
         :param str arg: Parameters of the boot operation.
-        :param str name: The internal name of the service.
+        :param str name: The name of the boot operation.
         :param str path: Boot operation script path.
         """
         pulumi.set(__self__, "arg", arg)
@@ -1208,7 +1202,7 @@ class GetClustersClusterBootstrapActionListResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The internal name of the service.
+        The name of the boot operation.
         """
         return pulumi.get(self, "name")
 
@@ -1407,7 +1401,7 @@ class GetClustersClusterHostGroupListNodeResult(dict):
                  support_ipv6: bool,
                  zone_id: str):
         """
-        :param str create_time: Creation time.
+        :param str create_time: The creation time of the resource.
         :param Sequence['GetClustersClusterHostGroupListNodeDiskInfoArgs'] disk_infos: Disk information.
         :param str emr_expired_time: The timeout of the EMR.
         :param str expired_time: Timeout time.
@@ -1433,7 +1427,7 @@ class GetClustersClusterHostGroupListNodeResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        Creation time.
+        The creation time of the resource.
         """
         return pulumi.get(self, "create_time")
 
@@ -1611,8 +1605,8 @@ class GetClustersClusterRelateClusterInfoResult(dict):
         """
         :param str cluster_id: The ID of the associated cluster.
         :param str cluster_name: The name of the associated cluster.
-        :param str cluster_type: Cluster type:
-        :param str status: The cluster status.
+        :param str cluster_type: The cluster type of the associated cluster.
+        :param str status: The status  of the associated cluster.
         """
         pulumi.set(__self__, "cluster_id", cluster_id)
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -1639,7 +1633,7 @@ class GetClustersClusterRelateClusterInfoResult(dict):
     @pulumi.getter(name="clusterType")
     def cluster_type(self) -> str:
         """
-        Cluster type:
+        The cluster type of the associated cluster.
         """
         return pulumi.get(self, "cluster_type")
 
@@ -1647,7 +1641,7 @@ class GetClustersClusterRelateClusterInfoResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The cluster status.
+        The status  of the associated cluster.
         """
         return pulumi.get(self, "status")
 
@@ -1702,7 +1696,7 @@ class GetClustersClusterSoftwareInfoSoftwareResult(dict):
                  version: str):
         """
         :param str display_name: The name of the service.
-        :param str name: The internal name of the service.
+        :param str name: The name of the boot operation.
         :param bool only_display: Whether it shows.
         :param int start_tpe: Startup type.
         :param str version: Service version.
@@ -1725,7 +1719,7 @@ class GetClustersClusterSoftwareInfoSoftwareResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The internal name of the service.
+        The name of the boot operation.
         """
         return pulumi.get(self, "name")
 

@@ -126,7 +126,7 @@ type NetworkAcl struct {
 	EgressAclEntries NetworkAclEgressAclEntryArrayOutput `pulumi:"egressAclEntries"`
 	// Inward direction rule information. See `ingressAclEntries` below.
 	IngressAclEntries NetworkAclIngressAclEntryArrayOutput `pulumi:"ingressAclEntries"`
-	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+	// (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -185,7 +185,7 @@ type networkAclState struct {
 	EgressAclEntries []NetworkAclEgressAclEntry `pulumi:"egressAclEntries"`
 	// Inward direction rule information. See `ingressAclEntries` below.
 	IngressAclEntries []NetworkAclIngressAclEntry `pulumi:"ingressAclEntries"`
-	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+	// (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	Name *string `pulumi:"name"`
@@ -212,7 +212,7 @@ type NetworkAclState struct {
 	EgressAclEntries NetworkAclEgressAclEntryArrayInput
 	// Inward direction rule information. See `ingressAclEntries` below.
 	IngressAclEntries NetworkAclIngressAclEntryArrayInput
-	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+	// (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	Name pulumi.StringPtrInput
@@ -241,7 +241,7 @@ type networkAclArgs struct {
 	EgressAclEntries []NetworkAclEgressAclEntry `pulumi:"egressAclEntries"`
 	// Inward direction rule information. See `ingressAclEntries` below.
 	IngressAclEntries []NetworkAclIngressAclEntry `pulumi:"ingressAclEntries"`
-	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+	// (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	Name *string `pulumi:"name"`
@@ -265,7 +265,7 @@ type NetworkAclArgs struct {
 	EgressAclEntries NetworkAclEgressAclEntryArrayInput
 	// Inward direction rule information. See `ingressAclEntries` below.
 	IngressAclEntries NetworkAclIngressAclEntryArrayInput
-	// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+	// (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 	Name pulumi.StringPtrInput
@@ -388,7 +388,7 @@ func (o NetworkAclOutput) IngressAclEntries() NetworkAclIngressAclEntryArrayOutp
 	return o.ApplyT(func(v *NetworkAcl) NetworkAclIngressAclEntryArrayOutput { return v.IngressAclEntries }).(NetworkAclIngressAclEntryArrayOutput)
 }
 
-// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+// (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
 func (o NetworkAclOutput) Name() pulumi.StringOutput {

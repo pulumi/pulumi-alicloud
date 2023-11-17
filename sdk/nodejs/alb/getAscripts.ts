@@ -45,7 +45,7 @@ export function getAscripts(args?: GetAscriptsArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetAscriptsArgs {
     /**
-     * Script name.
+     * (ForceNew,Optional) Script name.
      */
     ascriptName?: string;
     enableDetails?: boolean;
@@ -54,7 +54,7 @@ export interface GetAscriptsArgs {
      */
     ids?: string[];
     /**
-     * Listener ID of script attribution
+     * (ForceNew,Optional) Listener ID of script attribution
      */
     listenerId?: string;
     /**
@@ -128,7 +128,7 @@ export function getAscriptsOutput(args?: GetAscriptsOutputArgs, opts?: pulumi.In
  */
 export interface GetAscriptsOutputArgs {
     /**
-     * Script name.
+     * (ForceNew,Optional) Script name.
      */
     ascriptName?: pulumi.Input<string>;
     enableDetails?: pulumi.Input<boolean>;
@@ -137,7 +137,7 @@ export interface GetAscriptsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Listener ID of script attribution
+     * (ForceNew,Optional) Listener ID of script attribution
      */
     listenerId?: pulumi.Input<string>;
     /**

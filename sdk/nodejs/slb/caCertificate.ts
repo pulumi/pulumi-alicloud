@@ -103,7 +103,7 @@ export class CaCertificate extends pulumi.CustomResource {
      */
     public readonly caCertificateName!: pulumi.Output<string>;
     /**
-     * Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+     * (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
      */
@@ -164,7 +164,7 @@ export interface CaCertificateState {
      */
     caCertificateName?: pulumi.Input<string>;
     /**
-     * Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+     * (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
      */
@@ -192,7 +192,7 @@ export interface CaCertificateArgs {
      */
     caCertificateName?: pulumi.Input<string>;
     /**
-     * Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+     * (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
      */

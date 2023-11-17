@@ -354,7 +354,7 @@ def get_clusters(cluster_name: Optional[str] = None,
     ```
 
 
-    :param str cluster_name: The name of the associated cluster.
+    :param str cluster_name: The ClusterName.
     :param Sequence[str] cluster_type_lists: The cluster type list.
     :param str create_type: How to create a cluster.
     :param bool default_status: The default status.
@@ -551,7 +551,7 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
     ```
 
 
-    :param str cluster_name: The name of the associated cluster.
+    :param str cluster_name: The ClusterName.
     :param Sequence[str] cluster_type_lists: The cluster type list.
     :param str create_type: How to create a cluster.
     :param bool default_status: The default status.

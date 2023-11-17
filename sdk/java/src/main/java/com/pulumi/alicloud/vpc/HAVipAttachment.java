@@ -131,7 +131,7 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
      * Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
      * - **True**: Force unbinding.
      * - **False** (default): unbinding is not forced.
-     * &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+     *   &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
      * 
      */
     @Export(name="force", type=Boolean.class, parameters={})
@@ -141,7 +141,7 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
      * @return Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
      * - **True**: Force unbinding.
      * - **False** (default): unbinding is not forced.
-     * &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+     *   &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
      * 
      */
     public Output<Optional<Boolean>> force() {
@@ -162,7 +162,7 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
         return this.haVipId;
     }
     /**
-     * . Field &#39;havip_id&#39; has been deprecated from provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+     * (Deprecated since v1.211.0). Field &#39;havip_id&#39; has been deprecated from provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
      * 
      * @deprecated
      * Field &#39;havip_id&#39; has been deprecated since provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
@@ -173,7 +173,7 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
     private Output<String> havipId;
 
     /**
-     * @return . Field &#39;havip_id&#39; has been deprecated from provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
+     * @return (Deprecated since v1.211.0). Field &#39;havip_id&#39; has been deprecated from provider version 1.211.0. New field &#39;ha_vip_id&#39; instead.
      * 
      */
     public Output<String> havipId() {

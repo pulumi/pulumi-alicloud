@@ -59,19 +59,19 @@ type GetHoneypotPresetsArgs struct {
 	CurrentPage *int `pulumi:"currentPage"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
-	// Honeypot mirror name
+	// (ForceNew,Optional) Honeypot mirror name
 	HoneypotImageName *string `pulumi:"honeypotImageName"`
 	// A list of Honeypot Preset IDs.
 	Ids  []string `pulumi:"ids"`
 	Lang *string  `pulumi:"lang"`
-	// Unique id of management node
+	// (ForceNew,Optional) Unique id of management node
 	NodeId   *string `pulumi:"nodeId"`
 	NodeName *string `pulumi:"nodeName"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// Honeypot template custom name
+	// (ForceNew,Optional) Honeypot template custom name
 	PresetName *string `pulumi:"presetName"`
 }
 
@@ -116,19 +116,19 @@ type GetHoneypotPresetsOutputArgs struct {
 	CurrentPage pulumi.IntPtrInput `pulumi:"currentPage"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
-	// Honeypot mirror name
+	// (ForceNew,Optional) Honeypot mirror name
 	HoneypotImageName pulumi.StringPtrInput `pulumi:"honeypotImageName"`
 	// A list of Honeypot Preset IDs.
 	Ids  pulumi.StringArrayInput `pulumi:"ids"`
 	Lang pulumi.StringPtrInput   `pulumi:"lang"`
-	// Unique id of management node
+	// (ForceNew,Optional) Unique id of management node
 	NodeId   pulumi.StringPtrInput `pulumi:"nodeId"`
 	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// Honeypot template custom name
+	// (ForceNew,Optional) Honeypot template custom name
 	PresetName pulumi.StringPtrInput `pulumi:"presetName"`
 }
 

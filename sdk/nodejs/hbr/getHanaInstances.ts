@@ -59,11 +59,11 @@ export interface GetHanaInstancesArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * The status of the SAP HANA instance.
+     * The status of the SAP HANA instance. Valid values:
      */
     status?: string;
     /**
-     * The ID of the backup vault.
+     * The id of the vault.
      */
     vaultId?: string;
 }
@@ -128,11 +128,11 @@ export interface GetHanaInstancesOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * The status of the SAP HANA instance.
+     * The status of the SAP HANA instance. Valid values:
      */
     status?: pulumi.Input<string>;
     /**
-     * The ID of the backup vault.
+     * The id of the vault.
      */
     vaultId?: pulumi.Input<string>;
 }

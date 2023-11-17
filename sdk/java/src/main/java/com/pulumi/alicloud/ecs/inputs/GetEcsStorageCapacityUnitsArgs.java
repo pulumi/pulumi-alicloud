@@ -62,14 +62,14 @@ public final class GetEcsStorageCapacityUnitsArgs extends com.pulumi.resources.I
     }
 
     /**
-     * The status of Storage Capacity Unit.
+     * The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of Storage Capacity Unit.
+     * @return The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -177,7 +177,7 @@ public final class GetEcsStorageCapacityUnitsArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param status The status of Storage Capacity Unit.
+         * @param status The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class GetEcsStorageCapacityUnitsArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param status The status of Storage Capacity Unit.
+         * @param status The status of Storage Capacity Unit. Valid values: `Active`, `Creating`, `Expired`, `Pending`.
          * 
          * @return builder
          * 

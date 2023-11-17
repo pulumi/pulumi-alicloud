@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of volume.
+        /// The status of volume. Valid values:
         /// </summary>
         [Input("status")]
         public int? Status { get; set; }
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of volume.
+        /// The status of volume. Valid values:
         /// </summary>
         [Input("status")]
         public Input<int>? Status { get; set; }

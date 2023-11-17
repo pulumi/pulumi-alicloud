@@ -15,14 +15,14 @@ public final class GetAuditPoliciesPlainArgs extends com.pulumi.resources.Invoke
     public static final GetAuditPoliciesPlainArgs Empty = new GetAuditPoliciesPlainArgs();
 
     /**
-     * The ID of the instance.
+     * (Request, ForceNew) The id of the db instance.
      * 
      */
     @Import(name="dbInstanceId", required=true)
     private String dbInstanceId;
 
     /**
-     * @return The ID of the instance.
+     * @return (Request, ForceNew) The id of the db instance.
      * 
      */
     public String dbInstanceId() {
@@ -70,7 +70,7 @@ public final class GetAuditPoliciesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param dbInstanceId The ID of the instance.
+         * @param dbInstanceId (Request, ForceNew) The id of the db instance.
          * 
          * @return builder
          * 

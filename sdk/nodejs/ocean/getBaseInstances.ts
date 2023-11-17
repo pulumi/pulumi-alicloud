@@ -56,11 +56,11 @@ export interface GetBaseInstancesArgs {
      */
     ids?: string[];
     /**
-     * OceanBase cluster ID.
+     * (ForceNew,Optional) OceanBase cluster ID.
      */
     instanceId?: string;
     /**
-     * OceanBase cluster name.
+     * OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
      */
     instanceName?: string;
     /**
@@ -74,15 +74,15 @@ export interface GetBaseInstancesArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * The ID of the enterprise resource group to which the instance resides.
+     * (ForceNew,Optional) The ID of the enterprise resource group to which the instance resides.
      */
     resourceGroupId?: string;
     /**
-     * The filter keyword for the query list.
+     * (ForceNew,Optional) The filter keyword for the query list.
      */
     searchKey?: string;
     /**
-     * The status of the resource.
+     * The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
      */
     status?: string;
 }
@@ -144,11 +144,11 @@ export interface GetBaseInstancesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * OceanBase cluster ID.
+     * (ForceNew,Optional) OceanBase cluster ID.
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * OceanBase cluster name.
+     * OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
      */
     instanceName?: pulumi.Input<string>;
     /**
@@ -162,15 +162,15 @@ export interface GetBaseInstancesOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * The ID of the enterprise resource group to which the instance resides.
+     * (ForceNew,Optional) The ID of the enterprise resource group to which the instance resides.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The filter keyword for the query list.
+     * (ForceNew,Optional) The filter keyword for the query list.
      */
     searchKey?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
      */
     status?: pulumi.Input<string>;
 }

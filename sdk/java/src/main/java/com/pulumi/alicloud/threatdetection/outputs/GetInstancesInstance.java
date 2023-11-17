@@ -20,7 +20,7 @@ public final class GetInstancesInstance {
      */
     private String id;
     /**
-     * @return The first ID of the resource
+     * @return (ForceNew,Optional) The first ID of the resource
      * 
      */
     private String instanceId;
@@ -51,7 +51,7 @@ public final class GetInstancesInstance {
         return this.id;
     }
     /**
-     * @return The first ID of the resource
+     * @return (ForceNew,Optional) The first ID of the resource
      * 
      */
     public String instanceId() {

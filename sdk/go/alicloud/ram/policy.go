@@ -85,13 +85,13 @@ type Policy struct {
 	DefaultVersion pulumi.StringOutput `pulumi:"defaultVersion"`
 	// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
+	// (Deprecated since 1.114.0, Optional, Conflicts with `policyDocument`, `statement` and `version`) It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
 	//
 	// Deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
 	Document pulumi.StringOutput `pulumi:"document"`
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
-	// It has been deprecated since provider version 1.114.0 and `policyName` instead.
+	// (Deprecated since 1.114.0, Required, ForceNew) It has been deprecated since provider version 1.114.0 and `policyName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -101,13 +101,13 @@ type Policy struct {
 	PolicyName pulumi.StringOutput `pulumi:"policyName"`
 	// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
 	RotateStrategy pulumi.StringOutput `pulumi:"rotateStrategy"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+	// (Deprecated since 1.49.0, Optional, Type: list, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
 	//
 	// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Statements PolicyStatementArrayOutput `pulumi:"statements"`
 	// The policy type.
 	Type pulumi.StringOutput `pulumi:"type"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	// (Deprecated since 1.49.0, Optional, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
 	//
 	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
@@ -151,13 +151,13 @@ type policyState struct {
 	DefaultVersion *string `pulumi:"defaultVersion"`
 	// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
 	Description *string `pulumi:"description"`
-	// It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
+	// (Deprecated since 1.114.0, Optional, Conflicts with `policyDocument`, `statement` and `version`) It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
 	//
 	// Deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
 	Document *string `pulumi:"document"`
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force *bool `pulumi:"force"`
-	// It has been deprecated since provider version 1.114.0 and `policyName` instead.
+	// (Deprecated since 1.114.0, Required, ForceNew) It has been deprecated since provider version 1.114.0 and `policyName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
 	Name *string `pulumi:"name"`
@@ -167,13 +167,13 @@ type policyState struct {
 	PolicyName *string `pulumi:"policyName"`
 	// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
 	RotateStrategy *string `pulumi:"rotateStrategy"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+	// (Deprecated since 1.49.0, Optional, Type: list, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
 	//
 	// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Statements []PolicyStatement `pulumi:"statements"`
 	// The policy type.
 	Type *string `pulumi:"type"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	// (Deprecated since 1.49.0, Optional, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
 	//
 	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version *string `pulumi:"version"`
@@ -188,13 +188,13 @@ type PolicyState struct {
 	DefaultVersion pulumi.StringPtrInput
 	// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
 	Description pulumi.StringPtrInput
-	// It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
+	// (Deprecated since 1.114.0, Optional, Conflicts with `policyDocument`, `statement` and `version`) It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
 	//
 	// Deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
 	Document pulumi.StringPtrInput
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force pulumi.BoolPtrInput
-	// It has been deprecated since provider version 1.114.0 and `policyName` instead.
+	// (Deprecated since 1.114.0, Required, ForceNew) It has been deprecated since provider version 1.114.0 and `policyName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
 	Name pulumi.StringPtrInput
@@ -204,13 +204,13 @@ type PolicyState struct {
 	PolicyName pulumi.StringPtrInput
 	// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
 	RotateStrategy pulumi.StringPtrInput
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+	// (Deprecated since 1.49.0, Optional, Type: list, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
 	//
 	// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Statements PolicyStatementArrayInput
 	// The policy type.
 	Type pulumi.StringPtrInput
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	// (Deprecated since 1.49.0, Optional, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
 	//
 	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version pulumi.StringPtrInput
@@ -225,13 +225,13 @@ func (PolicyState) ElementType() reflect.Type {
 type policyArgs struct {
 	// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
 	Description *string `pulumi:"description"`
-	// It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
+	// (Deprecated since 1.114.0, Optional, Conflicts with `policyDocument`, `statement` and `version`) It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
 	//
 	// Deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
 	Document *string `pulumi:"document"`
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force *bool `pulumi:"force"`
-	// It has been deprecated since provider version 1.114.0 and `policyName` instead.
+	// (Deprecated since 1.114.0, Required, ForceNew) It has been deprecated since provider version 1.114.0 and `policyName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
 	Name *string `pulumi:"name"`
@@ -241,11 +241,11 @@ type policyArgs struct {
 	PolicyName *string `pulumi:"policyName"`
 	// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
 	RotateStrategy *string `pulumi:"rotateStrategy"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+	// (Deprecated since 1.49.0, Optional, Type: list, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
 	//
 	// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Statements []PolicyStatement `pulumi:"statements"`
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	// (Deprecated since 1.49.0, Optional, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
 	//
 	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version *string `pulumi:"version"`
@@ -255,13 +255,13 @@ type policyArgs struct {
 type PolicyArgs struct {
 	// Description of the RAM policy. This name can have a string of 1 to 1024 characters.
 	Description pulumi.StringPtrInput
-	// It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
+	// (Deprecated since 1.114.0, Optional, Conflicts with `policyDocument`, `statement` and `version`) It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
 	//
 	// Deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
 	Document pulumi.StringPtrInput
 	// This parameter is used for resource destroy. Default value is `false`.
 	Force pulumi.BoolPtrInput
-	// It has been deprecated since provider version 1.114.0 and `policyName` instead.
+	// (Deprecated since 1.114.0, Required, ForceNew) It has been deprecated since provider version 1.114.0 and `policyName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
 	Name pulumi.StringPtrInput
@@ -271,11 +271,11 @@ type PolicyArgs struct {
 	PolicyName pulumi.StringPtrInput
 	// The rotation strategy of the policy. You can use this parameter to delete an early policy version. Valid Values: `None`, `DeleteOldestNonDefaultVersionWhenLimitExceeded`. Default to `None`.
 	RotateStrategy pulumi.StringPtrInput
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+	// (Deprecated since 1.49.0, Optional, Type: list, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
 	//
 	// Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Statements PolicyStatementArrayInput
-	// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+	// (Deprecated since 1.49.0, Optional, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
 	//
 	// Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 	Version pulumi.StringPtrInput
@@ -383,7 +383,7 @@ func (o PolicyOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
+// (Deprecated since 1.114.0, Optional, Conflicts with `policyDocument`, `statement` and `version`) It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
 //
 // Deprecated: Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
 func (o PolicyOutput) Document() pulumi.StringOutput {
@@ -395,7 +395,7 @@ func (o PolicyOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Policy) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
-// It has been deprecated since provider version 1.114.0 and `policyName` instead.
+// (Deprecated since 1.114.0, Required, ForceNew) It has been deprecated since provider version 1.114.0 and `policyName` instead.
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
 func (o PolicyOutput) Name() pulumi.StringOutput {
@@ -417,7 +417,7 @@ func (o PolicyOutput) RotateStrategy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.RotateStrategy }).(pulumi.StringOutput)
 }
 
-// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+// (Deprecated since 1.49.0, Optional, Type: list, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
 //
 // Deprecated: Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace.
 func (o PolicyOutput) Statements() PolicyStatementArrayOutput {
@@ -429,7 +429,7 @@ func (o PolicyOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+// (Deprecated since 1.49.0, Optional, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
 //
 // Deprecated: Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.
 func (o PolicyOutput) Version() pulumi.StringPtrOutput {

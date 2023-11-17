@@ -102,7 +102,7 @@ export class DomainNew extends pulumi.CustomResource {
      * - **domestic**: Mainland China only.
      * - **overseas**: Global (excluding Mainland China).
      * - **global**: global.
-     * The default value is **domestic**.
+     *   The default value is **domestic**.
      */
     public readonly scope!: pulumi.Output<string>;
     /**
@@ -201,7 +201,7 @@ export interface DomainNewState {
      * - **domestic**: Mainland China only.
      * - **overseas**: Global (excluding Mainland China).
      * - **global**: global.
-     * The default value is **domestic**.
+     *   The default value is **domestic**.
      */
     scope?: pulumi.Input<string>;
     /**
@@ -247,7 +247,7 @@ export interface DomainNewArgs {
      * - **domestic**: Mainland China only.
      * - **overseas**: Global (excluding Mainland China).
      * - **global**: global.
-     * The default value is **domestic**.
+     *   The default value is **domestic**.
      */
     scope?: pulumi.Input<string>;
     /**

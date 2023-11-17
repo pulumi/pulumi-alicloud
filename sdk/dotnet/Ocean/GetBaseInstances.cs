@@ -109,13 +109,13 @@ namespace Pulumi.AliCloud.Ocean
         }
 
         /// <summary>
-        /// OceanBase cluster ID.
+        /// (ForceNew,Optional) OceanBase cluster ID.
         /// </summary>
         [Input("instanceId")]
         public string? InstanceId { get; set; }
 
         /// <summary>
-        /// OceanBase cluster name.
+        /// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
         /// </summary>
         [Input("instanceName")]
         public string? InstanceName { get; set; }
@@ -139,19 +139,19 @@ namespace Pulumi.AliCloud.Ocean
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The ID of the enterprise resource group to which the instance resides.
+        /// (ForceNew,Optional) The ID of the enterprise resource group to which the instance resides.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The filter keyword for the query list.
+        /// (ForceNew,Optional) The filter keyword for the query list.
         /// </summary>
         [Input("searchKey")]
         public string? SearchKey { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -180,13 +180,13 @@ namespace Pulumi.AliCloud.Ocean
         }
 
         /// <summary>
-        /// OceanBase cluster ID.
+        /// (ForceNew,Optional) OceanBase cluster ID.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// OceanBase cluster name.
+        /// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
@@ -210,19 +210,19 @@ namespace Pulumi.AliCloud.Ocean
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The ID of the enterprise resource group to which the instance resides.
+        /// (ForceNew,Optional) The ID of the enterprise resource group to which the instance resides.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The filter keyword for the query list.
+        /// (ForceNew,Optional) The filter keyword for the query list.
         /// </summary>
         [Input("searchKey")]
         public Input<string>? SearchKey { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

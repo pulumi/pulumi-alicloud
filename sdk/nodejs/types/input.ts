@@ -512,6 +512,13 @@ export namespace alb {
         /**
          * The content of the inserted header field. Valid values:
          * * If the `valueType` is set to `SystemDefined`, the following values are used:
+         *   - `ClientSrcPort`: the port of the client.
+         *   - `ClientSrcIp`: the IP address of the client.
+         *   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+         *   - `SLBId`: the ID of the ALB instance.
+         *   - `SLBPort`: the listener port of the ALB instance.
+         * * If the `valueType` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+         * * If the `valueType` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
          */
         value?: pulumi.Input<string>;
         /**
@@ -644,6 +651,13 @@ export namespace alb {
         /**
          * The content of the inserted header field. Valid values:
          * * If the `valueType` is set to `SystemDefined`, the following values are used:
+         *   - `ClientSrcPort`: the port of the client.
+         *   - `ClientSrcIp`: the IP address of the client.
+         *   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+         *   - `SLBId`: the ID of the ALB instance.
+         *   - `SLBPort`: the listener port of the ALB instance.
+         * * If the `valueType` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+         * * If the `valueType` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
          */
         value?: pulumi.Input<string>;
     }
@@ -695,6 +709,13 @@ export namespace alb {
         /**
          * The content of the inserted header field. Valid values:
          * * If the `valueType` is set to `SystemDefined`, the following values are used:
+         *   - `ClientSrcPort`: the port of the client.
+         *   - `ClientSrcIp`: the IP address of the client.
+         *   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+         *   - `SLBId`: the ID of the ALB instance.
+         *   - `SLBPort`: the listener port of the ALB instance.
+         * * If the `valueType` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+         * * If the `valueType` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
          */
         value?: pulumi.Input<string>;
     }
@@ -783,7 +804,7 @@ export namespace alb {
          */
         serverIp?: pulumi.Input<string>;
         /**
-         * The type of the server. The type of the server. Valid values: 
+         * The type of the server. The type of the server. Valid values:
          * - Ecs: an ECS instance.
          * - Eni: an ENI.
          * - Eci: an elastic container instance.
@@ -1055,7 +1076,7 @@ export namespace arms {
          */
         key: pulumi.Input<string>;
         /**
-         * The operator used in the dispatch rule. Valid values: 
+         * The operator used in the dispatch rule. Valid values:
          * * eq: equals to.
          * * re: matches a regular expression.
          */
@@ -1350,12 +1371,11 @@ export namespace cdn {
          * Certificate type. Value:
          * - **upload**: upload certificate.
          * - **cas**: Cloud Shield certificate.
-         * - **free**: free certificate.
-         * > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
+         * - **free**: free certificate.If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
          */
         certType?: pulumi.Input<string>;
         /**
-         * The force set of the security certificate.
+         * (Removed) The force set of the security certificate.
          */
         forceSet?: pulumi.Input<string>;
         /**
@@ -2201,7 +2221,7 @@ export namespace cms {
          */
         operator?: pulumi.Input<string>;
         /**
-         * The name of the key that is used to filter logs imported from Log Service.
+         * The name of the key that is used to aggregate logs imported from Log Service.
          */
         slsKeyName?: pulumi.Input<string>;
         /**
@@ -2216,7 +2236,7 @@ export namespace cms {
          */
         alias?: pulumi.Input<string>;
         /**
-         * The name of the key that is used to filter logs imported from Log Service.
+         * The name of the key that is used to aggregate logs imported from Log Service.
          */
         slsKeyName?: pulumi.Input<string>;
     }
@@ -2241,7 +2261,7 @@ export namespace cms {
          */
         parameterTwo?: pulumi.Input<string>;
         /**
-         * The name of the key that is used to filter logs imported from Log Service.
+         * The name of the key that is used to aggregate logs imported from Log Service.
          */
         slsKeyName?: pulumi.Input<string>;
     }
@@ -2598,11 +2618,13 @@ export namespace cs {
 
     export interface EdgeKubernetesCertificateAuthority {
         /**
-         * The path of client certificate, like `~/.kube/client-cert.pem`.
+         * The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
          */
         clientCert?: pulumi.Input<string>;
         /**
-         * The path of client key, like `~/.kube/client-key.pem`.
+         * The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+         *
+         * *Network params*
          */
         clientKey?: pulumi.Input<string>;
         /**
@@ -2794,11 +2816,11 @@ export namespace cs {
 
     export interface KubernetesCertificateAuthority {
         /**
-         * The path of client certificate, like `~/.kube/client-cert.pem`.
+         * The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
          */
         clientCert?: pulumi.Input<string>;
         /**
-         * The path of client key, like `~/.kube/client-key.pem`.
+         * The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
          */
         clientKey?: pulumi.Input<string>;
         /**
@@ -2954,7 +2976,7 @@ export namespace cs {
          */
         config?: pulumi.Input<string>;
         /**
-         * It specifies whether to disable automatic installation. 
+         * It specifies whether to disable automatic installation.
          *
          * It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
          *
@@ -3027,6 +3049,7 @@ export namespace cs {
          * Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
          *
          * for example:
+         *
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
@@ -3101,11 +3124,11 @@ export namespace cs {
 
     export interface ManagedKubernetesWorkerDataDisk {
         /**
-         * (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+         * (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
          */
         autoSnapshotPolicyId?: pulumi.Input<string>;
         /**
-         * (Optional)The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+         * (Deprecated from version 1.177.0)(Optional)The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
          */
         category?: pulumi.Input<string>;
         /**
@@ -3113,7 +3136,7 @@ export namespace cs {
          */
         device?: pulumi.Input<string>;
         /**
-         * (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+         * (Deprecated from version 1.177.0)(Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
          */
         encrypted?: pulumi.Input<string>;
         /**
@@ -3125,11 +3148,11 @@ export namespace cs {
          */
         name?: pulumi.Input<string>;
         /**
-         * (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          */
         performanceLevel?: pulumi.Input<string>;
         /**
-         * (Optional)The size of a data disk, at least 40. Unit: GiB.
+         * (Deprecated from version 1.177.0)(Optional)The size of a data disk, at least 40. Unit: GiB.
          */
         size?: pulumi.Input<string>;
         /**
@@ -5331,11 +5354,11 @@ export namespace ecs {
 
     export interface LaunchTemplateNetworkInterfaces {
         /**
-         * The description of the data disk.
+         * The ENI description.
          */
         description?: pulumi.Input<string>;
         /**
-         * The name of the data disk.
+         * ENI name.
          */
         name?: pulumi.Input<string>;
         /**
@@ -5382,7 +5405,7 @@ export namespace ecs {
         encrypted?: pulumi.Input<boolean>;
         iops?: pulumi.Input<string>;
         /**
-         * The name of the data disk.
+         * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
          */
         name?: pulumi.Input<string>;
         performanceLevel?: pulumi.Input<string>;
@@ -6817,7 +6840,7 @@ export namespace eventbridge {
          * import * as pulumi from "@pulumi/pulumi";
          * ```
          *
-         * In order to fix the diff, from version 1.160.0,
+         * In order to fix the diff, from version 1.160.0, 
          * this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
          * If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
          */
@@ -7541,15 +7564,15 @@ export namespace hbr {
 
     export interface OtsBackupPlanRule {
         /**
-         * Backup type. Valid values: `COMPLETE`.
+         * The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
          */
         backupType?: pulumi.Input<string>;
         /**
-         * Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+         * Whether to disable the backup task. Valid values: true, false.
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * Backup retention days, the minimum is 1.
+         * Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
          */
         retention?: pulumi.Input<string>;
         /**
@@ -7659,13 +7682,13 @@ export namespace kms {
 export namespace kvstore {
     export interface InstanceParameter {
         /**
-         * Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+         * (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
          *
          * @deprecated Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
          */
         name?: pulumi.Input<string>;
         /**
-         * Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+         * (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
          *
          * @deprecated Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
          */
@@ -7691,7 +7714,7 @@ export namespace log {
     export interface AlertGroupConfiguration {
         fields?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * including FixedRate,Hourly,Daily,Weekly,Cron.
+         * Group configuration type, including no_group, labels_auto, custom.
          */
         type: pulumi.Input<string>;
     }
@@ -7702,18 +7725,18 @@ export namespace log {
          */
         condition: pulumi.Input<string>;
         /**
-         * including FixedRate,Hourly,Daily,Weekly,Cron.
+         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
          */
         type: pulumi.Input<string>;
     }
 
     export interface AlertLabel {
         /**
-         * Annotations's key for new alert.
+         * Labels's key for new alert.
          */
         key: pulumi.Input<string>;
         /**
-         * Annotations's value for new alert.
+         * Labels's value for new alert.
          */
         value: pulumi.Input<string>;
     }
@@ -7736,7 +7759,7 @@ export namespace log {
          */
         serviceUri?: pulumi.Input<string>;
         /**
-         * including FixedRate,Hourly,Daily,Weekly,Cron.
+         * Notification type. support Email, SMS, DingTalk, MessageCenter.
          */
         type: pulumi.Input<string>;
     }
@@ -7871,7 +7894,7 @@ export namespace log {
          */
         tokens?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * including FixedRate,Hourly,Daily,Weekly,Cron.
+         * Alert template type including `sys`, `user`.
          */
         type: pulumi.Input<string>;
     }
@@ -7948,6 +7971,7 @@ export namespace log {
         encryptType?: pulumi.Input<string>;
         /**
          * User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
+         *
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * ```
@@ -7972,7 +7996,7 @@ export namespace log {
 
     export interface StoreIndexFieldSearch {
         /**
-         * The alias of one field.
+         * The alias of one field
          */
         alias?: pulumi.Input<string>;
         /**
@@ -7992,7 +8016,7 @@ export namespace log {
          */
         jsonKeys?: pulumi.Input<pulumi.Input<inputs.log.StoreIndexFieldSearchJsonKey>[]>;
         /**
-         * When using the jsonKeys field, this field is required.
+         * The field name, which is unique in the same log store.
          */
         name: pulumi.Input<string>;
         /**
@@ -8000,14 +8024,14 @@ export namespace log {
          */
         token?: pulumi.Input<string>;
         /**
-         * The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+         * The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
          */
         type?: pulumi.Input<string>;
     }
 
     export interface StoreIndexFieldSearchJsonKey {
         /**
-         * The alias of one field.
+         * The alias of one field
          */
         alias?: pulumi.Input<string>;
         /**
@@ -8028,15 +8052,15 @@ export namespace log {
 
     export interface StoreIndexFullText {
         /**
-         * Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
+         * Whether the case sensitive. Default to false.
          */
         caseSensitive?: pulumi.Input<boolean>;
         /**
-         * Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
+         * Whether includes the chinese. Default to false.
          */
         includeChinese?: pulumi.Input<boolean>;
         /**
-         * The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
+         * The string of several split words, like "\r", "#"
          */
         token?: pulumi.Input<string>;
     }
@@ -8311,7 +8335,7 @@ export namespace mongodb {
          */
         nodeId?: pulumi.Input<string>;
         /**
-         * - Custom storage space; value range: [10, 1,000]
+         * Custom storage space; value range: [10, 1,000]
          * - 10-GB increments. Unit: GB.
          */
         nodeStorage: pulumi.Input<number>;
@@ -8492,7 +8516,6 @@ export namespace nlb {
         healthCheckConnectTimeout?: pulumi.Input<number>;
         /**
          * The domain name that is used for health checks. Valid values:
-         * - `$SERVER_IP`: the private IP address of a backend server.
          */
         healthCheckDomain?: pulumi.Input<string>;
         /**
@@ -8566,14 +8589,7 @@ export namespace opensearch {
          */
         qps?: pulumi.Input<number>;
         /**
-         * Specification. Valid values: 
-         * * `opensearch.share.junior`: Entry-level.
-         * * `opensearch.share.common`: Shared universal.
-         * * `opensearch.share.compute`: Shared computing.
-         * * `opensearch.share.storage`: Shared storage type.
-         * * `opensearch.private.common`: Exclusive universal type.
-         * * `opensearch.private.compute`: Exclusive computing type.
-         * * `opensearch.private.storage`: Exclusive storage type
+         * Specification. Valid values:
          */
         spec: pulumi.Input<string>;
     }
@@ -9346,15 +9362,15 @@ export namespace ram {
 
     export interface PolicyStatement {
         /**
-         * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
+         * (Deprecated since 1.49.0, Required, Type: list) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of operations for the `resource`. The format of each item in this list is `${service}:${action_name}`, such as `oss:ListBuckets` and `ecs:Describe*`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${action_name}` refers to the name of an api interface which related to the `${service}`.
          */
         actions: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
+         * (Deprecated since 1.49.0, Required) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) This parameter indicates whether or not the `action` is allowed. Valid values are `Allow` and `Deny`.
          */
         effect: pulumi.Input<string>;
         /**
-         * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
+         * (Deprecated since 1.49.0, Required, Type: list) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) List of specific objects which will be authorized. The format of each item in this list is `acs:${service}:${region}:${account_id}:${relative_id}`, such as `acs:ecs:*:*:instance/inst-002` and `acs:oss:*:1234567890000:mybucket`. The `${service}` can be `ecs`, `oss`, `ots` and so on, the `${region}` is the region info which can use `*` replace when it is not supplied, the `${account_id}` refers to someone's Alicloud account id or you can use `*` to replace, the `${relative_id}` is the resource description section which related to the `${service}`.
          */
         resources: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -9609,7 +9625,7 @@ export namespace rds {
          * Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
          * - true: enables the feature.
          * - false: disables the feature. This is the default value.
-         * > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+         * - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
          */
         autoPause?: pulumi.Input<boolean>;
         /**
@@ -9630,8 +9646,8 @@ export namespace rds {
          * Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
          * - true: enables the feature.
          * - false: disables the feature. This is the default value.
-         * > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
-         * > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
+         * - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+         * - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
          */
         switchForce?: pulumi.Input<boolean>;
     }
@@ -9692,7 +9708,7 @@ export namespace rds {
          * Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
          * - true: enables the feature.
          * - false: disables the feature. This is the default value.
-         * > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+         * - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
          */
         autoPause?: pulumi.Input<boolean>;
         /**
@@ -9713,8 +9729,8 @@ export namespace rds {
          * Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
          * - true: enables the feature.
          * - false: disables the feature. This is the default value.
-         * > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
-         * > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
+         * - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+         * - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
          */
         switchForce?: pulumi.Input<boolean>;
     }
@@ -10234,7 +10250,7 @@ export namespace sae {
          * - SLB_RT: The average response time of public network SLB within 15 seconds.
          * - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
          * - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-         * **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+         *   **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
          */
         metricType?: pulumi.Input<string>;
         /**
@@ -10555,7 +10571,7 @@ export namespace scdn {
          */
         certName?: pulumi.Input<string>;
         /**
-         * Certificate Type. Value Range: 
+         * Certificate Type. Value Range:
          * * upload: Certificate
          * * cas: Certificate Authority Certificate.
          * * free: Free Certificate.
@@ -10604,7 +10620,7 @@ export namespace scdn {
          */
         priority: pulumi.Input<string>;
         /**
-         * The Origin Server Type. Valid Values: 
+         * The Origin Server Type. Valid Values:
          * * ipaddr: IP Source Station
          * * domain: the Domain Name
          * * oss: OSS Bucket as a Source Station.
@@ -10929,9 +10945,6 @@ export namespace servicemesh {
         isRamRole?: pulumi.Input<boolean>;
         /**
          * The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
-         * - `istio-admin`:  The administrator.
-         * - `istio-ops`: The administrator of the service mesh resource.
-         * - `istio-readonly`: The read only permission.
          */
         roleName?: pulumi.Input<string>;
         /**
@@ -11018,34 +11031,34 @@ export namespace threatdetection {
 
     export interface HoneypotProbeHoneypotBindList {
         /**
-         * List of listening ports.See the following `Block BindPortList`.
+         * (ForceNew,Optional) List of listening ports.See the following `Block BindPortList`.
          */
         bindPortLists?: pulumi.Input<pulumi.Input<inputs.threatdetection.HoneypotProbeHoneypotBindListBindPortList>[]>;
         /**
-         * Honeypot ID.
+         * (ForceNew,Optional) Honeypot ID.
          */
         honeypotId?: pulumi.Input<string>;
     }
 
     export interface HoneypotProbeHoneypotBindListBindPortList {
         /**
-         * Whether to bind the port.
+         * (ForceNew,Optional) Whether to bind the port.
          */
         bindPort?: pulumi.Input<boolean>;
         /**
-         * End port.
+         * (ForceNew,Optional) End port.
          */
         endPort?: pulumi.Input<number>;
         /**
-         * Whether the port is fixed.
+         * (ForceNew,Optional) Whether the port is fixed.
          */
         fixed?: pulumi.Input<boolean>;
         /**
-         * Start port.
+         * (ForceNew,Optional) Start port.
          */
         startPort?: pulumi.Input<number>;
         /**
-         * Destination port.
+         * (ForceNew,Optional) Destination port.
          */
         targetPort?: pulumi.Input<number>;
     }
@@ -11122,7 +11135,7 @@ export namespace vpc {
          */
         policy?: pulumi.Input<string>;
         /**
-         * The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+         * The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
          */
         port?: pulumi.Input<string>;
         /**
@@ -11258,7 +11271,7 @@ export namespace vpc {
          * - **ChinaMobile**: China Mobile (single line).
          * - **ChinaUnicom**: China Unicom (single line).
          * - **ChinaTelecom**: China Telecom (single line).
-         * > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+         *   > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
          */
         ipv6Isp?: pulumi.Input<string>;
     }
@@ -11317,7 +11330,7 @@ export namespace vpc {
          */
         action: pulumi.Input<string>;
         /**
-         * DestinationCidrBlock.
+         * The destination address of the outbound rule network traffic.
          */
         destinationCidrBlock?: pulumi.Input<string>;
         /**
@@ -11326,7 +11339,7 @@ export namespace vpc {
          */
         destinationPortRange?: pulumi.Input<string>;
         /**
-         * Priority.
+         * The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
          */
         priority?: pulumi.Input<number>;
         /**
@@ -11357,7 +11370,7 @@ export namespace vpc {
          */
         action: pulumi.Input<string>;
         /**
-         * DestinationCidrBlock.
+         * The destination address of the outbound rule network traffic.
          */
         destinationCidrBlock?: pulumi.Input<string>;
         /**
@@ -11366,7 +11379,7 @@ export namespace vpc {
          */
         destinationPortRange?: pulumi.Input<string>;
         /**
-         * Priority.
+         * The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
          */
         priority?: pulumi.Input<number>;
         /**
@@ -11777,8 +11790,8 @@ export namespace wafv3 {
         readTimeout?: pulumi.Input<number>;
         /**
          * The traffic tag field and value of the domain name which used to mark the traffic processed by WAF. 
-         * It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
-         * and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
+         * It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field, 
+         * and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value, 
          * when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
          * to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
          * custom header field already exists in the request, the system will overwrite the value of the custom field in the

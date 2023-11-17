@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.Cen
     public sealed class GetChildInstanceRouteEntryToAttachmentsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the CEN instance.
+        /// (ForceNew,Optional) The ID of the CEN instance.
         /// </summary>
         [Input("cenId")]
         public string? CenId { get; set; }
@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Cen
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// ServiceType
+        /// (ForceNew,Optional) ServiceType
         /// </summary>
         [Input("serviceType")]
         public string? ServiceType { get; set; }
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Cen
     public sealed class GetChildInstanceRouteEntryToAttachmentsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the CEN instance.
+        /// (ForceNew,Optional) The ID of the CEN instance.
         /// </summary>
         [Input("cenId")]
         public Input<string>? CenId { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// ServiceType
+        /// (ForceNew,Optional) ServiceType
         /// </summary>
         [Input("serviceType")]
         public Input<string>? ServiceType { get; set; }

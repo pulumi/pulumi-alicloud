@@ -71,7 +71,7 @@ export interface GetHanaBackupPlansArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * The ID of the backup vault.
+     * The id of the vault.
      */
     vaultId?: string;
 }
@@ -149,7 +149,7 @@ export interface GetHanaBackupPlansOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * The ID of the backup vault.
+     * The id of the vault.
      */
     vaultId?: pulumi.Input<string>;
 }

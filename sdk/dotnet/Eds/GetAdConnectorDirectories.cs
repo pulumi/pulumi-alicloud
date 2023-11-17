@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Eds
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of directory.
+        /// The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -156,7 +156,7 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of directory.
+        /// The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

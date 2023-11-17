@@ -61,11 +61,11 @@ export interface GetResourceSharesArgs {
      */
     resourceShareName?: string;
     /**
-     * The owner of resource share.
+     * The owner of resource share, Valid values: `Self` and `OtherAccounts`.
      */
     resourceShareOwner: string;
     /**
-     * The status of resource share.
+     * The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
      */
     status?: string;
 }
@@ -133,11 +133,11 @@ export interface GetResourceSharesOutputArgs {
      */
     resourceShareName?: pulumi.Input<string>;
     /**
-     * The owner of resource share.
+     * The owner of resource share, Valid values: `Self` and `OtherAccounts`.
      */
     resourceShareOwner: pulumi.Input<string>;
     /**
-     * The status of resource share.
+     * The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
      */
     status?: pulumi.Input<string>;
 }

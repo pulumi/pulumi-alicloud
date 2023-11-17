@@ -15,14 +15,14 @@ public final class GetProductPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetProductPlainArgs Empty = new GetProductPlainArgs();
 
     /**
-     * A available region id used to filter market place Ecs images.
+     * (Available in 1.71.1+) A available region id used to filter market place Ecs images.
      * 
      */
     @Import(name="availableRegion")
     private @Nullable String availableRegion;
 
     /**
-     * @return A available region id used to filter market place Ecs images.
+     * @return (Available in 1.71.1+) A available region id used to filter market place Ecs images.
      * 
      */
     public Optional<String> availableRegion() {
@@ -70,7 +70,7 @@ public final class GetProductPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param availableRegion A available region id used to filter market place Ecs images.
+         * @param availableRegion (Available in 1.71.1+) A available region id used to filter market place Ecs images.
          * 
          * @return builder
          * 

@@ -17,14 +17,14 @@ public final class GetChildInstanceRouteEntryToAttachmentsArgs extends com.pulum
     public static final GetChildInstanceRouteEntryToAttachmentsArgs Empty = new GetChildInstanceRouteEntryToAttachmentsArgs();
 
     /**
-     * The ID of the CEN instance.
+     * (ForceNew,Optional) The ID of the CEN instance.
      * 
      */
     @Import(name="cenId")
     private @Nullable Output<String> cenId;
 
     /**
-     * @return The ID of the CEN instance.
+     * @return (ForceNew,Optional) The ID of the CEN instance.
      * 
      */
     public Optional<Output<String>> cenId() {
@@ -77,14 +77,14 @@ public final class GetChildInstanceRouteEntryToAttachmentsArgs extends com.pulum
     }
 
     /**
-     * ServiceType
+     * (ForceNew,Optional) ServiceType
      * 
      */
     @Import(name="serviceType")
     private @Nullable Output<String> serviceType;
 
     /**
-     * @return ServiceType
+     * @return (ForceNew,Optional) ServiceType
      * 
      */
     public Optional<Output<String>> serviceType() {
@@ -136,7 +136,7 @@ public final class GetChildInstanceRouteEntryToAttachmentsArgs extends com.pulum
         }
 
         /**
-         * @param cenId The ID of the CEN instance.
+         * @param cenId (ForceNew,Optional) The ID of the CEN instance.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class GetChildInstanceRouteEntryToAttachmentsArgs extends com.pulum
         }
 
         /**
-         * @param cenId The ID of the CEN instance.
+         * @param cenId (ForceNew,Optional) The ID of the CEN instance.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class GetChildInstanceRouteEntryToAttachmentsArgs extends com.pulum
         }
 
         /**
-         * @param serviceType ServiceType
+         * @param serviceType (ForceNew,Optional) ServiceType
          * 
          * @return builder
          * 
@@ -241,7 +241,7 @@ public final class GetChildInstanceRouteEntryToAttachmentsArgs extends com.pulum
         }
 
         /**
-         * @param serviceType ServiceType
+         * @param serviceType (ForceNew,Optional) ServiceType
          * 
          * @return builder
          * 

@@ -42,7 +42,7 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
     /**
      * The retention period of the snapshot copied across regions.
      * - -1: The snapshot is permanently retained.
-     * - [1, 65535]: The automatic snapshot is retained for the specified number of days.
+     * - [1, 65535]: The automatic snapshot is retained for the specified number of days.\
      *   Default value: -1.
      * 
      */
@@ -52,7 +52,7 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
     /**
      * @return The retention period of the snapshot copied across regions.
      * - -1: The snapshot is permanently retained.
-     * - [1, 65535]: The automatic snapshot is retained for the specified number of days.
+     * - [1, 65535]: The automatic snapshot is retained for the specified number of days.\
      *   Default value: -1.
      * 
      */

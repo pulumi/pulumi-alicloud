@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Ram
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated since provider version 1.114.0 and `policy_document` instead.
+        /// (Deprecated since 1.114.0, Optional, Conflicts with `policy_document`, `statement` and `version`) It has been deprecated since provider version 1.114.0 and `policy_document` instead.
         /// </summary>
         [Output("document")]
         public Output<string> Document { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.Ram
         public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated since provider version 1.114.0 and `policy_name` instead.
+        /// (Deprecated since 1.114.0, Required, ForceNew) It has been deprecated since provider version 1.114.0 and `policy_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Ram
         public Output<string> RotateStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+        /// (Deprecated since 1.49.0, Optional, Type: list, Conflicts with `policy_document`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
         /// </summary>
         [Output("statements")]
         public Output<ImmutableArray<Outputs.PolicyStatement>> Statements { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Ram
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+        /// (Deprecated since 1.49.0, Optional, Conflicts with `policy_document`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         /// </summary>
         [Output("version")]
         public Output<string?> Version { get; private set; } = null!;
@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// It has been deprecated since provider version 1.114.0 and `policy_document` instead.
+        /// (Deprecated since 1.114.0, Optional, Conflicts with `policy_document`, `statement` and `version`) It has been deprecated since provider version 1.114.0 and `policy_document` instead.
         /// </summary>
         [Input("document")]
         public Input<string>? Document { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// It has been deprecated since provider version 1.114.0 and `policy_name` instead.
+        /// (Deprecated since 1.114.0, Required, ForceNew) It has been deprecated since provider version 1.114.0 and `policy_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Ram
         private InputList<Inputs.PolicyStatementArgs>? _statements;
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+        /// (Deprecated since 1.49.0, Optional, Type: list, Conflicts with `policy_document`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
         /// </summary>
         [Obsolete(@"Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. ")]
         public InputList<Inputs.PolicyStatementArgs> Statements
@@ -249,7 +249,7 @@ namespace Pulumi.AliCloud.Ram
         }
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+        /// (Deprecated since 1.49.0, Optional, Conflicts with `policy_document`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
@@ -281,7 +281,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// It has been deprecated since provider version 1.114.0 and `policy_document` instead.
+        /// (Deprecated since 1.114.0, Optional, Conflicts with `policy_document`, `statement` and `version`) It has been deprecated since provider version 1.114.0 and `policy_document` instead.
         /// </summary>
         [Input("document")]
         public Input<string>? Document { get; set; }
@@ -293,7 +293,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<bool>? Force { get; set; }
 
         /// <summary>
-        /// It has been deprecated since provider version 1.114.0 and `policy_name` instead.
+        /// (Deprecated since 1.114.0, Required, ForceNew) It has been deprecated since provider version 1.114.0 and `policy_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -320,7 +320,7 @@ namespace Pulumi.AliCloud.Ram
         private InputList<Inputs.PolicyStatementGetArgs>? _statements;
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+        /// (Deprecated since 1.49.0, Optional, Type: list, Conflicts with `policy_document`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
         /// </summary>
         [Obsolete(@"Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. ")]
         public InputList<Inputs.PolicyStatementGetArgs> Statements
@@ -336,7 +336,7 @@ namespace Pulumi.AliCloud.Ram
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+        /// (Deprecated since 1.49.0, Optional, Conflicts with `policy_document`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
         /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }

@@ -54,7 +54,7 @@ export interface GetCapacityReservationsArgs {
      */
     ids?: string[];
     /**
-     * Instance type. Currently, you can only set the capacity reservation service for one instance type.
+     * (ForceNew,Optional) Instance type. Currently, you can only set the capacity reservation service for one instance type.
      */
     instanceType?: string;
     /**
@@ -66,23 +66,23 @@ export interface GetCapacityReservationsArgs {
      */
     outputFile?: string;
     /**
-     * The payment type of the resource. value range `PostPaid`, `PrePaid`.
+     * (ForceNew,Optional) The payment type of the resource. value range `PostPaid`, `PrePaid`.
      */
     paymentType?: string;
     /**
-     * platform of the capacity reservation , value range `windows`, `linux`, `all`.
+     * (ForceNew,Optional) platform of the capacity reservation , value range `windows`, `linux`, `all`.
      */
     platform?: string;
     /**
-     * The resource group id.
+     * (ForceNew,Optional) The resource group id.
      */
     resourceGroupId?: string;
     /**
-     * The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
+     * (ForceNew,Optional) The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
      */
     status?: string;
     /**
-     * The tag of the resource.
+     * (ForceNew,Optional) The tag of the resource.
      */
     tags?: {[key: string]: any};
 }
@@ -169,7 +169,7 @@ export interface GetCapacityReservationsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Instance type. Currently, you can only set the capacity reservation service for one instance type.
+     * (ForceNew,Optional) Instance type. Currently, you can only set the capacity reservation service for one instance type.
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -181,23 +181,23 @@ export interface GetCapacityReservationsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The payment type of the resource. value range `PostPaid`, `PrePaid`.
+     * (ForceNew,Optional) The payment type of the resource. value range `PostPaid`, `PrePaid`.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * platform of the capacity reservation , value range `windows`, `linux`, `all`.
+     * (ForceNew,Optional) platform of the capacity reservation , value range `windows`, `linux`, `all`.
      */
     platform?: pulumi.Input<string>;
     /**
-     * The resource group id.
+     * (ForceNew,Optional) The resource group id.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
+     * (ForceNew,Optional) The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The tag of the resource.
+     * (ForceNew,Optional) The tag of the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

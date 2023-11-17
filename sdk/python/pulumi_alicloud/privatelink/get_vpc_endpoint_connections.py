@@ -137,7 +137,7 @@ def get_vpc_endpoint_connections(endpoint_id: Optional[str] = None,
     :param int endpoint_owner_id: The endpoint owner id.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_id: The ID of the Vpc Endpoint Service.
-    :param str status: The status of Vpc Endpoint Connection.
+    :param str status: The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
     """
     __args__ = dict()
     __args__['endpointId'] = endpoint_id
@@ -189,6 +189,6 @@ def get_vpc_endpoint_connections_output(endpoint_id: Optional[pulumi.Input[Optio
     :param int endpoint_owner_id: The endpoint owner id.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str service_id: The ID of the Vpc Endpoint Service.
-    :param str status: The status of Vpc Endpoint Connection.
+    :param str status: The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
     """
     ...

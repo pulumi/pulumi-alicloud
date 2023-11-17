@@ -36,7 +36,7 @@ class DomainNewArgs:
                - **domestic**: Mainland China only.
                - **overseas**: Global (excluding Mainland China).
                - **global**: global.
-               The default value is **domestic**.
+                 The default value is **domestic**.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "cdn_type", cdn_type)
@@ -133,7 +133,7 @@ class DomainNewArgs:
         - **domestic**: Mainland China only.
         - **overseas**: Global (excluding Mainland China).
         - **global**: global.
-        The default value is **domestic**.
+          The default value is **domestic**.
         """
         return pulumi.get(self, "scope")
 
@@ -179,7 +179,7 @@ class _DomainNewState:
                - **domestic**: Mainland China only.
                - **overseas**: Global (excluding Mainland China).
                - **global**: global.
-               The default value is **domestic**.
+                 The default value is **domestic**.
         :param pulumi.Input[Sequence[pulumi.Input['DomainNewSourceArgs']]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
@@ -285,7 +285,7 @@ class _DomainNewState:
         - **domestic**: Mainland China only.
         - **overseas**: Global (excluding Mainland China).
         - **global**: global.
-        The default value is **domestic**.
+          The default value is **domestic**.
         """
         return pulumi.get(self, "scope")
 
@@ -395,7 +395,7 @@ class DomainNew(pulumi.CustomResource):
                - **domestic**: Mainland China only.
                - **overseas**: Global (excluding Mainland China).
                - **global**: global.
-               The default value is **domestic**.
+                 The default value is **domestic**.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainNewSourceArgs']]]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
@@ -530,7 +530,7 @@ class DomainNew(pulumi.CustomResource):
                - **domestic**: Mainland China only.
                - **overseas**: Global (excluding Mainland China).
                - **global**: global.
-               The default value is **domestic**.
+                 The default value is **domestic**.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DomainNewSourceArgs']]]] sources: The source address list of the accelerated domain. Defaults to null. See `sources` below.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
@@ -607,7 +607,7 @@ class DomainNew(pulumi.CustomResource):
         - **domestic**: Mainland China only.
         - **overseas**: Global (excluding Mainland China).
         - **global**: global.
-        The default value is **domestic**.
+          The default value is **domestic**.
         """
         return pulumi.get(self, "scope")
 

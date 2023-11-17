@@ -79,7 +79,7 @@ type RouteTable struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Description of the routing table.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+	// (Deprecated from v1.119.1+) Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -138,7 +138,7 @@ type routeTableState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Description of the routing table.
 	Description *string `pulumi:"description"`
-	// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+	// (Deprecated from v1.119.1+) Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 	Name *string `pulumi:"name"`
@@ -165,7 +165,7 @@ type RouteTableState struct {
 	CreateTime pulumi.StringPtrInput
 	// Description of the routing table.
 	Description pulumi.StringPtrInput
-	// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+	// (Deprecated from v1.119.1+) Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 	Name pulumi.StringPtrInput
@@ -194,7 +194,7 @@ type routeTableArgs struct {
 	AssociateType *string `pulumi:"associateType"`
 	// Description of the routing table.
 	Description *string `pulumi:"description"`
-	// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+	// (Deprecated from v1.119.1+) Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 	Name *string `pulumi:"name"`
@@ -216,7 +216,7 @@ type RouteTableArgs struct {
 	AssociateType pulumi.StringPtrInput
 	// Description of the routing table.
 	Description pulumi.StringPtrInput
-	// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+	// (Deprecated from v1.119.1+) Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 	Name pulumi.StringPtrInput
@@ -334,7 +334,7 @@ func (o RouteTableOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouteTable) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+// (Deprecated from v1.119.1+) Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
 func (o RouteTableOutput) Name() pulumi.StringOutput {

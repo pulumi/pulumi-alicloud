@@ -36,7 +36,7 @@ class ElasticInstanceArgs:
         The set of arguments for constructing a ElasticInstance resource.
         :param pulumi.Input[str] engine: Database engine: `gpdb`.
         :param pulumi.Input[str] engine_version: Database version. Valid value is `6.0`.
-        :param pulumi.Input[str] instance_spec: The specification of segment nodes. 
+        :param pulumi.Input[str] instance_spec: The specification of segment nodes.
                * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         :param pulumi.Input[int] seg_node_num: The number of segment nodes. Minimum is `4`, max is `256`, step is `4`.
@@ -115,7 +115,7 @@ class ElasticInstanceArgs:
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> pulumi.Input[str]:
         """
-        The specification of segment nodes. 
+        The specification of segment nodes.
         * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
         * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         """
@@ -342,7 +342,7 @@ class _ElasticInstanceState:
         :param pulumi.Input[str] engine: Database engine: `gpdb`.
         :param pulumi.Input[str] engine_version: Database version. Valid value is `6.0`.
         :param pulumi.Input[str] instance_network_type: The network type of ADB PG instance. Only `VPC` supported now.
-        :param pulumi.Input[str] instance_spec: The specification of segment nodes. 
+        :param pulumi.Input[str] instance_spec: The specification of segment nodes.
                * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         :param pulumi.Input[int] payment_duration: The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
@@ -503,7 +503,7 @@ class _ElasticInstanceState:
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of segment nodes. 
+        The specification of segment nodes.
         * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
         * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         """
@@ -736,7 +736,7 @@ class ElasticInstance(pulumi.CustomResource):
         :param pulumi.Input[str] engine: Database engine: `gpdb`.
         :param pulumi.Input[str] engine_version: Database version. Valid value is `6.0`.
         :param pulumi.Input[str] instance_network_type: The network type of ADB PG instance. Only `VPC` supported now.
-        :param pulumi.Input[str] instance_spec: The specification of segment nodes. 
+        :param pulumi.Input[str] instance_spec: The specification of segment nodes.
                * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         :param pulumi.Input[int] payment_duration: The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
@@ -924,7 +924,7 @@ class ElasticInstance(pulumi.CustomResource):
         :param pulumi.Input[str] engine: Database engine: `gpdb`.
         :param pulumi.Input[str] engine_version: Database version. Valid value is `6.0`.
         :param pulumi.Input[str] instance_network_type: The network type of ADB PG instance. Only `VPC` supported now.
-        :param pulumi.Input[str] instance_spec: The specification of segment nodes. 
+        :param pulumi.Input[str] instance_spec: The specification of segment nodes.
                * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
                * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         :param pulumi.Input[int] payment_duration: The subscription period. Valid values: [1~12]. It is valid when payment_type is `Subscription`.  
@@ -1037,7 +1037,7 @@ class ElasticInstance(pulumi.CustomResource):
     @pulumi.getter(name="instanceSpec")
     def instance_spec(self) -> pulumi.Output[str]:
         """
-        The specification of segment nodes. 
+        The specification of segment nodes.
         * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
         * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         """

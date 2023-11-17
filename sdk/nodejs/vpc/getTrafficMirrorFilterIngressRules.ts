@@ -60,7 +60,7 @@ export interface GetTrafficMirrorFilterIngressRulesArgs {
      */
     status?: string;
     /**
-     * The ID of the filter associated with the inbound rule.
+     * The ID of the Traffic Mirror Filter.
      */
     trafficMirrorFilterId: string;
 }
@@ -126,7 +126,7 @@ export interface GetTrafficMirrorFilterIngressRulesOutputArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * The ID of the filter associated with the inbound rule.
+     * The ID of the Traffic Mirror Filter.
      */
     trafficMirrorFilterId: pulumi.Input<string>;
 }

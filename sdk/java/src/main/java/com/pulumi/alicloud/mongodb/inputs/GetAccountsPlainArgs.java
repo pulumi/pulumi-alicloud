@@ -15,14 +15,14 @@ public final class GetAccountsPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetAccountsPlainArgs Empty = new GetAccountsPlainArgs();
 
     /**
-     * The name of the account.
+     * The name of the account. Valid values: `root`.
      * 
      */
     @Import(name="accountName")
     private @Nullable String accountName;
 
     /**
-     * @return The name of the account.
+     * @return The name of the account. Valid values: `root`.
      * 
      */
     public Optional<String> accountName() {
@@ -30,14 +30,14 @@ public final class GetAccountsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The id of the instance to which the account belongs.
+     * The ID of the instance.
      * 
      */
     @Import(name="instanceId", required=true)
     private String instanceId;
 
     /**
-     * @return The id of the instance to which the account belongs.
+     * @return The ID of the instance.
      * 
      */
     public String instanceId() {
@@ -86,7 +86,7 @@ public final class GetAccountsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param accountName The name of the account.
+         * @param accountName The name of the account. Valid values: `root`.
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class GetAccountsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param instanceId The id of the instance to which the account belongs.
+         * @param instanceId The ID of the instance.
          * 
          * @return builder
          * 

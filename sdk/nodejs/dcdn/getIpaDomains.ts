@@ -51,7 +51,7 @@ export function getIpaDomains(args?: GetIpaDomainsArgs, opts?: pulumi.InvokeOpti
  */
 export interface GetIpaDomainsArgs {
     /**
-     * The accelerated domain names.
+     * The name of the Domain.
      */
     domainName?: string;
     /**
@@ -124,7 +124,7 @@ export function getIpaDomainsOutput(args?: GetIpaDomainsOutputArgs, opts?: pulum
  */
 export interface GetIpaDomainsOutputArgs {
     /**
-     * The accelerated domain names.
+     * The name of the Domain.
      */
     domainName?: pulumi.Input<string>;
     /**

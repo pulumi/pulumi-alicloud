@@ -123,7 +123,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string?> InstanceNetworkType { get; private set; } = null!;
 
         /// <summary>
-        /// The specification of segment nodes. 
+        /// The specification of segment nodes.
         /// * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
         /// * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         /// </summary>
@@ -293,7 +293,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? InstanceNetworkType { get; set; }
 
         /// <summary>
-        /// The specification of segment nodes. 
+        /// The specification of segment nodes.
         /// * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
         /// * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         /// </summary>
@@ -431,7 +431,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? InstanceNetworkType { get; set; }
 
         /// <summary>
-        /// The specification of segment nodes. 
+        /// The specification of segment nodes.
         /// * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
         /// * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
         /// </summary>

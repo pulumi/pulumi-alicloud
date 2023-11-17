@@ -776,7 +776,7 @@ func (o GetAccessConfigurationsConfigurationPermissionPolicyArrayOutput) Index(i
 }
 
 type GetDirectoriesDirectory struct {
-	// Saml identifies the creation time of the provider configuration.
+	// The CreateTime of the CloudSSO directory.
 	CreateTime string `pulumi:"createTime"`
 	// The DirectoryId of the CloudSSO directory.
 	DirectoryId string `pulumi:"directoryId"`
@@ -808,7 +808,7 @@ type GetDirectoriesDirectoryInput interface {
 }
 
 type GetDirectoriesDirectoryArgs struct {
-	// Saml identifies the creation time of the provider configuration.
+	// The CreateTime of the CloudSSO directory.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The DirectoryId of the CloudSSO directory.
 	DirectoryId pulumi.StringInput `pulumi:"directoryId"`
@@ -879,7 +879,7 @@ func (o GetDirectoriesDirectoryOutput) ToGetDirectoriesDirectoryOutputWithContex
 	return o
 }
 
-// Saml identifies the creation time of the provider configuration.
+// The CreateTime of the CloudSSO directory.
 func (o GetDirectoriesDirectoryOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectory) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -947,7 +947,7 @@ func (o GetDirectoriesDirectoryArrayOutput) Index(i pulumi.IntInput) GetDirector
 }
 
 type GetDirectoriesDirectorySamlIdentityProviderConfiguration struct {
-	// Saml identifies the creation time of the provider configuration.
+	// The CreateTime of the CloudSSO directory.
 	CreateTime string `pulumi:"createTime"`
 	// Base64 encoded IdP metadata document.
 	EncodedMetadataDocument string `pulumi:"encodedMetadataDocument"`
@@ -971,7 +971,7 @@ type GetDirectoriesDirectorySamlIdentityProviderConfigurationInput interface {
 }
 
 type GetDirectoriesDirectorySamlIdentityProviderConfigurationArgs struct {
-	// Saml identifies the creation time of the provider configuration.
+	// The CreateTime of the CloudSSO directory.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// Base64 encoded IdP metadata document.
 	EncodedMetadataDocument pulumi.StringInput `pulumi:"encodedMetadataDocument"`
@@ -1034,7 +1034,7 @@ func (o GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput) ToGetDir
 	return o
 }
 
-// Saml identifies the creation time of the provider configuration.
+// The CreateTime of the CloudSSO directory.
 func (o GetDirectoriesDirectorySamlIdentityProviderConfigurationOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDirectoriesDirectorySamlIdentityProviderConfiguration) string { return v.CreateTime }).(pulumi.StringOutput)
 }

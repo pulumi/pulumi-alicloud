@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// Privilege type of account.
         /// - Normal: Common privilege.
-        /// Default to Normal.
+        ///   Default to Normal.
         /// </summary>
         [Output("accountType")]
         public Output<string?> AccountType { get; private set; } = null!;
@@ -240,7 +240,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// Privilege type of account.
         /// - Normal: Common privilege.
-        /// Default to Normal.
+        ///   Default to Normal.
         /// </summary>
         [Input("accountType")]
         public Input<string>? AccountType { get; set; }
@@ -317,7 +317,7 @@ namespace Pulumi.AliCloud.KVStore
         /// <summary>
         /// Privilege type of account.
         /// - Normal: Common privilege.
-        /// Default to Normal.
+        ///   Default to Normal.
         /// </summary>
         [Input("accountType")]
         public Input<string>? AccountType { get; set; }

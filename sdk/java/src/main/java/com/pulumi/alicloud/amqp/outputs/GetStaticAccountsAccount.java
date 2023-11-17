@@ -25,7 +25,7 @@ public final class GetStaticAccountsAccount {
      */
     private String id;
     /**
-     * @return InstanceId
+     * @return (ForceNew, Optional) InstanceId
      * 
      */
     private String instanceId;
@@ -68,7 +68,7 @@ public final class GetStaticAccountsAccount {
         return this.id;
     }
     /**
-     * @return InstanceId
+     * @return (ForceNew, Optional) InstanceId
      * 
      */
     public String instanceId() {

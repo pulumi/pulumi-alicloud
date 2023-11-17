@@ -107,14 +107,14 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The name of the data disk.
+     * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the data disk.
+     * @return Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -300,7 +300,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name The name of the data disk.
+         * @param name Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
          * 
          * @return builder
          * 
@@ -311,7 +311,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name The name of the data disk.
+         * @param name Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
          * 
          * @return builder
          * 

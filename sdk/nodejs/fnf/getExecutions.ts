@@ -67,7 +67,7 @@ export interface GetExecutionsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Running`, `Stopped`, `Succeeded`, `Failed`, `TimedOut`.
      */
     status?: string;
 }
@@ -141,7 +141,7 @@ export interface GetExecutionsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Running`, `Stopped`, `Succeeded`, `Failed`, `TimedOut`.
      */
     status?: pulumi.Input<string>;
 }

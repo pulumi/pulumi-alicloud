@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+        /// (Deprecated from v1.119.1+) Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+        /// (Deprecated from v1.119.1+) Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -234,7 +234,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+        /// (Deprecated from v1.119.1+) Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

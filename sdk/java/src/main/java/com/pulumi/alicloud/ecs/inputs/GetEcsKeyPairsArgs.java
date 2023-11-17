@@ -79,14 +79,14 @@ public final class GetEcsKeyPairsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Resource Group Id.
+     * The resource group Id.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Resource Group Id.
+     * @return The resource group Id.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -232,7 +232,7 @@ public final class GetEcsKeyPairsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId The Resource Group Id.
+         * @param resourceGroupId The resource group Id.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class GetEcsKeyPairsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId The Resource Group Id.
+         * @param resourceGroupId The resource group Id.
          * 
          * @return builder
          * 

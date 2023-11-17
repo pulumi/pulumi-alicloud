@@ -21,7 +21,7 @@ public final class GetBaselineStrategiesStrategy {
      */
     private String baselineStrategyName;
     /**
-     * @return The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+     * @return (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
      * 
      */
     private String customType;
@@ -73,7 +73,7 @@ public final class GetBaselineStrategiesStrategy {
         return this.baselineStrategyName;
     }
     /**
-     * @return The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+     * @return (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
      * 
      */
     public String customType() {

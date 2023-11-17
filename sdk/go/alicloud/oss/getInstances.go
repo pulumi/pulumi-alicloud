@@ -61,6 +61,7 @@ type GetInstancesArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// A map of tags assigned to the instance. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -125,6 +126,7 @@ type GetInstancesOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A map of tags assigned to the instance. It must be in the format:
+	//
 	// ```go
 	// package main
 	//

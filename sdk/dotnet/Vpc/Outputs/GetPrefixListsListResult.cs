@@ -19,6 +19,8 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         public readonly string CreateTime;
         /// <summary>
         /// The CIDR address block list of the prefix list.
+        /// * `cidr` - The CIDR address block of the prefix list.
+        /// * `description` - The description of the cidr entry.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPrefixListsListEntryResult> Entrys;
         /// <summary>

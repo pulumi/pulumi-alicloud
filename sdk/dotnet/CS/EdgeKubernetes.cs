@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
-        /// Nested attribute containing certificate authority data for your cluster.
+        /// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
         /// </summary>
         [Output("certificateAuthority")]
         public Output<Outputs.EdgeKubernetesCertificateAuthority> CertificateAuthority { get; private set; } = null!;
@@ -252,7 +252,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> ClusterSpec { get; private set; } = null!;
 
         /// <summary>
-        /// Map of kubernetes cluster connection information.
+        /// (Map) Map of kubernetes cluster connection information.
         /// </summary>
         [Output("connections")]
         public Output<Outputs.EdgeKubernetesConnections> Connections { get; private set; } = null!;
@@ -871,7 +871,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Nested attribute containing certificate authority data for your cluster.
+        /// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
         /// </summary>
         [Input("certificateAuthority")]
         public Input<Inputs.EdgeKubernetesCertificateAuthorityGetArgs>? CertificateAuthority { get; set; }
@@ -905,7 +905,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterSpec { get; set; }
 
         /// <summary>
-        /// Map of kubernetes cluster connection information.
+        /// (Map) Map of kubernetes cluster connection information.
         /// </summary>
         [Input("connections")]
         public Input<Inputs.EdgeKubernetesConnectionsGetArgs>? Connections { get; set; }

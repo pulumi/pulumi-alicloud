@@ -85,7 +85,7 @@ type TrafficMirrorFilterIngressRule struct {
 	Priority pulumi.IntOutput `pulumi:"priority"`
 	// The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
 	Protocol pulumi.StringOutput `pulumi:"protocol"`
-	// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+	// (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
 	//
 	// Deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
 	RuleAction pulumi.StringOutput `pulumi:"ruleAction"`
@@ -162,7 +162,7 @@ type trafficMirrorFilterIngressRuleState struct {
 	Priority *int `pulumi:"priority"`
 	// The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
 	Protocol *string `pulumi:"protocol"`
-	// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+	// (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
 	//
 	// Deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
 	RuleAction *string `pulumi:"ruleAction"`
@@ -195,7 +195,7 @@ type TrafficMirrorFilterIngressRuleState struct {
 	Priority pulumi.IntPtrInput
 	// The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
 	Protocol pulumi.StringPtrInput
-	// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+	// (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
 	//
 	// Deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
 	RuleAction pulumi.StringPtrInput
@@ -232,7 +232,7 @@ type trafficMirrorFilterIngressRuleArgs struct {
 	Priority int `pulumi:"priority"`
 	// The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
 	Protocol string `pulumi:"protocol"`
-	// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+	// (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
 	//
 	// Deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
 	RuleAction *string `pulumi:"ruleAction"`
@@ -262,7 +262,7 @@ type TrafficMirrorFilterIngressRuleArgs struct {
 	Priority pulumi.IntInput
 	// The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
 	Protocol pulumi.StringInput
-	// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+	// (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
 	//
 	// Deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
 	RuleAction pulumi.StringPtrInput
@@ -395,7 +395,7 @@ func (o TrafficMirrorFilterIngressRuleOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v *TrafficMirrorFilterIngressRule) pulumi.StringOutput { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+// (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
 //
 // Deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
 func (o TrafficMirrorFilterIngressRuleOutput) RuleAction() pulumi.StringOutput {

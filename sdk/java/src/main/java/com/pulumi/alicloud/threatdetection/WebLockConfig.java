@@ -104,56 +104,56 @@ public class WebLockConfig extends com.pulumi.resources.CustomResource {
         return this.dir;
     }
     /**
-     * Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+     * (ForceNew,Optional) Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      * 
      */
     @Export(name="exclusiveDir", type=String.class, parameters={})
     private Output</* @Nullable */ String> exclusiveDir;
 
     /**
-     * @return Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+     * @return (ForceNew,Optional) Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      * 
      */
     public Output<Optional<String>> exclusiveDir() {
         return Codegen.optional(this.exclusiveDir);
     }
     /**
-     * Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+     * (ForceNew,Optional) Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      * 
      */
     @Export(name="exclusiveFile", type=String.class, parameters={})
     private Output</* @Nullable */ String> exclusiveFile;
 
     /**
-     * @return Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+     * @return (ForceNew,Optional) Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      * 
      */
     public Output<Optional<String>> exclusiveFile() {
         return Codegen.optional(this.exclusiveFile);
     }
     /**
-     * Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+     * (ForceNew,Optional) Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      * 
      */
     @Export(name="exclusiveFileType", type=String.class, parameters={})
     private Output</* @Nullable */ String> exclusiveFileType;
 
     /**
-     * @return Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+     * @return (ForceNew,Optional) Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      * 
      */
     public Output<Optional<String>> exclusiveFileType() {
         return Codegen.optional(this.exclusiveFileType);
     }
     /**
-     * Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+     * (ForceNew,Optional) Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
      * 
      */
     @Export(name="inclusiveFileType", type=String.class, parameters={})
     private Output</* @Nullable */ String> inclusiveFileType;
 
     /**
-     * @return Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+     * @return (ForceNew,Optional) Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
      * 
      */
     public Output<Optional<String>> inclusiveFileType() {

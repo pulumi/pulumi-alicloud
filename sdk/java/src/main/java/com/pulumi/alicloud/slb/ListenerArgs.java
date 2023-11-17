@@ -607,7 +607,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+     * (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
      * 
      * @deprecated
      * Field &#39;ssl_certificate_id&#39; has been deprecated from 1.59.0 and using &#39;server_certificate_id&#39; instead.
@@ -618,7 +618,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> sslCertificateId;
 
     /**
-     * @return SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+     * @return (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
      * 
      * @deprecated
      * Field &#39;ssl_certificate_id&#39; has been deprecated from 1.59.0 and using &#39;server_certificate_id&#39; instead.
@@ -1588,7 +1588,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslCertificateId SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+         * @param sslCertificateId (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
          * 
          * @return builder
          * 
@@ -1603,7 +1603,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslCertificateId SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+         * @param sslCertificateId (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
          * 
          * @return builder
          * 

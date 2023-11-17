@@ -49,7 +49,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This attribute has been deprecated.
+     * (Deprecated) This attribute has been deprecated.
      * 
      * @deprecated
      * Attribute perm has been deprecated and suggest removing it from your template.
@@ -60,7 +60,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> perm;
 
     /**
-     * @return This attribute has been deprecated.
+     * @return (Deprecated) This attribute has been deprecated.
      * 
      * @deprecated
      * Attribute perm has been deprecated and suggest removing it from your template.
@@ -220,7 +220,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param perm This attribute has been deprecated.
+         * @param perm (Deprecated) This attribute has been deprecated.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class TopicState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param perm This attribute has been deprecated.
+         * @param perm (Deprecated) This attribute has been deprecated.
          * 
          * @return builder
          * 

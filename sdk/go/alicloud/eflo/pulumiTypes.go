@@ -24,22 +24,22 @@ type GetSubnetsSubnet struct {
 	Id string `pulumi:"id"`
 	// Error message
 	Message string `pulumi:"message"`
-	// Resource Group ID.
+	// (ForceNew,Optional) Resource Group ID.
 	ResourceGroupId string `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// (ForceNew,Optional) The status of the resource.
 	Status string `pulumi:"status"`
-	// Primary key ID.
+	// (ForceNew,Optional) Primary key ID.
 	SubnetId string `pulumi:"subnetId"`
-	// The Subnet name.
+	// (ForceNew,Optional) The Subnet name.
 	SubnetName string `pulumi:"subnetName"`
-	// Eflo subnet usage type, optional value:
+	// (ForceNew,Optional) Eflo subnet usage type, optional value:
 	// - General type is not filled in
 	// - OOB:OOB type
 	// - LB: LB type
 	Type string `pulumi:"type"`
-	// The Eflo VPD ID.
+	// (ForceNew,Optional) The Eflo VPD ID.
 	VpdId string `pulumi:"vpdId"`
-	// The zone ID of the resource.
+	// (ForceNew,Optional) The zone ID of the resource.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -65,22 +65,22 @@ type GetSubnetsSubnetArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Error message
 	Message pulumi.StringInput `pulumi:"message"`
-	// Resource Group ID.
+	// (ForceNew,Optional) Resource Group ID.
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// (ForceNew,Optional) The status of the resource.
 	Status pulumi.StringInput `pulumi:"status"`
-	// Primary key ID.
+	// (ForceNew,Optional) Primary key ID.
 	SubnetId pulumi.StringInput `pulumi:"subnetId"`
-	// The Subnet name.
+	// (ForceNew,Optional) The Subnet name.
 	SubnetName pulumi.StringInput `pulumi:"subnetName"`
-	// Eflo subnet usage type, optional value:
+	// (ForceNew,Optional) Eflo subnet usage type, optional value:
 	// - General type is not filled in
 	// - OOB:OOB type
 	// - LB: LB type
 	Type pulumi.StringInput `pulumi:"type"`
-	// The Eflo VPD ID.
+	// (ForceNew,Optional) The Eflo VPD ID.
 	VpdId pulumi.StringInput `pulumi:"vpdId"`
-	// The zone ID of the resource.
+	// (ForceNew,Optional) The zone ID of the resource.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -160,27 +160,27 @@ func (o GetSubnetsSubnetOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.Message }).(pulumi.StringOutput)
 }
 
-// Resource Group ID.
+// (ForceNew,Optional) Resource Group ID.
 func (o GetSubnetsSubnetOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// (ForceNew,Optional) The status of the resource.
 func (o GetSubnetsSubnetOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// Primary key ID.
+// (ForceNew,Optional) Primary key ID.
 func (o GetSubnetsSubnetOutput) SubnetId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.SubnetId }).(pulumi.StringOutput)
 }
 
-// The Subnet name.
+// (ForceNew,Optional) The Subnet name.
 func (o GetSubnetsSubnetOutput) SubnetName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.SubnetName }).(pulumi.StringOutput)
 }
 
-// Eflo subnet usage type, optional value:
+// (ForceNew,Optional) Eflo subnet usage type, optional value:
 // - General type is not filled in
 // - OOB:OOB type
 // - LB: LB type
@@ -188,12 +188,12 @@ func (o GetSubnetsSubnetOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The Eflo VPD ID.
+// (ForceNew,Optional) The Eflo VPD ID.
 func (o GetSubnetsSubnetOutput) VpdId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.VpdId }).(pulumi.StringOutput)
 }
 
-// The zone ID of the resource.
+// (ForceNew,Optional) The zone ID of the resource.
 func (o GetSubnetsSubnetOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSubnetsSubnet) string { return v.ZoneId }).(pulumi.StringOutput)
 }
@@ -227,13 +227,13 @@ type GetVpdsVpd struct {
 	GmtModified string `pulumi:"gmtModified"`
 	// The id of the vpd.
 	Id string `pulumi:"id"`
-	// The Resource group id
+	// (ForceNew,Optional) The Resource group id
 	ResourceGroupId string `pulumi:"resourceGroupId"`
-	// The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+	// (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
 	Status string `pulumi:"status"`
-	// The id of the vpd.
+	// (ForceNew,Optional) The id of the vpd.
 	VpdId string `pulumi:"vpdId"`
-	// The Name of the VPD.
+	// (ForceNew,Optional) The Name of the VPD.
 	VpdName string `pulumi:"vpdName"`
 }
 
@@ -257,13 +257,13 @@ type GetVpdsVpdArgs struct {
 	GmtModified pulumi.StringInput `pulumi:"gmtModified"`
 	// The id of the vpd.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The Resource group id
+	// (ForceNew,Optional) The Resource group id
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
-	// The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+	// (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
 	Status pulumi.StringInput `pulumi:"status"`
-	// The id of the vpd.
+	// (ForceNew,Optional) The id of the vpd.
 	VpdId pulumi.StringInput `pulumi:"vpdId"`
-	// The Name of the VPD.
+	// (ForceNew,Optional) The Name of the VPD.
 	VpdName pulumi.StringInput `pulumi:"vpdName"`
 }
 
@@ -338,22 +338,22 @@ func (o GetVpdsVpdOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpdsVpd) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The Resource group id
+// (ForceNew,Optional) The Resource group id
 func (o GetVpdsVpdOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpdsVpd) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+// (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
 func (o GetVpdsVpdOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpdsVpd) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The id of the vpd.
+// (ForceNew,Optional) The id of the vpd.
 func (o GetVpdsVpdOutput) VpdId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpdsVpd) string { return v.VpdId }).(pulumi.StringOutput)
 }
 
-// The Name of the VPD.
+// (ForceNew,Optional) The Name of the VPD.
 func (o GetVpdsVpdOutput) VpdName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpdsVpd) string { return v.VpdName }).(pulumi.StringOutput)
 }

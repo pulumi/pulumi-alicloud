@@ -52,15 +52,15 @@ type Instance struct {
 	// * International site customers can purchase the following versions of China Mainland region: ["versionProChina", "versionBusinessChina", "versionEnterpriseChina"]
 	// * International site customers can purchase the following versions of International region: ["versionPro", "versionBusiness", "versionEnterprise"].
 	PackageCode pulumi.StringOutput `pulumi:"packageCode"`
-	// Service time of Web Application Firewall.
+	// (ForceNew) Service time of Web Application Firewall.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Specify whether professional service is supported. Valid values: ["true", "false"]
 	PrefessionalService pulumi.StringOutput `pulumi:"prefessionalService"`
 	// The instance region ID.
 	Region pulumi.StringPtrOutput `pulumi:"region"`
-	// Renewal period of WAF service. Unit: month
+	// (ForceNew) Renewal period of WAF service. Unit: month
 	RenewPeriod pulumi.IntPtrOutput `pulumi:"renewPeriod"`
-	// Renewal status of WAF service. Valid values:
+	// (ForceNew) Renewal status of WAF service. Valid values:
 	// * AutoRenewal: The service time of WAF is renewed automatically.
 	// * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
 	RenewalStatus pulumi.StringPtrOutput `pulumi:"renewalStatus"`
@@ -154,15 +154,15 @@ type instanceState struct {
 	// * International site customers can purchase the following versions of China Mainland region: ["versionProChina", "versionBusinessChina", "versionEnterpriseChina"]
 	// * International site customers can purchase the following versions of International region: ["versionPro", "versionBusiness", "versionEnterprise"].
 	PackageCode *string `pulumi:"packageCode"`
-	// Service time of Web Application Firewall.
+	// (ForceNew) Service time of Web Application Firewall.
 	Period *int `pulumi:"period"`
 	// Specify whether professional service is supported. Valid values: ["true", "false"]
 	PrefessionalService *string `pulumi:"prefessionalService"`
 	// The instance region ID.
 	Region *string `pulumi:"region"`
-	// Renewal period of WAF service. Unit: month
+	// (ForceNew) Renewal period of WAF service. Unit: month
 	RenewPeriod *int `pulumi:"renewPeriod"`
-	// Renewal status of WAF service. Valid values:
+	// (ForceNew) Renewal status of WAF service. Valid values:
 	// * AutoRenewal: The service time of WAF is renewed automatically.
 	// * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
 	RenewalStatus *string `pulumi:"renewalStatus"`
@@ -197,15 +197,15 @@ type InstanceState struct {
 	// * International site customers can purchase the following versions of China Mainland region: ["versionProChina", "versionBusinessChina", "versionEnterpriseChina"]
 	// * International site customers can purchase the following versions of International region: ["versionPro", "versionBusiness", "versionEnterprise"].
 	PackageCode pulumi.StringPtrInput
-	// Service time of Web Application Firewall.
+	// (ForceNew) Service time of Web Application Firewall.
 	Period pulumi.IntPtrInput
 	// Specify whether professional service is supported. Valid values: ["true", "false"]
 	PrefessionalService pulumi.StringPtrInput
 	// The instance region ID.
 	Region pulumi.StringPtrInput
-	// Renewal period of WAF service. Unit: month
+	// (ForceNew) Renewal period of WAF service. Unit: month
 	RenewPeriod pulumi.IntPtrInput
-	// Renewal status of WAF service. Valid values:
+	// (ForceNew) Renewal status of WAF service. Valid values:
 	// * AutoRenewal: The service time of WAF is renewed automatically.
 	// * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
 	RenewalStatus pulumi.StringPtrInput
@@ -244,15 +244,15 @@ type instanceArgs struct {
 	// * International site customers can purchase the following versions of China Mainland region: ["versionProChina", "versionBusinessChina", "versionEnterpriseChina"]
 	// * International site customers can purchase the following versions of International region: ["versionPro", "versionBusiness", "versionEnterprise"].
 	PackageCode string `pulumi:"packageCode"`
-	// Service time of Web Application Firewall.
+	// (ForceNew) Service time of Web Application Firewall.
 	Period *int `pulumi:"period"`
 	// Specify whether professional service is supported. Valid values: ["true", "false"]
 	PrefessionalService string `pulumi:"prefessionalService"`
 	// The instance region ID.
 	Region *string `pulumi:"region"`
-	// Renewal period of WAF service. Unit: month
+	// (ForceNew) Renewal period of WAF service. Unit: month
 	RenewPeriod *int `pulumi:"renewPeriod"`
-	// Renewal status of WAF service. Valid values:
+	// (ForceNew) Renewal status of WAF service. Valid values:
 	// * AutoRenewal: The service time of WAF is renewed automatically.
 	// * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
 	RenewalStatus *string `pulumi:"renewalStatus"`
@@ -286,15 +286,15 @@ type InstanceArgs struct {
 	// * International site customers can purchase the following versions of China Mainland region: ["versionProChina", "versionBusinessChina", "versionEnterpriseChina"]
 	// * International site customers can purchase the following versions of International region: ["versionPro", "versionBusiness", "versionEnterprise"].
 	PackageCode pulumi.StringInput
-	// Service time of Web Application Firewall.
+	// (ForceNew) Service time of Web Application Firewall.
 	Period pulumi.IntPtrInput
 	// Specify whether professional service is supported. Valid values: ["true", "false"]
 	PrefessionalService pulumi.StringInput
 	// The instance region ID.
 	Region pulumi.StringPtrInput
-	// Renewal period of WAF service. Unit: month
+	// (ForceNew) Renewal period of WAF service. Unit: month
 	RenewPeriod pulumi.IntPtrInput
-	// Renewal status of WAF service. Valid values:
+	// (ForceNew) Renewal status of WAF service. Valid values:
 	// * AutoRenewal: The service time of WAF is renewed automatically.
 	// * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
 	RenewalStatus pulumi.StringPtrInput
@@ -437,7 +437,7 @@ func (o InstanceOutput) PackageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PackageCode }).(pulumi.StringOutput)
 }
 
-// Service time of Web Application Firewall.
+// (ForceNew) Service time of Web Application Firewall.
 func (o InstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
@@ -452,12 +452,12 @@ func (o InstanceOutput) Region() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Region }).(pulumi.StringPtrOutput)
 }
 
-// Renewal period of WAF service. Unit: month
+// (ForceNew) Renewal period of WAF service. Unit: month
 func (o InstanceOutput) RenewPeriod() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.RenewPeriod }).(pulumi.IntPtrOutput)
 }
 
-// Renewal status of WAF service. Valid values:
+// (ForceNew) Renewal status of WAF service. Valid values:
 // * AutoRenewal: The service time of WAF is renewed automatically.
 // * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
 func (o InstanceOutput) RenewalStatus() pulumi.StringPtrOutput {

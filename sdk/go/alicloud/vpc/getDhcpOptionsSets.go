@@ -91,13 +91,9 @@ func GetDhcpOptionsSets(ctx *pulumi.Context, args *GetDhcpOptionsSetsArgs, opts 
 
 // A collection of arguments for invoking getDhcpOptionsSets.
 type GetDhcpOptionsSetsArgs struct {
-	// The root domain, for example, example.com. After a DHCP options set is associated with a
-	// Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
-	// ECS instances in the VPC network.
+	// The name of the DHCP options set.The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
 	DhcpOptionsSetName *string `pulumi:"dhcpOptionsSetName"`
-	// The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
-	// Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
-	// instances in the VPC network.
+	// The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
 	DomainName *string `pulumi:"domainName"`
 	// A list of Dhcp Options Set IDs.
 	Ids []string `pulumi:"ids"`
@@ -138,13 +134,9 @@ func GetDhcpOptionsSetsOutput(ctx *pulumi.Context, args GetDhcpOptionsSetsOutput
 
 // A collection of arguments for invoking getDhcpOptionsSets.
 type GetDhcpOptionsSetsOutputArgs struct {
-	// The root domain, for example, example.com. After a DHCP options set is associated with a
-	// Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
-	// ECS instances in the VPC network.
+	// The name of the DHCP options set.The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
 	DhcpOptionsSetName pulumi.StringPtrInput `pulumi:"dhcpOptionsSetName"`
-	// The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
-	// Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
-	// instances in the VPC network.
+	// The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
 	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
 	// A list of Dhcp Options Set IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

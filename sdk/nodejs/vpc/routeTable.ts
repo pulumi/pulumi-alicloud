@@ -79,7 +79,7 @@ export class RouteTable extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+     * (Deprecated from v1.119.1+) Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      */
@@ -168,7 +168,7 @@ export interface RouteTableState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+     * (Deprecated from v1.119.1+) Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      */
@@ -212,7 +212,7 @@ export interface RouteTableArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
+     * (Deprecated from v1.119.1+) Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.1. New field 'route_table_name' instead.
      */

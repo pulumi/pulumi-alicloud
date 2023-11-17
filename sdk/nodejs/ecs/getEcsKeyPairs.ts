@@ -61,7 +61,7 @@ export interface GetEcsKeyPairsArgs {
      */
     outputFile?: string;
     /**
-     * The Resource Group Id.
+     * The resource group Id.
      */
     resourceGroupId?: string;
     /**
@@ -136,7 +136,7 @@ export interface GetEcsKeyPairsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The Resource Group Id.
+     * The resource group Id.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**

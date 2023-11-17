@@ -35,7 +35,7 @@ class PeerConnectionArgs:
         :param pulumi.Input[int] accepting_ali_uid: The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
                - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
                - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-               > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+                 > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
         :param pulumi.Input[int] bandwidth: The bandwidth of the VPC peering connection to be modified. Unit: Mbps. The value range is an integer greater than 0.
         :param pulumi.Input[str] description: The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
         :param pulumi.Input[bool] dry_run: Whether to PreCheck only this request. Value:
@@ -111,7 +111,7 @@ class PeerConnectionArgs:
         The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
         - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
         - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-        > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+          > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
         """
         return pulumi.get(self, "accepting_ali_uid")
 
@@ -226,7 +226,7 @@ class _PeerConnectionState:
         :param pulumi.Input[int] accepting_ali_uid: The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
                - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
                - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-               > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+                 > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
         :param pulumi.Input[str] accepting_region_id: The region ID of the recipient of the VPC peering connection to be created.
                - When creating a VPC peer-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.
                - When creating a cross-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.
@@ -275,7 +275,7 @@ class _PeerConnectionState:
         The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
         - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
         - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-        > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+          > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
         """
         return pulumi.get(self, "accepting_ali_uid")
 
@@ -490,7 +490,7 @@ class PeerConnection(pulumi.CustomResource):
         :param pulumi.Input[int] accepting_ali_uid: The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
                - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
                - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-               > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+                 > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
         :param pulumi.Input[str] accepting_region_id: The region ID of the recipient of the VPC peering connection to be created.
                - When creating a VPC peer-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.
                - When creating a cross-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.
@@ -645,7 +645,7 @@ class PeerConnection(pulumi.CustomResource):
         :param pulumi.Input[int] accepting_ali_uid: The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
                - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
                - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-               > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+                 > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
         :param pulumi.Input[str] accepting_region_id: The region ID of the recipient of the VPC peering connection to be created.
                - When creating a VPC peer-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.
                - When creating a cross-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.
@@ -687,7 +687,7 @@ class PeerConnection(pulumi.CustomResource):
         The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
         - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
         - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-        > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+          > **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
         """
         return pulumi.get(self, "accepting_ali_uid")
 

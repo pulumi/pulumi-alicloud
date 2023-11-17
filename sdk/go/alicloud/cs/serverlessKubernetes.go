@@ -170,7 +170,7 @@ type ServerlessKubernetes struct {
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway pulumi.BoolPtrOutput `pulumi:"newNatGateway"`
-	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+	// (Deprecated from version 1.123.1) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
 	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 	PrivateZone pulumi.BoolPtrOutput `pulumi:"privateZone"`
@@ -195,7 +195,7 @@ type ServerlessKubernetes struct {
 	Version pulumi.StringOutput `pulumi:"version"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	// (Deprecated from version 1.91.0) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
@@ -277,7 +277,7 @@ type serverlessKubernetesState struct {
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
-	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+	// (Deprecated from version 1.123.1) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
 	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 	PrivateZone *bool `pulumi:"privateZone"`
@@ -302,7 +302,7 @@ type serverlessKubernetesState struct {
 	Version *string `pulumi:"version"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId *string `pulumi:"vpcId"`
-	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	// (Deprecated from version 1.91.0) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -352,7 +352,7 @@ type ServerlessKubernetesState struct {
 	NamePrefix pulumi.StringPtrInput
 	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway pulumi.BoolPtrInput
-	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+	// (Deprecated from version 1.123.1) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
 	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 	PrivateZone pulumi.BoolPtrInput
@@ -377,7 +377,7 @@ type ServerlessKubernetesState struct {
 	Version pulumi.StringPtrInput
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId pulumi.StringPtrInput
-	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	// (Deprecated from version 1.91.0) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
 	VswitchId pulumi.StringPtrInput
@@ -431,7 +431,7 @@ type serverlessKubernetesArgs struct {
 	NamePrefix *string `pulumi:"namePrefix"`
 	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway *bool `pulumi:"newNatGateway"`
-	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+	// (Deprecated from version 1.123.1) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
 	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 	PrivateZone *bool `pulumi:"privateZone"`
@@ -456,7 +456,7 @@ type serverlessKubernetesArgs struct {
 	Version *string `pulumi:"version"`
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId string `pulumi:"vpcId"`
-	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	// (Deprecated from version 1.91.0) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -507,7 +507,7 @@ type ServerlessKubernetesArgs struct {
 	NamePrefix pulumi.StringPtrInput
 	// Whether to create a new nat gateway while creating kubernetes cluster. SNAT must be configured when a new VPC is automatically created. Default is `true`.
 	NewNatGateway pulumi.BoolPtrInput
-	// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+	// (Deprecated from version 1.123.1) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 	//
 	// Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 	PrivateZone pulumi.BoolPtrInput
@@ -532,7 +532,7 @@ type ServerlessKubernetesArgs struct {
 	Version pulumi.StringPtrInput
 	// The vpc where new kubernetes cluster will be located. Specify one vpc's id, if it is not specified, a new VPC  will be built.
 	VpcId pulumi.StringInput
-	// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+	// (Deprecated from version 1.91.0) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
 	VswitchId pulumi.StringPtrInput
@@ -716,7 +716,7 @@ func (o ServerlessKubernetesOutput) NewNatGateway() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.BoolPtrOutput { return v.NewNatGateway }).(pulumi.BoolPtrOutput)
 }
 
-// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
+// (Deprecated from version 1.123.1) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `serviceDiscoveryTypes`.
 //
 // Deprecated: Field 'private_zone' has been deprecated from provider version 1.123.1. New field 'service_discovery_types' replace it.
 func (o ServerlessKubernetesOutput) PrivateZone() pulumi.BoolPtrOutput {
@@ -777,7 +777,7 @@ func (o ServerlessKubernetesOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServerlessKubernetes) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
+// (Deprecated from version 1.91.0) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availabilityZone` specified.
 //
 // Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.91.0. New field 'vswitch_ids' replace it.
 func (o ServerlessKubernetesOutput) VswitchId() pulumi.StringOutput {

@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetVpcFirewallCensCen {
     /**
-     * @return The ID of the CEN instance.
+     * @return (ForceNew,Optional) The ID of the CEN instance.
      * 
      */
     private String cenId;
@@ -32,29 +32,29 @@ public final class GetVpcFirewallCensCen {
      */
     private List<GetVpcFirewallCensCenLocalVpc> localVpcs;
     /**
-     * @return The ID of the VPC instance that created the VPC firewall.
+     * @return (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
      * 
      */
     private String networkInstanceId;
     /**
-     * @return Firewall switch status
+     * @return (ForceNew,Optional) Firewall switch status
      * 
      */
     private String status;
     /**
-     * @return VPC firewall ID
+     * @return (ForceNew,Optional) VPC firewall ID
      * 
      */
     private String vpcFirewallId;
     /**
-     * @return The name of the VPC firewall instance.
+     * @return (ForceNew,Optional) The name of the VPC firewall instance.
      * 
      */
     private String vpcFirewallName;
 
     private GetVpcFirewallCensCen() {}
     /**
-     * @return The ID of the CEN instance.
+     * @return (ForceNew,Optional) The ID of the CEN instance.
      * 
      */
     public String cenId() {
@@ -82,28 +82,28 @@ public final class GetVpcFirewallCensCen {
         return this.localVpcs;
     }
     /**
-     * @return The ID of the VPC instance that created the VPC firewall.
+     * @return (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
      * 
      */
     public String networkInstanceId() {
         return this.networkInstanceId;
     }
     /**
-     * @return Firewall switch status
+     * @return (ForceNew,Optional) Firewall switch status
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return VPC firewall ID
+     * @return (ForceNew,Optional) VPC firewall ID
      * 
      */
     public String vpcFirewallId() {
         return this.vpcFirewallId;
     }
     /**
-     * @return The name of the VPC firewall instance.
+     * @return (ForceNew,Optional) The name of the VPC firewall instance.
      * 
      */
     public String vpcFirewallName() {

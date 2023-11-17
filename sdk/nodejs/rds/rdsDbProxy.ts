@@ -149,9 +149,9 @@ export class RdsDbProxy extends pulumi.CustomResource {
      * - ReadWriteSpliting: read/write splitting.
      * - ConnectionPersist: connection pooling.
      * - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-     * Valid status values:
-     * - 1: enabled.
-     * - 0: disabled.
+     *   Valid status values:
+     *   - 1: enabled.
+     *   - 0: disabled.
      *
      * > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
      */
@@ -357,9 +357,9 @@ export interface RdsDbProxyState {
      * - ReadWriteSpliting: read/write splitting.
      * - ConnectionPersist: connection pooling.
      * - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-     * Valid status values:
-     * - 1: enabled.
-     * - 0: disabled.
+     *   Valid status values:
+     *   - 1: enabled.
+     *   - 0: disabled.
      *
      * > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
      */
@@ -472,9 +472,9 @@ export interface RdsDbProxyArgs {
      * - ReadWriteSpliting: read/write splitting.
      * - ConnectionPersist: connection pooling.
      * - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-     * Valid status values:
-     * - 1: enabled.
-     * - 0: disabled.
+     *   Valid status values:
+     *   - 1: enabled.
+     *   - 0: disabled.
      *
      * > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
      */

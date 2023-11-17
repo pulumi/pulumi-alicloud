@@ -311,7 +311,7 @@ export class Listener extends pulumi.CustomResource {
      */
     public readonly serverGroupId!: pulumi.Output<string | undefined>;
     /**
-     * SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+     * (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
      *
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
@@ -617,7 +617,7 @@ export interface ListenerState {
      */
     serverGroupId?: pulumi.Input<string>;
     /**
-     * SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+     * (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
      *
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
@@ -806,7 +806,7 @@ export interface ListenerArgs {
      */
     serverGroupId?: pulumi.Input<string>;
     /**
-     * SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+     * (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
      *
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */

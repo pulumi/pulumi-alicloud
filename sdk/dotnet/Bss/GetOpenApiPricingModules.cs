@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Bss
         public string ProductCode { get; set; } = null!;
 
         /// <summary>
-        /// The product type.
+        /// (ForceNew,Optional) The product type.
         /// </summary>
         [Input("productType")]
         public string? ProductType { get; set; }
@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.Bss
         public Input<string> ProductCode { get; set; } = null!;
 
         /// <summary>
-        /// The product type.
+        /// (ForceNew,Optional) The product type.
         /// </summary>
         [Input("productType")]
         public Input<string>? ProductType { get; set; }

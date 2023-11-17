@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         public Input<string> Action { get; set; } = null!;
 
         /// <summary>
-        /// DestinationCidrBlock.
+        /// The destination address of the outbound rule network traffic.
         /// </summary>
         [Input("destinationCidrBlock")]
         public Input<string>? DestinationCidrBlock { get; set; }
@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         public Input<string>? DestinationPortRange { get; set; }
 
         /// <summary>
-        /// Priority.
+        /// The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }

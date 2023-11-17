@@ -123,14 +123,14 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
         return this.displayName;
     }
     /**
-     * Configure the service.See the following `Block HoneypotBindList`.
+     * (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
      * 
      */
     @Export(name="honeypotBindLists", type=List.class, parameters={HoneypotProbeHoneypotBindList.class})
     private Output</* @Nullable */ List<HoneypotProbeHoneypotBindList>> honeypotBindLists;
 
     /**
-     * @return Configure the service.See the following `Block HoneypotBindList`.
+     * @return (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
      * 
      */
     public Output<Optional<List<HoneypotProbeHoneypotBindList>>> honeypotBindLists() {
@@ -179,28 +179,28 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
         return this.probeType;
     }
     /**
-     * The version of the probe.
+     * (ForceNew,Optional) The version of the probe.
      * 
      */
     @Export(name="probeVersion", type=String.class, parameters={})
     private Output<String> probeVersion;
 
     /**
-     * @return The version of the probe.
+     * @return (ForceNew,Optional) The version of the probe.
      * 
      */
     public Output<String> probeVersion() {
         return this.probeVersion;
     }
     /**
-     * The IP address of the proxy.
+     * (ForceNew,Optional) The IP address of the proxy.
      * 
      */
     @Export(name="proxyIp", type=String.class, parameters={})
     private Output</* @Nullable */ String> proxyIp;
 
     /**
-     * @return The IP address of the proxy.
+     * @return (ForceNew,Optional) The IP address of the proxy.
      * 
      */
     public Output<Optional<String>> proxyIp() {
@@ -235,28 +235,28 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+     * (ForceNew,Optional) Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
      * 
      */
     @Export(name="uuid", type=String.class, parameters={})
     private Output</* @Nullable */ String> uuid;
 
     /**
-     * @return Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+     * @return (ForceNew,Optional) Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
      * 
      */
     public Output<Optional<String>> uuid() {
         return Codegen.optional(this.uuid);
     }
     /**
-     * The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+     * (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
      * 
      */
     @Export(name="vpcId", type=String.class, parameters={})
     private Output</* @Nullable */ String> vpcId;
 
     /**
-     * @return The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+     * @return (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
      * 
      */
     public Output<Optional<String>> vpcId() {

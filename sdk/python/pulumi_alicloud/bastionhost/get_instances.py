@@ -132,6 +132,7 @@ def get_instances(description_regex: Optional[str] = None,
     :param Sequence[str] ids: Matched instance IDs to filter data source result.
     :param str output_file: File name to persist data source output.
     :param Mapping[str, Any] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
+           
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -187,6 +188,7 @@ def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]
     :param Sequence[str] ids: Matched instance IDs to filter data source result.
     :param str output_file: File name to persist data source output.
     :param Mapping[str, Any] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
+           
            ```python
            import pulumi
            import pulumi_alicloud as alicloud

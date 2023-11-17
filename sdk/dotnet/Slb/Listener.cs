@@ -377,7 +377,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string?> ServerGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        /// (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         /// </summary>
         [Output("sslCertificateId")]
         public Output<string> SslCertificateId { get; private set; } = null!;
@@ -686,7 +686,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? ServerGroupId { get; set; }
 
         /// <summary>
-        /// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        /// (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         /// </summary>
         [Input("sslCertificateId")]
         public Input<string>? SslCertificateId { get; set; }
@@ -957,7 +957,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? ServerGroupId { get; set; }
 
         /// <summary>
-        /// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        /// (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         /// </summary>
         [Input("sslCertificateId")]
         public Input<string>? SslCertificateId { get; set; }

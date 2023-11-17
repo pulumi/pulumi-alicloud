@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StoreIndexFullText {
     /**
-     * @return Whether the case sensitive for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+     * @return Whether the case sensitive. Default to false.
      * 
      */
     private @Nullable Boolean caseSensitive;
     /**
-     * @return Whether includes the chinese for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+     * @return Whether includes the chinese. Default to false.
      * 
      */
     private @Nullable Boolean includeChinese;
     /**
-     * @return The string of several split words, like &#34;\r&#34;, &#34;#&#34;. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+     * @return The string of several split words, like &#34;\r&#34;, &#34;#&#34;
      * 
      */
     private @Nullable String token;
 
     private StoreIndexFullText() {}
     /**
-     * @return Whether the case sensitive for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+     * @return Whether the case sensitive. Default to false.
      * 
      */
     public Optional<Boolean> caseSensitive() {
         return Optional.ofNullable(this.caseSensitive);
     }
     /**
-     * @return Whether includes the chinese for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+     * @return Whether includes the chinese. Default to false.
      * 
      */
     public Optional<Boolean> includeChinese() {
         return Optional.ofNullable(this.includeChinese);
     }
     /**
-     * @return The string of several split words, like &#34;\r&#34;, &#34;#&#34;. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+     * @return The string of several split words, like &#34;\r&#34;, &#34;#&#34;
      * 
      */
     public Optional<String> token() {

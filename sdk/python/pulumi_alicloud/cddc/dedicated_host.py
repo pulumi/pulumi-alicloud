@@ -41,7 +41,7 @@ class DedicatedHostArgs:
         :param pulumi.Input[str] os_password: Host password. **NOTE:** The creation of a host password is supported only when the database type is `Tair-PMem`.
         :param pulumi.Input[str] period: The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] used_time: The subscription duration of the host. Valid values: 
+        :param pulumi.Input[int] used_time: The subscription duration of the host. Valid values:
                * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
                * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
                * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.
@@ -216,7 +216,7 @@ class DedicatedHostArgs:
     @pulumi.getter(name="usedTime")
     def used_time(self) -> Optional[pulumi.Input[int]]:
         """
-        The subscription duration of the host. Valid values: 
+        The subscription duration of the host. Valid values:
         * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
         * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
         * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.
@@ -260,7 +260,7 @@ class _DedicatedHostState:
         :param pulumi.Input[str] period: The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
         :param pulumi.Input[str] status: The state of the host. Valid values: `0:` The host is being created. `1`: The host is running. `2`: The host is faulty. `3`: The host is ready for deactivation. `4`: The host is being maintained. `5`: The host is deactivated. `6`: The host is restarting. `7`: The host is locked.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] used_time: The subscription duration of the host. Valid values: 
+        :param pulumi.Input[int] used_time: The subscription duration of the host. Valid values:
                * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
                * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
                * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.
@@ -446,7 +446,7 @@ class _DedicatedHostState:
     @pulumi.getter(name="usedTime")
     def used_time(self) -> Optional[pulumi.Input[int]]:
         """
-        The subscription duration of the host. Valid values: 
+        The subscription duration of the host. Valid values:
         * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
         * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
         * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.
@@ -522,7 +522,7 @@ class DedicatedHost(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[str] period: The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] used_time: The subscription duration of the host. Valid values: 
+        :param pulumi.Input[int] used_time: The subscription duration of the host. Valid values:
                * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
                * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
                * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.
@@ -652,7 +652,7 @@ class DedicatedHost(pulumi.CustomResource):
         :param pulumi.Input[str] period: The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
         :param pulumi.Input[str] status: The state of the host. Valid values: `0:` The host is being created. `1`: The host is running. `2`: The host is faulty. `3`: The host is ready for deactivation. `4`: The host is being maintained. `5`: The host is deactivated. `6`: The host is restarting. `7`: The host is locked.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] used_time: The subscription duration of the host. Valid values: 
+        :param pulumi.Input[int] used_time: The subscription duration of the host. Valid values:
                * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
                * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
                * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.
@@ -780,7 +780,7 @@ class DedicatedHost(pulumi.CustomResource):
     @pulumi.getter(name="usedTime")
     def used_time(self) -> pulumi.Output[Optional[int]]:
         """
-        The subscription duration of the host. Valid values: 
+        The subscription duration of the host. Valid values:
         * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
         * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
         * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.

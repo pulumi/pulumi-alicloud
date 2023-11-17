@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetEcsDisksDiskMountInstanceResult
     {
         /// <summary>
-        /// A mount of time.
+        /// Disk attachment time.
         /// </summary>
         public readonly string AttachedTime;
         /// <summary>
-        /// The mount point of the disk.
+        /// Cloud disk or the device name of the mounted instance on the site.
         /// </summary>
         public readonly string Device;
         /// <summary>
-        /// The instance ID of the disk mount.
+        /// Filter the results by the specified ECS instance ID.
         /// </summary>
         public readonly string InstanceId;
 

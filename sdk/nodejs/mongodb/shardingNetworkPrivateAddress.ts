@@ -106,14 +106,14 @@ export class ShardingNetworkPrivateAddress extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the account. 
+     * The name of the account.
      * - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
      * - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
      * - The permissions of this account are fixed to read-only.
      */
     public readonly accountName!: pulumi.Output<string | undefined>;
     /**
-     * Account password. 
+     * Account password.
      * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
      * - The password must be 8 to 32 characters in length.
      */
@@ -184,14 +184,14 @@ export class ShardingNetworkPrivateAddress extends pulumi.CustomResource {
  */
 export interface ShardingNetworkPrivateAddressState {
     /**
-     * The name of the account. 
+     * The name of the account.
      * - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
      * - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
      * - The permissions of this account are fixed to read-only.
      */
     accountName?: pulumi.Input<string>;
     /**
-     * Account password. 
+     * Account password.
      * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
      * - The password must be 8 to 32 characters in length.
      */
@@ -219,14 +219,14 @@ export interface ShardingNetworkPrivateAddressState {
  */
 export interface ShardingNetworkPrivateAddressArgs {
     /**
-     * The name of the account. 
+     * The name of the account.
      * - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
      * - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
      * - The permissions of this account are fixed to read-only.
      */
     accountName?: pulumi.Input<string>;
     /**
-     * Account password. 
+     * Account password.
      * - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&*()_+-=`.
      * - The password must be 8 to 32 characters in length.
      */

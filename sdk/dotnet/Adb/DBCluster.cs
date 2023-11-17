@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string> DbClusterCategory { get; private set; } = null!;
 
         /// <summary>
-        /// It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        /// (Deprecated since v1.121.2) It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         /// </summary>
         [Output("dbClusterClass")]
         public Output<string?> DbClusterClass { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Adb
         public Output<string?> ModifyType { get; private set; } = null!;
 
         /// <summary>
-        /// Field `pay_type` has been deprecated. New field `payment_type` instead.
+        /// (Deprecated since v1.166.0) Field `pay_type` has been deprecated. New field `payment_type` instead.
         /// </summary>
         [Output("payType")]
         public Output<string> PayType { get; private set; } = null!;
@@ -259,7 +259,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string> DbClusterCategory { get; set; } = null!;
 
         /// <summary>
-        /// It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        /// (Deprecated since v1.121.2) It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         /// </summary>
         [Input("dbClusterClass")]
         public Input<string>? DbClusterClass { get; set; }
@@ -331,7 +331,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// Field `pay_type` has been deprecated. New field `payment_type` instead.
+        /// (Deprecated since v1.166.0) Field `pay_type` has been deprecated. New field `payment_type` instead.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }
@@ -440,7 +440,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? DbClusterCategory { get; set; }
 
         /// <summary>
-        /// It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        /// (Deprecated since v1.121.2) It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         /// </summary>
         [Input("dbClusterClass")]
         public Input<string>? DbClusterClass { get; set; }
@@ -512,7 +512,7 @@ namespace Pulumi.AliCloud.Adb
         public Input<string>? ModifyType { get; set; }
 
         /// <summary>
-        /// Field `pay_type` has been deprecated. New field `payment_type` instead.
+        /// (Deprecated since v1.166.0) Field `pay_type` has been deprecated. New field `payment_type` instead.
         /// </summary>
         [Input("payType")]
         public Input<string>? PayType { get; set; }

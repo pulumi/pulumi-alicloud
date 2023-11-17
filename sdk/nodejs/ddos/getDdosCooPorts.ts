@@ -47,7 +47,7 @@ export interface GetDdosCooPortsArgs {
      */
     frontendPort?: string;
     /**
-     * The forwarding protocol.
+     * The forwarding protocol. Valid values `tcp` and `udp`.
      */
     frontendProtocol?: string;
     /**
@@ -112,7 +112,7 @@ export interface GetDdosCooPortsOutputArgs {
      */
     frontendPort?: pulumi.Input<string>;
     /**
-     * The forwarding protocol.
+     * The forwarding protocol. Valid values `tcp` and `udp`.
      */
     frontendProtocol?: pulumi.Input<string>;
     /**

@@ -205,15 +205,15 @@ def get_dedicated_hosts(allocation_status: Optional[str] = None,
     ```
 
 
-    :param str allocation_status: Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
-    :param str dedicated_host_group_id: The ID of the dedicated cluster in which the host is created.
+    :param str allocation_status: Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
+    :param str dedicated_host_group_id: The ID of the dedicated cluster.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
-    :param str host_type: The storage type of the host.
+    :param str host_type: The storage type of the host. Valid values: `dhg_local_ssd` or `dhg_cloud_ssd`. `dhg_local_ssd`: specifies that the host uses local SSDs. `dhg_cloud_ssd`: specifies that the host uses enhanced SSDs (ESSDs).
     :param Sequence[str] ids: A list of Dedicated Host IDs.
     :param str order_id: The ID of the order.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The state of the host.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param str status: The state of the host. Valid values:
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     :param str zone_id: The zone ID of the host.
     """
     __args__ = dict()
@@ -307,15 +307,15 @@ def get_dedicated_hosts_output(allocation_status: Optional[pulumi.Input[Optional
     ```
 
 
-    :param str allocation_status: Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
-    :param str dedicated_host_group_id: The ID of the dedicated cluster in which the host is created.
+    :param str allocation_status: Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
+    :param str dedicated_host_group_id: The ID of the dedicated cluster.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
-    :param str host_type: The storage type of the host.
+    :param str host_type: The storage type of the host. Valid values: `dhg_local_ssd` or `dhg_cloud_ssd`. `dhg_local_ssd`: specifies that the host uses local SSDs. `dhg_cloud_ssd`: specifies that the host uses enhanced SSDs (ESSDs).
     :param Sequence[str] ids: A list of Dedicated Host IDs.
     :param str order_id: The ID of the order.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The state of the host.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param str status: The state of the host. Valid values:
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     :param str zone_id: The zone ID of the host.
     """
     ...

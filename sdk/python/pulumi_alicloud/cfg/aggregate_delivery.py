@@ -29,9 +29,6 @@ class AggregateDeliveryArgs:
         The set of arguments for constructing a AggregateDelivery resource.
         :param pulumi.Input[str] aggregator_id: The ID of the Aggregator.
         :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination. The value must be in one of the following formats:
-               * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-               * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-               * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         :param pulumi.Input[str] delivery_channel_type: The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         :param pulumi.Input[bool] configuration_item_change_notification: Open or close delivery configuration change history.
         :param pulumi.Input[bool] configuration_snapshot: Open or close timed snapshot of shipping resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `OSS`.
@@ -81,9 +78,6 @@ class AggregateDeliveryArgs:
     def delivery_channel_target_arn(self) -> pulumi.Input[str]:
         """
         The ARN of the delivery destination. The value must be in one of the following formats:
-        * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-        * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-        * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         """
         return pulumi.get(self, "delivery_channel_target_arn")
 
@@ -226,9 +220,6 @@ class _AggregateDeliveryState:
         :param pulumi.Input[str] delivery_channel_id: The ID of the delivery method.
         :param pulumi.Input[str] delivery_channel_name: The name of the delivery method.
         :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination. The value must be in one of the following formats:
-               * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-               * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-               * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         :param pulumi.Input[str] delivery_channel_type: The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         :param pulumi.Input[str] description: The description of the delivery method.
         :param pulumi.Input[bool] non_compliant_notification: Open or close non-compliance events of delivery resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `SLS` or `MNS`.
@@ -339,9 +330,6 @@ class _AggregateDeliveryState:
     def delivery_channel_target_arn(self) -> Optional[pulumi.Input[str]]:
         """
         The ARN of the delivery destination. The value must be in one of the following formats:
-        * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-        * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-        * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         """
         return pulumi.get(self, "delivery_channel_target_arn")
 
@@ -452,9 +440,6 @@ class AggregateDelivery(pulumi.CustomResource):
         :param pulumi.Input[str] delivery_channel_condition: The rule attached to the delivery method. Please refer to api [CreateConfigDeliveryChannel](https://help.aliyun.com/document_detail/429798.html) for example format. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `MNS`.
         :param pulumi.Input[str] delivery_channel_name: The name of the delivery method.
         :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination. The value must be in one of the following formats:
-               * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-               * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-               * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         :param pulumi.Input[str] delivery_channel_type: The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         :param pulumi.Input[str] description: The description of the delivery method.
         :param pulumi.Input[bool] non_compliant_notification: Open or close non-compliance events of delivery resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `SLS` or `MNS`.
@@ -573,9 +558,6 @@ class AggregateDelivery(pulumi.CustomResource):
         :param pulumi.Input[str] delivery_channel_id: The ID of the delivery method.
         :param pulumi.Input[str] delivery_channel_name: The name of the delivery method.
         :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination. The value must be in one of the following formats:
-               * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-               * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-               * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         :param pulumi.Input[str] delivery_channel_type: The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         :param pulumi.Input[str] description: The description of the delivery method.
         :param pulumi.Input[bool] non_compliant_notification: Open or close non-compliance events of delivery resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `SLS` or `MNS`.
@@ -655,9 +637,6 @@ class AggregateDelivery(pulumi.CustomResource):
     def delivery_channel_target_arn(self) -> pulumi.Output[str]:
         """
         The ARN of the delivery destination. The value must be in one of the following formats:
-        * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-        * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-        * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         """
         return pulumi.get(self, "delivery_channel_target_arn")
 

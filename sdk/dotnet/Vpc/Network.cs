@@ -118,13 +118,13 @@ namespace Pulumi.AliCloud.Vpc
         /// - **ChinaMobile**: China Mobile (single line).
         /// - **ChinaUnicom**: China Unicom (single line).
         /// - **ChinaTelecom**: China Telecom (single line).
-        /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        ///   &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
         /// </summary>
         [Output("ipv6Isp")]
         public Output<string?> Ipv6Isp { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+        /// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> RouterId { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        /// (Deprecated from v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         /// </summary>
         [Output("routerTableId")]
         public Output<string> RouterTableId { get; private set; } = null!;
@@ -271,13 +271,13 @@ namespace Pulumi.AliCloud.Vpc
         /// - **ChinaMobile**: China Mobile (single line).
         /// - **ChinaUnicom**: China Unicom (single line).
         /// - **ChinaTelecom**: China Telecom (single line).
-        /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        ///   &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
         /// </summary>
         [Input("ipv6Isp")]
         public Input<string>? Ipv6Isp { get; set; }
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+        /// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -295,7 +295,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? RouteTableId { get; set; }
 
         /// <summary>
-        /// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        /// (Deprecated from v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         /// </summary>
         [Input("routerTableId")]
         public Input<string>? RouterTableId { get; set; }
@@ -417,13 +417,13 @@ namespace Pulumi.AliCloud.Vpc
         /// - **ChinaMobile**: China Mobile (single line).
         /// - **ChinaUnicom**: China Unicom (single line).
         /// - **ChinaTelecom**: China Telecom (single line).
-        /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        ///   &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
         /// </summary>
         [Input("ipv6Isp")]
         public Input<string>? Ipv6Isp { get; set; }
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+        /// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -447,7 +447,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? RouterId { get; set; }
 
         /// <summary>
-        /// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        /// (Deprecated from v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         /// </summary>
         [Input("routerTableId")]
         public Input<string>? RouterTableId { get; set; }

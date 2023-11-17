@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class GetAssetsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
+        /// (ForceNew, Optional) Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
         /// </summary>
         [Input("criteria")]
         public string? Criteria { get; set; }
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// Set asset importance. Value:
+        /// (ForceNew, Optional) Set asset importance. Value:
         /// - **2**: Significant assets
         /// - **1**: General assets
         /// - **0**: Test asset
@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public int? Importance { get; set; }
 
         /// <summary>
-        /// Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
+        /// (ForceNew, Optional) Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
         /// - **OR**: indicates that the relationship between multiple search conditions is **OR**.
         /// - **AND**: indicates that the relationship between multiple search conditions is **AND**.
         /// </summary>
@@ -113,7 +113,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public string? LogicalExp { get; set; }
 
         /// <summary>
-        /// The type of asset to query. Value:
+        /// (ForceNew, Optional) The type of asset to query. Value:
         /// - **ecs**: server.
         /// - **cloud_product**: Cloud product.
         /// </summary>
@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class GetAssetsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
+        /// (ForceNew, Optional) Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
         /// </summary>
         [Input("criteria")]
         public Input<string>? Criteria { get; set; }
@@ -165,7 +165,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// Set asset importance. Value:
+        /// (ForceNew, Optional) Set asset importance. Value:
         /// - **2**: Significant assets
         /// - **1**: General assets
         /// - **0**: Test asset
@@ -174,7 +174,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<int>? Importance { get; set; }
 
         /// <summary>
-        /// Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
+        /// (ForceNew, Optional) Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
         /// - **OR**: indicates that the relationship between multiple search conditions is **OR**.
         /// - **AND**: indicates that the relationship between multiple search conditions is **AND**.
         /// </summary>
@@ -182,7 +182,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? LogicalExp { get; set; }
 
         /// <summary>
-        /// The type of asset to query. Value:
+        /// (ForceNew, Optional) The type of asset to query. Value:
         /// - **ecs**: server.
         /// - **cloud_product**: Cloud product.
         /// </summary>

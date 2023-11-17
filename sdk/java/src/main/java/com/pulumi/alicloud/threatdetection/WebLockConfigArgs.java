@@ -46,14 +46,14 @@ public final class WebLockConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+     * (ForceNew,Optional) Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      * 
      */
     @Import(name="exclusiveDir")
     private @Nullable Output<String> exclusiveDir;
 
     /**
-     * @return Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+     * @return (ForceNew,Optional) Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      * 
      */
     public Optional<Output<String>> exclusiveDir() {
@@ -61,14 +61,14 @@ public final class WebLockConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+     * (ForceNew,Optional) Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      * 
      */
     @Import(name="exclusiveFile")
     private @Nullable Output<String> exclusiveFile;
 
     /**
-     * @return Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+     * @return (ForceNew,Optional) Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      * 
      */
     public Optional<Output<String>> exclusiveFile() {
@@ -76,14 +76,14 @@ public final class WebLockConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+     * (ForceNew,Optional) Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      * 
      */
     @Import(name="exclusiveFileType")
     private @Nullable Output<String> exclusiveFileType;
 
     /**
-     * @return Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+     * @return (ForceNew,Optional) Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
      * 
      */
     public Optional<Output<String>> exclusiveFileType() {
@@ -91,14 +91,14 @@ public final class WebLockConfigArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+     * (ForceNew,Optional) Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
      * 
      */
     @Import(name="inclusiveFileType")
     private @Nullable Output<String> inclusiveFileType;
 
     /**
-     * @return Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+     * @return (ForceNew,Optional) Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
      * 
      */
     public Optional<Output<String>> inclusiveFileType() {
@@ -225,7 +225,7 @@ public final class WebLockConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exclusiveDir Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+         * @param exclusiveDir (ForceNew,Optional) Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class WebLockConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exclusiveDir Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+         * @param exclusiveDir (ForceNew,Optional) Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class WebLockConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exclusiveFile Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+         * @param exclusiveFile (ForceNew,Optional) Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class WebLockConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exclusiveFile Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+         * @param exclusiveFile (ForceNew,Optional) Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class WebLockConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exclusiveFileType Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+         * @param exclusiveFileType (ForceNew,Optional) Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class WebLockConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param exclusiveFileType Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+         * @param exclusiveFileType (ForceNew,Optional) Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class WebLockConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inclusiveFileType Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+         * @param inclusiveFileType (ForceNew,Optional) Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class WebLockConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param inclusiveFileType Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+         * @param inclusiveFileType (ForceNew,Optional) Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
          * 
          * @return builder
          * 

@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class GetBaselineStrategiesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+        /// (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
         /// </summary>
         [Input("customType")]
         public string? CustomType { get; set; }
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class GetBaselineStrategiesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+        /// (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
         /// </summary>
         [Input("customType")]
         public Input<string>? CustomType { get; set; }

@@ -35,7 +35,7 @@ public final class GetImagesImage {
      */
     private String imageType;
     /**
-     * @return The platform of Plan supported.
+     * @return (Available in v1.161.0) The platform of Plan supported.
      * 
      */
     private String platform;
@@ -77,7 +77,7 @@ public final class GetImagesImage {
         return this.imageType;
     }
     /**
-     * @return The platform of Plan supported.
+     * @return (Available in v1.161.0) The platform of Plan supported.
      * 
      */
     public String platform() {

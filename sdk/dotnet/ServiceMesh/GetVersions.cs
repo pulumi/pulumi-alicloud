@@ -88,7 +88,9 @@ namespace Pulumi.AliCloud.ServiceMesh
     public sealed class GetVersionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The edition of the ASM instance.
+        /// The edition of the ASM instance. Valid values:
+        /// - Default: Standard Edition
+        /// - Pro: Professional Edition
         /// </summary>
         [Input("edition")]
         public string? Edition { get; set; }
@@ -120,7 +122,9 @@ namespace Pulumi.AliCloud.ServiceMesh
     public sealed class GetVersionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The edition of the ASM instance.
+        /// The edition of the ASM instance. Valid values:
+        /// - Default: Standard Edition
+        /// - Pro: Professional Edition
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }

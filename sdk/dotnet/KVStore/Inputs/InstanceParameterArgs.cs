@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.KVStore.Inputs
     public sealed class InstanceParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        /// (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        /// (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

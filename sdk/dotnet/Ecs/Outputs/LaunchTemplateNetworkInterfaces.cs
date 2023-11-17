@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class LaunchTemplateNetworkInterfaces
     {
         /// <summary>
-        /// The description of the data disk.
+        /// The ENI description.
         /// </summary>
         public readonly string? Description;
         /// <summary>
-        /// The name of the data disk.
+        /// ENI name.
         /// </summary>
         public readonly string? Name;
         /// <summary>

@@ -276,14 +276,14 @@ public class Image extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.resourceGroupId);
     }
     /**
-     * Specifies a snapshot that is used to create a combined custom image.
+     * Specifies a snapshot that is used to create a custom image.
      * 
      */
     @Export(name="snapshotId", type=String.class, parameters={})
     private Output</* @Nullable */ String> snapshotId;
 
     /**
-     * @return Specifies a snapshot that is used to create a combined custom image.
+     * @return Specifies a snapshot that is used to create a custom image.
      * 
      */
     public Output<Optional<String>> snapshotId() {

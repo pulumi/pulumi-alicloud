@@ -24,8 +24,6 @@ class InstanceAllowedIpAttachmentArgs:
         :param pulumi.Input[str] allowed_type: The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] port_range: The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-               - `9092/9092`: port range for a VPC whitelist.
-               - `9093/9093`: port range for an Internet whitelist.
         """
         pulumi.set(__self__, "allowed_ip", allowed_ip)
         pulumi.set(__self__, "allowed_type", allowed_type)
@@ -73,8 +71,6 @@ class InstanceAllowedIpAttachmentArgs:
     def port_range(self) -> pulumi.Input[str]:
         """
         The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-        - `9092/9092`: port range for a VPC whitelist.
-        - `9093/9093`: port range for an Internet whitelist.
         """
         return pulumi.get(self, "port_range")
 
@@ -96,8 +92,6 @@ class _InstanceAllowedIpAttachmentState:
         :param pulumi.Input[str] allowed_type: The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] port_range: The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-               - `9092/9092`: port range for a VPC whitelist.
-               - `9093/9093`: port range for an Internet whitelist.
         """
         if allowed_ip is not None:
             pulumi.set(__self__, "allowed_ip", allowed_ip)
@@ -149,8 +143,6 @@ class _InstanceAllowedIpAttachmentState:
     def port_range(self) -> Optional[pulumi.Input[str]]:
         """
         The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-        - `9092/9092`: port range for a VPC whitelist.
-        - `9093/9093`: port range for an Internet whitelist.
         """
         return pulumi.get(self, "port_range")
 
@@ -227,8 +219,6 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] allowed_type: The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] port_range: The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-               - `9092/9092`: port range for a VPC whitelist.
-               - `9093/9093`: port range for an Internet whitelist.
         """
         ...
     @overload
@@ -353,8 +343,6 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
         :param pulumi.Input[str] allowed_type: The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] port_range: The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-               - `9092/9092`: port range for a VPC whitelist.
-               - `9093/9093`: port range for an Internet whitelist.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -395,8 +383,6 @@ class InstanceAllowedIpAttachment(pulumi.CustomResource):
     def port_range(self) -> pulumi.Output[str]:
         """
         The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-        - `9092/9092`: port range for a VPC whitelist.
-        - `9093/9093`: port range for an Internet whitelist.
         """
         return pulumi.get(self, "port_range")
 

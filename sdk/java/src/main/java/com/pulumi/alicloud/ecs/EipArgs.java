@@ -106,7 +106,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
+     * (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
      * 
      * @deprecated
      * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
@@ -117,7 +117,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
+     * @return (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
      * 
      * @deprecated
      * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
@@ -173,7 +173,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+     * (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
@@ -184,7 +184,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+     * @return (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
@@ -453,7 +453,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
+         * @param instanceChargeType (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
          * 
          * @return builder
          * 
@@ -468,7 +468,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
+         * @param instanceChargeType (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
          * 
          * @return builder
          * 
@@ -542,7 +542,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+         * @param name (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
          * 
          * @return builder
          * 
@@ -557,7 +557,7 @@ public final class EipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+         * @param name (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
          * 
          * @return builder
          * 

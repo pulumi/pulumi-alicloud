@@ -23,7 +23,7 @@ class CaCertificateArgs:
         The set of arguments for constructing a CaCertificate resource.
         :param pulumi.Input[str] ca_certificate: the content of the CA certificate.
         :param pulumi.Input[str] ca_certificate_name: Name of the CA Certificate.
-        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+        :param pulumi.Input[str] name: (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -68,7 +68,7 @@ class CaCertificateArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+        (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""")
@@ -116,7 +116,7 @@ class _CaCertificateState:
         Input properties used for looking up and filtering CaCertificate resources.
         :param pulumi.Input[str] ca_certificate: the content of the CA certificate.
         :param pulumi.Input[str] ca_certificate_name: Name of the CA Certificate.
-        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+        :param pulumi.Input[str] name: (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -162,7 +162,7 @@ class _CaCertificateState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+        (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""")
@@ -272,7 +272,7 @@ class CaCertificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ca_certificate: the content of the CA certificate.
         :param pulumi.Input[str] ca_certificate_name: Name of the CA Certificate.
-        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+        :param pulumi.Input[str] name: (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -401,7 +401,7 @@ class CaCertificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] ca_certificate: the content of the CA certificate.
         :param pulumi.Input[str] ca_certificate_name: Name of the CA Certificate.
-        :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+        :param pulumi.Input[str] name: (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the slb_ca certificate belongs.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
@@ -436,7 +436,7 @@ class CaCertificate(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+        (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead""")

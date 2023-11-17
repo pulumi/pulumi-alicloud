@@ -473,7 +473,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * It has been deprecated from version 1.7.1 and new field &#39;vswitch_ids&#39; replaces it.
+     * (Deprecated) It has been deprecated from version 1.7.1 and new field &#39;vswitch_ids&#39; replaces it.
      * 
      * @deprecated
      * Field &#39;vswitch_id&#39; has been deprecated from provider version 1.7.1, and new field &#39;vswitch_ids&#39; can replace it.
@@ -484,7 +484,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return It has been deprecated from version 1.7.1 and new field &#39;vswitch_ids&#39; replaces it.
+     * @return (Deprecated) It has been deprecated from version 1.7.1 and new field &#39;vswitch_ids&#39; replaces it.
      * 
      */
     public Output<Optional<String>> vswitchId() {

@@ -28,7 +28,7 @@ namespace Pulumi.AliCloud.Ecs
     public partial class ElasticityAssurance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+        /// (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
         /// </summary>
         [Output("assuranceTimes")]
         public Output<string> AssuranceTimes { get; private set; } = null!;
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> InstanceChargeType { get; private set; } = null!;
 
         /// <summary>
-        /// Instance type. Currently, only one instance type is supported.
+        /// (ForceNew,Required) Instance type. Currently, only one instance type is supported.
         /// </summary>
         [Output("instanceType")]
         public Output<string> InstanceType { get; private set; } = null!;
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> PeriodUnit { get; private set; } = null!;
 
         /// <summary>
-        /// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+        /// (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
         /// </summary>
         [Output("privatePoolOptionsMatchCriteria")]
         public Output<string> PrivatePoolOptionsMatchCriteria { get; private set; } = null!;
@@ -96,13 +96,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> PrivatePoolOptionsName { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group.
+        /// (ForceNew,Optional) The ID of the resource group.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Flexible guarantee service effective time.
+        /// (ForceNew,Optional) Flexible guarantee service effective time.
         /// </summary>
         [Output("startTime")]
         public Output<string> StartTime { get; private set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int> UsedAssuranceTimes { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+        /// (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
         /// </summary>
         [Output("zoneIds")]
         public Output<ImmutableArray<string>> ZoneIds { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class ElasticityAssuranceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+        /// (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
         /// </summary>
         [Input("assuranceTimes")]
         public Input<string>? AssuranceTimes { get; set; }
@@ -202,7 +202,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int> InstanceAmount { get; set; } = null!;
 
         /// <summary>
-        /// Instance type. Currently, only one instance type is supported.
+        /// (ForceNew,Required) Instance type. Currently, only one instance type is supported.
         /// </summary>
         [Input("instanceType", required: true)]
         public Input<string> InstanceType { get; set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+        /// (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
         /// </summary>
         [Input("privatePoolOptionsMatchCriteria")]
         public Input<string>? PrivatePoolOptionsMatchCriteria { get; set; }
@@ -234,13 +234,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PrivatePoolOptionsName { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// (ForceNew,Optional) The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Flexible guarantee service effective time.
+        /// (ForceNew,Optional) Flexible guarantee service effective time.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
@@ -261,7 +261,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _zoneIds;
 
         /// <summary>
-        /// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+        /// (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
         /// </summary>
         public InputList<string> ZoneIds
         {
@@ -278,7 +278,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class ElasticityAssuranceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+        /// (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
         /// </summary>
         [Input("assuranceTimes")]
         public Input<string>? AssuranceTimes { get; set; }
@@ -314,7 +314,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// Instance type. Currently, only one instance type is supported.
+        /// (ForceNew,Required) Instance type. Currently, only one instance type is supported.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -334,7 +334,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PeriodUnit { get; set; }
 
         /// <summary>
-        /// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+        /// (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
         /// </summary>
         [Input("privatePoolOptionsMatchCriteria")]
         public Input<string>? PrivatePoolOptionsMatchCriteria { get; set; }
@@ -346,13 +346,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PrivatePoolOptionsName { get; set; }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// (ForceNew,Optional) The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Flexible guarantee service effective time.
+        /// (ForceNew,Optional) Flexible guarantee service effective time.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
@@ -391,7 +391,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _zoneIds;
 
         /// <summary>
-        /// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+        /// (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
         /// </summary>
         public InputList<string> ZoneIds
         {

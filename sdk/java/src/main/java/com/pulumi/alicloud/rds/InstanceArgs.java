@@ -101,7 +101,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
+     * (ForceNew, Optional, Available in 1.176.0+) The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
      * 
      * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      * 
@@ -110,7 +110,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<InstanceBabelfishConfigArgs>> babelfishConfigs;
 
     /**
-     * @return The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
+     * @return (ForceNew, Optional, Available in 1.176.0+) The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
      * 
      * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      * 
@@ -358,11 +358,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
      * - If you set the `Engine` parameter to MySQL.
-     * - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
-     * - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+     *   - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+     *   - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
      * - If you set the `Engine` parameter to PostgreSQL.
-     * - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
-     * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+     *   - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+     *   - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
      * 
      * &gt; **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
      * 
@@ -373,11 +373,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
      * - If you set the `Engine` parameter to MySQL.
-     * - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
-     * - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+     *   - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+     *   - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
      * - If you set the `Engine` parameter to PostgreSQL.
-     * - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
-     * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+     *   - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+     *   - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
      * 
      * &gt; **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
      * 
@@ -484,10 +484,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
      * - MariaDB: [ 10.3 ]
      * - Serverless
-     * &gt; - MySQL: [ 5.7、8.0 ]
-     * &gt; - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-     * &gt; - PostgreSQL: [ 14.0 ]
-     * &gt; - MariaDB does not support creating serverless instances.
+     * - MySQL: [ 5.7、8.0 ]
+     * - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+     * - PostgreSQL: [ 14.0 ]
+     * - MariaDB does not support creating serverless instances.
      * 
      */
     @Import(name="engineVersion", required=true)
@@ -500,10 +500,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
      * - MariaDB: [ 10.3 ]
      * - Serverless
-     * &gt; - MySQL: [ 5.7、8.0 ]
-     * &gt; - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-     * &gt; - PostgreSQL: [ 14.0 ]
-     * &gt; - MariaDB does not support creating serverless instances.
+     * - MySQL: [ 5.7、8.0 ]
+     * - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+     * - PostgreSQL: [ 14.0 ]
+     * - MariaDB does not support creating serverless instances.
      * 
      */
     public Output<String> engineVersion() {
@@ -864,14 +864,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     * (ForceNew, Optional, Available in 1.208.0+) The Alibaba Cloud Resource Name (ARN) of the RAM role.
      * 
      */
     @Import(name="roleArn")
     private @Nullable Output<String> roleArn;
 
     /**
-     * @return The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     * @return (ForceNew, Optional, Available in 1.208.0+) The Alibaba Cloud Resource Name (ARN) of the RAM role.
      * 
      */
     public Optional<Output<String>> roleArn() {
@@ -879,7 +879,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from 1.69.0 and use `security_group_ids` instead.
+     * (Deprecated) It has been deprecated from 1.69.0 and use `security_group_ids` instead.
      * 
      * @deprecated
      * Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
@@ -890,7 +890,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return It has been deprecated from 1.69.0 and use `security_group_ids` instead.
+     * @return (Deprecated) It has been deprecated from 1.69.0 and use `security_group_ids` instead.
      * 
      * @deprecated
      * Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
@@ -902,14 +902,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+     * The list IDs to join ECS Security Group. At most supports three security groups.
      * 
      */
     @Import(name="securityGroupIds")
     private @Nullable Output<List<String>> securityGroupIds;
 
     /**
-     * @return , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+     * @return The list IDs to join ECS Security Group. At most supports three security groups.
      * 
      */
     public Optional<Output<List<String>>> securityGroupIds() {
@@ -1187,9 +1187,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
      * - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-     * - rds: The instance runs RDS Basic or High-availability Edition.
-     * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-     * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+     *   - rds: The instance runs RDS Basic or High-availability Edition.
+     *   - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+     *   - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
      * 
      * &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -1202,9 +1202,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * @return The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
      * - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-     * - rds: The instance runs RDS Basic or High-availability Edition.
-     * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-     * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+     *   - rds: The instance runs RDS Basic or High-availability Edition.
+     *   - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+     *   - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
      * 
      * &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -1249,7 +1249,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to upgrade a minor version of the kernel. Valid values:
+     * (Deprecated from v1.198.0+)  Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
      * 
@@ -1262,7 +1262,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> upgradeDbInstanceKernelVersion;
 
     /**
-     * @return Whether to upgrade a minor version of the kernel. Valid values:
+     * @return (Deprecated from v1.198.0+)  Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
      * 
@@ -1316,14 +1316,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+     * (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+     * @return (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -1356,7 +1356,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
+     * (ForceNew, Optional) The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
      * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
      * The multiple zone ID can be retrieved by setting `multi` to &#34;true&#34; in the data source `alicloud.getZones`.
      * 
@@ -1365,7 +1365,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
+     * @return (ForceNew, Optional) The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
      * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
      * The multiple zone ID can be retrieved by setting `multi` to &#34;true&#34; in the data source `alicloud.getZones`.
      * 
@@ -1600,7 +1600,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param babelfishConfigs The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
+         * @param babelfishConfigs (ForceNew, Optional, Available in 1.176.0+) The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
          * 
          * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
          * 
@@ -1613,7 +1613,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param babelfishConfigs The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
+         * @param babelfishConfigs (ForceNew, Optional, Available in 1.176.0+) The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
          * 
          * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
          * 
@@ -1625,7 +1625,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param babelfishConfigs The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
+         * @param babelfishConfigs (ForceNew, Optional, Available in 1.176.0+) The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfish_config` below.
          * 
          * &gt; **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
          * 
@@ -1947,11 +1947,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dbTimeZone The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
          * - If you set the `Engine` parameter to MySQL.
-         * - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
-         * - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+         *   - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+         *   - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
          * - If you set the `Engine` parameter to PostgreSQL.
-         * - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
-         * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+         *   - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+         *   - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
          * 
          * &gt; **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
          * 
@@ -1966,11 +1966,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param dbTimeZone The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
          * - If you set the `Engine` parameter to MySQL.
-         * - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
-         * - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+         *   - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+         *   - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
          * - If you set the `Engine` parameter to PostgreSQL.
-         * - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
-         * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+         *   - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+         *   - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
          * 
          * &gt; **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
          * 
@@ -2109,10 +2109,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
          * - MariaDB: [ 10.3 ]
          * - Serverless
-         * &gt; - MySQL: [ 5.7、8.0 ]
-         * &gt; - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-         * &gt; - PostgreSQL: [ 14.0 ]
-         * &gt; - MariaDB does not support creating serverless instances.
+         * - MySQL: [ 5.7、8.0 ]
+         * - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+         * - PostgreSQL: [ 14.0 ]
+         * - MariaDB does not support creating serverless instances.
          * 
          * @return builder
          * 
@@ -2129,10 +2129,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
          * - MariaDB: [ 10.3 ]
          * - Serverless
-         * &gt; - MySQL: [ 5.7、8.0 ]
-         * &gt; - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-         * &gt; - PostgreSQL: [ 14.0 ]
-         * &gt; - MariaDB does not support creating serverless instances.
+         * - MySQL: [ 5.7、8.0 ]
+         * - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+         * - PostgreSQL: [ 14.0 ]
+         * - MariaDB does not support creating serverless instances.
          * 
          * @return builder
          * 
@@ -2629,7 +2629,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleArn The Alibaba Cloud Resource Name (ARN) of the RAM role.
+         * @param roleArn (ForceNew, Optional, Available in 1.208.0+) The Alibaba Cloud Resource Name (ARN) of the RAM role.
          * 
          * @return builder
          * 
@@ -2640,7 +2640,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleArn The Alibaba Cloud Resource Name (ARN) of the RAM role.
+         * @param roleArn (ForceNew, Optional, Available in 1.208.0+) The Alibaba Cloud Resource Name (ARN) of the RAM role.
          * 
          * @return builder
          * 
@@ -2650,7 +2650,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId It has been deprecated from 1.69.0 and use `security_group_ids` instead.
+         * @param securityGroupId (Deprecated) It has been deprecated from 1.69.0 and use `security_group_ids` instead.
          * 
          * @return builder
          * 
@@ -2665,7 +2665,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupId It has been deprecated from 1.69.0 and use `security_group_ids` instead.
+         * @param securityGroupId (Deprecated) It has been deprecated from 1.69.0 and use `security_group_ids` instead.
          * 
          * @return builder
          * 
@@ -2679,7 +2679,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+         * @param securityGroupIds The list IDs to join ECS Security Group. At most supports three security groups.
          * 
          * @return builder
          * 
@@ -2690,7 +2690,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+         * @param securityGroupIds The list IDs to join ECS Security Group. At most supports three security groups.
          * 
          * @return builder
          * 
@@ -2700,7 +2700,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+         * @param securityGroupIds The list IDs to join ECS Security Group. At most supports three security groups.
          * 
          * @return builder
          * 
@@ -3090,9 +3090,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param targetMinorVersion The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
          * - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
          * - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-         * - rds: The instance runs RDS Basic or High-availability Edition.
-         * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-         * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+         *   - rds: The instance runs RDS Basic or High-availability Edition.
+         *   - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+         *   - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
          * - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
          * 
          * &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -3109,9 +3109,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param targetMinorVersion The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
          * - PostgreSQL: rds_postgres_&lt;Major engine version&gt;00_&lt;Minor engine version&gt;. Example: rds_postgres_1200_20200830.
          * - MySQL: &lt;RDS edition&gt;_&lt;Minor engine version&gt;. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-         * - rds: The instance runs RDS Basic or High-availability Edition.
-         * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-         * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+         *   - rds: The instance runs RDS Basic or High-availability Edition.
+         *   - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+         *   - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
          * - SQLServer: &lt;Minor engine version&gt;. Example: 15.0.4073.23.
          * 
          * &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -3170,7 +3170,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param upgradeDbInstanceKernelVersion Whether to upgrade a minor version of the kernel. Valid values:
+         * @param upgradeDbInstanceKernelVersion (Deprecated from v1.198.0+)  Whether to upgrade a minor version of the kernel. Valid values:
          * - true: upgrade
          * - false: not to upgrade
          * 
@@ -3187,7 +3187,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param upgradeDbInstanceKernelVersion Whether to upgrade a minor version of the kernel. Valid values:
+         * @param upgradeDbInstanceKernelVersion (Deprecated from v1.198.0+)  Whether to upgrade a minor version of the kernel. Valid values:
          * - true: upgrade
          * - false: not to upgrade
          * 
@@ -3255,7 +3255,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+         * @param vswitchId (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
          * 
          * @return builder
          * 
@@ -3266,7 +3266,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+         * @param vswitchId (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
          * 
          * @return builder
          * 
@@ -3307,7 +3307,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
+         * @param zoneId (ForceNew, Optional) The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
          * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
          * The multiple zone ID can be retrieved by setting `multi` to &#34;true&#34; in the data source `alicloud.getZones`.
          * 
@@ -3320,7 +3320,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
+         * @param zoneId (ForceNew, Optional) The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
          * If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
          * The multiple zone ID can be retrieved by setting `multi` to &#34;true&#34; in the data source `alicloud.getZones`.
          * 

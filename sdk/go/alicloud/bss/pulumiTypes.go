@@ -22,7 +22,7 @@ type GetOpenApiPricingModulesModule struct {
 	PricingModuleName string `pulumi:"pricingModuleName"`
 	// The product code.
 	ProductCode string `pulumi:"productCode"`
-	// The product type.
+	// (ForceNew,Optional) The product type.
 	ProductType string `pulumi:"productType"`
 	// Subscription type. Value:
 	// * Subscription: Prepaid.
@@ -54,7 +54,7 @@ type GetOpenApiPricingModulesModuleArgs struct {
 	PricingModuleName pulumi.StringInput `pulumi:"pricingModuleName"`
 	// The product code.
 	ProductCode pulumi.StringInput `pulumi:"productCode"`
-	// The product type.
+	// (ForceNew,Optional) The product type.
 	ProductType pulumi.StringInput `pulumi:"productType"`
 	// Subscription type. Value:
 	// * Subscription: Prepaid.
@@ -137,7 +137,7 @@ func (o GetOpenApiPricingModulesModuleOutput) ProductCode() pulumi.StringOutput 
 	return o.ApplyT(func(v GetOpenApiPricingModulesModule) string { return v.ProductCode }).(pulumi.StringOutput)
 }
 
-// The product type.
+// (ForceNew,Optional) The product type.
 func (o GetOpenApiPricingModulesModuleOutput) ProductType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetOpenApiPricingModulesModule) string { return v.ProductType }).(pulumi.StringOutput)
 }

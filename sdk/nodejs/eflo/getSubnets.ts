@@ -62,34 +62,34 @@ export interface GetSubnetsArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * Resource Group ID.
+     * (ForceNew,Optional) Resource Group ID.
      */
     resourceGroupId?: string;
     /**
-     * The status of the resource.
+     * (ForceNew,Optional) The status of the resource.
      */
     status?: string;
     /**
-     * Primary key ID.
+     * (ForceNew,Optional) Primary key ID.
      */
     subnetId?: string;
     /**
-     * The Subnet name.
+     * (ForceNew,Optional) The Subnet name.
      */
     subnetName?: string;
     /**
-     * Eflo subnet usage type, optional value: 
+     * (ForceNew,Optional) Eflo subnet usage type, optional value:
      * - General type is not filled in
      * - OOB:OOB type
      * - LB: LB type
      */
     type?: string;
     /**
-     * The Eflo VPD ID.
+     * (ForceNew,Optional) The Eflo VPD ID.
      */
     vpdId?: string;
     /**
-     * The zone ID of the resource.
+     * (ForceNew,Optional) The zone ID of the resource.
      */
     zoneId?: string;
 }
@@ -184,34 +184,34 @@ export interface GetSubnetsOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * Resource Group ID.
+     * (ForceNew,Optional) Resource Group ID.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * (ForceNew,Optional) The status of the resource.
      */
     status?: pulumi.Input<string>;
     /**
-     * Primary key ID.
+     * (ForceNew,Optional) Primary key ID.
      */
     subnetId?: pulumi.Input<string>;
     /**
-     * The Subnet name.
+     * (ForceNew,Optional) The Subnet name.
      */
     subnetName?: pulumi.Input<string>;
     /**
-     * Eflo subnet usage type, optional value: 
+     * (ForceNew,Optional) Eflo subnet usage type, optional value:
      * - General type is not filled in
      * - OOB:OOB type
      * - LB: LB type
      */
     type?: pulumi.Input<string>;
     /**
-     * The Eflo VPD ID.
+     * (ForceNew,Optional) The Eflo VPD ID.
      */
     vpdId?: pulumi.Input<string>;
     /**
-     * The zone ID of the resource.
+     * (ForceNew,Optional) The zone ID of the resource.
      */
     zoneId?: pulumi.Input<string>;
 }

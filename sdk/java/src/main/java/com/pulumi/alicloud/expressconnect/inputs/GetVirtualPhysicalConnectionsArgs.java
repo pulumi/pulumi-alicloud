@@ -19,7 +19,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
     public static final GetVirtualPhysicalConnectionsArgs Empty = new GetVirtualPhysicalConnectionsArgs();
 
     /**
-     * The commercial status of the physical line. Value:
+     * (ForceNew,Optional) The commercial status of the physical line. Value:
      * - **Normal**: activated.
      * - **Financialized**: Arrears locked.
      * - **SecurityLocked**: locked for security reasons.
@@ -29,7 +29,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
     private @Nullable Output<String> businessStatus;
 
     /**
-     * @return The commercial status of the physical line. Value:
+     * @return (ForceNew,Optional) The commercial status of the physical line. Value:
      * - **Normal**: activated.
      * - **Financialized**: Arrears locked.
      * - **SecurityLocked**: locked for security reasons.
@@ -92,14 +92,14 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
     }
 
     /**
-     * The ID of the instance of the physical connection.
+     * (ForceNew,Optional) The ID of the instance of the physical connection.
      * 
      */
     @Import(name="parentPhysicalConnectionId")
     private @Nullable Output<String> parentPhysicalConnectionId;
 
     /**
-     * @return The ID of the instance of the physical connection.
+     * @return (ForceNew,Optional) The ID of the instance of the physical connection.
      * 
      */
     public Optional<Output<String>> parentPhysicalConnectionId() {
@@ -107,14 +107,14 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
     }
 
     /**
-     * The ID of the hosted connection. You can specify multiple hosted connection IDs.
+     * (ForceNew,Optional) The ID of the hosted connection. You can specify multiple hosted connection IDs.
      * 
      */
     @Import(name="virtualPhysicalConnectionIds")
     private @Nullable Output<List<String>> virtualPhysicalConnectionIds;
 
     /**
-     * @return The ID of the hosted connection. You can specify multiple hosted connection IDs.
+     * @return (ForceNew,Optional) The ID of the hosted connection. You can specify multiple hosted connection IDs.
      * 
      */
     public Optional<Output<List<String>>> virtualPhysicalConnectionIds() {
@@ -122,7 +122,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
     }
 
     /**
-     * The business status of the shared line. Value:
+     * (ForceNew,Optional) The business status of the shared line. Value:
      * - **Confirmed**: The shared line has been Confirmed to receive.
      * - **UnConfirmed**: The shared line has not been confirmed to be received.
      * - **Deleted**: The shared line has been Deleted.
@@ -132,7 +132,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
     private @Nullable Output<String> virtualPhysicalConnectionStatus;
 
     /**
-     * @return The business status of the shared line. Value:
+     * @return (ForceNew,Optional) The business status of the shared line. Value:
      * - **Confirmed**: The shared line has been Confirmed to receive.
      * - **UnConfirmed**: The shared line has not been confirmed to be received.
      * - **Deleted**: The shared line has been Deleted.
@@ -143,14 +143,14 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
     }
 
     /**
-     * The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
+     * (ForceNew,Optional) The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
      * 
      */
     @Import(name="vlanIds")
     private @Nullable Output<List<Integer>> vlanIds;
 
     /**
-     * @return The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
+     * @return (ForceNew,Optional) The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
      * 
      */
     public Optional<Output<List<Integer>>> vlanIds() {
@@ -158,14 +158,14 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
     }
 
     /**
-     * The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+     * (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
      * 
      */
     @Import(name="vpconnAliUid")
     private @Nullable Output<String> vpconnAliUid;
 
     /**
-     * @return The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+     * @return (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
      * 
      */
     public Optional<Output<String>> vpconnAliUid() {
@@ -206,7 +206,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param businessStatus The commercial status of the physical line. Value:
+         * @param businessStatus (ForceNew,Optional) The commercial status of the physical line. Value:
          * - **Normal**: activated.
          * - **Financialized**: Arrears locked.
          * - **SecurityLocked**: locked for security reasons.
@@ -220,7 +220,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param businessStatus The commercial status of the physical line. Value:
+         * @param businessStatus (ForceNew,Optional) The commercial status of the physical line. Value:
          * - **Normal**: activated.
          * - **Financialized**: Arrears locked.
          * - **SecurityLocked**: locked for security reasons.
@@ -315,7 +315,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param parentPhysicalConnectionId The ID of the instance of the physical connection.
+         * @param parentPhysicalConnectionId (ForceNew,Optional) The ID of the instance of the physical connection.
          * 
          * @return builder
          * 
@@ -326,7 +326,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param parentPhysicalConnectionId The ID of the instance of the physical connection.
+         * @param parentPhysicalConnectionId (ForceNew,Optional) The ID of the instance of the physical connection.
          * 
          * @return builder
          * 
@@ -336,7 +336,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param virtualPhysicalConnectionIds The ID of the hosted connection. You can specify multiple hosted connection IDs.
+         * @param virtualPhysicalConnectionIds (ForceNew,Optional) The ID of the hosted connection. You can specify multiple hosted connection IDs.
          * 
          * @return builder
          * 
@@ -347,7 +347,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param virtualPhysicalConnectionIds The ID of the hosted connection. You can specify multiple hosted connection IDs.
+         * @param virtualPhysicalConnectionIds (ForceNew,Optional) The ID of the hosted connection. You can specify multiple hosted connection IDs.
          * 
          * @return builder
          * 
@@ -357,7 +357,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param virtualPhysicalConnectionIds The ID of the hosted connection. You can specify multiple hosted connection IDs.
+         * @param virtualPhysicalConnectionIds (ForceNew,Optional) The ID of the hosted connection. You can specify multiple hosted connection IDs.
          * 
          * @return builder
          * 
@@ -367,7 +367,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param virtualPhysicalConnectionStatus The business status of the shared line. Value:
+         * @param virtualPhysicalConnectionStatus (ForceNew,Optional) The business status of the shared line. Value:
          * - **Confirmed**: The shared line has been Confirmed to receive.
          * - **UnConfirmed**: The shared line has not been confirmed to be received.
          * - **Deleted**: The shared line has been Deleted.
@@ -381,7 +381,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param virtualPhysicalConnectionStatus The business status of the shared line. Value:
+         * @param virtualPhysicalConnectionStatus (ForceNew,Optional) The business status of the shared line. Value:
          * - **Confirmed**: The shared line has been Confirmed to receive.
          * - **UnConfirmed**: The shared line has not been confirmed to be received.
          * - **Deleted**: The shared line has been Deleted.
@@ -394,7 +394,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param vlanIds The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
+         * @param vlanIds (ForceNew,Optional) The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param vlanIds The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
+         * @param vlanIds (ForceNew,Optional) The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param vlanIds The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
+         * @param vlanIds (ForceNew,Optional) The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
          * 
          * @return builder
          * 
@@ -425,7 +425,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param vpconnAliUid The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+         * @param vpconnAliUid (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
          * 
          * @return builder
          * 
@@ -436,7 +436,7 @@ public final class GetVirtualPhysicalConnectionsArgs extends com.pulumi.resource
         }
 
         /**
-         * @param vpconnAliUid The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+         * @param vpconnAliUid (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
          * 
          * @return builder
          * 

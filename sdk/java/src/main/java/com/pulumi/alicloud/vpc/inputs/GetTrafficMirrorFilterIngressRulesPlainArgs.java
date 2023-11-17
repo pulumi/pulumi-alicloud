@@ -61,14 +61,14 @@ public final class GetTrafficMirrorFilterIngressRulesPlainArgs extends com.pulum
     }
 
     /**
-     * The ID of the filter associated with the inbound rule.
+     * The ID of the Traffic Mirror Filter.
      * 
      */
     @Import(name="trafficMirrorFilterId", required=true)
     private String trafficMirrorFilterId;
 
     /**
-     * @return The ID of the filter associated with the inbound rule.
+     * @return The ID of the Traffic Mirror Filter.
      * 
      */
     public String trafficMirrorFilterId() {
@@ -146,7 +146,7 @@ public final class GetTrafficMirrorFilterIngressRulesPlainArgs extends com.pulum
         }
 
         /**
-         * @param trafficMirrorFilterId The ID of the filter associated with the inbound rule.
+         * @param trafficMirrorFilterId The ID of the Traffic Mirror Filter.
          * 
          * @return builder
          * 

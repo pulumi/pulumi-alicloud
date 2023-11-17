@@ -22,7 +22,7 @@ public final class GetVpcFirewallCensCenLocalVpc {
     private List<GetVpcFirewallCensCenLocalVpcEniList> eniLists;
     private String manualVswitchId;
     /**
-     * @return The ID of the VPC instance that created the VPC firewall.
+     * @return (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
      * 
      */
     private String networkInstanceId;
@@ -99,7 +99,7 @@ public final class GetVpcFirewallCensCenLocalVpc {
         return this.manualVswitchId;
     }
     /**
-     * @return The ID of the VPC instance that created the VPC firewall.
+     * @return (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
      * 
      */
     public String networkInstanceId() {

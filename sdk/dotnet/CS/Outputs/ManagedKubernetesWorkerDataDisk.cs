@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class ManagedKubernetesWorkerDataDisk
     {
         /// <summary>
-        /// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+        /// (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
         /// </summary>
         public readonly string? AutoSnapshotPolicyId;
         /// <summary>
-        /// (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        /// (Deprecated from version 1.177.0)(Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
         /// </summary>
         public readonly string? Category;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? Device;
         /// <summary>
-        /// (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+        /// (Deprecated from version 1.177.0)(Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
         /// </summary>
         public readonly string? Encrypted;
         /// <summary>
@@ -38,11 +38,11 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// </summary>
         public readonly string? Name;
         /// <summary>
-        /// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        /// (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         /// </summary>
         public readonly string? PerformanceLevel;
         /// <summary>
-        /// (Optional)The size of a data disk, at least 40. Unit: GiB.
+        /// (Deprecated from version 1.177.0)(Optional)The size of a data disk, at least 40. Unit: GiB.
         /// </summary>
         public readonly string? Size;
         /// <summary>

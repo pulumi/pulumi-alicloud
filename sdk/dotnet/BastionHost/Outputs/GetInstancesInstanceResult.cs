@@ -44,6 +44,7 @@ namespace Pulumi.AliCloud.BastionHost.Outputs
         public readonly ImmutableArray<string> SecurityGroupIds;
         /// <summary>
         /// A map of tags assigned to the bastionhost instance. It must be in the format:
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;

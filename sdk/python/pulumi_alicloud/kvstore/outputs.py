@@ -25,8 +25,8 @@ class InstanceParameter(dict):
                  name: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str name: Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
-        :param str value: Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        :param str name: (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        :param str value: (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -37,7 +37,7 @@ class InstanceParameter(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         """
         warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
@@ -48,7 +48,7 @@ class InstanceParameter(dict):
     @pulumi.getter
     def value(self) -> Optional[str]:
         """
-        Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         """
         warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
         pulumi.log.warn("""value is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")

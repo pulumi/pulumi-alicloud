@@ -148,7 +148,7 @@ public class CaCertificate extends com.pulumi.resources.CustomResource {
         return this.caCertificateName;
     }
     /**
-     * Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+     * (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;ca_certificate_name&#39; instead
@@ -159,7 +159,7 @@ public class CaCertificate extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+     * @return (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
      * 
      */
     public Output<String> name() {

@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string Ts;
         /// <summary>
-        /// Label value.
+        /// The value of the monitoring indicator.
         /// </summary>
         public readonly string Value;
 

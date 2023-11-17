@@ -65,7 +65,7 @@ export interface GetTransitRouterPrefixListAssociationsArgs {
      */
     prefixListId?: string;
     /**
-     * The status of the prefix list.
+     * The status of the prefix list. Valid Value: `Active`, `Updating`.
      */
     status?: string;
     /**
@@ -144,7 +144,7 @@ export interface GetTransitRouterPrefixListAssociationsOutputArgs {
      */
     prefixListId?: pulumi.Input<string>;
     /**
-     * The status of the prefix list.
+     * The status of the prefix list. Valid Value: `Active`, `Updating`.
      */
     status?: pulumi.Input<string>;
     /**

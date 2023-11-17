@@ -105,9 +105,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Payment type of the RI. Default value: `All Upfront`. Valid values:
-        /// - `No Upfront`: No upfront payment.
-        /// - `Partial Upfront`: A portion of upfront payment.
-        /// - `All Upfront`: Full upfront payment.
         /// </summary>
         [Output("offeringType")]
         public Output<string> OfferingType { get; private set; } = null!;
@@ -264,9 +261,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Payment type of the RI. Default value: `All Upfront`. Valid values:
-        /// - `No Upfront`: No upfront payment.
-        /// - `Partial Upfront`: A portion of upfront payment.
-        /// - `All Upfront`: Full upfront payment.
         /// </summary>
         [Input("offeringType")]
         public Input<string>? OfferingType { get; set; }
@@ -391,9 +385,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Payment type of the RI. Default value: `All Upfront`. Valid values:
-        /// - `No Upfront`: No upfront payment.
-        /// - `Partial Upfront`: A portion of upfront payment.
-        /// - `All Upfront`: Full upfront payment.
         /// </summary>
         [Input("offeringType")]
         public Input<string>? OfferingType { get; set; }

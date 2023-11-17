@@ -68,7 +68,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly autoUpgradeMinorVersion!: pulumi.Output<string>;
     /**
-     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
+     * (ForceNew, Optional, Available in 1.176.0+) The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
      *
      * > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      */
@@ -164,11 +164,11 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
      * - If you set the `Engine` parameter to MySQL.
-     * - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
-     * - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+     *   - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+     *   - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
      * - If you set the `Engine` parameter to PostgreSQL.
-     * - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
-     * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+     *   - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+     *   - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
      *
      * > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
      */
@@ -208,10 +208,10 @@ export class Instance extends pulumi.CustomResource {
      * - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
      * - MariaDB: [ 10.3 ]
      * - Serverless
-     * > - MySQL: [ 5.7、8.0 ]
-     * > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-     * > - PostgreSQL: [ 14.0 ]
-     * > - MariaDB does not support creating serverless instances.
+     * - MySQL: [ 5.7、8.0 ]
+     * - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+     * - PostgreSQL: [ 14.0 ]
+     * - MariaDB does not support creating serverless instances.
      */
     public readonly engineVersion!: pulumi.Output<string>;
     /**
@@ -246,8 +246,8 @@ export class Instance extends pulumi.CustomResource {
      * - [20,1000] for MySQL 5.7 basic single node edition;
      * - [10, 2000] for SQL Server 2008R2;
      * - [20,2000] for SQL Server 2012 basic single node edition
-     * Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-     * Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instanceStorage`.
+     *   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     *   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instanceStorage`.
      */
     public readonly instanceStorage!: pulumi.Output<number>;
     /**
@@ -325,17 +325,17 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     * (ForceNew, Optional, Available in 1.208.0+) The Alibaba Cloud Resource Name (ARN) of the RAM role.
      */
     public readonly roleArn!: pulumi.Output<string>;
     /**
-     * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+     * (Deprecated) It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      *
      * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
      */
     public readonly securityGroupId!: pulumi.Output<string>;
     /**
-     * , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+     * The list IDs to join ECS Security Group. At most supports three security groups.
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
@@ -372,9 +372,9 @@ export class Instance extends pulumi.CustomResource {
     public readonly sqlCollectorStatus!: pulumi.Output<string>;
     /**
      * Actions performed on SSL functions. Valid values: 
-     * `Open`: turn on SSL encryption;
-     * `Close`: turn off SSL encryption;
-     * `Update`: update SSL certificate.
+     * `Open`: turn on SSL encryption; 
+     * `Close`: turn off SSL encryption; 
+     * `Update`: update SSL certificate. 
      * See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
      *
      * > **NOTE:** The attribute `sslAction` will be ignored when setting `instanceChargeType = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
@@ -431,9 +431,9 @@ export class Instance extends pulumi.CustomResource {
      * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
      * - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-     * - rds: The instance runs RDS Basic or High-availability Edition.
-     * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-     * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+     *   - rds: The instance runs RDS Basic or High-availability Edition.
+     *   - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+     *   - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
      *
      * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -450,7 +450,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tdeStatus!: pulumi.Output<string>;
     /**
-     * Whether to upgrade a minor version of the kernel. Valid values:
+     * (Deprecated from v1.198.0+)  Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
      *
@@ -467,12 +467,11 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The VPC ID of the instance.
      *
-     *
      * > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
      */
     public readonly vpcId!: pulumi.Output<string>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+     * (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
@@ -485,7 +484,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly whitelistNetworkType!: pulumi.Output<string | undefined>;
     /**
-     * The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
+     * (ForceNew, Optional) The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
@@ -715,7 +714,7 @@ export interface InstanceState {
      */
     autoUpgradeMinorVersion?: pulumi.Input<string>;
     /**
-     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
+     * (ForceNew, Optional, Available in 1.176.0+) The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
      *
      * > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      */
@@ -811,11 +810,11 @@ export interface InstanceState {
     /**
      * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
      * - If you set the `Engine` parameter to MySQL.
-     * - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
-     * - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+     *   - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+     *   - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
      * - If you set the `Engine` parameter to PostgreSQL.
-     * - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
-     * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+     *   - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+     *   - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
      *
      * > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
      */
@@ -855,10 +854,10 @@ export interface InstanceState {
      * - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
      * - MariaDB: [ 10.3 ]
      * - Serverless
-     * > - MySQL: [ 5.7、8.0 ]
-     * > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-     * > - PostgreSQL: [ 14.0 ]
-     * > - MariaDB does not support creating serverless instances.
+     * - MySQL: [ 5.7、8.0 ]
+     * - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+     * - PostgreSQL: [ 14.0 ]
+     * - MariaDB does not support creating serverless instances.
      */
     engineVersion?: pulumi.Input<string>;
     /**
@@ -893,8 +892,8 @@ export interface InstanceState {
      * - [20,1000] for MySQL 5.7 basic single node edition;
      * - [10, 2000] for SQL Server 2008R2;
      * - [20,2000] for SQL Server 2012 basic single node edition
-     * Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-     * Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instanceStorage`.
+     *   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     *   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instanceStorage`.
      */
     instanceStorage?: pulumi.Input<number>;
     /**
@@ -972,17 +971,17 @@ export interface InstanceState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     * (ForceNew, Optional, Available in 1.208.0+) The Alibaba Cloud Resource Name (ARN) of the RAM role.
      */
     roleArn?: pulumi.Input<string>;
     /**
-     * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+     * (Deprecated) It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      *
      * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+     * The list IDs to join ECS Security Group. At most supports three security groups.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1019,9 +1018,9 @@ export interface InstanceState {
     sqlCollectorStatus?: pulumi.Input<string>;
     /**
      * Actions performed on SSL functions. Valid values: 
-     * `Open`: turn on SSL encryption;
-     * `Close`: turn off SSL encryption;
-     * `Update`: update SSL certificate.
+     * `Open`: turn on SSL encryption; 
+     * `Close`: turn off SSL encryption; 
+     * `Update`: update SSL certificate. 
      * See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
      *
      * > **NOTE:** The attribute `sslAction` will be ignored when setting `instanceChargeType = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
@@ -1078,9 +1077,9 @@ export interface InstanceState {
      * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
      * - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-     * - rds: The instance runs RDS Basic or High-availability Edition.
-     * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-     * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+     *   - rds: The instance runs RDS Basic or High-availability Edition.
+     *   - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+     *   - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
      *
      * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -1097,7 +1096,7 @@ export interface InstanceState {
      */
     tdeStatus?: pulumi.Input<string>;
     /**
-     * Whether to upgrade a minor version of the kernel. Valid values:
+     * (Deprecated from v1.198.0+)  Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
      *
@@ -1114,12 +1113,11 @@ export interface InstanceState {
     /**
      * The VPC ID of the instance.
      *
-     *
      * > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+     * (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
     vswitchId?: pulumi.Input<string>;
     /**
@@ -1132,7 +1130,7 @@ export interface InstanceState {
      */
     whitelistNetworkType?: pulumi.Input<string>;
     /**
-     * The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
+     * (ForceNew, Optional) The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
@@ -1176,7 +1174,7 @@ export interface InstanceArgs {
      */
     autoUpgradeMinorVersion?: pulumi.Input<string>;
     /**
-     * The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
+     * (ForceNew, Optional, Available in 1.176.0+) The configuration of an ApsaraDB RDS for PostgreSQL instance for which Babelfish is enabled. See `babelfishConfig` below.
      *
      * > **NOTE:** This parameter takes effect only when you create an ApsaraDB RDS for PostgreSQL instance. For more information, see [Introduction to Babelfish](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/babelfish-for-pg).
      */
@@ -1260,11 +1258,11 @@ export interface InstanceArgs {
     /**
      * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
      * - If you set the `Engine` parameter to MySQL.
-     * - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
-     * - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+     *   - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
+     *   - You can specify this parameter when the instance is equipped with local SSDs. For example, you can specify the time zone to Asia/Hong_Kong. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
      * - If you set the `Engine` parameter to PostgreSQL.
-     * - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
-     * - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
+     *   - This time zone of the instance is not in UTC. For more information about time zones, see [Time zones](https://www.alibabacloud.com/help/doc-detail/297356.htm).
+     *   - You can specify this parameter only when the instance is equipped with standard SSDs or ESSDs.
      *
      * > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
      */
@@ -1304,10 +1302,10 @@ export interface InstanceArgs {
      * - PostgreSQL: [ 10.0、11.0、12.0、13.0、14.0、15.0 ]
      * - MariaDB: [ 10.3 ]
      * - Serverless
-     * > - MySQL: [ 5.7、8.0 ]
-     * > - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
-     * > - PostgreSQL: [ 14.0 ]
-     * > - MariaDB does not support creating serverless instances.
+     * - MySQL: [ 5.7、8.0 ]
+     * - SQLServer: [ 2016_std_sl、2017_std_sl、2019_std_sl ]
+     * - PostgreSQL: [ 14.0 ]
+     * - MariaDB does not support creating serverless instances.
      */
     engineVersion: pulumi.Input<string>;
     /**
@@ -1342,8 +1340,8 @@ export interface InstanceArgs {
      * - [20,1000] for MySQL 5.7 basic single node edition;
      * - [10, 2000] for SQL Server 2008R2;
      * - [20,2000] for SQL Server 2012 basic single node edition
-     * Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
-     * Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instanceStorage`.
+     *   Increase progressively at a rate of 5 GB. For details, see [Instance type table](https://www.alibabacloud.com/help/doc-detail/26312.htm).
+     *   Note: There is extra 5 GB storage for SQL Server Instance, and it is not in specified `instanceStorage`.
      */
     instanceStorage: pulumi.Input<number>;
     /**
@@ -1421,17 +1419,17 @@ export interface InstanceArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The Alibaba Cloud Resource Name (ARN) of the RAM role.
+     * (ForceNew, Optional, Available in 1.208.0+) The Alibaba Cloud Resource Name (ARN) of the RAM role.
      */
     roleArn?: pulumi.Input<string>;
     /**
-     * It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
+     * (Deprecated) It has been deprecated from 1.69.0 and use `securityGroupIds` instead.
      *
      * @deprecated Attribute `security_group_id` has been deprecated from 1.69.0 and use `security_group_ids` instead.
      */
     securityGroupId?: pulumi.Input<string>;
     /**
-     * , Available in 1.69.0+) The list IDs to join ECS Security Group. At most supports three security groups.
+     * The list IDs to join ECS Security Group. At most supports three security groups.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1468,9 +1466,9 @@ export interface InstanceArgs {
     sqlCollectorStatus?: pulumi.Input<string>;
     /**
      * Actions performed on SSL functions. Valid values: 
-     * `Open`: turn on SSL encryption;
-     * `Close`: turn off SSL encryption;
-     * `Update`: update SSL certificate.
+     * `Open`: turn on SSL encryption; 
+     * `Close`: turn off SSL encryption; 
+     * `Update`: update SSL certificate. 
      * See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
      *
      * > **NOTE:** The attribute `sslAction` will be ignored when setting `instanceChargeType = "Serverless"` for SQLServer, PostgreSQL or MariaDB.
@@ -1519,9 +1517,9 @@ export interface InstanceArgs {
      * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
      * - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-     * - rds: The instance runs RDS Basic or High-availability Edition.
-     * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-     * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+     *   - rds: The instance runs RDS Basic or High-availability Edition.
+     *   - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+     *   - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
      *
      * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -1538,7 +1536,7 @@ export interface InstanceArgs {
      */
     tdeStatus?: pulumi.Input<string>;
     /**
-     * Whether to upgrade a minor version of the kernel. Valid values:
+     * (Deprecated from v1.198.0+)  Whether to upgrade a minor version of the kernel. Valid values:
      * - true: upgrade
      * - false: not to upgrade
      *
@@ -1555,12 +1553,11 @@ export interface InstanceArgs {
     /**
      * The VPC ID of the instance.
      *
-     *
      * > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+     * (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
     vswitchId?: pulumi.Input<string>;
     /**
@@ -1573,7 +1570,7 @@ export interface InstanceArgs {
      */
     whitelistNetworkType?: pulumi.Input<string>;
     /**
-     * The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
+     * (ForceNew, Optional) The Zone to launch the DB instance. From version 1.8.1, it supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */

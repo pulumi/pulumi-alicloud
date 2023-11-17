@@ -43,7 +43,7 @@ export function getEndpointAclService(args: GetEndpointAclServiceArgs, opts?: pu
  */
 export interface GetEndpointAclServiceArgs {
     /**
-     * Whether to enable Acl Service.  Valid values: `true` and `false`.
+     * Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
      */
     enable: boolean;
     /**
@@ -110,7 +110,7 @@ export function getEndpointAclServiceOutput(args: GetEndpointAclServiceOutputArg
  */
 export interface GetEndpointAclServiceOutputArgs {
     /**
-     * Whether to enable Acl Service.  Valid values: `true` and `false`.
+     * Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
      */
     enable: pulumi.Input<boolean>;
     /**

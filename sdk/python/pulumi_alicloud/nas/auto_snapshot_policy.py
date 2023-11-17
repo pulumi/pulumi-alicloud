@@ -32,7 +32,6 @@ class AutoSnapshotPolicyArgs:
                - The name can contain digits, colons (:), underscores (_), and hyphens (-). The name cannot start with `http://` or `https://`.
                - The value of this parameter is empty by default.
         :param pulumi.Input[int] retention_days: The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-               - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         """
         pulumi.set(__self__, "repeat_weekdays", repeat_weekdays)
         pulumi.set(__self__, "time_points", time_points)
@@ -90,7 +89,6 @@ class AutoSnapshotPolicyArgs:
     def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
         The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-        - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         """
         return pulumi.get(self, "retention_days")
 
@@ -118,7 +116,6 @@ class _AutoSnapshotPolicyState:
                - A maximum of 7 time points can be selected.
                - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
         :param pulumi.Input[int] retention_days: The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-               - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         :param pulumi.Input[str] status: The status of the automatic snapshot policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The point in time at which an auto snapshot is created.
                - A maximum of 24 time points can be selected.
@@ -170,7 +167,6 @@ class _AutoSnapshotPolicyState:
     def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
         The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-        - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         """
         return pulumi.get(self, "retention_days")
 
@@ -264,7 +260,6 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                - A maximum of 7 time points can be selected.
                - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
         :param pulumi.Input[int] retention_days: The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-               - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The point in time at which an auto snapshot is created.
                - A maximum of 24 time points can be selected.
                - The format is  an JSON array of ["0", "1", … "23"] and the time points are separated by commas (,).
@@ -381,7 +376,6 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
                - A maximum of 7 time points can be selected.
                - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
         :param pulumi.Input[int] retention_days: The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-               - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         :param pulumi.Input[str] status: The status of the automatic snapshot policy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] time_points: The point in time at which an auto snapshot is created.
                - A maximum of 24 time points can be selected.
@@ -425,7 +419,6 @@ class AutoSnapshotPolicy(pulumi.CustomResource):
     def retention_days(self) -> pulumi.Output[int]:
         """
         The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-        - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         """
         return pulumi.get(self, "retention_days")
 

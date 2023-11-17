@@ -252,12 +252,12 @@ type RdsUpgradeDbInstance struct {
 	SslEnabled pulumi.IntOutput `pulumi:"sslEnabled"`
 	// Specifies whether ApsaraDB RDS automatically switches your workloads over to the new instance after data is migrated to the new instance. Valid values:
 	// * **true**: ApsaraDB RDS automatically switches workloads over to the new instance. If you set this parameter to true, you must take note of the following information:
-	// * After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
-	// * During the switchover, the original instance processes only read requests. You must perform the switchover during off-peak hours.
-	// * If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
+	//   * After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
+	//   * During the switchover, the original instance processes only read requests. You must perform the switchover during off-peak hours.
+	//   * If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
 	// * **false**: ApsaraDB RDS does not automatically switch your workloads over to the new instance. Before you perform an upgrade, we recommend that you set this parameter to false to test whether the new major engine version is compatible with your workloads. If you set this parameter to false, you must take note of the following information:
-	// * The data migration does not interrupt your workloads on the original instance.
-	// * After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/doc-detail/96788.htm).
+	//   * The data migration does not interrupt your workloads on the original instance.
+	//   * After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/doc-detail/96788.htm).
 	SwitchOver pulumi.StringOutput `pulumi:"switchOver"`
 	// The time at which you want to apply the specification changes. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	SwitchTime pulumi.StringPtrOutput `pulumi:"switchTime"`
@@ -484,12 +484,12 @@ type rdsUpgradeDbInstanceState struct {
 	SslEnabled *int `pulumi:"sslEnabled"`
 	// Specifies whether ApsaraDB RDS automatically switches your workloads over to the new instance after data is migrated to the new instance. Valid values:
 	// * **true**: ApsaraDB RDS automatically switches workloads over to the new instance. If you set this parameter to true, you must take note of the following information:
-	// * After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
-	// * During the switchover, the original instance processes only read requests. You must perform the switchover during off-peak hours.
-	// * If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
+	//   * After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
+	//   * During the switchover, the original instance processes only read requests. You must perform the switchover during off-peak hours.
+	//   * If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
 	// * **false**: ApsaraDB RDS does not automatically switch your workloads over to the new instance. Before you perform an upgrade, we recommend that you set this parameter to false to test whether the new major engine version is compatible with your workloads. If you set this parameter to false, you must take note of the following information:
-	// * The data migration does not interrupt your workloads on the original instance.
-	// * After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/doc-detail/96788.htm).
+	//   * The data migration does not interrupt your workloads on the original instance.
+	//   * After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/doc-detail/96788.htm).
 	SwitchOver *string `pulumi:"switchOver"`
 	// The time at which you want to apply the specification changes. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	SwitchTime *string `pulumi:"switchTime"`
@@ -660,12 +660,12 @@ type RdsUpgradeDbInstanceState struct {
 	SslEnabled pulumi.IntPtrInput
 	// Specifies whether ApsaraDB RDS automatically switches your workloads over to the new instance after data is migrated to the new instance. Valid values:
 	// * **true**: ApsaraDB RDS automatically switches workloads over to the new instance. If you set this parameter to true, you must take note of the following information:
-	// * After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
-	// * During the switchover, the original instance processes only read requests. You must perform the switchover during off-peak hours.
-	// * If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
+	//   * After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
+	//   * During the switchover, the original instance processes only read requests. You must perform the switchover during off-peak hours.
+	//   * If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
 	// * **false**: ApsaraDB RDS does not automatically switch your workloads over to the new instance. Before you perform an upgrade, we recommend that you set this parameter to false to test whether the new major engine version is compatible with your workloads. If you set this parameter to false, you must take note of the following information:
-	// * The data migration does not interrupt your workloads on the original instance.
-	// * After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/doc-detail/96788.htm).
+	//   * The data migration does not interrupt your workloads on the original instance.
+	//   * After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/doc-detail/96788.htm).
 	SwitchOver pulumi.StringPtrInput
 	// The time at which you want to apply the specification changes. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	SwitchTime pulumi.StringPtrInput
@@ -838,12 +838,12 @@ type rdsUpgradeDbInstanceArgs struct {
 	SslEnabled *int `pulumi:"sslEnabled"`
 	// Specifies whether ApsaraDB RDS automatically switches your workloads over to the new instance after data is migrated to the new instance. Valid values:
 	// * **true**: ApsaraDB RDS automatically switches workloads over to the new instance. If you set this parameter to true, you must take note of the following information:
-	// * After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
-	// * During the switchover, the original instance processes only read requests. You must perform the switchover during off-peak hours.
-	// * If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
+	//   * After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
+	//   * During the switchover, the original instance processes only read requests. You must perform the switchover during off-peak hours.
+	//   * If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
 	// * **false**: ApsaraDB RDS does not automatically switch your workloads over to the new instance. Before you perform an upgrade, we recommend that you set this parameter to false to test whether the new major engine version is compatible with your workloads. If you set this parameter to false, you must take note of the following information:
-	// * The data migration does not interrupt your workloads on the original instance.
-	// * After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/doc-detail/96788.htm).
+	//   * The data migration does not interrupt your workloads on the original instance.
+	//   * After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/doc-detail/96788.htm).
 	SwitchOver string `pulumi:"switchOver"`
 	// The time at which you want to apply the specification changes. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	SwitchTime *string `pulumi:"switchTime"`
@@ -1013,12 +1013,12 @@ type RdsUpgradeDbInstanceArgs struct {
 	SslEnabled pulumi.IntPtrInput
 	// Specifies whether ApsaraDB RDS automatically switches your workloads over to the new instance after data is migrated to the new instance. Valid values:
 	// * **true**: ApsaraDB RDS automatically switches workloads over to the new instance. If you set this parameter to true, you must take note of the following information:
-	// * After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
-	// * During the switchover, the original instance processes only read requests. You must perform the switchover during off-peak hours.
-	// * If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
+	//   * After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
+	//   * During the switchover, the original instance processes only read requests. You must perform the switchover during off-peak hours.
+	//   * If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
 	// * **false**: ApsaraDB RDS does not automatically switch your workloads over to the new instance. Before you perform an upgrade, we recommend that you set this parameter to false to test whether the new major engine version is compatible with your workloads. If you set this parameter to false, you must take note of the following information:
-	// * The data migration does not interrupt your workloads on the original instance.
-	// * After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/doc-detail/96788.htm).
+	//   * The data migration does not interrupt your workloads on the original instance.
+	//   * After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/doc-detail/96788.htm).
 	SwitchOver pulumi.StringInput
 	// The time at which you want to apply the specification changes. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	SwitchTime pulumi.StringPtrInput
@@ -1407,12 +1407,13 @@ func (o RdsUpgradeDbInstanceOutput) SslEnabled() pulumi.IntOutput {
 
 // Specifies whether ApsaraDB RDS automatically switches your workloads over to the new instance after data is migrated to the new instance. Valid values:
 // * **true**: ApsaraDB RDS automatically switches workloads over to the new instance. If you set this parameter to true, you must take note of the following information:
-// * After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
-// * During the switchover, the original instance processes only read requests. You must perform the switchover during off-peak hours.
-// * If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
+//   - After the switchover is complete, you cannot roll your workloads back to the original instance. Proceed with caution.
+//   - During the switchover, the original instance processes only read requests. You must perform the switchover during off-peak hours.
+//   - If read-only instances are attached to the original instance, you can set this parameter only to false. In this case, the read-only instances that are attached to the original instance cannot be cloned. After the upgrade is complete, you must create read-only instances for the new instance.
+//
 // * **false**: ApsaraDB RDS does not automatically switch your workloads over to the new instance. Before you perform an upgrade, we recommend that you set this parameter to false to test whether the new major engine version is compatible with your workloads. If you set this parameter to false, you must take note of the following information:
-// * The data migration does not interrupt your workloads on the original instance.
-// * After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/doc-detail/96788.htm).
+//   - The data migration does not interrupt your workloads on the original instance.
+//   - After data is migrated to the new instance, you must update the endpoint configuration on your application. This update requires you to replace the endpoint of the original instance with the endpoint of the new instance. For more information about how to view the endpoint of an instance, see [View and change the internal and public endpoints and port numbers of an ApsaraDB RDS for PostgreSQL instance](https://www.alibabacloud.com/help/doc-detail/96788.htm).
 func (o RdsUpgradeDbInstanceOutput) SwitchOver() pulumi.StringOutput {
 	return o.ApplyT(func(v *RdsUpgradeDbInstance) pulumi.StringOutput { return v.SwitchOver }).(pulumi.StringOutput)
 }

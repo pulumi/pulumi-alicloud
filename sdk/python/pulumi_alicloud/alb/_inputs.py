@@ -1332,6 +1332,13 @@ class RuleRuleActionInsertHeaderConfigArgs:
         :param pulumi.Input[str] key: The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
         :param pulumi.Input[str] value: The content of the inserted header field. Valid values:
                * If the `value_type` is set to `SystemDefined`, the following values are used:
+                 - `ClientSrcPort`: the port of the client.
+                 - `ClientSrcIp`: the IP address of the client.
+                 - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+                 - `SLBId`: the ID of the ALB instance.
+                 - `SLBPort`: the listener port of the ALB instance.
+               * If the `value_type` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+               * If the `value_type` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
         :param pulumi.Input[str] value_type: The value type of the inserted header field. Valid values:
         """
         if key is not None:
@@ -1359,6 +1366,13 @@ class RuleRuleActionInsertHeaderConfigArgs:
         """
         The content of the inserted header field. Valid values:
         * If the `value_type` is set to `SystemDefined`, the following values are used:
+          - `ClientSrcPort`: the port of the client.
+          - `ClientSrcIp`: the IP address of the client.
+          - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+          - `SLBId`: the ID of the ALB instance.
+          - `SLBPort`: the listener port of the ALB instance.
+        * If the `value_type` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+        * If the `value_type` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "value")
 
@@ -1811,6 +1825,13 @@ class RuleRuleConditionCookieConfigValueArgs:
         :param pulumi.Input[str] key: The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
         :param pulumi.Input[str] value: The content of the inserted header field. Valid values:
                * If the `value_type` is set to `SystemDefined`, the following values are used:
+                 - `ClientSrcPort`: the port of the client.
+                 - `ClientSrcIp`: the IP address of the client.
+                 - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+                 - `SLBId`: the ID of the ALB instance.
+                 - `SLBPort`: the listener port of the ALB instance.
+               * If the `value_type` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+               * If the `value_type` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -1835,6 +1856,13 @@ class RuleRuleConditionCookieConfigValueArgs:
         """
         The content of the inserted header field. Valid values:
         * If the `value_type` is set to `SystemDefined`, the following values are used:
+          - `ClientSrcPort`: the port of the client.
+          - `ClientSrcIp`: the IP address of the client.
+          - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+          - `SLBId`: the ID of the ALB instance.
+          - `SLBPort`: the listener port of the ALB instance.
+        * If the `value_type` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+        * If the `value_type` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "value")
 
@@ -1983,6 +2011,13 @@ class RuleRuleConditionQueryStringConfigValueArgs:
         :param pulumi.Input[str] key: The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader. Note You cannot use Cookie or Host in the name.
         :param pulumi.Input[str] value: The content of the inserted header field. Valid values:
                * If the `value_type` is set to `SystemDefined`, the following values are used:
+                 - `ClientSrcPort`: the port of the client.
+                 - `ClientSrcIp`: the IP address of the client.
+                 - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+                 - `SLBId`: the ID of the ALB instance.
+                 - `SLBPort`: the listener port of the ALB instance.
+               * If the `value_type` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+               * If the `value_type` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
         """
         if key is not None:
             pulumi.set(__self__, "key", key)
@@ -2007,6 +2042,13 @@ class RuleRuleConditionQueryStringConfigValueArgs:
         """
         The content of the inserted header field. Valid values:
         * If the `value_type` is set to `SystemDefined`, the following values are used:
+          - `ClientSrcPort`: the port of the client.
+          - `ClientSrcIp`: the IP address of the client.
+          - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+          - `SLBId`: the ID of the ALB instance.
+          - `SLBPort`: the listener port of the ALB instance.
+        * If the `value_type` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+        * If the `value_type` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
         """
         return pulumi.get(self, "value")
 
@@ -2255,7 +2297,7 @@ class ServerGroupServerArgs:
                - If `server_group_type` is set to `Instance`, set the parameter to the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance. These backend servers are specified by Ecs, Eni, or Eci.
                - If `server_group_type` is set to `Ip`, set the parameter to an IP address specified in the server group.
                - If `server_group_type` is set to `Fc`, set the parameter to the Alibaba Cloud Resource Name (ARN) of a function specified in the server group.
-        :param pulumi.Input[str] server_type: The type of the server. The type of the server. Valid values: 
+        :param pulumi.Input[str] server_type: The type of the server. The type of the server. Valid values:
                - Ecs: an ECS instance.
                - Eni: an ENI.
                - Eci: an elastic container instance.
@@ -2303,7 +2345,7 @@ class ServerGroupServerArgs:
     @pulumi.getter(name="serverType")
     def server_type(self) -> pulumi.Input[str]:
         """
-        The type of the server. The type of the server. Valid values: 
+        The type of the server. The type of the server. Valid values:
         - Ecs: an ECS instance.
         - Eni: an ENI.
         - Eci: an elastic container instance.

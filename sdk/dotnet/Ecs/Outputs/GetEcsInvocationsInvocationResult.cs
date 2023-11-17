@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string InvocationId;
         /// <summary>
-        /// The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
+        /// The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances.
         /// </summary>
         public readonly string InvocationStatus;
         /// <summary>
@@ -67,8 +67,6 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string RepeatMode;
         /// <summary>
         /// Indicates whether the commands are to be automatically run.
-        /// * `error_code	` - The code that indicates why the command failed to be sent or run.
-        /// * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
         /// </summary>
         public readonly bool Timed;
         /// <summary>

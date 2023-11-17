@@ -85,7 +85,7 @@ func GetHoneypotProbes(ctx *pulumi.Context, args *GetHoneypotProbesArgs, opts ..
 
 // A collection of arguments for invoking getHoneypotProbes.
 type GetHoneypotProbesArgs struct {
-	// Probe name
+	// (ForceNew, Optional) Probe name
 	DisplayName *string `pulumi:"displayName"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
@@ -96,7 +96,7 @@ type GetHoneypotProbesArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile  *string `pulumi:"outputFile"`
 	ProbeStatus *string `pulumi:"probeStatus"`
-	// Probe type
+	// (ForceNew, Optional) Probe type
 	ProbeType *string `pulumi:"probeType"`
 }
 
@@ -133,7 +133,7 @@ func GetHoneypotProbesOutput(ctx *pulumi.Context, args GetHoneypotProbesOutputAr
 
 // A collection of arguments for invoking getHoneypotProbes.
 type GetHoneypotProbesOutputArgs struct {
-	// Probe name
+	// (ForceNew, Optional) Probe name
 	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
@@ -144,7 +144,7 @@ type GetHoneypotProbesOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile  pulumi.StringPtrInput `pulumi:"outputFile"`
 	ProbeStatus pulumi.StringPtrInput `pulumi:"probeStatus"`
-	// Probe type
+	// (ForceNew, Optional) Probe type
 	ProbeType pulumi.StringPtrInput `pulumi:"probeType"`
 }
 

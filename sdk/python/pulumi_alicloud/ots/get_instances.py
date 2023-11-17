@@ -135,6 +135,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
     :param str name_regex: A regex string to filter results by instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: A map of tags assigned to the instance. It must be in the format:
+           
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -188,6 +189,7 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     :param str name_regex: A regex string to filter results by instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Mapping[str, Any] tags: A map of tags assigned to the instance. It must be in the format:
+           
            ```python
            import pulumi
            import pulumi_alicloud as alicloud

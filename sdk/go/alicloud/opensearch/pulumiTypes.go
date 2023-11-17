@@ -136,13 +136,6 @@ type AppGroupQuota struct {
 	// Search request. Unit: times/second.
 	Qps *int `pulumi:"qps"`
 	// Specification. Valid values:
-	// * `opensearch.share.junior`: Entry-level.
-	// * `opensearch.share.common`: Shared universal.
-	// * `opensearch.share.compute`: Shared computing.
-	// * `opensearch.share.storage`: Shared storage type.
-	// * `opensearch.private.common`: Exclusive universal type.
-	// * `opensearch.private.compute`: Exclusive computing type.
-	// * `opensearch.private.storage`: Exclusive storage type
 	Spec string `pulumi:"spec"`
 }
 
@@ -165,13 +158,6 @@ type AppGroupQuotaArgs struct {
 	// Search request. Unit: times/second.
 	Qps pulumi.IntPtrInput `pulumi:"qps"`
 	// Specification. Valid values:
-	// * `opensearch.share.junior`: Entry-level.
-	// * `opensearch.share.common`: Shared universal.
-	// * `opensearch.share.compute`: Shared computing.
-	// * `opensearch.share.storage`: Shared storage type.
-	// * `opensearch.private.common`: Exclusive universal type.
-	// * `opensearch.private.compute`: Exclusive computing type.
-	// * `opensearch.private.storage`: Exclusive storage type
 	Spec pulumi.StringInput `pulumi:"spec"`
 }
 
@@ -268,13 +254,6 @@ func (o AppGroupQuotaOutput) Qps() pulumi.IntPtrOutput {
 }
 
 // Specification. Valid values:
-// * `opensearch.share.junior`: Entry-level.
-// * `opensearch.share.common`: Shared universal.
-// * `opensearch.share.compute`: Shared computing.
-// * `opensearch.share.storage`: Shared storage type.
-// * `opensearch.private.common`: Exclusive universal type.
-// * `opensearch.private.compute`: Exclusive computing type.
-// * `opensearch.private.storage`: Exclusive storage type
 func (o AppGroupQuotaOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v AppGroupQuota) string { return v.Spec }).(pulumi.StringOutput)
 }
@@ -334,13 +313,6 @@ func (o AppGroupQuotaPtrOutput) Qps() pulumi.IntPtrOutput {
 }
 
 // Specification. Valid values:
-// * `opensearch.share.junior`: Entry-level.
-// * `opensearch.share.common`: Shared universal.
-// * `opensearch.share.compute`: Shared computing.
-// * `opensearch.share.storage`: Shared storage type.
-// * `opensearch.private.common`: Exclusive universal type.
-// * `opensearch.private.compute`: Exclusive computing type.
-// * `opensearch.private.storage`: Exclusive storage type
 func (o AppGroupQuotaPtrOutput) Spec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppGroupQuota) *string {
 		if v == nil {
@@ -675,13 +647,6 @@ type GetAppGroupsGroupQuota struct {
 	// Storage Size. Unit: GB.
 	DocSize string `pulumi:"docSize"`
 	// Specification. Valid values:
-	// * `opensearch.share.junior`: Entry-level.
-	// * `opensearch.share.common`: Shared universal.
-	// * `opensearch.share.compute`: Shared computing.
-	// * `opensearch.share.storage`: Shared storage type.
-	// * `opensearch.private.common`: Exclusive universal type.
-	// * `opensearch.private.compute`: Exclusive computing type.
-	// * `opensearch.private.storage`: Exclusive storage type
 	Spec string `pulumi:"spec"`
 }
 
@@ -702,13 +667,6 @@ type GetAppGroupsGroupQuotaArgs struct {
 	// Storage Size. Unit: GB.
 	DocSize pulumi.StringInput `pulumi:"docSize"`
 	// Specification. Valid values:
-	// * `opensearch.share.junior`: Entry-level.
-	// * `opensearch.share.common`: Shared universal.
-	// * `opensearch.share.compute`: Shared computing.
-	// * `opensearch.share.storage`: Shared storage type.
-	// * `opensearch.private.common`: Exclusive universal type.
-	// * `opensearch.private.compute`: Exclusive computing type.
-	// * `opensearch.private.storage`: Exclusive storage type
 	Spec pulumi.StringInput `pulumi:"spec"`
 }
 
@@ -774,13 +732,6 @@ func (o GetAppGroupsGroupQuotaOutput) DocSize() pulumi.StringOutput {
 }
 
 // Specification. Valid values:
-// * `opensearch.share.junior`: Entry-level.
-// * `opensearch.share.common`: Shared universal.
-// * `opensearch.share.compute`: Shared computing.
-// * `opensearch.share.storage`: Shared storage type.
-// * `opensearch.private.common`: Exclusive universal type.
-// * `opensearch.private.compute`: Exclusive computing type.
-// * `opensearch.private.storage`: Exclusive storage type
 func (o GetAppGroupsGroupQuotaOutput) Spec() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAppGroupsGroupQuota) string { return v.Spec }).(pulumi.StringOutput)
 }

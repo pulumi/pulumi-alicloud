@@ -77,7 +77,7 @@ export interface GetDomainsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the domain name. The value of this parameter is used as a condition to filter domain names.
      */
     status?: string;
     /**
@@ -164,7 +164,7 @@ export interface GetDomainsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the domain name. The value of this parameter is used as a condition to filter domain names.
      */
     status?: pulumi.Input<string>;
     /**

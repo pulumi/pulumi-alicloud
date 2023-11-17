@@ -47,14 +47,14 @@ public final class DeployGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+     * (ForceNew) The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
      * 
      */
     @Import(name="groupType")
     private @Nullable Output<Integer> groupType;
 
     /**
-     * @return The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+     * @return (ForceNew) The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
      * 
      */
     public Optional<Output<Integer>> groupType() {
@@ -130,7 +130,7 @@ public final class DeployGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupType The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+         * @param groupType (ForceNew) The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class DeployGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param groupType The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+         * @param groupType (ForceNew) The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
          * 
          * @return builder
          * 

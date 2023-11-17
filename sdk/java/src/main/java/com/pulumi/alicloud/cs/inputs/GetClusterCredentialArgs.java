@@ -17,14 +17,14 @@ public final class GetClusterCredentialArgs extends com.pulumi.resources.InvokeA
     public static final GetClusterCredentialArgs Empty = new GetClusterCredentialArgs();
 
     /**
-     * The id of target cluster.
+     * (**Required**) The id of target cluster.
      * 
      */
     @Import(name="clusterId", required=true)
     private Output<String> clusterId;
 
     /**
-     * @return The id of target cluster.
+     * @return (**Required**) The id of target cluster.
      * 
      */
     public Output<String> clusterId() {
@@ -88,7 +88,7 @@ public final class GetClusterCredentialArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param clusterId The id of target cluster.
+         * @param clusterId (**Required**) The id of target cluster.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class GetClusterCredentialArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param clusterId The id of target cluster.
+         * @param clusterId (**Required**) The id of target cluster.
          * 
          * @return builder
          * 

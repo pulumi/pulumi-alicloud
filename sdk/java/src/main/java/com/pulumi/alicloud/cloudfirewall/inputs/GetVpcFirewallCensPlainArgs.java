@@ -17,14 +17,14 @@ public final class GetVpcFirewallCensPlainArgs extends com.pulumi.resources.Invo
     public static final GetVpcFirewallCensPlainArgs Empty = new GetVpcFirewallCensPlainArgs();
 
     /**
-     * The ID of the CEN instance.
+     * (ForceNew,Optional) The ID of the CEN instance.
      * 
      */
     @Import(name="cenId")
     private @Nullable String cenId;
 
     /**
-     * @return The ID of the CEN instance.
+     * @return (ForceNew,Optional) The ID of the CEN instance.
      * 
      */
     public Optional<String> cenId() {
@@ -47,14 +47,14 @@ public final class GetVpcFirewallCensPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+     * (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
      * 
      */
     @Import(name="lang")
     private @Nullable String lang;
 
     /**
-     * @return The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+     * @return (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
      * 
      */
     public Optional<String> lang() {
@@ -62,14 +62,14 @@ public final class GetVpcFirewallCensPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
+     * (ForceNew,Optional) The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
      * 
      */
     @Import(name="memberUid")
     private @Nullable String memberUid;
 
     /**
-     * @return The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
+     * @return (ForceNew,Optional) The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
      * 
      */
     public Optional<String> memberUid() {
@@ -77,14 +77,14 @@ public final class GetVpcFirewallCensPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The ID of the VPC instance that created the VPC firewall.
+     * (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
      * 
      */
     @Import(name="networkInstanceId")
     private @Nullable String networkInstanceId;
 
     /**
-     * @return The ID of the VPC instance that created the VPC firewall.
+     * @return (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
      * 
      */
     public Optional<String> networkInstanceId() {
@@ -121,14 +121,14 @@ public final class GetVpcFirewallCensPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Firewall switch status
+     * (ForceNew,Optional) Firewall switch status
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return Firewall switch status
+     * @return (ForceNew,Optional) Firewall switch status
      * 
      */
     public Optional<String> status() {
@@ -136,14 +136,14 @@ public final class GetVpcFirewallCensPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * VPC firewall ID
+     * (ForceNew,Optional) VPC firewall ID
      * 
      */
     @Import(name="vpcFirewallId")
     private @Nullable String vpcFirewallId;
 
     /**
-     * @return VPC firewall ID
+     * @return (ForceNew,Optional) VPC firewall ID
      * 
      */
     public Optional<String> vpcFirewallId() {
@@ -151,14 +151,14 @@ public final class GetVpcFirewallCensPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The name of the VPC firewall instance.
+     * (ForceNew,Optional) The name of the VPC firewall instance.
      * 
      */
     @Import(name="vpcFirewallName")
     private @Nullable String vpcFirewallName;
 
     /**
-     * @return The name of the VPC firewall instance.
+     * @return (ForceNew,Optional) The name of the VPC firewall instance.
      * 
      */
     public Optional<String> vpcFirewallName() {
@@ -200,7 +200,7 @@ public final class GetVpcFirewallCensPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param cenId The ID of the CEN instance.
+         * @param cenId (ForceNew,Optional) The ID of the CEN instance.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class GetVpcFirewallCensPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param lang The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+         * @param lang (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
          * 
          * @return builder
          * 
@@ -243,7 +243,7 @@ public final class GetVpcFirewallCensPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param memberUid The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
+         * @param memberUid (ForceNew,Optional) The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class GetVpcFirewallCensPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param networkInstanceId The ID of the VPC instance that created the VPC firewall.
+         * @param networkInstanceId (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class GetVpcFirewallCensPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param status Firewall switch status
+         * @param status (ForceNew,Optional) Firewall switch status
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class GetVpcFirewallCensPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param vpcFirewallId VPC firewall ID
+         * @param vpcFirewallId (ForceNew,Optional) VPC firewall ID
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class GetVpcFirewallCensPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param vpcFirewallName The name of the VPC firewall instance.
+         * @param vpcFirewallName (ForceNew,Optional) The name of the VPC firewall instance.
          * 
          * @return builder
          * 

@@ -76,14 +76,14 @@ public final class GetTrafficMarkingPoliciesPlainArgs extends com.pulumi.resourc
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
      * 
      */
     public Optional<String> status() {
@@ -189,7 +189,7 @@ public final class GetTrafficMarkingPoliciesPlainArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
          * 
          * @return builder
          * 

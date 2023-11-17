@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

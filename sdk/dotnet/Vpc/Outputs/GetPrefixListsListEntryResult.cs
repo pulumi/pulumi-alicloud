@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     [OutputType]
     public sealed class GetPrefixListsListEntryResult
     {
-        /// <summary>
-        /// The CIDR address block of the prefix list.
-        /// </summary>
         public readonly string Cidr;
-        /// <summary>
-        /// The description of the cidr entry.
-        /// </summary>
         public readonly string Description;
 
         [OutputConstructor]

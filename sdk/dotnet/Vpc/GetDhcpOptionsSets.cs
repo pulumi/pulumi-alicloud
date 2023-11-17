@@ -158,17 +158,13 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class GetDhcpOptionsSetsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The root domain, for example, example.com. After a DHCP options set is associated with a
-        /// Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
-        /// ECS instances in the VPC network.
+        /// The name of the DHCP options set.The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
         /// </summary>
         [Input("dhcpOptionsSetName")]
         public string? DhcpOptionsSetName { get; set; }
 
         /// <summary>
-        /// The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
-        /// Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
-        /// instances in the VPC network.
+        /// The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
         /// </summary>
         [Input("domainName")]
         public string? DomainName { get; set; }
@@ -212,17 +208,13 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class GetDhcpOptionsSetsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The root domain, for example, example.com. After a DHCP options set is associated with a
-        /// Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
-        /// ECS instances in the VPC network.
+        /// The name of the DHCP options set.The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
         /// </summary>
         [Input("dhcpOptionsSetName")]
         public Input<string>? DhcpOptionsSetName { get; set; }
 
         /// <summary>
-        /// The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
-        /// Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
-        /// instances in the VPC network.
+        /// The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
         /// </summary>
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }

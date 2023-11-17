@@ -239,7 +239,7 @@ type EdgeKubernetes struct {
 	Addons EdgeKubernetesAddonArrayOutput `pulumi:"addons"`
 	// The ID of availability zone.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// Nested attribute containing certificate authority data for your cluster.
+	// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
 	CertificateAuthority EdgeKubernetesCertificateAuthorityOutput `pulumi:"certificateAuthority"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
@@ -253,7 +253,7 @@ type EdgeKubernetes struct {
 	// * ack.standard : Standard edge clusters.
 	// * ack.pro.small : Professional edge clusters.
 	ClusterSpec pulumi.StringOutput `pulumi:"clusterSpec"`
-	// Map of kubernetes cluster connection information.
+	// (Map) Map of kubernetes cluster connection information.
 	Connections EdgeKubernetesConnectionsOutput `pulumi:"connections"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
@@ -396,7 +396,7 @@ type edgeKubernetesState struct {
 	Addons []EdgeKubernetesAddon `pulumi:"addons"`
 	// The ID of availability zone.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Nested attribute containing certificate authority data for your cluster.
+	// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
 	CertificateAuthority *EdgeKubernetesCertificateAuthority `pulumi:"certificateAuthority"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
@@ -410,7 +410,7 @@ type edgeKubernetesState struct {
 	// * ack.standard : Standard edge clusters.
 	// * ack.pro.small : Professional edge clusters.
 	ClusterSpec *string `pulumi:"clusterSpec"`
-	// Map of kubernetes cluster connection information.
+	// (Map) Map of kubernetes cluster connection information.
 	Connections *EdgeKubernetesConnections `pulumi:"connections"`
 	// Whether to enable cluster deletion protection.
 	DeletionProtection *bool `pulumi:"deletionProtection"`
@@ -508,7 +508,7 @@ type EdgeKubernetesState struct {
 	Addons EdgeKubernetesAddonArrayInput
 	// The ID of availability zone.
 	AvailabilityZone pulumi.StringPtrInput
-	// Nested attribute containing certificate authority data for your cluster.
+	// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
 	CertificateAuthority EdgeKubernetesCertificateAuthorityPtrInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput
@@ -522,7 +522,7 @@ type EdgeKubernetesState struct {
 	// * ack.standard : Standard edge clusters.
 	// * ack.pro.small : Professional edge clusters.
 	ClusterSpec pulumi.StringPtrInput
-	// Map of kubernetes cluster connection information.
+	// (Map) Map of kubernetes cluster connection information.
 	Connections EdgeKubernetesConnectionsPtrInput
 	// Whether to enable cluster deletion protection.
 	DeletionProtection pulumi.BoolPtrInput
@@ -909,7 +909,7 @@ func (o EdgeKubernetesOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Nested attribute containing certificate authority data for your cluster.
+// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
 func (o EdgeKubernetesOutput) CertificateAuthority() EdgeKubernetesCertificateAuthorityOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesCertificateAuthorityOutput { return v.CertificateAuthority }).(EdgeKubernetesCertificateAuthorityOutput)
 }
@@ -938,7 +938,7 @@ func (o EdgeKubernetesOutput) ClusterSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) pulumi.StringOutput { return v.ClusterSpec }).(pulumi.StringOutput)
 }
 
-// Map of kubernetes cluster connection information.
+// (Map) Map of kubernetes cluster connection information.
 func (o EdgeKubernetesOutput) Connections() EdgeKubernetesConnectionsOutput {
 	return o.ApplyT(func(v *EdgeKubernetes) EdgeKubernetesConnectionsOutput { return v.Connections }).(EdgeKubernetesConnectionsOutput)
 }

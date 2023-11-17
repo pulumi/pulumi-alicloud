@@ -57,7 +57,7 @@ func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.Invoke
 type GetRegionsArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The ID of the region.
+	// A list of Disk Replica Group IDs.
 	RegionId *string `pulumi:"regionId"`
 }
 
@@ -87,7 +87,7 @@ func GetRegionsOutput(ctx *pulumi.Context, args GetRegionsOutputArgs, opts ...pu
 type GetRegionsOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The ID of the region.
+	// A list of Disk Replica Group IDs.
 	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
 }
 

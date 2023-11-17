@@ -54,7 +54,7 @@ export interface GetZonesArgs {
      */
     instanceChargeType?: string;
     /**
-     * It has been deprecated from version 1.137.0 and using `multiZone` instead.
+     * (Deprecated) It has been deprecated from version 1.137.0 and using `multiZone` instead.
      */
     multi?: boolean;
     /**
@@ -128,7 +128,7 @@ export interface GetZonesOutputArgs {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.137.0 and using `multiZone` instead.
+     * (Deprecated) It has been deprecated from version 1.137.0 and using `multiZone` instead.
      */
     multi?: pulumi.Input<boolean>;
     /**

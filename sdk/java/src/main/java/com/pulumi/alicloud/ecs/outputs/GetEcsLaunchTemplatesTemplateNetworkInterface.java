@@ -10,12 +10,12 @@ import java.util.Objects;
 @CustomType
 public final class GetEcsLaunchTemplatesTemplateNetworkInterface {
     /**
-     * @return System disk description.
+     * @return The ENI description.
      * 
      */
     private String description;
     /**
-     * @return System disk name.
+     * @return The ENI name.
      * 
      */
     private String name;
@@ -25,26 +25,26 @@ public final class GetEcsLaunchTemplatesTemplateNetworkInterface {
      */
     private String primaryIp;
     /**
-     * @return The security group ID.
+     * @return The security group ID must be one in the same VPC.
      * 
      */
     private String securityGroupId;
     /**
-     * @return The vswitch id.
+     * @return The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
      * 
      */
     private String vswitchId;
 
     private GetEcsLaunchTemplatesTemplateNetworkInterface() {}
     /**
-     * @return System disk description.
+     * @return The ENI description.
      * 
      */
     public String description() {
         return this.description;
     }
     /**
-     * @return System disk name.
+     * @return The ENI name.
      * 
      */
     public String name() {
@@ -58,14 +58,14 @@ public final class GetEcsLaunchTemplatesTemplateNetworkInterface {
         return this.primaryIp;
     }
     /**
-     * @return The security group ID.
+     * @return The security group ID must be one in the same VPC.
      * 
      */
     public String securityGroupId() {
         return this.securityGroupId;
     }
     /**
-     * @return The vswitch id.
+     * @return The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
      * 
      */
     public String vswitchId() {

@@ -52,14 +52,14 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The platform of Plan supported.
+     * (Available in v1.161.0) The platform of Plan supported.
      * 
      */
     @Import(name="platform")
     private @Nullable String platform;
 
     /**
-     * @return The platform of Plan supported.
+     * @return (Available in v1.161.0) The platform of Plan supported.
      * 
      */
     public Optional<String> platform() {
@@ -125,7 +125,7 @@ public final class GetImagesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param platform The platform of Plan supported.
+         * @param platform (Available in v1.161.0) The platform of Plan supported.
          * 
          * @return builder
          * 

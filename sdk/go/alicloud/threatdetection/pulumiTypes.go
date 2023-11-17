@@ -189,9 +189,9 @@ func (o HoneypotPresetMetaPtrOutput) TrojanGit() pulumi.StringPtrOutput {
 }
 
 type HoneypotProbeHoneypotBindList struct {
-	// List of listening ports.See the following `Block BindPortList`.
+	// (ForceNew,Optional) List of listening ports.See the following `Block BindPortList`.
 	BindPortLists []HoneypotProbeHoneypotBindListBindPortList `pulumi:"bindPortLists"`
-	// Honeypot ID.
+	// (ForceNew,Optional) Honeypot ID.
 	HoneypotId *string `pulumi:"honeypotId"`
 }
 
@@ -207,9 +207,9 @@ type HoneypotProbeHoneypotBindListInput interface {
 }
 
 type HoneypotProbeHoneypotBindListArgs struct {
-	// List of listening ports.See the following `Block BindPortList`.
+	// (ForceNew,Optional) List of listening ports.See the following `Block BindPortList`.
 	BindPortLists HoneypotProbeHoneypotBindListBindPortListArrayInput `pulumi:"bindPortLists"`
-	// Honeypot ID.
+	// (ForceNew,Optional) Honeypot ID.
 	HoneypotId pulumi.StringPtrInput `pulumi:"honeypotId"`
 }
 
@@ -264,14 +264,14 @@ func (o HoneypotProbeHoneypotBindListOutput) ToHoneypotProbeHoneypotBindListOutp
 	return o
 }
 
-// List of listening ports.See the following `Block BindPortList`.
+// (ForceNew,Optional) List of listening ports.See the following `Block BindPortList`.
 func (o HoneypotProbeHoneypotBindListOutput) BindPortLists() HoneypotProbeHoneypotBindListBindPortListArrayOutput {
 	return o.ApplyT(func(v HoneypotProbeHoneypotBindList) []HoneypotProbeHoneypotBindListBindPortList {
 		return v.BindPortLists
 	}).(HoneypotProbeHoneypotBindListBindPortListArrayOutput)
 }
 
-// Honeypot ID.
+// (ForceNew,Optional) Honeypot ID.
 func (o HoneypotProbeHoneypotBindListOutput) HoneypotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HoneypotProbeHoneypotBindList) *string { return v.HoneypotId }).(pulumi.StringPtrOutput)
 }
@@ -297,15 +297,15 @@ func (o HoneypotProbeHoneypotBindListArrayOutput) Index(i pulumi.IntInput) Honey
 }
 
 type HoneypotProbeHoneypotBindListBindPortList struct {
-	// Whether to bind the port.
+	// (ForceNew,Optional) Whether to bind the port.
 	BindPort *bool `pulumi:"bindPort"`
-	// End port.
+	// (ForceNew,Optional) End port.
 	EndPort *int `pulumi:"endPort"`
-	// Whether the port is fixed.
+	// (ForceNew,Optional) Whether the port is fixed.
 	Fixed *bool `pulumi:"fixed"`
-	// Start port.
+	// (ForceNew,Optional) Start port.
 	StartPort *int `pulumi:"startPort"`
-	// Destination port.
+	// (ForceNew,Optional) Destination port.
 	TargetPort *int `pulumi:"targetPort"`
 }
 
@@ -321,15 +321,15 @@ type HoneypotProbeHoneypotBindListBindPortListInput interface {
 }
 
 type HoneypotProbeHoneypotBindListBindPortListArgs struct {
-	// Whether to bind the port.
+	// (ForceNew,Optional) Whether to bind the port.
 	BindPort pulumi.BoolPtrInput `pulumi:"bindPort"`
-	// End port.
+	// (ForceNew,Optional) End port.
 	EndPort pulumi.IntPtrInput `pulumi:"endPort"`
-	// Whether the port is fixed.
+	// (ForceNew,Optional) Whether the port is fixed.
 	Fixed pulumi.BoolPtrInput `pulumi:"fixed"`
-	// Start port.
+	// (ForceNew,Optional) Start port.
 	StartPort pulumi.IntPtrInput `pulumi:"startPort"`
-	// Destination port.
+	// (ForceNew,Optional) Destination port.
 	TargetPort pulumi.IntPtrInput `pulumi:"targetPort"`
 }
 
@@ -384,27 +384,27 @@ func (o HoneypotProbeHoneypotBindListBindPortListOutput) ToHoneypotProbeHoneypot
 	return o
 }
 
-// Whether to bind the port.
+// (ForceNew,Optional) Whether to bind the port.
 func (o HoneypotProbeHoneypotBindListBindPortListOutput) BindPort() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HoneypotProbeHoneypotBindListBindPortList) *bool { return v.BindPort }).(pulumi.BoolPtrOutput)
 }
 
-// End port.
+// (ForceNew,Optional) End port.
 func (o HoneypotProbeHoneypotBindListBindPortListOutput) EndPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HoneypotProbeHoneypotBindListBindPortList) *int { return v.EndPort }).(pulumi.IntPtrOutput)
 }
 
-// Whether the port is fixed.
+// (ForceNew,Optional) Whether the port is fixed.
 func (o HoneypotProbeHoneypotBindListBindPortListOutput) Fixed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HoneypotProbeHoneypotBindListBindPortList) *bool { return v.Fixed }).(pulumi.BoolPtrOutput)
 }
 
-// Start port.
+// (ForceNew,Optional) Start port.
 func (o HoneypotProbeHoneypotBindListBindPortListOutput) StartPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HoneypotProbeHoneypotBindListBindPortList) *int { return v.StartPort }).(pulumi.IntPtrOutput)
 }
 
-// Destination port.
+// (ForceNew,Optional) Destination port.
 func (o HoneypotProbeHoneypotBindListBindPortListOutput) TargetPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HoneypotProbeHoneypotBindListBindPortList) *int { return v.TargetPort }).(pulumi.IntPtrOutput)
 }
@@ -869,7 +869,7 @@ type GetBaselineStrategiesStrategy struct {
 	BaselineStrategyId string `pulumi:"baselineStrategyId"`
 	// Policy name.
 	BaselineStrategyName string `pulumi:"baselineStrategyName"`
-	// The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+	// (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
 	CustomType string `pulumi:"customType"`
 	// The detection period of the policy.
 	CycleDays int `pulumi:"cycleDays"`
@@ -905,7 +905,7 @@ type GetBaselineStrategiesStrategyArgs struct {
 	BaselineStrategyId pulumi.StringInput `pulumi:"baselineStrategyId"`
 	// Policy name.
 	BaselineStrategyName pulumi.StringInput `pulumi:"baselineStrategyName"`
-	// The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+	// (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
 	CustomType pulumi.StringInput `pulumi:"customType"`
 	// The detection period of the policy.
 	CycleDays pulumi.IntInput `pulumi:"cycleDays"`
@@ -986,7 +986,7 @@ func (o GetBaselineStrategiesStrategyOutput) BaselineStrategyName() pulumi.Strin
 	return o.ApplyT(func(v GetBaselineStrategiesStrategy) string { return v.BaselineStrategyName }).(pulumi.StringOutput)
 }
 
-// The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+// (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
 func (o GetBaselineStrategiesStrategyOutput) CustomType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBaselineStrategiesStrategy) string { return v.CustomType }).(pulumi.StringOutput)
 }
@@ -1403,9 +1403,9 @@ type GetHoneypotNodesNode struct {
 	CreateTime        string `pulumi:"createTime"`
 	// The ID of the Honeypot management node.
 	Id string `pulumi:"id"`
-	// Honeypot management node id.
+	// (ForceNew,Optional) Honeypot management node id.
 	NodeId string `pulumi:"nodeId"`
-	// The name of the management node.
+	// (ForceNew,Optional) The name of the management node.
 	NodeName string `pulumi:"nodeName"`
 	// Release the collection of network segments.
 	SecurityGroupProbeIpLists []string `pulumi:"securityGroupProbeIpLists"`
@@ -1431,9 +1431,9 @@ type GetHoneypotNodesNodeArgs struct {
 	CreateTime        pulumi.StringInput `pulumi:"createTime"`
 	// The ID of the Honeypot management node.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Honeypot management node id.
+	// (ForceNew,Optional) Honeypot management node id.
 	NodeId pulumi.StringInput `pulumi:"nodeId"`
-	// The name of the management node.
+	// (ForceNew,Optional) The name of the management node.
 	NodeName pulumi.StringInput `pulumi:"nodeName"`
 	// Release the collection of network segments.
 	SecurityGroupProbeIpLists pulumi.StringArrayInput `pulumi:"securityGroupProbeIpLists"`
@@ -1510,12 +1510,12 @@ func (o GetHoneypotNodesNodeOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHoneypotNodesNode) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Honeypot management node id.
+// (ForceNew,Optional) Honeypot management node id.
 func (o GetHoneypotNodesNodeOutput) NodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHoneypotNodesNode) string { return v.NodeId }).(pulumi.StringOutput)
 }
 
-// The name of the management node.
+// (ForceNew,Optional) The name of the management node.
 func (o GetHoneypotNodesNodeOutput) NodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHoneypotNodesNode) string { return v.NodeName }).(pulumi.StringOutput)
 }
@@ -1550,7 +1550,7 @@ func (o GetHoneypotNodesNodeArrayOutput) Index(i pulumi.IntInput) GetHoneypotNod
 }
 
 type GetHoneypotPresetsPreset struct {
-	// Honeypot mirror name
+	// (ForceNew,Optional) Honeypot mirror name
 	HoneypotImageName string `pulumi:"honeypotImageName"`
 	// Unique ID of honeypot Template.
 	HoneypotPresetId string `pulumi:"honeypotPresetId"`
@@ -1558,9 +1558,9 @@ type GetHoneypotPresetsPreset struct {
 	Id string `pulumi:"id"`
 	// Honeypot template custom parameters.
 	Metas []GetHoneypotPresetsPresetMeta `pulumi:"metas"`
-	// Unique id of management node
+	// (ForceNew,Optional) Unique id of management node
 	NodeId string `pulumi:"nodeId"`
-	// Honeypot template custom name
+	// (ForceNew,Optional) Honeypot template custom name
 	PresetName string `pulumi:"presetName"`
 }
 
@@ -1576,7 +1576,7 @@ type GetHoneypotPresetsPresetInput interface {
 }
 
 type GetHoneypotPresetsPresetArgs struct {
-	// Honeypot mirror name
+	// (ForceNew,Optional) Honeypot mirror name
 	HoneypotImageName pulumi.StringInput `pulumi:"honeypotImageName"`
 	// Unique ID of honeypot Template.
 	HoneypotPresetId pulumi.StringInput `pulumi:"honeypotPresetId"`
@@ -1584,9 +1584,9 @@ type GetHoneypotPresetsPresetArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Honeypot template custom parameters.
 	Metas GetHoneypotPresetsPresetMetaArrayInput `pulumi:"metas"`
-	// Unique id of management node
+	// (ForceNew,Optional) Unique id of management node
 	NodeId pulumi.StringInput `pulumi:"nodeId"`
-	// Honeypot template custom name
+	// (ForceNew,Optional) Honeypot template custom name
 	PresetName pulumi.StringInput `pulumi:"presetName"`
 }
 
@@ -1641,7 +1641,7 @@ func (o GetHoneypotPresetsPresetOutput) ToGetHoneypotPresetsPresetOutputWithCont
 	return o
 }
 
-// Honeypot mirror name
+// (ForceNew,Optional) Honeypot mirror name
 func (o GetHoneypotPresetsPresetOutput) HoneypotImageName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHoneypotPresetsPreset) string { return v.HoneypotImageName }).(pulumi.StringOutput)
 }
@@ -1661,12 +1661,12 @@ func (o GetHoneypotPresetsPresetOutput) Metas() GetHoneypotPresetsPresetMetaArra
 	return o.ApplyT(func(v GetHoneypotPresetsPreset) []GetHoneypotPresetsPresetMeta { return v.Metas }).(GetHoneypotPresetsPresetMetaArrayOutput)
 }
 
-// Unique id of management node
+// (ForceNew,Optional) Unique id of management node
 func (o GetHoneypotPresetsPresetOutput) NodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHoneypotPresetsPreset) string { return v.NodeId }).(pulumi.StringOutput)
 }
 
-// Honeypot template custom name
+// (ForceNew,Optional) Honeypot template custom name
 func (o GetHoneypotPresetsPresetOutput) PresetName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHoneypotPresetsPreset) string { return v.PresetName }).(pulumi.StringOutput)
 }
@@ -1811,7 +1811,7 @@ type GetHoneypotProbesProbe struct {
 	Arp bool `pulumi:"arp"`
 	// The ID of the management node.
 	ControlNodeId string `pulumi:"controlNodeId"`
-	// Probe name
+	// (ForceNew, Optional) Probe name
 	DisplayName       string                                   `pulumi:"displayName"`
 	HoneypotBindLists []GetHoneypotProbesProbeHoneypotBindList `pulumi:"honeypotBindLists"`
 	// The first ID of the resource
@@ -1820,7 +1820,7 @@ type GetHoneypotProbesProbe struct {
 	Id string `pulumi:"id"`
 	// Ping scan detection. Value:**true**: Enable **false**: Disabled. Available when `enableDetails` is on.
 	Ping bool `pulumi:"ping"`
-	// Probe type
+	// (ForceNew, Optional) Probe type
 	ProbeType string `pulumi:"probeType"`
 	// Listen to the IP address list. Available when `enableDetails` is on.
 	ServiceIpLists []string `pulumi:"serviceIpLists"`
@@ -1848,7 +1848,7 @@ type GetHoneypotProbesProbeArgs struct {
 	Arp pulumi.BoolInput `pulumi:"arp"`
 	// The ID of the management node.
 	ControlNodeId pulumi.StringInput `pulumi:"controlNodeId"`
-	// Probe name
+	// (ForceNew, Optional) Probe name
 	DisplayName       pulumi.StringInput                               `pulumi:"displayName"`
 	HoneypotBindLists GetHoneypotProbesProbeHoneypotBindListArrayInput `pulumi:"honeypotBindLists"`
 	// The first ID of the resource
@@ -1857,7 +1857,7 @@ type GetHoneypotProbesProbeArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Ping scan detection. Value:**true**: Enable **false**: Disabled. Available when `enableDetails` is on.
 	Ping pulumi.BoolInput `pulumi:"ping"`
-	// Probe type
+	// (ForceNew, Optional) Probe type
 	ProbeType pulumi.StringInput `pulumi:"probeType"`
 	// Listen to the IP address list. Available when `enableDetails` is on.
 	ServiceIpLists pulumi.StringArrayInput `pulumi:"serviceIpLists"`
@@ -1930,7 +1930,7 @@ func (o GetHoneypotProbesProbeOutput) ControlNodeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHoneypotProbesProbe) string { return v.ControlNodeId }).(pulumi.StringOutput)
 }
 
-// Probe name
+// (ForceNew, Optional) Probe name
 func (o GetHoneypotProbesProbeOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHoneypotProbesProbe) string { return v.DisplayName }).(pulumi.StringOutput)
 }
@@ -1954,7 +1954,7 @@ func (o GetHoneypotProbesProbeOutput) Ping() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetHoneypotProbesProbe) bool { return v.Ping }).(pulumi.BoolOutput)
 }
 
-// Probe type
+// (ForceNew, Optional) Probe type
 func (o GetHoneypotProbesProbeOutput) ProbeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHoneypotProbesProbe) string { return v.ProbeType }).(pulumi.StringOutput)
 }
@@ -2242,7 +2242,7 @@ type GetInstancesInstance struct {
 	CreateTime string `pulumi:"createTime"`
 	// ID of the instance.
 	Id string `pulumi:"id"`
-	// The first ID of the resource
+	// (ForceNew,Optional) The first ID of the resource
 	InstanceId string `pulumi:"instanceId"`
 	// The payment type of the resource.
 	PaymentType string `pulumi:"paymentType"`
@@ -2266,7 +2266,7 @@ type GetInstancesInstanceArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// ID of the instance.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The first ID of the resource
+	// (ForceNew,Optional) The first ID of the resource
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The payment type of the resource.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
@@ -2335,7 +2335,7 @@ func (o GetInstancesInstanceOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The first ID of the resource
+// (ForceNew,Optional) The first ID of the resource
 func (o GetInstancesInstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.InstanceId }).(pulumi.StringOutput)
 }

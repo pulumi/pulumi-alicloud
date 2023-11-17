@@ -386,7 +386,7 @@ public final class EnterpriseInstanceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * It has been deprecated from provider version 1.100.0 and &#39;status&#39; instead.
+     * (Deprecated) It has been deprecated from provider version 1.100.0 and &#39;status&#39; instead.
      * 
      * @deprecated
      * Field &#39;state&#39; has been deprecated from version 1.100.0. Use &#39;status&#39; instead.
@@ -397,7 +397,7 @@ public final class EnterpriseInstanceState extends com.pulumi.resources.Resource
     private @Nullable Output<String> state;
 
     /**
-     * @return It has been deprecated from provider version 1.100.0 and &#39;status&#39; instead.
+     * @return (Deprecated) It has been deprecated from provider version 1.100.0 and &#39;status&#39; instead.
      * 
      * @deprecated
      * Field &#39;state&#39; has been deprecated from version 1.100.0. Use &#39;status&#39; instead.
@@ -1033,7 +1033,7 @@ public final class EnterpriseInstanceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param state It has been deprecated from provider version 1.100.0 and &#39;status&#39; instead.
+         * @param state (Deprecated) It has been deprecated from provider version 1.100.0 and &#39;status&#39; instead.
          * 
          * @return builder
          * 
@@ -1048,7 +1048,7 @@ public final class EnterpriseInstanceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param state It has been deprecated from provider version 1.100.0 and &#39;status&#39; instead.
+         * @param state (Deprecated) It has been deprecated from provider version 1.100.0 and &#39;status&#39; instead.
          * 
          * @return builder
          * 

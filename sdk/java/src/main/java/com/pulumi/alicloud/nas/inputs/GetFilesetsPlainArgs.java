@@ -61,14 +61,14 @@ public final class GetFilesetsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The status of the fileset.
+     * The status of the fileset. Valid values: `CREATED`, `CREATING`, `RELEASED`, `RELEASING`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the fileset.
+     * @return The status of the fileset. Valid values: `CREATED`, `CREATING`, `RELEASED`, `RELEASING`.
      * 
      */
     public Optional<String> status() {
@@ -146,7 +146,7 @@ public final class GetFilesetsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param status The status of the fileset.
+         * @param status The status of the fileset. Valid values: `CREATED`, `CREATING`, `RELEASED`, `RELEASING`.
          * 
          * @return builder
          * 

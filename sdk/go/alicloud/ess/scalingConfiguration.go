@@ -163,7 +163,7 @@ type ScalingConfiguration struct {
 	ImageId pulumi.StringPtrOutput `pulumi:"imageId"`
 	// Name of an image file, indicating the image resource selected when an instance is enabled.
 	ImageName pulumi.StringPtrOutput `pulumi:"imageName"`
-	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+	// (Deprecated) It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	//
 	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
 	InstanceIds pulumi.StringArrayOutput `pulumi:"instanceIds"`
@@ -181,7 +181,7 @@ type ScalingConfiguration struct {
 	InternetMaxBandwidthIn pulumi.IntOutput `pulumi:"internetMaxBandwidthIn"`
 	// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
 	InternetMaxBandwidthOut pulumi.IntPtrOutput `pulumi:"internetMaxBandwidthOut"`
-	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	// (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 	//
 	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrOutput `pulumi:"ioOptimized"`
@@ -218,7 +218,6 @@ type ScalingConfiguration struct {
 	// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
 	//
 	// > **NOTE:** Restrictions on attaching ECS instances:
-	//
 	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
 	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
 	// - The attached ECS instances must in the running state.
@@ -302,7 +301,7 @@ type scalingConfigurationState struct {
 	ImageId *string `pulumi:"imageId"`
 	// Name of an image file, indicating the image resource selected when an instance is enabled.
 	ImageName *string `pulumi:"imageName"`
-	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+	// (Deprecated) It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	//
 	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
 	InstanceIds []string `pulumi:"instanceIds"`
@@ -320,7 +319,7 @@ type scalingConfigurationState struct {
 	InternetMaxBandwidthIn *int `pulumi:"internetMaxBandwidthIn"`
 	// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
-	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	// (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 	//
 	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized *string `pulumi:"ioOptimized"`
@@ -357,7 +356,6 @@ type scalingConfigurationState struct {
 	// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
 	//
 	// > **NOTE:** Restrictions on attaching ECS instances:
-	//
 	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
 	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
 	// - The attached ECS instances must in the running state.
@@ -409,7 +407,7 @@ type ScalingConfigurationState struct {
 	ImageId pulumi.StringPtrInput
 	// Name of an image file, indicating the image resource selected when an instance is enabled.
 	ImageName pulumi.StringPtrInput
-	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+	// (Deprecated) It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	//
 	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
 	InstanceIds pulumi.StringArrayInput
@@ -427,7 +425,7 @@ type ScalingConfigurationState struct {
 	InternetMaxBandwidthIn pulumi.IntPtrInput
 	// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
 	InternetMaxBandwidthOut pulumi.IntPtrInput
-	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	// (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 	//
 	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrInput
@@ -464,7 +462,6 @@ type ScalingConfigurationState struct {
 	// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
 	//
 	// > **NOTE:** Restrictions on attaching ECS instances:
-	//
 	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
 	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
 	// - The attached ECS instances must in the running state.
@@ -520,7 +517,7 @@ type scalingConfigurationArgs struct {
 	ImageId *string `pulumi:"imageId"`
 	// Name of an image file, indicating the image resource selected when an instance is enabled.
 	ImageName *string `pulumi:"imageName"`
-	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+	// (Deprecated) It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	//
 	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
 	InstanceIds []string `pulumi:"instanceIds"`
@@ -538,7 +535,7 @@ type scalingConfigurationArgs struct {
 	InternetMaxBandwidthIn *int `pulumi:"internetMaxBandwidthIn"`
 	// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
-	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	// (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 	//
 	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized *string `pulumi:"ioOptimized"`
@@ -575,7 +572,6 @@ type scalingConfigurationArgs struct {
 	// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
 	//
 	// > **NOTE:** Restrictions on attaching ECS instances:
-	//
 	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
 	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
 	// - The attached ECS instances must in the running state.
@@ -628,7 +624,7 @@ type ScalingConfigurationArgs struct {
 	ImageId pulumi.StringPtrInput
 	// Name of an image file, indicating the image resource selected when an instance is enabled.
 	ImageName pulumi.StringPtrInput
-	// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+	// (Deprecated) It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 	//
 	// Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
 	InstanceIds pulumi.StringArrayInput
@@ -646,7 +642,7 @@ type ScalingConfigurationArgs struct {
 	InternetMaxBandwidthIn pulumi.IntPtrInput
 	// Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
 	InternetMaxBandwidthOut pulumi.IntPtrInput
-	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	// (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 	//
 	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrInput
@@ -683,7 +679,6 @@ type ScalingConfigurationArgs struct {
 	// > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
 	//
 	// > **NOTE:** Restrictions on attaching ECS instances:
-	//
 	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
 	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
 	// - The attached ECS instances must in the running state.
@@ -845,7 +840,7 @@ func (o ScalingConfigurationOutput) ImageName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.StringPtrOutput { return v.ImageName }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+// (Deprecated) It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
 //
 // Deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
 func (o ScalingConfigurationOutput) InstanceIds() pulumi.StringArrayOutput {
@@ -889,7 +884,7 @@ func (o ScalingConfigurationOutput) InternetMaxBandwidthOut() pulumi.IntPtrOutpu
 	return o.ApplyT(func(v *ScalingConfiguration) pulumi.IntPtrOutput { return v.InternetMaxBandwidthOut }).(pulumi.IntPtrOutput)
 }
 
-// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+// (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 //
 // Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 func (o ScalingConfigurationOutput) IoOptimized() pulumi.StringPtrOutput {
@@ -968,7 +963,6 @@ func (o ScalingConfigurationOutput) SecurityGroupIds() pulumi.StringArrayOutput 
 // > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
 //
 // > **NOTE:** Restrictions on attaching ECS instances:
-//
 // - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
 // - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
 // - The attached ECS instances must in the running state.

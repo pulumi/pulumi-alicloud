@@ -154,7 +154,7 @@ type Image struct {
 	Platform pulumi.StringOutput `pulumi:"platform"`
 	// The ID of the enterprise resource group to which a custom image belongs
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	// Specifies a snapshot that is used to create a combined custom image.
+	// Specifies a snapshot that is used to create a custom image.
 	SnapshotId pulumi.StringPtrOutput `pulumi:"snapshotId"`
 	// The tag value of an image. The value of N ranges from 1 to 20.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -215,7 +215,7 @@ type imageState struct {
 	Platform *string `pulumi:"platform"`
 	// The ID of the enterprise resource group to which a custom image belongs
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Specifies a snapshot that is used to create a combined custom image.
+	// Specifies a snapshot that is used to create a custom image.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// The tag value of an image. The value of N ranges from 1 to 20.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -247,7 +247,7 @@ type ImageState struct {
 	Platform pulumi.StringPtrInput
 	// The ID of the enterprise resource group to which a custom image belongs
 	ResourceGroupId pulumi.StringPtrInput
-	// Specifies a snapshot that is used to create a combined custom image.
+	// Specifies a snapshot that is used to create a custom image.
 	SnapshotId pulumi.StringPtrInput
 	// The tag value of an image. The value of N ranges from 1 to 20.
 	Tags pulumi.MapInput
@@ -283,7 +283,7 @@ type imageArgs struct {
 	Platform *string `pulumi:"platform"`
 	// The ID of the enterprise resource group to which a custom image belongs
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Specifies a snapshot that is used to create a combined custom image.
+	// Specifies a snapshot that is used to create a custom image.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// The tag value of an image. The value of N ranges from 1 to 20.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -316,7 +316,7 @@ type ImageArgs struct {
 	Platform pulumi.StringPtrInput
 	// The ID of the enterprise resource group to which a custom image belongs
 	ResourceGroupId pulumi.StringPtrInput
-	// Specifies a snapshot that is used to create a combined custom image.
+	// Specifies a snapshot that is used to create a custom image.
 	SnapshotId pulumi.StringPtrInput
 	// The tag value of an image. The value of N ranges from 1 to 20.
 	Tags pulumi.MapInput
@@ -464,7 +464,7 @@ func (o ImageOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-// Specifies a snapshot that is used to create a combined custom image.
+// Specifies a snapshot that is used to create a custom image.
 func (o ImageOutput) SnapshotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
 }

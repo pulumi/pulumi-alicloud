@@ -80,21 +80,21 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
         return this.fingerPrint;
     }
     /**
-     * The name of file to save your new key pair&#39;s private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn&#39;t get its private key ever.
+     * (ForceNew) The name of file to save your new key pair&#39;s private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn&#39;t get its private key ever.
      * 
      */
     @Export(name="keyFile", type=String.class, parameters={})
     private Output</* @Nullable */ String> keyFile;
 
     /**
-     * @return The name of file to save your new key pair&#39;s private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn&#39;t get its private key ever.
+     * @return (ForceNew) The name of file to save your new key pair&#39;s private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn&#39;t get its private key ever.
      * 
      */
     public Output<Optional<String>> keyFile() {
         return Codegen.optional(this.keyFile);
     }
     /**
-     * The key pair&#39;s name. It is the only in one Alicloud account.
+     * (ForceNew) The key pair&#39;s name. It is the only in one Alicloud account.
      * 
      * @deprecated
      * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
@@ -105,7 +105,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
     private Output<String> keyName;
 
     /**
-     * @return The key pair&#39;s name. It is the only in one Alicloud account.
+     * @return (ForceNew) The key pair&#39;s name. It is the only in one Alicloud account.
      * 
      */
     public Output<String> keyName() {
@@ -124,14 +124,14 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
         return this.keyPairName;
     }
     /**
-     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+     * (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
      * 
      */
     @Export(name="publicKey", type=String.class, parameters={})
     private Output</* @Nullable */ String> publicKey;
 
     /**
-     * @return You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+     * @return (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
      * 
      */
     public Output<Optional<String>> publicKey() {

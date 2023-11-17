@@ -67,7 +67,7 @@ export interface GetSecurityPoliciesArgs {
      */
     securityPolicyNames?: string[];
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Available`, `Configuring`.
      */
     status?: string;
     /**
@@ -144,7 +144,7 @@ export interface GetSecurityPoliciesOutputArgs {
      */
     securityPolicyNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Available`, `Configuring`.
      */
     status?: pulumi.Input<string>;
     /**

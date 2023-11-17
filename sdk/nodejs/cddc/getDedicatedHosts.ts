@@ -87,11 +87,11 @@ export function getDedicatedHosts(args: GetDedicatedHostsArgs, opts?: pulumi.Inv
  */
 export interface GetDedicatedHostsArgs {
     /**
-     * Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+     * Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
      */
     allocationStatus?: string;
     /**
-     * The ID of the dedicated cluster in which the host is created.
+     * The ID of the dedicated cluster.
      */
     dedicatedHostGroupId: string;
     /**
@@ -99,7 +99,7 @@ export interface GetDedicatedHostsArgs {
      */
     enableDetails?: boolean;
     /**
-     * The storage type of the host.
+     * The storage type of the host. Valid values: `dhgLocalSsd` or `dhgCloudSsd`. `dhgLocalSsd`: specifies that the host uses local SSDs. `dhgCloudSsd`: specifies that the host uses enhanced SSDs (ESSDs).
      */
     hostType?: string;
     /**
@@ -115,11 +115,11 @@ export interface GetDedicatedHostsArgs {
      */
     outputFile?: string;
     /**
-     * The state of the host.
+     * The state of the host. Valid values:
      */
     status?: string;
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      */
     tags?: {[key: string]: any};
     /**
@@ -216,11 +216,11 @@ export function getDedicatedHostsOutput(args: GetDedicatedHostsOutputArgs, opts?
  */
 export interface GetDedicatedHostsOutputArgs {
     /**
-     * Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+     * Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
      */
     allocationStatus?: pulumi.Input<string>;
     /**
-     * The ID of the dedicated cluster in which the host is created.
+     * The ID of the dedicated cluster.
      */
     dedicatedHostGroupId: pulumi.Input<string>;
     /**
@@ -228,7 +228,7 @@ export interface GetDedicatedHostsOutputArgs {
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
-     * The storage type of the host.
+     * The storage type of the host. Valid values: `dhgLocalSsd` or `dhgCloudSsd`. `dhgLocalSsd`: specifies that the host uses local SSDs. `dhgCloudSsd`: specifies that the host uses enhanced SSDs (ESSDs).
      */
     hostType?: pulumi.Input<string>;
     /**
@@ -244,11 +244,11 @@ export interface GetDedicatedHostsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The state of the host.
+     * The state of the host. Valid values:
      */
     status?: pulumi.Input<string>;
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

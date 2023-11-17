@@ -22,7 +22,7 @@ class PublicIpAddressPoolArgs:
         """
         The set of arguments for constructing a PublicIpAddressPool resource.
         :param pulumi.Input[str] description: Description.
-        :param pulumi.Input[str] isp: The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+        :param pulumi.Input[str] isp: (ForceNew, Optional) The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
         :param pulumi.Input[str] public_ip_address_pool_name: The name of the VPC Public IP address pool.
         :param pulumi.Input[str] resource_group_id: The resource group ID of the VPC Public IP address pool.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
@@ -54,7 +54,7 @@ class PublicIpAddressPoolArgs:
     @pulumi.getter
     def isp(self) -> Optional[pulumi.Input[str]]:
         """
-        The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+        (ForceNew, Optional) The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
         """
         return pulumi.get(self, "isp")
 
@@ -118,7 +118,7 @@ class _PublicIpAddressPoolState:
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] description: Description.
         :param pulumi.Input[bool] ip_address_remaining: Whether there is a free IP address.
-        :param pulumi.Input[str] isp: The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+        :param pulumi.Input[str] isp: (ForceNew, Optional) The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
         :param pulumi.Input[str] public_ip_address_pool_name: The name of the VPC Public IP address pool.
         :param pulumi.Input[str] resource_group_id: The resource group ID of the VPC Public IP address pool.
         :param pulumi.Input[str] status: The status of the VPC Public IP address pool.
@@ -189,7 +189,7 @@ class _PublicIpAddressPoolState:
     @pulumi.getter
     def isp(self) -> Optional[pulumi.Input[str]]:
         """
-        The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+        (ForceNew, Optional) The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
         """
         return pulumi.get(self, "isp")
 
@@ -328,7 +328,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Description.
-        :param pulumi.Input[str] isp: The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+        :param pulumi.Input[str] isp: (ForceNew, Optional) The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
         :param pulumi.Input[str] public_ip_address_pool_name: The name of the VPC Public IP address pool.
         :param pulumi.Input[str] resource_group_id: The resource group ID of the VPC Public IP address pool.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of PrefixList.
@@ -445,7 +445,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The creation time of the resource.
         :param pulumi.Input[str] description: Description.
         :param pulumi.Input[bool] ip_address_remaining: Whether there is a free IP address.
-        :param pulumi.Input[str] isp: The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+        :param pulumi.Input[str] isp: (ForceNew, Optional) The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
         :param pulumi.Input[str] public_ip_address_pool_name: The name of the VPC Public IP address pool.
         :param pulumi.Input[str] resource_group_id: The resource group ID of the VPC Public IP address pool.
         :param pulumi.Input[str] status: The status of the VPC Public IP address pool.
@@ -498,7 +498,7 @@ class PublicIpAddressPool(pulumi.CustomResource):
     @pulumi.getter
     def isp(self) -> pulumi.Output[str]:
         """
-        The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+        (ForceNew, Optional) The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
         """
         return pulumi.get(self, "isp")
 

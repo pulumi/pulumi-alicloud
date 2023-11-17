@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class GetNetworkAclsAclEgressAclEntry {
     /**
-     * @return Description of the entry direction rule.
+     * @return Description of network ACL information.
      * 
      */
     private String description;
@@ -20,29 +20,29 @@ public final class GetNetworkAclsAclEgressAclEntry {
      */
     private String destinationCidrIp;
     /**
-     * @return The name of the entry direction rule entry.
+     * @return The name of the entry for the direction rule.
      * 
      */
     private String networkAclEntryName;
     /**
-     * @return The authorization policy.
+     * @return The  authorization policy.
      * 
      */
     private String policy;
     /**
-     * @return Source port range.
+     * @return Destination port range.
      * 
      */
     private String port;
     /**
-     * @return Transport layer protocol.
+     * @return Transport  layer protocol.
      * 
      */
     private String protocol;
 
     private GetNetworkAclsAclEgressAclEntry() {}
     /**
-     * @return Description of the entry direction rule.
+     * @return Description of network ACL information.
      * 
      */
     public String description() {
@@ -56,28 +56,28 @@ public final class GetNetworkAclsAclEgressAclEntry {
         return this.destinationCidrIp;
     }
     /**
-     * @return The name of the entry direction rule entry.
+     * @return The name of the entry for the direction rule.
      * 
      */
     public String networkAclEntryName() {
         return this.networkAclEntryName;
     }
     /**
-     * @return The authorization policy.
+     * @return The  authorization policy.
      * 
      */
     public String policy() {
         return this.policy;
     }
     /**
-     * @return Source port range.
+     * @return Destination port range.
      * 
      */
     public String port() {
         return this.port;
     }
     /**
-     * @return Transport layer protocol.
+     * @return Transport  layer protocol.
      * 
      */
     public String protocol() {

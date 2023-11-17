@@ -141,7 +141,6 @@ export class Attachment extends pulumi.CustomResource {
      * > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
      *
      * > **NOTE:** Restrictions on attaching ECS instances:
-     *
      * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
      * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
      * - The attached ECS instances must in the running state.
@@ -201,7 +200,6 @@ export interface AttachmentState {
      * > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
      *
      * > **NOTE:** Restrictions on attaching ECS instances:
-     *
      * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
      * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
      * - The attached ECS instances must in the running state.
@@ -229,7 +227,6 @@ export interface AttachmentArgs {
      * > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
      *
      * > **NOTE:** Restrictions on attaching ECS instances:
-     *
      * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
      * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
      * - The attached ECS instances must in the running state.

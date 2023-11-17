@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.CloudSso
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Create the identity type of the access assignment, which can be a user or a user group.
+        /// Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
         /// </summary>
         [Input("principalType")]
         public string? PrincipalType { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.CloudSso
         public string? TargetId { get; set; }
 
         /// <summary>
-        /// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+        /// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
         /// </summary>
         [Input("targetType")]
         public string? TargetType { get; set; }
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Create the identity type of the access assignment, which can be a user or a user group.
+        /// Create the identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
         /// </summary>
         [Input("principalType")]
         public Input<string>? PrincipalType { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? TargetId { get; set; }
 
         /// <summary>
-        /// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase.
+        /// The type of the resource range target to be accessed. Only a single RD primary account or member account can be specified in the first phase. Valid values: `RD-Account`.
         /// </summary>
         [Input("targetType")]
         public Input<string>? TargetType { get; set; }

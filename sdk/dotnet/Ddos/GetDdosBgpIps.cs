@@ -134,7 +134,9 @@ namespace Pulumi.AliCloud.Ddos
         public string? ProductName { get; set; }
 
         /// <summary>
-        /// The current state of the IP address.
+        /// The current state of the IP address. Valid Value:
+        /// - normal: indicates normal (not attacked).
+        /// - hole_begin: indicates that you are in a black hole state.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -184,7 +186,9 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? ProductName { get; set; }
 
         /// <summary>
-        /// The current state of the IP address.
+        /// The current state of the IP address. Valid Value:
+        /// - normal: indicates normal (not attacked).
+        /// - hole_begin: indicates that you are in a black hole state.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

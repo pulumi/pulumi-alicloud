@@ -24,7 +24,7 @@ type EcsDisk struct {
 	pulumi.CustomResourceState
 
 	AdvancedFeatures pulumi.StringPtrOutput `pulumi:"advancedFeatures"`
-	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
+	// (Deprecated since 1.122.0) Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
@@ -110,7 +110,7 @@ func GetEcsDisk(ctx *pulumi.Context,
 // Input properties used for looking up and filtering EcsDisk resources.
 type ecsDiskState struct {
 	AdvancedFeatures *string `pulumi:"advancedFeatures"`
-	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
+	// (Deprecated since 1.122.0) Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
@@ -167,7 +167,7 @@ type ecsDiskState struct {
 
 type EcsDiskState struct {
 	AdvancedFeatures pulumi.StringPtrInput
-	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
+	// (Deprecated since 1.122.0) Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringPtrInput
@@ -228,7 +228,7 @@ func (EcsDiskState) ElementType() reflect.Type {
 
 type ecsDiskArgs struct {
 	AdvancedFeatures *string `pulumi:"advancedFeatures"`
-	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
+	// (Deprecated since 1.122.0) Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
@@ -284,7 +284,7 @@ type ecsDiskArgs struct {
 // The set of arguments for constructing a EcsDisk resource.
 type EcsDiskArgs struct {
 	AdvancedFeatures pulumi.StringPtrInput
-	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
+	// (Deprecated since 1.122.0) Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringPtrInput
@@ -428,7 +428,7 @@ func (o EcsDiskOutput) AdvancedFeatures() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsDisk) pulumi.StringPtrOutput { return v.AdvancedFeatures }).(pulumi.StringPtrOutput)
 }
 
-// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
+// (Deprecated since 1.122.0) Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 //
 // Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 func (o EcsDiskOutput) AvailabilityZone() pulumi.StringOutput {

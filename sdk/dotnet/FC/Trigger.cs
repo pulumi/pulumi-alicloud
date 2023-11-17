@@ -691,13 +691,13 @@ namespace Pulumi.AliCloud.FC
         public Output<string> LastModified { get; private set; } = null!;
 
         /// <summary>
-        /// The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+        /// (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// Setting a prefix to get a only trigger name. It is conflict with "name".
+        /// (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
         /// </summary>
         [Output("namePrefix")]
         public Output<string?> NamePrefix { get; private set; } = null!;
@@ -801,13 +801,13 @@ namespace Pulumi.AliCloud.FC
         public Input<string> Function { get; set; } = null!;
 
         /// <summary>
-        /// The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+        /// (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Setting a prefix to get a only trigger name. It is conflict with "name".
+        /// (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
@@ -873,13 +873,13 @@ namespace Pulumi.AliCloud.FC
         public Input<string>? LastModified { get; set; }
 
         /// <summary>
-        /// The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+        /// (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// Setting a prefix to get a only trigger name. It is conflict with "name".
+        /// (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }

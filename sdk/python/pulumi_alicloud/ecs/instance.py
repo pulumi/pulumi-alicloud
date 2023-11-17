@@ -87,9 +87,9 @@ class InstanceArgs:
         :param pulumi.Input[str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] instance_type: The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
-        :param pulumi.Input[bool] allocate_public_ip: It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        :param pulumi.Input[bool] allocate_public_ip: (Deprecated) It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         :param pulumi.Input[str] auto_release_time: The automatic release time of the `PostPaid` instance. 
-               The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+               The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time. 
                Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
         :param pulumi.Input[int] auto_renew_period: Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
                - [1, 2, 3, 6, 12] when `period_unit` in "Month"
@@ -116,8 +116,8 @@ class InstanceArgs:
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
-        :param pulumi.Input[str] description: Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[bool] dry_run: Specifies whether to send a dry-run request. Default to false. 
+        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[bool] dry_run: Specifies whether to send a dry-run request. Default to false.
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
                - false: A request is sent. If the validation succeeds, the instance is created.
         :param pulumi.Input[bool] force_delete: If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
@@ -132,13 +132,13 @@ class InstanceArgs:
                - required: forcefully uses the security-enhanced mode (IMDSv2). After you set this parameter to required, you cannot access instance metadata in normal mode.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
-               **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
-               However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+               **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`. 
+               However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype), 
                there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
         :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
-        :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        :param pulumi.Input[str] io_optimized: (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
@@ -153,7 +153,7 @@ class InstanceArgs:
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
                - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
                - [1-3] when `period_unit` in "Week"
-               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+                 > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
@@ -371,7 +371,7 @@ class InstanceArgs:
     @pulumi.getter(name="allocatePublicIp")
     def allocate_public_ip(self) -> Optional[pulumi.Input[bool]]:
         """
-        It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        (Deprecated) It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         """
         warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
         pulumi.log.warn("""allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
@@ -387,7 +387,7 @@ class InstanceArgs:
     def auto_release_time(self) -> Optional[pulumi.Input[str]]:
         """
         The automatic release time of the `PostPaid` instance. 
-        The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+        The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time. 
         Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
         """
         return pulumi.get(self, "auto_release_time")
@@ -502,7 +502,7 @@ class InstanceArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        The description of the data disk.
         """
         return pulumi.get(self, "description")
 
@@ -514,7 +514,7 @@ class InstanceArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to send a dry-run request. Default to false. 
+        Specifies whether to send a dry-run request. Default to false.
         - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
         - false: A request is sent. If the validation succeeds, the instance is created.
         """
@@ -617,8 +617,8 @@ class InstanceArgs:
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
         Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
-        **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
-        However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+        **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`. 
+        However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype), 
         there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
         """
         return pulumi.get(self, "instance_charge_type")
@@ -679,7 +679,7 @@ class InstanceArgs:
     @pulumi.getter(name="ioOptimized")
     def io_optimized(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
         warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
         pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
@@ -829,7 +829,7 @@ class InstanceArgs:
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
         - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
         - [1-3] when `period_unit` in "Week"
-        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+          > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
 
@@ -1250,9 +1250,9 @@ class _InstanceState:
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
-        :param pulumi.Input[bool] allocate_public_ip: It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        :param pulumi.Input[bool] allocate_public_ip: (Deprecated) It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         :param pulumi.Input[str] auto_release_time: The automatic release time of the `PostPaid` instance. 
-               The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+               The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time. 
                Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
         :param pulumi.Input[int] auto_renew_period: Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
                - [1, 2, 3, 6, 12] when `period_unit` in "Month"
@@ -1281,8 +1281,8 @@ class _InstanceState:
                - false: Disable deletion protection.
         :param pulumi.Input[str] deployment_set_group_no: The group number of the instance in a deployment set when the deployment set is use.
         :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
-        :param pulumi.Input[str] description: Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[bool] dry_run: Specifies whether to send a dry-run request. Default to false. 
+        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[bool] dry_run: Specifies whether to send a dry-run request. Default to false.
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
                - false: A request is sent. If the validation succeeds, the instance is created.
         :param pulumi.Input[bool] force_delete: If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
@@ -1298,14 +1298,14 @@ class _InstanceState:
         :param pulumi.Input[str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
-               **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
-               However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+               **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`. 
+               However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype), 
                there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
         :param pulumi.Input[str] instance_type: The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
         :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
-        :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        :param pulumi.Input[str] io_optimized: (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
@@ -1324,7 +1324,7 @@ class _InstanceState:
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
                - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
                - [1-3] when `period_unit` in "Week"
-               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+                 > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] primary_ip_address: The primary private IP address of the ENI.
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
@@ -1531,7 +1531,7 @@ class _InstanceState:
     @pulumi.getter(name="allocatePublicIp")
     def allocate_public_ip(self) -> Optional[pulumi.Input[bool]]:
         """
-        It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        (Deprecated) It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         """
         warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
         pulumi.log.warn("""allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
@@ -1547,7 +1547,7 @@ class _InstanceState:
     def auto_release_time(self) -> Optional[pulumi.Input[str]]:
         """
         The automatic release time of the `PostPaid` instance. 
-        The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+        The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time. 
         Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
         """
         return pulumi.get(self, "auto_release_time")
@@ -1686,7 +1686,7 @@ class _InstanceState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        The description of the data disk.
         """
         return pulumi.get(self, "description")
 
@@ -1698,7 +1698,7 @@ class _InstanceState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specifies whether to send a dry-run request. Default to false. 
+        Specifies whether to send a dry-run request. Default to false.
         - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
         - false: A request is sent. If the validation succeeds, the instance is created.
         """
@@ -1813,8 +1813,8 @@ class _InstanceState:
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
         Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
-        **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
-        However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+        **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`. 
+        However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype), 
         there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
         """
         return pulumi.get(self, "instance_charge_type")
@@ -1887,7 +1887,7 @@ class _InstanceState:
     @pulumi.getter(name="ioOptimized")
     def io_optimized(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
         warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
         pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
@@ -2085,7 +2085,7 @@ class _InstanceState:
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
         - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
         - [1-3] when `period_unit` in "Week"
-        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+          > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
 
@@ -2615,9 +2615,9 @@ class Instance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allocate_public_ip: It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        :param pulumi.Input[bool] allocate_public_ip: (Deprecated) It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         :param pulumi.Input[str] auto_release_time: The automatic release time of the `PostPaid` instance. 
-               The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+               The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time. 
                Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
         :param pulumi.Input[int] auto_renew_period: Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
                - [1, 2, 3, 6, 12] when `period_unit` in "Month"
@@ -2644,8 +2644,8 @@ class Instance(pulumi.CustomResource):
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
-        :param pulumi.Input[str] description: Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[bool] dry_run: Specifies whether to send a dry-run request. Default to false. 
+        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[bool] dry_run: Specifies whether to send a dry-run request. Default to false.
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
                - false: A request is sent. If the validation succeeds, the instance is created.
         :param pulumi.Input[bool] force_delete: If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
@@ -2661,14 +2661,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
-               **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
-               However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+               **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`. 
+               However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype), 
                there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
         :param pulumi.Input[str] instance_type: The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
         :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
-        :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        :param pulumi.Input[str] io_optimized: (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
@@ -2683,7 +2683,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
                - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
                - [1-3] when `period_unit` in "Week"
-               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+                 > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] renewal_status: Whether to renew an ECS instance automatically or not. It is valid when `instance_charge_type` is `PrePaid`. Default to "Normal". Valid values:
@@ -3061,9 +3061,9 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allocate_public_ip: It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        :param pulumi.Input[bool] allocate_public_ip: (Deprecated) It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         :param pulumi.Input[str] auto_release_time: The automatic release time of the `PostPaid` instance. 
-               The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+               The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time. 
                Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
         :param pulumi.Input[int] auto_renew_period: Auto renewal period of an instance, in the unit of month. It is valid when `instance_charge_type` is `PrePaid`. Default to 1. Valid value:
                - [1, 2, 3, 6, 12] when `period_unit` in "Month"
@@ -3092,8 +3092,8 @@ class Instance(pulumi.CustomResource):
                - false: Disable deletion protection.
         :param pulumi.Input[str] deployment_set_group_no: The group number of the instance in a deployment set when the deployment set is use.
         :param pulumi.Input[str] deployment_set_id: The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
-        :param pulumi.Input[str] description: Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[bool] dry_run: Specifies whether to send a dry-run request. Default to false. 
+        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[bool] dry_run: Specifies whether to send a dry-run request. Default to false.
                - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
                - false: A request is sent. If the validation succeeds, the instance is created.
         :param pulumi.Input[bool] force_delete: If it is true, the "PrePaid" instance will be change to "PostPaid" and then deleted forcibly.
@@ -3109,14 +3109,14 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] image_id: The Image to use for the instance. ECS instance's image can be replaced via changing `image_id`. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[bool] include_data_disks: Whether to change instance disks charge type when changing instance charge type.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
-               **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
-               However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+               **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`. 
+               However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype), 
                there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
         :param pulumi.Input[str] instance_type: The type of instance to start. When it is changed, the instance will reboot to make the change take effect.
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the instance, Valid values are `PayByBandwidth`, `PayByTraffic`. Default is `PayByTraffic`. At present, 'PrePaid' instance cannot change the value to "PayByBandwidth" from "PayByTraffic".
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). Value range: [1, 200]. If this value is not specified, then automatically sets it to 200 Mbps.
         :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
-        :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        :param pulumi.Input[str] io_optimized: (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
@@ -3135,7 +3135,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
                - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
                - [1-3] when `period_unit` in "Week"
-               > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+                 > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] period_unit: The duration unit that you will buy the resource. It is valid when `instance_charge_type` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
         :param pulumi.Input[str] primary_ip_address: The primary private IP address of the ENI.
         :param pulumi.Input[str] private_ip: Instance private IP address can be specified when you creating new instance. It is valid when `vswitch_id` is specified. When it is changed, the instance will reboot to make the change take effect.
@@ -3263,7 +3263,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="allocatePublicIp")
     def allocate_public_ip(self) -> pulumi.Output[Optional[bool]]:
         """
-        It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        (Deprecated) It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         """
         warnings.warn("""Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""", DeprecationWarning)
         pulumi.log.warn("""allocate_public_ip is deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.""")
@@ -3275,7 +3275,7 @@ class Instance(pulumi.CustomResource):
     def auto_release_time(self) -> pulumi.Output[Optional[str]]:
         """
         The automatic release time of the `PostPaid` instance. 
-        The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+        The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time. 
         Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
         """
         return pulumi.get(self, "auto_release_time")
@@ -3374,7 +3374,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        The description of the data disk.
         """
         return pulumi.get(self, "description")
 
@@ -3382,7 +3382,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        Specifies whether to send a dry-run request. Default to false. 
+        Specifies whether to send a dry-run request. Default to false.
         - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
         - false: A request is sent. If the validation succeeds, the instance is created.
         """
@@ -3461,8 +3461,8 @@ class Instance(pulumi.CustomResource):
     def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
         Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
-        **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
-        However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+        **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`. 
+        However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype), 
         there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
         """
         return pulumi.get(self, "instance_charge_type")
@@ -3511,7 +3511,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="ioOptimized")
     def io_optimized(self) -> pulumi.Output[Optional[str]]:
         """
-        It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
         warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
         pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
@@ -3645,7 +3645,7 @@ class Instance(pulumi.CustomResource):
         The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
         - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
         - [1-3] when `period_unit` in "Week"
-        > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+          > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         """
         return pulumi.get(self, "period")
 

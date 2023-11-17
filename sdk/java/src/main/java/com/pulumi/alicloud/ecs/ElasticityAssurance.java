@@ -97,14 +97,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ecs/elasticityAssurance:ElasticityAssurance")
 public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
     /**
-     * The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+     * (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
      * 
      */
     @Export(name="assuranceTimes", type=String.class, parameters={})
     private Output<String> assuranceTimes;
 
     /**
-     * @return The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+     * @return (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
      * 
      */
     public Output<String> assuranceTimes() {
@@ -181,14 +181,14 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
         return this.instanceChargeType;
     }
     /**
-     * Instance type. Currently, only one instance type is supported.
+     * (ForceNew,Required) Instance type. Currently, only one instance type is supported.
      * 
      */
     @Export(name="instanceType", type=String.class, parameters={})
     private Output<String> instanceType;
 
     /**
-     * @return Instance type. Currently, only one instance type is supported.
+     * @return (ForceNew,Required) Instance type. Currently, only one instance type is supported.
      * 
      */
     public Output<String> instanceType() {
@@ -227,14 +227,14 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.periodUnit);
     }
     /**
-     * The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+     * (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
      * 
      */
     @Export(name="privatePoolOptionsMatchCriteria", type=String.class, parameters={})
     private Output<String> privatePoolOptionsMatchCriteria;
 
     /**
-     * @return The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+     * @return (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
      * 
      */
     public Output<String> privatePoolOptionsMatchCriteria() {
@@ -255,28 +255,28 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
         return this.privatePoolOptionsName;
     }
     /**
-     * The ID of the resource group.
+     * (ForceNew,Optional) The ID of the resource group.
      * 
      */
     @Export(name="resourceGroupId", type=String.class, parameters={})
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return (ForceNew,Optional) The ID of the resource group.
      * 
      */
     public Output<Optional<String>> resourceGroupId() {
         return Codegen.optional(this.resourceGroupId);
     }
     /**
-     * Flexible guarantee service effective time.
+     * (ForceNew,Optional) Flexible guarantee service effective time.
      * 
      */
     @Export(name="startTime", type=String.class, parameters={})
     private Output<String> startTime;
 
     /**
-     * @return Flexible guarantee service effective time.
+     * @return (ForceNew,Optional) Flexible guarantee service effective time.
      * 
      */
     public Output<String> startTime() {
@@ -339,14 +339,14 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
         return this.usedAssuranceTimes;
     }
     /**
-     * The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+     * (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
      * 
      */
     @Export(name="zoneIds", type=List.class, parameters={String.class})
     private Output<List<String>> zoneIds;
 
     /**
-     * @return The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+     * @return (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
      * 
      */
     public Output<List<String>> zoneIds() {

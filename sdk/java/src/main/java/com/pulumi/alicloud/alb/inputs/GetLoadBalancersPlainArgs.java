@@ -237,14 +237,14 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The ID of the zone to which the ALB instance belongs.
+     * The zone ID of the resource.
      * 
      */
     @Import(name="zoneId")
     private @Nullable String zoneId;
 
     /**
-     * @return The ID of the zone to which the ALB instance belongs.
+     * @return The zone ID of the resource.
      * 
      */
     public Optional<String> zoneId() {
@@ -478,7 +478,7 @@ public final class GetLoadBalancersPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param zoneId The ID of the zone to which the ALB instance belongs.
+         * @param zoneId The zone ID of the resource.
          * 
          * @return builder
          * 

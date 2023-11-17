@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class GetHybridMonitorSlsTasksTaskMatchExpress {
     /**
-     * @return The function that is used to aggregate log data within a statistical period.
+     * @return The method that is used to match the instance name.
      * 
      */
     private String function;
@@ -20,14 +20,14 @@ public final class GetHybridMonitorSlsTasksTaskMatchExpress {
      */
     private String name;
     /**
-     * @return The value of the key that is used to filter logs imported from Log Service.
+     * @return The keyword that corresponds to the instance name.
      * 
      */
     private String value;
 
     private GetHybridMonitorSlsTasksTaskMatchExpress() {}
     /**
-     * @return The function that is used to aggregate log data within a statistical period.
+     * @return The method that is used to match the instance name.
      * 
      */
     public String function() {
@@ -41,7 +41,7 @@ public final class GetHybridMonitorSlsTasksTaskMatchExpress {
         return this.name;
     }
     /**
-     * @return The value of the key that is used to filter logs imported from Log Service.
+     * @return The keyword that corresponds to the instance name.
      * 
      */
     public String value() {

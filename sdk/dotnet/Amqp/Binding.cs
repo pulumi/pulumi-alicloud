@@ -89,7 +89,7 @@ namespace Pulumi.AliCloud.Amqp
     public partial class Binding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// X-match Attributes. Valid Values: 
+        /// X-match Attributes. Valid Values:
         /// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
         /// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
         /// 
@@ -101,10 +101,10 @@ namespace Pulumi.AliCloud.Amqp
         /// <summary>
         /// The Binding Key.
         /// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        /// The binding key must be 1 to 255 characters in length.
-        /// * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        /// If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-        /// The binding key must be 1 to 255 characters in length.
+        ///   The binding key must be 1 to 255 characters in length.
+        /// * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@). 
+        ///   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.). 
+        ///   The binding key must be 1 to 255 characters in length.
         /// </summary>
         [Output("bindingKey")]
         public Output<string> BindingKey { get; private set; } = null!;
@@ -186,7 +186,7 @@ namespace Pulumi.AliCloud.Amqp
     public sealed class BindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// X-match Attributes. Valid Values: 
+        /// X-match Attributes. Valid Values:
         /// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
         /// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
         /// 
@@ -198,10 +198,10 @@ namespace Pulumi.AliCloud.Amqp
         /// <summary>
         /// The Binding Key.
         /// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        /// The binding key must be 1 to 255 characters in length.
-        /// * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        /// If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-        /// The binding key must be 1 to 255 characters in length.
+        ///   The binding key must be 1 to 255 characters in length.
+        /// * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@). 
+        ///   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.). 
+        ///   The binding key must be 1 to 255 characters in length.
         /// </summary>
         [Input("bindingKey", required: true)]
         public Input<string> BindingKey { get; set; } = null!;
@@ -245,7 +245,7 @@ namespace Pulumi.AliCloud.Amqp
     public sealed class BindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// X-match Attributes. Valid Values: 
+        /// X-match Attributes. Valid Values:
         /// * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
         /// * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
         /// 
@@ -257,10 +257,10 @@ namespace Pulumi.AliCloud.Amqp
         /// <summary>
         /// The Binding Key.
         /// * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        /// The binding key must be 1 to 255 characters in length.
-        /// * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        /// If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-        /// The binding key must be 1 to 255 characters in length.
+        ///   The binding key must be 1 to 255 characters in length.
+        /// * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@). 
+        ///   If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.). 
+        ///   The binding key must be 1 to 255 characters in length.
         /// </summary>
         [Input("bindingKey")]
         public Input<string>? BindingKey { get; set; }

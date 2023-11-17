@@ -108,13 +108,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         }
 
         /// <summary>
-        /// The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+        /// (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
         /// </summary>
         [Input("lang")]
         public string? Lang { get; set; }
 
         /// <summary>
-        /// The UID of the Alibaba Cloud member account.
+        /// (ForceNew,Optional) The UID of the Alibaba Cloud member account.
         /// </summary>
         [Input("memberUid")]
         public string? MemberUid { get; set; }
@@ -138,19 +138,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public string? RegionNo { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// (ForceNew,Optional) The status of the resource
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         /// <summary>
-        /// The ID of the VPC firewall instance.
+        /// (ForceNew,Optional) The ID of the VPC firewall instance.
         /// </summary>
         [Input("vpcFirewallId")]
         public string? VpcFirewallId { get; set; }
 
         /// <summary>
-        /// The name of the VPC firewall instance.
+        /// (ForceNew,Optional) The name of the VPC firewall instance.
         /// </summary>
         [Input("vpcFirewallName")]
         public string? VpcFirewallName { get; set; }
@@ -182,13 +182,13 @@ namespace Pulumi.AliCloud.CloudFirewall
         }
 
         /// <summary>
-        /// The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+        /// (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The UID of the Alibaba Cloud member account.
+        /// (ForceNew,Optional) The UID of the Alibaba Cloud member account.
         /// </summary>
         [Input("memberUid")]
         public Input<string>? MemberUid { get; set; }
@@ -212,19 +212,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? RegionNo { get; set; }
 
         /// <summary>
-        /// The status of the resource
+        /// (ForceNew,Optional) The status of the resource
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The ID of the VPC firewall instance.
+        /// (ForceNew,Optional) The ID of the VPC firewall instance.
         /// </summary>
         [Input("vpcFirewallId")]
         public Input<string>? VpcFirewallId { get; set; }
 
         /// <summary>
-        /// The name of the VPC firewall instance.
+        /// (ForceNew,Optional) The name of the VPC firewall instance.
         /// </summary>
         [Input("vpcFirewallName")]
         public Input<string>? VpcFirewallName { get; set; }

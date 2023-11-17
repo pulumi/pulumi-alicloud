@@ -18,14 +18,14 @@ public final class GetAscriptsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetAscriptsArgs Empty = new GetAscriptsArgs();
 
     /**
-     * Script name.
+     * (ForceNew,Optional) Script name.
      * 
      */
     @Import(name="ascriptName")
     private @Nullable Output<String> ascriptName;
 
     /**
-     * @return Script name.
+     * @return (ForceNew,Optional) Script name.
      * 
      */
     public Optional<Output<String>> ascriptName() {
@@ -55,14 +55,14 @@ public final class GetAscriptsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Listener ID of script attribution
+     * (ForceNew,Optional) Listener ID of script attribution
      * 
      */
     @Import(name="listenerId")
     private @Nullable Output<String> listenerId;
 
     /**
-     * @return Listener ID of script attribution
+     * @return (ForceNew,Optional) Listener ID of script attribution
      * 
      */
     public Optional<Output<String>> listenerId() {
@@ -129,7 +129,7 @@ public final class GetAscriptsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ascriptName Script name.
+         * @param ascriptName (ForceNew,Optional) Script name.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class GetAscriptsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param ascriptName Script name.
+         * @param ascriptName (ForceNew,Optional) Script name.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class GetAscriptsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param listenerId Listener ID of script attribution
+         * @param listenerId (ForceNew,Optional) Listener ID of script attribution
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class GetAscriptsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param listenerId Listener ID of script attribution
+         * @param listenerId (ForceNew,Optional) Listener ID of script attribution
          * 
          * @return builder
          * 

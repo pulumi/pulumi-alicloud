@@ -251,8 +251,10 @@ class EdgeKubernetesCertificateAuthority(dict):
                  client_key: Optional[str] = None,
                  cluster_cert: Optional[str] = None):
         """
-        :param str client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
-        :param str client_key: The path of client key, like `~/.kube/client-key.pem`.
+        :param str client_cert: The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
+        :param str client_key: The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+               
+               *Network params*
         :param str cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
         """
         if client_cert is not None:
@@ -266,7 +268,7 @@ class EdgeKubernetesCertificateAuthority(dict):
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[str]:
         """
-        The path of client certificate, like `~/.kube/client-cert.pem`.
+        The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
         """
         return pulumi.get(self, "client_cert")
 
@@ -274,7 +276,9 @@ class EdgeKubernetesCertificateAuthority(dict):
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
         """
-        The path of client key, like `~/.kube/client-key.pem`.
+        The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+
+        *Network params*
         """
         return pulumi.get(self, "client_key")
 
@@ -742,8 +746,8 @@ class KubernetesCertificateAuthority(dict):
                  client_key: Optional[str] = None,
                  cluster_cert: Optional[str] = None):
         """
-        :param str client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
-        :param str client_key: The path of client key, like `~/.kube/client-key.pem`.
+        :param str client_cert: The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
+        :param str client_key: The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
         :param str cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
         """
         if client_cert is not None:
@@ -757,7 +761,7 @@ class KubernetesCertificateAuthority(dict):
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[str]:
         """
-        The path of client certificate, like `~/.kube/client-cert.pem`.
+        The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
         """
         return pulumi.get(self, "client_cert")
 
@@ -765,7 +769,7 @@ class KubernetesCertificateAuthority(dict):
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
         """
-        The path of client key, like `~/.kube/client-key.pem`.
+        The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
         """
         return pulumi.get(self, "client_key")
 
@@ -1295,7 +1299,7 @@ class ManagedKubernetesAddon(dict):
                  name: Optional[str] = None):
         """
         :param str config: If this parameter is left empty, no configurations are required.
-        :param bool disabled: It specifies whether to disable automatic installation. 
+        :param bool disabled: It specifies whether to disable automatic installation.
                
                It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
                
@@ -1330,7 +1334,7 @@ class ManagedKubernetesAddon(dict):
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
         """
-        It specifies whether to disable automatic installation. 
+        It specifies whether to disable automatic installation.
 
         It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
 
@@ -1531,6 +1535,7 @@ class ManagedKubernetesMaintenanceWindow(dict):
         :param str weekly_period: Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
                
                for example:
+               
                ```python
                import pulumi
                ```
@@ -1571,6 +1576,7 @@ class ManagedKubernetesMaintenanceWindow(dict):
         Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 
         for example:
+
         ```python
         import pulumi
         ```
@@ -1804,14 +1810,14 @@ class ManagedKubernetesWorkerDataDisk(dict):
                  size: Optional[str] = None,
                  snapshot_id: Optional[str] = None):
         """
-        :param str auto_snapshot_policy_id: (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
-        :param str category: (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        :param str auto_snapshot_policy_id: (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+        :param str category: (Deprecated from version 1.177.0)(Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
         :param str device: The mount point of data disk N.
-        :param str encrypted: (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+        :param str encrypted: (Deprecated from version 1.177.0)(Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
         :param str kms_key_id: The ID of the Key Management Service (KMS) key to use for data disk N.
         :param str name: The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
-        :param str performance_level: (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-        :param str size: (Optional)The size of a data disk, at least 40. Unit: GiB.
+        :param str performance_level: (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        :param str size: (Deprecated from version 1.177.0)(Optional)The size of a data disk, at least 40. Unit: GiB.
         :param str snapshot_id: The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
         """
         if auto_snapshot_policy_id is not None:
@@ -1837,7 +1843,7 @@ class ManagedKubernetesWorkerDataDisk(dict):
     @pulumi.getter(name="autoSnapshotPolicyId")
     def auto_snapshot_policy_id(self) -> Optional[str]:
         """
-        (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+        (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
         """
         return pulumi.get(self, "auto_snapshot_policy_id")
 
@@ -1845,7 +1851,7 @@ class ManagedKubernetesWorkerDataDisk(dict):
     @pulumi.getter
     def category(self) -> Optional[str]:
         """
-        (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+        (Deprecated from version 1.177.0)(Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
         """
         return pulumi.get(self, "category")
 
@@ -1861,7 +1867,7 @@ class ManagedKubernetesWorkerDataDisk(dict):
     @pulumi.getter
     def encrypted(self) -> Optional[str]:
         """
-        (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+        (Deprecated from version 1.177.0)(Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
         """
         return pulumi.get(self, "encrypted")
 
@@ -1885,7 +1891,7 @@ class ManagedKubernetesWorkerDataDisk(dict):
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[str]:
         """
-        (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+        (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
         """
         return pulumi.get(self, "performance_level")
 
@@ -1893,7 +1899,7 @@ class ManagedKubernetesWorkerDataDisk(dict):
     @pulumi.getter
     def size(self) -> Optional[str]:
         """
-        (Optional)The size of a data disk, at least 40. Unit: GiB.
+        (Deprecated from version 1.177.0)(Optional)The size of a data disk, at least 40. Unit: GiB.
         """
         return pulumi.get(self, "size")
 

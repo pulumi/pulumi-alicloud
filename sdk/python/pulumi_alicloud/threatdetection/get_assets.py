@@ -167,16 +167,16 @@ def get_assets(criteria: Optional[str] = None,
     ```
 
 
-    :param str criteria: Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
+    :param str criteria: (ForceNew, Optional) Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
     :param Sequence[str] ids: A list of Asset IDs.
-    :param int importance: Set asset importance. Value:
+    :param int importance: (ForceNew, Optional) Set asset importance. Value:
            - **2**: Significant assets
            - **1**: General assets
            - **0**: Test asset
-    :param str logical_exp: Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
+    :param str logical_exp: (ForceNew, Optional) Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
            - **OR**: indicates that the relationship between multiple search conditions is **OR**.
            - **AND**: indicates that the relationship between multiple search conditions is **AND**.
-    :param str machine_types: The type of asset to query. Value:
+    :param str machine_types: (ForceNew, Optional) The type of asset to query. Value:
            - **ecs**: server.
            - **cloud_product**: Cloud product.
     :param bool no_group_trace: Specifies whether to internationalize the name of the default group. Default value: false
@@ -236,16 +236,16 @@ def get_assets_output(criteria: Optional[pulumi.Input[Optional[str]]] = None,
     ```
 
 
-    :param str criteria: Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
+    :param str criteria: (ForceNew, Optional) Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
     :param Sequence[str] ids: A list of Asset IDs.
-    :param int importance: Set asset importance. Value:
+    :param int importance: (ForceNew, Optional) Set asset importance. Value:
            - **2**: Significant assets
            - **1**: General assets
            - **0**: Test asset
-    :param str logical_exp: Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
+    :param str logical_exp: (ForceNew, Optional) Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
            - **OR**: indicates that the relationship between multiple search conditions is **OR**.
            - **AND**: indicates that the relationship between multiple search conditions is **AND**.
-    :param str machine_types: The type of asset to query. Value:
+    :param str machine_types: (ForceNew, Optional) The type of asset to query. Value:
            - **ecs**: server.
            - **cloud_product**: Cloud product.
     :param bool no_group_trace: Specifies whether to internationalize the name of the default group. Default value: false

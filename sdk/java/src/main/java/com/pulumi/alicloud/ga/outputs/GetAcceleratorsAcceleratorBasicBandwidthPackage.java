@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAcceleratorsAcceleratorBasicBandwidthPackage {
     /**
-     * @return Bandwidth value of cross-domain acceleration package.
+     * @return The bandwidth value of the basic bandwidth package.
      * 
      */
     private Integer bandwidth;
@@ -21,14 +21,14 @@ public final class GetAcceleratorsAcceleratorBasicBandwidthPackage {
      */
     private String bandwidthType;
     /**
-     * @return Instance ID of the cross-domain acceleration package.
+     * @return Instance ID of the basic bandwidth package.
      * 
      */
     private String instanceId;
 
     private GetAcceleratorsAcceleratorBasicBandwidthPackage() {}
     /**
-     * @return Bandwidth value of cross-domain acceleration package.
+     * @return The bandwidth value of the basic bandwidth package.
      * 
      */
     public Integer bandwidth() {
@@ -42,7 +42,7 @@ public final class GetAcceleratorsAcceleratorBasicBandwidthPackage {
         return this.bandwidthType;
     }
     /**
-     * @return Instance ID of the cross-domain acceleration package.
+     * @return Instance ID of the basic bandwidth package.
      * 
      */
     public String instanceId() {

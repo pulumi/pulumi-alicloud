@@ -40,7 +40,7 @@ class EcsDiskArgs:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a EcsDisk resource.
-        :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        :param pulumi.Input[str] availability_zone: (Deprecated since 1.122.0) Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
         :param pulumi.Input[bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
         :param pulumi.Input[bool] delete_with_instance: Indicates whether the disk is released together with the instance. Default value: `false`.
@@ -133,7 +133,7 @@ class EcsDiskArgs:
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        (Deprecated since 1.122.0) Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         """
         warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""", DeprecationWarning)
         pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
@@ -441,7 +441,7 @@ class _EcsDiskState:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EcsDisk resources.
-        :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        :param pulumi.Input[str] availability_zone: (Deprecated since 1.122.0) Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
         :param pulumi.Input[bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
         :param pulumi.Input[bool] delete_with_instance: Indicates whether the disk is released together with the instance. Default value: `false`.
@@ -537,7 +537,7 @@ class _EcsDiskState:
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        (Deprecated since 1.122.0) Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         """
         warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""", DeprecationWarning)
         pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")
@@ -868,7 +868,7 @@ class EcsDisk(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        :param pulumi.Input[str] availability_zone: (Deprecated since 1.122.0) Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
         :param pulumi.Input[bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
         :param pulumi.Input[bool] delete_with_instance: Indicates whether the disk is released together with the instance. Default value: `false`.
@@ -1023,7 +1023,7 @@ class EcsDisk(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        :param pulumi.Input[str] availability_zone: (Deprecated since 1.122.0) Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         :param pulumi.Input[str] category: Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
         :param pulumi.Input[bool] delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
         :param pulumi.Input[bool] delete_with_instance: Indicates whether the disk is released together with the instance. Default value: `false`.
@@ -1089,7 +1089,7 @@ class EcsDisk(pulumi.CustomResource):
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> pulumi.Output[str]:
         """
-        Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        (Deprecated since 1.122.0) Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         """
         warnings.warn("""Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""", DeprecationWarning)
         pulumi.log.warn("""availability_zone is deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead""")

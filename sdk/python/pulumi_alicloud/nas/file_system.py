@@ -32,13 +32,22 @@ class FileSystemArgs:
                `NFS`,
                `SMB` (Available when the `file_system_type` is `standard`),
                `cpfs` (Available when the `file_system_type` is `cpfs`).
-        :param pulumi.Input[str] storage_type: The storage type of the file System. 
+        :param pulumi.Input[str] storage_type: The storage type of the file System.
                * Valid values:
+                 * `Performance` (Available when the `file_system_type` is `standard`)
+                 * `Capacity` (Available when the `file_system_type` is `standard`)
+                 * `standard` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+                 * `advance` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+                 * `advance_100` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
+                 * `advance_200` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
         :param pulumi.Input[int] capacity: The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
                Unit: gib; **Note**: The minimum value is 100.
         :param pulumi.Input[str] description: The File System description.
-        :param pulumi.Input[int] encrypt_type: Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+        :param pulumi.Input[int] encrypt_type: Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
                * Valid values:
+                 * `0` (Default): The file system is not encrypted.
+                 * `1`: The file system is encrypted with a managed secret key.
+                 * `2` (Available in v1.140.0+ and when the `file_system_type` is `extreme`): User management key.
         :param pulumi.Input[str] file_system_type: the type of the file system. 
                Valid values:
                `standard` (Default),
@@ -91,8 +100,14 @@ class FileSystemArgs:
     @pulumi.getter(name="storageType")
     def storage_type(self) -> pulumi.Input[str]:
         """
-        The storage type of the file System. 
+        The storage type of the file System.
         * Valid values:
+          * `Performance` (Available when the `file_system_type` is `standard`)
+          * `Capacity` (Available when the `file_system_type` is `standard`)
+          * `standard` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+          * `advance` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+          * `advance_100` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
+          * `advance_200` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
         """
         return pulumi.get(self, "storage_type")
 
@@ -129,8 +144,11 @@ class FileSystemArgs:
     @pulumi.getter(name="encryptType")
     def encrypt_type(self) -> Optional[pulumi.Input[int]]:
         """
-        Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+        Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
         * Valid values:
+          * `0` (Default): The file system is not encrypted.
+          * `1`: The file system is encrypted with a managed secret key.
+          * `2` (Available in v1.140.0+ and when the `file_system_type` is `extreme`): User management key.
         """
         return pulumi.get(self, "encrypt_type")
 
@@ -234,8 +252,11 @@ class _FileSystemState:
         :param pulumi.Input[int] capacity: The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
                Unit: gib; **Note**: The minimum value is 100.
         :param pulumi.Input[str] description: The File System description.
-        :param pulumi.Input[int] encrypt_type: Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+        :param pulumi.Input[int] encrypt_type: Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
                * Valid values:
+                 * `0` (Default): The file system is not encrypted.
+                 * `1`: The file system is encrypted with a managed secret key.
+                 * `2` (Available in v1.140.0+ and when the `file_system_type` is `extreme`): User management key.
         :param pulumi.Input[str] file_system_type: the type of the file system. 
                Valid values:
                `standard` (Default),
@@ -247,8 +268,14 @@ class _FileSystemState:
                `NFS`,
                `SMB` (Available when the `file_system_type` is `standard`),
                `cpfs` (Available when the `file_system_type` is `cpfs`).
-        :param pulumi.Input[str] storage_type: The storage type of the file System. 
+        :param pulumi.Input[str] storage_type: The storage type of the file System.
                * Valid values:
+                 * `Performance` (Available when the `file_system_type` is `standard`)
+                 * `Capacity` (Available when the `file_system_type` is `standard`)
+                 * `standard` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+                 * `advance` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+                 * `advance_100` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
+                 * `advance_200` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
         :param pulumi.Input[str] vswitch_id: The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
@@ -306,8 +333,11 @@ class _FileSystemState:
     @pulumi.getter(name="encryptType")
     def encrypt_type(self) -> Optional[pulumi.Input[int]]:
         """
-        Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+        Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
         * Valid values:
+          * `0` (Default): The file system is not encrypted.
+          * `1`: The file system is encrypted with a managed secret key.
+          * `2` (Available in v1.140.0+ and when the `file_system_type` is `extreme`): User management key.
         """
         return pulumi.get(self, "encrypt_type")
 
@@ -363,8 +393,14 @@ class _FileSystemState:
     @pulumi.getter(name="storageType")
     def storage_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The storage type of the file System. 
+        The storage type of the file System.
         * Valid values:
+          * `Performance` (Available when the `file_system_type` is `standard`)
+          * `Capacity` (Available when the `file_system_type` is `standard`)
+          * `standard` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+          * `advance` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+          * `advance_100` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
+          * `advance_200` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
         """
         return pulumi.get(self, "storage_type")
 
@@ -515,8 +551,11 @@ class FileSystem(pulumi.CustomResource):
         :param pulumi.Input[int] capacity: The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
                Unit: gib; **Note**: The minimum value is 100.
         :param pulumi.Input[str] description: The File System description.
-        :param pulumi.Input[int] encrypt_type: Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+        :param pulumi.Input[int] encrypt_type: Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
                * Valid values:
+                 * `0` (Default): The file system is not encrypted.
+                 * `1`: The file system is encrypted with a managed secret key.
+                 * `2` (Available in v1.140.0+ and when the `file_system_type` is `extreme`): User management key.
         :param pulumi.Input[str] file_system_type: the type of the file system. 
                Valid values:
                `standard` (Default),
@@ -528,8 +567,14 @@ class FileSystem(pulumi.CustomResource):
                `NFS`,
                `SMB` (Available when the `file_system_type` is `standard`),
                `cpfs` (Available when the `file_system_type` is `cpfs`).
-        :param pulumi.Input[str] storage_type: The storage type of the file System. 
+        :param pulumi.Input[str] storage_type: The storage type of the file System.
                * Valid values:
+                 * `Performance` (Available when the `file_system_type` is `standard`)
+                 * `Capacity` (Available when the `file_system_type` is `standard`)
+                 * `standard` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+                 * `advance` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+                 * `advance_100` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
+                 * `advance_200` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
         :param pulumi.Input[str] vswitch_id: The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
@@ -694,8 +739,11 @@ class FileSystem(pulumi.CustomResource):
         :param pulumi.Input[int] capacity: The capacity of the file system. The `capacity` is required when the `file_system_type` is `extreme`.
                Unit: gib; **Note**: The minimum value is 100.
         :param pulumi.Input[str] description: The File System description.
-        :param pulumi.Input[int] encrypt_type: Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+        :param pulumi.Input[int] encrypt_type: Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
                * Valid values:
+                 * `0` (Default): The file system is not encrypted.
+                 * `1`: The file system is encrypted with a managed secret key.
+                 * `2` (Available in v1.140.0+ and when the `file_system_type` is `extreme`): User management key.
         :param pulumi.Input[str] file_system_type: the type of the file system. 
                Valid values:
                `standard` (Default),
@@ -707,8 +755,14 @@ class FileSystem(pulumi.CustomResource):
                `NFS`,
                `SMB` (Available when the `file_system_type` is `standard`),
                `cpfs` (Available when the `file_system_type` is `cpfs`).
-        :param pulumi.Input[str] storage_type: The storage type of the file System. 
+        :param pulumi.Input[str] storage_type: The storage type of the file System.
                * Valid values:
+                 * `Performance` (Available when the `file_system_type` is `standard`)
+                 * `Capacity` (Available when the `file_system_type` is `standard`)
+                 * `standard` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+                 * `advance` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+                 * `advance_100` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
+                 * `advance_200` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vpc_id: The id of the VPC. The `vpc_id` is required when the `file_system_type` is `cpfs`.
         :param pulumi.Input[str] vswitch_id: The id of the vSwitch. The `vswitch_id` is required when the `file_system_type` is `cpfs`.
@@ -752,8 +806,11 @@ class FileSystem(pulumi.CustomResource):
     @pulumi.getter(name="encryptType")
     def encrypt_type(self) -> pulumi.Output[Optional[int]]:
         """
-        Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+        Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
         * Valid values:
+          * `0` (Default): The file system is not encrypted.
+          * `1`: The file system is encrypted with a managed secret key.
+          * `2` (Available in v1.140.0+ and when the `file_system_type` is `extreme`): User management key.
         """
         return pulumi.get(self, "encrypt_type")
 
@@ -793,8 +850,14 @@ class FileSystem(pulumi.CustomResource):
     @pulumi.getter(name="storageType")
     def storage_type(self) -> pulumi.Output[str]:
         """
-        The storage type of the file System. 
+        The storage type of the file System.
         * Valid values:
+          * `Performance` (Available when the `file_system_type` is `standard`)
+          * `Capacity` (Available when the `file_system_type` is `standard`)
+          * `standard` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+          * `advance` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+          * `advance_100` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
+          * `advance_200` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
         """
         return pulumi.get(self, "storage_type")
 

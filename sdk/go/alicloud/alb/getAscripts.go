@@ -56,12 +56,12 @@ func GetAscripts(ctx *pulumi.Context, args *GetAscriptsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getAscripts.
 type GetAscriptsArgs struct {
-	// Script name.
+	// (ForceNew,Optional) Script name.
 	AscriptName   *string `pulumi:"ascriptName"`
 	EnableDetails *bool   `pulumi:"enableDetails"`
 	// A list of AScript IDs.
 	Ids []string `pulumi:"ids"`
-	// Listener ID of script attribution
+	// (ForceNew,Optional) Listener ID of script attribution
 	ListenerId *string `pulumi:"listenerId"`
 	// A regex string to filter results by Group Metric Rule name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -103,12 +103,12 @@ func GetAscriptsOutput(ctx *pulumi.Context, args GetAscriptsOutputArgs, opts ...
 
 // A collection of arguments for invoking getAscripts.
 type GetAscriptsOutputArgs struct {
-	// Script name.
+	// (ForceNew,Optional) Script name.
 	AscriptName   pulumi.StringPtrInput `pulumi:"ascriptName"`
 	EnableDetails pulumi.BoolPtrInput   `pulumi:"enableDetails"`
 	// A list of AScript IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// Listener ID of script attribution
+	// (ForceNew,Optional) Listener ID of script attribution
 	ListenerId pulumi.StringPtrInput `pulumi:"listenerId"`
 	// A regex string to filter results by Group Metric Rule name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`

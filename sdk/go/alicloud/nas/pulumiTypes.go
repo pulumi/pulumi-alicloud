@@ -701,6 +701,10 @@ type GetFileSystemsSystem struct {
 	RegionId string `pulumi:"regionId"`
 	// The storage type of the file system.
 	// * Valid values:
+	//   * `Performance` (Available when the `fileSystemType` is `standard`)
+	//   * `Capacity` (Available when the `fileSystemType` is `standard`)
+	//   * `standard` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+	//   * `advance` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
 	StorageType string `pulumi:"storageType"`
 	// (Optional, Available in v1.140.0+) The id of the zone. Each region consists of multiple isolated locations known as zones. Each zone has an independent power supply and network.
 	ZoneId string `pulumi:"zoneId"`
@@ -747,6 +751,10 @@ type GetFileSystemsSystemArgs struct {
 	RegionId pulumi.StringInput `pulumi:"regionId"`
 	// The storage type of the file system.
 	// * Valid values:
+	//   * `Performance` (Available when the `fileSystemType` is `standard`)
+	//   * `Capacity` (Available when the `fileSystemType` is `standard`)
+	//   * `standard` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+	//   * `advance` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
 	StorageType pulumi.StringInput `pulumi:"storageType"`
 	// (Optional, Available in v1.140.0+) The id of the zone. Each region consists of multiple isolated locations known as zones. Each zone has an independent power supply and network.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
@@ -862,6 +870,10 @@ func (o GetFileSystemsSystemOutput) RegionId() pulumi.StringOutput {
 
 // The storage type of the file system.
 // * Valid values:
+//   - `Performance` (Available when the `fileSystemType` is `standard`)
+//   - `Capacity` (Available when the `fileSystemType` is `standard`)
+//   - `standard` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+//   - `advance` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
 func (o GetFileSystemsSystemOutput) StorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFileSystemsSystem) string { return v.StorageType }).(pulumi.StringOutput)
 }

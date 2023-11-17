@@ -163,7 +163,7 @@ export class Instance extends pulumi.CustomResource {
      * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
      * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      * * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
-     * > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+     *   > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      */
     public readonly instanceSpec!: pulumi.Output<string | undefined>;
     /**
@@ -435,7 +435,7 @@ export interface InstanceState {
      * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
      * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      * * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
-     * > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+     *   > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      */
     instanceSpec?: pulumi.Input<string>;
     /**
@@ -599,7 +599,7 @@ export interface InstanceArgs {
      * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
      * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      * * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
-     * > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+     *   > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      */
     instanceSpec?: pulumi.Input<string>;
     /**

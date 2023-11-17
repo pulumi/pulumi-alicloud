@@ -79,14 +79,14 @@ public final class GetPluginsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The name of the plug-in that you want to create.
+     * The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
      * 
      */
     @Import(name="pluginName")
     private @Nullable Output<String> pluginName;
 
     /**
-     * @return The name of the plug-in that you want to create.
+     * @return The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
      * 
      */
     public Optional<Output<String>> pluginName() {
@@ -94,14 +94,14 @@ public final class GetPluginsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The type of the plug-in.
+     * The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
      * 
      */
     @Import(name="pluginType")
     private @Nullable Output<String> pluginType;
 
     /**
-     * @return The type of the plug-in.
+     * @return The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
      * 
      */
     public Optional<Output<String>> pluginType() {
@@ -109,14 +109,14 @@ public final class GetPluginsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -246,7 +246,7 @@ public final class GetPluginsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param pluginName The name of the plug-in that you want to create.
+         * @param pluginName The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class GetPluginsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param pluginName The name of the plug-in that you want to create.
+         * @param pluginName The name of the plug-in that you want to create. It can contain uppercase English letters, lowercase English letters, Chinese characters, numbers, and underscores (_). It must be 4 to 50 characters in length and cannot start with an underscore (_).
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class GetPluginsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param pluginType The type of the plug-in.
+         * @param pluginType The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
          * 
          * @return builder
          * 
@@ -278,7 +278,7 @@ public final class GetPluginsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param pluginType The type of the plug-in.
+         * @param pluginType The type of the plug-in. Valid values: `backendSignature`, `caching`, `cors`, `ipControl`, `jwtAuth`, `trafficControl`.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class GetPluginsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class GetPluginsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 

@@ -516,12 +516,12 @@ class InstanceServerlessConfig(dict):
         :param bool auto_pause: Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
                - true: enables the feature.
                - false: disables the feature. This is the default value.
-               > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+               - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
         :param bool switch_force: Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
                - true: enables the feature.
                - false: disables the feature. This is the default value.
-               > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
-               > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
+               - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+               - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
         """
         pulumi.set(__self__, "max_capacity", max_capacity)
         pulumi.set(__self__, "min_capacity", min_capacity)
@@ -559,7 +559,7 @@ class InstanceServerlessConfig(dict):
         Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
         - true: enables the feature.
         - false: disables the feature. This is the default value.
-        > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+        - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
         """
         return pulumi.get(self, "auto_pause")
 
@@ -570,8 +570,8 @@ class InstanceServerlessConfig(dict):
         Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
         - true: enables the feature.
         - false: disables the feature. This is the default value.
-        > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
-        > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
+        - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+        - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
         """
         return pulumi.get(self, "switch_force")
 
@@ -771,12 +771,12 @@ class RdsCloneDbInstanceServerlessConfig(dict):
         :param bool auto_pause: Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
                - true: enables the feature.
                - false: disables the feature. This is the default value.
-               > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+               - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
         :param bool switch_force: Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
                - true: enables the feature.
                - false: disables the feature. This is the default value.
-               > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
-               > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
+               - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+               - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
         """
         pulumi.set(__self__, "max_capacity", max_capacity)
         pulumi.set(__self__, "min_capacity", min_capacity)
@@ -814,7 +814,7 @@ class RdsCloneDbInstanceServerlessConfig(dict):
         Specifies whether to enable the smart startup and stop feature for the serverless instance. Valid values:
         - true: enables the feature.
         - false: disables the feature. This is the default value.
-        > - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
+        - Only MySQL Serverless instances need to set this parameter. If there is no connection within 10 minutes, it will enter a paused state and automatically wake up when the connection enters.
         """
         return pulumi.get(self, "auto_pause")
 
@@ -825,8 +825,8 @@ class RdsCloneDbInstanceServerlessConfig(dict):
         Specifies whether to enable the forced scaling feature for the serverless instance. Valid values:
         - true: enables the feature.
         - false: disables the feature. This is the default value.
-        > - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
-        > - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
+        - Only MySQL Serverless instances need to set this parameter. After enabling this parameter, there will be a flash break within 1 minute when the instance is forced to expand or shrink. Please use it with caution according to the actual situation.
+        - The elastic scaling of an instance RCU usually takes effect immediately, but in some special circumstances (such as during large transaction execution), it is not possible to complete scaling immediately. In this case, this parameter can be enabled to force scaling.
         """
         return pulumi.get(self, "switch_force")
 

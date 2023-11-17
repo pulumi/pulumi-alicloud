@@ -152,7 +152,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
         return this.highDefinitionMonitorLogStatus;
     }
     /**
-     * . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
+     * (Deprecated since v1.126.0). Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
      * @deprecated
      * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
@@ -163,7 +163,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
     private Output<String> instanceChargeType;
 
     /**
-     * @return . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
+     * @return (Deprecated since v1.126.0). Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
      */
     public Output<String> instanceChargeType() {
@@ -244,7 +244,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logStore);
     }
     /**
-     * . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
+     * (Deprecated since v1.126.0). Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
@@ -255,7 +255,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
+     * @return (Deprecated since v1.126.0). Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      */
     public Output<String> name() {

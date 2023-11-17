@@ -43,7 +43,7 @@ export class EcsDisk extends pulumi.CustomResource {
 
     public readonly advancedFeatures!: pulumi.Output<string | undefined>;
     /**
-     * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
+     * (Deprecated since 1.122.0) Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
      */
@@ -219,7 +219,7 @@ export class EcsDisk extends pulumi.CustomResource {
 export interface EcsDiskState {
     advancedFeatures?: pulumi.Input<string>;
     /**
-     * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
+     * (Deprecated since 1.122.0) Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
      */
@@ -325,7 +325,7 @@ export interface EcsDiskState {
 export interface EcsDiskArgs {
     advancedFeatures?: pulumi.Input<string>;
     /**
-     * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
+     * (Deprecated since 1.122.0) Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
      */

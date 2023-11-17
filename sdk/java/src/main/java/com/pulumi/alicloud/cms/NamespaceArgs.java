@@ -47,12 +47,6 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
-     * - `cms.s1.large`: Data storage duration is 15 days.
-     * - `cms.s1.xlarge`: Data storage duration is 32 days.
-     * - `cms.s1.2xlarge`: Data storage duration 63 days.
-     * - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
-     * - `cms.s1.6xlarge`: Data storage duration 185 days.
-     * - `cms.s1.12xlarge`: Data storage duration 376 days.
      * 
      */
     @Import(name="specification")
@@ -60,12 +54,6 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
-     * - `cms.s1.large`: Data storage duration is 15 days.
-     * - `cms.s1.xlarge`: Data storage duration is 32 days.
-     * - `cms.s1.2xlarge`: Data storage duration 63 days.
-     * - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
-     * - `cms.s1.6xlarge`: Data storage duration 185 days.
-     * - `cms.s1.12xlarge`: Data storage duration 376 days.
      * 
      */
     public Optional<Output<String>> specification() {
@@ -142,12 +130,6 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param specification Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
-         * - `cms.s1.large`: Data storage duration is 15 days.
-         * - `cms.s1.xlarge`: Data storage duration is 32 days.
-         * - `cms.s1.2xlarge`: Data storage duration 63 days.
-         * - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
-         * - `cms.s1.6xlarge`: Data storage duration 185 days.
-         * - `cms.s1.12xlarge`: Data storage duration 376 days.
          * 
          * @return builder
          * 
@@ -159,12 +141,6 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param specification Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
-         * - `cms.s1.large`: Data storage duration is 15 days.
-         * - `cms.s1.xlarge`: Data storage duration is 32 days.
-         * - `cms.s1.2xlarge`: Data storage duration 63 days.
-         * - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
-         * - `cms.s1.6xlarge`: Data storage duration 185 days.
-         * - `cms.s1.12xlarge`: Data storage duration 376 days.
          * 
          * @return builder
          * 

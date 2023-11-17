@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Resources on Behalf of a State of the Resource Attribute Field.
+        /// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Resources on Behalf of a State of the Resource Attribute Field.
+        /// Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

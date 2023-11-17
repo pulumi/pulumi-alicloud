@@ -878,7 +878,7 @@ class GetAddressPoolsPoolResult(dict):
         """
         :param str address_pool_id: The first ID of the resource.
         :param str address_pool_name: The name of the address pool.
-        :param Sequence['GetAddressPoolsPoolAddressArgs'] addresses: The address that you want to add to the address pool.
+        :param Sequence['GetAddressPoolsPoolAddressArgs'] addresses: The address lists of the Address Pool.
         :param str create_time: The time when the address pool was created.
         :param str create_timestamp: The timestamp that indicates when the address pool was created.
         :param str id: The ID of the Address Pool.
@@ -924,7 +924,7 @@ class GetAddressPoolsPoolResult(dict):
     @pulumi.getter
     def addresses(self) -> Sequence['outputs.GetAddressPoolsPoolAddressResult']:
         """
-        The address that you want to add to the address pool.
+        The address lists of the Address Pool.
         """
         return pulumi.get(self, "addresses")
 
@@ -1018,7 +1018,7 @@ class GetAddressPoolsPoolAddressResult(dict):
                  mode: str,
                  remark: str):
         """
-        :param str address: The address that you want to add to the address pool.
+        :param str address: The address lists of the Address Pool.
         :param str attribute_info: The source region of the address.
         :param int lba_weight: The weight of the address.
         :param str mode: The type of the address.
@@ -1034,7 +1034,7 @@ class GetAddressPoolsPoolAddressResult(dict):
     @pulumi.getter
     def address(self) -> str:
         """
-        The address that you want to add to the address pool.
+        The address lists of the Address Pool.
         """
         return pulumi.get(self, "address")
 

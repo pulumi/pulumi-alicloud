@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Ebs
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the region.
+        /// A list of Disk Replica Group IDs.
         /// </summary>
         [Input("regionId")]
         public string? RegionId { get; set; }
@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.Ebs
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the region.
+        /// A list of Disk Replica Group IDs.
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }

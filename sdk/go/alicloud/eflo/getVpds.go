@@ -65,13 +65,13 @@ type GetVpdsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// The Resource group id
+	// (ForceNew,Optional) The Resource group id
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+	// (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
 	Status *string `pulumi:"status"`
-	// The id of the vpd.
+	// (ForceNew,Optional) The id of the vpd.
 	VpdId *string `pulumi:"vpdId"`
-	// The Name of the VPD.
+	// (ForceNew,Optional) The Name of the VPD.
 	VpdName *string `pulumi:"vpdName"`
 }
 
@@ -125,13 +125,13 @@ type GetVpdsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// The Resource group id
+	// (ForceNew,Optional) The Resource group id
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+	// (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The id of the vpd.
+	// (ForceNew,Optional) The id of the vpd.
 	VpdId pulumi.StringPtrInput `pulumi:"vpdId"`
-	// The Name of the VPD.
+	// (ForceNew,Optional) The Name of the VPD.
 	VpdName pulumi.StringPtrInput `pulumi:"vpdName"`
 }
 

@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Oos
         public string? NameRegex { get; set; }
 
         /// <summary>
-        /// Operating system type.
+        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
         /// </summary>
         [Input("operationSystem")]
         public string? OperationSystem { get; set; }
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Oos
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Patch baseline sharing type.
+        /// Patch baseline sharing type. Valid values: `Private`, `Public`.
         /// </summary>
         [Input("shareType")]
         public string? ShareType { get; set; }
@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? NameRegex { get; set; }
 
         /// <summary>
-        /// Operating system type.
+        /// Operating system type. Valid values: `AliyunLinux`, `Anolis`, `CentOS`, `Debian`, `RedhatEnterpriseLinux`, `Ubuntu`, `Windows`.
         /// </summary>
         [Input("operationSystem")]
         public Input<string>? OperationSystem { get; set; }
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Patch baseline sharing type.
+        /// Patch baseline sharing type. Valid values: `Private`, `Public`.
         /// </summary>
         [Input("shareType")]
         public Input<string>? ShareType { get; set; }

@@ -47,7 +47,7 @@ export interface GetEcsBackupPlansArgs {
      */
     ids?: string[];
     /**
-     * The ID of ECS instance.
+     * The ECS instance ID of the EcsBackupPlan used.
      */
     instanceId?: string;
     /**
@@ -59,7 +59,7 @@ export interface GetEcsBackupPlansArgs {
      */
     outputFile?: string;
     /**
-     * The ID of Backup vault.
+     * The Vault ID of the EcsBackupPlan used.
      */
     vaultId?: string;
 }
@@ -112,7 +112,7 @@ export interface GetEcsBackupPlansOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of ECS instance.
+     * The ECS instance ID of the EcsBackupPlan used.
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -124,7 +124,7 @@ export interface GetEcsBackupPlansOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of Backup vault.
+     * The Vault ID of the EcsBackupPlan used.
      */
     vaultId?: pulumi.Input<string>;
 }

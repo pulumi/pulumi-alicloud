@@ -23,7 +23,7 @@ public final class ShardingInstanceShardList {
      */
     private @Nullable String nodeId;
     /**
-     * @return - Custom storage space; value range: [10, 1,000]
+     * @return Custom storage space; value range: [10, 1,000]
      * - 10-GB increments. Unit: GB.
      * 
      */
@@ -50,7 +50,7 @@ public final class ShardingInstanceShardList {
         return Optional.ofNullable(this.nodeId);
     }
     /**
-     * @return - Custom storage space; value range: [10, 1,000]
+     * @return Custom storage space; value range: [10, 1,000]
      * - 10-GB increments. Unit: GB.
      * 
      */

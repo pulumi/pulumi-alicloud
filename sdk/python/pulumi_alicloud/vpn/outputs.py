@@ -1928,7 +1928,7 @@ class GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult(dict):
         :param str policy: Whether to revoke the published route when the health check fails.
         :param int retry: The maximum number of health check retries.
         :param str sip: The source IP address.
-        :param str status: The status of the resource.
+        :param str status: The status of the health check.
         """
         pulumi.set(__self__, "dip", dip)
         pulumi.set(__self__, "enable", enable)
@@ -1990,7 +1990,7 @@ class GetGatewayVpnAttachmentsAttachmentHealthCheckConfigResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The status of the health check.
         """
         return pulumi.get(self, "status")
 

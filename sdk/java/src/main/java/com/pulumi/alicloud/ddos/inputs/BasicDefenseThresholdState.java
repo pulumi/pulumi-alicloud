@@ -34,6 +34,8 @@ public final class BasicDefenseThresholdState extends com.pulumi.resources.Resou
 
     /**
      * The type of the threshold to query. Valid values: `defense`,`blackhole`.
+     * -`defense` - scrubbing threshold.
+     * -`blackhole` - DDoS mitigation threshold.
      * 
      */
     @Import(name="ddosType")
@@ -41,6 +43,8 @@ public final class BasicDefenseThresholdState extends com.pulumi.resources.Resou
 
     /**
      * @return The type of the threshold to query. Valid values: `defense`,`blackhole`.
+     * -`defense` - scrubbing threshold.
+     * -`blackhole` - DDoS mitigation threshold.
      * 
      */
     public Optional<Output<String>> ddosType() {
@@ -207,6 +211,8 @@ public final class BasicDefenseThresholdState extends com.pulumi.resources.Resou
 
         /**
          * @param ddosType The type of the threshold to query. Valid values: `defense`,`blackhole`.
+         * -`defense` - scrubbing threshold.
+         * -`blackhole` - DDoS mitigation threshold.
          * 
          * @return builder
          * 
@@ -218,6 +224,8 @@ public final class BasicDefenseThresholdState extends com.pulumi.resources.Resou
 
         /**
          * @param ddosType The type of the threshold to query. Valid values: `defense`,`blackhole`.
+         * -`defense` - scrubbing threshold.
+         * -`blackhole` - DDoS mitigation threshold.
          * 
          * @return builder
          * 

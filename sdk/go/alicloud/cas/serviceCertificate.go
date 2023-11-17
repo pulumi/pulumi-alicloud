@@ -127,7 +127,7 @@ type ServiceCertificate struct {
 	Key pulumi.StringOutput `pulumi:"key"`
 	// The lang.
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
-	// It has been deprecated from version 1.129.0 and using `certificateName` instead.
+	// (Deprecated from 1.129.0, Optional, ForceNew) It has been deprecated from version 1.129.0 and using `certificateName` instead.
 	//
 	// Deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -181,7 +181,7 @@ type serviceCertificateState struct {
 	Key *string `pulumi:"key"`
 	// The lang.
 	Lang *string `pulumi:"lang"`
-	// It has been deprecated from version 1.129.0 and using `certificateName` instead.
+	// (Deprecated from 1.129.0, Optional, ForceNew) It has been deprecated from version 1.129.0 and using `certificateName` instead.
 	//
 	// Deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
 	Name *string `pulumi:"name"`
@@ -200,7 +200,7 @@ type ServiceCertificateState struct {
 	Key pulumi.StringPtrInput
 	// The lang.
 	Lang pulumi.StringPtrInput
-	// It has been deprecated from version 1.129.0 and using `certificateName` instead.
+	// (Deprecated from 1.129.0, Optional, ForceNew) It has been deprecated from version 1.129.0 and using `certificateName` instead.
 	//
 	// Deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
 	Name pulumi.StringPtrInput
@@ -223,7 +223,7 @@ type serviceCertificateArgs struct {
 	Key string `pulumi:"key"`
 	// The lang.
 	Lang *string `pulumi:"lang"`
-	// It has been deprecated from version 1.129.0 and using `certificateName` instead.
+	// (Deprecated from 1.129.0, Optional, ForceNew) It has been deprecated from version 1.129.0 and using `certificateName` instead.
 	//
 	// Deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
 	Name *string `pulumi:"name"`
@@ -243,7 +243,7 @@ type ServiceCertificateArgs struct {
 	Key pulumi.StringInput
 	// The lang.
 	Lang pulumi.StringPtrInput
-	// It has been deprecated from version 1.129.0 and using `certificateName` instead.
+	// (Deprecated from 1.129.0, Optional, ForceNew) It has been deprecated from version 1.129.0 and using `certificateName` instead.
 	//
 	// Deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
 	Name pulumi.StringPtrInput
@@ -360,7 +360,7 @@ func (o ServiceCertificateOutput) Lang() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceCertificate) pulumi.StringPtrOutput { return v.Lang }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from version 1.129.0 and using `certificateName` instead.
+// (Deprecated from 1.129.0, Optional, ForceNew) It has been deprecated from version 1.129.0 and using `certificateName` instead.
 //
 // Deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.
 func (o ServiceCertificateOutput) Name() pulumi.StringOutput {

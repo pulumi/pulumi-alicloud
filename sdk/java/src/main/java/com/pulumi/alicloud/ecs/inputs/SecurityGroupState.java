@@ -34,7 +34,7 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
+     * (Deprecated) Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
      * 
      * @deprecated
      * Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
@@ -45,7 +45,7 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<Boolean> innerAccess;
 
     /**
-     * @return Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
+     * @return (Deprecated) Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
      * 
      * @deprecated
      * Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
@@ -207,7 +207,7 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param innerAccess Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
+         * @param innerAccess (Deprecated) Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class SecurityGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param innerAccess Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
+         * @param innerAccess (Deprecated) Field &#39;inner_access&#39; has been deprecated from provider version 1.55.3. Use &#39;inner_access_policy&#39; replaces it.
          * 
          * @return builder
          * 

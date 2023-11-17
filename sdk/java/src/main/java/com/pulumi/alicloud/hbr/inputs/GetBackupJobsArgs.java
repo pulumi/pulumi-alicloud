@@ -70,14 +70,14 @@ public final class GetBackupJobsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+     * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
      * 
      */
     @Import(name="sourceType", required=true)
     private Output<String> sourceType;
 
     /**
-     * @return The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+     * @return The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
      * 
      */
     public Output<String> sourceType() {
@@ -85,14 +85,14 @@ public final class GetBackupJobsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+     * The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+     * @return The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -215,7 +215,7 @@ public final class GetBackupJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sourceType The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+         * @param sourceType The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class GetBackupJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sourceType The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+         * @param sourceType The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class GetBackupJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+         * @param status The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class GetBackupJobsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+         * @param status The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
          * 
          * @return builder
          * 

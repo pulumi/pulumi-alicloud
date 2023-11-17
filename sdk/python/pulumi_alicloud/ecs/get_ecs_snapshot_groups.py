@@ -163,8 +163,8 @@ def get_ecs_snapshot_groups(ids: Optional[Sequence[str]] = None,
     :param str name_regex: A regex string to filter results by Snapshot Group name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str snapshot_group_name: The name of the snapshot-consistent group.
-    :param str status: The status of the resource.
-    :param Mapping[str, Any] tags: List of label key-value pairs.
+    :param str status: The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the snapshot group.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -228,7 +228,7 @@ def get_ecs_snapshot_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[
     :param str name_regex: A regex string to filter results by Snapshot Group name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str snapshot_group_name: The name of the snapshot-consistent group.
-    :param str status: The status of the resource.
-    :param Mapping[str, Any] tags: List of label key-value pairs.
+    :param str status: The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the snapshot group.
     """
     ...

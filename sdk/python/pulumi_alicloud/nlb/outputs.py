@@ -197,7 +197,6 @@ class ServerGroupHealthCheck(dict):
         :param int health_check_connect_port: The backend port that is used for health checks. Valid values: 0 to 65535. Default value: 0. If you set the value to 0, the port of a backend server is used for health checks.
         :param int health_check_connect_timeout: The maximum timeout period of a health check response. Unit: seconds. Valid values: 1 to 300. Default value: 5.
         :param str health_check_domain: The domain name that is used for health checks. Valid values:
-               - `$SERVER_IP`: the private IP address of a backend server.
         :param bool health_check_enabled: Specifies whether to enable health checks.
         :param Sequence[str] health_check_http_codes: The HTTP status codes to return to health checks. Separate multiple HTTP status codes with commas (,). Valid values: http_2xx (default), http_3xx, http_4xx, and http_5xx. **Note:** This parameter takes effect only if `health_check_type` is set to `http`.
         :param int health_check_interval: The interval between two consecutive health checks. Unit: seconds. Valid values: 5 to 5000. Default value: 10.
@@ -251,7 +250,6 @@ class ServerGroupHealthCheck(dict):
     def health_check_domain(self) -> Optional[str]:
         """
         The domain name that is used for health checks. Valid values:
-        - `$SERVER_IP`: the private IP address of a backend server.
         """
         return pulumi.get(self, "health_check_domain")
 

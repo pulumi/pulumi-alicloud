@@ -16,14 +16,14 @@ public final class RouteEntryArgs extends com.pulumi.resources.ResourceArgs {
     public static final RouteEntryArgs Empty = new RouteEntryArgs();
 
     /**
-     * The RouteEntry&#39;s target network segment.
+     * (ForceNew) The RouteEntry&#39;s target network segment.
      * 
      */
     @Import(name="destinationCidrblock")
     private @Nullable Output<String> destinationCidrblock;
 
     /**
-     * @return The RouteEntry&#39;s target network segment.
+     * @return (ForceNew) The RouteEntry&#39;s target network segment.
      * 
      */
     public Optional<Output<String>> destinationCidrblock() {
@@ -46,14 +46,14 @@ public final class RouteEntryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
+     * (ForceNew) The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
      * 
      */
     @Import(name="nexthopId")
     private @Nullable Output<String> nexthopId;
 
     /**
-     * @return The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
+     * @return (ForceNew) The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
      * 
      */
     public Optional<Output<String>> nexthopId() {
@@ -61,14 +61,14 @@ public final class RouteEntryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The next hop type. Available values:
+     * (ForceNew) The next hop type. Available values:
      * 
      */
     @Import(name="nexthopType")
     private @Nullable Output<String> nexthopType;
 
     /**
-     * @return The next hop type. Available values:
+     * @return (ForceNew) The next hop type. Available values:
      * 
      */
     public Optional<Output<String>> nexthopType() {
@@ -91,7 +91,7 @@ public final class RouteEntryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * This argument has been deprecated. Please use other arguments to launch a custom route entry.
+     * (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
      * 
      * @deprecated
      * Attribute router_id has been deprecated and suggest removing it from your template.
@@ -102,7 +102,7 @@ public final class RouteEntryArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> routerId;
 
     /**
-     * @return This argument has been deprecated. Please use other arguments to launch a custom route entry.
+     * @return (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
      * 
      * @deprecated
      * Attribute router_id has been deprecated and suggest removing it from your template.
@@ -143,7 +143,7 @@ public final class RouteEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationCidrblock The RouteEntry&#39;s target network segment.
+         * @param destinationCidrblock (ForceNew) The RouteEntry&#39;s target network segment.
          * 
          * @return builder
          * 
@@ -154,7 +154,7 @@ public final class RouteEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationCidrblock The RouteEntry&#39;s target network segment.
+         * @param destinationCidrblock (ForceNew) The RouteEntry&#39;s target network segment.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class RouteEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nexthopId The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
+         * @param nexthopId (ForceNew) The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class RouteEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nexthopId The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
+         * @param nexthopId (ForceNew) The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
          * 
          * @return builder
          * 
@@ -206,7 +206,7 @@ public final class RouteEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nexthopType The next hop type. Available values:
+         * @param nexthopType (ForceNew) The next hop type. Available values:
          * 
          * @return builder
          * 
@@ -217,7 +217,7 @@ public final class RouteEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nexthopType The next hop type. Available values:
+         * @param nexthopType (ForceNew) The next hop type. Available values:
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class RouteEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerId This argument has been deprecated. Please use other arguments to launch a custom route entry.
+         * @param routerId (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class RouteEntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerId This argument has been deprecated. Please use other arguments to launch a custom route entry.
+         * @param routerId (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
          * 
          * @return builder
          * 

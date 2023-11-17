@@ -63,14 +63,14 @@ public final class GetDesktopTypesPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The Specification family.
+     * The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
      * 
      */
     @Import(name="instanceTypeFamily")
     private @Nullable String instanceTypeFamily;
 
     /**
-     * @return The Specification family.
+     * @return The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
      * 
      */
     public Optional<String> instanceTypeFamily() {
@@ -108,14 +108,14 @@ public final class GetDesktopTypesPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `SUFFICIENT`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `SUFFICIENT`.
      * 
      */
     public Optional<String> status() {
@@ -196,7 +196,7 @@ public final class GetDesktopTypesPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param instanceTypeFamily The Specification family.
+         * @param instanceTypeFamily The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class GetDesktopTypesPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `SUFFICIENT`.
          * 
          * @return builder
          * 

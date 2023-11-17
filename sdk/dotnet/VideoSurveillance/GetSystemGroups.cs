@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
         }
 
         /// <summary>
-        /// The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+        /// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
         /// </summary>
         [Input("inProtocol")]
         public string? InProtocol { get; set; }
@@ -174,7 +174,7 @@ namespace Pulumi.AliCloud.VideoSurveillance
         }
 
         /// <summary>
-        /// The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+        /// The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
         /// </summary>
         [Input("inProtocol")]
         public Input<string>? InProtocol { get; set; }

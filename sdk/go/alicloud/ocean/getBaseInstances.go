@@ -63,9 +63,9 @@ type GetBaseInstancesArgs struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Instance IDs.
 	Ids []string `pulumi:"ids"`
-	// OceanBase cluster ID.
+	// (ForceNew,Optional) OceanBase cluster ID.
 	InstanceId *string `pulumi:"instanceId"`
-	// OceanBase cluster name.
+	// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
 	InstanceName *string `pulumi:"instanceName"`
 	// A regex string to filter results by Instance name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -73,11 +73,11 @@ type GetBaseInstancesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// The ID of the enterprise resource group to which the instance resides.
+	// (ForceNew,Optional) The ID of the enterprise resource group to which the instance resides.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The filter keyword for the query list.
+	// (ForceNew,Optional) The filter keyword for the query list.
 	SearchKey *string `pulumi:"searchKey"`
-	// The status of the resource.
+	// The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
 	Status *string `pulumi:"status"`
 }
 
@@ -118,9 +118,9 @@ type GetBaseInstancesOutputArgs struct {
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Instance IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// OceanBase cluster ID.
+	// (ForceNew,Optional) OceanBase cluster ID.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	// OceanBase cluster name.
+	// OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
 	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
 	// A regex string to filter results by Instance name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
@@ -128,11 +128,11 @@ type GetBaseInstancesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// The ID of the enterprise resource group to which the instance resides.
+	// (ForceNew,Optional) The ID of the enterprise resource group to which the instance resides.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The filter keyword for the query list.
+	// (ForceNew,Optional) The filter keyword for the query list.
 	SearchKey pulumi.StringPtrInput `pulumi:"searchKey"`
-	// The status of the resource.
+	// The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

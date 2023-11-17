@@ -410,7 +410,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.securityGroups;
     }
     /**
-     * The slb service addresses of the cluster. See `slb_conn_addrs` below.
+     * (Available in 1.105.0+) The slb service addresses of the cluster. See `slb_conn_addrs` below.
      * 
      * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
      * 
@@ -419,7 +419,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<List<InstanceSlbConnAddr>> slbConnAddrs;
 
     /**
-     * @return The slb service addresses of the cluster. See `slb_conn_addrs` below.
+     * @return (Available in 1.105.0+) The slb service addresses of the cluster. See `slb_conn_addrs` below.
      * 
      * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
      * 
@@ -442,14 +442,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
+     * (Available in 1.105.0+) The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
      * 
      */
     @Export(name="uiProxyConnAddrs", type=List.class, parameters={InstanceUiProxyConnAddr.class})
     private Output<List<InstanceUiProxyConnAddr>> uiProxyConnAddrs;
 
     /**
-     * @return The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
+     * @return (Available in 1.105.0+) The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
      * 
      */
     public Output<List<InstanceUiProxyConnAddr>> uiProxyConnAddrs() {
@@ -484,14 +484,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.vswitchId);
     }
     /**
-     * The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
+     * (Available in 1.105.0+) The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
      * 
      */
     @Export(name="zkConnAddrs", type=List.class, parameters={InstanceZkConnAddr.class})
     private Output<List<InstanceZkConnAddr>> zkConnAddrs;
 
     /**
-     * @return The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
+     * @return (Available in 1.105.0+) The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
      * 
      */
     public Output<List<InstanceZkConnAddr>> zkConnAddrs() {

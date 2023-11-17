@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
     public sealed class GetHybridMonitorSlsTasksTaskSlsProcessConfigResult
     {
         /// <summary>
-        /// The extended field that specifies the result of basic operations that are performed on aggregation results.
+        /// The extended fields that specify the results of basic operations that are performed on aggregation results.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetHybridMonitorSlsTasksTaskSlsProcessConfigExpressResult> Expresses;
         /// <summary>

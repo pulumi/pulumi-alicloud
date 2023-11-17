@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The first ID of the resource
+        /// (ForceNew,Optional) The first ID of the resource
         /// </summary>
         public readonly string InstanceId;
         /// <summary>

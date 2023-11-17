@@ -110,7 +110,7 @@ export class CapacityReservation extends pulumi.CustomResource {
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
-     * The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+     * (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
      */
     public readonly matchCriteria!: pulumi.Output<string>;
     /**
@@ -122,7 +122,7 @@ export class CapacityReservation extends pulumi.CustomResource {
      */
     public readonly platform!: pulumi.Output<string>;
     /**
-     * The resource group id.
+     * (ForceNew,Optional) The resource group id.
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     /**
@@ -146,7 +146,7 @@ export class CapacityReservation extends pulumi.CustomResource {
      */
     public /*out*/ readonly timeSlot!: pulumi.Output<string>;
     /**
-     * The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+     * (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
      */
     public readonly zoneIds!: pulumi.Output<string[]>;
 
@@ -247,7 +247,7 @@ export interface CapacityReservationState {
      */
     instanceType?: pulumi.Input<string>;
     /**
-     * The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+     * (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
      */
     matchCriteria?: pulumi.Input<string>;
     /**
@@ -259,7 +259,7 @@ export interface CapacityReservationState {
      */
     platform?: pulumi.Input<string>;
     /**
-     * The resource group id.
+     * (ForceNew,Optional) The resource group id.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -283,7 +283,7 @@ export interface CapacityReservationState {
      */
     timeSlot?: pulumi.Input<string>;
     /**
-     * The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+     * (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
      */
     zoneIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -321,7 +321,7 @@ export interface CapacityReservationArgs {
      */
     instanceType: pulumi.Input<string>;
     /**
-     * The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+     * (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
      */
     matchCriteria?: pulumi.Input<string>;
     /**
@@ -329,7 +329,7 @@ export interface CapacityReservationArgs {
      */
     platform?: pulumi.Input<string>;
     /**
-     * The resource group id.
+     * (ForceNew,Optional) The resource group id.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
@@ -337,7 +337,7 @@ export interface CapacityReservationArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+     * (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
      */
     zoneIds: pulumi.Input<pulumi.Input<string>[]>;
 }

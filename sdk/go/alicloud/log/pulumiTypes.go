@@ -121,7 +121,7 @@ func (o AlertAnnotationArrayOutput) Index(i pulumi.IntInput) AlertAnnotationOutp
 
 type AlertGroupConfiguration struct {
 	Fields []string `pulumi:"fields"`
-	// including FixedRate,Hourly,Daily,Weekly,Cron.
+	// Group configuration type, including no_group, labels_auto, custom.
 	Type string `pulumi:"type"`
 }
 
@@ -138,7 +138,7 @@ type AlertGroupConfigurationInput interface {
 
 type AlertGroupConfigurationArgs struct {
 	Fields pulumi.StringArrayInput `pulumi:"fields"`
-	// including FixedRate,Hourly,Daily,Weekly,Cron.
+	// Group configuration type, including no_group, labels_auto, custom.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -223,7 +223,7 @@ func (o AlertGroupConfigurationOutput) Fields() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AlertGroupConfiguration) []string { return v.Fields }).(pulumi.StringArrayOutput)
 }
 
-// including FixedRate,Hourly,Daily,Weekly,Cron.
+// Group configuration type, including no_group, labels_auto, custom.
 func (o AlertGroupConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertGroupConfiguration) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -261,7 +261,7 @@ func (o AlertGroupConfigurationPtrOutput) Fields() pulumi.StringArrayOutput {
 	}).(pulumi.StringArrayOutput)
 }
 
-// including FixedRate,Hourly,Daily,Weekly,Cron.
+// Group configuration type, including no_group, labels_auto, custom.
 func (o AlertGroupConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertGroupConfiguration) *string {
 		if v == nil {
@@ -274,7 +274,7 @@ func (o AlertGroupConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
 type AlertJoinConfiguration struct {
 	// Join condition.
 	Condition string `pulumi:"condition"`
-	// including FixedRate,Hourly,Daily,Weekly,Cron.
+	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
 	Type string `pulumi:"type"`
 }
 
@@ -292,7 +292,7 @@ type AlertJoinConfigurationInput interface {
 type AlertJoinConfigurationArgs struct {
 	// Join condition.
 	Condition pulumi.StringInput `pulumi:"condition"`
-	// including FixedRate,Hourly,Daily,Weekly,Cron.
+	// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -352,7 +352,7 @@ func (o AlertJoinConfigurationOutput) Condition() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertJoinConfiguration) string { return v.Condition }).(pulumi.StringOutput)
 }
 
-// including FixedRate,Hourly,Daily,Weekly,Cron.
+// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
 func (o AlertJoinConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertJoinConfiguration) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -378,9 +378,9 @@ func (o AlertJoinConfigurationArrayOutput) Index(i pulumi.IntInput) AlertJoinCon
 }
 
 type AlertLabel struct {
-	// Annotations's key for new alert.
+	// Labels's key for new alert.
 	Key string `pulumi:"key"`
-	// Annotations's value for new alert.
+	// Labels's value for new alert.
 	Value string `pulumi:"value"`
 }
 
@@ -396,9 +396,9 @@ type AlertLabelInput interface {
 }
 
 type AlertLabelArgs struct {
-	// Annotations's key for new alert.
+	// Labels's key for new alert.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Annotations's value for new alert.
+	// Labels's value for new alert.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -453,12 +453,12 @@ func (o AlertLabelOutput) ToAlertLabelOutputWithContext(ctx context.Context) Ale
 	return o
 }
 
-// Annotations's key for new alert.
+// Labels's key for new alert.
 func (o AlertLabelOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertLabel) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Annotations's value for new alert.
+// Labels's value for new alert.
 func (o AlertLabelOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertLabel) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -492,7 +492,7 @@ type AlertNotificationList struct {
 	MobileLists []string `pulumi:"mobileLists"`
 	// Request address.
 	ServiceUri *string `pulumi:"serviceUri"`
-	// including FixedRate,Hourly,Daily,Weekly,Cron.
+	// Notification type. support Email, SMS, DingTalk, MessageCenter.
 	Type string `pulumi:"type"`
 }
 
@@ -516,7 +516,7 @@ type AlertNotificationListArgs struct {
 	MobileLists pulumi.StringArrayInput `pulumi:"mobileLists"`
 	// Request address.
 	ServiceUri pulumi.StringPtrInput `pulumi:"serviceUri"`
-	// including FixedRate,Hourly,Daily,Weekly,Cron.
+	// Notification type. support Email, SMS, DingTalk, MessageCenter.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -591,7 +591,7 @@ func (o AlertNotificationListOutput) ServiceUri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AlertNotificationList) *string { return v.ServiceUri }).(pulumi.StringPtrOutput)
 }
 
-// including FixedRate,Hourly,Daily,Weekly,Cron.
+// Notification type. support Email, SMS, DingTalk, MessageCenter.
 func (o AlertNotificationListOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertNotificationList) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1379,7 +1379,7 @@ type AlertTemplateConfiguration struct {
 	Lang *string `pulumi:"lang"`
 	// Alert template tokens.
 	Tokens map[string]string `pulumi:"tokens"`
-	// including FixedRate,Hourly,Daily,Weekly,Cron.
+	// Alert template type including `sys`, `user`.
 	Type string `pulumi:"type"`
 }
 
@@ -1403,7 +1403,7 @@ type AlertTemplateConfigurationArgs struct {
 	Lang pulumi.StringPtrInput `pulumi:"lang"`
 	// Alert template tokens.
 	Tokens pulumi.StringMapInput `pulumi:"tokens"`
-	// including FixedRate,Hourly,Daily,Weekly,Cron.
+	// Alert template type including `sys`, `user`.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -1504,7 +1504,7 @@ func (o AlertTemplateConfigurationOutput) Tokens() pulumi.StringMapOutput {
 	return o.ApplyT(func(v AlertTemplateConfiguration) map[string]string { return v.Tokens }).(pulumi.StringMapOutput)
 }
 
-// including FixedRate,Hourly,Daily,Weekly,Cron.
+// Alert template type including `sys`, `user`.
 func (o AlertTemplateConfigurationOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v AlertTemplateConfiguration) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -1573,7 +1573,7 @@ func (o AlertTemplateConfigurationPtrOutput) Tokens() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// including FixedRate,Hourly,Daily,Weekly,Cron.
+// Alert template type including `sys`, `user`.
 func (o AlertTemplateConfigurationPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AlertTemplateConfiguration) *string {
 		if v == nil {
@@ -1979,6 +1979,7 @@ type StoreEncryptConf struct {
 	// Supported encryption type, only supports `default(AES)`,`  m4 `
 	EncryptType *string `pulumi:"encryptType"`
 	// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
+	//
 	// ```go
 	// package main
 	//
@@ -2012,6 +2013,7 @@ type StoreEncryptConfArgs struct {
 	// Supported encryption type, only supports `default(AES)`,`  m4 `
 	EncryptType pulumi.StringPtrInput `pulumi:"encryptType"`
 	// User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
+	//
 	// ```go
 	// package main
 	//
@@ -2116,6 +2118,7 @@ func (o StoreEncryptConfOutput) EncryptType() pulumi.StringPtrOutput {
 }
 
 // User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
+//
 // ```go
 // package main
 //
@@ -2181,6 +2184,7 @@ func (o StoreEncryptConfPtrOutput) EncryptType() pulumi.StringPtrOutput {
 }
 
 // User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `userCmkInfo` below.
+//
 // ```go
 // package main
 //
@@ -2382,7 +2386,7 @@ func (o StoreEncryptConfUserCmkInfoPtrOutput) RegionId() pulumi.StringPtrOutput 
 }
 
 type StoreIndexFieldSearch struct {
-	// The alias of one field.
+	// The alias of one field
 	Alias *string `pulumi:"alias"`
 	// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
 	CaseSensitive *bool `pulumi:"caseSensitive"`
@@ -2392,11 +2396,11 @@ type StoreIndexFieldSearch struct {
 	IncludeChinese *bool `pulumi:"includeChinese"`
 	// Use nested index when type is json
 	JsonKeys []StoreIndexFieldSearchJsonKey `pulumi:"jsonKeys"`
-	// When using the jsonKeys field, this field is required.
+	// The field name, which is unique in the same log store.
 	Name string `pulumi:"name"`
 	// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
 	Token *string `pulumi:"token"`
-	// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+	// The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
 	Type *string `pulumi:"type"`
 }
 
@@ -2412,7 +2416,7 @@ type StoreIndexFieldSearchInput interface {
 }
 
 type StoreIndexFieldSearchArgs struct {
-	// The alias of one field.
+	// The alias of one field
 	Alias pulumi.StringPtrInput `pulumi:"alias"`
 	// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
 	CaseSensitive pulumi.BoolPtrInput `pulumi:"caseSensitive"`
@@ -2422,11 +2426,11 @@ type StoreIndexFieldSearchArgs struct {
 	IncludeChinese pulumi.BoolPtrInput `pulumi:"includeChinese"`
 	// Use nested index when type is json
 	JsonKeys StoreIndexFieldSearchJsonKeyArrayInput `pulumi:"jsonKeys"`
-	// When using the jsonKeys field, this field is required.
+	// The field name, which is unique in the same log store.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
 	Token pulumi.StringPtrInput `pulumi:"token"`
-	// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+	// The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -2481,7 +2485,7 @@ func (o StoreIndexFieldSearchOutput) ToStoreIndexFieldSearchOutputWithContext(ct
 	return o
 }
 
-// The alias of one field.
+// The alias of one field
 func (o StoreIndexFieldSearchOutput) Alias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreIndexFieldSearch) *string { return v.Alias }).(pulumi.StringPtrOutput)
 }
@@ -2506,7 +2510,7 @@ func (o StoreIndexFieldSearchOutput) JsonKeys() StoreIndexFieldSearchJsonKeyArra
 	return o.ApplyT(func(v StoreIndexFieldSearch) []StoreIndexFieldSearchJsonKey { return v.JsonKeys }).(StoreIndexFieldSearchJsonKeyArrayOutput)
 }
 
-// When using the jsonKeys field, this field is required.
+// The field name, which is unique in the same log store.
 func (o StoreIndexFieldSearchOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v StoreIndexFieldSearch) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -2516,7 +2520,7 @@ func (o StoreIndexFieldSearchOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreIndexFieldSearch) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
 
-// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+// The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
 func (o StoreIndexFieldSearchOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreIndexFieldSearch) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -2542,7 +2546,7 @@ func (o StoreIndexFieldSearchArrayOutput) Index(i pulumi.IntInput) StoreIndexFie
 }
 
 type StoreIndexFieldSearchJsonKey struct {
-	// The alias of one field.
+	// The alias of one field
 	Alias *string `pulumi:"alias"`
 	// Whether to enable statistics. default to true.
 	//
@@ -2566,7 +2570,7 @@ type StoreIndexFieldSearchJsonKeyInput interface {
 }
 
 type StoreIndexFieldSearchJsonKeyArgs struct {
-	// The alias of one field.
+	// The alias of one field
 	Alias pulumi.StringPtrInput `pulumi:"alias"`
 	// Whether to enable statistics. default to true.
 	//
@@ -2629,7 +2633,7 @@ func (o StoreIndexFieldSearchJsonKeyOutput) ToStoreIndexFieldSearchJsonKeyOutput
 	return o
 }
 
-// The alias of one field.
+// The alias of one field
 func (o StoreIndexFieldSearchJsonKeyOutput) Alias() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreIndexFieldSearchJsonKey) *string { return v.Alias }).(pulumi.StringPtrOutput)
 }
@@ -2672,11 +2676,11 @@ func (o StoreIndexFieldSearchJsonKeyArrayOutput) Index(i pulumi.IntInput) StoreI
 }
 
 type StoreIndexFullText struct {
-	// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
+	// Whether the case sensitive. Default to false.
 	CaseSensitive *bool `pulumi:"caseSensitive"`
-	// Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
+	// Whether includes the chinese. Default to false.
 	IncludeChinese *bool `pulumi:"includeChinese"`
-	// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
+	// The string of several split words, like "\r", "#"
 	Token *string `pulumi:"token"`
 }
 
@@ -2692,11 +2696,11 @@ type StoreIndexFullTextInput interface {
 }
 
 type StoreIndexFullTextArgs struct {
-	// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
+	// Whether the case sensitive. Default to false.
 	CaseSensitive pulumi.BoolPtrInput `pulumi:"caseSensitive"`
-	// Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
+	// Whether includes the chinese. Default to false.
 	IncludeChinese pulumi.BoolPtrInput `pulumi:"includeChinese"`
-	// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
+	// The string of several split words, like "\r", "#"
 	Token pulumi.StringPtrInput `pulumi:"token"`
 }
 
@@ -2777,17 +2781,17 @@ func (o StoreIndexFullTextOutput) ToStoreIndexFullTextPtrOutputWithContext(ctx c
 	}).(StoreIndexFullTextPtrOutput)
 }
 
-// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
+// Whether the case sensitive. Default to false.
 func (o StoreIndexFullTextOutput) CaseSensitive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StoreIndexFullText) *bool { return v.CaseSensitive }).(pulumi.BoolPtrOutput)
 }
 
-// Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
+// Whether includes the chinese. Default to false.
 func (o StoreIndexFullTextOutput) IncludeChinese() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v StoreIndexFullText) *bool { return v.IncludeChinese }).(pulumi.BoolPtrOutput)
 }
 
-// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
+// The string of several split words, like "\r", "#"
 func (o StoreIndexFullTextOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v StoreIndexFullText) *string { return v.Token }).(pulumi.StringPtrOutput)
 }
@@ -2816,7 +2820,7 @@ func (o StoreIndexFullTextPtrOutput) Elem() StoreIndexFullTextOutput {
 	}).(StoreIndexFullTextOutput)
 }
 
-// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
+// Whether the case sensitive. Default to false.
 func (o StoreIndexFullTextPtrOutput) CaseSensitive() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StoreIndexFullText) *bool {
 		if v == nil {
@@ -2826,7 +2830,7 @@ func (o StoreIndexFullTextPtrOutput) CaseSensitive() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
+// Whether includes the chinese. Default to false.
 func (o StoreIndexFullTextPtrOutput) IncludeChinese() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *StoreIndexFullText) *bool {
 		if v == nil {
@@ -2836,7 +2840,7 @@ func (o StoreIndexFullTextPtrOutput) IncludeChinese() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
+// The string of several split words, like "\r", "#"
 func (o StoreIndexFullTextPtrOutput) Token() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *StoreIndexFullText) *string {
 		if v == nil {
@@ -2979,7 +2983,7 @@ type GetProjectsProject struct {
 	LastModifyTime string `pulumi:"lastModifyTime"`
 	// The owner of project.
 	Owner string `pulumi:"owner"`
-	// The policy of project.
+	// (Available in 1.198.0+) The policy of project.
 	Policy string `pulumi:"policy"`
 	// The name of the project.
 	ProjectName string `pulumi:"projectName"`
@@ -3009,7 +3013,7 @@ type GetProjectsProjectArgs struct {
 	LastModifyTime pulumi.StringInput `pulumi:"lastModifyTime"`
 	// The owner of project.
 	Owner pulumi.StringInput `pulumi:"owner"`
-	// The policy of project.
+	// (Available in 1.198.0+) The policy of project.
 	Policy pulumi.StringInput `pulumi:"policy"`
 	// The name of the project.
 	ProjectName pulumi.StringInput `pulumi:"projectName"`
@@ -3090,7 +3094,7 @@ func (o GetProjectsProjectOutput) Owner() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Owner }).(pulumi.StringOutput)
 }
 
-// The policy of project.
+// (Available in 1.198.0+) The policy of project.
 func (o GetProjectsProjectOutput) Policy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetProjectsProject) string { return v.Policy }).(pulumi.StringOutput)
 }

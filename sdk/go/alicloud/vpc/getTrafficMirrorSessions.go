@@ -134,7 +134,7 @@ func GetTrafficMirrorSessions(ctx *pulumi.Context, args *GetTrafficMirrorSession
 
 // A collection of arguments for invoking getTrafficMirrorSessions.
 type GetTrafficMirrorSessionsArgs struct {
-	// Indicates whether traffic mirror sessions are enabled. default to `false`.
+	// Specifies whether to enable traffic mirror sessions. default to `false`.
 	Enabled *bool `pulumi:"enabled"`
 	// A list of Traffic Mirror Session IDs.
 	Ids []string `pulumi:"ids"`
@@ -142,13 +142,13 @@ type GetTrafficMirrorSessionsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The priority of the traffic mirror session. A smaller value indicates a higher priority.
+	// The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
 	Priority *int `pulumi:"priority"`
 	// The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
 	Status *string `pulumi:"status"`
 	// The ID of the filter.
 	TrafficMirrorFilterId *string `pulumi:"trafficMirrorFilterId"`
-	// The name of the traffic mirror session.
+	// The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
 	TrafficMirrorSessionName *string `pulumi:"trafficMirrorSessionName"`
 	// The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source.
 	TrafficMirrorSourceId *string `pulumi:"trafficMirrorSourceId"`
@@ -189,7 +189,7 @@ func GetTrafficMirrorSessionsOutput(ctx *pulumi.Context, args GetTrafficMirrorSe
 
 // A collection of arguments for invoking getTrafficMirrorSessions.
 type GetTrafficMirrorSessionsOutputArgs struct {
-	// Indicates whether traffic mirror sessions are enabled. default to `false`.
+	// Specifies whether to enable traffic mirror sessions. default to `false`.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// A list of Traffic Mirror Session IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -197,13 +197,13 @@ type GetTrafficMirrorSessionsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The priority of the traffic mirror session. A smaller value indicates a higher priority.
+	// The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
 	// The state of the traffic mirror session. Valid values: `Creating`, `Created`, `Modifying` and `Deleting`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The ID of the filter.
 	TrafficMirrorFilterId pulumi.StringPtrInput `pulumi:"trafficMirrorFilterId"`
-	// The name of the traffic mirror session.
+	// The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
 	TrafficMirrorSessionName pulumi.StringPtrInput `pulumi:"trafficMirrorSessionName"`
 	// The ID of the mirror source. You can specify only an elastic network interface (ENI) as the mirror source.
 	TrafficMirrorSourceId pulumi.StringPtrInput `pulumi:"trafficMirrorSourceId"`

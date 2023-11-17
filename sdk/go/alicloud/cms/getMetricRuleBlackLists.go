@@ -55,15 +55,15 @@ func GetMetricRuleBlackLists(ctx *pulumi.Context, args *GetMetricRuleBlackListsA
 
 // A collection of arguments for invoking getMetricRuleBlackLists.
 type GetMetricRuleBlackListsArgs struct {
-	// Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
+	// (ForceNew,Optional) Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
 	Category *string `pulumi:"category"`
 	// A list of Metric Rule Black List IDs.
 	Ids []string `pulumi:"ids"`
-	// The first ID of the resource
+	// (ForceNew,Optional) The first ID of the resource
 	MetricRuleBlackListId *string `pulumi:"metricRuleBlackListId"`
 	// A regex string to filter results by Group Metric Rule name.
 	NameRegex *string `pulumi:"nameRegex"`
-	// The data namespace of the cloud service.
+	// (ForceNew,Optional) The data namespace of the cloud service.
 	Namespace *string `pulumi:"namespace"`
 	Order     *int    `pulumi:"order"`
 	// File name where to save data source results (after running `pulumi preview`).
@@ -110,15 +110,15 @@ func GetMetricRuleBlackListsOutput(ctx *pulumi.Context, args GetMetricRuleBlackL
 
 // A collection of arguments for invoking getMetricRuleBlackLists.
 type GetMetricRuleBlackListsOutputArgs struct {
-	// Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
+	// (ForceNew,Optional) Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// A list of Metric Rule Black List IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The first ID of the resource
+	// (ForceNew,Optional) The first ID of the resource
 	MetricRuleBlackListId pulumi.StringPtrInput `pulumi:"metricRuleBlackListId"`
 	// A regex string to filter results by Group Metric Rule name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
-	// The data namespace of the cloud service.
+	// (ForceNew,Optional) The data namespace of the cloud service.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	Order     pulumi.IntPtrInput    `pulumi:"order"`
 	// File name where to save data source results (after running `pulumi preview`).

@@ -238,14 +238,14 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
         return this.queueNumber;
     }
     /**
-     * The Id of resource group which the network interface belongs.
+     * (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
      * 
      */
     @Export(name="resourceGroupId", type=String.class, parameters={})
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
-     * @return The Id of resource group which the network interface belongs.
+     * @return (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
      * 
      */
     public Output<Optional<String>> resourceGroupId() {
@@ -264,7 +264,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
         return this.securityGroupIds;
     }
     /**
-     * A list of security group ids to associate with.
+     * (Require) A list of security group ids to associate with.
      * 
      * @deprecated
      * Field &#39;security_groups&#39; has been deprecated from provider version 1.123.1. New field &#39;security_group_ids&#39; instead
@@ -275,7 +275,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     private Output<List<String>> securityGroups;
 
     /**
-     * @return A list of security group ids to associate with.
+     * @return (Require) A list of security group ids to associate with.
      * 
      */
     public Output<List<String>> securityGroups() {

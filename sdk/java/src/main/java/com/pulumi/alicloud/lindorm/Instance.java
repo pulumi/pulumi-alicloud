@@ -738,7 +738,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.timeSeriesEngineSpecification;
     }
     /**
-     * Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+     * (Deprecated since v1.182.0) Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
      * 
      * @deprecated
      * Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
@@ -749,7 +749,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> timeSeriresEngineSpecification;
 
     /**
-     * @return Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+     * @return (Deprecated since v1.182.0) Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
      * 
      */
     public Output<String> timeSeriresEngineSpecification() {

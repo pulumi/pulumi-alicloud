@@ -102,7 +102,7 @@ export class Instance extends pulumi.CustomResource {
      *
      * > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
      *
-     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) | 
      * |------|-------------|:----:|:-----:|
      * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
      * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
@@ -132,7 +132,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The max num of topic can be creation of the instance.
+     * (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
      * It has been deprecated since version 1.194.0 and using `partitionNum` instead.
      * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
      * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
@@ -295,7 +295,7 @@ export interface InstanceState {
      *
      * > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
      *
-     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) | 
      * |------|-------------|:----:|:-----:|
      * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
      * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
@@ -325,7 +325,7 @@ export interface InstanceState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The max num of topic can be creation of the instance.
+     * (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
      * It has been deprecated since version 1.194.0 and using `partitionNum` instead.
      * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
      * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
@@ -408,7 +408,7 @@ export interface InstanceArgs {
      *
      * > **NOTE:** Arguments io_max, disk_size, topic_quota, eipMax should follow the following constraints.
      *
-     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+     * | ioMax | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) | 
      * |------|-------------|:----:|:-----:|
      * |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
      * |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
@@ -430,7 +430,7 @@ export interface InstanceArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The max num of topic can be creation of the instance.
+     * (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
      * It has been deprecated since version 1.194.0 and using `partitionNum` instead.
      * Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
      * Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.

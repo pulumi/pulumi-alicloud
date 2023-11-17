@@ -633,7 +633,7 @@ func (o GetBandwidthPackagesPackageArrayOutput) Index(i pulumi.IntInput) GetBand
 }
 
 type GetChildInstanceRouteEntryToAttachmentsAttachment struct {
-	// The ID of the CEN instance.
+	// (ForceNew,Optional) The ID of the CEN instance.
 	CenId string `pulumi:"cenId"`
 	// The first ID of the resource
 	ChildInstanceRouteTableId string `pulumi:"childInstanceRouteTableId"`
@@ -641,7 +641,7 @@ type GetChildInstanceRouteEntryToAttachmentsAttachment struct {
 	DestinationCidrBlock string `pulumi:"destinationCidrBlock"`
 	// The ID of the resource. The value is formulated as `<cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>`.
 	Id string `pulumi:"id"`
-	// ServiceType
+	// (ForceNew,Optional) ServiceType
 	ServiceType string `pulumi:"serviceType"`
 	// The status of the resource
 	Status string `pulumi:"status"`
@@ -661,7 +661,7 @@ type GetChildInstanceRouteEntryToAttachmentsAttachmentInput interface {
 }
 
 type GetChildInstanceRouteEntryToAttachmentsAttachmentArgs struct {
-	// The ID of the CEN instance.
+	// (ForceNew,Optional) The ID of the CEN instance.
 	CenId pulumi.StringInput `pulumi:"cenId"`
 	// The first ID of the resource
 	ChildInstanceRouteTableId pulumi.StringInput `pulumi:"childInstanceRouteTableId"`
@@ -669,7 +669,7 @@ type GetChildInstanceRouteEntryToAttachmentsAttachmentArgs struct {
 	DestinationCidrBlock pulumi.StringInput `pulumi:"destinationCidrBlock"`
 	// The ID of the resource. The value is formulated as `<cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>`.
 	Id pulumi.StringInput `pulumi:"id"`
-	// ServiceType
+	// (ForceNew,Optional) ServiceType
 	ServiceType pulumi.StringInput `pulumi:"serviceType"`
 	// The status of the resource
 	Status pulumi.StringInput `pulumi:"status"`
@@ -728,7 +728,7 @@ func (o GetChildInstanceRouteEntryToAttachmentsAttachmentOutput) ToGetChildInsta
 	return o
 }
 
-// The ID of the CEN instance.
+// (ForceNew,Optional) The ID of the CEN instance.
 func (o GetChildInstanceRouteEntryToAttachmentsAttachmentOutput) CenId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetChildInstanceRouteEntryToAttachmentsAttachment) string { return v.CenId }).(pulumi.StringOutput)
 }
@@ -748,7 +748,7 @@ func (o GetChildInstanceRouteEntryToAttachmentsAttachmentOutput) Id() pulumi.Str
 	return o.ApplyT(func(v GetChildInstanceRouteEntryToAttachmentsAttachment) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// ServiceType
+// (ForceNew,Optional) ServiceType
 func (o GetChildInstanceRouteEntryToAttachmentsAttachmentOutput) ServiceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetChildInstanceRouteEntryToAttachmentsAttachment) string { return v.ServiceType }).(pulumi.StringOutput)
 }
@@ -1446,7 +1446,7 @@ type GetInterRegionTrafficQosQueuesQueue struct {
 	RemainBandwidthPercent int `pulumi:"remainBandwidthPercent"`
 	// The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
 	Status string `pulumi:"status"`
-	// The ID of the traffic scheduling policy.
+	// (ForceNew,Required) The ID of the traffic scheduling policy.
 	TrafficQosPolicyId string `pulumi:"trafficQosPolicyId"`
 }
 
@@ -1475,7 +1475,7 @@ type GetInterRegionTrafficQosQueuesQueueArgs struct {
 	RemainBandwidthPercent pulumi.IntInput `pulumi:"remainBandwidthPercent"`
 	// The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
 	Status pulumi.StringInput `pulumi:"status"`
-	// The ID of the traffic scheduling policy.
+	// (ForceNew,Required) The ID of the traffic scheduling policy.
 	TrafficQosPolicyId pulumi.StringInput `pulumi:"trafficQosPolicyId"`
 }
 
@@ -1564,7 +1564,7 @@ func (o GetInterRegionTrafficQosQueuesQueueOutput) Status() pulumi.StringOutput 
 	return o.ApplyT(func(v GetInterRegionTrafficQosQueuesQueue) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the traffic scheduling policy.
+// (ForceNew,Required) The ID of the traffic scheduling policy.
 func (o GetInterRegionTrafficQosQueuesQueueOutput) TrafficQosPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInterRegionTrafficQosQueuesQueue) string { return v.TrafficQosPolicyId }).(pulumi.StringOutput)
 }

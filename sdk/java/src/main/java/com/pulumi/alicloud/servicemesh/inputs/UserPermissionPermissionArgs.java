@@ -48,9 +48,6 @@ public final class UserPermissionPermissionArgs extends com.pulumi.resources.Res
 
     /**
      * The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
-     * - `istio-admin`:  The administrator.
-     * - `istio-ops`: The administrator of the service mesh resource.
-     * - `istio-readonly`: The read only permission.
      * 
      */
     @Import(name="roleName")
@@ -58,9 +55,6 @@ public final class UserPermissionPermissionArgs extends com.pulumi.resources.Res
 
     /**
      * @return The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
-     * - `istio-admin`:  The administrator.
-     * - `istio-ops`: The administrator of the service mesh resource.
-     * - `istio-readonly`: The read only permission.
      * 
      */
     public Optional<Output<String>> roleName() {
@@ -169,9 +163,6 @@ public final class UserPermissionPermissionArgs extends com.pulumi.resources.Res
 
         /**
          * @param roleName The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
-         * - `istio-admin`:  The administrator.
-         * - `istio-ops`: The administrator of the service mesh resource.
-         * - `istio-readonly`: The read only permission.
          * 
          * @return builder
          * 
@@ -183,9 +174,6 @@ public final class UserPermissionPermissionArgs extends com.pulumi.resources.Res
 
         /**
          * @param roleName The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
-         * - `istio-admin`:  The administrator.
-         * - `istio-ops`: The administrator of the service mesh resource.
-         * - `istio-readonly`: The read only permission.
          * 
          * @return builder
          * 

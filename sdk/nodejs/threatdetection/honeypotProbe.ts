@@ -87,7 +87,7 @@ export class HoneypotProbe extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * Configure the service.See the following `Block HoneypotBindList`.
+     * (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
      */
     public readonly honeypotBindLists!: pulumi.Output<outputs.threatdetection.HoneypotProbeHoneypotBindList[] | undefined>;
     /**
@@ -103,11 +103,11 @@ export class HoneypotProbe extends pulumi.CustomResource {
      */
     public readonly probeType!: pulumi.Output<string>;
     /**
-     * The version of the probe.
+     * (ForceNew,Optional) The version of the probe.
      */
     public readonly probeVersion!: pulumi.Output<string>;
     /**
-     * The IP address of the proxy.
+     * (ForceNew,Optional) The IP address of the proxy.
      */
     public readonly proxyIp!: pulumi.Output<string | undefined>;
     /**
@@ -119,11 +119,11 @@ export class HoneypotProbe extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
+     * (ForceNew,Optional) Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
      */
     public readonly uuid!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
+     * (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
      */
     public readonly vpcId!: pulumi.Output<string | undefined>;
 
@@ -200,7 +200,7 @@ export interface HoneypotProbeState {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * Configure the service.See the following `Block HoneypotBindList`.
+     * (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
      */
     honeypotBindLists?: pulumi.Input<pulumi.Input<inputs.threatdetection.HoneypotProbeHoneypotBindList>[]>;
     /**
@@ -216,11 +216,11 @@ export interface HoneypotProbeState {
      */
     probeType?: pulumi.Input<string>;
     /**
-     * The version of the probe.
+     * (ForceNew,Optional) The version of the probe.
      */
     probeVersion?: pulumi.Input<string>;
     /**
-     * The IP address of the proxy.
+     * (ForceNew,Optional) The IP address of the proxy.
      */
     proxyIp?: pulumi.Input<string>;
     /**
@@ -232,11 +232,11 @@ export interface HoneypotProbeState {
      */
     status?: pulumi.Input<string>;
     /**
-     * Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
+     * (ForceNew,Optional) Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
      */
     uuid?: pulumi.Input<string>;
     /**
-     * The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
+     * (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
      */
     vpcId?: pulumi.Input<string>;
 }
@@ -258,7 +258,7 @@ export interface HoneypotProbeArgs {
      */
     displayName: pulumi.Input<string>;
     /**
-     * Configure the service.See the following `Block HoneypotBindList`.
+     * (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
      */
     honeypotBindLists?: pulumi.Input<pulumi.Input<inputs.threatdetection.HoneypotProbeHoneypotBindList>[]>;
     /**
@@ -270,11 +270,11 @@ export interface HoneypotProbeArgs {
      */
     probeType: pulumi.Input<string>;
     /**
-     * The version of the probe.
+     * (ForceNew,Optional) The version of the probe.
      */
     probeVersion?: pulumi.Input<string>;
     /**
-     * The IP address of the proxy.
+     * (ForceNew,Optional) The IP address of the proxy.
      */
     proxyIp?: pulumi.Input<string>;
     /**
@@ -282,11 +282,11 @@ export interface HoneypotProbeArgs {
      */
     serviceIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
+     * (ForceNew,Optional) Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
      */
     uuid?: pulumi.Input<string>;
     /**
-     * The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
+     * (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
      */
     vpcId?: pulumi.Input<string>;
 }

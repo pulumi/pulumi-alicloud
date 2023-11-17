@@ -62,14 +62,14 @@ public final class GetMailAddressesArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Account type.
+     * Account type. Valid values: `batch`, `trigger`.
      * 
      */
     @Import(name="sendtype")
     private @Nullable Output<String> sendtype;
 
     /**
-     * @return Account type.
+     * @return Account type. Valid values: `batch`, `trigger`.
      * 
      */
     public Optional<Output<String>> sendtype() {
@@ -193,7 +193,7 @@ public final class GetMailAddressesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param sendtype Account type.
+         * @param sendtype Account type. Valid values: `batch`, `trigger`.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class GetMailAddressesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param sendtype Account type.
+         * @param sendtype Account type. Valid values: `batch`, `trigger`.
          * 
          * @return builder
          * 

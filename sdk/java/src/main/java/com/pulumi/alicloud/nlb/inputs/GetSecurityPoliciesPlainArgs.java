@@ -93,14 +93,14 @@ public final class GetSecurityPoliciesPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Available`, `Configuring`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Available`, `Configuring`.
      * 
      */
     public Optional<String> status() {
@@ -228,7 +228,7 @@ public final class GetSecurityPoliciesPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `Available`, `Configuring`.
          * 
          * @return builder
          * 

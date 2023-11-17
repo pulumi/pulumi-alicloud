@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Bss.Outputs
         /// </summary>
         public readonly string ProductCode;
         /// <summary>
-        /// The product type.
+        /// (ForceNew,Optional) The product type.
         /// </summary>
         public readonly string ProductType;
         /// <summary>

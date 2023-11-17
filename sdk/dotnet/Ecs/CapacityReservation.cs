@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
-        /// The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+        /// (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
         /// </summary>
         [Output("matchCriteria")]
         public Output<string> MatchCriteria { get; private set; } = null!;
@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> Platform { get; private set; } = null!;
 
         /// <summary>
-        /// The resource group id.
+        /// (ForceNew,Optional) The resource group id.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> TimeSlot { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+        /// (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         /// </summary>
         [Output("zoneIds")]
         public Output<ImmutableArray<string>> ZoneIds { get; private set; } = null!;
@@ -269,7 +269,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> InstanceType { get; set; } = null!;
 
         /// <summary>
-        /// The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+        /// (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
         /// </summary>
         [Input("matchCriteria")]
         public Input<string>? MatchCriteria { get; set; }
@@ -281,7 +281,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Platform { get; set; }
 
         /// <summary>
-        /// The resource group id.
+        /// (ForceNew,Optional) The resource group id.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -302,7 +302,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _zoneIds;
 
         /// <summary>
-        /// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+        /// (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         /// </summary>
         public InputList<string> ZoneIds
         {
@@ -361,7 +361,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+        /// (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
         /// </summary>
         [Input("matchCriteria")]
         public Input<string>? MatchCriteria { get; set; }
@@ -379,7 +379,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Platform { get; set; }
 
         /// <summary>
-        /// The resource group id.
+        /// (ForceNew,Optional) The resource group id.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -424,7 +424,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _zoneIds;
 
         /// <summary>
-        /// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+        /// (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         /// </summary>
         public InputList<string> ZoneIds
         {

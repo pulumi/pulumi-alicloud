@@ -283,6 +283,7 @@ def get_instances(availability_zone: Optional[str] = None,
     :param str resource_group_id: The ID of resource group which the instance belongs.
     :param str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
     :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
+           
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -380,6 +381,7 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     :param str resource_group_id: The ID of resource group which the instance belongs.
     :param str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
     :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
+           
            ```python
            import pulumi
            import pulumi_alicloud as alicloud

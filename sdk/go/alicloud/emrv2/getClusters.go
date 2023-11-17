@@ -26,7 +26,7 @@ func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getClusters.
 type GetClustersArgs struct {
-	// The name of the emr cluster.
+	// The cluster name.
 	ClusterName *string `pulumi:"clusterName"`
 	// The cluster states.
 	ClusterStates []string `pulumi:"clusterStates"`
@@ -44,7 +44,7 @@ type GetClustersArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The cluster payment types.
 	PaymentTypes []string `pulumi:"paymentTypes"`
-	// The resource group id of the resource.
+	// The Resource Group ID.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -85,7 +85,7 @@ func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...
 
 // A collection of arguments for invoking getClusters.
 type GetClustersOutputArgs struct {
-	// The name of the emr cluster.
+	// The cluster name.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
 	// The cluster states.
 	ClusterStates pulumi.StringArrayInput `pulumi:"clusterStates"`
@@ -103,7 +103,7 @@ type GetClustersOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The cluster payment types.
 	PaymentTypes pulumi.StringArrayInput `pulumi:"paymentTypes"`
-	// The resource group id of the resource.
+	// The Resource Group ID.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`

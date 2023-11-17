@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The value of the variable.
+        /// The value of the object variable.
         /// </summary>
         public readonly string Value;
 

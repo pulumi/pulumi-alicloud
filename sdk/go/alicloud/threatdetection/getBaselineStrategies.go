@@ -26,7 +26,7 @@ func GetBaselineStrategies(ctx *pulumi.Context, args *GetBaselineStrategiesArgs,
 
 // A collection of arguments for invoking getBaselineStrategies.
 type GetBaselineStrategiesArgs struct {
-	// The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+	// (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
 	CustomType *string `pulumi:"customType"`
 	// A list of Baseline Strategy IDs.
 	Ids []string `pulumi:"ids"`
@@ -70,7 +70,7 @@ func GetBaselineStrategiesOutput(ctx *pulumi.Context, args GetBaselineStrategies
 
 // A collection of arguments for invoking getBaselineStrategies.
 type GetBaselineStrategiesOutputArgs struct {
-	// The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+	// (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
 	CustomType pulumi.StringPtrInput `pulumi:"customType"`
 	// A list of Baseline Strategy IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

@@ -56,11 +56,11 @@ export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.Invo
  */
 export interface GetLoadBalancersArgs {
     /**
-     * The IP version.
+     * The IP version. Valid values: `ipv4`, `DualStack`.
      */
     addressIpVersion?: string;
     /**
-     * The type of IPv4 address used by the NLB instance.
+     * The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
      */
     addressType?: string;
     /**
@@ -72,11 +72,11 @@ export interface GetLoadBalancersArgs {
      */
     ids?: string[];
     /**
-     * The type of IPv6 address used by the NLB instance.
+     * The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
      */
     ipv6AddressType?: string;
     /**
-     * The business status of the NLB instance.
+     * The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
      */
     loadBalancerBusinessStatus?: string;
     /**
@@ -96,7 +96,7 @@ export interface GetLoadBalancersArgs {
      */
     resourceGroupId?: string;
     /**
-     * The status of the NLB instance.
+     * The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
      */
     status?: string;
     /**
@@ -170,11 +170,11 @@ export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?:
  */
 export interface GetLoadBalancersOutputArgs {
     /**
-     * The IP version.
+     * The IP version. Valid values: `ipv4`, `DualStack`.
      */
     addressIpVersion?: pulumi.Input<string>;
     /**
-     * The type of IPv4 address used by the NLB instance.
+     * The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
      */
     addressType?: pulumi.Input<string>;
     /**
@@ -186,11 +186,11 @@ export interface GetLoadBalancersOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The type of IPv6 address used by the NLB instance.
+     * The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
      */
     ipv6AddressType?: pulumi.Input<string>;
     /**
-     * The business status of the NLB instance.
+     * The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
      */
     loadBalancerBusinessStatus?: pulumi.Input<string>;
     /**
@@ -210,7 +210,7 @@ export interface GetLoadBalancersOutputArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of the NLB instance.
+     * The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
      */
     status?: pulumi.Input<string>;
     /**

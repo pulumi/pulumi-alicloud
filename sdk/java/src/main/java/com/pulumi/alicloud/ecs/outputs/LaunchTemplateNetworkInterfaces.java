@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class LaunchTemplateNetworkInterfaces {
     /**
-     * @return The description of the data disk.
+     * @return The ENI description.
      * 
      */
     private @Nullable String description;
     /**
-     * @return The name of the data disk.
+     * @return ENI name.
      * 
      */
     private @Nullable String name;
@@ -39,14 +39,14 @@ public final class LaunchTemplateNetworkInterfaces {
 
     private LaunchTemplateNetworkInterfaces() {}
     /**
-     * @return The description of the data disk.
+     * @return The ENI description.
      * 
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }
     /**
-     * @return The name of the data disk.
+     * @return ENI name.
      * 
      */
     public Optional<String> name() {

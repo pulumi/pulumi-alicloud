@@ -39,9 +39,6 @@ class ReservedInstanceArgs:
         :param pulumi.Input[int] instance_amount: Number of instances allocated to an RI (An RI is a coupon that includes one or more allocated instances.).
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
         :param pulumi.Input[str] offering_type: Payment type of the RI. Default value: `All Upfront`. Valid values:
-               - `No Upfront`: No upfront payment.
-               - `Partial Upfront`: A portion of upfront payment.
-               - `All Upfront`: Full upfront payment.
         :param pulumi.Input[int] period: The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
                - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
                - When `period_unit` is `Month`, Valid values: `1`.
@@ -155,9 +152,6 @@ class ReservedInstanceArgs:
     def offering_type(self) -> Optional[pulumi.Input[str]]:
         """
         Payment type of the RI. Default value: `All Upfront`. Valid values:
-        - `No Upfront`: No upfront payment.
-        - `Partial Upfront`: A portion of upfront payment.
-        - `All Upfront`: Full upfront payment.
         """
         return pulumi.get(self, "offering_type")
 
@@ -311,9 +305,6 @@ class _ReservedInstanceState:
         :param pulumi.Input[str] instance_type: Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
         :param pulumi.Input[str] offering_type: Payment type of the RI. Default value: `All Upfront`. Valid values:
-               - `No Upfront`: No upfront payment.
-               - `Partial Upfront`: A portion of upfront payment.
-               - `All Upfront`: Full upfront payment.
         :param pulumi.Input[Sequence[pulumi.Input['ReservedInstanceOperationLockArgs']]] operation_locks: Details about the lock status of the reserved instance.
         :param pulumi.Input[int] period: The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
                - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
@@ -479,9 +470,6 @@ class _ReservedInstanceState:
     def offering_type(self) -> Optional[pulumi.Input[str]]:
         """
         Payment type of the RI. Default value: `All Upfront`. Valid values:
-        - `No Upfront`: No upfront payment.
-        - `Partial Upfront`: A portion of upfront payment.
-        - `All Upfront`: Full upfront payment.
         """
         return pulumi.get(self, "offering_type")
 
@@ -696,9 +684,6 @@ class ReservedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_type: Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
         :param pulumi.Input[str] offering_type: Payment type of the RI. Default value: `All Upfront`. Valid values:
-               - `No Upfront`: No upfront payment.
-               - `Partial Upfront`: A portion of upfront payment.
-               - `All Upfront`: Full upfront payment.
         :param pulumi.Input[int] period: The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
                - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
                - When `period_unit` is `Month`, Valid values: `1`.
@@ -857,9 +842,6 @@ class ReservedInstance(pulumi.CustomResource):
         :param pulumi.Input[str] instance_type: Instance type of the RI. For more information, see [Instance type families](https://www.alibabacloud.com/help/doc-detail/25378.html).
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.194.0. New field `reserved_instance_name` instead.
         :param pulumi.Input[str] offering_type: Payment type of the RI. Default value: `All Upfront`. Valid values:
-               - `No Upfront`: No upfront payment.
-               - `Partial Upfront`: A portion of upfront payment.
-               - `All Upfront`: Full upfront payment.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ReservedInstanceOperationLockArgs']]]] operation_locks: Details about the lock status of the reserved instance.
         :param pulumi.Input[int] period: The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `period_unit` is `Year`.
                - When `period_unit` is `Year`, Valid values: `1`, `3`, `5`.
@@ -974,9 +956,6 @@ class ReservedInstance(pulumi.CustomResource):
     def offering_type(self) -> pulumi.Output[str]:
         """
         Payment type of the RI. Default value: `All Upfront`. Valid values:
-        - `No Upfront`: No upfront payment.
-        - `Partial Upfront`: A portion of upfront payment.
-        - `All Upfront`: Full upfront payment.
         """
         return pulumi.get(self, "offering_type")
 

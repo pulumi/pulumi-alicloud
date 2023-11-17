@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string CreatedTime;
         /// <summary>
-        /// Whether to enable the deduplication function for the database backup Vault.
+        /// (Internal use) Whether to enable the deduplication function for the database backup Vault.
         /// </summary>
         public readonly bool Dedup;
         /// <summary>
@@ -38,15 +38,15 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Index available.
+        /// (Not yet open) Index available.
         /// </summary>
         public readonly bool IndexAvailable;
         /// <summary>
-        /// Index level.
+        /// (Not yet open) Index level.
         /// </summary>
         public readonly string IndexLevel;
         /// <summary>
-        /// Index update time.
+        /// (Not yet open) Index update time.
         /// </summary>
         public readonly string IndexUpdateTime;
         /// <summary>
@@ -70,11 +70,11 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string ReplicationSourceVaultId;
         /// <summary>
-        /// Warehouse-level data retention days, only valid for archive libraries.
+        /// (Not yet open) Warehouse-level data retention days, only valid for archive libraries.
         /// </summary>
         public readonly string Retention;
         /// <summary>
-        /// Whether to enable the backup search function.
+        /// (Not yet open) Whether to enable the backup search function.
         /// </summary>
         public readonly bool SearchEnabled;
         public readonly ImmutableArray<string> SourceTypes;

@@ -2238,7 +2238,7 @@ class GetPolicyGroupsGroupResult(dict):
         """
         :param Sequence['GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArgs'] authorize_access_policy_rules: The rule of authorize access rule.
         :param Sequence['GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArgs'] authorize_security_policy_rules: The policy rule.
-        :param str camera_redirect: Whether to enable local camera redirection. Valid values: `on`, `off`.
+        :param str camera_redirect: (Available in 1.171.0+) Whether to enable local camera redirection. Valid values: `on`, `off`.
         :param str clipboard: The clipboard policy.
         :param str domain_list: The list of domain.
         :param int eds_count: The count of eds.
@@ -2249,10 +2249,10 @@ class GetPolicyGroupsGroupResult(dict):
         :param str policy_group_id: The policy group id.
         :param str policy_group_name: The name of policy group.
         :param str policy_group_type: The type of policy group.
-        :param str recording: Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
-        :param str recording_end_time: The end time of recording.
-        :param int recording_fps: The fps of recording. Valid values: `2`, `5`, `10`, `15`.
-        :param str recording_start_time: The start time of recording.
+        :param str recording: (Available in 1.171.0+) Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        :param str recording_end_time: (Available in 1.171.0+) The end time of recording.
+        :param int recording_fps: (Available in 1.171.0+) The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        :param str recording_start_time: (Available in 1.171.0+) The start time of recording.
         :param str status: The status of policy.
         :param str usb_redirect: The usb redirect policy.
         :param str visual_quality: The quality of visual.sae_ecdsae_nameecd_po
@@ -2304,7 +2304,7 @@ class GetPolicyGroupsGroupResult(dict):
     @pulumi.getter(name="cameraRedirect")
     def camera_redirect(self) -> str:
         """
-        Whether to enable local camera redirection. Valid values: `on`, `off`.
+        (Available in 1.171.0+) Whether to enable local camera redirection. Valid values: `on`, `off`.
         """
         return pulumi.get(self, "camera_redirect")
 
@@ -2392,7 +2392,7 @@ class GetPolicyGroupsGroupResult(dict):
     @pulumi.getter
     def recording(self) -> str:
         """
-        Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        (Available in 1.171.0+) Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
         """
         return pulumi.get(self, "recording")
 
@@ -2400,7 +2400,7 @@ class GetPolicyGroupsGroupResult(dict):
     @pulumi.getter(name="recordingEndTime")
     def recording_end_time(self) -> str:
         """
-        The end time of recording.
+        (Available in 1.171.0+) The end time of recording.
         """
         return pulumi.get(self, "recording_end_time")
 
@@ -2408,7 +2408,7 @@ class GetPolicyGroupsGroupResult(dict):
     @pulumi.getter(name="recordingFps")
     def recording_fps(self) -> int:
         """
-        The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        (Available in 1.171.0+) The fps of recording. Valid values: `2`, `5`, `10`, `15`.
         """
         return pulumi.get(self, "recording_fps")
 
@@ -2416,7 +2416,7 @@ class GetPolicyGroupsGroupResult(dict):
     @pulumi.getter(name="recordingStartTime")
     def recording_start_time(self) -> str:
         """
-        The start time of recording.
+        (Available in 1.171.0+) The start time of recording.
         """
         return pulumi.get(self, "recording_start_time")
 
@@ -3022,7 +3022,7 @@ class GetSimpleOfficeSitesSiteResult(dict):
                  vpc_id: str,
                  vswitch_ids: Sequence[str]):
         """
-        :param int bandwidth: The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+        :param int bandwidth: (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
         :param str cen_id: Cloud Enterprise Network Instance Id.
         :param str cidr_block: Workspace Corresponds to the Security Office Network of IPv4 Segment.
         :param str create_time: Workspace Creation Time.
@@ -3036,7 +3036,7 @@ class GetSimpleOfficeSitesSiteResult(dict):
         :param str domain_user_name: The Domain Administrator's Username.
         :param bool enable_admin_access: Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
         :param bool enable_cross_desktop_access: Enable Cross-Desktop Access.
-        :param bool enable_internet_access: Whether the Open Internet Access Function.
+        :param bool enable_internet_access: (Deprecated from 1.142.0) Whether the Open Internet Access Function.
         :param Sequence[str] file_system_ids: NAS File System ID.
         :param str id: The ID of the Simple Office Site.
         :param bool mfa_enabled: Whether to Enable Multi-Factor Authentication MFA.
@@ -3088,7 +3088,7 @@ class GetSimpleOfficeSitesSiteResult(dict):
     @pulumi.getter
     def bandwidth(self) -> int:
         """
-        The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+        (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
         """
         warnings.warn("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
         pulumi.log.warn("""bandwidth is deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.""")
@@ -3203,7 +3203,7 @@ class GetSimpleOfficeSitesSiteResult(dict):
     @pulumi.getter(name="enableInternetAccess")
     def enable_internet_access(self) -> bool:
         """
-        Whether the Open Internet Access Function.
+        (Deprecated from 1.142.0) Whether the Open Internet Access Function.
         """
         warnings.warn("""Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
         pulumi.log.warn("""enable_internet_access is deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""")

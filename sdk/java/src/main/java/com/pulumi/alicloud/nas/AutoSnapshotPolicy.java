@@ -117,7 +117,6 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
     }
     /**
      * The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-     * - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
      * 
      */
     @Export(name="retentionDays", type=Integer.class, parameters={})
@@ -125,7 +124,6 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-     * - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
      * 
      */
     public Output<Integer> retentionDays() {

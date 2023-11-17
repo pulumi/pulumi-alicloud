@@ -15,7 +15,7 @@ public final class GetLoadBalancersBalancerModificationProtectionConfig {
      */
     private String reason;
     /**
-     * @return The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+     * @return Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
      * 
      */
     private String status;
@@ -29,7 +29,7 @@ public final class GetLoadBalancersBalancerModificationProtectionConfig {
         return this.reason;
     }
     /**
-     * @return The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+     * @return Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
      * 
      */
     public String status() {

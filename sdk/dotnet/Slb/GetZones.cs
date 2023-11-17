@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.Slb
         public string? AvailableSlbAddressType { get; set; }
 
         /// <summary>
-        /// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+        /// (Deprecated from v1.154.0+) Default to false and only output `id` in the `zones` block. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? AvailableSlbAddressType { get; set; }
 
         /// <summary>
-        /// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+        /// (Deprecated from v1.154.0+) Default to false and only output `id` in the `zones` block. Set it to true can output more details.
         /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }

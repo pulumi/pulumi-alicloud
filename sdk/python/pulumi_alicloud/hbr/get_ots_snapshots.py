@@ -114,7 +114,7 @@ def get_ots_snapshots(end_time: Optional[str] = None,
 
     :param str end_time: The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str start_time: The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+    :param str start_time: The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
     """
     __args__ = dict()
     __args__['endTime'] = end_time
@@ -158,6 +158,6 @@ def get_ots_snapshots_output(end_time: Optional[pulumi.Input[Optional[str]]] = N
 
     :param str end_time: The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str start_time: The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+    :param str start_time: The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
     """
     ...

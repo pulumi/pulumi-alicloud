@@ -108,6 +108,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+     * -`true`: grants DDL permissions to the database account.
+     * -`false`: does not grant DDL permissions to the database account.
      * 
      */
     @Import(name="ddlAuthority")
@@ -115,6 +117,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+     * -`true`: grants DDL permissions to the database account.
+     * -`false`: does not grant DDL permissions to the database account.
      * 
      */
     public Optional<Output<Boolean>> ddlAuthority() {
@@ -359,6 +363,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ddlAuthority Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+         * -`true`: grants DDL permissions to the database account.
+         * -`false`: does not grant DDL permissions to the database account.
          * 
          * @return builder
          * 
@@ -370,6 +376,8 @@ public final class AccountState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param ddlAuthority Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+         * -`true`: grants DDL permissions to the database account.
+         * -`false`: does not grant DDL permissions to the database account.
          * 
          * @return builder
          * 

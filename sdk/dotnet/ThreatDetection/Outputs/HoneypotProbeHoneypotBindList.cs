@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
     public sealed class HoneypotProbeHoneypotBindList
     {
         /// <summary>
-        /// List of listening ports.See the following `Block BindPortList`.
+        /// (ForceNew,Optional) List of listening ports.See the following `Block BindPortList`.
         /// </summary>
         public readonly ImmutableArray<Outputs.HoneypotProbeHoneypotBindListBindPortList> BindPortLists;
         /// <summary>
-        /// Honeypot ID.
+        /// (ForceNew,Optional) Honeypot ID.
         /// </summary>
         public readonly string? HoneypotId;
 

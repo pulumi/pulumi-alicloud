@@ -41,7 +41,7 @@ export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOption
  */
 export interface GetSnapshotsArgs {
     /**
-     * The ID of the cloud desktop to which the snapshot belongs.
+     * The ID of the Desktop.
      */
     desktopId?: string;
     /**
@@ -57,7 +57,7 @@ export interface GetSnapshotsArgs {
      */
     outputFile?: string;
     /**
-     * The ID of the snapshot.
+     * The ID of the Snapshot.
      */
     snapshotId?: string;
 }
@@ -104,7 +104,7 @@ export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.
  */
 export interface GetSnapshotsOutputArgs {
     /**
-     * The ID of the cloud desktop to which the snapshot belongs.
+     * The ID of the Desktop.
      */
     desktopId?: pulumi.Input<string>;
     /**
@@ -120,7 +120,7 @@ export interface GetSnapshotsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of the snapshot.
+     * The ID of the Snapshot.
      */
     snapshotId?: pulumi.Input<string>;
 }

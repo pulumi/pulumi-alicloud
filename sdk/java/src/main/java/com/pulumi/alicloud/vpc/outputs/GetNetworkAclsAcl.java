@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetNetworkAclsAcl {
     /**
-     * @return Description of the entry direction rule.
+     * @return Description of network ACL information.
      * 
      */
     private String description;
@@ -61,7 +61,7 @@ public final class GetNetworkAclsAcl {
 
     private GetNetworkAclsAcl() {}
     /**
-     * @return Description of the entry direction rule.
+     * @return Description of network ACL information.
      * 
      */
     public String description() {

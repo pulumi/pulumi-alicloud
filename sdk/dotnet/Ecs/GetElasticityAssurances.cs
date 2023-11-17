@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.Ecs
         private List<string>? _privatePoolOptionsIds;
 
         /// <summary>
-        /// The ID of the elastic protection service.
+        /// (ForceNew,Optional) The ID of the elastic protection service.
         /// </summary>
         public List<string> PrivatePoolOptionsIds
         {
@@ -120,13 +120,13 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// (ForceNew,Optional) The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+        /// (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.Ecs
         private Dictionary<string, object>? _tags;
 
         /// <summary>
-        /// The tag key-value pair information bound by the elastic guarantee service.
+        /// (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
         /// </summary>
         public Dictionary<string, object> Tags
         {
@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputList<string>? _privatePoolOptionsIds;
 
         /// <summary>
-        /// The ID of the elastic protection service.
+        /// (ForceNew,Optional) The ID of the elastic protection service.
         /// </summary>
         public InputList<string> PrivatePoolOptionsIds
         {
@@ -182,13 +182,13 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The ID of the resource group.
+        /// (ForceNew,Optional) The ID of the resource group.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+        /// (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tag key-value pair information bound by the elastic guarantee service.
+        /// (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
         /// </summary>
         public InputMap<object> Tags
         {

@@ -118,17 +118,17 @@ type Rule struct {
 	RiskLevel pulumi.IntOutput `pulumi:"riskLevel"`
 	// The name of the rule.
 	RuleName pulumi.StringOutput `pulumi:"ruleName"`
-	// Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+	// (Deprecated) Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
 	//
 	// Deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
 	ScopeComplianceResourceTypes pulumi.StringOutput `pulumi:"scopeComplianceResourceTypes"`
-	// Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+	// (Deprecated) Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
 	//
 	// Deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
 	SourceDetailMessageType pulumi.StringOutput `pulumi:"sourceDetailMessageType"`
 	// The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
 	SourceIdentifier pulumi.StringOutput `pulumi:"sourceIdentifier"`
-	// Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+	// (Deprecated) Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
 	//
 	// Deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
 	SourceMaximumExecutionFrequency pulumi.StringOutput `pulumi:"sourceMaximumExecutionFrequency"`
@@ -222,17 +222,17 @@ type ruleState struct {
 	RiskLevel *int `pulumi:"riskLevel"`
 	// The name of the rule.
 	RuleName *string `pulumi:"ruleName"`
-	// Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+	// (Deprecated) Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
 	//
 	// Deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
 	ScopeComplianceResourceTypes *string `pulumi:"scopeComplianceResourceTypes"`
-	// Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+	// (Deprecated) Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
 	//
 	// Deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
 	SourceDetailMessageType *string `pulumi:"sourceDetailMessageType"`
 	// The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
 	SourceIdentifier *string `pulumi:"sourceIdentifier"`
-	// Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+	// (Deprecated) Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
 	//
 	// Deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
 	SourceMaximumExecutionFrequency *string `pulumi:"sourceMaximumExecutionFrequency"`
@@ -285,17 +285,17 @@ type RuleState struct {
 	RiskLevel pulumi.IntPtrInput
 	// The name of the rule.
 	RuleName pulumi.StringPtrInput
-	// Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+	// (Deprecated) Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
 	//
 	// Deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
 	ScopeComplianceResourceTypes pulumi.StringPtrInput
-	// Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+	// (Deprecated) Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
 	//
 	// Deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
 	SourceDetailMessageType pulumi.StringPtrInput
 	// The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
 	SourceIdentifier pulumi.StringPtrInput
-	// Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+	// (Deprecated) Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
 	//
 	// Deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
 	SourceMaximumExecutionFrequency pulumi.StringPtrInput
@@ -336,17 +336,17 @@ type ruleArgs struct {
 	RiskLevel int `pulumi:"riskLevel"`
 	// The name of the rule.
 	RuleName string `pulumi:"ruleName"`
-	// Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+	// (Deprecated) Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
 	//
 	// Deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
 	ScopeComplianceResourceTypes *string `pulumi:"scopeComplianceResourceTypes"`
-	// Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+	// (Deprecated) Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
 	//
 	// Deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
 	SourceDetailMessageType *string `pulumi:"sourceDetailMessageType"`
 	// The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
 	SourceIdentifier string `pulumi:"sourceIdentifier"`
-	// Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+	// (Deprecated) Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
 	//
 	// Deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
 	SourceMaximumExecutionFrequency *string `pulumi:"sourceMaximumExecutionFrequency"`
@@ -384,17 +384,17 @@ type RuleArgs struct {
 	RiskLevel pulumi.IntInput
 	// The name of the rule.
 	RuleName pulumi.StringInput
-	// Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+	// (Deprecated) Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
 	//
 	// Deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
 	ScopeComplianceResourceTypes pulumi.StringPtrInput
-	// Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+	// (Deprecated) Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
 	//
 	// Deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
 	SourceDetailMessageType pulumi.StringPtrInput
 	// The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
 	SourceIdentifier pulumi.StringInput
-	// Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+	// (Deprecated) Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
 	//
 	// Deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
 	SourceMaximumExecutionFrequency pulumi.StringPtrInput
@@ -587,14 +587,14 @@ func (o RuleOutput) RuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.RuleName }).(pulumi.StringOutput)
 }
 
-// Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+// (Deprecated) Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
 //
 // Deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
 func (o RuleOutput) ScopeComplianceResourceTypes() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.ScopeComplianceResourceTypes }).(pulumi.StringOutput)
 }
 
-// Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+// (Deprecated) Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
 //
 // Deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
 func (o RuleOutput) SourceDetailMessageType() pulumi.StringOutput {
@@ -606,7 +606,7 @@ func (o RuleOutput) SourceIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rule) pulumi.StringOutput { return v.SourceIdentifier }).(pulumi.StringOutput)
 }
 
-// Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+// (Deprecated) Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
 //
 // Deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
 func (o RuleOutput) SourceMaximumExecutionFrequency() pulumi.StringOutput {

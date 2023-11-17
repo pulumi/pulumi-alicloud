@@ -30,10 +30,10 @@ class WebLockConfigArgs:
         :param pulumi.Input[str] local_backup_dir: The local backup path is used to protect the safe backup of the Directory.
         :param pulumi.Input[str] mode: Specify the protected directory mode. Value:-**whitelist**: whitelist mode, which protects the added protected directories and file types.-**blacklist**: blacklist mode, which protects all unexcluded subdirectories, file types, and specified files under the added protection directory.
         :param pulumi.Input[str] uuid: Specify the UUID of the server to which you want to add a protection directory.> You can call the DescribeCloudCenterInstances interface to obtain the UUID of the server.
-        :param pulumi.Input[str] exclusive_dir: Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
-        :param pulumi.Input[str] exclusive_file: Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
-        :param pulumi.Input[str] exclusive_file_type: Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
-        :param pulumi.Input[str] inclusive_file_type: Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+        :param pulumi.Input[str] exclusive_dir: (ForceNew,Optional) Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        :param pulumi.Input[str] exclusive_file: (ForceNew,Optional) Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        :param pulumi.Input[str] exclusive_file_type: (ForceNew,Optional) Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        :param pulumi.Input[str] inclusive_file_type: (ForceNew,Optional) Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
         """
         pulumi.set(__self__, "defence_mode", defence_mode)
         pulumi.set(__self__, "dir", dir)
@@ -113,7 +113,7 @@ class WebLockConfigArgs:
     @pulumi.getter(name="exclusiveDir")
     def exclusive_dir(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        (ForceNew,Optional) Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         """
         return pulumi.get(self, "exclusive_dir")
 
@@ -125,7 +125,7 @@ class WebLockConfigArgs:
     @pulumi.getter(name="exclusiveFile")
     def exclusive_file(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        (ForceNew,Optional) Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         """
         return pulumi.get(self, "exclusive_file")
 
@@ -137,7 +137,7 @@ class WebLockConfigArgs:
     @pulumi.getter(name="exclusiveFileType")
     def exclusive_file_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        (ForceNew,Optional) Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         """
         return pulumi.get(self, "exclusive_file_type")
 
@@ -149,7 +149,7 @@ class WebLockConfigArgs:
     @pulumi.getter(name="inclusiveFileType")
     def inclusive_file_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+        (ForceNew,Optional) Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
         """
         return pulumi.get(self, "inclusive_file_type")
 
@@ -174,10 +174,10 @@ class _WebLockConfigState:
         Input properties used for looking up and filtering WebLockConfig resources.
         :param pulumi.Input[str] defence_mode: Protection mode. Value:-**block**: Intercept-**audit**: Alarm
         :param pulumi.Input[str] dir: Specify the protection directory.
-        :param pulumi.Input[str] exclusive_dir: Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
-        :param pulumi.Input[str] exclusive_file: Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
-        :param pulumi.Input[str] exclusive_file_type: Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
-        :param pulumi.Input[str] inclusive_file_type: Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+        :param pulumi.Input[str] exclusive_dir: (ForceNew,Optional) Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        :param pulumi.Input[str] exclusive_file: (ForceNew,Optional) Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        :param pulumi.Input[str] exclusive_file_type: (ForceNew,Optional) Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        :param pulumi.Input[str] inclusive_file_type: (ForceNew,Optional) Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
         :param pulumi.Input[str] local_backup_dir: The local backup path is used to protect the safe backup of the Directory.
         :param pulumi.Input[str] mode: Specify the protected directory mode. Value:-**whitelist**: whitelist mode, which protects the added protected directories and file types.-**blacklist**: blacklist mode, which protects all unexcluded subdirectories, file types, and specified files under the added protection directory.
         :param pulumi.Input[str] uuid: Specify the UUID of the server to which you want to add a protection directory.> You can call the DescribeCloudCenterInstances interface to obtain the UUID of the server.
@@ -229,7 +229,7 @@ class _WebLockConfigState:
     @pulumi.getter(name="exclusiveDir")
     def exclusive_dir(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        (ForceNew,Optional) Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         """
         return pulumi.get(self, "exclusive_dir")
 
@@ -241,7 +241,7 @@ class _WebLockConfigState:
     @pulumi.getter(name="exclusiveFile")
     def exclusive_file(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        (ForceNew,Optional) Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         """
         return pulumi.get(self, "exclusive_file")
 
@@ -253,7 +253,7 @@ class _WebLockConfigState:
     @pulumi.getter(name="exclusiveFileType")
     def exclusive_file_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        (ForceNew,Optional) Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         """
         return pulumi.get(self, "exclusive_file_type")
 
@@ -265,7 +265,7 @@ class _WebLockConfigState:
     @pulumi.getter(name="inclusiveFileType")
     def inclusive_file_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+        (ForceNew,Optional) Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
         """
         return pulumi.get(self, "inclusive_file_type")
 
@@ -362,10 +362,10 @@ class WebLockConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] defence_mode: Protection mode. Value:-**block**: Intercept-**audit**: Alarm
         :param pulumi.Input[str] dir: Specify the protection directory.
-        :param pulumi.Input[str] exclusive_dir: Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
-        :param pulumi.Input[str] exclusive_file: Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
-        :param pulumi.Input[str] exclusive_file_type: Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
-        :param pulumi.Input[str] inclusive_file_type: Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+        :param pulumi.Input[str] exclusive_dir: (ForceNew,Optional) Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        :param pulumi.Input[str] exclusive_file: (ForceNew,Optional) Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        :param pulumi.Input[str] exclusive_file_type: (ForceNew,Optional) Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        :param pulumi.Input[str] inclusive_file_type: (ForceNew,Optional) Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
         :param pulumi.Input[str] local_backup_dir: The local backup path is used to protect the safe backup of the Directory.
         :param pulumi.Input[str] mode: Specify the protected directory mode. Value:-**whitelist**: whitelist mode, which protects the added protected directories and file types.-**blacklist**: blacklist mode, which protects all unexcluded subdirectories, file types, and specified files under the added protection directory.
         :param pulumi.Input[str] uuid: Specify the UUID of the server to which you want to add a protection directory.> You can call the DescribeCloudCenterInstances interface to obtain the UUID of the server.
@@ -489,10 +489,10 @@ class WebLockConfig(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] defence_mode: Protection mode. Value:-**block**: Intercept-**audit**: Alarm
         :param pulumi.Input[str] dir: Specify the protection directory.
-        :param pulumi.Input[str] exclusive_dir: Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
-        :param pulumi.Input[str] exclusive_file: Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
-        :param pulumi.Input[str] exclusive_file_type: Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
-        :param pulumi.Input[str] inclusive_file_type: Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+        :param pulumi.Input[str] exclusive_dir: (ForceNew,Optional) Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        :param pulumi.Input[str] exclusive_file: (ForceNew,Optional) Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        :param pulumi.Input[str] exclusive_file_type: (ForceNew,Optional) Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        :param pulumi.Input[str] inclusive_file_type: (ForceNew,Optional) Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
         :param pulumi.Input[str] local_backup_dir: The local backup path is used to protect the safe backup of the Directory.
         :param pulumi.Input[str] mode: Specify the protected directory mode. Value:-**whitelist**: whitelist mode, which protects the added protected directories and file types.-**blacklist**: blacklist mode, which protects all unexcluded subdirectories, file types, and specified files under the added protection directory.
         :param pulumi.Input[str] uuid: Specify the UUID of the server to which you want to add a protection directory.> You can call the DescribeCloudCenterInstances interface to obtain the UUID of the server.
@@ -532,7 +532,7 @@ class WebLockConfig(pulumi.CustomResource):
     @pulumi.getter(name="exclusiveDir")
     def exclusive_dir(self) -> pulumi.Output[Optional[str]]:
         """
-        Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        (ForceNew,Optional) Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         """
         return pulumi.get(self, "exclusive_dir")
 
@@ -540,7 +540,7 @@ class WebLockConfig(pulumi.CustomResource):
     @pulumi.getter(name="exclusiveFile")
     def exclusive_file(self) -> pulumi.Output[Optional[str]]:
         """
-        Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        (ForceNew,Optional) Specify files that do not need to enable tamper protection for web pages (that is, exclude files).> The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         """
         return pulumi.get(self, "exclusive_file")
 
@@ -548,7 +548,7 @@ class WebLockConfig(pulumi.CustomResource):
     @pulumi.getter(name="exclusiveFileType")
     def exclusive_file_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        (ForceNew,Optional) Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png > The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         """
         return pulumi.get(self, "exclusive_file_type")
 
@@ -556,7 +556,7 @@ class WebLockConfig(pulumi.CustomResource):
     @pulumi.getter(name="inclusiveFileType")
     def inclusive_file_type(self) -> pulumi.Output[Optional[str]]:
         """
-        Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+        (ForceNew,Optional) Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png> The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
         """
         return pulumi.get(self, "inclusive_file_type")
 

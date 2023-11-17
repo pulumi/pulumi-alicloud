@@ -99,7 +99,7 @@ export class AuditLogConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Indicates Whether to Enable the Audit Log.  Valid value: 
+     * Indicates Whether to Enable the Audit Log.  Valid value:
      * * true: Default Value, Open.
      * * false: Closed.
      *
@@ -111,7 +111,7 @@ export class AuditLogConfig extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * Audit Log Retention Period Value: 1~365. 
+     * Audit Log Retention Period Value: 1~365.
      *
      * > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
      */
@@ -164,7 +164,7 @@ export interface AuditLogConfigState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Indicates Whether to Enable the Audit Log.  Valid value: 
+     * Indicates Whether to Enable the Audit Log.  Valid value:
      * * true: Default Value, Open.
      * * false: Closed.
      *
@@ -176,7 +176,7 @@ export interface AuditLogConfigState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * Audit Log Retention Period Value: 1~365. 
+     * Audit Log Retention Period Value: 1~365.
      *
      * > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
      */
@@ -192,7 +192,7 @@ export interface AuditLogConfigState {
  */
 export interface AuditLogConfigArgs {
     /**
-     * Indicates Whether to Enable the Audit Log.  Valid value: 
+     * Indicates Whether to Enable the Audit Log.  Valid value:
      * * true: Default Value, Open.
      * * false: Closed.
      *
@@ -204,7 +204,7 @@ export interface AuditLogConfigArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * Audit Log Retention Period Value: 1~365. 
+     * Audit Log Retention Period Value: 1~365.
      *
      * > **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
      */

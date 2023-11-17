@@ -124,7 +124,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+     * (Deprecated from v1.205.0+) Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
@@ -135,7 +135,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> havipName;
 
     /**
-     * @return Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+     * @return (Deprecated from v1.205.0+) Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
@@ -461,7 +461,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param havipName Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+         * @param havipName (Deprecated from v1.205.0+) Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
          * 
          * @return builder
          * 
@@ -476,7 +476,7 @@ public final class HaVipv2State extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param havipName Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+         * @param havipName (Deprecated from v1.205.0+) Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
          * 
          * @return builder
          * 

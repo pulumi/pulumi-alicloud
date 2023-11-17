@@ -187,7 +187,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         /// * UPGRADE: The specifications are upgraded.
         /// * DOWNGRADE: The specifications are downgraded.
-        /// **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        ///   **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         /// </summary>
         [Output("orderType")]
         public Output<string?> OrderType { get; private set; } = null!;
@@ -483,7 +483,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         /// * UPGRADE: The specifications are upgraded.
         /// * DOWNGRADE: The specifications are downgraded.
-        /// **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        ///   **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }
@@ -731,7 +731,7 @@ namespace Pulumi.AliCloud.MongoDB
         /// The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         /// * UPGRADE: The specifications are upgraded.
         /// * DOWNGRADE: The specifications are downgraded.
-        /// **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        ///   **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         /// </summary>
         [Input("orderType")]
         public Input<string>? OrderType { get; set; }

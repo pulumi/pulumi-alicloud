@@ -74,7 +74,7 @@ export interface GetIpv6GatewaysArgs {
      */
     outputFile?: string;
     /**
-     * The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+     * The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
      */
     status?: string;
     /**
@@ -158,7 +158,7 @@ export interface GetIpv6GatewaysOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+     * The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
      */
     status?: pulumi.Input<string>;
     /**

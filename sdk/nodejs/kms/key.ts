@@ -81,7 +81,7 @@ export class Key extends pulumi.CustomResource {
      */
     public /*out*/ readonly deleteDate!: pulumi.Output<string>;
     /**
-     * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
+     * (Deprecated since v1.85.0) Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      *
      * @deprecated Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
      */
@@ -95,7 +95,7 @@ export class Key extends pulumi.CustomResource {
      */
     public readonly dkmsInstanceId!: pulumi.Output<string | undefined>;
     /**
-     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+     * (Deprecated since v1.85.0) Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      *
      * @deprecated Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
      */
@@ -107,15 +107,13 @@ export class Key extends pulumi.CustomResource {
      */
     public readonly keySpec!: pulumi.Output<string>;
     /**
-     * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+     * (Deprecated since v1.123.1) Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      *
      * @deprecated Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.
      */
     public readonly keyState!: pulumi.Output<string>;
     /**
      * The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-     * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-     * - `SIGN/VERIFY`: generates or verifies a digital signature.
      */
     public readonly keyUsage!: pulumi.Output<string>;
     /**
@@ -136,7 +134,7 @@ export class Key extends pulumi.CustomResource {
     public readonly origin!: pulumi.Output<string>;
     /**
      * The number of days before the CMK is deleted. 
-     * During this period, the CMK is in the PendingDeletion state.
+     * During this period, the CMK is in the PendingDeletion state. 
      * After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
      * **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
      */
@@ -151,9 +149,9 @@ export class Key extends pulumi.CustomResource {
     public readonly protectionLevel!: pulumi.Output<string | undefined>;
     /**
      * The interval for automatic key rotation. Specify the value in the integer[unit] format.
-     * The following units are supported: d (day), h (hour), m (minute), and s (second).
-     * For example, you can use either 7d or 604800s to specify a seven-day interval.
-     * The interval can range from 7 days to 730 days.
+     * The following units are supported: d (day), h (hour), m (minute), and s (second). 
+     * For example, you can use either 7d or 604800s to specify a seven-day interval. 
+     * The interval can range from 7 days to 730 days. 
      * **NOTE**: It is Required when `automaticRotation = "Enabled"`
      *
      * > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
@@ -258,7 +256,7 @@ export interface KeyState {
      */
     deleteDate?: pulumi.Input<string>;
     /**
-     * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
+     * (Deprecated since v1.85.0) Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      *
      * @deprecated Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
      */
@@ -272,7 +270,7 @@ export interface KeyState {
      */
     dkmsInstanceId?: pulumi.Input<string>;
     /**
-     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+     * (Deprecated since v1.85.0) Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      *
      * @deprecated Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
      */
@@ -284,15 +282,13 @@ export interface KeyState {
      */
     keySpec?: pulumi.Input<string>;
     /**
-     * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+     * (Deprecated since v1.123.1) Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      *
      * @deprecated Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.
      */
     keyState?: pulumi.Input<string>;
     /**
      * The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-     * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-     * - `SIGN/VERIFY`: generates or verifies a digital signature.
      */
     keyUsage?: pulumi.Input<string>;
     /**
@@ -313,7 +309,7 @@ export interface KeyState {
     origin?: pulumi.Input<string>;
     /**
      * The number of days before the CMK is deleted. 
-     * During this period, the CMK is in the PendingDeletion state.
+     * During this period, the CMK is in the PendingDeletion state. 
      * After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
      * **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
      */
@@ -328,9 +324,9 @@ export interface KeyState {
     protectionLevel?: pulumi.Input<string>;
     /**
      * The interval for automatic key rotation. Specify the value in the integer[unit] format.
-     * The following units are supported: d (day), h (hour), m (minute), and s (second).
-     * For example, you can use either 7d or 604800s to specify a seven-day interval.
-     * The interval can range from 7 days to 730 days.
+     * The following units are supported: d (day), h (hour), m (minute), and s (second). 
+     * For example, you can use either 7d or 604800s to specify a seven-day interval. 
+     * The interval can range from 7 days to 730 days. 
      * **NOTE**: It is Required when `automaticRotation = "Enabled"`
      *
      * > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
@@ -355,7 +351,7 @@ export interface KeyArgs {
      */
     automaticRotation?: pulumi.Input<string>;
     /**
-     * Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
+     * (Deprecated since v1.85.0) Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
      *
      * @deprecated Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
      */
@@ -369,7 +365,7 @@ export interface KeyArgs {
      */
     dkmsInstanceId?: pulumi.Input<string>;
     /**
-     * Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+     * (Deprecated since v1.85.0) Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      *
      * @deprecated Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
      */
@@ -381,15 +377,13 @@ export interface KeyArgs {
      */
     keySpec?: pulumi.Input<string>;
     /**
-     * Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+     * (Deprecated since v1.123.1) Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
      *
      * @deprecated Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.
      */
     keyState?: pulumi.Input<string>;
     /**
      * The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-     * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-     * - `SIGN/VERIFY`: generates or verifies a digital signature.
      */
     keyUsage?: pulumi.Input<string>;
     /**
@@ -398,7 +392,7 @@ export interface KeyArgs {
     origin?: pulumi.Input<string>;
     /**
      * The number of days before the CMK is deleted. 
-     * During this period, the CMK is in the PendingDeletion state.
+     * During this period, the CMK is in the PendingDeletion state. 
      * After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
      * **NOTE:** From version 1.184.0, `pendingWindowInDays` can be set to `366`.
      */
@@ -409,9 +403,9 @@ export interface KeyArgs {
     protectionLevel?: pulumi.Input<string>;
     /**
      * The interval for automatic key rotation. Specify the value in the integer[unit] format.
-     * The following units are supported: d (day), h (hour), m (minute), and s (second).
-     * For example, you can use either 7d or 604800s to specify a seven-day interval.
-     * The interval can range from 7 days to 730 days.
+     * The following units are supported: d (day), h (hour), m (minute), and s (second). 
+     * For example, you can use either 7d or 604800s to specify a seven-day interval. 
+     * The interval can range from 7 days to 730 days. 
      * **NOTE**: It is Required when `automaticRotation = "Enabled"`
      *
      * > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.

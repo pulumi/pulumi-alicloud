@@ -59,7 +59,7 @@ func GetEndpointAclService(ctx *pulumi.Context, args *GetEndpointAclServiceArgs,
 
 // A collection of arguments for invoking getEndpointAclService.
 type GetEndpointAclServiceArgs struct {
-	// Whether to enable Acl Service.  Valid values: `true` and `false`.
+	// Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
 	Enable bool `pulumi:"enable"`
 	// The type of endpoint. Valid values: `internet`.
 	EndpointType string `pulumi:"endpointType"`
@@ -99,7 +99,7 @@ func GetEndpointAclServiceOutput(ctx *pulumi.Context, args GetEndpointAclService
 
 // A collection of arguments for invoking getEndpointAclService.
 type GetEndpointAclServiceOutputArgs struct {
-	// Whether to enable Acl Service.  Valid values: `true` and `false`.
+	// Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
 	Enable pulumi.BoolInput `pulumi:"enable"`
 	// The type of endpoint. Valid values: `internet`.
 	EndpointType pulumi.StringInput `pulumi:"endpointType"`

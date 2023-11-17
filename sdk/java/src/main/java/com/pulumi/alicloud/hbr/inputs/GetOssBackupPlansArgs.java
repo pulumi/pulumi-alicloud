@@ -77,14 +77,14 @@ public final class GetOssBackupPlansArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The ID of backup vault.
+     * The ID of backup vault the OssBackupPlan used.
      * 
      */
     @Import(name="vaultId")
     private @Nullable Output<String> vaultId;
 
     /**
-     * @return The ID of backup vault.
+     * @return The ID of backup vault the OssBackupPlan used.
      * 
      */
     public Optional<Output<String>> vaultId() {
@@ -214,7 +214,7 @@ public final class GetOssBackupPlansArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param vaultId The ID of backup vault.
+         * @param vaultId The ID of backup vault the OssBackupPlan used.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class GetOssBackupPlansArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param vaultId The ID of backup vault.
+         * @param vaultId The ID of backup vault the OssBackupPlan used.
          * 
          * @return builder
          * 

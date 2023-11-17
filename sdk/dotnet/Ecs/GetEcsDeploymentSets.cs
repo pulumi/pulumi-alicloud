@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The deployment strategy.
+        /// The deployment strategy. Valid values: `Availability`.
         /// </summary>
         [Input("strategy")]
         public string? Strategy { get; set; }
@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The deployment strategy.
+        /// The deployment strategy. Valid values: `Availability`.
         /// </summary>
         [Input("strategy")]
         public Input<string>? Strategy { get; set; }

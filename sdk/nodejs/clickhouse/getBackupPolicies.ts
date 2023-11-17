@@ -39,7 +39,7 @@ export function getBackupPolicies(args: GetBackupPoliciesArgs, opts?: pulumi.Inv
  */
 export interface GetBackupPoliciesArgs {
     /**
-     * The db cluster id.
+     * (Request, ForceNew) The db cluster id.
      */
     dbClusterId: string;
     /**
@@ -88,7 +88,7 @@ export function getBackupPoliciesOutput(args: GetBackupPoliciesOutputArgs, opts?
  */
 export interface GetBackupPoliciesOutputArgs {
     /**
-     * The db cluster id.
+     * (Request, ForceNew) The db cluster id.
      */
     dbClusterId: pulumi.Input<string>;
     /**

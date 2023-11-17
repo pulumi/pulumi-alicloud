@@ -117,7 +117,7 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly diskDeviceMappings!: pulumi.Output<outputs.ecs.ImageDiskDeviceMapping[]>;
     /**
-     * Indicates whether to force delete the custom image, Default is `false`. 
+     * Indicates whether to force delete the custom image, Default is `false`.
      * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
      * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
      */
@@ -137,7 +137,7 @@ export class Image extends pulumi.CustomResource {
     /**
      * The distribution of the operating system for the system disk in the custom image. 
      * If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
-     * to specify the distribution of the operating system for the system disk. Default value: Others Linux.
+     * to specify the distribution of the operating system for the system disk. Default value: Others Linux. 
      * More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
      * **NOTE**: It's default value is Ubuntu before version 1.197.0.
      */
@@ -147,7 +147,7 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     /**
-     * Specifies a snapshot that is used to create a combined custom image.
+     * Specifies a snapshot that is used to create a custom image.
      */
     public readonly snapshotId!: pulumi.Output<string | undefined>;
     /**
@@ -218,7 +218,7 @@ export interface ImageState {
      */
     diskDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.ImageDiskDeviceMapping>[]>;
     /**
-     * Indicates whether to force delete the custom image, Default is `false`. 
+     * Indicates whether to force delete the custom image, Default is `false`.
      * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
      * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
      */
@@ -238,7 +238,7 @@ export interface ImageState {
     /**
      * The distribution of the operating system for the system disk in the custom image. 
      * If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
-     * to specify the distribution of the operating system for the system disk. Default value: Others Linux.
+     * to specify the distribution of the operating system for the system disk. Default value: Others Linux. 
      * More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
      * **NOTE**: It's default value is Ubuntu before version 1.197.0.
      */
@@ -248,7 +248,7 @@ export interface ImageState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Specifies a snapshot that is used to create a combined custom image.
+     * Specifies a snapshot that is used to create a custom image.
      */
     snapshotId?: pulumi.Input<string>;
     /**
@@ -275,7 +275,7 @@ export interface ImageArgs {
      */
     diskDeviceMappings?: pulumi.Input<pulumi.Input<inputs.ecs.ImageDiskDeviceMapping>[]>;
     /**
-     * Indicates whether to force delete the custom image, Default is `false`. 
+     * Indicates whether to force delete the custom image, Default is `false`.
      * - true：Force deletes the custom image, regardless of whether the image is currently being used by other instances.
      * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
      */
@@ -295,7 +295,7 @@ export interface ImageArgs {
     /**
      * The distribution of the operating system for the system disk in the custom image. 
      * If you specify a data disk snapshot to create the system disk of the custom image, you must use the Platform parameter
-     * to specify the distribution of the operating system for the system disk. Default value: Others Linux.
+     * to specify the distribution of the operating system for the system disk. Default value: Others Linux. 
      * More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
      * **NOTE**: It's default value is Ubuntu before version 1.197.0.
      */
@@ -305,7 +305,7 @@ export interface ImageArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Specifies a snapshot that is used to create a combined custom image.
+     * Specifies a snapshot that is used to create a custom image.
      */
     snapshotId?: pulumi.Input<string>;
     /**

@@ -66,9 +66,9 @@ type EnterpriseProxyAccess struct {
 	// Secure access agent authorization password.
 	AccessSecret pulumi.StringOutput `pulumi:"accessSecret"`
 	CreateTime   pulumi.StringOutput `pulumi:"createTime"`
-	// Database account.
+	// (ForceNew,Optional) Database account.
 	IndepAccount pulumi.StringPtrOutput `pulumi:"indepAccount"`
-	// Database password.
+	// (ForceNew,Optional) Database password.
 	IndepPassword pulumi.StringPtrOutput `pulumi:"indepPassword"`
 	// The ID of the instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -137,9 +137,9 @@ type enterpriseProxyAccessState struct {
 	// Secure access agent authorization password.
 	AccessSecret *string `pulumi:"accessSecret"`
 	CreateTime   *string `pulumi:"createTime"`
-	// Database account.
+	// (ForceNew,Optional) Database account.
 	IndepAccount *string `pulumi:"indepAccount"`
-	// Database password.
+	// (ForceNew,Optional) Database password.
 	IndepPassword *string `pulumi:"indepPassword"`
 	// The ID of the instance.
 	InstanceId *string `pulumi:"instanceId"`
@@ -165,9 +165,9 @@ type EnterpriseProxyAccessState struct {
 	// Secure access agent authorization password.
 	AccessSecret pulumi.StringPtrInput
 	CreateTime   pulumi.StringPtrInput
-	// Database account.
+	// (ForceNew,Optional) Database account.
 	IndepAccount pulumi.StringPtrInput
-	// Database password.
+	// (ForceNew,Optional) Database password.
 	IndepPassword pulumi.StringPtrInput
 	// The ID of the instance.
 	InstanceId pulumi.StringPtrInput
@@ -192,9 +192,9 @@ func (EnterpriseProxyAccessState) ElementType() reflect.Type {
 }
 
 type enterpriseProxyAccessArgs struct {
-	// Database account.
+	// (ForceNew,Optional) Database account.
 	IndepAccount *string `pulumi:"indepAccount"`
-	// Database password.
+	// (ForceNew,Optional) Database password.
 	IndepPassword *string `pulumi:"indepPassword"`
 	// Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
 	ProxyAccessId *string `pulumi:"proxyAccessId"`
@@ -206,9 +206,9 @@ type enterpriseProxyAccessArgs struct {
 
 // The set of arguments for constructing a EnterpriseProxyAccess resource.
 type EnterpriseProxyAccessArgs struct {
-	// Database account.
+	// (ForceNew,Optional) Database account.
 	IndepAccount pulumi.StringPtrInput
-	// Database password.
+	// (ForceNew,Optional) Database password.
 	IndepPassword pulumi.StringPtrInput
 	// Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
 	ProxyAccessId pulumi.StringPtrInput
@@ -319,12 +319,12 @@ func (o EnterpriseProxyAccessOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *EnterpriseProxyAccess) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Database account.
+// (ForceNew,Optional) Database account.
 func (o EnterpriseProxyAccessOutput) IndepAccount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnterpriseProxyAccess) pulumi.StringPtrOutput { return v.IndepAccount }).(pulumi.StringPtrOutput)
 }
 
-// Database password.
+// (ForceNew,Optional) Database password.
 func (o EnterpriseProxyAccessOutput) IndepPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EnterpriseProxyAccess) pulumi.StringPtrOutput { return v.IndepPassword }).(pulumi.StringPtrOutput)
 }

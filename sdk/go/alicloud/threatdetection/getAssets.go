@@ -51,20 +51,20 @@ func GetAssets(ctx *pulumi.Context, args *GetAssetsArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getAssets.
 type GetAssetsArgs struct {
-	// Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
+	// (ForceNew, Optional) Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
 	Criteria *string `pulumi:"criteria"`
 	// A list of Asset IDs.
 	Ids []string `pulumi:"ids"`
-	// Set asset importance. Value:
+	// (ForceNew, Optional) Set asset importance. Value:
 	// - **2**: Significant assets
 	// - **1**: General assets
 	// - **0**: Test asset
 	Importance *int `pulumi:"importance"`
-	// Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
+	// (ForceNew, Optional) Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
 	// - **OR**: indicates that the relationship between multiple search conditions is **OR**.
 	// - **AND**: indicates that the relationship between multiple search conditions is **AND**.
 	LogicalExp *string `pulumi:"logicalExp"`
-	// The type of asset to query. Value:
+	// (ForceNew, Optional) The type of asset to query. Value:
 	// - **ecs**: server.
 	// - **cloud_product**: Cloud product.
 	MachineTypes *string `pulumi:"machineTypes"`
@@ -109,20 +109,20 @@ func GetAssetsOutput(ctx *pulumi.Context, args GetAssetsOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getAssets.
 type GetAssetsOutputArgs struct {
-	// Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
+	// (ForceNew, Optional) Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
 	Criteria pulumi.StringPtrInput `pulumi:"criteria"`
 	// A list of Asset IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// Set asset importance. Value:
+	// (ForceNew, Optional) Set asset importance. Value:
 	// - **2**: Significant assets
 	// - **1**: General assets
 	// - **0**: Test asset
 	Importance pulumi.IntPtrInput `pulumi:"importance"`
-	// Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
+	// (ForceNew, Optional) Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
 	// - **OR**: indicates that the relationship between multiple search conditions is **OR**.
 	// - **AND**: indicates that the relationship between multiple search conditions is **AND**.
 	LogicalExp pulumi.StringPtrInput `pulumi:"logicalExp"`
-	// The type of asset to query. Value:
+	// (ForceNew, Optional) The type of asset to query. Value:
 	// - **ecs**: server.
 	// - **cloud_product**: Cloud product.
 	MachineTypes pulumi.StringPtrInput `pulumi:"machineTypes"`

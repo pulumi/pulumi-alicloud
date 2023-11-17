@@ -1159,6 +1159,7 @@ type GetInstancesInstance struct {
 	// The instance's security group configuration.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// A map of tags assigned to the bastionhost instance. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -1214,6 +1215,7 @@ type GetInstancesInstanceArgs struct {
 	// The instance's security group configuration.
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
 	// A map of tags assigned to the bastionhost instance. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -1332,6 +1334,7 @@ func (o GetInstancesInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput 
 }
 
 // A map of tags assigned to the bastionhost instance. It must be in the format:
+//
 // ```go
 // package main
 //

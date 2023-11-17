@@ -17,14 +17,14 @@ public final class GetIpaDomainsPlainArgs extends com.pulumi.resources.InvokeArg
     public static final GetIpaDomainsPlainArgs Empty = new GetIpaDomainsPlainArgs();
 
     /**
-     * The accelerated domain names.
+     * The name of the Domain.
      * 
      */
     @Import(name="domainName")
     private @Nullable String domainName;
 
     /**
-     * @return The accelerated domain names.
+     * @return The name of the Domain.
      * 
      */
     public Optional<String> domainName() {
@@ -120,7 +120,7 @@ public final class GetIpaDomainsPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param domainName The accelerated domain names.
+         * @param domainName The name of the Domain.
          * 
          * @return builder
          * 

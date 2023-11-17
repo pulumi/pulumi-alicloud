@@ -427,6 +427,7 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
     :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
     :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
     :param Mapping[str, Any] tags: A map of tags assigned to the disks. It must be in the format:
+           
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -565,6 +566,7 @@ def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Seque
     :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
     :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
     :param Mapping[str, Any] tags: A map of tags assigned to the disks. It must be in the format:
+           
            ```python
            import pulumi
            import pulumi_alicloud as alicloud

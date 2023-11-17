@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         public readonly ImmutableArray<Outputs.GetVpcFirewallCensCenLocalVpcEniListResult> EniLists;
         public readonly string ManualVswitchId;
         /// <summary>
-        /// The ID of the VPC instance that created the VPC firewall.
+        /// (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
         /// </summary>
         public readonly string NetworkInstanceId;
         /// <summary>

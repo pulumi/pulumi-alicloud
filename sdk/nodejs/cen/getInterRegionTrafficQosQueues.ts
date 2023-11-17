@@ -53,7 +53,7 @@ export interface GetInterRegionTrafficQosQueuesArgs {
      */
     outputFile?: string;
     /**
-     * The ID of the traffic scheduling policy.
+     * (ForceNew,Required) The ID of the traffic scheduling policy.
      */
     trafficQosPolicyId: string;
 }
@@ -125,7 +125,7 @@ export interface GetInterRegionTrafficQosQueuesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of the traffic scheduling policy.
+     * (ForceNew,Required) The ID of the traffic scheduling policy.
      */
     trafficQosPolicyId: pulumi.Input<string>;
 }

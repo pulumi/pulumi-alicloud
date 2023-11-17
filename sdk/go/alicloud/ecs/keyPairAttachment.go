@@ -20,7 +20,7 @@ import (
 type KeyPairAttachment struct {
 	pulumi.CustomResourceState
 
-	// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+	// (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// The list of ECS instance's IDs.
 	InstanceIds pulumi.StringArrayOutput `pulumi:"instanceIds"`
@@ -64,7 +64,7 @@ func GetKeyPairAttachment(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KeyPairAttachment resources.
 type keyPairAttachmentState struct {
-	// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+	// (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
 	Force *bool `pulumi:"force"`
 	// The list of ECS instance's IDs.
 	InstanceIds []string `pulumi:"instanceIds"`
@@ -76,7 +76,7 @@ type keyPairAttachmentState struct {
 }
 
 type KeyPairAttachmentState struct {
-	// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+	// (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
 	Force pulumi.BoolPtrInput
 	// The list of ECS instance's IDs.
 	InstanceIds pulumi.StringArrayInput
@@ -92,7 +92,7 @@ func (KeyPairAttachmentState) ElementType() reflect.Type {
 }
 
 type keyPairAttachmentArgs struct {
-	// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+	// (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
 	Force *bool `pulumi:"force"`
 	// The list of ECS instance's IDs.
 	InstanceIds []string `pulumi:"instanceIds"`
@@ -105,7 +105,7 @@ type keyPairAttachmentArgs struct {
 
 // The set of arguments for constructing a KeyPairAttachment resource.
 type KeyPairAttachmentArgs struct {
-	// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+	// (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
 	Force pulumi.BoolPtrInput
 	// The list of ECS instance's IDs.
 	InstanceIds pulumi.StringArrayInput
@@ -203,7 +203,7 @@ func (o KeyPairAttachmentOutput) ToKeyPairAttachmentOutputWithContext(ctx contex
 	return o
 }
 
-// Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+// (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
 func (o KeyPairAttachmentOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *KeyPairAttachment) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }

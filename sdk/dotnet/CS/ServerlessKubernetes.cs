@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> NewNatGateway { get; private set; } = null!;
 
         /// <summary>
-        /// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+        /// (Deprecated from version 1.123.1) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         /// </summary>
         [Output("privateZone")]
         public Output<bool?> PrivateZone { get; private set; } = null!;
@@ -287,7 +287,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        /// (Deprecated from version 1.91.0) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         /// </summary>
         [Output("vswitchId")]
         public Output<string> VswitchId { get; private set; } = null!;
@@ -456,7 +456,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? NewNatGateway { get; set; }
 
         /// <summary>
-        /// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+        /// (Deprecated from version 1.123.1) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         /// </summary>
         [Input("privateZone")]
         public Input<bool>? PrivateZone { get; set; }
@@ -542,7 +542,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string> VpcId { get; set; } = null!;
 
         /// <summary>
-        /// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        /// (Deprecated from version 1.91.0) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -679,7 +679,7 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? NewNatGateway { get; set; }
 
         /// <summary>
-        /// Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+        /// (Deprecated from version 1.123.1) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
         /// </summary>
         [Input("privateZone")]
         public Input<bool>? PrivateZone { get; set; }
@@ -765,7 +765,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+        /// (Deprecated from version 1.91.0) The vswitch where new kubernetes cluster will be located. Specify one vswitch's id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

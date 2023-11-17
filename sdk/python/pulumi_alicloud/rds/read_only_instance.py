@@ -116,7 +116,7 @@ class ReadOnlyInstanceArgs:
                - perfer
                - verify-ca
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
-               > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+                 > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
         :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -134,9 +134,9 @@ class ReadOnlyInstanceArgs:
         :param pulumi.Input[str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
                - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
                - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-               - rds: The instance runs RDS Basic or High-availability Edition.
-               - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-               - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+                 - rds: The instance runs RDS Basic or High-availability Edition.
+                 - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+                 - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
                
                > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -152,7 +152,7 @@ class ReadOnlyInstanceArgs:
                - Classic: classic network in enhanced whitelist mode
                - VPC: virtual private cloud (VPC) in enhanced whitelist mode
                - MIX: standard whitelist mode
-               > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
+                 > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
         """
         pulumi.set(__self__, "engine_version", engine_version)
@@ -557,7 +557,7 @@ class ReadOnlyInstanceArgs:
         - perfer
         - verify-ca
         - verify-full (supported only when the instance runs PostgreSQL 12 or later)
-        > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+          > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         """
         return pulumi.get(self, "replication_acl")
 
@@ -674,9 +674,9 @@ class ReadOnlyInstanceArgs:
         The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
         - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
         - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-        - rds: The instance runs RDS Basic or High-availability Edition.
-        - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-        - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+          - rds: The instance runs RDS Basic or High-availability Edition.
+          - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+          - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 
         > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -736,7 +736,7 @@ class ReadOnlyInstanceArgs:
         - Classic: classic network in enhanced whitelist mode
         - VPC: virtual private cloud (VPC) in enhanced whitelist mode
         - MIX: standard whitelist mode
-        > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
+          > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         """
         return pulumi.get(self, "whitelist_network_type")
 
@@ -866,7 +866,7 @@ class _ReadOnlyInstanceState:
                - perfer
                - verify-ca
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
-               > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+                 > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
         :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -884,9 +884,9 @@ class _ReadOnlyInstanceState:
         :param pulumi.Input[str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
                - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
                - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-               - rds: The instance runs RDS Basic or High-availability Edition.
-               - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-               - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+                 - rds: The instance runs RDS Basic or High-availability Edition.
+                 - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+                 - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
                
                > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -902,7 +902,7 @@ class _ReadOnlyInstanceState:
                - Classic: classic network in enhanced whitelist mode
                - VPC: virtual private cloud (VPC) in enhanced whitelist mode
                - MIX: standard whitelist mode
-               > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
+                 > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
         """
         if acl is not None:
@@ -1353,7 +1353,7 @@ class _ReadOnlyInstanceState:
         - perfer
         - verify-ca
         - verify-full (supported only when the instance runs PostgreSQL 12 or later)
-        > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+          > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         """
         return pulumi.get(self, "replication_acl")
 
@@ -1470,9 +1470,9 @@ class _ReadOnlyInstanceState:
         The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
         - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
         - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-        - rds: The instance runs RDS Basic or High-availability Edition.
-        - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-        - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+          - rds: The instance runs RDS Basic or High-availability Edition.
+          - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+          - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 
         > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -1532,7 +1532,7 @@ class _ReadOnlyInstanceState:
         - Classic: classic network in enhanced whitelist mode
         - VPC: virtual private cloud (VPC) in enhanced whitelist mode
         - MIX: standard whitelist mode
-        > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
+          > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         """
         return pulumi.get(self, "whitelist_network_type")
 
@@ -1715,7 +1715,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - perfer
                - verify-ca
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
-               > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+                 > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
         :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -1733,9 +1733,9 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
                - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
                - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-               - rds: The instance runs RDS Basic or High-availability Edition.
-               - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-               - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+                 - rds: The instance runs RDS Basic or High-availability Edition.
+                 - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+                 - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
                
                > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -1751,7 +1751,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - Classic: classic network in enhanced whitelist mode
                - VPC: virtual private cloud (VPC) in enhanced whitelist mode
                - MIX: standard whitelist mode
-               > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
+                 > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
         """
         ...
@@ -2050,7 +2050,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - perfer
                - verify-ca
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
-               > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+                 > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB read-only instance belongs.
         :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -2068,9 +2068,9 @@ class ReadOnlyInstance(pulumi.CustomResource):
         :param pulumi.Input[str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
                - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
                - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-               - rds: The instance runs RDS Basic or High-availability Edition.
-               - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-               - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+                 - rds: The instance runs RDS Basic or High-availability Edition.
+                 - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+                 - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
                
                > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -2086,7 +2086,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
                - Classic: classic network in enhanced whitelist mode
                - VPC: virtual private cloud (VPC) in enhanced whitelist mode
                - MIX: standard whitelist mode
-               > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
+                 > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         :param pulumi.Input[str] zone_id: The Zone to launch the DB instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -2392,7 +2392,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         - perfer
         - verify-ca
         - verify-full (supported only when the instance runs PostgreSQL 12 or later)
-        > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
+          > **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
         """
         return pulumi.get(self, "replication_acl")
 
@@ -2473,9 +2473,9 @@ class ReadOnlyInstance(pulumi.CustomResource):
         The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
         - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
         - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-        - rds: The instance runs RDS Basic or High-availability Edition.
-        - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-        - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+          - rds: The instance runs RDS Basic or High-availability Edition.
+          - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+          - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 
         > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -2519,7 +2519,7 @@ class ReadOnlyInstance(pulumi.CustomResource):
         - Classic: classic network in enhanced whitelist mode
         - VPC: virtual private cloud (VPC) in enhanced whitelist mode
         - MIX: standard whitelist mode
-        > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
+          > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
         """
         return pulumi.get(self, "whitelist_network_type")
 

@@ -28,13 +28,13 @@ class SimpleOfficeSiteArgs:
         """
         The set of arguments for constructing a SimpleOfficeSite resource.
         :param pulumi.Input[str] cidr_block: Workspace Corresponds to the Security Office Network of IPv4 Segment.
-        :param pulumi.Input[int] bandwidth: The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+        :param pulumi.Input[int] bandwidth: (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         :param pulumi.Input[str] cen_id: Cloud Enterprise Network Instance ID.
         :param pulumi.Input[str] cen_owner_id: The cen owner id.
         :param pulumi.Input[str] desktop_access_type: Connect to the Cloud Desktop Allows the Use of the Access Mode of. Valid values: `Any`, `Internet`, `VPC`.
         :param pulumi.Input[bool] enable_admin_access: Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
         :param pulumi.Input[bool] enable_cross_desktop_access: Enable Cross-Desktop Access.
-        :param pulumi.Input[bool] enable_internet_access: Whether the Open Internet Access Function.
+        :param pulumi.Input[bool] enable_internet_access: (Deprecated from 1.142.0) Whether the Open Internet Access Function.
         :param pulumi.Input[bool] mfa_enabled: Whether to Enable Multi-Factor Authentication MFA.
         :param pulumi.Input[str] office_site_name: The office site name.
         :param pulumi.Input[bool] sso_enabled: Whether to Enable Single Sign-on (SSO) for User-Based SSO.
@@ -83,7 +83,7 @@ class SimpleOfficeSiteArgs:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+        (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         """
         warnings.warn("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
         pulumi.log.warn("""bandwidth is deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.""")
@@ -158,7 +158,7 @@ class SimpleOfficeSiteArgs:
     @pulumi.getter(name="enableInternetAccess")
     def enable_internet_access(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the Open Internet Access Function.
+        (Deprecated from 1.142.0) Whether the Open Internet Access Function.
         """
         warnings.warn("""Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
         pulumi.log.warn("""enable_internet_access is deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""")
@@ -223,14 +223,14 @@ class _SimpleOfficeSiteState:
                  status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering SimpleOfficeSite resources.
-        :param pulumi.Input[int] bandwidth: The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+        :param pulumi.Input[int] bandwidth: (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         :param pulumi.Input[str] cen_id: Cloud Enterprise Network Instance ID.
         :param pulumi.Input[str] cen_owner_id: The cen owner id.
         :param pulumi.Input[str] cidr_block: Workspace Corresponds to the Security Office Network of IPv4 Segment.
         :param pulumi.Input[str] desktop_access_type: Connect to the Cloud Desktop Allows the Use of the Access Mode of. Valid values: `Any`, `Internet`, `VPC`.
         :param pulumi.Input[bool] enable_admin_access: Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
         :param pulumi.Input[bool] enable_cross_desktop_access: Enable Cross-Desktop Access.
-        :param pulumi.Input[bool] enable_internet_access: Whether the Open Internet Access Function.
+        :param pulumi.Input[bool] enable_internet_access: (Deprecated from 1.142.0) Whether the Open Internet Access Function.
         :param pulumi.Input[bool] mfa_enabled: Whether to Enable Multi-Factor Authentication MFA.
         :param pulumi.Input[str] office_site_name: The office site name.
         :param pulumi.Input[bool] sso_enabled: Whether to Enable Single Sign-on (SSO) for User-Based SSO.
@@ -271,7 +271,7 @@ class _SimpleOfficeSiteState:
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+        (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         """
         warnings.warn("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
         pulumi.log.warn("""bandwidth is deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.""")
@@ -358,7 +358,7 @@ class _SimpleOfficeSiteState:
     @pulumi.getter(name="enableInternetAccess")
     def enable_internet_access(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the Open Internet Access Function.
+        (Deprecated from 1.142.0) Whether the Open Internet Access Function.
         """
         warnings.warn("""Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
         pulumi.log.warn("""enable_internet_access is deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""")
@@ -467,14 +467,14 @@ class SimpleOfficeSite(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] bandwidth: The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+        :param pulumi.Input[int] bandwidth: (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         :param pulumi.Input[str] cen_id: Cloud Enterprise Network Instance ID.
         :param pulumi.Input[str] cen_owner_id: The cen owner id.
         :param pulumi.Input[str] cidr_block: Workspace Corresponds to the Security Office Network of IPv4 Segment.
         :param pulumi.Input[str] desktop_access_type: Connect to the Cloud Desktop Allows the Use of the Access Mode of. Valid values: `Any`, `Internet`, `VPC`.
         :param pulumi.Input[bool] enable_admin_access: Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
         :param pulumi.Input[bool] enable_cross_desktop_access: Enable Cross-Desktop Access.
-        :param pulumi.Input[bool] enable_internet_access: Whether the Open Internet Access Function.
+        :param pulumi.Input[bool] enable_internet_access: (Deprecated from 1.142.0) Whether the Open Internet Access Function.
         :param pulumi.Input[bool] mfa_enabled: Whether to Enable Multi-Factor Authentication MFA.
         :param pulumi.Input[str] office_site_name: The office site name.
         :param pulumi.Input[bool] sso_enabled: Whether to Enable Single Sign-on (SSO) for User-Based SSO.
@@ -593,14 +593,14 @@ class SimpleOfficeSite(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] bandwidth: The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+        :param pulumi.Input[int] bandwidth: (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         :param pulumi.Input[str] cen_id: Cloud Enterprise Network Instance ID.
         :param pulumi.Input[str] cen_owner_id: The cen owner id.
         :param pulumi.Input[str] cidr_block: Workspace Corresponds to the Security Office Network of IPv4 Segment.
         :param pulumi.Input[str] desktop_access_type: Connect to the Cloud Desktop Allows the Use of the Access Mode of. Valid values: `Any`, `Internet`, `VPC`.
         :param pulumi.Input[bool] enable_admin_access: Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
         :param pulumi.Input[bool] enable_cross_desktop_access: Enable Cross-Desktop Access.
-        :param pulumi.Input[bool] enable_internet_access: Whether the Open Internet Access Function.
+        :param pulumi.Input[bool] enable_internet_access: (Deprecated from 1.142.0) Whether the Open Internet Access Function.
         :param pulumi.Input[bool] mfa_enabled: Whether to Enable Multi-Factor Authentication MFA.
         :param pulumi.Input[str] office_site_name: The office site name.
         :param pulumi.Input[bool] sso_enabled: Whether to Enable Single Sign-on (SSO) for User-Based SSO.
@@ -628,7 +628,7 @@ class SimpleOfficeSite(pulumi.CustomResource):
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[int]:
         """
-        The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+        (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         """
         warnings.warn("""Field 'bandwidth' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
         pulumi.log.warn("""bandwidth is deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.""")
@@ -687,7 +687,7 @@ class SimpleOfficeSite(pulumi.CustomResource):
     @pulumi.getter(name="enableInternetAccess")
     def enable_internet_access(self) -> pulumi.Output[bool]:
         """
-        Whether the Open Internet Access Function.
+        (Deprecated from 1.142.0) Whether the Open Internet Access Function.
         """
         warnings.warn("""Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""", DeprecationWarning)
         pulumi.log.warn("""enable_internet_access is deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.""")

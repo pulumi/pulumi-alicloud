@@ -260,7 +260,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
      * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      * * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
-     * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+     *   &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      * 
      */
     @Import(name="instanceSpec")
@@ -271,7 +271,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
      * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      * * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
-     * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+     *   &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
      * 
      */
     public Optional<Output<String>> instanceSpec() {
@@ -991,7 +991,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
          * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
          * * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
-         * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+         *   &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
          * 
          * @return builder
          * 
@@ -1006,7 +1006,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          * * When `db_instance_category` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
          * * When `db_instance_category` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
          * * When `db_instance_category` is `Serverless`, Valid values: `4C16G`, `8C32G`.
-         * &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+         *   &gt; **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
          * 
          * @return builder
          * 

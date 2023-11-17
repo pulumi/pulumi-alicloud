@@ -55,7 +55,9 @@ func GetVersions(ctx *pulumi.Context, args *GetVersionsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getVersions.
 type GetVersionsArgs struct {
-	// The edition of the ASM instance.
+	// The edition of the ASM instance. Valid values:
+	// - Default: Standard Edition
+	// - Pro: Professional Edition
 	Edition *string `pulumi:"edition"`
 	// A list of ASM versions. Its element formats as `<edition>:<version>`.
 	Ids []string `pulumi:"ids"`
@@ -88,7 +90,9 @@ func GetVersionsOutput(ctx *pulumi.Context, args GetVersionsOutputArgs, opts ...
 
 // A collection of arguments for invoking getVersions.
 type GetVersionsOutputArgs struct {
-	// The edition of the ASM instance.
+	// The edition of the ASM instance. Valid values:
+	// - Default: Standard Edition
+	// - Pro: Professional Edition
 	Edition pulumi.StringPtrInput `pulumi:"edition"`
 	// A list of ASM versions. Its element formats as `<edition>:<version>`.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

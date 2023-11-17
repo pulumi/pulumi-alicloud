@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class GetRulesRuleRuleConditionQueryStringConfigResult
     {
         /// <summary>
-        /// Add one or more IP addresses or IP address segments.
+        /// The configuration of the cookie.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRulesRuleRuleConditionQueryStringConfigValueResult> Values;
 

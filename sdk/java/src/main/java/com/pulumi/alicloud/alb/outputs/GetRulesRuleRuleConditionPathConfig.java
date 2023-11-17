@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesRuleRuleConditionPathConfig {
     /**
-     * @return Add one or more IP addresses or IP address segments.
+     * @return The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / &amp; ~ @ :. It cannot contain the following special characters: &#34; % # ; ! ( ) [ ] ^ , &#34;. The value is case-sensitive, and can contain asterisks (*) and question marks (?).
      * 
      */
     private List<String> values;
 
     private GetRulesRuleRuleConditionPathConfig() {}
     /**
-     * @return Add one or more IP addresses or IP address segments.
+     * @return The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / &amp; ~ @ :. It cannot contain the following special characters: &#34; % # ; ! ( ) [ ] ^ , &#34;. The value is case-sensitive, and can contain asterisks (*) and question marks (?).
      * 
      */
     public List<String> values() {

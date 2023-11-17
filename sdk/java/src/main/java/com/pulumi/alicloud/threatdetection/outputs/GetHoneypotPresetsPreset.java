@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetHoneypotPresetsPreset {
     /**
-     * @return Honeypot mirror name
+     * @return (ForceNew,Optional) Honeypot mirror name
      * 
      */
     private String honeypotImageName;
@@ -32,19 +32,19 @@ public final class GetHoneypotPresetsPreset {
      */
     private List<GetHoneypotPresetsPresetMeta> metas;
     /**
-     * @return Unique id of management node
+     * @return (ForceNew,Optional) Unique id of management node
      * 
      */
     private String nodeId;
     /**
-     * @return Honeypot template custom name
+     * @return (ForceNew,Optional) Honeypot template custom name
      * 
      */
     private String presetName;
 
     private GetHoneypotPresetsPreset() {}
     /**
-     * @return Honeypot mirror name
+     * @return (ForceNew,Optional) Honeypot mirror name
      * 
      */
     public String honeypotImageName() {
@@ -72,14 +72,14 @@ public final class GetHoneypotPresetsPreset {
         return this.metas;
     }
     /**
-     * @return Unique id of management node
+     * @return (ForceNew,Optional) Unique id of management node
      * 
      */
     public String nodeId() {
         return this.nodeId;
     }
     /**
-     * @return Honeypot template custom name
+     * @return (ForceNew,Optional) Honeypot template custom name
      * 
      */
     public String presetName() {

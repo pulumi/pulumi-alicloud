@@ -29,7 +29,10 @@ class DataFlowArgs:
         :param pulumi.Input[str] source_storage: The access path of the source store. Format: `<storage type>://<path>`. Among them:
                - storage type: currently only OSS is supported.
                - path: the bucket name of OSS.
-               - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+                 - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+                 - `8` to `128` English characters in length.
+                 - Use UTF-8 coding.
+                 - Cannot start with `http://` and `https://`.
         :param pulumi.Input[int] throughput: The maximum transmission bandwidth of data flow, unit: `MB/s`. Valid values: `1200`, `1500`, `600`. **NOTE:** The transmission bandwidth of data flow must be less than the IO bandwidth of the file system.
         :param pulumi.Input[str] description: The Description of the data flow. Restrictions:
         :param pulumi.Input[bool] dry_run: The dry run.
@@ -80,7 +83,10 @@ class DataFlowArgs:
         The access path of the source store. Format: `<storage type>://<path>`. Among them:
         - storage type: currently only OSS is supported.
         - path: the bucket name of OSS.
-        - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+          - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+          - `8` to `128` English characters in length.
+          - Use UTF-8 coding.
+          - Cannot start with `http://` and `https://`.
         """
         return pulumi.get(self, "source_storage")
 
@@ -172,7 +178,10 @@ class _DataFlowState:
         :param pulumi.Input[str] source_storage: The access path of the source store. Format: `<storage type>://<path>`. Among them:
                - storage type: currently only OSS is supported.
                - path: the bucket name of OSS.
-               - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+                 - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+                 - `8` to `128` English characters in length.
+                 - Use UTF-8 coding.
+                 - Cannot start with `http://` and `https://`.
         :param pulumi.Input[str] status: The status of the Data flow. Valid values: `Running`, `Stopped`.
         :param pulumi.Input[int] throughput: The maximum transmission bandwidth of data flow, unit: `MB/s`. Valid values: `1200`, `1500`, `600`. **NOTE:** The transmission bandwidth of data flow must be less than the IO bandwidth of the file system.
         """
@@ -274,7 +283,10 @@ class _DataFlowState:
         The access path of the source store. Format: `<storage type>://<path>`. Among them:
         - storage type: currently only OSS is supported.
         - path: the bucket name of OSS.
-        - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+          - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+          - `8` to `128` English characters in length.
+          - Use UTF-8 coding.
+          - Cannot start with `http://` and `https://`.
         """
         return pulumi.get(self, "source_storage")
 
@@ -346,7 +358,10 @@ class DataFlow(pulumi.CustomResource):
         :param pulumi.Input[str] source_storage: The access path of the source store. Format: `<storage type>://<path>`. Among them:
                - storage type: currently only OSS is supported.
                - path: the bucket name of OSS.
-               - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+                 - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+                 - `8` to `128` English characters in length.
+                 - Use UTF-8 coding.
+                 - Cannot start with `http://` and `https://`.
         :param pulumi.Input[str] status: The status of the Data flow. Valid values: `Running`, `Stopped`.
         :param pulumi.Input[int] throughput: The maximum transmission bandwidth of data flow, unit: `MB/s`. Valid values: `1200`, `1500`, `600`. **NOTE:** The transmission bandwidth of data flow must be less than the IO bandwidth of the file system.
         """
@@ -455,7 +470,10 @@ class DataFlow(pulumi.CustomResource):
         :param pulumi.Input[str] source_storage: The access path of the source store. Format: `<storage type>://<path>`. Among them:
                - storage type: currently only OSS is supported.
                - path: the bucket name of OSS.
-               - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+                 - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+                 - `8` to `128` English characters in length.
+                 - Use UTF-8 coding.
+                 - Cannot start with `http://` and `https://`.
         :param pulumi.Input[str] status: The status of the Data flow. Valid values: `Running`, `Stopped`.
         :param pulumi.Input[int] throughput: The maximum transmission bandwidth of data flow, unit: `MB/s`. Valid values: `1200`, `1500`, `600`. **NOTE:** The transmission bandwidth of data flow must be less than the IO bandwidth of the file system.
         """
@@ -529,7 +547,10 @@ class DataFlow(pulumi.CustomResource):
         The access path of the source store. Format: `<storage type>://<path>`. Among them:
         - storage type: currently only OSS is supported.
         - path: the bucket name of OSS.
-        - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+          - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+          - `8` to `128` English characters in length.
+          - Use UTF-8 coding.
+          - Cannot start with `http://` and `https://`.
         """
         return pulumi.get(self, "source_storage")
 

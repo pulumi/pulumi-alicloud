@@ -77,7 +77,7 @@ type GetInstancesArgs struct {
 	Status *string `pulumi:"status"`
 	// The tags of the instance.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The vswitch id.
+	// Used to retrieve instances belong to specified `vswitch` resources.
 	VswitchId *string `pulumi:"vswitchId"`
 }
 
@@ -141,7 +141,7 @@ type GetInstancesOutputArgs struct {
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The tags of the instance.
 	Tags pulumi.MapInput `pulumi:"tags"`
-	// The vswitch id.
+	// Used to retrieve instances belong to specified `vswitch` resources.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
 }
 

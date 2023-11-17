@@ -59,7 +59,7 @@ class _DeployGroupState:
         Input properties used for looking up and filtering DeployGroup resources.
         :param pulumi.Input[str] app_id: The ID of the application that you want to deploy.
         :param pulumi.Input[str] group_name: The name of the instance group that you want to create.
-        :param pulumi.Input[int] group_type: The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+        :param pulumi.Input[int] group_type: (ForceNew) The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
         """
         if app_id is not None:
             pulumi.set(__self__, "app_id", app_id)
@@ -96,7 +96,7 @@ class _DeployGroupState:
     @pulumi.getter(name="groupType")
     def group_type(self) -> Optional[pulumi.Input[int]]:
         """
-        The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+        (ForceNew) The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
         """
         return pulumi.get(self, "group_type")
 
@@ -267,7 +267,7 @@ class DeployGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The ID of the application that you want to deploy.
         :param pulumi.Input[str] group_name: The name of the instance group that you want to create.
-        :param pulumi.Input[int] group_type: The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+        :param pulumi.Input[int] group_type: (ForceNew) The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -298,7 +298,7 @@ class DeployGroup(pulumi.CustomResource):
     @pulumi.getter(name="groupType")
     def group_type(self) -> pulumi.Output[int]:
         """
-        The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+        (ForceNew) The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
         """
         return pulumi.get(self, "group_type")
 

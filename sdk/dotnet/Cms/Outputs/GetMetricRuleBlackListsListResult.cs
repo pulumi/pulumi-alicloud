@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
     public sealed class GetMetricRuleBlackListsListResult
     {
         /// <summary>
-        /// Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
+        /// (ForceNew,Optional) Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
         /// </summary>
         public readonly string Category;
         /// <summary>
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly bool IsEnable;
         /// <summary>
-        /// The first ID of the resource
+        /// (ForceNew,Optional) The first ID of the resource
         /// </summary>
         public readonly string MetricRuleBlackListId;
         /// <summary>
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetMetricRuleBlackListsListMetricResult> Metrics;
         /// <summary>
-        /// The data namespace of the cloud service.
+        /// (ForceNew,Optional) The data namespace of the cloud service.
         /// </summary>
         public readonly string Namespace;
         /// <summary>

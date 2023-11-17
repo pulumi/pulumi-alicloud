@@ -159,7 +159,7 @@ def get_security_policies(ids: Optional[Sequence[str]] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param Sequence[str] security_policy_names: The names of the TLS security policies.
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `Available`, `Configuring`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
@@ -220,7 +220,7 @@ def get_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param Sequence[str] security_policy_names: The names of the TLS security policies.
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `Available`, `Configuring`.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     ...

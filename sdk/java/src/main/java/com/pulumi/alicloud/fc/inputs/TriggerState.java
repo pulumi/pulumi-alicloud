@@ -76,14 +76,14 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+     * (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+     * @return (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -91,14 +91,14 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Setting a prefix to get a only trigger name. It is conflict with &#34;name&#34;.
+     * (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with &#34;name&#34;.
      * 
      */
     @Import(name="namePrefix")
     private @Nullable Output<String> namePrefix;
 
     /**
-     * @return Setting a prefix to get a only trigger name. It is conflict with &#34;name&#34;.
+     * @return (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with &#34;name&#34;.
      * 
      */
     public Optional<Output<String>> namePrefix() {
@@ -307,7 +307,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+         * @param name (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+         * @param name (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namePrefix Setting a prefix to get a only trigger name. It is conflict with &#34;name&#34;.
+         * @param namePrefix (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with &#34;name&#34;.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class TriggerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param namePrefix Setting a prefix to get a only trigger name. It is conflict with &#34;name&#34;.
+         * @param namePrefix (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with &#34;name&#34;.
          * 
          * @return builder
          * 

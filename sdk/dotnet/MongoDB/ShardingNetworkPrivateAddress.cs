@@ -106,7 +106,7 @@ namespace Pulumi.AliCloud.MongoDB
     public partial class ShardingNetworkPrivateAddress : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the account. 
+        /// The name of the account.
         /// - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
         /// - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
         /// - The permissions of this account are fixed to read-only.
@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string?> AccountName { get; private set; } = null!;
 
         /// <summary>
-        /// Account password. 
+        /// Account password.
         /// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
         /// - The password must be 8 to 32 characters in length.
         /// </summary>
@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class ShardingNetworkPrivateAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the account. 
+        /// The name of the account.
         /// - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
         /// - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
         /// - The permissions of this account are fixed to read-only.
@@ -209,7 +209,7 @@ namespace Pulumi.AliCloud.MongoDB
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// Account password. 
+        /// Account password.
         /// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
         /// - The password must be 8 to 32 characters in length.
         /// </summary>
@@ -250,7 +250,7 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class ShardingNetworkPrivateAddressState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the account. 
+        /// The name of the account.
         /// - The name must be 4 to 16 characters in length and can contain lowercase letters, digits, and underscores (_). It must start with a lowercase letter.
         /// - You need to set the account name and password only when you apply for an endpoint for a shard or Configserver node for the first time. In this case, the account name and password are used for all shard and Configserver nodes.
         /// - The permissions of this account are fixed to read-only.
@@ -262,7 +262,7 @@ namespace Pulumi.AliCloud.MongoDB
         private Input<string>? _accountPassword;
 
         /// <summary>
-        /// Account password. 
+        /// Account password.
         /// - The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `!#$%^&amp;*()_+-=`.
         /// - The password must be 8 to 32 characters in length.
         /// </summary>

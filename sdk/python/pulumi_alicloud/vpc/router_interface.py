@@ -38,7 +38,7 @@ class RouterInterfaceArgs:
         :param pulumi.Input[str] instance_charge_type: The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and opposite_region are the same.
         :param pulumi.Input[str] name: Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
                If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
-        :param pulumi.Input[str] opposite_access_point_id: It has been deprecated from version 1.11.0.
+        :param pulumi.Input[str] opposite_access_point_id: (Deprecated) It has been deprecated from version 1.11.0.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] specification: Specification of router interfaces. It is valid when `role` is `InitiatingSide`. Accepting side's role is default to set as 'Negative'. For more about the specification, refer to [Router interface specification](https://www.alibabacloud.com/help/doc-detail/36037.htm).
@@ -180,7 +180,7 @@ class RouterInterfaceArgs:
     @pulumi.getter(name="oppositeAccessPointId")
     def opposite_access_point_id(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.11.0.
+        (Deprecated) It has been deprecated from version 1.11.0.
         """
         warnings.warn("""Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""", DeprecationWarning)
         pulumi.log.warn("""opposite_access_point_id is deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""")
@@ -239,19 +239,19 @@ class _RouterInterfaceState:
                  specification: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RouterInterface resources.
-        :param pulumi.Input[str] access_point_id: It has been deprecated from version 1.11.0.
+        :param pulumi.Input[str] access_point_id: (Deprecated) It has been deprecated from version 1.11.0.
         :param pulumi.Input[str] description: Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
         :param pulumi.Input[str] health_check_source_ip: Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
         :param pulumi.Input[str] health_check_target_ip: Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
         :param pulumi.Input[str] instance_charge_type: The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and opposite_region are the same.
         :param pulumi.Input[str] name: Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
                If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
-        :param pulumi.Input[str] opposite_access_point_id: It has been deprecated from version 1.11.0.
-        :param pulumi.Input[str] opposite_interface_id: It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
-        :param pulumi.Input[str] opposite_interface_owner_id: It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+        :param pulumi.Input[str] opposite_access_point_id: (Deprecated) It has been deprecated from version 1.11.0.
+        :param pulumi.Input[str] opposite_interface_id: (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+        :param pulumi.Input[str] opposite_interface_owner_id: (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
         :param pulumi.Input[str] opposite_region: The Region of peer side.
-        :param pulumi.Input[str] opposite_router_id: It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
-        :param pulumi.Input[str] opposite_router_type: It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+        :param pulumi.Input[str] opposite_router_id: (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+        :param pulumi.Input[str] opposite_router_type: (Deprecated) It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] role: The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
@@ -316,7 +316,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="accessPointId")
     def access_point_id(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.11.0.
+        (Deprecated) It has been deprecated from version 1.11.0.
         """
         warnings.warn("""Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""", DeprecationWarning)
         pulumi.log.warn("""access_point_id is deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""")
@@ -392,7 +392,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="oppositeAccessPointId")
     def opposite_access_point_id(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.11.0.
+        (Deprecated) It has been deprecated from version 1.11.0.
         """
         warnings.warn("""Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""", DeprecationWarning)
         pulumi.log.warn("""opposite_access_point_id is deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""")
@@ -407,7 +407,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="oppositeInterfaceId")
     def opposite_interface_id(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+        (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         """
         warnings.warn("""Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""opposite_interface_id is deprecated: Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.""")
@@ -422,7 +422,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="oppositeInterfaceOwnerId")
     def opposite_interface_owner_id(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+        (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
         """
         warnings.warn("""Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""opposite_interface_owner_id is deprecated: Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.""")
@@ -449,7 +449,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="oppositeRouterId")
     def opposite_router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+        (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         """
         warnings.warn("""Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""opposite_router_id is deprecated: Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.""")
@@ -464,7 +464,7 @@ class _RouterInterfaceState:
     @pulumi.getter(name="oppositeRouterType")
     def opposite_router_type(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+        (Deprecated) It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
         """
         warnings.warn("""Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.""", DeprecationWarning)
         pulumi.log.warn("""opposite_router_type is deprecated: Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.""")
@@ -598,7 +598,7 @@ class RouterInterface(pulumi.CustomResource):
         :param pulumi.Input[str] instance_charge_type: The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and opposite_region are the same.
         :param pulumi.Input[str] name: Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
                If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
-        :param pulumi.Input[str] opposite_access_point_id: It has been deprecated from version 1.11.0.
+        :param pulumi.Input[str] opposite_access_point_id: (Deprecated) It has been deprecated from version 1.11.0.
         :param pulumi.Input[str] opposite_region: The Region of peer side.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -743,19 +743,19 @@ class RouterInterface(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] access_point_id: It has been deprecated from version 1.11.0.
+        :param pulumi.Input[str] access_point_id: (Deprecated) It has been deprecated from version 1.11.0.
         :param pulumi.Input[str] description: Description of the router interface. It can be 2-256 characters long or left blank. It cannot start with http:// and https://.
         :param pulumi.Input[str] health_check_source_ip: Used as the Packet Source IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_target_ip` must be specified at the same time.
         :param pulumi.Input[str] health_check_target_ip: Used as the Packet Target IP of health check for disaster recovery or ECMP. It is only valid when `router_type` is `VBR`. The IP must be an unused IP in the local VPC. It and `health_check_source_ip` must be specified at the same time.
         :param pulumi.Input[str] instance_charge_type: The billing method of the router interface. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid". Router Interface doesn't support "PrePaid" when region and opposite_region are the same.
         :param pulumi.Input[str] name: Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
                If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
-        :param pulumi.Input[str] opposite_access_point_id: It has been deprecated from version 1.11.0.
-        :param pulumi.Input[str] opposite_interface_id: It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
-        :param pulumi.Input[str] opposite_interface_owner_id: It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+        :param pulumi.Input[str] opposite_access_point_id: (Deprecated) It has been deprecated from version 1.11.0.
+        :param pulumi.Input[str] opposite_interface_id: (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+        :param pulumi.Input[str] opposite_interface_owner_id: (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
         :param pulumi.Input[str] opposite_region: The Region of peer side.
-        :param pulumi.Input[str] opposite_router_id: It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
-        :param pulumi.Input[str] opposite_router_type: It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+        :param pulumi.Input[str] opposite_router_id: (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+        :param pulumi.Input[str] opposite_router_type: (Deprecated) It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         :param pulumi.Input[str] role: The role the router interface plays. Optional value: `InitiatingSide`, `AcceptingSide`.
@@ -790,7 +790,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="accessPointId")
     def access_point_id(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from version 1.11.0.
+        (Deprecated) It has been deprecated from version 1.11.0.
         """
         warnings.warn("""Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""", DeprecationWarning)
         pulumi.log.warn("""access_point_id is deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""")
@@ -842,7 +842,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="oppositeAccessPointId")
     def opposite_access_point_id(self) -> pulumi.Output[Optional[str]]:
         """
-        It has been deprecated from version 1.11.0.
+        (Deprecated) It has been deprecated from version 1.11.0.
         """
         warnings.warn("""Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""", DeprecationWarning)
         pulumi.log.warn("""opposite_access_point_id is deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.""")
@@ -853,7 +853,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="oppositeInterfaceId")
     def opposite_interface_id(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+        (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         """
         warnings.warn("""Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""opposite_interface_id is deprecated: Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.""")
@@ -864,7 +864,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="oppositeInterfaceOwnerId")
     def opposite_interface_owner_id(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+        (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
         """
         warnings.warn("""Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""opposite_interface_owner_id is deprecated: Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.""")
@@ -883,7 +883,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="oppositeRouterId")
     def opposite_router_id(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+        (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         """
         warnings.warn("""Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""opposite_router_id is deprecated: Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.""")
@@ -894,7 +894,7 @@ class RouterInterface(pulumi.CustomResource):
     @pulumi.getter(name="oppositeRouterType")
     def opposite_router_type(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+        (Deprecated) It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
         """
         warnings.warn("""Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.""", DeprecationWarning)
         pulumi.log.warn("""opposite_router_type is deprecated: Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.""")

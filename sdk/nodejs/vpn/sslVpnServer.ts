@@ -43,9 +43,6 @@ export class SslVpnServer extends pulumi.CustomResource {
 
     /**
      * The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-     * * `AES-128-CBC` - the AES-128-CBC algorithm.
-     * * `AES-192-CBC` - the AES-192-CBC algorithm.
-     * * `AES-256-CBC` - the AES-256-CBC algorithm.
      */
     public readonly cipher!: pulumi.Output<string | undefined>;
     /**
@@ -147,9 +144,6 @@ export class SslVpnServer extends pulumi.CustomResource {
 export interface SslVpnServerState {
     /**
      * The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-     * * `AES-128-CBC` - the AES-128-CBC algorithm.
-     * * `AES-192-CBC` - the AES-192-CBC algorithm.
-     * * `AES-256-CBC` - the AES-256-CBC algorithm.
      */
     cipher?: pulumi.Input<string>;
     /**
@@ -200,9 +194,6 @@ export interface SslVpnServerState {
 export interface SslVpnServerArgs {
     /**
      * The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-     * * `AES-128-CBC` - the AES-128-CBC algorithm.
-     * * `AES-192-CBC` - the AES-192-CBC algorithm.
-     * * `AES-256-CBC` - the AES-256-CBC algorithm.
      */
     cipher?: pulumi.Input<string>;
     /**

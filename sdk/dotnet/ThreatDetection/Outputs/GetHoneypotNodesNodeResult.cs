@@ -27,11 +27,11 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// Honeypot management node id.
+        /// (ForceNew,Optional) Honeypot management node id.
         /// </summary>
         public readonly string NodeId;
         /// <summary>
-        /// The name of the management node.
+        /// (ForceNew,Optional) The name of the management node.
         /// </summary>
         public readonly string NodeName;
         /// <summary>

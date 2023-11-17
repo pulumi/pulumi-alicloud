@@ -67,7 +67,7 @@ export interface GetNetworkAclsArgs {
      */
     resourceId?: string;
     /**
-     * The type of the associated resource.
+     * The type of the associated resource. Valid values `VSwitch`. `resourceType` and `resourceId` need to be specified at the same time to take effect.
      */
     resourceType?: string;
     /**
@@ -148,7 +148,7 @@ export interface GetNetworkAclsOutputArgs {
      */
     resourceId?: pulumi.Input<string>;
     /**
-     * The type of the associated resource.
+     * The type of the associated resource. Valid values `VSwitch`. `resourceType` and `resourceId` need to be specified at the same time to take effect.
      */
     resourceType?: pulumi.Input<string>;
     /**

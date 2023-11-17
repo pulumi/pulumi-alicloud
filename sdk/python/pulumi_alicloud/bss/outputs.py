@@ -32,7 +32,7 @@ class GetOpenApiPricingModulesModuleResult(dict):
         :param str id: A list of Price Module IDs.
         :param str pricing_module_name: Attribute name.
         :param str product_code: The product code.
-        :param str product_type: The product type.
+        :param str product_type: (ForceNew,Optional) The product type.
         :param str subscription_type: Subscription type. Value:
                * Subscription: Prepaid.
                * PayAsYouGo: postpaid.
@@ -84,7 +84,7 @@ class GetOpenApiPricingModulesModuleResult(dict):
     @pulumi.getter(name="productType")
     def product_type(self) -> str:
         """
-        The product type.
+        (ForceNew,Optional) The product type.
         """
         return pulumi.get(self, "product_type")
 

@@ -81,7 +81,7 @@ export class PublicIpAddressPool extends pulumi.CustomResource {
      */
     public /*out*/ readonly ipAddressRemaining!: pulumi.Output<boolean>;
     /**
-     * The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+     * (ForceNew, Optional) The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
      */
     public readonly isp!: pulumi.Output<string>;
     public /*out*/ readonly publicIpAddressPoolId!: pulumi.Output<string>;
@@ -170,7 +170,7 @@ export interface PublicIpAddressPoolState {
      */
     ipAddressRemaining?: pulumi.Input<boolean>;
     /**
-     * The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+     * (ForceNew, Optional) The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
      */
     isp?: pulumi.Input<string>;
     publicIpAddressPoolId?: pulumi.Input<string>;
@@ -209,7 +209,7 @@ export interface PublicIpAddressPoolArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+     * (ForceNew, Optional) The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
      */
     isp?: pulumi.Input<string>;
     /**

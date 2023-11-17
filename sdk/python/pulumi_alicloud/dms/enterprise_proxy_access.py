@@ -23,8 +23,8 @@ class EnterpriseProxyAccessArgs:
         The set of arguments for constructing a EnterpriseProxyAccess resource.
         :param pulumi.Input[str] proxy_id: The ID of the security agent.
         :param pulumi.Input[str] user_id: The user ID.
-        :param pulumi.Input[str] indep_account: Database account.
-        :param pulumi.Input[str] indep_password: Database password.
+        :param pulumi.Input[str] indep_account: (ForceNew,Optional) Database account.
+        :param pulumi.Input[str] indep_password: (ForceNew,Optional) Database password.
         :param pulumi.Input[str] proxy_access_id: Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
         """
         pulumi.set(__self__, "proxy_id", proxy_id)
@@ -64,7 +64,7 @@ class EnterpriseProxyAccessArgs:
     @pulumi.getter(name="indepAccount")
     def indep_account(self) -> Optional[pulumi.Input[str]]:
         """
-        Database account.
+        (ForceNew,Optional) Database account.
         """
         return pulumi.get(self, "indep_account")
 
@@ -76,7 +76,7 @@ class EnterpriseProxyAccessArgs:
     @pulumi.getter(name="indepPassword")
     def indep_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Database password.
+        (ForceNew,Optional) Database password.
         """
         return pulumi.get(self, "indep_password")
 
@@ -116,8 +116,8 @@ class _EnterpriseProxyAccessState:
         Input properties used for looking up and filtering EnterpriseProxyAccess resources.
         :param pulumi.Input[str] access_id: The authorized account of the security agent.
         :param pulumi.Input[str] access_secret: Secure access agent authorization password.
-        :param pulumi.Input[str] indep_account: Database account.
-        :param pulumi.Input[str] indep_password: Database password.
+        :param pulumi.Input[str] indep_account: (ForceNew,Optional) Database account.
+        :param pulumi.Input[str] indep_password: (ForceNew,Optional) Database password.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] origin_info: The source information of the security access agent permission is enabled, and the return value is as follows:
                * **Owner Authorization**: The UID of the owner in parentheses.
@@ -190,7 +190,7 @@ class _EnterpriseProxyAccessState:
     @pulumi.getter(name="indepAccount")
     def indep_account(self) -> Optional[pulumi.Input[str]]:
         """
-        Database account.
+        (ForceNew,Optional) Database account.
         """
         return pulumi.get(self, "indep_account")
 
@@ -202,7 +202,7 @@ class _EnterpriseProxyAccessState:
     @pulumi.getter(name="indepPassword")
     def indep_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Database password.
+        (ForceNew,Optional) Database password.
         """
         return pulumi.get(self, "indep_password")
 
@@ -340,8 +340,8 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] indep_account: Database account.
-        :param pulumi.Input[str] indep_password: Database password.
+        :param pulumi.Input[str] indep_account: (ForceNew,Optional) Database account.
+        :param pulumi.Input[str] indep_password: (ForceNew,Optional) Database password.
         :param pulumi.Input[str] proxy_access_id: Security Protection authorization ID. After the target user is authorized by the security protection agent, the system automatically generates a security protection authorization ID, which is globally unique.
         :param pulumi.Input[str] proxy_id: The ID of the security agent.
         :param pulumi.Input[str] user_id: The user ID.
@@ -460,8 +460,8 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_id: The authorized account of the security agent.
         :param pulumi.Input[str] access_secret: Secure access agent authorization password.
-        :param pulumi.Input[str] indep_account: Database account.
-        :param pulumi.Input[str] indep_password: Database password.
+        :param pulumi.Input[str] indep_account: (ForceNew,Optional) Database account.
+        :param pulumi.Input[str] indep_password: (ForceNew,Optional) Database password.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] origin_info: The source information of the security access agent permission is enabled, and the return value is as follows:
                * **Owner Authorization**: The UID of the owner in parentheses.
@@ -515,7 +515,7 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
     @pulumi.getter(name="indepAccount")
     def indep_account(self) -> pulumi.Output[Optional[str]]:
         """
-        Database account.
+        (ForceNew,Optional) Database account.
         """
         return pulumi.get(self, "indep_account")
 
@@ -523,7 +523,7 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
     @pulumi.getter(name="indepPassword")
     def indep_password(self) -> pulumi.Output[Optional[str]]:
         """
-        Database password.
+        (ForceNew,Optional) Database password.
         """
         return pulumi.get(self, "indep_password")
 

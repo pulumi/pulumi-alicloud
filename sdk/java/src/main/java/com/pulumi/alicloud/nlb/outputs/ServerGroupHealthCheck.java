@@ -26,7 +26,6 @@ public final class ServerGroupHealthCheck {
     private @Nullable Integer healthCheckConnectTimeout;
     /**
      * @return The domain name that is used for health checks. Valid values:
-     * - `$SERVER_IP`: the private IP address of a backend server.
      * 
      */
     private @Nullable String healthCheckDomain;
@@ -88,7 +87,6 @@ public final class ServerGroupHealthCheck {
     }
     /**
      * @return The domain name that is used for health checks. Valid values:
-     * - `$SERVER_IP`: the private IP address of a backend server.
      * 
      */
     public Optional<String> healthCheckDomain() {

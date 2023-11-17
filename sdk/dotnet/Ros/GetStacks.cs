@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Ros
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Parent Stack Id.
+        /// ParentStackId.
         /// </summary>
         [Input("parentStackId")]
         public string? ParentStackId { get; set; }
@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.Ros
         public bool? ShowNestedStack { get; set; }
 
         /// <summary>
-        /// Stack Name.
+        /// StackName.
         /// </summary>
         [Input("stackName")]
         public string? StackName { get; set; }
@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.Ros
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Parent Stack Id.
+        /// ParentStackId.
         /// </summary>
         [Input("parentStackId")]
         public Input<string>? ParentStackId { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.Ros
         public Input<bool>? ShowNestedStack { get; set; }
 
         /// <summary>
-        /// Stack Name.
+        /// StackName.
         /// </summary>
         [Input("stackName")]
         public Input<string>? StackName { get; set; }

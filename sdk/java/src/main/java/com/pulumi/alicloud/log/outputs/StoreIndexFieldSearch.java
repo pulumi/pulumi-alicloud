@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StoreIndexFieldSearch {
     /**
-     * @return The alias of one field.
+     * @return The alias of one field
      * 
      */
     private @Nullable String alias;
@@ -40,7 +40,7 @@ public final class StoreIndexFieldSearch {
      */
     private @Nullable List<StoreIndexFieldSearchJsonKey> jsonKeys;
     /**
-     * @return When using the json_keys field, this field is required.
+     * @return The field name, which is unique in the same log store.
      * 
      */
     private String name;
@@ -50,14 +50,14 @@ public final class StoreIndexFieldSearch {
      */
     private @Nullable String token;
     /**
-     * @return The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
+     * @return The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;, &#34;json&#34;]. Default to &#34;long&#34;.
      * 
      */
     private @Nullable String type;
 
     private StoreIndexFieldSearch() {}
     /**
-     * @return The alias of one field.
+     * @return The alias of one field
      * 
      */
     public Optional<String> alias() {
@@ -92,7 +92,7 @@ public final class StoreIndexFieldSearch {
         return this.jsonKeys == null ? List.of() : this.jsonKeys;
     }
     /**
-     * @return When using the json_keys field, this field is required.
+     * @return The field name, which is unique in the same log store.
      * 
      */
     public String name() {
@@ -106,7 +106,7 @@ public final class StoreIndexFieldSearch {
         return Optional.ofNullable(this.token);
     }
     /**
-     * @return The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;]. Default to &#34;long&#34;
+     * @return The type of one field. Valid values: [&#34;long&#34;, &#34;text&#34;, &#34;double&#34;, &#34;json&#34;]. Default to &#34;long&#34;.
      * 
      */
     public Optional<String> type() {

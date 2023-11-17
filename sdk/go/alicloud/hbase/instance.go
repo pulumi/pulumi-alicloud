@@ -146,19 +146,19 @@ type Instance struct {
 	PayType pulumi.StringPtrOutput `pulumi:"payType"`
 	// The security group resource of the cluster.
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
-	// The slb service addresses of the cluster. See `slbConnAddrs` below.
+	// (Available in 1.105.0+) The slb service addresses of the cluster. See `slbConnAddrs` below.
 	//
 	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	SlbConnAddrs InstanceSlbConnAddrArrayOutput `pulumi:"slbConnAddrs"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
+	// (Available in 1.105.0+) The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
 	UiProxyConnAddrs InstanceUiProxyConnAddrArrayOutput `pulumi:"uiProxyConnAddrs"`
 	// The id of the VPC.
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
-	// The zookeeper addresses of the cluster. See `zkConnAddrs` below.
+	// (Available in 1.105.0+) The zookeeper addresses of the cluster. See `zkConnAddrs` below.
 	ZkConnAddrs InstanceZkConnAddrArrayOutput `pulumi:"zkConnAddrs"`
 	// The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be "" or consistent.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -255,19 +255,19 @@ type instanceState struct {
 	PayType *string `pulumi:"payType"`
 	// The security group resource of the cluster.
 	SecurityGroups []string `pulumi:"securityGroups"`
-	// The slb service addresses of the cluster. See `slbConnAddrs` below.
+	// (Available in 1.105.0+) The slb service addresses of the cluster. See `slbConnAddrs` below.
 	//
 	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	SlbConnAddrs []InstanceSlbConnAddr `pulumi:"slbConnAddrs"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
+	// (Available in 1.105.0+) The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
 	UiProxyConnAddrs []InstanceUiProxyConnAddr `pulumi:"uiProxyConnAddrs"`
 	// The id of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId *string `pulumi:"vswitchId"`
-	// The zookeeper addresses of the cluster. See `zkConnAddrs` below.
+	// (Available in 1.105.0+) The zookeeper addresses of the cluster. See `zkConnAddrs` below.
 	ZkConnAddrs []InstanceZkConnAddr `pulumi:"zkConnAddrs"`
 	// The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be "" or consistent.
 	ZoneId *string `pulumi:"zoneId"`
@@ -319,19 +319,19 @@ type InstanceState struct {
 	PayType pulumi.StringPtrInput
 	// The security group resource of the cluster.
 	SecurityGroups pulumi.StringArrayInput
-	// The slb service addresses of the cluster. See `slbConnAddrs` below.
+	// (Available in 1.105.0+) The slb service addresses of the cluster. See `slbConnAddrs` below.
 	//
 	// > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 	SlbConnAddrs InstanceSlbConnAddrArrayInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
+	// (Available in 1.105.0+) The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
 	UiProxyConnAddrs InstanceUiProxyConnAddrArrayInput
 	// The id of the VPC.
 	VpcId pulumi.StringPtrInput
 	// If vswitchId is not empty, that mean netType = vpc and has a same region. If vswitchId is empty, net_type=classic. Intl site not support classic network.
 	VswitchId pulumi.StringPtrInput
-	// The zookeeper addresses of the cluster. See `zkConnAddrs` below.
+	// (Available in 1.105.0+) The zookeeper addresses of the cluster. See `zkConnAddrs` below.
 	ZkConnAddrs InstanceZkConnAddrArrayInput
 	// The Zone to launch the HBase instance. If vswitchId is not empty, this zoneId can be "" or consistent.
 	ZoneId pulumi.StringPtrInput
@@ -645,7 +645,7 @@ func (o InstanceOutput) SecurityGroups() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.SecurityGroups }).(pulumi.StringArrayOutput)
 }
 
-// The slb service addresses of the cluster. See `slbConnAddrs` below.
+// (Available in 1.105.0+) The slb service addresses of the cluster. See `slbConnAddrs` below.
 //
 // > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
 func (o InstanceOutput) SlbConnAddrs() InstanceSlbConnAddrArrayOutput {
@@ -657,7 +657,7 @@ func (o InstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
+// (Available in 1.105.0+) The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
 func (o InstanceOutput) UiProxyConnAddrs() InstanceUiProxyConnAddrArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceUiProxyConnAddrArrayOutput { return v.UiProxyConnAddrs }).(InstanceUiProxyConnAddrArrayOutput)
 }
@@ -672,7 +672,7 @@ func (o InstanceOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
 }
 
-// The zookeeper addresses of the cluster. See `zkConnAddrs` below.
+// (Available in 1.105.0+) The zookeeper addresses of the cluster. See `zkConnAddrs` below.
 func (o InstanceOutput) ZkConnAddrs() InstanceZkConnAddrArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceZkConnAddrArrayOutput { return v.ZkConnAddrs }).(InstanceZkConnAddrArrayOutput)
 }

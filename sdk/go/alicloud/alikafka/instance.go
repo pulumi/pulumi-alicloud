@@ -78,7 +78,7 @@ type Instance struct {
 	Status pulumi.IntOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The max num of topic can be creation of the instance.
+	// (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
 	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
@@ -189,7 +189,7 @@ type instanceState struct {
 	Status *int `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The max num of topic can be creation of the instance.
+	// (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
 	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
@@ -259,7 +259,7 @@ type InstanceState struct {
 	Status pulumi.IntPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The max num of topic can be creation of the instance.
+	// (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
 	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
@@ -325,7 +325,7 @@ type instanceArgs struct {
 	SpecType *string `pulumi:"specType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The max num of topic can be creation of the instance.
+	// (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
 	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
@@ -388,7 +388,7 @@ type InstanceArgs struct {
 	SpecType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The max num of topic can be creation of the instance.
+	// (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
 	// It has been deprecated since version 1.194.0 and using `partitionNum` instead.
 	// Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 	// Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.
@@ -598,7 +598,7 @@ func (o InstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The max num of topic can be creation of the instance.
+// (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
 // It has been deprecated since version 1.194.0 and using `partitionNum` instead.
 // Currently, its value only can be set to 50 when creating it, and finally depends on `partitionNum` value: <`topicQuota`> = 1000 + <`partitionNum`>.
 // Therefore, you can update it by updating the `partitionNum`, and it is the only updating path.

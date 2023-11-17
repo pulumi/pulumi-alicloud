@@ -137,14 +137,14 @@ public final class GetVpcFlowLogsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The resource type.
+     * The resource type. Valid values: `NetworkInterface`, `VPC`, `VSwitch`.
      * 
      */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
     /**
-     * @return The resource type.
+     * @return The resource type. Valid values: `NetworkInterface`, `VPC`, `VSwitch`.
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -152,14 +152,14 @@ public final class GetVpcFlowLogsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of flow log.
+     * The status of  flow log. Valid values: `Active`, `Inactive`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of flow log.
+     * @return The status of  flow log. Valid values: `Active`, `Inactive`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -167,14 +167,14 @@ public final class GetVpcFlowLogsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The traffic type.
+     * The traffic type. Valid values: `All`, `Allow`, `Drop`.
      * 
      */
     @Import(name="trafficType")
     private @Nullable Output<String> trafficType;
 
     /**
-     * @return The traffic type.
+     * @return The traffic type. Valid values: `All`, `Allow`, `Drop`.
      * 
      */
     public Optional<Output<String>> trafficType() {
@@ -394,7 +394,7 @@ public final class GetVpcFlowLogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceType The resource type.
+         * @param resourceType The resource type. Valid values: `NetworkInterface`, `VPC`, `VSwitch`.
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class GetVpcFlowLogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceType The resource type.
+         * @param resourceType The resource type. Valid values: `NetworkInterface`, `VPC`, `VSwitch`.
          * 
          * @return builder
          * 
@@ -415,7 +415,7 @@ public final class GetVpcFlowLogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of flow log.
+         * @param status The status of  flow log. Valid values: `Active`, `Inactive`.
          * 
          * @return builder
          * 
@@ -426,7 +426,7 @@ public final class GetVpcFlowLogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of flow log.
+         * @param status The status of  flow log. Valid values: `Active`, `Inactive`.
          * 
          * @return builder
          * 
@@ -436,7 +436,7 @@ public final class GetVpcFlowLogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param trafficType The traffic type.
+         * @param trafficType The traffic type. Valid values: `All`, `Allow`, `Drop`.
          * 
          * @return builder
          * 
@@ -447,7 +447,7 @@ public final class GetVpcFlowLogsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param trafficType The traffic type.
+         * @param trafficType The traffic type. Valid values: `All`, `Allow`, `Drop`.
          * 
          * @return builder
          * 

@@ -58,7 +58,7 @@ export function getRules(args?: GetRulesArgs, opts?: pulumi.InvokeOptions): Prom
  */
 export interface GetRulesArgs {
     /**
-     * Sensitive Data Identification Rules for the Type of.
+     * Sensitive Data Identification Rules for the Type of. Valid values:
      */
     category?: number;
     /**
@@ -66,7 +66,7 @@ export interface GetRulesArgs {
      */
     contentCategory?: string;
     /**
-     * Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+     * Sensitive Data Identification Rules of Type. Valid values:
      */
     customType?: number;
     enableDetails?: boolean;
@@ -87,11 +87,11 @@ export interface GetRulesArgs {
      */
     outputFile?: string;
     /**
-     * Product ID.
+     * Product ID. Valid values:
      */
     productId?: string;
     /**
-     * Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+     * Sensitive Data Identification Rules of Risk Level ID. Valid values:
      */
     riskLevelId?: string;
     /**
@@ -103,7 +103,7 @@ export interface GetRulesArgs {
      */
     status?: string;
     /**
-     * The Level of Risk.
+     * The Level of Risk. Valid values:
      */
     warnLevel?: number;
 }
@@ -167,7 +167,7 @@ export function getRulesOutput(args?: GetRulesOutputArgs, opts?: pulumi.InvokeOp
  */
 export interface GetRulesOutputArgs {
     /**
-     * Sensitive Data Identification Rules for the Type of.
+     * Sensitive Data Identification Rules for the Type of. Valid values:
      */
     category?: pulumi.Input<number>;
     /**
@@ -175,7 +175,7 @@ export interface GetRulesOutputArgs {
      */
     contentCategory?: pulumi.Input<string>;
     /**
-     * Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+     * Sensitive Data Identification Rules of Type. Valid values:
      */
     customType?: pulumi.Input<number>;
     enableDetails?: pulumi.Input<boolean>;
@@ -196,11 +196,11 @@ export interface GetRulesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Product ID.
+     * Product ID. Valid values:
      */
     productId?: pulumi.Input<string>;
     /**
-     * Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+     * Sensitive Data Identification Rules of Risk Level ID. Valid values:
      */
     riskLevelId?: pulumi.Input<string>;
     /**
@@ -212,7 +212,7 @@ export interface GetRulesOutputArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * The Level of Risk.
+     * The Level of Risk. Valid values:
      */
     warnLevel?: pulumi.Input<number>;
 }

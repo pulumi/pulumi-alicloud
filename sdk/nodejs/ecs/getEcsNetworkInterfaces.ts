@@ -63,7 +63,7 @@ export interface GetEcsNetworkInterfacesArgs {
      */
     instanceId?: string;
     /**
-     * The network interface name.
+     * Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
      */
@@ -85,7 +85,7 @@ export interface GetEcsNetworkInterfacesArgs {
      */
     primaryIpAddress?: string;
     /**
-     * The primary private IP address of the ENI.
+     * Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
      *
      * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
@@ -103,11 +103,11 @@ export interface GetEcsNetworkInterfacesArgs {
      */
     serviceManaged?: boolean;
     /**
-     * The status of the ENI.
+     * The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
      */
     status?: string;
     /**
-     * The tags.
+     * A map of tags assigned to ENIs.
      */
     tags?: {[key: string]: any};
     /**
@@ -194,7 +194,7 @@ export interface GetEcsNetworkInterfacesOutputArgs {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The network interface name.
+     * Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
      */
@@ -216,7 +216,7 @@ export interface GetEcsNetworkInterfacesOutputArgs {
      */
     primaryIpAddress?: pulumi.Input<string>;
     /**
-     * The primary private IP address of the ENI.
+     * Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
      *
      * @deprecated Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
      */
@@ -234,11 +234,11 @@ export interface GetEcsNetworkInterfacesOutputArgs {
      */
     serviceManaged?: pulumi.Input<boolean>;
     /**
-     * The status of the ENI.
+     * The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The tags.
+     * A map of tags assigned to ENIs.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

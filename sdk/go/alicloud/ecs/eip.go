@@ -79,7 +79,7 @@ type Eip struct {
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description                    pulumi.StringPtrOutput `pulumi:"description"`
 	HighDefinitionMonitorLogStatus pulumi.StringOutput    `pulumi:"highDefinitionMonitorLogStatus"`
-	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	// (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
@@ -91,7 +91,7 @@ type Eip struct {
 	Isp        pulumi.StringOutput    `pulumi:"isp"`
 	LogProject pulumi.StringPtrOutput `pulumi:"logProject"`
 	LogStore   pulumi.StringPtrOutput `pulumi:"logStore"`
-	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+	// (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 	Name    pulumi.StringOutput `pulumi:"name"`
@@ -157,7 +157,7 @@ type eipState struct {
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description                    *string `pulumi:"description"`
 	HighDefinitionMonitorLogStatus *string `pulumi:"highDefinitionMonitorLogStatus"`
-	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	// (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -169,7 +169,7 @@ type eipState struct {
 	Isp        *string `pulumi:"isp"`
 	LogProject *string `pulumi:"logProject"`
 	LogStore   *string `pulumi:"logStore"`
-	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+	// (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 	Name    *string `pulumi:"name"`
@@ -206,7 +206,7 @@ type EipState struct {
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description                    pulumi.StringPtrInput
 	HighDefinitionMonitorLogStatus pulumi.StringPtrInput
-	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	// (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
@@ -218,7 +218,7 @@ type EipState struct {
 	Isp        pulumi.StringPtrInput
 	LogProject pulumi.StringPtrInput
 	LogStore   pulumi.StringPtrInput
-	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+	// (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 	Name    pulumi.StringPtrInput
@@ -258,7 +258,7 @@ type eipArgs struct {
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description                    *string `pulumi:"description"`
 	HighDefinitionMonitorLogStatus *string `pulumi:"highDefinitionMonitorLogStatus"`
-	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	// (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -268,7 +268,7 @@ type eipArgs struct {
 	Isp        *string `pulumi:"isp"`
 	LogProject *string `pulumi:"logProject"`
 	LogStore   *string `pulumi:"logStore"`
-	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+	// (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 	Name    *string `pulumi:"name"`
@@ -303,7 +303,7 @@ type EipArgs struct {
 	// Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description                    pulumi.StringPtrInput
 	HighDefinitionMonitorLogStatus pulumi.StringPtrInput
-	// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+	// (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
@@ -313,7 +313,7 @@ type EipArgs struct {
 	Isp        pulumi.StringPtrInput
 	LogProject pulumi.StringPtrInput
 	LogStore   pulumi.StringPtrInput
-	// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+	// (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 	Name    pulumi.StringPtrInput
@@ -458,7 +458,7 @@ func (o EipOutput) HighDefinitionMonitorLogStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringOutput { return v.HighDefinitionMonitorLogStatus }).(pulumi.StringOutput)
 }
 
-// (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+// (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
 //
 // Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 func (o EipOutput) InstanceChargeType() pulumi.StringOutput {
@@ -488,7 +488,7 @@ func (o EipOutput) LogStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Eip) pulumi.StringPtrOutput { return v.LogStore }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+// (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
 //
 // Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 func (o EipOutput) Name() pulumi.StringOutput {

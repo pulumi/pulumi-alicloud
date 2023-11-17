@@ -28,7 +28,7 @@ class HaVipv2Args:
                The following arguments will be discarded. Please use new fields as soon as possible:
         :param pulumi.Input[str] description: The description of the HaVip instance. The length is 2 to 256 characters.
         :param pulumi.Input[str] ha_vip_name: The name of the HaVip instance.
-        :param pulumi.Input[str] havip_name: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+        :param pulumi.Input[str] havip_name: (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
         :param pulumi.Input[str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of HaVip.
@@ -92,7 +92,7 @@ class HaVipv2Args:
     @pulumi.getter(name="havipName")
     def havip_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+        (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
         """
         warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
@@ -167,7 +167,7 @@ class _HaVipv2State:
         :param pulumi.Input[str] description: The description of the HaVip instance. The length is 2 to 256 characters.
         :param pulumi.Input[str] ha_vip_id: The ID of the resource.
         :param pulumi.Input[str] ha_vip_name: The name of the HaVip instance.
-        :param pulumi.Input[str] havip_name: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+        :param pulumi.Input[str] havip_name: (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
         :param pulumi.Input[str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         :param pulumi.Input[str] master_instance_id: The primary instance ID bound to HaVip.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
@@ -300,7 +300,7 @@ class _HaVipv2State:
     @pulumi.getter(name="havipName")
     def havip_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+        (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
         """
         warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")
@@ -465,7 +465,7 @@ class HaVipv2(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the HaVip instance. The length is 2 to 256 characters.
         :param pulumi.Input[str] ha_vip_name: The name of the HaVip instance.
-        :param pulumi.Input[str] havip_name: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+        :param pulumi.Input[str] havip_name: (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
         :param pulumi.Input[str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of HaVip.
@@ -616,7 +616,7 @@ class HaVipv2(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the HaVip instance. The length is 2 to 256 characters.
         :param pulumi.Input[str] ha_vip_id: The ID of the resource.
         :param pulumi.Input[str] ha_vip_name: The name of the HaVip instance.
-        :param pulumi.Input[str] havip_name: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+        :param pulumi.Input[str] havip_name: (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
         :param pulumi.Input[str] ip_address: The ip address of the HaVip. If not filled, the default will be assigned one from the vswitch.
         :param pulumi.Input[str] master_instance_id: The primary instance ID bound to HaVip.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
@@ -708,7 +708,7 @@ class HaVipv2(pulumi.CustomResource):
     @pulumi.getter(name="havipName")
     def havip_name(self) -> pulumi.Output[str]:
         """
-        Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+        (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
         """
         warnings.warn("""Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""havip_name is deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.""")

@@ -63,7 +63,7 @@ type GetNasBackupPlansArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The ID of backup vault.
+	// The backup vault ID of the NasBackupPlan used.
 	VaultId *string `pulumi:"vaultId"`
 }
 
@@ -103,7 +103,7 @@ type GetNasBackupPlansOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The ID of backup vault.
+	// The backup vault ID of the NasBackupPlan used.
 	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
 }
 

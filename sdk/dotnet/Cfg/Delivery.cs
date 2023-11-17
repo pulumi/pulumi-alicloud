@@ -101,9 +101,6 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// The ARN of the delivery destination. The value must be in one of the following formats:
-        /// * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-        /// * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-        /// * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         /// </summary>
         [Output("deliveryChannelTargetArn")]
         public Output<string> DeliveryChannelTargetArn { get; private set; } = null!;
@@ -127,7 +124,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<bool> NonCompliantNotification { get; private set; } = null!;
 
         /// <summary>
-        /// The oss ARN of the delivery channel when the value data oversized limit. 
+        /// The oss ARN of the delivery channel when the value data oversized limit.
         /// * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
         /// * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
         /// </summary>
@@ -212,9 +209,6 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// The ARN of the delivery destination. The value must be in one of the following formats:
-        /// * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-        /// * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-        /// * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         /// </summary>
         [Input("deliveryChannelTargetArn", required: true)]
         public Input<string> DeliveryChannelTargetArn { get; set; } = null!;
@@ -238,7 +232,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<bool>? NonCompliantNotification { get; set; }
 
         /// <summary>
-        /// The oss ARN of the delivery channel when the value data oversized limit. 
+        /// The oss ARN of the delivery channel when the value data oversized limit.
         /// * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
         /// * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
         /// </summary>
@@ -285,9 +279,6 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// The ARN of the delivery destination. The value must be in one of the following formats:
-        /// * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-        /// * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-        /// * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         /// </summary>
         [Input("deliveryChannelTargetArn")]
         public Input<string>? DeliveryChannelTargetArn { get; set; }
@@ -311,7 +302,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<bool>? NonCompliantNotification { get; set; }
 
         /// <summary>
-        /// The oss ARN of the delivery channel when the value data oversized limit. 
+        /// The oss ARN of the delivery channel when the value data oversized limit.
         /// * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
         /// * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
         /// </summary>

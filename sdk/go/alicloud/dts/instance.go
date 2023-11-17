@@ -115,9 +115,9 @@ type Instance struct {
 	// - **as400**:AS/400.
 	// - **Tablestore**: Tablestore.
 	// - **NOTE:**
-	// - The default value is **MySQL**.
-	// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-	// - This parameter or **job_id** must be passed in.
+	//   - The default value is **MySQL**.
+	//   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+	//   - This parameter or **job_id** must be passed in.
 	DestinationEndpointEngineName pulumi.StringOutput `pulumi:"destinationEndpointEngineName"`
 	// The target instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
 	DestinationRegion pulumi.StringPtrOutput `pulumi:"destinationRegion"`
@@ -142,7 +142,7 @@ type Instance struct {
 	Period pulumi.StringPtrOutput `pulumi:"period"`
 	// Resource Group ID.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// Source instance database engine type.
+	// (ForceNew, Optional) Source instance database engine type.
 	// - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
 	// - **PolarDB**:PolarDB MySQL.
 	// - **polardb_o**:PolarDB O engine.
@@ -165,9 +165,9 @@ type Instance struct {
 	// - **as400**:AS/400.
 	// - **Tablestore**: Tablestore.
 	// - **NOTE:**
-	// - The default value is **MySQL**.
-	// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-	// - This parameter or **job_id** must be passed in.
+	//   - The default value is **MySQL**.
+	//   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+	//   - This parameter or **job_id** must be passed in.
 	SourceEndpointEngineName pulumi.StringOutput `pulumi:"sourceEndpointEngineName"`
 	// The source instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
 	SourceRegion pulumi.StringPtrOutput `pulumi:"sourceRegion"`
@@ -191,8 +191,8 @@ type Instance struct {
 	// - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
 	// - When **Period** is **Year**, the values are 1, 2, 3, and 5.
 	// - **NOTE:**
-	// - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-	// - The billing method of the subscription instance. You can set the parameter `period`.
+	//   - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+	//   - The billing method of the subscription instance. You can set the parameter `period`.
 	UsedTime pulumi.IntPtrOutput `pulumi:"usedTime"`
 }
 
@@ -263,9 +263,9 @@ type instanceState struct {
 	// - **as400**:AS/400.
 	// - **Tablestore**: Tablestore.
 	// - **NOTE:**
-	// - The default value is **MySQL**.
-	// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-	// - This parameter or **job_id** must be passed in.
+	//   - The default value is **MySQL**.
+	//   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+	//   - This parameter or **job_id** must be passed in.
 	DestinationEndpointEngineName *string `pulumi:"destinationEndpointEngineName"`
 	// The target instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
 	DestinationRegion *string `pulumi:"destinationRegion"`
@@ -290,7 +290,7 @@ type instanceState struct {
 	Period *string `pulumi:"period"`
 	// Resource Group ID.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Source instance database engine type.
+	// (ForceNew, Optional) Source instance database engine type.
 	// - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
 	// - **PolarDB**:PolarDB MySQL.
 	// - **polardb_o**:PolarDB O engine.
@@ -313,9 +313,9 @@ type instanceState struct {
 	// - **as400**:AS/400.
 	// - **Tablestore**: Tablestore.
 	// - **NOTE:**
-	// - The default value is **MySQL**.
-	// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-	// - This parameter or **job_id** must be passed in.
+	//   - The default value is **MySQL**.
+	//   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+	//   - This parameter or **job_id** must be passed in.
 	SourceEndpointEngineName *string `pulumi:"sourceEndpointEngineName"`
 	// The source instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
 	SourceRegion *string `pulumi:"sourceRegion"`
@@ -339,8 +339,8 @@ type instanceState struct {
 	// - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
 	// - When **Period** is **Year**, the values are 1, 2, 3, and 5.
 	// - **NOTE:**
-	// - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-	// - The billing method of the subscription instance. You can set the parameter `period`.
+	//   - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+	//   - The billing method of the subscription instance. You can set the parameter `period`.
 	UsedTime *int `pulumi:"usedTime"`
 }
 
@@ -382,9 +382,9 @@ type InstanceState struct {
 	// - **as400**:AS/400.
 	// - **Tablestore**: Tablestore.
 	// - **NOTE:**
-	// - The default value is **MySQL**.
-	// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-	// - This parameter or **job_id** must be passed in.
+	//   - The default value is **MySQL**.
+	//   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+	//   - This parameter or **job_id** must be passed in.
 	DestinationEndpointEngineName pulumi.StringPtrInput
 	// The target instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
 	DestinationRegion pulumi.StringPtrInput
@@ -409,7 +409,7 @@ type InstanceState struct {
 	Period pulumi.StringPtrInput
 	// Resource Group ID.
 	ResourceGroupId pulumi.StringPtrInput
-	// Source instance database engine type.
+	// (ForceNew, Optional) Source instance database engine type.
 	// - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
 	// - **PolarDB**:PolarDB MySQL.
 	// - **polardb_o**:PolarDB O engine.
@@ -432,9 +432,9 @@ type InstanceState struct {
 	// - **as400**:AS/400.
 	// - **Tablestore**: Tablestore.
 	// - **NOTE:**
-	// - The default value is **MySQL**.
-	// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-	// - This parameter or **job_id** must be passed in.
+	//   - The default value is **MySQL**.
+	//   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+	//   - This parameter or **job_id** must be passed in.
 	SourceEndpointEngineName pulumi.StringPtrInput
 	// The source instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
 	SourceRegion pulumi.StringPtrInput
@@ -458,8 +458,8 @@ type InstanceState struct {
 	// - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
 	// - When **Period** is **Year**, the values are 1, 2, 3, and 5.
 	// - **NOTE:**
-	// - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-	// - The billing method of the subscription instance. You can set the parameter `period`.
+	//   - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+	//   - The billing method of the subscription instance. You can set the parameter `period`.
 	UsedTime pulumi.IntPtrInput
 }
 
@@ -503,9 +503,9 @@ type instanceArgs struct {
 	// - **as400**:AS/400.
 	// - **Tablestore**: Tablestore.
 	// - **NOTE:**
-	// - The default value is **MySQL**.
-	// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-	// - This parameter or **job_id** must be passed in.
+	//   - The default value is **MySQL**.
+	//   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+	//   - This parameter or **job_id** must be passed in.
 	DestinationEndpointEngineName *string `pulumi:"destinationEndpointEngineName"`
 	// The target instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
 	DestinationRegion *string `pulumi:"destinationRegion"`
@@ -526,7 +526,7 @@ type instanceArgs struct {
 	Period *string `pulumi:"period"`
 	// Resource Group ID.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Source instance database engine type.
+	// (ForceNew, Optional) Source instance database engine type.
 	// - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
 	// - **PolarDB**:PolarDB MySQL.
 	// - **polardb_o**:PolarDB O engine.
@@ -549,9 +549,9 @@ type instanceArgs struct {
 	// - **as400**:AS/400.
 	// - **Tablestore**: Tablestore.
 	// - **NOTE:**
-	// - The default value is **MySQL**.
-	// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-	// - This parameter or **job_id** must be passed in.
+	//   - The default value is **MySQL**.
+	//   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+	//   - This parameter or **job_id** must be passed in.
 	SourceEndpointEngineName *string `pulumi:"sourceEndpointEngineName"`
 	// The source instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
 	SourceRegion *string `pulumi:"sourceRegion"`
@@ -573,8 +573,8 @@ type instanceArgs struct {
 	// - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
 	// - When **Period** is **Year**, the values are 1, 2, 3, and 5.
 	// - **NOTE:**
-	// - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-	// - The billing method of the subscription instance. You can set the parameter `period`.
+	//   - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+	//   - The billing method of the subscription instance. You can set the parameter `period`.
 	UsedTime *int `pulumi:"usedTime"`
 }
 
@@ -615,9 +615,9 @@ type InstanceArgs struct {
 	// - **as400**:AS/400.
 	// - **Tablestore**: Tablestore.
 	// - **NOTE:**
-	// - The default value is **MySQL**.
-	// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-	// - This parameter or **job_id** must be passed in.
+	//   - The default value is **MySQL**.
+	//   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+	//   - This parameter or **job_id** must be passed in.
 	DestinationEndpointEngineName pulumi.StringPtrInput
 	// The target instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
 	DestinationRegion pulumi.StringPtrInput
@@ -638,7 +638,7 @@ type InstanceArgs struct {
 	Period pulumi.StringPtrInput
 	// Resource Group ID.
 	ResourceGroupId pulumi.StringPtrInput
-	// Source instance database engine type.
+	// (ForceNew, Optional) Source instance database engine type.
 	// - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
 	// - **PolarDB**:PolarDB MySQL.
 	// - **polardb_o**:PolarDB O engine.
@@ -661,9 +661,9 @@ type InstanceArgs struct {
 	// - **as400**:AS/400.
 	// - **Tablestore**: Tablestore.
 	// - **NOTE:**
-	// - The default value is **MySQL**.
-	// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-	// - This parameter or **job_id** must be passed in.
+	//   - The default value is **MySQL**.
+	//   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+	//   - This parameter or **job_id** must be passed in.
 	SourceEndpointEngineName pulumi.StringPtrInput
 	// The source instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
 	SourceRegion pulumi.StringPtrInput
@@ -685,8 +685,8 @@ type InstanceArgs struct {
 	// - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
 	// - When **Period** is **Year**, the values are 1, 2, 3, and 5.
 	// - **NOTE:**
-	// - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-	// - The billing method of the subscription instance. You can set the parameter `period`.
+	//   - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+	//   - The billing method of the subscription instance. You can set the parameter `period`.
 	UsedTime pulumi.IntPtrInput
 }
 
@@ -829,9 +829,9 @@ func (o InstanceOutput) DatabaseCount() pulumi.IntOutput {
 // - **as400**:AS/400.
 // - **Tablestore**: Tablestore.
 // - **NOTE:**
-// - The default value is **MySQL**.
-// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-// - This parameter or **job_id** must be passed in.
+//   - The default value is **MySQL**.
+//   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+//   - This parameter or **job_id** must be passed in.
 func (o InstanceOutput) DestinationEndpointEngineName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DestinationEndpointEngineName }).(pulumi.StringOutput)
 }
@@ -889,7 +889,7 @@ func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Source instance database engine type.
+// (ForceNew, Optional) Source instance database engine type.
 // - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
 // - **PolarDB**:PolarDB MySQL.
 // - **polardb_o**:PolarDB O engine.
@@ -912,9 +912,9 @@ func (o InstanceOutput) ResourceGroupId() pulumi.StringOutput {
 // - **as400**:AS/400.
 // - **Tablestore**: Tablestore.
 // - **NOTE:**
-// - The default value is **MySQL**.
-// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-// - This parameter or **job_id** must be passed in.
+//   - The default value is **MySQL**.
+//   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+//   - This parameter or **job_id** must be passed in.
 func (o InstanceOutput) SourceEndpointEngineName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SourceEndpointEngineName }).(pulumi.StringOutput)
 }
@@ -959,8 +959,8 @@ func (o InstanceOutput) Type() pulumi.StringPtrOutput {
 // - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
 // - When **Period** is **Year**, the values are 1, 2, 3, and 5.
 // - **NOTE:**
-// - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-// - The billing method of the subscription instance. You can set the parameter `period`.
+//   - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+//   - The billing method of the subscription instance. You can set the parameter `period`.
 func (o InstanceOutput) UsedTime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.UsedTime }).(pulumi.IntPtrOutput)
 }

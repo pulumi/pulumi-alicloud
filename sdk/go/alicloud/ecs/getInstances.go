@@ -76,6 +76,7 @@ type GetInstancesArgs struct {
 	// Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -179,6 +180,7 @@ type GetInstancesOutputArgs struct {
 	// Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
+	//
 	// ```go
 	// package main
 	//

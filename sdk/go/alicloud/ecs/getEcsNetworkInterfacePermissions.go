@@ -66,7 +66,7 @@ type GetEcsNetworkInterfacePermissionsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// The Status of the Network Interface Permissions.
+	// The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
 	Status *string `pulumi:"status"`
 }
 
@@ -107,7 +107,7 @@ type GetEcsNetworkInterfacePermissionsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// The Status of the Network Interface Permissions.
+	// The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

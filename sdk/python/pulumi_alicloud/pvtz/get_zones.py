@@ -198,7 +198,7 @@ def get_zones(enable_details: Optional[bool] = None,
     :param str query_region_id: query_region_id for zone regionId.
     :param str query_vpc_id: query_vpc_id for zone vpcId.
     :param str resource_group_id: resource_group_id for zone resourceGroupId.
-    :param str search_mode: Search mode. Value: 
+    :param str search_mode: Search mode. Value:
            - LIKE: fuzzy search.
            - EXACT: precise search. It is not filled in by default.
     """
@@ -266,7 +266,7 @@ def get_zones_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     :param str query_region_id: query_region_id for zone regionId.
     :param str query_vpc_id: query_vpc_id for zone vpcId.
     :param str resource_group_id: resource_group_id for zone resourceGroupId.
-    :param str search_mode: Search mode. Value: 
+    :param str search_mode: Search mode. Value:
            - LIKE: fuzzy search.
            - EXACT: precise search. It is not filled in by default.
     """

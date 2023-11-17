@@ -139,7 +139,7 @@ public class Key extends com.pulumi.resources.CustomResource {
         return this.deleteDate;
     }
     /**
-     * Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+     * (Deprecated since v1.85.0) Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
      * 
      * @deprecated
      * Field &#39;deletion_window_in_days&#39; has been deprecated from provider version 1.85.0. New field &#39;pending_window_in_days&#39; instead.
@@ -150,7 +150,7 @@ public class Key extends com.pulumi.resources.CustomResource {
     private Output<Integer> deletionWindowInDays;
 
     /**
-     * @return Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+     * @return (Deprecated since v1.85.0) Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
      * 
      */
     public Output<Integer> deletionWindowInDays() {
@@ -185,7 +185,7 @@ public class Key extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.dkmsInstanceId);
     }
     /**
-     * Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+     * (Deprecated since v1.85.0) Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      * 
      * @deprecated
      * Field &#39;is_enabled&#39; has been deprecated from provider version 1.85.0. New field &#39;key_state&#39; instead.
@@ -196,7 +196,7 @@ public class Key extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> isEnabled;
 
     /**
-     * @return Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+     * @return (Deprecated since v1.85.0) Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      * 
      */
     public Output<Optional<Boolean>> isEnabled() {
@@ -221,7 +221,7 @@ public class Key extends com.pulumi.resources.CustomResource {
         return this.keySpec;
     }
     /**
-     * Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+     * (Deprecated since v1.123.1) Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
      * 
      * @deprecated
      * Field &#39;key_state&#39; has been deprecated from provider version 1.123.1. New field &#39;status&#39; instead.
@@ -232,7 +232,7 @@ public class Key extends com.pulumi.resources.CustomResource {
     private Output<String> keyState;
 
     /**
-     * @return Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+     * @return (Deprecated since v1.123.1) Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
      * 
      */
     public Output<String> keyState() {
@@ -240,8 +240,6 @@ public class Key extends com.pulumi.resources.CustomResource {
     }
     /**
      * The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-     * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-     * - `SIGN/VERIFY`: generates or verifies a digital signature.
      * 
      */
     @Export(name="keyUsage", type=String.class, parameters={})
@@ -249,8 +247,6 @@ public class Key extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-     * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-     * - `SIGN/VERIFY`: generates or verifies a digital signature.
      * 
      */
     public Output<String> keyUsage() {

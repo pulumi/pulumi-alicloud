@@ -38,7 +38,7 @@ class TrafficMirrorFilterIngressRuleInitArgs:
         :param pulumi.Input[bool] dry_run: Whether to PreCheck this request only. Value:
                - **true**: sends a check request and does not create inbound or outbound rules. Check items include whether required parameters are filled in, request format, and restrictions. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
                - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
-        :param pulumi.Input[str] rule_action: . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+        :param pulumi.Input[str] rule_action: (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         :param pulumi.Input[str] source_port_range: The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
         """
         pulumi.set(__self__, "destination_cidr_block", destination_cidr_block)
@@ -164,7 +164,7 @@ class TrafficMirrorFilterIngressRuleInitArgs:
     @pulumi.getter(name="ruleAction")
     def rule_action(self) -> Optional[pulumi.Input[str]]:
         """
-        . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+        (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         """
         warnings.warn("""Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""", DeprecationWarning)
         pulumi.log.warn("""rule_action is deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""")
@@ -213,7 +213,7 @@ class _TrafficMirrorFilterIngressRuleState:
                - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
         :param pulumi.Input[int] priority: The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
         :param pulumi.Input[str] protocol: The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
-        :param pulumi.Input[str] rule_action: . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+        :param pulumi.Input[str] rule_action: (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         :param pulumi.Input[str] source_cidr_block: The source CIDR block of the inbound traffic.
         :param pulumi.Input[str] source_port_range: The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
         :param pulumi.Input[str] status: The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
@@ -328,7 +328,7 @@ class _TrafficMirrorFilterIngressRuleState:
     @pulumi.getter(name="ruleAction")
     def rule_action(self) -> Optional[pulumi.Input[str]]:
         """
-        . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+        (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         """
         warnings.warn("""Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""", DeprecationWarning)
         pulumi.log.warn("""rule_action is deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""")
@@ -463,7 +463,7 @@ class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
                - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
         :param pulumi.Input[int] priority: The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
         :param pulumi.Input[str] protocol: The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
-        :param pulumi.Input[str] rule_action: . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+        :param pulumi.Input[str] rule_action: (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         :param pulumi.Input[str] source_cidr_block: The source CIDR block of the inbound traffic.
         :param pulumi.Input[str] source_port_range: The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
         :param pulumi.Input[str] traffic_mirror_filter_id: The ID of the filter.
@@ -604,7 +604,7 @@ class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
                - **false** (default): Sends a normal request and directly creates an inbound or outbound direction rule after checking.
         :param pulumi.Input[int] priority: The priority of the inbound rule. A smaller value indicates a higher priority. The maximum value is `10`, which indicates that you can configure at most 10 inbound rules for a filter.
         :param pulumi.Input[str] protocol: The transport protocol used by inbound traffic that needs to be mirrored. Valid values: `ALL`, `ICMP`, `TCP`, `UDP`.
-        :param pulumi.Input[str] rule_action: . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+        :param pulumi.Input[str] rule_action: (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         :param pulumi.Input[str] source_cidr_block: The source CIDR block of the inbound traffic.
         :param pulumi.Input[str] source_port_range: The source port range of the inbound traffic. Valid values: `1` to `65535`. Separate the first port and last port with a forward slash (/), for example, `1/200` or `80/80`. A value of `-1/-1` indicates that all ports are available. Therefore, do not set the value to `-1/-1`. **NOTE:** When `protocol` is `ICMP`, this parameter is invalid.
         :param pulumi.Input[str] status: The state of the inbound rule. `Creating`, `Created`, `Modifying` and `Deleting`.
@@ -685,7 +685,7 @@ class TrafficMirrorFilterIngressRule(pulumi.CustomResource):
     @pulumi.getter(name="ruleAction")
     def rule_action(self) -> pulumi.Output[str]:
         """
-        . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+        (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         """
         warnings.warn("""Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""", DeprecationWarning)
         pulumi.log.warn("""rule_action is deprecated: Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.""")

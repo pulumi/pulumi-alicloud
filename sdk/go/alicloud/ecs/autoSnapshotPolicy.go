@@ -70,7 +70,7 @@ type AutoSnapshotPolicy struct {
 
 	// The retention period of the snapshot copied across regions.
 	// - -1: The snapshot is permanently retained.
-	// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
+	// - [1, 65535]: The automatic snapshot is retained for the specified number of days.\
 	//   Default value: -1.
 	CopiedSnapshotsRetentionDays pulumi.IntPtrOutput `pulumi:"copiedSnapshotsRetentionDays"`
 	// Specifies whether to enable the system to automatically copy snapshots across regions.
@@ -139,7 +139,7 @@ func GetAutoSnapshotPolicy(ctx *pulumi.Context,
 type autoSnapshotPolicyState struct {
 	// The retention period of the snapshot copied across regions.
 	// - -1: The snapshot is permanently retained.
-	// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
+	// - [1, 65535]: The automatic snapshot is retained for the specified number of days.\
 	//   Default value: -1.
 	CopiedSnapshotsRetentionDays *int `pulumi:"copiedSnapshotsRetentionDays"`
 	// Specifies whether to enable the system to automatically copy snapshots across regions.
@@ -170,7 +170,7 @@ type autoSnapshotPolicyState struct {
 type AutoSnapshotPolicyState struct {
 	// The retention period of the snapshot copied across regions.
 	// - -1: The snapshot is permanently retained.
-	// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
+	// - [1, 65535]: The automatic snapshot is retained for the specified number of days.\
 	//   Default value: -1.
 	CopiedSnapshotsRetentionDays pulumi.IntPtrInput
 	// Specifies whether to enable the system to automatically copy snapshots across regions.
@@ -205,7 +205,7 @@ func (AutoSnapshotPolicyState) ElementType() reflect.Type {
 type autoSnapshotPolicyArgs struct {
 	// The retention period of the snapshot copied across regions.
 	// - -1: The snapshot is permanently retained.
-	// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
+	// - [1, 65535]: The automatic snapshot is retained for the specified number of days.\
 	//   Default value: -1.
 	CopiedSnapshotsRetentionDays *int `pulumi:"copiedSnapshotsRetentionDays"`
 	// Specifies whether to enable the system to automatically copy snapshots across regions.
@@ -235,7 +235,7 @@ type autoSnapshotPolicyArgs struct {
 type AutoSnapshotPolicyArgs struct {
 	// The retention period of the snapshot copied across regions.
 	// - -1: The snapshot is permanently retained.
-	// - [1, 65535]: The automatic snapshot is retained for the specified number of days.
+	// - [1, 65535]: The automatic snapshot is retained for the specified number of days.\
 	//   Default value: -1.
 	CopiedSnapshotsRetentionDays pulumi.IntPtrInput
 	// Specifies whether to enable the system to automatically copy snapshots across regions.
@@ -350,7 +350,7 @@ func (o AutoSnapshotPolicyOutput) ToAutoSnapshotPolicyOutputWithContext(ctx cont
 
 // The retention period of the snapshot copied across regions.
 //   - -1: The snapshot is permanently retained.
-//   - [1, 65535]: The automatic snapshot is retained for the specified number of days.
+//   - [1, 65535]: The automatic snapshot is retained for the specified number of days.\
 //     Default value: -1.
 func (o AutoSnapshotPolicyOutput) CopiedSnapshotsRetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.IntPtrOutput { return v.CopiedSnapshotsRetentionDays }).(pulumi.IntPtrOutput)

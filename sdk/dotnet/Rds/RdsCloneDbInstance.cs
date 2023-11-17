@@ -326,7 +326,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<ImmutableArray<Outputs.RdsCloneDbInstanceParameter>> Parameters { get; private set; } = null!;
 
         /// <summary>
-        /// The password of the certificate. 
+        /// The password of the certificate.
         /// 
         /// &gt; **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         /// </summary>
@@ -813,7 +813,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The password of the certificate. 
+        /// The password of the certificate.
         /// 
         /// &gt; **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         /// </summary>
@@ -1286,7 +1286,7 @@ namespace Pulumi.AliCloud.Rds
         }
 
         /// <summary>
-        /// The password of the certificate. 
+        /// The password of the certificate.
         /// 
         /// &gt; **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
         /// </summary>

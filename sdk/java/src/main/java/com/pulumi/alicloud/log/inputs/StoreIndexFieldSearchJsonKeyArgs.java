@@ -17,14 +17,14 @@ public final class StoreIndexFieldSearchJsonKeyArgs extends com.pulumi.resources
     public static final StoreIndexFieldSearchJsonKeyArgs Empty = new StoreIndexFieldSearchJsonKeyArgs();
 
     /**
-     * The alias of one field.
+     * The alias of one field
      * 
      */
     @Import(name="alias")
     private @Nullable Output<String> alias;
 
     /**
-     * @return The alias of one field.
+     * @return The alias of one field
      * 
      */
     public Optional<Output<String>> alias() {
@@ -108,7 +108,7 @@ public final class StoreIndexFieldSearchJsonKeyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param alias The alias of one field.
+         * @param alias The alias of one field
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class StoreIndexFieldSearchJsonKeyArgs extends com.pulumi.resources
         }
 
         /**
-         * @param alias The alias of one field.
+         * @param alias The alias of one field
          * 
          * @return builder
          * 

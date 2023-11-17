@@ -127,7 +127,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly releaseTime!: pulumi.Output<string>;
     /**
-     * Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+     * (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
      *
      * @deprecated Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
      */
@@ -299,7 +299,7 @@ export interface InstanceState {
      */
     releaseTime?: pulumi.Input<string>;
     /**
-     * Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+     * (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
      *
      * @deprecated Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
      */
@@ -379,7 +379,7 @@ export interface InstanceArgs {
      */
     period: pulumi.Input<number>;
     /**
-     * Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+     * (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
      *
      * @deprecated Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
      */

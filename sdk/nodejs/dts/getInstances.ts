@@ -57,7 +57,7 @@ export interface GetInstancesArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * Resource Group ID
+     * (ForceNew,Optional) Resource Group ID
      */
     resourceGroupId?: string;
 }
@@ -132,7 +132,7 @@ export interface GetInstancesOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * Resource Group ID
+     * (ForceNew,Optional) Resource Group ID
      */
     resourceGroupId?: pulumi.Input<string>;
 }

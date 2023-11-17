@@ -96,6 +96,8 @@ public class BasicDefenseThreshold extends com.pulumi.resources.CustomResource {
     }
     /**
      * The type of the threshold to query. Valid values: `defense`,`blackhole`.
+     * -`defense` - scrubbing threshold.
+     * -`blackhole` - DDoS mitigation threshold.
      * 
      */
     @Export(name="ddosType", type=String.class, parameters={})
@@ -103,6 +105,8 @@ public class BasicDefenseThreshold extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The type of the threshold to query. Valid values: `defense`,`blackhole`.
+     * -`defense` - scrubbing threshold.
+     * -`blackhole` - DDoS mitigation threshold.
      * 
      */
     public Output<String> ddosType() {

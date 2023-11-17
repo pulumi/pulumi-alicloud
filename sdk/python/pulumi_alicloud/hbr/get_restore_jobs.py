@@ -176,13 +176,13 @@ def get_restore_jobs(output_file: Optional[str] = None,
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] restore_ids: The list of restore job IDs.
-    :param str restore_type: The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+    :param str restore_type: The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
     :param Sequence[str] source_types: The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
-    :param str status: The status of restore job.
-    :param Sequence[str] target_buckets: The name of target ofo OSS bucket.
-    :param Sequence[str] target_file_system_ids: The ID of destination file system.
+    :param str status: The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
+    :param Sequence[str] target_buckets: The name of target OSS bucket.
+    :param Sequence[str] target_file_system_ids: Valid while source_type equals `NAS`. The list of destination File System IDs.
     :param Sequence[str] target_instance_ids: The ID of target ECS instance.
-    :param Sequence[str] vault_ids: The ID of backup vault.
+    :param Sequence[str] vault_ids: The list of backup vault IDs.
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
@@ -245,12 +245,12 @@ def get_restore_jobs_output(output_file: Optional[pulumi.Input[Optional[str]]] =
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param Sequence[str] restore_ids: The list of restore job IDs.
-    :param str restore_type: The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+    :param str restore_type: The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
     :param Sequence[str] source_types: The list of data source types. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS_TABLE`,`UDM_ECS_ROLLBACK`.
-    :param str status: The status of restore job.
-    :param Sequence[str] target_buckets: The name of target ofo OSS bucket.
-    :param Sequence[str] target_file_system_ids: The ID of destination file system.
+    :param str status: The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
+    :param Sequence[str] target_buckets: The name of target OSS bucket.
+    :param Sequence[str] target_file_system_ids: Valid while source_type equals `NAS`. The list of destination File System IDs.
     :param Sequence[str] target_instance_ids: The ID of target ECS instance.
-    :param Sequence[str] vault_ids: The ID of backup vault.
+    :param Sequence[str] vault_ids: The list of backup vault IDs.
     """
     ...

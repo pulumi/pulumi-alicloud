@@ -58,7 +58,7 @@ export class DBCluster extends pulumi.CustomResource {
      */
     public readonly dbClusterCategory!: pulumi.Output<string>;
     /**
-     * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+     * (Deprecated since v1.121.2) It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      *
      * @deprecated It duplicates with attribute db_node_class and is deprecated from 1.121.2.
      */
@@ -108,7 +108,7 @@ export class DBCluster extends pulumi.CustomResource {
      */
     public readonly modifyType!: pulumi.Output<string | undefined>;
     /**
-     * Field `payType` has been deprecated. New field `paymentType` instead.
+     * (Deprecated since v1.166.0) Field `payType` has been deprecated. New field `paymentType` instead.
      *
      * @deprecated Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
@@ -267,7 +267,7 @@ export interface DBClusterState {
      */
     dbClusterCategory?: pulumi.Input<string>;
     /**
-     * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+     * (Deprecated since v1.121.2) It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      *
      * @deprecated It duplicates with attribute db_node_class and is deprecated from 1.121.2.
      */
@@ -317,7 +317,7 @@ export interface DBClusterState {
      */
     modifyType?: pulumi.Input<string>;
     /**
-     * Field `payType` has been deprecated. New field `paymentType` instead.
+     * (Deprecated since v1.166.0) Field `payType` has been deprecated. New field `paymentType` instead.
      *
      * @deprecated Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */
@@ -390,7 +390,7 @@ export interface DBClusterArgs {
      */
     dbClusterCategory: pulumi.Input<string>;
     /**
-     * It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+     * (Deprecated since v1.121.2) It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
      *
      * @deprecated It duplicates with attribute db_node_class and is deprecated from 1.121.2.
      */
@@ -440,7 +440,7 @@ export interface DBClusterArgs {
      */
     modifyType?: pulumi.Input<string>;
     /**
-     * Field `payType` has been deprecated. New field `paymentType` instead.
+     * (Deprecated since v1.166.0) Field `payType` has been deprecated. New field `paymentType` instead.
      *
      * @deprecated Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
      */

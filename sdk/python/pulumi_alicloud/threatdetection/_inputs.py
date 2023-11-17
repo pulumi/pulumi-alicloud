@@ -75,8 +75,8 @@ class HoneypotProbeHoneypotBindListArgs:
                  bind_port_lists: Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]]] = None,
                  honeypot_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]] bind_port_lists: List of listening ports.See the following `Block BindPortList`.
-        :param pulumi.Input[str] honeypot_id: Honeypot ID.
+        :param pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]] bind_port_lists: (ForceNew,Optional) List of listening ports.See the following `Block BindPortList`.
+        :param pulumi.Input[str] honeypot_id: (ForceNew,Optional) Honeypot ID.
         """
         if bind_port_lists is not None:
             pulumi.set(__self__, "bind_port_lists", bind_port_lists)
@@ -87,7 +87,7 @@ class HoneypotProbeHoneypotBindListArgs:
     @pulumi.getter(name="bindPortLists")
     def bind_port_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListBindPortListArgs']]]]:
         """
-        List of listening ports.See the following `Block BindPortList`.
+        (ForceNew,Optional) List of listening ports.See the following `Block BindPortList`.
         """
         return pulumi.get(self, "bind_port_lists")
 
@@ -99,7 +99,7 @@ class HoneypotProbeHoneypotBindListArgs:
     @pulumi.getter(name="honeypotId")
     def honeypot_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Honeypot ID.
+        (ForceNew,Optional) Honeypot ID.
         """
         return pulumi.get(self, "honeypot_id")
 
@@ -117,11 +117,11 @@ class HoneypotProbeHoneypotBindListBindPortListArgs:
                  start_port: Optional[pulumi.Input[int]] = None,
                  target_port: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[bool] bind_port: Whether to bind the port.
-        :param pulumi.Input[int] end_port: End port.
-        :param pulumi.Input[bool] fixed: Whether the port is fixed.
-        :param pulumi.Input[int] start_port: Start port.
-        :param pulumi.Input[int] target_port: Destination port.
+        :param pulumi.Input[bool] bind_port: (ForceNew,Optional) Whether to bind the port.
+        :param pulumi.Input[int] end_port: (ForceNew,Optional) End port.
+        :param pulumi.Input[bool] fixed: (ForceNew,Optional) Whether the port is fixed.
+        :param pulumi.Input[int] start_port: (ForceNew,Optional) Start port.
+        :param pulumi.Input[int] target_port: (ForceNew,Optional) Destination port.
         """
         if bind_port is not None:
             pulumi.set(__self__, "bind_port", bind_port)
@@ -138,7 +138,7 @@ class HoneypotProbeHoneypotBindListBindPortListArgs:
     @pulumi.getter(name="bindPort")
     def bind_port(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to bind the port.
+        (ForceNew,Optional) Whether to bind the port.
         """
         return pulumi.get(self, "bind_port")
 
@@ -150,7 +150,7 @@ class HoneypotProbeHoneypotBindListBindPortListArgs:
     @pulumi.getter(name="endPort")
     def end_port(self) -> Optional[pulumi.Input[int]]:
         """
-        End port.
+        (ForceNew,Optional) End port.
         """
         return pulumi.get(self, "end_port")
 
@@ -162,7 +162,7 @@ class HoneypotProbeHoneypotBindListBindPortListArgs:
     @pulumi.getter
     def fixed(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the port is fixed.
+        (ForceNew,Optional) Whether the port is fixed.
         """
         return pulumi.get(self, "fixed")
 
@@ -174,7 +174,7 @@ class HoneypotProbeHoneypotBindListBindPortListArgs:
     @pulumi.getter(name="startPort")
     def start_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Start port.
+        (ForceNew,Optional) Start port.
         """
         return pulumi.get(self, "start_port")
 
@@ -186,7 +186,7 @@ class HoneypotProbeHoneypotBindListBindPortListArgs:
     @pulumi.getter(name="targetPort")
     def target_port(self) -> Optional[pulumi.Input[int]]:
         """
-        Destination port.
+        (ForceNew,Optional) Destination port.
         """
         return pulumi.get(self, "target_port")
 

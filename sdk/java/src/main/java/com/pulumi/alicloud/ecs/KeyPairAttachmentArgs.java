@@ -18,14 +18,14 @@ public final class KeyPairAttachmentArgs extends com.pulumi.resources.ResourceAr
     public static final KeyPairAttachmentArgs Empty = new KeyPairAttachmentArgs();
 
     /**
-     * Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+     * (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
      * 
      */
     @Import(name="force")
     private @Nullable Output<Boolean> force;
 
     /**
-     * @return Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+     * @return (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
      * 
      */
     public Optional<Output<Boolean>> force() {
@@ -105,7 +105,7 @@ public final class KeyPairAttachmentArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param force Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+         * @param force (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class KeyPairAttachmentArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param force Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+         * @param force (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
          * 
          * @return builder
          * 

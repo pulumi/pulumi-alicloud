@@ -1532,7 +1532,7 @@ class GetVirtualPhysicalConnectionsConnectionResult(dict):
         :param str access_point_id: The ID of the access point of the physical connection.
         :param str ad_location: The physical location where the physical connection access device is located.
         :param str bandwidth: The bandwidth of the physical connection. Unit: Mbps.
-        :param str business_status: The commercial status of the physical line. Value:
+        :param str business_status: (ForceNew,Optional) The commercial status of the physical line. Value:
                - **Normal**: activated.
                - **Financialized**: Arrears locked.
                - **SecurityLocked**: locked for security reasons.
@@ -1547,7 +1547,7 @@ class GetVirtualPhysicalConnectionsConnectionResult(dict):
         :param str loa_status: The state of LOA. Value:-**Applying**:LOA application.-**Accept**:LOA application passed.-**Available**:LOA is Available.-**Rejected**:LOA application Rejected.-**Completing**: The dedicated line is under construction.-**Complete**: The construction of the dedicated line is completed.-**Deleted**:LOA has been Deleted.
         :param str order_mode: The payment method of shared dedicated line. Value:-**PayByPhysicalConnectionOwner**: indicates that the owner of the physical line associated with the shared line pays.-**PayByVirtualPhysicalConnectionOwner**: indicates that the owner of the shared line pays.
         :param str parent_physical_connection_ali_uid: The ID of the Alibaba Cloud account (primary account) to which the physical connection belongs.
-        :param str parent_physical_connection_id: The ID of the instance of the physical connection.
+        :param str parent_physical_connection_id: (ForceNew,Optional) The ID of the instance of the physical connection.
         :param str peer_location: The geographic location of the local data center.
         :param str port_number: The port number of the physical connection device.
         :param str port_type: Physical connection port type. Value:-**100Base-T**: 100 megabytes port.-**1000Base-T**: Gigabit port.-**1000Base-LX**: Gigabit single mode optical port (10km).-**10GBase-T**: 10 Gigabit port.-**10GBase-LR**: 10 Gigabit single mode optical port (10km).-**40GBase-LR**: 40 megabytes single-mode optical port.-**100GBase-LR**: 100,000 megabytes single-mode optical port.
@@ -1557,12 +1557,12 @@ class GetVirtualPhysicalConnectionsConnectionResult(dict):
         :param str status: The status of the resource
         :param str virtual_physical_connection_id: The ID of the hosted connection
         :param str virtual_physical_connection_name: The name of the physical connection.
-        :param str virtual_physical_connection_status: The business status of the shared line. Value:
+        :param str virtual_physical_connection_status: (ForceNew,Optional) The business status of the shared line. Value:
                - **Confirmed**: The shared line has been Confirmed to receive.
                - **UnConfirmed**: The shared line has not been confirmed to be received.
                - **Deleted**: The shared line has been Deleted.
         :param int vlan_id: The VLAN ID of the shared leased line.
-        :param str vpconn_ali_uid: The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+        :param str vpconn_ali_uid: (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
         """
         pulumi.set(__self__, "access_point_id", access_point_id)
         pulumi.set(__self__, "ad_location", ad_location)
@@ -1621,7 +1621,7 @@ class GetVirtualPhysicalConnectionsConnectionResult(dict):
     @pulumi.getter(name="businessStatus")
     def business_status(self) -> str:
         """
-        The commercial status of the physical line. Value:
+        (ForceNew,Optional) The commercial status of the physical line. Value:
         - **Normal**: activated.
         - **Financialized**: Arrears locked.
         - **SecurityLocked**: locked for security reasons.
@@ -1720,7 +1720,7 @@ class GetVirtualPhysicalConnectionsConnectionResult(dict):
     @pulumi.getter(name="parentPhysicalConnectionId")
     def parent_physical_connection_id(self) -> str:
         """
-        The ID of the instance of the physical connection.
+        (ForceNew,Optional) The ID of the instance of the physical connection.
         """
         return pulumi.get(self, "parent_physical_connection_id")
 
@@ -1800,7 +1800,7 @@ class GetVirtualPhysicalConnectionsConnectionResult(dict):
     @pulumi.getter(name="virtualPhysicalConnectionStatus")
     def virtual_physical_connection_status(self) -> str:
         """
-        The business status of the shared line. Value:
+        (ForceNew,Optional) The business status of the shared line. Value:
         - **Confirmed**: The shared line has been Confirmed to receive.
         - **UnConfirmed**: The shared line has not been confirmed to be received.
         - **Deleted**: The shared line has been Deleted.
@@ -1819,7 +1819,7 @@ class GetVirtualPhysicalConnectionsConnectionResult(dict):
     @pulumi.getter(name="vpconnAliUid")
     def vpconn_ali_uid(self) -> str:
         """
-        The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+        (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
         """
         return pulumi.get(self, "vpconn_ali_uid")
 

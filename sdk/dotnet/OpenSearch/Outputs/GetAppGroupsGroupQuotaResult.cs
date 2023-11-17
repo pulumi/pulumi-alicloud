@@ -23,13 +23,6 @@ namespace Pulumi.AliCloud.OpenSearch.Outputs
         public readonly string DocSize;
         /// <summary>
         /// Specification. Valid values:
-        /// * `opensearch.share.junior`: Entry-level.
-        /// * `opensearch.share.common`: Shared universal.
-        /// * `opensearch.share.compute`: Shared computing.
-        /// * `opensearch.share.storage`: Shared storage type.
-        /// * `opensearch.private.common`: Exclusive universal type.
-        /// * `opensearch.private.compute`: Exclusive computing type.
-        /// * `opensearch.private.storage`: Exclusive storage type
         /// </summary>
         public readonly string Spec;
 

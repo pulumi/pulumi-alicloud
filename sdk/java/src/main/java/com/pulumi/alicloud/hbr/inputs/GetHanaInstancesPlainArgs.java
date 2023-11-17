@@ -76,14 +76,14 @@ public final class GetHanaInstancesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The status of the SAP HANA instance.
+     * The status of the SAP HANA instance. Valid values:
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the SAP HANA instance.
+     * @return The status of the SAP HANA instance. Valid values:
      * 
      */
     public Optional<String> status() {
@@ -91,14 +91,14 @@ public final class GetHanaInstancesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The ID of the backup vault.
+     * The id of the vault.
      * 
      */
     @Import(name="vaultId")
     private @Nullable String vaultId;
 
     /**
-     * @return The ID of the backup vault.
+     * @return The id of the vault.
      * 
      */
     public Optional<String> vaultId() {
@@ -189,7 +189,7 @@ public final class GetHanaInstancesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param status The status of the SAP HANA instance.
+         * @param status The status of the SAP HANA instance. Valid values:
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class GetHanaInstancesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param vaultId The ID of the backup vault.
+         * @param vaultId The id of the vault.
          * 
          * @return builder
          * 

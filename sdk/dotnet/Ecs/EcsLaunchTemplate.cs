@@ -256,7 +256,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> LaunchTemplateName { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -348,25 +348,25 @@ namespace Pulumi.AliCloud.Ecs
         public Output<Outputs.EcsLaunchTemplateSystemDisk> SystemDisk { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         /// </summary>
         [Output("systemDiskCategory")]
         public Output<string> SystemDiskCategory { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         /// </summary>
         [Output("systemDiskDescription")]
         public Output<string> SystemDiskDescription { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         /// </summary>
         [Output("systemDiskName")]
         public Output<string> SystemDiskName { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         /// </summary>
         [Output("systemDiskSize")]
         public Output<int> SystemDiskSize { get; private set; } = null!;
@@ -398,7 +398,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> UserData { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `user_data` instead.
         /// </summary>
         [Output("userdata")]
         public Output<string> Userdata { get; private set; } = null!;
@@ -584,7 +584,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LaunchTemplateName { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -682,25 +682,25 @@ namespace Pulumi.AliCloud.Ecs
         public Input<Inputs.EcsLaunchTemplateSystemDiskArgs>? SystemDisk { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         /// </summary>
         [Input("systemDiskDescription")]
         public Input<string>? SystemDiskDescription { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         /// </summary>
         [Input("systemDiskName")]
         public Input<string>? SystemDiskName { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }
@@ -744,7 +744,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `user_data` instead.
         /// </summary>
         [Input("userdata")]
         public Input<string>? Userdata { get; set; }
@@ -892,7 +892,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LaunchTemplateName { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -990,25 +990,25 @@ namespace Pulumi.AliCloud.Ecs
         public Input<Inputs.EcsLaunchTemplateSystemDiskGetArgs>? SystemDisk { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         /// </summary>
         [Input("systemDiskCategory")]
         public Input<string>? SystemDiskCategory { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         /// </summary>
         [Input("systemDiskDescription")]
         public Input<string>? SystemDiskDescription { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         /// </summary>
         [Input("systemDiskName")]
         public Input<string>? SystemDiskName { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         /// </summary>
         [Input("systemDiskSize")]
         public Input<int>? SystemDiskSize { get; set; }
@@ -1052,7 +1052,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? UserData { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        /// (Deprecated) It has been deprecated from version 1.120.0, and use field `user_data` instead.
         /// </summary>
         [Input("userdata")]
         public Input<string>? Userdata { get; set; }

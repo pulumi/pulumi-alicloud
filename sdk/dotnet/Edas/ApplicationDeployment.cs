@@ -140,7 +140,7 @@ namespace Pulumi.AliCloud.Edas
         public Output<string> GroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Last package version deployed.
+        /// (ForceNew) Last package version deployed.
         /// </summary>
         [Output("lastPackageVersion")]
         public Output<string> LastPackageVersion { get; private set; } = null!;
@@ -248,7 +248,7 @@ namespace Pulumi.AliCloud.Edas
         public Input<string>? GroupId { get; set; }
 
         /// <summary>
-        /// Last package version deployed.
+        /// (ForceNew) Last package version deployed.
         /// </summary>
         [Input("lastPackageVersion")]
         public Input<string>? LastPackageVersion { get; set; }

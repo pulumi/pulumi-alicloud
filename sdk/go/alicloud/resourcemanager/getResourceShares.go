@@ -67,9 +67,9 @@ type GetResourceSharesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The name of resource share.
 	ResourceShareName *string `pulumi:"resourceShareName"`
-	// The owner of resource share.
+	// The owner of resource share, Valid values: `Self` and `OtherAccounts`.
 	ResourceShareOwner string `pulumi:"resourceShareOwner"`
-	// The status of resource share.
+	// The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
 	Status *string `pulumi:"status"`
 }
 
@@ -110,9 +110,9 @@ type GetResourceSharesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The name of resource share.
 	ResourceShareName pulumi.StringPtrInput `pulumi:"resourceShareName"`
-	// The owner of resource share.
+	// The owner of resource share, Valid values: `Self` and `OtherAccounts`.
 	ResourceShareOwner pulumi.StringInput `pulumi:"resourceShareOwner"`
-	// The status of resource share.
+	// The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

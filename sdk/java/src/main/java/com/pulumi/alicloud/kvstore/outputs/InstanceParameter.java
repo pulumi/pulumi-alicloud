@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceParameter {
     /**
-     * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+     * @return (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
      * 
      * @deprecated
      * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
@@ -21,7 +21,7 @@ public final class InstanceParameter {
     @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
     private @Nullable String name;
     /**
-     * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+     * @return (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
      * 
      * @deprecated
      * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
@@ -32,7 +32,7 @@ public final class InstanceParameter {
 
     private InstanceParameter() {}
     /**
-     * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+     * @return (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
      * 
      * @deprecated
      * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
@@ -43,7 +43,7 @@ public final class InstanceParameter {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+     * @return (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
      * 
      * @deprecated
      * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.

@@ -139,7 +139,7 @@ namespace Pulumi.AliCloud.Hbr
     public partial class OtsBackupPlan : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Backup type. Valid values: `COMPLETE`.
+        /// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
         /// </summary>
         [Output("backupType")]
         public Output<string> BackupType { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<int?> CrossAccountUserId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+        /// Whether to disable the backup task. Valid values: true, false.
         /// </summary>
         [Output("disabled")]
         public Output<bool> Disabled { get; private set; } = null!;
@@ -187,7 +187,7 @@ namespace Pulumi.AliCloud.Hbr
         public Output<ImmutableArray<Outputs.OtsBackupPlanOtsDetail>> OtsDetails { get; private set; } = null!;
 
         /// <summary>
-        /// Backup retention days, the minimum is 1.
+        /// Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
         /// </summary>
         [Output("retention")]
         public Output<string> Retention { get; private set; } = null!;
@@ -257,7 +257,7 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class OtsBackupPlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Backup type. Valid values: `COMPLETE`.
+        /// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
         /// </summary>
         [Input("backupType", required: true)]
         public Input<string> BackupType { get; set; } = null!;
@@ -281,7 +281,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<int>? CrossAccountUserId { get; set; }
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+        /// Whether to disable the backup task. Valid values: true, false.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -311,7 +311,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// Backup retention days, the minimum is 1.
+        /// Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
         /// </summary>
         [Input("retention", required: true)]
         public Input<string> Retention { get; set; } = null!;
@@ -349,7 +349,7 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class OtsBackupPlanState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Backup type. Valid values: `COMPLETE`.
+        /// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
         /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
@@ -373,7 +373,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<int>? CrossAccountUserId { get; set; }
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+        /// Whether to disable the backup task. Valid values: true, false.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -403,7 +403,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// Backup retention days, the minimum is 1.
+        /// Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
         /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }

@@ -169,7 +169,7 @@ type DdrInstance struct {
 	// - BackupSet: Data is restored from a backup set. If you use this value, you must also specify the BackupSetID parameter.
 	// - BackupTime: restores data to a point in time. You must also specify the RestoreTime, SourceRegion, and SourceDBInstanceName parameters.
 	RestoreType pulumi.StringOutput `pulumi:"restoreType"`
-	// ) The list IDs to join ECS Security Group. At most supports three security groups.
+	// The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
 	SecurityIpMode pulumi.StringOutput `pulumi:"securityIpMode"`
@@ -223,9 +223,9 @@ type DdrInstance struct {
 	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
 	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
 	// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-	// - rds: The instance runs RDS Basic or High-availability Edition.
-	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+	//   - rds: The instance runs RDS Basic or High-availability Edition.
+	//   - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+	//   - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
 	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 	//
 	// > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -249,7 +249,7 @@ type DdrInstance struct {
 	//
 	// > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
-	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+	// (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The network type of the IP address whitelist. Default value: MIX. Valid values:
 	// - Classic: classic network in enhanced whitelist mode
@@ -258,7 +258,7 @@ type DdrInstance struct {
 	//
 	// > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
 	WhitelistNetworkType pulumi.StringPtrOutput `pulumi:"whitelistNetworkType"`
-	// The Zone to launch the DB instance. It supports multiple zone.
+	// (ForceNew, Optional) The Zone to launch the DB instance. It supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
 	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -461,7 +461,7 @@ type ddrInstanceState struct {
 	// - BackupSet: Data is restored from a backup set. If you use this value, you must also specify the BackupSetID parameter.
 	// - BackupTime: restores data to a point in time. You must also specify the RestoreTime, SourceRegion, and SourceDBInstanceName parameters.
 	RestoreType *string `pulumi:"restoreType"`
-	// ) The list IDs to join ECS Security Group. At most supports three security groups.
+	// The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
 	SecurityIpMode *string `pulumi:"securityIpMode"`
@@ -515,9 +515,9 @@ type ddrInstanceState struct {
 	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
 	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
 	// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-	// - rds: The instance runs RDS Basic or High-availability Edition.
-	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+	//   - rds: The instance runs RDS Basic or High-availability Edition.
+	//   - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+	//   - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
 	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 	//
 	// > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -541,7 +541,7 @@ type ddrInstanceState struct {
 	//
 	// > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
 	VpcId *string `pulumi:"vpcId"`
-	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+	// (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The network type of the IP address whitelist. Default value: MIX. Valid values:
 	// - Classic: classic network in enhanced whitelist mode
@@ -550,7 +550,7 @@ type ddrInstanceState struct {
 	//
 	// > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
 	WhitelistNetworkType *string `pulumi:"whitelistNetworkType"`
-	// The Zone to launch the DB instance. It supports multiple zone.
+	// (ForceNew, Optional) The Zone to launch the DB instance. It supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
 	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId *string `pulumi:"zoneId"`
@@ -706,7 +706,7 @@ type DdrInstanceState struct {
 	// - BackupSet: Data is restored from a backup set. If you use this value, you must also specify the BackupSetID parameter.
 	// - BackupTime: restores data to a point in time. You must also specify the RestoreTime, SourceRegion, and SourceDBInstanceName parameters.
 	RestoreType pulumi.StringPtrInput
-	// ) The list IDs to join ECS Security Group. At most supports three security groups.
+	// The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayInput
 	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
 	SecurityIpMode pulumi.StringPtrInput
@@ -760,9 +760,9 @@ type DdrInstanceState struct {
 	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
 	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
 	// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-	// - rds: The instance runs RDS Basic or High-availability Edition.
-	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+	//   - rds: The instance runs RDS Basic or High-availability Edition.
+	//   - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+	//   - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
 	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 	//
 	// > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -786,7 +786,7 @@ type DdrInstanceState struct {
 	//
 	// > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
 	VpcId pulumi.StringPtrInput
-	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+	// (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId pulumi.StringPtrInput
 	// The network type of the IP address whitelist. Default value: MIX. Valid values:
 	// - Classic: classic network in enhanced whitelist mode
@@ -795,7 +795,7 @@ type DdrInstanceState struct {
 	//
 	// > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
 	WhitelistNetworkType pulumi.StringPtrInput
-	// The Zone to launch the DB instance. It supports multiple zone.
+	// (ForceNew, Optional) The Zone to launch the DB instance. It supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
 	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId pulumi.StringPtrInput
@@ -951,7 +951,7 @@ type ddrInstanceArgs struct {
 	// - BackupSet: Data is restored from a backup set. If you use this value, you must also specify the BackupSetID parameter.
 	// - BackupTime: restores data to a point in time. You must also specify the RestoreTime, SourceRegion, and SourceDBInstanceName parameters.
 	RestoreType string `pulumi:"restoreType"`
-	// ) The list IDs to join ECS Security Group. At most supports three security groups.
+	// The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
 	SecurityIpMode *string `pulumi:"securityIpMode"`
@@ -1003,9 +1003,9 @@ type ddrInstanceArgs struct {
 	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
 	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
 	// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-	// - rds: The instance runs RDS Basic or High-availability Edition.
-	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+	//   - rds: The instance runs RDS Basic or High-availability Edition.
+	//   - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+	//   - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
 	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 	//
 	// > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -1029,7 +1029,7 @@ type ddrInstanceArgs struct {
 	//
 	// > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
 	VpcId *string `pulumi:"vpcId"`
-	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+	// (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The network type of the IP address whitelist. Default value: MIX. Valid values:
 	// - Classic: classic network in enhanced whitelist mode
@@ -1038,7 +1038,7 @@ type ddrInstanceArgs struct {
 	//
 	// > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
 	WhitelistNetworkType *string `pulumi:"whitelistNetworkType"`
-	// The Zone to launch the DB instance. It supports multiple zone.
+	// (ForceNew, Optional) The Zone to launch the DB instance. It supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
 	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId *string `pulumi:"zoneId"`
@@ -1187,7 +1187,7 @@ type DdrInstanceArgs struct {
 	// - BackupSet: Data is restored from a backup set. If you use this value, you must also specify the BackupSetID parameter.
 	// - BackupTime: restores data to a point in time. You must also specify the RestoreTime, SourceRegion, and SourceDBInstanceName parameters.
 	RestoreType pulumi.StringInput
-	// ) The list IDs to join ECS Security Group. At most supports three security groups.
+	// The list IDs to join ECS Security Group. At most supports three security groups.
 	SecurityGroupIds pulumi.StringArrayInput
 	// Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
 	SecurityIpMode pulumi.StringPtrInput
@@ -1239,9 +1239,9 @@ type DdrInstanceArgs struct {
 	// The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
 	// - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
 	// - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-	// - rds: The instance runs RDS Basic or High-availability Edition.
-	// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-	// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+	//   - rds: The instance runs RDS Basic or High-availability Edition.
+	//   - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+	//   - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
 	// - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 	//
 	// > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -1265,7 +1265,7 @@ type DdrInstanceArgs struct {
 	//
 	// > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
 	VpcId pulumi.StringPtrInput
-	// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+	// (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 	VswitchId pulumi.StringPtrInput
 	// The network type of the IP address whitelist. Default value: MIX. Valid values:
 	// - Classic: classic network in enhanced whitelist mode
@@ -1274,7 +1274,7 @@ type DdrInstanceArgs struct {
 	//
 	// > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
 	WhitelistNetworkType pulumi.StringPtrInput
-	// The Zone to launch the DB instance. It supports multiple zone.
+	// (ForceNew, Optional) The Zone to launch the DB instance. It supports multiple zone.
 	// If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
 	// The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 	ZoneId pulumi.StringPtrInput
@@ -1638,7 +1638,7 @@ func (o DdrInstanceOutput) RestoreType() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdrInstance) pulumi.StringOutput { return v.RestoreType }).(pulumi.StringOutput)
 }
 
-// ) The list IDs to join ECS Security Group. At most supports three security groups.
+// The list IDs to join ECS Security Group. At most supports three security groups.
 func (o DdrInstanceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DdrInstance) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
@@ -1743,9 +1743,10 @@ func (o DdrInstanceOutput) Tags() pulumi.MapOutput {
 // The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
 // - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
 // - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-// - rds: The instance runs RDS Basic or High-availability Edition.
-// - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-// - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+//   - rds: The instance runs RDS Basic or High-availability Edition.
+//   - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+//   - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+//
 // - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 //
 // > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -1787,7 +1788,7 @@ func (o DdrInstanceOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdrInstance) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+// (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
 func (o DdrInstanceOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DdrInstance) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
 }
@@ -1802,7 +1803,7 @@ func (o DdrInstanceOutput) WhitelistNetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DdrInstance) pulumi.StringPtrOutput { return v.WhitelistNetworkType }).(pulumi.StringPtrOutput)
 }
 
-// The Zone to launch the DB instance. It supports multiple zone.
+// (ForceNew, Optional) The Zone to launch the DB instance. It supports multiple zone.
 // If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
 // The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `getZones`.
 func (o DdrInstanceOutput) ZoneId() pulumi.StringOutput {

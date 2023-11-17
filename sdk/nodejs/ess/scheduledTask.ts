@@ -66,8 +66,8 @@ export class ScheduledTask extends pulumi.CustomResource {
     public readonly launchExpirationTime!: pulumi.Output<number | undefined>;
     /**
      * The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. 
-     * The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
-     * If the `recurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
+     * The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation. 
+     * If the `recurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime. 
      * Otherwise, the task is only executed once at the date and time specified by LaunchTime.
      */
     public readonly launchTime!: pulumi.Output<string | undefined>;
@@ -182,8 +182,8 @@ export interface ScheduledTaskState {
     launchExpirationTime?: pulumi.Input<number>;
     /**
      * The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. 
-     * The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
-     * If the `recurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
+     * The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation. 
+     * If the `recurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime. 
      * Otherwise, the task is only executed once at the date and time specified by LaunchTime.
      */
     launchTime?: pulumi.Input<string>;
@@ -252,8 +252,8 @@ export interface ScheduledTaskArgs {
     launchExpirationTime?: pulumi.Input<number>;
     /**
      * The time at which the scheduled task is triggered. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. 
-     * The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation.
-     * If the `recurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime.
+     * The time must be in UTC. You cannot enter a time point later than 90 days from the date of scheduled task creation. 
+     * If the `recurrenceType` parameter is specified, the task is executed repeatedly at the time specified by LaunchTime. 
      * Otherwise, the task is only executed once at the date and time specified by LaunchTime.
      */
     launchTime?: pulumi.Input<string>;

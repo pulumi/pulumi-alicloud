@@ -170,7 +170,6 @@ type ServerGroupHealthCheck struct {
 	// The maximum timeout period of a health check response. Unit: seconds. Valid values: 1 to 300. Default value: 5.
 	HealthCheckConnectTimeout *int `pulumi:"healthCheckConnectTimeout"`
 	// The domain name that is used for health checks. Valid values:
-	// - `$SERVER_IP`: the private IP address of a backend server.
 	HealthCheckDomain *string `pulumi:"healthCheckDomain"`
 	// Specifies whether to enable health checks.
 	HealthCheckEnabled *bool `pulumi:"healthCheckEnabled"`
@@ -207,7 +206,6 @@ type ServerGroupHealthCheckArgs struct {
 	// The maximum timeout period of a health check response. Unit: seconds. Valid values: 1 to 300. Default value: 5.
 	HealthCheckConnectTimeout pulumi.IntPtrInput `pulumi:"healthCheckConnectTimeout"`
 	// The domain name that is used for health checks. Valid values:
-	// - `$SERVER_IP`: the private IP address of a backend server.
 	HealthCheckDomain pulumi.StringPtrInput `pulumi:"healthCheckDomain"`
 	// Specifies whether to enable health checks.
 	HealthCheckEnabled pulumi.BoolPtrInput `pulumi:"healthCheckEnabled"`
@@ -315,7 +313,6 @@ func (o ServerGroupHealthCheckOutput) HealthCheckConnectTimeout() pulumi.IntPtrO
 }
 
 // The domain name that is used for health checks. Valid values:
-// - `$SERVER_IP`: the private IP address of a backend server.
 func (o ServerGroupHealthCheckOutput) HealthCheckDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *string { return v.HealthCheckDomain }).(pulumi.StringPtrOutput)
 }
@@ -405,7 +402,6 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckConnectTimeout() pulumi.IntP
 }
 
 // The domain name that is used for health checks. Valid values:
-// - `$SERVER_IP`: the private IP address of a backend server.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *string {
 		if v == nil {

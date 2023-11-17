@@ -90,7 +90,7 @@ export class DedicatedHost extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The subscription duration of the host. Valid values: 
+     * The subscription duration of the host. Valid values:
      * * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
      * * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
      * * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.
@@ -226,7 +226,7 @@ export interface DedicatedHostState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The subscription duration of the host. Valid values: 
+     * The subscription duration of the host. Valid values:
      * * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
      * * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
      * * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.
@@ -287,7 +287,7 @@ export interface DedicatedHostArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The subscription duration of the host. Valid values: 
+     * The subscription duration of the host. Valid values:
      * * If the Period parameter is set to `Year`, the value of the UsedTime parameter ranges from `1` to `5`.
      * * If the Period parameter is set to `Month`, the value of the UsedTime parameter ranges from `1` to `9`.
      * * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.

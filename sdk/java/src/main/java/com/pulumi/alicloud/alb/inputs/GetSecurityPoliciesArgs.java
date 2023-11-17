@@ -94,14 +94,14 @@ public final class GetSecurityPoliciesArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+     * The name of the resource.
      * 
      */
     @Import(name="securityPolicyName")
     private @Nullable Output<String> securityPolicyName;
 
     /**
-     * @return The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+     * @return The name of the resource.
      * 
      */
     public Optional<Output<String>> securityPolicyName() {
@@ -109,14 +109,14 @@ public final class GetSecurityPoliciesArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values : `Available`, `Configuring`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values : `Available`, `Configuring`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -287,7 +287,7 @@ public final class GetSecurityPoliciesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param securityPolicyName The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+         * @param securityPolicyName The name of the resource.
          * 
          * @return builder
          * 
@@ -298,7 +298,7 @@ public final class GetSecurityPoliciesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param securityPolicyName The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
+         * @param securityPolicyName The name of the resource.
          * 
          * @return builder
          * 
@@ -308,7 +308,7 @@ public final class GetSecurityPoliciesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values : `Available`, `Configuring`.
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class GetSecurityPoliciesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values : `Available`, `Configuring`.
          * 
          * @return builder
          * 

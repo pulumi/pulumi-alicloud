@@ -122,7 +122,10 @@ public class DataFlow extends com.pulumi.resources.CustomResource {
      * The access path of the source store. Format: `&lt;storage type&gt;://&lt;path&gt;`. Among them:
      * - storage type: currently only OSS is supported.
      * - path: the bucket name of OSS.
-     * - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+     *   - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+     *   - `8` to `128` English characters in length.
+     *   - Use UTF-8 coding.
+     *   - Cannot start with `http://` and `https://`.
      * 
      */
     @Export(name="sourceStorage", type=String.class, parameters={})
@@ -132,7 +135,10 @@ public class DataFlow extends com.pulumi.resources.CustomResource {
      * @return The access path of the source store. Format: `&lt;storage type&gt;://&lt;path&gt;`. Among them:
      * - storage type: currently only OSS is supported.
      * - path: the bucket name of OSS.
-     * - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+     *   - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+     *   - `8` to `128` English characters in length.
+     *   - Use UTF-8 coding.
+     *   - Cannot start with `http://` and `https://`.
      * 
      */
     public Output<String> sourceStorage() {

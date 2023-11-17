@@ -46,7 +46,7 @@ export function getEndpointAclPolicies(args: GetEndpointAclPoliciesArgs, opts?: 
  */
 export interface GetEndpointAclPoliciesArgs {
     /**
-     * The type of endpoint.
+     * The type of endpoint. Valid values: `internet`.
      */
     endpointType: string;
     /**
@@ -110,7 +110,7 @@ export function getEndpointAclPoliciesOutput(args: GetEndpointAclPoliciesOutputA
  */
 export interface GetEndpointAclPoliciesOutputArgs {
     /**
-     * The type of endpoint.
+     * The type of endpoint. Valid values: `internet`.
      */
     endpointType: pulumi.Input<string>;
     /**

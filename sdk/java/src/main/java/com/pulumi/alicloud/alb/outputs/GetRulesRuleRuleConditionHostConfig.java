@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesRuleRuleConditionHostConfig {
     /**
-     * @return Add one or more IP addresses or IP address segments.
+     * @return The name of the host. **Note: ** The host name must meet the following rules: The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost field can contain only letters and wildcards, and cannot contain digits or hyphens (-). Other fields cannot start or end with a hyphen (-). You can enter asterisks (*) and question marks (?) anywhere in a field.
      * 
      */
     private List<String> values;
 
     private GetRulesRuleRuleConditionHostConfig() {}
     /**
-     * @return Add one or more IP addresses or IP address segments.
+     * @return The name of the host. **Note: ** The host name must meet the following rules: The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost field can contain only letters and wildcards, and cannot contain digits or hyphens (-). Other fields cannot start or end with a hyphen (-). You can enter asterisks (*) and question marks (?) anywhere in a field.
      * 
      */
     public List<String> values() {

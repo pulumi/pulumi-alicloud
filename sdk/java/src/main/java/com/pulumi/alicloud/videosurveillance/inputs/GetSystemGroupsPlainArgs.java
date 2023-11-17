@@ -31,14 +31,14 @@ public final class GetSystemGroupsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+     * The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
      * 
      */
     @Import(name="inProtocol")
     private @Nullable String inProtocol;
 
     /**
-     * @return The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+     * @return The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
      * 
      */
     public Optional<String> inProtocol() {
@@ -156,7 +156,7 @@ public final class GetSystemGroupsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param inProtocol The use of the access protocol support `gb28181`,`rtmp`(Real Time Messaging Protocol).
+         * @param inProtocol The use of the access protocol support gb28181, Real Time Messaging Protocol (rtmp). Valid values: `gb28181`, `rtmp`.
          * 
          * @return builder
          * 

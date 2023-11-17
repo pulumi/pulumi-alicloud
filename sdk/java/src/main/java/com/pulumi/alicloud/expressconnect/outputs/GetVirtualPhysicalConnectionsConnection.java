@@ -26,7 +26,7 @@ public final class GetVirtualPhysicalConnectionsConnection {
      */
     private String bandwidth;
     /**
-     * @return The commercial status of the physical line. Value:
+     * @return (ForceNew,Optional) The commercial status of the physical line. Value:
      * - **Normal**: activated.
      * - **Financialized**: Arrears locked.
      * - **SecurityLocked**: locked for security reasons.
@@ -89,7 +89,7 @@ public final class GetVirtualPhysicalConnectionsConnection {
      */
     private String parentPhysicalConnectionAliUid;
     /**
-     * @return The ID of the instance of the physical connection.
+     * @return (ForceNew,Optional) The ID of the instance of the physical connection.
      * 
      */
     private String parentPhysicalConnectionId;
@@ -139,7 +139,7 @@ public final class GetVirtualPhysicalConnectionsConnection {
      */
     private String virtualPhysicalConnectionName;
     /**
-     * @return The business status of the shared line. Value:
+     * @return (ForceNew,Optional) The business status of the shared line. Value:
      * - **Confirmed**: The shared line has been Confirmed to receive.
      * - **UnConfirmed**: The shared line has not been confirmed to be received.
      * - **Deleted**: The shared line has been Deleted.
@@ -152,7 +152,7 @@ public final class GetVirtualPhysicalConnectionsConnection {
      */
     private Integer vlanId;
     /**
-     * @return The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+     * @return (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
      * 
      */
     private String vpconnAliUid;
@@ -180,7 +180,7 @@ public final class GetVirtualPhysicalConnectionsConnection {
         return this.bandwidth;
     }
     /**
-     * @return The commercial status of the physical line. Value:
+     * @return (ForceNew,Optional) The commercial status of the physical line. Value:
      * - **Normal**: activated.
      * - **Financialized**: Arrears locked.
      * - **SecurityLocked**: locked for security reasons.
@@ -267,7 +267,7 @@ public final class GetVirtualPhysicalConnectionsConnection {
         return this.parentPhysicalConnectionAliUid;
     }
     /**
-     * @return The ID of the instance of the physical connection.
+     * @return (ForceNew,Optional) The ID of the instance of the physical connection.
      * 
      */
     public String parentPhysicalConnectionId() {
@@ -337,7 +337,7 @@ public final class GetVirtualPhysicalConnectionsConnection {
         return this.virtualPhysicalConnectionName;
     }
     /**
-     * @return The business status of the shared line. Value:
+     * @return (ForceNew,Optional) The business status of the shared line. Value:
      * - **Confirmed**: The shared line has been Confirmed to receive.
      * - **UnConfirmed**: The shared line has not been confirmed to be received.
      * - **Deleted**: The shared line has been Deleted.
@@ -354,7 +354,7 @@ public final class GetVirtualPhysicalConnectionsConnection {
         return this.vlanId;
     }
     /**
-     * @return The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+     * @return (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
      * 
      */
     public String vpconnAliUid() {

@@ -184,7 +184,7 @@ def get_group_metric_rules(dimensions: Optional[str] = None,
 
 
     :param str dimensions: The dimensions that specify the resources to be associated with the alert rule.
-    :param bool enable_state: Indicates whether the alert rule is enabled.
+    :param bool enable_state: EnableState.
     :param str group_id: The ID of the application group.
     :param str group_metric_rule_name: The name of the alert rule.
     :param Sequence[str] ids: A list of Group Metric Rule IDs.
@@ -256,7 +256,7 @@ def get_group_metric_rules_output(dimensions: Optional[pulumi.Input[Optional[str
 
 
     :param str dimensions: The dimensions that specify the resources to be associated with the alert rule.
-    :param bool enable_state: Indicates whether the alert rule is enabled.
+    :param bool enable_state: EnableState.
     :param str group_id: The ID of the application group.
     :param str group_metric_rule_name: The name of the alert rule.
     :param Sequence[str] ids: A list of Group Metric Rule IDs.

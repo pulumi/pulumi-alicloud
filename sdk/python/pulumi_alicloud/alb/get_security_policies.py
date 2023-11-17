@@ -169,8 +169,8 @@ def get_security_policies(ids: Optional[Sequence[str]] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param Sequence[str] security_policy_ids: The security policy ids.
-    :param str security_policy_name: The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
-    :param str status: The status of the resource.
+    :param str security_policy_name: The name of the resource.
+    :param str status: The status of the resource. Valid values : `Available`, `Configuring`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -233,7 +233,7 @@ def get_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
     :param Sequence[str] security_policy_ids: The security policy ids.
-    :param str security_policy_name: The name of the resource. The name must be 2 to 128 characters in length and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
-    :param str status: The status of the resource.
+    :param str security_policy_name: The name of the resource.
+    :param str status: The status of the resource. Valid values : `Available`, `Configuring`.
     """
     ...

@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Amqp
         }
 
         /// <summary>
-        /// InstanceId
+        /// (ForceNew, Optional) InstanceId
         /// </summary>
         [Input("instanceId")]
         public string? InstanceId { get; set; }
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.Amqp
         }
 
         /// <summary>
-        /// InstanceId
+        /// (ForceNew, Optional) InstanceId
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }

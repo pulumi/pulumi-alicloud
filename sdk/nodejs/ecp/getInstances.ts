@@ -45,7 +45,10 @@ export interface GetInstancesArgs {
      */
     imageId?: string;
     /**
-     * Instance Name.
+     * The name of the instance. It must be 2 to 128 characters in length and must start with an
+     * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+     * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+     * the instance.
      */
     instanceName?: string;
     /**
@@ -53,7 +56,7 @@ export interface GetInstancesArgs {
      */
     instanceType?: string;
     /**
-     * The Key Name.
+     * The name of the key pair of the mobile phone instance.
      */
     keyPairName?: string;
     /**
@@ -69,11 +72,12 @@ export interface GetInstancesArgs {
      */
     paymentType?: string;
     /**
-     * Resolution.
+     * The selected resolution for the cloud mobile phone instance.
      */
     resolution?: string;
     /**
-     * Instance Status.
+     * Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+     * .
      */
     status?: string;
     zoneId?: string;
@@ -125,7 +129,10 @@ export interface GetInstancesOutputArgs {
      */
     imageId?: pulumi.Input<string>;
     /**
-     * Instance Name.
+     * The name of the instance. It must be 2 to 128 characters in length and must start with an
+     * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+     * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+     * the instance.
      */
     instanceName?: pulumi.Input<string>;
     /**
@@ -133,7 +140,7 @@ export interface GetInstancesOutputArgs {
      */
     instanceType?: pulumi.Input<string>;
     /**
-     * The Key Name.
+     * The name of the key pair of the mobile phone instance.
      */
     keyPairName?: pulumi.Input<string>;
     /**
@@ -149,11 +156,12 @@ export interface GetInstancesOutputArgs {
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * Resolution.
+     * The selected resolution for the cloud mobile phone instance.
      */
     resolution?: pulumi.Input<string>;
     /**
-     * Instance Status.
+     * Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+     * .
      */
     status?: pulumi.Input<string>;
     zoneId?: pulumi.Input<string>;

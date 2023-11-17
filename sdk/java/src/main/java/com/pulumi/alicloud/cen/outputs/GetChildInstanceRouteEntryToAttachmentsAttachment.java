@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class GetChildInstanceRouteEntryToAttachmentsAttachment {
     /**
-     * @return The ID of the CEN instance.
+     * @return (ForceNew,Optional) The ID of the CEN instance.
      * 
      */
     private String cenId;
@@ -30,7 +30,7 @@ public final class GetChildInstanceRouteEntryToAttachmentsAttachment {
      */
     private String id;
     /**
-     * @return ServiceType
+     * @return (ForceNew,Optional) ServiceType
      * 
      */
     private String serviceType;
@@ -47,7 +47,7 @@ public final class GetChildInstanceRouteEntryToAttachmentsAttachment {
 
     private GetChildInstanceRouteEntryToAttachmentsAttachment() {}
     /**
-     * @return The ID of the CEN instance.
+     * @return (ForceNew,Optional) The ID of the CEN instance.
      * 
      */
     public String cenId() {
@@ -75,7 +75,7 @@ public final class GetChildInstanceRouteEntryToAttachmentsAttachment {
         return this.id;
     }
     /**
-     * @return ServiceType
+     * @return (ForceNew,Optional) ServiceType
      * 
      */
     public String serviceType() {

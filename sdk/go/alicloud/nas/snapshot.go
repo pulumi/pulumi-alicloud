@@ -91,7 +91,6 @@ type Snapshot struct {
 	// The ID of the file system.
 	FileSystemId pulumi.StringOutput `pulumi:"fileSystemId"`
 	// The retention period of the snapshot. Unit: days. Valid values:
-	// * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
 	RetentionDays pulumi.IntPtrOutput `pulumi:"retentionDays"`
 	// SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
 	SnapshotName pulumi.StringPtrOutput `pulumi:"snapshotName"`
@@ -137,7 +136,6 @@ type snapshotState struct {
 	// The ID of the file system.
 	FileSystemId *string `pulumi:"fileSystemId"`
 	// The retention period of the snapshot. Unit: days. Valid values:
-	// * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
 	RetentionDays *int `pulumi:"retentionDays"`
 	// SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
 	SnapshotName *string `pulumi:"snapshotName"`
@@ -151,7 +149,6 @@ type SnapshotState struct {
 	// The ID of the file system.
 	FileSystemId pulumi.StringPtrInput
 	// The retention period of the snapshot. Unit: days. Valid values:
-	// * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
 	RetentionDays pulumi.IntPtrInput
 	// SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
 	SnapshotName pulumi.StringPtrInput
@@ -169,7 +166,6 @@ type snapshotArgs struct {
 	// The ID of the file system.
 	FileSystemId string `pulumi:"fileSystemId"`
 	// The retention period of the snapshot. Unit: days. Valid values:
-	// * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
 	RetentionDays *int `pulumi:"retentionDays"`
 	// SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
 	SnapshotName *string `pulumi:"snapshotName"`
@@ -182,7 +178,6 @@ type SnapshotArgs struct {
 	// The ID of the file system.
 	FileSystemId pulumi.StringInput
 	// The retention period of the snapshot. Unit: days. Valid values:
-	// * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
 	RetentionDays pulumi.IntPtrInput
 	// SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
 	SnapshotName pulumi.StringPtrInput
@@ -286,7 +281,6 @@ func (o SnapshotOutput) FileSystemId() pulumi.StringOutput {
 }
 
 // The retention period of the snapshot. Unit: days. Valid values:
-// * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
 func (o SnapshotOutput) RetentionDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Snapshot) pulumi.IntPtrOutput { return v.RetentionDays }).(pulumi.IntPtrOutput)
 }

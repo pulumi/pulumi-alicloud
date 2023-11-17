@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> BackupInterval { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+        /// (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         /// </summary>
         [Output("backupPeriods")]
         public Output<ImmutableArray<string>> BackupPeriods { get; private set; } = null!;
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int?> BackupRetentionPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+        /// (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         /// </summary>
         [Output("backupTime")]
         public Output<string> BackupTime { get; private set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> LocalLogRetentionSpace { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
+        /// (Deprecated) It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         /// </summary>
         [Output("logBackup")]
         public Output<bool> LogBackup { get; private set; } = null!;
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<int> LogBackupRetentionPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+        /// (Deprecated) It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         /// </summary>
         [Output("logRetentionPeriod")]
         public Output<int> LogRetentionPeriod { get; private set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.Rds
         public Output<string> ReleasedKeepPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+        /// (Deprecated) It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         /// </summary>
         [Output("retentionPeriod")]
         public Output<int> RetentionPeriod { get; private set; } = null!;
@@ -307,7 +307,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<string>? _backupPeriods;
 
         /// <summary>
-        /// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+        /// (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         /// </summary>
         [Obsolete(@"Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead")]
         public InputList<string> BackupPeriods
@@ -323,7 +323,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? BackupRetentionPeriod { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+        /// (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
@@ -372,7 +372,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? LocalLogRetentionSpace { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
+        /// (Deprecated) It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         /// </summary>
         [Input("logBackup")]
         public Input<bool>? LogBackup { get; set; }
@@ -390,7 +390,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? LogBackupRetentionPeriod { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+        /// (Deprecated) It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         /// </summary>
         [Input("logRetentionPeriod")]
         public Input<int>? LogRetentionPeriod { get; set; }
@@ -423,7 +423,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? ReleasedKeepPolicy { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+        /// (Deprecated) It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         /// </summary>
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }
@@ -474,7 +474,7 @@ namespace Pulumi.AliCloud.Rds
         private InputList<string>? _backupPeriods;
 
         /// <summary>
-        /// It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+        /// (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         /// </summary>
         [Obsolete(@"Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead")]
         public InputList<string> BackupPeriods
@@ -490,7 +490,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? BackupRetentionPeriod { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+        /// (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         /// </summary>
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
@@ -539,7 +539,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? LocalLogRetentionSpace { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
+        /// (Deprecated) It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         /// </summary>
         [Input("logBackup")]
         public Input<bool>? LogBackup { get; set; }
@@ -557,7 +557,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<int>? LogBackupRetentionPeriod { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+        /// (Deprecated) It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         /// </summary>
         [Input("logRetentionPeriod")]
         public Input<int>? LogRetentionPeriod { get; set; }
@@ -590,7 +590,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? ReleasedKeepPolicy { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+        /// (Deprecated) It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         /// </summary>
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }

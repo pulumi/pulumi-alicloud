@@ -161,8 +161,8 @@ type RdsDbProxy struct {
 	// - ConnectionPersist: connection pooling.
 	// - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
 	//   Valid status values:
-	// - 1: enabled.
-	// - 0: disabled.
+	//   - 1: enabled.
+	//   - 0: disabled.
 	//
 	// > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
 	DbProxyFeatures pulumi.StringOutput `pulumi:"dbProxyFeatures"`
@@ -283,8 +283,8 @@ type rdsDbProxyState struct {
 	// - ConnectionPersist: connection pooling.
 	// - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
 	//   Valid status values:
-	// - 1: enabled.
-	// - 0: disabled.
+	//   - 1: enabled.
+	//   - 0: disabled.
 	//
 	// > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
 	DbProxyFeatures *string `pulumi:"dbProxyFeatures"`
@@ -361,8 +361,8 @@ type RdsDbProxyState struct {
 	// - ConnectionPersist: connection pooling.
 	// - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
 	//   Valid status values:
-	// - 1: enabled.
-	// - 0: disabled.
+	//   - 1: enabled.
+	//   - 0: disabled.
 	//
 	// > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
 	DbProxyFeatures pulumi.StringPtrInput
@@ -437,8 +437,8 @@ type rdsDbProxyArgs struct {
 	// - ConnectionPersist: connection pooling.
 	// - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
 	//   Valid status values:
-	// - 1: enabled.
-	// - 0: disabled.
+	//   - 1: enabled.
+	//   - 0: disabled.
 	//
 	// > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
 	DbProxyFeatures *string `pulumi:"dbProxyFeatures"`
@@ -506,8 +506,8 @@ type RdsDbProxyArgs struct {
 	// - ConnectionPersist: connection pooling.
 	// - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
 	//   Valid status values:
-	// - 1: enabled.
-	// - 0: disabled.
+	//   - 1: enabled.
+	//   - 0: disabled.
 	//
 	// > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
 	DbProxyFeatures pulumi.StringPtrInput

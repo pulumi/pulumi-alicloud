@@ -16,14 +16,14 @@ public final class GetBackupPoliciesArgs extends com.pulumi.resources.InvokeArgs
     public static final GetBackupPoliciesArgs Empty = new GetBackupPoliciesArgs();
 
     /**
-     * The db cluster id.
+     * (Request, ForceNew) The db cluster id.
      * 
      */
     @Import(name="dbClusterId", required=true)
     private Output<String> dbClusterId;
 
     /**
-     * @return The db cluster id.
+     * @return (Request, ForceNew) The db cluster id.
      * 
      */
     public Output<String> dbClusterId() {
@@ -71,7 +71,7 @@ public final class GetBackupPoliciesArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param dbClusterId The db cluster id.
+         * @param dbClusterId (Request, ForceNew) The db cluster id.
          * 
          * @return builder
          * 
@@ -82,7 +82,7 @@ public final class GetBackupPoliciesArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param dbClusterId The db cluster id.
+         * @param dbClusterId (Request, ForceNew) The db cluster id.
          * 
          * @return builder
          * 

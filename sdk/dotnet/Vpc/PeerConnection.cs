@@ -91,7 +91,7 @@ namespace Pulumi.AliCloud.Vpc
         /// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
         /// - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
         /// - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-        /// &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+        ///   &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
         /// </summary>
         [Output("acceptingAliUid")]
         public Output<int?> AcceptingAliUid { get; private set; } = null!;
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.Vpc
         /// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
         /// - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
         /// - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-        /// &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+        ///   &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
         /// </summary>
         [Input("acceptingAliUid")]
         public Input<int>? AcceptingAliUid { get; set; }
@@ -303,7 +303,7 @@ namespace Pulumi.AliCloud.Vpc
         /// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
         /// - Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.
         /// - Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.
-        /// &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
+        ///   &gt; **NOTE:**  If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
         /// </summary>
         [Input("acceptingAliUid")]
         public Input<int>? AcceptingAliUid { get; set; }

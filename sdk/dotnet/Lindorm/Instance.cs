@@ -352,7 +352,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Output<string> TimeSeriesEngineSpecification { get; private set; } = null!;
 
         /// <summary>
-        /// Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+        /// (Deprecated since v1.182.0) Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         /// </summary>
         [Output("timeSeriresEngineSpecification")]
         public Output<string> TimeSeriresEngineSpecification { get; private set; } = null!;
@@ -658,7 +658,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? TimeSeriesEngineSpecification { get; set; }
 
         /// <summary>
-        /// Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+        /// (Deprecated since v1.182.0) Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         /// </summary>
         [Input("timeSeriresEngineSpecification")]
         public Input<string>? TimeSeriresEngineSpecification { get; set; }
@@ -974,7 +974,7 @@ namespace Pulumi.AliCloud.Lindorm
         public Input<string>? TimeSeriesEngineSpecification { get; set; }
 
         /// <summary>
-        /// Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
+        /// (Deprecated since v1.182.0) Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead.
         /// </summary>
         [Input("timeSeriresEngineSpecification")]
         public Input<string>? TimeSeriresEngineSpecification { get; set; }

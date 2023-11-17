@@ -79,7 +79,7 @@ export class CommonBandwithPackage extends pulumi.CustomResource {
      */
     public readonly isp!: pulumi.Output<string>;
     /**
-     * . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+     * (Deprecated since v1.120.0). Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
      */
@@ -213,7 +213,7 @@ export interface CommonBandwithPackageState {
      */
     isp?: pulumi.Input<string>;
     /**
-     * . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+     * (Deprecated since v1.120.0). Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
      */
@@ -288,7 +288,7 @@ export interface CommonBandwithPackageArgs {
      */
     isp?: pulumi.Input<string>;
     /**
-     * . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+     * (Deprecated since v1.120.0). Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
      */

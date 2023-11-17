@@ -38,7 +38,7 @@ public final class QuotaApplicationState extends com.pulumi.resources.ResourceAr
      * Quota audit mode. Value:
      * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
      * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-     * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+     *   &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
      * 
      */
     @Import(name="auditMode")
@@ -48,7 +48,7 @@ public final class QuotaApplicationState extends com.pulumi.resources.ResourceAr
      * @return Quota audit mode. Value:
      * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
      * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-     * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+     *   &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
      * 
      */
     public Optional<Output<String>> auditMode() {
@@ -379,7 +379,7 @@ public final class QuotaApplicationState extends com.pulumi.resources.ResourceAr
          * @param auditMode Quota audit mode. Value:
          * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
          * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-         * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+         *   &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
          * 
          * @return builder
          * 
@@ -393,7 +393,7 @@ public final class QuotaApplicationState extends com.pulumi.resources.ResourceAr
          * @param auditMode Quota audit mode. Value:
          * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
          * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-         * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+         *   &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
          * 
          * @return builder
          * 

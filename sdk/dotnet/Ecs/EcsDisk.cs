@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> AdvancedFeatures { get; private set; } = null!;
 
         /// <summary>
-        /// Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        /// (Deprecated since 1.122.0) Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
@@ -217,7 +217,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AdvancedFeatures { get; set; }
 
         /// <summary>
-        /// Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        /// (Deprecated since 1.122.0) Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
@@ -371,7 +371,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AdvancedFeatures { get; set; }
 
         /// <summary>
-        /// Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+        /// (Deprecated since 1.122.0) Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }

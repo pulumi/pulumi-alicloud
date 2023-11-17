@@ -162,7 +162,7 @@ def get_domains(domain_search_type: Optional[str] = None,
     :param Sequence[str] ids: A list of Domain IDs. Its element value is same as Domain Name.
     :param str name_regex: A regex string to filter results by Domain name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the domain name. The value of this parameter is used as a condition to filter domain names.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
@@ -233,7 +233,7 @@ def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]]
     :param Sequence[str] ids: A list of Domain IDs. Its element value is same as Domain Name.
     :param str name_regex: A regex string to filter results by Domain name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the domain name. The value of this parameter is used as a condition to filter domain names.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     ...

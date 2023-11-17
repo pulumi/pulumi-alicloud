@@ -48,9 +48,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-     * - `drds.sn2.4c16g` Starter Edition.
-     * - `drds.sn2.8c32g` Standard Edition.
-     * - `drds.sn2.16c64g` Enterprise Edition.
      * 
      */
     @Import(name="instanceSeries", required=true)
@@ -58,9 +55,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-     * - `drds.sn2.4c16g` Starter Edition.
-     * - `drds.sn2.8c32g` Standard Edition.
-     * - `drds.sn2.16c64g` Enterprise Edition.
      * 
      */
     public Output<String> instanceSeries() {
@@ -84,14 +78,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * User-defined DRDS instance specification. Value range:
-     * - `drds.sn1.4c8g` for DRDS instance Starter version;
-     * - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-     * - `drds.sn1.8c16g` for DRDS instance Standard edition;
-     * - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-     * - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-     * - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-     * - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-     * - value range : `drds.sn1.32c64g.128c256g`
      * 
      */
     @Import(name="specification", required=true)
@@ -99,14 +85,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return User-defined DRDS instance specification. Value range:
-     * - `drds.sn1.4c8g` for DRDS instance Starter version;
-     * - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-     * - `drds.sn1.8c16g` for DRDS instance Standard edition;
-     * - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-     * - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-     * - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-     * - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-     * - value range : `drds.sn1.32c64g.128c256g`
      * 
      */
     public Output<String> specification() {
@@ -233,9 +211,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceSeries The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-         * - `drds.sn2.4c16g` Starter Edition.
-         * - `drds.sn2.8c32g` Standard Edition.
-         * - `drds.sn2.16c64g` Enterprise Edition.
          * 
          * @return builder
          * 
@@ -247,9 +222,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param instanceSeries The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-         * - `drds.sn2.4c16g` Starter Edition.
-         * - `drds.sn2.8c32g` Standard Edition.
-         * - `drds.sn2.16c64g` Enterprise Edition.
          * 
          * @return builder
          * 
@@ -281,14 +253,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param specification User-defined DRDS instance specification. Value range:
-         * - `drds.sn1.4c8g` for DRDS instance Starter version;
-         * - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-         * - `drds.sn1.8c16g` for DRDS instance Standard edition;
-         * - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-         * - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-         * - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-         * - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-         * - value range : `drds.sn1.32c64g.128c256g`
          * 
          * @return builder
          * 
@@ -300,14 +264,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param specification User-defined DRDS instance specification. Value range:
-         * - `drds.sn1.4c8g` for DRDS instance Starter version;
-         * - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-         * - `drds.sn1.8c16g` for DRDS instance Standard edition;
-         * - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-         * - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-         * - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-         * - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-         * - value range : `drds.sn1.32c64g.128c256g`
          * 
          * @return builder
          * 

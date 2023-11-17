@@ -70,25 +70,25 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<string> Dir { get; private set; } = null!;
 
         /// <summary>
-        /// Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        /// (ForceNew,Optional) Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         /// </summary>
         [Output("exclusiveDir")]
         public Output<string?> ExclusiveDir { get; private set; } = null!;
 
         /// <summary>
-        /// Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        /// (ForceNew,Optional) Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         /// </summary>
         [Output("exclusiveFile")]
         public Output<string?> ExclusiveFile { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        /// (ForceNew,Optional) Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         /// </summary>
         [Output("exclusiveFileType")]
         public Output<string?> ExclusiveFileType { get; private set; } = null!;
 
         /// <summary>
-        /// Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+        /// (ForceNew,Optional) Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
         /// </summary>
         [Output("inclusiveFileType")]
         public Output<string?> InclusiveFileType { get; private set; } = null!;
@@ -170,25 +170,25 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string> Dir { get; set; } = null!;
 
         /// <summary>
-        /// Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        /// (ForceNew,Optional) Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         /// </summary>
         [Input("exclusiveDir")]
         public Input<string>? ExclusiveDir { get; set; }
 
         /// <summary>
-        /// Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        /// (ForceNew,Optional) Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         /// </summary>
         [Input("exclusiveFile")]
         public Input<string>? ExclusiveFile { get; set; }
 
         /// <summary>
-        /// Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        /// (ForceNew,Optional) Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         /// </summary>
         [Input("exclusiveFileType")]
         public Input<string>? ExclusiveFileType { get; set; }
 
         /// <summary>
-        /// Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+        /// (ForceNew,Optional) Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
         /// </summary>
         [Input("inclusiveFileType")]
         public Input<string>? InclusiveFileType { get; set; }
@@ -232,25 +232,25 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? Dir { get; set; }
 
         /// <summary>
-        /// Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        /// (ForceNew,Optional) Specify a directory address that does not require Web tamper protection (I. E. Excluded directories).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         /// </summary>
         [Input("exclusiveDir")]
         public Input<string>? ExclusiveDir { get; set; }
 
         /// <summary>
-        /// Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        /// (ForceNew,Optional) Specify files that do not need to enable tamper protection for web pages (that is, exclude files).&gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         /// </summary>
         [Input("exclusiveFile")]
         public Input<string>? ExclusiveFile { get; set; }
 
         /// <summary>
-        /// Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
+        /// (ForceNew,Optional) Specify the type of file that does not require Web tamper protection (that is, the type of excluded file). When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png &gt; The protection Mode **Mode** is set to **blacklist**, you need to configure this parameter.
         /// </summary>
         [Input("exclusiveFileType")]
         public Input<string>? ExclusiveFileType { get; set; }
 
         /// <summary>
-        /// Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
+        /// (ForceNew,Optional) Specify the type of file that requires tamper protection. When there are multiple file types, use semicolons (;) separation. Value:-php-jsp-asp-aspx-js-cgi-html-htm-xml-shtml-shtm-jpg-gif-png&gt; The protection Mode **Mode** is set to **whitelist**, you need to configure this parameter.
         /// </summary>
         [Input("inclusiveFileType")]
         public Input<string>? InclusiveFileType { get; set; }

@@ -62,12 +62,12 @@ type DedicatedPropreHost struct {
 	// - Length is 8~30 characters.
 	// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
 	// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-	// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+	//   > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 	OsPassword pulumi.StringPtrOutput `pulumi:"osPassword"`
 	// Whether to use the default password of the image.
 	// - **false**: (default)Do not use
 	// - **true**: Use
-	// > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+	//   > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
 	PasswordInherit pulumi.StringPtrOutput `pulumi:"passwordInherit"`
 	// The Payment type. Currently, only **Subscription** is supported.
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
@@ -172,12 +172,12 @@ type dedicatedPropreHostState struct {
 	// - Length is 8~30 characters.
 	// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
 	// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-	// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+	//   > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 	OsPassword *string `pulumi:"osPassword"`
 	// Whether to use the default password of the image.
 	// - **false**: (default)Do not use
 	// - **true**: Use
-	// > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+	//   > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
 	PasswordInherit *string `pulumi:"passwordInherit"`
 	// The Payment type. Currently, only **Subscription** is supported.
 	PaymentType *string `pulumi:"paymentType"`
@@ -232,12 +232,12 @@ type DedicatedPropreHostState struct {
 	// - Length is 8~30 characters.
 	// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
 	// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-	// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+	//   > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 	OsPassword pulumi.StringPtrInput
 	// Whether to use the default password of the image.
 	// - **false**: (default)Do not use
 	// - **true**: Use
-	// > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+	//   > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
 	PasswordInherit pulumi.StringPtrInput
 	// The Payment type. Currently, only **Subscription** is supported.
 	PaymentType pulumi.StringPtrInput
@@ -294,12 +294,12 @@ type dedicatedPropreHostArgs struct {
 	// - Length is 8~30 characters.
 	// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
 	// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-	// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+	//   > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 	OsPassword *string `pulumi:"osPassword"`
 	// Whether to use the default password of the image.
 	// - **false**: (default)Do not use
 	// - **true**: Use
-	// > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+	//   > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
 	PasswordInherit *string `pulumi:"passwordInherit"`
 	// The Payment type. Currently, only **Subscription** is supported.
 	PaymentType string `pulumi:"paymentType"`
@@ -353,12 +353,12 @@ type DedicatedPropreHostArgs struct {
 	// - Length is 8~30 characters.
 	// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
 	// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-	// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+	//   > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 	OsPassword pulumi.StringPtrInput
 	// Whether to use the default password of the image.
 	// - **false**: (default)Do not use
 	// - **true**: Use
-	// > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+	//   > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
 	PasswordInherit pulumi.StringPtrInput
 	// The Payment type. Currently, only **Subscription** is supported.
 	PaymentType pulumi.StringInput
@@ -532,18 +532,18 @@ func (o DedicatedPropreHostOutput) KeyPairName() pulumi.StringPtrOutput {
 }
 
 // Host login password, which can be set later. The password must meet the following requirements:
-// - Length is 8~30 characters.
-// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
-// - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-// > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+//   - Length is 8~30 characters.
+//   - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
+//   - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
+//     > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
 func (o DedicatedPropreHostOutput) OsPassword() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.StringPtrOutput { return v.OsPassword }).(pulumi.StringPtrOutput)
 }
 
 // Whether to use the default password of the image.
-// - **false**: (default)Do not use
-// - **true**: Use
-// > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+//   - **false**: (default)Do not use
+//   - **true**: Use
+//     > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
 func (o DedicatedPropreHostOutput) PasswordInherit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DedicatedPropreHost) pulumi.StringPtrOutput { return v.PasswordInherit }).(pulumi.StringPtrOutput)
 }

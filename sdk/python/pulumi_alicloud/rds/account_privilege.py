@@ -23,13 +23,13 @@ class AccountPrivilegeArgs:
         :param pulumi.Input[str] account_name: A specified account name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs.
-        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values: 
+        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values:
                - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
                - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
                - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-               Default to "ReadOnly".
+                 Default to "ReadOnly".
         """
         pulumi.set(__self__, "account_name", account_name)
         pulumi.set(__self__, "db_names", db_names)
@@ -77,13 +77,13 @@ class AccountPrivilegeArgs:
     @pulumi.getter
     def privilege(self) -> Optional[pulumi.Input[str]]:
         """
-        The privilege of one account access database. Valid values: 
+        The privilege of one account access database. Valid values:
         - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
         - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
         - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-        Default to "ReadOnly".
+          Default to "ReadOnly".
         """
         return pulumi.get(self, "privilege")
 
@@ -104,13 +104,13 @@ class _AccountPrivilegeState:
         :param pulumi.Input[str] account_name: A specified account name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs.
-        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values: 
+        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values:
                - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
                - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
                - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-               Default to "ReadOnly".
+                 Default to "ReadOnly".
         """
         if account_name is not None:
             pulumi.set(__self__, "account_name", account_name)
@@ -161,13 +161,13 @@ class _AccountPrivilegeState:
     @pulumi.getter
     def privilege(self) -> Optional[pulumi.Input[str]]:
         """
-        The privilege of one account access database. Valid values: 
+        The privilege of one account access database. Valid values:
         - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
         - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
         - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-        Default to "ReadOnly".
+          Default to "ReadOnly".
         """
         return pulumi.get(self, "privilege")
 
@@ -250,13 +250,13 @@ class AccountPrivilege(pulumi.CustomResource):
         :param pulumi.Input[str] account_name: A specified account name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs.
-        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values: 
+        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values:
                - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
                - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
                - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-               Default to "ReadOnly".
+                 Default to "ReadOnly".
         """
         ...
     @overload
@@ -385,13 +385,13 @@ class AccountPrivilege(pulumi.CustomResource):
         :param pulumi.Input[str] account_name: A specified account name.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] db_names: List of specified database name.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs.
-        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values: 
+        :param pulumi.Input[str] privilege: The privilege of one account access database. Valid values:
                - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
                - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
                - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
                - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-               Default to "ReadOnly".
+                 Default to "ReadOnly".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -431,13 +431,13 @@ class AccountPrivilege(pulumi.CustomResource):
     @pulumi.getter
     def privilege(self) -> pulumi.Output[Optional[str]]:
         """
-        The privilege of one account access database. Valid values: 
+        The privilege of one account access database. Valid values:
         - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
         - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
         - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
         - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-        Default to "ReadOnly".
+          Default to "ReadOnly".
         """
         return pulumi.get(self, "privilege")
 

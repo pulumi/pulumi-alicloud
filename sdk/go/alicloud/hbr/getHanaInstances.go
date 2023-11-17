@@ -65,9 +65,9 @@ type GetHanaInstancesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// The status of the SAP HANA instance.
+	// The status of the SAP HANA instance. Valid values:
 	Status *string `pulumi:"status"`
-	// The ID of the backup vault.
+	// The id of the vault.
 	VaultId *string `pulumi:"vaultId"`
 }
 
@@ -109,9 +109,9 @@ type GetHanaInstancesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// The status of the SAP HANA instance.
+	// The status of the SAP HANA instance. Valid values:
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The ID of the backup vault.
+	// The id of the vault.
 	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
 }
 

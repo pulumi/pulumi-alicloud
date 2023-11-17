@@ -126,7 +126,7 @@ export class Switch extends pulumi.CustomResource {
     }
 
     /**
-     * Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+     * (Deprecated from v1.119.0+) Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      */
@@ -158,7 +158,7 @@ export class Switch extends pulumi.CustomResource {
      */
     public readonly ipv6CidrBlockMask!: pulumi.Output<number>;
     /**
-     * Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+     * (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
@@ -244,7 +244,7 @@ export class Switch extends pulumi.CustomResource {
  */
 export interface SwitchState {
     /**
-     * Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+     * (Deprecated from v1.119.0+) Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      */
@@ -276,7 +276,7 @@ export interface SwitchState {
      */
     ipv6CidrBlockMask?: pulumi.Input<number>;
     /**
-     * Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+     * (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */
@@ -310,7 +310,7 @@ export interface SwitchState {
  */
 export interface SwitchArgs {
     /**
-     * Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+     * (Deprecated from v1.119.0+) Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
      */
@@ -334,7 +334,7 @@ export interface SwitchArgs {
      */
     ipv6CidrBlockMask?: pulumi.Input<number>;
     /**
-     * Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+     * (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
      */

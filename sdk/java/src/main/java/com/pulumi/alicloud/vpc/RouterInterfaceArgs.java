@@ -94,7 +94,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * It has been deprecated from version 1.11.0.
+     * (Deprecated) It has been deprecated from version 1.11.0.
      * 
      * @deprecated
      * Attribute &#39;opposite_access_point_id&#39; has been deprecated from version 1.11.0.
@@ -105,7 +105,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> oppositeAccessPointId;
 
     /**
-     * @return It has been deprecated from version 1.11.0.
+     * @return (Deprecated) It has been deprecated from version 1.11.0.
      * 
      * @deprecated
      * Attribute &#39;opposite_access_point_id&#39; has been deprecated from version 1.11.0.
@@ -351,7 +351,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param oppositeAccessPointId It has been deprecated from version 1.11.0.
+         * @param oppositeAccessPointId (Deprecated) It has been deprecated from version 1.11.0.
          * 
          * @return builder
          * 
@@ -366,7 +366,7 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param oppositeAccessPointId It has been deprecated from version 1.11.0.
+         * @param oppositeAccessPointId (Deprecated) It has been deprecated from version 1.11.0.
          * 
          * @return builder
          * 

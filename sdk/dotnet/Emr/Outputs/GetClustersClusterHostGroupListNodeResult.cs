@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Emr.Outputs
     public sealed class GetClustersClusterHostGroupListNodeResult
     {
         /// <summary>
-        /// Creation time.
+        /// The creation time of the resource.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>

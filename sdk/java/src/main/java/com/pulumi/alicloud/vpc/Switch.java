@@ -196,7 +196,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/switch:Switch")
 public class Switch extends com.pulumi.resources.CustomResource {
     /**
-     * Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
+     * (Deprecated from v1.119.0+) Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
@@ -207,7 +207,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
     private Output<String> availabilityZone;
 
     /**
-     * @return Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
+     * @return (Deprecated from v1.119.0+) Field &#39;availability_zone&#39; has been deprecated from provider version 1.119.0. New field &#39;zone_id&#39; instead.
      * 
      */
     public Output<String> availabilityZone() {
@@ -302,7 +302,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
         return this.ipv6CidrBlockMask;
     }
     /**
-     * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
+     * (Deprecated from v1.119.0+) Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
@@ -313,7 +313,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
+     * @return (Deprecated from v1.119.0+) Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vswitch_name&#39; instead.
      * 
      */
     public Output<String> name() {

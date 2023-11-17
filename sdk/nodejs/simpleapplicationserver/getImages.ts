@@ -36,7 +36,7 @@ export interface GetImagesArgs {
     nameRegex?: string;
     outputFile?: string;
     /**
-     * The platform of Plan supported.
+     * (Available in v1.161.0) The platform of Plan supported.
      */
     platform?: string;
 }
@@ -78,7 +78,7 @@ export interface GetImagesOutputArgs {
     nameRegex?: pulumi.Input<string>;
     outputFile?: pulumi.Input<string>;
     /**
-     * The platform of Plan supported.
+     * (Available in v1.161.0) The platform of Plan supported.
      */
     platform?: pulumi.Input<string>;
 }

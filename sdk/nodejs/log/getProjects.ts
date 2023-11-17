@@ -40,7 +40,7 @@ export interface GetProjectsArgs {
      */
     outputFile?: string;
     /**
-     * The status of project.
+     * The status of log project. Valid values `Normal` and `Disable`.
      */
     status?: string;
 }
@@ -86,7 +86,7 @@ export interface GetProjectsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of project.
+     * The status of log project. Valid values `Normal` and `Disable`.
      */
     status?: pulumi.Input<string>;
 }

@@ -296,14 +296,14 @@ public class Secret extends com.pulumi.resources.CustomResource {
         return this.versionId;
     }
     /**
-     * ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with &#34;ACSCurrent&#34;.
+     * The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with &#34;ACSCurrent&#34;.
      * 
      */
     @Export(name="versionStages", type=List.class, parameters={String.class})
     private Output<List<String>> versionStages;
 
     /**
-     * @return ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with &#34;ACSCurrent&#34;.
+     * @return The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with &#34;ACSCurrent&#34;.
      * 
      */
     public Output<List<String>> versionStages() {

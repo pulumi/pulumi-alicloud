@@ -1476,7 +1476,7 @@ type GetAddressPoolsPool struct {
 	AddressPoolId string `pulumi:"addressPoolId"`
 	// The name of the address pool.
 	AddressPoolName string `pulumi:"addressPoolName"`
-	// The address that you want to add to the address pool.
+	// The address lists of the Address Pool.
 	Addresses []GetAddressPoolsPoolAddress `pulumi:"addresses"`
 	// The time when the address pool was created.
 	CreateTime string `pulumi:"createTime"`
@@ -1516,7 +1516,7 @@ type GetAddressPoolsPoolArgs struct {
 	AddressPoolId pulumi.StringInput `pulumi:"addressPoolId"`
 	// The name of the address pool.
 	AddressPoolName pulumi.StringInput `pulumi:"addressPoolName"`
-	// The address that you want to add to the address pool.
+	// The address lists of the Address Pool.
 	Addresses GetAddressPoolsPoolAddressArrayInput `pulumi:"addresses"`
 	// The time when the address pool was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
@@ -1601,7 +1601,7 @@ func (o GetAddressPoolsPoolOutput) AddressPoolName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressPoolsPool) string { return v.AddressPoolName }).(pulumi.StringOutput)
 }
 
-// The address that you want to add to the address pool.
+// The address lists of the Address Pool.
 func (o GetAddressPoolsPoolOutput) Addresses() GetAddressPoolsPoolAddressArrayOutput {
 	return o.ApplyT(func(v GetAddressPoolsPool) []GetAddressPoolsPoolAddress { return v.Addresses }).(GetAddressPoolsPoolAddressArrayOutput)
 }
@@ -1677,7 +1677,7 @@ func (o GetAddressPoolsPoolArrayOutput) Index(i pulumi.IntInput) GetAddressPools
 }
 
 type GetAddressPoolsPoolAddress struct {
-	// The address that you want to add to the address pool.
+	// The address lists of the Address Pool.
 	Address string `pulumi:"address"`
 	// The source region of the address.
 	AttributeInfo string `pulumi:"attributeInfo"`
@@ -1701,7 +1701,7 @@ type GetAddressPoolsPoolAddressInput interface {
 }
 
 type GetAddressPoolsPoolAddressArgs struct {
-	// The address that you want to add to the address pool.
+	// The address lists of the Address Pool.
 	Address pulumi.StringInput `pulumi:"address"`
 	// The source region of the address.
 	AttributeInfo pulumi.StringInput `pulumi:"attributeInfo"`
@@ -1764,7 +1764,7 @@ func (o GetAddressPoolsPoolAddressOutput) ToGetAddressPoolsPoolAddressOutputWith
 	return o
 }
 
-// The address that you want to add to the address pool.
+// The address lists of the Address Pool.
 func (o GetAddressPoolsPoolAddressOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressPoolsPoolAddress) string { return v.Address }).(pulumi.StringOutput)
 }

@@ -37,7 +37,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.advancedFeatures);
     }
     /**
-     * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+     * (Deprecated since 1.122.0) Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
@@ -48,7 +48,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
     private Output<String> availabilityZone;
 
     /**
-     * @return Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+     * @return (Deprecated since 1.122.0) Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
      * 
      */
     public Output<String> availabilityZone() {

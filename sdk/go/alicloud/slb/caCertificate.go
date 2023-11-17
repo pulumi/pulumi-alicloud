@@ -123,7 +123,7 @@ type CaCertificate struct {
 	CaCertificate pulumi.StringOutput `pulumi:"caCertificate"`
 	// Name of the CA Certificate.
 	CaCertificateName pulumi.StringOutput `pulumi:"caCertificateName"`
-	// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+	// (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -170,7 +170,7 @@ type caCertificateState struct {
 	CaCertificate *string `pulumi:"caCertificate"`
 	// Name of the CA Certificate.
 	CaCertificateName *string `pulumi:"caCertificateName"`
-	// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+	// (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
 	Name *string `pulumi:"name"`
@@ -185,7 +185,7 @@ type CaCertificateState struct {
 	CaCertificate pulumi.StringPtrInput
 	// Name of the CA Certificate.
 	CaCertificateName pulumi.StringPtrInput
-	// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+	// (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
 	Name pulumi.StringPtrInput
@@ -204,7 +204,7 @@ type caCertificateArgs struct {
 	CaCertificate string `pulumi:"caCertificate"`
 	// Name of the CA Certificate.
 	CaCertificateName *string `pulumi:"caCertificateName"`
-	// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+	// (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
 	Name *string `pulumi:"name"`
@@ -220,7 +220,7 @@ type CaCertificateArgs struct {
 	CaCertificate pulumi.StringInput
 	// Name of the CA Certificate.
 	CaCertificateName pulumi.StringPtrInput
-	// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+	// (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
 	Name pulumi.StringPtrInput
@@ -327,7 +327,7 @@ func (o CaCertificateOutput) CaCertificateName() pulumi.StringOutput {
 	return o.ApplyT(func(v *CaCertificate) pulumi.StringOutput { return v.CaCertificateName }).(pulumi.StringOutput)
 }
 
-// Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
+// (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `caCertificateName` instead
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'ca_certificate_name' instead
 func (o CaCertificateOutput) Name() pulumi.StringOutput {

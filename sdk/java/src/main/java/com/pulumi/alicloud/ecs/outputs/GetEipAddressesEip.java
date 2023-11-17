@@ -42,12 +42,12 @@ public final class GetEipAddressesEip {
      */
     private String internetChargeType;
     /**
-     * @return The IP address of the EIP.
+     * @return The eip address.
      * 
      */
     private String ipAddress;
     /**
-     * @return The status of the EIP.
+     * @return The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      * 
      */
     private String status;
@@ -99,14 +99,14 @@ public final class GetEipAddressesEip {
         return this.internetChargeType;
     }
     /**
-     * @return The IP address of the EIP.
+     * @return The eip address.
      * 
      */
     public String ipAddress() {
         return this.ipAddress;
     }
     /**
-     * @return The status of the EIP.
+     * @return The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
      * 
      */
     public String status() {

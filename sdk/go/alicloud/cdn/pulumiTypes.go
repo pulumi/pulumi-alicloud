@@ -694,10 +694,9 @@ type DomainNewCertificateConfig struct {
 	// Certificate type. Value:
 	// - **upload**: upload certificate.
 	// - **cas**: Cloud Shield certificate.
-	// - **free**: free certificate.
-	// > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
+	// - **free**: free certificate.If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
 	CertType *string `pulumi:"certType"`
-	// The force set of the security certificate.
+	// (Removed) The force set of the security certificate.
 	ForceSet *string `pulumi:"forceSet"`
 	// The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
 	PrivateKey *string `pulumi:"privateKey"`
@@ -730,10 +729,9 @@ type DomainNewCertificateConfigArgs struct {
 	// Certificate type. Value:
 	// - **upload**: upload certificate.
 	// - **cas**: Cloud Shield certificate.
-	// - **free**: free certificate.
-	// > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
+	// - **free**: free certificate.If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
 	CertType pulumi.StringPtrInput `pulumi:"certType"`
-	// The force set of the security certificate.
+	// (Removed) The force set of the security certificate.
 	ForceSet pulumi.StringPtrInput `pulumi:"forceSet"`
 	// The content of the private key. If the certificate is not enabled, you do not need to enter the content of the private key. To configure the certificate, enter the content of the private key.
 	PrivateKey pulumi.StringPtrInput `pulumi:"privateKey"`
@@ -840,13 +838,12 @@ func (o DomainNewCertificateConfigOutput) CertRegion() pulumi.StringPtrOutput {
 // Certificate type. Value:
 // - **upload**: upload certificate.
 // - **cas**: Cloud Shield certificate.
-// - **free**: free certificate.
-// > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
+// - **free**: free certificate.If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
 func (o DomainNewCertificateConfigOutput) CertType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.CertType }).(pulumi.StringPtrOutput)
 }
 
-// The force set of the security certificate.
+// (Removed) The force set of the security certificate.
 func (o DomainNewCertificateConfigOutput) ForceSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DomainNewCertificateConfig) *string { return v.ForceSet }).(pulumi.StringPtrOutput)
 }
@@ -925,8 +922,7 @@ func (o DomainNewCertificateConfigPtrOutput) CertRegion() pulumi.StringPtrOutput
 // Certificate type. Value:
 // - **upload**: upload certificate.
 // - **cas**: Cloud Shield certificate.
-// - **free**: free certificate.
-// > If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
+// - **free**: free certificate.If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
 func (o DomainNewCertificateConfigPtrOutput) CertType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainNewCertificateConfig) *string {
 		if v == nil {
@@ -936,7 +932,7 @@ func (o DomainNewCertificateConfigPtrOutput) CertType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The force set of the security certificate.
+// (Removed) The force set of the security certificate.
 func (o DomainNewCertificateConfigPtrOutput) ForceSet() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DomainNewCertificateConfig) *string {
 		if v == nil {

@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> VersionId { get; private set; } = null!;
 
         /// <summary>
-        /// ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+        /// The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         /// </summary>
         [Output("versionStages")]
         public Output<ImmutableArray<string>> VersionStages { get; private set; } = null!;
@@ -305,7 +305,7 @@ namespace Pulumi.AliCloud.Kms
         private InputList<string>? _versionStages;
 
         /// <summary>
-        /// ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+        /// The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         /// </summary>
         public InputList<string> VersionStages
         {
@@ -437,7 +437,7 @@ namespace Pulumi.AliCloud.Kms
         private InputList<string>? _versionStages;
 
         /// <summary>
-        /// ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+        /// The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         /// </summary>
         public InputList<string> VersionStages
         {

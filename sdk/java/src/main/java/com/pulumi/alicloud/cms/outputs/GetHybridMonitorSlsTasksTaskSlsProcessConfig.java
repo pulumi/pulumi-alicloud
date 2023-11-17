@@ -14,7 +14,7 @@ import java.util.Objects;
 @CustomType
 public final class GetHybridMonitorSlsTasksTaskSlsProcessConfig {
     /**
-     * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
+     * @return The extended fields that specify the results of basic operations that are performed on aggregation results.
      * 
      */
     private List<GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress> expresses;
@@ -36,7 +36,7 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfig {
 
     private GetHybridMonitorSlsTasksTaskSlsProcessConfig() {}
     /**
-     * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
+     * @return The extended fields that specify the results of basic operations that are performed on aggregation results.
      * 
      */
     public List<GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress> expresses() {

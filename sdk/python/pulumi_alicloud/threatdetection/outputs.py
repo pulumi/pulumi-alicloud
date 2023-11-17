@@ -117,8 +117,8 @@ class HoneypotProbeHoneypotBindList(dict):
                  bind_port_lists: Optional[Sequence['outputs.HoneypotProbeHoneypotBindListBindPortList']] = None,
                  honeypot_id: Optional[str] = None):
         """
-        :param Sequence['HoneypotProbeHoneypotBindListBindPortListArgs'] bind_port_lists: List of listening ports.See the following `Block BindPortList`.
-        :param str honeypot_id: Honeypot ID.
+        :param Sequence['HoneypotProbeHoneypotBindListBindPortListArgs'] bind_port_lists: (ForceNew,Optional) List of listening ports.See the following `Block BindPortList`.
+        :param str honeypot_id: (ForceNew,Optional) Honeypot ID.
         """
         if bind_port_lists is not None:
             pulumi.set(__self__, "bind_port_lists", bind_port_lists)
@@ -129,7 +129,7 @@ class HoneypotProbeHoneypotBindList(dict):
     @pulumi.getter(name="bindPortLists")
     def bind_port_lists(self) -> Optional[Sequence['outputs.HoneypotProbeHoneypotBindListBindPortList']]:
         """
-        List of listening ports.See the following `Block BindPortList`.
+        (ForceNew,Optional) List of listening ports.See the following `Block BindPortList`.
         """
         return pulumi.get(self, "bind_port_lists")
 
@@ -137,7 +137,7 @@ class HoneypotProbeHoneypotBindList(dict):
     @pulumi.getter(name="honeypotId")
     def honeypot_id(self) -> Optional[str]:
         """
-        Honeypot ID.
+        (ForceNew,Optional) Honeypot ID.
         """
         return pulumi.get(self, "honeypot_id")
 
@@ -174,11 +174,11 @@ class HoneypotProbeHoneypotBindListBindPortList(dict):
                  start_port: Optional[int] = None,
                  target_port: Optional[int] = None):
         """
-        :param bool bind_port: Whether to bind the port.
-        :param int end_port: End port.
-        :param bool fixed: Whether the port is fixed.
-        :param int start_port: Start port.
-        :param int target_port: Destination port.
+        :param bool bind_port: (ForceNew,Optional) Whether to bind the port.
+        :param int end_port: (ForceNew,Optional) End port.
+        :param bool fixed: (ForceNew,Optional) Whether the port is fixed.
+        :param int start_port: (ForceNew,Optional) Start port.
+        :param int target_port: (ForceNew,Optional) Destination port.
         """
         if bind_port is not None:
             pulumi.set(__self__, "bind_port", bind_port)
@@ -195,7 +195,7 @@ class HoneypotProbeHoneypotBindListBindPortList(dict):
     @pulumi.getter(name="bindPort")
     def bind_port(self) -> Optional[bool]:
         """
-        Whether to bind the port.
+        (ForceNew,Optional) Whether to bind the port.
         """
         return pulumi.get(self, "bind_port")
 
@@ -203,7 +203,7 @@ class HoneypotProbeHoneypotBindListBindPortList(dict):
     @pulumi.getter(name="endPort")
     def end_port(self) -> Optional[int]:
         """
-        End port.
+        (ForceNew,Optional) End port.
         """
         return pulumi.get(self, "end_port")
 
@@ -211,7 +211,7 @@ class HoneypotProbeHoneypotBindListBindPortList(dict):
     @pulumi.getter
     def fixed(self) -> Optional[bool]:
         """
-        Whether the port is fixed.
+        (ForceNew,Optional) Whether the port is fixed.
         """
         return pulumi.get(self, "fixed")
 
@@ -219,7 +219,7 @@ class HoneypotProbeHoneypotBindListBindPortList(dict):
     @pulumi.getter(name="startPort")
     def start_port(self) -> Optional[int]:
         """
-        Start port.
+        (ForceNew,Optional) Start port.
         """
         return pulumi.get(self, "start_port")
 
@@ -227,7 +227,7 @@ class HoneypotProbeHoneypotBindListBindPortList(dict):
     @pulumi.getter(name="targetPort")
     def target_port(self) -> Optional[int]:
         """
-        Destination port.
+        (ForceNew,Optional) Destination port.
         """
         return pulumi.get(self, "target_port")
 
@@ -478,7 +478,7 @@ class GetBaselineStrategiesStrategyResult(dict):
         """
         :param str baseline_strategy_id: The ID of the baseline check policy.
         :param str baseline_strategy_name: Policy name.
-        :param str custom_type: The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+        :param str custom_type: (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
         :param int cycle_days: The detection period of the policy.
         :param int cycle_start_time: The detection period of the policy. Value:
                * **0**: 0:00~06:00
@@ -520,7 +520,7 @@ class GetBaselineStrategiesStrategyResult(dict):
     @pulumi.getter(name="customType")
     def custom_type(self) -> str:
         """
-        The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+        (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
         """
         return pulumi.get(self, "custom_type")
 
@@ -817,8 +817,8 @@ class GetHoneypotNodesNodeResult(dict):
         :param bool allow_honeypot_access_internet: Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
         :param int available_probe_num: Number of probes available.
         :param str id: The ID of the Honeypot management node.
-        :param str node_id: Honeypot management node id.
-        :param str node_name: The name of the management node.
+        :param str node_id: (ForceNew,Optional) Honeypot management node id.
+        :param str node_name: (ForceNew,Optional) The name of the management node.
         :param Sequence[str] security_group_probe_ip_lists: Release the collection of network segments.
         """
         pulumi.set(__self__, "allow_honeypot_access_internet", allow_honeypot_access_internet)
@@ -863,7 +863,7 @@ class GetHoneypotNodesNodeResult(dict):
     @pulumi.getter(name="nodeId")
     def node_id(self) -> str:
         """
-        Honeypot management node id.
+        (ForceNew,Optional) Honeypot management node id.
         """
         return pulumi.get(self, "node_id")
 
@@ -871,7 +871,7 @@ class GetHoneypotNodesNodeResult(dict):
     @pulumi.getter(name="nodeName")
     def node_name(self) -> str:
         """
-        The name of the management node.
+        (ForceNew,Optional) The name of the management node.
         """
         return pulumi.get(self, "node_name")
 
@@ -899,12 +899,12 @@ class GetHoneypotPresetsPresetResult(dict):
                  node_id: str,
                  preset_name: str):
         """
-        :param str honeypot_image_name: Honeypot mirror name
+        :param str honeypot_image_name: (ForceNew,Optional) Honeypot mirror name
         :param str honeypot_preset_id: Unique ID of honeypot Template.
         :param str id: The id of the Honeypot template.
         :param Sequence['GetHoneypotPresetsPresetMetaArgs'] metas: Honeypot template custom parameters.
-        :param str node_id: Unique id of management node
-        :param str preset_name: Honeypot template custom name
+        :param str node_id: (ForceNew,Optional) Unique id of management node
+        :param str preset_name: (ForceNew,Optional) Honeypot template custom name
         """
         pulumi.set(__self__, "honeypot_image_name", honeypot_image_name)
         pulumi.set(__self__, "honeypot_preset_id", honeypot_preset_id)
@@ -917,7 +917,7 @@ class GetHoneypotPresetsPresetResult(dict):
     @pulumi.getter(name="honeypotImageName")
     def honeypot_image_name(self) -> str:
         """
-        Honeypot mirror name
+        (ForceNew,Optional) Honeypot mirror name
         """
         return pulumi.get(self, "honeypot_image_name")
 
@@ -949,7 +949,7 @@ class GetHoneypotPresetsPresetResult(dict):
     @pulumi.getter(name="nodeId")
     def node_id(self) -> str:
         """
-        Unique id of management node
+        (ForceNew,Optional) Unique id of management node
         """
         return pulumi.get(self, "node_id")
 
@@ -957,7 +957,7 @@ class GetHoneypotPresetsPresetResult(dict):
     @pulumi.getter(name="presetName")
     def preset_name(self) -> str:
         """
-        Honeypot template custom name
+        (ForceNew,Optional) Honeypot template custom name
         """
         return pulumi.get(self, "preset_name")
 
@@ -1020,11 +1020,11 @@ class GetHoneypotProbesProbeResult(dict):
         """
         :param bool arp: ARP spoofing detection.-**true**: Enable-**false**: Disabled. Available when `enable_details` is on.
         :param str control_node_id: The ID of the management node.
-        :param str display_name: Probe name
+        :param str display_name: (ForceNew, Optional) Probe name
         :param str honeypot_probe_id: The first ID of the resource
         :param str id: The ID of the honeypot probe. Its value is the same as `honeypot_probe_id`.
         :param bool ping: Ping scan detection. Value:**true**: Enable **false**: Disabled. Available when `enable_details` is on.
-        :param str probe_type: Probe type
+        :param str probe_type: (ForceNew, Optional) Probe type
         :param Sequence[str] service_ip_lists: Listen to the IP address list. Available when `enable_details` is on.
         :param str status: The status of the resource.
         :param str uuid: Machine uuid. Has a value when the type is `host_probe`.
@@ -1063,7 +1063,7 @@ class GetHoneypotProbesProbeResult(dict):
     @pulumi.getter(name="displayName")
     def display_name(self) -> str:
         """
-        Probe name
+        (ForceNew, Optional) Probe name
         """
         return pulumi.get(self, "display_name")
 
@@ -1100,7 +1100,7 @@ class GetHoneypotProbesProbeResult(dict):
     @pulumi.getter(name="probeType")
     def probe_type(self) -> str:
         """
-        Probe type
+        (ForceNew, Optional) Probe type
         """
         return pulumi.get(self, "probe_type")
 
@@ -1235,7 +1235,7 @@ class GetInstancesInstanceResult(dict):
         """
         :param str create_time: The creation time of the resource
         :param str id: ID of the instance.
-        :param str instance_id: The first ID of the resource
+        :param str instance_id: (ForceNew,Optional) The first ID of the resource
         :param str payment_type: The payment type of the resource.
         :param str status: The status of the resource.
         """
@@ -1265,7 +1265,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
         """
-        The first ID of the resource
+        (ForceNew,Optional) The first ID of the resource
         """
         return pulumi.get(self, "instance_id")
 

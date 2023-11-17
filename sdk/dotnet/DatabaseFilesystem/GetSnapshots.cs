@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+        /// The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+        /// The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

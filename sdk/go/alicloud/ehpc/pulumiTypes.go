@@ -493,10 +493,10 @@ func (o ClusterPostInstallScriptArrayOutput) Index(i pulumi.IntInput) ClusterPos
 
 type GetClustersCluster struct {
 	// The server type of the account.
-	AccountType  string                          `pulumi:"accountType"`
-	Applications []GetClustersClusterApplication `pulumi:"applications"`
-	// The version number of the client used by the cluster.
-	ClientVersion string `pulumi:"clientVersion"`
+	// * `clientVersion` - The version number of the client used by the cluster.
+	AccountType   string                          `pulumi:"accountType"`
+	Applications  []GetClustersClusterApplication `pulumi:"applications"`
+	ClientVersion string                          `pulumi:"clientVersion"`
 	// The id of E-HPC Cluster.
 	ClusterId string `pulumi:"clusterId"`
 	// The name of E-HPC cluster.
@@ -572,10 +572,10 @@ type GetClustersClusterInput interface {
 
 type GetClustersClusterArgs struct {
 	// The server type of the account.
-	AccountType  pulumi.StringInput                      `pulumi:"accountType"`
-	Applications GetClustersClusterApplicationArrayInput `pulumi:"applications"`
-	// The version number of the client used by the cluster.
-	ClientVersion pulumi.StringInput `pulumi:"clientVersion"`
+	// * `clientVersion` - The version number of the client used by the cluster.
+	AccountType   pulumi.StringInput                      `pulumi:"accountType"`
+	Applications  GetClustersClusterApplicationArrayInput `pulumi:"applications"`
+	ClientVersion pulumi.StringInput                      `pulumi:"clientVersion"`
 	// The id of E-HPC Cluster.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// The name of E-HPC cluster.
@@ -690,6 +690,7 @@ func (o GetClustersClusterOutput) ToGetClustersClusterOutputWithContext(ctx cont
 }
 
 // The server type of the account.
+// * `clientVersion` - The version number of the client used by the cluster.
 func (o GetClustersClusterOutput) AccountType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.AccountType }).(pulumi.StringOutput)
 }
@@ -698,7 +699,6 @@ func (o GetClustersClusterOutput) Applications() GetClustersClusterApplicationAr
 	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterApplication { return v.Applications }).(GetClustersClusterApplicationArrayOutput)
 }
 
-// The version number of the client used by the cluster.
 func (o GetClustersClusterOutput) ClientVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ClientVersion }).(pulumi.StringOutput)
 }

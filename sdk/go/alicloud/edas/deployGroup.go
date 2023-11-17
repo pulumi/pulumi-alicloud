@@ -100,7 +100,7 @@ type DeployGroup struct {
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// The name of the instance group that you want to create.
 	GroupName pulumi.StringOutput `pulumi:"groupName"`
-	// The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+	// (ForceNew) The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
 	GroupType pulumi.IntOutput `pulumi:"groupType"`
 }
 
@@ -144,7 +144,7 @@ type deployGroupState struct {
 	AppId *string `pulumi:"appId"`
 	// The name of the instance group that you want to create.
 	GroupName *string `pulumi:"groupName"`
-	// The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+	// (ForceNew) The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
 	GroupType *int `pulumi:"groupType"`
 }
 
@@ -153,7 +153,7 @@ type DeployGroupState struct {
 	AppId pulumi.StringPtrInput
 	// The name of the instance group that you want to create.
 	GroupName pulumi.StringPtrInput
-	// The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+	// (ForceNew) The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
 	GroupType pulumi.IntPtrInput
 }
 
@@ -273,7 +273,7 @@ func (o DeployGroupOutput) GroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v *DeployGroup) pulumi.StringOutput { return v.GroupName }).(pulumi.StringOutput)
 }
 
-// The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+// (ForceNew) The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
 func (o DeployGroupOutput) GroupType() pulumi.IntOutput {
 	return o.ApplyT(func(v *DeployGroup) pulumi.IntOutput { return v.GroupType }).(pulumi.IntOutput)
 }

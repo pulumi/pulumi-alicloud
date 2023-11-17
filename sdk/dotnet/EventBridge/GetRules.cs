@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.EventBridge
         public string? RuleNamePrefix { get; set; }
 
         /// <summary>
-        /// Rule status, either Enable or Disable.
+        /// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.EventBridge
         public Input<string>? RuleNamePrefix { get; set; }
 
         /// <summary>
-        /// Rule status, either Enable or Disable.
+        /// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

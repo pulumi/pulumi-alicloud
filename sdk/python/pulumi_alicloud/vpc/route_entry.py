@@ -23,11 +23,11 @@ class RouteEntryArgs:
         """
         The set of arguments for constructing a RouteEntry resource.
         :param pulumi.Input[str] route_table_id: The ID of the route table.
-        :param pulumi.Input[str] destination_cidrblock: The RouteEntry's target network segment.
+        :param pulumi.Input[str] destination_cidrblock: (ForceNew) The RouteEntry's target network segment.
         :param pulumi.Input[str] name: The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-        :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
-        :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
-        :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
+        :param pulumi.Input[str] nexthop_id: (ForceNew) The route entry's next hop. ECS instance ID or VPC router interface ID.
+        :param pulumi.Input[str] nexthop_type: (ForceNew) The next hop type. Available values:
+        :param pulumi.Input[str] router_id: (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         pulumi.set(__self__, "route_table_id", route_table_id)
         if destination_cidrblock is not None:
@@ -60,7 +60,7 @@ class RouteEntryArgs:
     @pulumi.getter(name="destinationCidrblock")
     def destination_cidrblock(self) -> Optional[pulumi.Input[str]]:
         """
-        The RouteEntry's target network segment.
+        (ForceNew) The RouteEntry's target network segment.
         """
         return pulumi.get(self, "destination_cidrblock")
 
@@ -84,7 +84,7 @@ class RouteEntryArgs:
     @pulumi.getter(name="nexthopId")
     def nexthop_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The route entry's next hop. ECS instance ID or VPC router interface ID.
+        (ForceNew) The route entry's next hop. ECS instance ID or VPC router interface ID.
         """
         return pulumi.get(self, "nexthop_id")
 
@@ -96,7 +96,7 @@ class RouteEntryArgs:
     @pulumi.getter(name="nexthopType")
     def nexthop_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The next hop type. Available values:
+        (ForceNew) The next hop type. Available values:
         """
         return pulumi.get(self, "nexthop_type")
 
@@ -108,7 +108,7 @@ class RouteEntryArgs:
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        This argument has been deprecated. Please use other arguments to launch a custom route entry.
+        (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         warnings.warn("""Attribute router_id has been deprecated and suggest removing it from your template.""", DeprecationWarning)
         pulumi.log.warn("""router_id is deprecated: Attribute router_id has been deprecated and suggest removing it from your template.""")
@@ -131,12 +131,12 @@ class _RouteEntryState:
                  router_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RouteEntry resources.
-        :param pulumi.Input[str] destination_cidrblock: The RouteEntry's target network segment.
+        :param pulumi.Input[str] destination_cidrblock: (ForceNew) The RouteEntry's target network segment.
         :param pulumi.Input[str] name: The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-        :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
-        :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
+        :param pulumi.Input[str] nexthop_id: (ForceNew) The route entry's next hop. ECS instance ID or VPC router interface ID.
+        :param pulumi.Input[str] nexthop_type: (ForceNew) The next hop type. Available values:
         :param pulumi.Input[str] route_table_id: The ID of the route table.
-        :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
+        :param pulumi.Input[str] router_id: (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         if destination_cidrblock is not None:
             pulumi.set(__self__, "destination_cidrblock", destination_cidrblock)
@@ -158,7 +158,7 @@ class _RouteEntryState:
     @pulumi.getter(name="destinationCidrblock")
     def destination_cidrblock(self) -> Optional[pulumi.Input[str]]:
         """
-        The RouteEntry's target network segment.
+        (ForceNew) The RouteEntry's target network segment.
         """
         return pulumi.get(self, "destination_cidrblock")
 
@@ -182,7 +182,7 @@ class _RouteEntryState:
     @pulumi.getter(name="nexthopId")
     def nexthop_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The route entry's next hop. ECS instance ID or VPC router interface ID.
+        (ForceNew) The route entry's next hop. ECS instance ID or VPC router interface ID.
         """
         return pulumi.get(self, "nexthop_id")
 
@@ -194,7 +194,7 @@ class _RouteEntryState:
     @pulumi.getter(name="nexthopType")
     def nexthop_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The next hop type. Available values:
+        (ForceNew) The next hop type. Available values:
         """
         return pulumi.get(self, "nexthop_type")
 
@@ -218,7 +218,7 @@ class _RouteEntryState:
     @pulumi.getter(name="routerId")
     def router_id(self) -> Optional[pulumi.Input[str]]:
         """
-        This argument has been deprecated. Please use other arguments to launch a custom route entry.
+        (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         warnings.warn("""Attribute router_id has been deprecated and suggest removing it from your template.""", DeprecationWarning)
         pulumi.log.warn("""router_id is deprecated: Attribute router_id has been deprecated and suggest removing it from your template.""")
@@ -315,12 +315,12 @@ class RouteEntry(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] destination_cidrblock: The RouteEntry's target network segment.
+        :param pulumi.Input[str] destination_cidrblock: (ForceNew) The RouteEntry's target network segment.
         :param pulumi.Input[str] name: The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-        :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
-        :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
+        :param pulumi.Input[str] nexthop_id: (ForceNew) The route entry's next hop. ECS instance ID or VPC router interface ID.
+        :param pulumi.Input[str] nexthop_type: (ForceNew) The next hop type. Available values:
         :param pulumi.Input[str] route_table_id: The ID of the route table.
-        :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
+        :param pulumi.Input[str] router_id: (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         ...
     @overload
@@ -460,12 +460,12 @@ class RouteEntry(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] destination_cidrblock: The RouteEntry's target network segment.
+        :param pulumi.Input[str] destination_cidrblock: (ForceNew) The RouteEntry's target network segment.
         :param pulumi.Input[str] name: The name of the route entry. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-",".","_", and must not begin or end with a hyphen, and must not begin with http:// or https://.
-        :param pulumi.Input[str] nexthop_id: The route entry's next hop. ECS instance ID or VPC router interface ID.
-        :param pulumi.Input[str] nexthop_type: The next hop type. Available values:
+        :param pulumi.Input[str] nexthop_id: (ForceNew) The route entry's next hop. ECS instance ID or VPC router interface ID.
+        :param pulumi.Input[str] nexthop_type: (ForceNew) The next hop type. Available values:
         :param pulumi.Input[str] route_table_id: The ID of the route table.
-        :param pulumi.Input[str] router_id: This argument has been deprecated. Please use other arguments to launch a custom route entry.
+        :param pulumi.Input[str] router_id: (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -483,7 +483,7 @@ class RouteEntry(pulumi.CustomResource):
     @pulumi.getter(name="destinationCidrblock")
     def destination_cidrblock(self) -> pulumi.Output[Optional[str]]:
         """
-        The RouteEntry's target network segment.
+        (ForceNew) The RouteEntry's target network segment.
         """
         return pulumi.get(self, "destination_cidrblock")
 
@@ -499,7 +499,7 @@ class RouteEntry(pulumi.CustomResource):
     @pulumi.getter(name="nexthopId")
     def nexthop_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The route entry's next hop. ECS instance ID or VPC router interface ID.
+        (ForceNew) The route entry's next hop. ECS instance ID or VPC router interface ID.
         """
         return pulumi.get(self, "nexthop_id")
 
@@ -507,7 +507,7 @@ class RouteEntry(pulumi.CustomResource):
     @pulumi.getter(name="nexthopType")
     def nexthop_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The next hop type. Available values:
+        (ForceNew) The next hop type. Available values:
         """
         return pulumi.get(self, "nexthop_type")
 
@@ -523,7 +523,7 @@ class RouteEntry(pulumi.CustomResource):
     @pulumi.getter(name="routerId")
     def router_id(self) -> pulumi.Output[str]:
         """
-        This argument has been deprecated. Please use other arguments to launch a custom route entry.
+        (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
         """
         warnings.warn("""Attribute router_id has been deprecated and suggest removing it from your template.""", DeprecationWarning)
         pulumi.log.warn("""router_id is deprecated: Attribute router_id has been deprecated and suggest removing it from your template.""")

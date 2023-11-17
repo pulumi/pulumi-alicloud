@@ -193,6 +193,8 @@ public class Account extends com.pulumi.resources.CustomResource {
     }
     /**
      * Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+     * -`true`: grants DDL permissions to the database account.
+     * -`false`: does not grant DDL permissions to the database account.
      * 
      */
     @Export(name="ddlAuthority", type=Boolean.class, parameters={})
@@ -200,6 +202,8 @@ public class Account extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+     * -`true`: grants DDL permissions to the database account.
+     * -`false`: does not grant DDL permissions to the database account.
      * 
      */
     public Output<Boolean> ddlAuthority() {

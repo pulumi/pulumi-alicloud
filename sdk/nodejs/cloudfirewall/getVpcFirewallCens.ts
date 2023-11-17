@@ -51,7 +51,7 @@ export function getVpcFirewallCens(args?: GetVpcFirewallCensArgs, opts?: pulumi.
  */
 export interface GetVpcFirewallCensArgs {
     /**
-     * The ID of the CEN instance.
+     * (ForceNew,Optional) The ID of the CEN instance.
      */
     cenId?: string;
     /**
@@ -59,15 +59,15 @@ export interface GetVpcFirewallCensArgs {
      */
     ids?: string[];
     /**
-     * The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+     * (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
      */
     lang?: string;
     /**
-     * The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
+     * (ForceNew,Optional) The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
      */
     memberUid?: string;
     /**
-     * The ID of the VPC instance that created the VPC firewall.
+     * (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
      */
     networkInstanceId?: string;
     /**
@@ -77,15 +77,15 @@ export interface GetVpcFirewallCensArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * Firewall switch status
+     * (ForceNew,Optional) Firewall switch status
      */
     status?: string;
     /**
-     * VPC firewall ID
+     * (ForceNew,Optional) VPC firewall ID
      */
     vpcFirewallId?: string;
     /**
-     * The name of the VPC firewall instance.
+     * (ForceNew,Optional) The name of the VPC firewall instance.
      */
     vpcFirewallName?: string;
 }
@@ -165,7 +165,7 @@ export function getVpcFirewallCensOutput(args?: GetVpcFirewallCensOutputArgs, op
  */
 export interface GetVpcFirewallCensOutputArgs {
     /**
-     * The ID of the CEN instance.
+     * (ForceNew,Optional) The ID of the CEN instance.
      */
     cenId?: pulumi.Input<string>;
     /**
@@ -173,15 +173,15 @@ export interface GetVpcFirewallCensOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+     * (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
      */
     lang?: pulumi.Input<string>;
     /**
-     * The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
+     * (ForceNew,Optional) The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
      */
     memberUid?: pulumi.Input<string>;
     /**
-     * The ID of the VPC instance that created the VPC firewall.
+     * (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
      */
     networkInstanceId?: pulumi.Input<string>;
     /**
@@ -191,15 +191,15 @@ export interface GetVpcFirewallCensOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * Firewall switch status
+     * (ForceNew,Optional) Firewall switch status
      */
     status?: pulumi.Input<string>;
     /**
-     * VPC firewall ID
+     * (ForceNew,Optional) VPC firewall ID
      */
     vpcFirewallId?: pulumi.Input<string>;
     /**
-     * The name of the VPC firewall instance.
+     * (ForceNew,Optional) The name of the VPC firewall instance.
      */
     vpcFirewallName?: pulumi.Input<string>;
 }

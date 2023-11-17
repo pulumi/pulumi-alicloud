@@ -28,7 +28,7 @@ func GetClusterCredential(ctx *pulumi.Context, args *GetClusterCredentialArgs, o
 
 // A collection of arguments for invoking getClusterCredential.
 type GetClusterCredentialArgs struct {
-	// The id of target cluster.
+	// (**Required**) The id of target cluster.
 	ClusterId string `pulumi:"clusterId"`
 	// File name where to save the returned KubeConfig (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -69,7 +69,7 @@ func GetClusterCredentialOutput(ctx *pulumi.Context, args GetClusterCredentialOu
 
 // A collection of arguments for invoking getClusterCredential.
 type GetClusterCredentialOutputArgs struct {
-	// The id of target cluster.
+	// (**Required**) The id of target cluster.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// File name where to save the returned KubeConfig (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

@@ -21,13 +21,6 @@ public final class GetAppGroupsGroupQuota {
     private String docSize;
     /**
      * @return Specification. Valid values:
-     * * `opensearch.share.junior`: Entry-level.
-     * * `opensearch.share.common`: Shared universal.
-     * * `opensearch.share.compute`: Shared computing.
-     * * `opensearch.share.storage`: Shared storage type.
-     * * `opensearch.private.common`: Exclusive universal type.
-     * * `opensearch.private.compute`: Exclusive computing type.
-     * * `opensearch.private.storage`: Exclusive storage type
      * 
      */
     private String spec;
@@ -49,13 +42,6 @@ public final class GetAppGroupsGroupQuota {
     }
     /**
      * @return Specification. Valid values:
-     * * `opensearch.share.junior`: Entry-level.
-     * * `opensearch.share.common`: Shared universal.
-     * * `opensearch.share.compute`: Shared computing.
-     * * `opensearch.share.storage`: Shared storage type.
-     * * `opensearch.private.common`: Exclusive universal type.
-     * * `opensearch.private.compute`: Exclusive computing type.
-     * * `opensearch.private.storage`: Exclusive storage type
      * 
      */
     public String spec() {

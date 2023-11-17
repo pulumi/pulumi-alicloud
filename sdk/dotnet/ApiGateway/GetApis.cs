@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.ApiGateway
     public sealed class GetApisArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
+        /// (Deprecated, Optional) (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
         /// </summary>
         [Input("apiId")]
         public string? ApiId { get; set; }
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.ApiGateway
     public sealed class GetApisInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
+        /// (Deprecated, Optional) (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
         /// </summary>
         [Input("apiId")]
         public Input<string>? ApiId { get; set; }

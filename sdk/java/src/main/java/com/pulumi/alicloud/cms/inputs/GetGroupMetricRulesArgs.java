@@ -33,14 +33,14 @@ public final class GetGroupMetricRulesArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Indicates whether the alert rule is enabled.
+     * EnableState.
      * 
      */
     @Import(name="enableState")
     private @Nullable Output<Boolean> enableState;
 
     /**
-     * @return Indicates whether the alert rule is enabled.
+     * @return EnableState.
      * 
      */
     public Optional<Output<Boolean>> enableState() {
@@ -222,7 +222,7 @@ public final class GetGroupMetricRulesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param enableState Indicates whether the alert rule is enabled.
+         * @param enableState EnableState.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class GetGroupMetricRulesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param enableState Indicates whether the alert rule is enabled.
+         * @param enableState EnableState.
          * 
          * @return builder
          * 

@@ -55,11 +55,11 @@ func GetHoneypotNodes(ctx *pulumi.Context, args *GetHoneypotNodesArgs, opts ...p
 type GetHoneypotNodesArgs struct {
 	// A list of Honeypot Node IDs.
 	Ids []string `pulumi:"ids"`
-	// A regex string to filter results by Honeypot Node name.
+	// (ForceNew,Optional)  A regex string to filter results by Honeypot Node name.
 	NameRegex *string `pulumi:"nameRegex"`
-	// Honeypot management node id.
+	// (ForceNew,Optional) Honeypot management node id.
 	NodeId *string `pulumi:"nodeId"`
-	// The name of the management node.
+	// (ForceNew,Optional) The name of the management node.
 	NodeName *string `pulumi:"nodeName"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -104,11 +104,11 @@ func GetHoneypotNodesOutput(ctx *pulumi.Context, args GetHoneypotNodesOutputArgs
 type GetHoneypotNodesOutputArgs struct {
 	// A list of Honeypot Node IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// A regex string to filter results by Honeypot Node name.
+	// (ForceNew,Optional)  A regex string to filter results by Honeypot Node name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
-	// Honeypot management node id.
+	// (ForceNew,Optional) Honeypot management node id.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
-	// The name of the management node.
+	// (ForceNew,Optional) The name of the management node.
 	NodeName pulumi.StringPtrInput `pulumi:"nodeName"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

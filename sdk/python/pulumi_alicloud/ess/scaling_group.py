@@ -55,7 +55,7 @@ class ScalingGroupArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
                - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
-               targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+                 targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
                - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
                - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
         :param pulumi.Input[str] multi_az_policy: Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
@@ -79,7 +79,7 @@ class ScalingGroupArgs:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[str] vswitch_id: It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+        :param pulumi.Input[str] vswitch_id: (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: List of virtual switch IDs in which the ecs instances to be launched.
         """
         pulumi.set(__self__, "max_size", max_size)
@@ -259,7 +259,7 @@ class ScalingGroupArgs:
         If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
         - The Server Load Balancer instance must be enabled.
         - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
-        targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+          targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
         - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
         - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
         """
@@ -393,7 +393,7 @@ class ScalingGroupArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+        (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         """
         warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""", DeprecationWarning)
         pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""")
@@ -457,7 +457,7 @@ class _ScalingGroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
                - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
-               targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+                 targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
                - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
                - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
         :param pulumi.Input[int] max_size: Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
@@ -485,7 +485,7 @@ class _ScalingGroupState:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[str] vswitch_id: It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+        :param pulumi.Input[str] vswitch_id: (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: List of virtual switch IDs in which the ecs instances to be launched.
         """
         if db_instance_ids is not None:
@@ -641,7 +641,7 @@ class _ScalingGroupState:
         If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
         - The Server Load Balancer instance must be enabled.
         - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
-        targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+          targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
         - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
         - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
         """
@@ -801,7 +801,7 @@ class _ScalingGroupState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+        (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         """
         warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""", DeprecationWarning)
         pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""")
@@ -947,7 +947,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
                - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
-               targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+                 targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
                - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
                - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
         :param pulumi.Input[int] max_size: Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
@@ -975,7 +975,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[str] vswitch_id: It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+        :param pulumi.Input[str] vswitch_id: (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: List of virtual switch IDs in which the ecs instances to be launched.
         """
         ...
@@ -1187,7 +1187,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] loadbalancer_ids: If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
                - The Server Load Balancer instance must be enabled.
                - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
-               targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+                 targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
                - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
                - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
         :param pulumi.Input[int] max_size: Maximum number of ECS instances in the scaling group. Value range: [0, 2000].
@@ -1215,7 +1215,7 @@ class ScalingGroup(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
-        :param pulumi.Input[str] vswitch_id: It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+        :param pulumi.Input[str] vswitch_id: (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] vswitch_ids: List of virtual switch IDs in which the ecs instances to be launched.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1319,7 +1319,7 @@ class ScalingGroup(pulumi.CustomResource):
         If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
         - The Server Load Balancer instance must be enabled.
         - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
-        targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+          targeting your `slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
         - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
         - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
         """
@@ -1431,7 +1431,7 @@ class ScalingGroup(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
-        It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+        (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         """
         warnings.warn("""Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""", DeprecationWarning)
         pulumi.log.warn("""vswitch_id is deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.""")

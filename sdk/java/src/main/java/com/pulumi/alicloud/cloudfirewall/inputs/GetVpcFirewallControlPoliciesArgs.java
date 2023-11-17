@@ -19,14 +19,14 @@ public final class GetVpcFirewallControlPoliciesArgs extends com.pulumi.resource
     public static final GetVpcFirewallControlPoliciesArgs Empty = new GetVpcFirewallControlPoliciesArgs();
 
     /**
-     * Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+     * The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
      * 
      */
     @Import(name="aclAction")
     private @Nullable Output<String> aclAction;
 
     /**
-     * @return Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+     * @return The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
      * 
      */
     public Optional<Output<String>> aclAction() {
@@ -169,6 +169,8 @@ public final class GetVpcFirewallControlPoliciesArgs extends com.pulumi.resource
 
     /**
      * The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+     * - **true**: Enable access control policies
+     * - **false**: does not enable access control policies.
      * 
      */
     @Import(name="release")
@@ -176,6 +178,8 @@ public final class GetVpcFirewallControlPoliciesArgs extends com.pulumi.resource
 
     /**
      * @return The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+     * - **true**: Enable access control policies
+     * - **false**: does not enable access control policies.
      * 
      */
     public Optional<Output<Boolean>> release() {
@@ -198,14 +202,18 @@ public final class GetVpcFirewallControlPoliciesArgs extends com.pulumi.resource
     }
 
     /**
-     * The ID of the VPC firewall instance.
+     * The ID of the VPC firewall instance. Value:
+     * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+     * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
      * 
      */
     @Import(name="vpcFirewallId", required=true)
     private Output<String> vpcFirewallId;
 
     /**
-     * @return The ID of the VPC firewall instance.
+     * @return The ID of the VPC firewall instance. Value:
+     * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+     * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
      * 
      */
     public Output<String> vpcFirewallId() {
@@ -250,7 +258,7 @@ public final class GetVpcFirewallControlPoliciesArgs extends com.pulumi.resource
         }
 
         /**
-         * @param aclAction Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+         * @param aclAction The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
          * 
          * @return builder
          * 
@@ -261,7 +269,7 @@ public final class GetVpcFirewallControlPoliciesArgs extends com.pulumi.resource
         }
 
         /**
-         * @param aclAction Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
+         * @param aclAction The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
          * 
          * @return builder
          * 
@@ -468,6 +476,8 @@ public final class GetVpcFirewallControlPoliciesArgs extends com.pulumi.resource
 
         /**
          * @param release The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+         * - **true**: Enable access control policies
+         * - **false**: does not enable access control policies.
          * 
          * @return builder
          * 
@@ -479,6 +489,8 @@ public final class GetVpcFirewallControlPoliciesArgs extends com.pulumi.resource
 
         /**
          * @param release The enabled status of the access control policy. The policy is enabled by default after it is created. Value:
+         * - **true**: Enable access control policies
+         * - **false**: does not enable access control policies.
          * 
          * @return builder
          * 
@@ -509,7 +521,9 @@ public final class GetVpcFirewallControlPoliciesArgs extends com.pulumi.resource
         }
 
         /**
-         * @param vpcFirewallId The ID of the VPC firewall instance.
+         * @param vpcFirewallId The ID of the VPC firewall instance. Value:
+         * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+         * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
          * 
          * @return builder
          * 
@@ -520,7 +534,9 @@ public final class GetVpcFirewallControlPoliciesArgs extends com.pulumi.resource
         }
 
         /**
-         * @param vpcFirewallId The ID of the VPC firewall instance.
+         * @param vpcFirewallId The ID of the VPC firewall instance. Value:
+         * - When the VPC firewall protects traffic between two VPCs connected through the cloud enterprise network, the policy group ID uses the cloud enterprise network instance ID.
+         * - When the VPC firewall protects traffic between two VPCs connected through the express connection, the policy group ID uses the ID of the VPC firewall instance.
          * 
          * @return builder
          * 

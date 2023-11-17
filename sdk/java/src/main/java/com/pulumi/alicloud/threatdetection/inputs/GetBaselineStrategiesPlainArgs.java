@@ -16,14 +16,14 @@ public final class GetBaselineStrategiesPlainArgs extends com.pulumi.resources.I
     public static final GetBaselineStrategiesPlainArgs Empty = new GetBaselineStrategiesPlainArgs();
 
     /**
-     * The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+     * (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
      * 
      */
     @Import(name="customType")
     private @Nullable String customType;
 
     /**
-     * @return The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+     * @return (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
      * 
      */
     public Optional<String> customType() {
@@ -111,7 +111,7 @@ public final class GetBaselineStrategiesPlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param customType The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+         * @param customType (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
          * 
          * @return builder
          * 

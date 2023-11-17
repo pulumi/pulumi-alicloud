@@ -111,14 +111,14 @@ public class HybridMonitorFcTask extends com.pulumi.resources.CustomResource {
         return this.hybridMonitorFcTaskId;
     }
     /**
-     * the namespace of the Alibaba Cloud service.
+     * The index warehouse where the host belongs.
      * 
      */
     @Export(name="namespace", type=String.class, parameters={})
     private Output<String> namespace;
 
     /**
-     * @return the namespace of the Alibaba Cloud service.
+     * @return The index warehouse where the host belongs.
      * 
      */
     public Output<String> namespace() {

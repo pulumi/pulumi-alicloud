@@ -92,7 +92,7 @@ type Secret struct {
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The version number of the initial version. Version numbers are unique in each secret object.
 	VersionId pulumi.StringOutput `pulumi:"versionId"`
-	// ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+	// The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
 	VersionStages pulumi.StringArrayOutput `pulumi:"versionStages"`
 }
 
@@ -174,7 +174,7 @@ type secretState struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The version number of the initial version. Version numbers are unique in each secret object.
 	VersionId *string `pulumi:"versionId"`
-	// ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+	// The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
 	VersionStages []string `pulumi:"versionStages"`
 }
 
@@ -211,7 +211,7 @@ type SecretState struct {
 	Tags pulumi.MapInput
 	// The version number of the initial version. Version numbers are unique in each secret object.
 	VersionId pulumi.StringPtrInput
-	// ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+	// The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
 	VersionStages pulumi.StringArrayInput
 }
 
@@ -248,7 +248,7 @@ type secretArgs struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The version number of the initial version. Version numbers are unique in each secret object.
 	VersionId string `pulumi:"versionId"`
-	// ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+	// The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
 	VersionStages []string `pulumi:"versionStages"`
 }
 
@@ -282,7 +282,7 @@ type SecretArgs struct {
 	Tags pulumi.MapInput
 	// The version number of the initial version. Version numbers are unique in each secret object.
 	VersionId pulumi.StringInput
-	// ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+	// The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
 	VersionStages pulumi.StringArrayInput
 }
 
@@ -453,7 +453,7 @@ func (o SecretOutput) VersionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringOutput { return v.VersionId }).(pulumi.StringOutput)
 }
 
-// ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+// The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
 func (o SecretOutput) VersionStages() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Secret) pulumi.StringArrayOutput { return v.VersionStages }).(pulumi.StringArrayOutput)
 }

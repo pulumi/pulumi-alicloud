@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Log.Inputs
         }
 
         /// <summary>
-        /// including FixedRate,Hourly,Daily,Weekly,Cron.
+        /// Alert template type including `sys`, `user`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

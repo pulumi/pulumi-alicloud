@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The Resource Group Id.
+        /// The resource group Id.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
@@ -182,7 +182,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The Resource Group Id.
+        /// The resource group Id.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }

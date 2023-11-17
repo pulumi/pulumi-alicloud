@@ -104,9 +104,6 @@ export class ReservedInstance extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * Payment type of the RI. Default value: `All Upfront`. Valid values:
-     * - `No Upfront`: No upfront payment.
-     * - `Partial Upfront`: A portion of upfront payment.
-     * - `All Upfront`: Full upfront payment.
      */
     public readonly offeringType!: pulumi.Output<string>;
     /**
@@ -266,9 +263,6 @@ export interface ReservedInstanceState {
     name?: pulumi.Input<string>;
     /**
      * Payment type of the RI. Default value: `All Upfront`. Valid values:
-     * - `No Upfront`: No upfront payment.
-     * - `Partial Upfront`: A portion of upfront payment.
-     * - `All Upfront`: Full upfront payment.
      */
     offeringType?: pulumi.Input<string>;
     /**
@@ -351,9 +345,6 @@ export interface ReservedInstanceArgs {
     name?: pulumi.Input<string>;
     /**
      * Payment type of the RI. Default value: `All Upfront`. Valid values:
-     * - `No Upfront`: No upfront payment.
-     * - `Partial Upfront`: A portion of upfront payment.
-     * - `All Upfront`: Full upfront payment.
      */
     offeringType?: pulumi.Input<string>;
     /**

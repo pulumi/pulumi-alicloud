@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+        /// (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         /// </summary>
         [Output("ruleAction")]
         public Output<string> RuleAction { get; private set; } = null!;
@@ -220,7 +220,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> Protocol { get; set; } = null!;
 
         /// <summary>
-        /// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+        /// (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         /// </summary>
         [Input("ruleAction")]
         public Input<string>? RuleAction { get; set; }
@@ -292,7 +292,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+        /// (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
         /// </summary>
         [Input("ruleAction")]
         public Input<string>? RuleAction { get; set; }

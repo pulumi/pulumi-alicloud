@@ -131,7 +131,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * - receive_all: Keep all backup sets;
      * - delete_all: delete all backup sets;
      * - receive_last: Keep the last backup set.
-     * &gt; **NOTE:**   The default value is delete_all.
+     *   &gt; **NOTE:**   The default value is delete_all.
      * 
      */
     @Export(name="backupRetainMode", type=String.class, parameters={})
@@ -142,7 +142,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * - receive_all: Keep all backup sets;
      * - delete_all: delete all backup sets;
      * - receive_last: Keep the last backup set.
-     * &gt; **NOTE:**   The default value is delete_all.
+     *   &gt; **NOTE:**   The default value is delete_all.
      * 
      */
     public Output<Optional<String>> backupRetainMode() {

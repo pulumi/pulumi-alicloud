@@ -75,7 +75,7 @@ type GetTrafficMarkingPoliciesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
 	Status *string `pulumi:"status"`
 	// The ID of the transit router.
 	TransitRouterId string `pulumi:"transitRouterId"`
@@ -118,7 +118,7 @@ type GetTrafficMarkingPoliciesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringInput `pulumi:"transitRouterId"`

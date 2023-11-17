@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Ros
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Share Type.
+        /// Share Type. Valid Values: `Private`, `Shared`
         /// </summary>
         [Input("shareType")]
         public string? ShareType { get; set; }
@@ -135,7 +135,7 @@ namespace Pulumi.AliCloud.Ros
         private Dictionary<string, object>? _tags;
 
         /// <summary>
-        /// Tags.
+        /// Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         /// </summary>
         public Dictionary<string, object> Tags
         {
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Ros
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Share Type.
+        /// Share Type. Valid Values: `Private`, `Shared`
         /// </summary>
         [Input("shareType")]
         public Input<string>? ShareType { get; set; }
@@ -197,7 +197,7 @@ namespace Pulumi.AliCloud.Ros
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// Tags.
+        /// Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{"key1":"value1"}`.
         /// </summary>
         public InputMap<object> Tags
         {

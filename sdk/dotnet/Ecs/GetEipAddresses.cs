@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEipAddressesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the EIP.
+        /// The eip name.
         /// </summary>
         [Input("addressName")]
         public string? AddressName { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.Ecs
         public bool? IncludeReservationData { get; set; }
 
         /// <summary>
-        /// The IP address of the EIP.
+        /// The eip address.
         /// </summary>
         [Input("ipAddress")]
         public string? IpAddress { get; set; }
@@ -159,7 +159,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The Internet service provider (ISP).
+        /// The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
         /// </summary>
         [Input("isp")]
         public string? Isp { get; set; }
@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The billing method of the EIP.
+        /// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
         /// </summary>
         [Input("paymentType")]
         public string? PaymentType { get; set; }
@@ -195,13 +195,13 @@ namespace Pulumi.AliCloud.Ecs
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The IDs of the contiguous EIPs.
+        /// The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
         /// </summary>
         [Input("segmentInstanceId")]
         public string? SegmentInstanceId { get; set; }
 
         /// <summary>
-        /// The status of the EIP.
+        /// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -227,7 +227,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEipAddressesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the EIP.
+        /// The eip name.
         /// </summary>
         [Input("addressName")]
         public Input<string>? AddressName { get; set; }
@@ -275,7 +275,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? IncludeReservationData { get; set; }
 
         /// <summary>
-        /// The IP address of the EIP.
+        /// The eip address.
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
@@ -290,7 +290,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The Internet service provider (ISP).
+        /// The Internet service provider (ISP). Valid values `BGP` and `BGP_PRO`.
         /// </summary>
         [Input("isp")]
         public Input<string>? Isp { get; set; }
@@ -314,7 +314,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The billing method of the EIP.
+        /// The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
@@ -326,13 +326,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The IDs of the contiguous EIPs.
+        /// The IDs of the contiguous EIPs.  This value is returned only when contiguous EIPs are specified.
         /// </summary>
         [Input("segmentInstanceId")]
         public Input<string>? SegmentInstanceId { get; set; }
 
         /// <summary>
-        /// The status of the EIP.
+        /// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

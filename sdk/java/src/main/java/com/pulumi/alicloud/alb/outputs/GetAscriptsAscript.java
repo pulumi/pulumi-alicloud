@@ -18,7 +18,7 @@ public final class GetAscriptsAscript {
      */
     private String ascriptId;
     /**
-     * @return Script name.
+     * @return (ForceNew,Optional) Script name.
      * 
      */
     private String ascriptName;
@@ -39,7 +39,7 @@ public final class GetAscriptsAscript {
     private List<GetAscriptsAscriptExtAttribute> extAttributes;
     private String id;
     /**
-     * @return Listener ID of script attribution
+     * @return (ForceNew,Optional) Listener ID of script attribution
      * 
      */
     private String listenerId;
@@ -69,7 +69,7 @@ public final class GetAscriptsAscript {
         return this.ascriptId;
     }
     /**
-     * @return Script name.
+     * @return (ForceNew,Optional) Script name.
      * 
      */
     public String ascriptName() {
@@ -100,7 +100,7 @@ public final class GetAscriptsAscript {
         return this.id;
     }
     /**
-     * @return Listener ID of script attribution
+     * @return (ForceNew,Optional) Listener ID of script attribution
      * 
      */
     public String listenerId() {

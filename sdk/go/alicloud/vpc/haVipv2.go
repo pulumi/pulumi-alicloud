@@ -122,7 +122,7 @@ type HaVipv2 struct {
 	HaVipId pulumi.StringOutput `pulumi:"haVipId"`
 	// The name of the HaVip instance.
 	HaVipName pulumi.StringOutput `pulumi:"haVipName"`
-	// Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+	// (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 	//
 	// Deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 	HavipName pulumi.StringOutput `pulumi:"havipName"`
@@ -191,7 +191,7 @@ type haVipv2State struct {
 	HaVipId *string `pulumi:"haVipId"`
 	// The name of the HaVip instance.
 	HaVipName *string `pulumi:"haVipName"`
-	// Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+	// (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 	//
 	// Deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 	HavipName *string `pulumi:"havipName"`
@@ -228,7 +228,7 @@ type HaVipv2State struct {
 	HaVipId pulumi.StringPtrInput
 	// The name of the HaVip instance.
 	HaVipName pulumi.StringPtrInput
-	// Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+	// (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 	//
 	// Deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 	HavipName pulumi.StringPtrInput
@@ -259,7 +259,7 @@ type haVipv2Args struct {
 	Description *string `pulumi:"description"`
 	// The name of the HaVip instance.
 	HaVipName *string `pulumi:"haVipName"`
-	// Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+	// (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 	//
 	// Deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 	HavipName *string `pulumi:"havipName"`
@@ -281,7 +281,7 @@ type HaVipv2Args struct {
 	Description pulumi.StringPtrInput
 	// The name of the HaVip instance.
 	HaVipName pulumi.StringPtrInput
-	// Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+	// (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 	//
 	// Deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 	HavipName pulumi.StringPtrInput
@@ -419,7 +419,7 @@ func (o HaVipv2Output) HaVipName() pulumi.StringOutput {
 	return o.ApplyT(func(v *HaVipv2) pulumi.StringOutput { return v.HaVipName }).(pulumi.StringOutput)
 }
 
-// Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+// (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 //
 // Deprecated: Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
 func (o HaVipv2Output) HavipName() pulumi.StringOutput {

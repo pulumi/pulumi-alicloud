@@ -44,7 +44,7 @@ export function getCertificates(args: GetCertificatesArgs, opts?: pulumi.InvokeO
  */
 export interface GetCertificatesArgs {
     /**
-     * The domain that you want to add to WAF.
+     * WAF domain name.
      */
     domain?: string;
     /**
@@ -111,7 +111,7 @@ export function getCertificatesOutput(args: GetCertificatesOutputArgs, opts?: pu
  */
 export interface GetCertificatesOutputArgs {
     /**
-     * The domain that you want to add to WAF.
+     * WAF domain name.
      */
     domain?: pulumi.Input<string>;
     /**

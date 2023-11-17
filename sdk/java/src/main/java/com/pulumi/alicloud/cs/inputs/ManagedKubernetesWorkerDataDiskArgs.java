@@ -16,14 +16,14 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
     public static final ManagedKubernetesWorkerDataDiskArgs Empty = new ManagedKubernetesWorkerDataDiskArgs();
 
     /**
-     * (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+     * (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
      * 
      */
     @Import(name="autoSnapshotPolicyId")
     private @Nullable Output<String> autoSnapshotPolicyId;
 
     /**
-     * @return (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+     * @return (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
      * 
      */
     public Optional<Output<String>> autoSnapshotPolicyId() {
@@ -31,14 +31,14 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
     }
 
     /**
-     * (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+     * (Deprecated from version 1.177.0)(Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+     * @return (Deprecated from version 1.177.0)(Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
      * 
      */
     public Optional<Output<String>> category() {
@@ -61,14 +61,14 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
     }
 
     /**
-     * (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+     * (Deprecated from version 1.177.0)(Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
      * 
      */
     @Import(name="encrypted")
     private @Nullable Output<String> encrypted;
 
     /**
-     * @return (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+     * @return (Deprecated from version 1.177.0)(Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
      * 
      */
     public Optional<Output<String>> encrypted() {
@@ -106,14 +106,14 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
     }
 
     /**
-     * (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     @Import(name="performanceLevel")
     private @Nullable Output<String> performanceLevel;
 
     /**
-     * @return (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * @return (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     public Optional<Output<String>> performanceLevel() {
@@ -121,14 +121,14 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
     }
 
     /**
-     * (Optional)The size of a data disk, at least 40. Unit: GiB.
+     * (Deprecated from version 1.177.0)(Optional)The size of a data disk, at least 40. Unit: GiB.
      * 
      */
     @Import(name="size")
     private @Nullable Output<String> size;
 
     /**
-     * @return (Optional)The size of a data disk, at least 40. Unit: GiB.
+     * @return (Deprecated from version 1.177.0)(Optional)The size of a data disk, at least 40. Unit: GiB.
      * 
      */
     public Optional<Output<String>> size() {
@@ -183,7 +183,7 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
         }
 
         /**
-         * @param autoSnapshotPolicyId (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+         * @param autoSnapshotPolicyId (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
         }
 
         /**
-         * @param autoSnapshotPolicyId (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+         * @param autoSnapshotPolicyId (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
         }
 
         /**
-         * @param category (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+         * @param category (Deprecated from version 1.177.0)(Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
         }
 
         /**
-         * @param category (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+         * @param category (Deprecated from version 1.177.0)(Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
          * 
          * @return builder
          * 
@@ -246,7 +246,7 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
         }
 
         /**
-         * @param encrypted (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+         * @param encrypted (Deprecated from version 1.177.0)(Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
          * 
          * @return builder
          * 
@@ -257,7 +257,7 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
         }
 
         /**
-         * @param encrypted (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+         * @param encrypted (Deprecated from version 1.177.0)(Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
         }
 
         /**
-         * @param performanceLevel (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * @param performanceLevel (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          * 
          * @return builder
          * 
@@ -320,7 +320,7 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
         }
 
         /**
-         * @param performanceLevel (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * @param performanceLevel (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
         }
 
         /**
-         * @param size (Optional)The size of a data disk, at least 40. Unit: GiB.
+         * @param size (Deprecated from version 1.177.0)(Optional)The size of a data disk, at least 40. Unit: GiB.
          * 
          * @return builder
          * 
@@ -341,7 +341,7 @@ public final class ManagedKubernetesWorkerDataDiskArgs extends com.pulumi.resour
         }
 
         /**
-         * @param size (Optional)The size of a data disk, at least 40. Unit: GiB.
+         * @param size (Deprecated from version 1.177.0)(Optional)The size of a data disk, at least 40. Unit: GiB.
          * 
          * @return builder
          * 

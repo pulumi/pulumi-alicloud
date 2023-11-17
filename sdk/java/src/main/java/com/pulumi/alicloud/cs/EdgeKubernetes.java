@@ -262,14 +262,14 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
         return this.availabilityZone;
     }
     /**
-     * Nested attribute containing certificate authority data for your cluster.
+     * (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      * 
      */
     @Export(name="certificateAuthority", type=EdgeKubernetesCertificateAuthority.class, parameters={})
     private Output<EdgeKubernetesCertificateAuthority> certificateAuthority;
 
     /**
-     * @return Nested attribute containing certificate authority data for your cluster.
+     * @return (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      * 
      */
     public Output<EdgeKubernetesCertificateAuthority> certificateAuthority() {
@@ -340,14 +340,14 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
         return this.clusterSpec;
     }
     /**
-     * Map of kubernetes cluster connection information.
+     * (Map) Map of kubernetes cluster connection information.
      * 
      */
     @Export(name="connections", type=EdgeKubernetesConnections.class, parameters={})
     private Output<EdgeKubernetesConnections> connections;
 
     /**
-     * @return Map of kubernetes cluster connection information.
+     * @return (Map) Map of kubernetes cluster connection information.
      * 
      */
     public Output<EdgeKubernetesConnections> connections() {

@@ -102,7 +102,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
+     * (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
      * Default to PostPaid.
      * 
      */
@@ -110,7 +110,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
+     * @return (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
      * Default to PostPaid.
      * 
      */
@@ -385,7 +385,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
+         * @param instanceChargeType (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
          * Default to PostPaid.
          * 
          * @return builder
@@ -397,7 +397,7 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
+         * @param instanceChargeType (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
          * Default to PostPaid.
          * 
          * @return builder

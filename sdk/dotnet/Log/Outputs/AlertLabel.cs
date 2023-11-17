@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Log.Outputs
     public sealed class AlertLabel
     {
         /// <summary>
-        /// Annotations's key for new alert.
+        /// Labels's key for new alert.
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Annotations's value for new alert.
+        /// Labels's value for new alert.
         /// </summary>
         public readonly string Value;
 

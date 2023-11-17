@@ -60,14 +60,14 @@ public final class GetShardingNetworkPrivateAddressesPlainArgs extends com.pulum
     }
 
     /**
-     * The role of the node.
+     * The role of the node. Valid values: `Primary` or `Secondary`.
      * 
      */
     @Import(name="role")
     private @Nullable String role;
 
     /**
-     * @return The role of the node.
+     * @return The role of the node. Valid values: `Primary` or `Secondary`.
      * 
      */
     public Optional<String> role() {
@@ -135,7 +135,7 @@ public final class GetShardingNetworkPrivateAddressesPlainArgs extends com.pulum
         }
 
         /**
-         * @param role The role of the node.
+         * @param role The role of the node. Valid values: `Primary` or `Secondary`.
          * 
          * @return builder
          * 

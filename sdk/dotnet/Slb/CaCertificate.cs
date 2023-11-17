@@ -101,7 +101,7 @@ namespace Pulumi.AliCloud.Slb
         public Output<string> CaCertificateName { get; private set; } = null!;
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+        /// (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -177,7 +177,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? CaCertificateName { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+        /// (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -221,7 +221,7 @@ namespace Pulumi.AliCloud.Slb
         public Input<string>? CaCertificateName { get; set; }
 
         /// <summary>
-        /// Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
+        /// (Deprecated) Field `name` has been deprecated from provider version 1.123.1. New field `ca_certificate_name` instead
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

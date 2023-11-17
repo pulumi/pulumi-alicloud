@@ -16,14 +16,14 @@ public final class GetEndpointAclServicePlainArgs extends com.pulumi.resources.I
     public static final GetEndpointAclServicePlainArgs Empty = new GetEndpointAclServicePlainArgs();
 
     /**
-     * Whether to enable Acl Service.  Valid values: `true` and `false`.
+     * Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
      * 
      */
     @Import(name="enable", required=true)
     private Boolean enable;
 
     /**
-     * @return Whether to enable Acl Service.  Valid values: `true` and `false`.
+     * @return Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
      * 
      */
     public Boolean enable() {
@@ -111,7 +111,7 @@ public final class GetEndpointAclServicePlainArgs extends com.pulumi.resources.I
         }
 
         /**
-         * @param enable Whether to enable Acl Service.  Valid values: `true` and `false`.
+         * @param enable Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
          * 
          * @return builder
          * 

@@ -46,14 +46,14 @@ public final class ApplicationDeploymentState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Last package version deployed.
+     * (ForceNew) Last package version deployed.
      * 
      */
     @Import(name="lastPackageVersion")
     private @Nullable Output<String> lastPackageVersion;
 
     /**
-     * @return Last package version deployed.
+     * @return (ForceNew) Last package version deployed.
      * 
      */
     public Optional<Output<String>> lastPackageVersion() {
@@ -161,7 +161,7 @@ public final class ApplicationDeploymentState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param lastPackageVersion Last package version deployed.
+         * @param lastPackageVersion (ForceNew) Last package version deployed.
          * 
          * @return builder
          * 
@@ -172,7 +172,7 @@ public final class ApplicationDeploymentState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param lastPackageVersion Last package version deployed.
+         * @param lastPackageVersion (ForceNew) Last package version deployed.
          * 
          * @return builder
          * 

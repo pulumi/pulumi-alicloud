@@ -18,7 +18,7 @@ public final class SimpleOfficeSiteState extends com.pulumi.resources.ResourceAr
     public static final SimpleOfficeSiteState Empty = new SimpleOfficeSiteState();
 
     /**
-     * The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+     * (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
      * 
      * @deprecated
      * Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
@@ -29,7 +29,7 @@ public final class SimpleOfficeSiteState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+     * @return (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
      * 
      * @deprecated
      * Field &#39;bandwidth&#39; has been deprecated from provider version 1.142.0.
@@ -131,7 +131,7 @@ public final class SimpleOfficeSiteState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether the Open Internet Access Function.
+     * (Deprecated from 1.142.0) Whether the Open Internet Access Function.
      * 
      * @deprecated
      * Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
@@ -142,7 +142,7 @@ public final class SimpleOfficeSiteState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Boolean> enableInternetAccess;
 
     /**
-     * @return Whether the Open Internet Access Function.
+     * @return (Deprecated from 1.142.0) Whether the Open Internet Access Function.
      * 
      * @deprecated
      * Field &#39;enable_internet_access&#39; has been deprecated from provider version 1.142.0.
@@ -249,7 +249,7 @@ public final class SimpleOfficeSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bandwidth The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+         * @param bandwidth (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
          * 
          * @return builder
          * 
@@ -264,7 +264,7 @@ public final class SimpleOfficeSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param bandwidth The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+         * @param bandwidth (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
          * 
          * @return builder
          * 
@@ -404,7 +404,7 @@ public final class SimpleOfficeSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enableInternetAccess Whether the Open Internet Access Function.
+         * @param enableInternetAccess (Deprecated from 1.142.0) Whether the Open Internet Access Function.
          * 
          * @return builder
          * 
@@ -419,7 +419,7 @@ public final class SimpleOfficeSiteState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enableInternetAccess Whether the Open Internet Access Function.
+         * @param enableInternetAccess (Deprecated from 1.142.0) Whether the Open Internet Access Function.
          * 
          * @return builder
          * 

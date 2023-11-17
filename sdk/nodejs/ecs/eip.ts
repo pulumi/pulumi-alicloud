@@ -93,7 +93,7 @@ export class Eip extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly highDefinitionMonitorLogStatus!: pulumi.Output<string>;
     /**
-     * (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+     * (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
      *
      * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
      */
@@ -113,7 +113,7 @@ export class Eip extends pulumi.CustomResource {
     public readonly logProject!: pulumi.Output<string | undefined>;
     public readonly logStore!: pulumi.Output<string | undefined>;
     /**
-     * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+     * (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
      */
@@ -246,7 +246,7 @@ export interface EipState {
     description?: pulumi.Input<string>;
     highDefinitionMonitorLogStatus?: pulumi.Input<string>;
     /**
-     * (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+     * (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
      *
      * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
      */
@@ -266,7 +266,7 @@ export interface EipState {
     logProject?: pulumi.Input<string>;
     logStore?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+     * (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
      */
@@ -325,7 +325,7 @@ export interface EipArgs {
     description?: pulumi.Input<string>;
     highDefinitionMonitorLogStatus?: pulumi.Input<string>;
     /**
-     * (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+     * (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `paymentType` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
      *
      * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
      */
@@ -341,7 +341,7 @@ export interface EipArgs {
     logProject?: pulumi.Input<string>;
     logStore?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
+     * (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `addressName` instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
      */

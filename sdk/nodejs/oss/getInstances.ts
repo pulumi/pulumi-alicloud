@@ -54,6 +54,7 @@ export interface GetInstancesArgs {
     outputFile?: string;
     /**
      * A map of tags assigned to the instance. It must be in the format:
+     *
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
@@ -135,6 +136,7 @@ export interface GetInstancesOutputArgs {
     outputFile?: pulumi.Input<string>;
     /**
      * A map of tags assigned to the instance. It must be in the format:
+     *
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";

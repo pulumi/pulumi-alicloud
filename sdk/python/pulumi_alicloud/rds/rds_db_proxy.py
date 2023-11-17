@@ -52,9 +52,9 @@ class RdsDbProxyArgs:
                - ReadWriteSpliting: read/write splitting.
                - ConnectionPersist: connection pooling.
                - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-               Valid status values:
-               - 1: enabled.
-               - 0: disabled.
+                 Valid status values:
+                 - 1: enabled.
+                 - 0: disabled.
                
                > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
         :param pulumi.Input[str] db_proxy_ssl_enabled: The SSL configuration setting that you want to apply on the instance. Valid values:
@@ -224,9 +224,9 @@ class RdsDbProxyArgs:
         - ReadWriteSpliting: read/write splitting.
         - ConnectionPersist: connection pooling.
         - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-        Valid status values:
-        - 1: enabled.
-        - 0: disabled.
+          Valid status values:
+          - 1: enabled.
+          - 0: disabled.
 
         > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
         """
@@ -404,9 +404,9 @@ class _RdsDbProxyState:
                - ReadWriteSpliting: read/write splitting.
                - ConnectionPersist: connection pooling.
                - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-               Valid status values:
-               - 1: enabled.
-               - 0: disabled.
+                 Valid status values:
+                 - 1: enabled.
+                 - 0: disabled.
                
                > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
         :param pulumi.Input[int] db_proxy_instance_num: The number of proxy instances that are enabled. Valid values: 1 to 60.
@@ -574,9 +574,9 @@ class _RdsDbProxyState:
         - ReadWriteSpliting: read/write splitting.
         - ConnectionPersist: connection pooling.
         - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-        Valid status values:
-        - 1: enabled.
-        - 0: disabled.
+          Valid status values:
+          - 1: enabled.
+          - 0: disabled.
 
         > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
         """
@@ -910,9 +910,9 @@ class RdsDbProxy(pulumi.CustomResource):
                - ReadWriteSpliting: read/write splitting.
                - ConnectionPersist: connection pooling.
                - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-               Valid status values:
-               - 1: enabled.
-               - 0: disabled.
+                 Valid status values:
+                 - 1: enabled.
+                 - 0: disabled.
                
                > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
         :param pulumi.Input[int] db_proxy_instance_num: The number of proxy instances that are enabled. Valid values: 1 to 60.
@@ -1159,9 +1159,9 @@ class RdsDbProxy(pulumi.CustomResource):
                - ReadWriteSpliting: read/write splitting.
                - ConnectionPersist: connection pooling.
                - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-               Valid status values:
-               - 1: enabled.
-               - 0: disabled.
+                 Valid status values:
+                 - 1: enabled.
+                 - 0: disabled.
                
                > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
         :param pulumi.Input[int] db_proxy_instance_num: The number of proxy instances that are enabled. Valid values: 1 to 60.
@@ -1287,9 +1287,9 @@ class RdsDbProxy(pulumi.CustomResource):
         - ReadWriteSpliting: read/write splitting.
         - ConnectionPersist: connection pooling.
         - TransactionReadSqlRouteOptimizeStatus: transaction splitting.
-        Valid status values:
-        - 1: enabled.
-        - 0: disabled.
+          Valid status values:
+          - 1: enabled.
+          - 0: disabled.
 
         > **NOTE:** Note You must specify this parameter only when the read/write splitting feature is enabled.
         """

@@ -1293,7 +1293,7 @@ class ApplicationScalingRuleScalingRuleMetricMetric(dict):
                - SLB_RT: The average response time of public network SLB within 15 seconds.
                - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
                - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-               **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+                 **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
         :param str slb_id: SLB ID.
         :param str slb_log_store: The log store of the Log Service.
         :param str slb_project: The project of the Log Service.
@@ -1334,7 +1334,7 @@ class ApplicationScalingRuleScalingRuleMetricMetric(dict):
         - SLB_RT: The average response time of public network SLB within 15 seconds.
         - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
         - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-        **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+          **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
         """
         return pulumi.get(self, "metric_type")
 
@@ -2820,9 +2820,9 @@ class GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult(dict):
                  stabilization_window_seconds: int,
                  step: int):
         """
-        :param bool disabled: Whether shrinkage is prohibited. The values are described as follows:
-        :param int stabilization_window_seconds: Expansion cooling time.
-        :param int step: Flexible expansion step. The maximum number of instances per unit time.
+        :param bool disabled: Whether shrinkage is prohibited.
+        :param int stabilization_window_seconds: Shrinkage cooling time.
+        :param int step: Elastic shrinkage step. The maximum number of instances per unit time.
         """
         pulumi.set(__self__, "disabled", disabled)
         pulumi.set(__self__, "stabilization_window_seconds", stabilization_window_seconds)
@@ -2832,7 +2832,7 @@ class GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult(dict):
     @pulumi.getter
     def disabled(self) -> bool:
         """
-        Whether shrinkage is prohibited. The values are described as follows:
+        Whether shrinkage is prohibited.
         """
         return pulumi.get(self, "disabled")
 
@@ -2840,7 +2840,7 @@ class GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult(dict):
     @pulumi.getter(name="stabilizationWindowSeconds")
     def stabilization_window_seconds(self) -> int:
         """
-        Expansion cooling time.
+        Shrinkage cooling time.
         """
         return pulumi.get(self, "stabilization_window_seconds")
 
@@ -2848,7 +2848,7 @@ class GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult(dict):
     @pulumi.getter
     def step(self) -> int:
         """
-        Flexible expansion step. The maximum number of instances per unit time.
+        Elastic shrinkage step. The maximum number of instances per unit time.
         """
         return pulumi.get(self, "step")
 
@@ -3586,7 +3586,7 @@ class GetApplicationsApplicationMountDescResult(dict):
                  mount_path: str,
                  nas_path: str):
         """
-        :param str mount_path: The Container mount path.
+        :param str mount_path: Container mount path.
         :param str nas_path: NAS relative file directory.
         """
         pulumi.set(__self__, "mount_path", mount_path)
@@ -3596,7 +3596,7 @@ class GetApplicationsApplicationMountDescResult(dict):
     @pulumi.getter(name="mountPath")
     def mount_path(self) -> str:
         """
-        The Container mount path.
+        Container mount path.
         """
         return pulumi.get(self, "mount_path")
 
@@ -3816,7 +3816,7 @@ class GetGreyTagRoutesRouteDubboRuleResult(dict):
                  service_name: str,
                  version: str):
         """
-        :param str condition: The Conditional Patterns for Grayscale Rules.
+        :param str condition: The conditional Patterns for Grayscale Rules.
         :param str group: The service group.
         :param Sequence['GetGreyTagRoutesRouteDubboRuleItemArgs'] items: A list of conditions items.
         :param str method_name: The method name
@@ -3834,7 +3834,7 @@ class GetGreyTagRoutesRouteDubboRuleResult(dict):
     @pulumi.getter
     def condition(self) -> str:
         """
-        The Conditional Patterns for Grayscale Rules.
+        The conditional Patterns for Grayscale Rules.
         """
         return pulumi.get(self, "condition")
 

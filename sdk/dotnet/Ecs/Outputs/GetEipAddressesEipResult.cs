@@ -39,11 +39,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string InternetChargeType;
         /// <summary>
-        /// The IP address of the EIP.
+        /// The eip address.
         /// </summary>
         public readonly string IpAddress;
         /// <summary>
-        /// The status of the EIP.
+        /// The status of the EIP. Valid values:  `Associating`: The EIP is being associated. `Unassociating`: The EIP is being disassociated. `InUse`: The EIP is allocated. `Available`:The EIP is available.
         /// </summary>
         public readonly string Status;
 

@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Rds
         public string? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+        /// (Deprecated) It has been deprecated from version 1.137.0 and using `multi_zone` instead.
         /// </summary>
         [Input("multi")]
         public bool? Multi { get; set; }
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Rds
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+        /// (Deprecated) It has been deprecated from version 1.137.0 and using `multi_zone` instead.
         /// </summary>
         [Input("multi")]
         public Input<bool>? Multi { get; set; }

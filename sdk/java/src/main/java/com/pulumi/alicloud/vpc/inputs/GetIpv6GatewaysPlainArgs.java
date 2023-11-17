@@ -76,14 +76,14 @@ public final class GetIpv6GatewaysPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+     * The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+     * @return The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
      * 
      */
     public Optional<String> status() {
@@ -189,7 +189,7 @@ public final class GetIpv6GatewaysPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+         * @param status The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
          * 
          * @return builder
          * 

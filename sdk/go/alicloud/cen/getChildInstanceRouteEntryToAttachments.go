@@ -54,7 +54,7 @@ func GetChildInstanceRouteEntryToAttachments(ctx *pulumi.Context, args *GetChild
 
 // A collection of arguments for invoking getChildInstanceRouteEntryToAttachments.
 type GetChildInstanceRouteEntryToAttachmentsArgs struct {
-	// The ID of the CEN instance.
+	// (ForceNew,Optional) The ID of the CEN instance.
 	CenId *string `pulumi:"cenId"`
 	// The first ID of the resource
 	ChildInstanceRouteTableId string `pulumi:"childInstanceRouteTableId"`
@@ -62,7 +62,7 @@ type GetChildInstanceRouteEntryToAttachmentsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// ServiceType
+	// (ForceNew,Optional) ServiceType
 	ServiceType *string `pulumi:"serviceType"`
 	// TransitRouterAttachmentId
 	TransitRouterAttachmentId string `pulumi:"transitRouterAttachmentId"`
@@ -102,7 +102,7 @@ func GetChildInstanceRouteEntryToAttachmentsOutput(ctx *pulumi.Context, args Get
 
 // A collection of arguments for invoking getChildInstanceRouteEntryToAttachments.
 type GetChildInstanceRouteEntryToAttachmentsOutputArgs struct {
-	// The ID of the CEN instance.
+	// (ForceNew,Optional) The ID of the CEN instance.
 	CenId pulumi.StringPtrInput `pulumi:"cenId"`
 	// The first ID of the resource
 	ChildInstanceRouteTableId pulumi.StringInput `pulumi:"childInstanceRouteTableId"`
@@ -110,7 +110,7 @@ type GetChildInstanceRouteEntryToAttachmentsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// ServiceType
+	// (ForceNew,Optional) ServiceType
 	ServiceType pulumi.StringPtrInput `pulumi:"serviceType"`
 	// TransitRouterAttachmentId
 	TransitRouterAttachmentId pulumi.StringInput `pulumi:"transitRouterAttachmentId"`

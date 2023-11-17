@@ -64,17 +64,17 @@ func GetLoadBalancers(ctx *pulumi.Context, args *GetLoadBalancersArgs, opts ...p
 
 // A collection of arguments for invoking getLoadBalancers.
 type GetLoadBalancersArgs struct {
-	// The IP version.
+	// The IP version. Valid values: `ipv4`, `DualStack`.
 	AddressIpVersion *string `pulumi:"addressIpVersion"`
-	// The type of IPv4 address used by the NLB instance.
+	// The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
 	AddressType *string `pulumi:"addressType"`
 	// The domain name of the NLB instance.
 	DnsName *string `pulumi:"dnsName"`
 	// A list of Load Balancer IDs.
 	Ids []string `pulumi:"ids"`
-	// The type of IPv6 address used by the NLB instance.
+	// The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
 	Ipv6AddressType *string `pulumi:"ipv6AddressType"`
-	// The business status of the NLB instance.
+	// The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
 	LoadBalancerBusinessStatus *string `pulumi:"loadBalancerBusinessStatus"`
 	// The name of the NLB instance. You can specify at most 10 names.
 	LoadBalancerNames []string `pulumi:"loadBalancerNames"`
@@ -84,7 +84,7 @@ type GetLoadBalancersArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of the NLB instance.
+	// The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
 	Status *string `pulumi:"status"`
 	// The tag of the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -131,17 +131,17 @@ func GetLoadBalancersOutput(ctx *pulumi.Context, args GetLoadBalancersOutputArgs
 
 // A collection of arguments for invoking getLoadBalancers.
 type GetLoadBalancersOutputArgs struct {
-	// The IP version.
+	// The IP version. Valid values: `ipv4`, `DualStack`.
 	AddressIpVersion pulumi.StringPtrInput `pulumi:"addressIpVersion"`
-	// The type of IPv4 address used by the NLB instance.
+	// The type of IPv4 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
 	AddressType pulumi.StringPtrInput `pulumi:"addressType"`
 	// The domain name of the NLB instance.
 	DnsName pulumi.StringPtrInput `pulumi:"dnsName"`
 	// A list of Load Balancer IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The type of IPv6 address used by the NLB instance.
+	// The type of IPv6 address used by the NLB instance. Valid values: `Internet`, `Intranet`.
 	Ipv6AddressType pulumi.StringPtrInput `pulumi:"ipv6AddressType"`
-	// The business status of the NLB instance.
+	// The business status of the NLB instance. Valid values: `Abnormal`, `Normal`.
 	LoadBalancerBusinessStatus pulumi.StringPtrInput `pulumi:"loadBalancerBusinessStatus"`
 	// The name of the NLB instance. You can specify at most 10 names.
 	LoadBalancerNames pulumi.StringArrayInput `pulumi:"loadBalancerNames"`
@@ -151,7 +151,7 @@ type GetLoadBalancersOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The status of the NLB instance.
+	// The status of the NLB instance. Valid values: `Inactive`, `Active`, `Provisioning`, `Configuring`, `Deleting`, `Deleted`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The tag of the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`

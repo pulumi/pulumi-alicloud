@@ -19,14 +19,14 @@ public final class GetAssetsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetAssetsArgs Empty = new GetAssetsArgs();
 
     /**
-     * Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
+     * (ForceNew, Optional) Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
      * 
      */
     @Import(name="criteria")
     private @Nullable Output<String> criteria;
 
     /**
-     * @return Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
+     * @return (ForceNew, Optional) Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
      * 
      */
     public Optional<Output<String>> criteria() {
@@ -49,7 +49,7 @@ public final class GetAssetsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Set asset importance. Value:
+     * (ForceNew, Optional) Set asset importance. Value:
      * - **2**: Significant assets
      * - **1**: General assets
      * - **0**: Test asset
@@ -59,7 +59,7 @@ public final class GetAssetsArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<Integer> importance;
 
     /**
-     * @return Set asset importance. Value:
+     * @return (ForceNew, Optional) Set asset importance. Value:
      * - **2**: Significant assets
      * - **1**: General assets
      * - **0**: Test asset
@@ -70,7 +70,7 @@ public final class GetAssetsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
+     * (ForceNew, Optional) Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
      * - **OR**: indicates that the relationship between multiple search conditions is **OR**.
      * - **AND**: indicates that the relationship between multiple search conditions is **AND**.
      * 
@@ -79,7 +79,7 @@ public final class GetAssetsArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> logicalExp;
 
     /**
-     * @return Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
+     * @return (ForceNew, Optional) Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
      * - **OR**: indicates that the relationship between multiple search conditions is **OR**.
      * - **AND**: indicates that the relationship between multiple search conditions is **AND**.
      * 
@@ -89,7 +89,7 @@ public final class GetAssetsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The type of asset to query. Value:
+     * (ForceNew, Optional) The type of asset to query. Value:
      * - **ecs**: server.
      * - **cloud_product**: Cloud product.
      * 
@@ -98,7 +98,7 @@ public final class GetAssetsArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> machineTypes;
 
     /**
-     * @return The type of asset to query. Value:
+     * @return (ForceNew, Optional) The type of asset to query. Value:
      * - **ecs**: server.
      * - **cloud_product**: Cloud product.
      * 
@@ -184,7 +184,7 @@ public final class GetAssetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param criteria Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
+         * @param criteria (ForceNew, Optional) Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class GetAssetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param criteria Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
+         * @param criteria (ForceNew, Optional) Set the conditions for searching assets. This parameter is in JSON format. Note the case when you enter the parameter. **NOTE:** You can search for assets by using conditions such as the instance ID, instance name, VPC ID, region, and public IP address of the asset.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class GetAssetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param importance Set asset importance. Value:
+         * @param importance (ForceNew, Optional) Set asset importance. Value:
          * - **2**: Significant assets
          * - **1**: General assets
          * - **0**: Test asset
@@ -250,7 +250,7 @@ public final class GetAssetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param importance Set asset importance. Value:
+         * @param importance (ForceNew, Optional) Set asset importance. Value:
          * - **2**: Significant assets
          * - **1**: General assets
          * - **0**: Test asset
@@ -263,7 +263,7 @@ public final class GetAssetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param logicalExp Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
+         * @param logicalExp (ForceNew, Optional) Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
          * - **OR**: indicates that the relationship between multiple search conditions is **OR**.
          * - **AND**: indicates that the relationship between multiple search conditions is **AND**.
          * 
@@ -276,7 +276,7 @@ public final class GetAssetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param logicalExp Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
+         * @param logicalExp (ForceNew, Optional) Set the logical relationship between multiple search conditions. The default value is **OR**. Valid values:
          * - **OR**: indicates that the relationship between multiple search conditions is **OR**.
          * - **AND**: indicates that the relationship between multiple search conditions is **AND**.
          * 
@@ -288,7 +288,7 @@ public final class GetAssetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param machineTypes The type of asset to query. Value:
+         * @param machineTypes (ForceNew, Optional) The type of asset to query. Value:
          * - **ecs**: server.
          * - **cloud_product**: Cloud product.
          * 
@@ -301,7 +301,7 @@ public final class GetAssetsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param machineTypes The type of asset to query. Value:
+         * @param machineTypes (ForceNew, Optional) The type of asset to query. Value:
          * - **ecs**: server.
          * - **cloud_product**: Cloud product.
          * 

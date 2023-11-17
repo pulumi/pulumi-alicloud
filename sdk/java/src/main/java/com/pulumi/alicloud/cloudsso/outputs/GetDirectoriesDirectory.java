@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetDirectoriesDirectory {
     /**
-     * @return Saml identifies the creation time of the provider configuration.
+     * @return The CreateTime of the CloudSSO directory.
      * 
      */
     private String createTime;
@@ -60,7 +60,7 @@ public final class GetDirectoriesDirectory {
 
     private GetDirectoriesDirectory() {}
     /**
-     * @return Saml identifies the creation time of the provider configuration.
+     * @return The CreateTime of the CloudSSO directory.
      * 
      */
     public String createTime() {

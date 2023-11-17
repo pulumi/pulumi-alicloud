@@ -55,7 +55,7 @@ export interface GetHavipsArgs {
      */
     outputFile?: string;
     /**
-     * The status.
+     * The status of HaVip instance. Valid value: `Available`, `InUse` and `Pending`.
      */
     status?: string;
 }
@@ -116,7 +116,7 @@ export interface GetHavipsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status.
+     * The status of HaVip instance. Valid value: `Available`, `InUse` and `Pending`.
      */
     status?: pulumi.Input<string>;
 }

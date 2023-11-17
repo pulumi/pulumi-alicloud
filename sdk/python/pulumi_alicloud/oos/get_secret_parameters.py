@@ -165,8 +165,8 @@ def get_secret_parameters(enable_details: Optional[bool] = None,
     :param str name_regex: A regex string to filter results by Secret Parameter name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the Resource Group.
-    :param str secret_parameter_name: The name of the encryption parameter.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param str secret_parameter_name: The name of the secret parameter.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -218,7 +218,7 @@ def get_secret_parameters_output(enable_details: Optional[pulumi.Input[Optional[
     :param str name_regex: A regex string to filter results by Secret Parameter name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the Resource Group.
-    :param str secret_parameter_name: The name of the encryption parameter.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param str secret_parameter_name: The name of the secret parameter.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     ...

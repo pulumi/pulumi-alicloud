@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Ecs
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The Status of the Network Interface Permissions.
+        /// The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The Status of the Network Interface Permissions.
+        /// The Status of the Network Interface Permissions. Valid values: `Granted`, `Pending`, `Revoked`, `Revoking`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

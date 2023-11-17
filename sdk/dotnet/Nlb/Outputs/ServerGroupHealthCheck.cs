@@ -23,7 +23,6 @@ namespace Pulumi.AliCloud.Nlb.Outputs
         public readonly int? HealthCheckConnectTimeout;
         /// <summary>
         /// The domain name that is used for health checks. Valid values:
-        /// - `$SERVER_IP`: the private IP address of a backend server.
         /// </summary>
         public readonly string? HealthCheckDomain;
         /// <summary>

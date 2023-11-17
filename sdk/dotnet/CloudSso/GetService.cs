@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class GetServiceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Setting the value to `On` to enable the service. Valid values: `On` or `Off`. 
+        /// Setting the value to `On` to enable the service. Valid values: `On` or `Off`.
         /// 
         /// &gt; **NOTE:** Setting `enable = "On"` to open the Cloud Sso service that means you have read and agreed the [Cloud Sso Terms of Service](https://help.aliyun.com/document_detail/299998.html). When there is no directory in Cloud SSO, you can set `enable = "Off"` to turn off Cloud SSO as needed. After it is closed, you can also open it at any time.
         /// </summary>
@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.CloudSso
     public sealed class GetServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Setting the value to `On` to enable the service. Valid values: `On` or `Off`. 
+        /// Setting the value to `On` to enable the service. Valid values: `On` or `Off`.
         /// 
         /// &gt; **NOTE:** Setting `enable = "On"` to open the Cloud Sso service that means you have read and agreed the [Cloud Sso Terms of Service](https://help.aliyun.com/document_detail/299998.html). When there is no directory in Cloud SSO, you can set `enable = "Off"` to turn off Cloud SSO as needed. After it is closed, you can also open it at any time.
         /// </summary>

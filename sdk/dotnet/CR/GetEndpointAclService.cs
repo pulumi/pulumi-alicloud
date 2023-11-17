@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.CR
     public sealed class GetEndpointAclServiceArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to enable Acl Service.  Valid values: `true` and `false`.
+        /// Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
         /// </summary>
         [Input("enable", required: true)]
         public bool Enable { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.CR
     public sealed class GetEndpointAclServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Whether to enable Acl Service.  Valid values: `true` and `false`.
+        /// Whether to enable Acl Service, Setting the value to `true` to enable the acl service. Valid values: `true` and `false`.
         /// </summary>
         [Input("enable", required: true)]
         public Input<bool> Enable { get; set; } = null!;

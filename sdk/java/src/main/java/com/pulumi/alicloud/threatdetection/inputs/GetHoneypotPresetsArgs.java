@@ -41,14 +41,14 @@ public final class GetHoneypotPresetsArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Honeypot mirror name
+     * (ForceNew,Optional) Honeypot mirror name
      * 
      */
     @Import(name="honeypotImageName")
     private @Nullable Output<String> honeypotImageName;
 
     /**
-     * @return Honeypot mirror name
+     * @return (ForceNew,Optional) Honeypot mirror name
      * 
      */
     public Optional<Output<String>> honeypotImageName() {
@@ -78,14 +78,14 @@ public final class GetHoneypotPresetsArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Unique id of management node
+     * (ForceNew,Optional) Unique id of management node
      * 
      */
     @Import(name="nodeId")
     private @Nullable Output<String> nodeId;
 
     /**
-     * @return Unique id of management node
+     * @return (ForceNew,Optional) Unique id of management node
      * 
      */
     public Optional<Output<String>> nodeId() {
@@ -129,14 +129,14 @@ public final class GetHoneypotPresetsArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Honeypot template custom name
+     * (ForceNew,Optional) Honeypot template custom name
      * 
      */
     @Import(name="presetName")
     private @Nullable Output<String> presetName;
 
     /**
-     * @return Honeypot template custom name
+     * @return (ForceNew,Optional) Honeypot template custom name
      * 
      */
     public Optional<Output<String>> presetName() {
@@ -208,7 +208,7 @@ public final class GetHoneypotPresetsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param honeypotImageName Honeypot mirror name
+         * @param honeypotImageName (ForceNew,Optional) Honeypot mirror name
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class GetHoneypotPresetsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param honeypotImageName Honeypot mirror name
+         * @param honeypotImageName (ForceNew,Optional) Honeypot mirror name
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class GetHoneypotPresetsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param nodeId Unique id of management node
+         * @param nodeId (ForceNew,Optional) Unique id of management node
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class GetHoneypotPresetsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param nodeId Unique id of management node
+         * @param nodeId (ForceNew,Optional) Unique id of management node
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class GetHoneypotPresetsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param presetName Honeypot template custom name
+         * @param presetName (ForceNew,Optional) Honeypot template custom name
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class GetHoneypotPresetsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param presetName Honeypot template custom name
+         * @param presetName (ForceNew,Optional) Honeypot template custom name
          * 
          * @return builder
          * 

@@ -27,7 +27,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+     * (Deprecated since 1.122.0) Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
@@ -38,7 +38,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> availabilityZone;
 
     /**
-     * @return Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+     * @return (Deprecated since 1.122.0) Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
@@ -440,7 +440,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZone Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+         * @param availabilityZone (Deprecated since 1.122.0) Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
          * 
          * @return builder
          * 
@@ -455,7 +455,7 @@ public final class EcsDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZone Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+         * @param availabilityZone (Deprecated since 1.122.0) Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
          * 
          * @return builder
          * 

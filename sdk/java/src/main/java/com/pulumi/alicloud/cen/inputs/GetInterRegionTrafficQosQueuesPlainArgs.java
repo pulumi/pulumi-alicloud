@@ -61,14 +61,14 @@ public final class GetInterRegionTrafficQosQueuesPlainArgs extends com.pulumi.re
     }
 
     /**
-     * The ID of the traffic scheduling policy.
+     * (ForceNew,Required) The ID of the traffic scheduling policy.
      * 
      */
     @Import(name="trafficQosPolicyId", required=true)
     private String trafficQosPolicyId;
 
     /**
-     * @return The ID of the traffic scheduling policy.
+     * @return (ForceNew,Required) The ID of the traffic scheduling policy.
      * 
      */
     public String trafficQosPolicyId() {
@@ -146,7 +146,7 @@ public final class GetInterRegionTrafficQosQueuesPlainArgs extends com.pulumi.re
         }
 
         /**
-         * @param trafficQosPolicyId The ID of the traffic scheduling policy.
+         * @param trafficQosPolicyId (ForceNew,Required) The ID of the traffic scheduling policy.
          * 
          * @return builder
          * 

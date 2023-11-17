@@ -34,6 +34,7 @@ namespace Pulumi.AliCloud.CS.Inputs
         /// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
         /// 
         /// for example:
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;

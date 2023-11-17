@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.AliKafka
         /// 
         /// &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
         /// 
-        /// | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+        /// | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) | 
         /// |------|-------------|:----:|:-----:|
         /// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
         /// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
@@ -148,7 +148,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The max num of topic can be creation of the instance.
+        /// (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
         /// It has been deprecated since version 1.194.0 and using `partition_num` instead.
         /// Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
         /// Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
@@ -304,7 +304,7 @@ namespace Pulumi.AliCloud.AliKafka
         /// 
         /// &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
         /// 
-        /// | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+        /// | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) | 
         /// |------|-------------|:----:|:-----:|
         /// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
         /// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
@@ -343,7 +343,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The max num of topic can be creation of the instance.
+        /// (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
         /// It has been deprecated since version 1.194.0 and using `partition_num` instead.
         /// Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
         /// Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
@@ -467,7 +467,7 @@ namespace Pulumi.AliCloud.AliKafka
         /// 
         /// &gt; **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
         /// 
-        /// | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+        /// | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) | 
         /// |------|-------------|:----:|:-----:|
         /// |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
         /// |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
@@ -516,7 +516,7 @@ namespace Pulumi.AliCloud.AliKafka
         }
 
         /// <summary>
-        /// The max num of topic can be creation of the instance.
+        /// (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
         /// It has been deprecated since version 1.194.0 and using `partition_num` instead.
         /// Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: &lt;`topic_quota`&gt; = 1000 + &lt;`partition_num`&gt;.
         /// Therefore, you can update it by updating the `partition_num`, and it is the only updating path.

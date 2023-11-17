@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Cddc
         /// Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
         /// - **true**: added.
         /// - **false** (default): Do not add.
-        /// When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+        ///   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         /// </summary>
         [Output("ecsUniqueSuffix")]
         public Output<string?> EcsUniqueSuffix { get; private set; } = null!;
@@ -85,7 +85,7 @@ namespace Pulumi.AliCloud.Cddc
         /// - **alisql**
         /// - **tair**
         /// - **mssql**
-        /// Must be consistent with the parent resource cluster engine attributes.
+        ///   Must be consistent with the parent resource cluster engine attributes.
         /// </summary>
         [Output("engine")]
         public Output<string> Engine { get; private set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.Cddc
         /// - Length is 8~30 characters.
         /// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
         /// - Special symbol '()\' ~! @#$%^&amp; *-_+ =|{}[]:;',.? /'
-        /// &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+        ///   &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         /// </summary>
         [Output("osPassword")]
         public Output<string?> OsPassword { get; private set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Cddc
         /// Whether to use the default password of the image.
         /// - **false**: (default)Do not use
         /// - **true**: Use
-        /// &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+        ///   &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         /// </summary>
         [Output("passwordInherit")]
         public Output<string?> PasswordInherit { get; private set; } = null!;
@@ -252,7 +252,7 @@ namespace Pulumi.AliCloud.Cddc
         /// Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
         /// - **true**: added.
         /// - **false** (default): Do not add.
-        /// When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+        ///   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         /// </summary>
         [Input("ecsUniqueSuffix")]
         public Input<string>? EcsUniqueSuffix { get; set; }
@@ -268,7 +268,7 @@ namespace Pulumi.AliCloud.Cddc
         /// - **alisql**
         /// - **tair**
         /// - **mssql**
-        /// Must be consistent with the parent resource cluster engine attributes.
+        ///   Must be consistent with the parent resource cluster engine attributes.
         /// </summary>
         [Input("engine", required: true)]
         public Input<string> Engine { get; set; } = null!;
@@ -291,7 +291,7 @@ namespace Pulumi.AliCloud.Cddc
         /// - Length is 8~30 characters.
         /// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
         /// - Special symbol '()\' ~! @#$%^&amp; *-_+ =|{}[]:;',.? /'
-        /// &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+        ///   &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         /// </summary>
         [Input("osPassword")]
         public Input<string>? OsPassword { get; set; }
@@ -300,7 +300,7 @@ namespace Pulumi.AliCloud.Cddc
         /// Whether to use the default password of the image.
         /// - **false**: (default)Do not use
         /// - **true**: Use
-        /// &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+        ///   &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         /// </summary>
         [Input("passwordInherit")]
         public Input<string>? PasswordInherit { get; set; }
@@ -403,7 +403,7 @@ namespace Pulumi.AliCloud.Cddc
         /// Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
         /// - **true**: added.
         /// - **false** (default): Do not add.
-        /// When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+        ///   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         /// </summary>
         [Input("ecsUniqueSuffix")]
         public Input<string>? EcsUniqueSuffix { get; set; }
@@ -419,7 +419,7 @@ namespace Pulumi.AliCloud.Cddc
         /// - **alisql**
         /// - **tair**
         /// - **mssql**
-        /// Must be consistent with the parent resource cluster engine attributes.
+        ///   Must be consistent with the parent resource cluster engine attributes.
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }
@@ -442,7 +442,7 @@ namespace Pulumi.AliCloud.Cddc
         /// - Length is 8~30 characters.
         /// - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
         /// - Special symbol '()\' ~! @#$%^&amp; *-_+ =|{}[]:;',.? /'
-        /// &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+        ///   &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         /// </summary>
         [Input("osPassword")]
         public Input<string>? OsPassword { get; set; }
@@ -451,7 +451,7 @@ namespace Pulumi.AliCloud.Cddc
         /// Whether to use the default password of the image.
         /// - **false**: (default)Do not use
         /// - **true**: Use
-        /// &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+        ///   &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         /// </summary>
         [Input("passwordInherit")]
         public Input<string>? PasswordInherit { get; set; }

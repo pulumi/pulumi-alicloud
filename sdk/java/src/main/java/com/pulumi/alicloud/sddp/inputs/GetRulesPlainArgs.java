@@ -18,14 +18,14 @@ public final class GetRulesPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetRulesPlainArgs Empty = new GetRulesPlainArgs();
 
     /**
-     * Sensitive Data Identification Rules for the Type of.
+     * Sensitive Data Identification Rules for the Type of. Valid values:
      * 
      */
     @Import(name="category")
     private @Nullable Integer category;
 
     /**
-     * @return Sensitive Data Identification Rules for the Type of.
+     * @return Sensitive Data Identification Rules for the Type of. Valid values:
      * 
      */
     public Optional<Integer> category() {
@@ -48,14 +48,14 @@ public final class GetRulesPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+     * Sensitive Data Identification Rules of Type. Valid values:
      * 
      */
     @Import(name="customType")
     private @Nullable Integer customType;
 
     /**
-     * @return Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+     * @return Sensitive Data Identification Rules of Type. Valid values:
      * 
      */
     public Optional<Integer> customType() {
@@ -130,14 +130,14 @@ public final class GetRulesPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Product ID.
+     * Product ID. Valid values:
      * 
      */
     @Import(name="productId")
     private @Nullable String productId;
 
     /**
-     * @return Product ID.
+     * @return Product ID. Valid values:
      * 
      */
     public Optional<String> productId() {
@@ -145,14 +145,14 @@ public final class GetRulesPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+     * Sensitive Data Identification Rules of Risk Level ID. Valid values:
      * 
      */
     @Import(name="riskLevelId")
     private @Nullable String riskLevelId;
 
     /**
-     * @return Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+     * @return Sensitive Data Identification Rules of Risk Level ID. Valid values:
      * 
      */
     public Optional<String> riskLevelId() {
@@ -190,14 +190,14 @@ public final class GetRulesPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Level of Risk.
+     * The Level of Risk. Valid values:
      * 
      */
     @Import(name="warnLevel")
     private @Nullable Integer warnLevel;
 
     /**
-     * @return The Level of Risk.
+     * @return The Level of Risk. Valid values:
      * 
      */
     public Optional<Integer> warnLevel() {
@@ -241,7 +241,7 @@ public final class GetRulesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param category Sensitive Data Identification Rules for the Type of.
+         * @param category Sensitive Data Identification Rules for the Type of. Valid values:
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class GetRulesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param customType Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+         * @param customType Sensitive Data Identification Rules of Type. Valid values:
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class GetRulesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param productId Product ID.
+         * @param productId Product ID. Valid values:
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class GetRulesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param riskLevelId Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+         * @param riskLevelId Sensitive Data Identification Rules of Risk Level ID. Valid values:
          * 
          * @return builder
          * 
@@ -377,7 +377,7 @@ public final class GetRulesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param warnLevel The Level of Risk.
+         * @param warnLevel The Level of Risk. Valid values:
          * 
          * @return builder
          * 

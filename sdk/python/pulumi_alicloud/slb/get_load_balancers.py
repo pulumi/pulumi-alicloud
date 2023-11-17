@@ -357,6 +357,7 @@ def get_load_balancers(address: Optional[str] = None,
     :param str resource_group_id: The Id of resource group which SLB belongs.
     :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
     :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+           
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -474,6 +475,7 @@ def get_load_balancers_output(address: Optional[pulumi.Input[Optional[str]]] = N
     :param str resource_group_id: The Id of resource group which SLB belongs.
     :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
     :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+           
            ```python
            import pulumi
            import pulumi_alicloud as alicloud

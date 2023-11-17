@@ -21,14 +21,14 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     public static final OtsBackupPlanArgs Empty = new OtsBackupPlanArgs();
 
     /**
-     * Backup type. Valid values: `COMPLETE`.
+     * The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
      * 
      */
     @Import(name="backupType", required=true)
     private Output<String> backupType;
 
     /**
-     * @return Backup type. Valid values: `COMPLETE`.
+     * @return The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
      * 
      */
     public Output<String> backupType() {
@@ -81,14 +81,14 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+     * Whether to disable the backup task. Valid values: true, false.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+     * @return Whether to disable the backup task. Valid values: true, false.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -141,14 +141,14 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Backup retention days, the minimum is 1.
+     * Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
      * 
      */
     @Import(name="retention", required=true)
     private Output<String> retention;
 
     /**
-     * @return Backup retention days, the minimum is 1.
+     * @return Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
      * 
      */
     public Output<String> retention() {
@@ -244,7 +244,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupType Backup type. Valid values: `COMPLETE`.
+         * @param backupType The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupType Backup type. Valid values: `COMPLETE`.
+         * @param backupType The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disabled Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+         * @param disabled Whether to disable the backup task. Valid values: true, false.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disabled Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+         * @param disabled Whether to disable the backup task. Valid values: true, false.
          * 
          * @return builder
          * 
@@ -422,7 +422,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retention Backup retention days, the minimum is 1.
+         * @param retention Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class OtsBackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retention Backup retention days, the minimum is 1.
+         * @param retention Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
          * 
          * @return builder
          * 

@@ -29,7 +29,7 @@ type Instance struct {
 	AutoRenewPeriod pulumi.IntPtrOutput `pulumi:"autoRenewPeriod"`
 	// Specifies whether to use a coupon. Default value: `false`.
 	AutoUseCoupon pulumi.BoolPtrOutput `pulumi:"autoUseCoupon"`
-	// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
@@ -49,7 +49,7 @@ type Instance struct {
 	Config pulumi.MapOutput `pulumi:"config"`
 	// Intranet connection address of the KVStore instance.
 	ConnectionDomain pulumi.StringOutput `pulumi:"connectionDomain"`
-	// Indicates whether the address is a private endpoint.
+	// (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
 	//
 	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
 	//
@@ -61,7 +61,7 @@ type Instance struct {
 	//
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
-	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix pulumi.StringPtrOutput `pulumi:"connectionStringPrefix"`
@@ -78,7 +78,7 @@ type Instance struct {
 	EffectiveTime pulumi.StringPtrOutput `pulumi:"effectiveTime"`
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog pulumi.IntPtrOutput `pulumi:"enableBackupLog"`
-	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	EnablePublic pulumi.BoolOutput `pulumi:"enablePublic"`
@@ -97,14 +97,14 @@ type Instance struct {
 	GlobalInstance pulumi.BoolPtrOutput `pulumi:"globalInstance"`
 	// The ID of distributed cache.
 	GlobalInstanceId pulumi.StringPtrOutput `pulumi:"globalInstanceId"`
-	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
 	// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
 	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 	InstanceClass pulumi.StringPtrOutput `pulumi:"instanceClass"`
-	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
 	// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
@@ -122,13 +122,13 @@ type Instance struct {
 	MaintainStartTime pulumi.StringOutput `pulumi:"maintainStartTime"`
 	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
 	ModifyMode pulumi.IntPtrOutput `pulumi:"modifyMode"`
-	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	// (Deprecated since v1.120.1) "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType pulumi.StringOutput `pulumi:"nodeType"`
 	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType pulumi.StringPtrOutput `pulumi:"orderType"`
-	// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
 	//
 	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 	Parameters InstanceParameterArrayOutput `pulumi:"parameters"`
@@ -231,7 +231,7 @@ type instanceState struct {
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// Specifies whether to use a coupon. Default value: `false`.
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
-	// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
@@ -251,7 +251,7 @@ type instanceState struct {
 	Config map[string]interface{} `pulumi:"config"`
 	// Intranet connection address of the KVStore instance.
 	ConnectionDomain *string `pulumi:"connectionDomain"`
-	// Indicates whether the address is a private endpoint.
+	// (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
 	//
 	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
 	//
@@ -263,7 +263,7 @@ type instanceState struct {
 	//
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString *string `pulumi:"connectionString"`
-	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
@@ -280,7 +280,7 @@ type instanceState struct {
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog *int `pulumi:"enableBackupLog"`
-	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	EnablePublic *bool `pulumi:"enablePublic"`
@@ -299,14 +299,14 @@ type instanceState struct {
 	GlobalInstance *bool `pulumi:"globalInstance"`
 	// The ID of distributed cache.
 	GlobalInstanceId *string `pulumi:"globalInstanceId"`
-	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
 	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 	InstanceClass *string `pulumi:"instanceClass"`
-	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
 	// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
 	InstanceName *string `pulumi:"instanceName"`
@@ -324,13 +324,13 @@ type instanceState struct {
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
 	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
 	ModifyMode *int `pulumi:"modifyMode"`
-	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	// (Deprecated since v1.120.1) "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType *string `pulumi:"nodeType"`
 	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType *string `pulumi:"orderType"`
-	// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
 	//
 	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 	Parameters []InstanceParameter `pulumi:"parameters"`
@@ -397,7 +397,7 @@ type InstanceState struct {
 	AutoRenewPeriod pulumi.IntPtrInput
 	// Specifies whether to use a coupon. Default value: `false`.
 	AutoUseCoupon pulumi.BoolPtrInput
-	// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.
 	AvailabilityZone pulumi.StringPtrInput
@@ -417,7 +417,7 @@ type InstanceState struct {
 	Config pulumi.MapInput
 	// Intranet connection address of the KVStore instance.
 	ConnectionDomain pulumi.StringPtrInput
-	// Indicates whether the address is a private endpoint.
+	// (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
 	//
 	// > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
 	//
@@ -429,7 +429,7 @@ type InstanceState struct {
 	//
 	// Deprecated: Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionString pulumi.StringPtrInput
-	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix pulumi.StringPtrInput
@@ -446,7 +446,7 @@ type InstanceState struct {
 	EffectiveTime pulumi.StringPtrInput
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog pulumi.IntPtrInput
-	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	EnablePublic pulumi.BoolPtrInput
@@ -465,14 +465,14 @@ type InstanceState struct {
 	GlobalInstance pulumi.BoolPtrInput
 	// The ID of distributed cache.
 	GlobalInstanceId pulumi.StringPtrInput
-	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
 	// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
 	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 	InstanceClass pulumi.StringPtrInput
-	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
 	// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
 	InstanceName pulumi.StringPtrInput
@@ -490,13 +490,13 @@ type InstanceState struct {
 	MaintainStartTime pulumi.StringPtrInput
 	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
 	ModifyMode pulumi.IntPtrInput
-	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	// (Deprecated since v1.120.1) "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType pulumi.StringPtrInput
 	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType pulumi.StringPtrInput
-	// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
 	//
 	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 	Parameters InstanceParameterArrayInput
@@ -567,7 +567,7 @@ type instanceArgs struct {
 	AutoRenewPeriod *int `pulumi:"autoRenewPeriod"`
 	// Specifies whether to use a coupon. Default value: `false`.
 	AutoUseCoupon *bool `pulumi:"autoUseCoupon"`
-	// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
@@ -583,7 +583,7 @@ type instanceArgs struct {
 	Capacity *int `pulumi:"capacity"`
 	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
 	Config map[string]interface{} `pulumi:"config"`
-	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix *string `pulumi:"connectionStringPrefix"`
@@ -600,7 +600,7 @@ type instanceArgs struct {
 	EffectiveTime *string `pulumi:"effectiveTime"`
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog *int `pulumi:"enableBackupLog"`
-	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	EnablePublic *bool `pulumi:"enablePublic"`
@@ -617,14 +617,14 @@ type instanceArgs struct {
 	GlobalInstance *bool `pulumi:"globalInstance"`
 	// The ID of distributed cache.
 	GlobalInstanceId *string `pulumi:"globalInstanceId"`
-	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
 	// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
 	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 	InstanceClass *string `pulumi:"instanceClass"`
-	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
 	// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
 	InstanceName *string `pulumi:"instanceName"`
@@ -642,13 +642,13 @@ type instanceArgs struct {
 	MaintainStartTime *string `pulumi:"maintainStartTime"`
 	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
 	ModifyMode *int `pulumi:"modifyMode"`
-	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	// (Deprecated since v1.120.1) "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType *string `pulumi:"nodeType"`
 	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType *string `pulumi:"orderType"`
-	// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
 	//
 	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 	Parameters []InstanceParameter `pulumi:"parameters"`
@@ -712,7 +712,7 @@ type InstanceArgs struct {
 	AutoRenewPeriod pulumi.IntPtrInput
 	// Specifies whether to use a coupon. Default value: `false`.
 	AutoUseCoupon pulumi.BoolPtrInput
-	// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.
 	AvailabilityZone pulumi.StringPtrInput
@@ -728,7 +728,7 @@ type InstanceArgs struct {
 	Capacity pulumi.IntPtrInput
 	// The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
 	Config pulumi.MapInput
-	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	ConnectionStringPrefix pulumi.StringPtrInput
@@ -745,7 +745,7 @@ type InstanceArgs struct {
 	EffectiveTime pulumi.StringPtrInput
 	// Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
 	EnableBackupLog pulumi.IntPtrInput
-	// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 	//
 	// Deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 	EnablePublic pulumi.BoolPtrInput
@@ -762,14 +762,14 @@ type InstanceArgs struct {
 	GlobalInstance pulumi.BoolPtrInput
 	// The ID of distributed cache.
 	GlobalInstanceId pulumi.StringPtrInput
-	// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
 	// Type of the applied ApsaraDB for Redis instance. It can be retrieved by data source `kvstore.getInstanceClasses`
 	// or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
 	InstanceClass pulumi.StringPtrInput
-	// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 	//
 	// Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
 	InstanceName pulumi.StringPtrInput
@@ -787,13 +787,13 @@ type InstanceArgs struct {
 	MaintainStartTime pulumi.StringPtrInput
 	// The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
 	ModifyMode pulumi.IntPtrInput
-	// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+	// (Deprecated since v1.120.1) "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 	//
 	// Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 	NodeType pulumi.StringPtrInput
 	// Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
 	OrderType pulumi.StringPtrInput
-	// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+	// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
 	//
 	// Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 	Parameters InstanceParameterArrayInput
@@ -951,7 +951,7 @@ func (o InstanceOutput) AutoUseCoupon() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.AutoUseCoupon }).(pulumi.BoolPtrOutput)
 }
 
-// It has been deprecated from provider version 1.101.0 and `zoneId` instead.
+// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `zoneId` instead.
 //
 // Deprecated: Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.
 func (o InstanceOutput) AvailabilityZone() pulumi.StringOutput {
@@ -998,7 +998,7 @@ func (o InstanceOutput) ConnectionDomain() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectionDomain }).(pulumi.StringOutput)
 }
 
-// Indicates whether the address is a private endpoint.
+// (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
 //
 // > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
 //
@@ -1013,7 +1013,7 @@ func (o InstanceOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ConnectionString }).(pulumi.StringOutput)
 }
 
-// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 //
 // Deprecated: Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 func (o InstanceOutput) ConnectionStringPrefix() pulumi.StringPtrOutput {
@@ -1051,7 +1051,7 @@ func (o InstanceOutput) EnableBackupLog() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.EnableBackupLog }).(pulumi.IntPtrOutput)
 }
 
-// It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
+// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
 //
 // Deprecated: Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
 func (o InstanceOutput) EnablePublic() pulumi.BoolOutput {
@@ -1094,7 +1094,7 @@ func (o InstanceOutput) GlobalInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.GlobalInstanceId }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from provider version 1.101.0 and `paymentType` instead.
+// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `paymentType` instead.
 //
 // Deprecated: Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
 func (o InstanceOutput) InstanceChargeType() pulumi.StringOutput {
@@ -1107,7 +1107,7 @@ func (o InstanceOutput) InstanceClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceClass }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
+// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
 //
 // Deprecated: Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
 func (o InstanceOutput) InstanceName() pulumi.StringOutput {
@@ -1149,7 +1149,7 @@ func (o InstanceOutput) ModifyMode() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.ModifyMode }).(pulumi.IntPtrOutput)
 }
 
-// "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+// (Deprecated since v1.120.1) "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
 //
 // Deprecated: Field 'node_type' has been deprecated from version 1.120.1
 func (o InstanceOutput) NodeType() pulumi.StringOutput {
@@ -1161,7 +1161,7 @@ func (o InstanceOutput) OrderType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.OrderType }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+// (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
 //
 // Deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
 func (o InstanceOutput) Parameters() InstanceParameterArrayOutput {

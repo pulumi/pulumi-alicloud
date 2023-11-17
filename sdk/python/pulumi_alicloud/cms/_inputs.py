@@ -1497,7 +1497,7 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs:
                  value: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] operator: The method that is used to filter logs imported from Log Service. Valid values: `>`, `>=`, `=`, `<=`, `<`, `!=`, `contain`, `notContain`.
-        :param pulumi.Input[str] sls_key_name: The name of the key that is used to filter logs imported from Log Service.
+        :param pulumi.Input[str] sls_key_name: The name of the key that is used to aggregate logs imported from Log Service.
         :param pulumi.Input[str] value: The tag value of the metric.
         """
         if operator is not None:
@@ -1523,7 +1523,7 @@ class HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs:
     @pulumi.getter(name="slsKeyName")
     def sls_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the key that is used to filter logs imported from Log Service.
+        The name of the key that is used to aggregate logs imported from Log Service.
         """
         return pulumi.get(self, "sls_key_name")
 
@@ -1551,7 +1551,7 @@ class HybridMonitorSlsTaskSlsProcessConfigGroupByArgs:
                  sls_key_name: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] alias: The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
-        :param pulumi.Input[str] sls_key_name: The name of the key that is used to filter logs imported from Log Service.
+        :param pulumi.Input[str] sls_key_name: The name of the key that is used to aggregate logs imported from Log Service.
         """
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
@@ -1574,7 +1574,7 @@ class HybridMonitorSlsTaskSlsProcessConfigGroupByArgs:
     @pulumi.getter(name="slsKeyName")
     def sls_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the key that is used to filter logs imported from Log Service.
+        The name of the key that is used to aggregate logs imported from Log Service.
         """
         return pulumi.get(self, "sls_key_name")
 
@@ -1598,7 +1598,7 @@ class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs:
                - If you set the `function` parameter to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
                - If you set the `function` parameter to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
         :param pulumi.Input[str] parameter_two: The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
-        :param pulumi.Input[str] sls_key_name: The name of the key that is used to filter logs imported from Log Service.
+        :param pulumi.Input[str] sls_key_name: The name of the key that is used to aggregate logs imported from Log Service.
         """
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
@@ -1665,7 +1665,7 @@ class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs:
     @pulumi.getter(name="slsKeyName")
     def sls_key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the key that is used to filter logs imported from Log Service.
+        The name of the key that is used to aggregate logs imported from Log Service.
         """
         return pulumi.get(self, "sls_key_name")
 

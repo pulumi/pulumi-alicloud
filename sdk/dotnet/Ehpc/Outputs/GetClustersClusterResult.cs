@@ -15,12 +15,10 @@ namespace Pulumi.AliCloud.Ehpc.Outputs
     {
         /// <summary>
         /// The server type of the account.
+        /// * `client_version` - The version number of the client used by the cluster.
         /// </summary>
         public readonly string AccountType;
         public readonly ImmutableArray<Outputs.GetClustersClusterApplicationResult> Applications;
-        /// <summary>
-        /// The version number of the client used by the cluster.
-        /// </summary>
         public readonly string ClientVersion;
         /// <summary>
         /// The id of E-HPC Cluster.

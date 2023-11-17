@@ -71,9 +71,6 @@ import javax.annotation.Nullable;
 public class TopicSubscription extends com.pulumi.resources.CustomResource {
     /**
      * The endpoint has three format. Available values format:
-     * - `HTTP Format`: http://xxx.com/xxx
-     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - `Email Format`: mail:directmail:{MailAddress}
      * 
      */
     @Export(name="endpoint", type=String.class, parameters={})
@@ -81,9 +78,6 @@ public class TopicSubscription extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The endpoint has three format. Available values format:
-     * - `HTTP Format`: http://xxx.com/xxx
-     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - `Email Format`: mail:directmail:{MailAddress}
      * 
      */
     public Output<String> endpoint() {

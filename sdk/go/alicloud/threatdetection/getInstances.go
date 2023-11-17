@@ -55,7 +55,7 @@ func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.In
 type GetInstancesArgs struct {
 	// A list of Instance IDs.
 	Ids []string `pulumi:"ids"`
-	// The first ID of the resource
+	// (ForceNew,Optional) The first ID of the resource
 	InstanceId *string `pulumi:"instanceId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -98,7 +98,7 @@ func GetInstancesOutput(ctx *pulumi.Context, args GetInstancesOutputArgs, opts .
 type GetInstancesOutputArgs struct {
 	// A list of Instance IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The first ID of the resource
+	// (ForceNew,Optional) The first ID of the resource
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

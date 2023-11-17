@@ -20,14 +20,14 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetEcsSnapshotsArgs Empty = new GetEcsSnapshotsArgs();
 
     /**
-     * The category of the snapshot.
+     * The category of the snapshot. Valid Values: `flash` and `standard`.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return The category of the snapshot.
+     * @return The category of the snapshot. Valid Values: `flash` and `standard`.
      * 
      */
     public Optional<Output<String>> category() {
@@ -50,14 +50,14 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Whether the snapshot is encrypted.
+     * Specifies whether the snapshot is encrypted.
      * 
      */
     @Import(name="encrypted")
     private @Nullable Output<Boolean> encrypted;
 
     /**
-     * @return Whether the snapshot is encrypted.
+     * @return Specifies whether the snapshot is encrypted.
      * 
      */
     public Optional<Output<Boolean>> encrypted() {
@@ -155,14 +155,14 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Snapshot Display Name.
+     * The name of the snapshot.
      * 
      */
     @Import(name="snapshotName")
     private @Nullable Output<String> snapshotName;
 
     /**
-     * @return Snapshot Display Name.
+     * @return The name of the snapshot.
      * 
      */
     public Optional<Output<String>> snapshotName() {
@@ -170,14 +170,14 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Snapshot creation type.
+     * The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
      * 
      */
     @Import(name="snapshotType")
     private @Nullable Output<String> snapshotType;
 
     /**
-     * @return Snapshot creation type.
+     * @return The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
      * 
      */
     public Optional<Output<String>> snapshotType() {
@@ -185,14 +185,14 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Source disk attributes.
+     * The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
      * 
      */
     @Import(name="sourceDiskType")
     private @Nullable Output<String> sourceDiskType;
 
     /**
-     * @return Source disk attributes.
+     * @return The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
      * 
      */
     public Optional<Output<String>> sourceDiskType() {
@@ -200,14 +200,14 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the snapshot.
+     * The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the snapshot.
+     * @return The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -215,14 +215,14 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The tags.
+     * A mapping of tags to assign to the snapshot.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The tags.
+     * @return A mapping of tags to assign to the snapshot.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -291,7 +291,7 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param category The category of the snapshot.
+         * @param category The category of the snapshot. Valid Values: `flash` and `standard`.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param category The category of the snapshot.
+         * @param category The category of the snapshot. Valid Values: `flash` and `standard`.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param encrypted Whether the snapshot is encrypted.
+         * @param encrypted Specifies whether the snapshot is encrypted.
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param encrypted Whether the snapshot is encrypted.
+         * @param encrypted Specifies whether the snapshot is encrypted.
          * 
          * @return builder
          * 
@@ -490,7 +490,7 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param snapshotName Snapshot Display Name.
+         * @param snapshotName The name of the snapshot.
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param snapshotName Snapshot Display Name.
+         * @param snapshotName The name of the snapshot.
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param snapshotType Snapshot creation type.
+         * @param snapshotType The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
          * 
          * @return builder
          * 
@@ -522,7 +522,7 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param snapshotType Snapshot creation type.
+         * @param snapshotType The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
          * 
          * @return builder
          * 
@@ -532,7 +532,7 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sourceDiskType Source disk attributes.
+         * @param sourceDiskType The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
          * 
          * @return builder
          * 
@@ -543,7 +543,7 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param sourceDiskType Source disk attributes.
+         * @param sourceDiskType The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
          * 
          * @return builder
          * 
@@ -553,7 +553,7 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the snapshot.
+         * @param status The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the snapshot.
+         * @param status The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
          * 
          * @return builder
          * 
@@ -574,7 +574,7 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags The tags.
+         * @param tags A mapping of tags to assign to the snapshot.
          * 
          * @return builder
          * 
@@ -585,7 +585,7 @@ public final class GetEcsSnapshotsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags The tags.
+         * @param tags A mapping of tags to assign to the snapshot.
          * 
          * @return builder
          * 

@@ -30,7 +30,7 @@ import (
 type ElasticityAssurance struct {
 	pulumi.CustomResourceState
 
-	// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+	// (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
 	AssuranceTimes pulumi.StringOutput `pulumi:"assuranceTimes"`
 	// Description of flexible guarantee service.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -42,7 +42,7 @@ type ElasticityAssurance struct {
 	InstanceAmount pulumi.IntOutput `pulumi:"instanceAmount"`
 	// The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
-	// Instance type. Currently, only one instance type is supported.
+	// (ForceNew,Required) Instance type. Currently, only one instance type is supported.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
 	// - When the `periodUnit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -50,13 +50,13 @@ type ElasticityAssurance struct {
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
-	// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+	// (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
 	PrivatePoolOptionsMatchCriteria pulumi.StringOutput `pulumi:"privatePoolOptionsMatchCriteria"`
 	// The name of the flexible protection service.
 	PrivatePoolOptionsName pulumi.StringOutput `pulumi:"privatePoolOptionsName"`
-	// The ID of the resource group.
+	// (ForceNew,Optional) The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
-	// Flexible guarantee service effective time.
+	// (ForceNew,Optional) Flexible guarantee service effective time.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
 	StartTimeType pulumi.StringOutput `pulumi:"startTimeType"`
@@ -66,7 +66,7 @@ type ElasticityAssurance struct {
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// This parameter is not yet available.
 	UsedAssuranceTimes pulumi.IntOutput `pulumi:"usedAssuranceTimes"`
-	// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+	// (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
 	ZoneIds pulumi.StringArrayOutput `pulumi:"zoneIds"`
 }
 
@@ -109,7 +109,7 @@ func GetElasticityAssurance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ElasticityAssurance resources.
 type elasticityAssuranceState struct {
-	// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+	// (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
 	AssuranceTimes *string `pulumi:"assuranceTimes"`
 	// Description of flexible guarantee service.
 	Description *string `pulumi:"description"`
@@ -121,7 +121,7 @@ type elasticityAssuranceState struct {
 	InstanceAmount *int `pulumi:"instanceAmount"`
 	// The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// Instance type. Currently, only one instance type is supported.
+	// (ForceNew,Required) Instance type. Currently, only one instance type is supported.
 	InstanceType *string `pulumi:"instanceType"`
 	// Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
 	// - When the `periodUnit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -129,13 +129,13 @@ type elasticityAssuranceState struct {
 	Period *int `pulumi:"period"`
 	// Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
 	PeriodUnit *string `pulumi:"periodUnit"`
-	// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+	// (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
 	PrivatePoolOptionsMatchCriteria *string `pulumi:"privatePoolOptionsMatchCriteria"`
 	// The name of the flexible protection service.
 	PrivatePoolOptionsName *string `pulumi:"privatePoolOptionsName"`
-	// The ID of the resource group.
+	// (ForceNew,Optional) The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Flexible guarantee service effective time.
+	// (ForceNew,Optional) Flexible guarantee service effective time.
 	StartTime *string `pulumi:"startTime"`
 	// Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
 	StartTimeType *string `pulumi:"startTimeType"`
@@ -145,12 +145,12 @@ type elasticityAssuranceState struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// This parameter is not yet available.
 	UsedAssuranceTimes *int `pulumi:"usedAssuranceTimes"`
-	// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+	// (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
 	ZoneIds []string `pulumi:"zoneIds"`
 }
 
 type ElasticityAssuranceState struct {
-	// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+	// (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
 	AssuranceTimes pulumi.StringPtrInput
 	// Description of flexible guarantee service.
 	Description pulumi.StringPtrInput
@@ -162,7 +162,7 @@ type ElasticityAssuranceState struct {
 	InstanceAmount pulumi.IntPtrInput
 	// The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
 	InstanceChargeType pulumi.StringPtrInput
-	// Instance type. Currently, only one instance type is supported.
+	// (ForceNew,Required) Instance type. Currently, only one instance type is supported.
 	InstanceType pulumi.StringPtrInput
 	// Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
 	// - When the `periodUnit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -170,13 +170,13 @@ type ElasticityAssuranceState struct {
 	Period pulumi.IntPtrInput
 	// Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
 	PeriodUnit pulumi.StringPtrInput
-	// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+	// (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
 	PrivatePoolOptionsMatchCriteria pulumi.StringPtrInput
 	// The name of the flexible protection service.
 	PrivatePoolOptionsName pulumi.StringPtrInput
-	// The ID of the resource group.
+	// (ForceNew,Optional) The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// Flexible guarantee service effective time.
+	// (ForceNew,Optional) Flexible guarantee service effective time.
 	StartTime pulumi.StringPtrInput
 	// Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
 	StartTimeType pulumi.StringPtrInput
@@ -186,7 +186,7 @@ type ElasticityAssuranceState struct {
 	Tags pulumi.MapInput
 	// This parameter is not yet available.
 	UsedAssuranceTimes pulumi.IntPtrInput
-	// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+	// (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
 	ZoneIds pulumi.StringArrayInput
 }
 
@@ -195,13 +195,13 @@ func (ElasticityAssuranceState) ElementType() reflect.Type {
 }
 
 type elasticityAssuranceArgs struct {
-	// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+	// (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
 	AssuranceTimes *string `pulumi:"assuranceTimes"`
 	// Description of flexible guarantee service.
 	Description *string `pulumi:"description"`
 	// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
 	InstanceAmount int `pulumi:"instanceAmount"`
-	// Instance type. Currently, only one instance type is supported.
+	// (ForceNew,Required) Instance type. Currently, only one instance type is supported.
 	InstanceType string `pulumi:"instanceType"`
 	// Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
 	// - When the `periodUnit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -209,29 +209,29 @@ type elasticityAssuranceArgs struct {
 	Period *int `pulumi:"period"`
 	// Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
 	PeriodUnit *string `pulumi:"periodUnit"`
-	// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+	// (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
 	PrivatePoolOptionsMatchCriteria *string `pulumi:"privatePoolOptionsMatchCriteria"`
 	// The name of the flexible protection service.
 	PrivatePoolOptionsName *string `pulumi:"privatePoolOptionsName"`
-	// The ID of the resource group.
+	// (ForceNew,Optional) The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Flexible guarantee service effective time.
+	// (ForceNew,Optional) Flexible guarantee service effective time.
 	StartTime *string `pulumi:"startTime"`
 	// The tag key-value pair information bound by the elastic guarantee service.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+	// (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
 	ZoneIds []string `pulumi:"zoneIds"`
 }
 
 // The set of arguments for constructing a ElasticityAssurance resource.
 type ElasticityAssuranceArgs struct {
-	// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+	// (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
 	AssuranceTimes pulumi.StringPtrInput
 	// Description of flexible guarantee service.
 	Description pulumi.StringPtrInput
 	// The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
 	InstanceAmount pulumi.IntInput
-	// Instance type. Currently, only one instance type is supported.
+	// (ForceNew,Required) Instance type. Currently, only one instance type is supported.
 	InstanceType pulumi.StringInput
 	// Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
 	// - When the `periodUnit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
@@ -239,17 +239,17 @@ type ElasticityAssuranceArgs struct {
 	Period pulumi.IntPtrInput
 	// Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
 	PeriodUnit pulumi.StringPtrInput
-	// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+	// (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
 	PrivatePoolOptionsMatchCriteria pulumi.StringPtrInput
 	// The name of the flexible protection service.
 	PrivatePoolOptionsName pulumi.StringPtrInput
-	// The ID of the resource group.
+	// (ForceNew,Optional) The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// Flexible guarantee service effective time.
+	// (ForceNew,Optional) Flexible guarantee service effective time.
 	StartTime pulumi.StringPtrInput
 	// The tag key-value pair information bound by the elastic guarantee service.
 	Tags pulumi.MapInput
-	// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+	// (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
 	ZoneIds pulumi.StringArrayInput
 }
 
@@ -340,7 +340,7 @@ func (o ElasticityAssuranceOutput) ToElasticityAssuranceOutputWithContext(ctx co
 	return o
 }
 
-// The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+// (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
 func (o ElasticityAssuranceOutput) AssuranceTimes() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringOutput { return v.AssuranceTimes }).(pulumi.StringOutput)
 }
@@ -370,7 +370,7 @@ func (o ElasticityAssuranceOutput) InstanceChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringOutput { return v.InstanceChargeType }).(pulumi.StringOutput)
 }
 
-// Instance type. Currently, only one instance type is supported.
+// (ForceNew,Required) Instance type. Currently, only one instance type is supported.
 func (o ElasticityAssuranceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
@@ -387,7 +387,7 @@ func (o ElasticityAssuranceOutput) PeriodUnit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringPtrOutput { return v.PeriodUnit }).(pulumi.StringPtrOutput)
 }
 
-// The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+// (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
 func (o ElasticityAssuranceOutput) PrivatePoolOptionsMatchCriteria() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringOutput { return v.PrivatePoolOptionsMatchCriteria }).(pulumi.StringOutput)
 }
@@ -397,12 +397,12 @@ func (o ElasticityAssuranceOutput) PrivatePoolOptionsName() pulumi.StringOutput 
 	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringOutput { return v.PrivatePoolOptionsName }).(pulumi.StringOutput)
 }
 
-// The ID of the resource group.
+// (ForceNew,Optional) The ID of the resource group.
 func (o ElasticityAssuranceOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
 
-// Flexible guarantee service effective time.
+// (ForceNew,Optional) Flexible guarantee service effective time.
 func (o ElasticityAssuranceOutput) StartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringOutput { return v.StartTime }).(pulumi.StringOutput)
 }
@@ -427,7 +427,7 @@ func (o ElasticityAssuranceOutput) UsedAssuranceTimes() pulumi.IntOutput {
 	return o.ApplyT(func(v *ElasticityAssurance) pulumi.IntOutput { return v.UsedAssuranceTimes }).(pulumi.IntOutput)
 }
 
-// The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+// (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
 func (o ElasticityAssuranceOutput) ZoneIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ElasticityAssurance) pulumi.StringArrayOutput { return v.ZoneIds }).(pulumi.StringArrayOutput)
 }

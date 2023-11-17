@@ -70,7 +70,7 @@ import (
 type RouterInterface struct {
 	pulumi.CustomResourceState
 
-	// It has been deprecated from version 1.11.0.
+	// (Deprecated) It has been deprecated from version 1.11.0.
 	//
 	// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 	AccessPointId pulumi.StringOutput `pulumi:"accessPointId"`
@@ -85,25 +85,25 @@ type RouterInterface struct {
 	// Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	// If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// It has been deprecated from version 1.11.0.
+	// (Deprecated) It has been deprecated from version 1.11.0.
 	//
 	// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 	OppositeAccessPointId pulumi.StringPtrOutput `pulumi:"oppositeAccessPointId"`
-	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+	// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
 	//
 	// Deprecated: Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
 	OppositeInterfaceId pulumi.StringOutput `pulumi:"oppositeInterfaceId"`
-	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+	// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
 	//
 	// Deprecated: Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.
 	OppositeInterfaceOwnerId pulumi.StringOutput `pulumi:"oppositeInterfaceOwnerId"`
 	// The Region of peer side.
 	OppositeRegion pulumi.StringOutput `pulumi:"oppositeRegion"`
-	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+	// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
 	//
 	// Deprecated: Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
 	OppositeRouterId pulumi.StringOutput `pulumi:"oppositeRouterId"`
-	// It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+	// (Deprecated) It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
 	//
 	// Deprecated: Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
 	OppositeRouterType pulumi.StringOutput `pulumi:"oppositeRouterType"`
@@ -162,7 +162,7 @@ func GetRouterInterface(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RouterInterface resources.
 type routerInterfaceState struct {
-	// It has been deprecated from version 1.11.0.
+	// (Deprecated) It has been deprecated from version 1.11.0.
 	//
 	// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 	AccessPointId *string `pulumi:"accessPointId"`
@@ -177,25 +177,25 @@ type routerInterfaceState struct {
 	// Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	// If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
 	Name *string `pulumi:"name"`
-	// It has been deprecated from version 1.11.0.
+	// (Deprecated) It has been deprecated from version 1.11.0.
 	//
 	// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 	OppositeAccessPointId *string `pulumi:"oppositeAccessPointId"`
-	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+	// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
 	//
 	// Deprecated: Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
 	OppositeInterfaceId *string `pulumi:"oppositeInterfaceId"`
-	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+	// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
 	//
 	// Deprecated: Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.
 	OppositeInterfaceOwnerId *string `pulumi:"oppositeInterfaceOwnerId"`
 	// The Region of peer side.
 	OppositeRegion *string `pulumi:"oppositeRegion"`
-	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+	// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
 	//
 	// Deprecated: Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
 	OppositeRouterId *string `pulumi:"oppositeRouterId"`
-	// It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+	// (Deprecated) It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
 	//
 	// Deprecated: Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
 	OppositeRouterType *string `pulumi:"oppositeRouterType"`
@@ -213,7 +213,7 @@ type routerInterfaceState struct {
 }
 
 type RouterInterfaceState struct {
-	// It has been deprecated from version 1.11.0.
+	// (Deprecated) It has been deprecated from version 1.11.0.
 	//
 	// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 	AccessPointId pulumi.StringPtrInput
@@ -228,25 +228,25 @@ type RouterInterfaceState struct {
 	// Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	// If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
 	Name pulumi.StringPtrInput
-	// It has been deprecated from version 1.11.0.
+	// (Deprecated) It has been deprecated from version 1.11.0.
 	//
 	// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 	OppositeAccessPointId pulumi.StringPtrInput
-	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+	// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
 	//
 	// Deprecated: Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
 	OppositeInterfaceId pulumi.StringPtrInput
-	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+	// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
 	//
 	// Deprecated: Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.
 	OppositeInterfaceOwnerId pulumi.StringPtrInput
 	// The Region of peer side.
 	OppositeRegion pulumi.StringPtrInput
-	// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+	// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
 	//
 	// Deprecated: Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
 	OppositeRouterId pulumi.StringPtrInput
-	// It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+	// (Deprecated) It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
 	//
 	// Deprecated: Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
 	OppositeRouterType pulumi.StringPtrInput
@@ -279,7 +279,7 @@ type routerInterfaceArgs struct {
 	// Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	// If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
 	Name *string `pulumi:"name"`
-	// It has been deprecated from version 1.11.0.
+	// (Deprecated) It has been deprecated from version 1.11.0.
 	//
 	// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 	OppositeAccessPointId *string `pulumi:"oppositeAccessPointId"`
@@ -311,7 +311,7 @@ type RouterInterfaceArgs struct {
 	// Name of the router interface. Length must be 2-80 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
 	// If it is not specified, the default value is interface ID. The name cannot start with http:// and https://.
 	Name pulumi.StringPtrInput
-	// It has been deprecated from version 1.11.0.
+	// (Deprecated) It has been deprecated from version 1.11.0.
 	//
 	// Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 	OppositeAccessPointId pulumi.StringPtrInput
@@ -417,7 +417,7 @@ func (o RouterInterfaceOutput) ToRouterInterfaceOutputWithContext(ctx context.Co
 	return o
 }
 
-// It has been deprecated from version 1.11.0.
+// (Deprecated) It has been deprecated from version 1.11.0.
 //
 // Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 func (o RouterInterfaceOutput) AccessPointId() pulumi.StringOutput {
@@ -450,21 +450,21 @@ func (o RouterInterfaceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// It has been deprecated from version 1.11.0.
+// (Deprecated) It has been deprecated from version 1.11.0.
 //
 // Deprecated: Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
 func (o RouterInterfaceOutput) OppositeAccessPointId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringPtrOutput { return v.OppositeAccessPointId }).(pulumi.StringPtrOutput)
 }
 
-// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
 //
 // Deprecated: Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
 func (o RouterInterfaceOutput) OppositeInterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.OppositeInterfaceId }).(pulumi.StringOutput)
 }
 
-// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
 //
 // Deprecated: Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.
 func (o RouterInterfaceOutput) OppositeInterfaceOwnerId() pulumi.StringOutput {
@@ -476,14 +476,14 @@ func (o RouterInterfaceOutput) OppositeRegion() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.OppositeRegion }).(pulumi.StringOutput)
 }
 
-// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
 //
 // Deprecated: Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
 func (o RouterInterfaceOutput) OppositeRouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterInterface) pulumi.StringOutput { return v.OppositeRouterId }).(pulumi.StringOutput)
 }
 
-// It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+// (Deprecated) It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
 //
 // Deprecated: Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
 func (o RouterInterfaceOutput) OppositeRouterType() pulumi.StringOutput {

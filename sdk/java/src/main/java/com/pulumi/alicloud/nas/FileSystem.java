@@ -208,6 +208,9 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
     /**
      * Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
      * * Valid values:
+     *   * `0` (Default): The file system is not encrypted.
+     *   * `1`: The file system is encrypted with a managed secret key.
+     *   * `2` (Available in v1.140.0+ and when the `file_system_type` is `extreme`): User management key.
      * 
      */
     @Export(name="encryptType", type=Integer.class, parameters={})
@@ -216,6 +219,9 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
     /**
      * @return Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
      * * Valid values:
+     *   * `0` (Default): The file system is not encrypted.
+     *   * `1`: The file system is encrypted with a managed secret key.
+     *   * `2` (Available in v1.140.0+ and when the `file_system_type` is `extreme`): User management key.
      * 
      */
     public Output<Optional<Integer>> encryptType() {
@@ -282,6 +288,12 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
     /**
      * The storage type of the file System.
      * * Valid values:
+     *   * `Performance` (Available when the `file_system_type` is `standard`)
+     *   * `Capacity` (Available when the `file_system_type` is `standard`)
+     *   * `standard` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+     *   * `advance` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+     *   * `advance_100` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
+     *   * `advance_200` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
      * 
      */
     @Export(name="storageType", type=String.class, parameters={})
@@ -290,6 +302,12 @@ public class FileSystem extends com.pulumi.resources.CustomResource {
     /**
      * @return The storage type of the file System.
      * * Valid values:
+     *   * `Performance` (Available when the `file_system_type` is `standard`)
+     *   * `Capacity` (Available when the `file_system_type` is `standard`)
+     *   * `standard` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+     *   * `advance` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+     *   * `advance_100` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
+     *   * `advance_200` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
      * 
      */
     public Output<String> storageType() {

@@ -16,14 +16,14 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
     public static final GetSnapshotsPlainArgs Empty = new GetSnapshotsPlainArgs();
 
     /**
-     * The ID of the cloud desktop to which the snapshot belongs.
+     * The ID of the Desktop.
      * 
      */
     @Import(name="desktopId")
     private @Nullable String desktopId;
 
     /**
-     * @return The ID of the cloud desktop to which the snapshot belongs.
+     * @return The ID of the Desktop.
      * 
      */
     public Optional<String> desktopId() {
@@ -76,14 +76,14 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The ID of the snapshot.
+     * The ID of the Snapshot.
      * 
      */
     @Import(name="snapshotId")
     private @Nullable String snapshotId;
 
     /**
-     * @return The ID of the snapshot.
+     * @return The ID of the Snapshot.
      * 
      */
     public Optional<String> snapshotId() {
@@ -119,7 +119,7 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param desktopId The ID of the cloud desktop to which the snapshot belongs.
+         * @param desktopId The ID of the Desktop.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class GetSnapshotsPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param snapshotId The ID of the snapshot.
+         * @param snapshotId The ID of the Snapshot.
          * 
          * @return builder
          * 

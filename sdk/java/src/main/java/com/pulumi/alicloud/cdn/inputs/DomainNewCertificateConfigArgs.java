@@ -64,8 +64,7 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
      * Certificate type. Value:
      * - **upload**: upload certificate.
      * - **cas**: Cloud Shield certificate.
-     * - **free**: free certificate.
-     * &gt; If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
+     * - **free**: free certificate.If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
      * 
      */
     @Import(name="certType")
@@ -75,8 +74,7 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
      * @return Certificate type. Value:
      * - **upload**: upload certificate.
      * - **cas**: Cloud Shield certificate.
-     * - **free**: free certificate.
-     * &gt; If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
+     * - **free**: free certificate.If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
      * 
      */
     public Optional<Output<String>> certType() {
@@ -84,14 +82,14 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The force set of the security certificate.
+     * (Removed) The force set of the security certificate.
      * 
      */
     @Import(name="forceSet")
     private @Nullable Output<String> forceSet;
 
     /**
-     * @return The force set of the security certificate.
+     * @return (Removed) The force set of the security certificate.
      * 
      */
     public Optional<Output<String>> forceSet() {
@@ -245,8 +243,7 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
          * @param certType Certificate type. Value:
          * - **upload**: upload certificate.
          * - **cas**: Cloud Shield certificate.
-         * - **free**: free certificate.
-         * &gt; If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
+         * - **free**: free certificate.If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
          * 
          * @return builder
          * 
@@ -260,8 +257,7 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
          * @param certType Certificate type. Value:
          * - **upload**: upload certificate.
          * - **cas**: Cloud Shield certificate.
-         * - **free**: free certificate.
-         * &gt; If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
+         * - **free**: free certificate.If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
          * 
          * @return builder
          * 
@@ -271,7 +267,7 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param forceSet The force set of the security certificate.
+         * @param forceSet (Removed) The force set of the security certificate.
          * 
          * @return builder
          * 
@@ -282,7 +278,7 @@ public final class DomainNewCertificateConfigArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param forceSet The force set of the security certificate.
+         * @param forceSet (Removed) The force set of the security certificate.
          * 
          * @return builder
          * 

@@ -69,7 +69,7 @@ type GetRulesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The rule name prefix.
 	RuleNamePrefix *string `pulumi:"ruleNamePrefix"`
-	// Rule status, either Enable or Disable.
+	// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
 	Status *string `pulumi:"status"`
 }
 
@@ -112,7 +112,7 @@ type GetRulesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The rule name prefix.
 	RuleNamePrefix pulumi.StringPtrInput `pulumi:"ruleNamePrefix"`
-	// Rule status, either Enable or Disable.
+	// Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

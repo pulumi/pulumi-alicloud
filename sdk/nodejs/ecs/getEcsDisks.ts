@@ -76,13 +76,13 @@ export interface GetEcsDisksArgs {
      */
     autoSnapshotPolicyId?: string;
     /**
-     * Availability zone of the disk.
+     * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
      */
     availabilityZone?: string;
     /**
-     * Disk category.
+     * Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`.
      */
     category?: string;
     /**
@@ -106,11 +106,11 @@ export interface GetEcsDisksArgs {
      */
     dryRun?: boolean;
     /**
-     * Whether the disk implements an automatic snapshot policy.
+     * Indicates whether the automatic snapshot is deleted when the disk is released.
      */
     enableAutoSnapshot?: boolean;
     /**
-     * Whether the disk implements an automatic snapshot policy.
+     * Whether the cloud disk has an automatic snapshot policy
      */
     enableAutomatedSnapshotPolicy?: boolean;
     /**
@@ -118,7 +118,7 @@ export interface GetEcsDisksArgs {
      */
     enableShared?: boolean;
     /**
-     * Indicate whether the disk is encrypted or not.
+     * Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
      */
     encrypted?: string;
     /**
@@ -126,7 +126,7 @@ export interface GetEcsDisksArgs {
      */
     ids?: string[];
     /**
-     * The instance ID of the disk mount.
+     * Filter the results by the specified ECS instance ID.
      */
     instanceId?: string;
     /**
@@ -153,29 +153,29 @@ export interface GetEcsDisksArgs {
      */
     portable?: boolean;
     /**
-     * The Id of resource group.
+     * The Id of resource group which the disk belongs.
      */
     resourceGroupId?: string;
     /**
-     * Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     * The source snapshot id.
      */
     snapshotId?: string;
     /**
-     * Current status.
+     * The status of disk.
      */
     status?: string;
     /**
-     * A map of tags assigned to the disk.
+     * A map of tags assigned to the disks.
      */
     tags?: {[key: string]: any};
     /**
-     * Disk type.
+     * Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
      */
     type?: string;
     /**
-     * The zone id.
+     * ID of the free zone to which the disk belongs.
      */
     zoneId?: string;
 }
@@ -264,13 +264,13 @@ export interface GetEcsDisksOutputArgs {
      */
     autoSnapshotPolicyId?: pulumi.Input<string>;
     /**
-     * Availability zone of the disk.
+     * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * Disk category.
+     * Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`.
      */
     category?: pulumi.Input<string>;
     /**
@@ -294,11 +294,11 @@ export interface GetEcsDisksOutputArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * Whether the disk implements an automatic snapshot policy.
+     * Indicates whether the automatic snapshot is deleted when the disk is released.
      */
     enableAutoSnapshot?: pulumi.Input<boolean>;
     /**
-     * Whether the disk implements an automatic snapshot policy.
+     * Whether the cloud disk has an automatic snapshot policy
      */
     enableAutomatedSnapshotPolicy?: pulumi.Input<boolean>;
     /**
@@ -306,7 +306,7 @@ export interface GetEcsDisksOutputArgs {
      */
     enableShared?: pulumi.Input<boolean>;
     /**
-     * Indicate whether the disk is encrypted or not.
+     * Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
      */
     encrypted?: pulumi.Input<string>;
     /**
@@ -314,7 +314,7 @@ export interface GetEcsDisksOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The instance ID of the disk mount.
+     * Filter the results by the specified ECS instance ID.
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -341,29 +341,29 @@ export interface GetEcsDisksOutputArgs {
      */
     portable?: pulumi.Input<boolean>;
     /**
-     * The Id of resource group.
+     * The Id of resource group which the disk belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     * The source snapshot id.
      */
     snapshotId?: pulumi.Input<string>;
     /**
-     * Current status.
+     * The status of disk.
      */
     status?: pulumi.Input<string>;
     /**
-     * A map of tags assigned to the disk.
+     * A map of tags assigned to the disks.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Disk type.
+     * Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
      */
     type?: pulumi.Input<string>;
     /**
-     * The zone id.
+     * ID of the free zone to which the disk belongs.
      */
     zoneId?: pulumi.Input<string>;
 }

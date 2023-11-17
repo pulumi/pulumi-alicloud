@@ -16,14 +16,14 @@ public final class EdgeKubernetesCertificateAuthorityArgs extends com.pulumi.res
     public static final EdgeKubernetesCertificateAuthorityArgs Empty = new EdgeKubernetesCertificateAuthorityArgs();
 
     /**
-     * The path of client certificate, like `~/.kube/client-cert.pem`.
+     * The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
      * 
      */
     @Import(name="clientCert")
     private @Nullable Output<String> clientCert;
 
     /**
-     * @return The path of client certificate, like `~/.kube/client-cert.pem`.
+     * @return The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
      * 
      */
     public Optional<Output<String>> clientCert() {
@@ -31,14 +31,18 @@ public final class EdgeKubernetesCertificateAuthorityArgs extends com.pulumi.res
     }
 
     /**
-     * The path of client key, like `~/.kube/client-key.pem`.
+     * The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+     * 
+     * *Network params*
      * 
      */
     @Import(name="clientKey")
     private @Nullable Output<String> clientKey;
 
     /**
-     * @return The path of client key, like `~/.kube/client-key.pem`.
+     * @return The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+     * 
+     * *Network params*
      * 
      */
     public Optional<Output<String>> clientKey() {
@@ -87,7 +91,7 @@ public final class EdgeKubernetesCertificateAuthorityArgs extends com.pulumi.res
         }
 
         /**
-         * @param clientCert The path of client certificate, like `~/.kube/client-cert.pem`.
+         * @param clientCert The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
          * 
          * @return builder
          * 
@@ -98,7 +102,7 @@ public final class EdgeKubernetesCertificateAuthorityArgs extends com.pulumi.res
         }
 
         /**
-         * @param clientCert The path of client certificate, like `~/.kube/client-cert.pem`.
+         * @param clientCert The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
          * 
          * @return builder
          * 
@@ -108,7 +112,9 @@ public final class EdgeKubernetesCertificateAuthorityArgs extends com.pulumi.res
         }
 
         /**
-         * @param clientKey The path of client key, like `~/.kube/client-key.pem`.
+         * @param clientKey The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+         * 
+         * *Network params*
          * 
          * @return builder
          * 
@@ -119,7 +125,9 @@ public final class EdgeKubernetesCertificateAuthorityArgs extends com.pulumi.res
         }
 
         /**
-         * @param clientKey The path of client key, like `~/.kube/client-key.pem`.
+         * @param clientKey The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+         * 
+         * *Network params*
          * 
          * @return builder
          * 

@@ -3944,7 +3944,7 @@ type GetContainerGroupsGroupContainer struct {
 	Memory float64 `pulumi:"memory"`
 	// The name of the volume.
 	Name string `pulumi:"name"`
-	// The exposed ports and protocols. Maximum: `100`.
+	// The list of exposed ports and protocols. Maximum: 100.
 	Ports []GetContainerGroupsGroupContainerPort `pulumi:"ports"`
 	// Indicates whether the container is ready.
 	Ready bool `pulumi:"ready"`
@@ -3986,7 +3986,7 @@ type GetContainerGroupsGroupContainerArgs struct {
 	Memory pulumi.Float64Input `pulumi:"memory"`
 	// The name of the volume.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The exposed ports and protocols. Maximum: `100`.
+	// The list of exposed ports and protocols. Maximum: 100.
 	Ports GetContainerGroupsGroupContainerPortArrayInput `pulumi:"ports"`
 	// Indicates whether the container is ready.
 	Ready pulumi.BoolInput `pulumi:"ready"`
@@ -4096,7 +4096,7 @@ func (o GetContainerGroupsGroupContainerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupContainer) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The exposed ports and protocols. Maximum: `100`.
+// The list of exposed ports and protocols. Maximum: 100.
 func (o GetContainerGroupsGroupContainerOutput) Ports() GetContainerGroupsGroupContainerPortArrayOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupContainer) []GetContainerGroupsGroupContainerPort { return v.Ports }).(GetContainerGroupsGroupContainerPortArrayOutput)
 }
@@ -4358,7 +4358,7 @@ func (o GetContainerGroupsGroupContainerPortArrayOutput) Index(i pulumi.IntInput
 type GetContainerGroupsGroupContainerVolumeMount struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
 	MountPath string `pulumi:"mountPath"`
-	// The name of the volume.
+	// The name of the volume. The name is the same as the volume you selected when you purchased the container.
 	Name string `pulumi:"name"`
 	// Default value: `false`.
 	ReadOnly bool `pulumi:"readOnly"`
@@ -4378,7 +4378,7 @@ type GetContainerGroupsGroupContainerVolumeMountInput interface {
 type GetContainerGroupsGroupContainerVolumeMountArgs struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// The name of the volume.
+	// The name of the volume. The name is the same as the volume you selected when you purchased the container.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Default value: `false`.
 	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
@@ -4440,7 +4440,7 @@ func (o GetContainerGroupsGroupContainerVolumeMountOutput) MountPath() pulumi.St
 	return o.ApplyT(func(v GetContainerGroupsGroupContainerVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
 }
 
-// The name of the volume.
+// The name of the volume. The name is the same as the volume you selected when you purchased the container.
 func (o GetContainerGroupsGroupContainerVolumeMountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -4588,7 +4588,7 @@ func (o GetContainerGroupsGroupDnsConfigArrayOutput) Index(i pulumi.IntInput) Ge
 type GetContainerGroupsGroupDnsConfigOption struct {
 	// The name of the volume.
 	Name string `pulumi:"name"`
-	// The value of the variable.
+	// The value of the object variable.
 	Value string `pulumi:"value"`
 }
 
@@ -4606,7 +4606,7 @@ type GetContainerGroupsGroupDnsConfigOptionInput interface {
 type GetContainerGroupsGroupDnsConfigOptionArgs struct {
 	// The name of the volume.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The value of the variable.
+	// The value of the object variable.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -4666,7 +4666,7 @@ func (o GetContainerGroupsGroupDnsConfigOptionOutput) Name() pulumi.StringOutput
 	return o.ApplyT(func(v GetContainerGroupsGroupDnsConfigOption) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value of the variable.
+// The value of the object variable.
 func (o GetContainerGroupsGroupDnsConfigOptionOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupDnsConfigOption) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -4793,7 +4793,7 @@ func (o GetContainerGroupsGroupEciSecurityContextArrayOutput) Index(i pulumi.Int
 type GetContainerGroupsGroupEciSecurityContextSysctl struct {
 	// The name of the volume.
 	Name string `pulumi:"name"`
-	// The value of the variable.
+	// The value of the object variable.
 	Value string `pulumi:"value"`
 }
 
@@ -4811,7 +4811,7 @@ type GetContainerGroupsGroupEciSecurityContextSysctlInput interface {
 type GetContainerGroupsGroupEciSecurityContextSysctlArgs struct {
 	// The name of the volume.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The value of the variable.
+	// The value of the object variable.
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -4871,7 +4871,7 @@ func (o GetContainerGroupsGroupEciSecurityContextSysctlOutput) Name() pulumi.Str
 	return o.ApplyT(func(v GetContainerGroupsGroupEciSecurityContextSysctl) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The value of the variable.
+// The value of the object variable.
 func (o GetContainerGroupsGroupEciSecurityContextSysctlOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupEciSecurityContextSysctl) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -4905,11 +4905,11 @@ type GetContainerGroupsGroupEvent struct {
 	LastTimestamp string `pulumi:"lastTimestamp"`
 	// The content of the event.
 	Message string `pulumi:"message"`
-	// The name of the volume.
+	// The name of the object to which the event belongs.
 	Name string `pulumi:"name"`
 	// The name of the event.
 	Reason string `pulumi:"reason"`
-	// The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+	// The type of the event. Valid values: Normal and Warning.
 	Type string `pulumi:"type"`
 }
 
@@ -4933,11 +4933,11 @@ type GetContainerGroupsGroupEventArgs struct {
 	LastTimestamp pulumi.StringInput `pulumi:"lastTimestamp"`
 	// The content of the event.
 	Message pulumi.StringInput `pulumi:"message"`
-	// The name of the volume.
+	// The name of the object to which the event belongs.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The name of the event.
 	Reason pulumi.StringInput `pulumi:"reason"`
-	// The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+	// The type of the event. Valid values: Normal and Warning.
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -5012,7 +5012,7 @@ func (o GetContainerGroupsGroupEventOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupEvent) string { return v.Message }).(pulumi.StringOutput)
 }
 
-// The name of the volume.
+// The name of the object to which the event belongs.
 func (o GetContainerGroupsGroupEventOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupEvent) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -5022,7 +5022,7 @@ func (o GetContainerGroupsGroupEventOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupEvent) string { return v.Reason }).(pulumi.StringOutput)
 }
 
-// The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+// The type of the event. Valid values: Normal and Warning.
 func (o GetContainerGroupsGroupEventOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupEvent) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -5588,7 +5588,7 @@ func (o GetContainerGroupsGroupInitContainerPortArrayOutput) Index(i pulumi.IntI
 type GetContainerGroupsGroupInitContainerVolumeMount struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
 	MountPath string `pulumi:"mountPath"`
-	// The name of the volume.
+	// The name of the volume. The name is the same as the volume you selected when you purchased the container.
 	Name string `pulumi:"name"`
 	// Default value: `false`.
 	ReadOnly bool `pulumi:"readOnly"`
@@ -5608,7 +5608,7 @@ type GetContainerGroupsGroupInitContainerVolumeMountInput interface {
 type GetContainerGroupsGroupInitContainerVolumeMountArgs struct {
 	// The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// The name of the volume.
+	// The name of the volume. The name is the same as the volume you selected when you purchased the container.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Default value: `false`.
 	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
@@ -5670,7 +5670,7 @@ func (o GetContainerGroupsGroupInitContainerVolumeMountOutput) MountPath() pulum
 	return o.ApplyT(func(v GetContainerGroupsGroupInitContainerVolumeMount) string { return v.MountPath }).(pulumi.StringOutput)
 }
 
-// The name of the volume.
+// The name of the volume. The name is the same as the volume you selected when you purchased the container.
 func (o GetContainerGroupsGroupInitContainerVolumeMountOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetContainerGroupsGroupInitContainerVolumeMount) string { return v.Name }).(pulumi.StringOutput)
 }

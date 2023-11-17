@@ -101,11 +101,11 @@ export interface GetBackupJobsArgs {
      */
     sortDirection?: string;
     /**
-     * The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+     * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
      */
     sourceType: string;
     /**
-     * The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+     * The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
      */
     status?: string;
 }
@@ -212,11 +212,11 @@ export interface GetBackupJobsOutputArgs {
      */
     sortDirection?: pulumi.Input<string>;
     /**
-     * The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+     * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
      */
     sourceType: pulumi.Input<string>;
     /**
-     * The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+     * The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
      */
     status?: pulumi.Input<string>;
 }

@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.Cddc
     public sealed class GetDedicatedHostAccountsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the Dedicated host.
+        /// The ID of the host.
         /// </summary>
         [Input("dedicatedHostId")]
         public string? DedicatedHostId { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Cddc
     public sealed class GetDedicatedHostAccountsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the Dedicated host.
+        /// The ID of the host.
         /// </summary>
         [Input("dedicatedHostId")]
         public Input<string>? DedicatedHostId { get; set; }

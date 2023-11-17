@@ -23,9 +23,6 @@ namespace Pulumi.AliCloud.Vpn
     {
         /// <summary>
         /// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-        /// * `AES-128-CBC` - the AES-128-CBC algorithm.
-        /// * `AES-192-CBC` - the AES-192-CBC algorithm.
-        /// * `AES-256-CBC` - the AES-256-CBC algorithm.
         /// </summary>
         [Output("cipher")]
         public Output<string?> Cipher { get; private set; } = null!;
@@ -138,9 +135,6 @@ namespace Pulumi.AliCloud.Vpn
     {
         /// <summary>
         /// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-        /// * `AES-128-CBC` - the AES-128-CBC algorithm.
-        /// * `AES-192-CBC` - the AES-192-CBC algorithm.
-        /// * `AES-256-CBC` - the AES-256-CBC algorithm.
         /// </summary>
         [Input("cipher")]
         public Input<string>? Cipher { get; set; }
@@ -197,9 +191,6 @@ namespace Pulumi.AliCloud.Vpn
     {
         /// <summary>
         /// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-        /// * `AES-128-CBC` - the AES-128-CBC algorithm.
-        /// * `AES-192-CBC` - the AES-192-CBC algorithm.
-        /// * `AES-256-CBC` - the AES-256-CBC algorithm.
         /// </summary>
         [Input("cipher")]
         public Input<string>? Cipher { get; set; }

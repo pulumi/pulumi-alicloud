@@ -24,14 +24,14 @@ public final class AlertGroupConfigurationArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * including FixedRate,Hourly,Daily,Weekly,Cron.
+     * Group configuration type, including no_group, labels_auto, custom.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return including FixedRate,Hourly,Daily,Weekly,Cron.
+     * @return Group configuration type, including no_group, labels_auto, custom.
      * 
      */
     public Output<String> type() {
@@ -77,7 +77,7 @@ public final class AlertGroupConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type including FixedRate,Hourly,Daily,Weekly,Cron.
+         * @param type Group configuration type, including no_group, labels_auto, custom.
          * 
          * @return builder
          * 
@@ -88,7 +88,7 @@ public final class AlertGroupConfigurationArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param type including FixedRate,Hourly,Daily,Weekly,Cron.
+         * @param type Group configuration type, including no_group, labels_auto, custom.
          * 
          * @return builder
          * 

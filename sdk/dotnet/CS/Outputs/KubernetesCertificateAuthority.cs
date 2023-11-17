@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.CS.Outputs
     public sealed class KubernetesCertificateAuthority
     {
         /// <summary>
-        /// The path of client certificate, like `~/.kube/client-cert.pem`.
+        /// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
         /// </summary>
         public readonly string? ClientCert;
         /// <summary>
-        /// The path of client key, like `~/.kube/client-key.pem`.
+        /// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
         /// </summary>
         public readonly string? ClientKey;
         /// <summary>

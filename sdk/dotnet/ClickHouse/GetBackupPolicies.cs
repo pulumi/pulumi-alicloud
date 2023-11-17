@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.ClickHouse
     public sealed class GetBackupPoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The db cluster id.
+        /// (Request, ForceNew) The db cluster id.
         /// </summary>
         [Input("dbClusterId", required: true)]
         public string DbClusterId { get; set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.ClickHouse
     public sealed class GetBackupPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The db cluster id.
+        /// (Request, ForceNew) The db cluster id.
         /// </summary>
         [Input("dbClusterId", required: true)]
         public Input<string> DbClusterId { get; set; } = null!;

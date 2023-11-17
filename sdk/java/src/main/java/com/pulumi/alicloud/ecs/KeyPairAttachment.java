@@ -133,14 +133,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:ecs/keyPairAttachment:KeyPairAttachment")
 public class KeyPairAttachment extends com.pulumi.resources.CustomResource {
     /**
-     * Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+     * (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
      * 
      */
     @Export(name="force", type=Boolean.class, parameters={})
     private Output</* @Nullable */ Boolean> force;
 
     /**
-     * @return Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+     * @return (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
      * 
      */
     public Output<Optional<Boolean>> force() {

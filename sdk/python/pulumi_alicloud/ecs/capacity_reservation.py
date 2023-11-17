@@ -30,15 +30,15 @@ class CapacityReservationArgs:
         The set of arguments for constructing a CapacityReservation resource.
         :param pulumi.Input[int] instance_amount: The total number of instances that need to be reserved within the capacity reservation.
         :param pulumi.Input[str] instance_type: Instance type. Currently, you can only set the capacity reservation service for one instance type.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         :param pulumi.Input[str] capacity_reservation_name: Capacity reservation service name.
         :param pulumi.Input[str] description: description of the capacity reservation instance.
         :param pulumi.Input[bool] dry_run: Specifies whether to pre-check the API request. Valid values: `true` and `false`.
         :param pulumi.Input[str] end_time: end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
         :param pulumi.Input[str] end_time_type: Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
-        :param pulumi.Input[str] match_criteria: The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+        :param pulumi.Input[str] match_criteria: (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
         :param pulumi.Input[str] platform: platform of the capacity reservation, value range `windows`, `linux`.
-        :param pulumi.Input[str] resource_group_id: The resource group id.
+        :param pulumi.Input[str] resource_group_id: (ForceNew,Optional) The resource group id.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         """
         pulumi.set(__self__, "instance_amount", instance_amount)
@@ -91,7 +91,7 @@ class CapacityReservationArgs:
     @pulumi.getter(name="zoneIds")
     def zone_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+        (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         """
         return pulumi.get(self, "zone_ids")
 
@@ -163,7 +163,7 @@ class CapacityReservationArgs:
     @pulumi.getter(name="matchCriteria")
     def match_criteria(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+        (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
         """
         return pulumi.get(self, "match_criteria")
 
@@ -187,7 +187,7 @@ class CapacityReservationArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource group id.
+        (ForceNew,Optional) The resource group id.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -237,16 +237,16 @@ class _CapacityReservationState:
         :param pulumi.Input[str] end_time_type: Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
         :param pulumi.Input[int] instance_amount: The total number of instances that need to be reserved within the capacity reservation.
         :param pulumi.Input[str] instance_type: Instance type. Currently, you can only set the capacity reservation service for one instance type.
-        :param pulumi.Input[str] match_criteria: The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+        :param pulumi.Input[str] match_criteria: (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
         :param pulumi.Input[str] payment_type: The payment type of the resource
         :param pulumi.Input[str] platform: platform of the capacity reservation, value range `windows`, `linux`.
-        :param pulumi.Input[str] resource_group_id: The resource group id.
+        :param pulumi.Input[str] resource_group_id: (ForceNew,Optional) The resource group id.
         :param pulumi.Input[str] start_time: time of the capacity reservation which become active.
         :param pulumi.Input[str] start_time_type: The capacity is scheduled to take effect. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
         :param pulumi.Input[str] status: The status of the capacity reservation.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         :param pulumi.Input[str] time_slot: This parameter is under test and is not yet open for use.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         """
         if capacity_reservation_name is not None:
             pulumi.set(__self__, "capacity_reservation_name", capacity_reservation_name)
@@ -371,7 +371,7 @@ class _CapacityReservationState:
     @pulumi.getter(name="matchCriteria")
     def match_criteria(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+        (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
         """
         return pulumi.get(self, "match_criteria")
 
@@ -407,7 +407,7 @@ class _CapacityReservationState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The resource group id.
+        (ForceNew,Optional) The resource group id.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -479,7 +479,7 @@ class _CapacityReservationState:
     @pulumi.getter(name="zoneIds")
     def zone_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+        (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         """
         return pulumi.get(self, "zone_ids")
 
@@ -557,11 +557,11 @@ class CapacityReservation(pulumi.CustomResource):
         :param pulumi.Input[str] end_time_type: Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
         :param pulumi.Input[int] instance_amount: The total number of instances that need to be reserved within the capacity reservation.
         :param pulumi.Input[str] instance_type: Instance type. Currently, you can only set the capacity reservation service for one instance type.
-        :param pulumi.Input[str] match_criteria: The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+        :param pulumi.Input[str] match_criteria: (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
         :param pulumi.Input[str] platform: platform of the capacity reservation, value range `windows`, `linux`.
-        :param pulumi.Input[str] resource_group_id: The resource group id.
+        :param pulumi.Input[str] resource_group_id: (ForceNew,Optional) The resource group id.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         """
         ...
     @overload
@@ -711,16 +711,16 @@ class CapacityReservation(pulumi.CustomResource):
         :param pulumi.Input[str] end_time_type: Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
         :param pulumi.Input[int] instance_amount: The total number of instances that need to be reserved within the capacity reservation.
         :param pulumi.Input[str] instance_type: Instance type. Currently, you can only set the capacity reservation service for one instance type.
-        :param pulumi.Input[str] match_criteria: The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+        :param pulumi.Input[str] match_criteria: (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
         :param pulumi.Input[str] payment_type: The payment type of the resource
         :param pulumi.Input[str] platform: platform of the capacity reservation, value range `windows`, `linux`.
-        :param pulumi.Input[str] resource_group_id: The resource group id.
+        :param pulumi.Input[str] resource_group_id: (ForceNew,Optional) The resource group id.
         :param pulumi.Input[str] start_time: time of the capacity reservation which become active.
         :param pulumi.Input[str] start_time_type: The capacity is scheduled to take effect. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
         :param pulumi.Input[str] status: The status of the capacity reservation.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         :param pulumi.Input[str] time_slot: This parameter is under test and is not yet open for use.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -805,7 +805,7 @@ class CapacityReservation(pulumi.CustomResource):
     @pulumi.getter(name="matchCriteria")
     def match_criteria(self) -> pulumi.Output[str]:
         """
-        The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+        (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
         """
         return pulumi.get(self, "match_criteria")
 
@@ -829,7 +829,7 @@ class CapacityReservation(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The resource group id.
+        (ForceNew,Optional) The resource group id.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -877,7 +877,7 @@ class CapacityReservation(pulumi.CustomResource):
     @pulumi.getter(name="zoneIds")
     def zone_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+        (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
         """
         return pulumi.get(self, "zone_ids")
 

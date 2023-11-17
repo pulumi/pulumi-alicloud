@@ -80,7 +80,6 @@ type AutoSnapshotPolicy struct {
 	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
 	RepeatWeekdays pulumi.StringArrayOutput `pulumi:"repeatWeekdays"`
 	// The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-	// - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
 	RetentionDays pulumi.IntOutput `pulumi:"retentionDays"`
 	// The status of the automatic snapshot policy.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -137,7 +136,6 @@ type autoSnapshotPolicyState struct {
 	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
 	RepeatWeekdays []string `pulumi:"repeatWeekdays"`
 	// The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-	// - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
 	RetentionDays *int `pulumi:"retentionDays"`
 	// The status of the automatic snapshot policy.
 	Status *string `pulumi:"status"`
@@ -159,7 +157,6 @@ type AutoSnapshotPolicyState struct {
 	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
 	RepeatWeekdays pulumi.StringArrayInput
 	// The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-	// - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
 	RetentionDays pulumi.IntPtrInput
 	// The status of the automatic snapshot policy.
 	Status pulumi.StringPtrInput
@@ -185,7 +182,6 @@ type autoSnapshotPolicyArgs struct {
 	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
 	RepeatWeekdays []string `pulumi:"repeatWeekdays"`
 	// The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-	// - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
 	RetentionDays *int `pulumi:"retentionDays"`
 	// The point in time at which an auto snapshot is created.
 	// - A maximum of 24 time points can be selected.
@@ -206,7 +202,6 @@ type AutoSnapshotPolicyArgs struct {
 	// - The format is  an JSON array of ["1", "2", … "7"]  and the time points are separated by commas (,).
 	RepeatWeekdays pulumi.StringArrayInput
 	// The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-	// - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
 	RetentionDays pulumi.IntPtrInput
 	// The point in time at which an auto snapshot is created.
 	// - A maximum of 24 time points can be selected.
@@ -318,7 +313,6 @@ func (o AutoSnapshotPolicyOutput) RepeatWeekdays() pulumi.StringArrayOutput {
 }
 
 // The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-// - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
 func (o AutoSnapshotPolicyOutput) RetentionDays() pulumi.IntOutput {
 	return o.ApplyT(func(v *AutoSnapshotPolicy) pulumi.IntOutput { return v.RetentionDays }).(pulumi.IntOutput)
 }

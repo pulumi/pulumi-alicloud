@@ -111,13 +111,13 @@ export class AccountPrivilege extends pulumi.CustomResource {
      */
     public readonly instanceId!: pulumi.Output<string>;
     /**
-     * The privilege of one account access database. Valid values: 
+     * The privilege of one account access database. Valid values:
      * - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
      * - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
      * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-     * Default to "ReadOnly".
+     *   Default to "ReadOnly".
      */
     public readonly privilege!: pulumi.Output<string | undefined>;
 
@@ -176,13 +176,13 @@ export interface AccountPrivilegeState {
      */
     instanceId?: pulumi.Input<string>;
     /**
-     * The privilege of one account access database. Valid values: 
+     * The privilege of one account access database. Valid values:
      * - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
      * - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
      * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-     * Default to "ReadOnly".
+     *   Default to "ReadOnly".
      */
     privilege?: pulumi.Input<string>;
 }
@@ -204,13 +204,13 @@ export interface AccountPrivilegeArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
-     * The privilege of one account access database. Valid values: 
+     * The privilege of one account access database. Valid values:
      * - ReadOnly: This value is only for MySQL, MariaDB and SQL Server
      * - ReadWrite: This value is only for MySQL, MariaDB and SQL Server
      * - DDLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DMLOnly: (Available in 1.64.0+) This value is only for MySQL and MariaDB
      * - DBOwner: (Available in 1.64.0+) This value is only for SQL Server and PostgreSQL.
-     * Default to "ReadOnly".
+     *   Default to "ReadOnly".
      */
     privilege?: pulumi.Input<string>;
 }

@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string InstanceAmount;
         /// <summary>
-        /// Instance type. Currently, you can only set the capacity reservation service for one instance type.
+        /// (ForceNew,Optional) Instance type. Currently, you can only set the capacity reservation service for one instance type.
         /// </summary>
         public readonly string InstanceType;
         /// <summary>
@@ -50,15 +50,15 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string MatchCriteria;
         /// <summary>
-        /// The payment type of the resource. value range `PostPaid`, `PrePaid`.
+        /// (ForceNew,Optional) The payment type of the resource. value range `PostPaid`, `PrePaid`.
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
-        /// platform of the capacity reservation , value range `windows`, `linux`, `all`.
+        /// (ForceNew,Optional) platform of the capacity reservation , value range `windows`, `linux`, `all`.
         /// </summary>
         public readonly string Platform;
         /// <summary>
-        /// The resource group id.
+        /// (ForceNew,Optional) The resource group id.
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
@@ -70,11 +70,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string StartTimeType;
         /// <summary>
-        /// The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
+        /// (ForceNew,Optional) The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The tag of the resource.
+        /// (ForceNew,Optional) The tag of the resource.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>

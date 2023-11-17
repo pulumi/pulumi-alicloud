@@ -15,14 +15,14 @@ public final class GetBackupPoliciesPlainArgs extends com.pulumi.resources.Invok
     public static final GetBackupPoliciesPlainArgs Empty = new GetBackupPoliciesPlainArgs();
 
     /**
-     * The db cluster id.
+     * (Request, ForceNew) The db cluster id.
      * 
      */
     @Import(name="dbClusterId", required=true)
     private String dbClusterId;
 
     /**
-     * @return The db cluster id.
+     * @return (Request, ForceNew) The db cluster id.
      * 
      */
     public String dbClusterId() {
@@ -70,7 +70,7 @@ public final class GetBackupPoliciesPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param dbClusterId The db cluster id.
+         * @param dbClusterId (Request, ForceNew) The db cluster id.
          * 
          * @return builder
          * 

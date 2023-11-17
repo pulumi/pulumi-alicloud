@@ -43,7 +43,7 @@ public final class GetInterRegionTrafficQosQueuesQueue {
      */
     private String status;
     /**
-     * @return The ID of the traffic scheduling policy.
+     * @return (ForceNew,Required) The ID of the traffic scheduling policy.
      * 
      */
     private String trafficQosPolicyId;
@@ -95,7 +95,7 @@ public final class GetInterRegionTrafficQosQueuesQueue {
         return this.status;
     }
     /**
-     * @return The ID of the traffic scheduling policy.
+     * @return (ForceNew,Required) The ID of the traffic scheduling policy.
      * 
      */
     public String trafficQosPolicyId() {

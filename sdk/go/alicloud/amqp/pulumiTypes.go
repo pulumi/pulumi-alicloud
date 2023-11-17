@@ -723,7 +723,7 @@ type GetStaticAccountsAccount struct {
 	CreateTime string `pulumi:"createTime"`
 	// The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.
 	Id string `pulumi:"id"`
-	// InstanceId
+	// (ForceNew, Optional) InstanceId
 	InstanceId string `pulumi:"instanceId"`
 	// The ID of the user's primary account.
 	MasterUid string `pulumi:"masterUid"`
@@ -751,7 +751,7 @@ type GetStaticAccountsAccountArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.
 	Id pulumi.StringInput `pulumi:"id"`
-	// InstanceId
+	// (ForceNew, Optional) InstanceId
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The ID of the user's primary account.
 	MasterUid pulumi.StringInput `pulumi:"masterUid"`
@@ -827,7 +827,7 @@ func (o GetStaticAccountsAccountOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStaticAccountsAccount) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// InstanceId
+// (ForceNew, Optional) InstanceId
 func (o GetStaticAccountsAccountOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetStaticAccountsAccount) string { return v.InstanceId }).(pulumi.StringOutput)
 }

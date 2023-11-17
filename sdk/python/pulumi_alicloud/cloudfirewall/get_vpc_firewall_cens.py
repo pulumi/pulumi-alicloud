@@ -209,15 +209,15 @@ def get_vpc_firewall_cens(cen_id: Optional[str] = None,
     ```
 
 
-    :param str cen_id: The ID of the CEN instance.
+    :param str cen_id: (ForceNew,Optional) The ID of the CEN instance.
     :param Sequence[str] ids: A list of Vpc Firewall Cen IDs.
-    :param str lang: The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
-    :param str member_uid: The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
-    :param str network_instance_id: The ID of the VPC instance that created the VPC firewall.
+    :param str lang: (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+    :param str member_uid: (ForceNew,Optional) The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
+    :param str network_instance_id: (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: Firewall switch status
-    :param str vpc_firewall_id: VPC firewall ID
-    :param str vpc_firewall_name: The name of the VPC firewall instance.
+    :param str status: (ForceNew,Optional) Firewall switch status
+    :param str vpc_firewall_id: (ForceNew,Optional) VPC firewall ID
+    :param str vpc_firewall_name: (ForceNew,Optional) The name of the VPC firewall instance.
     """
     __args__ = dict()
     __args__['cenId'] = cen_id
@@ -283,14 +283,14 @@ def get_vpc_firewall_cens_output(cen_id: Optional[pulumi.Input[Optional[str]]] =
     ```
 
 
-    :param str cen_id: The ID of the CEN instance.
+    :param str cen_id: (ForceNew,Optional) The ID of the CEN instance.
     :param Sequence[str] ids: A list of Vpc Firewall Cen IDs.
-    :param str lang: The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
-    :param str member_uid: The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
-    :param str network_instance_id: The ID of the VPC instance that created the VPC firewall.
+    :param str lang: (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+    :param str member_uid: (ForceNew,Optional) The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
+    :param str network_instance_id: (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: Firewall switch status
-    :param str vpc_firewall_id: VPC firewall ID
-    :param str vpc_firewall_name: The name of the VPC firewall instance.
+    :param str status: (ForceNew,Optional) Firewall switch status
+    :param str vpc_firewall_id: (ForceNew,Optional) VPC firewall ID
+    :param str vpc_firewall_name: (ForceNew,Optional) The name of the VPC firewall instance.
     """
     ...

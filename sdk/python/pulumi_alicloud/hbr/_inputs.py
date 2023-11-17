@@ -50,9 +50,9 @@ class OtsBackupPlanRuleArgs:
                  rule_name: Optional[pulumi.Input[str]] = None,
                  schedule: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] backup_type: Backup type. Valid values: `COMPLETE`.
-        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
-        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1.
+        :param pulumi.Input[str] backup_type: The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param pulumi.Input[bool] disabled: Whether to disable the backup task. Valid values: true, false.
+        :param pulumi.Input[str] retention: Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
         :param pulumi.Input[str] rule_name: The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
         :param pulumi.Input[str] schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
@@ -71,7 +71,7 @@ class OtsBackupPlanRuleArgs:
     @pulumi.getter(name="backupType")
     def backup_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup type. Valid values: `COMPLETE`.
+        The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "backup_type")
 
@@ -83,7 +83,7 @@ class OtsBackupPlanRuleArgs:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+        Whether to disable the backup task. Valid values: true, false.
         """
         return pulumi.get(self, "disabled")
 
@@ -95,7 +95,7 @@ class OtsBackupPlanRuleArgs:
     @pulumi.getter
     def retention(self) -> Optional[pulumi.Input[str]]:
         """
-        Backup retention days, the minimum is 1.
+        Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "retention")
 

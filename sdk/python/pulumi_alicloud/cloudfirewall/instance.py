@@ -46,7 +46,7 @@ class InstanceArgs:
         :param pulumi.Input[int] instance_count: The number of assets.
         :param pulumi.Input[str] logistics: The logistics.
         :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
-        :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        :param pulumi.Input[int] renew_period: (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
         :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
@@ -243,7 +243,7 @@ class InstanceArgs:
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
         """
         warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
         pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
@@ -332,7 +332,7 @@ class _InstanceState:
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
         :param pulumi.Input[str] release_time: The release time.
-        :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        :param pulumi.Input[int] renew_period: (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
         :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
@@ -569,7 +569,7 @@ class _InstanceState:
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
         """
         warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
         pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")
@@ -711,7 +711,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
-        :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        :param pulumi.Input[int] renew_period: (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
         :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
@@ -883,7 +883,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`.
         :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
         :param pulumi.Input[str] release_time: The release time.
-        :param pulumi.Input[int] renew_period: Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        :param pulumi.Input[int] renew_period: (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
         :param pulumi.Input[int] renewal_duration: Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
@@ -1041,7 +1041,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="renewPeriod")
     def renew_period(self) -> pulumi.Output[int]:
         """
-        Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
         """
         warnings.warn("""Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""", DeprecationWarning)
         pulumi.log.warn("""renew_period is deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.""")

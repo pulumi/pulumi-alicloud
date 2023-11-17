@@ -9,29 +9,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPrefixListsListEntry {
-    /**
-     * @return The CIDR address block of the prefix list.
-     * 
-     */
     private String cidr;
-    /**
-     * @return The description of the cidr entry.
-     * 
-     */
     private String description;
 
     private GetPrefixListsListEntry() {}
-    /**
-     * @return The CIDR address block of the prefix list.
-     * 
-     */
     public String cidr() {
         return this.cidr;
     }
-    /**
-     * @return The description of the cidr entry.
-     * 
-     */
     public String description() {
         return this.description;
     }

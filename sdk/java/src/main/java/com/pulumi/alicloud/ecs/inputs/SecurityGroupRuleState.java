@@ -111,7 +111,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The range of port numbers relevant to the IP protocol. Default to &#34;-1/-1&#34;. When the protocol is tcp or udp, each side port number range from 1 to 65535 and &#39;-1/-1&#39; will be invalid.
+     * (ForceNew) The range of port numbers relevant to the IP protocol. Default to &#34;-1/-1&#34;. When the protocol is tcp or udp, each side port number range from 1 to 65535 and &#39;-1/-1&#39; will be invalid.
      * For example, `1/200` means that the range of the port numbers is 1-200. Other protocols&#39; &#39;port_range&#39; can only be &#34;-1/-1&#34;, and other values will be invalid.
      * 
      */
@@ -119,7 +119,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
     private @Nullable Output<String> portRange;
 
     /**
-     * @return The range of port numbers relevant to the IP protocol. Default to &#34;-1/-1&#34;. When the protocol is tcp or udp, each side port number range from 1 to 65535 and &#39;-1/-1&#39; will be invalid.
+     * @return (ForceNew) The range of port numbers relevant to the IP protocol. Default to &#34;-1/-1&#34;. When the protocol is tcp or udp, each side port number range from 1 to 65535 and &#39;-1/-1&#39; will be invalid.
      * For example, `1/200` means that the range of the port numbers is 1-200. Other protocols&#39; &#39;port_range&#39; can only be &#34;-1/-1&#34;, and other values will be invalid.
      * 
      */
@@ -384,7 +384,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param portRange The range of port numbers relevant to the IP protocol. Default to &#34;-1/-1&#34;. When the protocol is tcp or udp, each side port number range from 1 to 65535 and &#39;-1/-1&#39; will be invalid.
+         * @param portRange (ForceNew) The range of port numbers relevant to the IP protocol. Default to &#34;-1/-1&#34;. When the protocol is tcp or udp, each side port number range from 1 to 65535 and &#39;-1/-1&#39; will be invalid.
          * For example, `1/200` means that the range of the port numbers is 1-200. Other protocols&#39; &#39;port_range&#39; can only be &#34;-1/-1&#34;, and other values will be invalid.
          * 
          * @return builder
@@ -396,7 +396,7 @@ public final class SecurityGroupRuleState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param portRange The range of port numbers relevant to the IP protocol. Default to &#34;-1/-1&#34;. When the protocol is tcp or udp, each side port number range from 1 to 65535 and &#39;-1/-1&#39; will be invalid.
+         * @param portRange (ForceNew) The range of port numbers relevant to the IP protocol. Default to &#34;-1/-1&#34;. When the protocol is tcp or udp, each side port number range from 1 to 65535 and &#39;-1/-1&#39; will be invalid.
          * For example, `1/200` means that the range of the port numbers is 1-200. Other protocols&#39; &#39;port_range&#39; can only be &#34;-1/-1&#34;, and other values will be invalid.
          * 
          * @return builder

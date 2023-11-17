@@ -44,7 +44,7 @@ export interface GetRegionsArgs {
      */
     outputFile?: string;
     /**
-     * The ID of the region.
+     * A list of Disk Replica Group IDs.
      */
     regionId?: string;
 }
@@ -93,7 +93,7 @@ export interface GetRegionsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of the region.
+     * A list of Disk Replica Group IDs.
      */
     regionId?: pulumi.Input<string>;
 }

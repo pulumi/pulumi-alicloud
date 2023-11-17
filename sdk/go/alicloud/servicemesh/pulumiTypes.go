@@ -2737,9 +2737,6 @@ type UserPermissionPermission struct {
 	// Whether the grant object is an entity.
 	IsRamRole *bool `pulumi:"isRamRole"`
 	// The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
-	// - `istio-admin`:  The administrator.
-	// - `istio-ops`: The administrator of the service mesh resource.
-	// - `istio-readonly`: The read only permission.
 	RoleName *string `pulumi:"roleName"`
 	// The role type. Valid Value: `custom`.
 	RoleType *string `pulumi:"roleType"`
@@ -2764,9 +2761,6 @@ type UserPermissionPermissionArgs struct {
 	// Whether the grant object is an entity.
 	IsRamRole pulumi.BoolPtrInput `pulumi:"isRamRole"`
 	// The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
-	// - `istio-admin`:  The administrator.
-	// - `istio-ops`: The administrator of the service mesh resource.
-	// - `istio-readonly`: The read only permission.
 	RoleName pulumi.StringPtrInput `pulumi:"roleName"`
 	// The role type. Valid Value: `custom`.
 	RoleType pulumi.StringPtrInput `pulumi:"roleType"`
@@ -2836,9 +2830,6 @@ func (o UserPermissionPermissionOutput) IsRamRole() pulumi.BoolPtrOutput {
 }
 
 // The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
-// - `istio-admin`:  The administrator.
-// - `istio-ops`: The administrator of the service mesh resource.
-// - `istio-readonly`: The read only permission.
 func (o UserPermissionPermissionOutput) RoleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v UserPermissionPermission) *string { return v.RoleName }).(pulumi.StringPtrOutput)
 }
@@ -5003,11 +4994,13 @@ func (o GetServiceMeshesMeshNetworkArrayOutput) Index(i pulumi.IntInput) GetServ
 }
 
 type GetVersionsVersion struct {
-	// The edition of the ASM instance.
+	// The edition of the ASM instance. Valid values:
+	// - Default: Standard Edition
+	// - Pro: Professional Edition
 	Edition string `pulumi:"edition"`
 	// The ASM version id. It formats as `<edition>:<version>`.
 	Id string `pulumi:"id"`
-	// The AMS version.
+	// A list of Service Mesh Service Meshes. Each element contains the following attributes:
 	Version string `pulumi:"version"`
 }
 
@@ -5023,11 +5016,13 @@ type GetVersionsVersionInput interface {
 }
 
 type GetVersionsVersionArgs struct {
-	// The edition of the ASM instance.
+	// The edition of the ASM instance. Valid values:
+	// - Default: Standard Edition
+	// - Pro: Professional Edition
 	Edition pulumi.StringInput `pulumi:"edition"`
 	// The ASM version id. It formats as `<edition>:<version>`.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The AMS version.
+	// A list of Service Mesh Service Meshes. Each element contains the following attributes:
 	Version pulumi.StringInput `pulumi:"version"`
 }
 
@@ -5082,7 +5077,9 @@ func (o GetVersionsVersionOutput) ToGetVersionsVersionOutputWithContext(ctx cont
 	return o
 }
 
-// The edition of the ASM instance.
+// The edition of the ASM instance. Valid values:
+// - Default: Standard Edition
+// - Pro: Professional Edition
 func (o GetVersionsVersionOutput) Edition() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVersionsVersion) string { return v.Edition }).(pulumi.StringOutput)
 }
@@ -5092,7 +5089,7 @@ func (o GetVersionsVersionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVersionsVersion) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The AMS version.
+// A list of Service Mesh Service Meshes. Each element contains the following attributes:
 func (o GetVersionsVersionOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVersionsVersion) string { return v.Version }).(pulumi.StringOutput)
 }

@@ -30,6 +30,7 @@ class AccessConfigurationArgs:
         :param pulumi.Input[str] description: The Description of the  Access Configuration. The description can be up to `1024` characters long.
         :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
                
+               
                * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]] permission_policies: The Policy List. See `permission_policies` below.
         :param pulumi.Input[str] relay_state: The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
@@ -89,6 +90,7 @@ class AccessConfigurationArgs:
     def force_remove_permission_policies(self) -> Optional[pulumi.Input[bool]]:
         """
         This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+
 
         * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         """
@@ -153,6 +155,7 @@ class _AccessConfigurationState:
         :param pulumi.Input[str] description: The Description of the  Access Configuration. The description can be up to `1024` characters long.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+               
                
                * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         :param pulumi.Input[Sequence[pulumi.Input['AccessConfigurationPermissionPolicyArgs']]] permission_policies: The Policy List. See `permission_policies` below.
@@ -229,6 +232,7 @@ class _AccessConfigurationState:
     def force_remove_permission_policies(self) -> Optional[pulumi.Input[bool]]:
         """
         This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+
 
         * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         """
@@ -311,6 +315,7 @@ class AccessConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] description: The Description of the  Access Configuration. The description can be up to `1024` characters long.
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+               
                
                * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessConfigurationPermissionPolicyArgs']]]] permission_policies: The Policy List. See `permission_policies` below.
@@ -414,6 +419,7 @@ class AccessConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] directory_id: The ID of the Directory.
         :param pulumi.Input[bool] force_remove_permission_policies: This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
                
+               
                * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['AccessConfigurationPermissionPolicyArgs']]]] permission_policies: The Policy List. See `permission_policies` below.
         :param pulumi.Input[str] relay_state: The RelayState of the Access Configuration, Cloud SSO users use this access configuration to access the RD account, the initial access page address. Must be the Alibaba Cloud console page, the default is the console home page.
@@ -470,6 +476,7 @@ class AccessConfiguration(pulumi.CustomResource):
     def force_remove_permission_policies(self) -> pulumi.Output[Optional[bool]]:
         """
         This parameter is used to force deletion `permission_policies`. Valid Value: `true` and `false`.
+
 
         * **NOTE:** The `permission_policies` will be removed automatically when the resource is deleted, please operate with caution. If there are left more permission policies in the access configuration, please remove them before deleting the access configuration.
         """

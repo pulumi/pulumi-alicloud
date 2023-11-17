@@ -189,9 +189,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - **as400**:AS/400.
      * - **Tablestore**: Tablestore.
      * - **NOTE:**
-     * - The default value is **MySQL**.
-     * - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-     * - This parameter or **job_id** must be passed in.
+     *   - The default value is **MySQL**.
+     *   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+     *   - This parameter or **job_id** must be passed in.
      * 
      */
     @Export(name="destinationEndpointEngineName", type=String.class, parameters={})
@@ -221,9 +221,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - **as400**:AS/400.
      * - **Tablestore**: Tablestore.
      * - **NOTE:**
-     * - The default value is **MySQL**.
-     * - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-     * - This parameter or **job_id** must be passed in.
+     *   - The default value is **MySQL**.
+     *   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+     *   - This parameter or **job_id** must be passed in.
      * 
      */
     public Output<String> destinationEndpointEngineName() {
@@ -376,7 +376,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * Source instance database engine type.
+     * (ForceNew, Optional) Source instance database engine type.
      * - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
      * - **PolarDB**:PolarDB MySQL.
      * - **polardb_o**:PolarDB O engine.
@@ -399,16 +399,16 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - **as400**:AS/400.
      * - **Tablestore**: Tablestore.
      * - **NOTE:**
-     * - The default value is **MySQL**.
-     * - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-     * - This parameter or **job_id** must be passed in.
+     *   - The default value is **MySQL**.
+     *   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+     *   - This parameter or **job_id** must be passed in.
      * 
      */
     @Export(name="sourceEndpointEngineName", type=String.class, parameters={})
     private Output<String> sourceEndpointEngineName;
 
     /**
-     * @return Source instance database engine type.
+     * @return (ForceNew, Optional) Source instance database engine type.
      * - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
      * - **PolarDB**:PolarDB MySQL.
      * - **polardb_o**:PolarDB O engine.
@@ -431,9 +431,9 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - **as400**:AS/400.
      * - **Tablestore**: Tablestore.
      * - **NOTE:**
-     * - The default value is **MySQL**.
-     * - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-     * - This parameter or **job_id** must be passed in.
+     *   - The default value is **MySQL**.
+     *   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+     *   - This parameter or **job_id** must be passed in.
      * 
      */
     public Output<String> sourceEndpointEngineName() {
@@ -540,8 +540,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
      * - When **Period** is **Year**, the values are 1, 2, 3, and 5.
      * - **NOTE:**
-     * - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-     * - The billing method of the subscription instance. You can set the parameter `period`.
+     *   - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+     *   - The billing method of the subscription instance. You can set the parameter `period`.
      * 
      */
     @Export(name="usedTime", type=Integer.class, parameters={})
@@ -552,8 +552,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
      * - When **Period** is **Year**, the values are 1, 2, 3, and 5.
      * - **NOTE:**
-     * - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-     * - The billing method of the subscription instance. You can set the parameter `period`.
+     *   - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+     *   - The billing method of the subscription instance. You can set the parameter `period`.
      * 
      */
     public Output<Optional<Integer>> usedTime() {

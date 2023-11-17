@@ -53,11 +53,11 @@ export interface GetVpcFirewallsArgs {
      */
     ids?: string[];
     /**
-     * The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+     * (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
      */
     lang?: string;
     /**
-     * The UID of the Alibaba Cloud member account.
+     * (ForceNew,Optional) The UID of the Alibaba Cloud member account.
      */
     memberUid?: string;
     /**
@@ -73,15 +73,15 @@ export interface GetVpcFirewallsArgs {
      */
     regionNo?: string;
     /**
-     * The status of the resource
+     * (ForceNew,Optional) The status of the resource
      */
     status?: string;
     /**
-     * The ID of the VPC firewall instance.
+     * (ForceNew,Optional) The ID of the VPC firewall instance.
      */
     vpcFirewallId?: string;
     /**
-     * The name of the VPC firewall instance.
+     * (ForceNew,Optional) The name of the VPC firewall instance.
      */
     vpcFirewallName?: string;
     /**
@@ -171,11 +171,11 @@ export interface GetVpcFirewallsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+     * (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
      */
     lang?: pulumi.Input<string>;
     /**
-     * The UID of the Alibaba Cloud member account.
+     * (ForceNew,Optional) The UID of the Alibaba Cloud member account.
      */
     memberUid?: pulumi.Input<string>;
     /**
@@ -191,15 +191,15 @@ export interface GetVpcFirewallsOutputArgs {
      */
     regionNo?: pulumi.Input<string>;
     /**
-     * The status of the resource
+     * (ForceNew,Optional) The status of the resource
      */
     status?: pulumi.Input<string>;
     /**
-     * The ID of the VPC firewall instance.
+     * (ForceNew,Optional) The ID of the VPC firewall instance.
      */
     vpcFirewallId?: pulumi.Input<string>;
     /**
-     * The name of the VPC firewall instance.
+     * (ForceNew,Optional) The name of the VPC firewall instance.
      */
     vpcFirewallName?: pulumi.Input<string>;
     /**

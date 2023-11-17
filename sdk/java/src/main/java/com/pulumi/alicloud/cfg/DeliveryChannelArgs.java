@@ -63,9 +63,6 @@ public final class DeliveryChannelArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
-     * - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-     * - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-     * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
      * 
      */
     @Import(name="deliveryChannelTargetArn", required=true)
@@ -73,9 +70,6 @@ public final class DeliveryChannelArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
-     * - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-     * - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-     * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
      * 
      */
     public Output<String> deliveryChannelTargetArn() {
@@ -222,9 +216,6 @@ public final class DeliveryChannelArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param deliveryChannelTargetArn The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
-         * - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-         * - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-         * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
          * 
          * @return builder
          * 
@@ -236,9 +227,6 @@ public final class DeliveryChannelArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param deliveryChannelTargetArn The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
-         * - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-         * - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-         * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
          * 
          * @return builder
          * 

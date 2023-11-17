@@ -24,7 +24,7 @@ type GetImagesImage struct {
 	ImageName string `pulumi:"imageName"`
 	// The type of the image. Valid values: `app`, `custom`, `system`.
 	ImageType string `pulumi:"imageType"`
-	// The platform of Plan supported.
+	// (Available in v1.161.0) The platform of Plan supported.
 	Platform string `pulumi:"platform"`
 }
 
@@ -50,7 +50,7 @@ type GetImagesImageArgs struct {
 	ImageName pulumi.StringInput `pulumi:"imageName"`
 	// The type of the image. Valid values: `app`, `custom`, `system`.
 	ImageType pulumi.StringInput `pulumi:"imageType"`
-	// The platform of Plan supported.
+	// (Available in v1.161.0) The platform of Plan supported.
 	Platform pulumi.StringInput `pulumi:"platform"`
 }
 
@@ -130,7 +130,7 @@ func (o GetImagesImageOutput) ImageType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.ImageType }).(pulumi.StringOutput)
 }
 
-// The platform of Plan supported.
+// (Available in v1.161.0) The platform of Plan supported.
 func (o GetImagesImageOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v GetImagesImage) string { return v.Platform }).(pulumi.StringOutput)
 }
@@ -837,7 +837,7 @@ type GetServerPlansPlan struct {
 	Memory int `pulumi:"memory"`
 	// The ID of the Instance Plan.
 	PlanId string `pulumi:"planId"`
-	// The platform of Plan supported.
+	// (Available in v1.161.0) The platform of Plan supported.
 	SupportPlatform string `pulumi:"supportPlatform"`
 }
 
@@ -867,7 +867,7 @@ type GetServerPlansPlanArgs struct {
 	Memory pulumi.IntInput `pulumi:"memory"`
 	// The ID of the Instance Plan.
 	PlanId pulumi.StringInput `pulumi:"planId"`
-	// The platform of Plan supported.
+	// (Available in v1.161.0) The platform of Plan supported.
 	SupportPlatform pulumi.StringInput `pulumi:"supportPlatform"`
 }
 
@@ -957,7 +957,7 @@ func (o GetServerPlansPlanOutput) PlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerPlansPlan) string { return v.PlanId }).(pulumi.StringOutput)
 }
 
-// The platform of Plan supported.
+// (Available in v1.161.0) The platform of Plan supported.
 func (o GetServerPlansPlanOutput) SupportPlatform() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerPlansPlan) string { return v.SupportPlatform }).(pulumi.StringOutput)
 }

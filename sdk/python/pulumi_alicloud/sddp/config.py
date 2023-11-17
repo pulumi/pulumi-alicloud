@@ -24,6 +24,9 @@ class ConfigArgs:
         :param pulumi.Input[str] description: Abnormal Alarm General Description of the Configuration Item.
         :param pulumi.Input[str] lang: The language of the request and response. Valid values: `zh`,`en`.
         :param pulumi.Input[str] value: The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+               * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold. 
+               * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold. 
+               * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
         """
         if code is not None:
             pulumi.set(__self__, "code", code)
@@ -75,6 +78,9 @@ class ConfigArgs:
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+        * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold. 
+        * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold. 
+        * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
         """
         return pulumi.get(self, "value")
 
@@ -96,6 +102,9 @@ class _ConfigState:
         :param pulumi.Input[str] description: Abnormal Alarm General Description of the Configuration Item.
         :param pulumi.Input[str] lang: The language of the request and response. Valid values: `zh`,`en`.
         :param pulumi.Input[str] value: The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+               * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold. 
+               * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold. 
+               * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
         """
         if code is not None:
             pulumi.set(__self__, "code", code)
@@ -147,6 +156,9 @@ class _ConfigState:
     def value(self) -> Optional[pulumi.Input[str]]:
         """
         The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+        * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold. 
+        * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold. 
+        * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
         """
         return pulumi.get(self, "value")
 
@@ -199,6 +211,9 @@ class Config(pulumi.CustomResource):
         :param pulumi.Input[str] description: Abnormal Alarm General Description of the Configuration Item.
         :param pulumi.Input[str] lang: The language of the request and response. Valid values: `zh`,`en`.
         :param pulumi.Input[str] value: The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+               * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold. 
+               * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold. 
+               * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
         """
         ...
     @overload
@@ -291,6 +306,9 @@ class Config(pulumi.CustomResource):
         :param pulumi.Input[str] description: Abnormal Alarm General Description of the Configuration Item.
         :param pulumi.Input[str] lang: The language of the request and response. Valid values: `zh`,`en`.
         :param pulumi.Input[str] value: The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+               * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold. 
+               * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold. 
+               * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -331,6 +349,9 @@ class Config(pulumi.CustomResource):
     def value(self) -> pulumi.Output[Optional[str]]:
         """
         The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+        * `access_failed_cnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold. 
+        * `access_permission_exprie_max_days`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold. 
+        * `log_datasize_avg_days`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
         """
         return pulumi.get(self, "value")
 

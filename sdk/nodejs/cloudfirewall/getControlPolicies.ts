@@ -63,7 +63,7 @@ export interface GetControlPoliciesArgs {
      */
     destination?: string;
     /**
-     * The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+     * Direction. Valid values: `in`, `out`.
      */
     direction: string;
     /**
@@ -79,7 +79,7 @@ export interface GetControlPoliciesArgs {
      */
     outputFile?: string;
     /**
-     * The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+     * The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
      */
     proto?: string;
     /**
@@ -157,7 +157,7 @@ export interface GetControlPoliciesOutputArgs {
      */
     destination?: pulumi.Input<string>;
     /**
-     * The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+     * Direction. Valid values: `in`, `out`.
      */
     direction: pulumi.Input<string>;
     /**
@@ -173,7 +173,7 @@ export interface GetControlPoliciesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+     * The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
      */
     proto?: pulumi.Input<string>;
     /**

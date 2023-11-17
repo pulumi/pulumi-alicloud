@@ -74,6 +74,7 @@ type GetSecurityGroupsArgs struct {
 	// The Id of resource group which the securityGroup belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -153,6 +154,7 @@ type GetSecurityGroupsOutputArgs struct {
 	// The Id of resource group which the securityGroup belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
+	//
 	// ```go
 	// package main
 	//

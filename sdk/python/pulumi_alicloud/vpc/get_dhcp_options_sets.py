@@ -152,12 +152,8 @@ def get_dhcp_options_sets(dhcp_options_set_name: Optional[str] = None,
     ```
 
 
-    :param str dhcp_options_set_name: The root domain, for example, example.com. After a DHCP options set is associated with a
-           Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
-           ECS instances in the VPC network.
-    :param str domain_name: The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
-           Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
-           instances in the VPC network.
+    :param str dhcp_options_set_name: The name of the DHCP options set.The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+    :param str domain_name: The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
     :param Sequence[str] ids: A list of Dhcp Options Set IDs.
     :param str name_regex: A regex string to filter results by Dhcp Options Set name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -221,12 +217,8 @@ def get_dhcp_options_sets_output(dhcp_options_set_name: Optional[pulumi.Input[Op
     ```
 
 
-    :param str dhcp_options_set_name: The root domain, for example, example.com. After a DHCP options set is associated with a
-           Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
-           ECS instances in the VPC network.
-    :param str domain_name: The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
-           Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
-           instances in the VPC network.
+    :param str dhcp_options_set_name: The name of the DHCP options set.The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
+    :param str domain_name: The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
     :param Sequence[str] ids: A list of Dhcp Options Set IDs.
     :param str name_regex: A regex string to filter results by Dhcp Options Set name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

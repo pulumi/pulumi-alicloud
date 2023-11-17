@@ -15,7 +15,7 @@ public final class GetContainerGroupsGroupDnsConfigOption {
      */
     private String name;
     /**
-     * @return The value of the variable.
+     * @return The value of the object variable.
      * 
      */
     private String value;
@@ -29,7 +29,7 @@ public final class GetContainerGroupsGroupDnsConfigOption {
         return this.name;
     }
     /**
-     * @return The value of the variable.
+     * @return The value of the object variable.
      * 
      */
     public String value() {

@@ -72,7 +72,7 @@ type GetGatewayVpnAttachmentsArgs struct {
 	PageSize   *int    `pulumi:"pageSize"`
 	// The status of the resource.
 	Status *string `pulumi:"status"`
-	// The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
+	// (Deprecated) The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
 	//
 	// Deprecated: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
 	VpnGatewayId *string `pulumi:"vpnGatewayId"`
@@ -119,7 +119,7 @@ type GetGatewayVpnAttachmentsOutputArgs struct {
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// The status of the resource.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
+	// (Deprecated) The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
 	//
 	// Deprecated: The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
 	VpnGatewayId pulumi.StringPtrInput `pulumi:"vpnGatewayId"`

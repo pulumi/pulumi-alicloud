@@ -76,14 +76,14 @@ public final class GetVaultsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
      * 
      */
     @Import(name="vaultType")
     private @Nullable String vaultType;
 
     /**
-     * @return The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+     * @return VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
      * 
      */
     public Optional<String> vaultType() {
@@ -173,7 +173,7 @@ public final class GetVaultsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vaultType The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+         * @param vaultType VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
          * 
          * @return builder
          * 

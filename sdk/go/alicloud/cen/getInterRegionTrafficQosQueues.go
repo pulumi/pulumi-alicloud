@@ -61,7 +61,7 @@ type GetInterRegionTrafficQosQueuesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The ID of the traffic scheduling policy.
+	// (ForceNew,Required) The ID of the traffic scheduling policy.
 	TrafficQosPolicyId string `pulumi:"trafficQosPolicyId"`
 }
 
@@ -102,7 +102,7 @@ type GetInterRegionTrafficQosQueuesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The ID of the traffic scheduling policy.
+	// (ForceNew,Required) The ID of the traffic scheduling policy.
 	TrafficQosPolicyId pulumi.StringInput `pulumi:"trafficQosPolicyId"`
 }
 

@@ -79,14 +79,7 @@ class AppGroupQuotaArgs:
         """
         :param pulumi.Input[int] compute_resource: Computing resources. Unit: LCU.
         :param pulumi.Input[int] doc_size: Storage Size. Unit: GB.
-        :param pulumi.Input[str] spec: Specification. Valid values: 
-               * `opensearch.share.junior`: Entry-level.
-               * `opensearch.share.common`: Shared universal.
-               * `opensearch.share.compute`: Shared computing.
-               * `opensearch.share.storage`: Shared storage type.
-               * `opensearch.private.common`: Exclusive universal type.
-               * `opensearch.private.compute`: Exclusive computing type.
-               * `opensearch.private.storage`: Exclusive storage type
+        :param pulumi.Input[str] spec: Specification. Valid values:
         :param pulumi.Input[int] qps: Search request. Unit: times/second.
         """
         pulumi.set(__self__, "compute_resource", compute_resource)
@@ -123,14 +116,7 @@ class AppGroupQuotaArgs:
     @pulumi.getter
     def spec(self) -> pulumi.Input[str]:
         """
-        Specification. Valid values: 
-        * `opensearch.share.junior`: Entry-level.
-        * `opensearch.share.common`: Shared universal.
-        * `opensearch.share.compute`: Shared computing.
-        * `opensearch.share.storage`: Shared storage type.
-        * `opensearch.private.common`: Exclusive universal type.
-        * `opensearch.private.compute`: Exclusive computing type.
-        * `opensearch.private.storage`: Exclusive storage type
+        Specification. Valid values:
         """
         return pulumi.get(self, "spec")
 

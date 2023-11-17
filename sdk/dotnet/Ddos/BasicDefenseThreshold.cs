@@ -69,6 +69,8 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// The type of the threshold to query. Valid values: `defense`,`blackhole`.
+        /// -`defense` - scrubbing threshold.
+        /// -`blackhole` - DDoS mitigation threshold.
         /// </summary>
         [Output("ddosType")]
         public Output<string> DdosType { get; private set; } = null!;
@@ -169,6 +171,8 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// The type of the threshold to query. Valid values: `defense`,`blackhole`.
+        /// -`defense` - scrubbing threshold.
+        /// -`blackhole` - DDoS mitigation threshold.
         /// </summary>
         [Input("ddosType", required: true)]
         public Input<string> DdosType { get; set; } = null!;
@@ -219,6 +223,8 @@ namespace Pulumi.AliCloud.Ddos
 
         /// <summary>
         /// The type of the threshold to query. Valid values: `defense`,`blackhole`.
+        /// -`defense` - scrubbing threshold.
+        /// -`blackhole` - DDoS mitigation threshold.
         /// </summary>
         [Input("ddosType")]
         public Input<string>? DdosType { get; set; }

@@ -202,7 +202,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The ID of the zone to which the ALB instance belongs.
+        /// The zone ID of the resource.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
@@ -324,7 +324,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The ID of the zone to which the ALB instance belongs.
+        /// The zone ID of the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -127,7 +127,7 @@ export class OtsBackupPlan extends pulumi.CustomResource {
     }
 
     /**
-     * Backup type. Valid values: `COMPLETE`.
+     * The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
     public readonly backupType!: pulumi.Output<string>;
     /**
@@ -143,7 +143,7 @@ export class OtsBackupPlan extends pulumi.CustomResource {
      */
     public readonly crossAccountUserId!: pulumi.Output<number | undefined>;
     /**
-     * Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+     * Whether to disable the backup task. Valid values: true, false.
      */
     public readonly disabled!: pulumi.Output<boolean>;
     /**
@@ -159,7 +159,7 @@ export class OtsBackupPlan extends pulumi.CustomResource {
      */
     public readonly otsDetails!: pulumi.Output<outputs.hbr.OtsBackupPlanOtsDetail[] | undefined>;
     /**
-     * Backup retention days, the minimum is 1.
+     * Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
     public readonly retention!: pulumi.Output<string>;
     /**
@@ -236,7 +236,7 @@ export class OtsBackupPlan extends pulumi.CustomResource {
  */
 export interface OtsBackupPlanState {
     /**
-     * Backup type. Valid values: `COMPLETE`.
+     * The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
     backupType?: pulumi.Input<string>;
     /**
@@ -252,7 +252,7 @@ export interface OtsBackupPlanState {
      */
     crossAccountUserId?: pulumi.Input<number>;
     /**
-     * Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+     * Whether to disable the backup task. Valid values: true, false.
      */
     disabled?: pulumi.Input<boolean>;
     /**
@@ -268,7 +268,7 @@ export interface OtsBackupPlanState {
      */
     otsDetails?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanOtsDetail>[]>;
     /**
-     * Backup retention days, the minimum is 1.
+     * Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
     retention?: pulumi.Input<string>;
     /**
@@ -292,7 +292,7 @@ export interface OtsBackupPlanState {
  */
 export interface OtsBackupPlanArgs {
     /**
-     * Backup type. Valid values: `COMPLETE`.
+     * The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
     backupType: pulumi.Input<string>;
     /**
@@ -308,7 +308,7 @@ export interface OtsBackupPlanArgs {
      */
     crossAccountUserId?: pulumi.Input<number>;
     /**
-     * Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+     * Whether to disable the backup task. Valid values: true, false.
      */
     disabled?: pulumi.Input<boolean>;
     /**
@@ -324,7 +324,7 @@ export interface OtsBackupPlanArgs {
      */
     otsDetails?: pulumi.Input<pulumi.Input<inputs.hbr.OtsBackupPlanOtsDetail>[]>;
     /**
-     * Backup retention days, the minimum is 1.
+     * Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
      */
     retention: pulumi.Input<string>;
     /**

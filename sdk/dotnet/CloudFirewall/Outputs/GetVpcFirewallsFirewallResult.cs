@@ -38,15 +38,15 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly string RegionStatus;
         /// <summary>
-        /// The status of the resource
+        /// (ForceNew,Optional) The status of the resource
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The ID of the VPC firewall instance.
+        /// (ForceNew,Optional) The ID of the VPC firewall instance.
         /// </summary>
         public readonly string VpcFirewallId;
         /// <summary>
-        /// The name of the VPC firewall instance.
+        /// (ForceNew,Optional) The name of the VPC firewall instance.
         /// </summary>
         public readonly string VpcFirewallName;
 

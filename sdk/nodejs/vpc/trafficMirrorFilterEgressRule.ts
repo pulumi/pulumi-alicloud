@@ -93,7 +93,7 @@ export class TrafficMirrorFilterEgressRule extends pulumi.CustomResource {
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
-     * . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+     * (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
      *
      * @deprecated Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
      */
@@ -212,7 +212,7 @@ export interface TrafficMirrorFilterEgressRuleState {
      */
     protocol?: pulumi.Input<string>;
     /**
-     * . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+     * (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
      *
      * @deprecated Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
      */
@@ -272,7 +272,7 @@ export interface TrafficMirrorFilterEgressRuleArgs {
      */
     protocol: pulumi.Input<string>;
     /**
-     * . Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
+     * (Deprecated since v1.211.0). Field 'rule_action' has been deprecated from provider version 1.211.0. New field 'action' instead.
      *
      * @deprecated Field 'rule_action' has been deprecated since provider version 1.211.0. New field 'action' instead.
      */

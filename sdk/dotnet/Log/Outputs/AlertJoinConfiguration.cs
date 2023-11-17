@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// </summary>
         public readonly string Condition;
         /// <summary>
-        /// including FixedRate,Hourly,Daily,Weekly,Cron.
+        /// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
         /// </summary>
         public readonly string Type;
 

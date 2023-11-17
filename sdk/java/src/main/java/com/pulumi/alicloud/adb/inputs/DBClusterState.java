@@ -80,7 +80,7 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+     * (Deprecated since v1.121.2) It duplicates with attribute db_node_class and is deprecated from 1.121.2.
      * 
      * @deprecated
      * It duplicates with attribute db_node_class and is deprecated from 1.121.2.
@@ -91,7 +91,7 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> dbClusterClass;
 
     /**
-     * @return It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+     * @return (Deprecated since v1.121.2) It duplicates with attribute db_node_class and is deprecated from 1.121.2.
      * 
      * @deprecated
      * It duplicates with attribute db_node_class and is deprecated from 1.121.2.
@@ -268,7 +268,7 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `pay_type` has been deprecated. New field `payment_type` instead.
+     * (Deprecated since v1.166.0) Field `pay_type` has been deprecated. New field `payment_type` instead.
      * 
      * @deprecated
      * Attribute &#39;pay_type&#39; has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
@@ -279,7 +279,7 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> payType;
 
     /**
-     * @return Field `pay_type` has been deprecated. New field `payment_type` instead.
+     * @return (Deprecated since v1.166.0) Field `pay_type` has been deprecated. New field `payment_type` instead.
      * 
      * @deprecated
      * Attribute &#39;pay_type&#39; has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute &#39;payment_type&#39; instead.
@@ -601,7 +601,7 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterClass It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+         * @param dbClusterClass (Deprecated since v1.121.2) It duplicates with attribute db_node_class and is deprecated from 1.121.2.
          * 
          * @return builder
          * 
@@ -616,7 +616,7 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dbClusterClass It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+         * @param dbClusterClass (Deprecated since v1.121.2) It duplicates with attribute db_node_class and is deprecated from 1.121.2.
          * 
          * @return builder
          * 
@@ -861,7 +861,7 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param payType Field `pay_type` has been deprecated. New field `payment_type` instead.
+         * @param payType (Deprecated since v1.166.0) Field `pay_type` has been deprecated. New field `payment_type` instead.
          * 
          * @return builder
          * 
@@ -876,7 +876,7 @@ public final class DBClusterState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param payType Field `pay_type` has been deprecated. New field `payment_type` instead.
+         * @param payType (Deprecated since v1.166.0) Field `pay_type` has been deprecated. New field `payment_type` instead.
          * 
          * @return builder
          * 

@@ -76,14 +76,14 @@ public final class GetResourceSharesPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The owner of resource share.
+     * The owner of resource share, Valid values: `Self` and `OtherAccounts`.
      * 
      */
     @Import(name="resourceShareOwner", required=true)
     private String resourceShareOwner;
 
     /**
-     * @return The owner of resource share.
+     * @return The owner of resource share, Valid values: `Self` and `OtherAccounts`.
      * 
      */
     public String resourceShareOwner() {
@@ -91,14 +91,14 @@ public final class GetResourceSharesPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The status of resource share.
+     * The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of resource share.
+     * @return The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
      * 
      */
     public Optional<String> status() {
@@ -189,7 +189,7 @@ public final class GetResourceSharesPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param resourceShareOwner The owner of resource share.
+         * @param resourceShareOwner The owner of resource share, Valid values: `Self` and `OtherAccounts`.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class GetResourceSharesPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param status The status of resource share.
+         * @param status The status of resource share. Valid values: `Active`,`Deleted` and `Deleting`.
          * 
          * @return builder
          * 

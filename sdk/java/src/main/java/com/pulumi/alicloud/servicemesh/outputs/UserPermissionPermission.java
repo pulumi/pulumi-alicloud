@@ -24,9 +24,6 @@ public final class UserPermissionPermission {
     private @Nullable Boolean isRamRole;
     /**
      * @return The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
-     * - `istio-admin`:  The administrator.
-     * - `istio-ops`: The administrator of the service mesh resource.
-     * - `istio-readonly`: The read only permission.
      * 
      */
     private @Nullable String roleName;
@@ -58,9 +55,6 @@ public final class UserPermissionPermission {
     }
     /**
      * @return The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
-     * - `istio-admin`:  The administrator.
-     * - `istio-ops`: The administrator of the service mesh resource.
-     * - `istio-readonly`: The read only permission.
      * 
      */
     public Optional<String> roleName() {

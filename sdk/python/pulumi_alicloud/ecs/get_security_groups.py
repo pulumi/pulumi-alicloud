@@ -204,6 +204,7 @@ def get_security_groups(enable_details: Optional[bool] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the security_group belongs.
     :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
+           
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -278,6 +279,7 @@ def get_security_groups_output(enable_details: Optional[pulumi.Input[Optional[bo
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the security_group belongs.
     :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
+           
            ```python
            import pulumi
            import pulumi_alicloud as alicloud

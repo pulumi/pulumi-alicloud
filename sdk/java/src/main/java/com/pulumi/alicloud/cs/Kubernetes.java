@@ -117,14 +117,14 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return this.availabilityZone;
     }
     /**
-     * Nested attribute containing certificate authority data for your cluster.
+     * (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      * 
      */
     @Export(name="certificateAuthority", type=KubernetesCertificateAuthority.class, parameters={})
     private Output<KubernetesCertificateAuthority> certificateAuthority;
 
     /**
-     * @return Nested attribute containing certificate authority data for your cluster.
+     * @return (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      * 
      */
     public Output<KubernetesCertificateAuthority> certificateAuthority() {
@@ -187,14 +187,14 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.clusterDomain);
     }
     /**
-     * Map of kubernetes cluster connection information.
+     * (Map) Map of kubernetes cluster connection information.
      * 
      */
     @Export(name="connections", type=KubernetesConnections.class, parameters={})
     private Output<KubernetesConnections> connections;
 
     /**
-     * @return Map of kubernetes cluster connection information.
+     * @return (Map) Map of kubernetes cluster connection information.
      * 
      */
     public Output<KubernetesConnections> connections() {
@@ -845,7 +845,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serviceCidr);
     }
     /**
-     * The ID of load balancer.
+     * (Deprecated) The ID of load balancer.
      * 
      * @deprecated
      * Field &#39;slb_id&#39; has been deprecated from provider version 1.9.2. New field &#39;slb_internet&#39; replaces it.
@@ -856,7 +856,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
     private Output<String> slbId;
 
     /**
-     * @return The ID of load balancer.
+     * @return (Deprecated) The ID of load balancer.
      * 
      */
     public Output<String> slbId() {
@@ -1039,7 +1039,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.workerAutoRenew);
     }
     /**
-     * Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+     * (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
      * 
      * @deprecated
      * Field &#39;worker_auto_renew_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;auto_renew_period&#39; to replace it
@@ -1050,14 +1050,14 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
     private Output<Integer> workerAutoRenewPeriod;
 
     /**
-     * @return Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+     * @return (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
      * 
      */
     public Output<Integer> workerAutoRenewPeriod() {
         return this.workerAutoRenewPeriod;
     }
     /**
-     * The data disk category of worker, use `worker_data_disks` to instead it.
+     * (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
      * 
      * @deprecated
      * Field &#39;worker_data_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks.category&#39; to replace it
@@ -1068,7 +1068,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> workerDataDiskCategory;
 
     /**
-     * @return The data disk category of worker, use `worker_data_disks` to instead it.
+     * @return (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
      * 
      */
     public Output<Optional<String>> workerDataDiskCategory() {
@@ -1227,7 +1227,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.workerInstanceTypes);
     }
     /**
-     * List of cluster worker nodes. See `worker_nodes` below.
+     * (Deprecated from version 1.177.0) List of cluster worker nodes. See `worker_nodes` below.
      * 
      * @deprecated
      * Field &#39;worker_nodes&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes.
@@ -1238,7 +1238,7 @@ public class Kubernetes extends com.pulumi.resources.CustomResource {
     private Output<List<KubernetesWorkerNode>> workerNodes;
 
     /**
-     * @return List of cluster worker nodes. See `worker_nodes` below.
+     * @return (Deprecated from version 1.177.0) List of cluster worker nodes. See `worker_nodes` below.
      * 
      */
     public Output<List<KubernetesWorkerNode>> workerNodes() {

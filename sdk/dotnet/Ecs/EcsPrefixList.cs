@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> AddressFamily { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        /// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -141,7 +141,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string> AddressFamily { get; set; } = null!;
 
         /// <summary>
-        /// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        /// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -185,7 +185,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AddressFamily { get; set; }
 
         /// <summary>
-        /// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        /// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

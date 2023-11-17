@@ -16,14 +16,14 @@ public final class GetClusterCredentialPlainArgs extends com.pulumi.resources.In
     public static final GetClusterCredentialPlainArgs Empty = new GetClusterCredentialPlainArgs();
 
     /**
-     * The id of target cluster.
+     * (**Required**) The id of target cluster.
      * 
      */
     @Import(name="clusterId", required=true)
     private String clusterId;
 
     /**
-     * @return The id of target cluster.
+     * @return (**Required**) The id of target cluster.
      * 
      */
     public String clusterId() {
@@ -87,7 +87,7 @@ public final class GetClusterCredentialPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param clusterId The id of target cluster.
+         * @param clusterId (**Required**) The id of target cluster.
          * 
          * @return builder
          * 

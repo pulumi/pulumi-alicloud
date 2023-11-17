@@ -112,7 +112,7 @@ export class ElasticInstance extends pulumi.CustomResource {
      */
     public readonly instanceNetworkType!: pulumi.Output<string | undefined>;
     /**
-     * The specification of segment nodes. 
+     * The specification of segment nodes.
      * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
      * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      */
@@ -289,7 +289,7 @@ export interface ElasticInstanceState {
      */
     instanceNetworkType?: pulumi.Input<string>;
     /**
-     * The specification of segment nodes. 
+     * The specification of segment nodes.
      * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
      * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      */
@@ -379,7 +379,7 @@ export interface ElasticInstanceArgs {
      */
     instanceNetworkType?: pulumi.Input<string>;
     /**
-     * The specification of segment nodes. 
+     * The specification of segment nodes.
      * * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
      * * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
      */

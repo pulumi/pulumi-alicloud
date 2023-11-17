@@ -61,11 +61,11 @@ export interface GetBandwidthPackagesArgs {
      */
     outputFile?: string;
     /**
-     * The status of the bandwidth plan.
+     * The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
      */
     status?: string;
     /**
-     * The type of the bandwidth packet. China station only supports return to basic.
+     * The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
      */
     type?: string;
 }
@@ -132,11 +132,11 @@ export interface GetBandwidthPackagesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the bandwidth plan.
+     * The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The type of the bandwidth packet. China station only supports return to basic.
+     * The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
      */
     type?: pulumi.Input<string>;
 }

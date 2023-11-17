@@ -78,7 +78,7 @@ export interface GetServerPlansArgs {
      */
     outputFile?: string;
     /**
-     * The platform of Plan supported. Valid values: ["Linux", "Windows"].
+     * (Available in v1.161.0) The platform of Plan supported. Valid values: ["Linux", "Windows"].
      */
     platform?: string;
 }
@@ -161,7 +161,7 @@ export interface GetServerPlansOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The platform of Plan supported. Valid values: ["Linux", "Windows"].
+     * (Available in v1.161.0) The platform of Plan supported. Valid values: ["Linux", "Windows"].
      */
     platform?: pulumi.Input<string>;
 }

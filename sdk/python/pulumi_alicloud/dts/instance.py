@@ -67,9 +67,9 @@ class InstanceArgs:
                - **as400**:AS/400.
                - **Tablestore**: Tablestore.
                - **NOTE:**
-               - The default value is **MySQL**.
-               - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-               - This parameter or **job_id** must be passed in.
+                 - The default value is **MySQL**.
+                 - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+                 - This parameter or **job_id** must be passed in.
         :param pulumi.Input[str] destination_region: The target instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
         :param pulumi.Input[int] du: Assign a specified number of DU resources to DTS tasks in the DTS exclusive cluster. Valid values: **1** ~ **100**. **NOTE:** The value of this parameter must be within the range of the number of DUs available for the DTS dedicated cluster.
         :param pulumi.Input[str] fee_type: Subscription billing type, Valid values: `ONLY_CONFIGURATION_FEE`: charges only configuration fees; `CONFIGURATION_FEE_AND_DATA_FEE`: charges configuration fees and data traffic fees.
@@ -81,7 +81,7 @@ class InstanceArgs:
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[str] period: The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `payment_type` is `Subscription`.
         :param pulumi.Input[str] resource_group_id: Resource Group ID.
-        :param pulumi.Input[str] source_endpoint_engine_name: Source instance database engine type.
+        :param pulumi.Input[str] source_endpoint_engine_name: (ForceNew, Optional) Source instance database engine type.
                - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
                - **PolarDB**:PolarDB MySQL.
                - **polardb_o**:PolarDB O engine.
@@ -104,9 +104,9 @@ class InstanceArgs:
                - **as400**:AS/400.
                - **Tablestore**: Tablestore.
                - **NOTE:**
-               - The default value is **MySQL**.
-               - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-               - This parameter or **job_id** must be passed in.
+                 - The default value is **MySQL**.
+                 - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+                 - This parameter or **job_id** must be passed in.
         :param pulumi.Input[str] source_region: The source instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
         :param pulumi.Input[str] sync_architecture: Synchronization topology, value:
                - **oneway**: one-way synchronization, the default value.
@@ -122,8 +122,8 @@ class InstanceArgs:
                - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
                - When **Period** is **Year**, the values are 1, 2, 3, and 5.
                - **NOTE:**
-               - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-               - The billing method of the subscription instance. You can set the parameter `period`.
+                 - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+                 - The billing method of the subscription instance. You can set the parameter `period`.
         """
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
@@ -245,9 +245,9 @@ class InstanceArgs:
         - **as400**:AS/400.
         - **Tablestore**: Tablestore.
         - **NOTE:**
-        - The default value is **MySQL**.
-        - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-        - This parameter or **job_id** must be passed in.
+          - The default value is **MySQL**.
+          - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+          - This parameter or **job_id** must be passed in.
         """
         return pulumi.get(self, "destination_endpoint_engine_name")
 
@@ -358,7 +358,7 @@ class InstanceArgs:
     @pulumi.getter(name="sourceEndpointEngineName")
     def source_endpoint_engine_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Source instance database engine type.
+        (ForceNew, Optional) Source instance database engine type.
         - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
         - **PolarDB**:PolarDB MySQL.
         - **polardb_o**:PolarDB O engine.
@@ -381,9 +381,9 @@ class InstanceArgs:
         - **as400**:AS/400.
         - **Tablestore**: Tablestore.
         - **NOTE:**
-        - The default value is **MySQL**.
-        - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-        - This parameter or **job_id** must be passed in.
+          - The default value is **MySQL**.
+          - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+          - This parameter or **job_id** must be passed in.
         """
         return pulumi.get(self, "source_endpoint_engine_name")
 
@@ -465,8 +465,8 @@ class InstanceArgs:
         - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
         - When **Period** is **Year**, the values are 1, 2, 3, and 5.
         - **NOTE:**
-        - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-        - The billing method of the subscription instance. You can set the parameter `period`.
+          - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+          - The billing method of the subscription instance. You can set the parameter `period`.
         """
         return pulumi.get(self, "used_time")
 
@@ -536,9 +536,9 @@ class _InstanceState:
                - **as400**:AS/400.
                - **Tablestore**: Tablestore.
                - **NOTE:**
-               - The default value is **MySQL**.
-               - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-               - This parameter or **job_id** must be passed in.
+                 - The default value is **MySQL**.
+                 - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+                 - This parameter or **job_id** must be passed in.
         :param pulumi.Input[str] destination_region: The target instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
         :param pulumi.Input[str] dts_instance_id: The ID of the subscription instance.
         :param pulumi.Input[int] du: Assign a specified number of DU resources to DTS tasks in the DTS exclusive cluster. Valid values: **1** ~ **100**. **NOTE:** The value of this parameter must be within the range of the number of DUs available for the DTS dedicated cluster.
@@ -552,7 +552,7 @@ class _InstanceState:
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[str] period: The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `payment_type` is `Subscription`.
         :param pulumi.Input[str] resource_group_id: Resource Group ID.
-        :param pulumi.Input[str] source_endpoint_engine_name: Source instance database engine type.
+        :param pulumi.Input[str] source_endpoint_engine_name: (ForceNew, Optional) Source instance database engine type.
                - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
                - **PolarDB**:PolarDB MySQL.
                - **polardb_o**:PolarDB O engine.
@@ -575,9 +575,9 @@ class _InstanceState:
                - **as400**:AS/400.
                - **Tablestore**: Tablestore.
                - **NOTE:**
-               - The default value is **MySQL**.
-               - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-               - This parameter or **job_id** must be passed in.
+                 - The default value is **MySQL**.
+                 - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+                 - This parameter or **job_id** must be passed in.
         :param pulumi.Input[str] source_region: The source instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
         :param pulumi.Input[str] status: Instance status.
         :param pulumi.Input[str] sync_architecture: Synchronization topology, value:
@@ -594,8 +594,8 @@ class _InstanceState:
                - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
                - When **Period** is **Year**, the values are 1, 2, 3, and 5.
                - **NOTE:**
-               - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-               - The billing method of the subscription instance. You can set the parameter `period`.
+                 - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+                 - The billing method of the subscription instance. You can set the parameter `period`.
         """
         if auto_pay is not None:
             pulumi.set(__self__, "auto_pay", auto_pay)
@@ -737,9 +737,9 @@ class _InstanceState:
         - **as400**:AS/400.
         - **Tablestore**: Tablestore.
         - **NOTE:**
-        - The default value is **MySQL**.
-        - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-        - This parameter or **job_id** must be passed in.
+          - The default value is **MySQL**.
+          - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+          - This parameter or **job_id** must be passed in.
         """
         return pulumi.get(self, "destination_endpoint_engine_name")
 
@@ -874,7 +874,7 @@ class _InstanceState:
     @pulumi.getter(name="sourceEndpointEngineName")
     def source_endpoint_engine_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Source instance database engine type.
+        (ForceNew, Optional) Source instance database engine type.
         - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
         - **PolarDB**:PolarDB MySQL.
         - **polardb_o**:PolarDB O engine.
@@ -897,9 +897,9 @@ class _InstanceState:
         - **as400**:AS/400.
         - **Tablestore**: Tablestore.
         - **NOTE:**
-        - The default value is **MySQL**.
-        - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-        - This parameter or **job_id** must be passed in.
+          - The default value is **MySQL**.
+          - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+          - This parameter or **job_id** must be passed in.
         """
         return pulumi.get(self, "source_endpoint_engine_name")
 
@@ -993,8 +993,8 @@ class _InstanceState:
         - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
         - When **Period** is **Year**, the values are 1, 2, 3, and 5.
         - **NOTE:**
-        - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-        - The billing method of the subscription instance. You can set the parameter `period`.
+          - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+          - The billing method of the subscription instance. You can set the parameter `period`.
         """
         return pulumi.get(self, "used_time")
 
@@ -1098,9 +1098,9 @@ class Instance(pulumi.CustomResource):
                - **as400**:AS/400.
                - **Tablestore**: Tablestore.
                - **NOTE:**
-               - The default value is **MySQL**.
-               - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-               - This parameter or **job_id** must be passed in.
+                 - The default value is **MySQL**.
+                 - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+                 - This parameter or **job_id** must be passed in.
         :param pulumi.Input[str] destination_region: The target instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
         :param pulumi.Input[int] du: Assign a specified number of DU resources to DTS tasks in the DTS exclusive cluster. Valid values: **1** ~ **100**. **NOTE:** The value of this parameter must be within the range of the number of DUs available for the DTS dedicated cluster.
         :param pulumi.Input[str] fee_type: Subscription billing type, Valid values: `ONLY_CONFIGURATION_FEE`: charges only configuration fees; `CONFIGURATION_FEE_AND_DATA_FEE`: charges configuration fees and data traffic fees.
@@ -1112,7 +1112,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[str] period: The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `payment_type` is `Subscription`.
         :param pulumi.Input[str] resource_group_id: Resource Group ID.
-        :param pulumi.Input[str] source_endpoint_engine_name: Source instance database engine type.
+        :param pulumi.Input[str] source_endpoint_engine_name: (ForceNew, Optional) Source instance database engine type.
                - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
                - **PolarDB**:PolarDB MySQL.
                - **polardb_o**:PolarDB O engine.
@@ -1135,9 +1135,9 @@ class Instance(pulumi.CustomResource):
                - **as400**:AS/400.
                - **Tablestore**: Tablestore.
                - **NOTE:**
-               - The default value is **MySQL**.
-               - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-               - This parameter or **job_id** must be passed in.
+                 - The default value is **MySQL**.
+                 - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+                 - This parameter or **job_id** must be passed in.
         :param pulumi.Input[str] source_region: The source instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
         :param pulumi.Input[str] sync_architecture: Synchronization topology, value:
                - **oneway**: one-way synchronization, the default value.
@@ -1153,8 +1153,8 @@ class Instance(pulumi.CustomResource):
                - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
                - When **Period** is **Year**, the values are 1, 2, 3, and 5.
                - **NOTE:**
-               - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-               - The billing method of the subscription instance. You can set the parameter `period`.
+                 - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+                 - The billing method of the subscription instance. You can set the parameter `period`.
         """
         ...
     @overload
@@ -1339,9 +1339,9 @@ class Instance(pulumi.CustomResource):
                - **as400**:AS/400.
                - **Tablestore**: Tablestore.
                - **NOTE:**
-               - The default value is **MySQL**.
-               - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-               - This parameter or **job_id** must be passed in.
+                 - The default value is **MySQL**.
+                 - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+                 - This parameter or **job_id** must be passed in.
         :param pulumi.Input[str] destination_region: The target instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
         :param pulumi.Input[str] dts_instance_id: The ID of the subscription instance.
         :param pulumi.Input[int] du: Assign a specified number of DU resources to DTS tasks in the DTS exclusive cluster. Valid values: **1** ~ **100**. **NOTE:** The value of this parameter must be within the range of the number of DUs available for the DTS dedicated cluster.
@@ -1355,7 +1355,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[str] period: The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `payment_type` is `Subscription`.
         :param pulumi.Input[str] resource_group_id: Resource Group ID.
-        :param pulumi.Input[str] source_endpoint_engine_name: Source instance database engine type.
+        :param pulumi.Input[str] source_endpoint_engine_name: (ForceNew, Optional) Source instance database engine type.
                - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
                - **PolarDB**:PolarDB MySQL.
                - **polardb_o**:PolarDB O engine.
@@ -1378,9 +1378,9 @@ class Instance(pulumi.CustomResource):
                - **as400**:AS/400.
                - **Tablestore**: Tablestore.
                - **NOTE:**
-               - The default value is **MySQL**.
-               - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-               - This parameter or **job_id** must be passed in.
+                 - The default value is **MySQL**.
+                 - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+                 - This parameter or **job_id** must be passed in.
         :param pulumi.Input[str] source_region: The source instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
         :param pulumi.Input[str] status: Instance status.
         :param pulumi.Input[str] sync_architecture: Synchronization topology, value:
@@ -1397,8 +1397,8 @@ class Instance(pulumi.CustomResource):
                - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
                - When **Period** is **Year**, the values are 1, 2, 3, and 5.
                - **NOTE:**
-               - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-               - The billing method of the subscription instance. You can set the parameter `period`.
+                 - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+                 - The billing method of the subscription instance. You can set the parameter `period`.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1501,9 +1501,9 @@ class Instance(pulumi.CustomResource):
         - **as400**:AS/400.
         - **Tablestore**: Tablestore.
         - **NOTE:**
-        - The default value is **MySQL**.
-        - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-        - This parameter or **job_id** must be passed in.
+          - The default value is **MySQL**.
+          - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+          - This parameter or **job_id** must be passed in.
         """
         return pulumi.get(self, "destination_endpoint_engine_name")
 
@@ -1594,7 +1594,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="sourceEndpointEngineName")
     def source_endpoint_engine_name(self) -> pulumi.Output[str]:
         """
-        Source instance database engine type.
+        (ForceNew, Optional) Source instance database engine type.
         - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
         - **PolarDB**:PolarDB MySQL.
         - **polardb_o**:PolarDB O engine.
@@ -1617,9 +1617,9 @@ class Instance(pulumi.CustomResource):
         - **as400**:AS/400.
         - **Tablestore**: Tablestore.
         - **NOTE:**
-        - The default value is **MySQL**.
-        - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-        - This parameter or **job_id** must be passed in.
+          - The default value is **MySQL**.
+          - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+          - This parameter or **job_id** must be passed in.
         """
         return pulumi.get(self, "source_endpoint_engine_name")
 
@@ -1685,8 +1685,8 @@ class Instance(pulumi.CustomResource):
         - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
         - When **Period** is **Year**, the values are 1, 2, 3, and 5.
         - **NOTE:**
-        - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-        - The billing method of the subscription instance. You can set the parameter `period`.
+          - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+          - The billing method of the subscription instance. You can set the parameter `period`.
         """
         return pulumi.get(self, "used_time")
 

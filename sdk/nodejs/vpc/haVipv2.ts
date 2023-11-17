@@ -116,7 +116,7 @@ export class HaVipv2 extends pulumi.CustomResource {
      */
     public readonly haVipName!: pulumi.Output<string>;
     /**
-     * Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+     * (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
      *
      * @deprecated Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
      */
@@ -239,7 +239,7 @@ export interface HaVipv2State {
      */
     haVipName?: pulumi.Input<string>;
     /**
-     * Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+     * (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
      *
      * @deprecated Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
      */
@@ -289,7 +289,7 @@ export interface HaVipv2Args {
      */
     haVipName?: pulumi.Input<string>;
     /**
-     * Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+     * (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
      *
      * @deprecated Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
      */

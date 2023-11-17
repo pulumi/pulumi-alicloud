@@ -166,9 +166,9 @@ def get_honeypot_nodes(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Honeypot Node IDs.
-    :param str name_regex: A regex string to filter results by Honeypot Node name.
-    :param str node_id: Honeypot management node id.
-    :param str node_name: The name of the management node.
+    :param str name_regex: (ForceNew,Optional)  A regex string to filter results by Honeypot Node name.
+    :param str node_id: (ForceNew,Optional) Honeypot management node id.
+    :param str node_name: (ForceNew,Optional) The name of the management node.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
@@ -221,9 +221,9 @@ def get_honeypot_nodes_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
 
     :param Sequence[str] ids: A list of Honeypot Node IDs.
-    :param str name_regex: A regex string to filter results by Honeypot Node name.
-    :param str node_id: Honeypot management node id.
-    :param str node_name: The name of the management node.
+    :param str name_regex: (ForceNew,Optional)  A regex string to filter results by Honeypot Node name.
+    :param str node_id: (ForceNew,Optional) Honeypot management node id.
+    :param str node_name: (ForceNew,Optional) The name of the management node.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

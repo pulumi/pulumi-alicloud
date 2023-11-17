@@ -156,7 +156,7 @@ type GetGatewayVcoRoutesArgs struct {
 	PageSize   *int    `pulumi:"pageSize"`
 	// The Routing input type. Valid values: `custom`, `bgp`.
 	RouteEntryType *string `pulumi:"routeEntryType"`
-	// The status of the vpn route entry.
+	// The status of the vpn route entry. Valid values: `normal`, `published`.
 	Status *string `pulumi:"status"`
 	// The id of the vpn connection.
 	VpnConnectionId string `pulumi:"vpnConnectionId"`
@@ -199,7 +199,7 @@ type GetGatewayVcoRoutesOutputArgs struct {
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
 	// The Routing input type. Valid values: `custom`, `bgp`.
 	RouteEntryType pulumi.StringPtrInput `pulumi:"routeEntryType"`
-	// The status of the vpn route entry.
+	// The status of the vpn route entry. Valid values: `normal`, `published`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The id of the vpn connection.
 	VpnConnectionId pulumi.StringInput `pulumi:"vpnConnectionId"`

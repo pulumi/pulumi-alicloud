@@ -133,7 +133,7 @@ def get_db_instances(db_instance_description: Optional[str] = None,
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Db Instance IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+    :param str status: Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
     """
     __args__ = dict()
     __args__['dbInstanceDescription'] = db_instance_description
@@ -189,6 +189,6 @@ def get_db_instances_output(db_instance_description: Optional[pulumi.Input[Optio
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Db Instance IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+    :param str status: Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
     """
     ...

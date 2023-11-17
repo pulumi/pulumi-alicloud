@@ -91,14 +91,14 @@ public final class GetTransitRouterPrefixListAssociationsPlainArgs extends com.p
     }
 
     /**
-     * The status of the prefix list.
+     * The status of the prefix list. Valid Value: `Active`, `Updating`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the prefix list.
+     * @return The status of the prefix list. Valid Value: `Active`, `Updating`.
      * 
      */
     public Optional<String> status() {
@@ -232,7 +232,7 @@ public final class GetTransitRouterPrefixListAssociationsPlainArgs extends com.p
         }
 
         /**
-         * @param status The status of the prefix list.
+         * @param status The status of the prefix list. Valid Value: `Active`, `Updating`.
          * 
          * @return builder
          * 

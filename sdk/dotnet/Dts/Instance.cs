@@ -122,9 +122,9 @@ namespace Pulumi.AliCloud.Dts
         /// - **as400**:AS/400.
         /// - **Tablestore**: Tablestore.
         /// - **NOTE:**
-        /// - The default value is **MySQL**.
-        /// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-        /// - This parameter or **job_id** must be passed in.
+        ///   - The default value is **MySQL**.
+        ///   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+        ///   - This parameter or **job_id** must be passed in.
         /// </summary>
         [Output("destinationEndpointEngineName")]
         public Output<string> DestinationEndpointEngineName { get; private set; } = null!;
@@ -193,7 +193,7 @@ namespace Pulumi.AliCloud.Dts
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Source instance database engine type.
+        /// (ForceNew, Optional) Source instance database engine type.
         /// - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
         /// - **PolarDB**:PolarDB MySQL.
         /// - **polardb_o**:PolarDB O engine.
@@ -216,9 +216,9 @@ namespace Pulumi.AliCloud.Dts
         /// - **as400**:AS/400.
         /// - **Tablestore**: Tablestore.
         /// - **NOTE:**
-        /// - The default value is **MySQL**.
-        /// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-        /// - This parameter or **job_id** must be passed in.
+        ///   - The default value is **MySQL**.
+        ///   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+        ///   - This parameter or **job_id** must be passed in.
         /// </summary>
         [Output("sourceEndpointEngineName")]
         public Output<string> SourceEndpointEngineName { get; private set; } = null!;
@@ -270,8 +270,8 @@ namespace Pulumi.AliCloud.Dts
         /// - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
         /// - When **Period** is **Year**, the values are 1, 2, 3, and 5.
         /// - **NOTE:**
-        /// - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-        /// - The billing method of the subscription instance. You can set the parameter `period`.
+        ///   - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+        ///   - The billing method of the subscription instance. You can set the parameter `period`.
         /// </summary>
         [Output("usedTime")]
         public Output<int?> UsedTime { get; private set; } = null!;
@@ -374,9 +374,9 @@ namespace Pulumi.AliCloud.Dts
         /// - **as400**:AS/400.
         /// - **Tablestore**: Tablestore.
         /// - **NOTE:**
-        /// - The default value is **MySQL**.
-        /// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-        /// - This parameter or **job_id** must be passed in.
+        ///   - The default value is **MySQL**.
+        ///   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+        ///   - This parameter or **job_id** must be passed in.
         /// </summary>
         [Input("destinationEndpointEngineName")]
         public Input<string>? DestinationEndpointEngineName { get; set; }
@@ -433,7 +433,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Source instance database engine type.
+        /// (ForceNew, Optional) Source instance database engine type.
         /// - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
         /// - **PolarDB**:PolarDB MySQL.
         /// - **polardb_o**:PolarDB O engine.
@@ -456,9 +456,9 @@ namespace Pulumi.AliCloud.Dts
         /// - **as400**:AS/400.
         /// - **Tablestore**: Tablestore.
         /// - **NOTE:**
-        /// - The default value is **MySQL**.
-        /// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-        /// - This parameter or **job_id** must be passed in.
+        ///   - The default value is **MySQL**.
+        ///   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+        ///   - This parameter or **job_id** must be passed in.
         /// </summary>
         [Input("sourceEndpointEngineName")]
         public Input<string>? SourceEndpointEngineName { get; set; }
@@ -510,8 +510,8 @@ namespace Pulumi.AliCloud.Dts
         /// - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
         /// - When **Period** is **Year**, the values are 1, 2, 3, and 5.
         /// - **NOTE:**
-        /// - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-        /// - The billing method of the subscription instance. You can set the parameter `period`.
+        ///   - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+        ///   - The billing method of the subscription instance. You can set the parameter `period`.
         /// </summary>
         [Input("usedTime")]
         public Input<int>? UsedTime { get; set; }
@@ -582,9 +582,9 @@ namespace Pulumi.AliCloud.Dts
         /// - **as400**:AS/400.
         /// - **Tablestore**: Tablestore.
         /// - **NOTE:**
-        /// - The default value is **MySQL**.
-        /// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-        /// - This parameter or **job_id** must be passed in.
+        ///   - The default value is **MySQL**.
+        ///   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+        ///   - This parameter or **job_id** must be passed in.
         /// </summary>
         [Input("destinationEndpointEngineName")]
         public Input<string>? DestinationEndpointEngineName { get; set; }
@@ -653,7 +653,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Source instance database engine type.
+        /// (ForceNew, Optional) Source instance database engine type.
         /// - **MySQL**:MySQL databases (including RDS MySQL and self-built MySQL).
         /// - **PolarDB**:PolarDB MySQL.
         /// - **polardb_o**:PolarDB O engine.
@@ -676,9 +676,9 @@ namespace Pulumi.AliCloud.Dts
         /// - **as400**:AS/400.
         /// - **Tablestore**: Tablestore.
         /// - **NOTE:**
-        /// - The default value is **MySQL**.
-        /// - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
-        /// - This parameter or **job_id** must be passed in.
+        ///   - The default value is **MySQL**.
+        ///   - For more information about the supported source and destination databases, see [Database, Synchronization Initialization Type, and Synchronization Topology](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-synchronization-scenarios-1) and [Supported Database and Migration Type](https://www.alibabacloud.com/help/en/data-transmission-service/latest/overview-of-data-migration-scenarios).
+        ///   - This parameter or **job_id** must be passed in.
         /// </summary>
         [Input("sourceEndpointEngineName")]
         public Input<string>? SourceEndpointEngineName { get; set; }
@@ -736,8 +736,8 @@ namespace Pulumi.AliCloud.Dts
         /// - When **period** is **Month**, the values are: 1, 2, 3, 4, 5, 6, 7, 8, and 9.
         /// - When **Period** is **Year**, the values are 1, 2, 3, and 5.
         /// - **NOTE:**
-        /// - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
-        /// - The billing method of the subscription instance. You can set the parameter `period`.
+        ///   - This parameter is valid and must be passed in only when **payment_type** is `Subscription`.
+        ///   - The billing method of the subscription instance. You can set the parameter `period`.
         /// </summary>
         [Input("usedTime")]
         public Input<int>? UsedTime { get; set; }

@@ -40,7 +40,7 @@ export class KeyPairAttachment extends pulumi.CustomResource {
     }
 
     /**
-     * Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+     * (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
@@ -92,7 +92,7 @@ export class KeyPairAttachment extends pulumi.CustomResource {
  */
 export interface KeyPairAttachmentState {
     /**
-     * Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+     * (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
      */
     force?: pulumi.Input<boolean>;
     /**
@@ -113,7 +113,7 @@ export interface KeyPairAttachmentState {
  */
 export interface KeyPairAttachmentArgs {
     /**
-     * Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+     * (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
      */
     force?: pulumi.Input<boolean>;
     /**

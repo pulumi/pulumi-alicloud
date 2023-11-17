@@ -13,62 +13,62 @@ import javax.annotation.Nullable;
 @CustomType
 public final class HoneypotProbeHoneypotBindListBindPortList {
     /**
-     * @return Whether to bind the port.
+     * @return (ForceNew,Optional) Whether to bind the port.
      * 
      */
     private @Nullable Boolean bindPort;
     /**
-     * @return End port.
+     * @return (ForceNew,Optional) End port.
      * 
      */
     private @Nullable Integer endPort;
     /**
-     * @return Whether the port is fixed.
+     * @return (ForceNew,Optional) Whether the port is fixed.
      * 
      */
     private @Nullable Boolean fixed;
     /**
-     * @return Start port.
+     * @return (ForceNew,Optional) Start port.
      * 
      */
     private @Nullable Integer startPort;
     /**
-     * @return Destination port.
+     * @return (ForceNew,Optional) Destination port.
      * 
      */
     private @Nullable Integer targetPort;
 
     private HoneypotProbeHoneypotBindListBindPortList() {}
     /**
-     * @return Whether to bind the port.
+     * @return (ForceNew,Optional) Whether to bind the port.
      * 
      */
     public Optional<Boolean> bindPort() {
         return Optional.ofNullable(this.bindPort);
     }
     /**
-     * @return End port.
+     * @return (ForceNew,Optional) End port.
      * 
      */
     public Optional<Integer> endPort() {
         return Optional.ofNullable(this.endPort);
     }
     /**
-     * @return Whether the port is fixed.
+     * @return (ForceNew,Optional) Whether the port is fixed.
      * 
      */
     public Optional<Boolean> fixed() {
         return Optional.ofNullable(this.fixed);
     }
     /**
-     * @return Start port.
+     * @return (ForceNew,Optional) Start port.
      * 
      */
     public Optional<Integer> startPort() {
         return Optional.ofNullable(this.startPort);
     }
     /**
-     * @return Destination port.
+     * @return (ForceNew,Optional) Destination port.
      * 
      */
     public Optional<Integer> targetPort() {

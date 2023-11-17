@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly bool? Encrypted;
         public readonly string? Iops;
         /// <summary>
-        /// The name of the data disk.
+        /// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         /// </summary>
         public readonly string? Name;
         public readonly string? PerformanceLevel;

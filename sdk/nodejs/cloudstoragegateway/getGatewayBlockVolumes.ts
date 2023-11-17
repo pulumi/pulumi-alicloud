@@ -67,7 +67,7 @@ export interface GetGatewayBlockVolumesArgs {
      */
     outputFile?: string;
     /**
-     * The status of volume.
+     * The status of volume. Valid values:
      */
     status?: number;
 }
@@ -141,7 +141,7 @@ export interface GetGatewayBlockVolumesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of volume.
+     * The status of volume. Valid values:
      */
     status?: pulumi.Input<number>;
 }

@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Hbr
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+        /// The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
         /// </summary>
         [Input("startTime")]
         public string? StartTime { get; set; }
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+        /// The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }

@@ -141,14 +141,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/routeEntry:RouteEntry")
 public class RouteEntry extends com.pulumi.resources.CustomResource {
     /**
-     * The RouteEntry&#39;s target network segment.
+     * (ForceNew) The RouteEntry&#39;s target network segment.
      * 
      */
     @Export(name="destinationCidrblock", type=String.class, parameters={})
     private Output</* @Nullable */ String> destinationCidrblock;
 
     /**
-     * @return The RouteEntry&#39;s target network segment.
+     * @return (ForceNew) The RouteEntry&#39;s target network segment.
      * 
      */
     public Output<Optional<String>> destinationCidrblock() {
@@ -169,28 +169,28 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
+     * (ForceNew) The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
      * 
      */
     @Export(name="nexthopId", type=String.class, parameters={})
     private Output</* @Nullable */ String> nexthopId;
 
     /**
-     * @return The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
+     * @return (ForceNew) The route entry&#39;s next hop. ECS instance ID or VPC router interface ID.
      * 
      */
     public Output<Optional<String>> nexthopId() {
         return Codegen.optional(this.nexthopId);
     }
     /**
-     * The next hop type. Available values:
+     * (ForceNew) The next hop type. Available values:
      * 
      */
     @Export(name="nexthopType", type=String.class, parameters={})
     private Output</* @Nullable */ String> nexthopType;
 
     /**
-     * @return The next hop type. Available values:
+     * @return (ForceNew) The next hop type. Available values:
      * 
      */
     public Output<Optional<String>> nexthopType() {
@@ -211,7 +211,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
         return this.routeTableId;
     }
     /**
-     * This argument has been deprecated. Please use other arguments to launch a custom route entry.
+     * (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
      * 
      * @deprecated
      * Attribute router_id has been deprecated and suggest removing it from your template.
@@ -222,7 +222,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
     private Output<String> routerId;
 
     /**
-     * @return This argument has been deprecated. Please use other arguments to launch a custom route entry.
+     * @return (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
      * 
      */
     public Output<String> routerId() {

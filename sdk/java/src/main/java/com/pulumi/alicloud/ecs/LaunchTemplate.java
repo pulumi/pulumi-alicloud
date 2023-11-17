@@ -350,7 +350,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
         return this.launchTemplateName;
     }
     /**
-     * The name of the data disk.
+     * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
@@ -361,7 +361,7 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return The name of the data disk.
+     * @return Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
      * 
      */
     public Output<String> name() {
@@ -448,14 +448,14 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.securityEnhancementStrategy);
     }
     /**
-     * The security group ID must be one in the same VPC.
+     * The security group ID.
      * 
      */
     @Export(name="securityGroupId", type=String.class, parameters={})
     private Output</* @Nullable */ String> securityGroupId;
 
     /**
-     * @return The security group ID must be one in the same VPC.
+     * @return The security group ID.
      * 
      */
     public Output<Optional<String>> securityGroupId() {
@@ -662,14 +662,14 @@ public class LaunchTemplate extends com.pulumi.resources.CustomResource {
         return this.vpcId;
     }
     /**
-     * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      * 
      */
     @Export(name="vswitchId", type=String.class, parameters={})
     private Output</* @Nullable */ String> vswitchId;
 
     /**
-     * @return The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * @return When creating a VPC-Connected instance, you must specify its VSwitch ID.
      * 
      */
     public Output<Optional<String>> vswitchId() {

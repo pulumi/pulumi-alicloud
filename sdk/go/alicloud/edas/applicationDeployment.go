@@ -157,7 +157,7 @@ type ApplicationDeployment struct {
 	AppId pulumi.StringOutput `pulumi:"appId"`
 	// The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
-	// Last package version deployed.
+	// (ForceNew) Last package version deployed.
 	LastPackageVersion pulumi.StringOutput `pulumi:"lastPackageVersion"`
 	// The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
 	PackageVersion pulumi.StringPtrOutput `pulumi:"packageVersion"`
@@ -208,7 +208,7 @@ type applicationDeploymentState struct {
 	AppId *string `pulumi:"appId"`
 	// The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
 	GroupId *string `pulumi:"groupId"`
-	// Last package version deployed.
+	// (ForceNew) Last package version deployed.
 	LastPackageVersion *string `pulumi:"lastPackageVersion"`
 	// The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
 	PackageVersion *string `pulumi:"packageVersion"`
@@ -221,7 +221,7 @@ type ApplicationDeploymentState struct {
 	AppId pulumi.StringPtrInput
 	// The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
 	GroupId pulumi.StringPtrInput
-	// Last package version deployed.
+	// (ForceNew) Last package version deployed.
 	LastPackageVersion pulumi.StringPtrInput
 	// The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
 	PackageVersion pulumi.StringPtrInput
@@ -353,7 +353,7 @@ func (o ApplicationDeploymentOutput) GroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationDeployment) pulumi.StringOutput { return v.GroupId }).(pulumi.StringOutput)
 }
 
-// Last package version deployed.
+// (ForceNew) Last package version deployed.
 func (o ApplicationDeploymentOutput) LastPackageVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *ApplicationDeployment) pulumi.StringOutput { return v.LastPackageVersion }).(pulumi.StringOutput)
 }

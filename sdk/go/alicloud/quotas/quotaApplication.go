@@ -29,7 +29,7 @@ type QuotaApplication struct {
 	// Quota audit mode. Value:
 	// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
 	// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-	// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+	//   > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
 	AuditMode pulumi.StringOutput `pulumi:"auditMode"`
 	// The audit reason.
 	AuditReason pulumi.StringOutput `pulumi:"auditReason"`
@@ -121,7 +121,7 @@ type quotaApplicationState struct {
 	// Quota audit mode. Value:
 	// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
 	// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-	// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+	//   > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
 	AuditMode *string `pulumi:"auditMode"`
 	// The audit reason.
 	AuditReason *string `pulumi:"auditReason"`
@@ -172,7 +172,7 @@ type QuotaApplicationState struct {
 	// Quota audit mode. Value:
 	// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
 	// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-	// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+	//   > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
 	AuditMode pulumi.StringPtrInput
 	// The audit reason.
 	AuditReason pulumi.StringPtrInput
@@ -225,7 +225,7 @@ type quotaApplicationArgs struct {
 	// Quota audit mode. Value:
 	// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
 	// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-	// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+	//   > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
 	AuditMode *string `pulumi:"auditMode"`
 	// The desire value of the quota application.
 	DesireValue float64 `pulumi:"desireValue"`
@@ -259,7 +259,7 @@ type QuotaApplicationArgs struct {
 	// Quota audit mode. Value:
 	// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
 	// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-	// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+	//   > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
 	AuditMode pulumi.StringPtrInput
 	// The desire value of the quota application.
 	DesireValue pulumi.Float64Input
@@ -381,9 +381,9 @@ func (o QuotaApplicationOutput) ApproveValue() pulumi.StringOutput {
 }
 
 // Quota audit mode. Value:
-// - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
-// - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-// > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+//   - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
+//   - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
+//     > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
 func (o QuotaApplicationOutput) AuditMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *QuotaApplication) pulumi.StringOutput { return v.AuditMode }).(pulumi.StringOutput)
 }

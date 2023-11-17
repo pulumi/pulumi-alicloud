@@ -166,6 +166,9 @@ type FileSystem struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
 	// * Valid values:
+	//   * `0` (Default): The file system is not encrypted.
+	//   * `1`: The file system is encrypted with a managed secret key.
+	//   * `2` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`): User management key.
 	EncryptType pulumi.IntPtrOutput `pulumi:"encryptType"`
 	// the type of the file system.
 	// Valid values:
@@ -183,6 +186,12 @@ type FileSystem struct {
 	ProtocolType pulumi.StringOutput `pulumi:"protocolType"`
 	// The storage type of the file System.
 	// * Valid values:
+	//   * `Performance` (Available when the `fileSystemType` is `standard`)
+	//   * `Capacity` (Available when the `fileSystemType` is `standard`)
+	//   * `standard` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+	//   * `advance` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+	//   * `advance100` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
+	//   * `advance200` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
 	StorageType pulumi.StringOutput `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -237,6 +246,9 @@ type fileSystemState struct {
 	Description *string `pulumi:"description"`
 	// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
 	// * Valid values:
+	//   * `0` (Default): The file system is not encrypted.
+	//   * `1`: The file system is encrypted with a managed secret key.
+	//   * `2` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`): User management key.
 	EncryptType *int `pulumi:"encryptType"`
 	// the type of the file system.
 	// Valid values:
@@ -254,6 +266,12 @@ type fileSystemState struct {
 	ProtocolType *string `pulumi:"protocolType"`
 	// The storage type of the file System.
 	// * Valid values:
+	//   * `Performance` (Available when the `fileSystemType` is `standard`)
+	//   * `Capacity` (Available when the `fileSystemType` is `standard`)
+	//   * `standard` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+	//   * `advance` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+	//   * `advance100` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
+	//   * `advance200` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
 	StorageType *string `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -273,6 +291,9 @@ type FileSystemState struct {
 	Description pulumi.StringPtrInput
 	// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
 	// * Valid values:
+	//   * `0` (Default): The file system is not encrypted.
+	//   * `1`: The file system is encrypted with a managed secret key.
+	//   * `2` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`): User management key.
 	EncryptType pulumi.IntPtrInput
 	// the type of the file system.
 	// Valid values:
@@ -290,6 +311,12 @@ type FileSystemState struct {
 	ProtocolType pulumi.StringPtrInput
 	// The storage type of the file System.
 	// * Valid values:
+	//   * `Performance` (Available when the `fileSystemType` is `standard`)
+	//   * `Capacity` (Available when the `fileSystemType` is `standard`)
+	//   * `standard` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+	//   * `advance` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+	//   * `advance100` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
+	//   * `advance200` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
 	StorageType pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -313,6 +340,9 @@ type fileSystemArgs struct {
 	Description *string `pulumi:"description"`
 	// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
 	// * Valid values:
+	//   * `0` (Default): The file system is not encrypted.
+	//   * `1`: The file system is encrypted with a managed secret key.
+	//   * `2` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`): User management key.
 	EncryptType *int `pulumi:"encryptType"`
 	// the type of the file system.
 	// Valid values:
@@ -330,6 +360,12 @@ type fileSystemArgs struct {
 	ProtocolType string `pulumi:"protocolType"`
 	// The storage type of the file System.
 	// * Valid values:
+	//   * `Performance` (Available when the `fileSystemType` is `standard`)
+	//   * `Capacity` (Available when the `fileSystemType` is `standard`)
+	//   * `standard` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+	//   * `advance` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+	//   * `advance100` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
+	//   * `advance200` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
 	StorageType string `pulumi:"storageType"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -350,6 +386,9 @@ type FileSystemArgs struct {
 	Description pulumi.StringPtrInput
 	// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
 	// * Valid values:
+	//   * `0` (Default): The file system is not encrypted.
+	//   * `1`: The file system is encrypted with a managed secret key.
+	//   * `2` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`): User management key.
 	EncryptType pulumi.IntPtrInput
 	// the type of the file system.
 	// Valid values:
@@ -367,6 +406,12 @@ type FileSystemArgs struct {
 	ProtocolType pulumi.StringInput
 	// The storage type of the file System.
 	// * Valid values:
+	//   * `Performance` (Available when the `fileSystemType` is `standard`)
+	//   * `Capacity` (Available when the `fileSystemType` is `standard`)
+	//   * `standard` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+	//   * `advance` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+	//   * `advance100` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
+	//   * `advance200` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
 	StorageType pulumi.StringInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -478,6 +523,9 @@ func (o FileSystemOutput) Description() pulumi.StringPtrOutput {
 
 // Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
 // * Valid values:
+//   - `0` (Default): The file system is not encrypted.
+//   - `1`: The file system is encrypted with a managed secret key.
+//   - `2` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`): User management key.
 func (o FileSystemOutput) EncryptType() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.IntPtrOutput { return v.EncryptType }).(pulumi.IntPtrOutput)
 }
@@ -507,6 +555,12 @@ func (o FileSystemOutput) ProtocolType() pulumi.StringOutput {
 
 // The storage type of the file System.
 // * Valid values:
+//   - `Performance` (Available when the `fileSystemType` is `standard`)
+//   - `Capacity` (Available when the `fileSystemType` is `standard`)
+//   - `standard` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+//   - `advance` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+//   - `advance100` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
+//   - `advance200` (Available in v1.153.0+ and when the `fileSystemType` is `cpfs`)
 func (o FileSystemOutput) StorageType() pulumi.StringOutput {
 	return o.ApplyT(func(v *FileSystem) pulumi.StringOutput { return v.StorageType }).(pulumi.StringOutput)
 }

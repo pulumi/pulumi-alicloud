@@ -32,13 +32,13 @@ namespace Pulumi.AliCloud.Ga
     public sealed class GetDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the global acceleration instance.
+        /// (ForceNew,Optional) The ID of the global acceleration instance.
         /// </summary>
         [Input("acceleratorId")]
         public string? AcceleratorId { get; set; }
 
         /// <summary>
-        /// The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+        /// (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
         /// </summary>
         [Input("domain")]
         public string? Domain { get; set; }
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.Ga
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+        /// (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -82,13 +82,13 @@ namespace Pulumi.AliCloud.Ga
     public sealed class GetDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the global acceleration instance.
+        /// (ForceNew,Optional) The ID of the global acceleration instance.
         /// </summary>
         [Input("acceleratorId")]
         public Input<string>? AcceleratorId { get; set; }
 
         /// <summary>
-        /// The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+        /// (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+        /// (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

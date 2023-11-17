@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KubernetesCertificateAuthority {
     /**
-     * @return The path of client certificate, like `~/.kube/client-cert.pem`.
+     * @return The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
      * 
      */
     private @Nullable String clientCert;
     /**
-     * @return The path of client key, like `~/.kube/client-key.pem`.
+     * @return The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
      * 
      */
     private @Nullable String clientKey;
@@ -29,14 +29,14 @@ public final class KubernetesCertificateAuthority {
 
     private KubernetesCertificateAuthority() {}
     /**
-     * @return The path of client certificate, like `~/.kube/client-cert.pem`.
+     * @return The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
      * 
      */
     public Optional<String> clientCert() {
         return Optional.ofNullable(this.clientCert);
     }
     /**
-     * @return The path of client key, like `~/.kube/client-key.pem`.
+     * @return The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
      * 
      */
     public Optional<String> clientKey() {

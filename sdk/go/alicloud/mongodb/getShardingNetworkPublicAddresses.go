@@ -63,7 +63,7 @@ type GetShardingNetworkPublicAddressesArgs struct {
 	NodeId *string `pulumi:"nodeId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The role of the node.
+	// The role of the node. Valid values: `Primary` or `Secondary`.
 	Role *string `pulumi:"role"`
 }
 
@@ -99,7 +99,7 @@ type GetShardingNetworkPublicAddressesOutputArgs struct {
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The role of the node.
+	// The role of the node. Valid values: `Primary` or `Secondary`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
 }
 

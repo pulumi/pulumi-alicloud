@@ -12,7 +12,7 @@ import java.util.Objects;
 @CustomType
 public final class GetGreyTagRoutesRouteDubboRule {
     /**
-     * @return The Conditional Patterns for Grayscale Rules.
+     * @return The conditional Patterns for Grayscale Rules.
      * 
      */
     private String condition;
@@ -44,7 +44,7 @@ public final class GetGreyTagRoutesRouteDubboRule {
 
     private GetGreyTagRoutesRouteDubboRule() {}
     /**
-     * @return The Conditional Patterns for Grayscale Rules.
+     * @return The conditional Patterns for Grayscale Rules.
      * 
      */
     public String condition() {

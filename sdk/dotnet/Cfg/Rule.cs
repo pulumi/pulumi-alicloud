@@ -180,13 +180,13 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string> RuleName { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+        /// (Deprecated) Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
         /// </summary>
         [Output("scopeComplianceResourceTypes")]
         public Output<string> ScopeComplianceResourceTypes { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+        /// (Deprecated) Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
         /// </summary>
         [Output("sourceDetailMessageType")]
         public Output<string> SourceDetailMessageType { get; private set; } = null!;
@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.Cfg
         public Output<string> SourceIdentifier { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+        /// (Deprecated) Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
         /// </summary>
         [Output("sourceMaximumExecutionFrequency")]
         public Output<string> SourceMaximumExecutionFrequency { get; private set; } = null!;
@@ -348,13 +348,13 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string> RuleName { get; set; } = null!;
 
         /// <summary>
-        /// Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+        /// (Deprecated) Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
         /// </summary>
         [Input("scopeComplianceResourceTypes")]
         public Input<string>? ScopeComplianceResourceTypes { get; set; }
 
         /// <summary>
-        /// Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+        /// (Deprecated) Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
         /// </summary>
         [Input("sourceDetailMessageType")]
         public Input<string>? SourceDetailMessageType { get; set; }
@@ -366,7 +366,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string> SourceIdentifier { get; set; } = null!;
 
         /// <summary>
-        /// Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+        /// (Deprecated) Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
         /// </summary>
         [Input("sourceMaximumExecutionFrequency")]
         public Input<string>? SourceMaximumExecutionFrequency { get; set; }
@@ -526,13 +526,13 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+        /// (Deprecated) Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
         /// </summary>
         [Input("scopeComplianceResourceTypes")]
         public Input<string>? ScopeComplianceResourceTypes { get; set; }
 
         /// <summary>
-        /// Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+        /// (Deprecated) Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
         /// </summary>
         [Input("sourceDetailMessageType")]
         public Input<string>? SourceDetailMessageType { get; set; }
@@ -544,7 +544,7 @@ namespace Pulumi.AliCloud.Cfg
         public Input<string>? SourceIdentifier { get; set; }
 
         /// <summary>
-        /// Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+        /// (Deprecated) Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
         /// </summary>
         [Input("sourceMaximumExecutionFrequency")]
         public Input<string>? SourceMaximumExecutionFrequency { get; set; }

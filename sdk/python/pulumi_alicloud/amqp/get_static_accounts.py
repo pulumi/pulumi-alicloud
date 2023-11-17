@@ -108,7 +108,7 @@ def get_static_accounts(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.
-    :param str instance_id: InstanceId
+    :param str instance_id: (ForceNew, Optional) InstanceId
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
@@ -148,7 +148,7 @@ def get_static_accounts_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
 
 
     :param Sequence[str] ids: The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.
-    :param str instance_id: InstanceId
+    :param str instance_id: (ForceNew, Optional) InstanceId
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

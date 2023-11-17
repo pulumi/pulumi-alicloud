@@ -92,7 +92,7 @@ class _ApplicationDeploymentState:
         Input properties used for looking up and filtering ApplicationDeployment resources.
         :param pulumi.Input[str] app_id: The ID of the application that you want to deploy.
         :param pulumi.Input[str] group_id: The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
-        :param pulumi.Input[str] last_package_version: Last package version deployed.
+        :param pulumi.Input[str] last_package_version: (ForceNew) Last package version deployed.
         :param pulumi.Input[str] package_version: The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
         :param pulumi.Input[str] war_url: The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
         """
@@ -135,7 +135,7 @@ class _ApplicationDeploymentState:
     @pulumi.getter(name="lastPackageVersion")
     def last_package_version(self) -> Optional[pulumi.Input[str]]:
         """
-        Last package version deployed.
+        (ForceNew) Last package version deployed.
         """
         return pulumi.get(self, "last_package_version")
 
@@ -378,7 +378,7 @@ class ApplicationDeployment(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] app_id: The ID of the application that you want to deploy.
         :param pulumi.Input[str] group_id: The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
-        :param pulumi.Input[str] last_package_version: Last package version deployed.
+        :param pulumi.Input[str] last_package_version: (ForceNew) Last package version deployed.
         :param pulumi.Input[str] package_version: The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
         :param pulumi.Input[str] war_url: The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
         """
@@ -413,7 +413,7 @@ class ApplicationDeployment(pulumi.CustomResource):
     @pulumi.getter(name="lastPackageVersion")
     def last_package_version(self) -> pulumi.Output[str]:
         """
-        Last package version deployed.
+        (ForceNew) Last package version deployed.
         """
         return pulumi.get(self, "last_package_version")
 

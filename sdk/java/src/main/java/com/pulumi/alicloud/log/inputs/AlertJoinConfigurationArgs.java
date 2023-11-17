@@ -29,14 +29,14 @@ public final class AlertJoinConfigurationArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * including FixedRate,Hourly,Daily,Weekly,Cron.
+     * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return including FixedRate,Hourly,Daily,Weekly,Cron.
+     * @return Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
      * 
      */
     public Output<String> type() {
@@ -90,7 +90,7 @@ public final class AlertJoinConfigurationArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type including FixedRate,Hourly,Daily,Weekly,Cron.
+         * @param type Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
          * 
          * @return builder
          * 
@@ -101,7 +101,7 @@ public final class AlertJoinConfigurationArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param type including FixedRate,Hourly,Daily,Weekly,Cron.
+         * @param type Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
          * 
          * @return builder
          * 

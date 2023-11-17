@@ -21,7 +21,7 @@ class KeyPairAttachmentArgs:
         """
         The set of arguments for constructing a KeyPairAttachment resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
-        :param pulumi.Input[bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+        :param pulumi.Input[bool] force: (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[str] key_name: The name of key pair used to bind.
         """
         pulumi.set(__self__, "instance_ids", instance_ids)
@@ -51,7 +51,7 @@ class KeyPairAttachmentArgs:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+        (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         """
         return pulumi.get(self, "force")
 
@@ -93,7 +93,7 @@ class _KeyPairAttachmentState:
                  key_pair_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering KeyPairAttachment resources.
-        :param pulumi.Input[bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+        :param pulumi.Input[bool] force: (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[str] key_name: The name of key pair used to bind.
         """
@@ -113,7 +113,7 @@ class _KeyPairAttachmentState:
     @pulumi.getter
     def force(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+        (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         """
         return pulumi.get(self, "force")
 
@@ -177,7 +177,7 @@ class KeyPairAttachment(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+        :param pulumi.Input[bool] force: (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[str] key_name: The name of key pair used to bind.
         """
@@ -249,7 +249,7 @@ class KeyPairAttachment(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] force: Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+        :param pulumi.Input[bool] force: (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: The list of ECS instance's IDs.
         :param pulumi.Input[str] key_name: The name of key pair used to bind.
         """
@@ -267,7 +267,7 @@ class KeyPairAttachment(pulumi.CustomResource):
     @pulumi.getter
     def force(self) -> pulumi.Output[Optional[bool]]:
         """
-        Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
+        (ForceNew) Set it to true and it will reboot instances which attached with the key pair to make key pair affect immediately.
         """
         return pulumi.get(self, "force")
 

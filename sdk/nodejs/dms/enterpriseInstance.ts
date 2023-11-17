@@ -229,7 +229,7 @@ export class EnterpriseInstance extends pulumi.CustomResource {
      */
     public readonly skipTest!: pulumi.Output<boolean | undefined>;
     /**
-     * It has been deprecated from provider version 1.100.0 and 'status' instead.
+     * (Deprecated) It has been deprecated from provider version 1.100.0 and 'status' instead.
      *
      * @deprecated Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.
      */
@@ -471,7 +471,7 @@ export interface EnterpriseInstanceState {
      */
     skipTest?: pulumi.Input<boolean>;
     /**
-     * It has been deprecated from provider version 1.100.0 and 'status' instead.
+     * (Deprecated) It has been deprecated from provider version 1.100.0 and 'status' instead.
      *
      * @deprecated Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.
      */

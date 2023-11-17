@@ -113,7 +113,7 @@ export interface GetLoadBalancersArgs {
      */
     vpcIds?: string[];
     /**
-     * The ID of the zone to which the ALB instance belongs.
+     * The zone ID of the resource.
      */
     zoneId?: string;
 }
@@ -235,7 +235,7 @@ export interface GetLoadBalancersOutputArgs {
      */
     vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the zone to which the ALB instance belongs.
+     * The zone ID of the resource.
      */
     zoneId?: pulumi.Input<string>;
 }

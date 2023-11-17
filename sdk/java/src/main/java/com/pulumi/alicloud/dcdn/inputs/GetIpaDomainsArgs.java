@@ -18,14 +18,14 @@ public final class GetIpaDomainsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetIpaDomainsArgs Empty = new GetIpaDomainsArgs();
 
     /**
-     * The accelerated domain names.
+     * The name of the Domain.
      * 
      */
     @Import(name="domainName")
     private @Nullable Output<String> domainName;
 
     /**
-     * @return The accelerated domain names.
+     * @return The name of the Domain.
      * 
      */
     public Optional<Output<String>> domainName() {
@@ -121,7 +121,7 @@ public final class GetIpaDomainsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param domainName The accelerated domain names.
+         * @param domainName The name of the Domain.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class GetIpaDomainsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param domainName The accelerated domain names.
+         * @param domainName The name of the Domain.
          * 
          * @return builder
          * 

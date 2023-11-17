@@ -63,7 +63,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - receive_all: Keep all backup sets;
      * - delete_all: delete all backup sets;
      * - receive_last: Keep the last backup set.
-     * &gt; **NOTE:**   The default value is delete_all.
+     *   &gt; **NOTE:**   The default value is delete_all.
      * 
      */
     @Import(name="backupRetainMode")
@@ -74,7 +74,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
      * - receive_all: Keep all backup sets;
      * - delete_all: delete all backup sets;
      * - receive_last: Keep the last backup set.
-     * &gt; **NOTE:**   The default value is delete_all.
+     *   &gt; **NOTE:**   The default value is delete_all.
      * 
      */
     public Optional<Output<String>> backupRetainMode() {
@@ -388,7 +388,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - receive_all: Keep all backup sets;
          * - delete_all: delete all backup sets;
          * - receive_last: Keep the last backup set.
-         * &gt; **NOTE:**   The default value is delete_all.
+         *   &gt; **NOTE:**   The default value is delete_all.
          * 
          * @return builder
          * 
@@ -403,7 +403,7 @@ public final class BaseInstanceArgs extends com.pulumi.resources.ResourceArgs {
          * - receive_all: Keep all backup sets;
          * - delete_all: delete all backup sets;
          * - receive_last: Keep the last backup set.
-         * &gt; **NOTE:**   The default value is delete_all.
+         *   &gt; **NOTE:**   The default value is delete_all.
          * 
          * @return builder
          * 

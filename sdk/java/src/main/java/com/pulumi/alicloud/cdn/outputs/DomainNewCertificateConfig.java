@@ -30,13 +30,12 @@ public final class DomainNewCertificateConfig {
      * @return Certificate type. Value:
      * - **upload**: upload certificate.
      * - **cas**: Cloud Shield certificate.
-     * - **free**: free certificate.
-     * &gt; If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
+     * - **free**: free certificate.If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
      * 
      */
     private @Nullable String certType;
     /**
-     * @return The force set of the security certificate.
+     * @return (Removed) The force set of the security certificate.
      * 
      */
     private @Nullable String forceSet;
@@ -84,15 +83,14 @@ public final class DomainNewCertificateConfig {
      * @return Certificate type. Value:
      * - **upload**: upload certificate.
      * - **cas**: Cloud Shield certificate.
-     * - **free**: free certificate.
-     * &gt; If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
+     * - **free**: free certificate.If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
      * 
      */
     public Optional<String> certType() {
         return Optional.ofNullable(this.certType);
     }
     /**
-     * @return The force set of the security certificate.
+     * @return (Removed) The force set of the security certificate.
      * 
      */
     public Optional<String> forceSet() {

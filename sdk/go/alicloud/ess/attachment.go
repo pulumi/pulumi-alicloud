@@ -184,7 +184,6 @@ type Attachment struct {
 	// > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
 	//
 	// > **NOTE:** Restrictions on attaching ECS instances:
-	//
 	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
 	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
 	// - The attached ECS instances must in the running state.
@@ -238,7 +237,6 @@ type attachmentState struct {
 	// > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
 	//
 	// > **NOTE:** Restrictions on attaching ECS instances:
-	//
 	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
 	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
 	// - The attached ECS instances must in the running state.
@@ -257,7 +255,6 @@ type AttachmentState struct {
 	// > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
 	//
 	// > **NOTE:** Restrictions on attaching ECS instances:
-	//
 	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
 	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
 	// - The attached ECS instances must in the running state.
@@ -280,7 +277,6 @@ type attachmentArgs struct {
 	// > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
 	//
 	// > **NOTE:** Restrictions on attaching ECS instances:
-	//
 	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
 	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
 	// - The attached ECS instances must in the running state.
@@ -300,7 +296,6 @@ type AttachmentArgs struct {
 	// > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
 	//
 	// > **NOTE:** Restrictions on attaching ECS instances:
-	//
 	// - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
 	// - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
 	// - The attached ECS instances must in the running state.
@@ -405,7 +400,6 @@ func (o AttachmentOutput) ToAttachmentOutputWithContext(ctx context.Context) Att
 // > **NOTE:** "AutoCreated" ECS instance will be deleted after it is removed from scaling group, but "Attached" will be not.
 //
 // > **NOTE:** Restrictions on attaching ECS instances:
-//
 // - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
 // - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
 // - The attached ECS instances must in the running state.

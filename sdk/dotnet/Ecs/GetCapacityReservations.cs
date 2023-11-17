@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Instance type. Currently, you can only set the capacity reservation service for one instance type.
+        /// (ForceNew,Optional) Instance type. Currently, you can only set the capacity reservation service for one instance type.
         /// </summary>
         [Input("instanceType")]
         public string? InstanceType { get; set; }
@@ -134,25 +134,25 @@ namespace Pulumi.AliCloud.Ecs
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. value range `PostPaid`, `PrePaid`.
+        /// (ForceNew,Optional) The payment type of the resource. value range `PostPaid`, `PrePaid`.
         /// </summary>
         [Input("paymentType")]
         public string? PaymentType { get; set; }
 
         /// <summary>
-        /// platform of the capacity reservation , value range `windows`, `linux`, `all`.
+        /// (ForceNew,Optional) platform of the capacity reservation , value range `windows`, `linux`, `all`.
         /// </summary>
         [Input("platform")]
         public string? Platform { get; set; }
 
         /// <summary>
-        /// The resource group id.
+        /// (ForceNew,Optional) The resource group id.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
+        /// (ForceNew,Optional) The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -161,7 +161,7 @@ namespace Pulumi.AliCloud.Ecs
         private Dictionary<string, object>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// (ForceNew,Optional) The tag of the resource.
         /// </summary>
         public Dictionary<string, object> Tags
         {
@@ -198,7 +198,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Instance type. Currently, you can only set the capacity reservation service for one instance type.
+        /// (ForceNew,Optional) Instance type. Currently, you can only set the capacity reservation service for one instance type.
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
@@ -216,25 +216,25 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The payment type of the resource. value range `PostPaid`, `PrePaid`.
+        /// (ForceNew,Optional) The payment type of the resource. value range `PostPaid`, `PrePaid`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// platform of the capacity reservation , value range `windows`, `linux`, `all`.
+        /// (ForceNew,Optional) platform of the capacity reservation , value range `windows`, `linux`, `all`.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }
 
         /// <summary>
-        /// The resource group id.
+        /// (ForceNew,Optional) The resource group id.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
+        /// (ForceNew,Optional) The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// (ForceNew,Optional) The tag of the resource.
         /// </summary>
         public InputMap<object> Tags
         {

@@ -68,14 +68,14 @@ public final class GetSubnetsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Resource Group ID.
+     * (ForceNew,Optional) Resource Group ID.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable String resourceGroupId;
 
     /**
-     * @return Resource Group ID.
+     * @return (ForceNew,Optional) Resource Group ID.
      * 
      */
     public Optional<String> resourceGroupId() {
@@ -83,14 +83,14 @@ public final class GetSubnetsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the resource.
+     * (ForceNew,Optional) The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return (ForceNew,Optional) The status of the resource.
      * 
      */
     public Optional<String> status() {
@@ -98,14 +98,14 @@ public final class GetSubnetsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Primary key ID.
+     * (ForceNew,Optional) Primary key ID.
      * 
      */
     @Import(name="subnetId")
     private @Nullable String subnetId;
 
     /**
-     * @return Primary key ID.
+     * @return (ForceNew,Optional) Primary key ID.
      * 
      */
     public Optional<String> subnetId() {
@@ -113,14 +113,14 @@ public final class GetSubnetsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Subnet name.
+     * (ForceNew,Optional) The Subnet name.
      * 
      */
     @Import(name="subnetName")
     private @Nullable String subnetName;
 
     /**
-     * @return The Subnet name.
+     * @return (ForceNew,Optional) The Subnet name.
      * 
      */
     public Optional<String> subnetName() {
@@ -128,7 +128,7 @@ public final class GetSubnetsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Eflo subnet usage type, optional value:
+     * (ForceNew,Optional) Eflo subnet usage type, optional value:
      * - General type is not filled in
      * - OOB:OOB type
      * - LB: LB type
@@ -138,7 +138,7 @@ public final class GetSubnetsPlainArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable String type;
 
     /**
-     * @return Eflo subnet usage type, optional value:
+     * @return (ForceNew,Optional) Eflo subnet usage type, optional value:
      * - General type is not filled in
      * - OOB:OOB type
      * - LB: LB type
@@ -149,14 +149,14 @@ public final class GetSubnetsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Eflo VPD ID.
+     * (ForceNew,Optional) The Eflo VPD ID.
      * 
      */
     @Import(name="vpdId")
     private @Nullable String vpdId;
 
     /**
-     * @return The Eflo VPD ID.
+     * @return (ForceNew,Optional) The Eflo VPD ID.
      * 
      */
     public Optional<String> vpdId() {
@@ -164,14 +164,14 @@ public final class GetSubnetsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The zone ID of the resource.
+     * (ForceNew,Optional) The zone ID of the resource.
      * 
      */
     @Import(name="zoneId")
     private @Nullable String zoneId;
 
     /**
-     * @return The zone ID of the resource.
+     * @return (ForceNew,Optional) The zone ID of the resource.
      * 
      */
     public Optional<String> zoneId() {
@@ -255,7 +255,7 @@ public final class GetSubnetsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId Resource Group ID.
+         * @param resourceGroupId (ForceNew,Optional) Resource Group ID.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class GetSubnetsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status (ForceNew,Optional) The status of the resource.
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class GetSubnetsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param subnetId Primary key ID.
+         * @param subnetId (ForceNew,Optional) Primary key ID.
          * 
          * @return builder
          * 
@@ -288,7 +288,7 @@ public final class GetSubnetsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param subnetName The Subnet name.
+         * @param subnetName (ForceNew,Optional) The Subnet name.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class GetSubnetsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param type Eflo subnet usage type, optional value:
+         * @param type (ForceNew,Optional) Eflo subnet usage type, optional value:
          * - General type is not filled in
          * - OOB:OOB type
          * - LB: LB type
@@ -313,7 +313,7 @@ public final class GetSubnetsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vpdId The Eflo VPD ID.
+         * @param vpdId (ForceNew,Optional) The Eflo VPD ID.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class GetSubnetsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId The zone ID of the resource.
+         * @param zoneId (ForceNew,Optional) The zone ID of the resource.
          * 
          * @return builder
          * 

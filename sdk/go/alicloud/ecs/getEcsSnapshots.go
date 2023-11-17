@@ -58,11 +58,11 @@ func GetEcsSnapshots(ctx *pulumi.Context, args *GetEcsSnapshotsArgs, opts ...pul
 
 // A collection of arguments for invoking getEcsSnapshots.
 type GetEcsSnapshotsArgs struct {
-	// The category of the snapshot.
+	// The category of the snapshot. Valid Values: `flash` and `standard`.
 	Category *string `pulumi:"category"`
 	// Specifies whether to check the validity of the request without actually making the request.
 	DryRun *bool `pulumi:"dryRun"`
-	// Whether the snapshot is encrypted.
+	// Specifies whether the snapshot is encrypted.
 	Encrypted *bool `pulumi:"encrypted"`
 	// A list of Snapshot IDs.
 	Ids []string `pulumi:"ids"`
@@ -76,15 +76,15 @@ type GetEcsSnapshotsArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The snapshot link id.
 	SnapshotLinkId *string `pulumi:"snapshotLinkId"`
-	// Snapshot Display Name.
+	// The name of the snapshot.
 	SnapshotName *string `pulumi:"snapshotName"`
-	// Snapshot creation type.
+	// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
 	SnapshotType *string `pulumi:"snapshotType"`
-	// Source disk attributes.
+	// The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
 	SourceDiskType *string `pulumi:"sourceDiskType"`
-	// The status of the snapshot.
+	// The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
 	Status *string `pulumi:"status"`
-	// The tags.
+	// A mapping of tags to assign to the snapshot.
 	Tags map[string]interface{} `pulumi:"tags"`
 	Type *string                `pulumi:"type"`
 	// A resource type that has a reference relationship.
@@ -130,11 +130,11 @@ func GetEcsSnapshotsOutput(ctx *pulumi.Context, args GetEcsSnapshotsOutputArgs, 
 
 // A collection of arguments for invoking getEcsSnapshots.
 type GetEcsSnapshotsOutputArgs struct {
-	// The category of the snapshot.
+	// The category of the snapshot. Valid Values: `flash` and `standard`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Specifies whether to check the validity of the request without actually making the request.
 	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
-	// Whether the snapshot is encrypted.
+	// Specifies whether the snapshot is encrypted.
 	Encrypted pulumi.BoolPtrInput `pulumi:"encrypted"`
 	// A list of Snapshot IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -148,15 +148,15 @@ type GetEcsSnapshotsOutputArgs struct {
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// The snapshot link id.
 	SnapshotLinkId pulumi.StringPtrInput `pulumi:"snapshotLinkId"`
-	// Snapshot Display Name.
+	// The name of the snapshot.
 	SnapshotName pulumi.StringPtrInput `pulumi:"snapshotName"`
-	// Snapshot creation type.
+	// The type of the snapshot. Valid Values: `auto`, `user` and `all`. Default to: `all`.
 	SnapshotType pulumi.StringPtrInput `pulumi:"snapshotType"`
-	// Source disk attributes.
+	// The type of the disk for which the snapshot was created. Valid Values: `System`, `Data`.
 	SourceDiskType pulumi.StringPtrInput `pulumi:"sourceDiskType"`
-	// The status of the snapshot.
+	// The status of the snapshot. Valid Values: `accomplished`, `failed`, `progressing` and `all`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The tags.
+	// A mapping of tags to assign to the snapshot.
 	Tags pulumi.MapInput       `pulumi:"tags"`
 	Type pulumi.StringPtrInput `pulumi:"type"`
 	// A resource type that has a reference relationship.

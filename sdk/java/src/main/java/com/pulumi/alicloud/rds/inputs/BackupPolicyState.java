@@ -99,7 +99,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
+     * (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
@@ -110,7 +110,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<String>> backupPeriods;
 
     /**
-     * @return It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
+     * @return (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
@@ -137,7 +137,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_time&#39; instead.
+     * (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_time&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
@@ -148,7 +148,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> backupTime;
 
     /**
-     * @return It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_time&#39; instead.
+     * @return (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_time&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
@@ -267,7 +267,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from version 1.68.0, and use field &#39;enable_backup_log&#39; instead.
+     * (Deprecated) It has been deprecated from version 1.68.0, and use field &#39;enable_backup_log&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enable_backup_log` instead
@@ -278,7 +278,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> logBackup;
 
     /**
-     * @return It has been deprecated from version 1.68.0, and use field &#39;enable_backup_log&#39; instead.
+     * @return (Deprecated) It has been deprecated from version 1.68.0, and use field &#39;enable_backup_log&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enable_backup_log` instead
@@ -320,7 +320,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from version 1.69.0, and use field &#39;log_backup_retention_period&#39; instead.
+     * (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;log_backup_retention_period&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
@@ -331,7 +331,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> logRetentionPeriod;
 
     /**
-     * @return It has been deprecated from version 1.69.0, and use field &#39;log_backup_retention_period&#39; instead.
+     * @return (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;log_backup_retention_period&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
@@ -394,7 +394,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from version 1.69.0, and use field &#39;backup_retention_period&#39; instead.
+     * (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;backup_retention_period&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backup_retention_period` instead
@@ -405,7 +405,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> retentionPeriod;
 
     /**
-     * @return It has been deprecated from version 1.69.0, and use field &#39;backup_retention_period&#39; instead.
+     * @return (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;backup_retention_period&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backup_retention_period` instead
@@ -566,7 +566,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupPeriods It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
+         * @param backupPeriods (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
          * 
          * @return builder
          * 
@@ -581,7 +581,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupPeriods It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
+         * @param backupPeriods (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
          * 
          * @return builder
          * 
@@ -595,7 +595,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupPeriods It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
+         * @param backupPeriods (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
          * 
          * @return builder
          * 
@@ -630,7 +630,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupTime It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_time&#39; instead.
+         * @param backupTime (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_time&#39; instead.
          * 
          * @return builder
          * 
@@ -645,7 +645,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param backupTime It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_time&#39; instead.
+         * @param backupTime (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_time&#39; instead.
          * 
          * @return builder
          * 
@@ -808,7 +808,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logBackup It has been deprecated from version 1.68.0, and use field &#39;enable_backup_log&#39; instead.
+         * @param logBackup (Deprecated) It has been deprecated from version 1.68.0, and use field &#39;enable_backup_log&#39; instead.
          * 
          * @return builder
          * 
@@ -823,7 +823,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logBackup It has been deprecated from version 1.68.0, and use field &#39;enable_backup_log&#39; instead.
+         * @param logBackup (Deprecated) It has been deprecated from version 1.68.0, and use field &#39;enable_backup_log&#39; instead.
          * 
          * @return builder
          * 
@@ -879,7 +879,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logRetentionPeriod It has been deprecated from version 1.69.0, and use field &#39;log_backup_retention_period&#39; instead.
+         * @param logRetentionPeriod (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;log_backup_retention_period&#39; instead.
          * 
          * @return builder
          * 
@@ -894,7 +894,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logRetentionPeriod It has been deprecated from version 1.69.0, and use field &#39;log_backup_retention_period&#39; instead.
+         * @param logRetentionPeriod (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;log_backup_retention_period&#39; instead.
          * 
          * @return builder
          * 
@@ -987,7 +987,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionPeriod It has been deprecated from version 1.69.0, and use field &#39;backup_retention_period&#39; instead.
+         * @param retentionPeriod (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;backup_retention_period&#39; instead.
          * 
          * @return builder
          * 
@@ -1002,7 +1002,7 @@ public final class BackupPolicyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionPeriod It has been deprecated from version 1.69.0, and use field &#39;backup_retention_period&#39; instead.
+         * @param retentionPeriod (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;backup_retention_period&#39; instead.
          * 
          * @return builder
          * 

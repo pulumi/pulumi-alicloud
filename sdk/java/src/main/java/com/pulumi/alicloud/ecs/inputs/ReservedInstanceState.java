@@ -150,9 +150,6 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
 
     /**
      * Payment type of the RI. Default value: `All Upfront`. Valid values:
-     * - `No Upfront`: No upfront payment.
-     * - `Partial Upfront`: A portion of upfront payment.
-     * - `All Upfront`: Full upfront payment.
      * 
      */
     @Import(name="offeringType")
@@ -160,9 +157,6 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return Payment type of the RI. Default value: `All Upfront`. Valid values:
-     * - `No Upfront`: No upfront payment.
-     * - `Partial Upfront`: A portion of upfront payment.
-     * - `All Upfront`: Full upfront payment.
      * 
      */
     public Optional<Output<String>> offeringType() {
@@ -575,9 +569,6 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param offeringType Payment type of the RI. Default value: `All Upfront`. Valid values:
-         * - `No Upfront`: No upfront payment.
-         * - `Partial Upfront`: A portion of upfront payment.
-         * - `All Upfront`: Full upfront payment.
          * 
          * @return builder
          * 
@@ -589,9 +580,6 @@ public final class ReservedInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param offeringType Payment type of the RI. Default value: `All Upfront`. Valid values:
-         * - `No Upfront`: No upfront payment.
-         * - `Partial Upfront`: A portion of upfront payment.
-         * - `All Upfront`: Full upfront payment.
          * 
          * @return builder
          * 

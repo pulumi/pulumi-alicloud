@@ -115,7 +115,7 @@ namespace Pulumi.AliCloud.Cen
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the transit router attachment.
+        /// The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the transit router attachment.
+        /// The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -40,14 +40,14 @@ public final class GetHoneypotPresetsPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Honeypot mirror name
+     * (ForceNew,Optional) Honeypot mirror name
      * 
      */
     @Import(name="honeypotImageName")
     private @Nullable String honeypotImageName;
 
     /**
-     * @return Honeypot mirror name
+     * @return (ForceNew,Optional) Honeypot mirror name
      * 
      */
     public Optional<String> honeypotImageName() {
@@ -77,14 +77,14 @@ public final class GetHoneypotPresetsPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Unique id of management node
+     * (ForceNew,Optional) Unique id of management node
      * 
      */
     @Import(name="nodeId")
     private @Nullable String nodeId;
 
     /**
-     * @return Unique id of management node
+     * @return (ForceNew,Optional) Unique id of management node
      * 
      */
     public Optional<String> nodeId() {
@@ -128,14 +128,14 @@ public final class GetHoneypotPresetsPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Honeypot template custom name
+     * (ForceNew,Optional) Honeypot template custom name
      * 
      */
     @Import(name="presetName")
     private @Nullable String presetName;
 
     /**
-     * @return Honeypot template custom name
+     * @return (ForceNew,Optional) Honeypot template custom name
      * 
      */
     public Optional<String> presetName() {
@@ -193,7 +193,7 @@ public final class GetHoneypotPresetsPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param honeypotImageName Honeypot mirror name
+         * @param honeypotImageName (ForceNew,Optional) Honeypot mirror name
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class GetHoneypotPresetsPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param nodeId Unique id of management node
+         * @param nodeId (ForceNew,Optional) Unique id of management node
          * 
          * @return builder
          * 
@@ -267,7 +267,7 @@ public final class GetHoneypotPresetsPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param presetName Honeypot template custom name
+         * @param presetName (ForceNew,Optional) Honeypot template custom name
          * 
          * @return builder
          * 

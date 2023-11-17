@@ -34,7 +34,7 @@ class DdosCooInstanceArgs:
         :param pulumi.Input[str] product_type: The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
                - ddoscoo: Only supports domestic account.
                - ddoscoo_intl: Only supports to international account.
-               Default to ddoscoo.
+                 Default to ddoscoo.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "base_bandwidth", base_bandwidth)
@@ -139,7 +139,7 @@ class DdosCooInstanceArgs:
         The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
         - ddoscoo: Only supports domestic account.
         - ddoscoo_intl: Only supports to international account.
-        Default to ddoscoo.
+          Default to ddoscoo.
         """
         return pulumi.get(self, "product_type")
 
@@ -170,7 +170,7 @@ class _DdosCooInstanceState:
         :param pulumi.Input[str] product_type: The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
                - ddoscoo: Only supports domestic account.
                - ddoscoo_intl: Only supports to international account.
-               Default to ddoscoo.
+                 Default to ddoscoo.
         :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
         """
         if bandwidth is not None:
@@ -269,7 +269,7 @@ class _DdosCooInstanceState:
         The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
         - ddoscoo: Only supports domestic account.
         - ddoscoo_intl: Only supports to international account.
-        Default to ddoscoo.
+          Default to ddoscoo.
         """
         return pulumi.get(self, "product_type")
 
@@ -354,7 +354,7 @@ class DdosCooInstance(pulumi.CustomResource):
         :param pulumi.Input[str] product_type: The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
                - ddoscoo: Only supports domestic account.
                - ddoscoo_intl: Only supports to international account.
-               Default to ddoscoo.
+                 Default to ddoscoo.
         :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
         """
         ...
@@ -488,7 +488,7 @@ class DdosCooInstance(pulumi.CustomResource):
         :param pulumi.Input[str] product_type: The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
                - ddoscoo: Only supports domestic account.
                - ddoscoo_intl: Only supports to international account.
-               Default to ddoscoo.
+                 Default to ddoscoo.
         :param pulumi.Input[str] service_bandwidth: Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -560,7 +560,7 @@ class DdosCooInstance(pulumi.CustomResource):
         The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
         - ddoscoo: Only supports domestic account.
         - ddoscoo_intl: Only supports to international account.
-        Default to ddoscoo.
+          Default to ddoscoo.
         """
         return pulumi.get(self, "product_type")
 

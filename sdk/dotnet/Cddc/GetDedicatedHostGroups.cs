@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Cddc
     public sealed class GetDedicatedHostGroupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+        /// Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
         /// </summary>
         [Input("engine")]
         public string? Engine { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Cddc
     public sealed class GetDedicatedHostGroupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
+        /// Database Engine Type. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
         /// </summary>
         [Input("engine")]
         public Input<string>? Engine { get; set; }

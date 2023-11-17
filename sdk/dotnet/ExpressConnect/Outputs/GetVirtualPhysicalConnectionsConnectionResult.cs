@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.ExpressConnect.Outputs
         /// </summary>
         public readonly string Bandwidth;
         /// <summary>
-        /// The commercial status of the physical line. Value:
+        /// (ForceNew,Optional) The commercial status of the physical line. Value:
         /// - **Normal**: activated.
         /// - **Financialized**: Arrears locked.
         /// - **SecurityLocked**: locked for security reasons.
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.ExpressConnect.Outputs
         /// </summary>
         public readonly string ParentPhysicalConnectionAliUid;
         /// <summary>
-        /// The ID of the instance of the physical connection.
+        /// (ForceNew,Optional) The ID of the instance of the physical connection.
         /// </summary>
         public readonly string ParentPhysicalConnectionId;
         /// <summary>
@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.ExpressConnect.Outputs
         /// </summary>
         public readonly string VirtualPhysicalConnectionName;
         /// <summary>
-        /// The business status of the shared line. Value:
+        /// (ForceNew,Optional) The business status of the shared line. Value:
         /// - **Confirmed**: The shared line has been Confirmed to receive.
         /// - **UnConfirmed**: The shared line has not been confirmed to be received.
         /// - **Deleted**: The shared line has been Deleted.
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.ExpressConnect.Outputs
         /// </summary>
         public readonly int VlanId;
         /// <summary>
-        /// The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+        /// (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
         /// </summary>
         public readonly string VpconnAliUid;
 

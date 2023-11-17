@@ -77,7 +77,7 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
      * Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
      * - **true**: added.
      * - **false** (default): Do not add.
-     * When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+     *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
      */
     public readonly ecsUniqueSuffix!: pulumi.Output<string | undefined>;
     /**
@@ -89,7 +89,7 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
      * - **alisql**
      * - **tair**
      * - **mssql**
-     * Must be consistent with the parent resource cluster engine attributes.
+     *   Must be consistent with the parent resource cluster engine attributes.
      */
     public readonly engine!: pulumi.Output<string>;
     /**
@@ -106,14 +106,14 @@ export class DedicatedPropreHost extends pulumi.CustomResource {
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
      * - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-     * > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+     *   > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      */
     public readonly osPassword!: pulumi.Output<string | undefined>;
     /**
      * Whether to use the default password of the image.
      * - **false**: (default)Do not use
      * - **true**: Use
-     * > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+     *   > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
      */
     public readonly passwordInherit!: pulumi.Output<string | undefined>;
     /**
@@ -261,7 +261,7 @@ export interface DedicatedPropreHostState {
      * Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
      * - **true**: added.
      * - **false** (default): Do not add.
-     * When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+     *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
      */
     ecsUniqueSuffix?: pulumi.Input<string>;
     /**
@@ -273,7 +273,7 @@ export interface DedicatedPropreHostState {
      * - **alisql**
      * - **tair**
      * - **mssql**
-     * Must be consistent with the parent resource cluster engine attributes.
+     *   Must be consistent with the parent resource cluster engine attributes.
      */
     engine?: pulumi.Input<string>;
     /**
@@ -290,14 +290,14 @@ export interface DedicatedPropreHostState {
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
      * - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-     * > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+     *   > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      */
     osPassword?: pulumi.Input<string>;
     /**
      * Whether to use the default password of the image.
      * - **false**: (default)Do not use
      * - **true**: Use
-     * > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+     *   > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
      */
     passwordInherit?: pulumi.Input<string>;
     /**
@@ -360,7 +360,7 @@ export interface DedicatedPropreHostArgs {
      * Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
      * - **true**: added.
      * - **false** (default): Do not add.
-     * When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+     *   When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix nameSuffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
      */
     ecsUniqueSuffix?: pulumi.Input<string>;
     /**
@@ -372,7 +372,7 @@ export interface DedicatedPropreHostArgs {
      * - **alisql**
      * - **tair**
      * - **mssql**
-     * Must be consistent with the parent resource cluster engine attributes.
+     *   Must be consistent with the parent resource cluster engine attributes.
      */
     engine: pulumi.Input<string>;
     /**
@@ -389,14 +389,14 @@ export interface DedicatedPropreHostArgs {
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
      * - Special symbol '()\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-     * > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+     *   > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      */
     osPassword?: pulumi.Input<string>;
     /**
      * Whether to use the default password of the image.
      * - **false**: (default)Do not use
      * - **true**: Use
-     * > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+     *   > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
      */
     passwordInherit?: pulumi.Input<string>;
     /**

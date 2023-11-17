@@ -104,7 +104,7 @@ def get_sharding_network_private_addresses(db_instance_id: Optional[str] = None,
     :param str db_instance_id: The db instance id.
     :param str node_id: The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str role: The role of the node.
+    :param str role: The role of the node. Valid values: `Primary` or `Secondary`.
     """
     __args__ = dict()
     __args__['dbInstanceId'] = db_instance_id
@@ -138,6 +138,6 @@ def get_sharding_network_private_addresses_output(db_instance_id: Optional[pulum
     :param str db_instance_id: The db instance id.
     :param str node_id: The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str role: The role of the node.
+    :param str role: The role of the node. Valid values: `Primary` or `Secondary`.
     """
     ...

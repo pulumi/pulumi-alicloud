@@ -53,7 +53,7 @@ export interface GetZonesArgs {
      */
     availableSlbAddressType?: string;
     /**
-     * Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+     * (Deprecated from v1.154.0+) Default to false and only output `id` in the `zones` block. Set it to true can output more details.
      *
      * @deprecated The parameter enable_details has been deprecated from version v1.154.0+
      */
@@ -141,7 +141,7 @@ export interface GetZonesOutputArgs {
      */
     availableSlbAddressType?: pulumi.Input<string>;
     /**
-     * Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+     * (Deprecated from v1.154.0+) Default to false and only output `id` in the `zones` block. Set it to true can output more details.
      *
      * @deprecated The parameter enable_details has been deprecated from version v1.154.0+
      */

@@ -77,11 +77,11 @@ export interface GetEcsSnapshotGroupsArgs {
      */
     snapshotGroupName?: string;
     /**
-     * The status of the resource.
+     * The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
      */
     status?: string;
     /**
-     * List of label key-value pairs.
+     * A mapping of tags to assign to the snapshot group.
      */
     tags?: {[key: string]: any};
 }
@@ -164,11 +164,11 @@ export interface GetEcsSnapshotGroupsOutputArgs {
      */
     snapshotGroupName?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
      */
     status?: pulumi.Input<string>;
     /**
-     * List of label key-value pairs.
+     * A mapping of tags to assign to the snapshot group.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

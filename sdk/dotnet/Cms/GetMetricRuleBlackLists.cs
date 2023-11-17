@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Cms
     public sealed class GetMetricRuleBlackListsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
+        /// (ForceNew,Optional) Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
         /// </summary>
         [Input("category")]
         public string? Category { get; set; }
@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The first ID of the resource
+        /// (ForceNew,Optional) The first ID of the resource
         /// </summary>
         [Input("metricRuleBlackListId")]
         public string? MetricRuleBlackListId { get; set; }
@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Cms
         public string? NameRegex { get; set; }
 
         /// <summary>
-        /// The data namespace of the cloud service.
+        /// (ForceNew,Optional) The data namespace of the cloud service.
         /// </summary>
         [Input("namespace")]
         public string? Namespace { get; set; }
@@ -153,7 +153,7 @@ namespace Pulumi.AliCloud.Cms
     public sealed class GetMetricRuleBlackListsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
+        /// (ForceNew,Optional) Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -171,7 +171,7 @@ namespace Pulumi.AliCloud.Cms
         }
 
         /// <summary>
-        /// The first ID of the resource
+        /// (ForceNew,Optional) The first ID of the resource
         /// </summary>
         [Input("metricRuleBlackListId")]
         public Input<string>? MetricRuleBlackListId { get; set; }
@@ -183,7 +183,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? NameRegex { get; set; }
 
         /// <summary>
-        /// The data namespace of the cloud service.
+        /// (ForceNew,Optional) The data namespace of the cloud service.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }

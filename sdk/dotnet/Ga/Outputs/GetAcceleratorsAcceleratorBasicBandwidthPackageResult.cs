@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
     public sealed class GetAcceleratorsAcceleratorBasicBandwidthPackageResult
     {
         /// <summary>
-        /// Bandwidth value of cross-domain acceleration package.
+        /// The bandwidth value of the basic bandwidth package.
         /// </summary>
         public readonly int Bandwidth;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string BandwidthType;
         /// <summary>
-        /// Instance ID of the cross-domain acceleration package.
+        /// Instance ID of the basic bandwidth package.
         /// </summary>
         public readonly string InstanceId;
 

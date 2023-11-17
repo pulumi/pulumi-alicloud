@@ -11,7 +11,7 @@ import java.util.Objects;
 @CustomType
 public final class GetAddressPoolsPoolAddress {
     /**
-     * @return The address that you want to add to the address pool.
+     * @return The address lists of the Address Pool.
      * 
      */
     private String address;
@@ -38,7 +38,7 @@ public final class GetAddressPoolsPoolAddress {
 
     private GetAddressPoolsPoolAddress() {}
     /**
-     * @return The address that you want to add to the address pool.
+     * @return The address lists of the Address Pool.
      * 
      */
     public String address() {

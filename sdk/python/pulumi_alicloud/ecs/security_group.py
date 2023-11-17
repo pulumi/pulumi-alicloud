@@ -25,7 +25,7 @@ class SecurityGroupArgs:
         """
         The set of arguments for constructing a SecurityGroup resource.
         :param pulumi.Input[str] description: The security group description. Defaults to null.
-        :param pulumi.Input[bool] inner_access: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+        :param pulumi.Input[bool] inner_access: (Deprecated) Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
         :param pulumi.Input[str] inner_access_policy: Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
         :param pulumi.Input[str] name: The name of the security group. Defaults to null.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the security_group belongs.
@@ -73,7 +73,7 @@ class SecurityGroupArgs:
     @pulumi.getter(name="innerAccess")
     def inner_access(self) -> Optional[pulumi.Input[bool]]:
         """
-        Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+        (Deprecated) Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
         """
         warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
         pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")
@@ -175,7 +175,7 @@ class _SecurityGroupState:
         """
         Input properties used for looking up and filtering SecurityGroup resources.
         :param pulumi.Input[str] description: The security group description. Defaults to null.
-        :param pulumi.Input[bool] inner_access: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+        :param pulumi.Input[bool] inner_access: (Deprecated) Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
         :param pulumi.Input[str] inner_access_policy: Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
         :param pulumi.Input[str] name: The name of the security group. Defaults to null.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the security_group belongs.
@@ -223,7 +223,7 @@ class _SecurityGroupState:
     @pulumi.getter(name="innerAccess")
     def inner_access(self) -> Optional[pulumi.Input[bool]]:
         """
-        Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+        (Deprecated) Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
         """
         warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
         pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")
@@ -369,7 +369,7 @@ class SecurityGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The security group description. Defaults to null.
-        :param pulumi.Input[bool] inner_access: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+        :param pulumi.Input[bool] inner_access: (Deprecated) Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
         :param pulumi.Input[str] inner_access_policy: Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
         :param pulumi.Input[str] name: The name of the security group. Defaults to null.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the security_group belongs.
@@ -494,7 +494,7 @@ class SecurityGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The security group description. Defaults to null.
-        :param pulumi.Input[bool] inner_access: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+        :param pulumi.Input[bool] inner_access: (Deprecated) Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
         :param pulumi.Input[str] inner_access_policy: Whether to allow both machines to access each other on all ports in the same security group. Valid values: ["Accept", "Drop"]
         :param pulumi.Input[str] name: The name of the security group. Defaults to null.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the security_group belongs.
@@ -532,7 +532,7 @@ class SecurityGroup(pulumi.CustomResource):
     @pulumi.getter(name="innerAccess")
     def inner_access(self) -> pulumi.Output[bool]:
         """
-        Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+        (Deprecated) Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
         """
         warnings.warn("""Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""", DeprecationWarning)
         pulumi.log.warn("""inner_access is deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.""")

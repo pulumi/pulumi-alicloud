@@ -48,7 +48,6 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The retention period of the snapshot. Unit: days. Valid values:
-     * * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
      * 
      */
     @Import(name="retentionDays")
@@ -56,7 +55,6 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The retention period of the snapshot. Unit: days. Valid values:
-     * * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
      * 
      */
     public Optional<Output<Integer>> retentionDays() {
@@ -165,7 +163,6 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param retentionDays The retention period of the snapshot. Unit: days. Valid values:
-         * * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
          * 
          * @return builder
          * 
@@ -177,7 +174,6 @@ public final class SnapshotState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param retentionDays The retention period of the snapshot. Unit: days. Valid values:
-         * * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
          * 
          * @return builder
          * 

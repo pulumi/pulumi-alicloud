@@ -17,14 +17,14 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetDomainsPlainArgs Empty = new GetDomainsPlainArgs();
 
     /**
-     * The ID of the global acceleration instance.
+     * (ForceNew,Optional) The ID of the global acceleration instance.
      * 
      */
     @Import(name="acceleratorId")
     private @Nullable String acceleratorId;
 
     /**
-     * @return The ID of the global acceleration instance.
+     * @return (ForceNew,Optional) The ID of the global acceleration instance.
      * 
      */
     public Optional<String> acceleratorId() {
@@ -32,14 +32,14 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The accelerated domain name to be added. only top-level domain names are supported, such as &#39;example.com&#39;.
+     * (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as &#39;example.com&#39;.
      * 
      */
     @Import(name="domain")
     private @Nullable String domain;
 
     /**
-     * @return The accelerated domain name to be added. only top-level domain names are supported, such as &#39;example.com&#39;.
+     * @return (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as &#39;example.com&#39;.
      * 
      */
     public Optional<String> domain() {
@@ -91,14 +91,14 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+     * (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+     * @return (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
      * 
      */
     public Optional<String> status() {
@@ -136,7 +136,7 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param acceleratorId The ID of the global acceleration instance.
+         * @param acceleratorId (ForceNew,Optional) The ID of the global acceleration instance.
          * 
          * @return builder
          * 
@@ -147,7 +147,7 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param domain The accelerated domain name to be added. only top-level domain names are supported, such as &#39;example.com&#39;.
+         * @param domain (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as &#39;example.com&#39;.
          * 
          * @return builder
          * 
@@ -200,7 +200,7 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+         * @param status (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
          * 
          * @return builder
          * 

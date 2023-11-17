@@ -66,7 +66,7 @@ type GetTransitRouterPrefixListAssociationsArgs struct {
 	PageSize   *int `pulumi:"pageSize"`
 	// The ID of the prefix list.
 	PrefixListId *string `pulumi:"prefixListId"`
-	// The status of the prefix list.
+	// The status of the prefix list. Valid Value: `Active`, `Updating`.
 	Status *string `pulumi:"status"`
 	// The ID of the transit router.
 	TransitRouterId string `pulumi:"transitRouterId"`
@@ -115,7 +115,7 @@ type GetTransitRouterPrefixListAssociationsOutputArgs struct {
 	PageSize   pulumi.IntPtrInput `pulumi:"pageSize"`
 	// The ID of the prefix list.
 	PrefixListId pulumi.StringPtrInput `pulumi:"prefixListId"`
-	// The status of the prefix list.
+	// The status of the prefix list. Valid Value: `Active`, `Updating`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The ID of the transit router.
 	TransitRouterId pulumi.StringInput `pulumi:"transitRouterId"`

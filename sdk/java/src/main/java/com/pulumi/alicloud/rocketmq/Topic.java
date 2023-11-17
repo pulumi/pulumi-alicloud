@@ -108,7 +108,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
         return this.messageType;
     }
     /**
-     * This attribute has been deprecated.
+     * (Deprecated) This attribute has been deprecated.
      * 
      * @deprecated
      * Attribute perm has been deprecated and suggest removing it from your template.
@@ -119,7 +119,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
     private Output<Integer> perm;
 
     /**
-     * @return This attribute has been deprecated.
+     * @return (Deprecated) This attribute has been deprecated.
      * 
      */
     public Output<Integer> perm() {

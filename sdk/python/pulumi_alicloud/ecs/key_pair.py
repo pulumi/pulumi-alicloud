@@ -23,9 +23,9 @@ class KeyPairArgs:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a KeyPair resource.
-        :param pulumi.Input[str] key_file: The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
-        :param pulumi.Input[str] key_name: The key pair's name. It is the only in one Alicloud account.
-        :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+        :param pulumi.Input[str] key_file: (ForceNew) The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
+        :param pulumi.Input[str] key_name: (ForceNew) The key pair's name. It is the only in one Alicloud account.
+        :param pulumi.Input[str] public_key: (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
         """
         if key_file is not None:
@@ -50,7 +50,7 @@ class KeyPairArgs:
     @pulumi.getter(name="keyFile")
     def key_file(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
+        (ForceNew) The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
         """
         return pulumi.get(self, "key_file")
 
@@ -62,7 +62,7 @@ class KeyPairArgs:
     @pulumi.getter(name="keyName")
     def key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The key pair's name. It is the only in one Alicloud account.
+        (ForceNew) The key pair's name. It is the only in one Alicloud account.
         """
         warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
@@ -95,7 +95,7 @@ class KeyPairArgs:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
         """
-        You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+        (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         """
         return pulumi.get(self, "public_key")
 
@@ -138,9 +138,9 @@ class _KeyPairState:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering KeyPair resources.
-        :param pulumi.Input[str] key_file: The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
-        :param pulumi.Input[str] key_name: The key pair's name. It is the only in one Alicloud account.
-        :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+        :param pulumi.Input[str] key_file: (ForceNew) The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
+        :param pulumi.Input[str] key_name: (ForceNew) The key pair's name. It is the only in one Alicloud account.
+        :param pulumi.Input[str] public_key: (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
         """
         if finger_print is not None:
@@ -176,7 +176,7 @@ class _KeyPairState:
     @pulumi.getter(name="keyFile")
     def key_file(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
+        (ForceNew) The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
         """
         return pulumi.get(self, "key_file")
 
@@ -188,7 +188,7 @@ class _KeyPairState:
     @pulumi.getter(name="keyName")
     def key_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The key pair's name. It is the only in one Alicloud account.
+        (ForceNew) The key pair's name. It is the only in one Alicloud account.
         """
         warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
@@ -221,7 +221,7 @@ class _KeyPairState:
     @pulumi.getter(name="publicKey")
     def public_key(self) -> Optional[pulumi.Input[str]]:
         """
-        You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+        (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         """
         return pulumi.get(self, "public_key")
 
@@ -296,9 +296,9 @@ class KeyPair(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] key_file: The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
-        :param pulumi.Input[str] key_name: The key pair's name. It is the only in one Alicloud account.
-        :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+        :param pulumi.Input[str] key_file: (ForceNew) The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
+        :param pulumi.Input[str] key_name: (ForceNew) The key pair's name. It is the only in one Alicloud account.
+        :param pulumi.Input[str] public_key: (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
         """
         ...
@@ -401,9 +401,9 @@ class KeyPair(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] key_file: The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
-        :param pulumi.Input[str] key_name: The key pair's name. It is the only in one Alicloud account.
-        :param pulumi.Input[str] public_key: You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+        :param pulumi.Input[str] key_file: (ForceNew) The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
+        :param pulumi.Input[str] key_name: (ForceNew) The key pair's name. It is the only in one Alicloud account.
+        :param pulumi.Input[str] public_key: (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         :param pulumi.Input[str] resource_group_id: The Id of resource group which the key pair belongs.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -429,7 +429,7 @@ class KeyPair(pulumi.CustomResource):
     @pulumi.getter(name="keyFile")
     def key_file(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
+        (ForceNew) The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
         """
         return pulumi.get(self, "key_file")
 
@@ -437,7 +437,7 @@ class KeyPair(pulumi.CustomResource):
     @pulumi.getter(name="keyName")
     def key_name(self) -> pulumi.Output[str]:
         """
-        The key pair's name. It is the only in one Alicloud account.
+        (ForceNew) The key pair's name. It is the only in one Alicloud account.
         """
         warnings.warn("""Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""key_name is deprecated: Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.""")
@@ -458,7 +458,7 @@ class KeyPair(pulumi.CustomResource):
     @pulumi.getter(name="publicKey")
     def public_key(self) -> pulumi.Output[Optional[str]]:
         """
-        You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+        (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         """
         return pulumi.get(self, "public_key")
 

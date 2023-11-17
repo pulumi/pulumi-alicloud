@@ -51,7 +51,7 @@ export interface GetRegionsArgs {
      */
     outputFile?: string;
     /**
-     * The Region ID.
+     * (Option) You can use specified regionId to find the region and available zones information that supports ClickHouse.
      */
     regionId?: string;
 }
@@ -107,7 +107,7 @@ export interface GetRegionsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The Region ID.
+     * (Option) You can use specified regionId to find the region and available zones information that supports ClickHouse.
      */
     regionId?: pulumi.Input<string>;
 }

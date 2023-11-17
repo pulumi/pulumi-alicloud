@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleResult> AuthorizeSecurityPolicyRules;
         /// <summary>
-        /// Whether to enable local camera redirection. Valid values: `on`, `off`.
+        /// (Available in 1.171.0+) Whether to enable local camera redirection. Valid values: `on`, `off`.
         /// </summary>
         public readonly string CameraRedirect;
         /// <summary>
@@ -66,19 +66,19 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly string PolicyGroupType;
         /// <summary>
-        /// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+        /// (Available in 1.171.0+) Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
         /// </summary>
         public readonly string Recording;
         /// <summary>
-        /// The end time of recording.
+        /// (Available in 1.171.0+) The end time of recording.
         /// </summary>
         public readonly string RecordingEndTime;
         /// <summary>
-        /// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+        /// (Available in 1.171.0+) The fps of recording. Valid values: `2`, `5`, `10`, `15`.
         /// </summary>
         public readonly int RecordingFps;
         /// <summary>
-        /// The start time of recording.
+        /// (Available in 1.171.0+) The start time of recording.
         /// </summary>
         public readonly string RecordingStartTime;
         /// <summary>

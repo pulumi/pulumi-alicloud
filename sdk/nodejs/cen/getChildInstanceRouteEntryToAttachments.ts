@@ -42,7 +42,7 @@ export function getChildInstanceRouteEntryToAttachments(args: GetChildInstanceRo
  */
 export interface GetChildInstanceRouteEntryToAttachmentsArgs {
     /**
-     * The ID of the CEN instance.
+     * (ForceNew,Optional) The ID of the CEN instance.
      */
     cenId?: string;
     /**
@@ -58,7 +58,7 @@ export interface GetChildInstanceRouteEntryToAttachmentsArgs {
      */
     outputFile?: string;
     /**
-     * ServiceType
+     * (ForceNew,Optional) ServiceType
      */
     serviceType?: string;
     /**
@@ -128,7 +128,7 @@ export function getChildInstanceRouteEntryToAttachmentsOutput(args: GetChildInst
  */
 export interface GetChildInstanceRouteEntryToAttachmentsOutputArgs {
     /**
-     * The ID of the CEN instance.
+     * (ForceNew,Optional) The ID of the CEN instance.
      */
     cenId?: pulumi.Input<string>;
     /**
@@ -144,7 +144,7 @@ export interface GetChildInstanceRouteEntryToAttachmentsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * ServiceType
+     * (ForceNew,Optional) ServiceType
      */
     serviceType?: pulumi.Input<string>;
     /**

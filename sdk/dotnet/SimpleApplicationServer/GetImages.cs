@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The platform of Plan supported.
+        /// (Available in v1.161.0) The platform of Plan supported.
         /// </summary>
         [Input("platform")]
         public string? Platform { get; set; }
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The platform of Plan supported.
+        /// (Available in v1.161.0) The platform of Plan supported.
         /// </summary>
         [Input("platform")]
         public Input<string>? Platform { get; set; }

@@ -43,7 +43,7 @@ class DedicatedPropreHostArgs:
                - **alisql**
                - **tair**
                - **mssql**
-               Must be consistent with the parent resource cluster engine attributes.
+                 Must be consistent with the parent resource cluster engine attributes.
         :param pulumi.Input[str] payment_type: The Payment type. Currently, only **Subscription** is supported.
         :param pulumi.Input[str] security_group_id: The ID of the security group.
         :param pulumi.Input[str] vpc_id: VPCID of the VPC.
@@ -58,7 +58,7 @@ class DedicatedPropreHostArgs:
         :param pulumi.Input[str] ecs_unique_suffix: Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
                - **true**: added.
                - **false** (default): Do not add.
-               When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+                 When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         :param pulumi.Input[str] image_id: The ID of the custom image.
                > **NOTE:**  If you need to use the default image, you do not need to fill it in.
         :param pulumi.Input[str] key_pair_name: The key pair name.
@@ -66,11 +66,11 @@ class DedicatedPropreHostArgs:
                - Length is 8~30 characters.
                - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
                - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-               > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+                 > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         :param pulumi.Input[str] password_inherit: Whether to use the default password of the image.
                - **false**: (default)Do not use
                - **true**: Use
-               > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+                 > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         :param pulumi.Input[str] period: Duration of purchase.
         :param pulumi.Input[str] period_type: The subscription type. Currently, only **Monthly** (subscription) is supported.
         """
@@ -138,7 +138,7 @@ class DedicatedPropreHostArgs:
         - **alisql**
         - **tair**
         - **mssql**
-        Must be consistent with the parent resource cluster engine attributes.
+          Must be consistent with the parent resource cluster engine attributes.
         """
         return pulumi.get(self, "engine")
 
@@ -263,7 +263,7 @@ class DedicatedPropreHostArgs:
         Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
         - **true**: added.
         - **false** (default): Do not add.
-        When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+          When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         """
         return pulumi.get(self, "ecs_unique_suffix")
 
@@ -304,7 +304,7 @@ class DedicatedPropreHostArgs:
         - Length is 8~30 characters.
         - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
         - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-        > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+          > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         """
         return pulumi.get(self, "os_password")
 
@@ -319,7 +319,7 @@ class DedicatedPropreHostArgs:
         Whether to use the default password of the image.
         - **false**: (default)Do not use
         - **true**: Use
-        > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+          > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         """
         return pulumi.get(self, "password_inherit")
 
@@ -389,13 +389,13 @@ class _DedicatedPropreHostState:
         :param pulumi.Input[str] ecs_unique_suffix: Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
                - **true**: added.
                - **false** (default): Do not add.
-               When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+                 When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         :param pulumi.Input[str] ecs_zone_id: The ID of the zone.
         :param pulumi.Input[str] engine: Database type, value:
                - **alisql**
                - **tair**
                - **mssql**
-               Must be consistent with the parent resource cluster engine attributes.
+                 Must be consistent with the parent resource cluster engine attributes.
         :param pulumi.Input[str] image_id: The ID of the custom image.
                > **NOTE:**  If you need to use the default image, you do not need to fill it in.
         :param pulumi.Input[str] key_pair_name: The key pair name.
@@ -403,11 +403,11 @@ class _DedicatedPropreHostState:
                - Length is 8~30 characters.
                - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
                - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-               > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+                 > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         :param pulumi.Input[str] password_inherit: Whether to use the default password of the image.
                - **false**: (default)Do not use
                - **true**: Use
-               > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+                 > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         :param pulumi.Input[str] payment_type: The Payment type. Currently, only **Subscription** is supported.
         :param pulumi.Input[str] period: Duration of purchase.
         :param pulumi.Input[str] period_type: The subscription type. Currently, only **Monthly** (subscription) is supported.
@@ -549,7 +549,7 @@ class _DedicatedPropreHostState:
         Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
         - **true**: added.
         - **false** (default): Do not add.
-        When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+          When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         """
         return pulumi.get(self, "ecs_unique_suffix")
 
@@ -577,7 +577,7 @@ class _DedicatedPropreHostState:
         - **alisql**
         - **tair**
         - **mssql**
-        Must be consistent with the parent resource cluster engine attributes.
+          Must be consistent with the parent resource cluster engine attributes.
         """
         return pulumi.get(self, "engine")
 
@@ -618,7 +618,7 @@ class _DedicatedPropreHostState:
         - Length is 8~30 characters.
         - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
         - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-        > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+          > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         """
         return pulumi.get(self, "os_password")
 
@@ -633,7 +633,7 @@ class _DedicatedPropreHostState:
         Whether to use the default password of the image.
         - **false**: (default)Do not use
         - **true**: Use
-        > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+          > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         """
         return pulumi.get(self, "password_inherit")
 
@@ -761,13 +761,13 @@ class DedicatedPropreHost(pulumi.CustomResource):
         :param pulumi.Input[str] ecs_unique_suffix: Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
                - **true**: added.
                - **false** (default): Do not add.
-               When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+                 When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         :param pulumi.Input[str] ecs_zone_id: The ID of the zone.
         :param pulumi.Input[str] engine: Database type, value:
                - **alisql**
                - **tair**
                - **mssql**
-               Must be consistent with the parent resource cluster engine attributes.
+                 Must be consistent with the parent resource cluster engine attributes.
         :param pulumi.Input[str] image_id: The ID of the custom image.
                > **NOTE:**  If you need to use the default image, you do not need to fill it in.
         :param pulumi.Input[str] key_pair_name: The key pair name.
@@ -775,11 +775,11 @@ class DedicatedPropreHost(pulumi.CustomResource):
                - Length is 8~30 characters.
                - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
                - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-               > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+                 > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         :param pulumi.Input[str] password_inherit: Whether to use the default password of the image.
                - **false**: (default)Do not use
                - **true**: Use
-               > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+                 > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         :param pulumi.Input[str] payment_type: The Payment type. Currently, only **Subscription** is supported.
         :param pulumi.Input[str] period: Duration of purchase.
         :param pulumi.Input[str] period_type: The subscription type. Currently, only **Monthly** (subscription) is supported.
@@ -928,13 +928,13 @@ class DedicatedPropreHost(pulumi.CustomResource):
         :param pulumi.Input[str] ecs_unique_suffix: Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
                - **true**: added.
                - **false** (default): Do not add.
-               When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+                 When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         :param pulumi.Input[str] ecs_zone_id: The ID of the zone.
         :param pulumi.Input[str] engine: Database type, value:
                - **alisql**
                - **tair**
                - **mssql**
-               Must be consistent with the parent resource cluster engine attributes.
+                 Must be consistent with the parent resource cluster engine attributes.
         :param pulumi.Input[str] image_id: The ID of the custom image.
                > **NOTE:**  If you need to use the default image, you do not need to fill it in.
         :param pulumi.Input[str] key_pair_name: The key pair name.
@@ -942,11 +942,11 @@ class DedicatedPropreHost(pulumi.CustomResource):
                - Length is 8~30 characters.
                - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
                - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-               > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+                 > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         :param pulumi.Input[str] password_inherit: Whether to use the default password of the image.
                - **false**: (default)Do not use
                - **true**: Use
-               > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+                 > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         :param pulumi.Input[str] payment_type: The Payment type. Currently, only **Subscription** is supported.
         :param pulumi.Input[str] period: Duration of purchase.
         :param pulumi.Input[str] period_type: The subscription type. Currently, only **Monthly** (subscription) is supported.
@@ -1045,7 +1045,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         Whether to automatically add an ordered suffix for HostName and InstanceName when creating multiple instances. The ordered suffix starts from 001 and cannot exceed 999. Value Description:
         - **true**: added.
         - **false** (default): Do not add.
-        When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
+          When the HostName or InstanceName is set according to the specified sorting format, and the naming suffix name_suffix is not set, that is, when the naming format is name_prefix[begin_number,bits], the UniqueSuffix does not take effect, and the names are only sorted according to the specified order.
         """
         return pulumi.get(self, "ecs_unique_suffix")
 
@@ -1065,7 +1065,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         - **alisql**
         - **tair**
         - **mssql**
-        Must be consistent with the parent resource cluster engine attributes.
+          Must be consistent with the parent resource cluster engine attributes.
         """
         return pulumi.get(self, "engine")
 
@@ -1094,7 +1094,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         - Length is 8~30 characters.
         - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
         - Special symbol '()\\' ~! @#$%^& *-_+ =|{}[]:;',.? /'
-        > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+          > **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
         """
         return pulumi.get(self, "os_password")
 
@@ -1105,7 +1105,7 @@ class DedicatedPropreHost(pulumi.CustomResource):
         Whether to use the default password of the image.
         - **false**: (default)Do not use
         - **true**: Use
-        > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+          > **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
         """
         return pulumi.get(self, "password_inherit")
 

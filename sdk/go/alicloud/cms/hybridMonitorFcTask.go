@@ -100,7 +100,7 @@ type HybridMonitorFcTask struct {
 
 	// The ID of the monitoring task.
 	HybridMonitorFcTaskId pulumi.StringOutput `pulumi:"hybridMonitorFcTaskId"`
-	// the namespace of the Alibaba Cloud service.
+	// The index warehouse where the host belongs.
 	Namespace pulumi.StringOutput `pulumi:"namespace"`
 	// The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
 	TargetUserId pulumi.StringOutput `pulumi:"targetUserId"`
@@ -146,7 +146,7 @@ func GetHybridMonitorFcTask(ctx *pulumi.Context,
 type hybridMonitorFcTaskState struct {
 	// The ID of the monitoring task.
 	HybridMonitorFcTaskId *string `pulumi:"hybridMonitorFcTaskId"`
-	// the namespace of the Alibaba Cloud service.
+	// The index warehouse where the host belongs.
 	Namespace *string `pulumi:"namespace"`
 	// The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
 	TargetUserId *string `pulumi:"targetUserId"`
@@ -157,7 +157,7 @@ type hybridMonitorFcTaskState struct {
 type HybridMonitorFcTaskState struct {
 	// The ID of the monitoring task.
 	HybridMonitorFcTaskId pulumi.StringPtrInput
-	// the namespace of the Alibaba Cloud service.
+	// The index warehouse where the host belongs.
 	Namespace pulumi.StringPtrInput
 	// The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
 	TargetUserId pulumi.StringPtrInput
@@ -170,7 +170,7 @@ func (HybridMonitorFcTaskState) ElementType() reflect.Type {
 }
 
 type hybridMonitorFcTaskArgs struct {
-	// the namespace of the Alibaba Cloud service.
+	// The index warehouse where the host belongs.
 	Namespace string `pulumi:"namespace"`
 	// The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
 	TargetUserId *string `pulumi:"targetUserId"`
@@ -180,7 +180,7 @@ type hybridMonitorFcTaskArgs struct {
 
 // The set of arguments for constructing a HybridMonitorFcTask resource.
 type HybridMonitorFcTaskArgs struct {
-	// the namespace of the Alibaba Cloud service.
+	// The index warehouse where the host belongs.
 	Namespace pulumi.StringInput
 	// The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
 	TargetUserId pulumi.StringPtrInput
@@ -280,7 +280,7 @@ func (o HybridMonitorFcTaskOutput) HybridMonitorFcTaskId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HybridMonitorFcTask) pulumi.StringOutput { return v.HybridMonitorFcTaskId }).(pulumi.StringOutput)
 }
 
-// the namespace of the Alibaba Cloud service.
+// The index warehouse where the host belongs.
 func (o HybridMonitorFcTaskOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v *HybridMonitorFcTask) pulumi.StringOutput { return v.Namespace }).(pulumi.StringOutput)
 }

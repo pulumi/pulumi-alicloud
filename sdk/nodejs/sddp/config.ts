@@ -75,6 +75,9 @@ export class Config extends pulumi.CustomResource {
     public readonly lang!: pulumi.Output<string | undefined>;
     /**
      * The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+     * * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold. 
+     * * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold. 
+     * * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
      */
     public readonly value!: pulumi.Output<string | undefined>;
 
@@ -125,6 +128,9 @@ export interface ConfigState {
     lang?: pulumi.Input<string>;
     /**
      * The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+     * * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold. 
+     * * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold. 
+     * * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
      */
     value?: pulumi.Input<string>;
 }
@@ -147,6 +153,9 @@ export interface ConfigArgs {
     lang?: pulumi.Input<string>;
     /**
      * The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+     * * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold. 
+     * * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold. 
+     * * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
      */
     value?: pulumi.Input<string>;
 }

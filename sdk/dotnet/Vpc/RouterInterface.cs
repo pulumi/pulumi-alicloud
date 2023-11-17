@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Vpc
     public partial class RouterInterface : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// It has been deprecated from version 1.11.0.
+        /// (Deprecated) It has been deprecated from version 1.11.0.
         /// </summary>
         [Output("accessPointId")]
         public Output<string> AccessPointId { get; private set; } = null!;
@@ -96,19 +96,19 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.11.0.
+        /// (Deprecated) It has been deprecated from version 1.11.0.
         /// </summary>
         [Output("oppositeAccessPointId")]
         public Output<string?> OppositeAccessPointId { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+        /// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         /// </summary>
         [Output("oppositeInterfaceId")]
         public Output<string> OppositeInterfaceId { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+        /// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
         /// </summary>
         [Output("oppositeInterfaceOwnerId")]
         public Output<string> OppositeInterfaceOwnerId { get; private set; } = null!;
@@ -120,13 +120,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> OppositeRegion { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+        /// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         /// </summary>
         [Output("oppositeRouterId")]
         public Output<string> OppositeRouterId { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+        /// (Deprecated) It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
         /// </summary>
         [Output("oppositeRouterType")]
         public Output<string> OppositeRouterType { get; private set; } = null!;
@@ -240,7 +240,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.11.0.
+        /// (Deprecated) It has been deprecated from version 1.11.0.
         /// </summary>
         [Input("oppositeAccessPointId")]
         public Input<string>? OppositeAccessPointId { get; set; }
@@ -291,7 +291,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class RouterInterfaceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// It has been deprecated from version 1.11.0.
+        /// (Deprecated) It has been deprecated from version 1.11.0.
         /// </summary>
         [Input("accessPointId")]
         public Input<string>? AccessPointId { get; set; }
@@ -328,19 +328,19 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.11.0.
+        /// (Deprecated) It has been deprecated from version 1.11.0.
         /// </summary>
         [Input("oppositeAccessPointId")]
         public Input<string>? OppositeAccessPointId { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+        /// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         /// </summary>
         [Input("oppositeInterfaceId")]
         public Input<string>? OppositeInterfaceId { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+        /// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
         /// </summary>
         [Input("oppositeInterfaceOwnerId")]
         public Input<string>? OppositeInterfaceOwnerId { get; set; }
@@ -352,13 +352,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? OppositeRegion { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+        /// (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
         /// </summary>
         [Input("oppositeRouterId")]
         public Input<string>? OppositeRouterId { get; set; }
 
         /// <summary>
-        /// It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+        /// (Deprecated) It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
         /// </summary>
         [Input("oppositeRouterType")]
         public Input<string>? OppositeRouterType { get; set; }

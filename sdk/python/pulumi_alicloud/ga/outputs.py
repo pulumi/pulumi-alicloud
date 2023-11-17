@@ -920,9 +920,9 @@ class GetAcceleratorsAcceleratorBasicBandwidthPackageResult(dict):
                  bandwidth_type: str,
                  instance_id: str):
         """
-        :param int bandwidth: Bandwidth value of cross-domain acceleration package.
+        :param int bandwidth: The bandwidth value of the basic bandwidth package.
         :param str bandwidth_type: The bandwidth type of the basic bandwidth package.
-        :param str instance_id: Instance ID of the cross-domain acceleration package.
+        :param str instance_id: Instance ID of the basic bandwidth package.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "bandwidth_type", bandwidth_type)
@@ -932,7 +932,7 @@ class GetAcceleratorsAcceleratorBasicBandwidthPackageResult(dict):
     @pulumi.getter
     def bandwidth(self) -> int:
         """
-        Bandwidth value of cross-domain acceleration package.
+        The bandwidth value of the basic bandwidth package.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -948,7 +948,7 @@ class GetAcceleratorsAcceleratorBasicBandwidthPackageResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
         """
-        Instance ID of the cross-domain acceleration package.
+        Instance ID of the basic bandwidth package.
         """
         return pulumi.get(self, "instance_id")
 
@@ -2440,10 +2440,10 @@ class GetDomainsDomainResult(dict):
                  id: str,
                  status: str):
         """
-        :param str accelerator_id: The ID of the global acceleration instance.
-        :param str domain: The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+        :param str accelerator_id: (ForceNew,Optional) The ID of the global acceleration instance.
+        :param str domain: (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
         :param str id: The ID of the Ga Domain.
-        :param str status: The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+        :param str status: (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
         """
         pulumi.set(__self__, "accelerator_id", accelerator_id)
         pulumi.set(__self__, "domain", domain)
@@ -2454,7 +2454,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter(name="acceleratorId")
     def accelerator_id(self) -> str:
         """
-        The ID of the global acceleration instance.
+        (ForceNew,Optional) The ID of the global acceleration instance.
         """
         return pulumi.get(self, "accelerator_id")
 
@@ -2462,7 +2462,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter
     def domain(self) -> str:
         """
-        The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+        (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
         """
         return pulumi.get(self, "domain")
 
@@ -2478,7 +2478,7 @@ class GetDomainsDomainResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+        (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
         """
         return pulumi.get(self, "status")
 

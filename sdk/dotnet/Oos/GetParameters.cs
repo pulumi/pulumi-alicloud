@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Oos
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The name of the common parameter.
+        /// The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
         /// </summary>
         [Input("parameterName")]
         public string? ParameterName { get; set; }
@@ -205,7 +205,7 @@ namespace Pulumi.AliCloud.Oos
         private Dictionary<string, object>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public Dictionary<string, object> Tags
         {
@@ -214,7 +214,7 @@ namespace Pulumi.AliCloud.Oos
         }
 
         /// <summary>
-        /// The data type of the common parameter.
+        /// The data type of the common parameter. Valid values: `String` and `StringList`.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -258,7 +258,7 @@ namespace Pulumi.AliCloud.Oos
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The name of the common parameter.
+        /// The name of the common parameter. You can enter a keyword to query parameter names in fuzzy match mode.
         /// </summary>
         [Input("parameterName")]
         public Input<string>? ParameterName { get; set; }
@@ -279,7 +279,7 @@ namespace Pulumi.AliCloud.Oos
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -288,7 +288,7 @@ namespace Pulumi.AliCloud.Oos
         }
 
         /// <summary>
-        /// The data type of the common parameter.
+        /// The data type of the common parameter. Valid values: `String` and `StringList`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

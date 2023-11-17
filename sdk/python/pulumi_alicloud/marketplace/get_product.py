@@ -96,7 +96,7 @@ def get_product(available_region: Optional[str] = None,
     ```
 
 
-    :param str available_region: A available region id used to filter market place Ecs images.
+    :param str available_region: (Available in 1.71.1+) A available region id used to filter market place Ecs images.
     :param str product_code: The product code of the market product.
     """
     __args__ = dict()
@@ -134,7 +134,7 @@ def get_product_output(available_region: Optional[pulumi.Input[Optional[str]]] =
     ```
 
 
-    :param str available_region: A available region id used to filter market place Ecs images.
+    :param str available_region: (Available in 1.71.1+) A available region id used to filter market place Ecs images.
     :param str product_code: The product code of the market product.
     """
     ...

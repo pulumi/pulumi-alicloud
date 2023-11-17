@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Vpn
         public Output<bool?> EnableSsl { get; private set; } = null!;
 
         /// <summary>
-        /// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+        /// (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
         /// Default to PostPaid.
         /// </summary>
         [Output("instanceChargeType")]
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EnableSsl { get; set; }
 
         /// <summary>
-        /// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+        /// (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
         /// Default to PostPaid.
         /// </summary>
         [Input("instanceChargeType")]
@@ -313,7 +313,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<bool>? EnableSsl { get; set; }
 
         /// <summary>
-        /// The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+        /// (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
         /// Default to PostPaid.
         /// </summary>
         [Input("instanceChargeType")]

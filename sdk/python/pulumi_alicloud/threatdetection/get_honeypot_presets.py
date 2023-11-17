@@ -200,11 +200,11 @@ def get_honeypot_presets(current_page: Optional[int] = None,
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
-    :param str honeypot_image_name: Honeypot mirror name
+    :param str honeypot_image_name: (ForceNew,Optional) Honeypot mirror name
     :param Sequence[str] ids: A list of Honeypot Preset IDs.
-    :param str node_id: Unique id of management node
+    :param str node_id: (ForceNew,Optional) Unique id of management node
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str preset_name: Honeypot template custom name
+    :param str preset_name: (ForceNew,Optional) Honeypot template custom name
     """
     __args__ = dict()
     __args__['currentPage'] = current_page
@@ -270,10 +270,10 @@ def get_honeypot_presets_output(current_page: Optional[pulumi.Input[Optional[int
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
-    :param str honeypot_image_name: Honeypot mirror name
+    :param str honeypot_image_name: (ForceNew,Optional) Honeypot mirror name
     :param Sequence[str] ids: A list of Honeypot Preset IDs.
-    :param str node_id: Unique id of management node
+    :param str node_id: (ForceNew,Optional) Unique id of management node
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str preset_name: Honeypot template custom name
+    :param str preset_name: (ForceNew,Optional) Honeypot template custom name
     """
     ...

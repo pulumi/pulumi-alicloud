@@ -53,13 +53,13 @@ export interface GetSecretParametersArgs {
      */
     resourceGroupId?: string;
     /**
-     * The name of the encryption parameter.
+     * The name of the secret parameter.
      */
     secretParameterName?: string;
     sortField?: string;
     sortOrder?: string;
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      */
     tags?: {[key: string]: any};
 }
@@ -118,13 +118,13 @@ export interface GetSecretParametersOutputArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The name of the encryption parameter.
+     * The name of the secret parameter.
      */
     secretParameterName?: pulumi.Input<string>;
     sortField?: pulumi.Input<string>;
     sortOrder?: pulumi.Input<string>;
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

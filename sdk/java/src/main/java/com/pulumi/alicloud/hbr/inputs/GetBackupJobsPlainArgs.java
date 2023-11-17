@@ -69,14 +69,14 @@ public final class GetBackupJobsPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+     * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
      * 
      */
     @Import(name="sourceType", required=true)
     private String sourceType;
 
     /**
-     * @return The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+     * @return The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
      * 
      */
     public String sourceType() {
@@ -84,14 +84,14 @@ public final class GetBackupJobsPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+     * The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+     * @return The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
      * 
      */
     public Optional<String> status() {
@@ -180,7 +180,7 @@ public final class GetBackupJobsPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param sourceType The type of data source. Valid Values: `ECS_FILE`, `OSS`, `NAS`, `UDM_DISK`.
+         * @param sourceType The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`, `OTS`, `UDM_ECS`, `UDM_ECS_DISK`.
          * 
          * @return builder
          * 
@@ -191,7 +191,7 @@ public final class GetBackupJobsPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param status The status of restore job. Valid values: `COMPLETE` , `PARTIAL_COMPLETE`, `FAILED`.
+         * @param status The status of backup job. Valid values: `COMPLETE`, `PARTIAL_COMPLETE`, `FAILED`, `UNAVAILABLE`.
          * 
          * @return builder
          * 

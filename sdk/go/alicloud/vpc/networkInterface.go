@@ -125,11 +125,11 @@ type NetworkInterface struct {
 	// Deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
 	PrivateIpsCount pulumi.IntOutput `pulumi:"privateIpsCount"`
 	QueueNumber     pulumi.IntOutput `pulumi:"queueNumber"`
-	// The Id of resource group which the network interface belongs.
+	// (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
 	ResourceGroupId                pulumi.StringPtrOutput   `pulumi:"resourceGroupId"`
 	SecondaryPrivateIpAddressCount pulumi.IntOutput         `pulumi:"secondaryPrivateIpAddressCount"`
 	SecurityGroupIds               pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// A list of security group ids to associate with.
+	// (Require) A list of security group ids to associate with.
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups pulumi.StringArrayOutput `pulumi:"securityGroups"`
@@ -199,11 +199,11 @@ type networkInterfaceState struct {
 	// Deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
 	PrivateIpsCount *int `pulumi:"privateIpsCount"`
 	QueueNumber     *int `pulumi:"queueNumber"`
-	// The Id of resource group which the network interface belongs.
+	// (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
 	ResourceGroupId                *string  `pulumi:"resourceGroupId"`
 	SecondaryPrivateIpAddressCount *int     `pulumi:"secondaryPrivateIpAddressCount"`
 	SecurityGroupIds               []string `pulumi:"securityGroupIds"`
-	// A list of security group ids to associate with.
+	// (Require) A list of security group ids to associate with.
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups []string `pulumi:"securityGroups"`
@@ -241,11 +241,11 @@ type NetworkInterfaceState struct {
 	// Deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
 	PrivateIpsCount pulumi.IntPtrInput
 	QueueNumber     pulumi.IntPtrInput
-	// The Id of resource group which the network interface belongs.
+	// (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
 	ResourceGroupId                pulumi.StringPtrInput
 	SecondaryPrivateIpAddressCount pulumi.IntPtrInput
 	SecurityGroupIds               pulumi.StringArrayInput
-	// A list of security group ids to associate with.
+	// (Require) A list of security group ids to associate with.
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups pulumi.StringArrayInput
@@ -285,11 +285,11 @@ type networkInterfaceArgs struct {
 	// Deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
 	PrivateIpsCount *int `pulumi:"privateIpsCount"`
 	QueueNumber     *int `pulumi:"queueNumber"`
-	// The Id of resource group which the network interface belongs.
+	// (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
 	ResourceGroupId                *string  `pulumi:"resourceGroupId"`
 	SecondaryPrivateIpAddressCount *int     `pulumi:"secondaryPrivateIpAddressCount"`
 	SecurityGroupIds               []string `pulumi:"securityGroupIds"`
-	// A list of security group ids to associate with.
+	// (Require) A list of security group ids to associate with.
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups []string `pulumi:"securityGroups"`
@@ -325,11 +325,11 @@ type NetworkInterfaceArgs struct {
 	// Deprecated: Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead
 	PrivateIpsCount pulumi.IntPtrInput
 	QueueNumber     pulumi.IntPtrInput
-	// The Id of resource group which the network interface belongs.
+	// (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
 	ResourceGroupId                pulumi.StringPtrInput
 	SecondaryPrivateIpAddressCount pulumi.IntPtrInput
 	SecurityGroupIds               pulumi.StringArrayInput
-	// A list of security group ids to associate with.
+	// (Require) A list of security group ids to associate with.
 	//
 	// Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 	SecurityGroups pulumi.StringArrayInput
@@ -488,7 +488,7 @@ func (o NetworkInterfaceOutput) QueueNumber() pulumi.IntOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.IntOutput { return v.QueueNumber }).(pulumi.IntOutput)
 }
 
-// The Id of resource group which the network interface belongs.
+// (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
 func (o NetworkInterfaceOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
@@ -501,7 +501,7 @@ func (o NetworkInterfaceOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// A list of security group ids to associate with.
+// (Require) A list of security group ids to associate with.
 //
 // Deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
 func (o NetworkInterfaceOutput) SecurityGroups() pulumi.StringArrayOutput {

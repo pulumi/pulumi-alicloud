@@ -90,7 +90,7 @@ type GetLoadBalancersArgs struct {
 	VpcId *string `pulumi:"vpcId"`
 	// The vpc ids.
 	VpcIds []string `pulumi:"vpcIds"`
-	// The ID of the zone to which the ALB instance belongs.
+	// The zone ID of the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -163,7 +163,7 @@ type GetLoadBalancersOutputArgs struct {
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 	// The vpc ids.
 	VpcIds pulumi.StringArrayInput `pulumi:"vpcIds"`
-	// The ID of the zone to which the ALB instance belongs.
+	// The zone ID of the resource.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 

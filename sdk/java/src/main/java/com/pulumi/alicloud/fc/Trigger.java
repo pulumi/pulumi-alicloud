@@ -800,28 +800,28 @@ public class Trigger extends com.pulumi.resources.CustomResource {
         return this.lastModified;
     }
     /**
-     * The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+     * (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
      * 
      */
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
     /**
-     * @return The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
+     * @return (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * Setting a prefix to get a only trigger name. It is conflict with &#34;name&#34;.
+     * (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with &#34;name&#34;.
      * 
      */
     @Export(name="namePrefix", type=String.class, parameters={})
     private Output</* @Nullable */ String> namePrefix;
 
     /**
-     * @return Setting a prefix to get a only trigger name. It is conflict with &#34;name&#34;.
+     * @return (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with &#34;name&#34;.
      * 
      */
     public Output<Optional<String>> namePrefix() {

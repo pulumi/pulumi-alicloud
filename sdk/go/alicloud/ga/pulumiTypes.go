@@ -1990,11 +1990,11 @@ func (o GetAcceleratorsAcceleratorArrayOutput) Index(i pulumi.IntInput) GetAccel
 }
 
 type GetAcceleratorsAcceleratorBasicBandwidthPackage struct {
-	// Bandwidth value of cross-domain acceleration package.
+	// The bandwidth value of the basic bandwidth package.
 	Bandwidth int `pulumi:"bandwidth"`
 	// The bandwidth type of the basic bandwidth package.
 	BandwidthType string `pulumi:"bandwidthType"`
-	// Instance ID of the cross-domain acceleration package.
+	// Instance ID of the basic bandwidth package.
 	InstanceId string `pulumi:"instanceId"`
 }
 
@@ -2010,11 +2010,11 @@ type GetAcceleratorsAcceleratorBasicBandwidthPackageInput interface {
 }
 
 type GetAcceleratorsAcceleratorBasicBandwidthPackageArgs struct {
-	// Bandwidth value of cross-domain acceleration package.
+	// The bandwidth value of the basic bandwidth package.
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
 	// The bandwidth type of the basic bandwidth package.
 	BandwidthType pulumi.StringInput `pulumi:"bandwidthType"`
-	// Instance ID of the cross-domain acceleration package.
+	// Instance ID of the basic bandwidth package.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 }
 
@@ -2069,7 +2069,7 @@ func (o GetAcceleratorsAcceleratorBasicBandwidthPackageOutput) ToGetAccelerators
 	return o
 }
 
-// Bandwidth value of cross-domain acceleration package.
+// The bandwidth value of the basic bandwidth package.
 func (o GetAcceleratorsAcceleratorBasicBandwidthPackageOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAcceleratorsAcceleratorBasicBandwidthPackage) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
@@ -2079,7 +2079,7 @@ func (o GetAcceleratorsAcceleratorBasicBandwidthPackageOutput) BandwidthType() p
 	return o.ApplyT(func(v GetAcceleratorsAcceleratorBasicBandwidthPackage) string { return v.BandwidthType }).(pulumi.StringOutput)
 }
 
-// Instance ID of the cross-domain acceleration package.
+// Instance ID of the basic bandwidth package.
 func (o GetAcceleratorsAcceleratorBasicBandwidthPackageOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAcceleratorsAcceleratorBasicBandwidthPackage) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -4840,13 +4840,13 @@ func (o GetCustomRoutingPortMappingsCustomRoutingPortMappingDestinationSocketAdd
 }
 
 type GetDomainsDomain struct {
-	// The ID of the global acceleration instance.
+	// (ForceNew,Optional) The ID of the global acceleration instance.
 	AcceleratorId string `pulumi:"acceleratorId"`
-	// The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+	// (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
 	Domain string `pulumi:"domain"`
 	// The ID of the Ga Domain.
 	Id string `pulumi:"id"`
-	// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+	// (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
 	Status string `pulumi:"status"`
 }
 
@@ -4862,13 +4862,13 @@ type GetDomainsDomainInput interface {
 }
 
 type GetDomainsDomainArgs struct {
-	// The ID of the global acceleration instance.
+	// (ForceNew,Optional) The ID of the global acceleration instance.
 	AcceleratorId pulumi.StringInput `pulumi:"acceleratorId"`
-	// The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+	// (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
 	Domain pulumi.StringInput `pulumi:"domain"`
 	// The ID of the Ga Domain.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+	// (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -4923,12 +4923,12 @@ func (o GetDomainsDomainOutput) ToGetDomainsDomainOutputWithContext(ctx context.
 	return o
 }
 
-// The ID of the global acceleration instance.
+// (ForceNew,Optional) The ID of the global acceleration instance.
 func (o GetDomainsDomainOutput) AcceleratorId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.AcceleratorId }).(pulumi.StringOutput)
 }
 
-// The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+// (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
 func (o GetDomainsDomainOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.Domain }).(pulumi.StringOutput)
 }
@@ -4938,7 +4938,7 @@ func (o GetDomainsDomainOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+// (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
 func (o GetDomainsDomainOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDomainsDomain) string { return v.Status }).(pulumi.StringOutput)
 }

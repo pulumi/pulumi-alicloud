@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Eds
     public partial class SimpleOfficeSite : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+        /// (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         /// </summary>
         [Output("bandwidth")]
         public Output<int> Bandwidth { get; private set; } = null!;
@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.Eds
         public Output<bool> EnableCrossDesktopAccess { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the Open Internet Access Function.
+        /// (Deprecated from 1.142.0) Whether the Open Internet Access Function.
         /// </summary>
         [Output("enableInternetAccess")]
         public Output<bool> EnableInternetAccess { get; private set; } = null!;
@@ -169,7 +169,7 @@ namespace Pulumi.AliCloud.Eds
     public sealed class SimpleOfficeSiteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+        /// (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.Eds
         public Input<bool>? EnableCrossDesktopAccess { get; set; }
 
         /// <summary>
-        /// Whether the Open Internet Access Function.
+        /// (Deprecated from 1.142.0) Whether the Open Internet Access Function.
         /// </summary>
         [Input("enableInternetAccess")]
         public Input<bool>? EnableInternetAccess { get; set; }
@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.Eds
     public sealed class SimpleOfficeSiteState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+        /// (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
         /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
@@ -285,7 +285,7 @@ namespace Pulumi.AliCloud.Eds
         public Input<bool>? EnableCrossDesktopAccess { get; set; }
 
         /// <summary>
-        /// Whether the Open Internet Access Function.
+        /// (Deprecated from 1.142.0) Whether the Open Internet Access Function.
         /// </summary>
         [Input("enableInternetAccess")]
         public Input<bool>? EnableInternetAccess { get; set; }

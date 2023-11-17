@@ -59,7 +59,7 @@ func GetCertificates(ctx *pulumi.Context, args *GetCertificatesArgs, opts ...pul
 
 // A collection of arguments for invoking getCertificates.
 type GetCertificatesArgs struct {
-	// The domain that you want to add to WAF.
+	// WAF domain name.
 	Domain *string `pulumi:"domain"`
 	// A list of Certificate IDs.
 	Ids []string `pulumi:"ids"`
@@ -99,7 +99,7 @@ func GetCertificatesOutput(ctx *pulumi.Context, args GetCertificatesOutputArgs, 
 
 // A collection of arguments for invoking getCertificates.
 type GetCertificatesOutputArgs struct {
-	// The domain that you want to add to WAF.
+	// WAF domain name.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// A list of Certificate IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

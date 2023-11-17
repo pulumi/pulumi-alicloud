@@ -60,9 +60,9 @@ func GetVpcFirewalls(ctx *pulumi.Context, args *GetVpcFirewallsArgs, opts ...pul
 type GetVpcFirewallsArgs struct {
 	// A list of Vpc Firewall IDs.
 	Ids []string `pulumi:"ids"`
-	// The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+	// (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
 	Lang *string `pulumi:"lang"`
-	// The UID of the Alibaba Cloud member account.
+	// (ForceNew,Optional) The UID of the Alibaba Cloud member account.
 	MemberUid *string `pulumi:"memberUid"`
 	// A regex string to filter results by Group Metric Rule name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -70,11 +70,11 @@ type GetVpcFirewallsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The region ID of the peer VPC.
 	RegionNo *string `pulumi:"regionNo"`
-	// The status of the resource
+	// (ForceNew,Optional) The status of the resource
 	Status *string `pulumi:"status"`
-	// The ID of the VPC firewall instance.
+	// (ForceNew,Optional) The ID of the VPC firewall instance.
 	VpcFirewallId *string `pulumi:"vpcFirewallId"`
-	// The name of the VPC firewall instance.
+	// (ForceNew,Optional) The name of the VPC firewall instance.
 	VpcFirewallName *string `pulumi:"vpcFirewallName"`
 	// The ID of the peer VPC instance.
 	VpcId *string `pulumi:"vpcId"`
@@ -124,9 +124,9 @@ func GetVpcFirewallsOutput(ctx *pulumi.Context, args GetVpcFirewallsOutputArgs, 
 type GetVpcFirewallsOutputArgs struct {
 	// A list of Vpc Firewall IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+	// (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
 	Lang pulumi.StringPtrInput `pulumi:"lang"`
-	// The UID of the Alibaba Cloud member account.
+	// (ForceNew,Optional) The UID of the Alibaba Cloud member account.
 	MemberUid pulumi.StringPtrInput `pulumi:"memberUid"`
 	// A regex string to filter results by Group Metric Rule name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
@@ -134,11 +134,11 @@ type GetVpcFirewallsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The region ID of the peer VPC.
 	RegionNo pulumi.StringPtrInput `pulumi:"regionNo"`
-	// The status of the resource
+	// (ForceNew,Optional) The status of the resource
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The ID of the VPC firewall instance.
+	// (ForceNew,Optional) The ID of the VPC firewall instance.
 	VpcFirewallId pulumi.StringPtrInput `pulumi:"vpcFirewallId"`
-	// The name of the VPC firewall instance.
+	// (ForceNew,Optional) The name of the VPC firewall instance.
 	VpcFirewallName pulumi.StringPtrInput `pulumi:"vpcFirewallName"`
 	// The ID of the peer VPC instance.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`

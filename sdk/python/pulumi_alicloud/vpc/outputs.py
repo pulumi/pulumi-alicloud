@@ -200,7 +200,7 @@ class NetworkAclEgressAclEntry(dict):
         :param str policy: Authorization policy. Value:
                - accept: Allow.
                - drop: Refused.
-        :param str port: The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+        :param str port: The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
         :param str protocol: The protocol type. Value:
                - icmp: Network Control Message Protocol.
                - gre: Generic Routing Encapsulation Protocol.
@@ -259,7 +259,7 @@ class NetworkAclEgressAclEntry(dict):
     @pulumi.getter
     def port(self) -> Optional[str]:
         """
-        The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+        The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
         """
         return pulumi.get(self, "port")
 
@@ -700,7 +700,7 @@ class NetworkIpv6CidrBlock(dict):
                - **ChinaMobile**: China Mobile (single line).
                - **ChinaUnicom**: China Unicom (single line).
                - **ChinaTelecom**: China Telecom (single line).
-               > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+                 > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
         """
         if ipv6_cidr_block is not None:
             pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
@@ -724,7 +724,7 @@ class NetworkIpv6CidrBlock(dict):
         - **ChinaMobile**: China Mobile (single line).
         - **ChinaUnicom**: China Unicom (single line).
         - **ChinaTelecom**: China Telecom (single line).
-        > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+          > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
         """
         return pulumi.get(self, "ipv6_isp")
 
@@ -935,10 +935,10 @@ class TrafficMirrorFilterEgressRule(dict):
                - ICMP: Network Control Message Protocol.
                - TCP: Transmission Control Protocol.
                - UDP: User Datagram Protocol.
-        :param str destination_cidr_block: DestinationCidrBlock.
+        :param str destination_cidr_block: The destination address of the outbound rule network traffic.
         :param str destination_port_range: The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
                > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-        :param int priority: Priority.
+        :param int priority: The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
         :param str source_cidr_block: The source address of the outbound rule network traffic.
         :param str source_port_range: The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
                > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
@@ -984,7 +984,7 @@ class TrafficMirrorFilterEgressRule(dict):
     @pulumi.getter(name="destinationCidrBlock")
     def destination_cidr_block(self) -> Optional[str]:
         """
-        DestinationCidrBlock.
+        The destination address of the outbound rule network traffic.
         """
         return pulumi.get(self, "destination_cidr_block")
 
@@ -1001,7 +1001,7 @@ class TrafficMirrorFilterEgressRule(dict):
     @pulumi.getter
     def priority(self) -> Optional[int]:
         """
-        Priority.
+        The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
         """
         return pulumi.get(self, "priority")
 
@@ -1073,10 +1073,10 @@ class TrafficMirrorFilterIngressRule(dict):
                - ICMP: Network Control Message Protocol.
                - TCP: Transmission Control Protocol.
                - UDP: User Datagram Protocol.
-        :param str destination_cidr_block: DestinationCidrBlock.
+        :param str destination_cidr_block: The destination address of the outbound rule network traffic.
         :param str destination_port_range: The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
                > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-        :param int priority: Priority.
+        :param int priority: The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
         :param str source_cidr_block: The source address of the outbound rule network traffic.
         :param str source_port_range: The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
                > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
@@ -1122,7 +1122,7 @@ class TrafficMirrorFilterIngressRule(dict):
     @pulumi.getter(name="destinationCidrBlock")
     def destination_cidr_block(self) -> Optional[str]:
         """
-        DestinationCidrBlock.
+        The destination address of the outbound rule network traffic.
         """
         return pulumi.get(self, "destination_cidr_block")
 
@@ -1139,7 +1139,7 @@ class TrafficMirrorFilterIngressRule(dict):
     @pulumi.getter
     def priority(self) -> Optional[int]:
         """
-        Priority.
+        The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
         """
         return pulumi.get(self, "priority")
 
@@ -3620,7 +3620,7 @@ class GetNetworkAclsAclResult(dict):
                  status: str,
                  vpc_id: str):
         """
-        :param str description: Description of the entry direction rule.
+        :param str description: Description of network ACL information.
         :param Sequence['GetNetworkAclsAclEgressAclEntryArgs'] egress_acl_entries: Output direction rule information.
         :param str id: The ID of the Network Acl.
         :param Sequence['GetNetworkAclsAclIngressAclEntryArgs'] ingress_acl_entries: Entry direction rule information.
@@ -3644,7 +3644,7 @@ class GetNetworkAclsAclResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        Description of the entry direction rule.
+        Description of network ACL information.
         """
         return pulumi.get(self, "description")
 
@@ -3723,12 +3723,12 @@ class GetNetworkAclsAclEgressAclEntryResult(dict):
                  port: str,
                  protocol: str):
         """
-        :param str description: Description of the entry direction rule.
+        :param str description: Description of network ACL information.
         :param str destination_cidr_ip: The destination address segment.
-        :param str network_acl_entry_name: The name of the entry direction rule entry.
-        :param str policy: The authorization policy.
-        :param str port: Source port range.
-        :param str protocol: Transport layer protocol.
+        :param str network_acl_entry_name: The name of the entry for the direction rule.
+        :param str policy: The  authorization policy.
+        :param str port: Destination port range.
+        :param str protocol: Transport  layer protocol.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "destination_cidr_ip", destination_cidr_ip)
@@ -3741,7 +3741,7 @@ class GetNetworkAclsAclEgressAclEntryResult(dict):
     @pulumi.getter
     def description(self) -> str:
         """
-        Description of the entry direction rule.
+        Description of network ACL information.
         """
         return pulumi.get(self, "description")
 
@@ -3757,7 +3757,7 @@ class GetNetworkAclsAclEgressAclEntryResult(dict):
     @pulumi.getter(name="networkAclEntryName")
     def network_acl_entry_name(self) -> str:
         """
-        The name of the entry direction rule entry.
+        The name of the entry for the direction rule.
         """
         return pulumi.get(self, "network_acl_entry_name")
 
@@ -3765,7 +3765,7 @@ class GetNetworkAclsAclEgressAclEntryResult(dict):
     @pulumi.getter
     def policy(self) -> str:
         """
-        The authorization policy.
+        The  authorization policy.
         """
         return pulumi.get(self, "policy")
 
@@ -3773,7 +3773,7 @@ class GetNetworkAclsAclEgressAclEntryResult(dict):
     @pulumi.getter
     def port(self) -> str:
         """
-        Source port range.
+        Destination port range.
         """
         return pulumi.get(self, "port")
 
@@ -3781,7 +3781,7 @@ class GetNetworkAclsAclEgressAclEntryResult(dict):
     @pulumi.getter
     def protocol(self) -> str:
         """
-        Transport layer protocol.
+        Transport  layer protocol.
         """
         return pulumi.get(self, "protocol")
 
@@ -3868,7 +3868,7 @@ class GetNetworkAclsAclResourceResult(dict):
         """
         :param str resource_id: The ID of the associated resource.
         :param str resource_type: The type of the associated resource.
-        :param str status: The state of the network ACL.
+        :param str status: The state of the associated resource.
         """
         pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "resource_type", resource_type)
@@ -3894,7 +3894,7 @@ class GetNetworkAclsAclResourceResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The state of the network ACL.
+        The state of the associated resource.
         """
         return pulumi.get(self, "status")
 
@@ -4214,16 +4214,8 @@ class GetPeerConnectionsConnectionResult(dict):
                  status: str,
                  vpc_id: str):
         """
-        :param int accepting_ali_uid: The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
-        :param str accepting_region_id: The region ID of the recipient of the VPC peering connection to be created.
-        :param str accepting_vpc_id: The VPC ID of the receiving end of the VPC peer connection.
-        :param int bandwidth: The bandwidth of the VPC peering connection to be modified. Unit: Mbps.
-        :param str create_time: The creation time of the resource.
-        :param str description: The description of the VPC peer connection to be created.
-        :param str id: The ID of the PeerConnection.
-        :param str peer_connection_id: The first ID of the resource.
         :param str peer_connection_name: The name of the resource.
-        :param str status: The status of the resource.
+        :param str status: The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
         :param str vpc_id: The ID of the requester VPC.
         """
         pulumi.set(__self__, "accepting_ali_uid", accepting_ali_uid)
@@ -4241,65 +4233,41 @@ class GetPeerConnectionsConnectionResult(dict):
     @property
     @pulumi.getter(name="acceptingAliUid")
     def accepting_ali_uid(self) -> int:
-        """
-        The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
-        """
         return pulumi.get(self, "accepting_ali_uid")
 
     @property
     @pulumi.getter(name="acceptingRegionId")
     def accepting_region_id(self) -> str:
-        """
-        The region ID of the recipient of the VPC peering connection to be created.
-        """
         return pulumi.get(self, "accepting_region_id")
 
     @property
     @pulumi.getter(name="acceptingVpcId")
     def accepting_vpc_id(self) -> str:
-        """
-        The VPC ID of the receiving end of the VPC peer connection.
-        """
         return pulumi.get(self, "accepting_vpc_id")
 
     @property
     @pulumi.getter
     def bandwidth(self) -> int:
-        """
-        The bandwidth of the VPC peering connection to be modified. Unit: Mbps.
-        """
         return pulumi.get(self, "bandwidth")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
-        """
-        The creation time of the resource.
-        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The description of the VPC peer connection to be created.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the PeerConnection.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="peerConnectionId")
     def peer_connection_id(self) -> str:
-        """
-        The first ID of the resource.
-        """
         return pulumi.get(self, "peer_connection_id")
 
     @property
@@ -4314,7 +4282,7 @@ class GetPeerConnectionsConnectionResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
         """
         return pulumi.get(self, "status")
 
@@ -4342,6 +4310,8 @@ class GetPrefixListsListResult(dict):
         """
         :param str create_time: The time when the prefix list was created.
         :param Sequence['GetPrefixListsListEntryArgs'] entrys: The CIDR address block list of the prefix list.
+               * `cidr` - The CIDR address block of the prefix list.
+               * `description` - The description of the cidr entry.
         :param str id: The ID of the Prefix List.
         :param str ip_version: The IP version of the prefix list.
         :param int max_entries: The maximum number of entries for CIDR address blocks in the prefix list.
@@ -4373,6 +4343,8 @@ class GetPrefixListsListResult(dict):
     def entrys(self) -> Sequence['outputs.GetPrefixListsListEntryResult']:
         """
         The CIDR address block list of the prefix list.
+        * `cidr` - The CIDR address block of the prefix list.
+        * `description` - The description of the cidr entry.
         """
         return pulumi.get(self, "entrys")
 
@@ -4438,27 +4410,17 @@ class GetPrefixListsListEntryResult(dict):
     def __init__(__self__, *,
                  cidr: str,
                  description: str):
-        """
-        :param str cidr: The CIDR address block of the prefix list.
-        :param str description: The description of the cidr entry.
-        """
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "description", description)
 
     @property
     @pulumi.getter
     def cidr(self) -> str:
-        """
-        The CIDR address block of the prefix list.
-        """
         return pulumi.get(self, "cidr")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The description of the cidr entry.
-        """
         return pulumi.get(self, "description")
 
 

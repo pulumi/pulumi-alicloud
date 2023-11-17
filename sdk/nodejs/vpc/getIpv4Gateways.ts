@@ -62,7 +62,7 @@ export interface GetIpv4GatewaysArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Creating`, `Created`, `Deleting`, `Pending`, `Deleted`.
      */
     status?: string;
     /**
@@ -134,7 +134,7 @@ export interface GetIpv4GatewaysOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Creating`, `Created`, `Deleting`, `Pending`, `Deleted`.
      */
     status?: pulumi.Input<string>;
     /**

@@ -114,7 +114,7 @@ export class RouteEntry extends pulumi.CustomResource {
     }
 
     /**
-     * The RouteEntry's target network segment.
+     * (ForceNew) The RouteEntry's target network segment.
      */
     public readonly destinationCidrblock!: pulumi.Output<string | undefined>;
     /**
@@ -122,11 +122,11 @@ export class RouteEntry extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * The route entry's next hop. ECS instance ID or VPC router interface ID.
+     * (ForceNew) The route entry's next hop. ECS instance ID or VPC router interface ID.
      */
     public readonly nexthopId!: pulumi.Output<string | undefined>;
     /**
-     * The next hop type. Available values:
+     * (ForceNew) The next hop type. Available values:
      */
     public readonly nexthopType!: pulumi.Output<string | undefined>;
     /**
@@ -134,7 +134,7 @@ export class RouteEntry extends pulumi.CustomResource {
      */
     public readonly routeTableId!: pulumi.Output<string>;
     /**
-     * This argument has been deprecated. Please use other arguments to launch a custom route entry.
+     * (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
      *
      * @deprecated Attribute router_id has been deprecated and suggest removing it from your template.
      */
@@ -181,7 +181,7 @@ export class RouteEntry extends pulumi.CustomResource {
  */
 export interface RouteEntryState {
     /**
-     * The RouteEntry's target network segment.
+     * (ForceNew) The RouteEntry's target network segment.
      */
     destinationCidrblock?: pulumi.Input<string>;
     /**
@@ -189,11 +189,11 @@ export interface RouteEntryState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The route entry's next hop. ECS instance ID or VPC router interface ID.
+     * (ForceNew) The route entry's next hop. ECS instance ID or VPC router interface ID.
      */
     nexthopId?: pulumi.Input<string>;
     /**
-     * The next hop type. Available values:
+     * (ForceNew) The next hop type. Available values:
      */
     nexthopType?: pulumi.Input<string>;
     /**
@@ -201,7 +201,7 @@ export interface RouteEntryState {
      */
     routeTableId?: pulumi.Input<string>;
     /**
-     * This argument has been deprecated. Please use other arguments to launch a custom route entry.
+     * (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
      *
      * @deprecated Attribute router_id has been deprecated and suggest removing it from your template.
      */
@@ -213,7 +213,7 @@ export interface RouteEntryState {
  */
 export interface RouteEntryArgs {
     /**
-     * The RouteEntry's target network segment.
+     * (ForceNew) The RouteEntry's target network segment.
      */
     destinationCidrblock?: pulumi.Input<string>;
     /**
@@ -221,11 +221,11 @@ export interface RouteEntryArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * The route entry's next hop. ECS instance ID or VPC router interface ID.
+     * (ForceNew) The route entry's next hop. ECS instance ID or VPC router interface ID.
      */
     nexthopId?: pulumi.Input<string>;
     /**
-     * The next hop type. Available values:
+     * (ForceNew) The next hop type. Available values:
      */
     nexthopType?: pulumi.Input<string>;
     /**
@@ -233,7 +233,7 @@ export interface RouteEntryArgs {
      */
     routeTableId: pulumi.Input<string>;
     /**
-     * This argument has been deprecated. Please use other arguments to launch a custom route entry.
+     * (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
      *
      * @deprecated Attribute router_id has been deprecated and suggest removing it from your template.
      */

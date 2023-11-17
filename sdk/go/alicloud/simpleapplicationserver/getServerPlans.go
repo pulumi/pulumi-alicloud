@@ -73,7 +73,7 @@ type GetServerPlansArgs struct {
 	Memory *int `pulumi:"memory"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The platform of Plan supported. Valid values: ["Linux", "Windows"].
+	// (Available in v1.161.0) The platform of Plan supported. Valid values: ["Linux", "Windows"].
 	Platform *string `pulumi:"platform"`
 }
 
@@ -121,7 +121,7 @@ type GetServerPlansOutputArgs struct {
 	Memory pulumi.IntPtrInput `pulumi:"memory"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The platform of Plan supported. Valid values: ["Linux", "Windows"].
+	// (Available in v1.161.0) The platform of Plan supported. Valid values: ["Linux", "Windows"].
 	Platform pulumi.StringPtrInput `pulumi:"platform"`
 }
 

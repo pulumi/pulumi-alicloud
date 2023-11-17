@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly bool DeleteWithInstance;
         /// <summary>
-        /// System disk description.
+        /// The Description of Template.
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly bool Encrypted;
         /// <summary>
-        /// System disk name.
+        /// The ENI name.
         /// </summary>
         public readonly string Name;
         /// <summary>

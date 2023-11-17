@@ -45,7 +45,7 @@ type CommonBandwithPackage struct {
 	InternetChargeType pulumi.StringPtrOutput `pulumi:"internetChargeType"`
 	// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
 	Isp pulumi.StringOutput `pulumi:"isp"`
-	// . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+	// (Deprecated since v1.120.0). Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -121,7 +121,7 @@ type commonBandwithPackageState struct {
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
 	Isp *string `pulumi:"isp"`
-	// . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+	// (Deprecated since v1.120.0). Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	Name *string `pulumi:"name"`
@@ -165,7 +165,7 @@ type CommonBandwithPackageState struct {
 	InternetChargeType pulumi.StringPtrInput
 	// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
 	Isp pulumi.StringPtrInput
-	// . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+	// (Deprecated since v1.120.0). Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	Name pulumi.StringPtrInput
@@ -211,7 +211,7 @@ type commonBandwithPackageArgs struct {
 	InternetChargeType *string `pulumi:"internetChargeType"`
 	// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
 	Isp *string `pulumi:"isp"`
-	// . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+	// (Deprecated since v1.120.0). Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	Name *string `pulumi:"name"`
@@ -250,7 +250,7 @@ type CommonBandwithPackageArgs struct {
 	InternetChargeType pulumi.StringPtrInput
 	// The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
 	Isp pulumi.StringPtrInput
-	// . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+	// (Deprecated since v1.120.0). Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
 	Name pulumi.StringPtrInput
@@ -400,7 +400,7 @@ func (o CommonBandwithPackageOutput) Isp() pulumi.StringOutput {
 	return o.ApplyT(func(v *CommonBandwithPackage) pulumi.StringOutput { return v.Isp }).(pulumi.StringOutput)
 }
 
-// . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+// (Deprecated since v1.120.0). Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
 //
 // Deprecated: Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead.
 func (o CommonBandwithPackageOutput) Name() pulumi.StringOutput {

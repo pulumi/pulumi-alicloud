@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.Vpc
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+        /// The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -226,7 +226,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the IPv6 gateway. Valid values: `Available`, `Deleting`, `Pending`.
+        /// The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -67,7 +67,7 @@ export interface GetGatewayVpnAttachmentsArgs {
      */
     status?: string;
     /**
-     * The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
+     * (Deprecated) The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
      *
      * @deprecated The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
      */
@@ -145,7 +145,7 @@ export interface GetGatewayVpnAttachmentsOutputArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
+     * (Deprecated) The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
      *
      * @deprecated The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
      */

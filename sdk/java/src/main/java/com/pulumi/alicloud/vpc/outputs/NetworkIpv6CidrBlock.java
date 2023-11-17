@@ -22,7 +22,7 @@ public final class NetworkIpv6CidrBlock {
      * - **ChinaMobile**: China Mobile (single line).
      * - **ChinaUnicom**: China Unicom (single line).
      * - **ChinaTelecom**: China Telecom (single line).
-     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     *   &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
      * 
      */
     private @Nullable String ipv6Isp;
@@ -41,7 +41,7 @@ public final class NetworkIpv6CidrBlock {
      * - **ChinaMobile**: China Mobile (single line).
      * - **ChinaUnicom**: China Unicom (single line).
      * - **ChinaTelecom**: China Telecom (single line).
-     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     *   &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
      * 
      */
     public Optional<String> ipv6Isp() {

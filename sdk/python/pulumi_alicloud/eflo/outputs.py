@@ -35,16 +35,16 @@ class GetSubnetsSubnetResult(dict):
         :param str gmt_modified: Modification time
         :param str id: The ID of the resource.
         :param str message: Error message
-        :param str resource_group_id: Resource Group ID.
-        :param str status: The status of the resource.
-        :param str subnet_id: Primary key ID.
-        :param str subnet_name: The Subnet name.
-        :param str type: Eflo subnet usage type, optional value: 
+        :param str resource_group_id: (ForceNew,Optional) Resource Group ID.
+        :param str status: (ForceNew,Optional) The status of the resource.
+        :param str subnet_id: (ForceNew,Optional) Primary key ID.
+        :param str subnet_name: (ForceNew,Optional) The Subnet name.
+        :param str type: (ForceNew,Optional) Eflo subnet usage type, optional value:
                - General type is not filled in
                - OOB:OOB type
                - LB: LB type
-        :param str vpd_id: The Eflo VPD ID.
-        :param str zone_id: The zone ID of the resource.
+        :param str vpd_id: (ForceNew,Optional) The Eflo VPD ID.
+        :param str zone_id: (ForceNew,Optional) The zone ID of the resource.
         """
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "create_time", create_time)
@@ -103,7 +103,7 @@ class GetSubnetsSubnetResult(dict):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> str:
         """
-        Resource Group ID.
+        (ForceNew,Optional) Resource Group ID.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -111,7 +111,7 @@ class GetSubnetsSubnetResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        (ForceNew,Optional) The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -119,7 +119,7 @@ class GetSubnetsSubnetResult(dict):
     @pulumi.getter(name="subnetId")
     def subnet_id(self) -> str:
         """
-        Primary key ID.
+        (ForceNew,Optional) Primary key ID.
         """
         return pulumi.get(self, "subnet_id")
 
@@ -127,7 +127,7 @@ class GetSubnetsSubnetResult(dict):
     @pulumi.getter(name="subnetName")
     def subnet_name(self) -> str:
         """
-        The Subnet name.
+        (ForceNew,Optional) The Subnet name.
         """
         return pulumi.get(self, "subnet_name")
 
@@ -135,7 +135,7 @@ class GetSubnetsSubnetResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Eflo subnet usage type, optional value: 
+        (ForceNew,Optional) Eflo subnet usage type, optional value:
         - General type is not filled in
         - OOB:OOB type
         - LB: LB type
@@ -146,7 +146,7 @@ class GetSubnetsSubnetResult(dict):
     @pulumi.getter(name="vpdId")
     def vpd_id(self) -> str:
         """
-        The Eflo VPD ID.
+        (ForceNew,Optional) The Eflo VPD ID.
         """
         return pulumi.get(self, "vpd_id")
 
@@ -154,7 +154,7 @@ class GetSubnetsSubnetResult(dict):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
         """
-        The zone ID of the resource.
+        (ForceNew,Optional) The zone ID of the resource.
         """
         return pulumi.get(self, "zone_id")
 
@@ -175,10 +175,10 @@ class GetVpdsVpdResult(dict):
         :param str create_time: The creation time of the resource
         :param str gmt_modified: Modification time
         :param str id: The id of the vpd.
-        :param str resource_group_id: The Resource group id
-        :param str status: The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
-        :param str vpd_id: The id of the vpd.
-        :param str vpd_name: The Name of the VPD.
+        :param str resource_group_id: (ForceNew,Optional) The Resource group id
+        :param str status: (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+        :param str vpd_id: (ForceNew,Optional) The id of the vpd.
+        :param str vpd_name: (ForceNew,Optional) The Name of the VPD.
         """
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "create_time", create_time)
@@ -225,7 +225,7 @@ class GetVpdsVpdResult(dict):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> str:
         """
-        The Resource group id
+        (ForceNew,Optional) The Resource group id
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -233,7 +233,7 @@ class GetVpdsVpdResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+        (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
         """
         return pulumi.get(self, "status")
 
@@ -241,7 +241,7 @@ class GetVpdsVpdResult(dict):
     @pulumi.getter(name="vpdId")
     def vpd_id(self) -> str:
         """
-        The id of the vpd.
+        (ForceNew,Optional) The id of the vpd.
         """
         return pulumi.get(self, "vpd_id")
 
@@ -249,7 +249,7 @@ class GetVpdsVpdResult(dict):
     @pulumi.getter(name="vpdName")
     def vpd_name(self) -> str:
         """
-        The Name of the VPD.
+        (ForceNew,Optional) The Name of the VPD.
         """
         return pulumi.get(self, "vpd_name")
 

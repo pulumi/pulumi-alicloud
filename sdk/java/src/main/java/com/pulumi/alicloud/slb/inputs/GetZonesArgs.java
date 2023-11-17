@@ -53,7 +53,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+     * (Deprecated from v1.154.0+) Default to false and only output `id` in the `zones` block. Set it to true can output more details.
      * 
      * @deprecated
      * The parameter enable_details has been deprecated from version v1.154.0+
@@ -64,7 +64,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<Boolean> enableDetails;
 
     /**
-     * @return Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+     * @return (Deprecated from v1.154.0+) Default to false and only output `id` in the `zones` block. Set it to true can output more details.
      * 
      * @deprecated
      * The parameter enable_details has been deprecated from version v1.154.0+
@@ -198,7 +198,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+         * @param enableDetails (Deprecated from v1.154.0+) Default to false and only output `id` in the `zones` block. Set it to true can output more details.
          * 
          * @return builder
          * 
@@ -213,7 +213,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableDetails Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+         * @param enableDetails (Deprecated from v1.154.0+) Default to false and only output `id` in the `zones` block. Set it to true can output more details.
          * 
          * @return builder
          * 

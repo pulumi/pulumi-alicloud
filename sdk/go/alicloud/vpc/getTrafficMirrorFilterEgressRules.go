@@ -75,7 +75,7 @@ type GetTrafficMirrorFilterEgressRulesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
 	Status *string `pulumi:"status"`
-	// The ID of the filter associated with the outbound rule.
+	// The ID of the Traffic Mirror Filter.
 	TrafficMirrorFilterId string `pulumi:"trafficMirrorFilterId"`
 }
 
@@ -111,7 +111,7 @@ type GetTrafficMirrorFilterEgressRulesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The ID of the filter associated with the outbound rule.
+	// The ID of the Traffic Mirror Filter.
 	TrafficMirrorFilterId pulumi.StringInput `pulumi:"trafficMirrorFilterId"`
 }
 

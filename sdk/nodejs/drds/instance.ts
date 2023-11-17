@@ -81,9 +81,6 @@ export class Instance extends pulumi.CustomResource {
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
     /**
      * The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-     * - `drds.sn2.4c16g` Starter Edition.
-     * - `drds.sn2.8c32g` Standard Edition.
-     * - `drds.sn2.16c64g` Enterprise Edition.
      */
     public readonly instanceSeries!: pulumi.Output<string>;
     /**
@@ -96,14 +93,6 @@ export class Instance extends pulumi.CustomResource {
     public /*out*/ readonly port!: pulumi.Output<string>;
     /**
      * User-defined DRDS instance specification. Value range:
-     * - `drds.sn1.4c8g` for DRDS instance Starter version;
-     * - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-     * - `drds.sn1.8c16g` for DRDS instance Standard edition;
-     * - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-     * - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-     * - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-     * - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-     * - value range : `drds.sn1.32c64g.128c256g`
      */
     public readonly specification!: pulumi.Output<string>;
     /**
@@ -193,9 +182,6 @@ export interface InstanceState {
     instanceChargeType?: pulumi.Input<string>;
     /**
      * The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-     * - `drds.sn2.4c16g` Starter Edition.
-     * - `drds.sn2.8c32g` Standard Edition.
-     * - `drds.sn2.16c64g` Enterprise Edition.
      */
     instanceSeries?: pulumi.Input<string>;
     /**
@@ -208,14 +194,6 @@ export interface InstanceState {
     port?: pulumi.Input<string>;
     /**
      * User-defined DRDS instance specification. Value range:
-     * - `drds.sn1.4c8g` for DRDS instance Starter version;
-     * - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-     * - `drds.sn1.8c16g` for DRDS instance Standard edition;
-     * - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-     * - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-     * - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-     * - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-     * - value range : `drds.sn1.32c64g.128c256g`
      */
     specification?: pulumi.Input<string>;
     /**
@@ -246,9 +224,6 @@ export interface InstanceArgs {
     instanceChargeType?: pulumi.Input<string>;
     /**
      * The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-     * - `drds.sn2.4c16g` Starter Edition.
-     * - `drds.sn2.8c32g` Standard Edition.
-     * - `drds.sn2.16c64g` Enterprise Edition.
      */
     instanceSeries: pulumi.Input<string>;
     /**
@@ -257,14 +232,6 @@ export interface InstanceArgs {
     mysqlVersion?: pulumi.Input<number>;
     /**
      * User-defined DRDS instance specification. Value range:
-     * - `drds.sn1.4c8g` for DRDS instance Starter version;
-     * - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-     * - `drds.sn1.8c16g` for DRDS instance Standard edition;
-     * - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-     * - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-     * - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-     * - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-     * - value range : `drds.sn1.32c64g.128c256g`
      */
     specification: pulumi.Input<string>;
     /**

@@ -76,7 +76,7 @@ export class Topic extends pulumi.CustomResource {
      */
     public readonly messageType!: pulumi.Output<number>;
     /**
-     * This attribute has been deprecated.
+     * (Deprecated) This attribute has been deprecated.
      *
      * @deprecated Attribute perm has been deprecated and suggest removing it from your template.
      */
@@ -158,7 +158,7 @@ export interface TopicState {
      */
     messageType?: pulumi.Input<number>;
     /**
-     * This attribute has been deprecated.
+     * (Deprecated) This attribute has been deprecated.
      *
      * @deprecated Attribute perm has been deprecated and suggest removing it from your template.
      */
@@ -200,7 +200,7 @@ export interface TopicArgs {
      */
     messageType: pulumi.Input<number>;
     /**
-     * This attribute has been deprecated.
+     * (Deprecated) This attribute has been deprecated.
      *
      * @deprecated Attribute perm has been deprecated and suggest removing it from your template.
      */

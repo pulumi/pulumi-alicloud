@@ -45,7 +45,7 @@ class DBClusterArgs:
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
-        :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        :param pulumi.Input[str] db_cluster_class: (Deprecated since v1.121.2) It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         :param pulumi.Input[str] db_cluster_version: The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         :param pulumi.Input[str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         :param pulumi.Input[int] db_node_count: The db node count.
@@ -56,7 +56,7 @@ class DBClusterArgs:
         :param pulumi.Input[str] elastic_io_resource_size: The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] modify_type: The modify type.
-        :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
+        :param pulumi.Input[str] pay_type: (Deprecated since v1.166.0) Field `pay_type` has been deprecated. New field `payment_type` instead.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
@@ -179,7 +179,7 @@ class DBClusterArgs:
     @pulumi.getter(name="dbClusterClass")
     def db_cluster_class(self) -> Optional[pulumi.Input[str]]:
         """
-        It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        (Deprecated since v1.121.2) It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         """
         warnings.warn("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""", DeprecationWarning)
         pulumi.log.warn("""db_cluster_class is deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
@@ -314,7 +314,7 @@ class DBClusterArgs:
     @pulumi.getter(name="payType")
     def pay_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `pay_type` has been deprecated. New field `payment_type` instead.
+        (Deprecated since v1.166.0) Field `pay_type` has been deprecated. New field `payment_type` instead.
         """
         warnings.warn("""Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
         pulumi.log.warn("""pay_type is deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
@@ -476,7 +476,7 @@ class _DBClusterState:
         :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
         :param pulumi.Input[str] connection_string: The connection string of the cluster.
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
-        :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        :param pulumi.Input[str] db_cluster_class: (Deprecated since v1.121.2) It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         :param pulumi.Input[str] db_cluster_version: The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         :param pulumi.Input[str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         :param pulumi.Input[int] db_node_count: The db node count.
@@ -488,7 +488,7 @@ class _DBClusterState:
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[str] modify_type: The modify type.
-        :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
+        :param pulumi.Input[str] pay_type: (Deprecated since v1.166.0) Field `pay_type` has been deprecated. New field `payment_type` instead.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
@@ -621,7 +621,7 @@ class _DBClusterState:
     @pulumi.getter(name="dbClusterClass")
     def db_cluster_class(self) -> Optional[pulumi.Input[str]]:
         """
-        It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        (Deprecated since v1.121.2) It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         """
         warnings.warn("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""", DeprecationWarning)
         pulumi.log.warn("""db_cluster_class is deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
@@ -768,7 +768,7 @@ class _DBClusterState:
     @pulumi.getter(name="payType")
     def pay_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `pay_type` has been deprecated. New field `payment_type` instead.
+        (Deprecated since v1.166.0) Field `pay_type` has been deprecated. New field `payment_type` instead.
         """
         warnings.warn("""Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
         pulumi.log.warn("""pay_type is deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")
@@ -962,7 +962,7 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[int] auto_renew_period: Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
         :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
-        :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        :param pulumi.Input[str] db_cluster_class: (Deprecated since v1.121.2) It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         :param pulumi.Input[str] db_cluster_version: The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         :param pulumi.Input[str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         :param pulumi.Input[int] db_node_count: The db node count.
@@ -974,7 +974,7 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[str] modify_type: The modify type.
-        :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
+        :param pulumi.Input[str] pay_type: (Deprecated since v1.166.0) Field `pay_type` has been deprecated. New field `payment_type` instead.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
@@ -1135,7 +1135,7 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[str] compute_resource: The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
         :param pulumi.Input[str] connection_string: The connection string of the cluster.
         :param pulumi.Input[str] db_cluster_category: The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
-        :param pulumi.Input[str] db_cluster_class: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        :param pulumi.Input[str] db_cluster_class: (Deprecated since v1.121.2) It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         :param pulumi.Input[str] db_cluster_version: The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
         :param pulumi.Input[str] db_node_class: The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
         :param pulumi.Input[int] db_node_count: The db node count.
@@ -1147,7 +1147,7 @@ class DBCluster(pulumi.CustomResource):
         :param pulumi.Input[str] maintain_time: The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
         :param pulumi.Input[str] mode: The mode of the cluster. Valid values: `reserver`, `flexible`.
         :param pulumi.Input[str] modify_type: The modify type.
-        :param pulumi.Input[str] pay_type: Field `pay_type` has been deprecated. New field `payment_type` instead.
+        :param pulumi.Input[str] pay_type: (Deprecated since v1.166.0) Field `pay_type` has been deprecated. New field `payment_type` instead.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
         :param pulumi.Input[int] period: The duration that you will buy DB cluster (in month). It is valid when `payment_type` is `Subscription`. Valid values: [1~9], 12, 24, 36.
                > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
@@ -1235,7 +1235,7 @@ class DBCluster(pulumi.CustomResource):
     @pulumi.getter(name="dbClusterClass")
     def db_cluster_class(self) -> pulumi.Output[Optional[str]]:
         """
-        It duplicates with attribute db_node_class and is deprecated from 1.121.2.
+        (Deprecated since v1.121.2) It duplicates with attribute db_node_class and is deprecated from 1.121.2.
         """
         warnings.warn("""It duplicates with attribute db_node_class and is deprecated from 1.121.2.""", DeprecationWarning)
         pulumi.log.warn("""db_cluster_class is deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.""")
@@ -1334,7 +1334,7 @@ class DBCluster(pulumi.CustomResource):
     @pulumi.getter(name="payType")
     def pay_type(self) -> pulumi.Output[str]:
         """
-        Field `pay_type` has been deprecated. New field `payment_type` instead.
+        (Deprecated since v1.166.0) Field `pay_type` has been deprecated. New field `payment_type` instead.
         """
         warnings.warn("""Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""", DeprecationWarning)
         pulumi.log.warn("""pay_type is deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.""")

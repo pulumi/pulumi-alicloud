@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Waf
     public sealed class GetCertificatesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The domain that you want to add to WAF.
+        /// WAF domain name.
         /// </summary>
         [Input("domain")]
         public string? Domain { get; set; }
@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Waf
     public sealed class GetCertificatesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The domain that you want to add to WAF.
+        /// WAF domain name.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }

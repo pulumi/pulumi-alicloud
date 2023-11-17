@@ -16,7 +16,7 @@ public final class GetContainerGroupsGroupContainerVolumeMount {
      */
     private String mountPath;
     /**
-     * @return The name of the volume.
+     * @return The name of the volume. The name is the same as the volume you selected when you purchased the container.
      * 
      */
     private String name;
@@ -35,7 +35,7 @@ public final class GetContainerGroupsGroupContainerVolumeMount {
         return this.mountPath;
     }
     /**
-     * @return The name of the volume.
+     * @return The name of the volume. The name is the same as the volume you selected when you purchased the container.
      * 
      */
     public String name() {

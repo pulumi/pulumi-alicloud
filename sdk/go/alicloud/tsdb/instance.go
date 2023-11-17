@@ -94,27 +94,6 @@ type Instance struct {
 	InstanceAlias pulumi.StringPtrOutput `pulumi:"instanceAlias"`
 	// The specification of the instance.
 	// - Following enumerative value for TSDB for InfluxDB️ standart edition:
-	// - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-	// - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-	// - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-	// - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-	// - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-	// - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-	// - Following enumerative value for TSDB for InfluxDB High-availability edition:
-	// - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-	// - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-	// - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-	// - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-	// - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-	// - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-	// - Following enumerative value for TSDB:
-	// - `tsdb.1x.basic` refers to basic edition I;
-	// - `tsdb.3x.basic` refers to basic edition II;
-	// - `tsdb.4x.basic` refers to basic edtion III;
-	// - `tsdb.12x.standard` refers to standard edition I;
-	// - `tsdb.24x.standard` refers to standard edition II;
-	// - `tsdb.48x.large` refers to ultimate edition I;
-	// - `tsdb.96x.large` refers to ultimate edition II.
 	InstanceClass pulumi.StringOutput `pulumi:"instanceClass"`
 	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
 	InstanceStorage pulumi.StringOutput `pulumi:"instanceStorage"`
@@ -182,27 +161,6 @@ type instanceState struct {
 	InstanceAlias *string `pulumi:"instanceAlias"`
 	// The specification of the instance.
 	// - Following enumerative value for TSDB for InfluxDB️ standart edition:
-	// - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-	// - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-	// - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-	// - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-	// - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-	// - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-	// - Following enumerative value for TSDB for InfluxDB High-availability edition:
-	// - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-	// - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-	// - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-	// - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-	// - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-	// - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-	// - Following enumerative value for TSDB:
-	// - `tsdb.1x.basic` refers to basic edition I;
-	// - `tsdb.3x.basic` refers to basic edition II;
-	// - `tsdb.4x.basic` refers to basic edtion III;
-	// - `tsdb.12x.standard` refers to standard edition I;
-	// - `tsdb.24x.standard` refers to standard edition II;
-	// - `tsdb.48x.large` refers to ultimate edition I;
-	// - `tsdb.96x.large` refers to ultimate edition II.
 	InstanceClass *string `pulumi:"instanceClass"`
 	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
 	InstanceStorage *string `pulumi:"instanceStorage"`
@@ -229,27 +187,6 @@ type InstanceState struct {
 	InstanceAlias pulumi.StringPtrInput
 	// The specification of the instance.
 	// - Following enumerative value for TSDB for InfluxDB️ standart edition:
-	// - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-	// - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-	// - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-	// - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-	// - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-	// - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-	// - Following enumerative value for TSDB for InfluxDB High-availability edition:
-	// - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-	// - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-	// - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-	// - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-	// - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-	// - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-	// - Following enumerative value for TSDB:
-	// - `tsdb.1x.basic` refers to basic edition I;
-	// - `tsdb.3x.basic` refers to basic edition II;
-	// - `tsdb.4x.basic` refers to basic edtion III;
-	// - `tsdb.12x.standard` refers to standard edition I;
-	// - `tsdb.24x.standard` refers to standard edition II;
-	// - `tsdb.48x.large` refers to ultimate edition I;
-	// - `tsdb.96x.large` refers to ultimate edition II.
 	InstanceClass pulumi.StringPtrInput
 	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
 	InstanceStorage pulumi.StringPtrInput
@@ -280,27 +217,6 @@ type instanceArgs struct {
 	InstanceAlias *string `pulumi:"instanceAlias"`
 	// The specification of the instance.
 	// - Following enumerative value for TSDB for InfluxDB️ standart edition:
-	// - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-	// - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-	// - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-	// - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-	// - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-	// - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-	// - Following enumerative value for TSDB for InfluxDB High-availability edition:
-	// - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-	// - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-	// - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-	// - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-	// - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-	// - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-	// - Following enumerative value for TSDB:
-	// - `tsdb.1x.basic` refers to basic edition I;
-	// - `tsdb.3x.basic` refers to basic edition II;
-	// - `tsdb.4x.basic` refers to basic edtion III;
-	// - `tsdb.12x.standard` refers to standard edition I;
-	// - `tsdb.24x.standard` refers to standard edition II;
-	// - `tsdb.48x.large` refers to ultimate edition I;
-	// - `tsdb.96x.large` refers to ultimate edition II.
 	InstanceClass string `pulumi:"instanceClass"`
 	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
 	InstanceStorage string `pulumi:"instanceStorage"`
@@ -326,27 +242,6 @@ type InstanceArgs struct {
 	InstanceAlias pulumi.StringPtrInput
 	// The specification of the instance.
 	// - Following enumerative value for TSDB for InfluxDB️ standart edition:
-	// - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-	// - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-	// - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-	// - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-	// - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-	// - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-	// - Following enumerative value for TSDB for InfluxDB High-availability edition:
-	// - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-	// - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-	// - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-	// - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-	// - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-	// - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-	// - Following enumerative value for TSDB:
-	// - `tsdb.1x.basic` refers to basic edition I;
-	// - `tsdb.3x.basic` refers to basic edition II;
-	// - `tsdb.4x.basic` refers to basic edtion III;
-	// - `tsdb.12x.standard` refers to standard edition I;
-	// - `tsdb.24x.standard` refers to standard edition II;
-	// - `tsdb.48x.large` refers to ultimate edition I;
-	// - `tsdb.96x.large` refers to ultimate edition II.
 	InstanceClass pulumi.StringInput
 	// The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
 	InstanceStorage pulumi.StringInput
@@ -472,27 +367,6 @@ func (o InstanceOutput) InstanceAlias() pulumi.StringPtrOutput {
 
 // The specification of the instance.
 // - Following enumerative value for TSDB for InfluxDB️ standart edition:
-// - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-// - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-// - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-// - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-// - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-// - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-// - Following enumerative value for TSDB for InfluxDB High-availability edition:
-// - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-// - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-// - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-// - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-// - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-// - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-// - Following enumerative value for TSDB:
-// - `tsdb.1x.basic` refers to basic edition I;
-// - `tsdb.3x.basic` refers to basic edition II;
-// - `tsdb.4x.basic` refers to basic edtion III;
-// - `tsdb.12x.standard` refers to standard edition I;
-// - `tsdb.24x.standard` refers to standard edition II;
-// - `tsdb.48x.large` refers to ultimate edition I;
-// - `tsdb.96x.large` refers to ultimate edition II.
 func (o InstanceOutput) InstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceClass }).(pulumi.StringOutput)
 }

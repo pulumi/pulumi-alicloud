@@ -63,7 +63,6 @@ type GetPrivateZonesArgs struct {
 	HostRegionId *string `pulumi:"hostRegionId"`
 	// A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
 	// **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
-	// * ` hostRegionId  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -110,7 +109,6 @@ type GetPrivateZonesOutputArgs struct {
 	HostRegionId pulumi.StringPtrInput `pulumi:"hostRegionId"`
 	// A list of CEN private zone IDs. Each element format as `<cen_id>:<access_region_id>`.
 	// **NOTE:** Before 1.162.0, each element same as `accessRegionId`.
-	// * ` hostRegionId  ` - (Optional) The service region is the target region of the PrivateZone service accessed through CEN.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

@@ -150,7 +150,7 @@ type Instance struct {
 	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
 	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
 	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
-	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+	//   > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec pulumi.StringPtrOutput `pulumi:"instanceSpec"`
 	// The ip whitelist. See `ipWhitelist` below.
 	// Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
@@ -284,7 +284,7 @@ type instanceState struct {
 	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
 	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
 	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
-	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+	//   > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec *string `pulumi:"instanceSpec"`
 	// The ip whitelist. See `ipWhitelist` below.
 	// Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
@@ -377,7 +377,7 @@ type InstanceState struct {
 	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
 	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
 	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
-	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+	//   > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec pulumi.StringPtrInput
 	// The ip whitelist. See `ipWhitelist` below.
 	// Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
@@ -472,7 +472,7 @@ type instanceArgs struct {
 	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
 	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
 	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
-	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+	//   > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec *string `pulumi:"instanceSpec"`
 	// The ip whitelist. See `ipWhitelist` below.
 	// Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
@@ -560,7 +560,7 @@ type InstanceArgs struct {
 	// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
 	// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
 	// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
-	// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+	//   > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 	InstanceSpec pulumi.StringPtrInput
 	// The ip whitelist. See `ipWhitelist` below.
 	// Default to creating a whitelist group with the group name "default" and securityIpList "127.0.0.1".
@@ -774,10 +774,10 @@ func (o InstanceOutput) InstanceNetworkType() pulumi.StringOutput {
 }
 
 // The specification of segment nodes.
-// * When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
-// * When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
-// * When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
-// > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
+//   - When `dbInstanceCategory` is `HighAvailability`, Valid values: `2C16G`, `4C32G`, `16C128G`.
+//   - When `dbInstanceCategory` is `Basic`, Valid values: `2C8G`, `4C16G`, `8C32G`, `16C64G`.
+//   - When `dbInstanceCategory` is `Serverless`, Valid values: `4C16G`, `8C32G`.
+//     > **NOTE:** This parameter must be passed to create a storage elastic mode instance and a serverless version instance.
 func (o InstanceOutput) InstanceSpec() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceSpec }).(pulumi.StringPtrOutput)
 }

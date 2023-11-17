@@ -232,16 +232,16 @@ def get_subnets(ids: Optional[Sequence[str]] = None,
 
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str resource_group_id: Resource Group ID.
-    :param str status: The status of the resource.
-    :param str subnet_id: Primary key ID.
-    :param str subnet_name: The Subnet name.
-    :param str type: Eflo subnet usage type, optional value: 
+    :param str resource_group_id: (ForceNew,Optional) Resource Group ID.
+    :param str status: (ForceNew,Optional) The status of the resource.
+    :param str subnet_id: (ForceNew,Optional) Primary key ID.
+    :param str subnet_name: (ForceNew,Optional) The Subnet name.
+    :param str type: (ForceNew,Optional) Eflo subnet usage type, optional value:
            - General type is not filled in
            - OOB:OOB type
            - LB: LB type
-    :param str vpd_id: The Eflo VPD ID.
-    :param str zone_id: The zone ID of the resource.
+    :param str vpd_id: (ForceNew,Optional) The Eflo VPD ID.
+    :param str zone_id: (ForceNew,Optional) The zone ID of the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -312,15 +312,15 @@ def get_subnets_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
 
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str resource_group_id: Resource Group ID.
-    :param str status: The status of the resource.
-    :param str subnet_id: Primary key ID.
-    :param str subnet_name: The Subnet name.
-    :param str type: Eflo subnet usage type, optional value: 
+    :param str resource_group_id: (ForceNew,Optional) Resource Group ID.
+    :param str status: (ForceNew,Optional) The status of the resource.
+    :param str subnet_id: (ForceNew,Optional) Primary key ID.
+    :param str subnet_name: (ForceNew,Optional) The Subnet name.
+    :param str type: (ForceNew,Optional) Eflo subnet usage type, optional value:
            - General type is not filled in
            - OOB:OOB type
            - LB: LB type
-    :param str vpd_id: The Eflo VPD ID.
-    :param str zone_id: The zone ID of the resource.
+    :param str vpd_id: (ForceNew,Optional) The Eflo VPD ID.
+    :param str zone_id: (ForceNew,Optional) The zone ID of the resource.
     """
     ...

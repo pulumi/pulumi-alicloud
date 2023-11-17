@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.MongoDB
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The role of the node.
+        /// The role of the node. Valid values: `Primary` or `Secondary`.
         /// </summary>
         [Input("role")]
         public string? Role { get; set; }
@@ -82,7 +82,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The role of the node.
+        /// The role of the node. Valid values: `Primary` or `Secondary`.
         /// </summary>
         [Input("role")]
         public Input<string>? Role { get; set; }

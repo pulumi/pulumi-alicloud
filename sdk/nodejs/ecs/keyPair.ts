@@ -65,11 +65,11 @@ export class KeyPair extends pulumi.CustomResource {
 
     public /*out*/ readonly fingerPrint!: pulumi.Output<string>;
     /**
-     * The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
+     * (ForceNew) The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
      */
     public readonly keyFile!: pulumi.Output<string | undefined>;
     /**
-     * The key pair's name. It is the only in one Alicloud account.
+     * (ForceNew) The key pair's name. It is the only in one Alicloud account.
      *
      * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
@@ -77,7 +77,7 @@ export class KeyPair extends pulumi.CustomResource {
     public readonly keyNamePrefix!: pulumi.Output<string | undefined>;
     public readonly keyPairName!: pulumi.Output<string>;
     /**
-     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
+     * (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      */
     public readonly publicKey!: pulumi.Output<string | undefined>;
     /**
@@ -129,11 +129,11 @@ export class KeyPair extends pulumi.CustomResource {
 export interface KeyPairState {
     fingerPrint?: pulumi.Input<string>;
     /**
-     * The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
+     * (ForceNew) The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
      */
     keyFile?: pulumi.Input<string>;
     /**
-     * The key pair's name. It is the only in one Alicloud account.
+     * (ForceNew) The key pair's name. It is the only in one Alicloud account.
      *
      * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
@@ -141,7 +141,7 @@ export interface KeyPairState {
     keyNamePrefix?: pulumi.Input<string>;
     keyPairName?: pulumi.Input<string>;
     /**
-     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
+     * (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      */
     publicKey?: pulumi.Input<string>;
     /**
@@ -156,11 +156,11 @@ export interface KeyPairState {
  */
 export interface KeyPairArgs {
     /**
-     * The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
+     * (ForceNew) The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
      */
     keyFile?: pulumi.Input<string>;
     /**
-     * The key pair's name. It is the only in one Alicloud account.
+     * (ForceNew) The key pair's name. It is the only in one Alicloud account.
      *
      * @deprecated Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead.
      */
@@ -168,7 +168,7 @@ export interface KeyPairArgs {
     keyNamePrefix?: pulumi.Input<string>;
     keyPairName?: pulumi.Input<string>;
     /**
-     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
+     * (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resourceGroupId` is the key pair belongs.
      */
     publicKey?: pulumi.Input<string>;
     /**

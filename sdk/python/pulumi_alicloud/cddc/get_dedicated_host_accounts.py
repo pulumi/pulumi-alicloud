@@ -142,7 +142,7 @@ def get_dedicated_host_accounts(dedicated_host_id: Optional[str] = None,
     ```
 
 
-    :param str dedicated_host_id: The ID of the Dedicated host.
+    :param str dedicated_host_id: The ID of the host.
     :param Sequence[str] ids: A list of Dedicated Host Account IDs.
     :param str name_regex: A regex string to filter results by Account name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -195,7 +195,7 @@ def get_dedicated_host_accounts_output(dedicated_host_id: Optional[pulumi.Input[
     ```
 
 
-    :param str dedicated_host_id: The ID of the Dedicated host.
+    :param str dedicated_host_id: The ID of the host.
     :param Sequence[str] ids: A list of Dedicated Host Account IDs.
     :param str name_regex: A regex string to filter results by Account name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

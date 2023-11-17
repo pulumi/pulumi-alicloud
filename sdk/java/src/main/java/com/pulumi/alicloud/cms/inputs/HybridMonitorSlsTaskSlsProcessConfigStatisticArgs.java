@@ -80,14 +80,14 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs extends com
     }
 
     /**
-     * The name of the key that is used to filter logs imported from Log Service.
+     * The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
     @Import(name="slsKeyName")
     private @Nullable Output<String> slsKeyName;
 
     /**
-     * @return The name of the key that is used to filter logs imported from Log Service.
+     * @return The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
     public Optional<Output<String>> slsKeyName() {
@@ -211,7 +211,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs extends com
         }
 
         /**
-         * @param slsKeyName The name of the key that is used to filter logs imported from Log Service.
+         * @param slsKeyName The name of the key that is used to aggregate logs imported from Log Service.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatisticArgs extends com
         }
 
         /**
-         * @param slsKeyName The name of the key that is used to filter logs imported from Log Service.
+         * @param slsKeyName The name of the key that is used to aggregate logs imported from Log Service.
          * 
          * @return builder
          * 

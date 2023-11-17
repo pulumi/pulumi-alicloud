@@ -59,7 +59,7 @@ export interface GetNasBackupPlansArgs {
      */
     outputFile?: string;
     /**
-     * The ID of backup vault.
+     * The backup vault ID of the NasBackupPlan used.
      */
     vaultId?: string;
 }
@@ -124,7 +124,7 @@ export interface GetNasBackupPlansOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of backup vault.
+     * The backup vault ID of the NasBackupPlan used.
      */
     vaultId?: pulumi.Input<string>;
 }

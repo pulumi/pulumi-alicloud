@@ -78,7 +78,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:vpc/routerInterface:RouterInterface")
 public class RouterInterface extends com.pulumi.resources.CustomResource {
     /**
-     * It has been deprecated from version 1.11.0.
+     * (Deprecated) It has been deprecated from version 1.11.0.
      * 
      * @deprecated
      * Attribute &#39;opposite_access_point_id&#39; has been deprecated from version 1.11.0.
@@ -89,7 +89,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     private Output<String> accessPointId;
 
     /**
-     * @return It has been deprecated from version 1.11.0.
+     * @return (Deprecated) It has been deprecated from version 1.11.0.
      * 
      */
     public Output<String> accessPointId() {
@@ -168,7 +168,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * It has been deprecated from version 1.11.0.
+     * (Deprecated) It has been deprecated from version 1.11.0.
      * 
      * @deprecated
      * Attribute &#39;opposite_access_point_id&#39; has been deprecated from version 1.11.0.
@@ -179,14 +179,14 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> oppositeAccessPointId;
 
     /**
-     * @return It has been deprecated from version 1.11.0.
+     * @return (Deprecated) It has been deprecated from version 1.11.0.
      * 
      */
     public Output<Optional<String>> oppositeAccessPointId() {
         return Codegen.optional(this.oppositeAccessPointId);
     }
     /**
-     * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_router_id&#39; instead.
+     * (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_router_id&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;opposite_interface_id&#39; has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_interface_id&#39; instead.
@@ -197,14 +197,14 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     private Output<String> oppositeInterfaceId;
 
     /**
-     * @return It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_router_id&#39; instead.
+     * @return (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_router_id&#39; instead.
      * 
      */
     public Output<String> oppositeInterfaceId() {
         return this.oppositeInterfaceId;
     }
     /**
-     * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_interface_id&#39; instead.
+     * (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_interface_id&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;opposite_interface_owner_id&#39; has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_interface_owner_id&#39; instead.
@@ -215,7 +215,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     private Output<String> oppositeInterfaceOwnerId;
 
     /**
-     * @return It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_interface_id&#39; instead.
+     * @return (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_interface_id&#39; instead.
      * 
      */
     public Output<String> oppositeInterfaceOwnerId() {
@@ -236,7 +236,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
         return this.oppositeRegion;
     }
     /**
-     * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_router_id&#39; instead.
+     * (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_router_id&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;opposite_router_id&#39; has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_router_id&#39; instead.
@@ -247,14 +247,14 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     private Output<String> oppositeRouterId;
 
     /**
-     * @return It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_router_id&#39; instead.
+     * @return (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_router_id&#39; instead.
      * 
      */
     public Output<String> oppositeRouterId() {
         return this.oppositeRouterId;
     }
     /**
-     * It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection&#39;s &#39;opposite_router_type&#39; instead.
+     * (Deprecated) It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection&#39;s &#39;opposite_router_type&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;opposite_router_type&#39; has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection&#39;s &#39;opposite_router_type&#39; instead.
@@ -265,7 +265,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
     private Output<String> oppositeRouterType;
 
     /**
-     * @return It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection&#39;s &#39;opposite_router_type&#39; instead.
+     * @return (Deprecated) It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection&#39;s &#39;opposite_router_type&#39; instead.
      * 
      */
     public Output<String> oppositeRouterType() {

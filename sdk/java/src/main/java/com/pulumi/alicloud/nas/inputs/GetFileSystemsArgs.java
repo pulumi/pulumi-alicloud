@@ -85,6 +85,10 @@ public final class GetFileSystemsArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * The storage type of the file system.
      * * Valid values:
+     *   * `Performance` (Available when the `file_system_type` is `standard`)
+     *   * `Capacity` (Available when the `file_system_type` is `standard`)
+     *   * `standard` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+     *   * `advance` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
      * 
      */
     @Import(name="storageType")
@@ -93,6 +97,10 @@ public final class GetFileSystemsArgs extends com.pulumi.resources.InvokeArgs {
     /**
      * @return The storage type of the file system.
      * * Valid values:
+     *   * `Performance` (Available when the `file_system_type` is `standard`)
+     *   * `Capacity` (Available when the `file_system_type` is `standard`)
+     *   * `standard` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+     *   * `advance` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
      * 
      */
     public Optional<Output<String>> storageType() {
@@ -230,6 +238,10 @@ public final class GetFileSystemsArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param storageType The storage type of the file system.
          * * Valid values:
+         *   * `Performance` (Available when the `file_system_type` is `standard`)
+         *   * `Capacity` (Available when the `file_system_type` is `standard`)
+         *   * `standard` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+         *   * `advance` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
          * 
          * @return builder
          * 
@@ -242,6 +254,10 @@ public final class GetFileSystemsArgs extends com.pulumi.resources.InvokeArgs {
         /**
          * @param storageType The storage type of the file system.
          * * Valid values:
+         *   * `Performance` (Available when the `file_system_type` is `standard`)
+         *   * `Capacity` (Available when the `file_system_type` is `standard`)
+         *   * `standard` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+         *   * `advance` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
          * 
          * @return builder
          * 

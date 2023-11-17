@@ -54,7 +54,7 @@ export interface GetWafPoliciesArgs {
      */
     queryArgs?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `on`, `off`.
      */
     status?: string;
 }
@@ -114,7 +114,7 @@ export interface GetWafPoliciesOutputArgs {
      */
     queryArgs?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `on`, `off`.
      */
     status?: pulumi.Input<string>;
 }

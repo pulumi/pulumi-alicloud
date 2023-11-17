@@ -78,14 +78,14 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Nested attribute containing certificate authority data for your cluster.
+     * (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      * 
      */
     @Import(name="certificateAuthority")
     private @Nullable Output<KubernetesCertificateAuthorityArgs> certificateAuthority;
 
     /**
-     * @return Nested attribute containing certificate authority data for your cluster.
+     * @return (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      * 
      */
     public Optional<Output<KubernetesCertificateAuthorityArgs>> certificateAuthority() {
@@ -153,14 +153,14 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Map of kubernetes cluster connection information.
+     * (Map) Map of kubernetes cluster connection information.
      * 
      */
     @Import(name="connections")
     private @Nullable Output<KubernetesConnectionsArgs> connections;
 
     /**
-     * @return Map of kubernetes cluster connection information.
+     * @return (Map) Map of kubernetes cluster connection information.
      * 
      */
     public Optional<Output<KubernetesConnectionsArgs>> connections() {
@@ -879,7 +879,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of load balancer.
+     * (Deprecated) The ID of load balancer.
      * 
      * @deprecated
      * Field &#39;slb_id&#39; has been deprecated from provider version 1.9.2. New field &#39;slb_internet&#39; replaces it.
@@ -890,7 +890,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> slbId;
 
     /**
-     * @return The ID of load balancer.
+     * @return (Deprecated) The ID of load balancer.
      * 
      * @deprecated
      * Field &#39;slb_id&#39; has been deprecated from provider version 1.9.2. New field &#39;slb_internet&#39; replaces it.
@@ -1101,7 +1101,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+     * (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
      * 
      * @deprecated
      * Field &#39;worker_auto_renew_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;auto_renew_period&#39; to replace it
@@ -1112,7 +1112,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> workerAutoRenewPeriod;
 
     /**
-     * @return Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+     * @return (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
      * 
      * @deprecated
      * Field &#39;worker_auto_renew_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;auto_renew_period&#39; to replace it
@@ -1124,7 +1124,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The data disk category of worker, use `worker_data_disks` to instead it.
+     * (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
      * 
      * @deprecated
      * Field &#39;worker_data_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks.category&#39; to replace it
@@ -1135,7 +1135,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> workerDataDiskCategory;
 
     /**
-     * @return The data disk category of worker, use `worker_data_disks` to instead it.
+     * @return (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
      * 
      * @deprecated
      * Field &#39;worker_data_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks.category&#39; to replace it
@@ -1339,7 +1339,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * List of cluster worker nodes. See `worker_nodes` below.
+     * (Deprecated from version 1.177.0) List of cluster worker nodes. See `worker_nodes` below.
      * 
      * @deprecated
      * Field &#39;worker_nodes&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes.
@@ -1350,7 +1350,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<KubernetesWorkerNodeArgs>> workerNodes;
 
     /**
-     * @return List of cluster worker nodes. See `worker_nodes` below.
+     * @return (Deprecated from version 1.177.0) List of cluster worker nodes. See `worker_nodes` below.
      * 
      * @deprecated
      * Field &#39;worker_nodes&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes.
@@ -1661,7 +1661,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateAuthority Nested attribute containing certificate authority data for your cluster.
+         * @param certificateAuthority (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
          * 
          * @return builder
          * 
@@ -1672,7 +1672,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param certificateAuthority Nested attribute containing certificate authority data for your cluster.
+         * @param certificateAuthority (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
          * 
          * @return builder
          * 
@@ -1766,7 +1766,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connections Map of kubernetes cluster connection information.
+         * @param connections (Map) Map of kubernetes cluster connection information.
          * 
          * @return builder
          * 
@@ -1777,7 +1777,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connections Map of kubernetes cluster connection information.
+         * @param connections (Map) Map of kubernetes cluster connection information.
          * 
          * @return builder
          * 
@@ -2820,7 +2820,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slbId The ID of load balancer.
+         * @param slbId (Deprecated) The ID of load balancer.
          * 
          * @return builder
          * 
@@ -2835,7 +2835,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slbId The ID of load balancer.
+         * @param slbId (Deprecated) The ID of load balancer.
          * 
          * @return builder
          * 
@@ -3128,7 +3128,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerAutoRenewPeriod Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+         * @param workerAutoRenewPeriod (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
          * 
          * @return builder
          * 
@@ -3143,7 +3143,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerAutoRenewPeriod Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+         * @param workerAutoRenewPeriod (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
          * 
          * @return builder
          * 
@@ -3157,7 +3157,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerDataDiskCategory The data disk category of worker, use `worker_data_disks` to instead it.
+         * @param workerDataDiskCategory (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
          * 
          * @return builder
          * 
@@ -3172,7 +3172,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerDataDiskCategory The data disk category of worker, use `worker_data_disks` to instead it.
+         * @param workerDataDiskCategory (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
          * 
          * @return builder
          * 
@@ -3454,7 +3454,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerNodes List of cluster worker nodes. See `worker_nodes` below.
+         * @param workerNodes (Deprecated from version 1.177.0) List of cluster worker nodes. See `worker_nodes` below.
          * 
          * @return builder
          * 
@@ -3469,7 +3469,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerNodes List of cluster worker nodes. See `worker_nodes` below.
+         * @param workerNodes (Deprecated from version 1.177.0) List of cluster worker nodes. See `worker_nodes` below.
          * 
          * @return builder
          * 
@@ -3483,7 +3483,7 @@ public final class KubernetesState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerNodes List of cluster worker nodes. See `worker_nodes` below.
+         * @param workerNodes (Deprecated from version 1.177.0) List of cluster worker nodes. See `worker_nodes` below.
          * 
          * @return builder
          * 

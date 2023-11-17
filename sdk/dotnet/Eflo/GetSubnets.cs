@@ -116,31 +116,31 @@ namespace Pulumi.AliCloud.Eflo
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// Resource Group ID.
+        /// (ForceNew,Optional) Resource Group ID.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// (ForceNew,Optional) The status of the resource.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         /// <summary>
-        /// Primary key ID.
+        /// (ForceNew,Optional) Primary key ID.
         /// </summary>
         [Input("subnetId")]
         public string? SubnetId { get; set; }
 
         /// <summary>
-        /// The Subnet name.
+        /// (ForceNew,Optional) The Subnet name.
         /// </summary>
         [Input("subnetName")]
         public string? SubnetName { get; set; }
 
         /// <summary>
-        /// Eflo subnet usage type, optional value: 
+        /// (ForceNew,Optional) Eflo subnet usage type, optional value:
         /// - General type is not filled in
         /// - OOB:OOB type
         /// - LB: LB type
@@ -149,13 +149,13 @@ namespace Pulumi.AliCloud.Eflo
         public string? Type { get; set; }
 
         /// <summary>
-        /// The Eflo VPD ID.
+        /// (ForceNew,Optional) The Eflo VPD ID.
         /// </summary>
         [Input("vpdId")]
         public string? VpdId { get; set; }
 
         /// <summary>
-        /// The zone ID of the resource.
+        /// (ForceNew,Optional) The zone ID of the resource.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
@@ -195,31 +195,31 @@ namespace Pulumi.AliCloud.Eflo
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// Resource Group ID.
+        /// (ForceNew,Optional) Resource Group ID.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// (ForceNew,Optional) The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Primary key ID.
+        /// (ForceNew,Optional) Primary key ID.
         /// </summary>
         [Input("subnetId")]
         public Input<string>? SubnetId { get; set; }
 
         /// <summary>
-        /// The Subnet name.
+        /// (ForceNew,Optional) The Subnet name.
         /// </summary>
         [Input("subnetName")]
         public Input<string>? SubnetName { get; set; }
 
         /// <summary>
-        /// Eflo subnet usage type, optional value: 
+        /// (ForceNew,Optional) Eflo subnet usage type, optional value:
         /// - General type is not filled in
         /// - OOB:OOB type
         /// - LB: LB type
@@ -228,13 +228,13 @@ namespace Pulumi.AliCloud.Eflo
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The Eflo VPD ID.
+        /// (ForceNew,Optional) The Eflo VPD ID.
         /// </summary>
         [Input("vpdId")]
         public Input<string>? VpdId { get; set; }
 
         /// <summary>
-        /// The zone ID of the resource.
+        /// (ForceNew,Optional) The zone ID of the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

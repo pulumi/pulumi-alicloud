@@ -14,15 +14,15 @@ namespace Pulumi.AliCloud.Log.Outputs
     public sealed class StoreIndexFullText
     {
         /// <summary>
-        /// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
+        /// Whether the case sensitive. Default to false.
         /// </summary>
         public readonly bool? CaseSensitive;
         /// <summary>
-        /// Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
+        /// Whether includes the chinese. Default to false.
         /// </summary>
         public readonly bool? IncludeChinese;
         /// <summary>
-        /// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
+        /// The string of several split words, like "\r", "#"
         /// </summary>
         public readonly string? Token;
 

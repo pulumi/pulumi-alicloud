@@ -214,7 +214,7 @@ type ScalingGroup struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+	// (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
@@ -319,7 +319,7 @@ type scalingGroupState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+	// (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -389,7 +389,7 @@ type ScalingGroupState struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
-	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+	// (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
 	VswitchId pulumi.StringPtrInput
@@ -463,7 +463,7 @@ type scalingGroupArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+	// (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -534,7 +534,7 @@ type ScalingGroupArgs struct {
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
 	// - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
 	Tags pulumi.MapInput
-	// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+	// (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 	//
 	// Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
 	VswitchId pulumi.StringPtrInput
@@ -750,7 +750,7 @@ func (o ScalingGroupOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *ScalingGroup) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+// (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
 //
 // Deprecated: Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
 func (o ScalingGroupOutput) VswitchId() pulumi.StringPtrOutput {

@@ -57,25 +57,25 @@ func GetVpcFirewallCens(ctx *pulumi.Context, args *GetVpcFirewallCensArgs, opts 
 
 // A collection of arguments for invoking getVpcFirewallCens.
 type GetVpcFirewallCensArgs struct {
-	// The ID of the CEN instance.
+	// (ForceNew,Optional) The ID of the CEN instance.
 	CenId *string `pulumi:"cenId"`
 	// A list of Vpc Firewall Cen IDs.
 	Ids []string `pulumi:"ids"`
-	// The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+	// (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
 	Lang *string `pulumi:"lang"`
-	// The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
+	// (ForceNew,Optional) The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
 	MemberUid *string `pulumi:"memberUid"`
-	// The ID of the VPC instance that created the VPC firewall.
+	// (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
 	NetworkInstanceId *string `pulumi:"networkInstanceId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// Firewall switch status
+	// (ForceNew,Optional) Firewall switch status
 	Status *string `pulumi:"status"`
-	// VPC firewall ID
+	// (ForceNew,Optional) VPC firewall ID
 	VpcFirewallId *string `pulumi:"vpcFirewallId"`
-	// The name of the VPC firewall instance.
+	// (ForceNew,Optional) The name of the VPC firewall instance.
 	VpcFirewallName *string `pulumi:"vpcFirewallName"`
 }
 
@@ -120,25 +120,25 @@ func GetVpcFirewallCensOutput(ctx *pulumi.Context, args GetVpcFirewallCensOutput
 
 // A collection of arguments for invoking getVpcFirewallCens.
 type GetVpcFirewallCensOutputArgs struct {
-	// The ID of the CEN instance.
+	// (ForceNew,Optional) The ID of the CEN instance.
 	CenId pulumi.StringPtrInput `pulumi:"cenId"`
 	// A list of Vpc Firewall Cen IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+	// (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
 	Lang pulumi.StringPtrInput `pulumi:"lang"`
-	// The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
+	// (ForceNew,Optional) The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
 	MemberUid pulumi.StringPtrInput `pulumi:"memberUid"`
-	// The ID of the VPC instance that created the VPC firewall.
+	// (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
 	NetworkInstanceId pulumi.StringPtrInput `pulumi:"networkInstanceId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// Firewall switch status
+	// (ForceNew,Optional) Firewall switch status
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// VPC firewall ID
+	// (ForceNew,Optional) VPC firewall ID
 	VpcFirewallId pulumi.StringPtrInput `pulumi:"vpcFirewallId"`
-	// The name of the VPC firewall instance.
+	// (ForceNew,Optional) The name of the VPC firewall instance.
 	VpcFirewallName pulumi.StringPtrInput `pulumi:"vpcFirewallName"`
 }
 

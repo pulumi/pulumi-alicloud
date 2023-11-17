@@ -181,7 +181,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
-     * Nested attribute containing certificate authority data for your cluster.
+     * (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      */
     public /*out*/ readonly certificateAuthority!: pulumi.Output<outputs.cs.EdgeKubernetesCertificateAuthority>;
     /**
@@ -205,7 +205,7 @@ export class EdgeKubernetes extends pulumi.CustomResource {
      */
     public readonly clusterSpec!: pulumi.Output<string>;
     /**
-     * Map of kubernetes cluster connection information.
+     * (Map) Map of kubernetes cluster connection information.
      */
     public /*out*/ readonly connections!: pulumi.Output<outputs.cs.EdgeKubernetesConnections>;
     /**
@@ -515,7 +515,7 @@ export interface EdgeKubernetesState {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * Nested attribute containing certificate authority data for your cluster.
+     * (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      */
     certificateAuthority?: pulumi.Input<inputs.cs.EdgeKubernetesCertificateAuthority>;
     /**
@@ -539,7 +539,7 @@ export interface EdgeKubernetesState {
      */
     clusterSpec?: pulumi.Input<string>;
     /**
-     * Map of kubernetes cluster connection information.
+     * (Map) Map of kubernetes cluster connection information.
      */
     connections?: pulumi.Input<inputs.cs.EdgeKubernetesConnections>;
     /**

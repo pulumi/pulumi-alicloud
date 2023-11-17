@@ -10,7 +10,7 @@ import java.util.Objects;
 @CustomType
 public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
     /**
-     * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+     * @return The alias of the aggregation result.
      * 
      */
     private String alias;
@@ -30,14 +30,14 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
      */
     private String parameterTwo;
     /**
-     * @return The name of the key that is used to filter logs imported from Log Service.
+     * @return The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
     private String slsKeyName;
 
     private GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic() {}
     /**
-     * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
+     * @return The alias of the aggregation result.
      * 
      */
     public String alias() {
@@ -65,7 +65,7 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
         return this.parameterTwo;
     }
     /**
-     * @return The name of the key that is used to filter logs imported from Log Service.
+     * @return The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
     public String slsKeyName() {

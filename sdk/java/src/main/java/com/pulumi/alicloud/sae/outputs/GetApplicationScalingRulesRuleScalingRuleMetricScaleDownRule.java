@@ -11,38 +11,38 @@ import java.util.Objects;
 @CustomType
 public final class GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule {
     /**
-     * @return Whether shrinkage is prohibited. The values are described as follows:
+     * @return Whether shrinkage is prohibited.
      * 
      */
     private Boolean disabled;
     /**
-     * @return Expansion cooling time.
+     * @return Shrinkage cooling time.
      * 
      */
     private Integer stabilizationWindowSeconds;
     /**
-     * @return Flexible expansion step. The maximum number of instances per unit time.
+     * @return Elastic shrinkage step. The maximum number of instances per unit time.
      * 
      */
     private Integer step;
 
     private GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule() {}
     /**
-     * @return Whether shrinkage is prohibited. The values are described as follows:
+     * @return Whether shrinkage is prohibited.
      * 
      */
     public Boolean disabled() {
         return this.disabled;
     }
     /**
-     * @return Expansion cooling time.
+     * @return Shrinkage cooling time.
      * 
      */
     public Integer stabilizationWindowSeconds() {
         return this.stabilizationWindowSeconds;
     }
     /**
-     * @return Flexible expansion step. The maximum number of instances per unit time.
+     * @return Elastic shrinkage step. The maximum number of instances per unit time.
      * 
      */
     public Integer step() {

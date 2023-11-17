@@ -106,9 +106,6 @@ type Delivery struct {
 	// The name of the delivery method.
 	DeliveryChannelName pulumi.StringPtrOutput `pulumi:"deliveryChannelName"`
 	// The ARN of the delivery destination. The value must be in one of the following formats:
-	// * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-	// * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-	// * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
 	DeliveryChannelTargetArn pulumi.StringOutput `pulumi:"deliveryChannelTargetArn"`
 	// The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
 	DeliveryChannelType pulumi.StringOutput `pulumi:"deliveryChannelType"`
@@ -169,9 +166,6 @@ type deliveryState struct {
 	// The name of the delivery method.
 	DeliveryChannelName *string `pulumi:"deliveryChannelName"`
 	// The ARN of the delivery destination. The value must be in one of the following formats:
-	// * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-	// * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-	// * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
 	DeliveryChannelTargetArn *string `pulumi:"deliveryChannelTargetArn"`
 	// The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
 	DeliveryChannelType *string `pulumi:"deliveryChannelType"`
@@ -197,9 +191,6 @@ type DeliveryState struct {
 	// The name of the delivery method.
 	DeliveryChannelName pulumi.StringPtrInput
 	// The ARN of the delivery destination. The value must be in one of the following formats:
-	// * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-	// * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-	// * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
 	DeliveryChannelTargetArn pulumi.StringPtrInput
 	// The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
 	DeliveryChannelType pulumi.StringPtrInput
@@ -229,9 +220,6 @@ type deliveryArgs struct {
 	// The name of the delivery method.
 	DeliveryChannelName *string `pulumi:"deliveryChannelName"`
 	// The ARN of the delivery destination. The value must be in one of the following formats:
-	// * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-	// * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-	// * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
 	DeliveryChannelTargetArn string `pulumi:"deliveryChannelTargetArn"`
 	// The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
 	DeliveryChannelType string `pulumi:"deliveryChannelType"`
@@ -258,9 +246,6 @@ type DeliveryArgs struct {
 	// The name of the delivery method.
 	DeliveryChannelName pulumi.StringPtrInput
 	// The ARN of the delivery destination. The value must be in one of the following formats:
-	// * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-	// * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-	// * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
 	DeliveryChannelTargetArn pulumi.StringInput
 	// The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
 	DeliveryChannelType pulumi.StringInput
@@ -384,9 +369,6 @@ func (o DeliveryOutput) DeliveryChannelName() pulumi.StringPtrOutput {
 }
 
 // The ARN of the delivery destination. The value must be in one of the following formats:
-// * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-// * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-// * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
 func (o DeliveryOutput) DeliveryChannelTargetArn() pulumi.StringOutput {
 	return o.ApplyT(func(v *Delivery) pulumi.StringOutput { return v.DeliveryChannelTargetArn }).(pulumi.StringOutput)
 }

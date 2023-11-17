@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Cms
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `DISABLED`, `ENABLED`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `DISABLED`, `ENABLED`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

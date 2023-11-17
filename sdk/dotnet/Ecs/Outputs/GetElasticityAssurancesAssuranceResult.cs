@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string PrivatePoolOptionsName;
         /// <summary>
-        /// The ID of the resource group.
+        /// (ForceNew,Optional) The ID of the resource group.
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
@@ -62,11 +62,11 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string StartTimeType;
         /// <summary>
-        /// The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+        /// (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The tag key-value pair information bound by the elastic guarantee service.
+        /// (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
         /// </summary>
         public readonly ImmutableDictionary<string, object>? Tags;
         /// <summary>

@@ -79,7 +79,7 @@ type PublicIpAddressPool struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether there is a free IP address.
 	IpAddressRemaining pulumi.BoolOutput `pulumi:"ipAddressRemaining"`
-	// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+	// (ForceNew, Optional) The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
 	Isp                   pulumi.StringOutput `pulumi:"isp"`
 	PublicIpAddressPoolId pulumi.StringOutput `pulumi:"publicIpAddressPoolId"`
 	// The name of the VPC Public IP address pool.
@@ -132,7 +132,7 @@ type publicIpAddressPoolState struct {
 	Description *string `pulumi:"description"`
 	// Whether there is a free IP address.
 	IpAddressRemaining *bool `pulumi:"ipAddressRemaining"`
-	// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+	// (ForceNew, Optional) The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
 	Isp                   *string `pulumi:"isp"`
 	PublicIpAddressPoolId *string `pulumi:"publicIpAddressPoolId"`
 	// The name of the VPC Public IP address pool.
@@ -156,7 +156,7 @@ type PublicIpAddressPoolState struct {
 	Description pulumi.StringPtrInput
 	// Whether there is a free IP address.
 	IpAddressRemaining pulumi.BoolPtrInput
-	// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+	// (ForceNew, Optional) The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
 	Isp                   pulumi.StringPtrInput
 	PublicIpAddressPoolId pulumi.StringPtrInput
 	// The name of the VPC Public IP address pool.
@@ -180,7 +180,7 @@ func (PublicIpAddressPoolState) ElementType() reflect.Type {
 type publicIpAddressPoolArgs struct {
 	// Description.
 	Description *string `pulumi:"description"`
-	// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+	// (ForceNew, Optional) The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
 	Isp *string `pulumi:"isp"`
 	// The name of the VPC Public IP address pool.
 	PublicIpAddressPoolName *string `pulumi:"publicIpAddressPoolName"`
@@ -194,7 +194,7 @@ type publicIpAddressPoolArgs struct {
 type PublicIpAddressPoolArgs struct {
 	// Description.
 	Description pulumi.StringPtrInput
-	// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+	// (ForceNew, Optional) The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
 	Isp pulumi.StringPtrInput
 	// The name of the VPC Public IP address pool.
 	PublicIpAddressPoolName pulumi.StringPtrInput
@@ -306,7 +306,7 @@ func (o PublicIpAddressPoolOutput) IpAddressRemaining() pulumi.BoolOutput {
 	return o.ApplyT(func(v *PublicIpAddressPool) pulumi.BoolOutput { return v.IpAddressRemaining }).(pulumi.BoolOutput)
 }
 
-// The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
+// (ForceNew, Optional) The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
 func (o PublicIpAddressPoolOutput) Isp() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicIpAddressPool) pulumi.StringOutput { return v.Isp }).(pulumi.StringOutput)
 }

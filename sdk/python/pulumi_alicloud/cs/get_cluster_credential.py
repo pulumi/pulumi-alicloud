@@ -135,7 +135,7 @@ def get_cluster_credential(cluster_id: Optional[str] = None,
     > **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
 
 
-    :param str cluster_id: The id of target cluster.
+    :param str cluster_id: (**Required**) The id of target cluster.
     :param str output_file: File name where to save the returned KubeConfig (after running `pulumi preview`).
     :param int temporary_duration_minutes: Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `expiration`.
     """
@@ -170,7 +170,7 @@ def get_cluster_credential_output(cluster_id: Optional[pulumi.Input[str]] = None
     > **NOTE:** This datasource can be used on all kinds of ACK clusters, including managed clusters, imported kubernetes clusters, serverless clusters and edge clusters. Please make sure that the target cluster is not in the failed state before using this datasource, since the api server of clusters in the failed state cannot be accessed.
 
 
-    :param str cluster_id: The id of target cluster.
+    :param str cluster_id: (**Required**) The id of target cluster.
     :param str output_file: File name where to save the returned KubeConfig (after running `pulumi preview`).
     :param int temporary_duration_minutes: Automatic expiration time of the returned credential. The valid value between `15` and `4320`, in minutes. When this field is omitted, the expiration time will be determined by the system automatically and the result will be in the attributed field `expiration`.
     """

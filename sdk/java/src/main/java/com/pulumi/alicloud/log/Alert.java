@@ -428,14 +428,14 @@ public class Alert extends com.pulumi.resources.CustomResource {
         return this.alertName;
     }
     /**
-     * Alert template annotations.
+     * Annotations for new alert.
      * 
      */
     @Export(name="annotations", type=List.class, parameters={AlertAnnotation.class})
     private Output</* @Nullable */ List<AlertAnnotation>> annotations;
 
     /**
-     * @return Alert template annotations.
+     * @return Annotations for new alert.
      * 
      */
     public Output<Optional<List<AlertAnnotation>>> annotations() {
@@ -456,7 +456,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoAnnotation);
     }
     /**
-     * Join condition.
+     * Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
      * 
      * @deprecated
      * Deprecated from 1.161.0+, use eval_condition in severity_configurations
@@ -467,7 +467,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> condition;
 
     /**
-     * @return Join condition.
+     * @return Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
      * 
      */
     public Output<Optional<String>> condition() {
@@ -634,14 +634,14 @@ public class Alert extends com.pulumi.resources.CustomResource {
         return this.projectName;
     }
     /**
-     * Multiple conditions for configured alarm query.
+     * (Optinal, Required before 1.203.0) Multiple conditions for configured alarm query.
      * 
      */
     @Export(name="queryLists", type=List.class, parameters={AlertQueryList.class})
     private Output</* @Nullable */ List<AlertQueryList>> queryLists;
 
     /**
-     * @return Multiple conditions for configured alarm query.
+     * @return (Optinal, Required before 1.203.0) Multiple conditions for configured alarm query.
      * 
      */
     public Output<Optional<List<AlertQueryList>>> queryLists() {
@@ -772,14 +772,14 @@ public class Alert extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.throttling);
     }
     /**
-     * including FixedRate,Hourly,Daily,Weekly,Cron.
+     * The type of new alert, `default` for custom alert, `tpl` for template alert.
      * 
      */
     @Export(name="type", type=String.class, parameters={})
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return including FixedRate,Hourly,Daily,Weekly,Cron.
+     * @return The type of new alert, `default` for custom alert, `tpl` for template alert.
      * 
      */
     public Output<Optional<String>> type() {

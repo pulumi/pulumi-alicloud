@@ -2693,7 +2693,7 @@ func (o GetInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetInstancesIn
 }
 
 type GetVpcFirewallCensCen struct {
-	// The ID of the CEN instance.
+	// (ForceNew,Optional) The ID of the CEN instance.
 	CenId string `pulumi:"cenId"`
 	// Intercommunication type, value: `expressconnect`: Express Channel `cen`: Cloud Enterprise Network
 	ConnectType string `pulumi:"connectType"`
@@ -2701,13 +2701,13 @@ type GetVpcFirewallCensCen struct {
 	Id string `pulumi:"id"`
 	// The details of the VPC.
 	LocalVpcs []GetVpcFirewallCensCenLocalVpc `pulumi:"localVpcs"`
-	// The ID of the VPC instance that created the VPC firewall.
+	// (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
 	NetworkInstanceId string `pulumi:"networkInstanceId"`
-	// Firewall switch status
+	// (ForceNew,Optional) Firewall switch status
 	Status string `pulumi:"status"`
-	// VPC firewall ID
+	// (ForceNew,Optional) VPC firewall ID
 	VpcFirewallId string `pulumi:"vpcFirewallId"`
-	// The name of the VPC firewall instance.
+	// (ForceNew,Optional) The name of the VPC firewall instance.
 	VpcFirewallName string `pulumi:"vpcFirewallName"`
 }
 
@@ -2723,7 +2723,7 @@ type GetVpcFirewallCensCenInput interface {
 }
 
 type GetVpcFirewallCensCenArgs struct {
-	// The ID of the CEN instance.
+	// (ForceNew,Optional) The ID of the CEN instance.
 	CenId pulumi.StringInput `pulumi:"cenId"`
 	// Intercommunication type, value: `expressconnect`: Express Channel `cen`: Cloud Enterprise Network
 	ConnectType pulumi.StringInput `pulumi:"connectType"`
@@ -2731,13 +2731,13 @@ type GetVpcFirewallCensCenArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// The details of the VPC.
 	LocalVpcs GetVpcFirewallCensCenLocalVpcArrayInput `pulumi:"localVpcs"`
-	// The ID of the VPC instance that created the VPC firewall.
+	// (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
 	NetworkInstanceId pulumi.StringInput `pulumi:"networkInstanceId"`
-	// Firewall switch status
+	// (ForceNew,Optional) Firewall switch status
 	Status pulumi.StringInput `pulumi:"status"`
-	// VPC firewall ID
+	// (ForceNew,Optional) VPC firewall ID
 	VpcFirewallId pulumi.StringInput `pulumi:"vpcFirewallId"`
-	// The name of the VPC firewall instance.
+	// (ForceNew,Optional) The name of the VPC firewall instance.
 	VpcFirewallName pulumi.StringInput `pulumi:"vpcFirewallName"`
 }
 
@@ -2792,7 +2792,7 @@ func (o GetVpcFirewallCensCenOutput) ToGetVpcFirewallCensCenOutputWithContext(ct
 	return o
 }
 
-// The ID of the CEN instance.
+// (ForceNew,Optional) The ID of the CEN instance.
 func (o GetVpcFirewallCensCenOutput) CenId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensCen) string { return v.CenId }).(pulumi.StringOutput)
 }
@@ -2812,22 +2812,22 @@ func (o GetVpcFirewallCensCenOutput) LocalVpcs() GetVpcFirewallCensCenLocalVpcAr
 	return o.ApplyT(func(v GetVpcFirewallCensCen) []GetVpcFirewallCensCenLocalVpc { return v.LocalVpcs }).(GetVpcFirewallCensCenLocalVpcArrayOutput)
 }
 
-// The ID of the VPC instance that created the VPC firewall.
+// (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
 func (o GetVpcFirewallCensCenOutput) NetworkInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensCen) string { return v.NetworkInstanceId }).(pulumi.StringOutput)
 }
 
-// Firewall switch status
+// (ForceNew,Optional) Firewall switch status
 func (o GetVpcFirewallCensCenOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensCen) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// VPC firewall ID
+// (ForceNew,Optional) VPC firewall ID
 func (o GetVpcFirewallCensCenOutput) VpcFirewallId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensCen) string { return v.VpcFirewallId }).(pulumi.StringOutput)
 }
 
-// The name of the VPC firewall instance.
+// (ForceNew,Optional) The name of the VPC firewall instance.
 func (o GetVpcFirewallCensCenOutput) VpcFirewallName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensCen) string { return v.VpcFirewallName }).(pulumi.StringOutput)
 }
@@ -2859,7 +2859,7 @@ type GetVpcFirewallCensCenLocalVpc struct {
 	DefendCidrLists []string                               `pulumi:"defendCidrLists"`
 	EniLists        []GetVpcFirewallCensCenLocalVpcEniList `pulumi:"eniLists"`
 	ManualVswitchId string                                 `pulumi:"manualVswitchId"`
-	// The ID of the VPC instance that created the VPC firewall.
+	// (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
 	NetworkInstanceId string `pulumi:"networkInstanceId"`
 	// The name of the network instance.
 	NetworkInstanceName string `pulumi:"networkInstanceName"`
@@ -2902,7 +2902,7 @@ type GetVpcFirewallCensCenLocalVpcArgs struct {
 	DefendCidrLists pulumi.StringArrayInput                        `pulumi:"defendCidrLists"`
 	EniLists        GetVpcFirewallCensCenLocalVpcEniListArrayInput `pulumi:"eniLists"`
 	ManualVswitchId pulumi.StringInput                             `pulumi:"manualVswitchId"`
-	// The ID of the VPC instance that created the VPC firewall.
+	// (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
 	NetworkInstanceId pulumi.StringInput `pulumi:"networkInstanceId"`
 	// The name of the network instance.
 	NetworkInstanceName pulumi.StringInput `pulumi:"networkInstanceName"`
@@ -2999,7 +2999,7 @@ func (o GetVpcFirewallCensCenLocalVpcOutput) ManualVswitchId() pulumi.StringOutp
 	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.ManualVswitchId }).(pulumi.StringOutput)
 }
 
-// The ID of the VPC instance that created the VPC firewall.
+// (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
 func (o GetVpcFirewallCensCenLocalVpcOutput) NetworkInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallCensCenLocalVpc) string { return v.NetworkInstanceId }).(pulumi.StringOutput)
 }
@@ -3711,11 +3711,11 @@ type GetVpcFirewallsFirewall struct {
 	PeerVpcs []GetVpcFirewallsFirewallPeerVpc `pulumi:"peerVpcs"`
 	// The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
 	RegionStatus string `pulumi:"regionStatus"`
-	// The status of the resource
+	// (ForceNew,Optional) The status of the resource
 	Status string `pulumi:"status"`
-	// The ID of the VPC firewall instance.
+	// (ForceNew,Optional) The ID of the VPC firewall instance.
 	VpcFirewallId string `pulumi:"vpcFirewallId"`
-	// The name of the VPC firewall instance.
+	// (ForceNew,Optional) The name of the VPC firewall instance.
 	VpcFirewallName string `pulumi:"vpcFirewallName"`
 }
 
@@ -3743,11 +3743,11 @@ type GetVpcFirewallsFirewallArgs struct {
 	PeerVpcs GetVpcFirewallsFirewallPeerVpcArrayInput `pulumi:"peerVpcs"`
 	// The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
 	RegionStatus pulumi.StringInput `pulumi:"regionStatus"`
-	// The status of the resource
+	// (ForceNew,Optional) The status of the resource
 	Status pulumi.StringInput `pulumi:"status"`
-	// The ID of the VPC firewall instance.
+	// (ForceNew,Optional) The ID of the VPC firewall instance.
 	VpcFirewallId pulumi.StringInput `pulumi:"vpcFirewallId"`
-	// The name of the VPC firewall instance.
+	// (ForceNew,Optional) The name of the VPC firewall instance.
 	VpcFirewallName pulumi.StringInput `pulumi:"vpcFirewallName"`
 }
 
@@ -3832,17 +3832,17 @@ func (o GetVpcFirewallsFirewallOutput) RegionStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallsFirewall) string { return v.RegionStatus }).(pulumi.StringOutput)
 }
 
-// The status of the resource
+// (ForceNew,Optional) The status of the resource
 func (o GetVpcFirewallsFirewallOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallsFirewall) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the VPC firewall instance.
+// (ForceNew,Optional) The ID of the VPC firewall instance.
 func (o GetVpcFirewallsFirewallOutput) VpcFirewallId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallsFirewall) string { return v.VpcFirewallId }).(pulumi.StringOutput)
 }
 
-// The name of the VPC firewall instance.
+// (ForceNew,Optional) The name of the VPC firewall instance.
 func (o GetVpcFirewallsFirewallOutput) VpcFirewallName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVpcFirewallsFirewall) string { return v.VpcFirewallName }).(pulumi.StringOutput)
 }

@@ -40,14 +40,14 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:hbr/otsBackupPlan:OtsBackupPlan")
 public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
     /**
-     * Backup type. Valid values: `COMPLETE`.
+     * The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
      * 
      */
     @Export(name="backupType", type=String.class, parameters={})
     private Output<String> backupType;
 
     /**
-     * @return Backup type. Valid values: `COMPLETE`.
+     * @return The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
      * 
      */
     public Output<String> backupType() {
@@ -96,14 +96,14 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.crossAccountUserId);
     }
     /**
-     * Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+     * Whether to disable the backup task. Valid values: true, false.
      * 
      */
     @Export(name="disabled", type=Boolean.class, parameters={})
     private Output<Boolean> disabled;
 
     /**
-     * @return Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+     * @return Whether to disable the backup task. Valid values: true, false.
      * 
      */
     public Output<Boolean> disabled() {
@@ -152,14 +152,14 @@ public class OtsBackupPlan extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.otsDetails);
     }
     /**
-     * Backup retention days, the minimum is 1.
+     * Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
      * 
      */
     @Export(name="retention", type=String.class, parameters={})
     private Output<String> retention;
 
     /**
-     * @return Backup retention days, the minimum is 1.
+     * @return Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
      * 
      */
     public Output<String> retention() {

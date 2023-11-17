@@ -92,6 +92,7 @@ type GetDisksArgs struct {
 	// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the disks. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -229,6 +230,7 @@ type GetDisksOutputArgs struct {
 	// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to the disks. It must be in the format:
+	//
 	// ```go
 	// package main
 	//

@@ -33,7 +33,7 @@ public final class AlertNotificationList {
      */
     private @Nullable String serviceUri;
     /**
-     * @return including FixedRate,Hourly,Daily,Weekly,Cron.
+     * @return Notification type. support Email, SMS, DingTalk, MessageCenter.
      * 
      */
     private String type;
@@ -68,7 +68,7 @@ public final class AlertNotificationList {
         return Optional.ofNullable(this.serviceUri);
     }
     /**
-     * @return including FixedRate,Hourly,Daily,Weekly,Cron.
+     * @return Notification type. support Email, SMS, DingTalk, MessageCenter.
      * 
      */
     public String type() {

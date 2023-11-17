@@ -59,7 +59,7 @@ export interface GetOssBackupPlansArgs {
      */
     outputFile?: string;
     /**
-     * The ID of backup vault.
+     * The ID of backup vault the OssBackupPlan used.
      */
     vaultId?: string;
 }
@@ -124,7 +124,7 @@ export interface GetOssBackupPlansOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of backup vault.
+     * The ID of backup vault the OssBackupPlan used.
      */
     vaultId?: pulumi.Input<string>;
 }

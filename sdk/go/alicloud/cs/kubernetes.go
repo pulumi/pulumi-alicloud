@@ -63,7 +63,7 @@ type Kubernetes struct {
 	//
 	// *Removed params*
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
-	// Nested attribute containing certificate authority data for your cluster.
+	// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
 	CertificateAuthority KubernetesCertificateAuthorityOutput `pulumi:"certificateAuthority"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrOutput `pulumi:"clientCert"`
@@ -73,7 +73,7 @@ type Kubernetes struct {
 	ClusterCaCert pulumi.StringPtrOutput `pulumi:"clusterCaCert"`
 	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
 	ClusterDomain pulumi.StringPtrOutput `pulumi:"clusterDomain"`
-	// Map of kubernetes cluster connection information.
+	// (Map) Map of kubernetes cluster connection information.
 	Connections KubernetesConnectionsOutput `pulumi:"connections"`
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	//
@@ -176,7 +176,7 @@ type Kubernetes struct {
 	ServiceAccountIssuer pulumi.StringPtrOutput `pulumi:"serviceAccountIssuer"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrOutput `pulumi:"serviceCidr"`
-	// The ID of load balancer.
+	// (Deprecated) The ID of load balancer.
 	//
 	// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
 	SlbId pulumi.StringOutput `pulumi:"slbId"`
@@ -213,11 +213,11 @@ type Kubernetes struct {
 	//
 	// Deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it
 	WorkerAutoRenew pulumi.BoolPtrOutput `pulumi:"workerAutoRenew"`
-	// Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+	// (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
 	//
 	// Deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it
 	WorkerAutoRenewPeriod pulumi.IntOutput `pulumi:"workerAutoRenewPeriod"`
-	// The data disk category of worker, use `workerDataDisks` to instead it.
+	// (Deprecated) The data disk category of worker, use `workerDataDisks` to instead it.
 	//
 	// Deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it
 	WorkerDataDiskCategory pulumi.StringPtrOutput `pulumi:"workerDataDiskCategory"`
@@ -257,7 +257,7 @@ type Kubernetes struct {
 	//
 	// Deprecated: Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it
 	WorkerInstanceTypes pulumi.StringArrayOutput `pulumi:"workerInstanceTypes"`
-	// List of cluster worker nodes. See `workerNodes` below.
+	// (Deprecated from version 1.177.0) List of cluster worker nodes. See `workerNodes` below.
 	//
 	// Deprecated: Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.
 	WorkerNodes KubernetesWorkerNodeArrayOutput `pulumi:"workerNodes"`
@@ -332,7 +332,7 @@ type kubernetesState struct {
 	//
 	// *Removed params*
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Nested attribute containing certificate authority data for your cluster.
+	// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
 	CertificateAuthority *KubernetesCertificateAuthority `pulumi:"certificateAuthority"`
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert *string `pulumi:"clientCert"`
@@ -342,7 +342,7 @@ type kubernetesState struct {
 	ClusterCaCert *string `pulumi:"clusterCaCert"`
 	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
 	ClusterDomain *string `pulumi:"clusterDomain"`
-	// Map of kubernetes cluster connection information.
+	// (Map) Map of kubernetes cluster connection information.
 	Connections *KubernetesConnections `pulumi:"connections"`
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	//
@@ -445,7 +445,7 @@ type kubernetesState struct {
 	ServiceAccountIssuer *string `pulumi:"serviceAccountIssuer"`
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr *string `pulumi:"serviceCidr"`
-	// The ID of load balancer.
+	// (Deprecated) The ID of load balancer.
 	//
 	// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
 	SlbId *string `pulumi:"slbId"`
@@ -482,11 +482,11 @@ type kubernetesState struct {
 	//
 	// Deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it
 	WorkerAutoRenew *bool `pulumi:"workerAutoRenew"`
-	// Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+	// (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
 	//
 	// Deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it
 	WorkerAutoRenewPeriod *int `pulumi:"workerAutoRenewPeriod"`
-	// The data disk category of worker, use `workerDataDisks` to instead it.
+	// (Deprecated) The data disk category of worker, use `workerDataDisks` to instead it.
 	//
 	// Deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it
 	WorkerDataDiskCategory *string `pulumi:"workerDataDiskCategory"`
@@ -526,7 +526,7 @@ type kubernetesState struct {
 	//
 	// Deprecated: Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it
 	WorkerInstanceTypes []string `pulumi:"workerInstanceTypes"`
-	// List of cluster worker nodes. See `workerNodes` below.
+	// (Deprecated from version 1.177.0) List of cluster worker nodes. See `workerNodes` below.
 	//
 	// Deprecated: Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.
 	WorkerNodes []KubernetesWorkerNode `pulumi:"workerNodes"`
@@ -559,7 +559,7 @@ type KubernetesState struct {
 	//
 	// *Removed params*
 	AvailabilityZone pulumi.StringPtrInput
-	// Nested attribute containing certificate authority data for your cluster.
+	// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
 	CertificateAuthority KubernetesCertificateAuthorityPtrInput
 	// The path of client certificate, like `~/.kube/client-cert.pem`.
 	ClientCert pulumi.StringPtrInput
@@ -569,7 +569,7 @@ type KubernetesState struct {
 	ClusterCaCert pulumi.StringPtrInput
 	// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
 	ClusterDomain pulumi.StringPtrInput
-	// Map of kubernetes cluster connection information.
+	// (Map) Map of kubernetes cluster connection information.
 	Connections KubernetesConnectionsPtrInput
 	// Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
 	//
@@ -672,7 +672,7 @@ type KubernetesState struct {
 	ServiceAccountIssuer pulumi.StringPtrInput
 	// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
 	ServiceCidr pulumi.StringPtrInput
-	// The ID of load balancer.
+	// (Deprecated) The ID of load balancer.
 	//
 	// Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
 	SlbId pulumi.StringPtrInput
@@ -709,11 +709,11 @@ type KubernetesState struct {
 	//
 	// Deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it
 	WorkerAutoRenew pulumi.BoolPtrInput
-	// Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+	// (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
 	//
 	// Deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it
 	WorkerAutoRenewPeriod pulumi.IntPtrInput
-	// The data disk category of worker, use `workerDataDisks` to instead it.
+	// (Deprecated) The data disk category of worker, use `workerDataDisks` to instead it.
 	//
 	// Deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it
 	WorkerDataDiskCategory pulumi.StringPtrInput
@@ -753,7 +753,7 @@ type KubernetesState struct {
 	//
 	// Deprecated: Field 'worker_instance_types' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'instance_types' to replace it
 	WorkerInstanceTypes pulumi.StringArrayInput
-	// List of cluster worker nodes. See `workerNodes` below.
+	// (Deprecated from version 1.177.0) List of cluster worker nodes. See `workerNodes` below.
 	//
 	// Deprecated: Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.
 	WorkerNodes KubernetesWorkerNodeArrayInput
@@ -920,11 +920,11 @@ type kubernetesArgs struct {
 	//
 	// Deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it
 	WorkerAutoRenew *bool `pulumi:"workerAutoRenew"`
-	// Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+	// (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
 	//
 	// Deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it
 	WorkerAutoRenewPeriod *int `pulumi:"workerAutoRenewPeriod"`
-	// The data disk category of worker, use `workerDataDisks` to instead it.
+	// (Deprecated) The data disk category of worker, use `workerDataDisks` to instead it.
 	//
 	// Deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it
 	WorkerDataDiskCategory *string `pulumi:"workerDataDiskCategory"`
@@ -1122,11 +1122,11 @@ type KubernetesArgs struct {
 	//
 	// Deprecated: Field 'worker_auto_renew' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew' to replace it
 	WorkerAutoRenew pulumi.BoolPtrInput
-	// Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+	// (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
 	//
 	// Deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it
 	WorkerAutoRenewPeriod pulumi.IntPtrInput
-	// The data disk category of worker, use `workerDataDisks` to instead it.
+	// (Deprecated) The data disk category of worker, use `workerDataDisks` to instead it.
 	//
 	// Deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it
 	WorkerDataDiskCategory pulumi.StringPtrInput
@@ -1288,7 +1288,7 @@ func (o KubernetesOutput) AvailabilityZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringOutput { return v.AvailabilityZone }).(pulumi.StringOutput)
 }
 
-// Nested attribute containing certificate authority data for your cluster.
+// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
 func (o KubernetesOutput) CertificateAuthority() KubernetesCertificateAuthorityOutput {
 	return o.ApplyT(func(v *Kubernetes) KubernetesCertificateAuthorityOutput { return v.CertificateAuthority }).(KubernetesCertificateAuthorityOutput)
 }
@@ -1313,7 +1313,7 @@ func (o KubernetesOutput) ClusterDomain() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringPtrOutput { return v.ClusterDomain }).(pulumi.StringPtrOutput)
 }
 
-// Map of kubernetes cluster connection information.
+// (Map) Map of kubernetes cluster connection information.
 func (o KubernetesOutput) Connections() KubernetesConnectionsOutput {
 	return o.ApplyT(func(v *Kubernetes) KubernetesConnectionsOutput { return v.Connections }).(KubernetesConnectionsOutput)
 }
@@ -1554,7 +1554,7 @@ func (o KubernetesOutput) ServiceCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringPtrOutput { return v.ServiceCidr }).(pulumi.StringPtrOutput)
 }
 
-// The ID of load balancer.
+// (Deprecated) The ID of load balancer.
 //
 // Deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
 func (o KubernetesOutput) SlbId() pulumi.StringOutput {
@@ -1627,14 +1627,14 @@ func (o KubernetesOutput) WorkerAutoRenew() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.BoolPtrOutput { return v.WorkerAutoRenew }).(pulumi.BoolPtrOutput)
 }
 
-// Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+// (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
 //
 // Deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it
 func (o KubernetesOutput) WorkerAutoRenewPeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.IntOutput { return v.WorkerAutoRenewPeriod }).(pulumi.IntOutput)
 }
 
-// The data disk category of worker, use `workerDataDisks` to instead it.
+// (Deprecated) The data disk category of worker, use `workerDataDisks` to instead it.
 //
 // Deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it
 func (o KubernetesOutput) WorkerDataDiskCategory() pulumi.StringPtrOutput {
@@ -1701,7 +1701,7 @@ func (o KubernetesOutput) WorkerInstanceTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Kubernetes) pulumi.StringArrayOutput { return v.WorkerInstanceTypes }).(pulumi.StringArrayOutput)
 }
 
-// List of cluster worker nodes. See `workerNodes` below.
+// (Deprecated from version 1.177.0) List of cluster worker nodes. See `workerNodes` below.
 //
 // Deprecated: Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.
 func (o KubernetesOutput) WorkerNodes() KubernetesWorkerNodeArrayOutput {

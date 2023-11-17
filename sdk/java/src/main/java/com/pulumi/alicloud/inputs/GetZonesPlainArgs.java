@@ -69,7 +69,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+     * (Available since 1.45.0) Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
      * 
      * &gt; **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don&#39;t support it. It is recommended to use `cloud_efficiency` or `cloud_ssd`.
      * 
@@ -78,7 +78,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable String availableSlbAddressIpVersion;
 
     /**
-     * @return Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+     * @return (Available since 1.45.0) Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
      * 
      * &gt; **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don&#39;t support it. It is recommended to use `cloud_efficiency` or `cloud_ssd`.
      * 
@@ -88,14 +88,14 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+     * (Available since 1.45.0) Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
      * 
      */
     @Import(name="availableSlbAddressType")
     private @Nullable String availableSlbAddressType;
 
     /**
-     * @return Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+     * @return (Available since 1.45.0) Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
      * 
      */
     public Optional<String> availableSlbAddressType() {
@@ -178,14 +178,14 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+     * Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
      * 
      */
     @Import(name="spotStrategy")
     private @Nullable String spotStrategy;
 
     /**
-     * @return - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+     * @return Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
      * 
      */
     public Optional<String> spotStrategy() {
@@ -264,7 +264,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param availableSlbAddressIpVersion Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+         * @param availableSlbAddressIpVersion (Available since 1.45.0) Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
          * 
          * &gt; **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don&#39;t support it. It is recommended to use `cloud_efficiency` or `cloud_ssd`.
          * 
@@ -277,7 +277,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param availableSlbAddressType Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+         * @param availableSlbAddressType (Available since 1.45.0) Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class GetZonesPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param spotStrategy - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+         * @param spotStrategy Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
          * 
          * @return builder
          * 

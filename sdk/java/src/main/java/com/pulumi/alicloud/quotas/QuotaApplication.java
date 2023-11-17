@@ -48,7 +48,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * Quota audit mode. Value:
      * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
      * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-     * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+     *   &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
      * 
      */
     @Export(name="auditMode", type=String.class, parameters={})
@@ -58,7 +58,7 @@ public class QuotaApplication extends com.pulumi.resources.CustomResource {
      * @return Quota audit mode. Value:
      * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
      * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-     * &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+     *   &gt; **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
      * 
      */
     public Output<String> auditMode() {

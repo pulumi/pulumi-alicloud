@@ -102,19 +102,19 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// A regex string to filter results by Honeypot Node name.
+        /// (ForceNew,Optional)  A regex string to filter results by Honeypot Node name.
         /// </summary>
         [Input("nameRegex")]
         public string? NameRegex { get; set; }
 
         /// <summary>
-        /// Honeypot management node id.
+        /// (ForceNew,Optional) Honeypot management node id.
         /// </summary>
         [Input("nodeId")]
         public string? NodeId { get; set; }
 
         /// <summary>
-        /// The name of the management node.
+        /// (ForceNew,Optional) The name of the management node.
         /// </summary>
         [Input("nodeName")]
         public string? NodeName { get; set; }
@@ -152,19 +152,19 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// A regex string to filter results by Honeypot Node name.
+        /// (ForceNew,Optional)  A regex string to filter results by Honeypot Node name.
         /// </summary>
         [Input("nameRegex")]
         public Input<string>? NameRegex { get; set; }
 
         /// <summary>
-        /// Honeypot management node id.
+        /// (ForceNew,Optional) Honeypot management node id.
         /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }
 
         /// <summary>
-        /// The name of the management node.
+        /// (ForceNew,Optional) The name of the management node.
         /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }

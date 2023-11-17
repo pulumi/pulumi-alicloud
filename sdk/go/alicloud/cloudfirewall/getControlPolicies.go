@@ -62,7 +62,7 @@ type GetControlPoliciesArgs struct {
 	Description *string `pulumi:"description"`
 	// The destination address defined in the access control policy.
 	Destination *string `pulumi:"destination"`
-	// The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+	// Direction. Valid values: `in`, `out`.
 	Direction string `pulumi:"direction"`
 	// The ip version.
 	IpVersion *string `pulumi:"ipVersion"`
@@ -70,7 +70,7 @@ type GetControlPoliciesArgs struct {
 	Lang *string `pulumi:"lang"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+	// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
 	Proto *string `pulumi:"proto"`
 	// The source address defined in the access control policy.
 	Source *string `pulumi:"source"`
@@ -120,7 +120,7 @@ type GetControlPoliciesOutputArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The destination address defined in the access control policy.
 	Destination pulumi.StringPtrInput `pulumi:"destination"`
-	// The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+	// Direction. Valid values: `in`, `out`.
 	Direction pulumi.StringInput `pulumi:"direction"`
 	// The ip version.
 	IpVersion pulumi.StringPtrInput `pulumi:"ipVersion"`
@@ -128,7 +128,7 @@ type GetControlPoliciesOutputArgs struct {
 	Lang pulumi.StringPtrInput `pulumi:"lang"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+	// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
 	Proto pulumi.StringPtrInput `pulumi:"proto"`
 	// The source address defined in the access control policy.
 	Source pulumi.StringPtrInput `pulumi:"source"`

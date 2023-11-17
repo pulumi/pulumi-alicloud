@@ -18,14 +18,14 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetClustersPlainArgs Empty = new GetClustersPlainArgs();
 
     /**
-     * The name of the associated cluster.
+     * The ClusterName.
      * 
      */
     @Import(name="clusterName")
     private @Nullable String clusterName;
 
     /**
-     * @return The name of the associated cluster.
+     * @return The ClusterName.
      * 
      */
     public Optional<String> clusterName() {
@@ -281,7 +281,7 @@ public final class GetClustersPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param clusterName The name of the associated cluster.
+         * @param clusterName The ClusterName.
          * 
          * @return builder
          * 

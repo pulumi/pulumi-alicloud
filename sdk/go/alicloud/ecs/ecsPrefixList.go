@@ -69,7 +69,7 @@ type EcsPrefixList struct {
 
 	// The IP address family. Valid values: `IPv4`,`IPv6`.
 	AddressFamily pulumi.StringOutput `pulumi:"addressFamily"`
-	// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The Entry. The details see Block `entry`.
 	Entries EcsPrefixListEntryArrayOutput `pulumi:"entries"`
@@ -123,7 +123,7 @@ func GetEcsPrefixList(ctx *pulumi.Context,
 type ecsPrefixListState struct {
 	// The IP address family. Valid values: `IPv4`,`IPv6`.
 	AddressFamily *string `pulumi:"addressFamily"`
-	// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
 	// The Entry. The details see Block `entry`.
 	Entries []EcsPrefixListEntry `pulumi:"entries"`
@@ -136,7 +136,7 @@ type ecsPrefixListState struct {
 type EcsPrefixListState struct {
 	// The IP address family. Valid values: `IPv4`,`IPv6`.
 	AddressFamily pulumi.StringPtrInput
-	// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
 	// The Entry. The details see Block `entry`.
 	Entries EcsPrefixListEntryArrayInput
@@ -153,7 +153,7 @@ func (EcsPrefixListState) ElementType() reflect.Type {
 type ecsPrefixListArgs struct {
 	// The IP address family. Valid values: `IPv4`,`IPv6`.
 	AddressFamily string `pulumi:"addressFamily"`
-	// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
 	Description *string `pulumi:"description"`
 	// The Entry. The details see Block `entry`.
 	Entries []EcsPrefixListEntry `pulumi:"entries"`
@@ -167,7 +167,7 @@ type ecsPrefixListArgs struct {
 type EcsPrefixListArgs struct {
 	// The IP address family. Valid values: `IPv4`,`IPv6`.
 	AddressFamily pulumi.StringInput
-	// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
 	Description pulumi.StringPtrInput
 	// The Entry. The details see Block `entry`.
 	Entries EcsPrefixListEntryArrayInput
@@ -269,7 +269,7 @@ func (o EcsPrefixListOutput) AddressFamily() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsPrefixList) pulumi.StringOutput { return v.AddressFamily }).(pulumi.StringOutput)
 }
 
-// The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+// The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
 func (o EcsPrefixListOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsPrefixList) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

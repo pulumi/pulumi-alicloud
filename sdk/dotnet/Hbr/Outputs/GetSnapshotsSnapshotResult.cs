@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string BackupType;
         /// <summary>
-        /// The name of OSS bucket.
+        /// (OSS) The name of OSS bucket.
         /// </summary>
         public readonly string Bucket;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string BytesTotal;
         /// <summary>
-        /// The ID of ECS backup client.
+        /// (ECS_FILE) The ID of ECS backup client.
         /// </summary>
         public readonly string ClientId;
         /// <summary>
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string CompleteTime;
         /// <summary>
-        /// File System Creation Time of Nas. Unix Time Seconds.
+        /// (NAS) File System Creation Time of Nas. Unix Time Seconds.
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
@@ -55,7 +55,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         public readonly string CreatedTime;
         public readonly string ErrorFile;
         /// <summary>
-        /// The ID of NAS File system.
+        /// (NAS) The ID of NAS File system.
         /// </summary>
         public readonly string FileSystemId;
         /// <summary>
@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The ID of ECS instance.
+        /// (ECS_FILE) The ID of ECS instance.
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
@@ -83,11 +83,11 @@ namespace Pulumi.AliCloud.Hbr.Outputs
         /// </summary>
         public readonly string ParentSnapshotHash;
         /// <summary>
-        /// Backup Path.
+        /// (ECS_FILE, NAS) Backup Path.
         /// </summary>
         public readonly string Path;
         /// <summary>
-        /// Backup file prefix.
+        /// (OSS) Backup file prefix.
         /// </summary>
         public readonly string Prefix;
         /// <summary>

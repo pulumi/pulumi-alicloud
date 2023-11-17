@@ -32,14 +32,14 @@ public final class GetHoneypotNodesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * A regex string to filter results by Honeypot Node name.
+     * (ForceNew,Optional)  A regex string to filter results by Honeypot Node name.
      * 
      */
     @Import(name="nameRegex")
     private @Nullable String nameRegex;
 
     /**
-     * @return A regex string to filter results by Honeypot Node name.
+     * @return (ForceNew,Optional)  A regex string to filter results by Honeypot Node name.
      * 
      */
     public Optional<String> nameRegex() {
@@ -47,14 +47,14 @@ public final class GetHoneypotNodesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * Honeypot management node id.
+     * (ForceNew,Optional) Honeypot management node id.
      * 
      */
     @Import(name="nodeId")
     private @Nullable String nodeId;
 
     /**
-     * @return Honeypot management node id.
+     * @return (ForceNew,Optional) Honeypot management node id.
      * 
      */
     public Optional<String> nodeId() {
@@ -62,14 +62,14 @@ public final class GetHoneypotNodesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The name of the management node.
+     * (ForceNew,Optional) The name of the management node.
      * 
      */
     @Import(name="nodeName")
     private @Nullable String nodeName;
 
     /**
-     * @return The name of the management node.
+     * @return (ForceNew,Optional) The name of the management node.
      * 
      */
     public Optional<String> nodeName() {
@@ -157,7 +157,7 @@ public final class GetHoneypotNodesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param nameRegex A regex string to filter results by Honeypot Node name.
+         * @param nameRegex (ForceNew,Optional)  A regex string to filter results by Honeypot Node name.
          * 
          * @return builder
          * 
@@ -168,7 +168,7 @@ public final class GetHoneypotNodesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param nodeId Honeypot management node id.
+         * @param nodeId (ForceNew,Optional) Honeypot management node id.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class GetHoneypotNodesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param nodeName The name of the management node.
+         * @param nodeName (ForceNew,Optional) The name of the management node.
          * 
          * @return builder
          * 

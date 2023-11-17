@@ -153,7 +153,7 @@ def get_traffic_marking_policies(description: Optional[str] = None,
     :param Sequence[str] ids: A list of Traffic Marking Policy IDs.
     :param str name_regex: A regex string to filter results by Traffic Marking Policy name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
     :param str transit_router_id: The ID of the transit router.
     """
     __args__ = dict()
@@ -215,7 +215,7 @@ def get_traffic_marking_policies_output(description: Optional[pulumi.Input[Optio
     :param Sequence[str] ids: A list of Traffic Marking Policy IDs.
     :param str name_regex: A regex string to filter results by Traffic Marking Policy name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
     :param str transit_router_id: The ID of the transit router.
     """
     ...

@@ -155,8 +155,8 @@ class KubernetesArgs:
         :param pulumi.Input[str] user_data: Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
-        :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
-        :param pulumi.Input[str] worker_data_disk_category: The data disk category of worker, use `worker_data_disks` to instead it.
+        :param pulumi.Input[int] worker_auto_renew_period: (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        :param pulumi.Input[str] worker_data_disk_category: (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
         :param pulumi.Input[int] worker_data_disk_size: The data disk size of worker, use `worker_data_disks` to instead it.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerDataDiskArgs']]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -1110,7 +1110,7 @@ class KubernetesArgs:
     @pulumi.getter(name="workerAutoRenewPeriod")
     def worker_auto_renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         """
         warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""", DeprecationWarning)
         pulumi.log.warn("""worker_auto_renew_period is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""")
@@ -1125,7 +1125,7 @@ class KubernetesArgs:
     @pulumi.getter(name="workerDataDiskCategory")
     def worker_data_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The data disk category of worker, use `worker_data_disks` to instead it.
+        (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
         """
         warnings.warn("""Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""", DeprecationWarning)
         pulumi.log.warn("""worker_data_disk_category is deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""")
@@ -1413,12 +1413,12 @@ class _KubernetesState:
         :param pulumi.Input[str] availability_zone: The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
                
                *Removed params*
-        :param pulumi.Input['KubernetesCertificateAuthorityArgs'] certificate_authority: Nested attribute containing certificate authority data for your cluster.
+        :param pulumi.Input['KubernetesCertificateAuthorityArgs'] certificate_authority: (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         :param pulumi.Input[str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
-        :param pulumi.Input['KubernetesConnectionsArgs'] connections: Map of kubernetes cluster connection information.
+        :param pulumi.Input['KubernetesConnectionsArgs'] connections: (Map) Map of kubernetes cluster connection information.
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
@@ -1466,7 +1466,7 @@ class _KubernetesState:
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-        :param pulumi.Input[str] slb_id: The ID of load balancer.
+        :param pulumi.Input[str] slb_id: (Deprecated) The ID of load balancer.
         :param pulumi.Input[str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
                
@@ -1483,8 +1483,8 @@ class _KubernetesState:
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
         :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
-        :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
-        :param pulumi.Input[str] worker_data_disk_category: The data disk category of worker, use `worker_data_disks` to instead it.
+        :param pulumi.Input[int] worker_auto_renew_period: (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        :param pulumi.Input[str] worker_data_disk_category: (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
         :param pulumi.Input[int] worker_data_disk_size: The data disk size of worker, use `worker_data_disks` to instead it.
         :param pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerDataDiskArgs']]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -1497,7 +1497,7 @@ class _KubernetesState:
                You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kube_config.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-        :param pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerNodeArgs']]] worker_nodes: List of cluster worker nodes. See `worker_nodes` below.
+        :param pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerNodeArgs']]] worker_nodes: (Deprecated from version 1.177.0) List of cluster worker nodes. See `worker_nodes` below.
         :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         :param pulumi.Input[int] worker_period: Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] worker_period_unit: Worker payment period unit, the valid value is `Month`.
@@ -1783,7 +1783,7 @@ class _KubernetesState:
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input['KubernetesCertificateAuthorityArgs']]:
         """
-        Nested attribute containing certificate authority data for your cluster.
+        (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -1843,7 +1843,7 @@ class _KubernetesState:
     @pulumi.getter
     def connections(self) -> Optional[pulumi.Input['KubernetesConnectionsArgs']]:
         """
-        Map of kubernetes cluster connection information.
+        (Map) Map of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 
@@ -2408,7 +2408,7 @@ class _KubernetesState:
     @pulumi.getter(name="slbId")
     def slb_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of load balancer.
+        (Deprecated) The ID of load balancer.
         """
         warnings.warn("""Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""", DeprecationWarning)
         pulumi.log.warn("""slb_id is deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""")
@@ -2569,7 +2569,7 @@ class _KubernetesState:
     @pulumi.getter(name="workerAutoRenewPeriod")
     def worker_auto_renew_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         """
         warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""", DeprecationWarning)
         pulumi.log.warn("""worker_auto_renew_period is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""")
@@ -2584,7 +2584,7 @@ class _KubernetesState:
     @pulumi.getter(name="workerDataDiskCategory")
     def worker_data_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The data disk category of worker, use `worker_data_disks` to instead it.
+        (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
         """
         warnings.warn("""Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""", DeprecationWarning)
         pulumi.log.warn("""worker_data_disk_category is deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""")
@@ -2723,7 +2723,7 @@ class _KubernetesState:
     @pulumi.getter(name="workerNodes")
     def worker_nodes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['KubernetesWorkerNodeArgs']]]]:
         """
-        List of cluster worker nodes. See `worker_nodes` below.
+        (Deprecated from version 1.177.0) List of cluster worker nodes. See `worker_nodes` below.
         """
         warnings.warn("""Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
         pulumi.log.warn("""worker_nodes is deprecated: Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")
@@ -2992,8 +2992,8 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] user_data: Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
-        :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
-        :param pulumi.Input[str] worker_data_disk_category: The data disk category of worker, use `worker_data_disks` to instead it.
+        :param pulumi.Input[int] worker_auto_renew_period: (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        :param pulumi.Input[str] worker_data_disk_category: (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
         :param pulumi.Input[int] worker_data_disk_size: The data disk size of worker, use `worker_data_disks` to instead it.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -3345,12 +3345,12 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] availability_zone: The Zone where new kubernetes cluster will be located. If it is not be specified, the `vswitch_ids` should be set, its value will be vswitch's zone.
                
                *Removed params*
-        :param pulumi.Input[pulumi.InputType['KubernetesCertificateAuthorityArgs']] certificate_authority: Nested attribute containing certificate authority data for your cluster.
+        :param pulumi.Input[pulumi.InputType['KubernetesCertificateAuthorityArgs']] certificate_authority: (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
         :param pulumi.Input[str] cluster_domain: Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
-        :param pulumi.Input[pulumi.InputType['KubernetesConnectionsArgs']] connections: Map of kubernetes cluster connection information.
+        :param pulumi.Input[pulumi.InputType['KubernetesConnectionsArgs']] connections: (Map) Map of kubernetes cluster connection information.
         :param pulumi.Input[str] cpu_policy: Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
         :param pulumi.Input[str] custom_san: Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
@@ -3398,7 +3398,7 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] security_group_id: The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
         :param pulumi.Input[str] service_account_issuer: The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
         :param pulumi.Input[str] service_cidr: The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-        :param pulumi.Input[str] slb_id: The ID of load balancer.
+        :param pulumi.Input[str] slb_id: (Deprecated) The ID of load balancer.
         :param pulumi.Input[str] slb_internet: The public ip of load balancer.
         :param pulumi.Input[bool] slb_internet_enabled: Whether to create internet load balancer for API Server. Default to true.
                
@@ -3415,8 +3415,8 @@ class Kubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] version: Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
         :param pulumi.Input[str] vpc_id: The ID of VPC where the current cluster is located.
         :param pulumi.Input[bool] worker_auto_renew: Enable worker payment auto-renew, defaults to false.
-        :param pulumi.Input[int] worker_auto_renew_period: Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
-        :param pulumi.Input[str] worker_data_disk_category: The data disk category of worker, use `worker_data_disks` to instead it.
+        :param pulumi.Input[int] worker_auto_renew_period: (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        :param pulumi.Input[str] worker_data_disk_category: (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
         :param pulumi.Input[int] worker_data_disk_size: The data disk size of worker, use `worker_data_disks` to instead it.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerDataDiskArgs']]]] worker_data_disks: The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
         :param pulumi.Input[str] worker_disk_category: The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
@@ -3429,7 +3429,7 @@ class Kubernetes(pulumi.CustomResource):
                You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we've written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `cs_get_cluster_credential` is recommended to manage cluster's kube_config.
         :param pulumi.Input[str] worker_instance_charge_type: Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] worker_instance_types: The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerNodeArgs']]]] worker_nodes: List of cluster worker nodes. See `worker_nodes` below.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['KubernetesWorkerNodeArgs']]]] worker_nodes: (Deprecated from version 1.177.0) List of cluster worker nodes. See `worker_nodes` below.
         :param pulumi.Input[int] worker_number: The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
         :param pulumi.Input[int] worker_period: Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
         :param pulumi.Input[str] worker_period_unit: Worker payment period unit, the valid value is `Month`.
@@ -3554,7 +3554,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Output['outputs.KubernetesCertificateAuthority']:
         """
-        Nested attribute containing certificate authority data for your cluster.
+        (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -3594,7 +3594,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter
     def connections(self) -> pulumi.Output['outputs.KubernetesConnections']:
         """
-        Map of kubernetes cluster connection information.
+        (Map) Map of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 
@@ -3975,7 +3975,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="slbId")
     def slb_id(self) -> pulumi.Output[str]:
         """
-        The ID of load balancer.
+        (Deprecated) The ID of load balancer.
         """
         warnings.warn("""Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""", DeprecationWarning)
         pulumi.log.warn("""slb_id is deprecated: Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.""")
@@ -4088,7 +4088,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerAutoRenewPeriod")
     def worker_auto_renew_period(self) -> pulumi.Output[int]:
         """
-        Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         """
         warnings.warn("""Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""", DeprecationWarning)
         pulumi.log.warn("""worker_auto_renew_period is deprecated: Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it""")
@@ -4099,7 +4099,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerDataDiskCategory")
     def worker_data_disk_category(self) -> pulumi.Output[Optional[str]]:
         """
-        The data disk category of worker, use `worker_data_disks` to instead it.
+        (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
         """
         warnings.warn("""Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""", DeprecationWarning)
         pulumi.log.warn("""worker_data_disk_category is deprecated: Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it""")
@@ -4202,7 +4202,7 @@ class Kubernetes(pulumi.CustomResource):
     @pulumi.getter(name="workerNodes")
     def worker_nodes(self) -> pulumi.Output[Sequence['outputs.KubernetesWorkerNode']]:
         """
-        List of cluster worker nodes. See `worker_nodes` below.
+        (Deprecated from version 1.177.0) List of cluster worker nodes. See `worker_nodes` below.
         """
         warnings.warn("""Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""", DeprecationWarning)
         pulumi.log.warn("""worker_nodes is deprecated: Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.""")

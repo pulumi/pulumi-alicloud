@@ -211,14 +211,14 @@ def get_vpc_firewalls(ids: Optional[Sequence[str]] = None,
 
 
     :param Sequence[str] ids: A list of Vpc Firewall IDs.
-    :param str lang: The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
-    :param str member_uid: The UID of the Alibaba Cloud member account.
+    :param str lang: (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+    :param str member_uid: (ForceNew,Optional) The UID of the Alibaba Cloud member account.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str region_no: The region ID of the peer VPC.
-    :param str status: The status of the resource
-    :param str vpc_firewall_id: The ID of the VPC firewall instance.
-    :param str vpc_firewall_name: The name of the VPC firewall instance.
+    :param str status: (ForceNew,Optional) The status of the resource
+    :param str vpc_firewall_id: (ForceNew,Optional) The ID of the VPC firewall instance.
+    :param str vpc_firewall_name: (ForceNew,Optional) The name of the VPC firewall instance.
     :param str vpc_id: The ID of the peer VPC instance.
     """
     __args__ = dict()
@@ -283,14 +283,14 @@ def get_vpc_firewalls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
 
     :param Sequence[str] ids: A list of Vpc Firewall IDs.
-    :param str lang: The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
-    :param str member_uid: The UID of the Alibaba Cloud member account.
+    :param str lang: (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+    :param str member_uid: (ForceNew,Optional) The UID of the Alibaba Cloud member account.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str region_no: The region ID of the peer VPC.
-    :param str status: The status of the resource
-    :param str vpc_firewall_id: The ID of the VPC firewall instance.
-    :param str vpc_firewall_name: The name of the VPC firewall instance.
+    :param str status: (ForceNew,Optional) The status of the resource
+    :param str vpc_firewall_id: (ForceNew,Optional) The ID of the VPC firewall instance.
+    :param str vpc_firewall_name: (ForceNew,Optional) The name of the VPC firewall instance.
     :param str vpc_id: The ID of the peer VPC instance.
     """
     ...

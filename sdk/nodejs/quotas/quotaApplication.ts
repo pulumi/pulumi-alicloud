@@ -51,7 +51,7 @@ export class QuotaApplication extends pulumi.CustomResource {
      * Quota audit mode. Value:
      * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
      * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-     * > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+     *   > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
      */
     public readonly auditMode!: pulumi.Output<string>;
     /**
@@ -209,7 +209,7 @@ export interface QuotaApplicationState {
      * Quota audit mode. Value:
      * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
      * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-     * > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+     *   > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
      */
     auditMode?: pulumi.Input<string>;
     /**
@@ -295,7 +295,7 @@ export interface QuotaApplicationArgs {
      * Quota audit mode. Value:
      * - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
      * - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-     * > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+     *   > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
      */
     auditMode?: pulumi.Input<string>;
     /**

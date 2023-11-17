@@ -17,14 +17,14 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetDesktopsArgs Empty = new GetDesktopsArgs();
 
     /**
-     * The desktop name of the Desktop.
+     * The desktop name.
      * 
      */
     @Import(name="desktopName")
     private @Nullable Output<String> desktopName;
 
     /**
-     * @return The desktop name of the Desktop.
+     * @return The desktop name.
      * 
      */
     public Optional<Output<String>> desktopName() {
@@ -168,7 +168,7 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param desktopName The desktop name of the Desktop.
+         * @param desktopName The desktop name.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class GetDesktopsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param desktopName The desktop name of the Desktop.
+         * @param desktopName The desktop name.
          * 
          * @return builder
          * 

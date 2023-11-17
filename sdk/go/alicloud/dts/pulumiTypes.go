@@ -180,7 +180,7 @@ type GetInstancesInstance struct {
 	InstanceName  string `pulumi:"instanceName"`
 	// The payment type of the resource.
 	PaymentType string `pulumi:"paymentType"`
-	// Resource Group ID
+	// (ForceNew,Optional) Resource Group ID
 	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// Source instance database engine type.
 	SourceEndpointEngineName string `pulumi:"sourceEndpointEngineName"`
@@ -221,7 +221,7 @@ type GetInstancesInstanceArgs struct {
 	InstanceName  pulumi.StringInput `pulumi:"instanceName"`
 	// The payment type of the resource.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
-	// Resource Group ID
+	// (ForceNew,Optional) Resource Group ID
 	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// Source instance database engine type.
 	SourceEndpointEngineName pulumi.StringInput `pulumi:"sourceEndpointEngineName"`
@@ -325,7 +325,7 @@ func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// Resource Group ID
+// (ForceNew,Optional) Resource Group ID
 func (o GetInstancesInstanceOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }

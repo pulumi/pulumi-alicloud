@@ -25,14 +25,14 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of file to save your new key pair&#39;s private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn&#39;t get its private key ever.
+     * (ForceNew) The name of file to save your new key pair&#39;s private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn&#39;t get its private key ever.
      * 
      */
     @Import(name="keyFile")
     private @Nullable Output<String> keyFile;
 
     /**
-     * @return The name of file to save your new key pair&#39;s private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn&#39;t get its private key ever.
+     * @return (ForceNew) The name of file to save your new key pair&#39;s private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn&#39;t get its private key ever.
      * 
      */
     public Optional<Output<String>> keyFile() {
@@ -40,7 +40,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The key pair&#39;s name. It is the only in one Alicloud account.
+     * (ForceNew) The key pair&#39;s name. It is the only in one Alicloud account.
      * 
      * @deprecated
      * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
@@ -51,7 +51,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> keyName;
 
     /**
-     * @return The key pair&#39;s name. It is the only in one Alicloud account.
+     * @return (ForceNew) The key pair&#39;s name. It is the only in one Alicloud account.
      * 
      * @deprecated
      * Field &#39;key_name&#39; has been deprecated from provider version 1.121.0. New field &#39;key_pair_name&#39; instead.
@@ -77,14 +77,14 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+     * (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
      * 
      */
     @Import(name="publicKey")
     private @Nullable Output<String> publicKey;
 
     /**
-     * @return You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+     * @return (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
      * 
      */
     public Optional<Output<String>> publicKey() {
@@ -154,7 +154,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyFile The name of file to save your new key pair&#39;s private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn&#39;t get its private key ever.
+         * @param keyFile (ForceNew) The name of file to save your new key pair&#39;s private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn&#39;t get its private key ever.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyFile The name of file to save your new key pair&#39;s private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn&#39;t get its private key ever.
+         * @param keyFile (ForceNew) The name of file to save your new key pair&#39;s private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn&#39;t get its private key ever.
          * 
          * @return builder
          * 
@@ -175,7 +175,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyName The key pair&#39;s name. It is the only in one Alicloud account.
+         * @param keyName (ForceNew) The key pair&#39;s name. It is the only in one Alicloud account.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyName The key pair&#39;s name. It is the only in one Alicloud account.
+         * @param keyName (ForceNew) The key pair&#39;s name. It is the only in one Alicloud account.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKey You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+         * @param publicKey (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
          * 
          * @return builder
          * 
@@ -233,7 +233,7 @@ public final class KeyPairState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param publicKey You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+         * @param publicKey (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
          * 
          * @return builder
          * 

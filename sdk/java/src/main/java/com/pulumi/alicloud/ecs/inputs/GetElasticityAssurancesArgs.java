@@ -49,14 +49,14 @@ public final class GetElasticityAssurancesArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The ID of the elastic protection service.
+     * (ForceNew,Optional) The ID of the elastic protection service.
      * 
      */
     @Import(name="privatePoolOptionsIds")
     private @Nullable Output<List<String>> privatePoolOptionsIds;
 
     /**
-     * @return The ID of the elastic protection service.
+     * @return (ForceNew,Optional) The ID of the elastic protection service.
      * 
      */
     public Optional<Output<List<String>>> privatePoolOptionsIds() {
@@ -64,14 +64,14 @@ public final class GetElasticityAssurancesArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The ID of the resource group.
+     * (ForceNew,Optional) The ID of the resource group.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return (ForceNew,Optional) The ID of the resource group.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -79,14 +79,14 @@ public final class GetElasticityAssurancesArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+     * (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+     * @return (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -94,14 +94,14 @@ public final class GetElasticityAssurancesArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The tag key-value pair information bound by the elastic guarantee service.
+     * (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The tag key-value pair information bound by the elastic guarantee service.
+     * @return (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -190,7 +190,7 @@ public final class GetElasticityAssurancesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param privatePoolOptionsIds The ID of the elastic protection service.
+         * @param privatePoolOptionsIds (ForceNew,Optional) The ID of the elastic protection service.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class GetElasticityAssurancesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param privatePoolOptionsIds The ID of the elastic protection service.
+         * @param privatePoolOptionsIds (ForceNew,Optional) The ID of the elastic protection service.
          * 
          * @return builder
          * 
@@ -211,7 +211,7 @@ public final class GetElasticityAssurancesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param privatePoolOptionsIds The ID of the elastic protection service.
+         * @param privatePoolOptionsIds (ForceNew,Optional) The ID of the elastic protection service.
          * 
          * @return builder
          * 
@@ -221,7 +221,7 @@ public final class GetElasticityAssurancesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId (ForceNew,Optional) The ID of the resource group.
          * 
          * @return builder
          * 
@@ -232,7 +232,7 @@ public final class GetElasticityAssurancesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId (ForceNew,Optional) The ID of the resource group.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class GetElasticityAssurancesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param status The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+         * @param status (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
          * 
          * @return builder
          * 
@@ -253,7 +253,7 @@ public final class GetElasticityAssurancesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param status The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+         * @param status (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class GetElasticityAssurancesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param tags The tag key-value pair information bound by the elastic guarantee service.
+         * @param tags (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
          * 
          * @return builder
          * 
@@ -274,7 +274,7 @@ public final class GetElasticityAssurancesArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param tags The tag key-value pair information bound by the elastic guarantee service.
+         * @param tags (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
          * 
          * @return builder
          * 

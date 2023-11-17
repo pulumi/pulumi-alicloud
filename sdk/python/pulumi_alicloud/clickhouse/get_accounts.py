@@ -160,7 +160,7 @@ def get_accounts(db_cluster_id: Optional[str] = None,
     :param Sequence[str] ids: A list of Account IDs. Its element value is same as Account Name.
     :param str name_regex: A regex string to filter results by Account name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
     """
     __args__ = dict()
     __args__['dbClusterId'] = db_cluster_id
@@ -235,6 +235,6 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
     :param Sequence[str] ids: A list of Account IDs. Its element value is same as Account Name.
     :param str name_regex: A regex string to filter results by Account name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
     """
     ...

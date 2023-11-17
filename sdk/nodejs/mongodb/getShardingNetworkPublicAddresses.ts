@@ -55,7 +55,7 @@ export interface GetShardingNetworkPublicAddressesArgs {
      */
     outputFile?: string;
     /**
-     * The role of the node.
+     * The role of the node. Valid values: `Primary` or `Secondary`.
      */
     role?: string;
 }
@@ -116,7 +116,7 @@ export interface GetShardingNetworkPublicAddressesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The role of the node.
+     * The role of the node. Valid values: `Primary` or `Secondary`.
      */
     role?: pulumi.Input<string>;
 }

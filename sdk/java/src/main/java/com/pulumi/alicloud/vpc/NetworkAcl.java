@@ -177,7 +177,7 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
         return this.ingressAclEntries;
     }
     /**
-     * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
+     * (Deprecated from v1.122.0+) Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
@@ -188,7 +188,7 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
+     * @return (Deprecated from v1.122.0+) Field &#39;name&#39; has been deprecated from provider version 1.122.0. New field &#39;network_acl_name&#39; instead.
      * 
      */
     public Output<String> name() {

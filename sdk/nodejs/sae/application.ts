@@ -136,7 +136,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly command!: pulumi.Output<string | undefined>;
     /**
-     * Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
+     * (Deprecated since v1.211.0) Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
      *
      * @deprecated Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
      */
@@ -146,7 +146,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly commandArgsV2s!: pulumi.Output<string[]>;
     /**
-     * ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
+     * (Deprecated since v1.211.0) ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
      *
      * @deprecated Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
      */
@@ -160,7 +160,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly cpu!: pulumi.Output<number | undefined>;
     /**
-     * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
+     * (Deprecated since v1.211.0) Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
      *
      * @deprecated Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
      */
@@ -214,7 +214,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly kafkaConfigs!: pulumi.Output<outputs.sae.ApplicationKafkaConfigs | undefined>;
     /**
-     * Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+     * (Deprecated since v1.211.0) Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
      * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
      *
      * @deprecated Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
@@ -234,8 +234,6 @@ export class Application extends pulumi.CustomResource {
     public readonly microRegistration!: pulumi.Output<string | undefined>;
     /**
      * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
-     * * `-1`: Initialization value, indicating that percentages are not used.
-     * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
      */
     public readonly minReadyInstanceRatio!: pulumi.Output<number>;
     /**
@@ -259,7 +257,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly ossAkSecret!: pulumi.Output<string | undefined>;
     /**
-     * OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
+     * (Deprecated since v1.211.0) OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
      *
      * @deprecated Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
      */
@@ -297,7 +295,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly phpConfigLocation!: pulumi.Output<string | undefined>;
     /**
-     * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
+     * (Deprecated since v1.211.0) Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
      *
      * @deprecated Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
      */
@@ -307,7 +305,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly postStartV2!: pulumi.Output<outputs.sae.ApplicationPostStartV2>;
     /**
-     * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
+     * (Deprecated since v1.211.0) Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
      *
      * @deprecated Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
      */
@@ -325,7 +323,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly pvtzDiscoverySvc!: pulumi.Output<outputs.sae.ApplicationPvtzDiscoverySvc | undefined>;
     /**
-     * Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+     * (Deprecated since v1.211.0) Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
      * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
      *
      * @deprecated Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
@@ -364,7 +362,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly timezone!: pulumi.Output<string>;
     /**
-     * Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
+     * (Deprecated since v1.211.0) Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
      * **NOTE:** Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
      *
      * @deprecated Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
@@ -375,7 +373,7 @@ export class Application extends pulumi.CustomResource {
      */
     public readonly tomcatConfigV2!: pulumi.Output<outputs.sae.ApplicationTomcatConfigV2>;
     /**
-     * The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
+     * (Deprecated since v1.211.0) The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
      *
      * @deprecated Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
      */
@@ -612,7 +610,7 @@ export interface ApplicationState {
      */
     command?: pulumi.Input<string>;
     /**
-     * Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
+     * (Deprecated since v1.211.0) Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
      *
      * @deprecated Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
      */
@@ -622,7 +620,7 @@ export interface ApplicationState {
      */
     commandArgsV2s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
+     * (Deprecated since v1.211.0) ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
      *
      * @deprecated Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
      */
@@ -636,7 +634,7 @@ export interface ApplicationState {
      */
     cpu?: pulumi.Input<number>;
     /**
-     * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
+     * (Deprecated since v1.211.0) Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
      *
      * @deprecated Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
      */
@@ -690,7 +688,7 @@ export interface ApplicationState {
      */
     kafkaConfigs?: pulumi.Input<inputs.sae.ApplicationKafkaConfigs>;
     /**
-     * Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+     * (Deprecated since v1.211.0) Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
      * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
      *
      * @deprecated Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
@@ -710,8 +708,6 @@ export interface ApplicationState {
     microRegistration?: pulumi.Input<string>;
     /**
      * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
-     * * `-1`: Initialization value, indicating that percentages are not used.
-     * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
      */
     minReadyInstanceRatio?: pulumi.Input<number>;
     /**
@@ -735,7 +731,7 @@ export interface ApplicationState {
      */
     ossAkSecret?: pulumi.Input<string>;
     /**
-     * OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
+     * (Deprecated since v1.211.0) OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
      *
      * @deprecated Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
      */
@@ -773,7 +769,7 @@ export interface ApplicationState {
      */
     phpConfigLocation?: pulumi.Input<string>;
     /**
-     * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
+     * (Deprecated since v1.211.0) Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
      *
      * @deprecated Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
      */
@@ -783,7 +779,7 @@ export interface ApplicationState {
      */
     postStartV2?: pulumi.Input<inputs.sae.ApplicationPostStartV2>;
     /**
-     * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
+     * (Deprecated since v1.211.0) Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
      *
      * @deprecated Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
      */
@@ -801,7 +797,7 @@ export interface ApplicationState {
      */
     pvtzDiscoverySvc?: pulumi.Input<inputs.sae.ApplicationPvtzDiscoverySvc>;
     /**
-     * Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+     * (Deprecated since v1.211.0) Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
      * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
      *
      * @deprecated Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
@@ -840,7 +836,7 @@ export interface ApplicationState {
      */
     timezone?: pulumi.Input<string>;
     /**
-     * Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
+     * (Deprecated since v1.211.0) Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
      * **NOTE:** Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
      *
      * @deprecated Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
@@ -851,7 +847,7 @@ export interface ApplicationState {
      */
     tomcatConfigV2?: pulumi.Input<inputs.sae.ApplicationTomcatConfigV2>;
     /**
-     * The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
+     * (Deprecated since v1.211.0) The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
      *
      * @deprecated Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
      */
@@ -919,7 +915,7 @@ export interface ApplicationArgs {
      */
     command?: pulumi.Input<string>;
     /**
-     * Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
+     * (Deprecated since v1.211.0) Mirror startup command parameters. The parameters required for the above start command. For example: 1d. **NOTE:** Field `commandArgs` has been deprecated from provider version 1.211.0. New field `commandArgsV2` instead.
      *
      * @deprecated Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead.
      */
@@ -929,7 +925,7 @@ export interface ApplicationArgs {
      */
     commandArgsV2s?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
+     * (Deprecated since v1.211.0) ConfigMap mount description. **NOTE:** Field `configMapMountDesc` has been deprecated from provider version 1.211.0. New field `configMapMountDescV2` instead.
      *
      * @deprecated Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead.
      */
@@ -943,7 +939,7 @@ export interface ApplicationArgs {
      */
     cpu?: pulumi.Input<number>;
     /**
-     * Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
+     * (Deprecated since v1.211.0) Custom host mapping in the container. For example: [{`hostName`:`samplehost`,`ip`:`127.0.0.1`}]. **NOTE:** Field `customHostAlias` has been deprecated from provider version 1.211.0. New field `customHostAliasV2` instead.
      *
      * @deprecated Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead.
      */
@@ -997,7 +993,7 @@ export interface ApplicationArgs {
      */
     kafkaConfigs?: pulumi.Input<inputs.sae.ApplicationKafkaConfigs>;
     /**
-     * Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
+     * (Deprecated since v1.211.0) Container health check. Containers that fail the health check will be shut down and restored. Currently, only the method of issuing commands in the container is supported.
      * **NOTE:** Field `liveness` has been deprecated from provider version 1.211.0. New field `livenessV2` instead.
      *
      * @deprecated Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead.
@@ -1017,8 +1013,6 @@ export interface ApplicationArgs {
     microRegistration?: pulumi.Input<string>;
     /**
      * Minimum Survival Instance Percentage. **NOTE:** When `minReadyInstances` and `minReadyInstanceRatio` are passed at the same time, and the value of `minReadyInstanceRatio` is not -1, the `minReadyInstanceRatio` parameter shall prevail. Assuming that `minReadyInstances` is 5 and `minReadyInstanceRatio` is 50, 50 is used to calculate the minimum number of surviving instances.The value description is as follows:
-     * * `-1`: Initialization value, indicating that percentages are not used.
-     * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
      */
     minReadyInstanceRatio?: pulumi.Input<number>;
     /**
@@ -1042,7 +1036,7 @@ export interface ApplicationArgs {
      */
     ossAkSecret?: pulumi.Input<string>;
     /**
-     * OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
+     * (Deprecated since v1.211.0) OSS mount description information. **NOTE:** Field `ossMountDescs` has been deprecated from provider version 1.211.0. New field `ossMountDescsV2` instead.
      *
      * @deprecated Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead.
      */
@@ -1080,7 +1074,7 @@ export interface ApplicationArgs {
      */
     phpConfigLocation?: pulumi.Input<string>;
     /**
-     * Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
+     * (Deprecated since v1.211.0) Execute the script after startup, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `postStart` has been deprecated from provider version 1.211.0. New field `postStartV2` instead.
      *
      * @deprecated Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead.
      */
@@ -1090,7 +1084,7 @@ export interface ApplicationArgs {
      */
     postStartV2?: pulumi.Input<inputs.sae.ApplicationPostStartV2>;
     /**
-     * Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
+     * (Deprecated since v1.211.0) Execute the script before stopping, the format is like: {`exec`:{`command`:[`cat`,"/etc/group"]}}. **NOTE:** Field `preStop` has been deprecated from provider version 1.211.0. New field `preStopV2` instead.
      *
      * @deprecated Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead.
      */
@@ -1108,7 +1102,7 @@ export interface ApplicationArgs {
      */
     pvtzDiscoverySvc?: pulumi.Input<inputs.sae.ApplicationPvtzDiscoverySvc>;
     /**
-     * Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
+     * (Deprecated since v1.211.0) Application startup status checks, containers that fail multiple health checks will be shut down and restarted. Containers that do not pass the health check will not receive SLB traffic. For example: {`exec`:{`command`:[`sh`,"-c","cat /home/admin/start.sh"]},`initialDelaySeconds`:30,`periodSeconds`:30,"timeoutSeconds ":2}. Valid values: `command`, `initialDelaySeconds`, `periodSeconds`, `timeoutSeconds`.
      * **NOTE:** Field `readiness` has been deprecated from provider version 1.211.0. New field `readinessV2` instead.
      *
      * @deprecated Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead.
@@ -1147,7 +1141,7 @@ export interface ApplicationArgs {
      */
     timezone?: pulumi.Input<string>;
     /**
-     * Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
+     * (Deprecated since v1.211.0) Tomcat file configuration, set to "{}" means to delete the configuration:  useDefaultConfig: Whether to use a custom configuration, if it is true, it means that the custom configuration is not used; if it is false, it means that the custom configuration is used. If you do not use custom configuration, the following parameter configuration will not take effect.  contextInputType: Select the access path of the application.  war: No need to fill in the custom path, the access path of the application is the WAR package name. root: No need to fill in the custom path, the access path of the application is /. custom: You need to fill in the custom path in the custom path below. contextPath: custom path, this parameter only needs to be configured when the contextInputType type is custom.  httpPort: The port range is 1024~65535. Ports less than 1024 need Root permission to operate. Because the container is configured with Admin permissions, please fill in a port greater than 1024. If not configured, the default is 8080. maxThreads: Configure the number of connections in the connection pool, the default size is 400. uriEncoding: Tomcat encoding format, including UTF-8, ISO-8859-1, GBK and GB2312. If not set, the default is ISO-8859-1. useBodyEncoding: Whether to use BodyEncoding for URL. Valid values: `contextInputType`, `contextPath`, `httpPort`, `maxThreads`, `uriEncoding`, `useBodyEncoding`, `useDefaultConfig`.
      * **NOTE:** Field `tomcatConfig` has been deprecated from provider version 1.211.0. New field `tomcatConfigV2` instead.
      *
      * @deprecated Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead.
@@ -1158,7 +1152,7 @@ export interface ApplicationArgs {
      */
     tomcatConfigV2?: pulumi.Input<inputs.sae.ApplicationTomcatConfigV2>;
     /**
-     * The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
+     * (Deprecated since v1.211.0) The update strategy. **NOTE:** Field `updateStrategy` has been deprecated from provider version 1.211.0. New field `updateStrategyV2` instead.
      *
      * @deprecated Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead.
      */

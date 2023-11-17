@@ -16,14 +16,14 @@ public final class HybridMonitorFcTaskArgs extends com.pulumi.resources.Resource
     public static final HybridMonitorFcTaskArgs Empty = new HybridMonitorFcTaskArgs();
 
     /**
-     * the namespace of the Alibaba Cloud service.
+     * The index warehouse where the host belongs.
      * 
      */
     @Import(name="namespace", required=true)
     private Output<String> namespace;
 
     /**
-     * @return the namespace of the Alibaba Cloud service.
+     * @return The index warehouse where the host belongs.
      * 
      */
     public Output<String> namespace() {
@@ -87,7 +87,7 @@ public final class HybridMonitorFcTaskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param namespace the namespace of the Alibaba Cloud service.
+         * @param namespace The index warehouse where the host belongs.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class HybridMonitorFcTaskArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param namespace the namespace of the Alibaba Cloud service.
+         * @param namespace The index warehouse where the host belongs.
          * 
          * @return builder
          * 

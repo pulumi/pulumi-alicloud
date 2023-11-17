@@ -14,19 +14,19 @@ namespace Pulumi.AliCloud.Cms.Outputs
     public sealed class GetGroupMetricRulesRuleEscalationCriticalResult
     {
         /// <summary>
-        /// The comparison operator of the threshold for warn-level alerts.
+        /// The comparison operator of the threshold for info-level alerts.
         /// </summary>
         public readonly string ComparisonOperator;
         /// <summary>
-        /// The statistical aggregation method for warn-level alerts.
+        /// The statistical aggregation method for info-level alerts.
         /// </summary>
         public readonly string Statistics;
         /// <summary>
-        /// The threshold for warn-level alerts.
+        /// The threshold for info-level alerts.
         /// </summary>
         public readonly string Threshold;
         /// <summary>
-        /// The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
+        /// The consecutive number of times for which the metric value is measured before a info-level alert is triggered.
         /// </summary>
         public readonly int Times;
 

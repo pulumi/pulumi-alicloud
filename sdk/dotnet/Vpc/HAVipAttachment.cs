@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Vpc
         /// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
         /// - **True**: Force unbinding.
         /// - **False** (default): unbinding is not forced.
-        /// &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+        ///   &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
         /// </summary>
         [Output("force")]
         public Output<bool?> Force { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> HaVipId { get; private set; } = null!;
 
         /// <summary>
-        /// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        /// (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         /// </summary>
         [Output("havipId")]
         public Output<string> HavipId { get; private set; } = null!;
@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.Vpc
         /// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
         /// - **True**: Force unbinding.
         /// - **False** (default): unbinding is not forced.
-        /// &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+        ///   &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? HaVipId { get; set; }
 
         /// <summary>
-        /// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        /// (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         /// </summary>
         [Input("havipId")]
         public Input<string>? HavipId { get; set; }
@@ -239,7 +239,7 @@ namespace Pulumi.AliCloud.Vpc
         /// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
         /// - **True**: Force unbinding.
         /// - **False** (default): unbinding is not forced.
-        /// &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+        ///   &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
         /// </summary>
         [Input("force")]
         public Input<bool>? Force { get; set; }
@@ -251,7 +251,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? HaVipId { get; set; }
 
         /// <summary>
-        /// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        /// (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         /// </summary>
         [Input("havipId")]
         public Input<string>? HavipId { get; set; }

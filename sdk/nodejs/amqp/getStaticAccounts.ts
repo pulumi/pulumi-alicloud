@@ -43,7 +43,7 @@ export interface GetStaticAccountsArgs {
      */
     ids?: string[];
     /**
-     * InstanceId
+     * (ForceNew, Optional) InstanceId
      */
     instanceId?: string;
     /**
@@ -101,7 +101,7 @@ export interface GetStaticAccountsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * InstanceId
+     * (ForceNew, Optional) InstanceId
      */
     instanceId?: pulumi.Input<string>;
     /**

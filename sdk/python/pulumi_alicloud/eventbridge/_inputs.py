@@ -755,7 +755,7 @@ class RuleTargetParamListArgs:
                import pulumi
                ```
                
-               In order to fix the diff, from version 1.160.0,
+               In order to fix the diff, from version 1.160.0, 
                this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
                If you want to set `resource_key = "IsBase64Encode"`, please avoid to set `value = "false"`.
         """
@@ -814,7 +814,7 @@ class RuleTargetParamListArgs:
         import pulumi
         ```
 
-        In order to fix the diff, from version 1.160.0,
+        In order to fix the diff, from version 1.160.0, 
         this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
         If you want to set `resource_key = "IsBase64Encode"`, please avoid to set `value = "false"`.
         """

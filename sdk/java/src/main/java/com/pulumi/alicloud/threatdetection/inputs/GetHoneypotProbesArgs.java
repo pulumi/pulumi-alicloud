@@ -18,14 +18,14 @@ public final class GetHoneypotProbesArgs extends com.pulumi.resources.InvokeArgs
     public static final GetHoneypotProbesArgs Empty = new GetHoneypotProbesArgs();
 
     /**
-     * Probe name
+     * (ForceNew, Optional) Probe name
      * 
      */
     @Import(name="displayName")
     private @Nullable Output<String> displayName;
 
     /**
-     * @return Probe name
+     * @return (ForceNew, Optional) Probe name
      * 
      */
     public Optional<Output<String>> displayName() {
@@ -100,14 +100,14 @@ public final class GetHoneypotProbesArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Probe type
+     * (ForceNew, Optional) Probe type
      * 
      */
     @Import(name="probeType")
     private @Nullable Output<String> probeType;
 
     /**
-     * @return Probe type
+     * @return (ForceNew, Optional) Probe type
      * 
      */
     public Optional<Output<String>> probeType() {
@@ -145,7 +145,7 @@ public final class GetHoneypotProbesArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param displayName Probe name
+         * @param displayName (ForceNew, Optional) Probe name
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class GetHoneypotProbesArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param displayName Probe name
+         * @param displayName (ForceNew, Optional) Probe name
          * 
          * @return builder
          * 
@@ -269,7 +269,7 @@ public final class GetHoneypotProbesArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param probeType Probe type
+         * @param probeType (ForceNew, Optional) Probe type
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class GetHoneypotProbesArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param probeType Probe type
+         * @param probeType (ForceNew, Optional) Probe type
          * 
          * @return builder
          * 

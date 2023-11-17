@@ -1833,17 +1833,17 @@ type GetInstancesInstance struct {
 	// Instance availability zone.
 	AvailabilityZone string `pulumi:"availabilityZone"`
 	ChargeType       string `pulumi:"chargeType"`
-	// The connection string of the instance.
+	// (Available in 1.196.0+) The connection string of the instance.
 	ConnectionString string `pulumi:"connectionString"`
 	// The number of CPU cores of the computing node. Unit: Core.
 	CpuCores string `pulumi:"cpuCores"`
 	// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
-	CreateTime   string `pulumi:"createTime"`
-	CreationTime string `pulumi:"creationTime"`
-	// The db instance category. Valid values: `HighAvailability`, `Basic`.
+	// * `dbInstanceCategory` - The db instance category. Valid values: `HighAvailability`, `Basic`.
+	// * `dbInstanceClass` - The db instance class.
+	CreateTime         string `pulumi:"createTime"`
+	CreationTime       string `pulumi:"creationTime"`
 	DbInstanceCategory string `pulumi:"dbInstanceCategory"`
-	// The db instance class.
-	DbInstanceClass string `pulumi:"dbInstanceClass"`
+	DbInstanceClass    string `pulumi:"dbInstanceClass"`
 	// The db instance id.
 	DbInstanceId string `pulumi:"dbInstanceId"`
 	// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
@@ -1870,8 +1870,7 @@ type GetInstancesInstance struct {
 	MemorySize string `pulumi:"memorySize"`
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType string `pulumi:"paymentType"`
-	// Region ID the instance belongs to.
-	RegionId string `pulumi:"regionId"`
+	RegionId    string `pulumi:"regionId"`
 	// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
 	SegNodeNum string `pulumi:"segNodeNum"`
 	// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
@@ -1887,6 +1886,7 @@ type GetInstancesInstance struct {
 	// The vswitch id.
 	VswitchId string `pulumi:"vswitchId"`
 	// The zone ID of the instance.
+	// * `regionId` - Region ID the instance belongs to.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -1905,17 +1905,17 @@ type GetInstancesInstanceArgs struct {
 	// Instance availability zone.
 	AvailabilityZone pulumi.StringInput `pulumi:"availabilityZone"`
 	ChargeType       pulumi.StringInput `pulumi:"chargeType"`
-	// The connection string of the instance.
+	// (Available in 1.196.0+) The connection string of the instance.
 	ConnectionString pulumi.StringInput `pulumi:"connectionString"`
 	// The number of CPU cores of the computing node. Unit: Core.
 	CpuCores pulumi.StringInput `pulumi:"cpuCores"`
 	// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
-	CreateTime   pulumi.StringInput `pulumi:"createTime"`
-	CreationTime pulumi.StringInput `pulumi:"creationTime"`
-	// The db instance category. Valid values: `HighAvailability`, `Basic`.
+	// * `dbInstanceCategory` - The db instance category. Valid values: `HighAvailability`, `Basic`.
+	// * `dbInstanceClass` - The db instance class.
+	CreateTime         pulumi.StringInput `pulumi:"createTime"`
+	CreationTime       pulumi.StringInput `pulumi:"creationTime"`
 	DbInstanceCategory pulumi.StringInput `pulumi:"dbInstanceCategory"`
-	// The db instance class.
-	DbInstanceClass pulumi.StringInput `pulumi:"dbInstanceClass"`
+	DbInstanceClass    pulumi.StringInput `pulumi:"dbInstanceClass"`
 	// The db instance id.
 	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
 	// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
@@ -1942,8 +1942,7 @@ type GetInstancesInstanceArgs struct {
 	MemorySize pulumi.StringInput `pulumi:"memorySize"`
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
-	// Region ID the instance belongs to.
-	RegionId pulumi.StringInput `pulumi:"regionId"`
+	RegionId    pulumi.StringInput `pulumi:"regionId"`
 	// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
 	SegNodeNum pulumi.StringInput `pulumi:"segNodeNum"`
 	// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
@@ -1959,6 +1958,7 @@ type GetInstancesInstanceArgs struct {
 	// The vswitch id.
 	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
 	// The zone ID of the instance.
+	// * `regionId` - Region ID the instance belongs to.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -2022,7 +2022,7 @@ func (o GetInstancesInstanceOutput) ChargeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ChargeType }).(pulumi.StringOutput)
 }
 
-// The connection string of the instance.
+// (Available in 1.196.0+) The connection string of the instance.
 func (o GetInstancesInstanceOutput) ConnectionString() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ConnectionString }).(pulumi.StringOutput)
 }
@@ -2033,6 +2033,8 @@ func (o GetInstancesInstanceOutput) CpuCores() pulumi.StringOutput {
 }
 
 // The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+// * `dbInstanceCategory` - The db instance category. Valid values: `HighAvailability`, `Basic`.
+// * `dbInstanceClass` - The db instance class.
 func (o GetInstancesInstanceOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -2041,12 +2043,10 @@ func (o GetInstancesInstanceOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// The db instance category. Valid values: `HighAvailability`, `Basic`.
 func (o GetInstancesInstanceOutput) DbInstanceCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceCategory }).(pulumi.StringOutput)
 }
 
-// The db instance class.
 func (o GetInstancesInstanceOutput) DbInstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceClass }).(pulumi.StringOutput)
 }
@@ -2116,7 +2116,6 @@ func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// Region ID the instance belongs to.
 func (o GetInstancesInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }
@@ -2157,6 +2156,7 @@ func (o GetInstancesInstanceOutput) VswitchId() pulumi.StringOutput {
 }
 
 // The zone ID of the instance.
+// * `regionId` - Region ID the instance belongs to.
 func (o GetInstancesInstanceOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -69,7 +69,7 @@ class AlertGroupConfiguration(dict):
                  type: str,
                  fields: Optional[Sequence[str]] = None):
         """
-        :param str type: including FixedRate,Hourly,Daily,Weekly,Cron.
+        :param str type: Group configuration type, including no_group, labels_auto, custom.
         """
         pulumi.set(__self__, "type", type)
         if fields is not None:
@@ -79,7 +79,7 @@ class AlertGroupConfiguration(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        including FixedRate,Hourly,Daily,Weekly,Cron.
+        Group configuration type, including no_group, labels_auto, custom.
         """
         return pulumi.get(self, "type")
 
@@ -96,7 +96,7 @@ class AlertJoinConfiguration(dict):
                  type: str):
         """
         :param str condition: Join condition.
-        :param str type: including FixedRate,Hourly,Daily,Weekly,Cron.
+        :param str type: Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "type", type)
@@ -113,7 +113,7 @@ class AlertJoinConfiguration(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        including FixedRate,Hourly,Daily,Weekly,Cron.
+        Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
         """
         return pulumi.get(self, "type")
 
@@ -124,8 +124,8 @@ class AlertLabel(dict):
                  key: str,
                  value: str):
         """
-        :param str key: Annotations's key for new alert.
-        :param str value: Annotations's value for new alert.
+        :param str key: Labels's key for new alert.
+        :param str value: Labels's value for new alert.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -134,7 +134,7 @@ class AlertLabel(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        Annotations's key for new alert.
+        Labels's key for new alert.
         """
         return pulumi.get(self, "key")
 
@@ -142,7 +142,7 @@ class AlertLabel(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Annotations's value for new alert.
+        Labels's value for new alert.
         """
         return pulumi.get(self, "value")
 
@@ -178,7 +178,7 @@ class AlertNotificationList(dict):
                  service_uri: Optional[str] = None):
         """
         :param str content: Notice content of alarm.
-        :param str type: including FixedRate,Hourly,Daily,Weekly,Cron.
+        :param str type: Notification type. support Email, SMS, DingTalk, MessageCenter.
         :param Sequence[str] email_lists: Email address list.
         :param Sequence[str] mobile_lists: SMS sending mobile number.
         :param str service_uri: Request address.
@@ -204,7 +204,7 @@ class AlertNotificationList(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        including FixedRate,Hourly,Daily,Weekly,Cron.
+        Notification type. support Email, SMS, DingTalk, MessageCenter.
         """
         return pulumi.get(self, "type")
 
@@ -658,7 +658,7 @@ class AlertTemplateConfiguration(dict):
                  tokens: Optional[Mapping[str, str]] = None):
         """
         :param str id: Alert template id.
-        :param str type: including FixedRate,Hourly,Daily,Weekly,Cron.
+        :param str type: Alert template type including `sys`, `user`.
         :param Mapping[str, str] annotations: Alert template annotations.
         :param str lang: Alert template language including `cn`, `en`.
         :param Mapping[str, str] tokens: Alert template tokens.
@@ -684,7 +684,7 @@ class AlertTemplateConfiguration(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        including FixedRate,Hourly,Daily,Weekly,Cron.
+        Alert template type including `sys`, `user`.
         """
         return pulumi.get(self, "type")
 
@@ -942,6 +942,7 @@ class StoreEncryptConf(dict):
         :param bool enable: enable encryption. Default `false`
         :param str encrypt_type: Supported encryption type, only supports `default(AES)`,` m4`
         :param 'StoreEncryptConfUserCmkInfoArgs' user_cmk_info: User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
+               
                ```python
                import pulumi
                ```
@@ -974,6 +975,7 @@ class StoreEncryptConf(dict):
     def user_cmk_info(self) -> Optional['outputs.StoreEncryptConfUserCmkInfo']:
         """
         User bring your own key (BYOK) encryption [Refer to details](https://www.alibabacloud.com/help/zh/doc-detail/187853.htm), the format is as follows. See `user_cmk_info` below.
+
         ```python
         import pulumi
         ```
@@ -1075,14 +1077,14 @@ class StoreIndexFieldSearch(dict):
                  token: Optional[str] = None,
                  type: Optional[str] = None):
         """
-        :param str name: When using the json_keys field, this field is required.
-        :param str alias: The alias of one field.
+        :param str name: The field name, which is unique in the same log store.
+        :param str alias: The alias of one field
         :param bool case_sensitive: Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
         :param bool enable_analytics: Whether to enable field analytics. Default to true.
         :param bool include_chinese: Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
         :param Sequence['StoreIndexFieldSearchJsonKeyArgs'] json_keys: Use nested index when type is json
         :param str token: The string of several split words, like "\\r", "#". It is valid when "type" is "text" or "json".
-        :param str type: The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+        :param str type: The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
         """
         pulumi.set(__self__, "name", name)
         if alias is not None:
@@ -1104,7 +1106,7 @@ class StoreIndexFieldSearch(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        When using the json_keys field, this field is required.
+        The field name, which is unique in the same log store.
         """
         return pulumi.get(self, "name")
 
@@ -1112,7 +1114,7 @@ class StoreIndexFieldSearch(dict):
     @pulumi.getter
     def alias(self) -> Optional[str]:
         """
-        The alias of one field.
+        The alias of one field
         """
         return pulumi.get(self, "alias")
 
@@ -1160,7 +1162,7 @@ class StoreIndexFieldSearch(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
+        The type of one field. Valid values: ["long", "text", "double", "json"]. Default to "long".
         """
         return pulumi.get(self, "type")
 
@@ -1191,7 +1193,7 @@ class StoreIndexFieldSearchJsonKey(dict):
                  type: Optional[str] = None):
         """
         :param str name: When using the json_keys field, this field is required.
-        :param str alias: The alias of one field.
+        :param str alias: The alias of one field
         :param bool doc_value: Whether to enable statistics. default to true.
                
                > **Note:** At least one of the "full_text" and "field_search" should be specified.
@@ -1217,7 +1219,7 @@ class StoreIndexFieldSearchJsonKey(dict):
     @pulumi.getter
     def alias(self) -> Optional[str]:
         """
-        The alias of one field.
+        The alias of one field
         """
         return pulumi.get(self, "alias")
 
@@ -1266,9 +1268,9 @@ class StoreIndexFullText(dict):
                  include_chinese: Optional[bool] = None,
                  token: Optional[str] = None):
         """
-        :param bool case_sensitive: Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
-        :param bool include_chinese: Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
-        :param str token: The string of several split words, like "\\r", "#". It is valid when "type" is "text" or "json".
+        :param bool case_sensitive: Whether the case sensitive. Default to false.
+        :param bool include_chinese: Whether includes the chinese. Default to false.
+        :param str token: The string of several split words, like "\\r", "#"
         """
         if case_sensitive is not None:
             pulumi.set(__self__, "case_sensitive", case_sensitive)
@@ -1281,7 +1283,7 @@ class StoreIndexFullText(dict):
     @pulumi.getter(name="caseSensitive")
     def case_sensitive(self) -> Optional[bool]:
         """
-        Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
+        Whether the case sensitive. Default to false.
         """
         return pulumi.get(self, "case_sensitive")
 
@@ -1289,7 +1291,7 @@ class StoreIndexFullText(dict):
     @pulumi.getter(name="includeChinese")
     def include_chinese(self) -> Optional[bool]:
         """
-        Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
+        Whether includes the chinese. Default to false.
         """
         return pulumi.get(self, "include_chinese")
 
@@ -1297,7 +1299,7 @@ class StoreIndexFullText(dict):
     @pulumi.getter
     def token(self) -> Optional[str]:
         """
-        The string of several split words, like "\\r", "#". It is valid when "type" is "text" or "json".
+        The string of several split words, like "\\r", "#"
         """
         return pulumi.get(self, "token")
 
@@ -1392,7 +1394,7 @@ class GetProjectsProjectResult(dict):
         :param str id: The ID of the project.
         :param str last_modify_time: The last modify time of project.
         :param str owner: The owner of project.
-        :param str policy: The policy of project.
+        :param str policy: (Available in 1.198.0+) The policy of project.
         :param str project_name: The name of the project.
         :param str region: The region of project.
         :param str status: The status of project.
@@ -1442,7 +1444,7 @@ class GetProjectsProjectResult(dict):
     @pulumi.getter
     def policy(self) -> str:
         """
-        The policy of project.
+        (Available in 1.198.0+) The policy of project.
         """
         return pulumi.get(self, "policy")
 

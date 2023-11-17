@@ -90,7 +90,7 @@ type GetConfigMapsArgs struct {
 	Ids []string `pulumi:"ids"`
 	// A regex string to filter results by Config Map name.
 	NameRegex *string `pulumi:"nameRegex"`
-	// The NamespaceId of Config Maps.
+	// The NamespaceId of Config Maps. The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
 	NamespaceId string `pulumi:"namespaceId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -127,7 +127,7 @@ type GetConfigMapsOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// A regex string to filter results by Config Map name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
-	// The NamespaceId of Config Maps.
+	// The NamespaceId of Config Maps. The Id of Namespace.It can contain 2 to 32 characters.The value is in format {RegionId}:{namespace}.
 	NamespaceId pulumi.StringInput `pulumi:"namespaceId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

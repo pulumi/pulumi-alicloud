@@ -146,10 +146,10 @@ def get_desktop_types(cpu_count: Optional[int] = None,
     :param int cpu_count: The CPU cores.
     :param float gpu_count: The GPU cores.
     :param Sequence[str] ids: A list of Desktop Type IDs.
-    :param str instance_type_family: The Specification family.
+    :param str instance_type_family: The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
     :param int memory_size: The Memory size. Unit: MiB.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `SUFFICIENT`.
     """
     __args__ = dict()
     __args__['cpuCount'] = cpu_count
@@ -204,9 +204,9 @@ def get_desktop_types_output(cpu_count: Optional[pulumi.Input[Optional[int]]] = 
     :param int cpu_count: The CPU cores.
     :param float gpu_count: The GPU cores.
     :param Sequence[str] ids: A list of Desktop Type IDs.
-    :param str instance_type_family: The Specification family.
+    :param str instance_type_family: The Specification family. Valid values: `eds.graphics`, `eds.hf`, `eds.general`, `ecd.graphics`, `ecd.performance`, `ecd.advanced`, `ecd.basic`.
     :param int memory_size: The Memory size. Unit: MiB.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `SUFFICIENT`.
     """
     ...

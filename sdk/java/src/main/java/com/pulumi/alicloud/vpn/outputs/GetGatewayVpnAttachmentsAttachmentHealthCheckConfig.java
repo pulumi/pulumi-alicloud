@@ -42,7 +42,7 @@ public final class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
      */
     private String sip;
     /**
-     * @return The status of the resource.
+     * @return The status of the health check.
      * 
      */
     private String status;
@@ -91,7 +91,7 @@ public final class GetGatewayVpnAttachmentsAttachmentHealthCheckConfig {
         return this.sip;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the health check.
      * 
      */
     public String status() {

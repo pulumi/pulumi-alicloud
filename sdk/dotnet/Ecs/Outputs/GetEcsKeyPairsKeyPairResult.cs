@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string KeyName;
         public readonly string KeyPairName;
         /// <summary>
-        /// The Resource Group Id.
+        /// The resource group Id.
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>

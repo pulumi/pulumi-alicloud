@@ -50,19 +50,19 @@ export interface GetElasticityAssurancesArgs {
      */
     outputFile?: string;
     /**
-     * The ID of the elastic protection service.
+     * (ForceNew,Optional) The ID of the elastic protection service.
      */
     privatePoolOptionsIds?: string[];
     /**
-     * The ID of the resource group.
+     * (ForceNew,Optional) The ID of the resource group.
      */
     resourceGroupId?: string;
     /**
-     * The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+     * (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
      */
     status?: string;
     /**
-     * The tag key-value pair information bound by the elastic guarantee service.
+     * (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
      */
     tags?: {[key: string]: any};
 }
@@ -132,19 +132,19 @@ export interface GetElasticityAssurancesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of the elastic protection service.
+     * (ForceNew,Optional) The ID of the elastic protection service.
      */
     privatePoolOptionsIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the resource group.
+     * (ForceNew,Optional) The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+     * (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The tag key-value pair information bound by the elastic guarantee service.
+     * (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

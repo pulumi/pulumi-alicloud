@@ -40,14 +40,14 @@ public final class GetBaseInstancesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * OceanBase cluster ID.
+     * (ForceNew,Optional) OceanBase cluster ID.
      * 
      */
     @Import(name="instanceId")
     private @Nullable String instanceId;
 
     /**
-     * @return OceanBase cluster ID.
+     * @return (ForceNew,Optional) OceanBase cluster ID.
      * 
      */
     public Optional<String> instanceId() {
@@ -55,14 +55,14 @@ public final class GetBaseInstancesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * OceanBase cluster name.
+     * OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
      * 
      */
     @Import(name="instanceName")
     private @Nullable String instanceName;
 
     /**
-     * @return OceanBase cluster name.
+     * @return OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
      * 
      */
     public Optional<String> instanceName() {
@@ -114,14 +114,14 @@ public final class GetBaseInstancesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The ID of the enterprise resource group to which the instance resides.
+     * (ForceNew,Optional) The ID of the enterprise resource group to which the instance resides.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable String resourceGroupId;
 
     /**
-     * @return The ID of the enterprise resource group to which the instance resides.
+     * @return (ForceNew,Optional) The ID of the enterprise resource group to which the instance resides.
      * 
      */
     public Optional<String> resourceGroupId() {
@@ -129,14 +129,14 @@ public final class GetBaseInstancesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The filter keyword for the query list.
+     * (ForceNew,Optional) The filter keyword for the query list.
      * 
      */
     @Import(name="searchKey")
     private @Nullable String searchKey;
 
     /**
-     * @return The filter keyword for the query list.
+     * @return (ForceNew,Optional) The filter keyword for the query list.
      * 
      */
     public Optional<String> searchKey() {
@@ -144,14 +144,14 @@ public final class GetBaseInstancesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The status of the resource.
+     * The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
      * 
      */
     public Optional<String> status() {
@@ -219,7 +219,7 @@ public final class GetBaseInstancesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param instanceId OceanBase cluster ID.
+         * @param instanceId (ForceNew,Optional) OceanBase cluster ID.
          * 
          * @return builder
          * 
@@ -230,7 +230,7 @@ public final class GetBaseInstancesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param instanceName OceanBase cluster name.
+         * @param instanceName OceanBase cluster name. The length is 1 to 20 English or Chinese characters. If this parameter is not specified, the default value is the InstanceId of the cluster.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class GetBaseInstancesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param resourceGroupId The ID of the enterprise resource group to which the instance resides.
+         * @param resourceGroupId (ForceNew,Optional) The ID of the enterprise resource group to which the instance resides.
          * 
          * @return builder
          * 
@@ -284,7 +284,7 @@ public final class GetBaseInstancesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param searchKey The filter keyword for the query list.
+         * @param searchKey (ForceNew,Optional) The filter keyword for the query list.
          * 
          * @return builder
          * 
@@ -295,7 +295,7 @@ public final class GetBaseInstancesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the Instance. Value range: `PENDING_CREATE`, `ONLINE`, `TENANT_CREATING`, `TENANT_SPEC_MODIFYING`, `EXPANDING`, `REDUCING`, `SPEC_UPGRADING`, `DISK_UPGRADING`, `WHITE_LIST_MODIFYING`, `PARAMETER_MODIFYING`, `SSL_MODIFYING`, `PREPAID_EXPIRE_CLOSED`, `ARREARS_CLOSED`, `PENDING_DELETE`.
          * 
          * @return builder
          * 

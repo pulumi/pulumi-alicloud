@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string Key;
         /// <summary>
-        /// Add one or more IP addresses or IP address segments.
+        /// The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch &gt;= 32 &amp;&amp; ch &lt; 127, and wildcards such as asterisks (*) and question marks (?). The value cannot start or end with a space.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

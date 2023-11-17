@@ -47,15 +47,15 @@ export interface GetHoneypotNodesArgs {
      */
     ids?: string[];
     /**
-     * A regex string to filter results by Honeypot Node name.
+     * (ForceNew,Optional)  A regex string to filter results by Honeypot Node name.
      */
     nameRegex?: string;
     /**
-     * Honeypot management node id.
+     * (ForceNew,Optional) Honeypot management node id.
      */
     nodeId?: string;
     /**
-     * The name of the management node.
+     * (ForceNew,Optional) The name of the management node.
      */
     nodeName?: string;
     /**
@@ -129,15 +129,15 @@ export interface GetHoneypotNodesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A regex string to filter results by Honeypot Node name.
+     * (ForceNew,Optional)  A regex string to filter results by Honeypot Node name.
      */
     nameRegex?: pulumi.Input<string>;
     /**
-     * Honeypot management node id.
+     * (ForceNew,Optional) Honeypot management node id.
      */
     nodeId?: pulumi.Input<string>;
     /**
-     * The name of the management node.
+     * (ForceNew,Optional) The name of the management node.
      */
     nodeName?: pulumi.Input<string>;
     /**

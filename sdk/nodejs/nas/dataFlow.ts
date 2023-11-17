@@ -75,7 +75,10 @@ export class DataFlow extends pulumi.CustomResource {
      * The access path of the source store. Format: `<storage type>://<path>`. Among them:
      * - storage type: currently only OSS is supported.
      * - path: the bucket name of OSS.
-     * - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+     *   - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+     *   - `8` to `128` English characters in length.
+     *   - Use UTF-8 coding.
+     *   - Cannot start with `http://` and `https://`.
      */
     public readonly sourceStorage!: pulumi.Output<string>;
     /**
@@ -170,7 +173,10 @@ export interface DataFlowState {
      * The access path of the source store. Format: `<storage type>://<path>`. Among them:
      * - storage type: currently only OSS is supported.
      * - path: the bucket name of OSS.
-     * - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+     *   - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+     *   - `8` to `128` English characters in length.
+     *   - Use UTF-8 coding.
+     *   - Cannot start with `http://` and `https://`.
      */
     sourceStorage?: pulumi.Input<string>;
     /**
@@ -211,7 +217,10 @@ export interface DataFlowArgs {
      * The access path of the source store. Format: `<storage type>://<path>`. Among them:
      * - storage type: currently only OSS is supported.
      * - path: the bucket name of OSS.
-     * - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+     *   - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+     *   - `8` to `128` English characters in length.
+     *   - Use UTF-8 coding.
+     *   - Cannot start with `http://` and `https://`.
      */
     sourceStorage: pulumi.Input<string>;
     /**

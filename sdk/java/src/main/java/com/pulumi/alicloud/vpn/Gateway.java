@@ -121,7 +121,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableSsl);
     }
     /**
-     * The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
+     * (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
      * Default to PostPaid.
      * 
      */
@@ -129,7 +129,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> instanceChargeType;
 
     /**
-     * @return The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
+     * @return (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid.
      * Default to PostPaid.
      * 
      */

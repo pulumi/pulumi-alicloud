@@ -246,7 +246,7 @@ namespace Pulumi.AliCloud.Eds
         public string? NameRegex { get; set; }
 
         /// <summary>
-        /// The os type of the image.
+        /// The operating system type of the image. Valid values: `Windows` and `Linux`.
         /// </summary>
         [Input("osType")]
         public string? OsType { get; set; }
@@ -302,7 +302,7 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? NameRegex { get; set; }
 
         /// <summary>
-        /// The os type of the image.
+        /// The operating system type of the image. Valid values: `Windows` and `Linux`.
         /// </summary>
         [Input("osType")]
         public Input<string>? OsType { get; set; }

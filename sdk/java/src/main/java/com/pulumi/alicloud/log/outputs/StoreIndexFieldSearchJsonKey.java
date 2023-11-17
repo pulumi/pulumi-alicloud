@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StoreIndexFieldSearchJsonKey {
     /**
-     * @return The alias of one field.
+     * @return The alias of one field
      * 
      */
     private @Nullable String alias;
@@ -37,7 +37,7 @@ public final class StoreIndexFieldSearchJsonKey {
 
     private StoreIndexFieldSearchJsonKey() {}
     /**
-     * @return The alias of one field.
+     * @return The alias of one field
      * 
      */
     public Optional<String> alias() {

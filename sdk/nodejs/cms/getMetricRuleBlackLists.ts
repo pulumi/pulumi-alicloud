@@ -47,7 +47,7 @@ export function getMetricRuleBlackLists(args?: GetMetricRuleBlackListsArgs, opts
  */
 export interface GetMetricRuleBlackListsArgs {
     /**
-     * Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
+     * (ForceNew,Optional) Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
      */
     category?: string;
     /**
@@ -55,7 +55,7 @@ export interface GetMetricRuleBlackListsArgs {
      */
     ids?: string[];
     /**
-     * The first ID of the resource
+     * (ForceNew,Optional) The first ID of the resource
      */
     metricRuleBlackListId?: string;
     /**
@@ -63,7 +63,7 @@ export interface GetMetricRuleBlackListsArgs {
      */
     nameRegex?: string;
     /**
-     * The data namespace of the cloud service.
+     * (ForceNew,Optional) The data namespace of the cloud service.
      */
     namespace?: string;
     order?: number;
@@ -141,7 +141,7 @@ export function getMetricRuleBlackListsOutput(args?: GetMetricRuleBlackListsOutp
  */
 export interface GetMetricRuleBlackListsOutputArgs {
     /**
-     * Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
+     * (ForceNew,Optional) Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
      */
     category?: pulumi.Input<string>;
     /**
@@ -149,7 +149,7 @@ export interface GetMetricRuleBlackListsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The first ID of the resource
+     * (ForceNew,Optional) The first ID of the resource
      */
     metricRuleBlackListId?: pulumi.Input<string>;
     /**
@@ -157,7 +157,7 @@ export interface GetMetricRuleBlackListsOutputArgs {
      */
     nameRegex?: pulumi.Input<string>;
     /**
-     * The data namespace of the cloud service.
+     * (ForceNew,Optional) The data namespace of the cloud service.
      */
     namespace?: pulumi.Input<string>;
     order?: pulumi.Input<number>;

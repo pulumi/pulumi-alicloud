@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string>? Tokens;
         /// <summary>
-        /// including FixedRate,Hourly,Daily,Weekly,Cron.
+        /// Alert template type including `sys`, `user`.
         /// </summary>
         public readonly string Type;
 

@@ -73,11 +73,11 @@ export class EnterpriseProxyAccess extends pulumi.CustomResource {
     public /*out*/ readonly accessSecret!: pulumi.Output<string>;
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Database account.
+     * (ForceNew,Optional) Database account.
      */
     public readonly indepAccount!: pulumi.Output<string | undefined>;
     /**
-     * Database password.
+     * (ForceNew,Optional) Database password.
      */
     public readonly indepPassword!: pulumi.Output<string | undefined>;
     /**
@@ -178,11 +178,11 @@ export interface EnterpriseProxyAccessState {
     accessSecret?: pulumi.Input<string>;
     createTime?: pulumi.Input<string>;
     /**
-     * Database account.
+     * (ForceNew,Optional) Database account.
      */
     indepAccount?: pulumi.Input<string>;
     /**
-     * Database password.
+     * (ForceNew,Optional) Database password.
      */
     indepPassword?: pulumi.Input<string>;
     /**
@@ -222,11 +222,11 @@ export interface EnterpriseProxyAccessState {
  */
 export interface EnterpriseProxyAccessArgs {
     /**
-     * Database account.
+     * (ForceNew,Optional) Database account.
      */
     indepAccount?: pulumi.Input<string>;
     /**
-     * Database password.
+     * (ForceNew,Optional) Database password.
      */
     indepPassword?: pulumi.Input<string>;
     /**

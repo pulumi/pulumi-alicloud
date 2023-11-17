@@ -46,7 +46,7 @@ public final class LaunchTemplateSystemDisk {
     private @Nullable Boolean encrypted;
     private @Nullable String iops;
     /**
-     * @return The name of the data disk.
+     * @return Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
      * 
      */
     private @Nullable String name;
@@ -106,7 +106,7 @@ public final class LaunchTemplateSystemDisk {
         return Optional.ofNullable(this.iops);
     }
     /**
-     * @return The name of the data disk.
+     * @return Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
      * 
      */
     public Optional<String> name() {

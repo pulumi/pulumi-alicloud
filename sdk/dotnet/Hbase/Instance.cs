@@ -211,7 +211,7 @@ namespace Pulumi.AliCloud.Hbase
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
 
         /// <summary>
-        /// The slb service addresses of the cluster. See `slb_conn_addrs` below.
+        /// (Available in 1.105.0+) The slb service addresses of the cluster. See `slb_conn_addrs` below.
         /// 
         /// &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         /// </summary>
@@ -225,7 +225,7 @@ namespace Pulumi.AliCloud.Hbase
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
+        /// (Available in 1.105.0+) The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
         /// </summary>
         [Output("uiProxyConnAddrs")]
         public Output<ImmutableArray<Outputs.InstanceUiProxyConnAddr>> UiProxyConnAddrs { get; private set; } = null!;
@@ -243,7 +243,7 @@ namespace Pulumi.AliCloud.Hbase
         public Output<string?> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
+        /// (Available in 1.105.0+) The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
         /// </summary>
         [Output("zkConnAddrs")]
         public Output<ImmutableArray<Outputs.InstanceZkConnAddr>> ZkConnAddrs { get; private set; } = null!;
@@ -630,7 +630,7 @@ namespace Pulumi.AliCloud.Hbase
         private InputList<Inputs.InstanceSlbConnAddrGetArgs>? _slbConnAddrs;
 
         /// <summary>
-        /// The slb service addresses of the cluster. See `slb_conn_addrs` below.
+        /// (Available in 1.105.0+) The slb service addresses of the cluster. See `slb_conn_addrs` below.
         /// 
         /// &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
         /// </summary>
@@ -656,7 +656,7 @@ namespace Pulumi.AliCloud.Hbase
         private InputList<Inputs.InstanceUiProxyConnAddrGetArgs>? _uiProxyConnAddrs;
 
         /// <summary>
-        /// The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
+        /// (Available in 1.105.0+) The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
         /// </summary>
         public InputList<Inputs.InstanceUiProxyConnAddrGetArgs> UiProxyConnAddrs
         {
@@ -680,7 +680,7 @@ namespace Pulumi.AliCloud.Hbase
         private InputList<Inputs.InstanceZkConnAddrGetArgs>? _zkConnAddrs;
 
         /// <summary>
-        /// The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
+        /// (Available in 1.105.0+) The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
         /// </summary>
         public InputList<Inputs.InstanceZkConnAddrGetArgs> ZkConnAddrs
         {

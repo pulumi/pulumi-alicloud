@@ -196,7 +196,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
+     * (Deprecated from version 1.177.0)(Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
      * 
      * @deprecated
      * Field &#39;cpu_policy&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;cpu_policy&#39; to replace it
@@ -207,7 +207,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> cpuPolicy;
 
     /**
-     * @return (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
+     * @return (Deprecated from version 1.177.0)(Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
      * 
      * @deprecated
      * Field &#39;cpu_policy&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;cpu_policy&#39; to replace it
@@ -264,7 +264,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional) Enable login to the node through SSH. Default to `false`.
+     * (Deprecated from version 1.177.0)(Optional) Enable login to the node through SSH. Default to `false`.
      * 
      * @deprecated
      * Field &#39;enable_ssh&#39; has been deprecated from provider version 1.177.0.
@@ -275,7 +275,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Boolean> enableSsh;
 
     /**
-     * @return (Optional) Enable login to the node through SSH. Default to `false`.
+     * @return (Deprecated from version 1.177.0)(Optional) Enable login to the node through SSH. Default to `false`.
      * 
      * @deprecated
      * Field &#39;enable_ssh&#39; has been deprecated from provider version 1.177.0.
@@ -302,7 +302,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
+     * (Deprecated from version 1.177.0)(Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
      * 
      * @deprecated
      * Field &#39;worker_auto_renew_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes
@@ -313,7 +313,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Boolean> excludeAutoscalerNodes;
 
     /**
-     * @return (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
+     * @return (Deprecated from version 1.177.0)(Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
      * 
      * @deprecated
      * Field &#39;worker_auto_renew_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes
@@ -325,7 +325,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
+     * (Deprecated from version 1.177.0)(Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
      * 
      * @deprecated
      * Field &#39;image_id&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;image_id&#39; to replace it
@@ -336,7 +336,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> imageId;
 
     /**
-     * @return (Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
+     * @return (Deprecated from version 1.177.0)(Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
      * 
      * @deprecated
      * Field &#39;image_id&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;image_id&#39; to replace it
@@ -348,7 +348,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
+     * (Deprecated from version 1.177.0)(Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
      * 
      * @deprecated
      * Field &#39;install_cloud_monitor&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;install_cloud_monitor&#39; to replace it
@@ -359,7 +359,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Boolean> installCloudMonitor;
 
     /**
-     * @return (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
+     * @return (Deprecated from version 1.177.0)(Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
      * 
      * @deprecated
      * Field &#39;install_cloud_monitor&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;install_cloud_monitor&#39; to replace it
@@ -386,7 +386,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+     * (Deprecated from version 1.177.0)(Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
      * 
      * @deprecated
      * Field &#39;key_name&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;key_name&#39; to replace it
@@ -397,7 +397,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> keyName;
 
     /**
-     * @return (Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+     * @return (Deprecated from version 1.177.0)(Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
      * 
      * @deprecated
      * Field &#39;key_name&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;key_name&#39; to replace it
@@ -409,7 +409,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * (Deprecated from version 1.177.0)(Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
      * 
      * @deprecated
      * Field &#39;kms_encrypted_password&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;kms_encrypted_password&#39; to replace it
@@ -420,7 +420,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> kmsEncryptedPassword;
 
     /**
-     * @return (Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+     * @return (Deprecated from version 1.177.0)(Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
      * 
      * @deprecated
      * Field &#39;kms_encrypted_password&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;kms_encrypted_password&#39; to replace it
@@ -432,7 +432,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, MapString, Available in 1.57.1+) An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * (Deprecated from version 1.177.0)(Optional, MapString, Available in 1.57.1+) An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      * @deprecated
      * Field &#39;kms_encryption_context&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;kms_encryption_context&#39; to replace it
@@ -443,7 +443,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Map<String,Object>> kmsEncryptionContext;
 
     /**
-     * @return (Optional, MapString, Available in 1.57.1+) An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+     * @return (Deprecated from version 1.177.0)(Optional, MapString, Available in 1.57.1+) An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      * @deprecated
      * Field &#39;kms_encryption_context&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;kms_encryption_context&#39; to replace it
@@ -560,7 +560,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, Available in 1.88.0+) Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,5,-test&#34;, if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+     * (Deprecated from version 1.177.0)(Optional, Available in 1.88.0+) Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,5,-test&#34;, if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
      * 
      * @deprecated
      * Field &#39;node_name_mode&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;node_name_mode&#39; to replace it.
@@ -571,7 +571,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> nodeNameMode;
 
     /**
-     * @return (Optional, Available in 1.88.0+) Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,5,-test&#34;, if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+     * @return (Deprecated from version 1.177.0)(Optional, Available in 1.88.0+) Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,5,-test&#34;, if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
      * 
      * @deprecated
      * Field &#39;node_name_mode&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;node_name_mode&#39; to replace it.
@@ -583,7 +583,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+     * (Deprecated from version 1.177.0)(Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
      * 
      * @deprecated
      * Field &#39;platform&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes.
@@ -594,7 +594,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> nodePortRange;
 
     /**
-     * @return (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+     * @return (Deprecated from version 1.177.0)(Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
      * 
      * @deprecated
      * Field &#39;platform&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes.
@@ -606,7 +606,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
+     * (Deprecated from version 1.177.0)(Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
      * 
      * @deprecated
      * Field &#39;os_type&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes.
@@ -617,7 +617,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> osType;
 
     /**
-     * @return (Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
+     * @return (Deprecated from version 1.177.0)(Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
      * 
      * @deprecated
      * Field &#39;os_type&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes.
@@ -629,7 +629,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+     * (Deprecated from version 1.177.0)(Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
      * 
      * @deprecated
      * Field &#39;password&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;password&#39; to replace it
@@ -640,7 +640,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> password;
 
     /**
-     * @return (Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+     * @return (Deprecated from version 1.177.0)(Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
      * 
      * @deprecated
      * Field &#39;password&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;password&#39; to replace it
@@ -652,7 +652,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+     * (Deprecated from version 1.177.0)(Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
      * 
      * @deprecated
      * Field &#39;platform&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;platform&#39; to replace it.
@@ -663,7 +663,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> platform;
 
     /**
-     * @return (Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+     * @return (Deprecated from version 1.177.0)(Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
      * 
      * @deprecated
      * Field &#39;platform&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;platform&#39; to replace it.
@@ -720,7 +720,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     * (Deprecated from version 1.177.0)(Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
      * 
      * @deprecated
      * Field &#39;rds_instances&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;rds_instances&#39; to replace it.
@@ -731,7 +731,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<List<String>> rdsInstances;
 
     /**
-     * @return (Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
+     * @return (Deprecated from version 1.177.0)(Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
      * 
      * @deprecated
      * Field &#39;rds_instances&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;rds_instances&#39; to replace it.
@@ -780,7 +780,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * (Deprecated from version 1.177.0)(Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
      * 
      * @deprecated
      * Field &#39;runtime&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;runtime_name&#39; and &#39;runtime_version&#39; to replace it.
@@ -791,7 +791,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<ManagedKubernetesRuntimeArgs> runtime;
 
     /**
-     * @return (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+     * @return (Deprecated from version 1.177.0)(Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
      * 
      * @deprecated
      * Field &#39;runtime&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;runtime_name&#39; and &#39;runtime_version&#39; to replace it.
@@ -884,7 +884,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+     * (Deprecated from version 1.177.0)(Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
      * 
      * @deprecated
      * Field &#39;taints&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;taints&#39; to replace it.
@@ -895,7 +895,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<List<ManagedKubernetesTaintArgs>> taints;
 
     /**
-     * @return (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+     * @return (Deprecated from version 1.177.0)(Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
      * 
      * @deprecated
      * Field &#39;taints&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;taints&#39; to replace it.
@@ -937,7 +937,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
+     * (Deprecated from version 1.177.0)(Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
      * 
      * @deprecated
      * Field &#39;user_data&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;user_data&#39; to replace it.
@@ -948,7 +948,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> userData;
 
     /**
-     * @return (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
+     * @return (Deprecated from version 1.177.0)(Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
      * 
      * @deprecated
      * Field &#39;user_data&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;user_data&#39; to replace it.
@@ -975,7 +975,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional) Enable worker payment auto-renew, defaults to false.
+     * (Deprecated from version 1.177.0)(Optional) Enable worker payment auto-renew, defaults to false.
      * 
      * @deprecated
      * Field &#39;worker_auto_renew&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;auto_renew&#39; to replace it
@@ -986,7 +986,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Boolean> workerAutoRenew;
 
     /**
-     * @return (Optional) Enable worker payment auto-renew, defaults to false.
+     * @return (Deprecated from version 1.177.0)(Optional) Enable worker payment auto-renew, defaults to false.
      * 
      * @deprecated
      * Field &#39;worker_auto_renew&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;auto_renew&#39; to replace it
@@ -998,7 +998,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+     * (Deprecated from version 1.177.0, Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
      * 
      * @deprecated
      * Field &#39;worker_auto_renew_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;auto_renew_period&#39; to replace it
@@ -1009,7 +1009,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Integer> workerAutoRenewPeriod;
 
     /**
-     * @return Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+     * @return (Deprecated from version 1.177.0, Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
      * 
      * @deprecated
      * Field &#39;worker_auto_renew_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;auto_renew_period&#39; to replace it
@@ -1021,7 +1021,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional) The data disk category of worker, use `worker_data_disks` to instead it.
+     * (Removed)(Optional) The data disk category of worker, use `worker_data_disks` to instead it.
      * 
      * @deprecated
      * Field &#39;worker_data_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks.category&#39; to replace it
@@ -1032,7 +1032,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> workerDataDiskCategory;
 
     /**
-     * @return (Optional) The data disk category of worker, use `worker_data_disks` to instead it.
+     * @return (Removed)(Optional) The data disk category of worker, use `worker_data_disks` to instead it.
      * 
      * @deprecated
      * Field &#39;worker_data_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks.category&#39; to replace it
@@ -1044,7 +1044,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional) The data disk size of worker, use `worker_data_disks` to instead it.
+     * (Removed)(Optional) The data disk size of worker, use `worker_data_disks` to instead it.
      * 
      * @deprecated
      * Field &#39;worker_data_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks.size&#39; to replace it
@@ -1055,7 +1055,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Integer> workerDataDiskSize;
 
     /**
-     * @return (Optional) The data disk size of worker, use `worker_data_disks` to instead it.
+     * @return (Removed)(Optional) The data disk size of worker, use `worker_data_disks` to instead it.
      * 
      * @deprecated
      * Field &#39;worker_data_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks.size&#39; to replace it
@@ -1067,7 +1067,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
+     * (Deprecated from version 1.177.0)(Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
      * 
      * @deprecated
      * Field &#39;worker_data_disks&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks&#39; to replace it
@@ -1078,7 +1078,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<List<ManagedKubernetesWorkerDataDiskArgs>> workerDataDisks;
 
     /**
-     * @return (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
+     * @return (Deprecated from version 1.177.0)(Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
      * 
      * @deprecated
      * Field &#39;worker_data_disks&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;data_disks&#39; to replace it
@@ -1090,7 +1090,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+     * (Deprecated from version 1.177.0)(Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
      * 
      * @deprecated
      * Field &#39;worker_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;system_disk_category&#39; to replace it.
@@ -1101,7 +1101,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> workerDiskCategory;
 
     /**
-     * @return (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+     * @return (Deprecated from version 1.177.0)(Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
      * 
      * @deprecated
      * Field &#39;worker_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;system_disk_category&#39; to replace it.
@@ -1113,7 +1113,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      * @deprecated
      * Field &#39;worker_disk_performance_level&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;system_disk_performance_level&#39; to replace it
@@ -1124,7 +1124,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> workerDiskPerformanceLevel;
 
     /**
-     * @return (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * @return (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      * @deprecated
      * Field &#39;worker_disk_performance_level&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;system_disk_performance_level&#39; to replace it
@@ -1136,7 +1136,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
+     * (Deprecated from version 1.177.0)(Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
      * 
      * @deprecated
      * Field &#39;worker_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;system_disk_size&#39; to replace it.
@@ -1147,7 +1147,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Integer> workerDiskSize;
 
     /**
-     * @return (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
+     * @return (Deprecated from version 1.177.0)(Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
      * 
      * @deprecated
      * Field &#39;worker_disk_size&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;system_disk_size&#39; to replace it.
@@ -1159,7 +1159,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
+     * (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
      * 
      * @deprecated
      * Field &#39;worker_disk_snapshot_policy_id&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;system_disk_snapshot_policy_id&#39; to replace it
@@ -1170,7 +1170,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> workerDiskSnapshotPolicyId;
 
     /**
-     * @return (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
+     * @return (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
      * 
      * @deprecated
      * Field &#39;worker_disk_snapshot_policy_id&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;system_disk_snapshot_policy_id&#39; to replace it
@@ -1182,7 +1182,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
+     * (Deprecated from version 1.177.0)(Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
      * 
      * @deprecated
      * Field &#39;worker_instance_charge_type&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;instance_charge_type&#39; to replace it
@@ -1193,7 +1193,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> workerInstanceChargeType;
 
     /**
-     * @return (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
+     * @return (Deprecated from version 1.177.0)(Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
      * 
      * @deprecated
      * Field &#39;worker_instance_charge_type&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;instance_charge_type&#39; to replace it
@@ -1205,7 +1205,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
+     * (Deprecated from version 1.177.0)(Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
      * 
      * @deprecated
      * Field &#39;worker_instance_types&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;instance_types&#39; to replace it.
@@ -1216,7 +1216,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<List<String>> workerInstanceTypes;
 
     /**
-     * @return (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
+     * @return (Deprecated from version 1.177.0)(Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
      * 
      * @deprecated
      * Field &#39;worker_instance_types&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;instance_types&#39; to replace it.
@@ -1228,7 +1228,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
+     * (Deprecated from version 1.177.0)(Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
      * 
      * @deprecated
      * Field &#39;worker_number&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes., by using field &#39;desired_size&#39; to replace it.
@@ -1239,7 +1239,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Integer> workerNumber;
 
     /**
-     * @return (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
+     * @return (Deprecated from version 1.177.0)(Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
      * 
      * @deprecated
      * Field &#39;worker_number&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes., by using field &#39;desired_size&#39; to replace it.
@@ -1251,7 +1251,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+     * (Deprecated from version 1.177.0)(Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
      * 
      * @deprecated
      * Field &#39;worker_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;period&#39; to replace it
@@ -1262,7 +1262,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Integer> workerPeriod;
 
     /**
-     * @return (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+     * @return (Deprecated from version 1.177.0)(Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
      * 
      * @deprecated
      * Field &#39;worker_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;period&#39; to replace it
@@ -1274,7 +1274,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Optional) Worker payment period unit, the valid value is `Month`.
+     * (Deprecated from version 1.177.0)(Optional) Worker payment period unit, the valid value is `Month`.
      * 
      * @deprecated
      * Field &#39;worker_period_unit&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;period_unit&#39; to replace it
@@ -1285,7 +1285,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> workerPeriodUnit;
 
     /**
-     * @return (Optional) Worker payment period unit, the valid value is `Month`.
+     * @return (Deprecated from version 1.177.0)(Optional) Worker payment period unit, the valid value is `Month`.
      * 
      * @deprecated
      * Field &#39;worker_period_unit&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster nodes, by using field &#39;period_unit&#39; to replace it
@@ -1297,14 +1297,14 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The vswitches used by control plane.
+     * (**Required**) The vswitches used by control plane.
      * 
      */
     @Import(name="workerVswitchIds", required=true)
     private Output<List<String>> workerVswitchIds;
 
     /**
-     * @return The vswitches used by control plane.
+     * @return (**Required**) The vswitches used by control plane.
      * 
      */
     public Output<List<String>> workerVswitchIds() {
@@ -1669,7 +1669,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cpuPolicy (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
+         * @param cpuPolicy (Deprecated from version 1.177.0)(Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
          * 
          * @return builder
          * 
@@ -1684,7 +1684,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param cpuPolicy (Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
+         * @param cpuPolicy (Deprecated from version 1.177.0)(Optional) Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none`.
          * 
          * @return builder
          * 
@@ -1761,7 +1761,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enableSsh (Optional) Enable login to the node through SSH. Default to `false`.
+         * @param enableSsh (Deprecated from version 1.177.0)(Optional) Enable login to the node through SSH. Default to `false`.
          * 
          * @return builder
          * 
@@ -1776,7 +1776,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enableSsh (Optional) Enable login to the node through SSH. Default to `false`.
+         * @param enableSsh (Deprecated from version 1.177.0)(Optional) Enable login to the node through SSH. Default to `false`.
          * 
          * @return builder
          * 
@@ -1811,7 +1811,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param excludeAutoscalerNodes (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
+         * @param excludeAutoscalerNodes (Deprecated from version 1.177.0)(Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
          * 
          * @return builder
          * 
@@ -1826,7 +1826,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param excludeAutoscalerNodes (Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
+         * @param excludeAutoscalerNodes (Deprecated from version 1.177.0)(Optional, Available in 1.88.0+) Exclude autoscaler nodes from `worker_nodes`. Default to `false`.
          * 
          * @return builder
          * 
@@ -1840,7 +1840,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param imageId (Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
+         * @param imageId (Deprecated from version 1.177.0)(Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
          * 
          * @return builder
          * 
@@ -1855,7 +1855,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param imageId (Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
+         * @param imageId (Deprecated from version 1.177.0)(Optional) Custom Image support. Must based on CentOS7 or AliyunLinux2.
          * 
          * @return builder
          * 
@@ -1869,7 +1869,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param installCloudMonitor (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
+         * @param installCloudMonitor (Deprecated from version 1.177.0)(Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
          * 
          * @return builder
          * 
@@ -1884,7 +1884,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param installCloudMonitor (Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
+         * @param installCloudMonitor (Deprecated from version 1.177.0)(Optional) Install cloud monitor agent on ECS. Default is `true` in previous version. From provider version 1.208.0, the default value is `false`.
          * 
          * @return builder
          * 
@@ -1919,7 +1919,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param keyName (Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+         * @param keyName (Deprecated from version 1.177.0)(Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
          * 
          * @return builder
          * 
@@ -1934,7 +1934,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param keyName (Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+         * @param keyName (Deprecated from version 1.177.0)(Optional) The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
          * 
          * @return builder
          * 
@@ -1948,7 +1948,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param kmsEncryptedPassword (Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+         * @param kmsEncryptedPassword (Deprecated from version 1.177.0)(Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
          * 
          * @return builder
          * 
@@ -1963,7 +1963,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param kmsEncryptedPassword (Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
+         * @param kmsEncryptedPassword (Deprecated from version 1.177.0)(Optional, Available in 1.57.1+) An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
          * 
          * @return builder
          * 
@@ -1977,7 +1977,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param kmsEncryptionContext (Optional, MapString, Available in 1.57.1+) An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+         * @param kmsEncryptionContext (Deprecated from version 1.177.0)(Optional, MapString, Available in 1.57.1+) An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
          * 
          * @return builder
          * 
@@ -1992,7 +1992,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param kmsEncryptionContext (Optional, MapString, Available in 1.57.1+) An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
+         * @param kmsEncryptionContext (Deprecated from version 1.177.0)(Optional, MapString, Available in 1.57.1+) An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
          * 
          * @return builder
          * 
@@ -2149,7 +2149,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nodeNameMode (Optional, Available in 1.88.0+) Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,5,-test&#34;, if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+         * @param nodeNameMode (Deprecated from version 1.177.0)(Optional, Available in 1.88.0+) Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,5,-test&#34;, if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
          * 
          * @return builder
          * 
@@ -2164,7 +2164,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nodeNameMode (Optional, Available in 1.88.0+) Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,5,-test&#34;, if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
+         * @param nodeNameMode (Deprecated from version 1.177.0)(Optional, Available in 1.88.0+) Each node name consists of a prefix, an IP substring, and a suffix, the input format is `customized,&lt;prefix&gt;,IPSubStringLen,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,5,-test&#34;, if the node IP address is 192.168.59.176, the prefix is aliyun.com-, IP substring length is 5, and the suffix is -test, the node name will be aliyun.com-59176-test.
          * 
          * @return builder
          * 
@@ -2178,7 +2178,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nodePortRange (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+         * @param nodePortRange (Deprecated from version 1.177.0)(Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
          * 
          * @return builder
          * 
@@ -2193,7 +2193,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nodePortRange (Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
+         * @param nodePortRange (Deprecated from version 1.177.0)(Optional, ForceNew, Available in 1.103.2+) The service port range of nodes, valid values: `30000` to `65535`. Default to `30000-32767`.
          * 
          * @return builder
          * 
@@ -2207,7 +2207,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param osType (Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
+         * @param osType (Deprecated from version 1.177.0)(Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
          * 
          * @return builder
          * 
@@ -2222,7 +2222,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param osType (Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
+         * @param osType (Deprecated from version 1.177.0)(Optional, ForceNew, Available in 1.103.2+) The operating system of the nodes that run pods, its valid value is either `Linux` or `Windows`. Default to `Linux`.
          * 
          * @return builder
          * 
@@ -2236,7 +2236,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param password (Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+         * @param password (Deprecated from version 1.177.0)(Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
          * 
          * @return builder
          * 
@@ -2251,7 +2251,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param password (Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
+         * @param password (Deprecated from version 1.177.0)(Optional, Sensitive) The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. From ersion 1.109.1, It is not necessary in the professional managed cluster.
          * 
          * @return builder
          * 
@@ -2265,7 +2265,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param platform (Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+         * @param platform (Deprecated from version 1.177.0)(Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
          * 
          * @return builder
          * 
@@ -2280,7 +2280,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param platform (Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
+         * @param platform (Deprecated from version 1.177.0)(Optional, ForceNew, Available in 1.103.2+) The architecture of the nodes that run pods, its valid value is either `CentOS` or `AliyunLinux`. Default to `CentOS`.
          * 
          * @return builder
          * 
@@ -2367,7 +2367,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rdsInstances (Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
+         * @param rdsInstances (Deprecated from version 1.177.0)(Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
          * 
          * @return builder
          * 
@@ -2382,7 +2382,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rdsInstances (Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
+         * @param rdsInstances (Deprecated from version 1.177.0)(Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
          * 
          * @return builder
          * 
@@ -2396,7 +2396,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param rdsInstances (Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
+         * @param rdsInstances (Deprecated from version 1.177.0)(Optional, Available in 1.103.2+) RDS instance list, You can choose which RDS instances whitelist to add instances to.
          * 
          * @return builder
          * 
@@ -2465,7 +2465,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param runtime (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+         * @param runtime (Deprecated from version 1.177.0)(Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
          * 
          * @return builder
          * 
@@ -2480,7 +2480,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param runtime (Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
+         * @param runtime (Deprecated from version 1.177.0)(Optional, Available in 1.103.2+) The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
          * 
          * @return builder
          * 
@@ -2605,7 +2605,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param taints (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+         * @param taints (Deprecated from version 1.177.0)(Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
          * 
          * @return builder
          * 
@@ -2620,7 +2620,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param taints (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+         * @param taints (Deprecated from version 1.177.0)(Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
          * 
          * @return builder
          * 
@@ -2634,7 +2634,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param taints (Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
+         * @param taints (Deprecated from version 1.177.0)(Optional, Available in 1.103.2+) Taints ensure pods are not scheduled onto inappropriate nodes. One or more taints are applied to a node; this marks that the node should not accept any pods that do not tolerate the taints. For more information, see [Taints and Tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). Detailed below.
          * 
          * @return builder
          * 
@@ -2690,7 +2690,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userData (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
+         * @param userData (Deprecated from version 1.177.0)(Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
          * 
          * @return builder
          * 
@@ -2705,7 +2705,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param userData (Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
+         * @param userData (Deprecated from version 1.177.0)(Optional, Available in 1.81.0+) Custom data that can execute on nodes. For more information, see [Prepare user data](https://www.alibabacloud.com/help/doc-detail/49121.htm).
          * 
          * @return builder
          * 
@@ -2740,7 +2740,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerAutoRenew (Optional) Enable worker payment auto-renew, defaults to false.
+         * @param workerAutoRenew (Deprecated from version 1.177.0)(Optional) Enable worker payment auto-renew, defaults to false.
          * 
          * @return builder
          * 
@@ -2755,7 +2755,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerAutoRenew (Optional) Enable worker payment auto-renew, defaults to false.
+         * @param workerAutoRenew (Deprecated from version 1.177.0)(Optional) Enable worker payment auto-renew, defaults to false.
          * 
          * @return builder
          * 
@@ -2769,7 +2769,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerAutoRenewPeriod Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+         * @param workerAutoRenewPeriod (Deprecated from version 1.177.0, Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
          * 
          * @return builder
          * 
@@ -2784,7 +2784,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerAutoRenewPeriod Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+         * @param workerAutoRenewPeriod (Deprecated from version 1.177.0, Optional) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
          * 
          * @return builder
          * 
@@ -2798,7 +2798,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDataDiskCategory (Optional) The data disk category of worker, use `worker_data_disks` to instead it.
+         * @param workerDataDiskCategory (Removed)(Optional) The data disk category of worker, use `worker_data_disks` to instead it.
          * 
          * @return builder
          * 
@@ -2813,7 +2813,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDataDiskCategory (Optional) The data disk category of worker, use `worker_data_disks` to instead it.
+         * @param workerDataDiskCategory (Removed)(Optional) The data disk category of worker, use `worker_data_disks` to instead it.
          * 
          * @return builder
          * 
@@ -2827,7 +2827,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDataDiskSize (Optional) The data disk size of worker, use `worker_data_disks` to instead it.
+         * @param workerDataDiskSize (Removed)(Optional) The data disk size of worker, use `worker_data_disks` to instead it.
          * 
          * @return builder
          * 
@@ -2842,7 +2842,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDataDiskSize (Optional) The data disk size of worker, use `worker_data_disks` to instead it.
+         * @param workerDataDiskSize (Removed)(Optional) The data disk size of worker, use `worker_data_disks` to instead it.
          * 
          * @return builder
          * 
@@ -2856,7 +2856,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDataDisks (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
+         * @param workerDataDisks (Deprecated from version 1.177.0)(Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
          * 
          * @return builder
          * 
@@ -2871,7 +2871,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDataDisks (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
+         * @param workerDataDisks (Deprecated from version 1.177.0)(Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
          * 
          * @return builder
          * 
@@ -2885,7 +2885,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDataDisks (Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
+         * @param workerDataDisks (Deprecated from version 1.177.0)(Optional, Available in 1.91.0+) The data disk configurations of worker nodes, such as the disk type and disk size. Detailed below.
          * 
          * @return builder
          * 
@@ -2899,7 +2899,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDiskCategory (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+         * @param workerDiskCategory (Deprecated from version 1.177.0)(Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
          * 
          * @return builder
          * 
@@ -2914,7 +2914,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDiskCategory (Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
+         * @param workerDiskCategory (Deprecated from version 1.177.0)(Optional) The system disk category of worker node. Its valid value are `cloud`, `cloud_ssd`, `cloud_essd` and `cloud_efficiency`. Default to `cloud_efficiency`.
          * 
          * @return builder
          * 
@@ -2928,7 +2928,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDiskPerformanceLevel (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * @param workerDiskPerformanceLevel (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          * 
          * @return builder
          * 
@@ -2943,7 +2943,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDiskPerformanceLevel (Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+         * @param workerDiskPerformanceLevel (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
          * 
          * @return builder
          * 
@@ -2957,7 +2957,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDiskSize (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
+         * @param workerDiskSize (Deprecated from version 1.177.0)(Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
          * 
          * @return builder
          * 
@@ -2972,7 +2972,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDiskSize (Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
+         * @param workerDiskSize (Deprecated from version 1.177.0)(Optional) The system disk size of worker node. Its valid value range [40~500] in GB.
          * 
          * @return builder
          * 
@@ -2986,7 +2986,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDiskSnapshotPolicyId (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
+         * @param workerDiskSnapshotPolicyId (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
          * 
          * @return builder
          * 
@@ -3001,7 +3001,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerDiskSnapshotPolicyId (Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
+         * @param workerDiskSnapshotPolicyId (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node system disk auto snapshot policy.
          * 
          * @return builder
          * 
@@ -3015,7 +3015,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerInstanceChargeType (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
+         * @param workerInstanceChargeType (Deprecated from version 1.177.0)(Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
          * 
          * @return builder
          * 
@@ -3030,7 +3030,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerInstanceChargeType (Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
+         * @param workerInstanceChargeType (Deprecated from version 1.177.0)(Optional) Worker payment type, its valid value is either or `PostPaid` or `PrePaid`. Defaults to `PostPaid`. If value is `PrePaid`, the files `worker_period`, `worker_period_unit`, `worker_auto_renew` and `worker_auto_renew_period` are required, default is `PostPaid`.
          * 
          * @return builder
          * 
@@ -3044,7 +3044,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerInstanceTypes (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
+         * @param workerInstanceTypes (Deprecated from version 1.177.0)(Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
          * 
          * @return builder
          * 
@@ -3059,7 +3059,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerInstanceTypes (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
+         * @param workerInstanceTypes (Deprecated from version 1.177.0)(Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
          * 
          * @return builder
          * 
@@ -3073,7 +3073,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerInstanceTypes (Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
+         * @param workerInstanceTypes (Deprecated from version 1.177.0)(Optional) The instance type of worker node. Specify one type for single AZ Cluster, three types for MultiAZ Cluster. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
          * 
          * @return builder
          * 
@@ -3087,7 +3087,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerNumber (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
+         * @param workerNumber (Deprecated from version 1.177.0)(Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
          * 
          * @return builder
          * 
@@ -3102,7 +3102,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerNumber (Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
+         * @param workerNumber (Deprecated from version 1.177.0)(Optional) The worker node number of the kubernetes cluster. Default to 3. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us. From version 1.109.1, It is not necessary in the professional managed cluster, but it is necessary in other types of clusters.
          * 
          * @return builder
          * 
@@ -3116,7 +3116,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerPeriod (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+         * @param workerPeriod (Deprecated from version 1.177.0)(Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
          * 
          * @return builder
          * 
@@ -3131,7 +3131,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerPeriod (Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
+         * @param workerPeriod (Deprecated from version 1.177.0)(Optional) Worker payment period. The unit is `Month`. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
          * 
          * @return builder
          * 
@@ -3145,7 +3145,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerPeriodUnit (Optional) Worker payment period unit, the valid value is `Month`.
+         * @param workerPeriodUnit (Deprecated from version 1.177.0)(Optional) Worker payment period unit, the valid value is `Month`.
          * 
          * @return builder
          * 
@@ -3160,7 +3160,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerPeriodUnit (Optional) Worker payment period unit, the valid value is `Month`.
+         * @param workerPeriodUnit (Deprecated from version 1.177.0)(Optional) Worker payment period unit, the valid value is `Month`.
          * 
          * @return builder
          * 
@@ -3174,7 +3174,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerVswitchIds The vswitches used by control plane.
+         * @param workerVswitchIds (**Required**) The vswitches used by control plane.
          * 
          * @return builder
          * 
@@ -3185,7 +3185,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerVswitchIds The vswitches used by control plane.
+         * @param workerVswitchIds (**Required**) The vswitches used by control plane.
          * 
          * @return builder
          * 
@@ -3195,7 +3195,7 @@ public final class ManagedKubernetesArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param workerVswitchIds The vswitches used by control plane.
+         * @param workerVswitchIds (**Required**) The vswitches used by control plane.
          * 
          * @return builder
          * 

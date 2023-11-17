@@ -86,9 +86,6 @@ type ReservedInstance struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Payment type of the RI. Default value: `All Upfront`. Valid values:
-	// - `No Upfront`: No upfront payment.
-	// - `Partial Upfront`: A portion of upfront payment.
-	// - `All Upfront`: Full upfront payment.
 	OfferingType pulumi.StringOutput `pulumi:"offeringType"`
 	// Details about the lock status of the reserved instance.
 	OperationLocks ReservedInstanceOperationLockArrayOutput `pulumi:"operationLocks"`
@@ -170,9 +167,6 @@ type reservedInstanceState struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.
 	Name *string `pulumi:"name"`
 	// Payment type of the RI. Default value: `All Upfront`. Valid values:
-	// - `No Upfront`: No upfront payment.
-	// - `Partial Upfront`: A portion of upfront payment.
-	// - `All Upfront`: Full upfront payment.
 	OfferingType *string `pulumi:"offeringType"`
 	// Details about the lock status of the reserved instance.
 	OperationLocks []ReservedInstanceOperationLock `pulumi:"operationLocks"`
@@ -222,9 +216,6 @@ type ReservedInstanceState struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.
 	Name pulumi.StringPtrInput
 	// Payment type of the RI. Default value: `All Upfront`. Valid values:
-	// - `No Upfront`: No upfront payment.
-	// - `Partial Upfront`: A portion of upfront payment.
-	// - `All Upfront`: Full upfront payment.
 	OfferingType pulumi.StringPtrInput
 	// Details about the lock status of the reserved instance.
 	OperationLocks ReservedInstanceOperationLockArrayInput
@@ -272,9 +263,6 @@ type reservedInstanceArgs struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.
 	Name *string `pulumi:"name"`
 	// Payment type of the RI. Default value: `All Upfront`. Valid values:
-	// - `No Upfront`: No upfront payment.
-	// - `Partial Upfront`: A portion of upfront payment.
-	// - `All Upfront`: Full upfront payment.
 	OfferingType *string `pulumi:"offeringType"`
 	// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
 	// - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
@@ -313,9 +301,6 @@ type ReservedInstanceArgs struct {
 	// Deprecated: Field 'name' has been deprecated from provider version 1.194.0. New field 'reserved_instance_name' instead.
 	Name pulumi.StringPtrInput
 	// Payment type of the RI. Default value: `All Upfront`. Valid values:
-	// - `No Upfront`: No upfront payment.
-	// - `Partial Upfront`: A portion of upfront payment.
-	// - `All Upfront`: Full upfront payment.
 	OfferingType pulumi.StringPtrInput
 	// The validity period of the reserved instance. Default value: `1`. **NOTE:** From version 1.183.0, `period` can be set to `5`, when `periodUnit` is `Year`.
 	// - When `periodUnit` is `Year`, Valid values: `1`, `3`, `5`.
@@ -469,9 +454,6 @@ func (o ReservedInstanceOutput) Name() pulumi.StringOutput {
 }
 
 // Payment type of the RI. Default value: `All Upfront`. Valid values:
-// - `No Upfront`: No upfront payment.
-// - `Partial Upfront`: A portion of upfront payment.
-// - `All Upfront`: Full upfront payment.
 func (o ReservedInstanceOutput) OfferingType() pulumi.StringOutput {
 	return o.ApplyT(func(v *ReservedInstance) pulumi.StringOutput { return v.OfferingType }).(pulumi.StringOutput)
 }

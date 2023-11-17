@@ -489,7 +489,7 @@ class GetStaticAccountsAccountResult(dict):
         :param str access_key: Access key.
         :param str create_time: Create time stamp. Unix timestamp, to millisecond level.
         :param str id: The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.
-        :param str instance_id: InstanceId
+        :param str instance_id: (ForceNew, Optional) InstanceId
         :param str master_uid: The ID of the user's primary account.
         :param str password: Static password.
         :param str user_name: Static username.
@@ -530,7 +530,7 @@ class GetStaticAccountsAccountResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
         """
-        InstanceId
+        (ForceNew, Optional) InstanceId
         """
         return pulumi.get(self, "instance_id")
 

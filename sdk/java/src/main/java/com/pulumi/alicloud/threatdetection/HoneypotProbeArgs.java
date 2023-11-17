@@ -64,14 +64,14 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Configure the service.See the following `Block HoneypotBindList`.
+     * (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
      * 
      */
     @Import(name="honeypotBindLists")
     private @Nullable Output<List<HoneypotProbeHoneypotBindListArgs>> honeypotBindLists;
 
     /**
-     * @return Configure the service.See the following `Block HoneypotBindList`.
+     * @return (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
      * 
      */
     public Optional<Output<List<HoneypotProbeHoneypotBindListArgs>>> honeypotBindLists() {
@@ -109,14 +109,14 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The version of the probe.
+     * (ForceNew,Optional) The version of the probe.
      * 
      */
     @Import(name="probeVersion")
     private @Nullable Output<String> probeVersion;
 
     /**
-     * @return The version of the probe.
+     * @return (ForceNew,Optional) The version of the probe.
      * 
      */
     public Optional<Output<String>> probeVersion() {
@@ -124,14 +124,14 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The IP address of the proxy.
+     * (ForceNew,Optional) The IP address of the proxy.
      * 
      */
     @Import(name="proxyIp")
     private @Nullable Output<String> proxyIp;
 
     /**
-     * @return The IP address of the proxy.
+     * @return (ForceNew,Optional) The IP address of the proxy.
      * 
      */
     public Optional<Output<String>> proxyIp() {
@@ -154,14 +154,14 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+     * (ForceNew,Optional) Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
      * 
      */
     @Import(name="uuid")
     private @Nullable Output<String> uuid;
 
     /**
-     * @return Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+     * @return (ForceNew,Optional) Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
      * 
      */
     public Optional<Output<String>> uuid() {
@@ -169,14 +169,14 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+     * (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+     * @return (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -281,7 +281,7 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param honeypotBindLists Configure the service.See the following `Block HoneypotBindList`.
+         * @param honeypotBindLists (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param honeypotBindLists Configure the service.See the following `Block HoneypotBindList`.
+         * @param honeypotBindLists (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param honeypotBindLists Configure the service.See the following `Block HoneypotBindList`.
+         * @param honeypotBindLists (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param probeVersion The version of the probe.
+         * @param probeVersion (ForceNew,Optional) The version of the probe.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param probeVersion The version of the probe.
+         * @param probeVersion (ForceNew,Optional) The version of the probe.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyIp The IP address of the proxy.
+         * @param proxyIp (ForceNew,Optional) The IP address of the proxy.
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param proxyIp The IP address of the proxy.
+         * @param proxyIp (ForceNew,Optional) The IP address of the proxy.
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uuid Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+         * @param uuid (ForceNew,Optional) Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uuid Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+         * @param uuid (ForceNew,Optional) Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+         * @param vpcId (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class HoneypotProbeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+         * @param vpcId (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
          * 
          * @return builder
          * 

@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string> AvailabilityZone { get; private set; } = null!;
 
         /// <summary>
-        /// Nested attribute containing certificate authority data for your cluster.
+        /// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
         /// </summary>
         [Output("certificateAuthority")]
         public Output<Outputs.KubernetesCertificateAuthority> CertificateAuthority { get; private set; } = null!;
@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ClusterDomain { get; private set; } = null!;
 
         /// <summary>
-        /// Map of kubernetes cluster connection information.
+        /// (Map) Map of kubernetes cluster connection information.
         /// </summary>
         [Output("connections")]
         public Output<Outputs.KubernetesConnections> Connections { get; private set; } = null!;
@@ -377,7 +377,7 @@ namespace Pulumi.AliCloud.CS
         public Output<string?> ServiceCidr { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of load balancer.
+        /// (Deprecated) The ID of load balancer.
         /// </summary>
         [Output("slbId")]
         public Output<string> SlbId { get; private set; } = null!;
@@ -454,13 +454,13 @@ namespace Pulumi.AliCloud.CS
         public Output<bool?> WorkerAutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        /// (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         /// </summary>
         [Output("workerAutoRenewPeriod")]
         public Output<int> WorkerAutoRenewPeriod { get; private set; } = null!;
 
         /// <summary>
-        /// The data disk category of worker, use `worker_data_disks` to instead it.
+        /// (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
         /// </summary>
         [Output("workerDataDiskCategory")]
         public Output<string?> WorkerDataDiskCategory { get; private set; } = null!;
@@ -518,7 +518,7 @@ namespace Pulumi.AliCloud.CS
         public Output<ImmutableArray<string>> WorkerInstanceTypes { get; private set; } = null!;
 
         /// <summary>
-        /// List of cluster worker nodes. See `worker_nodes` below.
+        /// (Deprecated from version 1.177.0) List of cluster worker nodes. See `worker_nodes` below.
         /// </summary>
         [Output("workerNodes")]
         public Output<ImmutableArray<Outputs.KubernetesWorkerNode>> WorkerNodes { get; private set; } = null!;
@@ -1025,13 +1025,13 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? WorkerAutoRenew { get; set; }
 
         /// <summary>
-        /// Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        /// (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         /// </summary>
         [Input("workerAutoRenewPeriod")]
         public Input<int>? WorkerAutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The data disk category of worker, use `worker_data_disks` to instead it.
+        /// (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
         /// </summary>
         [Input("workerDataDiskCategory")]
         public Input<string>? WorkerDataDiskCategory { get; set; }
@@ -1174,7 +1174,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Nested attribute containing certificate authority data for your cluster.
+        /// (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
         /// </summary>
         [Input("certificateAuthority")]
         public Input<Inputs.KubernetesCertificateAuthorityGetArgs>? CertificateAuthority { get; set; }
@@ -1204,7 +1204,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ClusterDomain { get; set; }
 
         /// <summary>
-        /// Map of kubernetes cluster connection information.
+        /// (Map) Map of kubernetes cluster connection information.
         /// </summary>
         [Input("connections")]
         public Input<Inputs.KubernetesConnectionsGetArgs>? Connections { get; set; }
@@ -1529,7 +1529,7 @@ namespace Pulumi.AliCloud.CS
         public Input<string>? ServiceCidr { get; set; }
 
         /// <summary>
-        /// The ID of load balancer.
+        /// (Deprecated) The ID of load balancer.
         /// </summary>
         [Input("slbId")]
         public Input<string>? SlbId { get; set; }
@@ -1619,13 +1619,13 @@ namespace Pulumi.AliCloud.CS
         public Input<bool>? WorkerAutoRenew { get; set; }
 
         /// <summary>
-        /// Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+        /// (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
         /// </summary>
         [Input("workerAutoRenewPeriod")]
         public Input<int>? WorkerAutoRenewPeriod { get; set; }
 
         /// <summary>
-        /// The data disk category of worker, use `worker_data_disks` to instead it.
+        /// (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
         /// </summary>
         [Input("workerDataDiskCategory")]
         public Input<string>? WorkerDataDiskCategory { get; set; }
@@ -1700,7 +1700,7 @@ namespace Pulumi.AliCloud.CS
         private InputList<Inputs.KubernetesWorkerNodeGetArgs>? _workerNodes;
 
         /// <summary>
-        /// List of cluster worker nodes. See `worker_nodes` below.
+        /// (Deprecated from version 1.177.0) List of cluster worker nodes. See `worker_nodes` below.
         /// </summary>
         [Obsolete(@"Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.")]
         public InputList<Inputs.KubernetesWorkerNodeGetArgs> WorkerNodes

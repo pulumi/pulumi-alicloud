@@ -1193,7 +1193,7 @@ class ApplicationScalingRuleScalingRuleMetricMetricArgs:
                - SLB_RT: The average response time of public network SLB within 15 seconds.
                - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
                - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-               **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+                 **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
         :param pulumi.Input[str] slb_id: SLB ID.
         :param pulumi.Input[str] slb_log_store: The log store of the Log Service.
         :param pulumi.Input[str] slb_project: The project of the Log Service.
@@ -1238,7 +1238,7 @@ class ApplicationScalingRuleScalingRuleMetricMetricArgs:
         - SLB_RT: The average response time of public network SLB within 15 seconds.
         - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
         - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-        **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
+          **NOTE:** From version 1.206.0, `metric_type` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
         """
         return pulumi.get(self, "metric_type")
 

@@ -363,7 +363,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from version 1.7.1 and new field &#39;vswitch_ids&#39; replaces it.
+     * (Deprecated) It has been deprecated from version 1.7.1 and new field &#39;vswitch_ids&#39; replaces it.
      * 
      * @deprecated
      * Field &#39;vswitch_id&#39; has been deprecated from provider version 1.7.1, and new field &#39;vswitch_ids&#39; can replace it.
@@ -374,7 +374,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return It has been deprecated from version 1.7.1 and new field &#39;vswitch_ids&#39; replaces it.
+     * @return (Deprecated) It has been deprecated from version 1.7.1 and new field &#39;vswitch_ids&#39; replaces it.
      * 
      * @deprecated
      * Field &#39;vswitch_id&#39; has been deprecated from provider version 1.7.1, and new field &#39;vswitch_ids&#39; can replace it.
@@ -965,7 +965,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId It has been deprecated from version 1.7.1 and new field &#39;vswitch_ids&#39; replaces it.
+         * @param vswitchId (Deprecated) It has been deprecated from version 1.7.1 and new field &#39;vswitch_ids&#39; replaces it.
          * 
          * @return builder
          * 
@@ -980,7 +980,7 @@ public final class ScalingGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vswitchId It has been deprecated from version 1.7.1 and new field &#39;vswitch_ids&#39; replaces it.
+         * @param vswitchId (Deprecated) It has been deprecated from version 1.7.1 and new field &#39;vswitch_ids&#39; replaces it.
          * 
          * @return builder
          * 

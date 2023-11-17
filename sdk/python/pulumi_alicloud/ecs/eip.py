@@ -44,10 +44,10 @@ class EipArgs:
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[str] instance_charge_type: (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        :param pulumi.Input[str] instance_charge_type: (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-        :param pulumi.Input[str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        :param pulumi.Input[str] name: (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
                **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -186,7 +186,7 @@ class EipArgs:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         """
         warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
         pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
@@ -243,7 +243,7 @@ class EipArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         """
         warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
@@ -385,11 +385,11 @@ class _EipState:
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[str] instance_charge_type: (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        :param pulumi.Input[str] instance_charge_type: (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
         :param pulumi.Input[str] ip_address: The elastic ip address
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-        :param pulumi.Input[str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        :param pulumi.Input[str] name: (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
                **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -544,7 +544,7 @@ class _EipState:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         """
         warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
         pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
@@ -613,7 +613,7 @@ class _EipState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         """
         warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
@@ -806,10 +806,10 @@ class Eip(pulumi.CustomResource):
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[str] instance_charge_type: (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        :param pulumi.Input[str] instance_charge_type: (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-        :param pulumi.Input[str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        :param pulumi.Input[str] name: (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
                **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -976,11 +976,11 @@ class Eip(pulumi.CustomResource):
                - true: Enable deletion protection.
                - false: Disable deletion protection.
         :param pulumi.Input[str] description: Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
-        :param pulumi.Input[str] instance_charge_type: (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        :param pulumi.Input[str] instance_charge_type: (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         :param pulumi.Input[str] internet_charge_type: Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only "PayByBandwidth" when `instance_charge_type` is PrePaid.
         :param pulumi.Input[str] ip_address: The elastic ip address
         :param pulumi.Input[str] isp: The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
-        :param pulumi.Input[str] name: It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        :param pulumi.Input[str] name: (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
         :param pulumi.Input[int] period: The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values: [1-9, 12, 24, 36]. At present, the provider does not support modify "period" and you can do that via web console.
                **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
@@ -1077,7 +1077,7 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Output[str]:
         """
-        (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
+        (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are "PrePaid" and "PostPaid". Default to "PostPaid".
         """
         warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
         pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
@@ -1122,7 +1122,7 @@ class Eip(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+        (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
         """
         warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")

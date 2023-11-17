@@ -78,6 +78,8 @@ export class BasicDefenseThreshold extends pulumi.CustomResource {
     public readonly bps!: pulumi.Output<number>;
     /**
      * The type of the threshold to query. Valid values: `defense`,`blackhole`.
+     * -`defense` - scrubbing threshold.
+     * -`blackhole` - DDoS mitigation threshold.
      */
     public readonly ddosType!: pulumi.Output<string>;
     /**
@@ -167,6 +169,8 @@ export interface BasicDefenseThresholdState {
     bps?: pulumi.Input<number>;
     /**
      * The type of the threshold to query. Valid values: `defense`,`blackhole`.
+     * -`defense` - scrubbing threshold.
+     * -`blackhole` - DDoS mitigation threshold.
      */
     ddosType?: pulumi.Input<string>;
     /**
@@ -209,6 +213,8 @@ export interface BasicDefenseThresholdArgs {
     bps?: pulumi.Input<number>;
     /**
      * The type of the threshold to query. Valid values: `defense`,`blackhole`.
+     * -`defense` - scrubbing threshold.
+     * -`blackhole` - DDoS mitigation threshold.
      */
     ddosType: pulumi.Input<string>;
     /**

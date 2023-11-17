@@ -56,8 +56,8 @@ class ShardingInstanceArgs:
         :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
                * UPGRADE: The specifications are upgraded.
-               * DOWNGRADE: The specifications are downgraded.
-               Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+               * DOWNGRADE: The specifications are downgraded. 
+                 Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[str] protocol_type: The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
@@ -267,8 +267,8 @@ class ShardingInstanceArgs:
         """
         The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         * UPGRADE: The specifications are upgraded.
-        * DOWNGRADE: The specifications are downgraded.
-        Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        * DOWNGRADE: The specifications are downgraded. 
+          Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         """
         return pulumi.get(self, "order_type")
 
@@ -455,8 +455,8 @@ class _ShardingInstanceState:
         :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
                * UPGRADE: The specifications are upgraded.
-               * DOWNGRADE: The specifications are downgraded.
-               Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+               * DOWNGRADE: The specifications are downgraded. 
+                 Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[str] protocol_type: The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
@@ -675,8 +675,8 @@ class _ShardingInstanceState:
         """
         The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         * UPGRADE: The specifications are upgraded.
-        * DOWNGRADE: The specifications are downgraded.
-        Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        * DOWNGRADE: The specifications are downgraded. 
+          Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         """
         return pulumi.get(self, "order_type")
 
@@ -958,8 +958,8 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
                * UPGRADE: The specifications are upgraded.
-               * DOWNGRADE: The specifications are downgraded.
-               Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+               * DOWNGRADE: The specifications are downgraded. 
+                 Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[str] protocol_type: The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
@@ -1190,8 +1190,8 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[str] network_type: The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
                * UPGRADE: The specifications are upgraded.
-               * DOWNGRADE: The specifications are downgraded.
-               Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+               * DOWNGRADE: The specifications are downgraded. 
+                 Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[str] protocol_type: The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
@@ -1341,8 +1341,8 @@ class ShardingInstance(pulumi.CustomResource):
         """
         The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         * UPGRADE: The specifications are upgraded.
-        * DOWNGRADE: The specifications are downgraded.
-        Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+        * DOWNGRADE: The specifications are downgraded. 
+          Note: This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         """
         return pulumi.get(self, "order_type")
 

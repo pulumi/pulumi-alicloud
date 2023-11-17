@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         /// </summary>
         public readonly string AscriptId;
         /// <summary>
-        /// Script name.
+        /// (ForceNew,Optional) Script name.
         /// </summary>
         public readonly string AscriptName;
         /// <summary>
@@ -35,7 +35,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
         public readonly ImmutableArray<Outputs.GetAscriptsAscriptExtAttributeResult> ExtAttributes;
         public readonly string Id;
         /// <summary>
-        /// Listener ID of script attribution
+        /// (ForceNew,Optional) Listener ID of script attribution
         /// </summary>
         public readonly string ListenerId;
         public readonly string LoadBalancerId;

@@ -48,14 +48,14 @@ public final class GetElasticityAssurancesPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The ID of the elastic protection service.
+     * (ForceNew,Optional) The ID of the elastic protection service.
      * 
      */
     @Import(name="privatePoolOptionsIds")
     private @Nullable List<String> privatePoolOptionsIds;
 
     /**
-     * @return The ID of the elastic protection service.
+     * @return (ForceNew,Optional) The ID of the elastic protection service.
      * 
      */
     public Optional<List<String>> privatePoolOptionsIds() {
@@ -63,14 +63,14 @@ public final class GetElasticityAssurancesPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The ID of the resource group.
+     * (ForceNew,Optional) The ID of the resource group.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable String resourceGroupId;
 
     /**
-     * @return The ID of the resource group.
+     * @return (ForceNew,Optional) The ID of the resource group.
      * 
      */
     public Optional<String> resourceGroupId() {
@@ -78,14 +78,14 @@ public final class GetElasticityAssurancesPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+     * (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+     * @return (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
      * 
      */
     public Optional<String> status() {
@@ -93,14 +93,14 @@ public final class GetElasticityAssurancesPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The tag key-value pair information bound by the elastic guarantee service.
+     * (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
      * 
      */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
     /**
-     * @return The tag key-value pair information bound by the elastic guarantee service.
+     * @return (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
      * 
      */
     public Optional<Map<String,Object>> tags() {
@@ -169,7 +169,7 @@ public final class GetElasticityAssurancesPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param privatePoolOptionsIds The ID of the elastic protection service.
+         * @param privatePoolOptionsIds (ForceNew,Optional) The ID of the elastic protection service.
          * 
          * @return builder
          * 
@@ -180,7 +180,7 @@ public final class GetElasticityAssurancesPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param privatePoolOptionsIds The ID of the elastic protection service.
+         * @param privatePoolOptionsIds (ForceNew,Optional) The ID of the elastic protection service.
          * 
          * @return builder
          * 
@@ -190,7 +190,7 @@ public final class GetElasticityAssurancesPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param resourceGroupId The ID of the resource group.
+         * @param resourceGroupId (ForceNew,Optional) The ID of the resource group.
          * 
          * @return builder
          * 
@@ -201,7 +201,7 @@ public final class GetElasticityAssurancesPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param status The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+         * @param status (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class GetElasticityAssurancesPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tags The tag key-value pair information bound by the elastic guarantee service.
+         * @param tags (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
          * 
          * @return builder
          * 

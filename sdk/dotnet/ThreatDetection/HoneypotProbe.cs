@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Configure the service.See the following `Block HoneypotBindList`.
+        /// (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
         /// </summary>
         [Output("honeypotBindLists")]
         public Output<ImmutableArray<Outputs.HoneypotProbeHoneypotBindList>> HoneypotBindLists { get; private set; } = null!;
@@ -110,13 +110,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<string> ProbeType { get; private set; } = null!;
 
         /// <summary>
-        /// The version of the probe.
+        /// (ForceNew,Optional) The version of the probe.
         /// </summary>
         [Output("probeVersion")]
         public Output<string> ProbeVersion { get; private set; } = null!;
 
         /// <summary>
-        /// The IP address of the proxy.
+        /// (ForceNew,Optional) The IP address of the proxy.
         /// </summary>
         [Output("proxyIp")]
         public Output<string?> ProxyIp { get; private set; } = null!;
@@ -134,13 +134,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+        /// (ForceNew,Optional) Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
         /// </summary>
         [Output("uuid")]
         public Output<string?> Uuid { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+        /// (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
         /// </summary>
         [Output("vpcId")]
         public Output<string?> VpcId { get; private set; } = null!;
@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<Inputs.HoneypotProbeHoneypotBindListArgs>? _honeypotBindLists;
 
         /// <summary>
-        /// Configure the service.See the following `Block HoneypotBindList`.
+        /// (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
         /// </summary>
         public InputList<Inputs.HoneypotProbeHoneypotBindListArgs> HoneypotBindLists
         {
@@ -234,13 +234,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string> ProbeType { get; set; } = null!;
 
         /// <summary>
-        /// The version of the probe.
+        /// (ForceNew,Optional) The version of the probe.
         /// </summary>
         [Input("probeVersion")]
         public Input<string>? ProbeVersion { get; set; }
 
         /// <summary>
-        /// The IP address of the proxy.
+        /// (ForceNew,Optional) The IP address of the proxy.
         /// </summary>
         [Input("proxyIp")]
         public Input<string>? ProxyIp { get; set; }
@@ -258,13 +258,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+        /// (ForceNew,Optional) Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 
         /// <summary>
-        /// The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+        /// (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }
@@ -299,7 +299,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         private InputList<Inputs.HoneypotProbeHoneypotBindListGetArgs>? _honeypotBindLists;
 
         /// <summary>
-        /// Configure the service.See the following `Block HoneypotBindList`.
+        /// (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
         /// </summary>
         public InputList<Inputs.HoneypotProbeHoneypotBindListGetArgs> HoneypotBindLists
         {
@@ -326,13 +326,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? ProbeType { get; set; }
 
         /// <summary>
-        /// The version of the probe.
+        /// (ForceNew,Optional) The version of the probe.
         /// </summary>
         [Input("probeVersion")]
         public Input<string>? ProbeVersion { get; set; }
 
         /// <summary>
-        /// The IP address of the proxy.
+        /// (ForceNew,Optional) The IP address of the proxy.
         /// </summary>
         [Input("proxyIp")]
         public Input<string>? ProxyIp { get; set; }
@@ -356,13 +356,13 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+        /// (ForceNew,Optional) Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
         /// </summary>
         [Input("uuid")]
         public Input<string>? Uuid { get; set; }
 
         /// <summary>
-        /// The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+        /// (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

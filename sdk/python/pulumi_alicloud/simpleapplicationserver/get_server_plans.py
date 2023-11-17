@@ -164,7 +164,7 @@ def get_server_plans(bandwidth: Optional[int] = None,
     :param Sequence[str] ids: A list of Instance Plan IDs.
     :param int memory: The memory size. Unit: GB.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str platform: The platform of Plan supported. Valid values: ["Linux", "Windows"].
+    :param str platform: (Available in v1.161.0) The platform of Plan supported. Valid values: ["Linux", "Windows"].
     """
     __args__ = dict()
     __args__['bandwidth'] = bandwidth
@@ -230,6 +230,6 @@ def get_server_plans_output(bandwidth: Optional[pulumi.Input[Optional[int]]] = N
     :param Sequence[str] ids: A list of Instance Plan IDs.
     :param int memory: The memory size. Unit: GB.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str platform: The platform of Plan supported. Valid values: ["Linux", "Windows"].
+    :param str platform: (Available in v1.161.0) The platform of Plan supported. Valid values: ["Linux", "Windows"].
     """
     ...

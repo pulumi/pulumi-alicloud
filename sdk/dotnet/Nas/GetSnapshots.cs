@@ -130,7 +130,7 @@ namespace Pulumi.AliCloud.Nas
         public string? SnapshotName { get; set; }
 
         /// <summary>
-        /// The status of the snapshot.
+        /// Status. Valid values: `accomplished`, `failed`, `progressing`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -180,7 +180,7 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? SnapshotName { get; set; }
 
         /// <summary>
-        /// The status of the snapshot.
+        /// Status. Valid values: `accomplished`, `failed`, `progressing`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

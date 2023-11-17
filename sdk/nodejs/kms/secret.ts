@@ -127,7 +127,7 @@ export class Secret extends pulumi.CustomResource {
      */
     public readonly versionId!: pulumi.Output<string>;
     /**
-     * ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+     * The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
      */
     public readonly versionStages!: pulumi.Output<string[]>;
 
@@ -266,7 +266,7 @@ export interface SecretState {
      */
     versionId?: pulumi.Input<string>;
     /**
-     * ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+     * The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
      */
     versionStages?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -332,7 +332,7 @@ export interface SecretArgs {
      */
     versionId: pulumi.Input<string>;
     /**
-     * ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+     * The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
      */
     versionStages?: pulumi.Input<pulumi.Input<string>[]>;
 }

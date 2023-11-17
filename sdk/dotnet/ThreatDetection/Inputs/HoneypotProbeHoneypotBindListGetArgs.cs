@@ -16,7 +16,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Inputs
         private InputList<Inputs.HoneypotProbeHoneypotBindListBindPortListGetArgs>? _bindPortLists;
 
         /// <summary>
-        /// List of listening ports.See the following `Block BindPortList`.
+        /// (ForceNew,Optional) List of listening ports.See the following `Block BindPortList`.
         /// </summary>
         public InputList<Inputs.HoneypotProbeHoneypotBindListBindPortListGetArgs> BindPortLists
         {
@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Inputs
         }
 
         /// <summary>
-        /// Honeypot ID.
+        /// (ForceNew,Optional) Honeypot ID.
         /// </summary>
         [Input("honeypotId")]
         public Input<string>? HoneypotId { get; set; }

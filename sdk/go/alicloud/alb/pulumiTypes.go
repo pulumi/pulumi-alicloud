@@ -3489,6 +3489,13 @@ type RuleRuleActionInsertHeaderConfig struct {
 	Key *string `pulumi:"key"`
 	// The content of the inserted header field. Valid values:
 	// * If the `valueType` is set to `SystemDefined`, the following values are used:
+	//   - `ClientSrcPort`: the port of the client.
+	//   - `ClientSrcIp`: the IP address of the client.
+	//   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+	//   - `SLBId`: the ID of the ALB instance.
+	//   - `SLBPort`: the listener port of the ALB instance.
+	// * If the `valueType` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+	// * If the `valueType` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 	Value *string `pulumi:"value"`
 	// The value type of the inserted header field. Valid values:
 	ValueType *string `pulumi:"valueType"`
@@ -3510,6 +3517,13 @@ type RuleRuleActionInsertHeaderConfigArgs struct {
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The content of the inserted header field. Valid values:
 	// * If the `valueType` is set to `SystemDefined`, the following values are used:
+	//   - `ClientSrcPort`: the port of the client.
+	//   - `ClientSrcIp`: the IP address of the client.
+	//   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+	//   - `SLBId`: the ID of the ALB instance.
+	//   - `SLBPort`: the listener port of the ALB instance.
+	// * If the `valueType` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+	// * If the `valueType` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 	Value pulumi.StringPtrInput `pulumi:"value"`
 	// The value type of the inserted header field. Valid values:
 	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
@@ -3599,6 +3613,14 @@ func (o RuleRuleActionInsertHeaderConfigOutput) Key() pulumi.StringPtrOutput {
 
 // The content of the inserted header field. Valid values:
 // * If the `valueType` is set to `SystemDefined`, the following values are used:
+//   - `ClientSrcPort`: the port of the client.
+//   - `ClientSrcIp`: the IP address of the client.
+//   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+//   - `SLBId`: the ID of the ALB instance.
+//   - `SLBPort`: the listener port of the ALB instance.
+//
+// * If the `valueType` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+// * If the `valueType` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 func (o RuleRuleActionInsertHeaderConfigOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionInsertHeaderConfig) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -3644,6 +3666,14 @@ func (o RuleRuleActionInsertHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput 
 
 // The content of the inserted header field. Valid values:
 // * If the `valueType` is set to `SystemDefined`, the following values are used:
+//   - `ClientSrcPort`: the port of the client.
+//   - `ClientSrcIp`: the IP address of the client.
+//   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+//   - `SLBId`: the ID of the ALB instance.
+//   - `SLBPort`: the listener port of the ALB instance.
+//
+// * If the `valueType` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+// * If the `valueType` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 func (o RuleRuleActionInsertHeaderConfigPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionInsertHeaderConfig) *string {
 		if v == nil {
@@ -4905,6 +4935,13 @@ type RuleRuleConditionCookieConfigValue struct {
 	Key *string `pulumi:"key"`
 	// The content of the inserted header field. Valid values:
 	// * If the `valueType` is set to `SystemDefined`, the following values are used:
+	//   - `ClientSrcPort`: the port of the client.
+	//   - `ClientSrcIp`: the IP address of the client.
+	//   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+	//   - `SLBId`: the ID of the ALB instance.
+	//   - `SLBPort`: the listener port of the ALB instance.
+	// * If the `valueType` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+	// * If the `valueType` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 	Value *string `pulumi:"value"`
 }
 
@@ -4924,6 +4961,13 @@ type RuleRuleConditionCookieConfigValueArgs struct {
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The content of the inserted header field. Valid values:
 	// * If the `valueType` is set to `SystemDefined`, the following values are used:
+	//   - `ClientSrcPort`: the port of the client.
+	//   - `ClientSrcIp`: the IP address of the client.
+	//   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+	//   - `SLBId`: the ID of the ALB instance.
+	//   - `SLBPort`: the listener port of the ALB instance.
+	// * If the `valueType` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+	// * If the `valueType` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -4985,6 +5029,14 @@ func (o RuleRuleConditionCookieConfigValueOutput) Key() pulumi.StringPtrOutput {
 
 // The content of the inserted header field. Valid values:
 // * If the `valueType` is set to `SystemDefined`, the following values are used:
+//   - `ClientSrcPort`: the port of the client.
+//   - `ClientSrcIp`: the IP address of the client.
+//   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+//   - `SLBId`: the ID of the ALB instance.
+//   - `SLBPort`: the listener port of the ALB instance.
+//
+// * If the `valueType` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+// * If the `valueType` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 func (o RuleRuleConditionCookieConfigValueOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleConditionCookieConfigValue) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5718,6 +5770,13 @@ type RuleRuleConditionQueryStringConfigValue struct {
 	Key *string `pulumi:"key"`
 	// The content of the inserted header field. Valid values:
 	// * If the `valueType` is set to `SystemDefined`, the following values are used:
+	//   - `ClientSrcPort`: the port of the client.
+	//   - `ClientSrcIp`: the IP address of the client.
+	//   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+	//   - `SLBId`: the ID of the ALB instance.
+	//   - `SLBPort`: the listener port of the ALB instance.
+	// * If the `valueType` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+	// * If the `valueType` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 	Value *string `pulumi:"value"`
 }
 
@@ -5737,6 +5796,13 @@ type RuleRuleConditionQueryStringConfigValueArgs struct {
 	Key pulumi.StringPtrInput `pulumi:"key"`
 	// The content of the inserted header field. Valid values:
 	// * If the `valueType` is set to `SystemDefined`, the following values are used:
+	//   - `ClientSrcPort`: the port of the client.
+	//   - `ClientSrcIp`: the IP address of the client.
+	//   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+	//   - `SLBId`: the ID of the ALB instance.
+	//   - `SLBPort`: the listener port of the ALB instance.
+	// * If the `valueType` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+	// * If the `valueType` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -5798,6 +5864,14 @@ func (o RuleRuleConditionQueryStringConfigValueOutput) Key() pulumi.StringPtrOut
 
 // The content of the inserted header field. Valid values:
 // * If the `valueType` is set to `SystemDefined`, the following values are used:
+//   - `ClientSrcPort`: the port of the client.
+//   - `ClientSrcIp`: the IP address of the client.
+//   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+//   - `SLBId`: the ID of the ALB instance.
+//   - `SLBPort`: the listener port of the ALB instance.
+//
+// * If the `valueType` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+// * If the `valueType` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 func (o RuleRuleConditionQueryStringConfigValueOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleConditionQueryStringConfigValue) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -6968,7 +7042,7 @@ func (o GetAclsAclAclEntryArrayOutput) Index(i pulumi.IntInput) GetAclsAclAclEnt
 type GetAscriptsAscript struct {
 	// Script identification.
 	AscriptId string `pulumi:"ascriptId"`
-	// Script name.
+	// (ForceNew,Optional) Script name.
 	AscriptName string `pulumi:"ascriptName"`
 	// Whether scripts are enabled.
 	Enabled bool `pulumi:"enabled"`
@@ -6977,7 +7051,7 @@ type GetAscriptsAscript struct {
 	// Extended attribute list.
 	ExtAttributes []GetAscriptsAscriptExtAttribute `pulumi:"extAttributes"`
 	Id            string                           `pulumi:"id"`
-	// Listener ID of script attribution
+	// (ForceNew,Optional) Listener ID of script attribution
 	ListenerId     string `pulumi:"listenerId"`
 	LoadBalancerId string `pulumi:"loadBalancerId"`
 	// Script execution location.
@@ -7002,7 +7076,7 @@ type GetAscriptsAscriptInput interface {
 type GetAscriptsAscriptArgs struct {
 	// Script identification.
 	AscriptId pulumi.StringInput `pulumi:"ascriptId"`
-	// Script name.
+	// (ForceNew,Optional) Script name.
 	AscriptName pulumi.StringInput `pulumi:"ascriptName"`
 	// Whether scripts are enabled.
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
@@ -7011,7 +7085,7 @@ type GetAscriptsAscriptArgs struct {
 	// Extended attribute list.
 	ExtAttributes GetAscriptsAscriptExtAttributeArrayInput `pulumi:"extAttributes"`
 	Id            pulumi.StringInput                       `pulumi:"id"`
-	// Listener ID of script attribution
+	// (ForceNew,Optional) Listener ID of script attribution
 	ListenerId     pulumi.StringInput `pulumi:"listenerId"`
 	LoadBalancerId pulumi.StringInput `pulumi:"loadBalancerId"`
 	// Script execution location.
@@ -7078,7 +7152,7 @@ func (o GetAscriptsAscriptOutput) AscriptId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAscriptsAscript) string { return v.AscriptId }).(pulumi.StringOutput)
 }
 
-// Script name.
+// (ForceNew,Optional) Script name.
 func (o GetAscriptsAscriptOutput) AscriptName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAscriptsAscript) string { return v.AscriptName }).(pulumi.StringOutput)
 }
@@ -7102,7 +7176,7 @@ func (o GetAscriptsAscriptOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAscriptsAscript) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Listener ID of script attribution
+// (ForceNew,Optional) Listener ID of script attribution
 func (o GetAscriptsAscriptOutput) ListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAscriptsAscript) string { return v.ListenerId }).(pulumi.StringOutput)
 }
@@ -7511,7 +7585,7 @@ type GetListenersListener struct {
 	//
 	// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 	SecurityPolicyId string `pulumi:"securityPolicyId"`
-	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status string `pulumi:"status"`
 	// xforwardfor Related Attribute Configuration.
 	XforwardedForConfigs []GetListenersListenerXforwardedForConfig `pulumi:"xforwardedForConfigs"`
@@ -7573,7 +7647,7 @@ type GetListenersListenerArgs struct {
 	//
 	// > **NOTE:** The attribute is valid when the attribute `ListenerProtocol` is `HTTPS`.
 	SecurityPolicyId pulumi.StringInput `pulumi:"securityPolicyId"`
-	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringInput `pulumi:"status"`
 	// xforwardfor Related Attribute Configuration.
 	XforwardedForConfigs GetListenersListenerXforwardedForConfigArrayInput `pulumi:"xforwardedForConfigs"`
@@ -7733,7 +7807,7 @@ func (o GetListenersListenerOutput) SecurityPolicyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.SecurityPolicyId }).(pulumi.StringOutput)
 }
 
-// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 func (o GetListenersListenerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListener) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -8007,7 +8081,7 @@ func (o GetListenersListenerAclConfigArrayOutput) Index(i pulumi.IntInput) GetLi
 type GetListenersListenerAclConfigAclRelation struct {
 	// Snooping Binding of the Access Policy Group ID List.
 	AclId string `pulumi:"aclId"`
-	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status string `pulumi:"status"`
 }
 
@@ -8025,7 +8099,7 @@ type GetListenersListenerAclConfigAclRelationInput interface {
 type GetListenersListenerAclConfigAclRelationArgs struct {
 	// Snooping Binding of the Access Policy Group ID List.
 	AclId pulumi.StringInput `pulumi:"aclId"`
-	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -8085,7 +8159,7 @@ func (o GetListenersListenerAclConfigAclRelationOutput) AclId() pulumi.StringOut
 	return o.ApplyT(func(v GetListenersListenerAclConfigAclRelation) string { return v.AclId }).(pulumi.StringOutput)
 }
 
-// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 func (o GetListenersListenerAclConfigAclRelationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerAclConfigAclRelation) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -9550,7 +9624,7 @@ func (o GetLoadBalancersBalancerLoadBalancerOperationLockArrayOutput) Index(i pu
 type GetLoadBalancersBalancerModificationProtectionConfig struct {
 	// The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
 	Reason string `pulumi:"reason"`
-	// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+	// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
 	Status string `pulumi:"status"`
 }
 
@@ -9568,7 +9642,7 @@ type GetLoadBalancersBalancerModificationProtectionConfigInput interface {
 type GetLoadBalancersBalancerModificationProtectionConfigArgs struct {
 	// The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
 	Reason pulumi.StringInput `pulumi:"reason"`
-	// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+	// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -9628,7 +9702,7 @@ func (o GetLoadBalancersBalancerModificationProtectionConfigOutput) Reason() pul
 	return o.ApplyT(func(v GetLoadBalancersBalancerModificationProtectionConfig) string { return v.Reason }).(pulumi.StringOutput)
 }
 
-// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+// Specifies whether to enable the configuration read-only mode for the ALB instance. Valid values: `NonProtection` and `ConsoleProtection`.
 func (o GetLoadBalancersBalancerModificationProtectionConfigOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerModificationProtectionConfig) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -10530,9 +10604,9 @@ func (o GetRulesRuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) Ind
 }
 
 type GetRulesRuleRuleActionInsertHeaderConfig struct {
-	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
 	Key string `pulumi:"key"`
-	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 	Value string `pulumi:"value"`
 	// Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
 	ValueType string `pulumi:"valueType"`
@@ -10550,9 +10624,9 @@ type GetRulesRuleRuleActionInsertHeaderConfigInput interface {
 }
 
 type GetRulesRuleRuleActionInsertHeaderConfigArgs struct {
-	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+	// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 	Value pulumi.StringInput `pulumi:"value"`
 	// Valid values:  UserDefined: a custom value ReferenceHeader: uses a field of the user request header. SystemDefined: a system value.
 	ValueType pulumi.StringInput `pulumi:"valueType"`
@@ -10609,12 +10683,12 @@ func (o GetRulesRuleRuleActionInsertHeaderConfigOutput) ToGetRulesRuleRuleAction
 	return o
 }
 
-// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
+// The name of the inserted header field. The name must be 1 to 40 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). You cannot use the same name in InsertHeader.  Note You cannot use Cookie or Host in the name.
 func (o GetRulesRuleRuleActionInsertHeaderConfigOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleActionInsertHeaderConfig) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 func (o GetRulesRuleRuleActionInsertHeaderConfigOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleActionInsertHeaderConfig) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -10645,17 +10719,17 @@ func (o GetRulesRuleRuleActionInsertHeaderConfigArrayOutput) Index(i pulumi.IntI
 }
 
 type GetRulesRuleRuleActionRedirectConfig struct {
-	// The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	// The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 	Host string `pulumi:"host"`
 	// The redirect method. Valid values:301, 302, 303, 307, and 308.
 	HttpCode string `pulumi:"httpCode"`
-	// The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+	// The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
 	Path string `pulumi:"path"`
 	// The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
 	Port string `pulumi:"port"`
 	// The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
 	Protocol string `pulumi:"protocol"`
-	// The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+	// The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
 	Query string `pulumi:"query"`
 }
 
@@ -10671,17 +10745,17 @@ type GetRulesRuleRuleActionRedirectConfigInput interface {
 }
 
 type GetRulesRuleRuleActionRedirectConfigArgs struct {
-	// The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+	// The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 	Host pulumi.StringInput `pulumi:"host"`
 	// The redirect method. Valid values:301, 302, 303, 307, and 308.
 	HttpCode pulumi.StringInput `pulumi:"httpCode"`
-	// The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+	// The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
 	Path pulumi.StringInput `pulumi:"path"`
 	// The port of the destination to which requests are redirected.  Valid values: 1 to 63335.  Default value: ${port}. You cannot use this value together with other characters at the same time.
 	Port pulumi.StringInput `pulumi:"port"`
 	// The protocol of the requests to be redirected.  Valid values: HTTP and HTTPS.  Default value: ${protocol}. You cannot use this value together with other characters at the same time.  Note HTTPS listeners can redirect only HTTPS requests.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
-	// The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+	// The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
 	Query pulumi.StringInput `pulumi:"query"`
 }
 
@@ -10736,7 +10810,7 @@ func (o GetRulesRuleRuleActionRedirectConfigOutput) ToGetRulesRuleRuleActionRedi
 	return o
 }
 
-// The host name of the destination to which requests are redirected within ALB.  Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
+// The host name of the destination to which requests are directed.  The host name must meet the following rules:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 func (o GetRulesRuleRuleActionRedirectConfigOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleActionRedirectConfig) string { return v.Host }).(pulumi.StringOutput)
 }
@@ -10746,7 +10820,7 @@ func (o GetRulesRuleRuleActionRedirectConfigOutput) HttpCode() pulumi.StringOutp
 	return o.ApplyT(func(v GetRulesRuleRuleActionRedirectConfig) string { return v.HttpCode }).(pulumi.StringOutput)
 }
 
-// The path to which requests are to be redirected within ALB.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. This value can be used only once. You can use it with a valid string.
+// The path of the destination to which requests are directed.  Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?) and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive.  Default value: ${path}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them with a valid string.
 func (o GetRulesRuleRuleActionRedirectConfigOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleActionRedirectConfig) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -10761,7 +10835,7 @@ func (o GetRulesRuleRuleActionRedirectConfigOutput) Protocol() pulumi.StringOutp
 	return o.ApplyT(func(v GetRulesRuleRuleActionRedirectConfig) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The query string of the request to be redirected within ALB.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. This value can be used only once. You can use it with a valid string.
+// The query string of the request to be redirected.  The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &.  Default value: ${query}. You can also reference ${host}, ${protocol}, and ${port}. Each variable can appear at most once. You can use the preceding variables at the same time, or use them together with a valid string.
 func (o GetRulesRuleRuleActionRedirectConfigOutput) Query() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleActionRedirectConfig) string { return v.Query }).(pulumi.StringOutput)
 }
@@ -11467,7 +11541,7 @@ func (o GetRulesRuleRuleConditionArrayOutput) Index(i pulumi.IntInput) GetRulesR
 }
 
 type GetRulesRuleRuleConditionCookieConfig struct {
-	// Add one or more IP addresses or IP address segments.
+	// The configuration of the cookie.
 	Values []GetRulesRuleRuleConditionCookieConfigValue `pulumi:"values"`
 }
 
@@ -11483,7 +11557,7 @@ type GetRulesRuleRuleConditionCookieConfigInput interface {
 }
 
 type GetRulesRuleRuleConditionCookieConfigArgs struct {
-	// Add one or more IP addresses or IP address segments.
+	// The configuration of the cookie.
 	Values GetRulesRuleRuleConditionCookieConfigValueArrayInput `pulumi:"values"`
 }
 
@@ -11538,7 +11612,7 @@ func (o GetRulesRuleRuleConditionCookieConfigOutput) ToGetRulesRuleRuleCondition
 	return o
 }
 
-// Add one or more IP addresses or IP address segments.
+// The configuration of the cookie.
 func (o GetRulesRuleRuleConditionCookieConfigOutput) Values() GetRulesRuleRuleConditionCookieConfigValueArrayOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleConditionCookieConfig) []GetRulesRuleRuleConditionCookieConfigValue {
 		return v.Values
@@ -11568,7 +11642,7 @@ func (o GetRulesRuleRuleConditionCookieConfigArrayOutput) Index(i pulumi.IntInpu
 type GetRulesRuleRuleConditionCookieConfigValue struct {
 	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
 	Key string `pulumi:"key"`
-	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 	Value string `pulumi:"value"`
 }
 
@@ -11586,7 +11660,7 @@ type GetRulesRuleRuleConditionCookieConfigValueInput interface {
 type GetRulesRuleRuleConditionCookieConfigValueArgs struct {
 	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -11646,7 +11720,7 @@ func (o GetRulesRuleRuleConditionCookieConfigValueOutput) Key() pulumi.StringOut
 	return o.ApplyT(func(v GetRulesRuleRuleConditionCookieConfigValue) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 func (o GetRulesRuleRuleConditionCookieConfigValueOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleConditionCookieConfigValue) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -11674,7 +11748,7 @@ func (o GetRulesRuleRuleConditionCookieConfigValueArrayOutput) Index(i pulumi.In
 type GetRulesRuleRuleConditionHeaderConfig struct {
 	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
 	Key string `pulumi:"key"`
-	// Add one or more IP addresses or IP address segments.
+	// The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The value cannot start or end with a space.
 	Values []string `pulumi:"values"`
 }
 
@@ -11692,7 +11766,7 @@ type GetRulesRuleRuleConditionHeaderConfigInput interface {
 type GetRulesRuleRuleConditionHeaderConfigArgs struct {
 	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Add one or more IP addresses or IP address segments.
+	// The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The value cannot start or end with a space.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -11752,7 +11826,7 @@ func (o GetRulesRuleRuleConditionHeaderConfigOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleConditionHeaderConfig) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Add one or more IP addresses or IP address segments.
+// The value of the header field. The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The value cannot start or end with a space.
 func (o GetRulesRuleRuleConditionHeaderConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleConditionHeaderConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -11778,7 +11852,7 @@ func (o GetRulesRuleRuleConditionHeaderConfigArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetRulesRuleRuleConditionHostConfig struct {
-	// Add one or more IP addresses or IP address segments.
+	// The name of the host. **Note: ** The host name must meet the following rules: The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost field can contain only letters and wildcards, and cannot contain digits or hyphens (-). Other fields cannot start or end with a hyphen (-). You can enter asterisks (*) and question marks (?) anywhere in a field.
 	Values []string `pulumi:"values"`
 }
 
@@ -11794,7 +11868,7 @@ type GetRulesRuleRuleConditionHostConfigInput interface {
 }
 
 type GetRulesRuleRuleConditionHostConfigArgs struct {
-	// Add one or more IP addresses or IP address segments.
+	// The name of the host. **Note: ** The host name must meet the following rules: The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost field can contain only letters and wildcards, and cannot contain digits or hyphens (-). Other fields cannot start or end with a hyphen (-). You can enter asterisks (*) and question marks (?) anywhere in a field.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -11849,7 +11923,7 @@ func (o GetRulesRuleRuleConditionHostConfigOutput) ToGetRulesRuleRuleConditionHo
 	return o
 }
 
-// Add one or more IP addresses or IP address segments.
+// The name of the host. **Note: ** The host name must meet the following rules: The hostname must be 3 to 128 characters in length, and can contain lowercase letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost field can contain only letters and wildcards, and cannot contain digits or hyphens (-). Other fields cannot start or end with a hyphen (-). You can enter asterisks (*) and question marks (?) anywhere in a field.
 func (o GetRulesRuleRuleConditionHostConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleConditionHostConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -11875,7 +11949,7 @@ func (o GetRulesRuleRuleConditionHostConfigArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetRulesRuleRuleConditionMethodConfig struct {
-	// Add one or more IP addresses or IP address segments.
+	// The request method. Valid values: `HEAD`, `GET`, `POST`, `OPTIONS`, `PUT`, `PATCH`, and `DELETE`.
 	Values []string `pulumi:"values"`
 }
 
@@ -11891,7 +11965,7 @@ type GetRulesRuleRuleConditionMethodConfigInput interface {
 }
 
 type GetRulesRuleRuleConditionMethodConfigArgs struct {
-	// Add one or more IP addresses or IP address segments.
+	// The request method. Valid values: `HEAD`, `GET`, `POST`, `OPTIONS`, `PUT`, `PATCH`, and `DELETE`.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -11946,7 +12020,7 @@ func (o GetRulesRuleRuleConditionMethodConfigOutput) ToGetRulesRuleRuleCondition
 	return o
 }
 
-// Add one or more IP addresses or IP address segments.
+// The request method. Valid values: `HEAD`, `GET`, `POST`, `OPTIONS`, `PUT`, `PATCH`, and `DELETE`.
 func (o GetRulesRuleRuleConditionMethodConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleConditionMethodConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -11972,7 +12046,7 @@ func (o GetRulesRuleRuleConditionMethodConfigArrayOutput) Index(i pulumi.IntInpu
 }
 
 type GetRulesRuleRuleConditionPathConfig struct {
-	// Add one or more IP addresses or IP address segments.
+	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
 	Values []string `pulumi:"values"`
 }
 
@@ -11988,7 +12062,7 @@ type GetRulesRuleRuleConditionPathConfigInput interface {
 }
 
 type GetRulesRuleRuleConditionPathConfigArgs struct {
-	// Add one or more IP addresses or IP address segments.
+	// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -12043,7 +12117,7 @@ func (o GetRulesRuleRuleConditionPathConfigOutput) ToGetRulesRuleRuleConditionPa
 	return o
 }
 
-// Add one or more IP addresses or IP address segments.
+// The path of the request to be forwarded. The path must be 1 to 128 characters in length and must start with a forward slash (/). The path can contain letters, digits, and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ". The value is case-sensitive, and can contain asterisks (*) and question marks (?).
 func (o GetRulesRuleRuleConditionPathConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleConditionPathConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -12069,7 +12143,7 @@ func (o GetRulesRuleRuleConditionPathConfigArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetRulesRuleRuleConditionQueryStringConfig struct {
-	// Add one or more IP addresses or IP address segments.
+	// The configuration of the cookie.
 	Values []GetRulesRuleRuleConditionQueryStringConfigValue `pulumi:"values"`
 }
 
@@ -12085,7 +12159,7 @@ type GetRulesRuleRuleConditionQueryStringConfigInput interface {
 }
 
 type GetRulesRuleRuleConditionQueryStringConfigArgs struct {
-	// Add one or more IP addresses or IP address segments.
+	// The configuration of the cookie.
 	Values GetRulesRuleRuleConditionQueryStringConfigValueArrayInput `pulumi:"values"`
 }
 
@@ -12140,7 +12214,7 @@ func (o GetRulesRuleRuleConditionQueryStringConfigOutput) ToGetRulesRuleRuleCond
 	return o
 }
 
-// Add one or more IP addresses or IP address segments.
+// The configuration of the cookie.
 func (o GetRulesRuleRuleConditionQueryStringConfigOutput) Values() GetRulesRuleRuleConditionQueryStringConfigValueArrayOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleConditionQueryStringConfig) []GetRulesRuleRuleConditionQueryStringConfigValue {
 		return v.Values
@@ -12170,7 +12244,7 @@ func (o GetRulesRuleRuleConditionQueryStringConfigArrayOutput) Index(i pulumi.In
 type GetRulesRuleRuleConditionQueryStringConfigValue struct {
 	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
 	Key string `pulumi:"key"`
-	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 	Value string `pulumi:"value"`
 }
 
@@ -12188,7 +12262,7 @@ type GetRulesRuleRuleConditionQueryStringConfigValueInput interface {
 type GetRulesRuleRuleConditionQueryStringConfigValueArgs struct {
 	// The key of the header field. The key must be 1 to 40 characters in length, and can contain letters, digits, hyphens (-) and underscores (_). The key does not support Cookie or Host.
 	Key pulumi.StringInput `pulumi:"key"`
-	// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+	// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -12248,7 +12322,7 @@ func (o GetRulesRuleRuleConditionQueryStringConfigValueOutput) Key() pulumi.Stri
 	return o.ApplyT(func(v GetRulesRuleRuleConditionQueryStringConfigValue) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters, asterisks (*), and question marks (?). The value cannot contain spaces or the following special characters: # [ ] { } \ | < > &.
+// The content of the inserted header field:  If the ValueType parameter is set to SystemDefined, the following values are used:  ClientSrcPort: the port of the client ClientSrcIp: the IP address of the client Protocol: the protocol used by client requests (HTTP or HTTPS) SLBId: the ID of the ALB instance SLBPort: the listener port of the ALB instance If the ValueType parameter is set to UserDefined: The header value must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch >= 32 && ch < 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.  If the ValueType parameter is set to ReferenceHeader: The header value must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
 func (o GetRulesRuleRuleConditionQueryStringConfigValueOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRulesRuleRuleConditionQueryStringConfigValue) string { return v.Value }).(pulumi.StringOutput)
 }

@@ -45,14 +45,14 @@ public final class GetVpcEndpointZonesPlainArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The Status of Vpc Endpoint Zone..
+     * The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The Status of Vpc Endpoint Zone..
+     * @return The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
      * 
      */
     public Optional<String> status() {
@@ -108,7 +108,7 @@ public final class GetVpcEndpointZonesPlainArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param status The Status of Vpc Endpoint Zone..
+         * @param status The Status of Vpc Endpoint Zone. Valid Values: `Connected`, `Connecting`, `Creating`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting` and `Wait`.
          * 
          * @return builder
          * 

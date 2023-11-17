@@ -49,7 +49,7 @@ public final class GetCapacityReservationsReservation {
      */
     private String instanceAmount;
     /**
-     * @return Instance type. Currently, you can only set the capacity reservation service for one instance type.
+     * @return (ForceNew,Optional) Instance type. Currently, you can only set the capacity reservation service for one instance type.
      * 
      */
     private String instanceType;
@@ -59,17 +59,17 @@ public final class GetCapacityReservationsReservation {
      */
     private String matchCriteria;
     /**
-     * @return The payment type of the resource. value range `PostPaid`, `PrePaid`.
+     * @return (ForceNew,Optional) The payment type of the resource. value range `PostPaid`, `PrePaid`.
      * 
      */
     private String paymentType;
     /**
-     * @return platform of the capacity reservation , value range `windows`, `linux`, `all`.
+     * @return (ForceNew,Optional) platform of the capacity reservation , value range `windows`, `linux`, `all`.
      * 
      */
     private String platform;
     /**
-     * @return The resource group id.
+     * @return (ForceNew,Optional) The resource group id.
      * 
      */
     private String resourceGroupId;
@@ -84,12 +84,12 @@ public final class GetCapacityReservationsReservation {
      */
     private String startTimeType;
     /**
-     * @return The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
+     * @return (ForceNew,Optional) The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
      * 
      */
     private String status;
     /**
-     * @return The tag of the resource.
+     * @return (ForceNew,Optional) The tag of the resource.
      * 
      */
     private @Nullable Map<String,Object> tags;
@@ -155,7 +155,7 @@ public final class GetCapacityReservationsReservation {
         return this.instanceAmount;
     }
     /**
-     * @return Instance type. Currently, you can only set the capacity reservation service for one instance type.
+     * @return (ForceNew,Optional) Instance type. Currently, you can only set the capacity reservation service for one instance type.
      * 
      */
     public String instanceType() {
@@ -169,21 +169,21 @@ public final class GetCapacityReservationsReservation {
         return this.matchCriteria;
     }
     /**
-     * @return The payment type of the resource. value range `PostPaid`, `PrePaid`.
+     * @return (ForceNew,Optional) The payment type of the resource. value range `PostPaid`, `PrePaid`.
      * 
      */
     public String paymentType() {
         return this.paymentType;
     }
     /**
-     * @return platform of the capacity reservation , value range `windows`, `linux`, `all`.
+     * @return (ForceNew,Optional) platform of the capacity reservation , value range `windows`, `linux`, `all`.
      * 
      */
     public String platform() {
         return this.platform;
     }
     /**
-     * @return The resource group id.
+     * @return (ForceNew,Optional) The resource group id.
      * 
      */
     public String resourceGroupId() {
@@ -204,14 +204,14 @@ public final class GetCapacityReservationsReservation {
         return this.startTimeType;
     }
     /**
-     * @return The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
+     * @return (ForceNew,Optional) The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The tag of the resource.
+     * @return (ForceNew,Optional) The tag of the resource.
      * 
      */
     public Map<String,Object> tags() {

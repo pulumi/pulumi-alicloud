@@ -80,14 +80,14 @@ public final class GetTemplatesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Share Type.
+     * Share Type. Valid Values: `Private`, `Shared`
      * 
      */
     @Import(name="shareType")
     private @Nullable Output<String> shareType;
 
     /**
-     * @return Share Type.
+     * @return Share Type. Valid Values: `Private`, `Shared`
      * 
      */
     public Optional<Output<String>> shareType() {
@@ -95,14 +95,14 @@ public final class GetTemplatesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Tags.
+     * Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{&#34;key1&#34;:&#34;value1&#34;}`.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return Tags.
+     * @return Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{&#34;key1&#34;:&#34;value1&#34;}`.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -249,7 +249,7 @@ public final class GetTemplatesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param shareType Share Type.
+         * @param shareType Share Type. Valid Values: `Private`, `Shared`
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class GetTemplatesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param shareType Share Type.
+         * @param shareType Share Type. Valid Values: `Private`, `Shared`
          * 
          * @return builder
          * 
@@ -270,7 +270,7 @@ public final class GetTemplatesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags Tags.
+         * @param tags Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{&#34;key1&#34;:&#34;value1&#34;}`.
          * 
          * @return builder
          * 
@@ -281,7 +281,7 @@ public final class GetTemplatesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags Tags.
+         * @param tags Query the resource bound to the tag. The format of the incoming value is `json` string, including `TagKey` and `TagValue`. `TagKey` cannot be null, and `TagValue` can be empty. Format example `{&#34;key1&#34;:&#34;value1&#34;}`.
          * 
          * @return builder
          * 

@@ -168,7 +168,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
         return this.protocol;
     }
     /**
-     * . Field &#39;rule_action&#39; has been deprecated from provider version 1.211.0. New field &#39;action&#39; instead.
+     * (Deprecated since v1.211.0). Field &#39;rule_action&#39; has been deprecated from provider version 1.211.0. New field &#39;action&#39; instead.
      * 
      * @deprecated
      * Field &#39;rule_action&#39; has been deprecated since provider version 1.211.0. New field &#39;action&#39; instead.
@@ -179,7 +179,7 @@ public class TrafficMirrorFilterIngressRule extends com.pulumi.resources.CustomR
     private Output<String> ruleAction;
 
     /**
-     * @return . Field &#39;rule_action&#39; has been deprecated from provider version 1.211.0. New field &#39;action&#39; instead.
+     * @return (Deprecated since v1.211.0). Field &#39;rule_action&#39; has been deprecated from provider version 1.211.0. New field &#39;action&#39; instead.
      * 
      */
     public Output<String> ruleAction() {

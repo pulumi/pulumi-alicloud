@@ -35,7 +35,7 @@ public final class GetEcsKeyPairsKeyPair {
     private String keyName;
     private String keyPairName;
     /**
-     * @return The Resource Group Id.
+     * @return The resource group Id.
      * 
      */
     private String resourceGroupId;
@@ -78,7 +78,7 @@ public final class GetEcsKeyPairsKeyPair {
         return this.keyPairName;
     }
     /**
-     * @return The Resource Group Id.
+     * @return The resource group Id.
      * 
      */
     public String resourceGroupId() {

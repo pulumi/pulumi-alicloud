@@ -365,9 +365,11 @@ func (o EdgeKubernetesAddonArrayOutput) Index(i pulumi.IntInput) EdgeKubernetesA
 }
 
 type EdgeKubernetesCertificateAuthority struct {
-	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
 	ClientCert *string `pulumi:"clientCert"`
-	// The path of client key, like `~/.kube/client-key.pem`.
+	// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+	//
+	// *Network params*
 	ClientKey *string `pulumi:"clientKey"`
 	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
 	ClusterCert *string `pulumi:"clusterCert"`
@@ -385,9 +387,11 @@ type EdgeKubernetesCertificateAuthorityInput interface {
 }
 
 type EdgeKubernetesCertificateAuthorityArgs struct {
-	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
 	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
-	// The path of client key, like `~/.kube/client-key.pem`.
+	// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+	//
+	// *Network params*
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
 	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
 	ClusterCert pulumi.StringPtrInput `pulumi:"clusterCert"`
@@ -470,12 +474,14 @@ func (o EdgeKubernetesCertificateAuthorityOutput) ToEdgeKubernetesCertificateAut
 	}).(EdgeKubernetesCertificateAuthorityPtrOutput)
 }
 
-// The path of client certificate, like `~/.kube/client-cert.pem`.
+// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
 func (o EdgeKubernetesCertificateAuthorityOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesCertificateAuthority) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
 }
 
-// The path of client key, like `~/.kube/client-key.pem`.
+// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+//
+// *Network params*
 func (o EdgeKubernetesCertificateAuthorityOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EdgeKubernetesCertificateAuthority) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
@@ -509,7 +515,7 @@ func (o EdgeKubernetesCertificateAuthorityPtrOutput) Elem() EdgeKubernetesCertif
 	}).(EdgeKubernetesCertificateAuthorityOutput)
 }
 
-// The path of client certificate, like `~/.kube/client-cert.pem`.
+// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
 func (o EdgeKubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetesCertificateAuthority) *string {
 		if v == nil {
@@ -519,7 +525,9 @@ func (o EdgeKubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The path of client key, like `~/.kube/client-key.pem`.
+// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+//
+// *Network params*
 func (o EdgeKubernetesCertificateAuthorityPtrOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EdgeKubernetesCertificateAuthority) *string {
 		if v == nil {
@@ -1566,9 +1574,9 @@ func (o KubernetesAutoscalerNodepoolArrayOutput) Index(i pulumi.IntInput) Kubern
 }
 
 type KubernetesCertificateAuthority struct {
-	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
 	ClientCert *string `pulumi:"clientCert"`
-	// The path of client key, like `~/.kube/client-key.pem`.
+	// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
 	ClientKey *string `pulumi:"clientKey"`
 	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
 	ClusterCert *string `pulumi:"clusterCert"`
@@ -1586,9 +1594,9 @@ type KubernetesCertificateAuthorityInput interface {
 }
 
 type KubernetesCertificateAuthorityArgs struct {
-	// The path of client certificate, like `~/.kube/client-cert.pem`.
+	// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
 	ClientCert pulumi.StringPtrInput `pulumi:"clientCert"`
-	// The path of client key, like `~/.kube/client-key.pem`.
+	// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
 	ClientKey pulumi.StringPtrInput `pulumi:"clientKey"`
 	// The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
 	ClusterCert pulumi.StringPtrInput `pulumi:"clusterCert"`
@@ -1671,12 +1679,12 @@ func (o KubernetesCertificateAuthorityOutput) ToKubernetesCertificateAuthorityPt
 	}).(KubernetesCertificateAuthorityPtrOutput)
 }
 
-// The path of client certificate, like `~/.kube/client-cert.pem`.
+// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
 func (o KubernetesCertificateAuthorityOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesCertificateAuthority) *string { return v.ClientCert }).(pulumi.StringPtrOutput)
 }
 
-// The path of client key, like `~/.kube/client-key.pem`.
+// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
 func (o KubernetesCertificateAuthorityOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v KubernetesCertificateAuthority) *string { return v.ClientKey }).(pulumi.StringPtrOutput)
 }
@@ -1710,7 +1718,7 @@ func (o KubernetesCertificateAuthorityPtrOutput) Elem() KubernetesCertificateAut
 	}).(KubernetesCertificateAuthorityOutput)
 }
 
-// The path of client certificate, like `~/.kube/client-cert.pem`.
+// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
 func (o KubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesCertificateAuthority) *string {
 		if v == nil {
@@ -1720,7 +1728,7 @@ func (o KubernetesCertificateAuthorityPtrOutput) ClientCert() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The path of client key, like `~/.kube/client-key.pem`.
+// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
 func (o KubernetesCertificateAuthorityPtrOutput) ClientKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *KubernetesCertificateAuthority) *string {
 		if v == nil {
@@ -3276,6 +3284,7 @@ type ManagedKubernetesMaintenanceWindow struct {
 	// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 	//
 	// for example:
+	//
 	// ```go
 	// package main
 	//
@@ -3313,6 +3322,7 @@ type ManagedKubernetesMaintenanceWindowArgs struct {
 	// Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 	//
 	// for example:
+	//
 	// ```go
 	// package main
 	//
@@ -3424,6 +3434,7 @@ func (o ManagedKubernetesMaintenanceWindowOutput) MaintenanceTime() pulumi.Strin
 // Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 //
 // for example:
+//
 // ```go
 // package main
 //
@@ -3501,6 +3512,7 @@ func (o ManagedKubernetesMaintenanceWindowPtrOutput) MaintenanceTime() pulumi.St
 // Maintenance cycle, you can set the values from Monday to Sunday, separated by commas when the values are multiple. The default is Thursday.
 //
 // for example:
+//
 // ```go
 // package main
 //
@@ -4097,21 +4109,21 @@ func (o ManagedKubernetesTaintArrayOutput) Index(i pulumi.IntInput) ManagedKuber
 }
 
 type ManagedKubernetesWorkerDataDisk struct {
-	// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+	// (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
-	// (Optional)The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+	// (Deprecated from version 1.177.0)(Optional)The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	Category *string `pulumi:"category"`
 	// The mount point of data disk N.
 	Device *string `pulumi:"device"`
-	// (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+	// (Deprecated from version 1.177.0)(Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
 	Encrypted *string `pulumi:"encrypted"`
 	// The ID of the Key Management Service (KMS) key to use for data disk N.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
 	// The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
 	Name *string `pulumi:"name"`
-	// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	// (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// (Optional)The size of a data disk, at least 40. Unit: GiB.
+	// (Deprecated from version 1.177.0)(Optional)The size of a data disk, at least 40. Unit: GiB.
 	Size *string `pulumi:"size"`
 	// The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
 	SnapshotId *string `pulumi:"snapshotId"`
@@ -4129,21 +4141,21 @@ type ManagedKubernetesWorkerDataDiskInput interface {
 }
 
 type ManagedKubernetesWorkerDataDiskArgs struct {
-	// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+	// (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
-	// (Optional)The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+	// (Deprecated from version 1.177.0)(Optional)The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// The mount point of data disk N.
 	Device pulumi.StringPtrInput `pulumi:"device"`
-	// (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+	// (Deprecated from version 1.177.0)(Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
 	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
 	// The ID of the Key Management Service (KMS) key to use for data disk N.
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
 	// The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
 	Name pulumi.StringPtrInput `pulumi:"name"`
-	// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+	// (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	// (Optional)The size of a data disk, at least 40. Unit: GiB.
+	// (Deprecated from version 1.177.0)(Optional)The size of a data disk, at least 40. Unit: GiB.
 	Size pulumi.StringPtrInput `pulumi:"size"`
 	// The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
@@ -4200,12 +4212,12 @@ func (o ManagedKubernetesWorkerDataDiskOutput) ToManagedKubernetesWorkerDataDisk
 	return o
 }
 
-// (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+// (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
 func (o ManagedKubernetesWorkerDataDiskOutput) AutoSnapshotPolicyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.AutoSnapshotPolicyId }).(pulumi.StringPtrOutput)
 }
 
-// (Optional)The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
+// (Deprecated from version 1.177.0)(Optional)The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
 func (o ManagedKubernetesWorkerDataDiskOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
@@ -4215,7 +4227,7 @@ func (o ManagedKubernetesWorkerDataDiskOutput) Device() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Device }).(pulumi.StringPtrOutput)
 }
 
-// (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+// (Deprecated from version 1.177.0)(Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
 func (o ManagedKubernetesWorkerDataDiskOutput) Encrypted() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Encrypted }).(pulumi.StringPtrOutput)
 }
@@ -4230,12 +4242,12 @@ func (o ManagedKubernetesWorkerDataDiskOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+// (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
 func (o ManagedKubernetesWorkerDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
-// (Optional)The size of a data disk, at least 40. Unit: GiB.
+// (Deprecated from version 1.177.0)(Optional)The size of a data disk, at least 40. Unit: GiB.
 func (o ManagedKubernetesWorkerDataDiskOutput) Size() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedKubernetesWorkerDataDisk) *string { return v.Size }).(pulumi.StringPtrOutput)
 }

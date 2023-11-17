@@ -246,7 +246,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class GetTrafficMirrorSessionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Indicates whether traffic mirror sessions are enabled. default to `false`.
+        /// Specifies whether to enable traffic mirror sessions. default to `false`.
         /// </summary>
         [Input("enabled")]
         public bool? Enabled { get; set; }
@@ -276,7 +276,7 @@ namespace Pulumi.AliCloud.Vpc
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The priority of the traffic mirror session. A smaller value indicates a higher priority.
+        /// The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
         /// </summary>
         [Input("priority")]
         public int? Priority { get; set; }
@@ -294,7 +294,7 @@ namespace Pulumi.AliCloud.Vpc
         public string? TrafficMirrorFilterId { get; set; }
 
         /// <summary>
-        /// The name of the traffic mirror session.
+        /// The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
         /// </summary>
         [Input("trafficMirrorSessionName")]
         public string? TrafficMirrorSessionName { get; set; }
@@ -320,7 +320,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class GetTrafficMirrorSessionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Indicates whether traffic mirror sessions are enabled. default to `false`.
+        /// Specifies whether to enable traffic mirror sessions. default to `false`.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
@@ -350,7 +350,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The priority of the traffic mirror session. A smaller value indicates a higher priority.
+        /// The priority of the traffic mirror session. Valid values: `1` to `32766`. A smaller value indicates a higher priority. You cannot specify the same priority for traffic mirror sessions that are created in the same region with the same Alibaba Cloud account.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -368,7 +368,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? TrafficMirrorFilterId { get; set; }
 
         /// <summary>
-        /// The name of the traffic mirror session.
+        /// The name of the traffic mirror session. The name must be `2` to `128` characters in length and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
         /// </summary>
         [Input("trafficMirrorSessionName")]
         public Input<string>? TrafficMirrorSessionName { get; set; }

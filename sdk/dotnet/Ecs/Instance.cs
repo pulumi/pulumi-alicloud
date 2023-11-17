@@ -109,14 +109,14 @@ namespace Pulumi.AliCloud.Ecs
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        /// (Deprecated) It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         /// </summary>
         [Output("allocatePublicIp")]
         public Output<bool?> AllocatePublicIp { get; private set; } = null!;
 
         /// <summary>
         /// The automatic release time of the `PostPaid` instance. 
-        /// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+        /// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time. 
         /// Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
         /// </summary>
         [Output("autoReleaseTime")]
@@ -195,13 +195,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> DeploymentSetId { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        /// The description of the data disk.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to send a dry-run request. Default to false. 
+        /// Specifies whether to send a dry-run request. Default to false.
         /// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
         /// - false: A request is sent. If the validation succeeds, the instance is created.
         /// </summary>
@@ -262,8 +262,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
-        /// **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
-        /// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+        /// **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`. 
+        /// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype), 
         /// there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
         /// </summary>
         [Output("instanceChargeType")]
@@ -297,7 +297,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int?> InternetMaxBandwidthOut { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        /// (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         /// </summary>
         [Output("ioOptimized")]
         public Output<string?> IoOptimized { get; private set; } = null!;
@@ -396,7 +396,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
         /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
         /// - [1-3] when `period_unit` in "Week"
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        ///   &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Output("period")]
         public Output<int?> Period { get; private set; } = null!;
@@ -646,14 +646,14 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        /// (Deprecated) It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         /// </summary>
         [Input("allocatePublicIp")]
         public Input<bool>? AllocatePublicIp { get; set; }
 
         /// <summary>
         /// The automatic release time of the `PostPaid` instance. 
-        /// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+        /// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time. 
         /// Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
         /// </summary>
         [Input("autoReleaseTime")]
@@ -726,13 +726,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? DeploymentSetId { get; set; }
 
         /// <summary>
-        /// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        /// The description of the data disk.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to send a dry-run request. Default to false. 
+        /// Specifies whether to send a dry-run request. Default to false.
         /// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
         /// - false: A request is sent. If the validation succeeds, the instance is created.
         /// </summary>
@@ -793,8 +793,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
-        /// **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
-        /// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+        /// **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`. 
+        /// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype), 
         /// there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
         /// </summary>
         [Input("instanceChargeType")]
@@ -828,7 +828,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? InternetMaxBandwidthOut { get; set; }
 
         /// <summary>
-        /// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        /// (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         /// </summary>
         [Input("ioOptimized")]
         public Input<string>? IoOptimized { get; set; }
@@ -925,7 +925,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
         /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
         /// - [1-3] when `period_unit` in "Week"
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        ///   &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
@@ -1139,14 +1139,14 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class InstanceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
+        /// (Deprecated) It has been deprecated from version "1.7.0". Setting "internet_max_bandwidth_out" larger than 0 can allocate a public ip address for an instance.
         /// </summary>
         [Input("allocatePublicIp")]
         public Input<bool>? AllocatePublicIp { get; set; }
 
         /// <summary>
         /// The automatic release time of the `PostPaid` instance. 
-        /// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time.
+        /// The time follows the ISO 8601 standard and is in UTC time. Format: yyyy-MM-ddTHH:mm:ssZ. It must be at least half an hour later than the current time and less than 3 years since the current time. 
         /// Setting it to null can cancel automatic release feature, and the ECS instance will not be released automatically.
         /// </summary>
         [Input("autoReleaseTime")]
@@ -1231,13 +1231,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? DeploymentSetId { get; set; }
 
         /// <summary>
-        /// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+        /// The description of the data disk.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Specifies whether to send a dry-run request. Default to false. 
+        /// Specifies whether to send a dry-run request. Default to false.
         /// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
         /// - false: A request is sent. If the validation succeeds, the instance is created.
         /// </summary>
@@ -1298,8 +1298,8 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// Valid values are `PrePaid`, `PostPaid`, The default is `PostPaid`.
-        /// **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`.
-        /// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype),
+        /// **NOTE:** Since 1.9.6, it can be changed each other between `PostPaid` and `PrePaid`. 
+        /// However, since [some limitation about CPU core count in one month](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/modifyinstancechargetype), 
         /// there strongly recommends that `Don't change instance_charge_type frequentlly in one month`.
         /// </summary>
         [Input("instanceChargeType")]
@@ -1333,7 +1333,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? InternetMaxBandwidthOut { get; set; }
 
         /// <summary>
-        /// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        /// (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         /// </summary>
         [Input("ioOptimized")]
         public Input<string>? IoOptimized { get; set; }
@@ -1454,7 +1454,7 @@ namespace Pulumi.AliCloud.Ecs
         /// The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
         /// - [1-9, 12, 24, 36, 48, 60] when `period_unit` in "Month"
         /// - [1-3] when `period_unit` in "Week"
-        /// &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+        ///   &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }

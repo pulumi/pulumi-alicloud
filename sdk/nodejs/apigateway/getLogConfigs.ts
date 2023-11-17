@@ -49,7 +49,7 @@ export interface GetLogConfigsArgs {
      */
     ids?: string[];
     /**
-     * The type the of log.
+     * The type the of log. Valid values: `PROVIDER`.
      */
     logType?: string;
     /**
@@ -107,7 +107,7 @@ export interface GetLogConfigsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The type the of log.
+     * The type the of log. Valid values: `PROVIDER`.
      */
     logType?: pulumi.Input<string>;
     /**

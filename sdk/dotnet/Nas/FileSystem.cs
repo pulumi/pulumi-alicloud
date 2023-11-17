@@ -140,8 +140,11 @@ namespace Pulumi.AliCloud.Nas
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+        /// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
         /// * Valid values:
+        ///   * `0` (Default): The file system is not encrypted.
+        ///   * `1`: The file system is encrypted with a managed secret key.
+        ///   * `2` (Available in v1.140.0+ and when the `file_system_type` is `extreme`): User management key.
         /// </summary>
         [Output("encryptType")]
         public Output<int?> EncryptType { get; private set; } = null!;
@@ -173,8 +176,14 @@ namespace Pulumi.AliCloud.Nas
         public Output<string> ProtocolType { get; private set; } = null!;
 
         /// <summary>
-        /// The storage type of the file System. 
+        /// The storage type of the file System.
         /// * Valid values:
+        ///   * `Performance` (Available when the `file_system_type` is `standard`)
+        ///   * `Capacity` (Available when the `file_system_type` is `standard`)
+        ///   * `standard` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+        ///   * `advance` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+        ///   * `advance_100` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
+        ///   * `advance_200` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
         /// </summary>
         [Output("storageType")]
         public Output<string> StorageType { get; private set; } = null!;
@@ -263,8 +272,11 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+        /// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
         /// * Valid values:
+        ///   * `0` (Default): The file system is not encrypted.
+        ///   * `1`: The file system is encrypted with a managed secret key.
+        ///   * `2` (Available in v1.140.0+ and when the `file_system_type` is `extreme`): User management key.
         /// </summary>
         [Input("encryptType")]
         public Input<int>? EncryptType { get; set; }
@@ -296,8 +308,14 @@ namespace Pulumi.AliCloud.Nas
         public Input<string> ProtocolType { get; set; } = null!;
 
         /// <summary>
-        /// The storage type of the file System. 
+        /// The storage type of the file System.
         /// * Valid values:
+        ///   * `Performance` (Available when the `file_system_type` is `standard`)
+        ///   * `Capacity` (Available when the `file_system_type` is `standard`)
+        ///   * `standard` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+        ///   * `advance` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+        ///   * `advance_100` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
+        ///   * `advance_200` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
         /// </summary>
         [Input("storageType", required: true)]
         public Input<string> StorageType { get; set; } = null!;
@@ -354,8 +372,11 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt. 
+        /// Whether the file system is encrypted. Using kms service escrow key to encrypt and store the file system data. When reading and writing encrypted data, there is no need to decrypt.
         /// * Valid values:
+        ///   * `0` (Default): The file system is not encrypted.
+        ///   * `1`: The file system is encrypted with a managed secret key.
+        ///   * `2` (Available in v1.140.0+ and when the `file_system_type` is `extreme`): User management key.
         /// </summary>
         [Input("encryptType")]
         public Input<int>? EncryptType { get; set; }
@@ -387,8 +408,14 @@ namespace Pulumi.AliCloud.Nas
         public Input<string>? ProtocolType { get; set; }
 
         /// <summary>
-        /// The storage type of the file System. 
+        /// The storage type of the file System.
         /// * Valid values:
+        ///   * `Performance` (Available when the `file_system_type` is `standard`)
+        ///   * `Capacity` (Available when the `file_system_type` is `standard`)
+        ///   * `standard` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+        ///   * `advance` (Available in v1.140.0+ and when the `file_system_type` is `extreme`)
+        ///   * `advance_100` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
+        ///   * `advance_200` (Available in v1.153.0+ and when the `file_system_type` is `cpfs`)
         /// </summary>
         [Input("storageType")]
         public Input<string>? StorageType { get; set; }

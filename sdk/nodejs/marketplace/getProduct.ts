@@ -39,7 +39,7 @@ export function getProduct(args: GetProductArgs, opts?: pulumi.InvokeOptions): P
  */
 export interface GetProductArgs {
     /**
-     * A available region id used to filter market place Ecs images.
+     * (Available in 1.71.1+) A available region id used to filter market place Ecs images.
      */
     availableRegion?: string;
     /**
@@ -91,7 +91,7 @@ export function getProductOutput(args: GetProductOutputArgs, opts?: pulumi.Invok
  */
 export interface GetProductOutputArgs {
     /**
-     * A available region id used to filter market place Ecs images.
+     * (Available in 1.71.1+) A available region id used to filter market place Ecs images.
      */
     availableRegion?: pulumi.Input<string>;
     /**

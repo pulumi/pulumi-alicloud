@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Output<int> MessageType { get; private set; } = null!;
 
         /// <summary>
-        /// This attribute has been deprecated.
+        /// (Deprecated) This attribute has been deprecated.
         /// </summary>
         [Output("perm")]
         public Output<int> Perm { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<int> MessageType { get; set; } = null!;
 
         /// <summary>
-        /// This attribute has been deprecated.
+        /// (Deprecated) This attribute has been deprecated.
         /// </summary>
         [Input("perm")]
         public Input<int>? Perm { get; set; }
@@ -223,7 +223,7 @@ namespace Pulumi.AliCloud.RocketMQ
         public Input<int>? MessageType { get; set; }
 
         /// <summary>
-        /// This attribute has been deprecated.
+        /// (Deprecated) This attribute has been deprecated.
         /// </summary>
         [Input("perm")]
         public Input<int>? Perm { get; set; }

@@ -100,6 +100,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         public readonly string Status;
         /// <summary>
         /// A map of tags assigned to the disks. It must be in the format:
+        /// 
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;

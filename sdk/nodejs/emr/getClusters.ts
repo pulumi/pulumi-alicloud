@@ -169,7 +169,7 @@ export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetClustersArgs {
     /**
-     * The name of the associated cluster.
+     * The ClusterName.
      */
     clusterName?: string;
     /**
@@ -399,7 +399,7 @@ export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.In
  */
 export interface GetClustersOutputArgs {
     /**
-     * The name of the associated cluster.
+     * The ClusterName.
      */
     clusterName?: pulumi.Input<string>;
     /**

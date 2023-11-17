@@ -27,7 +27,7 @@ class EcsPrefixListArgs:
         :param pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]] entries: The Entry. The details see Block `entry`.
         :param pulumi.Input[int] max_entries: The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
         :param pulumi.Input[str] prefix_list_name: The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
-        :param pulumi.Input[str] description: The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] description: The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
         """
         pulumi.set(__self__, "address_family", address_family)
         pulumi.set(__self__, "entries", entries)
@@ -88,7 +88,7 @@ class EcsPrefixListArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -108,7 +108,7 @@ class _EcsPrefixListState:
         """
         Input properties used for looking up and filtering EcsPrefixList resources.
         :param pulumi.Input[str] address_family: The IP address family. Valid values: `IPv4`,`IPv6`.
-        :param pulumi.Input[str] description: The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] description: The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[Sequence[pulumi.Input['EcsPrefixListEntryArgs']]] entries: The Entry. The details see Block `entry`.
         :param pulumi.Input[int] max_entries: The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
         :param pulumi.Input[str] prefix_list_name: The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
@@ -140,7 +140,7 @@ class _EcsPrefixListState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 
@@ -233,7 +233,7 @@ class EcsPrefixList(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_family: The IP address family. Valid values: `IPv4`,`IPv6`.
-        :param pulumi.Input[str] description: The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] description: The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsPrefixListEntryArgs']]]] entries: The Entry. The details see Block `entry`.
         :param pulumi.Input[int] max_entries: The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
         :param pulumi.Input[str] prefix_list_name: The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
@@ -343,7 +343,7 @@ class EcsPrefixList(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] address_family: The IP address family. Valid values: `IPv4`,`IPv6`.
-        :param pulumi.Input[str] description: The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        :param pulumi.Input[str] description: The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EcsPrefixListEntryArgs']]]] entries: The Entry. The details see Block `entry`.
         :param pulumi.Input[int] max_entries: The maximum number of entries that the prefix list can contain.  Valid values: 1 to 200.
         :param pulumi.Input[str] prefix_list_name: The name of the prefix. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with `http://`, `https://`, `com.aliyun`, or `com.alibabacloud`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
@@ -371,7 +371,7 @@ class EcsPrefixList(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+        The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
         """
         return pulumi.get(self, "description")
 

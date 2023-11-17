@@ -49,7 +49,7 @@ public final class GetInstancesInstance {
      */
     private String paymentType;
     /**
-     * @return Resource Group ID
+     * @return (ForceNew,Optional) Resource Group ID
      * 
      */
     private String resourceGroupId;
@@ -133,7 +133,7 @@ public final class GetInstancesInstance {
         return this.paymentType;
     }
     /**
-     * @return Resource Group ID
+     * @return (ForceNew,Optional) Resource Group ID
      * 
      */
     public String resourceGroupId() {

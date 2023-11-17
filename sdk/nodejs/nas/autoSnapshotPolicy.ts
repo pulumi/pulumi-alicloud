@@ -87,7 +87,6 @@ export class AutoSnapshotPolicy extends pulumi.CustomResource {
     public readonly repeatWeekdays!: pulumi.Output<string[]>;
     /**
      * The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-     * - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
      */
     public readonly retentionDays!: pulumi.Output<number>;
     /**
@@ -158,7 +157,6 @@ export interface AutoSnapshotPolicyState {
     repeatWeekdays?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-     * - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
      */
     retentionDays?: pulumi.Input<number>;
     /**
@@ -193,7 +191,6 @@ export interface AutoSnapshotPolicyArgs {
     repeatWeekdays: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The number of days for which you want to retain auto snapshots. Unit: days. Valid values:
-     * - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
      */
     retentionDays?: pulumi.Input<number>;
     /**

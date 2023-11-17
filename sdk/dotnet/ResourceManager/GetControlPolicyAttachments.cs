@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The type of policy.
+        /// The policy type of control policy. Valid values: `Custom` and `System`.
         /// </summary>
         [Input("policyType")]
         public string? PolicyType { get; set; }
@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.ResourceManager
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The type of policy.
+        /// The policy type of control policy. Valid values: `Custom` and `System`.
         /// </summary>
         [Input("policyType")]
         public Input<string>? PolicyType { get; set; }

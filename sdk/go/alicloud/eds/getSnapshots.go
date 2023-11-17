@@ -53,7 +53,7 @@ func GetSnapshots(ctx *pulumi.Context, args *GetSnapshotsArgs, opts ...pulumi.In
 
 // A collection of arguments for invoking getSnapshots.
 type GetSnapshotsArgs struct {
-	// The ID of the cloud desktop to which the snapshot belongs.
+	// The ID of the Desktop.
 	DesktopId *string `pulumi:"desktopId"`
 	// A list of Snapshot IDs.
 	Ids []string `pulumi:"ids"`
@@ -61,7 +61,7 @@ type GetSnapshotsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The ID of the snapshot.
+	// The ID of the Snapshot.
 	SnapshotId *string `pulumi:"snapshotId"`
 }
 
@@ -93,7 +93,7 @@ func GetSnapshotsOutput(ctx *pulumi.Context, args GetSnapshotsOutputArgs, opts .
 
 // A collection of arguments for invoking getSnapshots.
 type GetSnapshotsOutputArgs struct {
-	// The ID of the cloud desktop to which the snapshot belongs.
+	// The ID of the Desktop.
 	DesktopId pulumi.StringPtrInput `pulumi:"desktopId"`
 	// A list of Snapshot IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -101,7 +101,7 @@ type GetSnapshotsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The ID of the snapshot.
+	// The ID of the Snapshot.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
 }
 

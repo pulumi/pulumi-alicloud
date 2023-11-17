@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// </summary>
         public readonly string? ParameterTwo;
         /// <summary>
-        /// The name of the key that is used to filter logs imported from Log Service.
+        /// The name of the key that is used to aggregate logs imported from Log Service.
         /// </summary>
         public readonly string? SlsKeyName;
 

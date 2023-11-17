@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.FNF
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Running`, `Stopped`, `Succeeded`, `Failed`, `TimedOut`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.FNF
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Running`, `Stopped`, `Succeeded`, `Failed`, `TimedOut`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

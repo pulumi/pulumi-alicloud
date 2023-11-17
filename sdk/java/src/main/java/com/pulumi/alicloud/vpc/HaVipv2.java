@@ -206,7 +206,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
         return this.haVipName;
     }
     /**
-     * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+     * (Deprecated from v1.205.0+) Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
@@ -217,7 +217,7 @@ public class HaVipv2 extends com.pulumi.resources.CustomResource {
     private Output<String> havipName;
 
     /**
-     * @return Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
+     * @return (Deprecated from v1.205.0+) Field &#39;havip_name&#39; has been deprecated from provider version 1.205.0. New field &#39;ha_vip_name&#39; instead.
      * 
      */
     public Output<String> havipName() {

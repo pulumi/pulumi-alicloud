@@ -64,7 +64,7 @@ export class SimpleOfficeSite extends pulumi.CustomResource {
     }
 
     /**
-     * The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+     * (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
      *
      * @deprecated Field 'bandwidth' has been deprecated from provider version 1.142.0.
      */
@@ -94,7 +94,7 @@ export class SimpleOfficeSite extends pulumi.CustomResource {
      */
     public readonly enableCrossDesktopAccess!: pulumi.Output<boolean>;
     /**
-     * Whether the Open Internet Access Function.
+     * (Deprecated from 1.142.0) Whether the Open Internet Access Function.
      *
      * @deprecated Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
      */
@@ -169,7 +169,7 @@ export class SimpleOfficeSite extends pulumi.CustomResource {
  */
 export interface SimpleOfficeSiteState {
     /**
-     * The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+     * (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
      *
      * @deprecated Field 'bandwidth' has been deprecated from provider version 1.142.0.
      */
@@ -199,7 +199,7 @@ export interface SimpleOfficeSiteState {
      */
     enableCrossDesktopAccess?: pulumi.Input<boolean>;
     /**
-     * Whether the Open Internet Access Function.
+     * (Deprecated from 1.142.0) Whether the Open Internet Access Function.
      *
      * @deprecated Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
      */
@@ -227,7 +227,7 @@ export interface SimpleOfficeSiteState {
  */
 export interface SimpleOfficeSiteArgs {
     /**
-     * The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+     * (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
      *
      * @deprecated Field 'bandwidth' has been deprecated from provider version 1.142.0.
      */
@@ -257,7 +257,7 @@ export interface SimpleOfficeSiteArgs {
      */
     enableCrossDesktopAccess?: pulumi.Input<boolean>;
     /**
-     * Whether the Open Internet Access Function.
+     * (Deprecated from 1.142.0) Whether the Open Internet Access Function.
      *
      * @deprecated Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
      */

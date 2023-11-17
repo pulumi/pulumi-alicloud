@@ -61,7 +61,7 @@ import (
 type SimpleOfficeSite struct {
 	pulumi.CustomResourceState
 
-	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+	// (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
 	//
 	// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 	Bandwidth pulumi.IntOutput `pulumi:"bandwidth"`
@@ -77,7 +77,7 @@ type SimpleOfficeSite struct {
 	EnableAdminAccess pulumi.BoolOutput `pulumi:"enableAdminAccess"`
 	// Enable Cross-Desktop Access.
 	EnableCrossDesktopAccess pulumi.BoolOutput `pulumi:"enableCrossDesktopAccess"`
-	// Whether the Open Internet Access Function.
+	// (Deprecated from 1.142.0) Whether the Open Internet Access Function.
 	//
 	// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 	EnableInternetAccess pulumi.BoolOutput `pulumi:"enableInternetAccess"`
@@ -124,7 +124,7 @@ func GetSimpleOfficeSite(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering SimpleOfficeSite resources.
 type simpleOfficeSiteState struct {
-	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+	// (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
 	//
 	// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 	Bandwidth *int `pulumi:"bandwidth"`
@@ -140,7 +140,7 @@ type simpleOfficeSiteState struct {
 	EnableAdminAccess *bool `pulumi:"enableAdminAccess"`
 	// Enable Cross-Desktop Access.
 	EnableCrossDesktopAccess *bool `pulumi:"enableCrossDesktopAccess"`
-	// Whether the Open Internet Access Function.
+	// (Deprecated from 1.142.0) Whether the Open Internet Access Function.
 	//
 	// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 	EnableInternetAccess *bool `pulumi:"enableInternetAccess"`
@@ -155,7 +155,7 @@ type simpleOfficeSiteState struct {
 }
 
 type SimpleOfficeSiteState struct {
-	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+	// (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
 	//
 	// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 	Bandwidth pulumi.IntPtrInput
@@ -171,7 +171,7 @@ type SimpleOfficeSiteState struct {
 	EnableAdminAccess pulumi.BoolPtrInput
 	// Enable Cross-Desktop Access.
 	EnableCrossDesktopAccess pulumi.BoolPtrInput
-	// Whether the Open Internet Access Function.
+	// (Deprecated from 1.142.0) Whether the Open Internet Access Function.
 	//
 	// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 	EnableInternetAccess pulumi.BoolPtrInput
@@ -190,7 +190,7 @@ func (SimpleOfficeSiteState) ElementType() reflect.Type {
 }
 
 type simpleOfficeSiteArgs struct {
-	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+	// (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
 	//
 	// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 	Bandwidth *int `pulumi:"bandwidth"`
@@ -206,7 +206,7 @@ type simpleOfficeSiteArgs struct {
 	EnableAdminAccess *bool `pulumi:"enableAdminAccess"`
 	// Enable Cross-Desktop Access.
 	EnableCrossDesktopAccess *bool `pulumi:"enableCrossDesktopAccess"`
-	// Whether the Open Internet Access Function.
+	// (Deprecated from 1.142.0) Whether the Open Internet Access Function.
 	//
 	// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 	EnableInternetAccess *bool `pulumi:"enableInternetAccess"`
@@ -220,7 +220,7 @@ type simpleOfficeSiteArgs struct {
 
 // The set of arguments for constructing a SimpleOfficeSite resource.
 type SimpleOfficeSiteArgs struct {
-	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+	// (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
 	//
 	// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 	Bandwidth pulumi.IntPtrInput
@@ -236,7 +236,7 @@ type SimpleOfficeSiteArgs struct {
 	EnableAdminAccess pulumi.BoolPtrInput
 	// Enable Cross-Desktop Access.
 	EnableCrossDesktopAccess pulumi.BoolPtrInput
-	// Whether the Open Internet Access Function.
+	// (Deprecated from 1.142.0) Whether the Open Internet Access Function.
 	//
 	// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 	EnableInternetAccess pulumi.BoolPtrInput
@@ -335,7 +335,7 @@ func (o SimpleOfficeSiteOutput) ToSimpleOfficeSiteOutputWithContext(ctx context.
 	return o
 }
 
-// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
+// (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new resource alicloud_ecd_network_package.
 //
 // Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 func (o SimpleOfficeSiteOutput) Bandwidth() pulumi.IntOutput {
@@ -372,7 +372,7 @@ func (o SimpleOfficeSiteOutput) EnableCrossDesktopAccess() pulumi.BoolOutput {
 	return o.ApplyT(func(v *SimpleOfficeSite) pulumi.BoolOutput { return v.EnableCrossDesktopAccess }).(pulumi.BoolOutput)
 }
 
-// Whether the Open Internet Access Function.
+// (Deprecated from 1.142.0) Whether the Open Internet Access Function.
 //
 // Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 func (o SimpleOfficeSiteOutput) EnableInternetAccess() pulumi.BoolOutput {

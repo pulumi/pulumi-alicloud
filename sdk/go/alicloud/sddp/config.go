@@ -65,6 +65,9 @@ type Config struct {
 	// The language of the request and response. Valid values: `zh`,`en`.
 	Lang pulumi.StringPtrOutput `pulumi:"lang"`
 	// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+	// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
+	// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
+	// * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
 	Value pulumi.StringPtrOutput `pulumi:"value"`
 }
 
@@ -105,6 +108,9 @@ type configState struct {
 	// The language of the request and response. Valid values: `zh`,`en`.
 	Lang *string `pulumi:"lang"`
 	// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+	// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
+	// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
+	// * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
 	Value *string `pulumi:"value"`
 }
 
@@ -116,6 +122,9 @@ type ConfigState struct {
 	// The language of the request and response. Valid values: `zh`,`en`.
 	Lang pulumi.StringPtrInput
 	// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+	// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
+	// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
+	// * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
 	Value pulumi.StringPtrInput
 }
 
@@ -131,6 +140,9 @@ type configArgs struct {
 	// The language of the request and response. Valid values: `zh`,`en`.
 	Lang *string `pulumi:"lang"`
 	// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+	// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
+	// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
+	// * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
 	Value *string `pulumi:"value"`
 }
 
@@ -143,6 +155,9 @@ type ConfigArgs struct {
 	// The language of the request and response. Valid values: `zh`,`en`.
 	Lang pulumi.StringPtrInput
 	// The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+	// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
+	// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
+	// * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
 	Value pulumi.StringPtrInput
 }
 
@@ -249,6 +264,9 @@ func (o ConfigOutput) Lang() pulumi.StringPtrOutput {
 }
 
 // The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
+// * `accessFailedCnt`: Value Represents the Non-Authorized Resource Repeatedly Attempts to Access the Threshold.
+// * `accessPermissionExprieMaxDays`: Value Represents the Permissions during Periods of Inactivity Exceeding a Threshold.
+// * `logDatasizeAvgDays`: Value Represents the Date Certain Log Output Is Less than 10 Days before the Average Value of the Threshold.
 func (o ConfigOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Config) pulumi.StringPtrOutput { return v.Value }).(pulumi.StringPtrOutput)
 }

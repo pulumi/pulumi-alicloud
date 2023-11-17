@@ -159,7 +159,7 @@ def get_ecs_key_pairs(finger_print: Optional[str] = None,
     :param Sequence[str] ids: A list of Key Pair IDs.
     :param str name_regex: A regex string to filter results by Key Pair name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str resource_group_id: The Resource Group Id.
+    :param str resource_group_id: The resource group Id.
     :param Mapping[str, Any] tags: The tags.
     """
     __args__ = dict()
@@ -216,7 +216,7 @@ def get_ecs_key_pairs_output(finger_print: Optional[pulumi.Input[Optional[str]]]
     :param Sequence[str] ids: A list of Key Pair IDs.
     :param str name_regex: A regex string to filter results by Key Pair name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str resource_group_id: The Resource Group Id.
+    :param str resource_group_id: The resource group Id.
     :param Mapping[str, Any] tags: The tags.
     """
     ...

@@ -31,11 +31,11 @@ export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): 
  */
 export interface GetDomainsArgs {
     /**
-     * The ID of the global acceleration instance.
+     * (ForceNew,Optional) The ID of the global acceleration instance.
      */
     acceleratorId?: string;
     /**
-     * The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+     * (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
      */
     domain?: string;
     /**
@@ -49,7 +49,7 @@ export interface GetDomainsArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+     * (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
      */
     status?: string;
 }
@@ -97,11 +97,11 @@ export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.Invo
  */
 export interface GetDomainsOutputArgs {
     /**
-     * The ID of the global acceleration instance.
+     * (ForceNew,Optional) The ID of the global acceleration instance.
      */
     acceleratorId?: pulumi.Input<string>;
     /**
-     * The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+     * (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
      */
     domain?: pulumi.Input<string>;
     /**
@@ -115,7 +115,7 @@ export interface GetDomainsOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+     * (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
      */
     status?: pulumi.Input<string>;
 }

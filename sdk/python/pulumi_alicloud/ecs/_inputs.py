@@ -1409,8 +1409,8 @@ class LaunchTemplateNetworkInterfacesArgs:
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] description: The description of the data disk.
-        :param pulumi.Input[str] name: The name of the data disk.
+        :param pulumi.Input[str] description: The ENI description.
+        :param pulumi.Input[str] name: ENI name.
         :param pulumi.Input[str] primary_ip: The primary private IP address of the ENI.
         :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
@@ -1430,7 +1430,7 @@ class LaunchTemplateNetworkInterfacesArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the data disk.
+        The ENI description.
         """
         return pulumi.get(self, "description")
 
@@ -1442,7 +1442,7 @@ class LaunchTemplateNetworkInterfacesArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the data disk.
+        ENI name.
         """
         return pulumi.get(self, "name")
 
@@ -1514,7 +1514,7 @@ class LaunchTemplateSystemDiskArgs:
         :param pulumi.Input[bool] encrypted: Encrypted the data in this disk.
                
                Default to false
-        :param pulumi.Input[str] name: The name of the data disk.
+        :param pulumi.Input[str] name: Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         :param pulumi.Input[int] size: The size of the data disk.
                - cloud：[5, 2000]
                - cloud_efficiency：[20, 32768]
@@ -1611,7 +1611,7 @@ class LaunchTemplateSystemDiskArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the data disk.
+        Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         """
         return pulumi.get(self, "name")
 

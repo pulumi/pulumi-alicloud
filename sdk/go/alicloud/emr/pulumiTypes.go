@@ -987,13 +987,13 @@ type GetClustersCluster struct {
 	BootstrapActionLists []GetClustersClusterBootstrapActionList `pulumi:"bootstrapActionLists"`
 	// The result of the boot operation.
 	BootstrapFailed bool `pulumi:"bootstrapFailed"`
-	// The ID of the associated cluster.
+	// The first ID of the resource.
 	ClusterId string `pulumi:"clusterId"`
-	// The name of the associated cluster.
+	// The ClusterName.
 	ClusterName string `pulumi:"clusterName"`
 	// Cluster tag, no need to pay attention.
 	CreateResource string `pulumi:"createResource"`
-	// Creation time.
+	// The creation time of the resource.
 	CreateTime string `pulumi:"createTime"`
 	// How to create a cluster.
 	CreateType string `pulumi:"createType"`
@@ -1087,13 +1087,13 @@ type GetClustersClusterArgs struct {
 	BootstrapActionLists GetClustersClusterBootstrapActionListArrayInput `pulumi:"bootstrapActionLists"`
 	// The result of the boot operation.
 	BootstrapFailed pulumi.BoolInput `pulumi:"bootstrapFailed"`
-	// The ID of the associated cluster.
+	// The first ID of the resource.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The name of the associated cluster.
+	// The ClusterName.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
 	// Cluster tag, no need to pay attention.
 	CreateResource pulumi.StringInput `pulumi:"createResource"`
-	// Creation time.
+	// The creation time of the resource.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// How to create a cluster.
 	CreateType pulumi.StringInput `pulumi:"createType"`
@@ -1247,12 +1247,12 @@ func (o GetClustersClusterOutput) BootstrapFailed() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClustersCluster) bool { return v.BootstrapFailed }).(pulumi.BoolOutput)
 }
 
-// The ID of the associated cluster.
+// The first ID of the resource.
 func (o GetClustersClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The name of the associated cluster.
+// The ClusterName.
 func (o GetClustersClusterOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterName }).(pulumi.StringOutput)
 }
@@ -1262,7 +1262,7 @@ func (o GetClustersClusterOutput) CreateResource() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.CreateResource }).(pulumi.StringOutput)
 }
 
-// Creation time.
+// The creation time of the resource.
 func (o GetClustersClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -1452,6 +1452,8 @@ func (o GetClustersClusterArrayOutput) Index(i pulumi.IntInput) GetClustersClust
 
 type GetClustersClusterAccessInfo struct {
 	// Link address information list of ZooKeeper.
+	// * `link` - The access link address of ZooKeeper.
+	// * `port` - The port of ZooKeeper.
 	ZkLinks []GetClustersClusterAccessInfoZkLink `pulumi:"zkLinks"`
 }
 
@@ -1468,6 +1470,8 @@ type GetClustersClusterAccessInfoInput interface {
 
 type GetClustersClusterAccessInfoArgs struct {
 	// Link address information list of ZooKeeper.
+	// * `link` - The access link address of ZooKeeper.
+	// * `port` - The port of ZooKeeper.
 	ZkLinks GetClustersClusterAccessInfoZkLinkArrayInput `pulumi:"zkLinks"`
 }
 
@@ -1523,6 +1527,8 @@ func (o GetClustersClusterAccessInfoOutput) ToGetClustersClusterAccessInfoOutput
 }
 
 // Link address information list of ZooKeeper.
+// * `link` - The access link address of ZooKeeper.
+// * `port` - The port of ZooKeeper.
 func (o GetClustersClusterAccessInfoOutput) ZkLinks() GetClustersClusterAccessInfoZkLinkArrayOutput {
 	return o.ApplyT(func(v GetClustersClusterAccessInfo) []GetClustersClusterAccessInfoZkLink { return v.ZkLinks }).(GetClustersClusterAccessInfoZkLinkArrayOutput)
 }
@@ -1548,9 +1554,7 @@ func (o GetClustersClusterAccessInfoArrayOutput) Index(i pulumi.IntInput) GetClu
 }
 
 type GetClustersClusterAccessInfoZkLink struct {
-	// The access link address of ZooKeeper.
 	Link string `pulumi:"link"`
-	// The port of ZooKeeper.
 	Port string `pulumi:"port"`
 }
 
@@ -1566,9 +1570,7 @@ type GetClustersClusterAccessInfoZkLinkInput interface {
 }
 
 type GetClustersClusterAccessInfoZkLinkArgs struct {
-	// The access link address of ZooKeeper.
 	Link pulumi.StringInput `pulumi:"link"`
-	// The port of ZooKeeper.
 	Port pulumi.StringInput `pulumi:"port"`
 }
 
@@ -1623,12 +1625,10 @@ func (o GetClustersClusterAccessInfoZkLinkOutput) ToGetClustersClusterAccessInfo
 	return o
 }
 
-// The access link address of ZooKeeper.
 func (o GetClustersClusterAccessInfoZkLinkOutput) Link() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterAccessInfoZkLink) string { return v.Link }).(pulumi.StringOutput)
 }
 
-// The port of ZooKeeper.
 func (o GetClustersClusterAccessInfoZkLinkOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterAccessInfoZkLink) string { return v.Port }).(pulumi.StringOutput)
 }
@@ -1656,7 +1656,7 @@ func (o GetClustersClusterAccessInfoZkLinkArrayOutput) Index(i pulumi.IntInput) 
 type GetClustersClusterBootstrapActionList struct {
 	// Parameters of the boot operation.
 	Arg string `pulumi:"arg"`
-	// The internal name of the service.
+	// The name of the boot operation.
 	Name string `pulumi:"name"`
 	// Boot operation script path.
 	Path string `pulumi:"path"`
@@ -1676,7 +1676,7 @@ type GetClustersClusterBootstrapActionListInput interface {
 type GetClustersClusterBootstrapActionListArgs struct {
 	// Parameters of the boot operation.
 	Arg pulumi.StringInput `pulumi:"arg"`
-	// The internal name of the service.
+	// The name of the boot operation.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Boot operation script path.
 	Path pulumi.StringInput `pulumi:"path"`
@@ -1738,7 +1738,7 @@ func (o GetClustersClusterBootstrapActionListOutput) Arg() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterBootstrapActionList) string { return v.Arg }).(pulumi.StringOutput)
 }
 
-// The internal name of the service.
+// The name of the boot operation.
 func (o GetClustersClusterBootstrapActionListOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterBootstrapActionList) string { return v.Name }).(pulumi.StringOutput)
 }
@@ -1992,7 +1992,7 @@ func (o GetClustersClusterHostGroupListArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetClustersClusterHostGroupListNode struct {
-	// Creation time.
+	// The creation time of the resource.
 	CreateTime string `pulumi:"createTime"`
 	// Disk information.
 	DiskInfos []GetClustersClusterHostGroupListNodeDiskInfo `pulumi:"diskInfos"`
@@ -2026,7 +2026,7 @@ type GetClustersClusterHostGroupListNodeInput interface {
 }
 
 type GetClustersClusterHostGroupListNodeArgs struct {
-	// Creation time.
+	// The creation time of the resource.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// Disk information.
 	DiskInfos GetClustersClusterHostGroupListNodeDiskInfoArrayInput `pulumi:"diskInfos"`
@@ -2099,7 +2099,7 @@ func (o GetClustersClusterHostGroupListNodeOutput) ToGetClustersClusterHostGroup
 	return o
 }
 
-// Creation time.
+// The creation time of the resource.
 func (o GetClustersClusterHostGroupListNodeOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterHostGroupListNode) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -2415,9 +2415,9 @@ type GetClustersClusterRelateClusterInfo struct {
 	ClusterId string `pulumi:"clusterId"`
 	// The name of the associated cluster.
 	ClusterName string `pulumi:"clusterName"`
-	// Cluster type:
+	// The cluster type of the associated cluster.
 	ClusterType string `pulumi:"clusterType"`
-	// The cluster status.
+	// The status  of the associated cluster.
 	Status string `pulumi:"status"`
 }
 
@@ -2437,9 +2437,9 @@ type GetClustersClusterRelateClusterInfoArgs struct {
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// The name of the associated cluster.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// Cluster type:
+	// The cluster type of the associated cluster.
 	ClusterType pulumi.StringInput `pulumi:"clusterType"`
-	// The cluster status.
+	// The status  of the associated cluster.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -2504,12 +2504,12 @@ func (o GetClustersClusterRelateClusterInfoOutput) ClusterName() pulumi.StringOu
 	return o.ApplyT(func(v GetClustersClusterRelateClusterInfo) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
-// Cluster type:
+// The cluster type of the associated cluster.
 func (o GetClustersClusterRelateClusterInfoOutput) ClusterType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterRelateClusterInfo) string { return v.ClusterType }).(pulumi.StringOutput)
 }
 
-// The cluster status.
+// The status  of the associated cluster.
 func (o GetClustersClusterRelateClusterInfoOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterRelateClusterInfo) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -2652,7 +2652,7 @@ func (o GetClustersClusterSoftwareInfoArrayOutput) Index(i pulumi.IntInput) GetC
 type GetClustersClusterSoftwareInfoSoftware struct {
 	// The name of the service.
 	DisplayName string `pulumi:"displayName"`
-	// The internal name of the service.
+	// The name of the boot operation.
 	Name string `pulumi:"name"`
 	// Whether it shows.
 	OnlyDisplay bool `pulumi:"onlyDisplay"`
@@ -2676,7 +2676,7 @@ type GetClustersClusterSoftwareInfoSoftwareInput interface {
 type GetClustersClusterSoftwareInfoSoftwareArgs struct {
 	// The name of the service.
 	DisplayName pulumi.StringInput `pulumi:"displayName"`
-	// The internal name of the service.
+	// The name of the boot operation.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Whether it shows.
 	OnlyDisplay pulumi.BoolInput `pulumi:"onlyDisplay"`
@@ -2742,7 +2742,7 @@ func (o GetClustersClusterSoftwareInfoSoftwareOutput) DisplayName() pulumi.Strin
 	return o.ApplyT(func(v GetClustersClusterSoftwareInfoSoftware) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The internal name of the service.
+// The name of the boot operation.
 func (o GetClustersClusterSoftwareInfoSoftwareOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersClusterSoftwareInfoSoftware) string { return v.Name }).(pulumi.StringOutput)
 }

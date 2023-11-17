@@ -67,7 +67,7 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly enableSsl!: pulumi.Output<boolean | undefined>;
     /**
-     * The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+     * (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
      * Default to PostPaid.
      */
     public readonly instanceChargeType!: pulumi.Output<string | undefined>;
@@ -204,7 +204,7 @@ export interface GatewayState {
      */
     enableSsl?: pulumi.Input<boolean>;
     /**
-     * The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+     * (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
      * Default to PostPaid.
      */
     instanceChargeType?: pulumi.Input<string>;
@@ -277,7 +277,7 @@ export interface GatewayArgs {
      */
     enableSsl?: pulumi.Input<boolean>;
     /**
-     * The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+     * (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
      * Default to PostPaid.
      */
     instanceChargeType?: pulumi.Input<string>;

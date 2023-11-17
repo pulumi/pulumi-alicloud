@@ -212,7 +212,7 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
                * _aliyun_arms_alert_rule_id: alert rule ID
                * _aliyun_arms_alert_type: alert type
                * _aliyun_arms_alert_level: alert severity
-        :param str operator: The operator used in the dispatch rule. Valid values: 
+        :param str operator: The operator used in the dispatch rule. Valid values:
                * eq: equals to.
                * re: matches a regular expression.
         :param str value: The value of the tag.
@@ -241,7 +241,7 @@ class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExp
     @pulumi.getter
     def operator(self) -> str:
         """
-        The operator used in the dispatch rule. Valid values: 
+        The operator used in the dispatch rule. Valid values:
         * eq: equals to.
         * re: matches a regular expression.
         """

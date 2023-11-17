@@ -274,7 +274,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * * Ram: Ram User
      * * AD: AD-authenticated User
      * * LDAP: LDAP-authenticated User
-     * &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
+     *   &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
      * 
      */
     @Export(name="source", type=String.class, parameters={})
@@ -286,7 +286,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * * Ram: Ram User
      * * AD: AD-authenticated User
      * * LDAP: LDAP-authenticated User
-     * &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
+     *   &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
      * 
      */
     public Output<String> source() {

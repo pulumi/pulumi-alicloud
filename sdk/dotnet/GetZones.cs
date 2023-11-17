@@ -95,14 +95,14 @@ namespace Pulumi.AliCloud
         /// Filter the results by a specific resource type.
         /// Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
         /// 
-        /// &gt; **NOTE:** From version 1.134.0, the `available_resource_creation` value "Rds" has been deprecated.
+        /// &gt; **NOTE:** From version 1.134.0, the `available_resource_creation` value "Rds" has been deprecated. 
         /// If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
         /// </summary>
         [Input("availableResourceCreation")]
         public string? AvailableResourceCreation { get; set; }
 
         /// <summary>
-        /// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+        /// (Available since 1.45.0) Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
         /// 
         /// &gt; **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloud_efficiency` or `cloud_ssd`.
         /// </summary>
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud
         public string? AvailableSlbAddressIpVersion { get; set; }
 
         /// <summary>
-        /// Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+        /// (Available since 1.45.0) Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
         /// </summary>
         [Input("availableSlbAddressType")]
         public string? AvailableSlbAddressType { get; set; }
@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+        /// Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
         /// </summary>
         [Input("spotStrategy")]
         public string? SpotStrategy { get; set; }
@@ -175,14 +175,14 @@ namespace Pulumi.AliCloud
         /// Filter the results by a specific resource type.
         /// Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
         /// 
-        /// &gt; **NOTE:** From version 1.134.0, the `available_resource_creation` value "Rds" has been deprecated.
+        /// &gt; **NOTE:** From version 1.134.0, the `available_resource_creation` value "Rds" has been deprecated. 
         /// If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
         /// </summary>
         [Input("availableResourceCreation")]
         public Input<string>? AvailableResourceCreation { get; set; }
 
         /// <summary>
-        /// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+        /// (Available since 1.45.0) Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
         /// 
         /// &gt; **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloud_efficiency` or `cloud_ssd`.
         /// </summary>
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud
         public Input<string>? AvailableSlbAddressIpVersion { get; set; }
 
         /// <summary>
-        /// Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+        /// (Available since 1.45.0) Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
         /// </summary>
         [Input("availableSlbAddressType")]
         public Input<string>? AvailableSlbAddressType { get; set; }
@@ -226,7 +226,7 @@ namespace Pulumi.AliCloud
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+        /// Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
         /// </summary>
         [Input("spotStrategy")]
         public Input<string>? SpotStrategy { get; set; }

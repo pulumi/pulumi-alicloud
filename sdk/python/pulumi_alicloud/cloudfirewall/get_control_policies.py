@@ -195,11 +195,11 @@ def get_control_policies(acl_action: Optional[str] = None,
     :param str acl_uuid: The unique ID of the access control policy.
     :param str description: The description of the access control policy.
     :param str destination: The destination address defined in the access control policy.
-    :param str direction: The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+    :param str direction: Direction. Valid values: `in`, `out`.
     :param str ip_version: The ip version.
     :param str lang: DestPortGroupPorts. Valid values: `en`, `zh`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str proto: The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+    :param str proto: The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
     :param str source: The source address defined in the access control policy.
     :param str source_ip: The source IP address of the request.
     """
@@ -269,11 +269,11 @@ def get_control_policies_output(acl_action: Optional[pulumi.Input[Optional[str]]
     :param str acl_uuid: The unique ID of the access control policy.
     :param str description: The description of the access control policy.
     :param str destination: The destination address defined in the access control policy.
-    :param str direction: The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+    :param str direction: Direction. Valid values: `in`, `out`.
     :param str ip_version: The ip version.
     :param str lang: DestPortGroupPorts. Valid values: `en`, `zh`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str proto: The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+    :param str proto: The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
     :param str source: The source address defined in the access control policy.
     :param str source_ip: The source IP address of the request.
     """

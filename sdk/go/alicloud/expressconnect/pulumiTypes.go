@@ -1969,7 +1969,7 @@ type GetVirtualPhysicalConnectionsConnection struct {
 	AdLocation string `pulumi:"adLocation"`
 	// The bandwidth of the physical connection. Unit: Mbps.
 	Bandwidth string `pulumi:"bandwidth"`
-	// The commercial status of the physical line. Value:
+	// (ForceNew,Optional) The commercial status of the physical line. Value:
 	// - **Normal**: activated.
 	// - **Financialized**: Arrears locked.
 	// - **SecurityLocked**: locked for security reasons.
@@ -1996,7 +1996,7 @@ type GetVirtualPhysicalConnectionsConnection struct {
 	OrderMode string `pulumi:"orderMode"`
 	// The ID of the Alibaba Cloud account (primary account) to which the physical connection belongs.
 	ParentPhysicalConnectionAliUid string `pulumi:"parentPhysicalConnectionAliUid"`
-	// The ID of the instance of the physical connection.
+	// (ForceNew,Optional) The ID of the instance of the physical connection.
 	ParentPhysicalConnectionId string `pulumi:"parentPhysicalConnectionId"`
 	// The geographic location of the local data center.
 	PeerLocation string `pulumi:"peerLocation"`
@@ -2016,14 +2016,14 @@ type GetVirtualPhysicalConnectionsConnection struct {
 	VirtualPhysicalConnectionId string `pulumi:"virtualPhysicalConnectionId"`
 	// The name of the physical connection.
 	VirtualPhysicalConnectionName string `pulumi:"virtualPhysicalConnectionName"`
-	// The business status of the shared line. Value:
+	// (ForceNew,Optional) The business status of the shared line. Value:
 	// - **Confirmed**: The shared line has been Confirmed to receive.
 	// - **UnConfirmed**: The shared line has not been confirmed to be received.
 	// - **Deleted**: The shared line has been Deleted.
 	VirtualPhysicalConnectionStatus string `pulumi:"virtualPhysicalConnectionStatus"`
 	// The VLAN ID of the shared leased line.
 	VlanId int `pulumi:"vlanId"`
-	// The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+	// (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
 	VpconnAliUid string `pulumi:"vpconnAliUid"`
 }
 
@@ -2045,7 +2045,7 @@ type GetVirtualPhysicalConnectionsConnectionArgs struct {
 	AdLocation pulumi.StringInput `pulumi:"adLocation"`
 	// The bandwidth of the physical connection. Unit: Mbps.
 	Bandwidth pulumi.StringInput `pulumi:"bandwidth"`
-	// The commercial status of the physical line. Value:
+	// (ForceNew,Optional) The commercial status of the physical line. Value:
 	// - **Normal**: activated.
 	// - **Financialized**: Arrears locked.
 	// - **SecurityLocked**: locked for security reasons.
@@ -2072,7 +2072,7 @@ type GetVirtualPhysicalConnectionsConnectionArgs struct {
 	OrderMode pulumi.StringInput `pulumi:"orderMode"`
 	// The ID of the Alibaba Cloud account (primary account) to which the physical connection belongs.
 	ParentPhysicalConnectionAliUid pulumi.StringInput `pulumi:"parentPhysicalConnectionAliUid"`
-	// The ID of the instance of the physical connection.
+	// (ForceNew,Optional) The ID of the instance of the physical connection.
 	ParentPhysicalConnectionId pulumi.StringInput `pulumi:"parentPhysicalConnectionId"`
 	// The geographic location of the local data center.
 	PeerLocation pulumi.StringInput `pulumi:"peerLocation"`
@@ -2092,14 +2092,14 @@ type GetVirtualPhysicalConnectionsConnectionArgs struct {
 	VirtualPhysicalConnectionId pulumi.StringInput `pulumi:"virtualPhysicalConnectionId"`
 	// The name of the physical connection.
 	VirtualPhysicalConnectionName pulumi.StringInput `pulumi:"virtualPhysicalConnectionName"`
-	// The business status of the shared line. Value:
+	// (ForceNew,Optional) The business status of the shared line. Value:
 	// - **Confirmed**: The shared line has been Confirmed to receive.
 	// - **UnConfirmed**: The shared line has not been confirmed to be received.
 	// - **Deleted**: The shared line has been Deleted.
 	VirtualPhysicalConnectionStatus pulumi.StringInput `pulumi:"virtualPhysicalConnectionStatus"`
 	// The VLAN ID of the shared leased line.
 	VlanId pulumi.IntInput `pulumi:"vlanId"`
-	// The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+	// (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
 	VpconnAliUid pulumi.StringInput `pulumi:"vpconnAliUid"`
 }
 
@@ -2169,7 +2169,7 @@ func (o GetVirtualPhysicalConnectionsConnectionOutput) Bandwidth() pulumi.String
 	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.Bandwidth }).(pulumi.StringOutput)
 }
 
-// The commercial status of the physical line. Value:
+// (ForceNew,Optional) The commercial status of the physical line. Value:
 // - **Normal**: activated.
 // - **Financialized**: Arrears locked.
 // - **SecurityLocked**: locked for security reasons.
@@ -2232,7 +2232,7 @@ func (o GetVirtualPhysicalConnectionsConnectionOutput) ParentPhysicalConnectionA
 	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.ParentPhysicalConnectionAliUid }).(pulumi.StringOutput)
 }
 
-// The ID of the instance of the physical connection.
+// (ForceNew,Optional) The ID of the instance of the physical connection.
 func (o GetVirtualPhysicalConnectionsConnectionOutput) ParentPhysicalConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.ParentPhysicalConnectionId }).(pulumi.StringOutput)
 }
@@ -2282,7 +2282,7 @@ func (o GetVirtualPhysicalConnectionsConnectionOutput) VirtualPhysicalConnection
 	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.VirtualPhysicalConnectionName }).(pulumi.StringOutput)
 }
 
-// The business status of the shared line. Value:
+// (ForceNew,Optional) The business status of the shared line. Value:
 // - **Confirmed**: The shared line has been Confirmed to receive.
 // - **UnConfirmed**: The shared line has not been confirmed to be received.
 // - **Deleted**: The shared line has been Deleted.
@@ -2295,7 +2295,7 @@ func (o GetVirtualPhysicalConnectionsConnectionOutput) VlanId() pulumi.IntOutput
 	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) int { return v.VlanId }).(pulumi.IntOutput)
 }
 
-// The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+// (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
 func (o GetVirtualPhysicalConnectionsConnectionOutput) VpconnAliUid() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVirtualPhysicalConnectionsConnection) string { return v.VpconnAliUid }).(pulumi.StringOutput)
 }

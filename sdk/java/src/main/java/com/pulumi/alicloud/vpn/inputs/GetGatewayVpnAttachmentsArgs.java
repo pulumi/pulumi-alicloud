@@ -92,7 +92,7 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
+     * (Deprecated) The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
      * 
      * @deprecated
      * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
@@ -103,7 +103,7 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
     private @Nullable Output<String> vpnGatewayId;
 
     /**
-     * @return The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
+     * @return (Deprecated) The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
      * 
      * @deprecated
      * The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
@@ -257,7 +257,7 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param vpnGatewayId The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
+         * @param vpnGatewayId (Deprecated) The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
          * 
          * @return builder
          * 
@@ -272,7 +272,7 @@ public final class GetGatewayVpnAttachmentsArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param vpnGatewayId The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
+         * @param vpnGatewayId (Deprecated) The parameter &#39;vpn_gateway_id&#39; has been deprecated from 1.194.0.
          * 
          * @return builder
          * 

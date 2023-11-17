@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.CloudSso
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+        /// The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
         /// </summary>
         [Input("provisionType")]
         public string? ProvisionType { get; set; }
@@ -190,7 +190,7 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The Provision Type of the Group. Valid values: `Manual`, `Synchronized`.
+        /// The ProvisionType of the Group. Valid values: `Manual`, `Synchronized`.
         /// </summary>
         [Input("provisionType")]
         public Input<string>? ProvisionType { get; set; }

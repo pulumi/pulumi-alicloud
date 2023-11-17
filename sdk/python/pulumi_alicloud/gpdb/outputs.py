@@ -840,11 +840,11 @@ class GetInstancesInstanceResult(dict):
                  zone_id: str):
         """
         :param str availability_zone: Instance availability zone.
-        :param str connection_string: The connection string of the instance.
+        :param str connection_string: (Available in 1.196.0+) The connection string of the instance.
         :param str cpu_cores: The number of CPU cores of the computing node. Unit: Core.
         :param str create_time: The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
-        :param str db_instance_category: The db instance category. Valid values: `HighAvailability`, `Basic`.
-        :param str db_instance_class: The db instance class.
+               * `db_instance_category` - The db instance category. Valid values: `HighAvailability`, `Basic`.
+               * `db_instance_class` - The db instance class.
         :param str db_instance_id: The db instance id.
         :param str db_instance_mode: The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
         :param str description: The description of the instance.
@@ -858,7 +858,6 @@ class GetInstancesInstanceResult(dict):
         :param str master_node_num: The number of Master nodes. Valid values: 1 to 2. if it is not filled in, the default value is 1 Master node.
         :param str memory_size: The memory size of the compute node.
         :param str payment_type: The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
-        :param str region_id: Region ID the instance belongs to.
         :param str seg_node_num: Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
         :param str status: The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
         :param int storage_size: The storage capacity. Unit: GB. Value: `50` to `4000`.
@@ -867,6 +866,7 @@ class GetInstancesInstanceResult(dict):
         :param str vpc_id: The ID of the VPC。.
         :param str vswitch_id: The vswitch id.
         :param str zone_id: The zone ID of the instance.
+               * `region_id` - Region ID the instance belongs to.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "charge_type", charge_type)
@@ -916,7 +916,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="connectionString")
     def connection_string(self) -> str:
         """
-        The connection string of the instance.
+        (Available in 1.196.0+) The connection string of the instance.
         """
         return pulumi.get(self, "connection_string")
 
@@ -933,6 +933,8 @@ class GetInstancesInstanceResult(dict):
     def create_time(self) -> str:
         """
         The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+        * `db_instance_category` - The db instance category. Valid values: `HighAvailability`, `Basic`.
+        * `db_instance_class` - The db instance class.
         """
         return pulumi.get(self, "create_time")
 
@@ -944,17 +946,11 @@ class GetInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="dbInstanceCategory")
     def db_instance_category(self) -> str:
-        """
-        The db instance category. Valid values: `HighAvailability`, `Basic`.
-        """
         return pulumi.get(self, "db_instance_category")
 
     @property
     @pulumi.getter(name="dbInstanceClass")
     def db_instance_class(self) -> str:
-        """
-        The db instance class.
-        """
         return pulumi.get(self, "db_instance_class")
 
     @property
@@ -1064,9 +1060,6 @@ class GetInstancesInstanceResult(dict):
     @property
     @pulumi.getter(name="regionId")
     def region_id(self) -> str:
-        """
-        Region ID the instance belongs to.
-        """
         return pulumi.get(self, "region_id")
 
     @property
@@ -1130,6 +1123,7 @@ class GetInstancesInstanceResult(dict):
     def zone_id(self) -> str:
         """
         The zone ID of the instance.
+        * `region_id` - Region ID the instance belongs to.
         """
         return pulumi.get(self, "zone_id")
 

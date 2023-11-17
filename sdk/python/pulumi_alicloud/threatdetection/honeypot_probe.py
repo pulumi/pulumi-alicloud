@@ -33,13 +33,13 @@ class HoneypotProbeArgs:
         :param pulumi.Input[str] display_name: Probe display name.
         :param pulumi.Input[str] probe_type: Probe type, support `host_probe` and `vpc_black_hole_probe`.
         :param pulumi.Input[bool] arp: ARP spoofing detection.**true**: Enable **false**: Disabled
-        :param pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]] honeypot_bind_lists: Configure the service.See the following `Block HoneypotBindList`.
+        :param pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]] honeypot_bind_lists: (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
         :param pulumi.Input[bool] ping: Ping scan detection. Value: **true**: Enable **false**: Disabled
-        :param pulumi.Input[str] probe_version: The version of the probe.
-        :param pulumi.Input[str] proxy_ip: The IP address of the proxy.
+        :param pulumi.Input[str] probe_version: (ForceNew,Optional) The version of the probe.
+        :param pulumi.Input[str] proxy_ip: (ForceNew,Optional) The IP address of the proxy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_ip_lists: Listen to the IP address list.
-        :param pulumi.Input[str] uuid: Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+        :param pulumi.Input[str] uuid: (ForceNew,Optional) Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+        :param pulumi.Input[str] vpc_id: (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
         """
         pulumi.set(__self__, "control_node_id", control_node_id)
         pulumi.set(__self__, "display_name", display_name)
@@ -113,7 +113,7 @@ class HoneypotProbeArgs:
     @pulumi.getter(name="honeypotBindLists")
     def honeypot_bind_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]]:
         """
-        Configure the service.See the following `Block HoneypotBindList`.
+        (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
         """
         return pulumi.get(self, "honeypot_bind_lists")
 
@@ -137,7 +137,7 @@ class HoneypotProbeArgs:
     @pulumi.getter(name="probeVersion")
     def probe_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the probe.
+        (ForceNew,Optional) The version of the probe.
         """
         return pulumi.get(self, "probe_version")
 
@@ -149,7 +149,7 @@ class HoneypotProbeArgs:
     @pulumi.getter(name="proxyIp")
     def proxy_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP address of the proxy.
+        (ForceNew,Optional) The IP address of the proxy.
         """
         return pulumi.get(self, "proxy_ip")
 
@@ -173,7 +173,7 @@ class HoneypotProbeArgs:
     @pulumi.getter
     def uuid(self) -> Optional[pulumi.Input[str]]:
         """
-        Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+        (ForceNew,Optional) Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
         """
         return pulumi.get(self, "uuid")
 
@@ -185,7 +185,7 @@ class HoneypotProbeArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+        (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -215,16 +215,16 @@ class _HoneypotProbeState:
         :param pulumi.Input[bool] arp: ARP spoofing detection.**true**: Enable **false**: Disabled
         :param pulumi.Input[str] control_node_id: The ID of the management node.
         :param pulumi.Input[str] display_name: Probe display name.
-        :param pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]] honeypot_bind_lists: Configure the service.See the following `Block HoneypotBindList`.
+        :param pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]] honeypot_bind_lists: (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
         :param pulumi.Input[str] honeypot_probe_id: The first ID of the resource
         :param pulumi.Input[bool] ping: Ping scan detection. Value: **true**: Enable **false**: Disabled
         :param pulumi.Input[str] probe_type: Probe type, support `host_probe` and `vpc_black_hole_probe`.
-        :param pulumi.Input[str] probe_version: The version of the probe.
-        :param pulumi.Input[str] proxy_ip: The IP address of the proxy.
+        :param pulumi.Input[str] probe_version: (ForceNew,Optional) The version of the probe.
+        :param pulumi.Input[str] proxy_ip: (ForceNew,Optional) The IP address of the proxy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_ip_lists: Listen to the IP address list.
         :param pulumi.Input[str] status: The status of the resource
-        :param pulumi.Input[str] uuid: Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+        :param pulumi.Input[str] uuid: (ForceNew,Optional) Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+        :param pulumi.Input[str] vpc_id: (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
         """
         if arp is not None:
             pulumi.set(__self__, "arp", arp)
@@ -293,7 +293,7 @@ class _HoneypotProbeState:
     @pulumi.getter(name="honeypotBindLists")
     def honeypot_bind_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HoneypotProbeHoneypotBindListArgs']]]]:
         """
-        Configure the service.See the following `Block HoneypotBindList`.
+        (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
         """
         return pulumi.get(self, "honeypot_bind_lists")
 
@@ -341,7 +341,7 @@ class _HoneypotProbeState:
     @pulumi.getter(name="probeVersion")
     def probe_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The version of the probe.
+        (ForceNew,Optional) The version of the probe.
         """
         return pulumi.get(self, "probe_version")
 
@@ -353,7 +353,7 @@ class _HoneypotProbeState:
     @pulumi.getter(name="proxyIp")
     def proxy_ip(self) -> Optional[pulumi.Input[str]]:
         """
-        The IP address of the proxy.
+        (ForceNew,Optional) The IP address of the proxy.
         """
         return pulumi.get(self, "proxy_ip")
 
@@ -389,7 +389,7 @@ class _HoneypotProbeState:
     @pulumi.getter
     def uuid(self) -> Optional[pulumi.Input[str]]:
         """
-        Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+        (ForceNew,Optional) Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
         """
         return pulumi.get(self, "uuid")
 
@@ -401,7 +401,7 @@ class _HoneypotProbeState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+        (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -471,14 +471,14 @@ class HoneypotProbe(pulumi.CustomResource):
         :param pulumi.Input[bool] arp: ARP spoofing detection.**true**: Enable **false**: Disabled
         :param pulumi.Input[str] control_node_id: The ID of the management node.
         :param pulumi.Input[str] display_name: Probe display name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HoneypotProbeHoneypotBindListArgs']]]] honeypot_bind_lists: Configure the service.See the following `Block HoneypotBindList`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HoneypotProbeHoneypotBindListArgs']]]] honeypot_bind_lists: (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
         :param pulumi.Input[bool] ping: Ping scan detection. Value: **true**: Enable **false**: Disabled
         :param pulumi.Input[str] probe_type: Probe type, support `host_probe` and `vpc_black_hole_probe`.
-        :param pulumi.Input[str] probe_version: The version of the probe.
-        :param pulumi.Input[str] proxy_ip: The IP address of the proxy.
+        :param pulumi.Input[str] probe_version: (ForceNew,Optional) The version of the probe.
+        :param pulumi.Input[str] proxy_ip: (ForceNew,Optional) The IP address of the proxy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_ip_lists: Listen to the IP address list.
-        :param pulumi.Input[str] uuid: Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+        :param pulumi.Input[str] uuid: (ForceNew,Optional) Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+        :param pulumi.Input[str] vpc_id: (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
         """
         ...
     @overload
@@ -612,16 +612,16 @@ class HoneypotProbe(pulumi.CustomResource):
         :param pulumi.Input[bool] arp: ARP spoofing detection.**true**: Enable **false**: Disabled
         :param pulumi.Input[str] control_node_id: The ID of the management node.
         :param pulumi.Input[str] display_name: Probe display name.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HoneypotProbeHoneypotBindListArgs']]]] honeypot_bind_lists: Configure the service.See the following `Block HoneypotBindList`.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['HoneypotProbeHoneypotBindListArgs']]]] honeypot_bind_lists: (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
         :param pulumi.Input[str] honeypot_probe_id: The first ID of the resource
         :param pulumi.Input[bool] ping: Ping scan detection. Value: **true**: Enable **false**: Disabled
         :param pulumi.Input[str] probe_type: Probe type, support `host_probe` and `vpc_black_hole_probe`.
-        :param pulumi.Input[str] probe_version: The version of the probe.
-        :param pulumi.Input[str] proxy_ip: The IP address of the proxy.
+        :param pulumi.Input[str] probe_version: (ForceNew,Optional) The version of the probe.
+        :param pulumi.Input[str] proxy_ip: (ForceNew,Optional) The IP address of the proxy.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] service_ip_lists: Listen to the IP address list.
         :param pulumi.Input[str] status: The status of the resource
-        :param pulumi.Input[str] uuid: Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
-        :param pulumi.Input[str] vpc_id: The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+        :param pulumi.Input[str] uuid: (ForceNew,Optional) Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+        :param pulumi.Input[str] vpc_id: (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -670,7 +670,7 @@ class HoneypotProbe(pulumi.CustomResource):
     @pulumi.getter(name="honeypotBindLists")
     def honeypot_bind_lists(self) -> pulumi.Output[Optional[Sequence['outputs.HoneypotProbeHoneypotBindList']]]:
         """
-        Configure the service.See the following `Block HoneypotBindList`.
+        (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
         """
         return pulumi.get(self, "honeypot_bind_lists")
 
@@ -702,7 +702,7 @@ class HoneypotProbe(pulumi.CustomResource):
     @pulumi.getter(name="probeVersion")
     def probe_version(self) -> pulumi.Output[str]:
         """
-        The version of the probe.
+        (ForceNew,Optional) The version of the probe.
         """
         return pulumi.get(self, "probe_version")
 
@@ -710,7 +710,7 @@ class HoneypotProbe(pulumi.CustomResource):
     @pulumi.getter(name="proxyIp")
     def proxy_ip(self) -> pulumi.Output[Optional[str]]:
         """
-        The IP address of the proxy.
+        (ForceNew,Optional) The IP address of the proxy.
         """
         return pulumi.get(self, "proxy_ip")
 
@@ -734,7 +734,7 @@ class HoneypotProbe(pulumi.CustomResource):
     @pulumi.getter
     def uuid(self) -> pulumi.Output[Optional[str]]:
         """
-        Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
+        (ForceNew,Optional) Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
         """
         return pulumi.get(self, "uuid")
 
@@ -742,7 +742,7 @@ class HoneypotProbe(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
+        (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
         """
         return pulumi.get(self, "vpc_id")
 

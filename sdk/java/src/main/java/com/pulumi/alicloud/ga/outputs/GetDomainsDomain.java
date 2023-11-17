@@ -10,12 +10,12 @@ import java.util.Objects;
 @CustomType
 public final class GetDomainsDomain {
     /**
-     * @return The ID of the global acceleration instance.
+     * @return (ForceNew,Optional) The ID of the global acceleration instance.
      * 
      */
     private String acceleratorId;
     /**
-     * @return The accelerated domain name to be added. only top-level domain names are supported, such as &#39;example.com&#39;.
+     * @return (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as &#39;example.com&#39;.
      * 
      */
     private String domain;
@@ -25,21 +25,21 @@ public final class GetDomainsDomain {
      */
     private String id;
     /**
-     * @return The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+     * @return (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
      * 
      */
     private String status;
 
     private GetDomainsDomain() {}
     /**
-     * @return The ID of the global acceleration instance.
+     * @return (ForceNew,Optional) The ID of the global acceleration instance.
      * 
      */
     public String acceleratorId() {
         return this.acceleratorId;
     }
     /**
-     * @return The accelerated domain name to be added. only top-level domain names are supported, such as &#39;example.com&#39;.
+     * @return (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as &#39;example.com&#39;.
      * 
      */
     public String domain() {
@@ -53,7 +53,7 @@ public final class GetDomainsDomain {
         return this.id;
     }
     /**
-     * @return The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+     * @return (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
      * 
      */
     public String status() {

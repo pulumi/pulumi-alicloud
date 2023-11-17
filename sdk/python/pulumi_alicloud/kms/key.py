@@ -31,27 +31,25 @@ class KeyArgs:
         """
         The set of arguments for constructing a Key resource.
         :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
-        :param pulumi.Input[int] deletion_window_in_days: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+        :param pulumi.Input[int] deletion_window_in_days: (Deprecated since v1.85.0) Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         :param pulumi.Input[str] description: The description of the CMK. The description can be 0 to 8,192 characters in length.
         :param pulumi.Input[str] dkms_instance_id: The instance ID of the exclusive KMS instance.
-        :param pulumi.Input[bool] is_enabled: Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        :param pulumi.Input[bool] is_enabled: (Deprecated since v1.85.0) Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
         :param pulumi.Input[str] key_spec: The type of the CMK. Default value: `Aliyun_AES_256`. Valid values: 
                `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
                Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
-        :param pulumi.Input[str] key_state: Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+        :param pulumi.Input[str] key_state: (Deprecated since v1.123.1) Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         :param pulumi.Input[str] key_usage: The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-               - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-               - `SIGN/VERIFY`: generates or verifies a digital signature.
         :param pulumi.Input[str] origin: The source of key material. Default value: `Aliyun_KMS`. Valid values:
         :param pulumi.Input[int] pending_window_in_days: The number of days before the CMK is deleted. 
-               During this period, the CMK is in the PendingDeletion state.
+               During this period, the CMK is in the PendingDeletion state. 
                After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
                **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         :param pulumi.Input[str] protection_level: The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
         :param pulumi.Input[str] rotation_interval: The interval for automatic key rotation. Specify the value in the integer[unit] format.
-               The following units are supported: d (day), h (hour), m (minute), and s (second).
-               For example, you can use either 7d or 604800s to specify a seven-day interval.
-               The interval can range from 7 days to 730 days.
+               The following units are supported: d (day), h (hour), m (minute), and s (second). 
+               For example, you can use either 7d or 604800s to specify a seven-day interval. 
+               The interval can range from 7 days to 730 days. 
                **NOTE**: It is Required when `automatic_rotation = "Enabled"`
                
                > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
@@ -112,7 +110,7 @@ class KeyArgs:
     @pulumi.getter(name="deletionWindowInDays")
     def deletion_window_in_days(self) -> Optional[pulumi.Input[int]]:
         """
-        Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+        (Deprecated since v1.85.0) Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         """
         warnings.warn("""Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""", DeprecationWarning)
         pulumi.log.warn("""deletion_window_in_days is deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""")
@@ -151,7 +149,7 @@ class KeyArgs:
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        (Deprecated since v1.85.0) Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
         """
         warnings.warn("""Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""", DeprecationWarning)
         pulumi.log.warn("""is_enabled is deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""")
@@ -180,7 +178,7 @@ class KeyArgs:
     @pulumi.getter(name="keyState")
     def key_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+        (Deprecated since v1.123.1) Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         """
         warnings.warn("""Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.""", DeprecationWarning)
         pulumi.log.warn("""key_state is deprecated: Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.""")
@@ -196,8 +194,6 @@ class KeyArgs:
     def key_usage(self) -> Optional[pulumi.Input[str]]:
         """
         The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-        - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-        - `SIGN/VERIFY`: generates or verifies a digital signature.
         """
         return pulumi.get(self, "key_usage")
 
@@ -222,7 +218,7 @@ class KeyArgs:
     def pending_window_in_days(self) -> Optional[pulumi.Input[int]]:
         """
         The number of days before the CMK is deleted. 
-        During this period, the CMK is in the PendingDeletion state.
+        During this period, the CMK is in the PendingDeletion state. 
         After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
         **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         """
@@ -249,9 +245,9 @@ class KeyArgs:
     def rotation_interval(self) -> Optional[pulumi.Input[str]]:
         """
         The interval for automatic key rotation. Specify the value in the integer[unit] format.
-        The following units are supported: d (day), h (hour), m (minute), and s (second).
-        For example, you can use either 7d or 604800s to specify a seven-day interval.
-        The interval can range from 7 days to 730 days.
+        The following units are supported: d (day), h (hour), m (minute), and s (second). 
+        For example, you can use either 7d or 604800s to specify a seven-day interval. 
+        The interval can range from 7 days to 730 days. 
         **NOTE**: It is Required when `automatic_rotation = "Enabled"`
 
         > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
@@ -319,31 +315,29 @@ class _KeyState:
         :param pulumi.Input[str] creation_date: The date and time when the CMK was created. The time is displayed in UTC.
         :param pulumi.Input[str] creator: The creator of the CMK.
         :param pulumi.Input[str] delete_date: The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
-        :param pulumi.Input[int] deletion_window_in_days: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+        :param pulumi.Input[int] deletion_window_in_days: (Deprecated since v1.85.0) Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         :param pulumi.Input[str] description: The description of the CMK. The description can be 0 to 8,192 characters in length.
         :param pulumi.Input[str] dkms_instance_id: The instance ID of the exclusive KMS instance.
-        :param pulumi.Input[bool] is_enabled: Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        :param pulumi.Input[bool] is_enabled: (Deprecated since v1.85.0) Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
         :param pulumi.Input[str] key_spec: The type of the CMK. Default value: `Aliyun_AES_256`. Valid values: 
                `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
                Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
-        :param pulumi.Input[str] key_state: Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+        :param pulumi.Input[str] key_state: (Deprecated since v1.123.1) Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         :param pulumi.Input[str] key_usage: The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-               - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-               - `SIGN/VERIFY`: generates or verifies a digital signature.
         :param pulumi.Input[str] last_rotation_date: The date and time the last rotation was performed. The time is displayed in UTC.
         :param pulumi.Input[str] material_expire_time: The time and date the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.
         :param pulumi.Input[str] next_rotation_date: The time the next rotation is scheduled for execution.
         :param pulumi.Input[str] origin: The source of key material. Default value: `Aliyun_KMS`. Valid values:
         :param pulumi.Input[int] pending_window_in_days: The number of days before the CMK is deleted. 
-               During this period, the CMK is in the PendingDeletion state.
+               During this period, the CMK is in the PendingDeletion state. 
                After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
                **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         :param pulumi.Input[str] primary_key_version: The ID of the current primary key version of the symmetric CMK.
         :param pulumi.Input[str] protection_level: The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
         :param pulumi.Input[str] rotation_interval: The interval for automatic key rotation. Specify the value in the integer[unit] format.
-               The following units are supported: d (day), h (hour), m (minute), and s (second).
-               For example, you can use either 7d or 604800s to specify a seven-day interval.
-               The interval can range from 7 days to 730 days.
+               The following units are supported: d (day), h (hour), m (minute), and s (second). 
+               For example, you can use either 7d or 604800s to specify a seven-day interval. 
+               The interval can range from 7 days to 730 days. 
                **NOTE**: It is Required when `automatic_rotation = "Enabled"`
                
                > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
@@ -468,7 +462,7 @@ class _KeyState:
     @pulumi.getter(name="deletionWindowInDays")
     def deletion_window_in_days(self) -> Optional[pulumi.Input[int]]:
         """
-        Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+        (Deprecated since v1.85.0) Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         """
         warnings.warn("""Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""", DeprecationWarning)
         pulumi.log.warn("""deletion_window_in_days is deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""")
@@ -507,7 +501,7 @@ class _KeyState:
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        (Deprecated since v1.85.0) Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
         """
         warnings.warn("""Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""", DeprecationWarning)
         pulumi.log.warn("""is_enabled is deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""")
@@ -536,7 +530,7 @@ class _KeyState:
     @pulumi.getter(name="keyState")
     def key_state(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+        (Deprecated since v1.123.1) Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         """
         warnings.warn("""Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.""", DeprecationWarning)
         pulumi.log.warn("""key_state is deprecated: Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.""")
@@ -552,8 +546,6 @@ class _KeyState:
     def key_usage(self) -> Optional[pulumi.Input[str]]:
         """
         The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-        - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-        - `SIGN/VERIFY`: generates or verifies a digital signature.
         """
         return pulumi.get(self, "key_usage")
 
@@ -614,7 +606,7 @@ class _KeyState:
     def pending_window_in_days(self) -> Optional[pulumi.Input[int]]:
         """
         The number of days before the CMK is deleted. 
-        During this period, the CMK is in the PendingDeletion state.
+        During this period, the CMK is in the PendingDeletion state. 
         After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
         **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         """
@@ -653,9 +645,9 @@ class _KeyState:
     def rotation_interval(self) -> Optional[pulumi.Input[str]]:
         """
         The interval for automatic key rotation. Specify the value in the integer[unit] format.
-        The following units are supported: d (day), h (hour), m (minute), and s (second).
-        For example, you can use either 7d or 604800s to specify a seven-day interval.
-        The interval can range from 7 days to 730 days.
+        The following units are supported: d (day), h (hour), m (minute), and s (second). 
+        For example, you can use either 7d or 604800s to specify a seven-day interval. 
+        The interval can range from 7 days to 730 days. 
         **NOTE**: It is Required when `automatic_rotation = "Enabled"`
 
         > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
@@ -741,27 +733,25 @@ class Key(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] automatic_rotation: Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
-        :param pulumi.Input[int] deletion_window_in_days: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+        :param pulumi.Input[int] deletion_window_in_days: (Deprecated since v1.85.0) Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         :param pulumi.Input[str] description: The description of the CMK. The description can be 0 to 8,192 characters in length.
         :param pulumi.Input[str] dkms_instance_id: The instance ID of the exclusive KMS instance.
-        :param pulumi.Input[bool] is_enabled: Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        :param pulumi.Input[bool] is_enabled: (Deprecated since v1.85.0) Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
         :param pulumi.Input[str] key_spec: The type of the CMK. Default value: `Aliyun_AES_256`. Valid values: 
                `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
                Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
-        :param pulumi.Input[str] key_state: Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+        :param pulumi.Input[str] key_state: (Deprecated since v1.123.1) Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         :param pulumi.Input[str] key_usage: The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-               - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-               - `SIGN/VERIFY`: generates or verifies a digital signature.
         :param pulumi.Input[str] origin: The source of key material. Default value: `Aliyun_KMS`. Valid values:
         :param pulumi.Input[int] pending_window_in_days: The number of days before the CMK is deleted. 
-               During this period, the CMK is in the PendingDeletion state.
+               During this period, the CMK is in the PendingDeletion state. 
                After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
                **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         :param pulumi.Input[str] protection_level: The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
         :param pulumi.Input[str] rotation_interval: The interval for automatic key rotation. Specify the value in the integer[unit] format.
-               The following units are supported: d (day), h (hour), m (minute), and s (second).
-               For example, you can use either 7d or 604800s to specify a seven-day interval.
-               The interval can range from 7 days to 730 days.
+               The following units are supported: d (day), h (hour), m (minute), and s (second). 
+               For example, you can use either 7d or 604800s to specify a seven-day interval. 
+               The interval can range from 7 days to 730 days. 
                **NOTE**: It is Required when `automatic_rotation = "Enabled"`
                
                > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
@@ -905,31 +895,29 @@ class Key(pulumi.CustomResource):
         :param pulumi.Input[str] creation_date: The date and time when the CMK was created. The time is displayed in UTC.
         :param pulumi.Input[str] creator: The creator of the CMK.
         :param pulumi.Input[str] delete_date: The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
-        :param pulumi.Input[int] deletion_window_in_days: Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+        :param pulumi.Input[int] deletion_window_in_days: (Deprecated since v1.85.0) Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         :param pulumi.Input[str] description: The description of the CMK. The description can be 0 to 8,192 characters in length.
         :param pulumi.Input[str] dkms_instance_id: The instance ID of the exclusive KMS instance.
-        :param pulumi.Input[bool] is_enabled: Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        :param pulumi.Input[bool] is_enabled: (Deprecated since v1.85.0) Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
         :param pulumi.Input[str] key_spec: The type of the CMK. Default value: `Aliyun_AES_256`. Valid values: 
                `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
                Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
-        :param pulumi.Input[str] key_state: Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+        :param pulumi.Input[str] key_state: (Deprecated since v1.123.1) Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         :param pulumi.Input[str] key_usage: The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-               - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-               - `SIGN/VERIFY`: generates or verifies a digital signature.
         :param pulumi.Input[str] last_rotation_date: The date and time the last rotation was performed. The time is displayed in UTC.
         :param pulumi.Input[str] material_expire_time: The time and date the key material for the CMK expires. The time is displayed in UTC. If the value is empty, the key material for the CMK does not expire.
         :param pulumi.Input[str] next_rotation_date: The time the next rotation is scheduled for execution.
         :param pulumi.Input[str] origin: The source of key material. Default value: `Aliyun_KMS`. Valid values:
         :param pulumi.Input[int] pending_window_in_days: The number of days before the CMK is deleted. 
-               During this period, the CMK is in the PendingDeletion state.
+               During this period, the CMK is in the PendingDeletion state. 
                After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
                **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         :param pulumi.Input[str] primary_key_version: The ID of the current primary key version of the symmetric CMK.
         :param pulumi.Input[str] protection_level: The protection level of the CMK. Default value: `SOFTWARE`. Valid values:
         :param pulumi.Input[str] rotation_interval: The interval for automatic key rotation. Specify the value in the integer[unit] format.
-               The following units are supported: d (day), h (hour), m (minute), and s (second).
-               For example, you can use either 7d or 604800s to specify a seven-day interval.
-               The interval can range from 7 days to 730 days.
+               The following units are supported: d (day), h (hour), m (minute), and s (second). 
+               For example, you can use either 7d or 604800s to specify a seven-day interval. 
+               The interval can range from 7 days to 730 days. 
                **NOTE**: It is Required when `automatic_rotation = "Enabled"`
                
                > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
@@ -1008,7 +996,7 @@ class Key(pulumi.CustomResource):
     @pulumi.getter(name="deletionWindowInDays")
     def deletion_window_in_days(self) -> pulumi.Output[int]:
         """
-        Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+        (Deprecated since v1.85.0) Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         """
         warnings.warn("""Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""", DeprecationWarning)
         pulumi.log.warn("""deletion_window_in_days is deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.""")
@@ -1035,7 +1023,7 @@ class Key(pulumi.CustomResource):
     @pulumi.getter(name="isEnabled")
     def is_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        (Deprecated since v1.85.0) Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
         """
         warnings.warn("""Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""", DeprecationWarning)
         pulumi.log.warn("""is_enabled is deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.""")
@@ -1056,7 +1044,7 @@ class Key(pulumi.CustomResource):
     @pulumi.getter(name="keyState")
     def key_state(self) -> pulumi.Output[str]:
         """
-        Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+        (Deprecated since v1.123.1) Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         """
         warnings.warn("""Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.""", DeprecationWarning)
         pulumi.log.warn("""key_state is deprecated: Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.""")
@@ -1068,8 +1056,6 @@ class Key(pulumi.CustomResource):
     def key_usage(self) -> pulumi.Output[str]:
         """
         The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-        - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-        - `SIGN/VERIFY`: generates or verifies a digital signature.
         """
         return pulumi.get(self, "key_usage")
 
@@ -1110,7 +1096,7 @@ class Key(pulumi.CustomResource):
     def pending_window_in_days(self) -> pulumi.Output[int]:
         """
         The number of days before the CMK is deleted. 
-        During this period, the CMK is in the PendingDeletion state.
+        During this period, the CMK is in the PendingDeletion state. 
         After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
         **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         """
@@ -1137,9 +1123,9 @@ class Key(pulumi.CustomResource):
     def rotation_interval(self) -> pulumi.Output[Optional[str]]:
         """
         The interval for automatic key rotation. Specify the value in the integer[unit] format.
-        The following units are supported: d (day), h (hour), m (minute), and s (second).
-        For example, you can use either 7d or 604800s to specify a seven-day interval.
-        The interval can range from 7 days to 730 days.
+        The following units are supported: d (day), h (hour), m (minute), and s (second). 
+        For example, you can use either 7d or 604800s to specify a seven-day interval. 
+        The interval can range from 7 days to 730 days. 
         **NOTE**: It is Required when `automatic_rotation = "Enabled"`
 
         > **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.

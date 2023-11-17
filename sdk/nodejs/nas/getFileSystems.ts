@@ -63,6 +63,10 @@ export interface GetFileSystemsArgs {
     /**
      * The storage type of the file system.
      * * Valid values:
+     *   * `Performance` (Available when the `fileSystemType` is `standard`)
+     *   * `Capacity` (Available when the `fileSystemType` is `standard`)
+     *   * `standard` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+     *   * `advance` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
      */
     storageType?: string;
 }
@@ -146,6 +150,10 @@ export interface GetFileSystemsOutputArgs {
     /**
      * The storage type of the file system.
      * * Valid values:
+     *   * `Performance` (Available when the `fileSystemType` is `standard`)
+     *   * `Capacity` (Available when the `fileSystemType` is `standard`)
+     *   * `standard` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+     *   * `advance` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
      */
     storageType?: pulumi.Input<string>;
 }

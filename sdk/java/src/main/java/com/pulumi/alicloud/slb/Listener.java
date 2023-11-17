@@ -710,7 +710,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.serverGroupId);
     }
     /**
-     * SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+     * (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
      * 
      * @deprecated
      * Field &#39;ssl_certificate_id&#39; has been deprecated from 1.59.0 and using &#39;server_certificate_id&#39; instead.
@@ -721,7 +721,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
     private Output<String> sslCertificateId;
 
     /**
-     * @return SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+     * @return (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
      * 
      */
     public Output<String> sslCertificateId() {

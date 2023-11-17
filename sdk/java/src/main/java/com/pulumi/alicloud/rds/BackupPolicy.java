@@ -178,7 +178,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
         return this.backupInterval;
     }
     /**
-     * It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
+     * (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;backup_period&#39; has been deprecated from version 1.69.0. Use `preferred_backup_period` instead
@@ -189,7 +189,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
     private Output<List<String>> backupPeriods;
 
     /**
-     * @return It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
+     * @return (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_period&#39; instead.
      * 
      */
     public Output<List<String>> backupPeriods() {
@@ -210,7 +210,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.backupRetentionPeriod);
     }
     /**
-     * It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_time&#39; instead.
+     * (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_time&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;backup_time&#39; has been deprecated from version 1.69.0. Use `preferred_backup_time` instead
@@ -221,7 +221,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
     private Output<String> backupTime;
 
     /**
-     * @return It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_time&#39; instead.
+     * @return (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;preferred_backup_time&#39; instead.
      * 
      */
     public Output<String> backupTime() {
@@ -328,7 +328,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
         return this.localLogRetentionSpace;
     }
     /**
-     * It has been deprecated from version 1.68.0, and use field &#39;enable_backup_log&#39; instead.
+     * (Deprecated) It has been deprecated from version 1.68.0, and use field &#39;enable_backup_log&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;log_backup&#39; has been deprecated from version 1.68.0. Use `enable_backup_log` instead
@@ -339,7 +339,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
     private Output<Boolean> logBackup;
 
     /**
-     * @return It has been deprecated from version 1.68.0, and use field &#39;enable_backup_log&#39; instead.
+     * @return (Deprecated) It has been deprecated from version 1.68.0, and use field &#39;enable_backup_log&#39; instead.
      * 
      */
     public Output<Boolean> logBackup() {
@@ -374,7 +374,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
         return this.logBackupRetentionPeriod;
     }
     /**
-     * It has been deprecated from version 1.69.0, and use field &#39;log_backup_retention_period&#39; instead.
+     * (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;log_backup_retention_period&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;log_retention_period&#39; has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead
@@ -385,7 +385,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
     private Output<Integer> logRetentionPeriod;
 
     /**
-     * @return It has been deprecated from version 1.69.0, and use field &#39;log_backup_retention_period&#39; instead.
+     * @return (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;log_backup_retention_period&#39; instead.
      * 
      */
     public Output<Integer> logRetentionPeriod() {
@@ -440,7 +440,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
         return this.releasedKeepPolicy;
     }
     /**
-     * It has been deprecated from version 1.69.0, and use field &#39;backup_retention_period&#39; instead.
+     * (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;backup_retention_period&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;retention_period&#39; has been deprecated from version 1.69.0. Use `backup_retention_period` instead
@@ -451,7 +451,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
     private Output<Integer> retentionPeriod;
 
     /**
-     * @return It has been deprecated from version 1.69.0, and use field &#39;backup_retention_period&#39; instead.
+     * @return (Deprecated) It has been deprecated from version 1.69.0, and use field &#39;backup_retention_period&#39; instead.
      * 
      */
     public Output<Integer> retentionPeriod() {

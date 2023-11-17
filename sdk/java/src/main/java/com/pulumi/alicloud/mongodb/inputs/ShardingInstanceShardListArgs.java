@@ -47,7 +47,7 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * - Custom storage space; value range: [10, 1,000]
+     * Custom storage space; value range: [10, 1,000]
      * - 10-GB increments. Unit: GB.
      * 
      */
@@ -55,7 +55,7 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
     private Output<Integer> nodeStorage;
 
     /**
-     * @return - Custom storage space; value range: [10, 1,000]
+     * @return Custom storage space; value range: [10, 1,000]
      * - 10-GB increments. Unit: GB.
      * 
      */
@@ -148,7 +148,7 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeStorage - Custom storage space; value range: [10, 1,000]
+         * @param nodeStorage Custom storage space; value range: [10, 1,000]
          * - 10-GB increments. Unit: GB.
          * 
          * @return builder
@@ -160,7 +160,7 @@ public final class ShardingInstanceShardListArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param nodeStorage - Custom storage space; value range: [10, 1,000]
+         * @param nodeStorage Custom storage space; value range: [10, 1,000]
          * - 10-GB increments. Unit: GB.
          * 
          * @return builder

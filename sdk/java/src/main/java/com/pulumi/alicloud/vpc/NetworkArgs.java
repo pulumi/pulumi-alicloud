@@ -108,7 +108,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
      * - **ChinaMobile**: China Mobile (single line).
      * - **ChinaUnicom**: China Unicom (single line).
      * - **ChinaTelecom**: China Telecom (single line).
-     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     *   &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
      * 
      */
     @Import(name="ipv6Isp")
@@ -120,7 +120,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
      * - **ChinaMobile**: China Mobile (single line).
      * - **ChinaUnicom**: China Unicom (single line).
      * - **ChinaTelecom**: China Telecom (single line).
-     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     *   &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
      * 
      */
     public Optional<Output<String>> ipv6Isp() {
@@ -128,7 +128,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+     * (Deprecated from v1.119.0+) Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
@@ -139,7 +139,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+     * @return (Deprecated from v1.119.0+) Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
@@ -181,7 +181,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+     * (Deprecated from v1.206.0+) Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
      * @deprecated
      * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
@@ -192,7 +192,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> routerTableId;
 
     /**
-     * @return Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+     * @return (Deprecated from v1.206.0+) Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
      * @deprecated
      * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
@@ -431,7 +431,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
          * - **ChinaMobile**: China Mobile (single line).
          * - **ChinaUnicom**: China Unicom (single line).
          * - **ChinaTelecom**: China Telecom (single line).
-         * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+         *   &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
          * 
          * @return builder
          * 
@@ -447,7 +447,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
          * - **ChinaMobile**: China Mobile (single line).
          * - **ChinaUnicom**: China Unicom (single line).
          * - **ChinaTelecom**: China Telecom (single line).
-         * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+         *   &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
          * 
          * @return builder
          * 
@@ -457,7 +457,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+         * @param name (Deprecated from v1.119.0+) Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
          * 
          * @return builder
          * 
@@ -472,7 +472,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+         * @param name (Deprecated from v1.119.0+) Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
          * 
          * @return builder
          * 
@@ -528,7 +528,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerTableId Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+         * @param routerTableId (Deprecated from v1.206.0+) Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
          * 
          * @return builder
          * 
@@ -543,7 +543,7 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param routerTableId Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+         * @param routerTableId (Deprecated from v1.206.0+) Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
          * 
          * @return builder
          * 

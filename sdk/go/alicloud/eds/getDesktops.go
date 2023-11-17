@@ -124,7 +124,7 @@ func GetDesktops(ctx *pulumi.Context, args *GetDesktopsArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getDesktops.
 type GetDesktopsArgs struct {
-	// The desktop name of the Desktop.
+	// The desktop name.
 	DesktopName *string `pulumi:"desktopName"`
 	// The desktop end user id of the Desktop.
 	EndUserIds []string `pulumi:"endUserIds"`
@@ -173,7 +173,7 @@ func GetDesktopsOutput(ctx *pulumi.Context, args GetDesktopsOutputArgs, opts ...
 
 // A collection of arguments for invoking getDesktops.
 type GetDesktopsOutputArgs struct {
-	// The desktop name of the Desktop.
+	// The desktop name.
 	DesktopName pulumi.StringPtrInput `pulumi:"desktopName"`
 	// The desktop end user id of the Desktop.
 	EndUserIds pulumi.StringArrayInput `pulumi:"endUserIds"`

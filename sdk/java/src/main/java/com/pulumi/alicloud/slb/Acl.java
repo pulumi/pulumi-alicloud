@@ -91,7 +91,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:slb/acl:Acl")
 public class Acl extends com.pulumi.resources.CustomResource {
     /**
-     * A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** &#34;Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.&#34;,
+     * (Deprecated from v1.162.0 ) A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** &#34;Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.&#34;,
      * 
      * @deprecated
      * Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.
@@ -102,7 +102,7 @@ public class Acl extends com.pulumi.resources.CustomResource {
     private Output<List<AclEntryList>> entryLists;
 
     /**
-     * @return A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** &#34;Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.&#34;,
+     * @return (Deprecated from v1.162.0 ) A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** &#34;Field &#39;entry_list&#39; has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_slb_acl_entry_attachment&#39;.&#34;,
      * 
      */
     public Output<List<AclEntryList>> entryLists() {

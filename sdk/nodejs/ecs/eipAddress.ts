@@ -78,7 +78,7 @@ export class EipAddress extends pulumi.CustomResource {
      */
     public readonly highDefinitionMonitorLogStatus!: pulumi.Output<string>;
     /**
-     * . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+     * (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
      */
@@ -106,7 +106,7 @@ export class EipAddress extends pulumi.CustomResource {
      */
     public readonly logStore!: pulumi.Output<string | undefined>;
     /**
-     * . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+     * (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
      */
@@ -268,7 +268,7 @@ export interface EipAddressState {
      */
     highDefinitionMonitorLogStatus?: pulumi.Input<string>;
     /**
-     * . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+     * (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
      */
@@ -296,7 +296,7 @@ export interface EipAddressState {
      */
     logStore?: pulumi.Input<string>;
     /**
-     * . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+     * (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
      */
@@ -384,7 +384,7 @@ export interface EipAddressArgs {
      */
     highDefinitionMonitorLogStatus?: pulumi.Input<string>;
     /**
-     * . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+     * (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
      */
@@ -408,7 +408,7 @@ export interface EipAddressArgs {
      */
     logStore?: pulumi.Input<string>;
     /**
-     * . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+     * (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
      *
      * @deprecated Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
      */

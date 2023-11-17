@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Cen
         public string? PrefixListId { get; set; }
 
         /// <summary>
-        /// The status of the prefix list.
+        /// The status of the prefix list. Valid Value: `Active`, `Updating`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? PrefixListId { get; set; }
 
         /// <summary>
-        /// The status of the prefix list.
+        /// The status of the prefix list. Valid Value: `Active`, `Updating`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

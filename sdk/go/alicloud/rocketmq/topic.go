@@ -81,7 +81,7 @@ type Topic struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
 	MessageType pulumi.IntOutput `pulumi:"messageType"`
-	// This attribute has been deprecated.
+	// (Deprecated) This attribute has been deprecated.
 	//
 	// Deprecated: Attribute perm has been deprecated and suggest removing it from your template.
 	Perm pulumi.IntOutput `pulumi:"perm"`
@@ -141,7 +141,7 @@ type topicState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
 	MessageType *int `pulumi:"messageType"`
-	// This attribute has been deprecated.
+	// (Deprecated) This attribute has been deprecated.
 	//
 	// Deprecated: Attribute perm has been deprecated and suggest removing it from your template.
 	Perm *int `pulumi:"perm"`
@@ -166,7 +166,7 @@ type TopicState struct {
 	InstanceId pulumi.StringPtrInput
 	// The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
 	MessageType pulumi.IntPtrInput
-	// This attribute has been deprecated.
+	// (Deprecated) This attribute has been deprecated.
 	//
 	// Deprecated: Attribute perm has been deprecated and suggest removing it from your template.
 	Perm pulumi.IntPtrInput
@@ -195,7 +195,7 @@ type topicArgs struct {
 	InstanceId string `pulumi:"instanceId"`
 	// The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
 	MessageType int `pulumi:"messageType"`
-	// This attribute has been deprecated.
+	// (Deprecated) This attribute has been deprecated.
 	//
 	// Deprecated: Attribute perm has been deprecated and suggest removing it from your template.
 	Perm *int `pulumi:"perm"`
@@ -221,7 +221,7 @@ type TopicArgs struct {
 	InstanceId pulumi.StringInput
 	// The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
 	MessageType pulumi.IntInput
-	// This attribute has been deprecated.
+	// (Deprecated) This attribute has been deprecated.
 	//
 	// Deprecated: Attribute perm has been deprecated and suggest removing it from your template.
 	Perm pulumi.IntPtrInput
@@ -338,7 +338,7 @@ func (o TopicOutput) MessageType() pulumi.IntOutput {
 	return o.ApplyT(func(v *Topic) pulumi.IntOutput { return v.MessageType }).(pulumi.IntOutput)
 }
 
-// This attribute has been deprecated.
+// (Deprecated) This attribute has been deprecated.
 //
 // Deprecated: Attribute perm has been deprecated and suggest removing it from your template.
 func (o TopicOutput) Perm() pulumi.IntOutput {

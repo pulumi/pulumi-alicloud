@@ -105,7 +105,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public bool? EnableDetails { get; set; }
 
         /// <summary>
-        /// Honeypot mirror name
+        /// (ForceNew,Optional) Honeypot mirror name
         /// </summary>
         [Input("honeypotImageName")]
         public string? HoneypotImageName { get; set; }
@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public string? Lang { get; set; }
 
         /// <summary>
-        /// Unique id of management node
+        /// (ForceNew,Optional) Unique id of management node
         /// </summary>
         [Input("nodeId")]
         public string? NodeId { get; set; }
@@ -147,7 +147,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// Honeypot template custom name
+        /// (ForceNew,Optional) Honeypot template custom name
         /// </summary>
         [Input("presetName")]
         public string? PresetName { get; set; }
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<bool>? EnableDetails { get; set; }
 
         /// <summary>
-        /// Honeypot mirror name
+        /// (ForceNew,Optional) Honeypot mirror name
         /// </summary>
         [Input("honeypotImageName")]
         public Input<string>? HoneypotImageName { get; set; }
@@ -191,7 +191,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// Unique id of management node
+        /// (ForceNew,Optional) Unique id of management node
         /// </summary>
         [Input("nodeId")]
         public Input<string>? NodeId { get; set; }
@@ -212,7 +212,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// Honeypot template custom name
+        /// (ForceNew,Optional) Honeypot template custom name
         /// </summary>
         [Input("presetName")]
         public Input<string>? PresetName { get; set; }

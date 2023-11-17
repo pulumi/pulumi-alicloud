@@ -19,8 +19,8 @@ class InstanceParameterArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] name: Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
-        :param pulumi.Input[str] value: Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        :param pulumi.Input[str] name: (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        :param pulumi.Input[str] value: (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         """
         if name is not None:
             warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
@@ -37,7 +37,7 @@ class InstanceParameterArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         """
         warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")
@@ -52,7 +52,7 @@ class InstanceParameterArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+        (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
         """
         warnings.warn("""Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""", DeprecationWarning)
         pulumi.log.warn("""value is deprecated: Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.""")

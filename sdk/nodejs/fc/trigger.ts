@@ -528,11 +528,11 @@ export class Trigger extends pulumi.CustomResource {
      */
     public /*out*/ readonly lastModified!: pulumi.Output<string>;
     /**
-     * The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
+     * (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * Setting a prefix to get a only trigger name. It is conflict with "name".
+     * (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
      */
     public readonly namePrefix!: pulumi.Output<string | undefined>;
     /**
@@ -633,11 +633,11 @@ export interface TriggerState {
      */
     lastModified?: pulumi.Input<string>;
     /**
-     * The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
+     * (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
      */
     name?: pulumi.Input<string>;
     /**
-     * Setting a prefix to get a only trigger name. It is conflict with "name".
+     * (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
      */
     namePrefix?: pulumi.Input<string>;
     /**
@@ -683,11 +683,11 @@ export interface TriggerArgs {
      */
     function: pulumi.Input<string>;
     /**
-     * The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
+     * (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
      */
     name?: pulumi.Input<string>;
     /**
-     * Setting a prefix to get a only trigger name. It is conflict with "name".
+     * (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
      */
     namePrefix?: pulumi.Input<string>;
     /**

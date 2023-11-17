@@ -74,7 +74,7 @@ export class EcsPrefixList extends pulumi.CustomResource {
      */
     public readonly addressFamily!: pulumi.Output<string>;
     /**
-     * The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+     * The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -142,7 +142,7 @@ export interface EcsPrefixListState {
      */
     addressFamily?: pulumi.Input<string>;
     /**
-     * The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+     * The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
     /**
@@ -168,7 +168,7 @@ export interface EcsPrefixListArgs {
      */
     addressFamily: pulumi.Input<string>;
     /**
-     * The description of the prefix list. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+     * The description in entry. The description must be 2 to 32 characters in length and cannot start with `http://` or `https://`.
      */
     description?: pulumi.Input<string>;
     /**

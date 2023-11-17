@@ -77,14 +77,14 @@ public final class AlertNotificationListArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * including FixedRate,Hourly,Daily,Weekly,Cron.
+     * Notification type. support Email, SMS, DingTalk, MessageCenter.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return including FixedRate,Hourly,Daily,Weekly,Cron.
+     * @return Notification type. support Email, SMS, DingTalk, MessageCenter.
      * 
      */
     public Output<String> type() {
@@ -224,7 +224,7 @@ public final class AlertNotificationListArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type including FixedRate,Hourly,Daily,Weekly,Cron.
+         * @param type Notification type. support Email, SMS, DingTalk, MessageCenter.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class AlertNotificationListArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type including FixedRate,Hourly,Daily,Weekly,Cron.
+         * @param type Notification type. support Email, SMS, DingTalk, MessageCenter.
          * 
          * @return builder
          * 

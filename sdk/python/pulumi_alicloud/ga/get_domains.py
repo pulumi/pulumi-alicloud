@@ -143,11 +143,11 @@ def get_domains(accelerator_id: Optional[str] = None,
     > **NOTE:** Available in 1.197.0+
 
 
-    :param str accelerator_id: The ID of the global acceleration instance.
-    :param str domain: The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+    :param str accelerator_id: (ForceNew,Optional) The ID of the global acceleration instance.
+    :param str domain: (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
     :param Sequence[str] ids: A list of Ga Domain IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+    :param str status: (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
     """
     __args__ = dict()
     __args__['acceleratorId'] = accelerator_id
@@ -187,10 +187,10 @@ def get_domains_output(accelerator_id: Optional[pulumi.Input[Optional[str]]] = N
     > **NOTE:** Available in 1.197.0+
 
 
-    :param str accelerator_id: The ID of the global acceleration instance.
-    :param str domain: The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+    :param str accelerator_id: (ForceNew,Optional) The ID of the global acceleration instance.
+    :param str domain: (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
     :param Sequence[str] ids: A list of Ga Domain IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+    :param str status: (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
     """
     ...

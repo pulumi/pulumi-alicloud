@@ -108,14 +108,7 @@ class AppGroupQuota(dict):
         """
         :param int compute_resource: Computing resources. Unit: LCU.
         :param int doc_size: Storage Size. Unit: GB.
-        :param str spec: Specification. Valid values: 
-               * `opensearch.share.junior`: Entry-level.
-               * `opensearch.share.common`: Shared universal.
-               * `opensearch.share.compute`: Shared computing.
-               * `opensearch.share.storage`: Shared storage type.
-               * `opensearch.private.common`: Exclusive universal type.
-               * `opensearch.private.compute`: Exclusive computing type.
-               * `opensearch.private.storage`: Exclusive storage type
+        :param str spec: Specification. Valid values:
         :param int qps: Search request. Unit: times/second.
         """
         pulumi.set(__self__, "compute_resource", compute_resource)
@@ -144,14 +137,7 @@ class AppGroupQuota(dict):
     @pulumi.getter
     def spec(self) -> str:
         """
-        Specification. Valid values: 
-        * `opensearch.share.junior`: Entry-level.
-        * `opensearch.share.common`: Shared universal.
-        * `opensearch.share.compute`: Shared computing.
-        * `opensearch.share.storage`: Shared storage type.
-        * `opensearch.private.common`: Exclusive universal type.
-        * `opensearch.private.compute`: Exclusive computing type.
-        * `opensearch.private.storage`: Exclusive storage type
+        Specification. Valid values:
         """
         return pulumi.get(self, "spec")
 
@@ -463,13 +449,6 @@ class GetAppGroupsGroupQuotaResult(dict):
         :param str compute_resource: Computing resources. Unit: LCU.
         :param str doc_size: Storage Size. Unit: GB.
         :param str spec: Specification. Valid values:
-               * `opensearch.share.junior`: Entry-level.
-               * `opensearch.share.common`: Shared universal.
-               * `opensearch.share.compute`: Shared computing.
-               * `opensearch.share.storage`: Shared storage type.
-               * `opensearch.private.common`: Exclusive universal type.
-               * `opensearch.private.compute`: Exclusive computing type.
-               * `opensearch.private.storage`: Exclusive storage type
         """
         pulumi.set(__self__, "compute_resource", compute_resource)
         pulumi.set(__self__, "doc_size", doc_size)
@@ -496,13 +475,6 @@ class GetAppGroupsGroupQuotaResult(dict):
     def spec(self) -> str:
         """
         Specification. Valid values:
-        * `opensearch.share.junior`: Entry-level.
-        * `opensearch.share.common`: Shared universal.
-        * `opensearch.share.compute`: Shared computing.
-        * `opensearch.share.storage`: Shared storage type.
-        * `opensearch.private.common`: Exclusive universal type.
-        * `opensearch.private.compute`: Exclusive computing type.
-        * `opensearch.private.storage`: Exclusive storage type
         """
         return pulumi.get(self, "spec")
 

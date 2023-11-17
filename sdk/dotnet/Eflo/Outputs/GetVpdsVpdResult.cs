@@ -30,19 +30,19 @@ namespace Pulumi.AliCloud.Eflo.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The Resource group id
+        /// (ForceNew,Optional) The Resource group id
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
-        /// The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+        /// (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The id of the vpd.
+        /// (ForceNew,Optional) The id of the vpd.
         /// </summary>
         public readonly string VpdId;
         /// <summary>
-        /// The Name of the VPD.
+        /// (ForceNew,Optional) The Name of the VPD.
         /// </summary>
         public readonly string VpdName;
 

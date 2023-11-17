@@ -13,44 +13,20 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     [OutputType]
     public sealed class GetPeerConnectionsConnectionResult
     {
-        /// <summary>
-        /// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
-        /// </summary>
         public readonly int AcceptingAliUid;
-        /// <summary>
-        /// The region ID of the recipient of the VPC peering connection to be created.
-        /// </summary>
         public readonly string AcceptingRegionId;
-        /// <summary>
-        /// The VPC ID of the receiving end of the VPC peer connection.
-        /// </summary>
         public readonly string AcceptingVpcId;
-        /// <summary>
-        /// The bandwidth of the VPC peering connection to be modified. Unit: Mbps.
-        /// </summary>
         public readonly int Bandwidth;
-        /// <summary>
-        /// The creation time of the resource.
-        /// </summary>
         public readonly string CreateTime;
-        /// <summary>
-        /// The description of the VPC peer connection to be created.
-        /// </summary>
         public readonly string Description;
-        /// <summary>
-        /// The ID of the PeerConnection.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The first ID of the resource.
-        /// </summary>
         public readonly string PeerConnectionId;
         /// <summary>
         /// The name of the resource.
         /// </summary>
         public readonly string PeerConnectionName;
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
         /// </summary>
         public readonly string Status;
         /// <summary>

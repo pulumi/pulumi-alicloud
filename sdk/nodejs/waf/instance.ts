@@ -86,7 +86,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly packageCode!: pulumi.Output<string>;
     /**
-     * Service time of Web Application Firewall.
+     * (ForceNew) Service time of Web Application Firewall.
      */
     public readonly period!: pulumi.Output<number | undefined>;
     /**
@@ -98,11 +98,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string | undefined>;
     /**
-     * Renewal period of WAF service. Unit: month
+     * (ForceNew) Renewal period of WAF service. Unit: month
      */
     public readonly renewPeriod!: pulumi.Output<number | undefined>;
     /**
-     * Renewal status of WAF service. Valid values: 
+     * (ForceNew) Renewal status of WAF service. Valid values:
      * * AutoRenewal: The service time of WAF is renewed automatically.
      * * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
      */
@@ -250,7 +250,7 @@ export interface InstanceState {
      */
     packageCode?: pulumi.Input<string>;
     /**
-     * Service time of Web Application Firewall.
+     * (ForceNew) Service time of Web Application Firewall.
      */
     period?: pulumi.Input<number>;
     /**
@@ -262,11 +262,11 @@ export interface InstanceState {
      */
     region?: pulumi.Input<string>;
     /**
-     * Renewal period of WAF service. Unit: month
+     * (ForceNew) Renewal period of WAF service. Unit: month
      */
     renewPeriod?: pulumi.Input<number>;
     /**
-     * Renewal status of WAF service. Valid values: 
+     * (ForceNew) Renewal status of WAF service. Valid values:
      * * AutoRenewal: The service time of WAF is renewed automatically.
      * * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
      */
@@ -330,7 +330,7 @@ export interface InstanceArgs {
      */
     packageCode: pulumi.Input<string>;
     /**
-     * Service time of Web Application Firewall.
+     * (ForceNew) Service time of Web Application Firewall.
      */
     period?: pulumi.Input<number>;
     /**
@@ -342,11 +342,11 @@ export interface InstanceArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * Renewal period of WAF service. Unit: month
+     * (ForceNew) Renewal period of WAF service. Unit: month
      */
     renewPeriod?: pulumi.Input<number>;
     /**
-     * Renewal status of WAF service. Valid values: 
+     * (ForceNew) Renewal status of WAF service. Valid values:
      * * AutoRenewal: The service time of WAF is renewed automatically.
      * * ManualRenewal (default): The service time of WAF is renewed manually.Specifies whether to configure a Layer-7 proxy, such as Anti-DDoS Pro or CDN, to filter the inbound traffic before it is forwarded to WAF. Valid values: "On" and "Off". Default to "Off".
      */

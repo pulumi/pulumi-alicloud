@@ -20,7 +20,7 @@ public final class GetNetworkAclsAclResource {
      */
     private String resourceType;
     /**
-     * @return The state of the network ACL.
+     * @return The state of the associated resource.
      * 
      */
     private String status;
@@ -41,7 +41,7 @@ public final class GetNetworkAclsAclResource {
         return this.resourceType;
     }
     /**
-     * @return The state of the network ACL.
+     * @return The state of the associated resource.
      * 
      */
     public String status() {

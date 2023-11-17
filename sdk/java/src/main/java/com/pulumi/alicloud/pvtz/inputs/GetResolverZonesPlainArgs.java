@@ -30,14 +30,14 @@ public final class GetResolverZonesPlainArgs extends com.pulumi.resources.Invoke
     }
 
     /**
-     * The status of the Zone.
+     * The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the Zone.
+     * @return The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
      * 
      */
     public Optional<String> status() {
@@ -81,7 +81,7 @@ public final class GetResolverZonesPlainArgs extends com.pulumi.resources.Invoke
         }
 
         /**
-         * @param status The status of the Zone.
+         * @param status The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
          * 
          * @return builder
          * 

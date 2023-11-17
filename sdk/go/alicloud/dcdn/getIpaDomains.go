@@ -66,7 +66,7 @@ func GetIpaDomains(ctx *pulumi.Context, args *GetIpaDomainsArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getIpaDomains.
 type GetIpaDomainsArgs struct {
-	// The accelerated domain names.
+	// The name of the Domain.
 	DomainName *string `pulumi:"domainName"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
@@ -106,7 +106,7 @@ func GetIpaDomainsOutput(ctx *pulumi.Context, args GetIpaDomainsOutputArgs, opts
 
 // A collection of arguments for invoking getIpaDomains.
 type GetIpaDomainsOutputArgs struct {
-	// The accelerated domain names.
+	// The name of the Domain.
 	DomainName pulumi.StringPtrInput `pulumi:"domainName"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`

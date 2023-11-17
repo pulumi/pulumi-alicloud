@@ -26,9 +26,9 @@ func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getDomains.
 type GetDomainsArgs struct {
-	// The ID of the global acceleration instance.
+	// (ForceNew,Optional) The ID of the global acceleration instance.
 	AcceleratorId *string `pulumi:"acceleratorId"`
-	// The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+	// (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
 	Domain *string `pulumi:"domain"`
 	// A list of Ga Domain IDs.
 	Ids []string `pulumi:"ids"`
@@ -36,7 +36,7 @@ type GetDomainsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+	// (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
 	Status *string `pulumi:"status"`
 }
 
@@ -73,9 +73,9 @@ func GetDomainsOutput(ctx *pulumi.Context, args GetDomainsOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getDomains.
 type GetDomainsOutputArgs struct {
-	// The ID of the global acceleration instance.
+	// (ForceNew,Optional) The ID of the global acceleration instance.
 	AcceleratorId pulumi.StringPtrInput `pulumi:"acceleratorId"`
-	// The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+	// (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
 	Domain pulumi.StringPtrInput `pulumi:"domain"`
 	// A list of Ga Domain IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -83,7 +83,7 @@ type GetDomainsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+	// (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

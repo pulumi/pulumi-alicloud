@@ -379,7 +379,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> AlertName { get; private set; } = null!;
 
         /// <summary>
-        /// Alert template annotations.
+        /// Annotations for new alert.
         /// </summary>
         [Output("annotations")]
         public Output<ImmutableArray<Outputs.AlertAnnotation>> Annotations { get; private set; } = null!;
@@ -391,7 +391,7 @@ namespace Pulumi.AliCloud.Log
         public Output<bool?> AutoAnnotation { get; private set; } = null!;
 
         /// <summary>
-        /// Join condition.
+        /// Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
         /// </summary>
         [Output("condition")]
         public Output<string?> Condition { get; private set; } = null!;
@@ -460,7 +460,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string> ProjectName { get; private set; } = null!;
 
         /// <summary>
-        /// Multiple conditions for configured alarm query.
+        /// (Optinal, Required before 1.203.0) Multiple conditions for configured alarm query.
         /// </summary>
         [Output("queryLists")]
         public Output<ImmutableArray<Outputs.AlertQueryList>> QueryLists { get; private set; } = null!;
@@ -514,7 +514,7 @@ namespace Pulumi.AliCloud.Log
         public Output<string?> Throttling { get; private set; } = null!;
 
         /// <summary>
-        /// including FixedRate,Hourly,Daily,Weekly,Cron.
+        /// The type of new alert, `default` for custom alert, `tpl` for template alert.
         /// </summary>
         [Output("type")]
         public Output<string?> Type { get; private set; } = null!;
@@ -593,7 +593,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertAnnotationArgs>? _annotations;
 
         /// <summary>
-        /// Alert template annotations.
+        /// Annotations for new alert.
         /// </summary>
         public InputList<Inputs.AlertAnnotationArgs> Annotations
         {
@@ -608,7 +608,7 @@ namespace Pulumi.AliCloud.Log
         public Input<bool>? AutoAnnotation { get; set; }
 
         /// <summary>
-        /// Join condition.
+        /// Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
         /// </summary>
         [Input("condition")]
         public Input<string>? Condition { get; set; }
@@ -699,7 +699,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertQueryListArgs>? _queryLists;
 
         /// <summary>
-        /// Multiple conditions for configured alarm query.
+        /// (Optinal, Required before 1.203.0) Multiple conditions for configured alarm query.
         /// </summary>
         public InputList<Inputs.AlertQueryListArgs> QueryLists
         {
@@ -762,7 +762,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Throttling { get; set; }
 
         /// <summary>
-        /// including FixedRate,Hourly,Daily,Weekly,Cron.
+        /// The type of new alert, `default` for custom alert, `tpl` for template alert.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
@@ -803,7 +803,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertAnnotationGetArgs>? _annotations;
 
         /// <summary>
-        /// Alert template annotations.
+        /// Annotations for new alert.
         /// </summary>
         public InputList<Inputs.AlertAnnotationGetArgs> Annotations
         {
@@ -818,7 +818,7 @@ namespace Pulumi.AliCloud.Log
         public Input<bool>? AutoAnnotation { get; set; }
 
         /// <summary>
-        /// Join condition.
+        /// Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
         /// </summary>
         [Input("condition")]
         public Input<string>? Condition { get; set; }
@@ -909,7 +909,7 @@ namespace Pulumi.AliCloud.Log
         private InputList<Inputs.AlertQueryListGetArgs>? _queryLists;
 
         /// <summary>
-        /// Multiple conditions for configured alarm query.
+        /// (Optinal, Required before 1.203.0) Multiple conditions for configured alarm query.
         /// </summary>
         public InputList<Inputs.AlertQueryListGetArgs> QueryLists
         {
@@ -972,7 +972,7 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Throttling { get; set; }
 
         /// <summary>
-        /// including FixedRate,Hourly,Daily,Weekly,Cron.
+        /// The type of new alert, `default` for custom alert, `tpl` for template alert.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

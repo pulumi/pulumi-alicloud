@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// The recursive DNS proxy. Valid values:
         /// - ZONE: indicates that the recursive DNS proxy is disabled.
         /// - RECORD: indicates that the recursive DNS proxy is enabled.
-        /// Default to "ZONE".
+        ///   Default to "ZONE".
         /// </summary>
         [Output("proxyPattern")]
         public Output<string?> ProxyPattern { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// The recursive DNS proxy. Valid values:
         /// - ZONE: indicates that the recursive DNS proxy is disabled.
         /// - RECORD: indicates that the recursive DNS proxy is enabled.
-        /// Default to "ZONE".
+        ///   Default to "ZONE".
         /// </summary>
         [Input("proxyPattern")]
         public Input<string>? ProxyPattern { get; set; }
@@ -249,7 +249,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// The recursive DNS proxy. Valid values:
         /// - ZONE: indicates that the recursive DNS proxy is disabled.
         /// - RECORD: indicates that the recursive DNS proxy is enabled.
-        /// Default to "ZONE".
+        ///   Default to "ZONE".
         /// </summary>
         [Input("proxyPattern")]
         public Input<string>? ProxyPattern { get; set; }

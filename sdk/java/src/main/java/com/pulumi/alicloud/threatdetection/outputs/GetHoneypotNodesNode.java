@@ -29,12 +29,12 @@ public final class GetHoneypotNodesNode {
      */
     private String id;
     /**
-     * @return Honeypot management node id.
+     * @return (ForceNew,Optional) Honeypot management node id.
      * 
      */
     private String nodeId;
     /**
-     * @return The name of the management node.
+     * @return (ForceNew,Optional) The name of the management node.
      * 
      */
     private String nodeName;
@@ -71,14 +71,14 @@ public final class GetHoneypotNodesNode {
         return this.id;
     }
     /**
-     * @return Honeypot management node id.
+     * @return (ForceNew,Optional) Honeypot management node id.
      * 
      */
     public String nodeId() {
         return this.nodeId;
     }
     /**
-     * @return The name of the management node.
+     * @return (ForceNew,Optional) The name of the management node.
      * 
      */
     public String nodeName() {

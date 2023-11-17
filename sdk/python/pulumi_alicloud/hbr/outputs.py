@@ -101,9 +101,9 @@ class OtsBackupPlanRule(dict):
                  rule_name: Optional[str] = None,
                  schedule: Optional[str] = None):
         """
-        :param str backup_type: Backup type. Valid values: `COMPLETE`.
-        :param bool disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
-        :param str retention: Backup retention days, the minimum is 1.
+        :param str backup_type: The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
+        :param bool disabled: Whether to disable the backup task. Valid values: true, false.
+        :param str retention: Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
         :param str rule_name: The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
         :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
@@ -122,7 +122,7 @@ class OtsBackupPlanRule(dict):
     @pulumi.getter(name="backupType")
     def backup_type(self) -> Optional[str]:
         """
-        Backup type. Valid values: `COMPLETE`.
+        The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "backup_type")
 
@@ -130,7 +130,7 @@ class OtsBackupPlanRule(dict):
     @pulumi.getter
     def disabled(self) -> Optional[bool]:
         """
-        Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+        Whether to disable the backup task. Valid values: true, false.
         """
         return pulumi.get(self, "disabled")
 
@@ -138,7 +138,7 @@ class OtsBackupPlanRule(dict):
     @pulumi.getter
     def retention(self) -> Optional[str]:
         """
-        Backup retention days, the minimum is 1.
+        Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
         """
         return pulumi.get(self, "retention")
 
@@ -448,9 +448,9 @@ class GetBackupJobsJobResult(dict):
         :param str bytes_total: The total amount of data sources. Unit byte.
         :param str complete_time: The completion time of backup job. UNIX time seconds.
         :param str create_time: The creation time of backup job. UNIX time seconds.
-        :param str cross_account_role_name: The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
-        :param str cross_account_type: The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
-        :param int cross_account_user_id: The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        :param str cross_account_role_name: (Available in v1.190.0+) The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        :param str cross_account_type: (Available in v1.190.0+) The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        :param int cross_account_user_id: (Available in v1.190.0+) The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
         :param str error_message: Error message.
         :param str exclude: Exclude path. String of Json list. Up to 255 characters. e.g. `"[\\"/home/work\\"]"`
         :param str file_system_id: The ID of destination file system.
@@ -587,7 +587,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter(name="crossAccountRoleName")
     def cross_account_role_name(self) -> str:
         """
-        The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        (Available in v1.190.0+) The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
         """
         return pulumi.get(self, "cross_account_role_name")
 
@@ -595,7 +595,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter(name="crossAccountType")
     def cross_account_type(self) -> str:
         """
-        The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        (Available in v1.190.0+) The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
         """
         return pulumi.get(self, "cross_account_type")
 
@@ -603,7 +603,7 @@ class GetBackupJobsJobResult(dict):
     @pulumi.getter(name="crossAccountUserId")
     def cross_account_user_id(self) -> int:
         """
-        The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+        (Available in v1.190.0+) The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
         """
         return pulumi.get(self, "cross_account_user_id")
 
@@ -3052,22 +3052,22 @@ class GetSnapshotsSnapshotResult(dict):
         :param str actual_bytes: The actual data volume of the snapshot. Unit byte.
         :param str actual_items: The actual number of items in the snapshot. (Currently only file backup is available).
         :param str backup_type: Backup type. Possible values: `COMPLETE` (full backup).
-        :param str bucket: The name of OSS bucket.
+        :param str bucket: (OSS) The name of OSS bucket.
         :param str bytes_done: The incremental amount of backup data. Unit byte.
         :param str bytes_total: The total amount of data sources. Unit byte.
-        :param str client_id: The ID of ECS backup client.
+        :param str client_id: (ECS_FILE) The ID of ECS backup client.
         :param str complete_time: The time when the snapshot completed. UNIX time in seconds.
-        :param str create_time: File System Creation Time of Nas. Unix Time Seconds.
+        :param str create_time: (NAS) File System Creation Time of Nas. Unix Time Seconds.
         :param str created_time: Snapshot creation time. UNIX time in seconds.
-        :param str file_system_id: The ID of NAS File system.
+        :param str file_system_id: (NAS) The ID of NAS File system.
         :param str id: The ID of the Snapshot.
-        :param str instance_id: The ID of ECS instance.
+        :param str instance_id: (ECS_FILE) The ID of ECS instance.
         :param str items_done: The number of backup items. (Currently only file backup is available).
         :param str items_total: The total number of data source items. (Currently only file backup is available).
         :param str job_id: The job ID of backup task.
         :param str parent_snapshot_hash: The hashcode of parent backup snapshot.
-        :param str path: Backup Path.
-        :param str prefix: Backup file prefix.
+        :param str path: (ECS_FILE, NAS) Backup Path.
+        :param str prefix: (OSS) Backup file prefix.
         :param str retention: The number of days to keep.
         :param str snapshot_hash: The hashcode of Snapshot.
         :param str snapshot_id: The ID of the Snapshot.
@@ -3132,7 +3132,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def bucket(self) -> str:
         """
-        The name of OSS bucket.
+        (OSS) The name of OSS bucket.
         """
         return pulumi.get(self, "bucket")
 
@@ -3156,7 +3156,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="clientId")
     def client_id(self) -> str:
         """
-        The ID of ECS backup client.
+        (ECS_FILE) The ID of ECS backup client.
         """
         return pulumi.get(self, "client_id")
 
@@ -3172,7 +3172,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        File System Creation Time of Nas. Unix Time Seconds.
+        (NAS) File System Creation Time of Nas. Unix Time Seconds.
         """
         return pulumi.get(self, "create_time")
 
@@ -3193,7 +3193,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="fileSystemId")
     def file_system_id(self) -> str:
         """
-        The ID of NAS File system.
+        (NAS) The ID of NAS File system.
         """
         return pulumi.get(self, "file_system_id")
 
@@ -3209,7 +3209,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
         """
-        The ID of ECS instance.
+        (ECS_FILE) The ID of ECS instance.
         """
         return pulumi.get(self, "instance_id")
 
@@ -3249,7 +3249,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        Backup Path.
+        (ECS_FILE, NAS) Backup Path.
         """
         return pulumi.get(self, "path")
 
@@ -3257,7 +3257,7 @@ class GetSnapshotsSnapshotResult(dict):
     @pulumi.getter
     def prefix(self) -> str:
         """
-        Backup file prefix.
+        (OSS) Backup file prefix.
         """
         return pulumi.get(self, "prefix")
 
@@ -3350,19 +3350,19 @@ class GetVaultsVaultResult(dict):
         :param str bucket_name: The name of the OSS bucket of the Vault.
         :param str bytes_done: The amount of backup data. The unit is Byte.
         :param str created_time: The creation time of the Vault. UNIX time in seconds.
-        :param bool dedup: Whether to enable the deduplication function for the database backup Vault.
+        :param bool dedup: (Internal use) Whether to enable the deduplication function for the database backup Vault.
         :param str description: The description of the vault.
         :param str id: The ID of vault.
-        :param bool index_available: Index available.
-        :param str index_level: Index level.
-        :param str index_update_time: Index update time.
+        :param bool index_available: (Not yet open) Index available.
+        :param str index_level: (Not yet open) Index level.
+        :param str index_update_time: (Not yet open) Index update time.
         :param str latest_replication_time: The time of the last remote backup synchronization.
         :param str payment_type: Billing model, possible values:
         :param bool replication: Whether it is a remote backup warehouse. It's a boolean value.
         :param str replication_source_region_id: The region ID to which the remote backup Vault belongs.
         :param str replication_source_vault_id: The source vault ID of the remote backup Vault.
-        :param str retention: Warehouse-level data retention days, only valid for archive libraries.
-        :param bool search_enabled: Whether to enable the backup search function.
+        :param str retention: (Not yet open) Warehouse-level data retention days, only valid for archive libraries.
+        :param bool search_enabled: (Not yet open) Whether to enable the backup search function.
         :param str status: The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
         :param str storage_size: Backup vault storage usage. The unit is Byte.
         :param str updated_time: The update time of the Vault. UNIX time in seconds.
@@ -3426,7 +3426,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter
     def dedup(self) -> bool:
         """
-        Whether to enable the deduplication function for the database backup Vault.
+        (Internal use) Whether to enable the deduplication function for the database backup Vault.
         """
         return pulumi.get(self, "dedup")
 
@@ -3450,7 +3450,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter(name="indexAvailable")
     def index_available(self) -> bool:
         """
-        Index available.
+        (Not yet open) Index available.
         """
         return pulumi.get(self, "index_available")
 
@@ -3458,7 +3458,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter(name="indexLevel")
     def index_level(self) -> str:
         """
-        Index level.
+        (Not yet open) Index level.
         """
         return pulumi.get(self, "index_level")
 
@@ -3466,7 +3466,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter(name="indexUpdateTime")
     def index_update_time(self) -> str:
         """
-        Index update time.
+        (Not yet open) Index update time.
         """
         return pulumi.get(self, "index_update_time")
 
@@ -3514,7 +3514,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter
     def retention(self) -> str:
         """
-        Warehouse-level data retention days, only valid for archive libraries.
+        (Not yet open) Warehouse-level data retention days, only valid for archive libraries.
         """
         return pulumi.get(self, "retention")
 
@@ -3522,7 +3522,7 @@ class GetVaultsVaultResult(dict):
     @pulumi.getter(name="searchEnabled")
     def search_enabled(self) -> bool:
         """
-        Whether to enable the backup search function.
+        (Not yet open) Whether to enable the backup search function.
         """
         return pulumi.get(self, "search_enabled")
 

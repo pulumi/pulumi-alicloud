@@ -130,13 +130,13 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The billing method of the simple application server.
+        /// The paymen type of the resource. Valid values: `Subscription`.
         /// </summary>
         [Input("paymentType")]
         public string? PaymentType { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -174,13 +174,13 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The billing method of the simple application server.
+        /// The paymen type of the resource. Valid values: `Subscription`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Resetting`, `Running`, `Stopped`, `Upgrading`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

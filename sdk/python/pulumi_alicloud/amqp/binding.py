@@ -25,16 +25,16 @@ class BindingArgs:
         The set of arguments for constructing a Binding resource.
         :param pulumi.Input[str] binding_key: The Binding Key.
                * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-               The binding key must be 1 to 255 characters in length.
-               * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-               If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-               The binding key must be 1 to 255 characters in length.
+                 The binding key must be 1 to 255 characters in length.
+               * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@). 
+                 If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.). 
+                 The binding key must be 1 to 255 characters in length.
         :param pulumi.Input[str] binding_type: The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
         :param pulumi.Input[str] destination_name: The Target Queue Or Exchange of the Name.
         :param pulumi.Input[str] instance_id: Instance Id.
         :param pulumi.Input[str] source_exchange: The Source Exchange Name.
         :param pulumi.Input[str] virtual_host_name: Virtualhost Name.
-        :param pulumi.Input[str] argument: X-match Attributes. Valid Values: 
+        :param pulumi.Input[str] argument: X-match Attributes. Valid Values:
                * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
                * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
                
@@ -55,10 +55,10 @@ class BindingArgs:
         """
         The Binding Key.
         * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        The binding key must be 1 to 255 characters in length.
-        * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-        The binding key must be 1 to 255 characters in length.
+          The binding key must be 1 to 255 characters in length.
+        * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@). 
+          If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.). 
+          The binding key must be 1 to 255 characters in length.
         """
         return pulumi.get(self, "binding_key")
 
@@ -130,7 +130,7 @@ class BindingArgs:
     @pulumi.getter
     def argument(self) -> Optional[pulumi.Input[str]]:
         """
-        X-match Attributes. Valid Values: 
+        X-match Attributes. Valid Values:
         * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
         * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
 
@@ -155,17 +155,17 @@ class _BindingState:
                  virtual_host_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Binding resources.
-        :param pulumi.Input[str] argument: X-match Attributes. Valid Values: 
+        :param pulumi.Input[str] argument: X-match Attributes. Valid Values:
                * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
                * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
                
                **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
         :param pulumi.Input[str] binding_key: The Binding Key.
                * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-               The binding key must be 1 to 255 characters in length.
-               * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-               If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-               The binding key must be 1 to 255 characters in length.
+                 The binding key must be 1 to 255 characters in length.
+               * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@). 
+                 If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.). 
+                 The binding key must be 1 to 255 characters in length.
         :param pulumi.Input[str] binding_type: The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
         :param pulumi.Input[str] destination_name: The Target Queue Or Exchange of the Name.
         :param pulumi.Input[str] instance_id: Instance Id.
@@ -191,7 +191,7 @@ class _BindingState:
     @pulumi.getter
     def argument(self) -> Optional[pulumi.Input[str]]:
         """
-        X-match Attributes. Valid Values: 
+        X-match Attributes. Valid Values:
         * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
         * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
 
@@ -209,10 +209,10 @@ class _BindingState:
         """
         The Binding Key.
         * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        The binding key must be 1 to 255 characters in length.
-        * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-        The binding key must be 1 to 255 characters in length.
+          The binding key must be 1 to 255 characters in length.
+        * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@). 
+          If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.). 
+          The binding key must be 1 to 255 characters in length.
         """
         return pulumi.get(self, "binding_key")
 
@@ -352,17 +352,17 @@ class Binding(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] argument: X-match Attributes. Valid Values: 
+        :param pulumi.Input[str] argument: X-match Attributes. Valid Values:
                * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
                * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
                
                **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
         :param pulumi.Input[str] binding_key: The Binding Key.
                * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-               The binding key must be 1 to 255 characters in length.
-               * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-               If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-               The binding key must be 1 to 255 characters in length.
+                 The binding key must be 1 to 255 characters in length.
+               * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@). 
+                 If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.). 
+                 The binding key must be 1 to 255 characters in length.
         :param pulumi.Input[str] binding_type: The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
         :param pulumi.Input[str] destination_name: The Target Queue Or Exchange of the Name.
         :param pulumi.Input[str] instance_id: Instance Id.
@@ -505,17 +505,17 @@ class Binding(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] argument: X-match Attributes. Valid Values: 
+        :param pulumi.Input[str] argument: X-match Attributes. Valid Values:
                * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
                * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
                
                **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
         :param pulumi.Input[str] binding_key: The Binding Key.
                * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-               The binding key must be 1 to 255 characters in length.
-               * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-               If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-               The binding key must be 1 to 255 characters in length.
+                 The binding key must be 1 to 255 characters in length.
+               * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@). 
+                 If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.). 
+                 The binding key must be 1 to 255 characters in length.
         :param pulumi.Input[str] binding_type: The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
         :param pulumi.Input[str] destination_name: The Target Queue Or Exchange of the Name.
         :param pulumi.Input[str] instance_id: Instance Id.
@@ -539,7 +539,7 @@ class Binding(pulumi.CustomResource):
     @pulumi.getter
     def argument(self) -> pulumi.Output[str]:
         """
-        X-match Attributes. Valid Values: 
+        X-match Attributes. Valid Values:
         * "x-match:all": Default Value, All the Message Header of Key-Value Pairs Stored in the Must Match.
         * "x-match:any": at Least One Pair of the Message Header of Key-Value Pairs Stored in the Must Match.
 
@@ -553,10 +553,10 @@ class Binding(pulumi.CustomResource):
         """
         The Binding Key.
         * For a non-topic source exchange: The binding key can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        The binding key must be 1 to 255 characters in length.
-        * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
-        If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.).
-        The binding key must be 1 to 255 characters in length.
+          The binding key must be 1 to 255 characters in length.
+        * For a topic source exchange: The binding key can contain letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@). 
+          If the binding key contains a number sign (#), the binding key must start with a number sign (#) followed by a period (.) or end with a number sign (#) that follows a period (.). 
+          The binding key must be 1 to 255 characters in length.
         """
         return pulumi.get(self, "binding_key")
 

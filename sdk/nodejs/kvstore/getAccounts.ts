@@ -55,7 +55,7 @@ export interface GetAccountsArgs {
      */
     outputFile?: string;
     /**
-     * The status of account.
+     * The status of KVStore Account. Valid Values: `"Available` `Unavailable`
      */
     status?: string;
 }
@@ -118,7 +118,7 @@ export interface GetAccountsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of account.
+     * The status of KVStore Account. Valid Values: `"Available` `Unavailable`
      */
     status?: pulumi.Input<string>;
 }

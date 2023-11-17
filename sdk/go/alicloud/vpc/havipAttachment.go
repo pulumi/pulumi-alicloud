@@ -132,11 +132,11 @@ type HAVipAttachment struct {
 	// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
 	// - **True**: Force unbinding.
 	// - **False** (default): unbinding is not forced.
-	// > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+	//   > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
 	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// The ID of the HaVip instance.
 	HaVipId pulumi.StringOutput `pulumi:"haVipId"`
-	// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+	// (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
 	//
 	// Deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
 	HavipId pulumi.StringOutput `pulumi:"havipId"`
@@ -186,11 +186,11 @@ type havipAttachmentState struct {
 	// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
 	// - **True**: Force unbinding.
 	// - **False** (default): unbinding is not forced.
-	// > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+	//   > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
 	Force *bool `pulumi:"force"`
 	// The ID of the HaVip instance.
 	HaVipId *string `pulumi:"haVipId"`
-	// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+	// (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
 	//
 	// Deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
 	HavipId *string `pulumi:"havipId"`
@@ -208,11 +208,11 @@ type HAVipAttachmentState struct {
 	// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
 	// - **True**: Force unbinding.
 	// - **False** (default): unbinding is not forced.
-	// > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+	//   > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
 	Force pulumi.BoolPtrInput
 	// The ID of the HaVip instance.
 	HaVipId pulumi.StringPtrInput
-	// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+	// (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
 	//
 	// Deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
 	HavipId pulumi.StringPtrInput
@@ -234,11 +234,11 @@ type havipAttachmentArgs struct {
 	// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
 	// - **True**: Force unbinding.
 	// - **False** (default): unbinding is not forced.
-	// > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+	//   > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
 	Force *bool `pulumi:"force"`
 	// The ID of the HaVip instance.
 	HaVipId *string `pulumi:"haVipId"`
-	// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+	// (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
 	//
 	// Deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
 	HavipId *string `pulumi:"havipId"`
@@ -255,11 +255,11 @@ type HAVipAttachmentArgs struct {
 	// Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
 	// - **True**: Force unbinding.
 	// - **False** (default): unbinding is not forced.
-	// > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+	//   > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
 	Force pulumi.BoolPtrInput
 	// The ID of the HaVip instance.
 	HaVipId pulumi.StringPtrInput
-	// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+	// (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
 	//
 	// Deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
 	HavipId pulumi.StringPtrInput
@@ -359,9 +359,9 @@ func (o HAVipAttachmentOutput) ToHAVipAttachmentOutputWithContext(ctx context.Co
 }
 
 // Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
-// - **True**: Force unbinding.
-// - **False** (default): unbinding is not forced.
-// > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+//   - **True**: Force unbinding.
+//   - **False** (default): unbinding is not forced.
+//     > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
 func (o HAVipAttachmentOutput) Force() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *HAVipAttachment) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
@@ -371,7 +371,7 @@ func (o HAVipAttachmentOutput) HaVipId() pulumi.StringOutput {
 	return o.ApplyT(func(v *HAVipAttachment) pulumi.StringOutput { return v.HaVipId }).(pulumi.StringOutput)
 }
 
-// . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+// (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
 //
 // Deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
 func (o HAVipAttachmentOutput) HavipId() pulumi.StringOutput {

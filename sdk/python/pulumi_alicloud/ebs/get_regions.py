@@ -94,7 +94,7 @@ def get_regions(output_file: Optional[str] = None,
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str region_id: The ID of the region.
+    :param str region_id: A list of Disk Replica Group IDs.
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
@@ -132,6 +132,6 @@ def get_regions_output(output_file: Optional[pulumi.Input[Optional[str]]] = None
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str region_id: The ID of the region.
+    :param str region_id: A list of Disk Replica Group IDs.
     """
     ...

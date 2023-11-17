@@ -34,7 +34,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatistic {
      */
     private @Nullable String parameterTwo;
     /**
-     * @return The name of the key that is used to filter logs imported from Log Service.
+     * @return The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
     private @Nullable String slsKeyName;
@@ -71,7 +71,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigStatistic {
         return Optional.ofNullable(this.parameterTwo);
     }
     /**
-     * @return The name of the key that is used to filter logs imported from Log Service.
+     * @return The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
     public Optional<String> slsKeyName() {

@@ -36,7 +36,7 @@ class GatewayArgs:
         :param pulumi.Input[str] description: The description of the VPN instance.
         :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
         :param pulumi.Input[bool] enable_ssl: Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
-        :param pulumi.Input[str] instance_charge_type: The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+        :param pulumi.Input[str] instance_charge_type: (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
                Default to PostPaid.
         :param pulumi.Input[str] name: The name of the VPN. Defaults to null.
         :param pulumi.Input[str] network_type: The network type of the VPN gateway. Value:
@@ -162,7 +162,7 @@ class GatewayArgs:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+        (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
         Default to PostPaid.
         """
         return pulumi.get(self, "instance_charge_type")
@@ -277,7 +277,7 @@ class _GatewayState:
         :param pulumi.Input[str] description: The description of the VPN instance.
         :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
         :param pulumi.Input[bool] enable_ssl: Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
-        :param pulumi.Input[str] instance_charge_type: The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+        :param pulumi.Input[str] instance_charge_type: (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
                Default to PostPaid.
         :param pulumi.Input[str] internet_ip: The internet ip of the VPN.
         :param pulumi.Input[str] name: The name of the VPN. Defaults to null.
@@ -414,7 +414,7 @@ class _GatewayState:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+        (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
         Default to PostPaid.
         """
         return pulumi.get(self, "instance_charge_type")
@@ -573,7 +573,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the VPN instance.
         :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
         :param pulumi.Input[bool] enable_ssl: Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
-        :param pulumi.Input[str] instance_charge_type: The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+        :param pulumi.Input[str] instance_charge_type: (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
                Default to PostPaid.
         :param pulumi.Input[str] name: The name of the VPN. Defaults to null.
         :param pulumi.Input[str] network_type: The network type of the VPN gateway. Value:
@@ -702,7 +702,7 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the VPN instance.
         :param pulumi.Input[bool] enable_ipsec: Enable or Disable IPSec VPN. At least one type of VPN should be enabled.
         :param pulumi.Input[bool] enable_ssl: Enable or Disable SSL VPN.  At least one type of VPN should be enabled.
-        :param pulumi.Input[str] instance_charge_type: The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+        :param pulumi.Input[str] instance_charge_type: (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
                Default to PostPaid.
         :param pulumi.Input[str] internet_ip: The internet ip of the VPN.
         :param pulumi.Input[str] name: The name of the VPN. Defaults to null.
@@ -799,7 +799,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
+        (ForceNew) The charge type for instance. If it is an international site account, the valid value is PostPaid, otherwise PrePaid. 
         Default to PostPaid.
         """
         return pulumi.get(self, "instance_charge_type")

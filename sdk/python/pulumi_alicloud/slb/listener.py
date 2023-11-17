@@ -103,7 +103,7 @@ class ListenerArgs:
                Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
         :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
         :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
-        :param pulumi.Input[str] ssl_certificate_id: SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        :param pulumi.Input[str] ssl_certificate_id: (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
@@ -670,7 +670,7 @@ class ListenerArgs:
     @pulumi.getter(name="sslCertificateId")
     def ssl_certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
-        SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         """
         warnings.warn("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""ssl_certificate_id is deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
@@ -832,7 +832,7 @@ class _ListenerState:
                Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
         :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
         :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
-        :param pulumi.Input[str] ssl_certificate_id: SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        :param pulumi.Input[str] ssl_certificate_id: (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
@@ -1402,7 +1402,7 @@ class _ListenerState:
     @pulumi.getter(name="sslCertificateId")
     def ssl_certificate_id(self) -> Optional[pulumi.Input[str]]:
         """
-        SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         """
         warnings.warn("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""ssl_certificate_id is deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")
@@ -1684,7 +1684,7 @@ class Listener(pulumi.CustomResource):
                Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
         :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
         :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
-        :param pulumi.Input[str] ssl_certificate_id: SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        :param pulumi.Input[str] ssl_certificate_id: (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
@@ -2034,7 +2034,7 @@ class Listener(pulumi.CustomResource):
                Only when `protocol` is `tcp` or `udp`, `scheduler` can be set to `sch`. Only when instance is guaranteed-performance instance and `protocol` is `tcp` or `udp`, `scheduler` can be set to `tch`. Only when instance is guaranteed-performance instance and `protocol` is `udp`, `scheduler` can be set to `qch`.
         :param pulumi.Input[str] server_certificate_id: SLB Server certificate ID. It is required when `protocol` is `https`. The `server_certificate_id` is also required when the value of the `ssl_certificate_id`  is Empty.
         :param pulumi.Input[str] server_group_id: the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
-        :param pulumi.Input[str] ssl_certificate_id: SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        :param pulumi.Input[str] ssl_certificate_id: (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         :param pulumi.Input[str] sticky_session: Whether to enable session persistence, Valid values are `on` and `off`. Default to `off`.
         :param pulumi.Input[str] sticky_session_type: Mode for handling the cookie. If `sticky_session` is "on", it is mandatory. Otherwise, it will be ignored. Valid values are `insert` and `server`. `insert` means it is inserted from Server Load Balancer; `server` means the Server Load Balancer learns from the backend server.
         :param pulumi.Input[str] tls_cipher_policy: Https listener TLS cipher policy. Valid values are `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`. Default to `tls_cipher_policy_1_0`. Currently the `tls_cipher_policy` can not be updated when load balancer instance is "Shared-Performance".
@@ -2404,7 +2404,7 @@ class Listener(pulumi.CustomResource):
     @pulumi.getter(name="sslCertificateId")
     def ssl_certificate_id(self) -> pulumi.Output[str]:
         """
-        SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
+        (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `server_certificate_id` instead.
         """
         warnings.warn("""Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""ssl_certificate_id is deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.""")

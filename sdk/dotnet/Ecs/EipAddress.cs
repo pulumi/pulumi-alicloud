@@ -74,7 +74,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> HighDefinitionMonitorLogStatus { get; private set; } = null!;
 
         /// <summary>
-        /// . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+        /// (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         /// </summary>
         [Output("instanceChargeType")]
         public Output<string> InstanceChargeType { get; private set; } = null!;
@@ -112,7 +112,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> LogStore { get; private set; } = null!;
 
         /// <summary>
-        /// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+        /// (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -274,7 +274,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HighDefinitionMonitorLogStatus { get; set; }
 
         /// <summary>
-        /// . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+        /// (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -306,7 +306,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LogStore { get; set; }
 
         /// <summary>
-        /// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+        /// (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -442,7 +442,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? HighDefinitionMonitorLogStatus { get; set; }
 
         /// <summary>
-        /// . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+        /// (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         /// </summary>
         [Input("instanceChargeType")]
         public Input<string>? InstanceChargeType { get; set; }
@@ -480,7 +480,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LogStore { get; set; }
 
         /// <summary>
-        /// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+        /// (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

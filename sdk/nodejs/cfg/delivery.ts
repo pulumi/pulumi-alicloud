@@ -91,9 +91,6 @@ export class Delivery extends pulumi.CustomResource {
     public readonly deliveryChannelName!: pulumi.Output<string | undefined>;
     /**
      * The ARN of the delivery destination. The value must be in one of the following formats:
-     * * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-     * * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-     * * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
      */
     public readonly deliveryChannelTargetArn!: pulumi.Output<string>;
     /**
@@ -109,7 +106,7 @@ export class Delivery extends pulumi.CustomResource {
      */
     public readonly nonCompliantNotification!: pulumi.Output<boolean>;
     /**
-     * The oss ARN of the delivery channel when the value data oversized limit. 
+     * The oss ARN of the delivery channel when the value data oversized limit.
      * * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
      * * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
      */
@@ -188,9 +185,6 @@ export interface DeliveryState {
     deliveryChannelName?: pulumi.Input<string>;
     /**
      * The ARN of the delivery destination. The value must be in one of the following formats:
-     * * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-     * * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-     * * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
      */
     deliveryChannelTargetArn?: pulumi.Input<string>;
     /**
@@ -206,7 +200,7 @@ export interface DeliveryState {
      */
     nonCompliantNotification?: pulumi.Input<boolean>;
     /**
-     * The oss ARN of the delivery channel when the value data oversized limit. 
+     * The oss ARN of the delivery channel when the value data oversized limit.
      * * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
      * * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
      */
@@ -239,9 +233,6 @@ export interface DeliveryArgs {
     deliveryChannelName?: pulumi.Input<string>;
     /**
      * The ARN of the delivery destination. The value must be in one of the following formats:
-     * * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-     * * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-     * * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
      */
     deliveryChannelTargetArn: pulumi.Input<string>;
     /**
@@ -257,7 +248,7 @@ export interface DeliveryArgs {
      */
     nonCompliantNotification?: pulumi.Input<boolean>;
     /**
-     * The oss ARN of the delivery channel when the value data oversized limit. 
+     * The oss ARN of the delivery channel when the value data oversized limit.
      * * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
      * * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
      */

@@ -122,14 +122,14 @@ public final class GetServerPlansPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The platform of Plan supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+     * (Available in v1.161.0) The platform of Plan supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
      * 
      */
     @Import(name="platform")
     private @Nullable String platform;
 
     /**
-     * @return The platform of Plan supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+     * @return (Available in v1.161.0) The platform of Plan supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
      * 
      */
     public Optional<String> platform() {
@@ -255,7 +255,7 @@ public final class GetServerPlansPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param platform The platform of Plan supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
+         * @param platform (Available in v1.161.0) The platform of Plan supported. Valid values: [&#34;Linux&#34;, &#34;Windows&#34;].
          * 
          * @return builder
          * 

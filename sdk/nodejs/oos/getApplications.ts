@@ -56,7 +56,7 @@ export interface GetApplicationsArgs {
      */
     outputFile?: string;
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      */
     tags?: {[key: string]: any};
 }
@@ -118,7 +118,7 @@ export interface GetApplicationsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
 }

@@ -248,7 +248,7 @@ func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.Invo
 
 // A collection of arguments for invoking getClusters.
 type GetClustersArgs struct {
-	// The name of the associated cluster.
+	// The ClusterName.
 	ClusterName *string `pulumi:"clusterName"`
 	// The cluster type list.
 	ClusterTypeLists []string `pulumi:"clusterTypeLists"`
@@ -320,7 +320,7 @@ func GetClustersOutput(ctx *pulumi.Context, args GetClustersOutputArgs, opts ...
 
 // A collection of arguments for invoking getClusters.
 type GetClustersOutputArgs struct {
-	// The name of the associated cluster.
+	// The ClusterName.
 	ClusterName pulumi.StringPtrInput `pulumi:"clusterName"`
 	// The cluster type list.
 	ClusterTypeLists pulumi.StringArrayInput `pulumi:"clusterTypeLists"`

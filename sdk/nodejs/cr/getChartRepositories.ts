@@ -49,7 +49,7 @@ export interface GetChartRepositoriesArgs {
      */
     ids?: string[];
     /**
-     * The ID of the Container Registry instance.
+     * InstanceId.
      */
     instanceId: string;
     /**
@@ -113,7 +113,7 @@ export interface GetChartRepositoriesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the Container Registry instance.
+     * InstanceId.
      */
     instanceId: pulumi.Input<string>;
     /**

@@ -64,9 +64,6 @@ type TopicSubscription struct {
 	pulumi.CustomResourceState
 
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
-	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// The length should be shorter than 16.
 	FilterTag pulumi.StringPtrOutput `pulumi:"filterTag"`
@@ -117,9 +114,6 @@ func GetTopicSubscription(ctx *pulumi.Context,
 // Input properties used for looking up and filtering TopicSubscription resources.
 type topicSubscriptionState struct {
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
-	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint *string `pulumi:"endpoint"`
 	// The length should be shorter than 16.
 	FilterTag *string `pulumi:"filterTag"`
@@ -135,9 +129,6 @@ type topicSubscriptionState struct {
 
 type TopicSubscriptionState struct {
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
-	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint pulumi.StringPtrInput
 	// The length should be shorter than 16.
 	FilterTag pulumi.StringPtrInput
@@ -157,9 +148,6 @@ func (TopicSubscriptionState) ElementType() reflect.Type {
 
 type topicSubscriptionArgs struct {
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
-	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint string `pulumi:"endpoint"`
 	// The length should be shorter than 16.
 	FilterTag *string `pulumi:"filterTag"`
@@ -176,9 +164,6 @@ type topicSubscriptionArgs struct {
 // The set of arguments for constructing a TopicSubscription resource.
 type TopicSubscriptionArgs struct {
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
-	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint pulumi.StringInput
 	// The length should be shorter than 16.
 	FilterTag pulumi.StringPtrInput
@@ -280,9 +265,6 @@ func (o TopicSubscriptionOutput) ToTopicSubscriptionOutputWithContext(ctx contex
 }
 
 // The endpoint has three format. Available values format:
-// - `HTTP Format`: http://xxx.com/xxx
-// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-// - `Email Format`: mail:directmail:{MailAddress}
 func (o TopicSubscriptionOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *TopicSubscription) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }

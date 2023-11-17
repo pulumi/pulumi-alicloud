@@ -159,7 +159,7 @@ def get_instances(app_key: Optional[str] = None,
     :param Sequence[str] ids: A list of Instance IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_str: The query str.
-    :param str status: Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+    :param str status: Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
     :param str status_list: The status list.
     """
     __args__ = dict()
@@ -221,7 +221,7 @@ def get_instances_output(app_key: Optional[pulumi.Input[Optional[str]]] = None,
     :param Sequence[str] ids: A list of Instance IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_str: The query str.
-    :param str status: Instance status, enumerative: ACTIVATION,DELETED, CREATING,CLASS_CHANGING,LOCKED.
+    :param str status: Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
     :param str status_list: The status list.
     """
     ...

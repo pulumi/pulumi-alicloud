@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class GetRulesRuleRuleConditionMethodConfigResult
     {
         /// <summary>
-        /// Add one or more IP addresses or IP address segments.
+        /// The request method. Valid values: `HEAD`, `GET`, `POST`, `OPTIONS`, `PUT`, `PATCH`, and `DELETE`.
         /// </summary>
         public readonly ImmutableArray<string> Values;
 

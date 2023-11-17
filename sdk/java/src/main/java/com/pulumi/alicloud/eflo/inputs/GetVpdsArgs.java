@@ -93,14 +93,14 @@ public final class GetVpdsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Resource group id
+     * (ForceNew,Optional) The Resource group id
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Resource group id
+     * @return (ForceNew,Optional) The Resource group id
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -108,14 +108,14 @@ public final class GetVpdsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+     * (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+     * @return (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
      * 
      */
     public Optional<Output<String>> status() {
@@ -123,14 +123,14 @@ public final class GetVpdsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The id of the vpd.
+     * (ForceNew,Optional) The id of the vpd.
      * 
      */
     @Import(name="vpdId")
     private @Nullable Output<String> vpdId;
 
     /**
-     * @return The id of the vpd.
+     * @return (ForceNew,Optional) The id of the vpd.
      * 
      */
     public Optional<Output<String>> vpdId() {
@@ -138,14 +138,14 @@ public final class GetVpdsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Name of the VPD.
+     * (ForceNew,Optional) The Name of the VPD.
      * 
      */
     @Import(name="vpdName")
     private @Nullable Output<String> vpdName;
 
     /**
-     * @return The Name of the VPD.
+     * @return (ForceNew,Optional) The Name of the VPD.
      * 
      */
     public Optional<Output<String>> vpdName() {
@@ -298,7 +298,7 @@ public final class GetVpdsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId The Resource group id
+         * @param resourceGroupId (ForceNew,Optional) The Resource group id
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class GetVpdsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId The Resource group id
+         * @param resourceGroupId (ForceNew,Optional) The Resource group id
          * 
          * @return builder
          * 
@@ -319,7 +319,7 @@ public final class GetVpdsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+         * @param status (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
          * 
          * @return builder
          * 
@@ -330,7 +330,7 @@ public final class GetVpdsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+         * @param status (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
          * 
          * @return builder
          * 
@@ -340,7 +340,7 @@ public final class GetVpdsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vpdId The id of the vpd.
+         * @param vpdId (ForceNew,Optional) The id of the vpd.
          * 
          * @return builder
          * 
@@ -351,7 +351,7 @@ public final class GetVpdsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vpdId The id of the vpd.
+         * @param vpdId (ForceNew,Optional) The id of the vpd.
          * 
          * @return builder
          * 
@@ -361,7 +361,7 @@ public final class GetVpdsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vpdName The Name of the VPD.
+         * @param vpdName (ForceNew,Optional) The Name of the VPD.
          * 
          * @return builder
          * 
@@ -372,7 +372,7 @@ public final class GetVpdsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vpdName The Name of the VPD.
+         * @param vpdName (ForceNew,Optional) The Name of the VPD.
          * 
          * @return builder
          * 

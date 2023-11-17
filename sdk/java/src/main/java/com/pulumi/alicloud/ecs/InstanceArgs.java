@@ -24,7 +24,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public ip address for an instance.
+     * (Deprecated) It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public ip address for an instance.
      * 
      * @deprecated
      * Field &#39;allocate_public_ip&#39; has been deprecated from provider version 1.6.1. Setting &#39;internet_max_bandwidth_out&#39; larger than 0 will allocate public ip for instance.
@@ -35,7 +35,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> allocatePublicIp;
 
     /**
-     * @return It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public ip address for an instance.
+     * @return (Deprecated) It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public ip address for an instance.
      * 
      * @deprecated
      * Field &#39;allocate_public_ip&#39; has been deprecated from provider version 1.6.1. Setting &#39;internet_max_bandwidth_out&#39; larger than 0 will allocate public ip for instance.
@@ -207,14 +207,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+     * The description of the data disk.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+     * @return The description of the data disk.
      * 
      */
     public Optional<Output<String>> description() {
@@ -465,7 +465,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+     * (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      * 
      * @deprecated
      * Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
@@ -476,7 +476,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> ioOptimized;
 
     /**
-     * @return It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+     * @return (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      * 
      * @deprecated
      * Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
@@ -656,7 +656,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
      * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
      * - [1-3] when `period_unit` in &#34;Week&#34;
-     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     *   &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
     @Import(name="period")
@@ -666,7 +666,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * @return The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
      * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
      * - [1-3] when `period_unit` in &#34;Week&#34;
-     * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+     *   &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -1197,7 +1197,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allocatePublicIp It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public ip address for an instance.
+         * @param allocatePublicIp (Deprecated) It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public ip address for an instance.
          * 
          * @return builder
          * 
@@ -1212,7 +1212,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allocatePublicIp It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public ip address for an instance.
+         * @param allocatePublicIp (Deprecated) It has been deprecated from version &#34;1.7.0&#34;. Setting &#34;internet_max_bandwidth_out&#34; larger than 0 can allocate a public ip address for an instance.
          * 
          * @return builder
          * 
@@ -1444,7 +1444,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+         * @param description The description of the data disk.
          * 
          * @return builder
          * 
@@ -1455,7 +1455,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+         * @param description The description of the data disk.
          * 
          * @return builder
          * 
@@ -1794,7 +1794,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ioOptimized It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+         * @param ioOptimized (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
          * 
          * @return builder
          * 
@@ -1809,7 +1809,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ioOptimized It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+         * @param ioOptimized (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
          * 
          * @return builder
          * 
@@ -2067,7 +2067,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param period The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
          * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
          * - [1-3] when `period_unit` in &#34;Week&#34;
-         * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+         *   &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder
          * 
@@ -2081,7 +2081,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @param period The duration that you will buy the resource, in month. It is valid when `instance_charge_type` is `PrePaid`. Valid values:
          * - [1-9, 12, 24, 36, 48, 60] when `period_unit` in &#34;Month&#34;
          * - [1-3] when `period_unit` in &#34;Week&#34;
-         * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+         *   &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
          * 
          * @return builder
          * 

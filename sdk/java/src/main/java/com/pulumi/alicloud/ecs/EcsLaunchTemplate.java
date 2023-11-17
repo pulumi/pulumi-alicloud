@@ -418,7 +418,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return this.launchTemplateName;
     }
     /**
-     * It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * (Deprecated) It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
@@ -429,7 +429,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+     * @return (Deprecated) It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
      * 
      */
     public Output<String> name() {
@@ -636,7 +636,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return this.systemDisk;
     }
     /**
-     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
      * 
      * @deprecated
      * Field &#39;system_disk_category&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
@@ -647,14 +647,14 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> systemDiskCategory;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * @return (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
      * 
      */
     public Output<String> systemDiskCategory() {
         return this.systemDiskCategory;
     }
     /**
-     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
      * 
      * @deprecated
      * Field &#39;system_disk_description&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
@@ -665,14 +665,14 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> systemDiskDescription;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * @return (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
      * 
      */
     public Output<String> systemDiskDescription() {
         return this.systemDiskDescription;
     }
     /**
-     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
      * 
      * @deprecated
      * Field &#39;system_disk_name&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
@@ -683,14 +683,14 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> systemDiskName;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * @return (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
      * 
      */
     public Output<String> systemDiskName() {
         return this.systemDiskName;
     }
     /**
-     * It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
      * 
      * @deprecated
      * Field &#39;system_disk_size&#39; has been deprecated from provider version 1.120.0. New field &#39;system_disk&#39; instead.
@@ -701,7 +701,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<Integer> systemDiskSize;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+     * @return (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
      * 
      */
     public Output<Integer> systemDiskSize() {
@@ -768,7 +768,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
         return this.userData;
     }
     /**
-     * It has been deprecated from version 1.120.0, and use field `user_data` instead.
+     * (Deprecated) It has been deprecated from version 1.120.0, and use field `user_data` instead.
      * 
      * @deprecated
      * Field &#39;userdata&#39; has been deprecated from provider version 1.120.0. New field &#39;user_data&#39; instead.
@@ -779,7 +779,7 @@ public class EcsLaunchTemplate extends com.pulumi.resources.CustomResource {
     private Output<String> userdata;
 
     /**
-     * @return It has been deprecated from version 1.120.0, and use field `user_data` instead.
+     * @return (Deprecated) It has been deprecated from version 1.120.0, and use field `user_data` instead.
      * 
      */
     public Output<String> userdata() {

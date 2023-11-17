@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.Vpn
         public string? Status { get; set; }
 
         /// <summary>
-        /// The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
+        /// (Deprecated) The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
         /// </summary>
         [Input("vpnGatewayId")]
         public string? VpnGatewayId { get; set; }
@@ -184,7 +184,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
+        /// (Deprecated) The parameter 'vpn_gateway_id' has been deprecated from 1.194.0.
         /// </summary>
         [Input("vpnGatewayId")]
         public Input<string>? VpnGatewayId { get; set; }

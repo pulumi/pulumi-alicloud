@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Slb
     public partial class Acl : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
+        /// (Deprecated from v1.162.0 ) A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
         /// </summary>
         [Output("entryLists")]
         public Output<ImmutableArray<Outputs.AclEntryList>> EntryLists { get; private set; } = null!;
@@ -149,7 +149,7 @@ namespace Pulumi.AliCloud.Slb
         private InputList<Inputs.AclEntryListArgs>? _entryLists;
 
         /// <summary>
-        /// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
+        /// (Deprecated from v1.162.0 ) A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
         /// </summary>
         [Obsolete(@"Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.")]
         public InputList<Inputs.AclEntryListArgs> EntryLists
@@ -200,7 +200,7 @@ namespace Pulumi.AliCloud.Slb
         private InputList<Inputs.AclEntryListGetArgs>? _entryLists;
 
         /// <summary>
-        /// A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
+        /// (Deprecated from v1.162.0 ) A list of entry (CIDR blocks) to be added. It contains two sub-fields as `Entry Block` follows. **NOTE:** "Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.",
         /// </summary>
         [Obsolete(@"Field 'entry_list' has been deprecated from provider version 1.162.0 and it will be removed in the future version. Please use the new resource 'alicloud_slb_acl_entry_attachment'.")]
         public InputList<Inputs.AclEntryListGetArgs> EntryLists

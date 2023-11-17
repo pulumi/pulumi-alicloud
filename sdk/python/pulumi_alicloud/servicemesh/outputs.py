@@ -1076,9 +1076,6 @@ class UserPermissionPermission(dict):
         :param bool is_custom: Whether the grant object is a RAM role.
         :param bool is_ram_role: Whether the grant object is an entity.
         :param str role_name: The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
-               - `istio-admin`:  The administrator.
-               - `istio-ops`: The administrator of the service mesh resource.
-               - `istio-readonly`: The read only permission.
         :param str role_type: The role type. Valid Value: `custom`.
         :param str service_mesh_id: The service mesh id.
         """
@@ -1114,9 +1111,6 @@ class UserPermissionPermission(dict):
     def role_name(self) -> Optional[str]:
         """
         The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
-        - `istio-admin`:  The administrator.
-        - `istio-ops`: The administrator of the service mesh resource.
-        - `istio-readonly`: The read only permission.
         """
         return pulumi.get(self, "role_name")
 
@@ -2125,9 +2119,11 @@ class GetVersionsVersionResult(dict):
                  id: str,
                  version: str):
         """
-        :param str edition: The edition of the ASM instance.
+        :param str edition: The edition of the ASM instance. Valid values:
+               - Default: Standard Edition
+               - Pro: Professional Edition
         :param str id: The ASM version id. It formats as `<edition>:<version>`.
-        :param str version: The AMS version.
+        :param str version: A list of Service Mesh Service Meshes. Each element contains the following attributes:
         """
         pulumi.set(__self__, "edition", edition)
         pulumi.set(__self__, "id", id)
@@ -2137,7 +2133,9 @@ class GetVersionsVersionResult(dict):
     @pulumi.getter
     def edition(self) -> str:
         """
-        The edition of the ASM instance.
+        The edition of the ASM instance. Valid values:
+        - Default: Standard Edition
+        - Pro: Professional Edition
         """
         return pulumi.get(self, "edition")
 
@@ -2153,7 +2151,7 @@ class GetVersionsVersionResult(dict):
     @pulumi.getter
     def version(self) -> str:
         """
-        The AMS version.
+        A list of Service Mesh Service Meshes. Each element contains the following attributes:
         """
         return pulumi.get(self, "version")
 

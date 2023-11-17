@@ -17,7 +17,7 @@ public final class GetApisArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetApisArgs Empty = new GetApisArgs();
 
     /**
-     * (It has been deprecated from version 1.52.2, and use field &#39;ids&#39; to replace.) ID of the specified API.
+     * (Deprecated, Optional) (It has been deprecated from version 1.52.2, and use field &#39;ids&#39; to replace.) ID of the specified API.
      * 
      * @deprecated
      * Field &#39;api_id&#39; has been deprecated from provider version 1.52.2. New field &#39;ids&#39; replaces it.
@@ -28,7 +28,7 @@ public final class GetApisArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> apiId;
 
     /**
-     * @return (It has been deprecated from version 1.52.2, and use field &#39;ids&#39; to replace.) ID of the specified API.
+     * @return (Deprecated, Optional) (It has been deprecated from version 1.52.2, and use field &#39;ids&#39; to replace.) ID of the specified API.
      * 
      * @deprecated
      * Field &#39;api_id&#39; has been deprecated from provider version 1.52.2. New field &#39;ids&#39; replaces it.
@@ -128,7 +128,7 @@ public final class GetApisArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param apiId (It has been deprecated from version 1.52.2, and use field &#39;ids&#39; to replace.) ID of the specified API.
+         * @param apiId (Deprecated, Optional) (It has been deprecated from version 1.52.2, and use field &#39;ids&#39; to replace.) ID of the specified API.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class GetApisArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param apiId (It has been deprecated from version 1.52.2, and use field &#39;ids&#39; to replace.) ID of the specified API.
+         * @param apiId (Deprecated, Optional) (It has been deprecated from version 1.52.2, and use field &#39;ids&#39; to replace.) ID of the specified API.
          * 
          * @return builder
          * 

@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The network type of the instance.
+        /// The network type of the instance. Valid values: `Classic` or `VPC`.
         /// </summary>
         [Input("networkType")]
         public string? NetworkType { get; set; }
@@ -242,7 +242,7 @@ namespace Pulumi.AliCloud.MongoDB
         }
 
         /// <summary>
-        /// The network type of the instance.
+        /// The network type of the instance. Valid values: `Classic` or `VPC`.
         /// </summary>
         [Input("networkType")]
         public Input<string>? NetworkType { get; set; }

@@ -137,7 +137,7 @@ class DdrInstanceArgs:
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
                
                > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
-        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values: 
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
                
@@ -184,7 +184,7 @@ class DdrInstanceArgs:
                - verify-full (supported only when the instance runs PostgreSQL 12 or later)
         :param pulumi.Input[str] resource_group_id: The ID of resource group which the DB instance belongs.
         :param pulumi.Input[str] restore_time: The point in time to which you want to restore data. The point in time that you specify must be earlier than the current time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ) The list IDs to join ECS Security Group. At most supports three security groups.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -220,9 +220,9 @@ class DdrInstanceArgs:
         :param pulumi.Input[str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
                - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
                - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-               - rds: The instance runs RDS Basic or High-availability Edition.
-               - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-               - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+                 - rds: The instance runs RDS Basic or High-availability Edition.
+                 - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+                 - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
                
                > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -240,14 +240,14 @@ class DdrInstanceArgs:
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
-        :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+        :param pulumi.Input[str] vswitch_id: (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
                - Classic: classic network in enhanced whitelist mode
                - VPC: virtual private cloud (VPC) in enhanced whitelist mode
                - MIX: standard whitelist mode
                
                > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
-        :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. It supports multiple zone.
+        :param pulumi.Input[str] zone_id: (ForceNew, Optional) The Zone to launch the DB instance. It supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
@@ -654,7 +654,7 @@ class DdrInstanceArgs:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        The switch of delete protection. Valid values: 
+        The switch of delete protection. Valid values:
         - true: delete protect.
         - false: no delete protect.
 
@@ -921,7 +921,7 @@ class DdrInstanceArgs:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        ) The list IDs to join ECS Security Group. At most supports three security groups.
+        The list IDs to join ECS Security Group. At most supports three security groups.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -1133,9 +1133,9 @@ class DdrInstanceArgs:
         The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
         - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
         - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-        - rds: The instance runs RDS Basic or High-availability Edition.
-        - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-        - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+          - rds: The instance runs RDS Basic or High-availability Edition.
+          - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+          - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 
         > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -1219,7 +1219,7 @@ class DdrInstanceArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+        (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -1248,7 +1248,7 @@ class DdrInstanceArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Zone to launch the DB instance. It supports multiple zone.
+        (ForceNew, Optional) The Zone to launch the DB instance. It supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
         The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
@@ -1376,7 +1376,7 @@ class _DdrInstanceState:
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
                
                > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
-        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values: 
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
                
@@ -1437,7 +1437,7 @@ class _DdrInstanceState:
         :param pulumi.Input[str] restore_type: The method that is used to restore data. Valid values:
                - BackupSet: Data is restored from a backup set. If you use this value, you must also specify the BackupSetID parameter.
                - BackupTime: restores data to a point in time. You must also specify the RestoreTime, SourceRegion, and SourceDBInstanceName parameters.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ) The list IDs to join ECS Security Group. At most supports three security groups.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -1474,9 +1474,9 @@ class _DdrInstanceState:
         :param pulumi.Input[str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
                - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
                - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-               - rds: The instance runs RDS Basic or High-availability Edition.
-               - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-               - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+                 - rds: The instance runs RDS Basic or High-availability Edition.
+                 - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+                 - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
                
                > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -1494,14 +1494,14 @@ class _DdrInstanceState:
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
-        :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+        :param pulumi.Input[str] vswitch_id: (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
                - Classic: classic network in enhanced whitelist mode
                - VPC: virtual private cloud (VPC) in enhanced whitelist mode
                - MIX: standard whitelist mode
                
                > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
-        :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. It supports multiple zone.
+        :param pulumi.Input[str] zone_id: (ForceNew, Optional) The Zone to launch the DB instance. It supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance.
@@ -1870,7 +1870,7 @@ class _DdrInstanceState:
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
         """
-        The switch of delete protection. Valid values: 
+        The switch of delete protection. Valid values:
         - true: delete protect.
         - false: no delete protect.
 
@@ -2217,7 +2217,7 @@ class _DdrInstanceState:
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        ) The list IDs to join ECS Security Group. At most supports three security groups.
+        The list IDs to join ECS Security Group. At most supports three security groups.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -2441,9 +2441,9 @@ class _DdrInstanceState:
         The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
         - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
         - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-        - rds: The instance runs RDS Basic or High-availability Edition.
-        - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-        - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+          - rds: The instance runs RDS Basic or High-availability Edition.
+          - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+          - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 
         > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -2527,7 +2527,7 @@ class _DdrInstanceState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+        (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -2556,7 +2556,7 @@ class _DdrInstanceState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Zone to launch the DB instance. It supports multiple zone.
+        (ForceNew, Optional) The Zone to launch the DB instance. It supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
         The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
@@ -2713,7 +2713,7 @@ class DdrInstance(pulumi.CustomResource):
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
                
                > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
-        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values: 
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
                
@@ -2774,7 +2774,7 @@ class DdrInstance(pulumi.CustomResource):
         :param pulumi.Input[str] restore_type: The method that is used to restore data. Valid values:
                - BackupSet: Data is restored from a backup set. If you use this value, you must also specify the BackupSetID parameter.
                - BackupTime: restores data to a point in time. You must also specify the RestoreTime, SourceRegion, and SourceDBInstanceName parameters.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ) The list IDs to join ECS Security Group. At most supports three security groups.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -2810,9 +2810,9 @@ class DdrInstance(pulumi.CustomResource):
         :param pulumi.Input[str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
                - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
                - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-               - rds: The instance runs RDS Basic or High-availability Edition.
-               - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-               - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+                 - rds: The instance runs RDS Basic or High-availability Edition.
+                 - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+                 - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
                
                > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -2830,14 +2830,14 @@ class DdrInstance(pulumi.CustomResource):
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
-        :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+        :param pulumi.Input[str] vswitch_id: (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
                - Classic: classic network in enhanced whitelist mode
                - VPC: virtual private cloud (VPC) in enhanced whitelist mode
                - MIX: standard whitelist mode
                
                > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
-        :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. It supports multiple zone.
+        :param pulumi.Input[str] zone_id: (ForceNew, Optional) The Zone to launch the DB instance. It supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """
@@ -3156,7 +3156,7 @@ class DdrInstance(pulumi.CustomResource):
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
                
                > **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
-        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values: 
+        :param pulumi.Input[bool] deletion_protection: The switch of delete protection. Valid values:
                - true: delete protect.
                - false: no delete protect.
                
@@ -3217,7 +3217,7 @@ class DdrInstance(pulumi.CustomResource):
         :param pulumi.Input[str] restore_type: The method that is used to restore data. Valid values:
                - BackupSet: Data is restored from a backup set. If you use this value, you must also specify the BackupSetID parameter.
                - BackupTime: restores data to a point in time. You must also specify the RestoreTime, SourceRegion, and SourceDBInstanceName parameters.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: ) The list IDs to join ECS Security Group. At most supports three security groups.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The list IDs to join ECS Security Group. At most supports three security groups.
         :param pulumi.Input[str] security_ip_mode: Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
         :param pulumi.Input[str] security_ip_type: The type of IP address in the IP address whitelist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ips: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
@@ -3254,9 +3254,9 @@ class DdrInstance(pulumi.CustomResource):
         :param pulumi.Input[str] target_minor_version: The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
                - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
                - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-               - rds: The instance runs RDS Basic or High-availability Edition.
-               - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-               - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+                 - rds: The instance runs RDS Basic or High-availability Edition.
+                 - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+                 - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
                - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
                
                > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -3274,14 +3274,14 @@ class DdrInstance(pulumi.CustomResource):
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
                
                > **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
-        :param pulumi.Input[str] vswitch_id: The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+        :param pulumi.Input[str] vswitch_id: (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         :param pulumi.Input[str] whitelist_network_type: The network type of the IP address whitelist. Default value: MIX. Valid values:
                - Classic: classic network in enhanced whitelist mode
                - VPC: virtual private cloud (VPC) in enhanced whitelist mode
                - MIX: standard whitelist mode
                
                > **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
-        :param pulumi.Input[str] zone_id: The Zone to launch the DB instance. It supports multiple zone.
+        :param pulumi.Input[str] zone_id: (ForceNew, Optional) The Zone to launch the DB instance. It supports multiple zone.
                If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
                The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         :param pulumi.Input[str] zone_id_slave_a: The region ID of the secondary instance if you create a secondary instance.
@@ -3521,7 +3521,7 @@ class DdrInstance(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtection")
     def deletion_protection(self) -> pulumi.Output[bool]:
         """
-        The switch of delete protection. Valid values: 
+        The switch of delete protection. Valid values:
         - true: delete protect.
         - false: no delete protect.
 
@@ -3764,7 +3764,7 @@ class DdrInstance(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        ) The list IDs to join ECS Security Group. At most supports three security groups.
+        The list IDs to join ECS Security Group. At most supports three security groups.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -3920,9 +3920,9 @@ class DdrInstance(pulumi.CustomResource):
         The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgrade_db_instance_kernel_version = true`. You must specify the minor engine version in one of the following formats:
         - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
         - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-        - rds: The instance runs RDS Basic or High-availability Edition.
-        - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-        - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+          - rds: The instance runs RDS Basic or High-availability Edition.
+          - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+          - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
         - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
 
         > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -3982,7 +3982,7 @@ class DdrInstance(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+        (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -4003,7 +4003,7 @@ class DdrInstance(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The Zone to launch the DB instance. It supports multiple zone.
+        (ForceNew, Optional) The Zone to launch the DB instance. It supports multiple zone.
         If it is a multi-zone and `vswitch_id` is specified, the vswitch must in the one of them.
         The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `get_zones`.
         """

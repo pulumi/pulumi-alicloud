@@ -24,7 +24,7 @@ namespace Pulumi.AliCloud.Vpc.Inputs
         /// - **ChinaMobile**: China Mobile (single line).
         /// - **ChinaUnicom**: China Unicom (single line).
         /// - **ChinaTelecom**: China Telecom (single line).
-        /// &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        ///   &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
         /// </summary>
         [Input("ipv6Isp")]
         public Input<string>? Ipv6Isp { get; set; }

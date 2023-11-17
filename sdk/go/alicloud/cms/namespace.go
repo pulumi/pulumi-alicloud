@@ -64,12 +64,6 @@ type Namespace struct {
 	// Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
 	Namespace pulumi.StringOutput `pulumi:"namespace"`
 	// Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
-	// - `cms.s1.large`: Data storage duration is 15 days.
-	// - `cms.s1.xlarge`: Data storage duration is 32 days.
-	// - `cms.s1.2xlarge`: Data storage duration 63 days.
-	// - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
-	// - `cms.s1.6xlarge`: Data storage duration 185 days.
-	// - `cms.s1.12xlarge`: Data storage duration 376 days.
 	Specification pulumi.StringOutput `pulumi:"specification"`
 }
 
@@ -111,12 +105,6 @@ type namespaceState struct {
 	// Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
 	Namespace *string `pulumi:"namespace"`
 	// Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
-	// - `cms.s1.large`: Data storage duration is 15 days.
-	// - `cms.s1.xlarge`: Data storage duration is 32 days.
-	// - `cms.s1.2xlarge`: Data storage duration 63 days.
-	// - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
-	// - `cms.s1.6xlarge`: Data storage duration 185 days.
-	// - `cms.s1.12xlarge`: Data storage duration 376 days.
 	Specification *string `pulumi:"specification"`
 }
 
@@ -126,12 +114,6 @@ type NamespaceState struct {
 	// Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
 	Namespace pulumi.StringPtrInput
 	// Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
-	// - `cms.s1.large`: Data storage duration is 15 days.
-	// - `cms.s1.xlarge`: Data storage duration is 32 days.
-	// - `cms.s1.2xlarge`: Data storage duration 63 days.
-	// - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
-	// - `cms.s1.6xlarge`: Data storage duration 185 days.
-	// - `cms.s1.12xlarge`: Data storage duration 376 days.
 	Specification pulumi.StringPtrInput
 }
 
@@ -145,12 +127,6 @@ type namespaceArgs struct {
 	// Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
 	Namespace string `pulumi:"namespace"`
 	// Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
-	// - `cms.s1.large`: Data storage duration is 15 days.
-	// - `cms.s1.xlarge`: Data storage duration is 32 days.
-	// - `cms.s1.2xlarge`: Data storage duration 63 days.
-	// - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
-	// - `cms.s1.6xlarge`: Data storage duration 185 days.
-	// - `cms.s1.12xlarge`: Data storage duration 376 days.
 	Specification *string `pulumi:"specification"`
 }
 
@@ -161,12 +137,6 @@ type NamespaceArgs struct {
 	// Indicator warehouse name. The namespace can contain lowercase letters, digits, and hyphens (-).
 	Namespace pulumi.StringInput
 	// Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
-	// - `cms.s1.large`: Data storage duration is 15 days.
-	// - `cms.s1.xlarge`: Data storage duration is 32 days.
-	// - `cms.s1.2xlarge`: Data storage duration 63 days.
-	// - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
-	// - `cms.s1.6xlarge`: Data storage duration 185 days.
-	// - `cms.s1.12xlarge`: Data storage duration 376 days.
 	Specification pulumi.StringPtrInput
 }
 
@@ -268,12 +238,6 @@ func (o NamespaceOutput) Namespace() pulumi.StringOutput {
 }
 
 // Data storage duration. Valid values: `cms.s1.12xlarge`, `cms.s1.2xlarge`, `cms.s1.3xlarge`, `cms.s1.6xlarge`, `cms.s1.large`, `cms.s1.xlarge`.
-// - `cms.s1.large`: Data storage duration is 15 days.
-// - `cms.s1.xlarge`: Data storage duration is 32 days.
-// - `cms.s1.2xlarge`: Data storage duration 63 days.
-// - `cms.s1.3xlarge`: (Default) Data storage duration 93 days.
-// - `cms.s1.6xlarge`: Data storage duration 185 days.
-// - `cms.s1.12xlarge`: Data storage duration 376 days.
 func (o NamespaceOutput) Specification() pulumi.StringOutput {
 	return o.ApplyT(func(v *Namespace) pulumi.StringOutput { return v.Specification }).(pulumi.StringOutput)
 }

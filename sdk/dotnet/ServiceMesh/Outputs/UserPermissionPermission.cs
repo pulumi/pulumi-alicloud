@@ -23,9 +23,6 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         public readonly bool? IsRamRole;
         /// <summary>
         /// The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
-        /// - `istio-admin`:  The administrator.
-        /// - `istio-ops`: The administrator of the service mesh resource.
-        /// - `istio-readonly`: The read only permission.
         /// </summary>
         public readonly string? RoleName;
         /// <summary>

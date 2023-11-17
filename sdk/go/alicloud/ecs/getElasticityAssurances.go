@@ -57,13 +57,13 @@ type GetElasticityAssurancesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The ID of the elastic protection service.
+	// (ForceNew,Optional) The ID of the elastic protection service.
 	PrivatePoolOptionsIds []string `pulumi:"privatePoolOptionsIds"`
-	// The ID of the resource group.
+	// (ForceNew,Optional) The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+	// (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
 	Status *string `pulumi:"status"`
-	// The tag key-value pair information bound by the elastic guarantee service.
+	// (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -104,13 +104,13 @@ type GetElasticityAssurancesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The ID of the elastic protection service.
+	// (ForceNew,Optional) The ID of the elastic protection service.
 	PrivatePoolOptionsIds pulumi.StringArrayInput `pulumi:"privatePoolOptionsIds"`
-	// The ID of the resource group.
+	// (ForceNew,Optional) The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+	// (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The tag key-value pair information bound by the elastic guarantee service.
+	// (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
 	Tags pulumi.MapInput `pulumi:"tags"`
 }
 

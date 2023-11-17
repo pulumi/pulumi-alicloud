@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableArray<Outputs.NetworkAclIngressAclEntry>> IngressAclEntries { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+        /// (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -242,7 +242,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+        /// (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -330,7 +330,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+        /// (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

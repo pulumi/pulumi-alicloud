@@ -69,7 +69,7 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[str] host_name: Hostname of an ECS instance.
         :param pulumi.Input[str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: (Deprecated) It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
         :param pulumi.Input[str] instance_type: Resource type of an ECS instance.
@@ -77,7 +77,7 @@ class ScalingConfigurationArgs:
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
         :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
-        :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        :param pulumi.Input[str] io_optimized: (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
@@ -97,7 +97,6 @@ class ScalingConfigurationArgs:
                > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
                
                > **NOTE:** Restrictions on attaching ECS instances:
-               
                - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
                - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
                - The attached ECS instances must in the running state.
@@ -321,7 +320,7 @@ class ScalingConfigurationArgs:
     @pulumi.getter(name="instanceIds")
     def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+        (Deprecated) It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         """
         warnings.warn("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""", DeprecationWarning)
         pulumi.log.warn("""instance_ids is deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
@@ -420,7 +419,7 @@ class ScalingConfigurationArgs:
     @pulumi.getter(name="ioOptimized")
     def io_optimized(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
         warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
         pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
@@ -586,7 +585,6 @@ class ScalingConfigurationArgs:
         > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
 
         > **NOTE:** Restrictions on attaching ECS instances:
-
         - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
         - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
         - The attached ECS instances must in the running state.
@@ -791,7 +789,7 @@ class _ScalingConfigurationState:
         :param pulumi.Input[str] host_name: Hostname of an ECS instance.
         :param pulumi.Input[str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: (Deprecated) It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         :param pulumi.Input[Sequence[pulumi.Input['ScalingConfigurationInstancePatternInfoArgs']]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
         :param pulumi.Input[str] instance_type: Resource type of an ECS instance.
@@ -799,7 +797,7 @@ class _ScalingConfigurationState:
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
         :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
-        :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        :param pulumi.Input[str] io_optimized: (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
@@ -820,7 +818,6 @@ class _ScalingConfigurationState:
                > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
                
                > **NOTE:** Restrictions on attaching ECS instances:
-               
                - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
                - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
                - The attached ECS instances must in the running state.
@@ -1033,7 +1030,7 @@ class _ScalingConfigurationState:
     @pulumi.getter(name="instanceIds")
     def instance_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+        (Deprecated) It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         """
         warnings.warn("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""", DeprecationWarning)
         pulumi.log.warn("""instance_ids is deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
@@ -1132,7 +1129,7 @@ class _ScalingConfigurationState:
     @pulumi.getter(name="ioOptimized")
     def io_optimized(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
         warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
         pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
@@ -1310,7 +1307,6 @@ class _ScalingConfigurationState:
         > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
 
         > **NOTE:** Restrictions on attaching ECS instances:
-
         - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
         - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
         - The attached ECS instances must in the running state.
@@ -1591,7 +1587,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] host_name: Hostname of an ECS instance.
         :param pulumi.Input[str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: (Deprecated) It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstancePatternInfoArgs']]]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
         :param pulumi.Input[str] instance_type: Resource type of an ECS instance.
@@ -1599,7 +1595,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
         :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
-        :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        :param pulumi.Input[str] io_optimized: (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
@@ -1620,7 +1616,6 @@ class ScalingConfiguration(pulumi.CustomResource):
                > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
                
                > **NOTE:** Restrictions on attaching ECS instances:
-               
                - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
                - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
                - The attached ECS instances must in the running state.
@@ -1898,7 +1893,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] host_name: Hostname of an ECS instance.
         :param pulumi.Input[str] image_id: ID of an image file, indicating the image resource selected when an instance is enabled.
         :param pulumi.Input[str] image_name: Name of an image file, indicating the image resource selected when an instance is enabled.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_ids: (Deprecated) It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         :param pulumi.Input[str] instance_name: Name of an ECS instance. Default to "ESS-Instance". It is valid from version 1.7.1.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingConfigurationInstancePatternInfoArgs']]]] instance_pattern_infos: intelligent configuration mode. In this mode, you only need to specify the number of vCPUs, memory size, instance family, and maximum price. The system selects an instance type that is provided at the lowest price based on your configurations to create ECS instances. This mode is available only for scaling groups that reside in virtual private clouds (VPCs). This mode helps reduce the failures of scale-out activities caused by insufficient inventory of instance types.  See `instance_pattern_info` below for details.
         :param pulumi.Input[str] instance_type: Resource type of an ECS instance.
@@ -1906,7 +1901,7 @@ class ScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] internet_charge_type: Network billing type, Values: PayByBandwidth or PayByTraffic. Default to `PayByBandwidth`.
         :param pulumi.Input[int] internet_max_bandwidth_in: Maximum incoming bandwidth from the public network, measured in Mbps (Mega bit per second). The value range is [1,200].
         :param pulumi.Input[int] internet_max_bandwidth_out: Maximum outgoing bandwidth from the public network, measured in Mbps (Mega bit per second). The value range for PayByBandwidth is [0,100].
-        :param pulumi.Input[str] io_optimized: It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        :param pulumi.Input[str] io_optimized: (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         :param pulumi.Input[bool] is_outdated: Whether to use outdated instance type. Default to false.
         :param pulumi.Input[str] key_name: The name of key pair that can login ECS instance successfully without password. If it is specified, the password would be invalid.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a db account. If the `password` is filled in, this field will be ignored.
@@ -1927,7 +1922,6 @@ class ScalingConfiguration(pulumi.CustomResource):
                > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
                
                > **NOTE:** Restrictions on attaching ECS instances:
-               
                - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
                - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
                - The attached ECS instances must in the running state.
@@ -2065,7 +2059,7 @@ class ScalingConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="instanceIds")
     def instance_ids(self) -> pulumi.Output[Optional[Sequence[str]]]:
         """
-        It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
+        (Deprecated) It has been deprecated from version 1.6.0. New resource `ess.Attachment` replaces it.
         """
         warnings.warn("""Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""", DeprecationWarning)
         pulumi.log.warn("""instance_ids is deprecated: Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.""")
@@ -2132,7 +2126,7 @@ class ScalingConfiguration(pulumi.CustomResource):
     @pulumi.getter(name="ioOptimized")
     def io_optimized(self) -> pulumi.Output[Optional[str]]:
         """
-        It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+        (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
         """
         warnings.warn("""Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""", DeprecationWarning)
         pulumi.log.warn("""io_optimized is deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.""")
@@ -2254,7 +2248,6 @@ class ScalingConfiguration(pulumi.CustomResource):
         > **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
 
         > **NOTE:** Restrictions on attaching ECS instances:
-
         - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
         - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
         - The attached ECS instances must in the running state.

@@ -58,7 +58,7 @@ export interface GetRestoreJobsArgs {
      */
     restoreIds?: string[];
     /**
-     * The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+     * The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
      */
     restoreType: string;
     /**
@@ -66,15 +66,15 @@ export interface GetRestoreJobsArgs {
      */
     sourceTypes?: string[];
     /**
-     * The status of restore job.
+     * The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
      */
     status?: string;
     /**
-     * The name of target ofo OSS bucket.
+     * The name of target OSS bucket.
      */
     targetBuckets?: string[];
     /**
-     * The ID of destination file system.
+     * Valid while sourceType equals `NAS`. The list of destination File System IDs.
      */
     targetFileSystemIds?: string[];
     /**
@@ -82,7 +82,7 @@ export interface GetRestoreJobsArgs {
      */
     targetInstanceIds?: string[];
     /**
-     * The ID of backup vault.
+     * The list of backup vault IDs.
      */
     vaultIds?: string[];
 }
@@ -147,7 +147,7 @@ export interface GetRestoreJobsOutputArgs {
      */
     restoreIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The type of recovery destination. Valid Values: `ECS_FILE`, `OSS`, `NAS`.
+     * The Recovery Destination Types. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`, `UDM_ECS_ROLLBACK`.
      */
     restoreType: pulumi.Input<string>;
     /**
@@ -155,15 +155,15 @@ export interface GetRestoreJobsOutputArgs {
      */
     sourceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The status of restore job.
+     * The status of restore job. Valid values: `CANCELED`, `CANCELING`, `COMPLETE`, `CREATED`, `EXPIRED`, `FAILED`, `PARTIAL_COMPLETE`, `QUEUED`, `RUNNING`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The name of target ofo OSS bucket.
+     * The name of target OSS bucket.
      */
     targetBuckets?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of destination file system.
+     * Valid while sourceType equals `NAS`. The list of destination File System IDs.
      */
     targetFileSystemIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -171,7 +171,7 @@ export interface GetRestoreJobsOutputArgs {
      */
     targetInstanceIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of backup vault.
+     * The list of backup vault IDs.
      */
     vaultIds?: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The db_node_class of cluster node.
-        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. 
         /// From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         /// </summary>
         [Output("dbNodeClass")]
@@ -554,7 +554,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The db_node_class of cluster node.
-        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. 
         /// From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         /// </summary>
         [Input("dbNodeClass", required: true)]
@@ -1000,7 +1000,7 @@ namespace Pulumi.AliCloud.PolarDB
 
         /// <summary>
         /// The db_node_class of cluster node.
-        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+        /// &gt; **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. 
         /// From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
         /// </summary>
         [Input("dbNodeClass")]

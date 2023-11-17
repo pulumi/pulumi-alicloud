@@ -17,14 +17,14 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
     public static final HoneypotProbeHoneypotBindListBindPortListArgs Empty = new HoneypotProbeHoneypotBindListBindPortListArgs();
 
     /**
-     * Whether to bind the port.
+     * (ForceNew,Optional) Whether to bind the port.
      * 
      */
     @Import(name="bindPort")
     private @Nullable Output<Boolean> bindPort;
 
     /**
-     * @return Whether to bind the port.
+     * @return (ForceNew,Optional) Whether to bind the port.
      * 
      */
     public Optional<Output<Boolean>> bindPort() {
@@ -32,14 +32,14 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
     }
 
     /**
-     * End port.
+     * (ForceNew,Optional) End port.
      * 
      */
     @Import(name="endPort")
     private @Nullable Output<Integer> endPort;
 
     /**
-     * @return End port.
+     * @return (ForceNew,Optional) End port.
      * 
      */
     public Optional<Output<Integer>> endPort() {
@@ -47,14 +47,14 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
     }
 
     /**
-     * Whether the port is fixed.
+     * (ForceNew,Optional) Whether the port is fixed.
      * 
      */
     @Import(name="fixed")
     private @Nullable Output<Boolean> fixed;
 
     /**
-     * @return Whether the port is fixed.
+     * @return (ForceNew,Optional) Whether the port is fixed.
      * 
      */
     public Optional<Output<Boolean>> fixed() {
@@ -62,14 +62,14 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
     }
 
     /**
-     * Start port.
+     * (ForceNew,Optional) Start port.
      * 
      */
     @Import(name="startPort")
     private @Nullable Output<Integer> startPort;
 
     /**
-     * @return Start port.
+     * @return (ForceNew,Optional) Start port.
      * 
      */
     public Optional<Output<Integer>> startPort() {
@@ -77,14 +77,14 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
     }
 
     /**
-     * Destination port.
+     * (ForceNew,Optional) Destination port.
      * 
      */
     @Import(name="targetPort")
     private @Nullable Output<Integer> targetPort;
 
     /**
-     * @return Destination port.
+     * @return (ForceNew,Optional) Destination port.
      * 
      */
     public Optional<Output<Integer>> targetPort() {
@@ -120,7 +120,7 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
         }
 
         /**
-         * @param bindPort Whether to bind the port.
+         * @param bindPort (ForceNew,Optional) Whether to bind the port.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
         }
 
         /**
-         * @param bindPort Whether to bind the port.
+         * @param bindPort (ForceNew,Optional) Whether to bind the port.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
         }
 
         /**
-         * @param endPort End port.
+         * @param endPort (ForceNew,Optional) End port.
          * 
          * @return builder
          * 
@@ -152,7 +152,7 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
         }
 
         /**
-         * @param endPort End port.
+         * @param endPort (ForceNew,Optional) End port.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
         }
 
         /**
-         * @param fixed Whether the port is fixed.
+         * @param fixed (ForceNew,Optional) Whether the port is fixed.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
         }
 
         /**
-         * @param fixed Whether the port is fixed.
+         * @param fixed (ForceNew,Optional) Whether the port is fixed.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
         }
 
         /**
-         * @param startPort Start port.
+         * @param startPort (ForceNew,Optional) Start port.
          * 
          * @return builder
          * 
@@ -194,7 +194,7 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
         }
 
         /**
-         * @param startPort Start port.
+         * @param startPort (ForceNew,Optional) Start port.
          * 
          * @return builder
          * 
@@ -204,7 +204,7 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
         }
 
         /**
-         * @param targetPort Destination port.
+         * @param targetPort (ForceNew,Optional) Destination port.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
         }
 
         /**
-         * @param targetPort Destination port.
+         * @param targetPort (ForceNew,Optional) Destination port.
          * 
          * @return builder
          * 

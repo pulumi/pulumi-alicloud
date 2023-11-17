@@ -128,7 +128,7 @@ export interface GetGatewayVcoRoutesArgs {
      */
     routeEntryType?: string;
     /**
-     * The status of the vpn route entry.
+     * The status of the vpn route entry. Valid values: `normal`, `published`.
      */
     status?: string;
     /**
@@ -266,7 +266,7 @@ export interface GetGatewayVcoRoutesOutputArgs {
      */
     routeEntryType?: pulumi.Input<string>;
     /**
-     * The status of the vpn route entry.
+     * The status of the vpn route entry. Valid values: `normal`, `published`.
      */
     status?: pulumi.Input<string>;
     /**

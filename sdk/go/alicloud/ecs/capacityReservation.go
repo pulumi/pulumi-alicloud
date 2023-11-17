@@ -106,13 +106,13 @@ type CapacityReservation struct {
 	InstanceAmount pulumi.IntOutput `pulumi:"instanceAmount"`
 	// Instance type. Currently, you can only set the capacity reservation service for one instance type.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
-	// The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+	// (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
 	MatchCriteria pulumi.StringOutput `pulumi:"matchCriteria"`
 	// The payment type of the resource
 	PaymentType pulumi.StringOutput `pulumi:"paymentType"`
 	// platform of the capacity reservation, value range `windows`, `linux`.
 	Platform pulumi.StringOutput `pulumi:"platform"`
-	// The resource group id.
+	// (ForceNew,Optional) The resource group id.
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// time of the capacity reservation which become active.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
@@ -124,7 +124,7 @@ type CapacityReservation struct {
 	Tags pulumi.MapOutput `pulumi:"tags"`
 	// This parameter is under test and is not yet open for use.
 	TimeSlot pulumi.StringOutput `pulumi:"timeSlot"`
-	// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+	// (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
 	ZoneIds pulumi.StringArrayOutput `pulumi:"zoneIds"`
 }
 
@@ -181,13 +181,13 @@ type capacityReservationState struct {
 	InstanceAmount *int `pulumi:"instanceAmount"`
 	// Instance type. Currently, you can only set the capacity reservation service for one instance type.
 	InstanceType *string `pulumi:"instanceType"`
-	// The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+	// (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
 	MatchCriteria *string `pulumi:"matchCriteria"`
 	// The payment type of the resource
 	PaymentType *string `pulumi:"paymentType"`
 	// platform of the capacity reservation, value range `windows`, `linux`.
 	Platform *string `pulumi:"platform"`
-	// The resource group id.
+	// (ForceNew,Optional) The resource group id.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// time of the capacity reservation which become active.
 	StartTime *string `pulumi:"startTime"`
@@ -199,7 +199,7 @@ type capacityReservationState struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// This parameter is under test and is not yet open for use.
 	TimeSlot *string `pulumi:"timeSlot"`
-	// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+	// (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
 	ZoneIds []string `pulumi:"zoneIds"`
 }
 
@@ -218,13 +218,13 @@ type CapacityReservationState struct {
 	InstanceAmount pulumi.IntPtrInput
 	// Instance type. Currently, you can only set the capacity reservation service for one instance type.
 	InstanceType pulumi.StringPtrInput
-	// The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+	// (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
 	MatchCriteria pulumi.StringPtrInput
 	// The payment type of the resource
 	PaymentType pulumi.StringPtrInput
 	// platform of the capacity reservation, value range `windows`, `linux`.
 	Platform pulumi.StringPtrInput
-	// The resource group id.
+	// (ForceNew,Optional) The resource group id.
 	ResourceGroupId pulumi.StringPtrInput
 	// time of the capacity reservation which become active.
 	StartTime pulumi.StringPtrInput
@@ -236,7 +236,7 @@ type CapacityReservationState struct {
 	Tags pulumi.MapInput
 	// This parameter is under test and is not yet open for use.
 	TimeSlot pulumi.StringPtrInput
-	// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+	// (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
 	ZoneIds pulumi.StringArrayInput
 }
 
@@ -259,15 +259,15 @@ type capacityReservationArgs struct {
 	InstanceAmount int `pulumi:"instanceAmount"`
 	// Instance type. Currently, you can only set the capacity reservation service for one instance type.
 	InstanceType string `pulumi:"instanceType"`
-	// The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+	// (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
 	MatchCriteria *string `pulumi:"matchCriteria"`
 	// platform of the capacity reservation, value range `windows`, `linux`.
 	Platform *string `pulumi:"platform"`
-	// The resource group id.
+	// (ForceNew,Optional) The resource group id.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The tag of the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+	// (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
 	ZoneIds []string `pulumi:"zoneIds"`
 }
 
@@ -287,15 +287,15 @@ type CapacityReservationArgs struct {
 	InstanceAmount pulumi.IntInput
 	// Instance type. Currently, you can only set the capacity reservation service for one instance type.
 	InstanceType pulumi.StringInput
-	// The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+	// (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
 	MatchCriteria pulumi.StringPtrInput
 	// platform of the capacity reservation, value range `windows`, `linux`.
 	Platform pulumi.StringPtrInput
-	// The resource group id.
+	// (ForceNew,Optional) The resource group id.
 	ResourceGroupId pulumi.StringPtrInput
 	// The tag of the resource.
 	Tags pulumi.MapInput
-	// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+	// (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
 	ZoneIds pulumi.StringArrayInput
 }
 
@@ -421,7 +421,7 @@ func (o CapacityReservationOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityReservation) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
 }
 
-// The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+// (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
 func (o CapacityReservationOutput) MatchCriteria() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityReservation) pulumi.StringOutput { return v.MatchCriteria }).(pulumi.StringOutput)
 }
@@ -436,7 +436,7 @@ func (o CapacityReservationOutput) Platform() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityReservation) pulumi.StringOutput { return v.Platform }).(pulumi.StringOutput)
 }
 
-// The resource group id.
+// (ForceNew,Optional) The resource group id.
 func (o CapacityReservationOutput) ResourceGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CapacityReservation) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
 }
@@ -466,7 +466,7 @@ func (o CapacityReservationOutput) TimeSlot() pulumi.StringOutput {
 	return o.ApplyT(func(v *CapacityReservation) pulumi.StringOutput { return v.TimeSlot }).(pulumi.StringOutput)
 }
 
-// The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+// (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
 func (o CapacityReservationOutput) ZoneIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *CapacityReservation) pulumi.StringArrayOutput { return v.ZoneIds }).(pulumi.StringArrayOutput)
 }

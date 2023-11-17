@@ -94,7 +94,7 @@ type Instance struct {
 	Period pulumi.IntOutput `pulumi:"period"`
 	// The release time.
 	ReleaseTime pulumi.StringOutput `pulumi:"releaseTime"`
-	// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+	// (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 	//
 	// Deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 	RenewPeriod pulumi.IntOutput `pulumi:"renewPeriod"`
@@ -188,7 +188,7 @@ type instanceState struct {
 	Period *int `pulumi:"period"`
 	// The release time.
 	ReleaseTime *string `pulumi:"releaseTime"`
-	// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+	// (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 	//
 	// Deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 	RenewPeriod *int `pulumi:"renewPeriod"`
@@ -235,7 +235,7 @@ type InstanceState struct {
 	Period pulumi.IntPtrInput
 	// The release time.
 	ReleaseTime pulumi.StringPtrInput
-	// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+	// (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 	//
 	// Deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 	RenewPeriod pulumi.IntPtrInput
@@ -280,7 +280,7 @@ type instanceArgs struct {
 	PaymentType string `pulumi:"paymentType"`
 	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
 	Period int `pulumi:"period"`
-	// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+	// (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 	//
 	// Deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 	RenewPeriod *int `pulumi:"renewPeriod"`
@@ -320,7 +320,7 @@ type InstanceArgs struct {
 	PaymentType pulumi.StringInput
 	// The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
 	Period pulumi.IntInput
-	// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+	// (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 	//
 	// Deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 	RenewPeriod pulumi.IntPtrInput
@@ -496,7 +496,7 @@ func (o InstanceOutput) ReleaseTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ReleaseTime }).(pulumi.StringOutput)
 }
 
-// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+// (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 //
 // Deprecated: Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
 func (o InstanceOutput) RenewPeriod() pulumi.IntOutput {

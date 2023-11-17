@@ -174,7 +174,7 @@ namespace Pulumi.AliCloud.Vod
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the domain name. The value of this parameter is used as a condition to filter domain names.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -230,7 +230,7 @@ namespace Pulumi.AliCloud.Vod
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the domain name. The value of this parameter is used as a condition to filter domain names.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

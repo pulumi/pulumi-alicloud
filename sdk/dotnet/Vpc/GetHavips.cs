@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Vpc
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status.
+        /// The status of HaVip instance. Valid value: `Available`, `InUse` and `Pending`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status.
+        /// The status of HaVip instance. Valid value: `Available`, `InUse` and `Pending`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

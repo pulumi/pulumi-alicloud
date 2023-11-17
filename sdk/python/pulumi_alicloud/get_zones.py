@@ -204,18 +204,18 @@ def get_zones(available_disk_category: Optional[str] = None,
     :param str available_resource_creation: Filter the results by a specific resource type.
            Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
            
-           > **NOTE:** From version 1.134.0, the `available_resource_creation` value "Rds" has been deprecated.
+           > **NOTE:** From version 1.134.0, the `available_resource_creation` value "Rds" has been deprecated. 
            If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
-    :param str available_slb_address_ip_version: Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+    :param str available_slb_address_ip_version: (Available since 1.45.0) Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
            
            > **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloud_efficiency` or `cloud_ssd`.
-    :param str available_slb_address_type: Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+    :param str available_slb_address_type: (Available since 1.45.0) Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
     :param bool enable_details: Default to false and only output `id` in the `zones` block. Set it to true can output more details.
     :param str instance_charge_type: Filter the results by a specific ECS instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
     :param str network_type: Filter the results by a specific network type. Valid values: `Classic` and `Vpc`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str spot_strategy: - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+    :param str spot_strategy: Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
     """
     __args__ = dict()
     __args__['availableDiskCategory'] = available_disk_category
@@ -283,17 +283,17 @@ def get_zones_output(available_disk_category: Optional[pulumi.Input[Optional[str
     :param str available_resource_creation: Filter the results by a specific resource type.
            Valid values: `Instance`, `Disk`, `VSwitch`, `Rds`, `KVStore`, `FunctionCompute`, `Elasticsearch`, `Slb`.
            
-           > **NOTE:** From version 1.134.0, the `available_resource_creation` value "Rds" has been deprecated.
+           > **NOTE:** From version 1.134.0, the `available_resource_creation` value "Rds" has been deprecated. 
            If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
-    :param str available_slb_address_ip_version: Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+    :param str available_slb_address_ip_version: (Available since 1.45.0) Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
            
            > **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloud_efficiency` or `cloud_ssd`.
-    :param str available_slb_address_type: Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
+    :param str available_slb_address_type: (Available since 1.45.0) Filter the results by a slb instance address type. Can be either `Vpc`, `classic_internet` or `classic_intranet`
     :param bool enable_details: Default to false and only output `id` in the `zones` block. Set it to true can output more details.
     :param str instance_charge_type: Filter the results by a specific ECS instance charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
     :param bool multi: Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
     :param str network_type: Filter the results by a specific network type. Valid values: `Classic` and `Vpc`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str spot_strategy: - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+    :param str spot_strategy: Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
     """
     ...

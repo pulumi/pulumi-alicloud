@@ -32,14 +32,14 @@ public final class GetStaticAccountsArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * InstanceId
+     * (ForceNew, Optional) InstanceId
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return InstanceId
+     * @return (ForceNew, Optional) InstanceId
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -119,7 +119,7 @@ public final class GetStaticAccountsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param instanceId InstanceId
+         * @param instanceId (ForceNew, Optional) InstanceId
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class GetStaticAccountsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param instanceId InstanceId
+         * @param instanceId (ForceNew, Optional) InstanceId
          * 
          * @return builder
          * 

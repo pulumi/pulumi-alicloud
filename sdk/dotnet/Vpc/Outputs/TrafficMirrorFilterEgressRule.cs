@@ -20,7 +20,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string Action;
         /// <summary>
-        /// DestinationCidrBlock.
+        /// The destination address of the outbound rule network traffic.
         /// </summary>
         public readonly string? DestinationCidrBlock;
         /// <summary>
@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string? DestinationPortRange;
         /// <summary>
-        /// Priority.
+        /// The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
         /// </summary>
         public readonly int? Priority;
         /// <summary>

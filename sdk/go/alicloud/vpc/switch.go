@@ -180,7 +180,7 @@ import (
 type Switch struct {
 	pulumi.CustomResourceState
 
-	// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+	// (Deprecated from v1.119.0+) Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone pulumi.StringOutput `pulumi:"availabilityZone"`
@@ -198,7 +198,7 @@ type Switch struct {
 	Ipv6CidrBlock pulumi.StringOutput `pulumi:"ipv6CidrBlock"`
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlockMask pulumi.IntOutput `pulumi:"ipv6CidrBlockMask"`
-	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+	// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -252,7 +252,7 @@ func GetSwitch(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Switch resources.
 type switchState struct {
-	// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+	// (Deprecated from v1.119.0+) Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
@@ -270,7 +270,7 @@ type switchState struct {
 	Ipv6CidrBlock *string `pulumi:"ipv6CidrBlock"`
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlockMask *int `pulumi:"ipv6CidrBlockMask"`
-	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+	// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name *string `pulumi:"name"`
@@ -289,7 +289,7 @@ type switchState struct {
 }
 
 type SwitchState struct {
-	// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+	// (Deprecated from v1.119.0+) Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone pulumi.StringPtrInput
@@ -307,7 +307,7 @@ type SwitchState struct {
 	Ipv6CidrBlock pulumi.StringPtrInput
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlockMask pulumi.IntPtrInput
-	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+	// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name pulumi.StringPtrInput
@@ -330,7 +330,7 @@ func (SwitchState) ElementType() reflect.Type {
 }
 
 type switchArgs struct {
-	// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+	// (Deprecated from v1.119.0+) Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone *string `pulumi:"availabilityZone"`
@@ -344,7 +344,7 @@ type switchArgs struct {
 	EnableIpv6 *bool `pulumi:"enableIpv6"`
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlockMask *int `pulumi:"ipv6CidrBlockMask"`
-	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+	// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name *string `pulumi:"name"`
@@ -362,7 +362,7 @@ type switchArgs struct {
 
 // The set of arguments for constructing a Switch resource.
 type SwitchArgs struct {
-	// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+	// (Deprecated from v1.119.0+) Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 	AvailabilityZone pulumi.StringPtrInput
@@ -376,7 +376,7 @@ type SwitchArgs struct {
 	EnableIpv6 pulumi.BoolPtrInput
 	// The IPv6 CIDR block of the VSwitch.
 	Ipv6CidrBlockMask pulumi.IntPtrInput
-	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+	// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 	Name pulumi.StringPtrInput
@@ -479,7 +479,7 @@ func (o SwitchOutput) ToSwitchOutputWithContext(ctx context.Context) SwitchOutpu
 	return o
 }
 
-// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+// (Deprecated from v1.119.0+) Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 //
 // Deprecated: Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
 func (o SwitchOutput) AvailabilityZone() pulumi.StringOutput {
@@ -518,7 +518,7 @@ func (o SwitchOutput) Ipv6CidrBlockMask() pulumi.IntOutput {
 	return o.ApplyT(func(v *Switch) pulumi.IntOutput { return v.Ipv6CidrBlockMask }).(pulumi.IntOutput)
 }
 
-// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
 func (o SwitchOutput) Name() pulumi.StringOutput {

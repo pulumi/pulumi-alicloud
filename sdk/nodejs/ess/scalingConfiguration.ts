@@ -149,7 +149,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly imageName!: pulumi.Output<string | undefined>;
     /**
-     * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
+     * (Deprecated) It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      *
      * @deprecated Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
      */
@@ -183,7 +183,7 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly internetMaxBandwidthOut!: pulumi.Output<number | undefined>;
     /**
-     * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+     * (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      *
      * @deprecated Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      */
@@ -248,7 +248,6 @@ export class ScalingConfiguration extends pulumi.CustomResource {
      * > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
      *
      * > **NOTE:** Restrictions on attaching ECS instances:
-     *
      * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
      * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
      * - The attached ECS instances must in the running state.
@@ -450,7 +449,7 @@ export interface ScalingConfigurationState {
      */
     imageName?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
+     * (Deprecated) It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      *
      * @deprecated Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
      */
@@ -484,7 +483,7 @@ export interface ScalingConfigurationState {
      */
     internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
-     * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+     * (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      *
      * @deprecated Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      */
@@ -549,7 +548,6 @@ export interface ScalingConfigurationState {
      * > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
      *
      * > **NOTE:** Restrictions on attaching ECS instances:
-     *
      * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
      * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
      * - The attached ECS instances must in the running state.
@@ -644,7 +642,7 @@ export interface ScalingConfigurationArgs {
      */
     imageName?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
+     * (Deprecated) It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      *
      * @deprecated Field 'instance_ids' has been deprecated from provider version 1.6.0. New resource 'alicloud_ess_attachment' replaces it.
      */
@@ -678,7 +676,7 @@ export interface ScalingConfigurationArgs {
      */
     internetMaxBandwidthOut?: pulumi.Input<number>;
     /**
-     * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+     * (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      *
      * @deprecated Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
      */
@@ -743,7 +741,6 @@ export interface ScalingConfigurationArgs {
      * > **NOTE:** If the number of attached ECS instances by `instanceIds` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
      *
      * > **NOTE:** Restrictions on attaching ECS instances:
-     *
      * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
      * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
      * - The attached ECS instances must in the running state.

@@ -69,14 +69,14 @@ public final class GetOpenApiPricingModulesArgs extends com.pulumi.resources.Inv
     }
 
     /**
-     * The product type.
+     * (ForceNew,Optional) The product type.
      * 
      */
     @Import(name="productType")
     private @Nullable Output<String> productType;
 
     /**
-     * @return The product type.
+     * @return (ForceNew,Optional) The product type.
      * 
      */
     public Optional<Output<String>> productType() {
@@ -208,7 +208,7 @@ public final class GetOpenApiPricingModulesArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param productType The product type.
+         * @param productType (ForceNew,Optional) The product type.
          * 
          * @return builder
          * 
@@ -219,7 +219,7 @@ public final class GetOpenApiPricingModulesArgs extends com.pulumi.resources.Inv
         }
 
         /**
-         * @param productType The product type.
+         * @param productType (ForceNew,Optional) The product type.
          * 
          * @return builder
          * 

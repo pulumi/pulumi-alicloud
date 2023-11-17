@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesRuleRuleConditionQueryStringConfig {
     /**
-     * @return Add one or more IP addresses or IP address segments.
+     * @return The configuration of the cookie.
      * 
      */
     private List<GetRulesRuleRuleConditionQueryStringConfigValue> values;
 
     private GetRulesRuleRuleConditionQueryStringConfig() {}
     /**
-     * @return Add one or more IP addresses or IP address segments.
+     * @return The configuration of the cookie.
      * 
      */
     public List<GetRulesRuleRuleConditionQueryStringConfigValue> values() {

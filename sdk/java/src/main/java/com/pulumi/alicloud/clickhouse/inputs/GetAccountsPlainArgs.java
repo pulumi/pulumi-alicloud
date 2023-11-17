@@ -76,14 +76,14 @@ public final class GetAccountsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
      * 
      */
     public Optional<String> status() {
@@ -173,7 +173,7 @@ public final class GetAccountsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
          * 
          * @return builder
          * 

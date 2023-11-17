@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     public sealed class GetVirtualPhysicalConnectionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The commercial status of the physical line. Value:
+        /// (ForceNew,Optional) The commercial status of the physical line. Value:
         /// - **Normal**: activated.
         /// - **Financialized**: Arrears locked.
         /// - **SecurityLocked**: locked for security reasons.
@@ -68,7 +68,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the instance of the physical connection.
+        /// (ForceNew,Optional) The ID of the instance of the physical connection.
         /// </summary>
         [Input("parentPhysicalConnectionId")]
         public string? ParentPhysicalConnectionId { get; set; }
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         private List<string>? _virtualPhysicalConnectionIds;
 
         /// <summary>
-        /// The ID of the hosted connection. You can specify multiple hosted connection IDs.
+        /// (ForceNew,Optional) The ID of the hosted connection. You can specify multiple hosted connection IDs.
         /// </summary>
         public List<string> VirtualPhysicalConnectionIds
         {
@@ -86,7 +86,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         }
 
         /// <summary>
-        /// The business status of the shared line. Value:
+        /// (ForceNew,Optional) The business status of the shared line. Value:
         /// - **Confirmed**: The shared line has been Confirmed to receive.
         /// - **UnConfirmed**: The shared line has not been confirmed to be received.
         /// - **Deleted**: The shared line has been Deleted.
@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         private List<int>? _vlanIds;
 
         /// <summary>
-        /// The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
+        /// (ForceNew,Optional) The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
         /// </summary>
         public List<int> VlanIds
         {
@@ -107,7 +107,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         }
 
         /// <summary>
-        /// The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+        /// (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
         /// </summary>
         [Input("vpconnAliUid")]
         public string? VpconnAliUid { get; set; }
@@ -121,7 +121,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     public sealed class GetVirtualPhysicalConnectionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The commercial status of the physical line. Value:
+        /// (ForceNew,Optional) The commercial status of the physical line. Value:
         /// - **Normal**: activated.
         /// - **Financialized**: Arrears locked.
         /// - **SecurityLocked**: locked for security reasons.
@@ -157,7 +157,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the instance of the physical connection.
+        /// (ForceNew,Optional) The ID of the instance of the physical connection.
         /// </summary>
         [Input("parentPhysicalConnectionId")]
         public Input<string>? ParentPhysicalConnectionId { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         private InputList<string>? _virtualPhysicalConnectionIds;
 
         /// <summary>
-        /// The ID of the hosted connection. You can specify multiple hosted connection IDs.
+        /// (ForceNew,Optional) The ID of the hosted connection. You can specify multiple hosted connection IDs.
         /// </summary>
         public InputList<string> VirtualPhysicalConnectionIds
         {
@@ -175,7 +175,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         }
 
         /// <summary>
-        /// The business status of the shared line. Value:
+        /// (ForceNew,Optional) The business status of the shared line. Value:
         /// - **Confirmed**: The shared line has been Confirmed to receive.
         /// - **UnConfirmed**: The shared line has not been confirmed to be received.
         /// - **Deleted**: The shared line has been Deleted.
@@ -187,7 +187,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         private InputList<int>? _vlanIds;
 
         /// <summary>
-        /// The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
+        /// (ForceNew,Optional) The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
         /// </summary>
         public InputList<int> VlanIds
         {
@@ -196,7 +196,7 @@ namespace Pulumi.AliCloud.ExpressConnect
         }
 
         /// <summary>
-        /// The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+        /// (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
         /// </summary>
         [Input("vpconnAliUid")]
         public Input<string>? VpconnAliUid { get; set; }

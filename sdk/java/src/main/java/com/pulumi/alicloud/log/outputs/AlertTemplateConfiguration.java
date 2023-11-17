@@ -33,7 +33,7 @@ public final class AlertTemplateConfiguration {
      */
     private @Nullable Map<String,String> tokens;
     /**
-     * @return including FixedRate,Hourly,Daily,Weekly,Cron.
+     * @return Alert template type including `sys`, `user`.
      * 
      */
     private String type;
@@ -68,7 +68,7 @@ public final class AlertTemplateConfiguration {
         return this.tokens == null ? Map.of() : this.tokens;
     }
     /**
-     * @return including FixedRate,Hourly,Daily,Weekly,Cron.
+     * @return Alert template type including `sys`, `user`.
      * 
      */
     public String type() {

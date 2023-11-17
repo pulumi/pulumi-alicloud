@@ -150,19 +150,19 @@ namespace Pulumi.AliCloud.Vpc
         public string? ResourceId { get; set; }
 
         /// <summary>
-        /// The resource type.
+        /// The resource type. Valid values: `NetworkInterface`, `VPC`, `VSwitch`.
         /// </summary>
         [Input("resourceType")]
         public string? ResourceType { get; set; }
 
         /// <summary>
-        /// The status of flow log.
+        /// The status of  flow log. Valid values: `Active`, `Inactive`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         /// <summary>
-        /// The traffic type.
+        /// The traffic type. Valid values: `All`, `Allow`, `Drop`.
         /// </summary>
         [Input("trafficType")]
         public string? TrafficType { get; set; }
@@ -230,19 +230,19 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? ResourceId { get; set; }
 
         /// <summary>
-        /// The resource type.
+        /// The resource type. Valid values: `NetworkInterface`, `VPC`, `VSwitch`.
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// The status of flow log.
+        /// The status of  flow log. Valid values: `Active`, `Inactive`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The traffic type.
+        /// The traffic type. Valid values: `All`, `Allow`, `Drop`.
         /// </summary>
         [Input("trafficType")]
         public Input<string>? TrafficType { get; set; }

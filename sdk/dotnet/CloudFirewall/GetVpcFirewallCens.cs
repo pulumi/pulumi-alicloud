@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class GetVpcFirewallCensArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the CEN instance.
+        /// (ForceNew,Optional) The ID of the CEN instance.
         /// </summary>
         [Input("cenId")]
         public string? CenId { get; set; }
@@ -116,19 +116,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         }
 
         /// <summary>
-        /// The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+        /// (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
         /// </summary>
         [Input("lang")]
         public string? Lang { get; set; }
 
         /// <summary>
-        /// The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
+        /// (ForceNew,Optional) The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
         /// </summary>
         [Input("memberUid")]
         public string? MemberUid { get; set; }
 
         /// <summary>
-        /// The ID of the VPC instance that created the VPC firewall.
+        /// (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
         /// </summary>
         [Input("networkInstanceId")]
         public string? NetworkInstanceId { get; set; }
@@ -146,19 +146,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// Firewall switch status
+        /// (ForceNew,Optional) Firewall switch status
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         /// <summary>
-        /// VPC firewall ID
+        /// (ForceNew,Optional) VPC firewall ID
         /// </summary>
         [Input("vpcFirewallId")]
         public string? VpcFirewallId { get; set; }
 
         /// <summary>
-        /// The name of the VPC firewall instance.
+        /// (ForceNew,Optional) The name of the VPC firewall instance.
         /// </summary>
         [Input("vpcFirewallName")]
         public string? VpcFirewallName { get; set; }
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     public sealed class GetVpcFirewallCensInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the CEN instance.
+        /// (ForceNew,Optional) The ID of the CEN instance.
         /// </summary>
         [Input("cenId")]
         public Input<string>? CenId { get; set; }
@@ -190,19 +190,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         }
 
         /// <summary>
-        /// The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
+        /// (ForceNew,Optional) The language type of the requested and received messages. Value:-**zh** (default): Chinese.-**en**: English.
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
+        /// (ForceNew,Optional) The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
         /// </summary>
         [Input("memberUid")]
         public Input<string>? MemberUid { get; set; }
 
         /// <summary>
-        /// The ID of the VPC instance that created the VPC firewall.
+        /// (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
         /// </summary>
         [Input("networkInstanceId")]
         public Input<string>? NetworkInstanceId { get; set; }
@@ -220,19 +220,19 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// Firewall switch status
+        /// (ForceNew,Optional) Firewall switch status
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// VPC firewall ID
+        /// (ForceNew,Optional) VPC firewall ID
         /// </summary>
         [Input("vpcFirewallId")]
         public Input<string>? VpcFirewallId { get; set; }
 
         /// <summary>
-        /// The name of the VPC firewall instance.
+        /// (ForceNew,Optional) The name of the VPC firewall instance.
         /// </summary>
         [Input("vpcFirewallName")]
         public Input<string>? VpcFirewallName { get; set; }

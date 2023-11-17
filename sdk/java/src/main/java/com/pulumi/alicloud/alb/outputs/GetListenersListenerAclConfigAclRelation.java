@@ -15,7 +15,7 @@ public final class GetListenersListenerAclConfigAclRelation {
      */
     private String aclId;
     /**
-     * @return The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+     * @return The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
      * 
      */
     private String status;
@@ -29,7 +29,7 @@ public final class GetListenersListenerAclConfigAclRelation {
         return this.aclId;
     }
     /**
-     * @return The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+     * @return The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
      * 
      */
     public String status() {

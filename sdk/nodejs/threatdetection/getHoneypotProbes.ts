@@ -63,7 +63,7 @@ export function getHoneypotProbes(args?: GetHoneypotProbesArgs, opts?: pulumi.In
  */
 export interface GetHoneypotProbesArgs {
     /**
-     * Probe name
+     * (ForceNew, Optional) Probe name
      */
     displayName?: string;
     /**
@@ -84,7 +84,7 @@ export interface GetHoneypotProbesArgs {
     outputFile?: string;
     probeStatus?: string;
     /**
-     * Probe type
+     * (ForceNew, Optional) Probe type
      */
     probeType?: string;
 }
@@ -164,7 +164,7 @@ export function getHoneypotProbesOutput(args?: GetHoneypotProbesOutputArgs, opts
  */
 export interface GetHoneypotProbesOutputArgs {
     /**
-     * Probe name
+     * (ForceNew, Optional) Probe name
      */
     displayName?: pulumi.Input<string>;
     /**
@@ -185,7 +185,7 @@ export interface GetHoneypotProbesOutputArgs {
     outputFile?: pulumi.Input<string>;
     probeStatus?: pulumi.Input<string>;
     /**
-     * Probe type
+     * (ForceNew, Optional) Probe type
      */
     probeType?: pulumi.Input<string>;
 }

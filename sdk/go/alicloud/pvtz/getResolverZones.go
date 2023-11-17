@@ -57,7 +57,7 @@ func GetResolverZones(ctx *pulumi.Context, args *GetResolverZonesArgs, opts ...p
 type GetResolverZonesArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the Zone.
+	// The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
 	Status *string `pulumi:"status"`
 }
 
@@ -87,7 +87,7 @@ func GetResolverZonesOutput(ctx *pulumi.Context, args GetResolverZonesOutputArgs
 type GetResolverZonesOutputArgs struct {
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the Zone.
+	// The status of the Zone. Valid values: `NORMAL`, `SOLD_OUT`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

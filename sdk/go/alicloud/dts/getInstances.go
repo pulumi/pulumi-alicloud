@@ -62,7 +62,7 @@ type GetInstancesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// Resource Group ID
+	// (ForceNew,Optional) Resource Group ID
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 }
 
@@ -107,7 +107,7 @@ type GetInstancesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// Resource Group ID
+	// (ForceNew,Optional) Resource Group ID
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 }
 

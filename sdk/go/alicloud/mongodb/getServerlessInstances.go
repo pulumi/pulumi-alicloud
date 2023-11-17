@@ -77,7 +77,7 @@ type GetServerlessInstancesArgs struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Serverless Instance IDs.
 	Ids []string `pulumi:"ids"`
-	// The network type of the instance.
+	// The network type of the instance. Valid values: `Classic` or `VPC`.
 	NetworkType *string `pulumi:"networkType"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -137,7 +137,7 @@ type GetServerlessInstancesOutputArgs struct {
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Serverless Instance IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The network type of the instance.
+	// The network type of the instance. Valid values: `Classic` or `VPC`.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

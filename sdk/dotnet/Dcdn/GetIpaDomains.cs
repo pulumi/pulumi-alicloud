@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class GetIpaDomainsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The accelerated domain names.
+        /// The name of the Domain.
         /// </summary>
         [Input("domainName")]
         public string? DomainName { get; set; }
@@ -154,7 +154,7 @@ namespace Pulumi.AliCloud.Dcdn
     public sealed class GetIpaDomainsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The accelerated domain names.
+        /// The name of the Domain.
         /// </summary>
         [Input("domainName")]
         public Input<string>? DomainName { get; set; }

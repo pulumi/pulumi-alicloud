@@ -274,7 +274,7 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+     * (Deprecated from version 1.123.1) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
      * 
      * @deprecated
      * Field &#39;private_zone&#39; has been deprecated from provider version 1.123.1. New field &#39;service_discovery_types&#39; replace it.
@@ -285,7 +285,7 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<Boolean> privateZone;
 
     /**
-     * @return Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+     * @return (Deprecated from version 1.123.1) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
      * 
      * @deprecated
      * Field &#39;private_zone&#39; has been deprecated from provider version 1.123.1. New field &#39;service_discovery_types&#39; replace it.
@@ -454,7 +454,7 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+     * (Deprecated from version 1.91.0) The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
      * 
      * @deprecated
      * Field &#39;vswitch_id&#39; has been deprecated from provider version 1.91.0. New field &#39;vswitch_ids&#39; replace it.
@@ -465,7 +465,7 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+     * @return (Deprecated from version 1.91.0) The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
      * 
      * @deprecated
      * Field &#39;vswitch_id&#39; has been deprecated from provider version 1.91.0. New field &#39;vswitch_ids&#39; replace it.
@@ -915,7 +915,7 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateZone Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+         * @param privateZone (Deprecated from version 1.123.1) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
          * 
          * @return builder
          * 
@@ -930,7 +930,7 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param privateZone Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
+         * @param privateZone (Deprecated from version 1.123.1) Has been deprecated from provider version 1.123.1. `PrivateZone` is used as the enumeration value of `service_discovery_types`.
          * 
          * @return builder
          * 
@@ -1177,7 +1177,7 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vswitchId The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+         * @param vswitchId (Deprecated from version 1.91.0) The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
          * 
          * @return builder
          * 
@@ -1192,7 +1192,7 @@ public final class ServerlessKubernetesArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vswitchId The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
+         * @param vswitchId (Deprecated from version 1.91.0) The vswitch where new kubernetes cluster will be located. Specify one vswitch&#39;s id, if it is not specified, a new VPC and VSwicth will be built. It must be in the zone which `availability_zone` specified.
          * 
          * @return builder
          * 

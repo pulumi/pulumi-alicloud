@@ -89,7 +89,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly availabilityZone!: pulumi.Output<string>;
     /**
-     * Nested attribute containing certificate authority data for your cluster.
+     * (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      */
     public /*out*/ readonly certificateAuthority!: pulumi.Output<outputs.cs.KubernetesCertificateAuthority>;
     /**
@@ -109,7 +109,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly clusterDomain!: pulumi.Output<string | undefined>;
     /**
-     * Map of kubernetes cluster connection information.
+     * (Map) Map of kubernetes cluster connection information.
      */
     public /*out*/ readonly connections!: pulumi.Output<outputs.cs.KubernetesConnections>;
     /**
@@ -302,7 +302,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly serviceCidr!: pulumi.Output<string | undefined>;
     /**
-     * The ID of load balancer.
+     * (Deprecated) The ID of load balancer.
      *
      * @deprecated Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
      */
@@ -363,13 +363,13 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly workerAutoRenew!: pulumi.Output<boolean | undefined>;
     /**
-     * Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+     * (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
      *
      * @deprecated Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it
      */
     public readonly workerAutoRenewPeriod!: pulumi.Output<number>;
     /**
-     * The data disk category of worker, use `workerDataDisks` to instead it.
+     * (Deprecated) The data disk category of worker, use `workerDataDisks` to instead it.
      *
      * @deprecated Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it
      */
@@ -427,7 +427,7 @@ export class Kubernetes extends pulumi.CustomResource {
      */
     public readonly workerInstanceTypes!: pulumi.Output<string[] | undefined>;
     /**
-     * List of cluster worker nodes. See `workerNodes` below.
+     * (Deprecated from version 1.177.0) List of cluster worker nodes. See `workerNodes` below.
      *
      * @deprecated Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.
      */
@@ -673,7 +673,7 @@ export interface KubernetesState {
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * Nested attribute containing certificate authority data for your cluster.
+     * (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      */
     certificateAuthority?: pulumi.Input<inputs.cs.KubernetesCertificateAuthority>;
     /**
@@ -693,7 +693,7 @@ export interface KubernetesState {
      */
     clusterDomain?: pulumi.Input<string>;
     /**
-     * Map of kubernetes cluster connection information.
+     * (Map) Map of kubernetes cluster connection information.
      */
     connections?: pulumi.Input<inputs.cs.KubernetesConnections>;
     /**
@@ -886,7 +886,7 @@ export interface KubernetesState {
      */
     serviceCidr?: pulumi.Input<string>;
     /**
-     * The ID of load balancer.
+     * (Deprecated) The ID of load balancer.
      *
      * @deprecated Field 'slb_id' has been deprecated from provider version 1.9.2. New field 'slb_internet' replaces it.
      */
@@ -947,13 +947,13 @@ export interface KubernetesState {
      */
     workerAutoRenew?: pulumi.Input<boolean>;
     /**
-     * Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+     * (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
      *
      * @deprecated Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it
      */
     workerAutoRenewPeriod?: pulumi.Input<number>;
     /**
-     * The data disk category of worker, use `workerDataDisks` to instead it.
+     * (Deprecated) The data disk category of worker, use `workerDataDisks` to instead it.
      *
      * @deprecated Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it
      */
@@ -1011,7 +1011,7 @@ export interface KubernetesState {
      */
     workerInstanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * List of cluster worker nodes. See `workerNodes` below.
+     * (Deprecated from version 1.177.0) List of cluster worker nodes. See `workerNodes` below.
      *
      * @deprecated Field 'worker_nodes' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes.
      */
@@ -1303,13 +1303,13 @@ export interface KubernetesArgs {
      */
     workerAutoRenew?: pulumi.Input<boolean>;
     /**
-     * Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+     * (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
      *
      * @deprecated Field 'worker_auto_renew_period' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'auto_renew_period' to replace it
      */
     workerAutoRenewPeriod?: pulumi.Input<number>;
     /**
-     * The data disk category of worker, use `workerDataDisks` to instead it.
+     * (Deprecated) The data disk category of worker, use `workerDataDisks` to instead it.
      *
      * @deprecated Field 'worker_data_disk_category' has been deprecated from provider version 1.177.0. Please use resource 'alicloud_cs_kubernetes_node_pool' to manage cluster worker nodes, by using field 'data_disks.category' to replace it
      */

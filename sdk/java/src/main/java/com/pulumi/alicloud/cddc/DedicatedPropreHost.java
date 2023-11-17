@@ -221,7 +221,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
      * - Special symbol &#39;()\&#39; ~! @#$%^&amp; *-_+ =|{}[]:;&#39;,.? /&#39;
-     * &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+     *   &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      * 
      */
     @Export(name="osPassword", type=String.class, parameters={})
@@ -232,7 +232,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * - Length is 8~30 characters.
      * - Must contain at least three items: uppercase letters, lowercase letters, numbers, and special characters.
      * - Special symbol &#39;()\&#39; ~! @#$%^&amp; *-_+ =|{}[]:;&#39;,.? /&#39;
-     * &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
+     *   &gt; **NOTE:** - If you need to set the host login password later, fill in an empty string for this parameter. If you need to set a host login password, we recommend that you use the HTTPS protocol to send requests to avoid password leakage.
      * 
      */
     public Output<Optional<String>> osPassword() {
@@ -242,7 +242,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * Whether to use the default password of the image.
      * - **false**: (default)Do not use
      * - **true**: Use
-     * &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+     *   &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
      * 
      */
     @Export(name="passwordInherit", type=String.class, parameters={})
@@ -252,7 +252,7 @@ public class DedicatedPropreHost extends com.pulumi.resources.CustomResource {
      * @return Whether to use the default password of the image.
      * - **false**: (default)Do not use
      * - **true**: Use
-     * &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
+     *   &gt; **NOTE:**  If the default password of the image is used, the **OSPassword** parameter is not required.
      * 
      */
     public Output<Optional<String>> passwordInherit() {

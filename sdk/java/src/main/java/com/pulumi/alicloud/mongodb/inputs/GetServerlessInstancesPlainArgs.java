@@ -79,14 +79,14 @@ public final class GetServerlessInstancesPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * The network type of the instance.
+     * The network type of the instance. Valid values: `Classic` or `VPC`.
      * 
      */
     @Import(name="networkType")
     private @Nullable String networkType;
 
     /**
-     * @return The network type of the instance.
+     * @return The network type of the instance. Valid values: `Classic` or `VPC`.
      * 
      */
     public Optional<String> networkType() {
@@ -288,7 +288,7 @@ public final class GetServerlessInstancesPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param networkType The network type of the instance.
+         * @param networkType The network type of the instance. Valid values: `Classic` or `VPC`.
          * 
          * @return builder
          * 

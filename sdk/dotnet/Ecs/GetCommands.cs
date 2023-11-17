@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The name of the command
+        /// The name of the command.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The command type.
+        /// The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The name of the command
+        /// The name of the command.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -206,7 +206,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The command type.
+        /// The command type. Valid Values: `RunBatScript`, `RunPowerShellScript` and `RunShellScript`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

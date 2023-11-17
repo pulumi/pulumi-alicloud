@@ -119,7 +119,6 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     }
     /**
      * The retention period of the snapshot. Unit: days. Valid values:
-     * * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
      * 
      */
     @Export(name="retentionDays", type=Integer.class, parameters={})
@@ -127,7 +126,6 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The retention period of the snapshot. Unit: days. Valid values:
-     * * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
      * 
      */
     public Output<Optional<Integer>> retentionDays() {

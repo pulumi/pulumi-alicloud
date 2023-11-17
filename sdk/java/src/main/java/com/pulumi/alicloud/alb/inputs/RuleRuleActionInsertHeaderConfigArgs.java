@@ -33,6 +33,13 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
     /**
      * The content of the inserted header field. Valid values:
      * * If the `value_type` is set to `SystemDefined`, the following values are used:
+     *   - `ClientSrcPort`: the port of the client.
+     *   - `ClientSrcIp`: the IP address of the client.
+     *   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+     *   - `SLBId`: the ID of the ALB instance.
+     *   - `SLBPort`: the listener port of the ALB instance.
+     * * If the `value_type` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch &gt;= 32 &amp;&amp; ch &lt; 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+     * * If the `value_type` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
      * 
      */
     @Import(name="value")
@@ -41,6 +48,13 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
     /**
      * @return The content of the inserted header field. Valid values:
      * * If the `value_type` is set to `SystemDefined`, the following values are used:
+     *   - `ClientSrcPort`: the port of the client.
+     *   - `ClientSrcIp`: the IP address of the client.
+     *   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+     *   - `SLBId`: the ID of the ALB instance.
+     *   - `SLBPort`: the listener port of the ALB instance.
+     * * If the `value_type` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch &gt;= 32 &amp;&amp; ch &lt; 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+     * * If the `value_type` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
      * 
      */
     public Optional<Output<String>> value() {
@@ -112,6 +126,13 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
         /**
          * @param value The content of the inserted header field. Valid values:
          * * If the `value_type` is set to `SystemDefined`, the following values are used:
+         *   - `ClientSrcPort`: the port of the client.
+         *   - `ClientSrcIp`: the IP address of the client.
+         *   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+         *   - `SLBId`: the ID of the ALB instance.
+         *   - `SLBPort`: the listener port of the ALB instance.
+         * * If the `value_type` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch &gt;= 32 &amp;&amp; ch &lt; 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+         * * If the `value_type` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
          * 
          * @return builder
          * 
@@ -124,6 +145,13 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
         /**
          * @param value The content of the inserted header field. Valid values:
          * * If the `value_type` is set to `SystemDefined`, the following values are used:
+         *   - `ClientSrcPort`: the port of the client.
+         *   - `ClientSrcIp`: the IP address of the client.
+         *   - `Protocol`: the protocol used by client requests (HTTP or HTTPS).
+         *   - `SLBId`: the ID of the ALB instance.
+         *   - `SLBPort`: the listener port of the ALB instance.
+         * * If the `value_type` is set to `UserDefined`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, printable characters whose ASCII value is ch &gt;= 32 &amp;&amp; ch &lt; 127, and wildcards such as asterisks (*) and question marks (?). The header value cannot start or end with a space.
+         * * If the `value_type` is set to `ReferenceHeader`, the `value` must be 1 to 128 characters in length, and can contain lowercase letters, digits, underscores (_), and hyphens (-).
          * 
          * @return builder
          * 

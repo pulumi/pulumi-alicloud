@@ -61,7 +61,7 @@ public final class GetElasticityAssurancesAssurance {
      */
     private String privatePoolOptionsName;
     /**
-     * @return The ID of the resource group.
+     * @return (ForceNew,Optional) The ID of the resource group.
      * 
      */
     private String resourceGroupId;
@@ -76,12 +76,12 @@ public final class GetElasticityAssurancesAssurance {
      */
     private String startTimeType;
     /**
-     * @return The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+     * @return (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
      * 
      */
     private String status;
     /**
-     * @return The tag key-value pair information bound by the elastic guarantee service.
+     * @return (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
      * 
      */
     private @Nullable Map<String,Object> tags;
@@ -161,7 +161,7 @@ public final class GetElasticityAssurancesAssurance {
         return this.privatePoolOptionsName;
     }
     /**
-     * @return The ID of the resource group.
+     * @return (ForceNew,Optional) The ID of the resource group.
      * 
      */
     public String resourceGroupId() {
@@ -182,14 +182,14 @@ public final class GetElasticityAssurancesAssurance {
         return this.startTimeType;
     }
     /**
-     * @return The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+     * @return (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The tag key-value pair information bound by the elastic guarantee service.
+     * @return (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
      * 
      */
     public Map<String,Object> tags() {

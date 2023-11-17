@@ -792,9 +792,9 @@ type Trigger struct {
 	Function pulumi.StringOutput `pulumi:"function"`
 	// The date this resource was last modified.
 	LastModified pulumi.StringOutput `pulumi:"lastModified"`
-	// The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
+	// (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Setting a prefix to get a only trigger name. It is conflict with "name".
+	// (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
 	NamePrefix pulumi.StringPtrOutput `pulumi:"namePrefix"`
 	// RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
 	Role pulumi.StringPtrOutput `pulumi:"role"`
@@ -859,9 +859,9 @@ type triggerState struct {
 	Function *string `pulumi:"function"`
 	// The date this resource was last modified.
 	LastModified *string `pulumi:"lastModified"`
-	// The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
+	// (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
 	Name *string `pulumi:"name"`
-	// Setting a prefix to get a only trigger name. It is conflict with "name".
+	// (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
 	NamePrefix *string `pulumi:"namePrefix"`
 	// RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
 	Role *string `pulumi:"role"`
@@ -888,9 +888,9 @@ type TriggerState struct {
 	Function pulumi.StringPtrInput
 	// The date this resource was last modified.
 	LastModified pulumi.StringPtrInput
-	// The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
+	// (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
 	Name pulumi.StringPtrInput
-	// Setting a prefix to get a only trigger name. It is conflict with "name".
+	// (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
 	NamePrefix pulumi.StringPtrInput
 	// RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
 	Role pulumi.StringPtrInput
@@ -919,9 +919,9 @@ type triggerArgs struct {
 	ConfigMns *string `pulumi:"configMns"`
 	// The Function Compute function name.
 	Function string `pulumi:"function"`
-	// The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
+	// (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
 	Name *string `pulumi:"name"`
-	// Setting a prefix to get a only trigger name. It is conflict with "name".
+	// (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
 	NamePrefix *string `pulumi:"namePrefix"`
 	// RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
 	Role *string `pulumi:"role"`
@@ -945,9 +945,9 @@ type TriggerArgs struct {
 	ConfigMns pulumi.StringPtrInput
 	// The Function Compute function name.
 	Function pulumi.StringInput
-	// The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
+	// (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
 	Name pulumi.StringPtrInput
-	// Setting a prefix to get a only trigger name. It is conflict with "name".
+	// (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
 	NamePrefix pulumi.StringPtrInput
 	// RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
 	Role pulumi.StringPtrInput
@@ -1070,12 +1070,12 @@ func (o TriggerOutput) LastModified() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.LastModified }).(pulumi.StringOutput)
 }
 
-// The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
+// (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "namePrefix".
 func (o TriggerOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Setting a prefix to get a only trigger name. It is conflict with "name".
+// (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
 func (o TriggerOutput) NamePrefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Trigger) pulumi.StringPtrOutput { return v.NamePrefix }).(pulumi.StringPtrOutput)
 }

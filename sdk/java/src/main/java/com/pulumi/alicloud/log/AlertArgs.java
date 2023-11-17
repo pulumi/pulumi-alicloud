@@ -74,14 +74,14 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Alert template annotations.
+     * Annotations for new alert.
      * 
      */
     @Import(name="annotations")
     private @Nullable Output<List<AlertAnnotationArgs>> annotations;
 
     /**
-     * @return Alert template annotations.
+     * @return Annotations for new alert.
      * 
      */
     public Optional<Output<List<AlertAnnotationArgs>>> annotations() {
@@ -104,7 +104,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Join condition.
+     * Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
      * 
      * @deprecated
      * Deprecated from 1.161.0+, use eval_condition in severity_configurations
@@ -115,7 +115,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> condition;
 
     /**
-     * @return Join condition.
+     * @return Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
      * 
      * @deprecated
      * Deprecated from 1.161.0+, use eval_condition in severity_configurations
@@ -312,14 +312,14 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Multiple conditions for configured alarm query.
+     * (Optinal, Required before 1.203.0) Multiple conditions for configured alarm query.
      * 
      */
     @Import(name="queryLists")
     private @Nullable Output<List<AlertQueryListArgs>> queryLists;
 
     /**
-     * @return Multiple conditions for configured alarm query.
+     * @return (Optinal, Required before 1.203.0) Multiple conditions for configured alarm query.
      * 
      */
     public Optional<Output<List<AlertQueryListArgs>>> queryLists() {
@@ -471,14 +471,14 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * including FixedRate,Hourly,Daily,Weekly,Cron.
+     * The type of new alert, `default` for custom alert, `tpl` for template alert.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return including FixedRate,Hourly,Daily,Weekly,Cron.
+     * @return The type of new alert, `default` for custom alert, `tpl` for template alert.
      * 
      */
     public Optional<Output<String>> type() {
@@ -615,7 +615,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Alert template annotations.
+         * @param annotations Annotations for new alert.
          * 
          * @return builder
          * 
@@ -626,7 +626,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Alert template annotations.
+         * @param annotations Annotations for new alert.
          * 
          * @return builder
          * 
@@ -636,7 +636,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param annotations Alert template annotations.
+         * @param annotations Annotations for new alert.
          * 
          * @return builder
          * 
@@ -667,7 +667,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param condition Join condition.
+         * @param condition Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
          * 
          * @return builder
          * 
@@ -682,7 +682,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param condition Join condition.
+         * @param condition Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
          * 
          * @return builder
          * 
@@ -981,7 +981,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryLists Multiple conditions for configured alarm query.
+         * @param queryLists (Optinal, Required before 1.203.0) Multiple conditions for configured alarm query.
          * 
          * @return builder
          * 
@@ -992,7 +992,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryLists Multiple conditions for configured alarm query.
+         * @param queryLists (Optinal, Required before 1.203.0) Multiple conditions for configured alarm query.
          * 
          * @return builder
          * 
@@ -1002,7 +1002,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param queryLists Multiple conditions for configured alarm query.
+         * @param queryLists (Optinal, Required before 1.203.0) Multiple conditions for configured alarm query.
          * 
          * @return builder
          * 
@@ -1214,7 +1214,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type including FixedRate,Hourly,Daily,Weekly,Cron.
+         * @param type The type of new alert, `default` for custom alert, `tpl` for template alert.
          * 
          * @return builder
          * 
@@ -1225,7 +1225,7 @@ public final class AlertArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type including FixedRate,Hourly,Daily,Weekly,Cron.
+         * @param type The type of new alert, `default` for custom alert, `tpl` for template alert.
          * 
          * @return builder
          * 

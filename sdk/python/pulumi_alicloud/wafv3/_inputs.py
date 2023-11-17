@@ -314,8 +314,8 @@ class DomainRedirectArgs:
         :param pulumi.Input[int] keepalive_timeout: Long connection over time, default: `15`. Range: 1-60.
         :param pulumi.Input[int] read_timeout: Read timeout duration. **Unit**: seconds, **Value range**: 5~1800.
         :param pulumi.Input[Sequence[pulumi.Input['DomainRedirectRequestHeaderArgs']]] request_headers: The traffic tag field and value of the domain name which used to mark the traffic processed by WAF. 
-               It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
-               and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
+               It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field, 
+               and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value, 
                when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
                to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
                custom header field already exists in the request, the system will overwrite the value of the custom field in the
@@ -460,8 +460,8 @@ class DomainRedirectArgs:
     def request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DomainRedirectRequestHeaderArgs']]]]:
         """
         The traffic tag field and value of the domain name which used to mark the traffic processed by WAF. 
-        It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field,
-        and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value,
+        It formats as `[{" k ":"_key_"," v ":"_value_"}]`. Where the `k` represents the specified custom request header field, 
+        and the `v` represents the value set for this field. By specifying the custom request header field and the corresponding value, 
         when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value
         to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the
         custom header field already exists in the request, the system will overwrite the value of the custom field in the

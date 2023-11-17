@@ -121,7 +121,7 @@ def get_traffic_mirror_filter_egress_rules(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Traffic Mirror Filter Egress Rule IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
-    :param str traffic_mirror_filter_id: The ID of the filter associated with the outbound rule.
+    :param str traffic_mirror_filter_id: The ID of the Traffic Mirror Filter.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -172,6 +172,6 @@ def get_traffic_mirror_filter_egress_rules_output(ids: Optional[pulumi.Input[Opt
     :param Sequence[str] ids: A list of Traffic Mirror Filter Egress Rule IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the resource. Valid values:`Creating`, `Created`, `Modifying` and `Deleting`.
-    :param str traffic_mirror_filter_id: The ID of the filter associated with the outbound rule.
+    :param str traffic_mirror_filter_id: The ID of the Traffic Mirror Filter.
     """
     ...

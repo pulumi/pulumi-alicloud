@@ -343,7 +343,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return this.ruleName;
     }
     /**
-     * Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
+     * (Deprecated) Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
      * 
      * @deprecated
      * Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
@@ -354,14 +354,14 @@ public class Rule extends com.pulumi.resources.CustomResource {
     private Output<String> scopeComplianceResourceTypes;
 
     /**
-     * @return Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
+     * @return (Deprecated) Field &#39;scope_compliance_resource_types&#39; has been deprecated from provider version 1.124.1. New field &#39;resource_types_scope&#39; instead.
      * 
      */
     public Output<String> scopeComplianceResourceTypes() {
         return this.scopeComplianceResourceTypes;
     }
     /**
-     * Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
+     * (Deprecated) Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
      * 
      * @deprecated
      * Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
@@ -372,7 +372,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
     private Output<String> sourceDetailMessageType;
 
     /**
-     * @return Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
+     * @return (Deprecated) Field &#39;source_detail_message_type&#39; has been deprecated from provider version 1.124.1. New field &#39;config_rule_trigger_types&#39; instead.
      * 
      */
     public Output<String> sourceDetailMessageType() {
@@ -393,7 +393,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
         return this.sourceIdentifier;
     }
     /**
-     * Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
+     * (Deprecated) Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
      * 
      * @deprecated
      * Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
@@ -404,7 +404,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
     private Output<String> sourceMaximumExecutionFrequency;
 
     /**
-     * @return Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
+     * @return (Deprecated) Field &#39;source_maximum_execution_frequency&#39; has been deprecated from provider version 1.124.1. New field &#39;maximum_execution_frequency&#39; instead.
      * 
      */
     public Output<String> sourceMaximumExecutionFrequency() {

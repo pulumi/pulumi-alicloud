@@ -67,6 +67,10 @@ type GetFileSystemsArgs struct {
 	ProtocolType *string `pulumi:"protocolType"`
 	// The storage type of the file system.
 	// * Valid values:
+	//   * `Performance` (Available when the `fileSystemType` is `standard`)
+	//   * `Capacity` (Available when the `fileSystemType` is `standard`)
+	//   * `standard` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+	//   * `advance` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
 	StorageType *string `pulumi:"storageType"`
 }
 
@@ -116,6 +120,10 @@ type GetFileSystemsOutputArgs struct {
 	ProtocolType pulumi.StringPtrInput `pulumi:"protocolType"`
 	// The storage type of the file system.
 	// * Valid values:
+	//   * `Performance` (Available when the `fileSystemType` is `standard`)
+	//   * `Capacity` (Available when the `fileSystemType` is `standard`)
+	//   * `standard` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
+	//   * `advance` (Available in v1.140.0+ and when the `fileSystemType` is `extreme`)
 	StorageType pulumi.StringPtrInput `pulumi:"storageType"`
 }
 

@@ -102,7 +102,7 @@ export class EcsInvocation extends pulumi.CustomResource {
      */
     public readonly timed!: pulumi.Output<boolean>;
     /**
-     * The username that is used to run the command on the ECS instance. 
+     * The username that is used to run the command on the ECS instance.
      * * For Linux instances, the root username is used.
      * * For Windows instances, the System username is used.
      * * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).
@@ -194,7 +194,7 @@ export interface EcsInvocationState {
      */
     timed?: pulumi.Input<boolean>;
     /**
-     * The username that is used to run the command on the ECS instance. 
+     * The username that is used to run the command on the ECS instance.
      * * For Linux instances, the root username is used.
      * * For Windows instances, the System username is used.
      * * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).
@@ -238,7 +238,7 @@ export interface EcsInvocationArgs {
      */
     timed?: pulumi.Input<boolean>;
     /**
-     * The username that is used to run the command on the ECS instance. 
+     * The username that is used to run the command on the ECS instance.
      * * For Linux instances, the root username is used.
      * * For Windows instances, the System username is used.
      * * You can also specify other usernames that already exist in the ECS instance to run the command. It is more secure to run Cloud Assistant commands as a regular user. For more information, see [Configure a regular user to run Cloud Assistant commands](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/run-cloud-assistant-commands-as-a-regular-user).

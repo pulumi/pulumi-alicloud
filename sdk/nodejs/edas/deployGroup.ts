@@ -89,7 +89,7 @@ export class DeployGroup extends pulumi.CustomResource {
      */
     public readonly groupName!: pulumi.Output<string>;
     /**
-     * The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+     * (ForceNew) The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
      */
     public /*out*/ readonly groupType!: pulumi.Output<number>;
 
@@ -139,7 +139,7 @@ export interface DeployGroupState {
      */
     groupName?: pulumi.Input<string>;
     /**
-     * The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+     * (ForceNew) The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
      */
     groupType?: pulumi.Input<number>;
 }

@@ -20,7 +20,7 @@ public final class TrafficMirrorFilterIngressRule {
      */
     private String action;
     /**
-     * @return DestinationCidrBlock.
+     * @return The destination address of the outbound rule network traffic.
      * 
      */
     private @Nullable String destinationCidrBlock;
@@ -31,7 +31,7 @@ public final class TrafficMirrorFilterIngressRule {
      */
     private @Nullable String destinationPortRange;
     /**
-     * @return Priority.
+     * @return The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
      * 
      */
     private @Nullable Integer priority;
@@ -68,7 +68,7 @@ public final class TrafficMirrorFilterIngressRule {
         return this.action;
     }
     /**
-     * @return DestinationCidrBlock.
+     * @return The destination address of the outbound rule network traffic.
      * 
      */
     public Optional<String> destinationCidrBlock() {
@@ -83,7 +83,7 @@ public final class TrafficMirrorFilterIngressRule {
         return Optional.ofNullable(this.destinationPortRange);
     }
     /**
-     * @return Priority.
+     * @return The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
      * 
      */
     public Optional<Integer> priority() {

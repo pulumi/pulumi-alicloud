@@ -190,11 +190,11 @@ def get_metric_rule_black_lists(category: Optional[str] = None,
     ```
 
 
-    :param str category: Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
+    :param str category: (ForceNew,Optional) Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
     :param Sequence[str] ids: A list of Metric Rule Black List IDs.
-    :param str metric_rule_black_list_id: The first ID of the resource
+    :param str metric_rule_black_list_id: (ForceNew,Optional) The first ID of the resource
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
-    :param str namespace: The data namespace of the cloud service.
+    :param str namespace: (ForceNew,Optional) The data namespace of the cloud service.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     __args__ = dict()
@@ -254,11 +254,11 @@ def get_metric_rule_black_lists_output(category: Optional[pulumi.Input[Optional[
     ```
 
 
-    :param str category: Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
+    :param str category: (ForceNew,Optional) Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
     :param Sequence[str] ids: A list of Metric Rule Black List IDs.
-    :param str metric_rule_black_list_id: The first ID of the resource
+    :param str metric_rule_black_list_id: (ForceNew,Optional) The first ID of the resource
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
-    :param str namespace: The data namespace of the cloud service.
+    :param str namespace: (ForceNew,Optional) The data namespace of the cloud service.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
     ...

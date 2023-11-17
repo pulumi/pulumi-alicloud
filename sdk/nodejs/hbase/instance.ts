@@ -179,7 +179,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly securityGroups!: pulumi.Output<string[]>;
     /**
-     * The slb service addresses of the cluster. See `slbConnAddrs` below.
+     * (Available in 1.105.0+) The slb service addresses of the cluster. See `slbConnAddrs` below.
      *
      * > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
      */
@@ -189,7 +189,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
+     * (Available in 1.105.0+) The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
      */
     public /*out*/ readonly uiProxyConnAddrs!: pulumi.Output<outputs.hbase.InstanceUiProxyConnAddr[]>;
     /**
@@ -201,7 +201,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
-     * The zookeeper addresses of the cluster. See `zkConnAddrs` below.
+     * (Available in 1.105.0+) The zookeeper addresses of the cluster. See `zkConnAddrs` below.
      */
     public /*out*/ readonly zkConnAddrs!: pulumi.Output<outputs.hbase.InstanceZkConnAddr[]>;
     /**
@@ -389,7 +389,7 @@ export interface InstanceState {
      */
     securityGroups?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The slb service addresses of the cluster. See `slbConnAddrs` below.
+     * (Available in 1.105.0+) The slb service addresses of the cluster. See `slbConnAddrs` below.
      *
      * > **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, coreInstanceQuantity and so on) will be supported in the furture.
      */
@@ -399,7 +399,7 @@ export interface InstanceState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
+     * (Available in 1.105.0+) The Web UI proxy addresses of the cluster. See `uiProxyConnAddrs` below.
      */
     uiProxyConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceUiProxyConnAddr>[]>;
     /**
@@ -411,7 +411,7 @@ export interface InstanceState {
      */
     vswitchId?: pulumi.Input<string>;
     /**
-     * The zookeeper addresses of the cluster. See `zkConnAddrs` below.
+     * (Available in 1.105.0+) The zookeeper addresses of the cluster. See `zkConnAddrs` below.
      */
     zkConnAddrs?: pulumi.Input<pulumi.Input<inputs.hbase.InstanceZkConnAddr>[]>;
     /**

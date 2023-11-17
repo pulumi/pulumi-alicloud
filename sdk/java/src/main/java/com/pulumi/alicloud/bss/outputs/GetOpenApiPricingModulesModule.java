@@ -32,7 +32,7 @@ public final class GetOpenApiPricingModulesModule {
      */
     private String productCode;
     /**
-     * @return The product type.
+     * @return (ForceNew,Optional) The product type.
      * 
      */
     private String productType;
@@ -84,7 +84,7 @@ public final class GetOpenApiPricingModulesModule {
         return this.productCode;
     }
     /**
-     * @return The product type.
+     * @return (ForceNew,Optional) The product type.
      * 
      */
     public String productType() {

@@ -66,11 +66,11 @@ func GetRules(ctx *pulumi.Context, args *GetRulesArgs, opts ...pulumi.InvokeOpti
 
 // A collection of arguments for invoking getRules.
 type GetRulesArgs struct {
-	// Sensitive Data Identification Rules for the Type of.
+	// Sensitive Data Identification Rules for the Type of. Valid values:
 	Category *int `pulumi:"category"`
 	// The Content Classification.
 	ContentCategory *string `pulumi:"contentCategory"`
-	// Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+	// Sensitive Data Identification Rules of Type. Valid values:
 	CustomType    *int  `pulumi:"customType"`
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Rule IDs.
@@ -81,15 +81,15 @@ type GetRulesArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// Product ID.
+	// Product ID. Valid values:
 	ProductId *string `pulumi:"productId"`
-	// Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+	// Sensitive Data Identification Rules of Risk Level ID. Valid values:
 	RiskLevelId *string `pulumi:"riskLevelId"`
 	// Rule Type.
 	RuleType *int `pulumi:"ruleType"`
 	// Sensitive Data Identification Rules Detection State of.
 	Status *string `pulumi:"status"`
-	// The Level of Risk.
+	// The Level of Risk. Valid values:
 	WarnLevel *int `pulumi:"warnLevel"`
 }
 
@@ -129,11 +129,11 @@ func GetRulesOutput(ctx *pulumi.Context, args GetRulesOutputArgs, opts ...pulumi
 
 // A collection of arguments for invoking getRules.
 type GetRulesOutputArgs struct {
-	// Sensitive Data Identification Rules for the Type of.
+	// Sensitive Data Identification Rules for the Type of. Valid values:
 	Category pulumi.IntPtrInput `pulumi:"category"`
 	// The Content Classification.
 	ContentCategory pulumi.StringPtrInput `pulumi:"contentCategory"`
-	// Sensitive Data Identification Rules of Type. 0: the Built-in 1: The User-Defined.
+	// Sensitive Data Identification Rules of Type. Valid values:
 	CustomType    pulumi.IntPtrInput  `pulumi:"customType"`
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Rule IDs.
@@ -144,15 +144,15 @@ type GetRulesOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// Product ID.
+	// Product ID. Valid values:
 	ProductId pulumi.StringPtrInput `pulumi:"productId"`
-	// Sensitive Data Identification Rules of Risk Level ID. Valid values:1:S1, Weak Risk Level. 2:S2, Medium Risk Level. 3:S3 High Risk Level. 4:S4, the Highest Risk Level.
+	// Sensitive Data Identification Rules of Risk Level ID. Valid values:
 	RiskLevelId pulumi.StringPtrInput `pulumi:"riskLevelId"`
 	// Rule Type.
 	RuleType pulumi.IntPtrInput `pulumi:"ruleType"`
 	// Sensitive Data Identification Rules Detection State of.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The Level of Risk.
+	// The Level of Risk. Valid values:
 	WarnLevel pulumi.IntPtrInput `pulumi:"warnLevel"`
 }
 

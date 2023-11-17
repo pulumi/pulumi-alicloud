@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class GetBgpPeersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the BGP group.
+        /// The ID of the BGP group to which the BGP peer that you want to query belongs.
         /// </summary>
         [Input("bgpGroupId")]
         public string? BgpGroupId { get; set; }
@@ -156,13 +156,13 @@ namespace Pulumi.AliCloud.Vpc
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the router.
+        /// The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
         /// </summary>
         [Input("routerId")]
         public string? RouterId { get; set; }
 
         /// <summary>
-        /// The status of the BGP peer.
+        /// The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class GetBgpPeersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the BGP group.
+        /// The ID of the BGP group to which the BGP peer that you want to query belongs.
         /// </summary>
         [Input("bgpGroupId")]
         public Input<string>? BgpGroupId { get; set; }
@@ -200,13 +200,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the router.
+        /// The ID of the virtual border router (VBR) that is associated with the BGP peer that you want to query.
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
 
         /// <summary>
-        /// The status of the BGP peer.
+        /// The status of the BGP peer. Valid values: `Available`, `Deleted`, `Deleting`, `Modifying`, `Pending`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -32,7 +32,7 @@ type DBCluster struct {
 	ConnectionString pulumi.StringOutput `pulumi:"connectionString"`
 	// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
 	DbClusterCategory pulumi.StringOutput `pulumi:"dbClusterCategory"`
-	// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+	// (Deprecated since v1.121.2) It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
 	//
 	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass pulumi.StringPtrOutput `pulumi:"dbClusterClass"`
@@ -58,7 +58,7 @@ type DBCluster struct {
 	Mode pulumi.StringOutput `pulumi:"mode"`
 	// The modify type.
 	ModifyType pulumi.StringPtrOutput `pulumi:"modifyType"`
-	// Field `payType` has been deprecated. New field `paymentType` instead.
+	// (Deprecated since v1.166.0) Field `payType` has been deprecated. New field `paymentType` instead.
 	//
 	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	PayType pulumi.StringOutput `pulumi:"payType"`
@@ -135,7 +135,7 @@ type dbclusterState struct {
 	ConnectionString *string `pulumi:"connectionString"`
 	// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
 	DbClusterCategory *string `pulumi:"dbClusterCategory"`
-	// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+	// (Deprecated since v1.121.2) It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
 	//
 	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass *string `pulumi:"dbClusterClass"`
@@ -161,7 +161,7 @@ type dbclusterState struct {
 	Mode *string `pulumi:"mode"`
 	// The modify type.
 	ModifyType *string `pulumi:"modifyType"`
-	// Field `payType` has been deprecated. New field `paymentType` instead.
+	// (Deprecated since v1.166.0) Field `payType` has been deprecated. New field `paymentType` instead.
 	//
 	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	PayType *string `pulumi:"payType"`
@@ -203,7 +203,7 @@ type DBClusterState struct {
 	ConnectionString pulumi.StringPtrInput
 	// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
 	DbClusterCategory pulumi.StringPtrInput
-	// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+	// (Deprecated since v1.121.2) It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
 	//
 	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass pulumi.StringPtrInput
@@ -229,7 +229,7 @@ type DBClusterState struct {
 	Mode pulumi.StringPtrInput
 	// The modify type.
 	ModifyType pulumi.StringPtrInput
-	// Field `payType` has been deprecated. New field `paymentType` instead.
+	// (Deprecated since v1.166.0) Field `payType` has been deprecated. New field `paymentType` instead.
 	//
 	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	PayType pulumi.StringPtrInput
@@ -273,7 +273,7 @@ type dbclusterArgs struct {
 	ComputeResource *string `pulumi:"computeResource"`
 	// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
 	DbClusterCategory string `pulumi:"dbClusterCategory"`
-	// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+	// (Deprecated since v1.121.2) It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
 	//
 	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass *string `pulumi:"dbClusterClass"`
@@ -299,7 +299,7 @@ type dbclusterArgs struct {
 	Mode string `pulumi:"mode"`
 	// The modify type.
 	ModifyType *string `pulumi:"modifyType"`
-	// Field `payType` has been deprecated. New field `paymentType` instead.
+	// (Deprecated since v1.166.0) Field `payType` has been deprecated. New field `paymentType` instead.
 	//
 	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	PayType *string `pulumi:"payType"`
@@ -336,7 +336,7 @@ type DBClusterArgs struct {
 	ComputeResource pulumi.StringPtrInput
 	// The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
 	DbClusterCategory pulumi.StringInput
-	// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+	// (Deprecated since v1.121.2) It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
 	//
 	// Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 	DbClusterClass pulumi.StringPtrInput
@@ -362,7 +362,7 @@ type DBClusterArgs struct {
 	Mode pulumi.StringInput
 	// The modify type.
 	ModifyType pulumi.StringPtrInput
-	// Field `payType` has been deprecated. New field `paymentType` instead.
+	// (Deprecated since v1.166.0) Field `payType` has been deprecated. New field `paymentType` instead.
 	//
 	// Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 	PayType pulumi.StringPtrInput
@@ -498,7 +498,7 @@ func (o DBClusterOutput) DbClusterCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringOutput { return v.DbClusterCategory }).(pulumi.StringOutput)
 }
 
-// It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
+// (Deprecated since v1.121.2) It duplicates with attribute dbNodeClass and is deprecated from 1.121.2.
 //
 // Deprecated: It duplicates with attribute db_node_class and is deprecated from 1.121.2.
 func (o DBClusterOutput) DbClusterClass() pulumi.StringPtrOutput {
@@ -560,7 +560,7 @@ func (o DBClusterOutput) ModifyType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DBCluster) pulumi.StringPtrOutput { return v.ModifyType }).(pulumi.StringPtrOutput)
 }
 
-// Field `payType` has been deprecated. New field `paymentType` instead.
+// (Deprecated since v1.166.0) Field `payType` has been deprecated. New field `paymentType` instead.
 //
 // Deprecated: Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead.
 func (o DBClusterOutput) PayType() pulumi.StringOutput {

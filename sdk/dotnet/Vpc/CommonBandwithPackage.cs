@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Isp { get; private set; } = null!;
 
         /// <summary>
-        /// . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+        /// (Deprecated since v1.120.0). Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -218,7 +218,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Isp { get; set; }
 
         /// <summary>
-        /// . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+        /// (Deprecated since v1.120.0). Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -329,7 +329,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Isp { get; set; }
 
         /// <summary>
-        /// . Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
+        /// (Deprecated since v1.120.0). Field 'name' has been deprecated from provider version 1.120.0. New field 'bandwidth_package_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

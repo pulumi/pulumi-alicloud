@@ -92,14 +92,14 @@ public final class GetTransitRouterPrefixListAssociationsArgs extends com.pulumi
     }
 
     /**
-     * The status of the prefix list.
+     * The status of the prefix list. Valid Value: `Active`, `Updating`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the prefix list.
+     * @return The status of the prefix list. Valid Value: `Active`, `Updating`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -281,7 +281,7 @@ public final class GetTransitRouterPrefixListAssociationsArgs extends com.pulumi
         }
 
         /**
-         * @param status The status of the prefix list.
+         * @param status The status of the prefix list. Valid Value: `Active`, `Updating`.
          * 
          * @return builder
          * 
@@ -292,7 +292,7 @@ public final class GetTransitRouterPrefixListAssociationsArgs extends com.pulumi
         }
 
         /**
-         * @param status The status of the prefix list.
+         * @param status The status of the prefix list. Valid Value: `Active`, `Updating`.
          * 
          * @return builder
          * 

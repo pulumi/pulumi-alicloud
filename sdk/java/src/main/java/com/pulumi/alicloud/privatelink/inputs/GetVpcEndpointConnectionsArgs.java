@@ -77,14 +77,14 @@ public final class GetVpcEndpointConnectionsArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The status of Vpc Endpoint Connection.
+     * The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of Vpc Endpoint Connection.
+     * @return The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -204,7 +204,7 @@ public final class GetVpcEndpointConnectionsArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param status The status of Vpc Endpoint Connection.
+         * @param status The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class GetVpcEndpointConnectionsArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param status The status of Vpc Endpoint Connection.
+         * @param status The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
          * 
          * @return builder
          * 

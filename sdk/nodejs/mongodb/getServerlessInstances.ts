@@ -78,7 +78,7 @@ export interface GetServerlessInstancesArgs {
      */
     ids?: string[];
     /**
-     * The network type of the instance.
+     * The network type of the instance. Valid values: `Classic` or `VPC`.
      */
     networkType?: string;
     /**
@@ -189,7 +189,7 @@ export interface GetServerlessInstancesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The network type of the instance.
+     * The network type of the instance. Valid values: `Classic` or `VPC`.
      */
     networkType?: pulumi.Input<string>;
     /**

@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.Hbr.Inputs
     public sealed class OtsBackupPlanRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Backup type. Valid values: `COMPLETE`.
+        /// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while source_type equals `OTS_TABLE`.
         /// </summary>
         [Input("backupType")]
         public Input<string>? BackupType { get; set; }
 
         /// <summary>
-        /// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+        /// Whether to disable the backup task. Valid values: true, false.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Backup retention days, the minimum is 1.
+        /// Backup retention days, the minimum is 1. **Note:** Required while source_type equals `OTS_TABLE`.
         /// </summary>
         [Input("retention")]
         public Input<string>? Retention { get; set; }

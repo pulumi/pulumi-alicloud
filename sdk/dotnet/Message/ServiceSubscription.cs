@@ -64,9 +64,6 @@ namespace Pulumi.AliCloud.Message
     {
         /// <summary>
         /// The endpoint has three format. Available values format:
-        /// - `HTTP Format`: http://xxx.com/xxx
-        /// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-        /// - `Email Format`: mail:directmail:{MailAddress}
         /// </summary>
         [Output("endpoint")]
         public Output<string> Endpoint { get; private set; } = null!;
@@ -155,9 +152,6 @@ namespace Pulumi.AliCloud.Message
     {
         /// <summary>
         /// The endpoint has three format. Available values format:
-        /// - `HTTP Format`: http://xxx.com/xxx
-        /// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-        /// - `Email Format`: mail:directmail:{MailAddress}
         /// </summary>
         [Input("endpoint", required: true)]
         public Input<string> Endpoint { get; set; } = null!;
@@ -208,9 +202,6 @@ namespace Pulumi.AliCloud.Message
     {
         /// <summary>
         /// The endpoint has three format. Available values format:
-        /// - `HTTP Format`: http://xxx.com/xxx
-        /// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-        /// - `Email Format`: mail:directmail:{MailAddress}
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }

@@ -55,7 +55,7 @@ export interface GetHoneypotPresetsArgs {
      */
     enableDetails?: boolean;
     /**
-     * Honeypot mirror name
+     * (ForceNew,Optional) Honeypot mirror name
      */
     honeypotImageName?: string;
     /**
@@ -64,7 +64,7 @@ export interface GetHoneypotPresetsArgs {
     ids?: string[];
     lang?: string;
     /**
-     * Unique id of management node
+     * (ForceNew,Optional) Unique id of management node
      */
     nodeId?: string;
     nodeName?: string;
@@ -75,7 +75,7 @@ export interface GetHoneypotPresetsArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * Honeypot template custom name
+     * (ForceNew,Optional) Honeypot template custom name
      */
     presetName?: string;
 }
@@ -150,7 +150,7 @@ export interface GetHoneypotPresetsOutputArgs {
      */
     enableDetails?: pulumi.Input<boolean>;
     /**
-     * Honeypot mirror name
+     * (ForceNew,Optional) Honeypot mirror name
      */
     honeypotImageName?: pulumi.Input<string>;
     /**
@@ -159,7 +159,7 @@ export interface GetHoneypotPresetsOutputArgs {
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     lang?: pulumi.Input<string>;
     /**
-     * Unique id of management node
+     * (ForceNew,Optional) Unique id of management node
      */
     nodeId?: pulumi.Input<string>;
     nodeName?: pulumi.Input<string>;
@@ -170,7 +170,7 @@ export interface GetHoneypotPresetsOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * Honeypot template custom name
+     * (ForceNew,Optional) Honeypot template custom name
      */
     presetName?: pulumi.Input<string>;
 }

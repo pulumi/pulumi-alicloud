@@ -94,7 +94,7 @@ export class BaseInstance extends pulumi.CustomResource {
      * - receive_all: Keep all backup sets;
      * - delete_all: delete all backup sets;
      * - receive_last: Keep the last backup set.
-     * > **NOTE:**   The default value is delete_all.
+     *   > **NOTE:**   The default value is delete_all.
      */
     public readonly backupRetainMode!: pulumi.Output<string | undefined>;
     /**
@@ -116,7 +116,7 @@ export class BaseInstance extends pulumi.CustomResource {
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
-     * The default value of each package is its minimum value.
+     *   The default value of each package is its minimum value.
      */
     public readonly diskSize!: pulumi.Output<number>;
     /**
@@ -274,7 +274,7 @@ export interface BaseInstanceState {
      * - receive_all: Keep all backup sets;
      * - delete_all: delete all backup sets;
      * - receive_last: Keep the last backup set.
-     * > **NOTE:**   The default value is delete_all.
+     *   > **NOTE:**   The default value is delete_all.
      */
     backupRetainMode?: pulumi.Input<string>;
     /**
@@ -296,7 +296,7 @@ export interface BaseInstanceState {
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
-     * The default value of each package is its minimum value.
+     *   The default value of each package is its minimum value.
      */
     diskSize?: pulumi.Input<number>;
     /**
@@ -381,7 +381,7 @@ export interface BaseInstanceArgs {
      * - receive_all: Keep all backup sets;
      * - delete_all: delete all backup sets;
      * - receive_last: Keep the last backup set.
-     * > **NOTE:**   The default value is delete_all.
+     *   > **NOTE:**   The default value is delete_all.
      */
     backupRetainMode?: pulumi.Input<string>;
     /**
@@ -391,7 +391,7 @@ export interface BaseInstanceArgs {
      * - 14C70GB:200GB ~ 10000GB
      * - 30C180GB:400GB ~ 10000GB
      * - 62C400G:800GB ~ 10000GB.
-     * The default value of each package is its minimum value.
+     *   The default value of each package is its minimum value.
      */
     diskSize: pulumi.Input<number>;
     /**

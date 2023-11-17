@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Ocean
         /// - receive_all: Keep all backup sets;
         /// - delete_all: delete all backup sets;
         /// - receive_last: Keep the last backup set.
-        /// &gt; **NOTE:**   The default value is delete_all.
+        ///   &gt; **NOTE:**   The default value is delete_all.
         /// </summary>
         [Output("backupRetainMode")]
         public Output<string?> BackupRetainMode { get; private set; } = null!;
@@ -133,7 +133,7 @@ namespace Pulumi.AliCloud.Ocean
         /// - 14C70GB:200GB ~ 10000GB
         /// - 30C180GB:400GB ~ 10000GB
         /// - 62C400G:800GB ~ 10000GB.
-        /// The default value of each package is its minimum value.
+        ///   The default value of each package is its minimum value.
         /// </summary>
         [Output("diskSize")]
         public Output<int> DiskSize { get; private set; } = null!;
@@ -288,7 +288,7 @@ namespace Pulumi.AliCloud.Ocean
         /// - receive_all: Keep all backup sets;
         /// - delete_all: delete all backup sets;
         /// - receive_last: Keep the last backup set.
-        /// &gt; **NOTE:**   The default value is delete_all.
+        ///   &gt; **NOTE:**   The default value is delete_all.
         /// </summary>
         [Input("backupRetainMode")]
         public Input<string>? BackupRetainMode { get; set; }
@@ -300,7 +300,7 @@ namespace Pulumi.AliCloud.Ocean
         /// - 14C70GB:200GB ~ 10000GB
         /// - 30C180GB:400GB ~ 10000GB
         /// - 62C400G:800GB ~ 10000GB.
-        /// The default value of each package is its minimum value.
+        ///   The default value of each package is its minimum value.
         /// </summary>
         [Input("diskSize", required: true)]
         public Input<int> DiskSize { get; set; } = null!;
@@ -417,7 +417,7 @@ namespace Pulumi.AliCloud.Ocean
         /// - receive_all: Keep all backup sets;
         /// - delete_all: delete all backup sets;
         /// - receive_last: Keep the last backup set.
-        /// &gt; **NOTE:**   The default value is delete_all.
+        ///   &gt; **NOTE:**   The default value is delete_all.
         /// </summary>
         [Input("backupRetainMode")]
         public Input<string>? BackupRetainMode { get; set; }
@@ -447,7 +447,7 @@ namespace Pulumi.AliCloud.Ocean
         /// - 14C70GB:200GB ~ 10000GB
         /// - 30C180GB:400GB ~ 10000GB
         /// - 62C400G:800GB ~ 10000GB.
-        /// The default value of each package is its minimum value.
+        ///   The default value of each package is its minimum value.
         /// </summary>
         [Input("diskSize")]
         public Input<int>? DiskSize { get; set; }

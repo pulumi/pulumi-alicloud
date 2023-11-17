@@ -55,7 +55,7 @@ func GetStaticAccounts(ctx *pulumi.Context, args *GetStaticAccountsArgs, opts ..
 type GetStaticAccountsArgs struct {
 	// The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.
 	Ids []string `pulumi:"ids"`
-	// InstanceId
+	// (ForceNew, Optional) InstanceId
 	InstanceId *string `pulumi:"instanceId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -90,7 +90,7 @@ func GetStaticAccountsOutput(ctx *pulumi.Context, args GetStaticAccountsOutputAr
 type GetStaticAccountsOutputArgs struct {
 	// The `key` of the resource supplied above.The value is formulated as `<instance_id>:<access_key>`.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// InstanceId
+	// (ForceNew, Optional) InstanceId
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

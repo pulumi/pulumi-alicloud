@@ -97,7 +97,7 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
+     * (Deprecated since 1.114.0, Optional, Conflicts with `policyDocument`, `statement` and `version`) It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
      *
      * @deprecated Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
      */
@@ -107,7 +107,7 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
-     * It has been deprecated since provider version 1.114.0 and `policyName` instead.
+     * (Deprecated since 1.114.0, Required, ForceNew) It has been deprecated since provider version 1.114.0 and `policyName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
      */
@@ -125,7 +125,7 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly rotateStrategy!: pulumi.Output<string>;
     /**
-     * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+     * (Deprecated since 1.49.0, Optional, Type: list, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
      *
      * @deprecated Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
@@ -135,7 +135,7 @@ export class Policy extends pulumi.CustomResource {
      */
     public /*out*/ readonly type!: pulumi.Output<string>;
     /**
-     * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+     * (Deprecated since 1.49.0, Optional, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
      *
      * @deprecated Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
@@ -209,7 +209,7 @@ export interface PolicyState {
      */
     description?: pulumi.Input<string>;
     /**
-     * It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
+     * (Deprecated since 1.114.0, Optional, Conflicts with `policyDocument`, `statement` and `version`) It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
      *
      * @deprecated Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
      */
@@ -219,7 +219,7 @@ export interface PolicyState {
      */
     force?: pulumi.Input<boolean>;
     /**
-     * It has been deprecated since provider version 1.114.0 and `policyName` instead.
+     * (Deprecated since 1.114.0, Required, ForceNew) It has been deprecated since provider version 1.114.0 and `policyName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
      */
@@ -237,7 +237,7 @@ export interface PolicyState {
      */
     rotateStrategy?: pulumi.Input<string>;
     /**
-     * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+     * (Deprecated since 1.49.0, Optional, Type: list, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
      *
      * @deprecated Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
@@ -247,7 +247,7 @@ export interface PolicyState {
      */
     type?: pulumi.Input<string>;
     /**
-     * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+     * (Deprecated since 1.49.0, Optional, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
      *
      * @deprecated Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
@@ -267,7 +267,7 @@ export interface PolicyArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
+     * (Deprecated since 1.114.0, Optional, Conflicts with `policyDocument`, `statement` and `version`) It has been deprecated since provider version 1.114.0 and `policyDocument` instead.
      *
      * @deprecated Field 'document' has been deprecated from provider version 1.114.0. New field 'policy_document' instead.
      */
@@ -277,7 +277,7 @@ export interface PolicyArgs {
      */
     force?: pulumi.Input<boolean>;
     /**
-     * It has been deprecated since provider version 1.114.0 and `policyName` instead.
+     * (Deprecated since 1.114.0, Required, ForceNew) It has been deprecated since provider version 1.114.0 and `policyName` instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.114.0. New field 'policy_name' instead.
      */
@@ -295,13 +295,13 @@ export interface PolicyArgs {
      */
     rotateStrategy?: pulumi.Input<string>;
     /**
-     * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
+     * (Deprecated since 1.49.0, Optional, Type: list, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Statements of the RAM policy document. It is required when the `document` is not specified. See `statement` below.
      *
      * @deprecated Field 'statement' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */
     statements?: pulumi.Input<pulumi.Input<inputs.ram.PolicyStatement>[]>;
     /**
-     * (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
+     * (Deprecated since 1.49.0, Optional, Conflicts with `policyDocument`, `document`) (It has been deprecated since version 1.49.0, and use field 'document' to replace.) Version of the RAM policy document. Valid value is `1`. Default value is `1`.
      *
      * @deprecated Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace. 
      */

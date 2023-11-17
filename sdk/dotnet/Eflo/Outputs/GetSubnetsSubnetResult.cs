@@ -34,34 +34,34 @@ namespace Pulumi.AliCloud.Eflo.Outputs
         /// </summary>
         public readonly string Message;
         /// <summary>
-        /// Resource Group ID.
+        /// (ForceNew,Optional) Resource Group ID.
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>
-        /// The status of the resource.
+        /// (ForceNew,Optional) The status of the resource.
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// Primary key ID.
+        /// (ForceNew,Optional) Primary key ID.
         /// </summary>
         public readonly string SubnetId;
         /// <summary>
-        /// The Subnet name.
+        /// (ForceNew,Optional) The Subnet name.
         /// </summary>
         public readonly string SubnetName;
         /// <summary>
-        /// Eflo subnet usage type, optional value: 
+        /// (ForceNew,Optional) Eflo subnet usage type, optional value:
         /// - General type is not filled in
         /// - OOB:OOB type
         /// - LB: LB type
         /// </summary>
         public readonly string Type;
         /// <summary>
-        /// The Eflo VPD ID.
+        /// (ForceNew,Optional) The Eflo VPD ID.
         /// </summary>
         public readonly string VpdId;
         /// <summary>
-        /// The zone ID of the resource.
+        /// (ForceNew,Optional) The zone ID of the resource.
         /// </summary>
         public readonly string ZoneId;
 

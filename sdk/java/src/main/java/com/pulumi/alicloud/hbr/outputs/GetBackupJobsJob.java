@@ -63,17 +63,17 @@ public final class GetBackupJobsJob {
      */
     private String createTime;
     /**
-     * @return The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * @return (Available in v1.190.0+) The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
      * 
      */
     private String crossAccountRoleName;
     /**
-     * @return The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * @return (Available in v1.190.0+) The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
      * 
      */
     private String crossAccountType;
     /**
-     * @return The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * @return (Available in v1.190.0+) The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
      * 
      */
     private Integer crossAccountUserId;
@@ -241,21 +241,21 @@ public final class GetBackupJobsJob {
         return this.createTime;
     }
     /**
-     * @return The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * @return (Available in v1.190.0+) The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
      * 
      */
     public String crossAccountRoleName() {
         return this.crossAccountRoleName;
     }
     /**
-     * @return The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * @return (Available in v1.190.0+) The type of the cross account backup. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
      * 
      */
     public String crossAccountType() {
         return this.crossAccountType;
     }
     /**
-     * @return The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+     * @return (Available in v1.190.0+) The original account ID of the cross account backup managed by the current account. It is valid only when `source_type` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
      * 
      */
     public Integer crossAccountUserId() {

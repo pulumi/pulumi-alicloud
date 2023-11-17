@@ -187,9 +187,9 @@ def get_nat_ips(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Nat Ip IDs.
     :param str name_regex: A regex string to filter results by Nat Ip name.
-    :param str nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
-    :param str nat_ip_cidr: The CIDR block to which the NAT IP address belongs.
-    :param Sequence[str] nat_ip_names: The name of the NAT IP address.
+    :param str nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
+    :param str nat_ip_cidr: NAT IP ADDRESS of the address segment.
+    :param Sequence[str] nat_ip_names: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
     """
@@ -272,9 +272,9 @@ def get_nat_ips_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
 
     :param Sequence[str] ids: A list of Nat Ip IDs.
     :param str name_regex: A regex string to filter results by Nat Ip name.
-    :param str nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway to which the NAT IP address belongs.
-    :param str nat_ip_cidr: The CIDR block to which the NAT IP address belongs.
-    :param Sequence[str] nat_ip_names: The name of the NAT IP address.
+    :param str nat_gateway_id: The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
+    :param str nat_ip_cidr: NAT IP ADDRESS of the address segment.
+    :param Sequence[str] nat_ip_names: NAT IP ADDRESS the name of the root directory. Length is from `2` to `128` characters, must start with a letter or the Chinese at the beginning can contain numbers, half a period (.), underscore (_) and dash (-). But do not start with `http://` or `https://` at the beginning.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of the NAT IP address. Valid values: `Available`, `Deleting` and `Creating`.
     """

@@ -27,7 +27,7 @@ public final class GetVaultsVault {
      */
     private String createdTime;
     /**
-     * @return Whether to enable the deduplication function for the database backup Vault.
+     * @return (Internal use) Whether to enable the deduplication function for the database backup Vault.
      * 
      */
     private Boolean dedup;
@@ -42,17 +42,17 @@ public final class GetVaultsVault {
      */
     private String id;
     /**
-     * @return Index available.
+     * @return (Not yet open) Index available.
      * 
      */
     private Boolean indexAvailable;
     /**
-     * @return Index level.
+     * @return (Not yet open) Index level.
      * 
      */
     private String indexLevel;
     /**
-     * @return Index update time.
+     * @return (Not yet open) Index update time.
      * 
      */
     private String indexUpdateTime;
@@ -82,12 +82,12 @@ public final class GetVaultsVault {
      */
     private String replicationSourceVaultId;
     /**
-     * @return Warehouse-level data retention days, only valid for archive libraries.
+     * @return (Not yet open) Warehouse-level data retention days, only valid for archive libraries.
      * 
      */
     private String retention;
     /**
-     * @return Whether to enable the backup search function.
+     * @return (Not yet open) Whether to enable the backup search function.
      * 
      */
     private Boolean searchEnabled;
@@ -156,7 +156,7 @@ public final class GetVaultsVault {
         return this.createdTime;
     }
     /**
-     * @return Whether to enable the deduplication function for the database backup Vault.
+     * @return (Internal use) Whether to enable the deduplication function for the database backup Vault.
      * 
      */
     public Boolean dedup() {
@@ -177,21 +177,21 @@ public final class GetVaultsVault {
         return this.id;
     }
     /**
-     * @return Index available.
+     * @return (Not yet open) Index available.
      * 
      */
     public Boolean indexAvailable() {
         return this.indexAvailable;
     }
     /**
-     * @return Index level.
+     * @return (Not yet open) Index level.
      * 
      */
     public String indexLevel() {
         return this.indexLevel;
     }
     /**
-     * @return Index update time.
+     * @return (Not yet open) Index update time.
      * 
      */
     public String indexUpdateTime() {
@@ -233,14 +233,14 @@ public final class GetVaultsVault {
         return this.replicationSourceVaultId;
     }
     /**
-     * @return Warehouse-level data retention days, only valid for archive libraries.
+     * @return (Not yet open) Warehouse-level data retention days, only valid for archive libraries.
      * 
      */
     public String retention() {
         return this.retention;
     }
     /**
-     * @return Whether to enable the backup search function.
+     * @return (Not yet open) Whether to enable the backup search function.
      * 
      */
     public Boolean searchEnabled() {

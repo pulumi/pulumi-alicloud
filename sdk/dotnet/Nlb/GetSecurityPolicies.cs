@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Available`, `Configuring`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -204,7 +204,7 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `Available`, `Configuring`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

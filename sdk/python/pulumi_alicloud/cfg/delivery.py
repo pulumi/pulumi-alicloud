@@ -27,9 +27,6 @@ class DeliveryArgs:
         """
         The set of arguments for constructing a Delivery resource.
         :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination. The value must be in one of the following formats:
-               * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-               * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-               * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         :param pulumi.Input[str] delivery_channel_type: The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         :param pulumi.Input[bool] configuration_item_change_notification: Open or close delivery configuration change history. true: open, false: close.
         :param pulumi.Input[bool] configuration_snapshot: Open or close timed snapshot of shipping resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `OSS`.
@@ -37,7 +34,7 @@ class DeliveryArgs:
         :param pulumi.Input[str] delivery_channel_name: The name of the delivery method.
         :param pulumi.Input[str] description: The description of the delivery method.
         :param pulumi.Input[bool] non_compliant_notification: Open or close non-compliance events of delivery resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `SLS` or `MNS`.
-        :param pulumi.Input[str] oversized_data_oss_target_arn: The oss ARN of the delivery channel when the value data oversized limit. 
+        :param pulumi.Input[str] oversized_data_oss_target_arn: The oss ARN of the delivery channel when the value data oversized limit.
                * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
                * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
         :param pulumi.Input[int] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled. This is the default value.
@@ -66,9 +63,6 @@ class DeliveryArgs:
     def delivery_channel_target_arn(self) -> pulumi.Input[str]:
         """
         The ARN of the delivery destination. The value must be in one of the following formats:
-        * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-        * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-        * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         """
         return pulumi.get(self, "delivery_channel_target_arn")
 
@@ -164,7 +158,7 @@ class DeliveryArgs:
     @pulumi.getter(name="oversizedDataOssTargetArn")
     def oversized_data_oss_target_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        The oss ARN of the delivery channel when the value data oversized limit. 
+        The oss ARN of the delivery channel when the value data oversized limit.
         * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
         * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
         """
@@ -207,13 +201,10 @@ class _DeliveryState:
         :param pulumi.Input[str] delivery_channel_condition: The rule attached to the delivery method. Please refer to api [CreateConfigDeliveryChannel](https://help.aliyun.com/document_detail/429798.html) for example format. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `MNS`.
         :param pulumi.Input[str] delivery_channel_name: The name of the delivery method.
         :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination. The value must be in one of the following formats:
-               * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-               * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-               * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         :param pulumi.Input[str] delivery_channel_type: The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         :param pulumi.Input[str] description: The description of the delivery method.
         :param pulumi.Input[bool] non_compliant_notification: Open or close non-compliance events of delivery resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `SLS` or `MNS`.
-        :param pulumi.Input[str] oversized_data_oss_target_arn: The oss ARN of the delivery channel when the value data oversized limit. 
+        :param pulumi.Input[str] oversized_data_oss_target_arn: The oss ARN of the delivery channel when the value data oversized limit.
                * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
                * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
         :param pulumi.Input[int] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled. This is the default value.
@@ -292,9 +283,6 @@ class _DeliveryState:
     def delivery_channel_target_arn(self) -> Optional[pulumi.Input[str]]:
         """
         The ARN of the delivery destination. The value must be in one of the following formats:
-        * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-        * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-        * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         """
         return pulumi.get(self, "delivery_channel_target_arn")
 
@@ -342,7 +330,7 @@ class _DeliveryState:
     @pulumi.getter(name="oversizedDataOssTargetArn")
     def oversized_data_oss_target_arn(self) -> Optional[pulumi.Input[str]]:
         """
-        The oss ARN of the delivery channel when the value data oversized limit. 
+        The oss ARN of the delivery channel when the value data oversized limit.
         * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
         * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
         """
@@ -428,13 +416,10 @@ class Delivery(pulumi.CustomResource):
         :param pulumi.Input[str] delivery_channel_condition: The rule attached to the delivery method. Please refer to api [CreateConfigDeliveryChannel](https://help.aliyun.com/document_detail/429798.html) for example format. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `MNS`.
         :param pulumi.Input[str] delivery_channel_name: The name of the delivery method.
         :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination. The value must be in one of the following formats:
-               * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-               * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-               * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         :param pulumi.Input[str] delivery_channel_type: The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         :param pulumi.Input[str] description: The description of the delivery method.
         :param pulumi.Input[bool] non_compliant_notification: Open or close non-compliance events of delivery resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `SLS` or `MNS`.
-        :param pulumi.Input[str] oversized_data_oss_target_arn: The oss ARN of the delivery channel when the value data oversized limit. 
+        :param pulumi.Input[str] oversized_data_oss_target_arn: The oss ARN of the delivery channel when the value data oversized limit.
                * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
                * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
         :param pulumi.Input[int] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled. This is the default value.
@@ -565,13 +550,10 @@ class Delivery(pulumi.CustomResource):
         :param pulumi.Input[str] delivery_channel_condition: The rule attached to the delivery method. Please refer to api [CreateConfigDeliveryChannel](https://help.aliyun.com/document_detail/429798.html) for example format. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `MNS`.
         :param pulumi.Input[str] delivery_channel_name: The name of the delivery method.
         :param pulumi.Input[str] delivery_channel_target_arn: The ARN of the delivery destination. The value must be in one of the following formats:
-               * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-               * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-               * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         :param pulumi.Input[str] delivery_channel_type: The type of the delivery method. Valid values: `OSS`: Object Storage, `MNS`: Message Service, `SLS`: Log Service.
         :param pulumi.Input[str] description: The description of the delivery method.
         :param pulumi.Input[bool] non_compliant_notification: Open or close non-compliance events of delivery resources. **NOTE:** The attribute is valid when the attribute `delivery_channel_type` is `SLS` or `MNS`.
-        :param pulumi.Input[str] oversized_data_oss_target_arn: The oss ARN of the delivery channel when the value data oversized limit. 
+        :param pulumi.Input[str] oversized_data_oss_target_arn: The oss ARN of the delivery channel when the value data oversized limit.
                * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
                * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
         :param pulumi.Input[int] status: The status of the delivery method. Valid values: `0`: The delivery method is disabled. `1`: The delivery destination is enabled. This is the default value.
@@ -629,9 +611,6 @@ class Delivery(pulumi.CustomResource):
     def delivery_channel_target_arn(self) -> pulumi.Output[str]:
         """
         The ARN of the delivery destination. The value must be in one of the following formats:
-        * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-        * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-        * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         """
         return pulumi.get(self, "delivery_channel_target_arn")
 
@@ -663,7 +642,7 @@ class Delivery(pulumi.CustomResource):
     @pulumi.getter(name="oversizedDataOssTargetArn")
     def oversized_data_oss_target_arn(self) -> pulumi.Output[Optional[str]]:
         """
-        The oss ARN of the delivery channel when the value data oversized limit. 
+        The oss ARN of the delivery channel when the value data oversized limit.
         * The value must be in one of the following formats: `acs:oss:{RegionId}:{accountId}:{bucketName}`, if your delivery destination is an Object Storage Service (OSS) bucket.
         * Only delivery channels `SLS` and `MNS` are supported. The delivery channel limit for Log Service SLS is 1 MB, and the delivery channel limit for Message Service MNS is 64 KB.
         """

@@ -24,12 +24,12 @@ class ServiceCertificateArgs:
         :param pulumi.Input[str] cert: Cert of the Certificate in which the Certificate will add.
         :param pulumi.Input[str] key: Key of the Certificate in which the Certificate will add.
         :param pulumi.Input[str] certificate_name: Name of the Certificate. 
-               This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-               and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
+               This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", 
+               and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. 
                Suffix .sh and .tel are not supported.
                **NOTE:** One of `certificate_name` and `name` must be specified.
         :param pulumi.Input[str] lang: The lang.
-        :param pulumi.Input[str] name: It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+        :param pulumi.Input[str] name: (Deprecated from 1.129.0, Optional, ForceNew) It has been deprecated from version 1.129.0 and using `certificate_name` instead.
         """
         pulumi.set(__self__, "cert", cert)
         pulumi.set(__self__, "key", key)
@@ -72,8 +72,8 @@ class ServiceCertificateArgs:
     def certificate_name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the Certificate. 
-        This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-        and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
+        This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", 
+        and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. 
         Suffix .sh and .tel are not supported.
         **NOTE:** One of `certificate_name` and `name` must be specified.
         """
@@ -99,7 +99,7 @@ class ServiceCertificateArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+        (Deprecated from 1.129.0, Optional, ForceNew) It has been deprecated from version 1.129.0 and using `certificate_name` instead.
         """
         warnings.warn("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
@@ -123,13 +123,13 @@ class _ServiceCertificateState:
         Input properties used for looking up and filtering ServiceCertificate resources.
         :param pulumi.Input[str] cert: Cert of the Certificate in which the Certificate will add.
         :param pulumi.Input[str] certificate_name: Name of the Certificate. 
-               This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-               and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
+               This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", 
+               and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. 
                Suffix .sh and .tel are not supported.
                **NOTE:** One of `certificate_name` and `name` must be specified.
         :param pulumi.Input[str] key: Key of the Certificate in which the Certificate will add.
         :param pulumi.Input[str] lang: The lang.
-        :param pulumi.Input[str] name: It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+        :param pulumi.Input[str] name: (Deprecated from 1.129.0, Optional, ForceNew) It has been deprecated from version 1.129.0 and using `certificate_name` instead.
         """
         if cert is not None:
             pulumi.set(__self__, "cert", cert)
@@ -162,8 +162,8 @@ class _ServiceCertificateState:
     def certificate_name(self) -> Optional[pulumi.Input[str]]:
         """
         Name of the Certificate. 
-        This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-        and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
+        This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", 
+        and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. 
         Suffix .sh and .tel are not supported.
         **NOTE:** One of `certificate_name` and `name` must be specified.
         """
@@ -201,7 +201,7 @@ class _ServiceCertificateState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+        (Deprecated from 1.129.0, Optional, ForceNew) It has been deprecated from version 1.129.0 and using `certificate_name` instead.
         """
         warnings.warn("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")
@@ -308,13 +308,13 @@ class ServiceCertificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cert: Cert of the Certificate in which the Certificate will add.
         :param pulumi.Input[str] certificate_name: Name of the Certificate. 
-               This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-               and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
+               This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", 
+               and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. 
                Suffix .sh and .tel are not supported.
                **NOTE:** One of `certificate_name` and `name` must be specified.
         :param pulumi.Input[str] key: Key of the Certificate in which the Certificate will add.
         :param pulumi.Input[str] lang: The lang.
-        :param pulumi.Input[str] name: It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+        :param pulumi.Input[str] name: (Deprecated from 1.129.0, Optional, ForceNew) It has been deprecated from version 1.129.0 and using `certificate_name` instead.
         """
         ...
     @overload
@@ -464,13 +464,13 @@ class ServiceCertificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cert: Cert of the Certificate in which the Certificate will add.
         :param pulumi.Input[str] certificate_name: Name of the Certificate. 
-               This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-               and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
+               This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", 
+               and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. 
                Suffix .sh and .tel are not supported.
                **NOTE:** One of `certificate_name` and `name` must be specified.
         :param pulumi.Input[str] key: Key of the Certificate in which the Certificate will add.
         :param pulumi.Input[str] lang: The lang.
-        :param pulumi.Input[str] name: It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+        :param pulumi.Input[str] name: (Deprecated from 1.129.0, Optional, ForceNew) It has been deprecated from version 1.129.0 and using `certificate_name` instead.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -496,8 +496,8 @@ class ServiceCertificate(pulumi.CustomResource):
     def certificate_name(self) -> pulumi.Output[str]:
         """
         Name of the Certificate. 
-        This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-",
-        and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time.
+        This name without suffix can have a string of 1 to 63 characters, must contain only alphanumeric characters or "-", 
+        and must not begin or end with "-", and "-" must not in the 3th and 4th character positions at the same time. 
         Suffix .sh and .tel are not supported.
         **NOTE:** One of `certificate_name` and `name` must be specified.
         """
@@ -523,7 +523,7 @@ class ServiceCertificate(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+        (Deprecated from 1.129.0, Optional, ForceNew) It has been deprecated from version 1.129.0 and using `certificate_name` instead.
         """
         warnings.warn("""attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: attribute 'name' has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute 'certificate_name' instead.""")

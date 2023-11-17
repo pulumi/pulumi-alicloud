@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates Whether to Enable the Audit Log.  Valid value: 
+        /// Indicates Whether to Enable the Audit Log.  Valid value:
         /// * true: Default Value, Open.
         /// * false: Closed.
         /// 
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.KVStore
         public Output<string> InstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Audit Log Retention Period Value: 1~365. 
+        /// Audit Log Retention Period Value: 1~365.
         /// 
         /// &gt; **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
         /// </summary>
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.KVStore
     public sealed class AuditLogConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Indicates Whether to Enable the Audit Log.  Valid value: 
+        /// Indicates Whether to Enable the Audit Log.  Valid value:
         /// * true: Default Value, Open.
         /// * false: Closed.
         /// 
@@ -194,7 +194,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string> InstanceId { get; set; } = null!;
 
         /// <summary>
-        /// Audit Log Retention Period Value: 1~365. 
+        /// Audit Log Retention Period Value: 1~365.
         /// 
         /// &gt; **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
         /// </summary>
@@ -216,7 +216,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Indicates Whether to Enable the Audit Log.  Valid value: 
+        /// Indicates Whether to Enable the Audit Log.  Valid value:
         /// * true: Default Value, Open.
         /// * false: Closed.
         /// 
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.KVStore
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// Audit Log Retention Period Value: 1~365. 
+        /// Audit Log Retention Period Value: 1~365.
         /// 
         /// &gt; **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
         /// </summary>

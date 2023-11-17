@@ -208,7 +208,7 @@ public class Network extends com.pulumi.resources.CustomResource {
      * - **ChinaMobile**: China Mobile (single line).
      * - **ChinaUnicom**: China Unicom (single line).
      * - **ChinaTelecom**: China Telecom (single line).
-     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     *   &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
      * 
      */
     @Export(name="ipv6Isp", type=String.class, parameters={})
@@ -220,14 +220,14 @@ public class Network extends com.pulumi.resources.CustomResource {
      * - **ChinaMobile**: China Mobile (single line).
      * - **ChinaUnicom**: China Unicom (single line).
      * - **ChinaTelecom**: China Telecom (single line).
-     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     *   &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
      * 
      */
     public Output<Optional<String>> ipv6Isp() {
         return Codegen.optional(this.ipv6Isp);
     }
     /**
-     * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+     * (Deprecated from v1.119.0+) Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
@@ -238,7 +238,7 @@ public class Network extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+     * @return (Deprecated from v1.119.0+) Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
      */
     public Output<String> name() {
@@ -287,7 +287,7 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.routerId;
     }
     /**
-     * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+     * (Deprecated from v1.206.0+) Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
      * @deprecated
      * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
@@ -298,7 +298,7 @@ public class Network extends com.pulumi.resources.CustomResource {
     private Output<String> routerTableId;
 
     /**
-     * @return Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+     * @return (Deprecated from v1.206.0+) Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
      */
     public Output<String> routerTableId() {

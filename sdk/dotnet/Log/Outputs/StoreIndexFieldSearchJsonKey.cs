@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Log.Outputs
     public sealed class StoreIndexFieldSearchJsonKey
     {
         /// <summary>
-        /// The alias of one field.
+        /// The alias of one field
         /// </summary>
         public readonly string? Alias;
         /// <summary>

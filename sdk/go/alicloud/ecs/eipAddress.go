@@ -43,7 +43,7 @@ type EipAddress struct {
 	// - **OFF**: not enabled.
 	// - **ON**: enabled.
 	HighDefinitionMonitorLogStatus pulumi.StringOutput `pulumi:"highDefinitionMonitorLogStatus"`
-	// . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+	// (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 	InstanceChargeType pulumi.StringOutput `pulumi:"instanceChargeType"`
@@ -59,7 +59,7 @@ type EipAddress struct {
 	LogProject pulumi.StringPtrOutput `pulumi:"logProject"`
 	// The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
 	LogStore pulumi.StringPtrOutput `pulumi:"logStore"`
-	// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+	// (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -139,7 +139,7 @@ type eipAddressState struct {
 	// - **OFF**: not enabled.
 	// - **ON**: enabled.
 	HighDefinitionMonitorLogStatus *string `pulumi:"highDefinitionMonitorLogStatus"`
-	// . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+	// (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -155,7 +155,7 @@ type eipAddressState struct {
 	LogProject *string `pulumi:"logProject"`
 	// The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
 	LogStore *string `pulumi:"logStore"`
-	// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+	// (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 	Name *string `pulumi:"name"`
@@ -206,7 +206,7 @@ type EipAddressState struct {
 	// - **OFF**: not enabled.
 	// - **ON**: enabled.
 	HighDefinitionMonitorLogStatus pulumi.StringPtrInput
-	// . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+	// (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
@@ -222,7 +222,7 @@ type EipAddressState struct {
 	LogProject pulumi.StringPtrInput
 	// The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
 	LogStore pulumi.StringPtrInput
-	// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+	// (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 	Name pulumi.StringPtrInput
@@ -275,7 +275,7 @@ type eipAddressArgs struct {
 	// - **OFF**: not enabled.
 	// - **ON**: enabled.
 	HighDefinitionMonitorLogStatus *string `pulumi:"highDefinitionMonitorLogStatus"`
-	// . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+	// (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
@@ -289,7 +289,7 @@ type eipAddressArgs struct {
 	LogProject *string `pulumi:"logProject"`
 	// The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
 	LogStore *string `pulumi:"logStore"`
-	// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+	// (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 	Name *string `pulumi:"name"`
@@ -337,7 +337,7 @@ type EipAddressArgs struct {
 	// - **OFF**: not enabled.
 	// - **ON**: enabled.
 	HighDefinitionMonitorLogStatus pulumi.StringPtrInput
-	// . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+	// (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
 	//
 	// Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 	InstanceChargeType pulumi.StringPtrInput
@@ -351,7 +351,7 @@ type EipAddressArgs struct {
 	LogProject pulumi.StringPtrInput
 	// The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
 	LogStore pulumi.StringPtrInput
-	// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+	// (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 	Name pulumi.StringPtrInput
@@ -510,7 +510,7 @@ func (o EipAddressOutput) HighDefinitionMonitorLogStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v *EipAddress) pulumi.StringOutput { return v.HighDefinitionMonitorLogStatus }).(pulumi.StringOutput)
 }
 
-// . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+// (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
 //
 // Deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.
 func (o EipAddressOutput) InstanceChargeType() pulumi.StringOutput {
@@ -544,7 +544,7 @@ func (o EipAddressOutput) LogStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EipAddress) pulumi.StringPtrOutput { return v.LogStore }).(pulumi.StringPtrOutput)
 }
 
-// . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+// (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
 //
 // Deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.
 func (o EipAddressOutput) Name() pulumi.StringOutput {

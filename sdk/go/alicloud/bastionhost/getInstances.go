@@ -66,6 +66,7 @@ type GetInstancesArgs struct {
 	// File name to persist data source output.
 	OutputFile *string `pulumi:"outputFile"`
 	// A map of tags assigned to the bastionhost instance. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -127,6 +128,7 @@ type GetInstancesOutputArgs struct {
 	// File name to persist data source output.
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// A map of tags assigned to the bastionhost instance. It must be in the format:
+	//
 	// ```go
 	// package main
 	//

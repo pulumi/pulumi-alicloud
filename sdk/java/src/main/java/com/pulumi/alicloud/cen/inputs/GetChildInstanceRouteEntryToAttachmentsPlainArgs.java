@@ -16,14 +16,14 @@ public final class GetChildInstanceRouteEntryToAttachmentsPlainArgs extends com.
     public static final GetChildInstanceRouteEntryToAttachmentsPlainArgs Empty = new GetChildInstanceRouteEntryToAttachmentsPlainArgs();
 
     /**
-     * The ID of the CEN instance.
+     * (ForceNew,Optional) The ID of the CEN instance.
      * 
      */
     @Import(name="cenId")
     private @Nullable String cenId;
 
     /**
-     * @return The ID of the CEN instance.
+     * @return (ForceNew,Optional) The ID of the CEN instance.
      * 
      */
     public Optional<String> cenId() {
@@ -76,14 +76,14 @@ public final class GetChildInstanceRouteEntryToAttachmentsPlainArgs extends com.
     }
 
     /**
-     * ServiceType
+     * (ForceNew,Optional) ServiceType
      * 
      */
     @Import(name="serviceType")
     private @Nullable String serviceType;
 
     /**
-     * @return ServiceType
+     * @return (ForceNew,Optional) ServiceType
      * 
      */
     public Optional<String> serviceType() {
@@ -135,7 +135,7 @@ public final class GetChildInstanceRouteEntryToAttachmentsPlainArgs extends com.
         }
 
         /**
-         * @param cenId The ID of the CEN instance.
+         * @param cenId (ForceNew,Optional) The ID of the CEN instance.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class GetChildInstanceRouteEntryToAttachmentsPlainArgs extends com.
         }
 
         /**
-         * @param serviceType ServiceType
+         * @param serviceType (ForceNew,Optional) ServiceType
          * 
          * @return builder
          * 

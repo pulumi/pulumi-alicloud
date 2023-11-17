@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetClustersClusterHostGroupListNode {
     /**
-     * @return Creation time.
+     * @return The creation time of the resource.
      * 
      */
     private String createTime;
@@ -65,7 +65,7 @@ public final class GetClustersClusterHostGroupListNode {
 
     private GetClustersClusterHostGroupListNode() {}
     /**
-     * @return Creation time.
+     * @return The creation time of the resource.
      * 
      */
     public String createTime() {

@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class GetClusterCredentialArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The id of target cluster.
+        /// (**Required**) The id of target cluster.
         /// </summary>
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.CS
     public sealed class GetClusterCredentialInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The id of target cluster.
+        /// (**Required**) The id of target cluster.
         /// </summary>
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;

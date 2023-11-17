@@ -16,7 +16,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
     public static final InstanceParameterArgs Empty = new InstanceParameterArgs();
 
     /**
-     * Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+     * (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
      * 
      * @deprecated
      * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
@@ -27,7 +27,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> name;
 
     /**
-     * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+     * @return (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
      * 
      * @deprecated
      * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
@@ -39,7 +39,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+     * (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
      * 
      * @deprecated
      * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
@@ -50,7 +50,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<String> value;
 
     /**
-     * @return Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+     * @return (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
      * 
      * @deprecated
      * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
@@ -87,7 +87,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+         * @param name (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+         * @param name (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
          * 
          * @return builder
          * 
@@ -116,7 +116,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param value Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+         * @param value (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class InstanceParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param value Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
+         * @param value (Deprecated since v1.101.0) Field `parameters` has been deprecated from provider version 1.101.0 and `config` instead.
          * 
          * @return builder
          * 

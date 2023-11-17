@@ -126,7 +126,7 @@ namespace Pulumi.AliCloud.DirectMail
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
         /// </summary>
         [Input("status")]
         public int? Status { get; set; }
@@ -170,7 +170,7 @@ namespace Pulumi.AliCloud.DirectMail
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid Values: `0` means uploading, `1` means upload completed.
         /// </summary>
         [Input("status")]
         public Input<int>? Status { get; set; }

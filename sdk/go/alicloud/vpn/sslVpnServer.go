@@ -25,9 +25,6 @@ type SslVpnServer struct {
 	pulumi.CustomResourceState
 
 	// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-	// * `AES-128-CBC` - the AES-128-CBC algorithm.
-	// * `AES-192-CBC` - the AES-192-CBC algorithm.
-	// * `AES-256-CBC` - the AES-256-CBC algorithm.
 	Cipher pulumi.StringPtrOutput `pulumi:"cipher"`
 	// The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
 	ClientIpPool pulumi.StringOutput `pulumi:"clientIpPool"`
@@ -91,9 +88,6 @@ func GetSslVpnServer(ctx *pulumi.Context,
 // Input properties used for looking up and filtering SslVpnServer resources.
 type sslVpnServerState struct {
 	// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-	// * `AES-128-CBC` - the AES-128-CBC algorithm.
-	// * `AES-192-CBC` - the AES-192-CBC algorithm.
-	// * `AES-256-CBC` - the AES-256-CBC algorithm.
 	Cipher *string `pulumi:"cipher"`
 	// The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
 	ClientIpPool *string `pulumi:"clientIpPool"`
@@ -119,9 +113,6 @@ type sslVpnServerState struct {
 
 type SslVpnServerState struct {
 	// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-	// * `AES-128-CBC` - the AES-128-CBC algorithm.
-	// * `AES-192-CBC` - the AES-192-CBC algorithm.
-	// * `AES-256-CBC` - the AES-256-CBC algorithm.
 	Cipher pulumi.StringPtrInput
 	// The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
 	ClientIpPool pulumi.StringPtrInput
@@ -151,9 +142,6 @@ func (SslVpnServerState) ElementType() reflect.Type {
 
 type sslVpnServerArgs struct {
 	// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-	// * `AES-128-CBC` - the AES-128-CBC algorithm.
-	// * `AES-192-CBC` - the AES-192-CBC algorithm.
-	// * `AES-256-CBC` - the AES-256-CBC algorithm.
 	Cipher *string `pulumi:"cipher"`
 	// The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
 	ClientIpPool string `pulumi:"clientIpPool"`
@@ -174,9 +162,6 @@ type sslVpnServerArgs struct {
 // The set of arguments for constructing a SslVpnServer resource.
 type SslVpnServerArgs struct {
 	// The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-	// * `AES-128-CBC` - the AES-128-CBC algorithm.
-	// * `AES-192-CBC` - the AES-192-CBC algorithm.
-	// * `AES-256-CBC` - the AES-256-CBC algorithm.
 	Cipher pulumi.StringPtrInput
 	// The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
 	ClientIpPool pulumi.StringInput
@@ -282,9 +267,6 @@ func (o SslVpnServerOutput) ToSslVpnServerOutputWithContext(ctx context.Context)
 }
 
 // The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-// * `AES-128-CBC` - the AES-128-CBC algorithm.
-// * `AES-192-CBC` - the AES-192-CBC algorithm.
-// * `AES-256-CBC` - the AES-256-CBC algorithm.
 func (o SslVpnServerOutput) Cipher() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SslVpnServer) pulumi.StringPtrOutput { return v.Cipher }).(pulumi.StringPtrOutput)
 }

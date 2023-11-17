@@ -29,18 +29,18 @@ class ElasticityAssuranceArgs:
         """
         The set of arguments for constructing a ElasticityAssurance resource.
         :param pulumi.Input[int] instance_amount: The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
-        :param pulumi.Input[str] instance_type: Instance type. Currently, only one instance type is supported.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
-        :param pulumi.Input[str] assurance_times: The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+        :param pulumi.Input[str] instance_type: (ForceNew,Required) Instance type. Currently, only one instance type is supported.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+        :param pulumi.Input[str] assurance_times: (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
         :param pulumi.Input[str] description: Description of flexible guarantee service.
         :param pulumi.Input[int] period: Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
                - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
                - When the `period_unit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
         :param pulumi.Input[str] period_unit: Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
-        :param pulumi.Input[str] private_pool_options_match_criteria: The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+        :param pulumi.Input[str] private_pool_options_match_criteria: (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
         :param pulumi.Input[str] private_pool_options_name: The name of the flexible protection service.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] start_time: Flexible guarantee service effective time.
+        :param pulumi.Input[str] resource_group_id: (ForceNew,Optional) The ID of the resource group.
+        :param pulumi.Input[str] start_time: (ForceNew,Optional) Flexible guarantee service effective time.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag key-value pair information bound by the elastic guarantee service.
         """
         pulumi.set(__self__, "instance_amount", instance_amount)
@@ -81,7 +81,7 @@ class ElasticityAssuranceArgs:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[str]:
         """
-        Instance type. Currently, only one instance type is supported.
+        (ForceNew,Required) Instance type. Currently, only one instance type is supported.
         """
         return pulumi.get(self, "instance_type")
 
@@ -93,7 +93,7 @@ class ElasticityAssuranceArgs:
     @pulumi.getter(name="zoneIds")
     def zone_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+        (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
         """
         return pulumi.get(self, "zone_ids")
 
@@ -105,7 +105,7 @@ class ElasticityAssuranceArgs:
     @pulumi.getter(name="assuranceTimes")
     def assurance_times(self) -> Optional[pulumi.Input[str]]:
         """
-        The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+        (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
         """
         return pulumi.get(self, "assurance_times")
 
@@ -155,7 +155,7 @@ class ElasticityAssuranceArgs:
     @pulumi.getter(name="privatePoolOptionsMatchCriteria")
     def private_pool_options_match_criteria(self) -> Optional[pulumi.Input[str]]:
         """
-        The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+        (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
         """
         return pulumi.get(self, "private_pool_options_match_criteria")
 
@@ -179,7 +179,7 @@ class ElasticityAssuranceArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group.
+        (ForceNew,Optional) The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -191,7 +191,7 @@ class ElasticityAssuranceArgs:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Flexible guarantee service effective time.
+        (ForceNew,Optional) Flexible guarantee service effective time.
         """
         return pulumi.get(self, "start_time")
 
@@ -235,26 +235,26 @@ class _ElasticityAssuranceState:
                  zone_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering ElasticityAssurance resources.
-        :param pulumi.Input[str] assurance_times: The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+        :param pulumi.Input[str] assurance_times: (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
         :param pulumi.Input[str] description: Description of flexible guarantee service.
         :param pulumi.Input[str] elasticity_assurance_id: The first ID of the resource
         :param pulumi.Input[str] end_time: Flexible guarantee service failure time.
         :param pulumi.Input[int] instance_amount: The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
         :param pulumi.Input[str] instance_charge_type: The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
-        :param pulumi.Input[str] instance_type: Instance type. Currently, only one instance type is supported.
+        :param pulumi.Input[str] instance_type: (ForceNew,Required) Instance type. Currently, only one instance type is supported.
         :param pulumi.Input[int] period: Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
                - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
                - When the `period_unit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
         :param pulumi.Input[str] period_unit: Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
-        :param pulumi.Input[str] private_pool_options_match_criteria: The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+        :param pulumi.Input[str] private_pool_options_match_criteria: (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
         :param pulumi.Input[str] private_pool_options_name: The name of the flexible protection service.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] start_time: Flexible guarantee service effective time.
+        :param pulumi.Input[str] resource_group_id: (ForceNew,Optional) The ID of the resource group.
+        :param pulumi.Input[str] start_time: (ForceNew,Optional) Flexible guarantee service effective time.
         :param pulumi.Input[str] start_time_type: Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
         :param pulumi.Input[str] status: The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag key-value pair information bound by the elastic guarantee service.
         :param pulumi.Input[int] used_assurance_times: This parameter is not yet available.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
         """
         if assurance_times is not None:
             pulumi.set(__self__, "assurance_times", assurance_times)
@@ -297,7 +297,7 @@ class _ElasticityAssuranceState:
     @pulumi.getter(name="assuranceTimes")
     def assurance_times(self) -> Optional[pulumi.Input[str]]:
         """
-        The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+        (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
         """
         return pulumi.get(self, "assurance_times")
 
@@ -369,7 +369,7 @@ class _ElasticityAssuranceState:
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Instance type. Currently, only one instance type is supported.
+        (ForceNew,Required) Instance type. Currently, only one instance type is supported.
         """
         return pulumi.get(self, "instance_type")
 
@@ -407,7 +407,7 @@ class _ElasticityAssuranceState:
     @pulumi.getter(name="privatePoolOptionsMatchCriteria")
     def private_pool_options_match_criteria(self) -> Optional[pulumi.Input[str]]:
         """
-        The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+        (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
         """
         return pulumi.get(self, "private_pool_options_match_criteria")
 
@@ -431,7 +431,7 @@ class _ElasticityAssuranceState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the resource group.
+        (ForceNew,Optional) The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -443,7 +443,7 @@ class _ElasticityAssuranceState:
     @pulumi.getter(name="startTime")
     def start_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Flexible guarantee service effective time.
+        (ForceNew,Optional) Flexible guarantee service effective time.
         """
         return pulumi.get(self, "start_time")
 
@@ -503,7 +503,7 @@ class _ElasticityAssuranceState:
     @pulumi.getter(name="zoneIds")
     def zone_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+        (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
         """
         return pulumi.get(self, "zone_ids")
 
@@ -547,20 +547,20 @@ class ElasticityAssurance(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] assurance_times: The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+        :param pulumi.Input[str] assurance_times: (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
         :param pulumi.Input[str] description: Description of flexible guarantee service.
         :param pulumi.Input[int] instance_amount: The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
-        :param pulumi.Input[str] instance_type: Instance type. Currently, only one instance type is supported.
+        :param pulumi.Input[str] instance_type: (ForceNew,Required) Instance type. Currently, only one instance type is supported.
         :param pulumi.Input[int] period: Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
                - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
                - When the `period_unit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
         :param pulumi.Input[str] period_unit: Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
-        :param pulumi.Input[str] private_pool_options_match_criteria: The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+        :param pulumi.Input[str] private_pool_options_match_criteria: (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
         :param pulumi.Input[str] private_pool_options_name: The name of the flexible protection service.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] start_time: Flexible guarantee service effective time.
+        :param pulumi.Input[str] resource_group_id: (ForceNew,Optional) The ID of the resource group.
+        :param pulumi.Input[str] start_time: (ForceNew,Optional) Flexible guarantee service effective time.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag key-value pair information bound by the elastic guarantee service.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
         """
         ...
     @overload
@@ -678,26 +678,26 @@ class ElasticityAssurance(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] assurance_times: The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+        :param pulumi.Input[str] assurance_times: (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
         :param pulumi.Input[str] description: Description of flexible guarantee service.
         :param pulumi.Input[str] elasticity_assurance_id: The first ID of the resource
         :param pulumi.Input[str] end_time: Flexible guarantee service failure time.
         :param pulumi.Input[int] instance_amount: The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
         :param pulumi.Input[str] instance_charge_type: The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
-        :param pulumi.Input[str] instance_type: Instance type. Currently, only one instance type is supported.
+        :param pulumi.Input[str] instance_type: (ForceNew,Required) Instance type. Currently, only one instance type is supported.
         :param pulumi.Input[int] period: Length of purchase. The unit of duration is determined by the 'period_unit' parameter. Default value: 1.
                - When the `period_unit` parameter is set to Month, the valid values are 1, 2, 3, 4, 5, 6, 7, 8, and 9.
                - When the `period_unit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
         :param pulumi.Input[str] period_unit: Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
-        :param pulumi.Input[str] private_pool_options_match_criteria: The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+        :param pulumi.Input[str] private_pool_options_match_criteria: (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
         :param pulumi.Input[str] private_pool_options_name: The name of the flexible protection service.
-        :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] start_time: Flexible guarantee service effective time.
+        :param pulumi.Input[str] resource_group_id: (ForceNew,Optional) The ID of the resource group.
+        :param pulumi.Input[str] start_time: (ForceNew,Optional) Flexible guarantee service effective time.
         :param pulumi.Input[str] start_time_type: Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
         :param pulumi.Input[str] status: The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag key-value pair information bound by the elastic guarantee service.
         :param pulumi.Input[int] used_assurance_times: This parameter is not yet available.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] zone_ids: (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -727,7 +727,7 @@ class ElasticityAssurance(pulumi.CustomResource):
     @pulumi.getter(name="assuranceTimes")
     def assurance_times(self) -> pulumi.Output[str]:
         """
-        The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+        (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
         """
         return pulumi.get(self, "assurance_times")
 
@@ -775,7 +775,7 @@ class ElasticityAssurance(pulumi.CustomResource):
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Output[str]:
         """
-        Instance type. Currently, only one instance type is supported.
+        (ForceNew,Required) Instance type. Currently, only one instance type is supported.
         """
         return pulumi.get(self, "instance_type")
 
@@ -801,7 +801,7 @@ class ElasticityAssurance(pulumi.CustomResource):
     @pulumi.getter(name="privatePoolOptionsMatchCriteria")
     def private_pool_options_match_criteria(self) -> pulumi.Output[str]:
         """
-        The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+        (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
         """
         return pulumi.get(self, "private_pool_options_match_criteria")
 
@@ -817,7 +817,7 @@ class ElasticityAssurance(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The ID of the resource group.
+        (ForceNew,Optional) The ID of the resource group.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -825,7 +825,7 @@ class ElasticityAssurance(pulumi.CustomResource):
     @pulumi.getter(name="startTime")
     def start_time(self) -> pulumi.Output[str]:
         """
-        Flexible guarantee service effective time.
+        (ForceNew,Optional) Flexible guarantee service effective time.
         """
         return pulumi.get(self, "start_time")
 
@@ -865,7 +865,7 @@ class ElasticityAssurance(pulumi.CustomResource):
     @pulumi.getter(name="zoneIds")
     def zone_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+        (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
         """
         return pulumi.get(self, "zone_ids")
 

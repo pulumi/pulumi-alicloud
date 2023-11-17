@@ -138,7 +138,7 @@ namespace Pulumi.AliCloud.Amqp
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: "DEPLOYING", "EXPIRED", "RELEASED", "SERVING".
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -182,7 +182,7 @@ namespace Pulumi.AliCloud.Amqp
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: "DEPLOYING", "EXPIRED", "RELEASED", "SERVING".
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

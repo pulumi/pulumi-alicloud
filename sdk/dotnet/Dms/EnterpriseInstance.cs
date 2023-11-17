@@ -285,7 +285,7 @@ namespace Pulumi.AliCloud.Dms
         public Output<bool?> SkipTest { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from provider version 1.100.0 and 'status' instead.
+        /// (Deprecated) It has been deprecated from provider version 1.100.0 and 'status' instead.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -693,7 +693,7 @@ namespace Pulumi.AliCloud.Dms
         public Input<bool>? SkipTest { get; set; }
 
         /// <summary>
-        /// It has been deprecated from provider version 1.100.0 and 'status' instead.
+        /// (Deprecated) It has been deprecated from provider version 1.100.0 and 'status' instead.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

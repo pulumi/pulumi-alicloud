@@ -114,7 +114,7 @@ export class Account extends pulumi.CustomResource {
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
-     * Default to Normal.
+     *   Default to Normal.
      */
     public readonly accountType!: pulumi.Output<string | undefined>;
     /**
@@ -207,7 +207,7 @@ export interface AccountState {
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
-     * Default to Normal.
+     *   Default to Normal.
      */
     accountType?: pulumi.Input<string>;
     /**
@@ -254,7 +254,7 @@ export interface AccountArgs {
     /**
      * Privilege type of account.
      * - Normal: Common privilege.
-     * Default to Normal.
+     *   Default to Normal.
      */
     accountType?: pulumi.Input<string>;
     /**

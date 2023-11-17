@@ -62,13 +62,13 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> FingerPrint { get; private set; } = null!;
 
         /// <summary>
-        /// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
+        /// (ForceNew) The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
         /// </summary>
         [Output("keyFile")]
         public Output<string?> KeyFile { get; private set; } = null!;
 
         /// <summary>
-        /// The key pair's name. It is the only in one Alicloud account.
+        /// (ForceNew) The key pair's name. It is the only in one Alicloud account.
         /// </summary>
         [Output("keyName")]
         public Output<string> KeyName { get; private set; } = null!;
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> KeyPairName { get; private set; } = null!;
 
         /// <summary>
-        /// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+        /// (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         /// </summary>
         [Output("publicKey")]
         public Output<string?> PublicKey { get; private set; } = null!;
@@ -141,13 +141,13 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class KeyPairArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
+        /// (ForceNew) The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
         /// </summary>
         [Input("keyFile")]
         public Input<string>? KeyFile { get; set; }
 
         /// <summary>
-        /// The key pair's name. It is the only in one Alicloud account.
+        /// (ForceNew) The key pair's name. It is the only in one Alicloud account.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -159,7 +159,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? KeyPairName { get; set; }
 
         /// <summary>
-        /// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+        /// (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         /// </summary>
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }
@@ -190,13 +190,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? FingerPrint { get; set; }
 
         /// <summary>
-        /// The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
+        /// (ForceNew) The name of file to save your new key pair's private key. Strongly suggest you to specified it when you creating key pair, otherwise, you wouldn't get its private key ever.
         /// </summary>
         [Input("keyFile")]
         public Input<string>? KeyFile { get; set; }
 
         /// <summary>
-        /// The key pair's name. It is the only in one Alicloud account.
+        /// (ForceNew) The key pair's name. It is the only in one Alicloud account.
         /// </summary>
         [Input("keyName")]
         public Input<string>? KeyName { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? KeyPairName { get; set; }
 
         /// <summary>
-        /// You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
+        /// (ForceNew) You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
         /// </summary>
         [Input("publicKey")]
         public Input<string>? PublicKey { get; set; }

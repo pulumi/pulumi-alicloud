@@ -164,7 +164,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
         return this.highDefinitionMonitorLogStatus;
     }
     /**
-     * (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
+     * (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
      * 
      * @deprecated
      * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
@@ -175,7 +175,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
     private Output<String> instanceChargeType;
 
     /**
-     * @return (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
+     * @return (Depreacted, Optional, ForceNew) (It has been deprecated from version 1.126.0 and using new attribute `payment_type` instead) Elastic IP instance charge type. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
      * 
      */
     public Output<String> instanceChargeType() {
@@ -236,7 +236,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.logStore);
     }
     /**
-     * It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+     * (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
@@ -247,7 +247,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
+     * @return (Deprecated) It has been deprecated from version 1.126.0 and using new attribute `address_name` instead.
      * 
      */
     public Output<String> name() {

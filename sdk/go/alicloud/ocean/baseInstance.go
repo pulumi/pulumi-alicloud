@@ -99,7 +99,7 @@ type BaseInstance struct {
 	// - receive_all: Keep all backup sets;
 	// - delete_all: delete all backup sets;
 	// - receive_last: Keep the last backup set.
-	// > **NOTE:**   The default value is delete_all.
+	//   > **NOTE:**   The default value is delete_all.
 	BackupRetainMode pulumi.StringPtrOutput `pulumi:"backupRetainMode"`
 	// The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
 	CommodityCode pulumi.StringOutput `pulumi:"commodityCode"`
@@ -209,7 +209,7 @@ type baseInstanceState struct {
 	// - receive_all: Keep all backup sets;
 	// - delete_all: delete all backup sets;
 	// - receive_last: Keep the last backup set.
-	// > **NOTE:**   The default value is delete_all.
+	//   > **NOTE:**   The default value is delete_all.
 	BackupRetainMode *string `pulumi:"backupRetainMode"`
 	// The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
 	CommodityCode *string `pulumi:"commodityCode"`
@@ -275,7 +275,7 @@ type BaseInstanceState struct {
 	// - receive_all: Keep all backup sets;
 	// - delete_all: delete all backup sets;
 	// - receive_last: Keep the last backup set.
-	// > **NOTE:**   The default value is delete_all.
+	//   > **NOTE:**   The default value is delete_all.
 	BackupRetainMode pulumi.StringPtrInput
 	// The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
 	CommodityCode pulumi.StringPtrInput
@@ -345,7 +345,7 @@ type baseInstanceArgs struct {
 	// - receive_all: Keep all backup sets;
 	// - delete_all: delete all backup sets;
 	// - receive_last: Keep the last backup set.
-	// > **NOTE:**   The default value is delete_all.
+	//   > **NOTE:**   The default value is delete_all.
 	BackupRetainMode *string `pulumi:"backupRetainMode"`
 	// The size of the storage space, in GB.
 	// The limits of storage space vary according to the cluster specifications, as follows:
@@ -404,7 +404,7 @@ type BaseInstanceArgs struct {
 	// - receive_all: Keep all backup sets;
 	// - delete_all: delete all backup sets;
 	// - receive_last: Keep the last backup set.
-	// > **NOTE:**   The default value is delete_all.
+	//   > **NOTE:**   The default value is delete_all.
 	BackupRetainMode pulumi.StringPtrInput
 	// The size of the storage space, in GB.
 	// The limits of storage space vary according to the cluster specifications, as follows:
@@ -551,10 +551,10 @@ func (o BaseInstanceOutput) AutoRenewPeriod() pulumi.IntPtrOutput {
 }
 
 // The backup retention policy after the cluster is deleted. The values are as follows:
-// - receive_all: Keep all backup sets;
-// - delete_all: delete all backup sets;
-// - receive_last: Keep the last backup set.
-// > **NOTE:**   The default value is delete_all.
+//   - receive_all: Keep all backup sets;
+//   - delete_all: delete all backup sets;
+//   - receive_last: Keep the last backup set.
+//     > **NOTE:**   The default value is delete_all.
 func (o BaseInstanceOutput) BackupRetainMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BaseInstance) pulumi.StringPtrOutput { return v.BackupRetainMode }).(pulumi.StringPtrOutput)
 }

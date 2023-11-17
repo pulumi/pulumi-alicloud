@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.Alb.Inputs
         public Input<string>? ServerIp { get; set; }
 
         /// <summary>
-        /// The type of the server. The type of the server. Valid values: 
+        /// The type of the server. The type of the server. Valid values:
         /// - Ecs: an ECS instance.
         /// - Eni: an ENI.
         /// - Eci: an elastic container instance.

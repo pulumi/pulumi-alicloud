@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.Edas
         public Output<string> GroupName { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+        /// (ForceNew) The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
         /// </summary>
         [Output("groupType")]
         public Output<int> GroupType { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.AliCloud.Edas
         public Input<string>? GroupName { get; set; }
 
         /// <summary>
-        /// The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
+        /// (ForceNew) The type of the instance group that you want to create. Valid values: 0: Default group. 1: Phased release is disabled for traffic management. 2: Phased release is enabled for traffic management.
         /// </summary>
         [Input("groupType")]
         public Input<int>? GroupType { get; set; }

@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
     public sealed class GetVpcFirewallCensCenResult
     {
         /// <summary>
-        /// The ID of the CEN instance.
+        /// (ForceNew,Optional) The ID of the CEN instance.
         /// </summary>
         public readonly string CenId;
         /// <summary>
@@ -30,19 +30,19 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetVpcFirewallCensCenLocalVpcResult> LocalVpcs;
         /// <summary>
-        /// The ID of the VPC instance that created the VPC firewall.
+        /// (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
         /// </summary>
         public readonly string NetworkInstanceId;
         /// <summary>
-        /// Firewall switch status
+        /// (ForceNew,Optional) Firewall switch status
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// VPC firewall ID
+        /// (ForceNew,Optional) VPC firewall ID
         /// </summary>
         public readonly string VpcFirewallId;
         /// <summary>
-        /// The name of the VPC firewall instance.
+        /// (ForceNew,Optional) The name of the VPC firewall instance.
         /// </summary>
         public readonly string VpcFirewallName;
 

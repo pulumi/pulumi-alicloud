@@ -251,7 +251,7 @@ def get_load_balancers(address_type: Optional[str] = None,
     :param Mapping[str, Any] tags: The tag of the resource.
     :param str vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
     :param Sequence[str] vpc_ids: The vpc ids.
-    :param str zone_id: The ID of the zone to which the ALB instance belongs.
+    :param str zone_id: The zone ID of the resource.
     """
     __args__ = dict()
     __args__['addressType'] = address_type
@@ -344,6 +344,6 @@ def get_load_balancers_output(address_type: Optional[pulumi.Input[Optional[str]]
     :param Mapping[str, Any] tags: The tag of the resource.
     :param str vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
     :param Sequence[str] vpc_ids: The vpc ids.
-    :param str zone_id: The ID of the zone to which the ALB instance belongs.
+    :param str zone_id: The zone ID of the resource.
     """
     ...

@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesRuleRuleConditionMethodConfig {
     /**
-     * @return Add one or more IP addresses or IP address segments.
+     * @return The request method. Valid values: `HEAD`, `GET`, `POST`, `OPTIONS`, `PUT`, `PATCH`, and `DELETE`.
      * 
      */
     private List<String> values;
 
     private GetRulesRuleRuleConditionMethodConfig() {}
     /**
-     * @return Add one or more IP addresses or IP address segments.
+     * @return The request method. Valid values: `HEAD`, `GET`, `POST`, `OPTIONS`, `PUT`, `PATCH`, and `DELETE`.
      * 
      */
     public List<String> values() {

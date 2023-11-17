@@ -25,7 +25,7 @@ public final class GetSnapshotsSnapshot {
      */
     private String backupType;
     /**
-     * @return The name of OSS bucket.
+     * @return (OSS) The name of OSS bucket.
      * 
      */
     private String bucket;
@@ -40,7 +40,7 @@ public final class GetSnapshotsSnapshot {
      */
     private String bytesTotal;
     /**
-     * @return The ID of ECS backup client.
+     * @return (ECS_FILE) The ID of ECS backup client.
      * 
      */
     private String clientId;
@@ -50,7 +50,7 @@ public final class GetSnapshotsSnapshot {
      */
     private String completeTime;
     /**
-     * @return File System Creation Time of Nas. Unix Time Seconds.
+     * @return (NAS) File System Creation Time of Nas. Unix Time Seconds.
      * 
      */
     private String createTime;
@@ -61,7 +61,7 @@ public final class GetSnapshotsSnapshot {
     private String createdTime;
     private String errorFile;
     /**
-     * @return The ID of NAS File system.
+     * @return (NAS) The ID of NAS File system.
      * 
      */
     private String fileSystemId;
@@ -71,7 +71,7 @@ public final class GetSnapshotsSnapshot {
      */
     private String id;
     /**
-     * @return The ID of ECS instance.
+     * @return (ECS_FILE) The ID of ECS instance.
      * 
      */
     private String instanceId;
@@ -96,12 +96,12 @@ public final class GetSnapshotsSnapshot {
      */
     private String parentSnapshotHash;
     /**
-     * @return Backup Path.
+     * @return (ECS_FILE, NAS) Backup Path.
      * 
      */
     private String path;
     /**
-     * @return Backup file prefix.
+     * @return (OSS) Backup file prefix.
      * 
      */
     private String prefix;
@@ -164,7 +164,7 @@ public final class GetSnapshotsSnapshot {
         return this.backupType;
     }
     /**
-     * @return The name of OSS bucket.
+     * @return (OSS) The name of OSS bucket.
      * 
      */
     public String bucket() {
@@ -185,7 +185,7 @@ public final class GetSnapshotsSnapshot {
         return this.bytesTotal;
     }
     /**
-     * @return The ID of ECS backup client.
+     * @return (ECS_FILE) The ID of ECS backup client.
      * 
      */
     public String clientId() {
@@ -199,7 +199,7 @@ public final class GetSnapshotsSnapshot {
         return this.completeTime;
     }
     /**
-     * @return File System Creation Time of Nas. Unix Time Seconds.
+     * @return (NAS) File System Creation Time of Nas. Unix Time Seconds.
      * 
      */
     public String createTime() {
@@ -216,7 +216,7 @@ public final class GetSnapshotsSnapshot {
         return this.errorFile;
     }
     /**
-     * @return The ID of NAS File system.
+     * @return (NAS) The ID of NAS File system.
      * 
      */
     public String fileSystemId() {
@@ -230,7 +230,7 @@ public final class GetSnapshotsSnapshot {
         return this.id;
     }
     /**
-     * @return The ID of ECS instance.
+     * @return (ECS_FILE) The ID of ECS instance.
      * 
      */
     public String instanceId() {
@@ -265,14 +265,14 @@ public final class GetSnapshotsSnapshot {
         return this.parentSnapshotHash;
     }
     /**
-     * @return Backup Path.
+     * @return (ECS_FILE, NAS) Backup Path.
      * 
      */
     public String path() {
         return this.path;
     }
     /**
-     * @return Backup file prefix.
+     * @return (OSS) Backup file prefix.
      * 
      */
     public String prefix() {

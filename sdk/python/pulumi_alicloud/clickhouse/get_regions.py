@@ -105,7 +105,7 @@ def get_regions(current: Optional[bool] = None,
 
     :param bool current: Set to true to match only the region configured in the provider. Default value: `true`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str region_id: The Region ID.
+    :param str region_id: (Option) You can use specified region_id to find the region and available zones information that supports ClickHouse.
     """
     __args__ = dict()
     __args__['current'] = current
@@ -147,6 +147,6 @@ def get_regions_output(current: Optional[pulumi.Input[Optional[bool]]] = None,
 
     :param bool current: Set to true to match only the region configured in the provider. Default value: `true`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str region_id: The Region ID.
+    :param str region_id: (Option) You can use specified region_id to find the region and available zones information that supports ClickHouse.
     """
     ...

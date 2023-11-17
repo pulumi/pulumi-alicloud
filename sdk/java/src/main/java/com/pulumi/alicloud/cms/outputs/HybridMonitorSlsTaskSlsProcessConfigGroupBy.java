@@ -17,7 +17,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigGroupBy {
      */
     private @Nullable String alias;
     /**
-     * @return The name of the key that is used to filter logs imported from Log Service.
+     * @return The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
     private @Nullable String slsKeyName;
@@ -31,7 +31,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigGroupBy {
         return Optional.ofNullable(this.alias);
     }
     /**
-     * @return The name of the key that is used to filter logs imported from Log Service.
+     * @return The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
     public Optional<String> slsKeyName() {

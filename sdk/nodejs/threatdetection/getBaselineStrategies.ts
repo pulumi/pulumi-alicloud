@@ -29,7 +29,7 @@ export function getBaselineStrategies(args?: GetBaselineStrategiesArgs, opts?: p
  */
 export interface GetBaselineStrategiesArgs {
     /**
-     * The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+     * (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
      */
     customType?: string;
     /**
@@ -88,7 +88,7 @@ export function getBaselineStrategiesOutput(args?: GetBaselineStrategiesOutputAr
  */
 export interface GetBaselineStrategiesOutputArgs {
     /**
-     * The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+     * (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
      */
     customType?: pulumi.Input<string>;
     /**

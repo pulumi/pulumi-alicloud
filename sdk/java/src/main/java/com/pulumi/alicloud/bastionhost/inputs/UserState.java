@@ -164,7 +164,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
      * * Ram: Ram User
      * * AD: AD-authenticated User
      * * LDAP: LDAP-authenticated User
-     * &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
+     *   &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
      * 
      */
     @Import(name="source")
@@ -176,7 +176,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
      * * Ram: Ram User
      * * AD: AD-authenticated User
      * * LDAP: LDAP-authenticated User
-     * &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
+     *   &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
      * 
      */
     public Optional<Output<String>> source() {
@@ -469,7 +469,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          * * Ram: Ram User
          * * AD: AD-authenticated User
          * * LDAP: LDAP-authenticated User
-         * &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
+         *   &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
          * 
          * @return builder
          * 
@@ -485,7 +485,7 @@ public final class UserState extends com.pulumi.resources.ResourceArgs {
          * * Ram: Ram User
          * * AD: AD-authenticated User
          * * LDAP: LDAP-authenticated User
-         * &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
+         *   &gt; **NOTE:** From version 1.199.0, `source` can be set to `AD`, `LDAP`.
          * 
          * @return builder
          * 

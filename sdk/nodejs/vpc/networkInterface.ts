@@ -118,13 +118,13 @@ export class NetworkInterface extends pulumi.CustomResource {
     public readonly privateIpsCount!: pulumi.Output<number>;
     public readonly queueNumber!: pulumi.Output<number>;
     /**
-     * The Id of resource group which the network interface belongs.
+     * (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     public readonly secondaryPrivateIpAddressCount!: pulumi.Output<number>;
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
-     * A list of security group ids to associate with.
+     * (Require) A list of security group ids to associate with.
      *
      * @deprecated Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
      */
@@ -244,13 +244,13 @@ export interface NetworkInterfaceState {
     privateIpsCount?: pulumi.Input<number>;
     queueNumber?: pulumi.Input<number>;
     /**
-     * The Id of resource group which the network interface belongs.
+     * (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     secondaryPrivateIpAddressCount?: pulumi.Input<number>;
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of security group ids to associate with.
+     * (Require) A list of security group ids to associate with.
      *
      * @deprecated Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
      */
@@ -305,13 +305,13 @@ export interface NetworkInterfaceArgs {
     privateIpsCount?: pulumi.Input<number>;
     queueNumber?: pulumi.Input<number>;
     /**
-     * The Id of resource group which the network interface belongs.
+     * (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     secondaryPrivateIpAddressCount?: pulumi.Input<number>;
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * A list of security group ids to associate with.
+     * (Require) A list of security group ids to associate with.
      *
      * @deprecated Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead
      */

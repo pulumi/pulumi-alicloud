@@ -46,7 +46,7 @@ export interface GetInstancesArgs {
      */
     ids?: string[];
     /**
-     * The first ID of the resource
+     * (ForceNew,Optional) The first ID of the resource
      */
     instanceId?: string;
     /**
@@ -116,7 +116,7 @@ export interface GetInstancesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The first ID of the resource
+     * (ForceNew,Optional) The first ID of the resource
      */
     instanceId?: pulumi.Input<string>;
     /**

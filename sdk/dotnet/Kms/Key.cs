@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> DeleteDate { get; private set; } = null!;
 
         /// <summary>
-        /// Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+        /// (Deprecated since v1.85.0) Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         /// </summary>
         [Output("deletionWindowInDays")]
         public Output<int> DeletionWindowInDays { get; private set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Kms
         public Output<string?> DkmsInstanceId { get; private set; } = null!;
 
         /// <summary>
-        /// Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        /// (Deprecated since v1.85.0) Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
         /// </summary>
         [Output("isEnabled")]
         public Output<bool?> IsEnabled { get; private set; } = null!;
@@ -110,15 +110,13 @@ namespace Pulumi.AliCloud.Kms
         public Output<string> KeySpec { get; private set; } = null!;
 
         /// <summary>
-        /// Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+        /// (Deprecated since v1.123.1) Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         /// </summary>
         [Output("keyState")]
         public Output<string> KeyStatus { get; private set; } = null!;
 
         /// <summary>
         /// The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-        /// - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-        /// - `SIGN/VERIFY`: generates or verifies a digital signature.
         /// </summary>
         [Output("keyUsage")]
         public Output<string> KeyUsage { get; private set; } = null!;
@@ -149,7 +147,7 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The number of days before the CMK is deleted. 
-        /// During this period, the CMK is in the PendingDeletion state.
+        /// During this period, the CMK is in the PendingDeletion state. 
         /// After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
         /// **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         /// </summary>
@@ -170,9 +168,9 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The interval for automatic key rotation. Specify the value in the integer[unit] format.
-        /// The following units are supported: d (day), h (hour), m (minute), and s (second).
-        /// For example, you can use either 7d or 604800s to specify a seven-day interval.
-        /// The interval can range from 7 days to 730 days.
+        /// The following units are supported: d (day), h (hour), m (minute), and s (second). 
+        /// For example, you can use either 7d or 604800s to specify a seven-day interval. 
+        /// The interval can range from 7 days to 730 days. 
         /// **NOTE**: It is Required when `automatic_rotation = "Enabled"`
         /// 
         /// &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
@@ -245,7 +243,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? AutomaticRotation { get; set; }
 
         /// <summary>
-        /// Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+        /// (Deprecated since v1.85.0) Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         /// </summary>
         [Input("deletionWindowInDays")]
         public Input<int>? DeletionWindowInDays { get; set; }
@@ -263,7 +261,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? DkmsInstanceId { get; set; }
 
         /// <summary>
-        /// Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        /// (Deprecated since v1.85.0) Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
         /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
@@ -277,15 +275,13 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? KeySpec { get; set; }
 
         /// <summary>
-        /// Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+        /// (Deprecated since v1.123.1) Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         /// </summary>
         [Input("keyState")]
         public Input<string>? KeyStatus { get; set; }
 
         /// <summary>
         /// The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-        /// - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-        /// - `SIGN/VERIFY`: generates or verifies a digital signature.
         /// </summary>
         [Input("keyUsage")]
         public Input<string>? KeyUsage { get; set; }
@@ -298,7 +294,7 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The number of days before the CMK is deleted. 
-        /// During this period, the CMK is in the PendingDeletion state.
+        /// During this period, the CMK is in the PendingDeletion state. 
         /// After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
         /// **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         /// </summary>
@@ -313,9 +309,9 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The interval for automatic key rotation. Specify the value in the integer[unit] format.
-        /// The following units are supported: d (day), h (hour), m (minute), and s (second).
-        /// For example, you can use either 7d or 604800s to specify a seven-day interval.
-        /// The interval can range from 7 days to 730 days.
+        /// The following units are supported: d (day), h (hour), m (minute), and s (second). 
+        /// For example, you can use either 7d or 604800s to specify a seven-day interval. 
+        /// The interval can range from 7 days to 730 days. 
         /// **NOTE**: It is Required when `automatic_rotation = "Enabled"`
         /// 
         /// &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.
@@ -380,7 +376,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? DeleteDate { get; set; }
 
         /// <summary>
-        /// Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+        /// (Deprecated since v1.85.0) Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
         /// </summary>
         [Input("deletionWindowInDays")]
         public Input<int>? DeletionWindowInDays { get; set; }
@@ -398,7 +394,7 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? DkmsInstanceId { get; set; }
 
         /// <summary>
-        /// Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+        /// (Deprecated since v1.85.0) Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
         /// </summary>
         [Input("isEnabled")]
         public Input<bool>? IsEnabled { get; set; }
@@ -412,15 +408,13 @@ namespace Pulumi.AliCloud.Kms
         public Input<string>? KeySpec { get; set; }
 
         /// <summary>
-        /// Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+        /// (Deprecated since v1.123.1) Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
         /// </summary>
         [Input("keyState")]
         public Input<string>? KeyStatus { get; set; }
 
         /// <summary>
         /// The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-        /// - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-        /// - `SIGN/VERIFY`: generates or verifies a digital signature.
         /// </summary>
         [Input("keyUsage")]
         public Input<string>? KeyUsage { get; set; }
@@ -451,7 +445,7 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The number of days before the CMK is deleted. 
-        /// During this period, the CMK is in the PendingDeletion state.
+        /// During this period, the CMK is in the PendingDeletion state. 
         /// After this period ends, you cannot cancel the deletion. Valid values: 7 to 366. Unit: days.
         /// **NOTE:** From version 1.184.0, `pending_window_in_days` can be set to `366`.
         /// </summary>
@@ -472,9 +466,9 @@ namespace Pulumi.AliCloud.Kms
 
         /// <summary>
         /// The interval for automatic key rotation. Specify the value in the integer[unit] format.
-        /// The following units are supported: d (day), h (hour), m (minute), and s (second).
-        /// For example, you can use either 7d or 604800s to specify a seven-day interval.
-        /// The interval can range from 7 days to 730 days.
+        /// The following units are supported: d (day), h (hour), m (minute), and s (second). 
+        /// For example, you can use either 7d or 604800s to specify a seven-day interval. 
+        /// The interval can range from 7 days to 730 days. 
         /// **NOTE**: It is Required when `automatic_rotation = "Enabled"`
         /// 
         /// &gt; **NOTE:** When the pre-deletion days elapses, the key is permanently deleted and cannot be recovered.

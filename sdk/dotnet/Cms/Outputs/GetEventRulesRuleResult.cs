@@ -21,9 +21,6 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// Event mode, used to describe the trigger conditions for this event.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEventRulesRuleEventPatternResult> EventPatterns;
-        /// <summary>
-        /// The name of the event rule.
-        /// </summary>
         public readonly string EventRuleName;
         /// <summary>
         /// The type of event.
@@ -33,9 +30,6 @@ namespace Pulumi.AliCloud.Cms.Outputs
         /// The ID of the application Group.
         /// </summary>
         public readonly string GroupId;
-        /// <summary>
-        /// The ID of the Event Rule. Its value is same as Event Rule Name.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The mute period during which new alerts are not sent even if the trigger conditions are met.

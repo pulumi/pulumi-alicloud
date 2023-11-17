@@ -98,7 +98,7 @@ namespace Pulumi.AliCloud.Dns
         /// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
         /// - ddoscoo: Only supports domestic account.
         /// - ddoscoo_intl: Only supports to international account.
-        /// Default to ddoscoo.
+        ///   Default to ddoscoo.
         /// </summary>
         [Output("productType")]
         public Output<string?> ProductType { get; private set; } = null!;
@@ -195,7 +195,7 @@ namespace Pulumi.AliCloud.Dns
         /// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
         /// - ddoscoo: Only supports domestic account.
         /// - ddoscoo_intl: Only supports to international account.
-        /// Default to ddoscoo.
+        ///   Default to ddoscoo.
         /// </summary>
         [Input("productType")]
         public Input<string>? ProductType { get; set; }
@@ -254,7 +254,7 @@ namespace Pulumi.AliCloud.Dns
         /// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
         /// - ddoscoo: Only supports domestic account.
         /// - ddoscoo_intl: Only supports to international account.
-        /// Default to ddoscoo.
+        ///   Default to ddoscoo.
         /// </summary>
         [Input("productType")]
         public Input<string>? ProductType { get; set; }

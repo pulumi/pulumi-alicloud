@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The ID of the instance to which the egress-only rule is applied.
+        /// The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
         /// </summary>
         [Input("instanceId")]
         public string? InstanceId { get; set; }
@@ -182,7 +182,7 @@ namespace Pulumi.AliCloud.Vpc
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+        /// The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -208,7 +208,7 @@ namespace Pulumi.AliCloud.Vpc
         }
 
         /// <summary>
-        /// The ID of the instance to which the egress-only rule is applied.
+        /// The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -238,7 +238,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+        /// The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

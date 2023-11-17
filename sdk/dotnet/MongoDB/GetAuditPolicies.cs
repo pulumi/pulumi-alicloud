@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class GetAuditPoliciesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the instance.
+        /// (Request, ForceNew) The id of the db instance.
         /// </summary>
         [Input("dbInstanceId", required: true)]
         public string DbInstanceId { get; set; } = null!;
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.MongoDB
     public sealed class GetAuditPoliciesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the instance.
+        /// (Request, ForceNew) The id of the db instance.
         /// </summary>
         [Input("dbInstanceId", required: true)]
         public Input<string> DbInstanceId { get; set; } = null!;

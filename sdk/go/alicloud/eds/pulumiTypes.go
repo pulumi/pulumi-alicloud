@@ -3386,7 +3386,7 @@ type GetPolicyGroupsGroup struct {
 	AuthorizeAccessPolicyRules []GetPolicyGroupsGroupAuthorizeAccessPolicyRule `pulumi:"authorizeAccessPolicyRules"`
 	// The policy rule.
 	AuthorizeSecurityPolicyRules []GetPolicyGroupsGroupAuthorizeSecurityPolicyRule `pulumi:"authorizeSecurityPolicyRules"`
-	// Whether to enable local camera redirection. Valid values: `on`, `off`.
+	// (Available in 1.171.0+) Whether to enable local camera redirection. Valid values: `on`, `off`.
 	CameraRedirect string `pulumi:"cameraRedirect"`
 	// The clipboard policy.
 	Clipboard string `pulumi:"clipboard"`
@@ -3408,13 +3408,13 @@ type GetPolicyGroupsGroup struct {
 	PolicyGroupName string `pulumi:"policyGroupName"`
 	// The type of policy group.
 	PolicyGroupType string `pulumi:"policyGroupType"`
-	// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+	// (Available in 1.171.0+) Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
 	Recording string `pulumi:"recording"`
-	// The end time of recording.
+	// (Available in 1.171.0+) The end time of recording.
 	RecordingEndTime string `pulumi:"recordingEndTime"`
-	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+	// (Available in 1.171.0+) The fps of recording. Valid values: `2`, `5`, `10`, `15`.
 	RecordingFps int `pulumi:"recordingFps"`
-	// The start time of recording.
+	// (Available in 1.171.0+) The start time of recording.
 	RecordingStartTime string `pulumi:"recordingStartTime"`
 	// The status of policy.
 	Status string `pulumi:"status"`
@@ -3446,7 +3446,7 @@ type GetPolicyGroupsGroupArgs struct {
 	AuthorizeAccessPolicyRules GetPolicyGroupsGroupAuthorizeAccessPolicyRuleArrayInput `pulumi:"authorizeAccessPolicyRules"`
 	// The policy rule.
 	AuthorizeSecurityPolicyRules GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayInput `pulumi:"authorizeSecurityPolicyRules"`
-	// Whether to enable local camera redirection. Valid values: `on`, `off`.
+	// (Available in 1.171.0+) Whether to enable local camera redirection. Valid values: `on`, `off`.
 	CameraRedirect pulumi.StringInput `pulumi:"cameraRedirect"`
 	// The clipboard policy.
 	Clipboard pulumi.StringInput `pulumi:"clipboard"`
@@ -3468,13 +3468,13 @@ type GetPolicyGroupsGroupArgs struct {
 	PolicyGroupName pulumi.StringInput `pulumi:"policyGroupName"`
 	// The type of policy group.
 	PolicyGroupType pulumi.StringInput `pulumi:"policyGroupType"`
-	// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+	// (Available in 1.171.0+) Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
 	Recording pulumi.StringInput `pulumi:"recording"`
-	// The end time of recording.
+	// (Available in 1.171.0+) The end time of recording.
 	RecordingEndTime pulumi.StringInput `pulumi:"recordingEndTime"`
-	// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+	// (Available in 1.171.0+) The fps of recording. Valid values: `2`, `5`, `10`, `15`.
 	RecordingFps pulumi.IntInput `pulumi:"recordingFps"`
-	// The start time of recording.
+	// (Available in 1.171.0+) The start time of recording.
 	RecordingStartTime pulumi.StringInput `pulumi:"recordingStartTime"`
 	// The status of policy.
 	Status pulumi.StringInput `pulumi:"status"`
@@ -3555,7 +3555,7 @@ func (o GetPolicyGroupsGroupOutput) AuthorizeSecurityPolicyRules() GetPolicyGrou
 	}).(GetPolicyGroupsGroupAuthorizeSecurityPolicyRuleArrayOutput)
 }
 
-// Whether to enable local camera redirection. Valid values: `on`, `off`.
+// (Available in 1.171.0+) Whether to enable local camera redirection. Valid values: `on`, `off`.
 func (o GetPolicyGroupsGroupOutput) CameraRedirect() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyGroupsGroup) string { return v.CameraRedirect }).(pulumi.StringOutput)
 }
@@ -3610,22 +3610,22 @@ func (o GetPolicyGroupsGroupOutput) PolicyGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyGroupsGroup) string { return v.PolicyGroupType }).(pulumi.StringOutput)
 }
 
-// Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
+// (Available in 1.171.0+) Whether to enable screen recording. Valid values: `off`, `alltime`, `period`.
 func (o GetPolicyGroupsGroupOutput) Recording() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyGroupsGroup) string { return v.Recording }).(pulumi.StringOutput)
 }
 
-// The end time of recording.
+// (Available in 1.171.0+) The end time of recording.
 func (o GetPolicyGroupsGroupOutput) RecordingEndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyGroupsGroup) string { return v.RecordingEndTime }).(pulumi.StringOutput)
 }
 
-// The fps of recording. Valid values: `2`, `5`, `10`, `15`.
+// (Available in 1.171.0+) The fps of recording. Valid values: `2`, `5`, `10`, `15`.
 func (o GetPolicyGroupsGroupOutput) RecordingFps() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPolicyGroupsGroup) int { return v.RecordingFps }).(pulumi.IntOutput)
 }
 
-// The start time of recording.
+// (Available in 1.171.0+) The start time of recording.
 func (o GetPolicyGroupsGroupOutput) RecordingStartTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPolicyGroupsGroup) string { return v.RecordingStartTime }).(pulumi.StringOutput)
 }
@@ -4517,7 +4517,7 @@ func (o GetRamDirectoriesDirectoryLogArrayOutput) Index(i pulumi.IntInput) GetRa
 }
 
 type GetSimpleOfficeSitesSite struct {
-	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+	// (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
 	//
 	// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 	Bandwidth int `pulumi:"bandwidth"`
@@ -4547,7 +4547,7 @@ type GetSimpleOfficeSitesSite struct {
 	EnableAdminAccess bool `pulumi:"enableAdminAccess"`
 	// Enable Cross-Desktop Access.
 	EnableCrossDesktopAccess bool `pulumi:"enableCrossDesktopAccess"`
-	// Whether the Open Internet Access Function.
+	// (Deprecated from 1.142.0) Whether the Open Internet Access Function.
 	//
 	// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 	EnableInternetAccess bool `pulumi:"enableInternetAccess"`
@@ -4595,7 +4595,7 @@ type GetSimpleOfficeSitesSiteInput interface {
 }
 
 type GetSimpleOfficeSitesSiteArgs struct {
-	// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+	// (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
 	//
 	// Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
@@ -4625,7 +4625,7 @@ type GetSimpleOfficeSitesSiteArgs struct {
 	EnableAdminAccess pulumi.BoolInput `pulumi:"enableAdminAccess"`
 	// Enable Cross-Desktop Access.
 	EnableCrossDesktopAccess pulumi.BoolInput `pulumi:"enableCrossDesktopAccess"`
-	// Whether the Open Internet Access Function.
+	// (Deprecated from 1.142.0) Whether the Open Internet Access Function.
 	//
 	// Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 	EnableInternetAccess pulumi.BoolInput `pulumi:"enableInternetAccess"`
@@ -4712,7 +4712,7 @@ func (o GetSimpleOfficeSitesSiteOutput) ToGetSimpleOfficeSitesSiteOutputWithCont
 	return o
 }
 
-// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+// (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
 //
 // Deprecated: Field 'bandwidth' has been deprecated from provider version 1.142.0.
 func (o GetSimpleOfficeSitesSiteOutput) Bandwidth() pulumi.IntOutput {
@@ -4784,7 +4784,7 @@ func (o GetSimpleOfficeSitesSiteOutput) EnableCrossDesktopAccess() pulumi.BoolOu
 	return o.ApplyT(func(v GetSimpleOfficeSitesSite) bool { return v.EnableCrossDesktopAccess }).(pulumi.BoolOutput)
 }
 
-// Whether the Open Internet Access Function.
+// (Deprecated from 1.142.0) Whether the Open Internet Access Function.
 //
 // Deprecated: Field 'enable_internet_access' has been deprecated from provider version 1.142.0.
 func (o GetSimpleOfficeSitesSiteOutput) EnableInternetAccess() pulumi.BoolOutput {

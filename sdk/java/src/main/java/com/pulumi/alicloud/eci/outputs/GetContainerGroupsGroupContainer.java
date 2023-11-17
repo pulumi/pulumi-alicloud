@@ -62,7 +62,7 @@ public final class GetContainerGroupsGroupContainer {
      */
     private String name;
     /**
-     * @return The exposed ports and protocols. Maximum: `100`.
+     * @return The list of exposed ports and protocols. Maximum: 100.
      * 
      */
     private List<GetContainerGroupsGroupContainerPort> ports;
@@ -152,7 +152,7 @@ public final class GetContainerGroupsGroupContainer {
         return this.name;
     }
     /**
-     * @return The exposed ports and protocols. Maximum: `100`.
+     * @return The list of exposed ports and protocols. Maximum: 100.
      * 
      */
     public List<GetContainerGroupsGroupContainerPort> ports() {

@@ -36,7 +36,7 @@ class QuotaApplicationArgs:
         :param pulumi.Input[str] audit_mode: Quota audit mode. Value:
                - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
                - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-               > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+                 > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         :param pulumi.Input[Sequence[pulumi.Input['QuotaApplicationDimensionArgs']]] dimensions: QuotaDimensions. See `dimensions` below.
         :param pulumi.Input[str] effective_time: The effective time of the quota application.
         :param pulumi.Input[str] env_language: The language of the quota alert notification. Value:
@@ -123,7 +123,7 @@ class QuotaApplicationArgs:
         Quota audit mode. Value:
         - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
         - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-        > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+          > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         """
         return pulumi.get(self, "audit_mode")
 
@@ -236,7 +236,7 @@ class _QuotaApplicationState:
         :param pulumi.Input[str] audit_mode: Quota audit mode. Value:
                - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
                - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-               > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+                 > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         :param pulumi.Input[str] audit_reason: The audit reason.
         :param pulumi.Input[str] create_time: Resource attribute field representing creation time.
         :param pulumi.Input[float] desire_value: The desire value of the quota application.
@@ -319,7 +319,7 @@ class _QuotaApplicationState:
         Quota audit mode. Value:
         - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
         - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-        > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+          > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         """
         return pulumi.get(self, "audit_mode")
 
@@ -560,7 +560,7 @@ class QuotaApplication(pulumi.CustomResource):
         :param pulumi.Input[str] audit_mode: Quota audit mode. Value:
                - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
                - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-               > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+                 > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         :param pulumi.Input[float] desire_value: The desire value of the quota application.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['QuotaApplicationDimensionArgs']]]] dimensions: QuotaDimensions. See `dimensions` below.
         :param pulumi.Input[str] effective_time: The effective time of the quota application.
@@ -692,7 +692,7 @@ class QuotaApplication(pulumi.CustomResource):
         :param pulumi.Input[str] audit_mode: Quota audit mode. Value:
                - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
                - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-               > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+                 > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         :param pulumi.Input[str] audit_reason: The audit reason.
         :param pulumi.Input[str] create_time: Resource attribute field representing creation time.
         :param pulumi.Input[float] desire_value: The desire value of the quota application.
@@ -758,7 +758,7 @@ class QuotaApplication(pulumi.CustomResource):
         Quota audit mode. Value:
         - Sync: Synchronize auditing. The quota center automatically approves, and the approval result is returned immediately, but the probability of application passing is lower than that of asynchronous approval, and the validity period of the increase quota is 1 hour.
         - Async: Asynchronous auditing. Manual review, the probability of application passing is relatively high, and the validity period of the increase quota is 1 month.
-        > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
+          > **NOTE:**  This parameter takes effect only for the ECS specification quota of the cloud server.
         """
         return pulumi.get(self, "audit_mode")
 

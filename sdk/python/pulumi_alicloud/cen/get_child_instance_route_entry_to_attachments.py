@@ -150,11 +150,11 @@ def get_child_instance_route_entry_to_attachments(cen_id: Optional[str] = None,
     ```
 
 
-    :param str cen_id: The ID of the CEN instance.
+    :param str cen_id: (ForceNew,Optional) The ID of the CEN instance.
     :param str child_instance_route_table_id: The first ID of the resource
     :param Sequence[str] ids: Limit search to a list of specific IDs.The value is formulated as `<cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str service_type: ServiceType
+    :param str service_type: (ForceNew,Optional) ServiceType
     :param str transit_router_attachment_id: TransitRouterAttachmentId
     """
     __args__ = dict()
@@ -203,11 +203,11 @@ def get_child_instance_route_entry_to_attachments_output(cen_id: Optional[pulumi
     ```
 
 
-    :param str cen_id: The ID of the CEN instance.
+    :param str cen_id: (ForceNew,Optional) The ID of the CEN instance.
     :param str child_instance_route_table_id: The first ID of the resource
     :param Sequence[str] ids: Limit search to a list of specific IDs.The value is formulated as `<cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str service_type: ServiceType
+    :param str service_type: (ForceNew,Optional) ServiceType
     :param str transit_router_attachment_id: TransitRouterAttachmentId
     """
     ...

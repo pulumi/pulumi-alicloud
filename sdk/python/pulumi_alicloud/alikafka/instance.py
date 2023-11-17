@@ -57,7 +57,7 @@ class InstanceArgs:
                
                > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
                
-               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) | 
                |------|-------------|:----:|:-----:|
                |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
                |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
@@ -67,7 +67,7 @@ class InstanceArgs:
         :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance.
+        :param pulumi.Input[int] topic_quota: (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
                It has been deprecated since version 1.194.0 and using `partition_num` instead.
                Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
                Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
@@ -282,7 +282,7 @@ class InstanceArgs:
 
         > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
 
-        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) | 
         |------|-------------|:----:|:-----:|
         |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
         |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
@@ -336,7 +336,7 @@ class InstanceArgs:
     @pulumi.getter(name="topicQuota")
     def topic_quota(self) -> Optional[pulumi.Input[int]]:
         """
-        The max num of topic can be creation of the instance.
+        (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
         It has been deprecated since version 1.194.0 and using `partition_num` instead.
         Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
         Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
@@ -423,7 +423,7 @@ class _InstanceState:
                
                > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
                
-               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) | 
                |------|-------------|:----:|:-----:|
                |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
                |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
@@ -438,7 +438,7 @@ class _InstanceState:
                - 5: running
                - 15: expired
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance.
+        :param pulumi.Input[int] topic_quota: (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
                It has been deprecated since version 1.194.0 and using `partition_num` instead.
                Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
                Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
@@ -662,7 +662,7 @@ class _InstanceState:
 
         > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
 
-        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) | 
         |------|-------------|:----:|:-----:|
         |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
         |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
@@ -732,7 +732,7 @@ class _InstanceState:
     @pulumi.getter(name="topicQuota")
     def topic_quota(self) -> Optional[pulumi.Input[int]]:
         """
-        The max num of topic can be creation of the instance.
+        (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
         It has been deprecated since version 1.194.0 and using `partition_num` instead.
         Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
         Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
@@ -840,7 +840,7 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
                
-               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) | 
                |------|-------------|:----:|:-----:|
                |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
                |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
@@ -850,7 +850,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] service_version: The kafka openSource version for this instance. Only 0.10.2 or 2.2.0 is allowed, default is 0.10.2.
         :param pulumi.Input[str] spec_type: The spec type of the instance. Support two type, "normal": normal version instance, "professional": professional version instance. Default is normal. When modify this value, it only support adjust from normal to professional. Note only pre paid type instance support professional specific type.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance.
+        :param pulumi.Input[int] topic_quota: (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
                It has been deprecated since version 1.194.0 and using `partition_num` instead.
                Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
                Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
@@ -1007,7 +1007,7 @@ class Instance(pulumi.CustomResource):
                
                > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
                
-               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+               | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) | 
                |------|-------------|:----:|:-----:|
                |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
                |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
@@ -1022,7 +1022,7 @@ class Instance(pulumi.CustomResource):
                - 5: running
                - 15: expired
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[int] topic_quota: The max num of topic can be creation of the instance.
+        :param pulumi.Input[int] topic_quota: (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
                It has been deprecated since version 1.194.0 and using `partition_num` instead.
                Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
                Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
@@ -1174,7 +1174,7 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Arguments io_max, disk_size, topic_quota, eip_max should follow the following constraints.
 
-        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) |
+        | io_max | disk_size(min-max:lag) | topic_quota(min-max:lag) | eip_max(min-max:lag) | 
         |------|-------------|:----:|:-----:|
         |20          |  500-6100:100   |   50-450:1  |    1-160:1  |
         |30          |  800-6100:100   |   50-450:1  |    1-240:1  |
@@ -1224,7 +1224,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="topicQuota")
     def topic_quota(self) -> pulumi.Output[int]:
         """
-        The max num of topic can be creation of the instance.
+        (Deprecated since v1.194.0) The max num of topic can be creation of the instance.
         It has been deprecated since version 1.194.0 and using `partition_num` instead.
         Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
         Therefore, you can update it by updating the `partition_num`, and it is the only updating path.

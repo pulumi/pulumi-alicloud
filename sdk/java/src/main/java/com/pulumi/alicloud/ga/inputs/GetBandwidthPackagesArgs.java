@@ -78,14 +78,14 @@ public final class GetBandwidthPackagesArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The status of the bandwidth plan.
+     * The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the bandwidth plan.
+     * @return The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -93,14 +93,14 @@ public final class GetBandwidthPackagesArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The type of the bandwidth packet. China station only supports return to basic.
+     * The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of the bandwidth packet. China station only supports return to basic.
+     * @return The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -231,7 +231,7 @@ public final class GetBandwidthPackagesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the bandwidth plan.
+         * @param status The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class GetBandwidthPackagesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the bandwidth plan.
+         * @param status The status of the bandwidth plan. Valid values: `active`, `binded`, `binding`, `finacialLocked`, `init`, `unbinding`, `updating`.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class GetBandwidthPackagesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param type The type of the bandwidth packet. China station only supports return to basic.
+         * @param type The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
          * 
          * @return builder
          * 
@@ -263,7 +263,7 @@ public final class GetBandwidthPackagesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param type The type of the bandwidth packet. China station only supports return to basic.
+         * @param type The type of the bandwidth plan. Valid values: `Basic`, `CrossDomain`.
          * 
          * @return builder
          * 

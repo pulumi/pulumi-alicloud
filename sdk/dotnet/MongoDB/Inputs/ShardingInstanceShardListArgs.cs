@@ -25,7 +25,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<string>? NodeId { get; set; }
 
         /// <summary>
-        /// - Custom storage space; value range: [10, 1,000]
+        /// Custom storage space; value range: [10, 1,000]
         /// - 10-GB increments. Unit: GB.
         /// </summary>
         [Input("nodeStorage", required: true)]

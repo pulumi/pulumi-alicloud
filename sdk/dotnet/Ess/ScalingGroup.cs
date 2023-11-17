@@ -181,7 +181,7 @@ namespace Pulumi.AliCloud.Ess
         /// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
         /// - The Server Load Balancer instance must be enabled.
         /// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
-        /// targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+        ///   targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
         /// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
         /// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
         /// </summary>
@@ -269,7 +269,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
         /// <summary>
-        /// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+        /// (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -389,7 +389,7 @@ namespace Pulumi.AliCloud.Ess
         /// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
         /// - The Server Load Balancer instance must be enabled.
         /// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
-        /// targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+        ///   targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
         /// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
         /// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
         /// </summary>
@@ -498,7 +498,7 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
-        /// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+        /// (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -586,7 +586,7 @@ namespace Pulumi.AliCloud.Ess
         /// If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
         /// - The Server Load Balancer instance must be enabled.
         /// - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `depends_on` argument
-        /// targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+        ///   targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
         /// - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
         /// - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
         /// </summary>
@@ -695,7 +695,7 @@ namespace Pulumi.AliCloud.Ess
         }
 
         /// <summary>
-        /// It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+        /// (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

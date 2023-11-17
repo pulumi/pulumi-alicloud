@@ -34,7 +34,7 @@ class GetImagesImageResult(dict):
         :param str image_id: The ID of the image.
         :param str image_name: The name of the resource.
         :param str image_type: The type of the image. Valid values: `app`, `custom`, `system`.
-        :param str platform: The platform of Plan supported.
+        :param str platform: (Available in v1.161.0) The platform of Plan supported.
         """
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "id", id)
@@ -87,7 +87,7 @@ class GetImagesImageResult(dict):
     @pulumi.getter
     def platform(self) -> str:
         """
-        The platform of Plan supported.
+        (Available in v1.161.0) The platform of Plan supported.
         """
         return pulumi.get(self, "platform")
 
@@ -524,7 +524,7 @@ class GetServerPlansPlanResult(dict):
         :param str id: The ID of the Instance Plan.
         :param int memory: The memory size. Unit: GB.
         :param str plan_id: The ID of the Instance Plan.
-        :param str support_platform: The platform of Plan supported.
+        :param str support_platform: (Available in v1.161.0) The platform of Plan supported.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "core", core)
@@ -595,7 +595,7 @@ class GetServerPlansPlanResult(dict):
     @pulumi.getter(name="supportPlatform")
     def support_platform(self) -> str:
         """
-        The platform of Plan supported.
+        (Available in v1.161.0) The platform of Plan supported.
         """
         return pulumi.get(self, "support_platform")
 

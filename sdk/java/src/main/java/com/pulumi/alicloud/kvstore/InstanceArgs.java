@@ -67,7 +67,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from provider version 1.101.0 and `zone_id` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `zone_id` instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from version 1.101.0. Use &#39;zone_id&#39; instead.
@@ -78,7 +78,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> availabilityZone;
 
     /**
-     * @return It has been deprecated from provider version 1.101.0 and `zone_id` instead.
+     * @return (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `zone_id` instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from version 1.101.0. Use &#39;zone_id&#39; instead.
@@ -180,7 +180,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      * 
      * @deprecated
      * Field &#39;connection_string_prefix&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
@@ -191,7 +191,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> connectionStringPrefix;
 
     /**
-     * @return It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
+     * @return (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      * 
      * @deprecated
      * Field &#39;connection_string_prefix&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
@@ -295,7 +295,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      * 
      * @deprecated
      * Field &#39;enable_public&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
@@ -306,7 +306,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> enablePublic;
 
     /**
-     * @return It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
+     * @return (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      * 
      * @deprecated
      * Field &#39;enable_public&#39; has been deprecated from version 1.101.0. Please use resource &#39;alicloud_kvstore_connection&#39; instead.
@@ -410,7 +410,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from provider version 1.101.0 and `payment_type` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `payment_type` instead.
      * 
      * @deprecated
      * Field &#39;instance_charge_type&#39; has been deprecated from version 1.101.0. Use &#39;payment_type&#39; instead.
@@ -421,7 +421,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return It has been deprecated from provider version 1.101.0 and `payment_type` instead.
+     * @return (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `payment_type` instead.
      * 
      * @deprecated
      * Field &#39;instance_charge_type&#39; has been deprecated from version 1.101.0. Use &#39;payment_type&#39; instead.
@@ -450,7 +450,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
      * 
      * @deprecated
      * Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
@@ -461,7 +461,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> instanceName;
 
     /**
-     * @return It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
+     * @return (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
      * 
      * @deprecated
      * Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
@@ -578,7 +578,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
+     * (Deprecated since v1.120.1) &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
      * 
      * @deprecated
      * Field &#39;node_type&#39; has been deprecated from version 1.120.1
@@ -589,7 +589,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> nodeType;
 
     /**
-     * @return &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
+     * @return (Deprecated since v1.120.1) &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
      * 
      * @deprecated
      * Field &#39;node_type&#39; has been deprecated from version 1.120.1
@@ -616,7 +616,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
      * 
      * @deprecated
      * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
@@ -627,7 +627,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<InstanceParameterArgs>> parameters;
 
     /**
-     * @return It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+     * @return (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
      * 
      * @deprecated
      * Field &#39;parameters&#39; has been deprecated from version 1.101.0. Use &#39;config&#39; instead.
@@ -1138,7 +1138,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZone It has been deprecated from provider version 1.101.0 and `zone_id` instead.
+         * @param availabilityZone (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `zone_id` instead.
          * 
          * @return builder
          * 
@@ -1153,7 +1153,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param availabilityZone It has been deprecated from provider version 1.101.0 and `zone_id` instead.
+         * @param availabilityZone (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `zone_id` instead.
          * 
          * @return builder
          * 
@@ -1303,7 +1303,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionStringPrefix It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
+         * @param connectionStringPrefix (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
          * 
          * @return builder
          * 
@@ -1318,7 +1318,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionStringPrefix It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
+         * @param connectionStringPrefix (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
          * 
          * @return builder
          * 
@@ -1460,7 +1460,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enablePublic It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
+         * @param enablePublic (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
          * 
          * @return builder
          * 
@@ -1475,7 +1475,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enablePublic It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
+         * @param enablePublic (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
          * 
          * @return builder
          * 
@@ -1617,7 +1617,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType It has been deprecated from provider version 1.101.0 and `payment_type` instead.
+         * @param instanceChargeType (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `payment_type` instead.
          * 
          * @return builder
          * 
@@ -1632,7 +1632,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType It has been deprecated from provider version 1.101.0 and `payment_type` instead.
+         * @param instanceChargeType (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `payment_type` instead.
          * 
          * @return builder
          * 
@@ -1669,7 +1669,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
+         * @param instanceName (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
          * 
          * @return builder
          * 
@@ -1684,7 +1684,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
+         * @param instanceName (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `db_instance_name` instead.
          * 
          * @return builder
          * 
@@ -1845,7 +1845,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
+         * @param nodeType (Deprecated since v1.120.1) &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
          * 
          * @return builder
          * 
@@ -1860,7 +1860,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
+         * @param nodeType (Deprecated since v1.120.1) &#34;Field `node_type` has been deprecated from version 1.120.1&#34;. This parameter is determined by the `instance_class`.
          * 
          * @return builder
          * 
@@ -1895,7 +1895,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+         * @param parameters (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
          * 
          * @return builder
          * 
@@ -1910,7 +1910,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+         * @param parameters (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
          * 
          * @return builder
          * 
@@ -1924,7 +1924,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param parameters It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+         * @param parameters (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
          * 
          * @return builder
          * 

@@ -345,7 +345,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The slb service addresses of the cluster. See `slb_conn_addrs` below.
+     * (Available in 1.105.0+) The slb service addresses of the cluster. See `slb_conn_addrs` below.
      * 
      * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
      * 
@@ -354,7 +354,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<InstanceSlbConnAddrArgs>> slbConnAddrs;
 
     /**
-     * @return The slb service addresses of the cluster. See `slb_conn_addrs` below.
+     * @return (Available in 1.105.0+) The slb service addresses of the cluster. See `slb_conn_addrs` below.
      * 
      * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
      * 
@@ -379,14 +379,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
+     * (Available in 1.105.0+) The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
      * 
      */
     @Import(name="uiProxyConnAddrs")
     private @Nullable Output<List<InstanceUiProxyConnAddrArgs>> uiProxyConnAddrs;
 
     /**
-     * @return The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
+     * @return (Available in 1.105.0+) The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
      * 
      */
     public Optional<Output<List<InstanceUiProxyConnAddrArgs>>> uiProxyConnAddrs() {
@@ -424,14 +424,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
+     * (Available in 1.105.0+) The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
      * 
      */
     @Import(name="zkConnAddrs")
     private @Nullable Output<List<InstanceZkConnAddrArgs>> zkConnAddrs;
 
     /**
-     * @return The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
+     * @return (Available in 1.105.0+) The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
      * 
      */
     public Optional<Output<List<InstanceZkConnAddrArgs>>> zkConnAddrs() {
@@ -962,7 +962,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slbConnAddrs The slb service addresses of the cluster. See `slb_conn_addrs` below.
+         * @param slbConnAddrs (Available in 1.105.0+) The slb service addresses of the cluster. See `slb_conn_addrs` below.
          * 
          * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
          * 
@@ -975,7 +975,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slbConnAddrs The slb service addresses of the cluster. See `slb_conn_addrs` below.
+         * @param slbConnAddrs (Available in 1.105.0+) The slb service addresses of the cluster. See `slb_conn_addrs` below.
          * 
          * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
          * 
@@ -987,7 +987,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param slbConnAddrs The slb service addresses of the cluster. See `slb_conn_addrs` below.
+         * @param slbConnAddrs (Available in 1.105.0+) The slb service addresses of the cluster. See `slb_conn_addrs` below.
          * 
          * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
          * 
@@ -1020,7 +1020,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uiProxyConnAddrs The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
+         * @param uiProxyConnAddrs (Available in 1.105.0+) The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
          * 
          * @return builder
          * 
@@ -1031,7 +1031,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uiProxyConnAddrs The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
+         * @param uiProxyConnAddrs (Available in 1.105.0+) The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
          * 
          * @return builder
          * 
@@ -1041,7 +1041,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param uiProxyConnAddrs The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
+         * @param uiProxyConnAddrs (Available in 1.105.0+) The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
          * 
          * @return builder
          * 
@@ -1093,7 +1093,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zkConnAddrs The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
+         * @param zkConnAddrs (Available in 1.105.0+) The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
          * 
          * @return builder
          * 
@@ -1104,7 +1104,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zkConnAddrs The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
+         * @param zkConnAddrs (Available in 1.105.0+) The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
          * 
          * @return builder
          * 
@@ -1114,7 +1114,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zkConnAddrs The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
+         * @param zkConnAddrs (Available in 1.105.0+) The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
          * 
          * @return builder
          * 

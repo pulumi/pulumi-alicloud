@@ -78,14 +78,14 @@ public final class GetEcsKeyPairsPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The Resource Group Id.
+     * The resource group Id.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable String resourceGroupId;
 
     /**
-     * @return The Resource Group Id.
+     * @return The resource group Id.
      * 
      */
     public Optional<String> resourceGroupId() {
@@ -191,7 +191,7 @@ public final class GetEcsKeyPairsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param resourceGroupId The Resource Group Id.
+         * @param resourceGroupId The resource group Id.
          * 
          * @return builder
          * 

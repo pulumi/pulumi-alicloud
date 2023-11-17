@@ -99,14 +99,14 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+     * (Deprecated) It has been deprecated from version 1.137.0 and using `multi_zone` instead.
      * 
      */
     @Import(name="multi")
     private @Nullable Output<Boolean> multi;
 
     /**
-     * @return It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+     * @return (Deprecated) It has been deprecated from version 1.137.0 and using `multi_zone` instead.
      * 
      */
     public Optional<Output<Boolean>> multi() {
@@ -290,7 +290,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param multi It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+         * @param multi (Deprecated) It has been deprecated from version 1.137.0 and using `multi_zone` instead.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class GetZonesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param multi It has been deprecated from version 1.137.0 and using `multi_zone` instead.
+         * @param multi (Deprecated) It has been deprecated from version 1.137.0 and using `multi_zone` instead.
          * 
          * @return builder
          * 

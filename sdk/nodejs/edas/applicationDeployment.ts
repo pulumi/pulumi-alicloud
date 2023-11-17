@@ -117,7 +117,7 @@ export class ApplicationDeployment extends pulumi.CustomResource {
      */
     public readonly groupId!: pulumi.Output<string>;
     /**
-     * Last package version deployed.
+     * (ForceNew) Last package version deployed.
      */
     public /*out*/ readonly lastPackageVersion!: pulumi.Output<string>;
     /**
@@ -182,7 +182,7 @@ export interface ApplicationDeploymentState {
      */
     groupId?: pulumi.Input<string>;
     /**
-     * Last package version deployed.
+     * (ForceNew) Last package version deployed.
      */
     lastPackageVersion?: pulumi.Input<string>;
     /**

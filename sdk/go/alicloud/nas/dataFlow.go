@@ -45,7 +45,10 @@ type DataFlow struct {
 	// The access path of the source store. Format: `<storage type>://<path>`. Among them:
 	// - storage type: currently only OSS is supported.
 	// - path: the bucket name of OSS.
-	// - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+	//   - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+	//   - `8` to `128` English characters in length.
+	//   - Use UTF-8 coding.
+	//   - Cannot start with `http://` and `https://`.
 	SourceStorage pulumi.StringOutput `pulumi:"sourceStorage"`
 	// The status of the Data flow. Valid values: `Running`, `Stopped`.
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -110,7 +113,10 @@ type dataFlowState struct {
 	// The access path of the source store. Format: `<storage type>://<path>`. Among them:
 	// - storage type: currently only OSS is supported.
 	// - path: the bucket name of OSS.
-	// - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+	//   - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+	//   - `8` to `128` English characters in length.
+	//   - Use UTF-8 coding.
+	//   - Cannot start with `http://` and `https://`.
 	SourceStorage *string `pulumi:"sourceStorage"`
 	// The status of the Data flow. Valid values: `Running`, `Stopped`.
 	Status *string `pulumi:"status"`
@@ -134,7 +140,10 @@ type DataFlowState struct {
 	// The access path of the source store. Format: `<storage type>://<path>`. Among them:
 	// - storage type: currently only OSS is supported.
 	// - path: the bucket name of OSS.
-	// - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+	//   - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+	//   - `8` to `128` English characters in length.
+	//   - Use UTF-8 coding.
+	//   - Cannot start with `http://` and `https://`.
 	SourceStorage pulumi.StringPtrInput
 	// The status of the Data flow. Valid values: `Running`, `Stopped`.
 	Status pulumi.StringPtrInput
@@ -160,7 +169,10 @@ type dataFlowArgs struct {
 	// The access path of the source store. Format: `<storage type>://<path>`. Among them:
 	// - storage type: currently only OSS is supported.
 	// - path: the bucket name of OSS.
-	// - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+	//   - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+	//   - `8` to `128` English characters in length.
+	//   - Use UTF-8 coding.
+	//   - Cannot start with `http://` and `https://`.
 	SourceStorage string `pulumi:"sourceStorage"`
 	// The status of the Data flow. Valid values: `Running`, `Stopped`.
 	Status *string `pulumi:"status"`
@@ -183,7 +195,10 @@ type DataFlowArgs struct {
 	// The access path of the source store. Format: `<storage type>://<path>`. Among them:
 	// - storage type: currently only OSS is supported.
 	// - path: the bucket name of OSS.
-	// - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+	//   - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+	//   - `8` to `128` English characters in length.
+	//   - Use UTF-8 coding.
+	//   - Cannot start with `http://` and `https://`.
 	SourceStorage pulumi.StringInput
 	// The status of the Data flow. Valid values: `Running`, `Stopped`.
 	Status pulumi.StringPtrInput
@@ -311,7 +326,10 @@ func (o DataFlowOutput) SourceSecurityType() pulumi.StringOutput {
 // The access path of the source store. Format: `<storage type>://<path>`. Among them:
 // - storage type: currently only OSS is supported.
 // - path: the bucket name of OSS.
-// - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+//   - Only lowercase letters, numbers, and dashes (-) are supported and must start and end with lowercase letters or numbers.
+//   - `8` to `128` English characters in length.
+//   - Use UTF-8 coding.
+//   - Cannot start with `http://` and `https://`.
 func (o DataFlowOutput) SourceStorage() pulumi.StringOutput {
 	return o.ApplyT(func(v *DataFlow) pulumi.StringOutput { return v.SourceStorage }).(pulumi.StringOutput)
 }

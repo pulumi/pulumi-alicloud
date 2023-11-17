@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// </summary>
         public readonly string Owner;
         /// <summary>
-        /// The policy of project.
+        /// (Available in 1.198.0+) The policy of project.
         /// </summary>
         public readonly string Policy;
         /// <summary>

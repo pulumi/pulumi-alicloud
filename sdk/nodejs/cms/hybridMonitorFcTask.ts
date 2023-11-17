@@ -92,7 +92,7 @@ export class HybridMonitorFcTask extends pulumi.CustomResource {
      */
     public /*out*/ readonly hybridMonitorFcTaskId!: pulumi.Output<string>;
     /**
-     * the namespace of the Alibaba Cloud service.
+     * The index warehouse where the host belongs.
      */
     public readonly namespace!: pulumi.Output<string>;
     /**
@@ -148,7 +148,7 @@ export interface HybridMonitorFcTaskState {
      */
     hybridMonitorFcTaskId?: pulumi.Input<string>;
     /**
-     * the namespace of the Alibaba Cloud service.
+     * The index warehouse where the host belongs.
      */
     namespace?: pulumi.Input<string>;
     /**
@@ -166,7 +166,7 @@ export interface HybridMonitorFcTaskState {
  */
 export interface HybridMonitorFcTaskArgs {
     /**
-     * the namespace of the Alibaba Cloud service.
+     * The index warehouse where the host belongs.
      */
     namespace: pulumi.Input<string>;
     /**

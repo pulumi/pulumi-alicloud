@@ -126,7 +126,7 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
+	// (Deprecated) It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
 	//
 	// Deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
 	AllocatePublicIp pulumi.BoolPtrOutput `pulumi:"allocatePublicIp"`
@@ -170,7 +170,7 @@ type Instance struct {
 	DeploymentSetGroupNo pulumi.StringOutput `pulumi:"deploymentSetGroupNo"`
 	// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
 	DeploymentSetId pulumi.StringPtrOutput `pulumi:"deploymentSetId"`
-	// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+	// The description of the data disk.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Specifies whether to send a dry-run request. Default to false.
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
@@ -212,7 +212,7 @@ type Instance struct {
 	InternetMaxBandwidthIn pulumi.IntOutput `pulumi:"internetMaxBandwidthIn"`
 	// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
 	InternetMaxBandwidthOut pulumi.IntPtrOutput `pulumi:"internetMaxBandwidthOut"`
-	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	// (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 	//
 	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrOutput `pulumi:"ioOptimized"`
@@ -249,7 +249,7 @@ type Instance struct {
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
 	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 	// - [1-3] when `periodUnit` in "Week"
-	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	//   > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
 	PeriodUnit pulumi.StringPtrOutput `pulumi:"periodUnit"`
@@ -371,7 +371,7 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
+	// (Deprecated) It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
 	//
 	// Deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
 	AllocatePublicIp *bool `pulumi:"allocatePublicIp"`
@@ -415,7 +415,7 @@ type instanceState struct {
 	DeploymentSetGroupNo *string `pulumi:"deploymentSetGroupNo"`
 	// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
-	// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+	// The description of the data disk.
 	Description *string `pulumi:"description"`
 	// Specifies whether to send a dry-run request. Default to false.
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
@@ -457,7 +457,7 @@ type instanceState struct {
 	InternetMaxBandwidthIn *int `pulumi:"internetMaxBandwidthIn"`
 	// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
-	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	// (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 	//
 	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized *string `pulumi:"ioOptimized"`
@@ -494,7 +494,7 @@ type instanceState struct {
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
 	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 	// - [1-3] when `periodUnit` in "Week"
-	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	//   > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
 	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
 	PeriodUnit *string `pulumi:"periodUnit"`
@@ -571,7 +571,7 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
+	// (Deprecated) It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
 	//
 	// Deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
 	AllocatePublicIp pulumi.BoolPtrInput
@@ -615,7 +615,7 @@ type InstanceState struct {
 	DeploymentSetGroupNo pulumi.StringPtrInput
 	// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
 	DeploymentSetId pulumi.StringPtrInput
-	// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+	// The description of the data disk.
 	Description pulumi.StringPtrInput
 	// Specifies whether to send a dry-run request. Default to false.
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
@@ -657,7 +657,7 @@ type InstanceState struct {
 	InternetMaxBandwidthIn pulumi.IntPtrInput
 	// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
 	InternetMaxBandwidthOut pulumi.IntPtrInput
-	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	// (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 	//
 	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrInput
@@ -694,7 +694,7 @@ type InstanceState struct {
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
 	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 	// - [1-3] when `periodUnit` in "Week"
-	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	//   > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
 	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
 	PeriodUnit pulumi.StringPtrInput
@@ -775,7 +775,7 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
+	// (Deprecated) It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
 	//
 	// Deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
 	AllocatePublicIp *bool `pulumi:"allocatePublicIp"`
@@ -815,7 +815,7 @@ type instanceArgs struct {
 	DeletionProtection *bool `pulumi:"deletionProtection"`
 	// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
 	DeploymentSetId *string `pulumi:"deploymentSetId"`
-	// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+	// The description of the data disk.
 	Description *string `pulumi:"description"`
 	// Specifies whether to send a dry-run request. Default to false.
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
@@ -857,7 +857,7 @@ type instanceArgs struct {
 	InternetMaxBandwidthIn *int `pulumi:"internetMaxBandwidthIn"`
 	// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
 	InternetMaxBandwidthOut *int `pulumi:"internetMaxBandwidthOut"`
-	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	// (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 	//
 	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized *string `pulumi:"ioOptimized"`
@@ -886,7 +886,7 @@ type instanceArgs struct {
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
 	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 	// - [1-3] when `periodUnit` in "Week"
-	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	//   > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period *int `pulumi:"period"`
 	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
 	PeriodUnit *string `pulumi:"periodUnit"`
@@ -958,7 +958,7 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
+	// (Deprecated) It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
 	//
 	// Deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
 	AllocatePublicIp pulumi.BoolPtrInput
@@ -998,7 +998,7 @@ type InstanceArgs struct {
 	DeletionProtection pulumi.BoolPtrInput
 	// The ID of the deployment set to which to deploy the instance. **NOTE:** From version 1.176.0, instance's deploymentSetId can be removed when 'deployment_set_id' = "".
 	DeploymentSetId pulumi.StringPtrInput
-	// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+	// The description of the data disk.
 	Description pulumi.StringPtrInput
 	// Specifies whether to send a dry-run request. Default to false.
 	// - true: Only a dry-run request is sent and no instance is created. The system checks whether the required parameters are set, and validates the request format, service permissions, and available ECS instances. If the validation fails, the corresponding error code is returned. If the validation succeeds, the `DryRunOperation` error code is returned.
@@ -1040,7 +1040,7 @@ type InstanceArgs struct {
 	InternetMaxBandwidthIn pulumi.IntPtrInput
 	// Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Value range:  [0, 100]. Default to 0 Mbps.
 	InternetMaxBandwidthOut pulumi.IntPtrInput
-	// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+	// (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 	//
 	// Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 	IoOptimized pulumi.StringPtrInput
@@ -1069,7 +1069,7 @@ type InstanceArgs struct {
 	// The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
 	// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
 	// - [1-3] when `periodUnit` in "Week"
-	// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+	//   > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 	Period pulumi.IntPtrInput
 	// The duration unit that you will buy the resource. It is valid when `instanceChargeType` is 'PrePaid'. Valid value: ["Week", "Month"]. Default to "Month".
 	PeriodUnit pulumi.StringPtrInput
@@ -1226,7 +1226,7 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
+// (Deprecated) It has been deprecated from version "1.7.0". Setting "internetMaxBandwidthOut" larger than 0 can allocate a public ip address for an instance.
 //
 // Deprecated: Field 'allocate_public_ip' has been deprecated from provider version 1.6.1. Setting 'internet_max_bandwidth_out' larger than 0 will allocate public ip for instance.
 func (o InstanceOutput) AllocatePublicIp() pulumi.BoolPtrOutput {
@@ -1303,7 +1303,7 @@ func (o InstanceOutput) DeploymentSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DeploymentSetId }).(pulumi.StringPtrOutput)
 }
 
-// Description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
+// The description of the data disk.
 func (o InstanceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1393,7 +1393,7 @@ func (o InstanceOutput) InternetMaxBandwidthOut() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.InternetMaxBandwidthOut }).(pulumi.IntPtrOutput)
 }
 
-// It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+// (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
 //
 // Deprecated: Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
 func (o InstanceOutput) IoOptimized() pulumi.StringPtrOutput {
@@ -1476,9 +1476,9 @@ func (o InstanceOutput) Password() pulumi.StringPtrOutput {
 }
 
 // The duration that you will buy the resource, in month. It is valid when `instanceChargeType` is `PrePaid`. Valid values:
-// - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
-// - [1-3] when `periodUnit` in "Week"
-// > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
+//   - [1-9, 12, 24, 36, 48, 60] when `periodUnit` in "Month"
+//   - [1-3] when `periodUnit` in "Week"
+//     > **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
 func (o InstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }

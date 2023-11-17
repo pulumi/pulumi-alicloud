@@ -177,7 +177,6 @@ public class Attachment extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** &#34;AutoCreated&#34; ECS instance will be deleted after it is removed from scaling group, but &#34;Attached&#34; will be not.
      * 
      * &gt; **NOTE:** Restrictions on attaching ECS instances:
-     * 
      * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
      * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
      * - The attached ECS instances must in the running state.
@@ -194,7 +193,6 @@ public class Attachment extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** &#34;AutoCreated&#34; ECS instance will be deleted after it is removed from scaling group, but &#34;Attached&#34; will be not.
      * 
      * &gt; **NOTE:** Restrictions on attaching ECS instances:
-     * 
      * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
      * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
      * - The attached ECS instances must in the running state.

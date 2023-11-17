@@ -82,7 +82,7 @@ class EcsLaunchTemplateArgs:
                - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] launch_template_name: The name of Launch Template.
-        :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        :param pulumi.Input[str] name: (Deprecated) It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         :param pulumi.Input['EcsLaunchTemplateNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
@@ -99,17 +99,17 @@ class EcsLaunchTemplateArgs:
         :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input['EcsLaunchTemplateSystemDiskArgs'] system_disk: The System Disk. See `system_disk` below.
-        :param pulumi.Input[str] system_disk_category: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
-        :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
-        :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
-        :param pulumi.Input[int] system_disk_size: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_category: (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_description: (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_name: (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[int] system_disk_size: (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to instance, block storage, and elastic network.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] template_resource_group_id: The template resource group id.
         :param pulumi.Input[Mapping[str, Any]] template_tags: A mapping of tags to assign to the launch template.
         :param pulumi.Input[str] user_data: The User Data.
-        :param pulumi.Input[str] userdata: It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        :param pulumi.Input[str] userdata: (Deprecated) It has been deprecated from version 1.120.0, and use field `user_data` instead.
         :param pulumi.Input[str] version_description: The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
@@ -434,7 +434,7 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
@@ -619,7 +619,7 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
         warnings.warn("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
         pulumi.log.warn("""system_disk_category is deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
@@ -634,7 +634,7 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter(name="systemDiskDescription")
     def system_disk_description(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
         warnings.warn("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
         pulumi.log.warn("""system_disk_description is deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
@@ -649,7 +649,7 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter(name="systemDiskName")
     def system_disk_name(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
         warnings.warn("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
         pulumi.log.warn("""system_disk_name is deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
@@ -664,7 +664,7 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> Optional[pulumi.Input[int]]:
         """
-        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
         warnings.warn("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
         pulumi.log.warn("""system_disk_size is deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
@@ -729,7 +729,7 @@ class EcsLaunchTemplateArgs:
     @pulumi.getter
     def userdata(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `user_data` instead.
         """
         warnings.warn("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""", DeprecationWarning)
         pulumi.log.warn("""userdata is deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
@@ -858,7 +858,7 @@ class _EcsLaunchTemplateState:
                - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] launch_template_name: The name of Launch Template.
-        :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        :param pulumi.Input[str] name: (Deprecated) It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         :param pulumi.Input['EcsLaunchTemplateNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
@@ -875,17 +875,17 @@ class _EcsLaunchTemplateState:
         :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input['EcsLaunchTemplateSystemDiskArgs'] system_disk: The System Disk. See `system_disk` below.
-        :param pulumi.Input[str] system_disk_category: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
-        :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
-        :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
-        :param pulumi.Input[int] system_disk_size: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_category: (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_description: (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_name: (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[int] system_disk_size: (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to instance, block storage, and elastic network.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] template_resource_group_id: The template resource group id.
         :param pulumi.Input[Mapping[str, Any]] template_tags: A mapping of tags to assign to the launch template.
         :param pulumi.Input[str] user_data: The User Data.
-        :param pulumi.Input[str] userdata: It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        :param pulumi.Input[str] userdata: (Deprecated) It has been deprecated from version 1.120.0, and use field `user_data` instead.
         :param pulumi.Input[str] version_description: The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
@@ -1210,7 +1210,7 @@ class _EcsLaunchTemplateState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
@@ -1395,7 +1395,7 @@ class _EcsLaunchTemplateState:
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
         warnings.warn("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
         pulumi.log.warn("""system_disk_category is deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
@@ -1410,7 +1410,7 @@ class _EcsLaunchTemplateState:
     @pulumi.getter(name="systemDiskDescription")
     def system_disk_description(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
         warnings.warn("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
         pulumi.log.warn("""system_disk_description is deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
@@ -1425,7 +1425,7 @@ class _EcsLaunchTemplateState:
     @pulumi.getter(name="systemDiskName")
     def system_disk_name(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
         warnings.warn("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
         pulumi.log.warn("""system_disk_name is deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
@@ -1440,7 +1440,7 @@ class _EcsLaunchTemplateState:
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> Optional[pulumi.Input[int]]:
         """
-        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
         warnings.warn("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
         pulumi.log.warn("""system_disk_size is deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
@@ -1505,7 +1505,7 @@ class _EcsLaunchTemplateState:
     @pulumi.getter
     def userdata(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `user_data` instead.
         """
         warnings.warn("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""", DeprecationWarning)
         pulumi.log.warn("""userdata is deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")
@@ -1737,7 +1737,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] launch_template_name: The name of Launch Template.
-        :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        :param pulumi.Input[str] name: (Deprecated) It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
@@ -1754,17 +1754,17 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateSystemDiskArgs']] system_disk: The System Disk. See `system_disk` below.
-        :param pulumi.Input[str] system_disk_category: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
-        :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
-        :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
-        :param pulumi.Input[int] system_disk_size: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_category: (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_description: (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_name: (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[int] system_disk_size: (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to instance, block storage, and elastic network.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] template_resource_group_id: The template resource group id.
         :param pulumi.Input[Mapping[str, Any]] template_tags: A mapping of tags to assign to the launch template.
         :param pulumi.Input[str] user_data: The User Data.
-        :param pulumi.Input[str] userdata: It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        :param pulumi.Input[str] userdata: (Deprecated) It has been deprecated from version 1.120.0, and use field `user_data` instead.
         :param pulumi.Input[str] version_description: The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
@@ -2071,7 +2071,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
                - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
         :param pulumi.Input[str] launch_template_name: The name of Launch Template.
-        :param pulumi.Input[str] name: It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        :param pulumi.Input[str] name: (Deprecated) It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] network_type: Network type of the instance. Valid values: `classic`, `vpc`.
         :param pulumi.Input[bool] password_inherit: Whether to use the password preset by the mirror.
@@ -2088,17 +2088,17 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Valid values: `NoSpot`, `SpotAsPriceGo`, `SpotWithPriceLimit`.
         :param pulumi.Input[pulumi.InputType['EcsLaunchTemplateSystemDiskArgs']] system_disk: The System Disk. See `system_disk` below.
-        :param pulumi.Input[str] system_disk_category: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
-        :param pulumi.Input[str] system_disk_description: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
-        :param pulumi.Input[str] system_disk_name: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
-        :param pulumi.Input[int] system_disk_size: It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_category: (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_description: (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[str] system_disk_name: (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        :param pulumi.Input[int] system_disk_size: (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to instance, block storage, and elastic network.
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] template_resource_group_id: The template resource group id.
         :param pulumi.Input[Mapping[str, Any]] template_tags: A mapping of tags to assign to the launch template.
         :param pulumi.Input[str] user_data: The User Data.
-        :param pulumi.Input[str] userdata: It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        :param pulumi.Input[str] userdata: (Deprecated) It has been deprecated from version 1.120.0, and use field `user_data` instead.
         :param pulumi.Input[str] version_description: The description of the launch template version. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         :param pulumi.Input[str] vpc_id: The ID of the VPC.
         :param pulumi.Input[str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
@@ -2297,7 +2297,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `launch_template_name` instead.
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
@@ -2422,7 +2422,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="systemDiskCategory")
     def system_disk_category(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
         warnings.warn("""Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
         pulumi.log.warn("""system_disk_category is deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
@@ -2433,7 +2433,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="systemDiskDescription")
     def system_disk_description(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
         warnings.warn("""Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
         pulumi.log.warn("""system_disk_description is deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
@@ -2444,7 +2444,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="systemDiskName")
     def system_disk_name(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
         warnings.warn("""Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
         pulumi.log.warn("""system_disk_name is deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
@@ -2455,7 +2455,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="systemDiskSize")
     def system_disk_size(self) -> pulumi.Output[int]:
         """
-        It has been deprecated from version 1.120.0, and use field `system_disk` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `system_disk` instead.
         """
         warnings.warn("""Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""", DeprecationWarning)
         pulumi.log.warn("""system_disk_size is deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.""")
@@ -2500,7 +2500,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
     @pulumi.getter
     def userdata(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from version 1.120.0, and use field `user_data` instead.
+        (Deprecated) It has been deprecated from version 1.120.0, and use field `user_data` instead.
         """
         warnings.warn("""Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""", DeprecationWarning)
         pulumi.log.warn("""userdata is deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.""")

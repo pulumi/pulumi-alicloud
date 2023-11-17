@@ -163,7 +163,7 @@ export class Instance extends pulumi.CustomResource {
      * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
-     * **NOTE:** This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+     *   **NOTE:** This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
      */
     public readonly orderType!: pulumi.Output<string | undefined>;
     /**
@@ -424,7 +424,7 @@ export interface InstanceState {
      * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
-     * **NOTE:** This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+     *   **NOTE:** This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
      */
     orderType?: pulumi.Input<string>;
     /**
@@ -582,7 +582,7 @@ export interface InstanceArgs {
      * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
      * * UPGRADE: The specifications are upgraded.
      * * DOWNGRADE: The specifications are downgraded.
-     * **NOTE:** This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
+     *   **NOTE:** This parameter is only applicable to instances when `instanceChargeType` is PrePaid.
      */
     orderType?: pulumi.Input<string>;
     /**

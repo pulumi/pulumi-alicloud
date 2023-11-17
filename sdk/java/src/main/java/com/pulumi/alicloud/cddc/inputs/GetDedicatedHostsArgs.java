@@ -20,14 +20,14 @@ public final class GetDedicatedHostsArgs extends com.pulumi.resources.InvokeArgs
     public static final GetDedicatedHostsArgs Empty = new GetDedicatedHostsArgs();
 
     /**
-     * Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+     * Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
      * 
      */
     @Import(name="allocationStatus")
     private @Nullable Output<String> allocationStatus;
 
     /**
-     * @return Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+     * @return Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
      * 
      */
     public Optional<Output<String>> allocationStatus() {
@@ -35,14 +35,14 @@ public final class GetDedicatedHostsArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The ID of the dedicated cluster in which the host is created.
+     * The ID of the dedicated cluster.
      * 
      */
     @Import(name="dedicatedHostGroupId", required=true)
     private Output<String> dedicatedHostGroupId;
 
     /**
-     * @return The ID of the dedicated cluster in which the host is created.
+     * @return The ID of the dedicated cluster.
      * 
      */
     public Output<String> dedicatedHostGroupId() {
@@ -65,14 +65,14 @@ public final class GetDedicatedHostsArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The storage type of the host.
+     * The storage type of the host. Valid values: `dhg_local_ssd` or `dhg_cloud_ssd`. `dhg_local_ssd`: specifies that the host uses local SSDs. `dhg_cloud_ssd`: specifies that the host uses enhanced SSDs (ESSDs).
      * 
      */
     @Import(name="hostType")
     private @Nullable Output<String> hostType;
 
     /**
-     * @return The storage type of the host.
+     * @return The storage type of the host. Valid values: `dhg_local_ssd` or `dhg_cloud_ssd`. `dhg_local_ssd`: specifies that the host uses local SSDs. `dhg_cloud_ssd`: specifies that the host uses enhanced SSDs (ESSDs).
      * 
      */
     public Optional<Output<String>> hostType() {
@@ -125,14 +125,14 @@ public final class GetDedicatedHostsArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The state of the host.
+     * The state of the host. Valid values:
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The state of the host.
+     * @return The state of the host. Valid values:
      * 
      */
     public Optional<Output<String>> status() {
@@ -140,14 +140,14 @@ public final class GetDedicatedHostsArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -203,7 +203,7 @@ public final class GetDedicatedHostsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param allocationStatus Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+         * @param allocationStatus Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class GetDedicatedHostsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param allocationStatus Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+         * @param allocationStatus Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
          * 
          * @return builder
          * 
@@ -224,7 +224,7 @@ public final class GetDedicatedHostsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param dedicatedHostGroupId The ID of the dedicated cluster in which the host is created.
+         * @param dedicatedHostGroupId The ID of the dedicated cluster.
          * 
          * @return builder
          * 
@@ -235,7 +235,7 @@ public final class GetDedicatedHostsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param dedicatedHostGroupId The ID of the dedicated cluster in which the host is created.
+         * @param dedicatedHostGroupId The ID of the dedicated cluster.
          * 
          * @return builder
          * 
@@ -266,7 +266,7 @@ public final class GetDedicatedHostsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param hostType The storage type of the host.
+         * @param hostType The storage type of the host. Valid values: `dhg_local_ssd` or `dhg_cloud_ssd`. `dhg_local_ssd`: specifies that the host uses local SSDs. `dhg_cloud_ssd`: specifies that the host uses enhanced SSDs (ESSDs).
          * 
          * @return builder
          * 
@@ -277,7 +277,7 @@ public final class GetDedicatedHostsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param hostType The storage type of the host.
+         * @param hostType The storage type of the host. Valid values: `dhg_local_ssd` or `dhg_cloud_ssd`. `dhg_local_ssd`: specifies that the host uses local SSDs. `dhg_cloud_ssd`: specifies that the host uses enhanced SSDs (ESSDs).
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class GetDedicatedHostsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status The state of the host.
+         * @param status The state of the host. Valid values:
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class GetDedicatedHostsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status The state of the host.
+         * @param status The state of the host. Valid values:
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class GetDedicatedHostsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class GetDedicatedHostsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 

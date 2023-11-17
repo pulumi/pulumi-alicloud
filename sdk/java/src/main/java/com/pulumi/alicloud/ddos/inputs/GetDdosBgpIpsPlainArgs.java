@@ -91,14 +91,18 @@ public final class GetDdosBgpIpsPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The current state of the IP address.
+     * The current state of the IP address. Valid Value:
+     * - normal: indicates normal (not attacked).
+     * - hole_begin: indicates that you are in a black hole state.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The current state of the IP address.
+     * @return The current state of the IP address. Valid Value:
+     * - normal: indicates normal (not attacked).
+     * - hole_begin: indicates that you are in a black hole state.
      * 
      */
     public Optional<String> status() {
@@ -200,7 +204,9 @@ public final class GetDdosBgpIpsPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param status The current state of the IP address.
+         * @param status The current state of the IP address. Valid Value:
+         * - normal: indicates normal (not attacked).
+         * - hole_begin: indicates that you are in a black hole state.
          * 
          * @return builder
          * 

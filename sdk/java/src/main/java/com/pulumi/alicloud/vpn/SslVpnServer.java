@@ -30,9 +30,6 @@ import javax.annotation.Nullable;
 public class SslVpnServer extends com.pulumi.resources.CustomResource {
     /**
      * The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-     * * `AES-128-CBC` - the AES-128-CBC algorithm.
-     * * `AES-192-CBC` - the AES-192-CBC algorithm.
-     * * `AES-256-CBC` - the AES-256-CBC algorithm.
      * 
      */
     @Export(name="cipher", type=String.class, parameters={})
@@ -40,9 +37,6 @@ public class SslVpnServer extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-     * * `AES-128-CBC` - the AES-128-CBC algorithm.
-     * * `AES-192-CBC` - the AES-192-CBC algorithm.
-     * * `AES-256-CBC` - the AES-256-CBC algorithm.
      * 
      */
     public Output<Optional<String>> cipher() {

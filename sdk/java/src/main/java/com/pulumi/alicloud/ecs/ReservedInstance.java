@@ -196,9 +196,6 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
     }
     /**
      * Payment type of the RI. Default value: `All Upfront`. Valid values:
-     * - `No Upfront`: No upfront payment.
-     * - `Partial Upfront`: A portion of upfront payment.
-     * - `All Upfront`: Full upfront payment.
      * 
      */
     @Export(name="offeringType", type=String.class, parameters={})
@@ -206,9 +203,6 @@ public class ReservedInstance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Payment type of the RI. Default value: `All Upfront`. Valid values:
-     * - `No Upfront`: No upfront payment.
-     * - `Partial Upfront`: A portion of upfront payment.
-     * - `All Upfront`: Full upfront payment.
      * 
      */
     public Output<String> offeringType() {

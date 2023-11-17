@@ -51,7 +51,7 @@ func GetApis(ctx *pulumi.Context, args *GetApisArgs, opts ...pulumi.InvokeOption
 
 // A collection of arguments for invoking getApis.
 type GetApisArgs struct {
-	// (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
+	// (Deprecated, Optional) (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
 	//
 	// Deprecated: Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
 	ApiId *string `pulumi:"apiId"`
@@ -98,7 +98,7 @@ func GetApisOutput(ctx *pulumi.Context, args GetApisOutputArgs, opts ...pulumi.I
 
 // A collection of arguments for invoking getApis.
 type GetApisOutputArgs struct {
-	// (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
+	// (Deprecated, Optional) (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
 	//
 	// Deprecated: Field 'api_id' has been deprecated from provider version 1.52.2. New field 'ids' replaces it.
 	ApiId pulumi.StringPtrInput `pulumi:"apiId"`

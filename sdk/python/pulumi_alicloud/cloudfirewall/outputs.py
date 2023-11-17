@@ -1491,14 +1491,14 @@ class GetVpcFirewallCensCenResult(dict):
                  vpc_firewall_id: str,
                  vpc_firewall_name: str):
         """
-        :param str cen_id: The ID of the CEN instance.
+        :param str cen_id: (ForceNew,Optional) The ID of the CEN instance.
         :param str connect_type: Intercommunication type, value: `expressconnect`: Express Channel `cen`: Cloud Enterprise Network
         :param str id: The ID of the CEN instance.
         :param Sequence['GetVpcFirewallCensCenLocalVpcArgs'] local_vpcs: The details of the VPC.
-        :param str network_instance_id: The ID of the VPC instance that created the VPC firewall.
-        :param str status: Firewall switch status
-        :param str vpc_firewall_id: VPC firewall ID
-        :param str vpc_firewall_name: The name of the VPC firewall instance.
+        :param str network_instance_id: (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
+        :param str status: (ForceNew,Optional) Firewall switch status
+        :param str vpc_firewall_id: (ForceNew,Optional) VPC firewall ID
+        :param str vpc_firewall_name: (ForceNew,Optional) The name of the VPC firewall instance.
         """
         pulumi.set(__self__, "cen_id", cen_id)
         pulumi.set(__self__, "connect_type", connect_type)
@@ -1513,7 +1513,7 @@ class GetVpcFirewallCensCenResult(dict):
     @pulumi.getter(name="cenId")
     def cen_id(self) -> str:
         """
-        The ID of the CEN instance.
+        (ForceNew,Optional) The ID of the CEN instance.
         """
         return pulumi.get(self, "cen_id")
 
@@ -1545,7 +1545,7 @@ class GetVpcFirewallCensCenResult(dict):
     @pulumi.getter(name="networkInstanceId")
     def network_instance_id(self) -> str:
         """
-        The ID of the VPC instance that created the VPC firewall.
+        (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
         """
         return pulumi.get(self, "network_instance_id")
 
@@ -1553,7 +1553,7 @@ class GetVpcFirewallCensCenResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        Firewall switch status
+        (ForceNew,Optional) Firewall switch status
         """
         return pulumi.get(self, "status")
 
@@ -1561,7 +1561,7 @@ class GetVpcFirewallCensCenResult(dict):
     @pulumi.getter(name="vpcFirewallId")
     def vpc_firewall_id(self) -> str:
         """
-        VPC firewall ID
+        (ForceNew,Optional) VPC firewall ID
         """
         return pulumi.get(self, "vpc_firewall_id")
 
@@ -1569,7 +1569,7 @@ class GetVpcFirewallCensCenResult(dict):
     @pulumi.getter(name="vpcFirewallName")
     def vpc_firewall_name(self) -> str:
         """
-        The name of the VPC firewall instance.
+        (ForceNew,Optional) The name of the VPC firewall instance.
         """
         return pulumi.get(self, "vpc_firewall_name")
 
@@ -1596,7 +1596,7 @@ class GetVpcFirewallCensCenLocalVpcResult(dict):
                  vpc_name: str):
         """
         :param Sequence[str] defend_cidr_lists: The list of network segments protected by the VPC firewall.
-        :param str network_instance_id: The ID of the VPC instance that created the VPC firewall.
+        :param str network_instance_id: (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
         :param str network_instance_name: The name of the network instance.
         :param str network_instance_type: The type of the network instance. Value: **VPC * *.
         :param str owner_id: The UID of the Alibaba Cloud account to which the VPC belongs.
@@ -1658,7 +1658,7 @@ class GetVpcFirewallCensCenLocalVpcResult(dict):
     @pulumi.getter(name="networkInstanceId")
     def network_instance_id(self) -> str:
         """
-        The ID of the VPC instance that created the VPC firewall.
+        (ForceNew,Optional) The ID of the VPC instance that created the VPC firewall.
         """
         return pulumi.get(self, "network_instance_id")
 
@@ -2115,9 +2115,9 @@ class GetVpcFirewallsFirewallResult(dict):
         :param Sequence['GetVpcFirewallsFirewallLocalVpcArgs'] local_vpcs: The details of the local VPC.
         :param Sequence['GetVpcFirewallsFirewallPeerVpcArgs'] peer_vpcs: The details of the peer VPC.
         :param str region_status: The region is open. Value:-**enable**: is enabled, indicating that VPC firewall can be configured in this region.-**disable**: indicates that VPC firewall cannot be configured in this region.
-        :param str status: The status of the resource
-        :param str vpc_firewall_id: The ID of the VPC firewall instance.
-        :param str vpc_firewall_name: The name of the VPC firewall instance.
+        :param str status: (ForceNew,Optional) The status of the resource
+        :param str vpc_firewall_id: (ForceNew,Optional) The ID of the VPC firewall instance.
+        :param str vpc_firewall_name: (ForceNew,Optional) The name of the VPC firewall instance.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
         pulumi.set(__self__, "connect_type", connect_type)
@@ -2181,7 +2181,7 @@ class GetVpcFirewallsFirewallResult(dict):
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource
+        (ForceNew,Optional) The status of the resource
         """
         return pulumi.get(self, "status")
 
@@ -2189,7 +2189,7 @@ class GetVpcFirewallsFirewallResult(dict):
     @pulumi.getter(name="vpcFirewallId")
     def vpc_firewall_id(self) -> str:
         """
-        The ID of the VPC firewall instance.
+        (ForceNew,Optional) The ID of the VPC firewall instance.
         """
         return pulumi.get(self, "vpc_firewall_id")
 
@@ -2197,7 +2197,7 @@ class GetVpcFirewallsFirewallResult(dict):
     @pulumi.getter(name="vpcFirewallName")
     def vpc_firewall_name(self) -> str:
         """
-        The name of the VPC firewall instance.
+        (ForceNew,Optional) The name of the VPC firewall instance.
         """
         return pulumi.get(self, "vpc_firewall_name")
 

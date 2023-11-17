@@ -63,7 +63,7 @@ type GetOssBackupPlansArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The ID of backup vault.
+	// The ID of backup vault the OssBackupPlan used.
 	VaultId *string `pulumi:"vaultId"`
 }
 
@@ -103,7 +103,7 @@ type GetOssBackupPlansOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The ID of backup vault.
+	// The ID of backup vault the OssBackupPlan used.
 	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
 }
 

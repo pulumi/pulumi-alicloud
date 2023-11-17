@@ -106,14 +106,14 @@ public final class GetHanaBackupPlansPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The ID of the backup vault.
+     * The id of the vault.
      * 
      */
     @Import(name="vaultId")
     private @Nullable String vaultId;
 
     /**
-     * @return The ID of the backup vault.
+     * @return The id of the vault.
      * 
      */
     public Optional<String> vaultId() {
@@ -227,7 +227,7 @@ public final class GetHanaBackupPlansPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param vaultId The ID of the backup vault.
+         * @param vaultId The id of the vault.
          * 
          * @return builder
          * 

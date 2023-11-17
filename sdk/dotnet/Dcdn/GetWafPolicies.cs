@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.Dcdn
         public string? QueryArgs { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `on`, `off`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.Dcdn
         public Input<string>? QueryArgs { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `on`, `off`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

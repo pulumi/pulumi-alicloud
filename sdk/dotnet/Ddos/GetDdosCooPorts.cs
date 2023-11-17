@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Ddos
         public string? FrontendPort { get; set; }
 
         /// <summary>
-        /// The forwarding protocol.
+        /// The forwarding protocol. Valid values `tcp` and `udp`.
         /// </summary>
         [Input("frontendProtocol")]
         public string? FrontendProtocol { get; set; }
@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? FrontendPort { get; set; }
 
         /// <summary>
-        /// The forwarding protocol.
+        /// The forwarding protocol. Valid values `tcp` and `udp`.
         /// </summary>
         [Input("frontendProtocol")]
         public Input<string>? FrontendProtocol { get; set; }

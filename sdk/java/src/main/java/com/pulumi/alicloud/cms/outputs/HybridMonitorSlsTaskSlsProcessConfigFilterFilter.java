@@ -17,7 +17,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
      */
     private @Nullable String operator;
     /**
-     * @return The name of the key that is used to filter logs imported from Log Service.
+     * @return The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
     private @Nullable String slsKeyName;
@@ -36,7 +36,7 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
         return Optional.ofNullable(this.operator);
     }
     /**
-     * @return The name of the key that is used to filter logs imported from Log Service.
+     * @return The name of the key that is used to aggregate logs imported from Log Service.
      * 
      */
     public Optional<String> slsKeyName() {

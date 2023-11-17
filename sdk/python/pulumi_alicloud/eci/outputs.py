@@ -2182,7 +2182,7 @@ class GetContainerGroupsGroupContainerResult(dict):
         :param str image_pull_policy: The policy for pulling an image.
         :param float memory: The amount of memory resources allocated to the container group.
         :param str name: The name of the volume.
-        :param Sequence['GetContainerGroupsGroupContainerPortArgs'] ports: The exposed ports and protocols. Maximum: `100`.
+        :param Sequence['GetContainerGroupsGroupContainerPortArgs'] ports: The list of exposed ports and protocols. Maximum: 100.
         :param bool ready: Indicates whether the container is ready.
         :param int restart_count: The number of times that the container has restarted.
         :param Sequence['GetContainerGroupsGroupContainerVolumeMountArgs'] volume_mounts: The list of volumes mounted to the container.
@@ -2279,7 +2279,7 @@ class GetContainerGroupsGroupContainerResult(dict):
     @pulumi.getter
     def ports(self) -> Sequence['outputs.GetContainerGroupsGroupContainerPortResult']:
         """
-        The exposed ports and protocols. Maximum: `100`.
+        The list of exposed ports and protocols. Maximum: 100.
         """
         return pulumi.get(self, "ports")
 
@@ -2382,7 +2382,7 @@ class GetContainerGroupsGroupContainerVolumeMountResult(dict):
                  read_only: bool):
         """
         :param str mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
-        :param str name: The name of the volume.
+        :param str name: The name of the volume. The name is the same as the volume you selected when you purchased the container.
         :param bool read_only: Default value: `false`.
         """
         pulumi.set(__self__, "mount_path", mount_path)
@@ -2401,7 +2401,7 @@ class GetContainerGroupsGroupContainerVolumeMountResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the volume.
+        The name of the volume. The name is the same as the volume you selected when you purchased the container.
         """
         return pulumi.get(self, "name")
 
@@ -2461,7 +2461,7 @@ class GetContainerGroupsGroupDnsConfigOptionResult(dict):
                  value: str):
         """
         :param str name: The name of the volume.
-        :param str value: The value of the variable.
+        :param str value: The value of the object variable.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -2478,7 +2478,7 @@ class GetContainerGroupsGroupDnsConfigOptionResult(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The value of the variable.
+        The value of the object variable.
         """
         return pulumi.get(self, "value")
 
@@ -2508,7 +2508,7 @@ class GetContainerGroupsGroupEciSecurityContextSysctlResult(dict):
                  value: str):
         """
         :param str name: The name of the volume.
-        :param str value: The value of the variable.
+        :param str value: The value of the object variable.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -2525,7 +2525,7 @@ class GetContainerGroupsGroupEciSecurityContextSysctlResult(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The value of the variable.
+        The value of the object variable.
         """
         return pulumi.get(self, "value")
 
@@ -2545,9 +2545,9 @@ class GetContainerGroupsGroupEventResult(dict):
         :param str first_timestamp: The time when the event started.
         :param str last_timestamp: The time when the event ended.
         :param str message: The content of the event.
-        :param str name: The name of the volume.
+        :param str name: The name of the object to which the event belongs.
         :param str reason: The name of the event.
-        :param str type: The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+        :param str type: The type of the event. Valid values: Normal and Warning.
         """
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "first_timestamp", first_timestamp)
@@ -2593,7 +2593,7 @@ class GetContainerGroupsGroupEventResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the volume.
+        The name of the object to which the event belongs.
         """
         return pulumi.get(self, "name")
 
@@ -2609,7 +2609,7 @@ class GetContainerGroupsGroupEventResult(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of the volume. Currently, the following types of volumes are supported: EmptyDirVolume, NFSVolume, ConfigFileVolume, and FlexVolume.
+        The type of the event. Valid values: Normal and Warning.
         """
         return pulumi.get(self, "type")
 
@@ -2870,7 +2870,7 @@ class GetContainerGroupsGroupInitContainerVolumeMountResult(dict):
                  read_only: bool):
         """
         :param str mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
-        :param str name: The name of the volume.
+        :param str name: The name of the volume. The name is the same as the volume you selected when you purchased the container.
         :param bool read_only: Default value: `false`.
         """
         pulumi.set(__self__, "mount_path", mount_path)
@@ -2889,7 +2889,7 @@ class GetContainerGroupsGroupInitContainerVolumeMountResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the volume.
+        The name of the volume. The name is the same as the volume you selected when you purchased the container.
         """
         return pulumi.get(self, "name")
 

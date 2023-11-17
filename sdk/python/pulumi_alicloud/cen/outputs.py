@@ -454,11 +454,11 @@ class GetChildInstanceRouteEntryToAttachmentsAttachmentResult(dict):
                  status: str,
                  transit_router_attachment_id: str):
         """
-        :param str cen_id: The ID of the CEN instance.
+        :param str cen_id: (ForceNew,Optional) The ID of the CEN instance.
         :param str child_instance_route_table_id: The first ID of the resource
         :param str destination_cidr_block: DestinationCidrBlock
         :param str id: The ID of the resource. The value is formulated as `<cen_id>:<child_instance_route_table_id>:<transit_router_attachment_id>:<destination_cidr_block>`.
-        :param str service_type: ServiceType
+        :param str service_type: (ForceNew,Optional) ServiceType
         :param str status: The status of the resource
         :param str transit_router_attachment_id: TransitRouterAttachmentId
         """
@@ -474,7 +474,7 @@ class GetChildInstanceRouteEntryToAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="cenId")
     def cen_id(self) -> str:
         """
-        The ID of the CEN instance.
+        (ForceNew,Optional) The ID of the CEN instance.
         """
         return pulumi.get(self, "cen_id")
 
@@ -506,7 +506,7 @@ class GetChildInstanceRouteEntryToAttachmentsAttachmentResult(dict):
     @pulumi.getter(name="serviceType")
     def service_type(self) -> str:
         """
-        ServiceType
+        (ForceNew,Optional) ServiceType
         """
         return pulumi.get(self, "service_type")
 
@@ -936,7 +936,7 @@ class GetInterRegionTrafficQosQueuesQueueResult(dict):
         :param str inter_region_traffic_qos_queue_name: The name of the traffic scheduling policy.
         :param int remain_bandwidth_percent: The percentage of cross-region bandwidth that the current queue can use.
         :param str status: The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
-        :param str traffic_qos_policy_id: The ID of the traffic scheduling policy.
+        :param str traffic_qos_policy_id: (ForceNew,Required) The ID of the traffic scheduling policy.
         """
         pulumi.set(__self__, "dscps", dscps)
         pulumi.set(__self__, "id", id)
@@ -1004,7 +1004,7 @@ class GetInterRegionTrafficQosQueuesQueueResult(dict):
     @pulumi.getter(name="trafficQosPolicyId")
     def traffic_qos_policy_id(self) -> str:
         """
-        The ID of the traffic scheduling policy.
+        (ForceNew,Required) The ID of the traffic scheduling policy.
         """
         return pulumi.get(self, "traffic_qos_policy_id")
 

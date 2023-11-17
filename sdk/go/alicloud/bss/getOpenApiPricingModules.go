@@ -63,7 +63,7 @@ type GetOpenApiPricingModulesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The product code.
 	ProductCode string `pulumi:"productCode"`
-	// The product type.
+	// (ForceNew,Optional) The product type.
 	ProductType *string `pulumi:"productType"`
 	// Subscription type. Value:
 	// * Subscription: Prepaid.
@@ -109,7 +109,7 @@ type GetOpenApiPricingModulesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The product code.
 	ProductCode pulumi.StringInput `pulumi:"productCode"`
-	// The product type.
+	// (ForceNew,Optional) The product type.
 	ProductType pulumi.StringPtrInput `pulumi:"productType"`
 	// Subscription type. Value:
 	// * Subscription: Prepaid.

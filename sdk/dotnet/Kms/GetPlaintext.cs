@@ -111,7 +111,7 @@ namespace Pulumi.AliCloud.Kms
         private Dictionary<string, string>? _encryptionContext;
 
         /// <summary>
-        /// (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        /// The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         /// </summary>
         public Dictionary<string, string> EncryptionContext
         {
@@ -137,7 +137,7 @@ namespace Pulumi.AliCloud.Kms
         private InputMap<string>? _encryptionContext;
 
         /// <summary>
-        /// (Optional) The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
+        /// The Encryption context. If you specify this parameter in the Encrypt or GenerateDataKey API operation, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
         /// </summary>
         public InputMap<string> EncryptionContext
         {

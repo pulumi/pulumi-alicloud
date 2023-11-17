@@ -84,7 +84,7 @@ func GetServerSnapshots(ctx *pulumi.Context, args *GetServerSnapshotsArgs, opts 
 
 // A collection of arguments for invoking getServerSnapshots.
 type GetServerSnapshotsArgs struct {
-	// The ID of the source disk. This parameter has a value even after the source disk is released.
+	// The ID of the disk.
 	DiskId *string `pulumi:"diskId"`
 	// A list of Snapshot IDs.
 	Ids []string `pulumi:"ids"`
@@ -127,7 +127,7 @@ func GetServerSnapshotsOutput(ctx *pulumi.Context, args GetServerSnapshotsOutput
 
 // A collection of arguments for invoking getServerSnapshots.
 type GetServerSnapshotsOutputArgs struct {
-	// The ID of the source disk. This parameter has a value even after the source disk is released.
+	// The ID of the disk.
 	DiskId pulumi.StringPtrInput `pulumi:"diskId"`
 	// A list of Snapshot IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

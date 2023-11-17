@@ -145,7 +145,7 @@ def get_alarm_contacts(chanel_type: Optional[str] = None,
     :param str chanel_value: The alarm notification target.
     :param Sequence[str] ids: A list of alarm contact IDs.
     :param str name_regex: A regex string to filter results by alarm contact name.
-    :param str output_file: File name where to save data source results (after running `pulumi preview`). 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
            
            > **NOTE:** Specify at least one of the following alarm notification targets: phone number, email address, webhook URL of the DingTalk chatbot, and TradeManager ID.
     """
@@ -198,7 +198,7 @@ def get_alarm_contacts_output(chanel_type: Optional[pulumi.Input[Optional[str]]]
     :param str chanel_value: The alarm notification target.
     :param Sequence[str] ids: A list of alarm contact IDs.
     :param str name_regex: A regex string to filter results by alarm contact name.
-    :param str output_file: File name where to save data source results (after running `pulumi preview`). 
+    :param str output_file: File name where to save data source results (after running `pulumi preview`).
            
            > **NOTE:** Specify at least one of the following alarm notification targets: phone number, email address, webhook URL of the DingTalk chatbot, and TradeManager ID.
     """

@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The Region ID.
+        /// (Option) You can use specified region_id to find the region and available zones information that supports ClickHouse.
         /// </summary>
         [Input("regionId")]
         public string? RegionId { get; set; }
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The Region ID.
+        /// (Option) You can use specified region_id to find the region and available zones information that supports ClickHouse.
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }

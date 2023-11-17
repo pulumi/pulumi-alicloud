@@ -67,7 +67,7 @@ export interface GetIpv6EgressRulesArgs {
      */
     ids?: string[];
     /**
-     * The ID of the instance to which the egress-only rule is applied.
+     * The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
      */
     instanceId?: string;
     /**
@@ -87,7 +87,7 @@ export interface GetIpv6EgressRulesArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+     * The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
      */
     status?: string;
 }
@@ -161,7 +161,7 @@ export interface GetIpv6EgressRulesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the instance to which the egress-only rule is applied.
+     * The ID of the instance that is associated with the IPv6 address to which the egress-only rule is applied.
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -181,7 +181,7 @@ export interface GetIpv6EgressRulesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource. Valid values: `Available`, `Pending` and `Deleting`.
+     * The status of the resource. Valid values: `Available`, `Deleting`, `Pending`.
      */
     status?: pulumi.Input<string>;
 }

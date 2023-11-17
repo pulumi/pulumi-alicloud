@@ -66,13 +66,13 @@ namespace Pulumi.AliCloud.Dms
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Database account.
+        /// (ForceNew,Optional) Database account.
         /// </summary>
         [Output("indepAccount")]
         public Output<string?> IndepAccount { get; private set; } = null!;
 
         /// <summary>
-        /// Database password.
+        /// (ForceNew,Optional) Database password.
         /// </summary>
         [Output("indepPassword")]
         public Output<string?> IndepPassword { get; private set; } = null!;
@@ -173,7 +173,7 @@ namespace Pulumi.AliCloud.Dms
     public sealed class EnterpriseProxyAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Database account.
+        /// (ForceNew,Optional) Database account.
         /// </summary>
         [Input("indepAccount")]
         public Input<string>? IndepAccount { get; set; }
@@ -182,7 +182,7 @@ namespace Pulumi.AliCloud.Dms
         private Input<string>? _indepPassword;
 
         /// <summary>
-        /// Database password.
+        /// (ForceNew,Optional) Database password.
         /// </summary>
         public Input<string>? IndepPassword
         {
@@ -246,7 +246,7 @@ namespace Pulumi.AliCloud.Dms
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Database account.
+        /// (ForceNew,Optional) Database account.
         /// </summary>
         [Input("indepAccount")]
         public Input<string>? IndepAccount { get; set; }
@@ -255,7 +255,7 @@ namespace Pulumi.AliCloud.Dms
         private Input<string>? _indepPassword;
 
         /// <summary>
-        /// Database password.
+        /// (ForceNew,Optional) Database password.
         /// </summary>
         public Input<string>? IndepPassword
         {

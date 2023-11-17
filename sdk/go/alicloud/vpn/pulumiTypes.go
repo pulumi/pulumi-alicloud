@@ -3584,7 +3584,7 @@ type GetGatewayVpnAttachmentsAttachmentHealthCheckConfig struct {
 	Retry int `pulumi:"retry"`
 	// The source IP address.
 	Sip string `pulumi:"sip"`
-	// The status of the resource.
+	// The status of the health check.
 	Status string `pulumi:"status"`
 }
 
@@ -3612,7 +3612,7 @@ type GetGatewayVpnAttachmentsAttachmentHealthCheckConfigArgs struct {
 	Retry pulumi.IntInput `pulumi:"retry"`
 	// The source IP address.
 	Sip pulumi.StringInput `pulumi:"sip"`
-	// The status of the resource.
+	// The status of the health check.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -3697,7 +3697,7 @@ func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) Sip() pulumi.
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentHealthCheckConfig) string { return v.Sip }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the health check.
 func (o GetGatewayVpnAttachmentsAttachmentHealthCheckConfigOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachmentHealthCheckConfig) string { return v.Status }).(pulumi.StringOutput)
 }

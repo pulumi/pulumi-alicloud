@@ -25,9 +25,9 @@ class HAVipAttachmentArgs:
         :param pulumi.Input[bool] force: Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
                - **True**: Force unbinding.
                - **False** (default): unbinding is not forced.
-               > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+                 > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
         :param pulumi.Input[str] ha_vip_id: The ID of the HaVip instance.
-        :param pulumi.Input[str] havip_id: . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        :param pulumi.Input[str] havip_id: (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         :param pulumi.Input[str] instance_type: The type of the instance associated with the VIIP.
                
                The following arguments will be discarded. Please use new fields as soon as possible:
@@ -64,7 +64,7 @@ class HAVipAttachmentArgs:
         Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
         - **True**: Force unbinding.
         - **False** (default): unbinding is not forced.
-        > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+          > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
         """
         return pulumi.get(self, "force")
 
@@ -88,7 +88,7 @@ class HAVipAttachmentArgs:
     @pulumi.getter(name="havipId")
     def havip_id(self) -> Optional[pulumi.Input[str]]:
         """
-        . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         """
         warnings.warn("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""havip_id is deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
@@ -128,9 +128,9 @@ class _HAVipAttachmentState:
         :param pulumi.Input[bool] force: Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
                - **True**: Force unbinding.
                - **False** (default): unbinding is not forced.
-               > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+                 > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
         :param pulumi.Input[str] ha_vip_id: The ID of the HaVip instance.
-        :param pulumi.Input[str] havip_id: . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        :param pulumi.Input[str] havip_id: (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         :param pulumi.Input[str] instance_id: The ID of the ECS instance bound to the HaVip instance.
         :param pulumi.Input[str] instance_type: The type of the instance associated with the VIIP.
                
@@ -160,7 +160,7 @@ class _HAVipAttachmentState:
         Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
         - **True**: Force unbinding.
         - **False** (default): unbinding is not forced.
-        > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+          > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
         """
         return pulumi.get(self, "force")
 
@@ -184,7 +184,7 @@ class _HAVipAttachmentState:
     @pulumi.getter(name="havipId")
     def havip_id(self) -> Optional[pulumi.Input[str]]:
         """
-        . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         """
         warnings.warn("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""havip_id is deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")
@@ -307,9 +307,9 @@ class HAVipAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] force: Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
                - **True**: Force unbinding.
                - **False** (default): unbinding is not forced.
-               > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+                 > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
         :param pulumi.Input[str] ha_vip_id: The ID of the HaVip instance.
-        :param pulumi.Input[str] havip_id: . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        :param pulumi.Input[str] havip_id: (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         :param pulumi.Input[str] instance_id: The ID of the ECS instance bound to the HaVip instance.
         :param pulumi.Input[str] instance_type: The type of the instance associated with the VIIP.
                
@@ -441,9 +441,9 @@ class HAVipAttachment(pulumi.CustomResource):
         :param pulumi.Input[bool] force: Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
                - **True**: Force unbinding.
                - **False** (default): unbinding is not forced.
-               > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+                 > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
         :param pulumi.Input[str] ha_vip_id: The ID of the HaVip instance.
-        :param pulumi.Input[str] havip_id: . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        :param pulumi.Input[str] havip_id: (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         :param pulumi.Input[str] instance_id: The ID of the ECS instance bound to the HaVip instance.
         :param pulumi.Input[str] instance_type: The type of the instance associated with the VIIP.
                
@@ -469,7 +469,7 @@ class HAVipAttachment(pulumi.CustomResource):
         Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
         - **True**: Force unbinding.
         - **False** (default): unbinding is not forced.
-        > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+          > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
         """
         return pulumi.get(self, "force")
 
@@ -485,7 +485,7 @@ class HAVipAttachment(pulumi.CustomResource):
     @pulumi.getter(name="havipId")
     def havip_id(self) -> pulumi.Output[str]:
         """
-        . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+        (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
         """
         warnings.warn("""Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""havip_id is deprecated: Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.""")

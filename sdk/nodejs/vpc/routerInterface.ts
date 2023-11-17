@@ -70,7 +70,7 @@ export class RouterInterface extends pulumi.CustomResource {
     }
 
     /**
-     * It has been deprecated from version 1.11.0.
+     * (Deprecated) It has been deprecated from version 1.11.0.
      *
      * @deprecated Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
      */
@@ -97,19 +97,19 @@ export class RouterInterface extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * It has been deprecated from version 1.11.0.
+     * (Deprecated) It has been deprecated from version 1.11.0.
      *
      * @deprecated Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
      */
     public readonly oppositeAccessPointId!: pulumi.Output<string | undefined>;
     /**
-     * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+     * (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      *
      * @deprecated Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
      */
     public /*out*/ readonly oppositeInterfaceId!: pulumi.Output<string>;
     /**
-     * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+     * (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
      *
      * @deprecated Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.
      */
@@ -119,13 +119,13 @@ export class RouterInterface extends pulumi.CustomResource {
      */
     public readonly oppositeRegion!: pulumi.Output<string>;
     /**
-     * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+     * (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      *
      * @deprecated Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      */
     public /*out*/ readonly oppositeRouterId!: pulumi.Output<string>;
     /**
-     * It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+     * (Deprecated) It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
      *
      * @deprecated Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
      */
@@ -224,7 +224,7 @@ export class RouterInterface extends pulumi.CustomResource {
  */
 export interface RouterInterfaceState {
     /**
-     * It has been deprecated from version 1.11.0.
+     * (Deprecated) It has been deprecated from version 1.11.0.
      *
      * @deprecated Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
      */
@@ -251,19 +251,19 @@ export interface RouterInterfaceState {
      */
     name?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.11.0.
+     * (Deprecated) It has been deprecated from version 1.11.0.
      *
      * @deprecated Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
      */
     oppositeAccessPointId?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+     * (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      *
      * @deprecated Attribute 'opposite_interface_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
      */
     oppositeInterfaceId?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
+     * (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_id' instead.
      *
      * @deprecated Attribute 'opposite_interface_owner_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_interface_owner_id' instead.
      */
@@ -273,13 +273,13 @@ export interface RouterInterfaceState {
      */
     oppositeRegion?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
+     * (Deprecated) It has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      *
      * @deprecated Attribute 'opposite_router_id' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_id' instead.
      */
     oppositeRouterId?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
+     * (Deprecated) It has been deprecated from version 1.11.0. resource alicloud_router_interface_connection's 'opposite_router_type' instead.
      *
      * @deprecated Attribute 'opposite_router_type' has been deprecated from version 1.11.0. Use resource alicloud_router_interface_connection's 'opposite_router_type' instead.
      */
@@ -333,7 +333,7 @@ export interface RouterInterfaceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * It has been deprecated from version 1.11.0.
+     * (Deprecated) It has been deprecated from version 1.11.0.
      *
      * @deprecated Attribute 'opposite_access_point_id' has been deprecated from version 1.11.0.
      */

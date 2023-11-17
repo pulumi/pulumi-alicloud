@@ -22,10 +22,6 @@ public final class GetEventRulesRule {
      * 
      */
     private List<GetEventRulesRuleEventPattern> eventPatterns;
-    /**
-     * @return The name of the event rule.
-     * 
-     */
     private String eventRuleName;
     /**
      * @return The type of event.
@@ -37,10 +33,6 @@ public final class GetEventRulesRule {
      * 
      */
     private String groupId;
-    /**
-     * @return The ID of the Event Rule. Its value is same as Event Rule Name.
-     * 
-     */
     private String id;
     /**
      * @return The mute period during which new alerts are not sent even if the trigger conditions are met.
@@ -68,10 +60,6 @@ public final class GetEventRulesRule {
     public List<GetEventRulesRuleEventPattern> eventPatterns() {
         return this.eventPatterns;
     }
-    /**
-     * @return The name of the event rule.
-     * 
-     */
     public String eventRuleName() {
         return this.eventRuleName;
     }
@@ -89,10 +77,6 @@ public final class GetEventRulesRule {
     public String groupId() {
         return this.groupId;
     }
-    /**
-     * @return The ID of the Event Rule. Its value is same as Event Rule Name.
-     * 
-     */
     public String id() {
         return this.id;
     }

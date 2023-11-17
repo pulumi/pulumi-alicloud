@@ -10,45 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPeerConnectionsConnection {
-    /**
-     * @return The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
-     * 
-     */
     private Integer acceptingAliUid;
-    /**
-     * @return The region ID of the recipient of the VPC peering connection to be created.
-     * 
-     */
     private String acceptingRegionId;
-    /**
-     * @return The VPC ID of the receiving end of the VPC peer connection.
-     * 
-     */
     private String acceptingVpcId;
-    /**
-     * @return The bandwidth of the VPC peering connection to be modified. Unit: Mbps.
-     * 
-     */
     private Integer bandwidth;
-    /**
-     * @return The creation time of the resource.
-     * 
-     */
     private String createTime;
-    /**
-     * @return The description of the VPC peer connection to be created.
-     * 
-     */
     private String description;
-    /**
-     * @return The ID of the PeerConnection.
-     * 
-     */
     private String id;
-    /**
-     * @return The first ID of the resource.
-     * 
-     */
     private String peerConnectionId;
     /**
      * @return The name of the resource.
@@ -56,7 +24,7 @@ public final class GetPeerConnectionsConnection {
      */
     private String peerConnectionName;
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
      * 
      */
     private String status;
@@ -67,59 +35,27 @@ public final class GetPeerConnectionsConnection {
     private String vpcId;
 
     private GetPeerConnectionsConnection() {}
-    /**
-     * @return The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
-     * 
-     */
     public Integer acceptingAliUid() {
         return this.acceptingAliUid;
     }
-    /**
-     * @return The region ID of the recipient of the VPC peering connection to be created.
-     * 
-     */
     public String acceptingRegionId() {
         return this.acceptingRegionId;
     }
-    /**
-     * @return The VPC ID of the receiving end of the VPC peer connection.
-     * 
-     */
     public String acceptingVpcId() {
         return this.acceptingVpcId;
     }
-    /**
-     * @return The bandwidth of the VPC peering connection to be modified. Unit: Mbps.
-     * 
-     */
     public Integer bandwidth() {
         return this.bandwidth;
     }
-    /**
-     * @return The creation time of the resource.
-     * 
-     */
     public String createTime() {
         return this.createTime;
     }
-    /**
-     * @return The description of the VPC peer connection to be created.
-     * 
-     */
     public String description() {
         return this.description;
     }
-    /**
-     * @return The ID of the PeerConnection.
-     * 
-     */
     public String id() {
         return this.id;
     }
-    /**
-     * @return The first ID of the resource.
-     * 
-     */
     public String peerConnectionId() {
         return this.peerConnectionId;
     }
@@ -131,7 +67,7 @@ public final class GetPeerConnectionsConnection {
         return this.peerConnectionName;
     }
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
      * 
      */
     public String status() {

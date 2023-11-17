@@ -79,9 +79,6 @@ type ServiceSubscription struct {
 	pulumi.CustomResourceState
 
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
-	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
 	FilterTag pulumi.StringPtrOutput `pulumi:"filterTag"`
@@ -140,9 +137,6 @@ func GetServiceSubscription(ctx *pulumi.Context,
 // Input properties used for looking up and filtering ServiceSubscription resources.
 type serviceSubscriptionState struct {
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
-	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint *string `pulumi:"endpoint"`
 	// The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
 	FilterTag *string `pulumi:"filterTag"`
@@ -160,9 +154,6 @@ type serviceSubscriptionState struct {
 
 type ServiceSubscriptionState struct {
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
-	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint pulumi.StringPtrInput
 	// The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
 	FilterTag pulumi.StringPtrInput
@@ -184,9 +175,6 @@ func (ServiceSubscriptionState) ElementType() reflect.Type {
 
 type serviceSubscriptionArgs struct {
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
-	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint string `pulumi:"endpoint"`
 	// The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
 	FilterTag *string `pulumi:"filterTag"`
@@ -205,9 +193,6 @@ type serviceSubscriptionArgs struct {
 // The set of arguments for constructing a ServiceSubscription resource.
 type ServiceSubscriptionArgs struct {
 	// The endpoint has three format. Available values format:
-	// - `HTTP Format`: http://xxx.com/xxx
-	// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-	// - `Email Format`: mail:directmail:{MailAddress}
 	Endpoint pulumi.StringInput
 	// The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
 	FilterTag pulumi.StringPtrInput
@@ -311,9 +296,6 @@ func (o ServiceSubscriptionOutput) ToServiceSubscriptionOutputWithContext(ctx co
 }
 
 // The endpoint has three format. Available values format:
-// - `HTTP Format`: http://xxx.com/xxx
-// - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-// - `Email Format`: mail:directmail:{MailAddress}
 func (o ServiceSubscriptionOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceSubscription) pulumi.StringOutput { return v.Endpoint }).(pulumi.StringOutput)
 }

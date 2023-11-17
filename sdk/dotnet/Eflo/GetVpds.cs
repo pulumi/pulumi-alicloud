@@ -130,25 +130,25 @@ namespace Pulumi.AliCloud.Eflo
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The Resource group id
+        /// (ForceNew,Optional) The Resource group id
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+        /// (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         /// <summary>
-        /// The id of the vpd.
+        /// (ForceNew,Optional) The id of the vpd.
         /// </summary>
         [Input("vpdId")]
         public string? VpdId { get; set; }
 
         /// <summary>
-        /// The Name of the VPD.
+        /// (ForceNew,Optional) The Name of the VPD.
         /// </summary>
         [Input("vpdName")]
         public string? VpdName { get; set; }
@@ -198,25 +198,25 @@ namespace Pulumi.AliCloud.Eflo
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The Resource group id
+        /// (ForceNew,Optional) The Resource group id
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+        /// (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The id of the vpd.
+        /// (ForceNew,Optional) The id of the vpd.
         /// </summary>
         [Input("vpdId")]
         public Input<string>? VpdId { get; set; }
 
         /// <summary>
-        /// The Name of the VPD.
+        /// (ForceNew,Optional) The Name of the VPD.
         /// </summary>
         [Input("vpdName")]
         public Input<string>? VpdName { get; set; }

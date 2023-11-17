@@ -63,11 +63,11 @@ type GetZonesArgs struct {
 	// > **NOTE:** From version 1.134.0, the `availableResourceCreation` value "Rds" has been deprecated.
 	// If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
 	AvailableResourceCreation *string `pulumi:"availableResourceCreation"`
-	// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+	// (Available since 1.45.0) Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
 	//
 	// > **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloudEfficiency` or `cloudSsd`.
 	AvailableSlbAddressIpVersion *string `pulumi:"availableSlbAddressIpVersion"`
-	// Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
+	// (Available since 1.45.0) Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
 	AvailableSlbAddressType *string `pulumi:"availableSlbAddressType"`
 	// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
 	EnableDetails *bool `pulumi:"enableDetails"`
@@ -79,7 +79,7 @@ type GetZonesArgs struct {
 	NetworkType *string `pulumi:"networkType"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+	// Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 }
 
@@ -130,11 +130,11 @@ type GetZonesOutputArgs struct {
 	// > **NOTE:** From version 1.134.0, the `availableResourceCreation` value "Rds" has been deprecated.
 	// If you want to fetch the available zones for RDS instance, you can use datasource alicloud_db_zones
 	AvailableResourceCreation pulumi.StringPtrInput `pulumi:"availableResourceCreation"`
-	// Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
+	// (Available since 1.45.0) Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
 	//
 	// > **NOTE:** The disk category `cloud` has been outdated and can only be used by non-I/O Optimized ECS instances. Many availability zones don't support it. It is recommended to use `cloudEfficiency` or `cloudSsd`.
 	AvailableSlbAddressIpVersion pulumi.StringPtrInput `pulumi:"availableSlbAddressIpVersion"`
-	// Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
+	// (Available since 1.45.0) Filter the results by a slb instance address type. Can be either `Vpc`, `classicInternet` or `classicIntranet`
 	AvailableSlbAddressType pulumi.StringPtrInput `pulumi:"availableSlbAddressType"`
 	// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
@@ -146,7 +146,7 @@ type GetZonesOutputArgs struct {
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// - (Optional) Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
+	// Filter the results by a specific ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy pulumi.StringPtrInput `pulumi:"spotStrategy"`
 }
 

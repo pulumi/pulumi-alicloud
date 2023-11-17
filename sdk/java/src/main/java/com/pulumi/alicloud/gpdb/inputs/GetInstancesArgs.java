@@ -200,14 +200,14 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The vswitch id.
+     * Used to retrieve instances belong to specified `vswitch` resources.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The vswitch id.
+     * @return Used to retrieve instances belong to specified `vswitch` resources.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -513,7 +513,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vswitchId The vswitch id.
+         * @param vswitchId Used to retrieve instances belong to specified `vswitch` resources.
          * 
          * @return builder
          * 
@@ -524,7 +524,7 @@ public final class GetInstancesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param vswitchId The vswitch id.
+         * @param vswitchId Used to retrieve instances belong to specified `vswitch` resources.
          * 
          * @return builder
          * 

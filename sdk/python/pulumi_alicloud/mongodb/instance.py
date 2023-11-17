@@ -71,7 +71,7 @@ class InstanceArgs:
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
                * UPGRADE: The specifications are upgraded.
                * DOWNGRADE: The specifications are downgraded.
-               **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+                 **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
@@ -343,7 +343,7 @@ class InstanceArgs:
         The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         * UPGRADE: The specifications are upgraded.
         * DOWNGRADE: The specifications are downgraded.
-        **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+          **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         """
         return pulumi.get(self, "order_type")
 
@@ -608,7 +608,7 @@ class _InstanceState:
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
                * UPGRADE: The specifications are upgraded.
                * DOWNGRADE: The specifications are downgraded.
-               **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+                 **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceParameterArgs']]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
@@ -895,7 +895,7 @@ class _InstanceState:
         The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         * UPGRADE: The specifications are upgraded.
         * DOWNGRADE: The specifications are downgraded.
-        **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+          **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         """
         return pulumi.get(self, "order_type")
 
@@ -1268,7 +1268,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
                * UPGRADE: The specifications are upgraded.
                * DOWNGRADE: The specifications are downgraded.
-               **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+                 **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
@@ -1529,7 +1529,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] order_type: The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
                * UPGRADE: The specifications are upgraded.
                * DOWNGRADE: The specifications are downgraded.
-               **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+                 **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceParameterArgs']]]] parameters: Set of parameters needs to be set after mongodb instance was launched. See `parameters` below.
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in the replica set instance. Default value: 0. Valid values: 0 to 5.
@@ -1725,7 +1725,7 @@ class Instance(pulumi.CustomResource):
         The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
         * UPGRADE: The specifications are upgraded.
         * DOWNGRADE: The specifications are downgraded.
-        **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+          **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
         """
         return pulumi.get(self, "order_type")
 

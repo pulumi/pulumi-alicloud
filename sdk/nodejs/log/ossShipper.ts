@@ -112,18 +112,18 @@ export class OssShipper extends pulumi.CustomResource {
      * Storage format, only supports three types: `json`, `parquet`, `csv`.
      * **According to the different format, please select the following parameters**
      * - format = `json`
-     * `jsonEnableTag` - (Optional) Whether to deliver the label.
+     *   `jsonEnableTag` - (Optional) Whether to deliver the label.
      * - format = `csv`
-     * `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-     * `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
-     * `csvConfigNullidentifier` - (Optional) Invalid field content.
-     * `csvConfigQuote` - (Optional) Escape character under csv configuration.
-     * `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-     * `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
+     *   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
+     *   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
+     *   `csvConfigNullidentifier` - (Optional) Invalid field content.
+     *   `csvConfigQuote` - (Optional) Escape character under csv configuration.
+     *   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
+     *   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
      * - format = `parquet`
-     * `parquetConfig` - (Optional) Configure to use parquet storage format.
-     * `name` - (Required) The name of the key.
-     * `type` - (Required) Type of configuration name.
+     *   `parquetConfig` - (Optional) Configure to use parquet storage format.
+     *   `name` - (Required) The name of the key.
+     *   `type` - (Required) Type of configuration name.
      */
     public readonly format!: pulumi.Output<string>;
     public readonly jsonEnableTag!: pulumi.Output<boolean | undefined>;
@@ -266,18 +266,18 @@ export interface OssShipperState {
      * Storage format, only supports three types: `json`, `parquet`, `csv`.
      * **According to the different format, please select the following parameters**
      * - format = `json`
-     * `jsonEnableTag` - (Optional) Whether to deliver the label.
+     *   `jsonEnableTag` - (Optional) Whether to deliver the label.
      * - format = `csv`
-     * `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-     * `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
-     * `csvConfigNullidentifier` - (Optional) Invalid field content.
-     * `csvConfigQuote` - (Optional) Escape character under csv configuration.
-     * `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-     * `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
+     *   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
+     *   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
+     *   `csvConfigNullidentifier` - (Optional) Invalid field content.
+     *   `csvConfigQuote` - (Optional) Escape character under csv configuration.
+     *   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
+     *   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
      * - format = `parquet`
-     * `parquetConfig` - (Optional) Configure to use parquet storage format.
-     * `name` - (Required) The name of the key.
-     * `type` - (Required) Type of configuration name.
+     *   `parquetConfig` - (Optional) Configure to use parquet storage format.
+     *   `name` - (Required) The name of the key.
+     *   `type` - (Required) Type of configuration name.
      */
     format?: pulumi.Input<string>;
     jsonEnableTag?: pulumi.Input<boolean>;
@@ -338,18 +338,18 @@ export interface OssShipperArgs {
      * Storage format, only supports three types: `json`, `parquet`, `csv`.
      * **According to the different format, please select the following parameters**
      * - format = `json`
-     * `jsonEnableTag` - (Optional) Whether to deliver the label.
+     *   `jsonEnableTag` - (Optional) Whether to deliver the label.
      * - format = `csv`
-     * `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
-     * `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
-     * `csvConfigNullidentifier` - (Optional) Invalid field content.
-     * `csvConfigQuote` - (Optional) Escape character under csv configuration.
-     * `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-     * `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
+     *   `csvConfigDelimiter` - (Optional) Separator configuration in csv configuration format.
+     *   `csvConfigColumns` - (Optional) Field configuration in csv configuration format.
+     *   `csvConfigNullidentifier` - (Optional) Invalid field content.
+     *   `csvConfigQuote` - (Optional) Escape character under csv configuration.
+     *   `csvConfigHeader` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
+     *   `csvConfigLinefeed` - (Optional) lineFeed in csv configuration.
      * - format = `parquet`
-     * `parquetConfig` - (Optional) Configure to use parquet storage format.
-     * `name` - (Required) The name of the key.
-     * `type` - (Required) Type of configuration name.
+     *   `parquetConfig` - (Optional) Configure to use parquet storage format.
+     *   `name` - (Required) The name of the key.
+     *   `type` - (Required) Type of configuration name.
      */
     format: pulumi.Input<string>;
     jsonEnableTag?: pulumi.Input<boolean>;

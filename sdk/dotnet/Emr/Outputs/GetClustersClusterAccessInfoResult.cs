@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.Emr.Outputs
     {
         /// <summary>
         /// Link address information list of ZooKeeper.
+        /// * `link` - The access link address of ZooKeeper.
+        /// * `port` - The port of ZooKeeper.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClustersClusterAccessInfoZkLinkResult> ZkLinks;
 

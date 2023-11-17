@@ -29,15 +29,15 @@ class EipSegmentAddressArgs:
         :param pulumi.Input[str] isp: Line type. Valid values:
                - **BGP** (default):BGP (multi-line) line. BGP (multi-line) EIP is supported in all regions.
                - **BGP_PRO** :BGP (multi-line)_boutique line. Currently, only Hong Kong, Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), the Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions support BGP (multi-line)_boutique route EIP.
-               For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
-               If you are a whitelist user with single-line bandwidth, you can also select the following types:
+                 For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
+                 If you are a whitelist user with single-line bandwidth, you can also select the following types:
                - **ChinaTelecom** : China Telecom
                - **ChinaUnicom** : China Unicom
                - **ChinaMobile** : China Mobile
                - **ChinaTelecom_L2** : China Telecom L2
                - **ChinaUnicom_L2** : China Unicom L2
                - **ChinaMobile_L2** : China Mobile L2
-               If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
+                 If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
         :param pulumi.Input[str] netmode: The network type. Set the value to **public**.
         """
         pulumi.set(__self__, "eip_mask", eip_mask)
@@ -95,15 +95,15 @@ class EipSegmentAddressArgs:
         Line type. Valid values:
         - **BGP** (default):BGP (multi-line) line. BGP (multi-line) EIP is supported in all regions.
         - **BGP_PRO** :BGP (multi-line)_boutique line. Currently, only Hong Kong, Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), the Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions support BGP (multi-line)_boutique route EIP.
-        For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
-        If you are a whitelist user with single-line bandwidth, you can also select the following types:
+          For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
+          If you are a whitelist user with single-line bandwidth, you can also select the following types:
         - **ChinaTelecom** : China Telecom
         - **ChinaUnicom** : China Unicom
         - **ChinaMobile** : China Mobile
         - **ChinaTelecom_L2** : China Telecom L2
         - **ChinaUnicom_L2** : China Unicom L2
         - **ChinaMobile_L2** : China Mobile L2
-        If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
+          If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
         """
         return pulumi.get(self, "isp")
 
@@ -145,15 +145,15 @@ class _EipSegmentAddressState:
         :param pulumi.Input[str] isp: Line type. Valid values:
                - **BGP** (default):BGP (multi-line) line. BGP (multi-line) EIP is supported in all regions.
                - **BGP_PRO** :BGP (multi-line)_boutique line. Currently, only Hong Kong, Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), the Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions support BGP (multi-line)_boutique route EIP.
-               For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
-               If you are a whitelist user with single-line bandwidth, you can also select the following types:
+                 For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
+                 If you are a whitelist user with single-line bandwidth, you can also select the following types:
                - **ChinaTelecom** : China Telecom
                - **ChinaUnicom** : China Unicom
                - **ChinaMobile** : China Mobile
                - **ChinaTelecom_L2** : China Telecom L2
                - **ChinaUnicom_L2** : China Unicom L2
                - **ChinaMobile_L2** : China Mobile L2
-               If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
+                 If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
         :param pulumi.Input[str] netmode: The network type. Set the value to **public**.
         :param pulumi.Input[str] status: The status of the resource.
         """
@@ -229,15 +229,15 @@ class _EipSegmentAddressState:
         Line type. Valid values:
         - **BGP** (default):BGP (multi-line) line. BGP (multi-line) EIP is supported in all regions.
         - **BGP_PRO** :BGP (multi-line)_boutique line. Currently, only Hong Kong, Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), the Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions support BGP (multi-line)_boutique route EIP.
-        For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
-        If you are a whitelist user with single-line bandwidth, you can also select the following types:
+          For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
+          If you are a whitelist user with single-line bandwidth, you can also select the following types:
         - **ChinaTelecom** : China Telecom
         - **ChinaUnicom** : China Unicom
         - **ChinaMobile** : China Mobile
         - **ChinaTelecom_L2** : China Telecom L2
         - **ChinaUnicom_L2** : China Unicom L2
         - **ChinaMobile_L2** : China Mobile L2
-        If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
+          If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
         """
         return pulumi.get(self, "isp")
 
@@ -326,15 +326,15 @@ class EipSegmentAddress(pulumi.CustomResource):
         :param pulumi.Input[str] isp: Line type. Valid values:
                - **BGP** (default):BGP (multi-line) line. BGP (multi-line) EIP is supported in all regions.
                - **BGP_PRO** :BGP (multi-line)_boutique line. Currently, only Hong Kong, Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), the Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions support BGP (multi-line)_boutique route EIP.
-               For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
-               If you are a whitelist user with single-line bandwidth, you can also select the following types:
+                 For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
+                 If you are a whitelist user with single-line bandwidth, you can also select the following types:
                - **ChinaTelecom** : China Telecom
                - **ChinaUnicom** : China Unicom
                - **ChinaMobile** : China Mobile
                - **ChinaTelecom_L2** : China Telecom L2
                - **ChinaUnicom_L2** : China Unicom L2
                - **ChinaMobile_L2** : China Mobile L2
-               If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
+                 If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
         :param pulumi.Input[str] netmode: The network type. Set the value to **public**.
         """
         ...
@@ -449,15 +449,15 @@ class EipSegmentAddress(pulumi.CustomResource):
         :param pulumi.Input[str] isp: Line type. Valid values:
                - **BGP** (default):BGP (multi-line) line. BGP (multi-line) EIP is supported in all regions.
                - **BGP_PRO** :BGP (multi-line)_boutique line. Currently, only Hong Kong, Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), the Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions support BGP (multi-line)_boutique route EIP.
-               For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
-               If you are a whitelist user with single-line bandwidth, you can also select the following types:
+                 For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
+                 If you are a whitelist user with single-line bandwidth, you can also select the following types:
                - **ChinaTelecom** : China Telecom
                - **ChinaUnicom** : China Unicom
                - **ChinaMobile** : China Mobile
                - **ChinaTelecom_L2** : China Telecom L2
                - **ChinaUnicom_L2** : China Unicom L2
                - **ChinaMobile_L2** : China Mobile L2
-               If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
+                 If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
         :param pulumi.Input[str] netmode: The network type. Set the value to **public**.
         :param pulumi.Input[str] status: The status of the resource.
         """
@@ -515,15 +515,15 @@ class EipSegmentAddress(pulumi.CustomResource):
         Line type. Valid values:
         - **BGP** (default):BGP (multi-line) line. BGP (multi-line) EIP is supported in all regions.
         - **BGP_PRO** :BGP (multi-line)_boutique line. Currently, only Hong Kong, Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), the Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions support BGP (multi-line)_boutique route EIP.
-        For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
-        If you are a whitelist user with single-line bandwidth, you can also select the following types:
+          For more information about BGP (multi-line) lines and BGP (multi-line) premium lines, see EIP line types.
+          If you are a whitelist user with single-line bandwidth, you can also select the following types:
         - **ChinaTelecom** : China Telecom
         - **ChinaUnicom** : China Unicom
         - **ChinaMobile** : China Mobile
         - **ChinaTelecom_L2** : China Telecom L2
         - **ChinaUnicom_L2** : China Unicom L2
         - **ChinaMobile_L2** : China Mobile L2
-        If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
+          If you are a user of Hangzhou Financial Cloud, this field is required. The value is `BGP_FinanceCloud`.
         """
         return pulumi.get(self, "isp")
 

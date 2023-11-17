@@ -196,14 +196,14 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
         return this.instanceType;
     }
     /**
-     * The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+     * (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
      * 
      */
     @Export(name="matchCriteria", type=String.class, parameters={})
     private Output<String> matchCriteria;
 
     /**
-     * @return The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+     * @return (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
      * 
      */
     public Output<String> matchCriteria() {
@@ -238,14 +238,14 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
         return this.platform;
     }
     /**
-     * The resource group id.
+     * (ForceNew,Optional) The resource group id.
      * 
      */
     @Export(name="resourceGroupId", type=String.class, parameters={})
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
-     * @return The resource group id.
+     * @return (ForceNew,Optional) The resource group id.
      * 
      */
     public Output<Optional<String>> resourceGroupId() {
@@ -322,14 +322,14 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
         return this.timeSlot;
     }
     /**
-     * The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+     * (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
      * 
      */
     @Export(name="zoneIds", type=List.class, parameters={String.class})
     private Output<List<String>> zoneIds;
 
     /**
-     * @return The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+     * @return (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
      * 
      */
     public Output<List<String>> zoneIds() {

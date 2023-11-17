@@ -53,14 +53,14 @@ public final class EnterpriseProxyAccessState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Database account.
+     * (ForceNew,Optional) Database account.
      * 
      */
     @Import(name="indepAccount")
     private @Nullable Output<String> indepAccount;
 
     /**
-     * @return Database account.
+     * @return (ForceNew,Optional) Database account.
      * 
      */
     public Optional<Output<String>> indepAccount() {
@@ -68,14 +68,14 @@ public final class EnterpriseProxyAccessState extends com.pulumi.resources.Resou
     }
 
     /**
-     * Database password.
+     * (ForceNew,Optional) Database password.
      * 
      */
     @Import(name="indepPassword")
     private @Nullable Output<String> indepPassword;
 
     /**
-     * @return Database password.
+     * @return (ForceNew,Optional) Database password.
      * 
      */
     public Optional<Output<String>> indepPassword() {
@@ -278,7 +278,7 @@ public final class EnterpriseProxyAccessState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param indepAccount Database account.
+         * @param indepAccount (ForceNew,Optional) Database account.
          * 
          * @return builder
          * 
@@ -289,7 +289,7 @@ public final class EnterpriseProxyAccessState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param indepAccount Database account.
+         * @param indepAccount (ForceNew,Optional) Database account.
          * 
          * @return builder
          * 
@@ -299,7 +299,7 @@ public final class EnterpriseProxyAccessState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param indepPassword Database password.
+         * @param indepPassword (ForceNew,Optional) Database password.
          * 
          * @return builder
          * 
@@ -310,7 +310,7 @@ public final class EnterpriseProxyAccessState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param indepPassword Database password.
+         * @param indepPassword (ForceNew,Optional) Database password.
          * 
          * @return builder
          * 

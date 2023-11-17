@@ -62,7 +62,7 @@ type GetTransitRouterVpnAttachmentsArgs struct {
 	NameRegex *string  `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the transit router attachment.
+	// The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
 	Status *string `pulumi:"status"`
 	// The ID of the forwarding router instance.
 	TransitRouterId *string `pulumi:"transitRouterId"`
@@ -104,7 +104,7 @@ type GetTransitRouterVpnAttachmentsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput   `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the transit router attachment.
+	// The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// The ID of the forwarding router instance.
 	TransitRouterId pulumi.StringPtrInput `pulumi:"transitRouterId"`

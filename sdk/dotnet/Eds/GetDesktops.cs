@@ -226,7 +226,7 @@ namespace Pulumi.AliCloud.Eds
     public sealed class GetDesktopsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The desktop name of the Desktop.
+        /// The desktop name.
         /// </summary>
         [Input("desktopName")]
         public string? DesktopName { get; set; }
@@ -294,7 +294,7 @@ namespace Pulumi.AliCloud.Eds
     public sealed class GetDesktopsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The desktop name of the Desktop.
+        /// The desktop name.
         /// </summary>
         [Input("desktopName")]
         public Input<string>? DesktopName { get; set; }

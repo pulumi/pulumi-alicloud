@@ -55,9 +55,6 @@ export class DeliveryChannel extends pulumi.CustomResource {
     public readonly deliveryChannelName!: pulumi.Output<string>;
     /**
      * The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
-     * - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-     * - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-     * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
      */
     public readonly deliveryChannelTargetArn!: pulumi.Output<string>;
     /**
@@ -135,9 +132,6 @@ export interface DeliveryChannelState {
     deliveryChannelName?: pulumi.Input<string>;
     /**
      * The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
-     * - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-     * - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-     * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
      */
     deliveryChannelTargetArn?: pulumi.Input<string>;
     /**
@@ -172,9 +166,6 @@ export interface DeliveryChannelArgs {
     deliveryChannelName?: pulumi.Input<string>;
     /**
      * The ARN of the delivery destination. This parameter is required when you create a delivery method. The value must be in one of the following formats:
-     * - `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-     * - `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-     * - `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
      */
     deliveryChannelTargetArn: pulumi.Input<string>;
     /**

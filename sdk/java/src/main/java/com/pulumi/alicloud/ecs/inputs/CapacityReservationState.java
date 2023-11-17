@@ -126,14 +126,14 @@ public final class CapacityReservationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+     * (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
      * 
      */
     @Import(name="matchCriteria")
     private @Nullable Output<String> matchCriteria;
 
     /**
-     * @return The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+     * @return (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
      * 
      */
     public Optional<Output<String>> matchCriteria() {
@@ -171,14 +171,14 @@ public final class CapacityReservationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The resource group id.
+     * (ForceNew,Optional) The resource group id.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The resource group id.
+     * @return (ForceNew,Optional) The resource group id.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -261,14 +261,14 @@ public final class CapacityReservationState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+     * (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
      * 
      */
     @Import(name="zoneIds")
     private @Nullable Output<List<String>> zoneIds;
 
     /**
-     * @return The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+     * @return (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
      * 
      */
     public Optional<Output<List<String>>> zoneIds() {
@@ -463,7 +463,7 @@ public final class CapacityReservationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param matchCriteria The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+         * @param matchCriteria (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
          * 
          * @return builder
          * 
@@ -474,7 +474,7 @@ public final class CapacityReservationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param matchCriteria The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
+         * @param matchCriteria (ForceNew,Optional) The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
          * 
          * @return builder
          * 
@@ -526,7 +526,7 @@ public final class CapacityReservationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param resourceGroupId The resource group id.
+         * @param resourceGroupId (ForceNew,Optional) The resource group id.
          * 
          * @return builder
          * 
@@ -537,7 +537,7 @@ public final class CapacityReservationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param resourceGroupId The resource group id.
+         * @param resourceGroupId (ForceNew,Optional) The resource group id.
          * 
          * @return builder
          * 
@@ -652,7 +652,7 @@ public final class CapacityReservationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneIds The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+         * @param zoneIds (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
          * 
          * @return builder
          * 
@@ -663,7 +663,7 @@ public final class CapacityReservationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneIds The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+         * @param zoneIds (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
          * 
          * @return builder
          * 
@@ -673,7 +673,7 @@ public final class CapacityReservationState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param zoneIds The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
+         * @param zoneIds (ForceNew,Required) The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
          * 
          * @return builder
          * 

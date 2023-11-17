@@ -24,6 +24,8 @@ class BasicDefenseThresholdArgs:
         """
         The set of arguments for constructing a BasicDefenseThreshold resource.
         :param pulumi.Input[str] ddos_type: The type of the threshold to query. Valid values: `defense`,`blackhole`.
+               -`defense` - scrubbing threshold.
+               -`blackhole` - DDoS mitigation threshold.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] instance_type: The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
         :param pulumi.Input[int] bps: Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
@@ -48,6 +50,8 @@ class BasicDefenseThresholdArgs:
     def ddos_type(self) -> pulumi.Input[str]:
         """
         The type of the threshold to query. Valid values: `defense`,`blackhole`.
+        -`defense` - scrubbing threshold.
+        -`blackhole` - DDoS mitigation threshold.
         """
         return pulumi.get(self, "ddos_type")
 
@@ -144,6 +148,8 @@ class _BasicDefenseThresholdState:
         Input properties used for looking up and filtering BasicDefenseThreshold resources.
         :param pulumi.Input[int] bps: Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
         :param pulumi.Input[str] ddos_type: The type of the threshold to query. Valid values: `defense`,`blackhole`.
+               -`defense` - scrubbing threshold.
+               -`blackhole` - DDoS mitigation threshold.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] instance_type: The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
         :param pulumi.Input[str] internet_ip: The Internet IP address.
@@ -188,6 +194,8 @@ class _BasicDefenseThresholdState:
     def ddos_type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of the threshold to query. Valid values: `defense`,`blackhole`.
+        -`defense` - scrubbing threshold.
+        -`blackhole` - DDoS mitigation threshold.
         """
         return pulumi.get(self, "ddos_type")
 
@@ -337,6 +345,8 @@ class BasicDefenseThreshold(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bps: Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
         :param pulumi.Input[str] ddos_type: The type of the threshold to query. Valid values: `defense`,`blackhole`.
+               -`defense` - scrubbing threshold.
+               -`blackhole` - DDoS mitigation threshold.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] instance_type: The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
         :param pulumi.Input[str] internet_ip: The Internet IP address.
@@ -463,6 +473,8 @@ class BasicDefenseThreshold(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[int] bps: Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
         :param pulumi.Input[str] ddos_type: The type of the threshold to query. Valid values: `defense`,`blackhole`.
+               -`defense` - scrubbing threshold.
+               -`blackhole` - DDoS mitigation threshold.
         :param pulumi.Input[str] instance_id: The ID of the instance.
         :param pulumi.Input[str] instance_type: The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
         :param pulumi.Input[str] internet_ip: The Internet IP address.
@@ -499,6 +511,8 @@ class BasicDefenseThreshold(pulumi.CustomResource):
     def ddos_type(self) -> pulumi.Output[str]:
         """
         The type of the threshold to query. Valid values: `defense`,`blackhole`.
+        -`defense` - scrubbing threshold.
+        -`blackhole` - DDoS mitigation threshold.
         """
         return pulumi.get(self, "ddos_type")
 

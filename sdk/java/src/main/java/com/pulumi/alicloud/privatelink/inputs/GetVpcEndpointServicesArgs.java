@@ -18,14 +18,14 @@ public final class GetVpcEndpointServicesArgs extends com.pulumi.resources.Invok
     public static final GetVpcEndpointServicesArgs Empty = new GetVpcEndpointServicesArgs();
 
     /**
-     * Whether to automatically accept terminal node connections..
+     * Whether to automatically accept terminal node connections.
      * 
      */
     @Import(name="autoAcceptConnection")
     private @Nullable Output<Boolean> autoAcceptConnection;
 
     /**
-     * @return Whether to automatically accept terminal node connections..
+     * @return Whether to automatically accept terminal node connections.
      * 
      */
     public Optional<Output<Boolean>> autoAcceptConnection() {
@@ -78,14 +78,14 @@ public final class GetVpcEndpointServicesArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The business status of the terminal node service..
+     * The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
      * 
      */
     @Import(name="serviceBusinessStatus")
     private @Nullable Output<String> serviceBusinessStatus;
 
     /**
-     * @return The business status of the terminal node service..
+     * @return The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
      * 
      */
     public Optional<Output<String>> serviceBusinessStatus() {
@@ -93,14 +93,14 @@ public final class GetVpcEndpointServicesArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The Status of Vpc Endpoint Service.
+     * The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The Status of Vpc Endpoint Service.
+     * @return The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -153,7 +153,7 @@ public final class GetVpcEndpointServicesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param autoAcceptConnection Whether to automatically accept terminal node connections..
+         * @param autoAcceptConnection Whether to automatically accept terminal node connections.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class GetVpcEndpointServicesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param autoAcceptConnection Whether to automatically accept terminal node connections..
+         * @param autoAcceptConnection Whether to automatically accept terminal node connections.
          * 
          * @return builder
          * 
@@ -247,7 +247,7 @@ public final class GetVpcEndpointServicesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param serviceBusinessStatus The business status of the terminal node service..
+         * @param serviceBusinessStatus The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
          * 
          * @return builder
          * 
@@ -258,7 +258,7 @@ public final class GetVpcEndpointServicesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param serviceBusinessStatus The business status of the terminal node service..
+         * @param serviceBusinessStatus The business status of the terminal node service. Valid Value: `Normal`, `FinancialLocked` and `SecurityLocked`.
          * 
          * @return builder
          * 
@@ -268,7 +268,7 @@ public final class GetVpcEndpointServicesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param status The Status of Vpc Endpoint Service.
+         * @param status The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class GetVpcEndpointServicesArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param status The Status of Vpc Endpoint Service.
+         * @param status The Status of Vpc Endpoint Service. Valid Value: `Active`, `Creating`, `Deleted`, `Deleting` and `Pending`.
          * 
          * @return builder
          * 

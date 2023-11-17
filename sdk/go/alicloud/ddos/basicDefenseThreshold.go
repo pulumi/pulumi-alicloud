@@ -81,6 +81,8 @@ type BasicDefenseThreshold struct {
 	// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
 	Bps pulumi.IntOutput `pulumi:"bps"`
 	// The type of the threshold to query. Valid values: `defense`,`blackhole`.
+	// -`defense` - scrubbing threshold.
+	// -`blackhole` - DDoS mitigation threshold.
 	DdosType pulumi.StringOutput `pulumi:"ddosType"`
 	// The ID of the instance.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
@@ -140,6 +142,8 @@ type basicDefenseThresholdState struct {
 	// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
 	Bps *int `pulumi:"bps"`
 	// The type of the threshold to query. Valid values: `defense`,`blackhole`.
+	// -`defense` - scrubbing threshold.
+	// -`blackhole` - DDoS mitigation threshold.
 	DdosType *string `pulumi:"ddosType"`
 	// The ID of the instance.
 	InstanceId *string `pulumi:"instanceId"`
@@ -161,6 +165,8 @@ type BasicDefenseThresholdState struct {
 	// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
 	Bps pulumi.IntPtrInput
 	// The type of the threshold to query. Valid values: `defense`,`blackhole`.
+	// -`defense` - scrubbing threshold.
+	// -`blackhole` - DDoS mitigation threshold.
 	DdosType pulumi.StringPtrInput
 	// The ID of the instance.
 	InstanceId pulumi.StringPtrInput
@@ -186,6 +192,8 @@ type basicDefenseThresholdArgs struct {
 	// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
 	Bps *int `pulumi:"bps"`
 	// The type of the threshold to query. Valid values: `defense`,`blackhole`.
+	// -`defense` - scrubbing threshold.
+	// -`blackhole` - DDoS mitigation threshold.
 	DdosType string `pulumi:"ddosType"`
 	// The ID of the instance.
 	InstanceId string `pulumi:"instanceId"`
@@ -204,6 +212,8 @@ type BasicDefenseThresholdArgs struct {
 	// Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
 	Bps pulumi.IntPtrInput
 	// The type of the threshold to query. Valid values: `defense`,`blackhole`.
+	// -`defense` - scrubbing threshold.
+	// -`blackhole` - DDoS mitigation threshold.
 	DdosType pulumi.StringInput
 	// The ID of the instance.
 	InstanceId pulumi.StringInput
@@ -310,6 +320,8 @@ func (o BasicDefenseThresholdOutput) Bps() pulumi.IntOutput {
 }
 
 // The type of the threshold to query. Valid values: `defense`,`blackhole`.
+// -`defense` - scrubbing threshold.
+// -`blackhole` - DDoS mitigation threshold.
 func (o BasicDefenseThresholdOutput) DdosType() pulumi.StringOutput {
 	return o.ApplyT(func(v *BasicDefenseThreshold) pulumi.StringOutput { return v.DdosType }).(pulumi.StringOutput)
 }

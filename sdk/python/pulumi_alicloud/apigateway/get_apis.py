@@ -143,7 +143,7 @@ def get_apis(api_id: Optional[str] = None,
     ```
 
 
-    :param str api_id: (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
+    :param str api_id: (Deprecated, Optional) (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
     :param str group_id: ID of the specified group.
     :param Sequence[str] ids: A list of api IDs.
     :param str name_regex: A regex string to filter api gateway apis by name.
@@ -190,7 +190,7 @@ def get_apis_output(api_id: Optional[pulumi.Input[Optional[str]]] = None,
     ```
 
 
-    :param str api_id: (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
+    :param str api_id: (Deprecated, Optional) (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
     :param str group_id: ID of the specified group.
     :param Sequence[str] ids: A list of api IDs.
     :param str name_regex: A regex string to filter api gateway apis by name.

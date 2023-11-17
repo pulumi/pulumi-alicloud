@@ -67,7 +67,7 @@ type Key struct {
 	Creator pulumi.StringOutput `pulumi:"creator"`
 	// The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
 	DeleteDate pulumi.StringOutput `pulumi:"deleteDate"`
-	// Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
+	// (Deprecated since v1.85.0) Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 	//
 	// Deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
 	DeletionWindowInDays pulumi.IntOutput `pulumi:"deletionWindowInDays"`
@@ -75,7 +75,7 @@ type Key struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The instance ID of the exclusive KMS instance.
 	DkmsInstanceId pulumi.StringPtrOutput `pulumi:"dkmsInstanceId"`
-	// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+	// (Deprecated since v1.85.0) Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
 	//
 	// Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
 	IsEnabled pulumi.BoolPtrOutput `pulumi:"isEnabled"`
@@ -83,13 +83,11 @@ type Key struct {
 	// `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
 	// Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
 	KeySpec pulumi.StringOutput `pulumi:"keySpec"`
-	// Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+	// (Deprecated since v1.123.1) Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
 	//
 	// Deprecated: Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.
 	KeyState pulumi.StringOutput `pulumi:"keyState"`
 	// The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-	// - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-	// - `SIGN/VERIFY`: generates or verifies a digital signature.
 	KeyUsage pulumi.StringOutput `pulumi:"keyUsage"`
 	// The date and time the last rotation was performed. The time is displayed in UTC.
 	LastRotationDate pulumi.StringOutput `pulumi:"lastRotationDate"`
@@ -162,7 +160,7 @@ type keyState struct {
 	Creator *string `pulumi:"creator"`
 	// The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
 	DeleteDate *string `pulumi:"deleteDate"`
-	// Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
+	// (Deprecated since v1.85.0) Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 	//
 	// Deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
 	DeletionWindowInDays *int `pulumi:"deletionWindowInDays"`
@@ -170,7 +168,7 @@ type keyState struct {
 	Description *string `pulumi:"description"`
 	// The instance ID of the exclusive KMS instance.
 	DkmsInstanceId *string `pulumi:"dkmsInstanceId"`
-	// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+	// (Deprecated since v1.85.0) Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
 	//
 	// Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
 	IsEnabled *bool `pulumi:"isEnabled"`
@@ -178,13 +176,11 @@ type keyState struct {
 	// `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
 	// Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
 	KeySpec *string `pulumi:"keySpec"`
-	// Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+	// (Deprecated since v1.123.1) Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
 	//
 	// Deprecated: Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.
 	KeyState *string `pulumi:"keyState"`
 	// The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-	// - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-	// - `SIGN/VERIFY`: generates or verifies a digital signature.
 	KeyUsage *string `pulumi:"keyUsage"`
 	// The date and time the last rotation was performed. The time is displayed in UTC.
 	LastRotationDate *string `pulumi:"lastRotationDate"`
@@ -228,7 +224,7 @@ type KeyState struct {
 	Creator pulumi.StringPtrInput
 	// The scheduled date to delete CMK. The time is displayed in UTC. This value is returned only when the KeyState value is PendingDeletion.
 	DeleteDate pulumi.StringPtrInput
-	// Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
+	// (Deprecated since v1.85.0) Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 	//
 	// Deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
 	DeletionWindowInDays pulumi.IntPtrInput
@@ -236,7 +232,7 @@ type KeyState struct {
 	Description pulumi.StringPtrInput
 	// The instance ID of the exclusive KMS instance.
 	DkmsInstanceId pulumi.StringPtrInput
-	// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+	// (Deprecated since v1.85.0) Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
 	//
 	// Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
 	IsEnabled pulumi.BoolPtrInput
@@ -244,13 +240,11 @@ type KeyState struct {
 	// `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
 	// Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
 	KeySpec pulumi.StringPtrInput
-	// Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+	// (Deprecated since v1.123.1) Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
 	//
 	// Deprecated: Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.
 	KeyState pulumi.StringPtrInput
 	// The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-	// - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-	// - `SIGN/VERIFY`: generates or verifies a digital signature.
 	KeyUsage pulumi.StringPtrInput
 	// The date and time the last rotation was performed. The time is displayed in UTC.
 	LastRotationDate pulumi.StringPtrInput
@@ -290,7 +284,7 @@ func (KeyState) ElementType() reflect.Type {
 type keyArgs struct {
 	// Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
 	AutomaticRotation *string `pulumi:"automaticRotation"`
-	// Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
+	// (Deprecated since v1.85.0) Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 	//
 	// Deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
 	DeletionWindowInDays *int `pulumi:"deletionWindowInDays"`
@@ -298,7 +292,7 @@ type keyArgs struct {
 	Description *string `pulumi:"description"`
 	// The instance ID of the exclusive KMS instance.
 	DkmsInstanceId *string `pulumi:"dkmsInstanceId"`
-	// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+	// (Deprecated since v1.85.0) Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
 	//
 	// Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
 	IsEnabled *bool `pulumi:"isEnabled"`
@@ -306,13 +300,11 @@ type keyArgs struct {
 	// `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
 	// Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
 	KeySpec *string `pulumi:"keySpec"`
-	// Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+	// (Deprecated since v1.123.1) Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
 	//
 	// Deprecated: Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.
 	KeyState *string `pulumi:"keyState"`
 	// The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-	// - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-	// - `SIGN/VERIFY`: generates or verifies a digital signature.
 	KeyUsage *string `pulumi:"keyUsage"`
 	// The source of key material. Default value: `Aliyun_KMS`. Valid values:
 	Origin *string `pulumi:"origin"`
@@ -341,7 +333,7 @@ type keyArgs struct {
 type KeyArgs struct {
 	// Specifies whether to enable automatic key rotation. Default value: `Disabled`. Valid values:
 	AutomaticRotation pulumi.StringPtrInput
-	// Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
+	// (Deprecated since v1.85.0) Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 	//
 	// Deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
 	DeletionWindowInDays pulumi.IntPtrInput
@@ -349,7 +341,7 @@ type KeyArgs struct {
 	Description pulumi.StringPtrInput
 	// The instance ID of the exclusive KMS instance.
 	DkmsInstanceId pulumi.StringPtrInput
-	// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+	// (Deprecated since v1.85.0) Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
 	//
 	// Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
 	IsEnabled pulumi.BoolPtrInput
@@ -357,13 +349,11 @@ type KeyArgs struct {
 	// `Aliyun_AES_256`, `Aliyun_AES_128`, `Aliyun_AES_192`, `Aliyun_SM4`, `RSA_2048`, `RSA_3072`, `EC_P256`, `EC_P256K`, `EC_SM2`.
 	// Note: The default type of the CMK is `Aliyun_AES_256`. Only Dedicated KMS supports `Aliyun_AES_128` and `Aliyun_AES_192`.
 	KeySpec pulumi.StringPtrInput
-	// Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+	// (Deprecated since v1.123.1) Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
 	//
 	// Deprecated: Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.
 	KeyState pulumi.StringPtrInput
 	// The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-	// - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-	// - `SIGN/VERIFY`: generates or verifies a digital signature.
 	KeyUsage pulumi.StringPtrInput
 	// The source of key material. Default value: `Aliyun_KMS`. Valid values:
 	Origin pulumi.StringPtrInput
@@ -500,7 +490,7 @@ func (o KeyOutput) DeleteDate() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.DeleteDate }).(pulumi.StringOutput)
 }
 
-// Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
+// (Deprecated since v1.85.0) Field `deletionWindowInDays` has been deprecated from provider version 1.85.0. New field `pendingWindowInDays` instead.
 //
 // Deprecated: Field 'deletion_window_in_days' has been deprecated from provider version 1.85.0. New field 'pending_window_in_days' instead.
 func (o KeyOutput) DeletionWindowInDays() pulumi.IntOutput {
@@ -517,7 +507,7 @@ func (o KeyOutput) DkmsInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringPtrOutput { return v.DkmsInstanceId }).(pulumi.StringPtrOutput)
 }
 
-// Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+// (Deprecated since v1.85.0) Field `isEnabled` has been deprecated from provider version 1.85.0. New field `status` instead.
 //
 // Deprecated: Field 'is_enabled' has been deprecated from provider version 1.85.0. New field 'key_state' instead.
 func (o KeyOutput) IsEnabled() pulumi.BoolPtrOutput {
@@ -531,7 +521,7 @@ func (o KeyOutput) KeySpec() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.KeySpec }).(pulumi.StringOutput)
 }
 
-// Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
+// (Deprecated since v1.123.1) Field `keyState` has been deprecated from provider version 1.123.1. New field `status` instead.
 //
 // Deprecated: Field 'key_state' has been deprecated from provider version 1.123.1. New field 'status' instead.
 func (o KeyOutput) KeyState() pulumi.StringOutput {
@@ -539,8 +529,6 @@ func (o KeyOutput) KeyState() pulumi.StringOutput {
 }
 
 // The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-// - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-// - `SIGN/VERIFY`: generates or verifies a digital signature.
 func (o KeyOutput) KeyUsage() pulumi.StringOutput {
 	return o.ApplyT(func(v *Key) pulumi.StringOutput { return v.KeyUsage }).(pulumi.StringOutput)
 }

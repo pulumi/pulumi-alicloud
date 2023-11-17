@@ -48,7 +48,7 @@ export class ElasticityAssurance extends pulumi.CustomResource {
     }
 
     /**
-     * The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+     * (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
      */
     public readonly assuranceTimes!: pulumi.Output<string>;
     /**
@@ -72,7 +72,7 @@ export class ElasticityAssurance extends pulumi.CustomResource {
      */
     public /*out*/ readonly instanceChargeType!: pulumi.Output<string>;
     /**
-     * Instance type. Currently, only one instance type is supported.
+     * (ForceNew,Required) Instance type. Currently, only one instance type is supported.
      */
     public readonly instanceType!: pulumi.Output<string>;
     /**
@@ -86,7 +86,7 @@ export class ElasticityAssurance extends pulumi.CustomResource {
      */
     public readonly periodUnit!: pulumi.Output<string | undefined>;
     /**
-     * The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+     * (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
      */
     public readonly privatePoolOptionsMatchCriteria!: pulumi.Output<string>;
     /**
@@ -94,11 +94,11 @@ export class ElasticityAssurance extends pulumi.CustomResource {
      */
     public readonly privatePoolOptionsName!: pulumi.Output<string>;
     /**
-     * The ID of the resource group.
+     * (ForceNew,Optional) The ID of the resource group.
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     /**
-     * Flexible guarantee service effective time.
+     * (ForceNew,Optional) Flexible guarantee service effective time.
      */
     public readonly startTime!: pulumi.Output<string>;
     /**
@@ -118,7 +118,7 @@ export class ElasticityAssurance extends pulumi.CustomResource {
      */
     public /*out*/ readonly usedAssuranceTimes!: pulumi.Output<number>;
     /**
-     * The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+     * (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
      */
     public readonly zoneIds!: pulumi.Output<string[]>;
 
@@ -193,7 +193,7 @@ export class ElasticityAssurance extends pulumi.CustomResource {
  */
 export interface ElasticityAssuranceState {
     /**
-     * The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+     * (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
      */
     assuranceTimes?: pulumi.Input<string>;
     /**
@@ -217,7 +217,7 @@ export interface ElasticityAssuranceState {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
-     * Instance type. Currently, only one instance type is supported.
+     * (ForceNew,Required) Instance type. Currently, only one instance type is supported.
      */
     instanceType?: pulumi.Input<string>;
     /**
@@ -231,7 +231,7 @@ export interface ElasticityAssuranceState {
      */
     periodUnit?: pulumi.Input<string>;
     /**
-     * The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+     * (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
      */
     privatePoolOptionsMatchCriteria?: pulumi.Input<string>;
     /**
@@ -239,11 +239,11 @@ export interface ElasticityAssuranceState {
      */
     privatePoolOptionsName?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * (ForceNew,Optional) The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Flexible guarantee service effective time.
+     * (ForceNew,Optional) Flexible guarantee service effective time.
      */
     startTime?: pulumi.Input<string>;
     /**
@@ -263,7 +263,7 @@ export interface ElasticityAssuranceState {
      */
     usedAssuranceTimes?: pulumi.Input<number>;
     /**
-     * The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+     * (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
      */
     zoneIds?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -273,7 +273,7 @@ export interface ElasticityAssuranceState {
  */
 export interface ElasticityAssuranceArgs {
     /**
-     * The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
+     * (ForceNew,Optional) The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
      */
     assuranceTimes?: pulumi.Input<string>;
     /**
@@ -285,7 +285,7 @@ export interface ElasticityAssuranceArgs {
      */
     instanceAmount: pulumi.Input<number>;
     /**
-     * Instance type. Currently, only one instance type is supported.
+     * (ForceNew,Required) Instance type. Currently, only one instance type is supported.
      */
     instanceType: pulumi.Input<string>;
     /**
@@ -299,7 +299,7 @@ export interface ElasticityAssuranceArgs {
      */
     periodUnit?: pulumi.Input<string>;
     /**
-     * The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
+     * (ForceNew,Optional,Computed) The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
      */
     privatePoolOptionsMatchCriteria?: pulumi.Input<string>;
     /**
@@ -307,11 +307,11 @@ export interface ElasticityAssuranceArgs {
      */
     privatePoolOptionsName?: pulumi.Input<string>;
     /**
-     * The ID of the resource group.
+     * (ForceNew,Optional) The ID of the resource group.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Flexible guarantee service effective time.
+     * (ForceNew,Optional) Flexible guarantee service effective time.
      */
     startTime?: pulumi.Input<string>;
     /**
@@ -319,7 +319,7 @@ export interface ElasticityAssuranceArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
+     * (ForceNew,Required) The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
      */
     zoneIds: pulumi.Input<pulumi.Input<string>[]>;
 }

@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class GetHoneypotProbesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Probe name
+        /// (ForceNew, Optional) Probe name
         /// </summary>
         [Input("displayName")]
         public string? DisplayName { get; set; }
@@ -189,7 +189,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public string? ProbeStatus { get; set; }
 
         /// <summary>
-        /// Probe type
+        /// (ForceNew, Optional) Probe type
         /// </summary>
         [Input("probeType")]
         public string? ProbeType { get; set; }
@@ -203,7 +203,7 @@ namespace Pulumi.AliCloud.ThreatDetection
     public sealed class GetHoneypotProbesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Probe name
+        /// (ForceNew, Optional) Probe name
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
@@ -242,7 +242,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         public Input<string>? ProbeStatus { get; set; }
 
         /// <summary>
-        /// Probe type
+        /// (ForceNew, Optional) Probe type
         /// </summary>
         [Input("probeType")]
         public Input<string>? ProbeType { get; set; }

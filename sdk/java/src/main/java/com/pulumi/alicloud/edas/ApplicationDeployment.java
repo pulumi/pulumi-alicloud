@@ -177,14 +177,14 @@ public class ApplicationDeployment extends com.pulumi.resources.CustomResource {
         return this.groupId;
     }
     /**
-     * Last package version deployed.
+     * (ForceNew) Last package version deployed.
      * 
      */
     @Export(name="lastPackageVersion", type=String.class, parameters={})
     private Output<String> lastPackageVersion;
 
     /**
-     * @return Last package version deployed.
+     * @return (ForceNew) Last package version deployed.
      * 
      */
     public Output<String> lastPackageVersion() {

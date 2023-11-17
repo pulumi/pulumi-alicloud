@@ -114,7 +114,7 @@ namespace Pulumi.AliCloud.PrivateLink
         public string ServiceId { get; set; } = null!;
 
         /// <summary>
-        /// The status of Vpc Endpoint Connection.
+        /// The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -152,7 +152,7 @@ namespace Pulumi.AliCloud.PrivateLink
         public Input<string> ServiceId { get; set; } = null!;
 
         /// <summary>
-        /// The status of Vpc Endpoint Connection.
+        /// The status of Vpc Endpoint Connection. Valid Values: `Connected`, `Connecting`, `Deleted`, `Deleting`, `Disconnected`, `Disconnecting`, `Pending` and `ServiceDeleted`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

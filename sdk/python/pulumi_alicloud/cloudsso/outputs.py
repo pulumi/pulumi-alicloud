@@ -446,7 +446,7 @@ class GetDirectoriesDirectoryResult(dict):
                  scim_synchronization_status: str,
                  tasks: Sequence['outputs.GetDirectoriesDirectoryTaskResult']):
         """
-        :param str create_time: Saml identifies the creation time of the provider configuration.
+        :param str create_time: The CreateTime of the CloudSSO directory.
         :param str directory_id: The DirectoryId of the CloudSSO directory.
         :param str directory_name: The name of the CloudSSO directory.
         :param str id: The ID of the Directory.
@@ -470,7 +470,7 @@ class GetDirectoriesDirectoryResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        Saml identifies the creation time of the provider configuration.
+        The CreateTime of the CloudSSO directory.
         """
         return pulumi.get(self, "create_time")
 
@@ -548,7 +548,7 @@ class GetDirectoriesDirectorySamlIdentityProviderConfigurationResult(dict):
                  login_url: str,
                  sso_status: str):
         """
-        :param str create_time: Saml identifies the creation time of the provider configuration.
+        :param str create_time: The CreateTime of the CloudSSO directory.
         :param str encoded_metadata_document: Base64 encoded IdP metadata document.
         :param str entity_id: SAML IdPEntityID.
         :param str login_url: SAML IdP http-post Binding address.
@@ -564,7 +564,7 @@ class GetDirectoriesDirectorySamlIdentityProviderConfigurationResult(dict):
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         """
-        Saml identifies the creation time of the provider configuration.
+        The CreateTime of the CloudSSO directory.
         """
         return pulumi.get(self, "create_time")
 

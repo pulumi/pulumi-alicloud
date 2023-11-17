@@ -99,9 +99,9 @@ type Network struct {
 	// - **ChinaMobile**: China Mobile (single line).
 	// - **ChinaUnicom**: China Unicom (single line).
 	// - **ChinaTelecom**: China Telecom (single line).
-	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+	//   > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
 	Ipv6Isp pulumi.StringPtrOutput `pulumi:"ipv6Isp"`
-	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+	// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -111,7 +111,7 @@ type Network struct {
 	RouteTableId pulumi.StringOutput `pulumi:"routeTableId"`
 	// The ID of the router created by default on VPC creation.
 	RouterId pulumi.StringOutput `pulumi:"routerId"`
-	// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+	// (Deprecated from v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	//
 	// Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	RouterTableId pulumi.StringOutput `pulumi:"routerTableId"`
@@ -186,9 +186,9 @@ type networkState struct {
 	// - **ChinaMobile**: China Mobile (single line).
 	// - **ChinaUnicom**: China Unicom (single line).
 	// - **ChinaTelecom**: China Telecom (single line).
-	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+	//   > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
 	Ipv6Isp *string `pulumi:"ipv6Isp"`
-	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+	// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	Name *string `pulumi:"name"`
@@ -198,7 +198,7 @@ type networkState struct {
 	RouteTableId *string `pulumi:"routeTableId"`
 	// The ID of the router created by default on VPC creation.
 	RouterId *string `pulumi:"routerId"`
-	// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+	// (Deprecated from v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	//
 	// Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	RouterTableId *string `pulumi:"routerTableId"`
@@ -244,9 +244,9 @@ type NetworkState struct {
 	// - **ChinaMobile**: China Mobile (single line).
 	// - **ChinaUnicom**: China Unicom (single line).
 	// - **ChinaTelecom**: China Telecom (single line).
-	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+	//   > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
 	Ipv6Isp pulumi.StringPtrInput
-	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+	// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	Name pulumi.StringPtrInput
@@ -256,7 +256,7 @@ type NetworkState struct {
 	RouteTableId pulumi.StringPtrInput
 	// The ID of the router created by default on VPC creation.
 	RouterId pulumi.StringPtrInput
-	// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+	// (Deprecated from v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	//
 	// Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	RouterTableId pulumi.StringPtrInput
@@ -300,9 +300,9 @@ type networkArgs struct {
 	// - **ChinaMobile**: China Mobile (single line).
 	// - **ChinaUnicom**: China Unicom (single line).
 	// - **ChinaTelecom**: China Telecom (single line).
-	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+	//   > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
 	Ipv6Isp *string `pulumi:"ipv6Isp"`
-	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+	// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	Name *string `pulumi:"name"`
@@ -310,7 +310,7 @@ type networkArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The route table ID of the router created by default on VPC creation.
 	RouteTableId *string `pulumi:"routeTableId"`
-	// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+	// (Deprecated from v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	//
 	// Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	RouterTableId *string `pulumi:"routerTableId"`
@@ -349,9 +349,9 @@ type NetworkArgs struct {
 	// - **ChinaMobile**: China Mobile (single line).
 	// - **ChinaUnicom**: China Unicom (single line).
 	// - **ChinaTelecom**: China Telecom (single line).
-	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+	//   > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
 	Ipv6Isp pulumi.StringPtrInput
-	// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+	// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 	Name pulumi.StringPtrInput
@@ -359,7 +359,7 @@ type NetworkArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The route table ID of the router created by default on VPC creation.
 	RouteTableId pulumi.StringPtrInput
-	// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+	// (Deprecated from v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	//
 	// Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 	RouterTableId pulumi.StringPtrInput
@@ -509,16 +509,16 @@ func (o NetworkOutput) Ipv6CidrBlocks() NetworkIpv6CidrBlockArrayOutput {
 }
 
 // The IPv6 address segment type of the VPC. Value:
-// - **BGP** (default): Alibaba Cloud BGP IPv6.
-// - **ChinaMobile**: China Mobile (single line).
-// - **ChinaUnicom**: China Unicom (single line).
-// - **ChinaTelecom**: China Telecom (single line).
-// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+//   - **BGP** (default): Alibaba Cloud BGP IPv6.
+//   - **ChinaMobile**: China Mobile (single line).
+//   - **ChinaUnicom**: China Unicom (single line).
+//   - **ChinaTelecom**: China Telecom (single line).
+//     > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
 func (o NetworkOutput) Ipv6Isp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.Ipv6Isp }).(pulumi.StringPtrOutput)
 }
 
-// Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
 func (o NetworkOutput) Name() pulumi.StringOutput {
@@ -540,7 +540,7 @@ func (o NetworkOutput) RouterId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.RouterId }).(pulumi.StringOutput)
 }
 
-// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+// (Deprecated from v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 //
 // Deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
 func (o NetworkOutput) RouterTableId() pulumi.StringOutput {

@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         public readonly string AvailabilityZone;
         public readonly string ChargeType;
         /// <summary>
-        /// The connection string of the instance.
+        /// (Available in 1.196.0+) The connection string of the instance.
         /// </summary>
         public readonly string ConnectionString;
         /// <summary>
@@ -28,16 +28,12 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         public readonly string CpuCores;
         /// <summary>
         /// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+        /// * `db_instance_category` - The db instance category. Valid values: `HighAvailability`, `Basic`.
+        /// * `db_instance_class` - The db instance class.
         /// </summary>
         public readonly string CreateTime;
         public readonly string CreationTime;
-        /// <summary>
-        /// The db instance category. Valid values: `HighAvailability`, `Basic`.
-        /// </summary>
         public readonly string DbInstanceCategory;
-        /// <summary>
-        /// The db instance class.
-        /// </summary>
         public readonly string DbInstanceClass;
         /// <summary>
         /// The db instance id.
@@ -91,9 +87,6 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         /// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
         /// </summary>
         public readonly string PaymentType;
-        /// <summary>
-        /// Region ID the instance belongs to.
-        /// </summary>
         public readonly string RegionId;
         /// <summary>
         /// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
@@ -125,6 +118,7 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
         public readonly string VswitchId;
         /// <summary>
         /// The zone ID of the instance.
+        /// * `region_id` - Region ID the instance belongs to.
         /// </summary>
         public readonly string ZoneId;
 

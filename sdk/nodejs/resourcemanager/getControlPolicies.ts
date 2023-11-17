@@ -65,7 +65,7 @@ export interface GetControlPoliciesArgs {
      */
     outputFile?: string;
     /**
-     * The type of policy.
+     * The policy type of control policy. Valid values `System` and `Custom`.
      */
     policyType?: string;
 }
@@ -136,7 +136,7 @@ export interface GetControlPoliciesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The type of policy.
+     * The policy type of control policy. Valid values `System` and `Custom`.
      */
     policyType?: pulumi.Input<string>;
 }

@@ -33,7 +33,7 @@ class AccountArgs:
         :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite`
         :param pulumi.Input[str] account_type: Privilege type of account.
                - Normal: Common privilege.
-               Default to Normal.
+                 Default to Normal.
         :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
         :param pulumi.Input[Mapping[str, Any]] kms_encryption_context: An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a KVStore account with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
@@ -110,7 +110,7 @@ class AccountArgs:
         """
         Privilege type of account.
         - Normal: Common privilege.
-        Default to Normal.
+          Default to Normal.
         """
         return pulumi.get(self, "account_type")
 
@@ -177,7 +177,7 @@ class _AccountState:
         :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite`
         :param pulumi.Input[str] account_type: Privilege type of account.
                - Normal: Common privilege.
-               Default to Normal.
+                 Default to Normal.
         :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
@@ -248,7 +248,7 @@ class _AccountState:
         """
         Privilege type of account.
         - Normal: Common privilege.
-        Default to Normal.
+          Default to Normal.
         """
         return pulumi.get(self, "account_type")
 
@@ -401,7 +401,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite`
         :param pulumi.Input[str] account_type: Privilege type of account.
                - Normal: Common privilege.
-               Default to Normal.
+                 Default to Normal.
         :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
@@ -554,7 +554,7 @@ class Account(pulumi.CustomResource):
         :param pulumi.Input[str] account_privilege: The privilege of account access database. Default value: `RoleReadWrite`
         :param pulumi.Input[str] account_type: Privilege type of account.
                - Normal: Common privilege.
-               Default to Normal.
+                 Default to Normal.
         :param pulumi.Input[str] description: Database description. It cannot begin with https://. It must start with a Chinese character or English letter. It can include Chinese and English characters, underlines (_), hyphens (-), and numbers. The length may be 2-256 characters.
         :param pulumi.Input[str] instance_id: The Id of instance in which account belongs (The engine version of instance must be 4.0 or 4.0+).
         :param pulumi.Input[str] kms_encrypted_password: An KMS encrypts password used to a KVStore account. If the `account_password` is filled in, this field will be ignored.
@@ -609,7 +609,7 @@ class Account(pulumi.CustomResource):
         """
         Privilege type of account.
         - Normal: Common privilege.
-        Default to Normal.
+          Default to Normal.
         """
         return pulumi.get(self, "account_type")
 

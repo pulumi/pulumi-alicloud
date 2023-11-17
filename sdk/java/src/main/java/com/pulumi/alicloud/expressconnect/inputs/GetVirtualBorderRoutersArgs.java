@@ -78,14 +78,14 @@ public final class GetVirtualBorderRoutersArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The VBR state.
+     * The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The VBR state.
+     * @return The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -225,7 +225,7 @@ public final class GetVirtualBorderRoutersArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param status The VBR state.
+         * @param status The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
          * 
          * @return builder
          * 
@@ -236,7 +236,7 @@ public final class GetVirtualBorderRoutersArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param status The VBR state.
+         * @param status The instance state with. Valid values: `active`, `deleting`, `recovering`, `terminated`, `terminating`, `unconfirmed`.
          * 
          * @return builder
          * 

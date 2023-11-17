@@ -16,14 +16,14 @@ public final class EnterpriseProxyAccessArgs extends com.pulumi.resources.Resour
     public static final EnterpriseProxyAccessArgs Empty = new EnterpriseProxyAccessArgs();
 
     /**
-     * Database account.
+     * (ForceNew,Optional) Database account.
      * 
      */
     @Import(name="indepAccount")
     private @Nullable Output<String> indepAccount;
 
     /**
-     * @return Database account.
+     * @return (ForceNew,Optional) Database account.
      * 
      */
     public Optional<Output<String>> indepAccount() {
@@ -31,14 +31,14 @@ public final class EnterpriseProxyAccessArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Database password.
+     * (ForceNew,Optional) Database password.
      * 
      */
     @Import(name="indepPassword")
     private @Nullable Output<String> indepPassword;
 
     /**
-     * @return Database password.
+     * @return (ForceNew,Optional) Database password.
      * 
      */
     public Optional<Output<String>> indepPassword() {
@@ -119,7 +119,7 @@ public final class EnterpriseProxyAccessArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param indepAccount Database account.
+         * @param indepAccount (ForceNew,Optional) Database account.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class EnterpriseProxyAccessArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param indepAccount Database account.
+         * @param indepAccount (ForceNew,Optional) Database account.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class EnterpriseProxyAccessArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param indepPassword Database password.
+         * @param indepPassword (ForceNew,Optional) Database password.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class EnterpriseProxyAccessArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param indepPassword Database password.
+         * @param indepPassword (ForceNew,Optional) Database password.
          * 
          * @return builder
          * 

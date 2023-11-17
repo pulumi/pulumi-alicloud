@@ -17,9 +17,6 @@ public final class TopicSubscriptionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The endpoint has three format. Available values format:
-     * - `HTTP Format`: http://xxx.com/xxx
-     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - `Email Format`: mail:directmail:{MailAddress}
      * 
      */
     @Import(name="endpoint", required=true)
@@ -27,9 +24,6 @@ public final class TopicSubscriptionArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The endpoint has three format. Available values format:
-     * - `HTTP Format`: http://xxx.com/xxx
-     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - `Email Format`: mail:directmail:{MailAddress}
      * 
      */
     public Output<String> endpoint() {
@@ -142,9 +136,6 @@ public final class TopicSubscriptionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param endpoint The endpoint has three format. Available values format:
-         * - `HTTP Format`: http://xxx.com/xxx
-         * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-         * - `Email Format`: mail:directmail:{MailAddress}
          * 
          * @return builder
          * 
@@ -156,9 +147,6 @@ public final class TopicSubscriptionArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param endpoint The endpoint has three format. Available values format:
-         * - `HTTP Format`: http://xxx.com/xxx
-         * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-         * - `Email Format`: mail:directmail:{MailAddress}
          * 
          * @return builder
          * 

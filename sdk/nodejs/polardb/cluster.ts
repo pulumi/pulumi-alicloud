@@ -88,7 +88,7 @@ export class Cluster extends pulumi.CustomResource {
     public readonly dbClusterIpArrays!: pulumi.Output<outputs.polardb.ClusterDbClusterIpArray[]>;
     /**
      * The dbNodeClass of cluster node.
-     * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+     * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. 
      * From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar.mysql.sl.small`.
      */
     public readonly dbNodeClass!: pulumi.Output<string>;
@@ -551,7 +551,7 @@ export interface ClusterState {
     dbClusterIpArrays?: pulumi.Input<pulumi.Input<inputs.polardb.ClusterDbClusterIpArray>[]>;
     /**
      * The dbNodeClass of cluster node.
-     * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+     * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. 
      * From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar.mysql.sl.small`.
      */
     dbNodeClass?: pulumi.Input<string>;
@@ -845,7 +845,7 @@ export interface ClusterArgs {
     dbClusterIpArrays?: pulumi.Input<pulumi.Input<inputs.polardb.ClusterDbClusterIpArray>[]>;
     /**
      * The dbNodeClass of cluster node.
-     * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed.
+     * > **NOTE:** Node specifications are divided into cluster version, single node version and History Library version. They can't change each other, but the general specification and exclusive specification of cluster version can be changed. 
      * From version 1.204.0, If you need to create a Serverless cluster, `dbNodeClass` can be set to `polar.mysql.sl.small`.
      */
     dbNodeClass: pulumi.Input<string>;

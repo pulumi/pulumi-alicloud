@@ -128,7 +128,7 @@ class GetInstancesInstanceResult(dict):
         :param str id: The ID of the instance.
         :param str instance_class: The type of the migration or synchronization instance.- The specifications of the migration instance: **xxlarge**, **xlarge**, **large**, **medium**, **small**.- The types of synchronization instances: **large**, **medium**, **small**, **micro**.
         :param str payment_type: The payment type of the resource.
-        :param str resource_group_id: Resource Group ID
+        :param str resource_group_id: (ForceNew,Optional) Resource Group ID
         :param str source_endpoint_engine_name: Source instance database engine type.
         :param str source_region: The source instance region.
         :param str status: Instance status.
@@ -216,7 +216,7 @@ class GetInstancesInstanceResult(dict):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> str:
         """
-        Resource Group ID
+        (ForceNew,Optional) Resource Group ID
         """
         return pulumi.get(self, "resource_group_id")
 

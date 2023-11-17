@@ -304,7 +304,7 @@ namespace Pulumi.AliCloud.Vpn
         public string? RouteEntryType { get; set; }
 
         /// <summary>
-        /// The status of the vpn route entry.
+        /// The status of the vpn route entry. Valid values: `normal`, `published`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -354,7 +354,7 @@ namespace Pulumi.AliCloud.Vpn
         public Input<string>? RouteEntryType { get; set; }
 
         /// <summary>
-        /// The status of the vpn route entry.
+        /// The status of the vpn route entry. Valid values: `normal`, `published`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

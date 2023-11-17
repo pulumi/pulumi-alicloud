@@ -790,6 +790,7 @@ class GetInstancesInstanceResult(dict):
         :param Sequence[str] security_group_ids: The instance's security group configuration.
         :param str user_vswitch_id: The instance's vSwitch ID.
         :param Mapping[str, Any] tags: A map of tags assigned to the bastionhost instance. It must be in the format:
+               
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -885,6 +886,7 @@ class GetInstancesInstanceResult(dict):
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
         A map of tags assigned to the bastionhost instance. It must be in the format:
+
         ```python
         import pulumi
         import pulumi_alicloud as alicloud

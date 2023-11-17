@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     public sealed class GetEcsDisksDiskResult
     {
         /// <summary>
-        /// A mount of time.
+        /// Disk attachment time.
         /// </summary>
         public readonly string AttachedTime;
         /// <summary>
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string DetachedTime;
         /// <summary>
-        /// The mount point of the disk.
+        /// Cloud disk or the device name of the mounted instance on the site.
         /// </summary>
         public readonly string Device;
         /// <summary>
@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// </summary>
         public readonly string ImageId;
         /// <summary>
-        /// The instance ID of the disk mount.
+        /// ID of the related instance. It is `null` unless the `status` is `In_use`.
         /// </summary>
         public readonly string InstanceId;
         public readonly int Iops;

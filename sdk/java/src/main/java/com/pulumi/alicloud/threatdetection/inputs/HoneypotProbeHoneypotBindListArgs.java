@@ -18,14 +18,14 @@ public final class HoneypotProbeHoneypotBindListArgs extends com.pulumi.resource
     public static final HoneypotProbeHoneypotBindListArgs Empty = new HoneypotProbeHoneypotBindListArgs();
 
     /**
-     * List of listening ports.See the following `Block BindPortList`.
+     * (ForceNew,Optional) List of listening ports.See the following `Block BindPortList`.
      * 
      */
     @Import(name="bindPortLists")
     private @Nullable Output<List<HoneypotProbeHoneypotBindListBindPortListArgs>> bindPortLists;
 
     /**
-     * @return List of listening ports.See the following `Block BindPortList`.
+     * @return (ForceNew,Optional) List of listening ports.See the following `Block BindPortList`.
      * 
      */
     public Optional<Output<List<HoneypotProbeHoneypotBindListBindPortListArgs>>> bindPortLists() {
@@ -33,14 +33,14 @@ public final class HoneypotProbeHoneypotBindListArgs extends com.pulumi.resource
     }
 
     /**
-     * Honeypot ID.
+     * (ForceNew,Optional) Honeypot ID.
      * 
      */
     @Import(name="honeypotId")
     private @Nullable Output<String> honeypotId;
 
     /**
-     * @return Honeypot ID.
+     * @return (ForceNew,Optional) Honeypot ID.
      * 
      */
     public Optional<Output<String>> honeypotId() {
@@ -73,7 +73,7 @@ public final class HoneypotProbeHoneypotBindListArgs extends com.pulumi.resource
         }
 
         /**
-         * @param bindPortLists List of listening ports.See the following `Block BindPortList`.
+         * @param bindPortLists (ForceNew,Optional) List of listening ports.See the following `Block BindPortList`.
          * 
          * @return builder
          * 
@@ -84,7 +84,7 @@ public final class HoneypotProbeHoneypotBindListArgs extends com.pulumi.resource
         }
 
         /**
-         * @param bindPortLists List of listening ports.See the following `Block BindPortList`.
+         * @param bindPortLists (ForceNew,Optional) List of listening ports.See the following `Block BindPortList`.
          * 
          * @return builder
          * 
@@ -94,7 +94,7 @@ public final class HoneypotProbeHoneypotBindListArgs extends com.pulumi.resource
         }
 
         /**
-         * @param bindPortLists List of listening ports.See the following `Block BindPortList`.
+         * @param bindPortLists (ForceNew,Optional) List of listening ports.See the following `Block BindPortList`.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class HoneypotProbeHoneypotBindListArgs extends com.pulumi.resource
         }
 
         /**
-         * @param honeypotId Honeypot ID.
+         * @param honeypotId (ForceNew,Optional) Honeypot ID.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class HoneypotProbeHoneypotBindListArgs extends com.pulumi.resource
         }
 
         /**
-         * @param honeypotId Honeypot ID.
+         * @param honeypotId (ForceNew,Optional) Honeypot ID.
          * 
          * @return builder
          * 

@@ -34,14 +34,13 @@ namespace Pulumi.AliCloud.Cdn.Inputs
         /// Certificate type. Value:
         /// - **upload**: upload certificate.
         /// - **cas**: Cloud Shield certificate.
-        /// - **free**: free certificate.
-        /// &gt; If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
+        /// - **free**: free certificate.If the certificate type is **cas**, **PrivateKey** does not need to pass parameters.
         /// </summary>
         [Input("certType")]
         public Input<string>? CertType { get; set; }
 
         /// <summary>
-        /// The force set of the security certificate.
+        /// (Removed) The force set of the security certificate.
         /// </summary>
         [Input("forceSet")]
         public Input<string>? ForceSet { get; set; }

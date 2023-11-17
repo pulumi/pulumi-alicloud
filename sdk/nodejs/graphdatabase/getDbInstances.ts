@@ -69,7 +69,7 @@ export interface GetDbInstancesArgs {
      */
     outputFile?: string;
     /**
-     * Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+     * Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      */
     status?: string;
 }
@@ -143,7 +143,7 @@ export interface GetDbInstancesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+     * Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      */
     status?: pulumi.Input<string>;
 }

@@ -160,7 +160,7 @@ def get_zones(available_slb_address_ip_version: Optional[str] = None,
            * vpc: an internal SLB instance that is deployed in a virtual private cloud (VPC).
            * classic_internet: a public-facing SLB instance.
            * classic_intranet: an internal SLB instance that is deployed in a classic network.
-    :param bool enable_details: Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+    :param bool enable_details: (Deprecated from v1.154.0+) Default to false and only output `id` in the `zones` block. Set it to true can output more details.
     :param str master_zone_id: The primary zone.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str slave_zone_id: The secondary zone.
@@ -216,7 +216,7 @@ def get_zones_output(available_slb_address_ip_version: Optional[pulumi.Input[Opt
            * vpc: an internal SLB instance that is deployed in a virtual private cloud (VPC).
            * classic_internet: a public-facing SLB instance.
            * classic_intranet: an internal SLB instance that is deployed in a classic network.
-    :param bool enable_details: Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+    :param bool enable_details: (Deprecated from v1.154.0+) Default to false and only output `id` in the `zones` block. Set it to true can output more details.
     :param str master_zone_id: The primary zone.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str slave_zone_id: The secondary zone.

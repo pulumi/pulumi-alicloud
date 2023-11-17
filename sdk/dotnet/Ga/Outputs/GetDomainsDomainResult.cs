@@ -14,11 +14,11 @@ namespace Pulumi.AliCloud.Ga.Outputs
     public sealed class GetDomainsDomainResult
     {
         /// <summary>
-        /// The ID of the global acceleration instance.
+        /// (ForceNew,Optional) The ID of the global acceleration instance.
         /// </summary>
         public readonly string AcceleratorId;
         /// <summary>
-        /// The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
+        /// (ForceNew,Optional) The accelerated domain name to be added. only top-level domain names are supported, such as 'example.com'.
         /// </summary>
         public readonly string Domain;
         /// <summary>
@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Ga.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
+        /// (ForceNew,Optional) The status of the resource. Valid values: `illegal`, `inactive`, `active`, `unknown`.
         /// </summary>
         public readonly string Status;
 

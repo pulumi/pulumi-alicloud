@@ -487,7 +487,7 @@ class _EnterpriseInstanceState:
         :param pulumi.Input[str] safe_rule_id: The safe rule id of the database instance.
         :param pulumi.Input[str] sid: The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
         :param pulumi.Input[bool] skip_test: Whether the instance ignores test connectivity. Valid values: `true`, `false`.
-        :param pulumi.Input[str] state: It has been deprecated from provider version 1.100.0 and 'status' instead.
+        :param pulumi.Input[str] state: (Deprecated) It has been deprecated from provider version 1.100.0 and 'status' instead.
         :param pulumi.Input[str] status: The instance status.
         :param pulumi.Input[int] tid: The tenant ID.
         :param pulumi.Input[int] use_dsql: Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
@@ -853,7 +853,7 @@ class _EnterpriseInstanceState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from provider version 1.100.0 and 'status' instead.
+        (Deprecated) It has been deprecated from provider version 1.100.0 and 'status' instead.
         """
         warnings.warn("""Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.""", DeprecationWarning)
         pulumi.log.warn("""state is deprecated: Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.""")
@@ -1329,7 +1329,7 @@ class EnterpriseInstance(pulumi.CustomResource):
         :param pulumi.Input[str] safe_rule_id: The safe rule id of the database instance.
         :param pulumi.Input[str] sid: The SID. This value must be passed when InstanceType is PostgreSQL or Oracle.
         :param pulumi.Input[bool] skip_test: Whether the instance ignores test connectivity. Valid values: `true`, `false`.
-        :param pulumi.Input[str] state: It has been deprecated from provider version 1.100.0 and 'status' instead.
+        :param pulumi.Input[str] state: (Deprecated) It has been deprecated from provider version 1.100.0 and 'status' instead.
         :param pulumi.Input[str] status: The instance status.
         :param pulumi.Input[int] tid: The tenant ID.
         :param pulumi.Input[int] use_dsql: Whether to enable cross-instance query. Valid values: `0` not open, `1` open.
@@ -1569,7 +1569,7 @@ class EnterpriseInstance(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from provider version 1.100.0 and 'status' instead.
+        (Deprecated) It has been deprecated from provider version 1.100.0 and 'status' instead.
         """
         warnings.warn("""Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.""", DeprecationWarning)
         pulumi.log.warn("""state is deprecated: Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.""")

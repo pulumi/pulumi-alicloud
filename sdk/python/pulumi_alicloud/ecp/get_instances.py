@@ -192,14 +192,18 @@ def get_instances(enable_details: Optional[bool] = None,
 
     :param Sequence[str] ids: A list of Ecp Instances IDs.
     :param str image_id: The ID Of The Image.
-    :param str instance_name: Instance Name.
+    :param str instance_name: The name of the instance. It must be 2 to 128 characters in length and must start with an
+           uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+           half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+           the instance.
     :param str instance_type: Instance Type.
-    :param str key_pair_name: The Key Name.
+    :param str key_pair_name: The name of the key pair of the mobile phone instance.
     :param str name_regex: A regex string to filter results by mobile phone name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: The payment type.Valid values: `PayAsYouGo`,`Subscription`
-    :param str resolution: Resolution.
-    :param str status: Instance Status.
+    :param str resolution: The selected resolution for the cloud mobile phone instance.
+    :param str status: Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+           .
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -257,13 +261,17 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
 
     :param Sequence[str] ids: A list of Ecp Instances IDs.
     :param str image_id: The ID Of The Image.
-    :param str instance_name: Instance Name.
+    :param str instance_name: The name of the instance. It must be 2 to 128 characters in length and must start with an
+           uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+           half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+           the instance.
     :param str instance_type: Instance Type.
-    :param str key_pair_name: The Key Name.
+    :param str key_pair_name: The name of the key pair of the mobile phone instance.
     :param str name_regex: A regex string to filter results by mobile phone name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str payment_type: The payment type.Valid values: `PayAsYouGo`,`Subscription`
-    :param str resolution: Resolution.
-    :param str status: Instance Status.
+    :param str resolution: The selected resolution for the cloud mobile phone instance.
+    :param str status: Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+           .
     """
     ...

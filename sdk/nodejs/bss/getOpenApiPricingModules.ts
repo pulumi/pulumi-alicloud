@@ -57,7 +57,7 @@ export interface GetOpenApiPricingModulesArgs {
      */
     productCode: string;
     /**
-     * The product type.
+     * (ForceNew,Optional) The product type.
      */
     productType?: string;
     /**
@@ -133,7 +133,7 @@ export interface GetOpenApiPricingModulesOutputArgs {
      */
     productCode: pulumi.Input<string>;
     /**
-     * The product type.
+     * (ForceNew,Optional) The product type.
      */
     productType?: pulumi.Input<string>;
     /**

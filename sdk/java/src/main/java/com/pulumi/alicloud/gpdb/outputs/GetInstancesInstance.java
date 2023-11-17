@@ -21,7 +21,7 @@ public final class GetInstancesInstance {
     private String availabilityZone;
     private String chargeType;
     /**
-     * @return The connection string of the instance.
+     * @return (Available in 1.196.0+) The connection string of the instance.
      * 
      */
     private String connectionString;
@@ -32,19 +32,13 @@ public final class GetInstancesInstance {
     private String cpuCores;
     /**
      * @return The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+     * * `db_instance_category` - The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * * `db_instance_class` - The db instance class.
      * 
      */
     private String createTime;
     private String creationTime;
-    /**
-     * @return The db instance category. Valid values: `HighAvailability`, `Basic`.
-     * 
-     */
     private String dbInstanceCategory;
-    /**
-     * @return The db instance class.
-     * 
-     */
     private String dbInstanceClass;
     /**
      * @return The db instance id.
@@ -111,10 +105,6 @@ public final class GetInstancesInstance {
      * 
      */
     private String paymentType;
-    /**
-     * @return Region ID the instance belongs to.
-     * 
-     */
     private String regionId;
     /**
      * @return Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
@@ -153,6 +143,7 @@ public final class GetInstancesInstance {
     private String vswitchId;
     /**
      * @return The zone ID of the instance.
+     * * `region_id` - Region ID the instance belongs to.
      * 
      */
     private String zoneId;
@@ -169,7 +160,7 @@ public final class GetInstancesInstance {
         return this.chargeType;
     }
     /**
-     * @return The connection string of the instance.
+     * @return (Available in 1.196.0+) The connection string of the instance.
      * 
      */
     public String connectionString() {
@@ -184,6 +175,8 @@ public final class GetInstancesInstance {
     }
     /**
      * @return The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
+     * * `db_instance_category` - The db instance category. Valid values: `HighAvailability`, `Basic`.
+     * * `db_instance_class` - The db instance class.
      * 
      */
     public String createTime() {
@@ -192,17 +185,9 @@ public final class GetInstancesInstance {
     public String creationTime() {
         return this.creationTime;
     }
-    /**
-     * @return The db instance category. Valid values: `HighAvailability`, `Basic`.
-     * 
-     */
     public String dbInstanceCategory() {
         return this.dbInstanceCategory;
     }
-    /**
-     * @return The db instance class.
-     * 
-     */
     public String dbInstanceClass() {
         return this.dbInstanceClass;
     }
@@ -297,10 +282,6 @@ public final class GetInstancesInstance {
     public String paymentType() {
         return this.paymentType;
     }
-    /**
-     * @return Region ID the instance belongs to.
-     * 
-     */
     public String regionId() {
         return this.regionId;
     }
@@ -355,6 +336,7 @@ public final class GetInstancesInstance {
     }
     /**
      * @return The zone ID of the instance.
+     * * `region_id` - Region ID the instance belongs to.
      * 
      */
     public String zoneId() {

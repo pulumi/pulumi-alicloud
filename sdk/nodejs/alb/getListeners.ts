@@ -69,7 +69,7 @@ export interface GetListenersArgs {
      */
     outputFile?: string;
     /**
-     * The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+     * The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
      */
     status?: string;
 }
@@ -143,7 +143,7 @@ export interface GetListenersOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+     * The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
      */
     status?: pulumi.Input<string>;
 }

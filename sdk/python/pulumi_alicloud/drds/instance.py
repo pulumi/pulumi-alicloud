@@ -26,18 +26,7 @@ class InstanceArgs:
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
         :param pulumi.Input[str] instance_series: The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-               - `drds.sn2.4c16g` Starter Edition.
-               - `drds.sn2.8c32g` Standard Edition.
-               - `drds.sn2.16c64g` Enterprise Edition.
         :param pulumi.Input[str] specification: User-defined DRDS instance specification. Value range:
-               - `drds.sn1.4c8g` for DRDS instance Starter version;
-               - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-               - `drds.sn1.8c16g` for DRDS instance Standard edition;
-               - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-               - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-               - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-               - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-               - value range : `drds.sn1.32c64g.128c256g`
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in.
         :param pulumi.Input[str] zone_id: The Zone to launch the DRDS instance.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
@@ -73,9 +62,6 @@ class InstanceArgs:
     def instance_series(self) -> pulumi.Input[str]:
         """
         The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-        - `drds.sn2.4c16g` Starter Edition.
-        - `drds.sn2.8c32g` Standard Edition.
-        - `drds.sn2.16c64g` Enterprise Edition.
         """
         return pulumi.get(self, "instance_series")
 
@@ -88,14 +74,6 @@ class InstanceArgs:
     def specification(self) -> pulumi.Input[str]:
         """
         User-defined DRDS instance specification. Value range:
-        - `drds.sn1.4c8g` for DRDS instance Starter version;
-        - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-        - `drds.sn1.8c16g` for DRDS instance Standard edition;
-        - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-        - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-        - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-        - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-        - value range : `drds.sn1.32c64g.128c256g`
         """
         return pulumi.get(self, "specification")
 
@@ -183,20 +161,9 @@ class _InstanceState:
         :param pulumi.Input[str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[str] instance_series: The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-               - `drds.sn2.4c16g` Starter Edition.
-               - `drds.sn2.8c32g` Standard Edition.
-               - `drds.sn2.16c64g` Enterprise Edition.
         :param pulumi.Input[int] mysql_version: The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
         :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the DRDS instance.
         :param pulumi.Input[str] specification: User-defined DRDS instance specification. Value range:
-               - `drds.sn1.4c8g` for DRDS instance Starter version;
-               - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-               - `drds.sn1.8c16g` for DRDS instance Standard edition;
-               - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-               - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-               - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-               - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-               - value range : `drds.sn1.32c64g.128c256g`
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in.
         :param pulumi.Input[str] zone_id: The Zone to launch the DRDS instance.
@@ -263,9 +230,6 @@ class _InstanceState:
     def instance_series(self) -> Optional[pulumi.Input[str]]:
         """
         The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-        - `drds.sn2.4c16g` Starter Edition.
-        - `drds.sn2.8c32g` Standard Edition.
-        - `drds.sn2.16c64g` Enterprise Edition.
         """
         return pulumi.get(self, "instance_series")
 
@@ -302,14 +266,6 @@ class _InstanceState:
     def specification(self) -> Optional[pulumi.Input[str]]:
         """
         User-defined DRDS instance specification. Value range:
-        - `drds.sn1.4c8g` for DRDS instance Starter version;
-        - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-        - `drds.sn1.8c16g` for DRDS instance Standard edition;
-        - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-        - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-        - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-        - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-        - value range : `drds.sn1.32c64g.128c256g`
         """
         return pulumi.get(self, "specification")
 
@@ -407,19 +363,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[str] instance_series: The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-               - `drds.sn2.4c16g` Starter Edition.
-               - `drds.sn2.8c32g` Standard Edition.
-               - `drds.sn2.16c64g` Enterprise Edition.
         :param pulumi.Input[int] mysql_version: The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
         :param pulumi.Input[str] specification: User-defined DRDS instance specification. Value range:
-               - `drds.sn1.4c8g` for DRDS instance Starter version;
-               - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-               - `drds.sn1.8c16g` for DRDS instance Standard edition;
-               - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-               - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-               - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-               - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-               - value range : `drds.sn1.32c64g.128c256g`
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in.
         :param pulumi.Input[str] zone_id: The Zone to launch the DRDS instance.
@@ -547,20 +492,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] description: Description of the DRDS instance, This description can have a string of 2 to 256 characters.
         :param pulumi.Input[str] instance_charge_type: Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
         :param pulumi.Input[str] instance_series: The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-               - `drds.sn2.4c16g` Starter Edition.
-               - `drds.sn2.8c32g` Standard Edition.
-               - `drds.sn2.16c64g` Enterprise Edition.
         :param pulumi.Input[int] mysql_version: The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
         :param pulumi.Input[str] port: (Available in 1.196.0+) The connection port of the DRDS instance.
         :param pulumi.Input[str] specification: User-defined DRDS instance specification. Value range:
-               - `drds.sn1.4c8g` for DRDS instance Starter version;
-               - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-               - `drds.sn1.8c16g` for DRDS instance Standard edition;
-               - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-               - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-               - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-               - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-               - value range : `drds.sn1.32c64g.128c256g`
         :param pulumi.Input[str] vpc_id: The id of the VPC.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID to launch in.
         :param pulumi.Input[str] zone_id: The Zone to launch the DRDS instance.
@@ -610,9 +544,6 @@ class Instance(pulumi.CustomResource):
     def instance_series(self) -> pulumi.Output[str]:
         """
         The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-        - `drds.sn2.4c16g` Starter Edition.
-        - `drds.sn2.8c32g` Standard Edition.
-        - `drds.sn2.16c64g` Enterprise Edition.
         """
         return pulumi.get(self, "instance_series")
 
@@ -637,14 +568,6 @@ class Instance(pulumi.CustomResource):
     def specification(self) -> pulumi.Output[str]:
         """
         User-defined DRDS instance specification. Value range:
-        - `drds.sn1.4c8g` for DRDS instance Starter version;
-        - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-        - `drds.sn1.8c16g` for DRDS instance Standard edition;
-        - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-        - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-        - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-        - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-        - value range : `drds.sn1.32c64g.128c256g`
         """
         return pulumi.get(self, "specification")
 

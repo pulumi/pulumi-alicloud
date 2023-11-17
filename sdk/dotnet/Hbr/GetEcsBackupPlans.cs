@@ -100,7 +100,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// The ID of ECS instance.
+        /// The ECS instance ID of the EcsBackupPlan used.
         /// </summary>
         [Input("instanceId")]
         public string? InstanceId { get; set; }
@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Hbr
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of Backup vault.
+        /// The Vault ID of the EcsBackupPlan used.
         /// </summary>
         [Input("vaultId")]
         public string? VaultId { get; set; }
@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// The ID of ECS instance.
+        /// The ECS instance ID of the EcsBackupPlan used.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of Backup vault.
+        /// The Vault ID of the EcsBackupPlan used.
         /// </summary>
         [Input("vaultId")]
         public Input<string>? VaultId { get; set; }

@@ -35,27 +35,27 @@ public final class GetSubnetsSubnet {
      */
     private String message;
     /**
-     * @return Resource Group ID.
+     * @return (ForceNew,Optional) Resource Group ID.
      * 
      */
     private String resourceGroupId;
     /**
-     * @return The status of the resource.
+     * @return (ForceNew,Optional) The status of the resource.
      * 
      */
     private String status;
     /**
-     * @return Primary key ID.
+     * @return (ForceNew,Optional) Primary key ID.
      * 
      */
     private String subnetId;
     /**
-     * @return The Subnet name.
+     * @return (ForceNew,Optional) The Subnet name.
      * 
      */
     private String subnetName;
     /**
-     * @return Eflo subnet usage type, optional value:
+     * @return (ForceNew,Optional) Eflo subnet usage type, optional value:
      * - General type is not filled in
      * - OOB:OOB type
      * - LB: LB type
@@ -63,12 +63,12 @@ public final class GetSubnetsSubnet {
      */
     private String type;
     /**
-     * @return The Eflo VPD ID.
+     * @return (ForceNew,Optional) The Eflo VPD ID.
      * 
      */
     private String vpdId;
     /**
-     * @return The zone ID of the resource.
+     * @return (ForceNew,Optional) The zone ID of the resource.
      * 
      */
     private String zoneId;
@@ -110,35 +110,35 @@ public final class GetSubnetsSubnet {
         return this.message;
     }
     /**
-     * @return Resource Group ID.
+     * @return (ForceNew,Optional) Resource Group ID.
      * 
      */
     public String resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * @return The status of the resource.
+     * @return (ForceNew,Optional) The status of the resource.
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return Primary key ID.
+     * @return (ForceNew,Optional) Primary key ID.
      * 
      */
     public String subnetId() {
         return this.subnetId;
     }
     /**
-     * @return The Subnet name.
+     * @return (ForceNew,Optional) The Subnet name.
      * 
      */
     public String subnetName() {
         return this.subnetName;
     }
     /**
-     * @return Eflo subnet usage type, optional value:
+     * @return (ForceNew,Optional) Eflo subnet usage type, optional value:
      * - General type is not filled in
      * - OOB:OOB type
      * - LB: LB type
@@ -148,14 +148,14 @@ public final class GetSubnetsSubnet {
         return this.type;
     }
     /**
-     * @return The Eflo VPD ID.
+     * @return (ForceNew,Optional) The Eflo VPD ID.
      * 
      */
     public String vpdId() {
         return this.vpdId;
     }
     /**
-     * @return The zone ID of the resource.
+     * @return (ForceNew,Optional) The zone ID of the resource.
      * 
      */
     public String zoneId() {

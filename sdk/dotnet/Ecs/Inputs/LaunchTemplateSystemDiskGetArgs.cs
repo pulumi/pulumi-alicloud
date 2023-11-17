@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<string>? Iops { get; set; }
 
         /// <summary>
-        /// The name of the data disk.
+        /// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

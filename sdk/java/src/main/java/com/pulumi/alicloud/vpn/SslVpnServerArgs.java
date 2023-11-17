@@ -19,9 +19,6 @@ public final class SslVpnServerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-     * * `AES-128-CBC` - the AES-128-CBC algorithm.
-     * * `AES-192-CBC` - the AES-192-CBC algorithm.
-     * * `AES-256-CBC` - the AES-256-CBC algorithm.
      * 
      */
     @Import(name="cipher")
@@ -29,9 +26,6 @@ public final class SslVpnServerArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-     * * `AES-128-CBC` - the AES-128-CBC algorithm.
-     * * `AES-192-CBC` - the AES-192-CBC algorithm.
-     * * `AES-256-CBC` - the AES-256-CBC algorithm.
      * 
      */
     public Optional<Output<String>> cipher() {
@@ -176,9 +170,6 @@ public final class SslVpnServerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cipher The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-         * * `AES-128-CBC` - the AES-128-CBC algorithm.
-         * * `AES-192-CBC` - the AES-192-CBC algorithm.
-         * * `AES-256-CBC` - the AES-256-CBC algorithm.
          * 
          * @return builder
          * 
@@ -190,9 +181,6 @@ public final class SslVpnServerArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param cipher The encryption algorithm that is used in the SSL-VPN connection. Valid values: `AES-128-CBC`,`AES-192-CBC`,`AES-256-CBC`,`none`. Default value: `AES-128-CBC`.
-         * * `AES-128-CBC` - the AES-128-CBC algorithm.
-         * * `AES-192-CBC` - the AES-192-CBC algorithm.
-         * * `AES-256-CBC` - the AES-256-CBC algorithm.
          * 
          * @return builder
          * 

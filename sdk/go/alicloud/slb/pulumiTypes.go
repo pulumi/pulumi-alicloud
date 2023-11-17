@@ -2951,6 +2951,7 @@ type GetLoadBalancersBalancer struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -3028,6 +3029,7 @@ type GetLoadBalancersBalancerArgs struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -3235,6 +3237,7 @@ func (o GetLoadBalancersBalancerOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+//
 // ```go
 // package main
 //
@@ -3647,6 +3650,7 @@ type GetLoadBalancersSlb struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -3710,6 +3714,7 @@ type GetLoadBalancersSlbArgs struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -3842,6 +3847,7 @@ func (o GetLoadBalancersSlbOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
+//
 // ```go
 // package main
 //

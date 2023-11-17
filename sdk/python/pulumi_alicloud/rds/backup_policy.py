@@ -53,9 +53,9 @@ class BackupPolicyArgs:
                - 720: A snapshot backup is performed once every 720 minutes.
                
                > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
-        :param pulumi.Input[str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+        :param pulumi.Input[str] backup_time: (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         :param pulumi.Input[str] category: Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
                > **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
         :param pulumi.Input[str] compress_type: The compress type of instance policy. Valid values are `1`, `4`, `8`.
@@ -63,17 +63,17 @@ class BackupPolicyArgs:
         :param pulumi.Input[str] high_space_usage_protection: Instance high space usage protection policy. Valid when the `enable_backup_log` is `true`. Valid values are `Enable`, `Disable`.
         :param pulumi.Input[int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         :param pulumi.Input[int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
-        :param pulumi.Input[bool] log_backup: It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
+        :param pulumi.Input[bool] log_backup: (Deprecated) It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         :param pulumi.Input[str] log_backup_frequency: Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
         :param pulumi.Input[int] log_backup_retention_period: Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
-        :param pulumi.Input[int] log_retention_period: It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+        :param pulumi.Input[int] log_retention_period: (Deprecated) It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         :param pulumi.Input[str] preferred_backup_time: DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
                * **None**: No archived backup files are retained.
                * **Lastest**: Only the most recent archived backup file is retained.
                * **All**: All archived backup files are retained.
-        :param pulumi.Input[int] retention_period: It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+        :param pulumi.Input[int] retention_period: (Deprecated) It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         if archive_backup_keep_count is not None:
@@ -208,7 +208,7 @@ class BackupPolicyArgs:
     @pulumi.getter(name="backupPeriods")
     def backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+        (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         """
         warnings.warn("""Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""", DeprecationWarning)
         pulumi.log.warn("""backup_periods is deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""")
@@ -235,7 +235,7 @@ class BackupPolicyArgs:
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+        (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         """
         warnings.warn("""Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""", DeprecationWarning)
         pulumi.log.warn("""backup_time is deprecated: Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""")
@@ -323,7 +323,7 @@ class BackupPolicyArgs:
     @pulumi.getter(name="logBackup")
     def log_backup(self) -> Optional[pulumi.Input[bool]]:
         """
-        It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
+        (Deprecated) It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         """
         warnings.warn("""Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""", DeprecationWarning)
         pulumi.log.warn("""log_backup is deprecated: Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""")
@@ -362,7 +362,7 @@ class BackupPolicyArgs:
     @pulumi.getter(name="logRetentionPeriod")
     def log_retention_period(self) -> Optional[pulumi.Input[int]]:
         """
-        It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+        (Deprecated) It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         """
         warnings.warn("""Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""", DeprecationWarning)
         pulumi.log.warn("""log_retention_period is deprecated: Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""")
@@ -416,7 +416,7 @@ class BackupPolicyArgs:
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[int]]:
         """
-        It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+        (Deprecated) It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
         warnings.warn("""Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""", DeprecationWarning)
         pulumi.log.warn("""retention_period is deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""")
@@ -469,9 +469,9 @@ class _BackupPolicyState:
                - 720: A snapshot backup is performed once every 720 minutes.
                
                > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
-        :param pulumi.Input[str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+        :param pulumi.Input[str] backup_time: (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         :param pulumi.Input[str] category: Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
                > **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
         :param pulumi.Input[str] compress_type: The compress type of instance policy. Valid values are `1`, `4`, `8`.
@@ -480,17 +480,17 @@ class _BackupPolicyState:
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         :param pulumi.Input[int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
-        :param pulumi.Input[bool] log_backup: It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
+        :param pulumi.Input[bool] log_backup: (Deprecated) It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         :param pulumi.Input[str] log_backup_frequency: Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
         :param pulumi.Input[int] log_backup_retention_period: Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
-        :param pulumi.Input[int] log_retention_period: It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+        :param pulumi.Input[int] log_retention_period: (Deprecated) It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         :param pulumi.Input[str] preferred_backup_time: DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
                * **None**: No archived backup files are retained.
                * **Lastest**: Only the most recent archived backup file is retained.
                * **All**: All archived backup files are retained.
-        :param pulumi.Input[int] retention_period: It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+        :param pulumi.Input[int] retention_period: (Deprecated) It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
         if archive_backup_keep_count is not None:
             pulumi.set(__self__, "archive_backup_keep_count", archive_backup_keep_count)
@@ -614,7 +614,7 @@ class _BackupPolicyState:
     @pulumi.getter(name="backupPeriods")
     def backup_periods(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+        (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         """
         warnings.warn("""Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""", DeprecationWarning)
         pulumi.log.warn("""backup_periods is deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""")
@@ -641,7 +641,7 @@ class _BackupPolicyState:
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> Optional[pulumi.Input[str]]:
         """
-        It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+        (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         """
         warnings.warn("""Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""", DeprecationWarning)
         pulumi.log.warn("""backup_time is deprecated: Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""")
@@ -741,7 +741,7 @@ class _BackupPolicyState:
     @pulumi.getter(name="logBackup")
     def log_backup(self) -> Optional[pulumi.Input[bool]]:
         """
-        It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
+        (Deprecated) It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         """
         warnings.warn("""Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""", DeprecationWarning)
         pulumi.log.warn("""log_backup is deprecated: Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""")
@@ -780,7 +780,7 @@ class _BackupPolicyState:
     @pulumi.getter(name="logRetentionPeriod")
     def log_retention_period(self) -> Optional[pulumi.Input[int]]:
         """
-        It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+        (Deprecated) It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         """
         warnings.warn("""Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""", DeprecationWarning)
         pulumi.log.warn("""log_retention_period is deprecated: Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""")
@@ -834,7 +834,7 @@ class _BackupPolicyState:
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[int]]:
         """
-        It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+        (Deprecated) It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
         warnings.warn("""Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""", DeprecationWarning)
         pulumi.log.warn("""retention_period is deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""")
@@ -935,9 +935,9 @@ class BackupPolicy(pulumi.CustomResource):
                - 720: A snapshot backup is performed once every 720 minutes.
                
                > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
-        :param pulumi.Input[str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+        :param pulumi.Input[str] backup_time: (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         :param pulumi.Input[str] category: Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
                > **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
         :param pulumi.Input[str] compress_type: The compress type of instance policy. Valid values are `1`, `4`, `8`.
@@ -946,17 +946,17 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         :param pulumi.Input[int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
-        :param pulumi.Input[bool] log_backup: It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
+        :param pulumi.Input[bool] log_backup: (Deprecated) It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         :param pulumi.Input[str] log_backup_frequency: Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
         :param pulumi.Input[int] log_backup_retention_period: Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
-        :param pulumi.Input[int] log_retention_period: It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+        :param pulumi.Input[int] log_retention_period: (Deprecated) It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         :param pulumi.Input[str] preferred_backup_time: DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
                * **None**: No archived backup files are retained.
                * **Lastest**: Only the most recent archived backup file is retained.
                * **All**: All archived backup files are retained.
-        :param pulumi.Input[int] retention_period: It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+        :param pulumi.Input[int] retention_period: (Deprecated) It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
         ...
     @overload
@@ -1132,9 +1132,9 @@ class BackupPolicy(pulumi.CustomResource):
                - 720: A snapshot backup is performed once every 720 minutes.
                
                > **NOTE:** Currently, the SQLServer instance does not support to modify `log_backup_retention_period`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_periods: (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         :param pulumi.Input[int] backup_retention_period: Instance backup retention days. Valid values: [7-730]. Default to 7. But mysql local disk is unlimited.
-        :param pulumi.Input[str] backup_time: It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+        :param pulumi.Input[str] backup_time: (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         :param pulumi.Input[str] category: Whether to enable second level backup.Valid values are `Flash`, `Standard`, Note:It only takes effect when the BackupPolicyMode parameter is DataBackupPolicy. 
                > **NOTE:** You can configure a backup policy by using this parameter and the PreferredBackupPeriod parameter. For example, if you set the PreferredBackupPeriod parameter to Saturday,Sunday and the BackupInterval parameter to -1, a snapshot backup is performed on every Saturday and Sunday.If the instance runs PostgreSQL, the BackupInterval parameter is supported only when the instance is equipped with standard SSDs or enhanced SSDs (ESSDs).This parameter takes effect only when you set the BackupPolicyMode parameter to DataBackupPolicy.
         :param pulumi.Input[str] compress_type: The compress type of instance policy. Valid values are `1`, `4`, `8`.
@@ -1143,17 +1143,17 @@ class BackupPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] instance_id: The Id of instance that can run database.
         :param pulumi.Input[int] local_log_retention_hours: Instance log backup local retention hours. Valid when the `enable_backup_log` is `true`. Valid values: [0-7*24].
         :param pulumi.Input[int] local_log_retention_space: Instance log backup local retention space. Valid when the `enable_backup_log` is `true`. Valid values: [0-50].
-        :param pulumi.Input[bool] log_backup: It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
+        :param pulumi.Input[bool] log_backup: (Deprecated) It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         :param pulumi.Input[str] log_backup_frequency: Instance log backup frequency. Valid when the instance engine is `SQLServer`. Valid values are `LogInterval`.
         :param pulumi.Input[int] log_backup_retention_period: Instance log backup retention days. Valid when the `enable_backup_log` is `1`. Valid values: [7-730]. Default to 7. It cannot be larger than `backup_retention_period`.
-        :param pulumi.Input[int] log_retention_period: It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+        :param pulumi.Input[int] log_retention_period: (Deprecated) It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] preferred_backup_periods: DB Instance backup period. Please set at least two days to ensure backing up at least twice a week. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
         :param pulumi.Input[str] preferred_backup_time: DB instance backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. Default to "02:00Z-03:00Z". China time is 8 hours behind it.
         :param pulumi.Input[str] released_keep_policy: The policy based on which ApsaraDB RDS retains archived backup files if the instance is released. Default value: None. Valid values:
                * **None**: No archived backup files are retained.
                * **Lastest**: Only the most recent archived backup file is retained.
                * **All**: All archived backup files are retained.
-        :param pulumi.Input[int] retention_period: It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+        :param pulumi.Input[int] retention_period: (Deprecated) It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1229,7 +1229,7 @@ class BackupPolicy(pulumi.CustomResource):
     @pulumi.getter(name="backupPeriods")
     def backup_periods(self) -> pulumi.Output[Sequence[str]]:
         """
-        It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
+        (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_period' instead.
         """
         warnings.warn("""Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""", DeprecationWarning)
         pulumi.log.warn("""backup_periods is deprecated: Attribute 'backup_period' has been deprecated from version 1.69.0. Use `preferred_backup_period` instead""")
@@ -1248,7 +1248,7 @@ class BackupPolicy(pulumi.CustomResource):
     @pulumi.getter(name="backupTime")
     def backup_time(self) -> pulumi.Output[str]:
         """
-        It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
+        (Deprecated) It has been deprecated from version 1.69.0, and use field 'preferred_backup_time' instead.
         """
         warnings.warn("""Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""", DeprecationWarning)
         pulumi.log.warn("""backup_time is deprecated: Attribute 'backup_time' has been deprecated from version 1.69.0. Use `preferred_backup_time` instead""")
@@ -1316,7 +1316,7 @@ class BackupPolicy(pulumi.CustomResource):
     @pulumi.getter(name="logBackup")
     def log_backup(self) -> pulumi.Output[bool]:
         """
-        It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
+        (Deprecated) It has been deprecated from version 1.68.0, and use field 'enable_backup_log' instead.
         """
         warnings.warn("""Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""", DeprecationWarning)
         pulumi.log.warn("""log_backup is deprecated: Attribute 'log_backup' has been deprecated from version 1.68.0. Use `enable_backup_log` instead""")
@@ -1343,7 +1343,7 @@ class BackupPolicy(pulumi.CustomResource):
     @pulumi.getter(name="logRetentionPeriod")
     def log_retention_period(self) -> pulumi.Output[int]:
         """
-        It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
+        (Deprecated) It has been deprecated from version 1.69.0, and use field 'log_backup_retention_period' instead.
         """
         warnings.warn("""Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""", DeprecationWarning)
         pulumi.log.warn("""log_retention_period is deprecated: Attribute 'log_retention_period' has been deprecated from version 1.69.0. Use `log_backup_retention_period` instead""")
@@ -1381,7 +1381,7 @@ class BackupPolicy(pulumi.CustomResource):
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> pulumi.Output[int]:
         """
-        It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
+        (Deprecated) It has been deprecated from version 1.69.0, and use field 'backup_retention_period' instead.
         """
         warnings.warn("""Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""", DeprecationWarning)
         pulumi.log.warn("""retention_period is deprecated: Attribute 'retention_period' has been deprecated from version 1.69.0. Use `backup_retention_period` instead""")

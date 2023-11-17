@@ -36,7 +36,7 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
      * - **ChinaMobile**: China Mobile (single line).
      * - **ChinaUnicom**: China Unicom (single line).
      * - **ChinaTelecom**: China Telecom (single line).
-     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     *   &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
      * 
      */
     @Import(name="ipv6Isp")
@@ -48,7 +48,7 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
      * - **ChinaMobile**: China Mobile (single line).
      * - **ChinaUnicom**: China Unicom (single line).
      * - **ChinaTelecom**: China Telecom (single line).
-     * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+     *   &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
      * 
      */
     public Optional<Output<String>> ipv6Isp() {
@@ -107,7 +107,7 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
          * - **ChinaMobile**: China Mobile (single line).
          * - **ChinaUnicom**: China Unicom (single line).
          * - **ChinaTelecom**: China Telecom (single line).
-         * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+         *   &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
          * 
          * @return builder
          * 
@@ -123,7 +123,7 @@ public final class NetworkIpv6CidrBlockArgs extends com.pulumi.resources.Resourc
          * - **ChinaMobile**: China Mobile (single line).
          * - **ChinaUnicom**: China Unicom (single line).
          * - **ChinaTelecom**: China Telecom (single line).
-         * &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+         *   &gt; **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
          * 
          * @return builder
          * 

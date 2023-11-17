@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Log.Inputs
     public sealed class StoreIndexFieldSearchJsonKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The alias of one field.
+        /// The alias of one field
         /// </summary>
         [Input("alias")]
         public Input<string>? Alias { get; set; }

@@ -88,7 +88,6 @@ export class Snapshot extends pulumi.CustomResource {
     public readonly fileSystemId!: pulumi.Output<string>;
     /**
      * The retention period of the snapshot. Unit: days. Valid values:
-     * * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
      */
     public readonly retentionDays!: pulumi.Output<number | undefined>;
     /**
@@ -148,7 +147,6 @@ export interface SnapshotState {
     fileSystemId?: pulumi.Input<string>;
     /**
      * The retention period of the snapshot. Unit: days. Valid values:
-     * * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
      */
     retentionDays?: pulumi.Input<number>;
     /**
@@ -175,7 +173,6 @@ export interface SnapshotArgs {
     fileSystemId: pulumi.Input<string>;
     /**
      * The retention period of the snapshot. Unit: days. Valid values:
-     * * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
      */
     retentionDays?: pulumi.Input<number>;
     /**

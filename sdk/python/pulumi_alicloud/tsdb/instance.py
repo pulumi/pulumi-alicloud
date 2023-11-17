@@ -26,29 +26,8 @@ class InstanceArgs:
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[str] instance_class: The specification of the instance. 
+        :param pulumi.Input[str] instance_class: The specification of the instance.
                - Following enumerative value for TSDB for InfluxDB️ standart edition:
-               - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-               - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-               - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-               - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-               - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-               - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-               - Following enumerative value for TSDB for InfluxDB High-availability edition:
-               - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-               - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-               - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-               - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-               - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-               - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-               - Following enumerative value for TSDB:
-               - `tsdb.1x.basic` refers to basic edition I;
-               - `tsdb.3x.basic` refers to basic edition II;
-               - `tsdb.4x.basic` refers to basic edtion III;
-               - `tsdb.12x.standard` refers to standard edition I;
-               - `tsdb.24x.standard` refers to standard edition II;
-               - `tsdb.48x.large` refers to ultimate edition I;
-               - `tsdb.96x.large` refers to ultimate edition II.
         :param pulumi.Input[str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
         :param pulumi.Input[str] payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
@@ -80,29 +59,8 @@ class InstanceArgs:
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> pulumi.Input[str]:
         """
-        The specification of the instance. 
+        The specification of the instance.
         - Following enumerative value for TSDB for InfluxDB️ standart edition:
-        - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-        - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-        - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-        - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-        - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-        - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-        - Following enumerative value for TSDB for InfluxDB High-availability edition:
-        - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-        - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-        - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-        - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-        - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-        - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-        - Following enumerative value for TSDB:
-        - `tsdb.1x.basic` refers to basic edition I;
-        - `tsdb.3x.basic` refers to basic edition II;
-        - `tsdb.4x.basic` refers to basic edtion III;
-        - `tsdb.12x.standard` refers to standard edition I;
-        - `tsdb.24x.standard` refers to standard edition II;
-        - `tsdb.48x.large` refers to ultimate edition I;
-        - `tsdb.96x.large` refers to ultimate edition II.
         """
         return pulumi.get(self, "instance_class")
 
@@ -240,29 +198,8 @@ class _InstanceState:
         :param pulumi.Input[str] duration: The duration.
         :param pulumi.Input[str] engine_type: The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
         :param pulumi.Input[str] instance_alias: The alias of the instance.
-        :param pulumi.Input[str] instance_class: The specification of the instance. 
+        :param pulumi.Input[str] instance_class: The specification of the instance.
                - Following enumerative value for TSDB for InfluxDB️ standart edition:
-               - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-               - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-               - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-               - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-               - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-               - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-               - Following enumerative value for TSDB for InfluxDB High-availability edition:
-               - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-               - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-               - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-               - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-               - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-               - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-               - Following enumerative value for TSDB:
-               - `tsdb.1x.basic` refers to basic edition I;
-               - `tsdb.3x.basic` refers to basic edition II;
-               - `tsdb.4x.basic` refers to basic edtion III;
-               - `tsdb.12x.standard` refers to standard edition I;
-               - `tsdb.24x.standard` refers to standard edition II;
-               - `tsdb.48x.large` refers to ultimate edition I;
-               - `tsdb.96x.large` refers to ultimate edition II.
         :param pulumi.Input[str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
         :param pulumi.Input[str] payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
         :param pulumi.Input[str] status: Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
@@ -356,29 +293,8 @@ class _InstanceState:
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The specification of the instance. 
+        The specification of the instance.
         - Following enumerative value for TSDB for InfluxDB️ standart edition:
-        - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-        - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-        - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-        - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-        - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-        - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-        - Following enumerative value for TSDB for InfluxDB High-availability edition:
-        - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-        - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-        - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-        - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-        - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-        - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-        - Following enumerative value for TSDB:
-        - `tsdb.1x.basic` refers to basic edition I;
-        - `tsdb.3x.basic` refers to basic edition II;
-        - `tsdb.4x.basic` refers to basic edtion III;
-        - `tsdb.12x.standard` refers to standard edition I;
-        - `tsdb.24x.standard` refers to standard edition II;
-        - `tsdb.48x.large` refers to ultimate edition I;
-        - `tsdb.96x.large` refers to ultimate edition II.
         """
         return pulumi.get(self, "instance_class")
 
@@ -508,29 +424,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] duration: The duration.
         :param pulumi.Input[str] engine_type: The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
         :param pulumi.Input[str] instance_alias: The alias of the instance.
-        :param pulumi.Input[str] instance_class: The specification of the instance. 
+        :param pulumi.Input[str] instance_class: The specification of the instance.
                - Following enumerative value for TSDB for InfluxDB️ standart edition:
-               - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-               - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-               - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-               - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-               - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-               - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-               - Following enumerative value for TSDB for InfluxDB High-availability edition:
-               - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-               - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-               - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-               - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-               - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-               - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-               - Following enumerative value for TSDB:
-               - `tsdb.1x.basic` refers to basic edition I;
-               - `tsdb.3x.basic` refers to basic edition II;
-               - `tsdb.4x.basic` refers to basic edtion III;
-               - `tsdb.12x.standard` refers to standard edition I;
-               - `tsdb.24x.standard` refers to standard edition II;
-               - `tsdb.48x.large` refers to ultimate edition I;
-               - `tsdb.96x.large` refers to ultimate edition II.
         :param pulumi.Input[str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
         :param pulumi.Input[str] payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
         :param pulumi.Input[str] vswitch_id: The vswitch id.
@@ -666,29 +561,8 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] duration: The duration.
         :param pulumi.Input[str] engine_type: The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
         :param pulumi.Input[str] instance_alias: The alias of the instance.
-        :param pulumi.Input[str] instance_class: The specification of the instance. 
+        :param pulumi.Input[str] instance_class: The specification of the instance.
                - Following enumerative value for TSDB for InfluxDB️ standart edition:
-               - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-               - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-               - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-               - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-               - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-               - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-               - Following enumerative value for TSDB for InfluxDB High-availability edition:
-               - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-               - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-               - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-               - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-               - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-               - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-               - Following enumerative value for TSDB:
-               - `tsdb.1x.basic` refers to basic edition I;
-               - `tsdb.3x.basic` refers to basic edition II;
-               - `tsdb.4x.basic` refers to basic edtion III;
-               - `tsdb.12x.standard` refers to standard edition I;
-               - `tsdb.24x.standard` refers to standard edition II;
-               - `tsdb.48x.large` refers to ultimate edition I;
-               - `tsdb.96x.large` refers to ultimate edition II.
         :param pulumi.Input[str] instance_storage: The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
         :param pulumi.Input[str] payment_type: The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
         :param pulumi.Input[str] status: Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
@@ -756,29 +630,8 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="instanceClass")
     def instance_class(self) -> pulumi.Output[str]:
         """
-        The specification of the instance. 
+        The specification of the instance.
         - Following enumerative value for TSDB for InfluxDB️ standart edition:
-        - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-        - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-        - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-        - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-        - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-        - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-        - Following enumerative value for TSDB for InfluxDB High-availability edition:
-        - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-        - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-        - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-        - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-        - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-        - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-        - Following enumerative value for TSDB:
-        - `tsdb.1x.basic` refers to basic edition I;
-        - `tsdb.3x.basic` refers to basic edition II;
-        - `tsdb.4x.basic` refers to basic edtion III;
-        - `tsdb.12x.standard` refers to standard edition I;
-        - `tsdb.24x.standard` refers to standard edition II;
-        - `tsdb.48x.large` refers to ultimate edition I;
-        - `tsdb.96x.large` refers to ultimate edition II.
         """
         return pulumi.get(self, "instance_class")
 

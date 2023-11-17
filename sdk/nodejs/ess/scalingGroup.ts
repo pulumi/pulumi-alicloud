@@ -158,7 +158,7 @@ export class ScalingGroup extends pulumi.CustomResource {
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
      * - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
-     * targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+     *   targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
      * - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
      * - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
      */
@@ -222,7 +222,7 @@ export class ScalingGroup extends pulumi.CustomResource {
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+     * (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
      *
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
      */
@@ -345,7 +345,7 @@ export interface ScalingGroupState {
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
      * - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
-     * targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+     *   targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
      * - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
      * - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
      */
@@ -409,7 +409,7 @@ export interface ScalingGroupState {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+     * (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
      *
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
      */
@@ -462,7 +462,7 @@ export interface ScalingGroupArgs {
      * If a Server Load Balancer instance is specified in the scaling group, the scaling group automatically attaches its ECS instances to the Server Load Balancer instance.
      * - The Server Load Balancer instance must be enabled.
      * - At least one listener must be configured for each Server Load Balancer and it HealthCheck must be on. Otherwise, creation will fail (it may be useful to add a `dependsOn` argument
-     * targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
+     *   targeting your `alicloud.slb.Listener` in order to make sure the listener with its HealthCheck configuration is ready before creating your scaling group).
      * - The Server Load Balancer instance attached with VPC-type ECS instances cannot be attached to the scaling group.
      * - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
      */
@@ -526,7 +526,7 @@ export interface ScalingGroupArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
+     * (Deprecated) It has been deprecated from version 1.7.1 and new field 'vswitch_ids' replaces it.
      *
      * @deprecated Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it.
      */

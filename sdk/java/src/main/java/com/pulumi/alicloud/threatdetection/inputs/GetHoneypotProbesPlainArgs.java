@@ -17,14 +17,14 @@ public final class GetHoneypotProbesPlainArgs extends com.pulumi.resources.Invok
     public static final GetHoneypotProbesPlainArgs Empty = new GetHoneypotProbesPlainArgs();
 
     /**
-     * Probe name
+     * (ForceNew, Optional) Probe name
      * 
      */
     @Import(name="displayName")
     private @Nullable String displayName;
 
     /**
-     * @return Probe name
+     * @return (ForceNew, Optional) Probe name
      * 
      */
     public Optional<String> displayName() {
@@ -99,14 +99,14 @@ public final class GetHoneypotProbesPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * Probe type
+     * (ForceNew, Optional) Probe type
      * 
      */
     @Import(name="probeType")
     private @Nullable String probeType;
 
     /**
-     * @return Probe type
+     * @return (ForceNew, Optional) Probe type
      * 
      */
     public Optional<String> probeType() {
@@ -144,7 +144,7 @@ public final class GetHoneypotProbesPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param displayName Probe name
+         * @param displayName (ForceNew, Optional) Probe name
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class GetHoneypotProbesPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param probeType Probe type
+         * @param probeType (ForceNew, Optional) Probe type
          * 
          * @return builder
          * 

@@ -66,19 +66,19 @@ export interface GetVpdsArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * The Resource group id
+     * (ForceNew,Optional) The Resource group id
      */
     resourceGroupId?: string;
     /**
-     * The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+     * (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
      */
     status?: string;
     /**
-     * The id of the vpd.
+     * (ForceNew,Optional) The id of the vpd.
      */
     vpdId?: string;
     /**
-     * The Name of the VPD.
+     * (ForceNew,Optional) The Name of the VPD.
      */
     vpdName?: string;
 }
@@ -171,19 +171,19 @@ export interface GetVpdsOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * The Resource group id
+     * (ForceNew,Optional) The Resource group id
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+     * (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
      */
     status?: pulumi.Input<string>;
     /**
-     * The id of the vpd.
+     * (ForceNew,Optional) The id of the vpd.
      */
     vpdId?: pulumi.Input<string>;
     /**
-     * The Name of the VPD.
+     * (ForceNew,Optional) The Name of the VPD.
      */
     vpdName?: pulumi.Input<string>;
 }

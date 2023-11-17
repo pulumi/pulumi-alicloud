@@ -445,7 +445,7 @@ class ShardingInstanceShardListArgs:
                  readonly_replicas: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[str] node_class: Node specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
-        :param pulumi.Input[int] node_storage: - Custom storage space; value range: [10, 1,000]
+        :param pulumi.Input[int] node_storage: Custom storage space; value range: [10, 1,000]
                - 10-GB increments. Unit: GB.
         :param pulumi.Input[str] node_id: The ID of the shard-node.
         :param pulumi.Input[int] readonly_replicas: The number of read-only nodes in shard node. Valid values: 0 to 5. Default value: 0.
@@ -473,7 +473,7 @@ class ShardingInstanceShardListArgs:
     @pulumi.getter(name="nodeStorage")
     def node_storage(self) -> pulumi.Input[int]:
         """
-        - Custom storage space; value range: [10, 1,000]
+        Custom storage space; value range: [10, 1,000]
         - 10-GB increments. Unit: GB.
         """
         return pulumi.get(self, "node_storage")

@@ -41,7 +41,9 @@ export function getVersions(args?: GetVersionsArgs, opts?: pulumi.InvokeOptions)
  */
 export interface GetVersionsArgs {
     /**
-     * The edition of the ASM instance.
+     * The edition of the ASM instance. Valid values:
+     * - Default: Standard Edition
+     * - Pro: Professional Edition
      */
     edition?: string;
     /**
@@ -95,7 +97,9 @@ export function getVersionsOutput(args?: GetVersionsOutputArgs, opts?: pulumi.In
  */
 export interface GetVersionsOutputArgs {
     /**
-     * The edition of the ASM instance.
+     * The edition of the ASM instance. Valid values:
+     * - Default: Standard Edition
+     * - Pro: Professional Edition
      */
     edition?: pulumi.Input<string>;
     /**

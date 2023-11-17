@@ -36,14 +36,14 @@ public final class TrafficMirrorFilterIngressRuleArgs extends com.pulumi.resourc
     }
 
     /**
-     * DestinationCidrBlock.
+     * The destination address of the outbound rule network traffic.
      * 
      */
     @Import(name="destinationCidrBlock")
     private @Nullable Output<String> destinationCidrBlock;
 
     /**
-     * @return DestinationCidrBlock.
+     * @return The destination address of the outbound rule network traffic.
      * 
      */
     public Optional<Output<String>> destinationCidrBlock() {
@@ -68,14 +68,14 @@ public final class TrafficMirrorFilterIngressRuleArgs extends com.pulumi.resourc
     }
 
     /**
-     * Priority.
+     * The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return Priority.
+     * @return The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
      * 
      */
     public Optional<Output<Integer>> priority() {
@@ -201,7 +201,7 @@ public final class TrafficMirrorFilterIngressRuleArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param destinationCidrBlock DestinationCidrBlock.
+         * @param destinationCidrBlock The destination address of the outbound rule network traffic.
          * 
          * @return builder
          * 
@@ -212,7 +212,7 @@ public final class TrafficMirrorFilterIngressRuleArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param destinationCidrBlock DestinationCidrBlock.
+         * @param destinationCidrBlock The destination address of the outbound rule network traffic.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class TrafficMirrorFilterIngressRuleArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param priority Priority.
+         * @param priority The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
          * 
          * @return builder
          * 
@@ -256,7 +256,7 @@ public final class TrafficMirrorFilterIngressRuleArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param priority Priority.
+         * @param priority The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
          * 
          * @return builder
          * 

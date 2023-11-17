@@ -184,7 +184,7 @@ public class ServiceCertificate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.lang);
     }
     /**
-     * It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+     * (Deprecated from 1.129.0, Optional, ForceNew) It has been deprecated from version 1.129.0 and using `certificate_name` instead.
      * 
      * @deprecated
      * attribute &#39;name&#39; has been deprecated from provider version 1.129.0 and it will be remove in the future version. Please use the new attribute &#39;certificate_name&#39; instead.
@@ -195,7 +195,7 @@ public class ServiceCertificate extends com.pulumi.resources.CustomResource {
     private Output<String> name;
 
     /**
-     * @return It has been deprecated from version 1.129.0 and using `certificate_name` instead.
+     * @return (Deprecated from 1.129.0, Optional, ForceNew) It has been deprecated from version 1.129.0 and using `certificate_name` instead.
      * 
      */
     public Output<String> name() {

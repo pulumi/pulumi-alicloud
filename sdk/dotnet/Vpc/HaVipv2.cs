@@ -127,7 +127,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> HaVipName { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+        /// (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
         /// </summary>
         [Output("havipName")]
         public Output<string> HavipName { get; private set; } = null!;
@@ -235,7 +235,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? HaVipName { get; set; }
 
         /// <summary>
-        /// Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+        /// (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
         /// </summary>
         [Input("havipName")]
         public Input<string>? HavipName { get; set; }
@@ -335,7 +335,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? HaVipName { get; set; }
 
         /// <summary>
-        /// Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
+        /// (Deprecated from v1.205.0+) Field 'havip_name' has been deprecated from provider version 1.205.0. New field 'ha_vip_name' instead.
         /// </summary>
         [Input("havipName")]
         public Input<string>? HavipName { get; set; }

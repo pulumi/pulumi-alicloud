@@ -104,7 +104,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public string? Destination { get; set; }
 
         /// <summary>
-        /// The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+        /// Direction. Valid values: `in`, `out`.
         /// </summary>
         [Input("direction", required: true)]
         public string Direction { get; set; } = null!;
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+        /// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
         /// </summary>
         [Input("proto")]
         public string? Proto { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? Destination { get; set; }
 
         /// <summary>
-        /// The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+        /// Direction. Valid values: `in`, `out`.
         /// </summary>
         [Input("direction", required: true)]
         public Input<string> Direction { get; set; } = null!;
@@ -202,7 +202,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+        /// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
         /// </summary>
         [Input("proto")]
         public Input<string>? Proto { get; set; }

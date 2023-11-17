@@ -198,7 +198,7 @@ type EcsLaunchTemplate struct {
 	KeyPairName pulumi.StringPtrOutput `pulumi:"keyPairName"`
 	// The name of Launch Template.
 	LaunchTemplateName pulumi.StringOutput `pulumi:"launchTemplateName"`
-	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -232,19 +232,19 @@ type EcsLaunchTemplate struct {
 	SpotStrategy pulumi.StringPtrOutput `pulumi:"spotStrategy"`
 	// The System Disk. See `systemDisk` below.
 	SystemDisk EcsLaunchTemplateSystemDiskOutput `pulumi:"systemDisk"`
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory pulumi.StringOutput `pulumi:"systemDiskCategory"`
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription pulumi.StringOutput `pulumi:"systemDiskDescription"`
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName pulumi.StringOutput `pulumi:"systemDiskName"`
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize pulumi.IntOutput `pulumi:"systemDiskSize"`
@@ -258,7 +258,7 @@ type EcsLaunchTemplate struct {
 	TemplateTags pulumi.MapOutput `pulumi:"templateTags"`
 	// The User Data.
 	UserData pulumi.StringOutput `pulumi:"userData"`
-	// It has been deprecated from version 1.120.0, and use field `userData` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `userData` instead.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
 	Userdata pulumi.StringOutput `pulumi:"userdata"`
@@ -338,7 +338,7 @@ type ecsLaunchTemplateState struct {
 	KeyPairName *string `pulumi:"keyPairName"`
 	// The name of Launch Template.
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
-	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name *string `pulumi:"name"`
@@ -372,19 +372,19 @@ type ecsLaunchTemplateState struct {
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The System Disk. See `systemDisk` below.
 	SystemDisk *EcsLaunchTemplateSystemDisk `pulumi:"systemDisk"`
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName *string `pulumi:"systemDiskName"`
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
@@ -398,7 +398,7 @@ type ecsLaunchTemplateState struct {
 	TemplateTags map[string]interface{} `pulumi:"templateTags"`
 	// The User Data.
 	UserData *string `pulumi:"userData"`
-	// It has been deprecated from version 1.120.0, and use field `userData` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `userData` instead.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
 	Userdata *string `pulumi:"userdata"`
@@ -449,7 +449,7 @@ type EcsLaunchTemplateState struct {
 	KeyPairName pulumi.StringPtrInput
 	// The name of Launch Template.
 	LaunchTemplateName pulumi.StringPtrInput
-	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringPtrInput
@@ -483,19 +483,19 @@ type EcsLaunchTemplateState struct {
 	SpotStrategy pulumi.StringPtrInput
 	// The System Disk. See `systemDisk` below.
 	SystemDisk EcsLaunchTemplateSystemDiskPtrInput
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory pulumi.StringPtrInput
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription pulumi.StringPtrInput
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName pulumi.StringPtrInput
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize pulumi.IntPtrInput
@@ -509,7 +509,7 @@ type EcsLaunchTemplateState struct {
 	TemplateTags pulumi.MapInput
 	// The User Data.
 	UserData pulumi.StringPtrInput
-	// It has been deprecated from version 1.120.0, and use field `userData` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `userData` instead.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
 	Userdata pulumi.StringPtrInput
@@ -564,7 +564,7 @@ type ecsLaunchTemplateArgs struct {
 	KeyPairName *string `pulumi:"keyPairName"`
 	// The name of Launch Template.
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
-	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name *string `pulumi:"name"`
@@ -598,19 +598,19 @@ type ecsLaunchTemplateArgs struct {
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// The System Disk. See `systemDisk` below.
 	SystemDisk *EcsLaunchTemplateSystemDisk `pulumi:"systemDisk"`
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory *string `pulumi:"systemDiskCategory"`
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription *string `pulumi:"systemDiskDescription"`
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName *string `pulumi:"systemDiskName"`
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
@@ -624,7 +624,7 @@ type ecsLaunchTemplateArgs struct {
 	TemplateTags map[string]interface{} `pulumi:"templateTags"`
 	// The User Data.
 	UserData *string `pulumi:"userData"`
-	// It has been deprecated from version 1.120.0, and use field `userData` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `userData` instead.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
 	Userdata *string `pulumi:"userdata"`
@@ -676,7 +676,7 @@ type EcsLaunchTemplateArgs struct {
 	KeyPairName pulumi.StringPtrInput
 	// The name of Launch Template.
 	LaunchTemplateName pulumi.StringPtrInput
-	// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringPtrInput
@@ -710,19 +710,19 @@ type EcsLaunchTemplateArgs struct {
 	SpotStrategy pulumi.StringPtrInput
 	// The System Disk. See `systemDisk` below.
 	SystemDisk EcsLaunchTemplateSystemDiskPtrInput
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskCategory pulumi.StringPtrInput
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskDescription pulumi.StringPtrInput
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskName pulumi.StringPtrInput
-	// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 	//
 	// Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 	SystemDiskSize pulumi.IntPtrInput
@@ -736,7 +736,7 @@ type EcsLaunchTemplateArgs struct {
 	TemplateTags pulumi.MapInput
 	// The User Data.
 	UserData pulumi.StringPtrInput
-	// It has been deprecated from version 1.120.0, and use field `userData` instead.
+	// (Deprecated) It has been deprecated from version 1.120.0, and use field `userData` instead.
 	//
 	// Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
 	Userdata pulumi.StringPtrInput
@@ -924,7 +924,7 @@ func (o EcsLaunchTemplateOutput) LaunchTemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.LaunchTemplateName }).(pulumi.StringOutput)
 }
 
-// It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
+// (Deprecated) It has been deprecated from version 1.120.0, and use field `launchTemplateName` instead.
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 func (o EcsLaunchTemplateOutput) Name() pulumi.StringOutput {
@@ -1003,28 +1003,28 @@ func (o EcsLaunchTemplateOutput) SystemDisk() EcsLaunchTemplateSystemDiskOutput 
 	return o.ApplyT(func(v *EcsLaunchTemplate) EcsLaunchTemplateSystemDiskOutput { return v.SystemDisk }).(EcsLaunchTemplateSystemDiskOutput)
 }
 
-// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 //
 // Deprecated: Field 'system_disk_category' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 func (o EcsLaunchTemplateOutput) SystemDiskCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.SystemDiskCategory }).(pulumi.StringOutput)
 }
 
-// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 //
 // Deprecated: Field 'system_disk_description' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 func (o EcsLaunchTemplateOutput) SystemDiskDescription() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.SystemDiskDescription }).(pulumi.StringOutput)
 }
 
-// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 //
 // Deprecated: Field 'system_disk_name' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 func (o EcsLaunchTemplateOutput) SystemDiskName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.SystemDiskName }).(pulumi.StringOutput)
 }
 
-// It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
+// (Deprecated) It has been deprecated from version 1.120.0, and use field `systemDisk` instead.
 //
 // Deprecated: Field 'system_disk_size' has been deprecated from provider version 1.120.0. New field 'system_disk' instead.
 func (o EcsLaunchTemplateOutput) SystemDiskSize() pulumi.IntOutput {
@@ -1053,7 +1053,7 @@ func (o EcsLaunchTemplateOutput) UserData() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsLaunchTemplate) pulumi.StringOutput { return v.UserData }).(pulumi.StringOutput)
 }
 
-// It has been deprecated from version 1.120.0, and use field `userData` instead.
+// (Deprecated) It has been deprecated from version 1.120.0, and use field `userData` instead.
 //
 // Deprecated: Field 'userdata' has been deprecated from provider version 1.120.0. New field 'user_data' instead.
 func (o EcsLaunchTemplateOutput) Userdata() pulumi.StringOutput {

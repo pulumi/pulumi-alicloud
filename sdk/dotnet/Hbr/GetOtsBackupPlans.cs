@@ -124,7 +124,7 @@ namespace Pulumi.AliCloud.Hbr
         public string? PlanName { get; set; }
 
         /// <summary>
-        /// The ID of backup vault.
+        /// The ID of backup vault the OtsBackupPlan used.
         /// </summary>
         [Input("vaultId")]
         public string? VaultId { get; set; }
@@ -174,7 +174,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? PlanName { get; set; }
 
         /// <summary>
-        /// The ID of backup vault.
+        /// The ID of backup vault the OtsBackupPlan used.
         /// </summary>
         [Input("vaultId")]
         public Input<string>? VaultId { get; set; }

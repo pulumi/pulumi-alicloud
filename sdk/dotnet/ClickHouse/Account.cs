@@ -123,6 +123,8 @@ namespace Pulumi.AliCloud.ClickHouse
 
         /// <summary>
         /// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+        /// -`true`: grants DDL permissions to the database account.
+        /// -`false`: does not grant DDL permissions to the database account.
         /// </summary>
         [Output("ddlAuthority")]
         public Output<bool> DdlAuthority { get; private set; } = null!;
@@ -241,6 +243,8 @@ namespace Pulumi.AliCloud.ClickHouse
 
         /// <summary>
         /// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+        /// -`true`: grants DDL permissions to the database account.
+        /// -`false`: does not grant DDL permissions to the database account.
         /// </summary>
         [Input("ddlAuthority")]
         public Input<bool>? DdlAuthority { get; set; }
@@ -309,6 +313,8 @@ namespace Pulumi.AliCloud.ClickHouse
 
         /// <summary>
         /// Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+        /// -`true`: grants DDL permissions to the database account.
+        /// -`false`: does not grant DDL permissions to the database account.
         /// </summary>
         [Input("ddlAuthority")]
         public Input<bool>? DdlAuthority { get; set; }

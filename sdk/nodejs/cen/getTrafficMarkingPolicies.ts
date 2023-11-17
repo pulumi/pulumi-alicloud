@@ -68,7 +68,7 @@ export interface GetTrafficMarkingPoliciesArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
      */
     status?: string;
     /**
@@ -147,7 +147,7 @@ export interface GetTrafficMarkingPoliciesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource.  Valid values: `Active`, `Creating`, `Deleting`, `Updating`.
      */
     status?: pulumi.Input<string>;
     /**

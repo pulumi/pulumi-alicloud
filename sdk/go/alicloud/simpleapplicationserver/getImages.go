@@ -31,7 +31,7 @@ type GetImagesArgs struct {
 	ImageType  *string `pulumi:"imageType"`
 	NameRegex  *string `pulumi:"nameRegex"`
 	OutputFile *string `pulumi:"outputFile"`
-	// The platform of Plan supported.
+	// (Available in v1.161.0) The platform of Plan supported.
 	Platform *string `pulumi:"platform"`
 }
 
@@ -68,7 +68,7 @@ type GetImagesOutputArgs struct {
 	ImageType  pulumi.StringPtrInput `pulumi:"imageType"`
 	NameRegex  pulumi.StringPtrInput `pulumi:"nameRegex"`
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The platform of Plan supported.
+	// (Available in v1.161.0) The platform of Plan supported.
 	Platform pulumi.StringPtrInput `pulumi:"platform"`
 }
 

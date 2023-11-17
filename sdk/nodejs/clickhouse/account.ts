@@ -116,6 +116,8 @@ export class Account extends pulumi.CustomResource {
     public readonly dbClusterId!: pulumi.Output<string>;
     /**
      * Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+     * -`true`: grants DDL permissions to the database account.
+     * -`false`: does not grant DDL permissions to the database account.
      */
     public readonly ddlAuthority!: pulumi.Output<boolean>;
     /**
@@ -223,6 +225,8 @@ export interface AccountState {
     dbClusterId?: pulumi.Input<string>;
     /**
      * Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+     * -`true`: grants DDL permissions to the database account.
+     * -`false`: does not grant DDL permissions to the database account.
      */
     ddlAuthority?: pulumi.Input<boolean>;
     /**
@@ -277,6 +281,8 @@ export interface AccountArgs {
     dbClusterId: pulumi.Input<string>;
     /**
      * Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
+     * -`true`: grants DDL permissions to the database account.
+     * -`false`: does not grant DDL permissions to the database account.
      */
     ddlAuthority?: pulumi.Input<boolean>;
     /**

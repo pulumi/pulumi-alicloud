@@ -48,9 +48,9 @@ class RuleArgs:
         :param pulumi.Input[str] region_ids_scope: The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
         :param pulumi.Input[str] resource_group_ids_scope: The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types_scopes: The types of the resources to be evaluated against the rule.
-        :param pulumi.Input[str] scope_compliance_resource_types: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
-        :param pulumi.Input[str] source_detail_message_type: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
-        :param pulumi.Input[str] source_maximum_execution_frequency: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+        :param pulumi.Input[str] scope_compliance_resource_types: (Deprecated) Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+        :param pulumi.Input[str] source_detail_message_type: (Deprecated) Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+        :param pulumi.Input[str] source_maximum_execution_frequency: (Deprecated) Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
         :param pulumi.Input[str] status: The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
         :param pulumi.Input[str] tag_value_scope: The rule monitors the tag value, only applies to rules created based on managed rules.
@@ -247,7 +247,7 @@ class RuleArgs:
     @pulumi.getter(name="scopeComplianceResourceTypes")
     def scope_compliance_resource_types(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+        (Deprecated) Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
         """
         warnings.warn("""Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""", DeprecationWarning)
         pulumi.log.warn("""scope_compliance_resource_types is deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""")
@@ -262,7 +262,7 @@ class RuleArgs:
     @pulumi.getter(name="sourceDetailMessageType")
     def source_detail_message_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+        (Deprecated) Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
         """
         warnings.warn("""Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""", DeprecationWarning)
         pulumi.log.warn("""source_detail_message_type is deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""")
@@ -277,7 +277,7 @@ class RuleArgs:
     @pulumi.getter(name="sourceMaximumExecutionFrequency")
     def source_maximum_execution_frequency(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+        (Deprecated) Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
         """
         warnings.warn("""Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""", DeprecationWarning)
         pulumi.log.warn("""source_maximum_execution_frequency is deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""")
@@ -376,10 +376,10 @@ class _RuleState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types_scopes: The types of the resources to be evaluated against the rule.
         :param pulumi.Input[int] risk_level: The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
         :param pulumi.Input[str] rule_name: The name of the rule.
-        :param pulumi.Input[str] scope_compliance_resource_types: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
-        :param pulumi.Input[str] source_detail_message_type: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+        :param pulumi.Input[str] scope_compliance_resource_types: (Deprecated) Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+        :param pulumi.Input[str] source_detail_message_type: (Deprecated) Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
         :param pulumi.Input[str] source_identifier: The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
-        :param pulumi.Input[str] source_maximum_execution_frequency: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+        :param pulumi.Input[str] source_maximum_execution_frequency: (Deprecated) Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
         :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
         :param pulumi.Input[str] status: The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
@@ -669,7 +669,7 @@ class _RuleState:
     @pulumi.getter(name="scopeComplianceResourceTypes")
     def scope_compliance_resource_types(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+        (Deprecated) Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
         """
         warnings.warn("""Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""", DeprecationWarning)
         pulumi.log.warn("""scope_compliance_resource_types is deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""")
@@ -684,7 +684,7 @@ class _RuleState:
     @pulumi.getter(name="sourceDetailMessageType")
     def source_detail_message_type(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+        (Deprecated) Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
         """
         warnings.warn("""Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""", DeprecationWarning)
         pulumi.log.warn("""source_detail_message_type is deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""")
@@ -711,7 +711,7 @@ class _RuleState:
     @pulumi.getter(name="sourceMaximumExecutionFrequency")
     def source_maximum_execution_frequency(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+        (Deprecated) Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
         """
         warnings.warn("""Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""", DeprecationWarning)
         pulumi.log.warn("""source_maximum_execution_frequency is deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""")
@@ -852,10 +852,10 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types_scopes: The types of the resources to be evaluated against the rule.
         :param pulumi.Input[int] risk_level: The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
         :param pulumi.Input[str] rule_name: The name of the rule.
-        :param pulumi.Input[str] scope_compliance_resource_types: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
-        :param pulumi.Input[str] source_detail_message_type: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+        :param pulumi.Input[str] scope_compliance_resource_types: (Deprecated) Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+        :param pulumi.Input[str] source_detail_message_type: (Deprecated) Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
         :param pulumi.Input[str] source_identifier: The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
-        :param pulumi.Input[str] source_maximum_execution_frequency: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+        :param pulumi.Input[str] source_maximum_execution_frequency: (Deprecated) Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
         :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
         :param pulumi.Input[str] status: The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
@@ -1049,10 +1049,10 @@ class Rule(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_types_scopes: The types of the resources to be evaluated against the rule.
         :param pulumi.Input[int] risk_level: The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
         :param pulumi.Input[str] rule_name: The name of the rule.
-        :param pulumi.Input[str] scope_compliance_resource_types: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
-        :param pulumi.Input[str] source_detail_message_type: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+        :param pulumi.Input[str] scope_compliance_resource_types: (Deprecated) Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+        :param pulumi.Input[str] source_detail_message_type: (Deprecated) Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
         :param pulumi.Input[str] source_identifier: The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
-        :param pulumi.Input[str] source_maximum_execution_frequency: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+        :param pulumi.Input[str] source_maximum_execution_frequency: (Deprecated) Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
         :param pulumi.Input[str] source_owner: Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
         :param pulumi.Input[str] status: The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
         :param pulumi.Input[str] tag_key_scope: The rule monitors the tag key, only applies to rules created based on managed rules.
@@ -1240,7 +1240,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="scopeComplianceResourceTypes")
     def scope_compliance_resource_types(self) -> pulumi.Output[str]:
         """
-        Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
+        (Deprecated) Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.
         """
         warnings.warn("""Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""", DeprecationWarning)
         pulumi.log.warn("""scope_compliance_resource_types is deprecated: Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead.""")
@@ -1251,7 +1251,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="sourceDetailMessageType")
     def source_detail_message_type(self) -> pulumi.Output[str]:
         """
-        Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
+        (Deprecated) Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.
         """
         warnings.warn("""Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""", DeprecationWarning)
         pulumi.log.warn("""source_detail_message_type is deprecated: Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead.""")
@@ -1270,7 +1270,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="sourceMaximumExecutionFrequency")
     def source_maximum_execution_frequency(self) -> pulumi.Output[str]:
         """
-        Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
+        (Deprecated) Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.
         """
         warnings.warn("""Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""", DeprecationWarning)
         pulumi.log.warn("""source_maximum_execution_frequency is deprecated: Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead.""")

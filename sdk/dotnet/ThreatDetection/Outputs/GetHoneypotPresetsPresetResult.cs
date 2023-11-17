@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
     public sealed class GetHoneypotPresetsPresetResult
     {
         /// <summary>
-        /// Honeypot mirror name
+        /// (ForceNew,Optional) Honeypot mirror name
         /// </summary>
         public readonly string HoneypotImageName;
         /// <summary>
@@ -30,11 +30,11 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetHoneypotPresetsPresetMetaResult> Metas;
         /// <summary>
-        /// Unique id of management node
+        /// (ForceNew,Optional) Unique id of management node
         /// </summary>
         public readonly string NodeId;
         /// <summary>
-        /// Honeypot template custom name
+        /// (ForceNew,Optional) Honeypot template custom name
         /// </summary>
         public readonly string PresetName;
 

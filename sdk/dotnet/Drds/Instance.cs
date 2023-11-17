@@ -74,9 +74,6 @@ namespace Pulumi.AliCloud.Drds
 
         /// <summary>
         /// The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-        /// - `drds.sn2.4c16g` Starter Edition.
-        /// - `drds.sn2.8c32g` Standard Edition.
-        /// - `drds.sn2.16c64g` Enterprise Edition.
         /// </summary>
         [Output("instanceSeries")]
         public Output<string> InstanceSeries { get; private set; } = null!;
@@ -95,14 +92,6 @@ namespace Pulumi.AliCloud.Drds
 
         /// <summary>
         /// User-defined DRDS instance specification. Value range:
-        /// - `drds.sn1.4c8g` for DRDS instance Starter version;
-        /// - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-        /// - `drds.sn1.8c16g` for DRDS instance Standard edition;
-        /// - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-        /// - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-        /// - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-        /// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-        /// - value range : `drds.sn1.32c64g.128c256g`
         /// </summary>
         [Output("specification")]
         public Output<string> Specification { get; private set; } = null!;
@@ -185,9 +174,6 @@ namespace Pulumi.AliCloud.Drds
 
         /// <summary>
         /// The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-        /// - `drds.sn2.4c16g` Starter Edition.
-        /// - `drds.sn2.8c32g` Standard Edition.
-        /// - `drds.sn2.16c64g` Enterprise Edition.
         /// </summary>
         [Input("instanceSeries", required: true)]
         public Input<string> InstanceSeries { get; set; } = null!;
@@ -200,14 +186,6 @@ namespace Pulumi.AliCloud.Drds
 
         /// <summary>
         /// User-defined DRDS instance specification. Value range:
-        /// - `drds.sn1.4c8g` for DRDS instance Starter version;
-        /// - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-        /// - `drds.sn1.8c16g` for DRDS instance Standard edition;
-        /// - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-        /// - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-        /// - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-        /// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-        /// - value range : `drds.sn1.32c64g.128c256g`
         /// </summary>
         [Input("specification", required: true)]
         public Input<string> Specification { get; set; } = null!;
@@ -258,9 +236,6 @@ namespace Pulumi.AliCloud.Drds
 
         /// <summary>
         /// The parameter of the instance series. **NOTE:**  `drds.sn1.4c8g`,`drds.sn1.8c16g`,`drds.sn1.16c32g`,`drds.sn1.32c64g` are no longer supported. Valid values:
-        /// - `drds.sn2.4c16g` Starter Edition.
-        /// - `drds.sn2.8c32g` Standard Edition.
-        /// - `drds.sn2.16c64g` Enterprise Edition.
         /// </summary>
         [Input("instanceSeries")]
         public Input<string>? InstanceSeries { get; set; }
@@ -279,14 +254,6 @@ namespace Pulumi.AliCloud.Drds
 
         /// <summary>
         /// User-defined DRDS instance specification. Value range:
-        /// - `drds.sn1.4c8g` for DRDS instance Starter version;
-        /// - value range : `drds.sn1.4c8g.8c16g`, `drds.sn1.4c8g.16c32g`, `drds.sn1.4c8g.32c64g`, `drds.sn1.4c8g.64c128g`
-        /// - `drds.sn1.8c16g` for DRDS instance Standard edition;
-        /// - value range : `drds.sn1.8c16g.16c32g`, `drds.sn1.8c16g.32c64g`, `drds.sn1.8c16g.64c128g`
-        /// - `drds.sn1.16c32g` for DRDS instance Enterprise Edition;
-        /// - value range : `drds.sn1.16c32g.32c64g`, `drds.sn1.16c32g.64c128g`
-        /// - `drds.sn1.32c64g` for DRDS instance Extreme Edition;
-        /// - value range : `drds.sn1.32c64g.128c256g`
         /// </summary>
         [Input("specification")]
         public Input<string>? Specification { get; set; }

@@ -56,7 +56,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly autoUseCoupon!: pulumi.Output<boolean | undefined>;
     /**
-     * It has been deprecated from provider version 1.101.0 and `zoneId` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.
      */
@@ -94,7 +94,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionDomain!: pulumi.Output<string>;
     /**
-     * Indicates whether the address is a private endpoint.
+     * (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
      *
      * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      *
@@ -108,7 +108,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly connectionString!: pulumi.Output<string>;
     /**
-     * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      *
      * @deprecated Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
@@ -139,7 +139,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly enableBackupLog!: pulumi.Output<number | undefined>;
     /**
-     * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      *
      * @deprecated Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
@@ -174,7 +174,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly globalInstanceId!: pulumi.Output<string | undefined>;
     /**
-     * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
      */
@@ -185,7 +185,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly instanceClass!: pulumi.Output<string | undefined>;
     /**
-     * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      *
      * @deprecated Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
      */
@@ -219,7 +219,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly modifyMode!: pulumi.Output<number | undefined>;
     /**
-     * "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+     * (Deprecated since v1.120.1) "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
      *
      * @deprecated Field 'node_type' has been deprecated from version 1.120.1
      */
@@ -229,7 +229,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly orderType!: pulumi.Output<string | undefined>;
     /**
-     * It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
      *
      * @deprecated Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
      */
@@ -322,7 +322,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
      * Specifies whether to enable TDE. Valid values: `Enabled`.
-     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects 
      * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      */
     public readonly tdeStatus!: pulumi.Output<string>;
@@ -511,7 +511,7 @@ export interface InstanceState {
      */
     autoUseCoupon?: pulumi.Input<boolean>;
     /**
-     * It has been deprecated from provider version 1.101.0 and `zoneId` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.
      */
@@ -549,7 +549,7 @@ export interface InstanceState {
      */
     connectionDomain?: pulumi.Input<string>;
     /**
-     * Indicates whether the address is a private endpoint.
+     * (Deprecated since v1.101.0) Indicates whether the address is a private endpoint.
      *
      * > **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      *
@@ -563,7 +563,7 @@ export interface InstanceState {
      */
     connectionString?: pulumi.Input<string>;
     /**
-     * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      *
      * @deprecated Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
@@ -594,7 +594,7 @@ export interface InstanceState {
      */
     enableBackupLog?: pulumi.Input<number>;
     /**
-     * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      *
      * @deprecated Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
@@ -629,7 +629,7 @@ export interface InstanceState {
      */
     globalInstanceId?: pulumi.Input<string>;
     /**
-     * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
      */
@@ -640,7 +640,7 @@ export interface InstanceState {
      */
     instanceClass?: pulumi.Input<string>;
     /**
-     * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      *
      * @deprecated Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
      */
@@ -674,7 +674,7 @@ export interface InstanceState {
      */
     modifyMode?: pulumi.Input<number>;
     /**
-     * "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+     * (Deprecated since v1.120.1) "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
      *
      * @deprecated Field 'node_type' has been deprecated from version 1.120.1
      */
@@ -684,7 +684,7 @@ export interface InstanceState {
      */
     orderType?: pulumi.Input<string>;
     /**
-     * It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
      *
      * @deprecated Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
      */
@@ -777,7 +777,7 @@ export interface InstanceState {
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Specifies whether to enable TDE. Valid values: `Enabled`.
-     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects 
      * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      */
     tdeStatus?: pulumi.Input<string>;
@@ -812,7 +812,7 @@ export interface InstanceArgs {
      */
     autoUseCoupon?: pulumi.Input<boolean>;
     /**
-     * It has been deprecated from provider version 1.101.0 and `zoneId` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead.
      */
@@ -842,7 +842,7 @@ export interface InstanceArgs {
      */
     config?: pulumi.Input<{[key: string]: any}>;
     /**
-     * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      *
      * @deprecated Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
@@ -873,7 +873,7 @@ export interface InstanceArgs {
      */
     enableBackupLog?: pulumi.Input<number>;
     /**
-     * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      *
      * @deprecated Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead.
      */
@@ -904,7 +904,7 @@ export interface InstanceArgs {
      */
     globalInstanceId?: pulumi.Input<string>;
     /**
-     * It has been deprecated from provider version 1.101.0 and `paymentType` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `paymentType` instead.
      *
      * @deprecated Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead.
      */
@@ -915,7 +915,7 @@ export interface InstanceArgs {
      */
     instanceClass?: pulumi.Input<string>;
     /**
-     * It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `dbInstanceName` instead.
      *
      * @deprecated Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead.
      */
@@ -949,7 +949,7 @@ export interface InstanceArgs {
      */
     modifyMode?: pulumi.Input<number>;
     /**
-     * "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
+     * (Deprecated since v1.120.1) "Field `nodeType` has been deprecated from version 1.120.1". This parameter is determined by the `instanceClass`.
      *
      * @deprecated Field 'node_type' has been deprecated from version 1.120.1
      */
@@ -959,7 +959,7 @@ export interface InstanceArgs {
      */
     orderType?: pulumi.Input<string>;
     /**
-     * It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
+     * (Deprecated since v1.101.0) It has been deprecated from provider version 1.101.0 and `config` instead. See `parameters` below.
      *
      * @deprecated Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead.
      */
@@ -1044,7 +1044,7 @@ export interface InstanceArgs {
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * Specifies whether to enable TDE. Valid values: `Enabled`.
-     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects
+     * **NOTE:**: TDE cannot be disabled after it is enabled. Before you enable it, evaluate whether this feature affects 
      * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      */
     tdeStatus?: pulumi.Input<string>;

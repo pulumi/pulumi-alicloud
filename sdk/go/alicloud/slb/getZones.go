@@ -60,7 +60,7 @@ type GetZonesArgs struct {
 	// * classic_internet: a public-facing SLB instance.
 	// * classic_intranet: an internal SLB instance that is deployed in a classic network.
 	AvailableSlbAddressType *string `pulumi:"availableSlbAddressType"`
-	// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+	// (Deprecated from v1.154.0+) Default to false and only output `id` in the `zones` block. Set it to true can output more details.
 	//
 	// Deprecated: The parameter enable_details has been deprecated from version v1.154.0+
 	EnableDetails *bool `pulumi:"enableDetails"`
@@ -113,7 +113,7 @@ type GetZonesOutputArgs struct {
 	// * classic_internet: a public-facing SLB instance.
 	// * classic_intranet: an internal SLB instance that is deployed in a classic network.
 	AvailableSlbAddressType pulumi.StringPtrInput `pulumi:"availableSlbAddressType"`
-	// Default to false and only output `id` in the `zones` block. Set it to true can output more details.
+	// (Deprecated from v1.154.0+) Default to false and only output `id` in the `zones` block. Set it to true can output more details.
 	//
 	// Deprecated: The parameter enable_details has been deprecated from version v1.154.0+
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`

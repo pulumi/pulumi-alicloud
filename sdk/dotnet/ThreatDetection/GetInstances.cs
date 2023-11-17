@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// The first ID of the resource
+        /// (ForceNew,Optional) The first ID of the resource
         /// </summary>
         [Input("instanceId")]
         public string? InstanceId { get; set; }
@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         }
 
         /// <summary>
-        /// The first ID of the resource
+        /// (ForceNew,Optional) The first ID of the resource
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }

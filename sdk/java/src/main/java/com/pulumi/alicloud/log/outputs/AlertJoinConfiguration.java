@@ -15,7 +15,7 @@ public final class AlertJoinConfiguration {
      */
     private String condition;
     /**
-     * @return including FixedRate,Hourly,Daily,Weekly,Cron.
+     * @return Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
      * 
      */
     private String type;
@@ -29,7 +29,7 @@ public final class AlertJoinConfiguration {
         return this.condition;
     }
     /**
-     * @return including FixedRate,Hourly,Daily,Weekly,Cron.
+     * @return Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
      * 
      */
     public String type() {

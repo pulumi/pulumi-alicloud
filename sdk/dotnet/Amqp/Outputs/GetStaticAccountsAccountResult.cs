@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.Amqp.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// InstanceId
+        /// (ForceNew, Optional) InstanceId
         /// </summary>
         public readonly string InstanceId;
         /// <summary>

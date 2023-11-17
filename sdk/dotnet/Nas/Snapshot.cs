@@ -83,7 +83,6 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The retention period of the snapshot. Unit: days. Valid values:
-        /// * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         /// </summary>
         [Output("retentionDays")]
         public Output<int?> RetentionDays { get; private set; } = null!;
@@ -160,7 +159,6 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The retention period of the snapshot. Unit: days. Valid values:
-        /// * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         /// </summary>
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }
@@ -193,7 +191,6 @@ namespace Pulumi.AliCloud.Nas
 
         /// <summary>
         /// The retention period of the snapshot. Unit: days. Valid values:
-        /// * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         /// </summary>
         [Input("retentionDays")]
         public Input<int>? RetentionDays { get; set; }

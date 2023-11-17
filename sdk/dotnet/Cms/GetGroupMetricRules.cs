@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.Cms
         public string? Dimensions { get; set; }
 
         /// <summary>
-        /// Indicates whether the alert rule is enabled.
+        /// EnableState.
         /// </summary>
         [Input("enableState")]
         public bool? EnableState { get; set; }
@@ -176,7 +176,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Dimensions { get; set; }
 
         /// <summary>
-        /// Indicates whether the alert rule is enabled.
+        /// EnableState.
         /// </summary>
         [Input("enableState")]
         public Input<bool>? EnableState { get; set; }

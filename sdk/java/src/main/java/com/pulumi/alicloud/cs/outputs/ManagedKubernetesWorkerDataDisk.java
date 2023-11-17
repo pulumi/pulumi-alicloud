@@ -12,12 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ManagedKubernetesWorkerDataDisk {
     /**
-     * @return (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+     * @return (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
      * 
      */
     private @Nullable String autoSnapshotPolicyId;
     /**
-     * @return (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+     * @return (Deprecated from version 1.177.0)(Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
      * 
      */
     private @Nullable String category;
@@ -27,7 +27,7 @@ public final class ManagedKubernetesWorkerDataDisk {
      */
     private @Nullable String device;
     /**
-     * @return (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+     * @return (Deprecated from version 1.177.0)(Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
      * 
      */
     private @Nullable String encrypted;
@@ -42,12 +42,12 @@ public final class ManagedKubernetesWorkerDataDisk {
      */
     private @Nullable String name;
     /**
-     * @return (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * @return (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     private @Nullable String performanceLevel;
     /**
-     * @return (Optional)The size of a data disk, at least 40. Unit: GiB.
+     * @return (Deprecated from version 1.177.0)(Optional)The size of a data disk, at least 40. Unit: GiB.
      * 
      */
     private @Nullable String size;
@@ -59,14 +59,14 @@ public final class ManagedKubernetesWorkerDataDisk {
 
     private ManagedKubernetesWorkerDataDisk() {}
     /**
-     * @return (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
+     * @return (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
      * 
      */
     public Optional<String> autoSnapshotPolicyId() {
         return Optional.ofNullable(this.autoSnapshotPolicyId);
     }
     /**
-     * @return (Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
+     * @return (Deprecated from version 1.177.0)(Optional)The type of the data disks. Valid values: `cloud`, `cloud_efficiency`, `cloud_ssd` and `cloud_essd`. Default to `cloud_efficiency`.
      * 
      */
     public Optional<String> category() {
@@ -80,7 +80,7 @@ public final class ManagedKubernetesWorkerDataDisk {
         return Optional.ofNullable(this.device);
     }
     /**
-     * @return (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
+     * @return (Deprecated from version 1.177.0)(Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
      * 
      */
     public Optional<String> encrypted() {
@@ -101,14 +101,14 @@ public final class ManagedKubernetesWorkerDataDisk {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
+     * @return (Deprecated from version 1.177.0)(Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
     public Optional<String> performanceLevel() {
         return Optional.ofNullable(this.performanceLevel);
     }
     /**
-     * @return (Optional)The size of a data disk, at least 40. Unit: GiB.
+     * @return (Deprecated from version 1.177.0)(Optional)The size of a data disk, at least 40. Unit: GiB.
      * 
      */
     public Optional<String> size() {

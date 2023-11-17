@@ -107,8 +107,6 @@ namespace Pulumi.AliCloud.AliKafka
 
         /// <summary>
         /// The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-        /// - `9092/9092`: port range for a VPC whitelist.
-        /// - `9093/9093`: port range for an Internet whitelist.
         /// </summary>
         [Output("portRange")]
         public Output<string> PortRange { get; private set; } = null!;
@@ -179,8 +177,6 @@ namespace Pulumi.AliCloud.AliKafka
 
         /// <summary>
         /// The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-        /// - `9092/9092`: port range for a VPC whitelist.
-        /// - `9093/9093`: port range for an Internet whitelist.
         /// </summary>
         [Input("portRange", required: true)]
         public Input<string> PortRange { get; set; } = null!;
@@ -213,8 +209,6 @@ namespace Pulumi.AliCloud.AliKafka
 
         /// <summary>
         /// The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `port_range` can be set to `9093/9093`.
-        /// - `9092/9092`: port range for a VPC whitelist.
-        /// - `9093/9093`: port range for an Internet whitelist.
         /// </summary>
         [Input("portRange")]
         public Input<string>? PortRange { get; set; }

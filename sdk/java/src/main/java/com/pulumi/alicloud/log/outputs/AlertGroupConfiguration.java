@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class AlertGroupConfiguration {
     private @Nullable List<String> fields;
     /**
-     * @return including FixedRate,Hourly,Daily,Weekly,Cron.
+     * @return Group configuration type, including no_group, labels_auto, custom.
      * 
      */
     private String type;
@@ -23,7 +23,7 @@ public final class AlertGroupConfiguration {
         return this.fields == null ? List.of() : this.fields;
     }
     /**
-     * @return including FixedRate,Hourly,Daily,Weekly,Cron.
+     * @return Group configuration type, including no_group, labels_auto, custom.
      * 
      */
     public String type() {

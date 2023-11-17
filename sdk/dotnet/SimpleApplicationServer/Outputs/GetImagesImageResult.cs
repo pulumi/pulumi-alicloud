@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer.Outputs
         /// </summary>
         public readonly string ImageType;
         /// <summary>
-        /// The platform of Plan supported.
+        /// (Available in v1.161.0) The platform of Plan supported.
         /// </summary>
         public readonly string Platform;
 

@@ -71,7 +71,7 @@ type GetHanaBackupPlansArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// The ID of the backup vault.
+	// The id of the vault.
 	VaultId *string `pulumi:"vaultId"`
 }
 
@@ -118,7 +118,7 @@ type GetHanaBackupPlansOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// The ID of the backup vault.
+	// The id of the vault.
 	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
 }
 

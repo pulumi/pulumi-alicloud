@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.Vpc
     public partial class Switch : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+        /// (Deprecated from v1.119.0+) Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
         /// </summary>
         [Output("availabilityZone")]
         public Output<string> AvailabilityZone { get; private set; } = null!;
@@ -188,7 +188,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<int> Ipv6CidrBlockMask { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+        /// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -272,7 +272,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class SwitchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+        /// (Deprecated from v1.119.0+) Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
@@ -304,7 +304,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<int>? Ipv6CidrBlockMask { get; set; }
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+        /// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -350,7 +350,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class SwitchState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
+        /// (Deprecated from v1.119.0+) Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
@@ -394,7 +394,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<int>? Ipv6CidrBlockMask { get; set; }
 
         /// <summary>
-        /// Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
+        /// (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

@@ -23,7 +23,7 @@ public final class GetHoneypotProbesProbe {
      */
     private String controlNodeId;
     /**
-     * @return Probe name
+     * @return (ForceNew, Optional) Probe name
      * 
      */
     private String displayName;
@@ -44,7 +44,7 @@ public final class GetHoneypotProbesProbe {
      */
     private Boolean ping;
     /**
-     * @return Probe type
+     * @return (ForceNew, Optional) Probe type
      * 
      */
     private String probeType;
@@ -85,7 +85,7 @@ public final class GetHoneypotProbesProbe {
         return this.controlNodeId;
     }
     /**
-     * @return Probe name
+     * @return (ForceNew, Optional) Probe name
      * 
      */
     public String displayName() {
@@ -116,7 +116,7 @@ public final class GetHoneypotProbesProbe {
         return this.ping;
     }
     /**
-     * @return Probe type
+     * @return (ForceNew, Optional) Probe type
      * 
      */
     public String probeType() {

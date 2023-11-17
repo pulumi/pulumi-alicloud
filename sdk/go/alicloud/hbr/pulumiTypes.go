@@ -111,11 +111,11 @@ func (o OtsBackupPlanOtsDetailArrayOutput) Index(i pulumi.IntInput) OtsBackupPla
 }
 
 type OtsBackupPlanRule struct {
-	// Backup type. Valid values: `COMPLETE`.
+	// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	BackupType *string `pulumi:"backupType"`
-	// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+	// Whether to disable the backup task. Valid values: true, false.
 	Disabled *bool `pulumi:"disabled"`
-	// Backup retention days, the minimum is 1.
+	// Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Retention *string `pulumi:"retention"`
 	// The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
 	RuleName *string `pulumi:"ruleName"`
@@ -135,11 +135,11 @@ type OtsBackupPlanRuleInput interface {
 }
 
 type OtsBackupPlanRuleArgs struct {
-	// Backup type. Valid values: `COMPLETE`.
+	// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
 	BackupType pulumi.StringPtrInput `pulumi:"backupType"`
-	// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+	// Whether to disable the backup task. Valid values: true, false.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// Backup retention days, the minimum is 1.
+	// Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
 	Retention pulumi.StringPtrInput `pulumi:"retention"`
 	// The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
 	RuleName pulumi.StringPtrInput `pulumi:"ruleName"`
@@ -198,17 +198,17 @@ func (o OtsBackupPlanRuleOutput) ToOtsBackupPlanRuleOutputWithContext(ctx contex
 	return o
 }
 
-// Backup type. Valid values: `COMPLETE`.
+// The name of the tableStore instance. Valid values: `COMPLETE`, `INCREMENTAL`. **Note:** Required while sourceType equals `OTS_TABLE`.
 func (o OtsBackupPlanRuleOutput) BackupType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OtsBackupPlanRule) *string { return v.BackupType }).(pulumi.StringPtrOutput)
 }
 
-// Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
+// Whether to disable the backup task. Valid values: true, false.
 func (o OtsBackupPlanRuleOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v OtsBackupPlanRule) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// Backup retention days, the minimum is 1.
+// Backup retention days, the minimum is 1. **Note:** Required while sourceType equals `OTS_TABLE`.
 func (o OtsBackupPlanRuleOutput) Retention() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OtsBackupPlanRule) *string { return v.Retention }).(pulumi.StringPtrOutput)
 }
@@ -700,11 +700,11 @@ type GetBackupJobsJob struct {
 	CompleteTime string `pulumi:"completeTime"`
 	// The creation time of backup job. UNIX time seconds.
 	CreateTime string `pulumi:"createTime"`
-	// The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+	// (Available in v1.190.0+) The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
 	CrossAccountRoleName string `pulumi:"crossAccountRoleName"`
-	// The type of the cross account backup. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+	// (Available in v1.190.0+) The type of the cross account backup. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
 	CrossAccountType string `pulumi:"crossAccountType"`
-	// The original account ID of the cross account backup managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+	// (Available in v1.190.0+) The original account ID of the cross account backup managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
 	CrossAccountUserId int `pulumi:"crossAccountUserId"`
 	// Error message.
 	ErrorMessage string `pulumi:"errorMessage"`
@@ -777,11 +777,11 @@ type GetBackupJobsJobArgs struct {
 	CompleteTime pulumi.StringInput `pulumi:"completeTime"`
 	// The creation time of backup job. UNIX time seconds.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+	// (Available in v1.190.0+) The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
 	CrossAccountRoleName pulumi.StringInput `pulumi:"crossAccountRoleName"`
-	// The type of the cross account backup. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+	// (Available in v1.190.0+) The type of the cross account backup. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
 	CrossAccountType pulumi.StringInput `pulumi:"crossAccountType"`
-	// The original account ID of the cross account backup managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+	// (Available in v1.190.0+) The original account ID of the cross account backup managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
 	CrossAccountUserId pulumi.IntInput `pulumi:"crossAccountUserId"`
 	// Error message.
 	ErrorMessage pulumi.StringInput `pulumi:"errorMessage"`
@@ -923,17 +923,17 @@ func (o GetBackupJobsJobOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupJobsJob) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+// (Available in v1.190.0+) The role name created in the original account RAM backup by the cross account managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
 func (o GetBackupJobsJobOutput) CrossAccountRoleName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupJobsJob) string { return v.CrossAccountRoleName }).(pulumi.StringOutput)
 }
 
-// The type of the cross account backup. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+// (Available in v1.190.0+) The type of the cross account backup. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
 func (o GetBackupJobsJobOutput) CrossAccountType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupJobsJob) string { return v.CrossAccountType }).(pulumi.StringOutput)
 }
 
-// The original account ID of the cross account backup managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
+// (Available in v1.190.0+) The original account ID of the cross account backup managed by the current account. It is valid only when `sourceType` is `ECS_FILE`, `NAS`, `OSS` or `OTS`.
 func (o GetBackupJobsJobOutput) CrossAccountUserId() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBackupJobsJob) int { return v.CrossAccountUserId }).(pulumi.IntOutput)
 }
@@ -4231,26 +4231,26 @@ type GetSnapshotsSnapshot struct {
 	ActualItems string `pulumi:"actualItems"`
 	// Backup type. Possible values: `COMPLETE` (full backup).
 	BackupType string `pulumi:"backupType"`
-	// The name of OSS bucket.
+	// (OSS) The name of OSS bucket.
 	Bucket string `pulumi:"bucket"`
 	// The incremental amount of backup data. Unit byte.
 	BytesDone string `pulumi:"bytesDone"`
 	// The total amount of data sources. Unit byte.
 	BytesTotal string `pulumi:"bytesTotal"`
-	// The ID of ECS backup client.
+	// (ECS_FILE) The ID of ECS backup client.
 	ClientId string `pulumi:"clientId"`
 	// The time when the snapshot completed. UNIX time in seconds.
 	CompleteTime string `pulumi:"completeTime"`
-	// File System Creation Time of Nas. Unix Time Seconds.
+	// (NAS) File System Creation Time of Nas. Unix Time Seconds.
 	CreateTime string `pulumi:"createTime"`
 	// Snapshot creation time. UNIX time in seconds.
 	CreatedTime string `pulumi:"createdTime"`
 	ErrorFile   string `pulumi:"errorFile"`
-	// The ID of NAS File system.
+	// (NAS) The ID of NAS File system.
 	FileSystemId string `pulumi:"fileSystemId"`
 	// The ID of the Snapshot.
 	Id string `pulumi:"id"`
-	// The ID of ECS instance.
+	// (ECS_FILE) The ID of ECS instance.
 	InstanceId string `pulumi:"instanceId"`
 	// The number of backup items. (Currently only file backup is available).
 	ItemsDone string `pulumi:"itemsDone"`
@@ -4260,9 +4260,9 @@ type GetSnapshotsSnapshot struct {
 	JobId string `pulumi:"jobId"`
 	// The hashcode of parent backup snapshot.
 	ParentSnapshotHash string `pulumi:"parentSnapshotHash"`
-	// Backup Path.
+	// (ECS_FILE, NAS) Backup Path.
 	Path string `pulumi:"path"`
-	// Backup file prefix.
+	// (OSS) Backup file prefix.
 	Prefix string `pulumi:"prefix"`
 	// The number of days to keep.
 	Retention string `pulumi:"retention"`
@@ -4298,26 +4298,26 @@ type GetSnapshotsSnapshotArgs struct {
 	ActualItems pulumi.StringInput `pulumi:"actualItems"`
 	// Backup type. Possible values: `COMPLETE` (full backup).
 	BackupType pulumi.StringInput `pulumi:"backupType"`
-	// The name of OSS bucket.
+	// (OSS) The name of OSS bucket.
 	Bucket pulumi.StringInput `pulumi:"bucket"`
 	// The incremental amount of backup data. Unit byte.
 	BytesDone pulumi.StringInput `pulumi:"bytesDone"`
 	// The total amount of data sources. Unit byte.
 	BytesTotal pulumi.StringInput `pulumi:"bytesTotal"`
-	// The ID of ECS backup client.
+	// (ECS_FILE) The ID of ECS backup client.
 	ClientId pulumi.StringInput `pulumi:"clientId"`
 	// The time when the snapshot completed. UNIX time in seconds.
 	CompleteTime pulumi.StringInput `pulumi:"completeTime"`
-	// File System Creation Time of Nas. Unix Time Seconds.
+	// (NAS) File System Creation Time of Nas. Unix Time Seconds.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// Snapshot creation time. UNIX time in seconds.
 	CreatedTime pulumi.StringInput `pulumi:"createdTime"`
 	ErrorFile   pulumi.StringInput `pulumi:"errorFile"`
-	// The ID of NAS File system.
+	// (NAS) The ID of NAS File system.
 	FileSystemId pulumi.StringInput `pulumi:"fileSystemId"`
 	// The ID of the Snapshot.
 	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of ECS instance.
+	// (ECS_FILE) The ID of ECS instance.
 	InstanceId pulumi.StringInput `pulumi:"instanceId"`
 	// The number of backup items. (Currently only file backup is available).
 	ItemsDone pulumi.StringInput `pulumi:"itemsDone"`
@@ -4327,9 +4327,9 @@ type GetSnapshotsSnapshotArgs struct {
 	JobId pulumi.StringInput `pulumi:"jobId"`
 	// The hashcode of parent backup snapshot.
 	ParentSnapshotHash pulumi.StringInput `pulumi:"parentSnapshotHash"`
-	// Backup Path.
+	// (ECS_FILE, NAS) Backup Path.
 	Path pulumi.StringInput `pulumi:"path"`
-	// Backup file prefix.
+	// (OSS) Backup file prefix.
 	Prefix pulumi.StringInput `pulumi:"prefix"`
 	// The number of days to keep.
 	Retention pulumi.StringInput `pulumi:"retention"`
@@ -4413,7 +4413,7 @@ func (o GetSnapshotsSnapshotOutput) BackupType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.BackupType }).(pulumi.StringOutput)
 }
 
-// The name of OSS bucket.
+// (OSS) The name of OSS bucket.
 func (o GetSnapshotsSnapshotOutput) Bucket() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Bucket }).(pulumi.StringOutput)
 }
@@ -4428,7 +4428,7 @@ func (o GetSnapshotsSnapshotOutput) BytesTotal() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.BytesTotal }).(pulumi.StringOutput)
 }
 
-// The ID of ECS backup client.
+// (ECS_FILE) The ID of ECS backup client.
 func (o GetSnapshotsSnapshotOutput) ClientId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.ClientId }).(pulumi.StringOutput)
 }
@@ -4438,7 +4438,7 @@ func (o GetSnapshotsSnapshotOutput) CompleteTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.CompleteTime }).(pulumi.StringOutput)
 }
 
-// File System Creation Time of Nas. Unix Time Seconds.
+// (NAS) File System Creation Time of Nas. Unix Time Seconds.
 func (o GetSnapshotsSnapshotOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -4452,7 +4452,7 @@ func (o GetSnapshotsSnapshotOutput) ErrorFile() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.ErrorFile }).(pulumi.StringOutput)
 }
 
-// The ID of NAS File system.
+// (NAS) The ID of NAS File system.
 func (o GetSnapshotsSnapshotOutput) FileSystemId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.FileSystemId }).(pulumi.StringOutput)
 }
@@ -4462,7 +4462,7 @@ func (o GetSnapshotsSnapshotOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of ECS instance.
+// (ECS_FILE) The ID of ECS instance.
 func (o GetSnapshotsSnapshotOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.InstanceId }).(pulumi.StringOutput)
 }
@@ -4487,12 +4487,12 @@ func (o GetSnapshotsSnapshotOutput) ParentSnapshotHash() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.ParentSnapshotHash }).(pulumi.StringOutput)
 }
 
-// Backup Path.
+// (ECS_FILE, NAS) Backup Path.
 func (o GetSnapshotsSnapshotOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Path }).(pulumi.StringOutput)
 }
 
-// Backup file prefix.
+// (OSS) Backup file prefix.
 func (o GetSnapshotsSnapshotOutput) Prefix() pulumi.StringOutput {
 	return o.ApplyT(func(v GetSnapshotsSnapshot) string { return v.Prefix }).(pulumi.StringOutput)
 }
@@ -4559,17 +4559,17 @@ type GetVaultsVault struct {
 	BytesDone string `pulumi:"bytesDone"`
 	// The creation time of the Vault. UNIX time in seconds.
 	CreatedTime string `pulumi:"createdTime"`
-	// Whether to enable the deduplication function for the database backup Vault.
+	// (Internal use) Whether to enable the deduplication function for the database backup Vault.
 	Dedup bool `pulumi:"dedup"`
 	// The description of the vault.
 	Description string `pulumi:"description"`
 	// The ID of vault.
 	Id string `pulumi:"id"`
-	// Index available.
+	// (Not yet open) Index available.
 	IndexAvailable bool `pulumi:"indexAvailable"`
-	// Index level.
+	// (Not yet open) Index level.
 	IndexLevel string `pulumi:"indexLevel"`
-	// Index update time.
+	// (Not yet open) Index update time.
 	IndexUpdateTime string `pulumi:"indexUpdateTime"`
 	// The time of the last remote backup synchronization.
 	LatestReplicationTime string `pulumi:"latestReplicationTime"`
@@ -4581,9 +4581,9 @@ type GetVaultsVault struct {
 	ReplicationSourceRegionId string `pulumi:"replicationSourceRegionId"`
 	// The source vault ID of the remote backup Vault.
 	ReplicationSourceVaultId string `pulumi:"replicationSourceVaultId"`
-	// Warehouse-level data retention days, only valid for archive libraries.
+	// (Not yet open) Warehouse-level data retention days, only valid for archive libraries.
 	Retention string `pulumi:"retention"`
-	// Whether to enable the backup search function.
+	// (Not yet open) Whether to enable the backup search function.
 	SearchEnabled bool     `pulumi:"searchEnabled"`
 	SourceTypes   []string `pulumi:"sourceTypes"`
 	// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
@@ -4622,17 +4622,17 @@ type GetVaultsVaultArgs struct {
 	BytesDone pulumi.StringInput `pulumi:"bytesDone"`
 	// The creation time of the Vault. UNIX time in seconds.
 	CreatedTime pulumi.StringInput `pulumi:"createdTime"`
-	// Whether to enable the deduplication function for the database backup Vault.
+	// (Internal use) Whether to enable the deduplication function for the database backup Vault.
 	Dedup pulumi.BoolInput `pulumi:"dedup"`
 	// The description of the vault.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The ID of vault.
 	Id pulumi.StringInput `pulumi:"id"`
-	// Index available.
+	// (Not yet open) Index available.
 	IndexAvailable pulumi.BoolInput `pulumi:"indexAvailable"`
-	// Index level.
+	// (Not yet open) Index level.
 	IndexLevel pulumi.StringInput `pulumi:"indexLevel"`
-	// Index update time.
+	// (Not yet open) Index update time.
 	IndexUpdateTime pulumi.StringInput `pulumi:"indexUpdateTime"`
 	// The time of the last remote backup synchronization.
 	LatestReplicationTime pulumi.StringInput `pulumi:"latestReplicationTime"`
@@ -4644,9 +4644,9 @@ type GetVaultsVaultArgs struct {
 	ReplicationSourceRegionId pulumi.StringInput `pulumi:"replicationSourceRegionId"`
 	// The source vault ID of the remote backup Vault.
 	ReplicationSourceVaultId pulumi.StringInput `pulumi:"replicationSourceVaultId"`
-	// Warehouse-level data retention days, only valid for archive libraries.
+	// (Not yet open) Warehouse-level data retention days, only valid for archive libraries.
 	Retention pulumi.StringInput `pulumi:"retention"`
-	// Whether to enable the backup search function.
+	// (Not yet open) Whether to enable the backup search function.
 	SearchEnabled pulumi.BoolInput        `pulumi:"searchEnabled"`
 	SourceTypes   pulumi.StringArrayInput `pulumi:"sourceTypes"`
 	// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
@@ -4733,7 +4733,7 @@ func (o GetVaultsVaultOutput) CreatedTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.CreatedTime }).(pulumi.StringOutput)
 }
 
-// Whether to enable the deduplication function for the database backup Vault.
+// (Internal use) Whether to enable the deduplication function for the database backup Vault.
 func (o GetVaultsVaultOutput) Dedup() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVaultsVault) bool { return v.Dedup }).(pulumi.BoolOutput)
 }
@@ -4748,17 +4748,17 @@ func (o GetVaultsVaultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// Index available.
+// (Not yet open) Index available.
 func (o GetVaultsVaultOutput) IndexAvailable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVaultsVault) bool { return v.IndexAvailable }).(pulumi.BoolOutput)
 }
 
-// Index level.
+// (Not yet open) Index level.
 func (o GetVaultsVaultOutput) IndexLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.IndexLevel }).(pulumi.StringOutput)
 }
 
-// Index update time.
+// (Not yet open) Index update time.
 func (o GetVaultsVaultOutput) IndexUpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.IndexUpdateTime }).(pulumi.StringOutput)
 }
@@ -4788,12 +4788,12 @@ func (o GetVaultsVaultOutput) ReplicationSourceVaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.ReplicationSourceVaultId }).(pulumi.StringOutput)
 }
 
-// Warehouse-level data retention days, only valid for archive libraries.
+// (Not yet open) Warehouse-level data retention days, only valid for archive libraries.
 func (o GetVaultsVaultOutput) Retention() pulumi.StringOutput {
 	return o.ApplyT(func(v GetVaultsVault) string { return v.Retention }).(pulumi.StringOutput)
 }
 
-// Whether to enable the backup search function.
+// (Not yet open) Whether to enable the backup search function.
 func (o GetVaultsVaultOutput) SearchEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetVaultsVault) bool { return v.SearchEnabled }).(pulumi.BoolOutput)
 }

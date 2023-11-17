@@ -103,7 +103,7 @@ export class HAVipAttachment extends pulumi.CustomResource {
      * Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
      * - **True**: Force unbinding.
      * - **False** (default): unbinding is not forced.
-     * > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+     *   > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
      */
     public readonly force!: pulumi.Output<boolean | undefined>;
     /**
@@ -111,7 +111,7 @@ export class HAVipAttachment extends pulumi.CustomResource {
      */
     public readonly haVipId!: pulumi.Output<string>;
     /**
-     * . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+     * (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
      *
      * @deprecated Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
      */
@@ -175,7 +175,7 @@ export interface HAVipAttachmentState {
      * Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
      * - **True**: Force unbinding.
      * - **False** (default): unbinding is not forced.
-     * > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+     *   > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
      */
     force?: pulumi.Input<boolean>;
     /**
@@ -183,7 +183,7 @@ export interface HAVipAttachmentState {
      */
     haVipId?: pulumi.Input<string>;
     /**
-     * . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+     * (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
      *
      * @deprecated Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
      */
@@ -212,7 +212,7 @@ export interface HAVipAttachmentArgs {
      * Whether to force the ECS instance or Eni instance bound to AVIP to be unbound. The value is:
      * - **True**: Force unbinding.
      * - **False** (default): unbinding is not forced.
-     * > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
+     *   > **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
      */
     force?: pulumi.Input<boolean>;
     /**
@@ -220,7 +220,7 @@ export interface HAVipAttachmentArgs {
      */
     haVipId?: pulumi.Input<string>;
     /**
-     * . Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
+     * (Deprecated since v1.211.0). Field 'havip_id' has been deprecated from provider version 1.211.0. New field 'ha_vip_id' instead.
      *
      * @deprecated Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead.
      */

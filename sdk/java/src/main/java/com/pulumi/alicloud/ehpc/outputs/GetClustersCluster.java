@@ -16,14 +16,11 @@ import java.util.Objects;
 public final class GetClustersCluster {
     /**
      * @return The server type of the account.
+     * * `client_version` - The version number of the client used by the cluster.
      * 
      */
     private String accountType;
     private List<GetClustersClusterApplication> applications;
-    /**
-     * @return The version number of the client used by the cluster.
-     * 
-     */
     private String clientVersion;
     /**
      * @return The id of E-HPC Cluster.
@@ -167,6 +164,7 @@ public final class GetClustersCluster {
     private GetClustersCluster() {}
     /**
      * @return The server type of the account.
+     * * `client_version` - The version number of the client used by the cluster.
      * 
      */
     public String accountType() {
@@ -175,10 +173,6 @@ public final class GetClustersCluster {
     public List<GetClustersClusterApplication> applications() {
         return this.applications;
     }
-    /**
-     * @return The version number of the client used by the cluster.
-     * 
-     */
     public String clientVersion() {
         return this.clientVersion;
     }

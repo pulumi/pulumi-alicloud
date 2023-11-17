@@ -739,7 +739,7 @@ class _EdgeKubernetesState:
         Input properties used for looking up and filtering EdgeKubernetes resources.
         :param pulumi.Input[Sequence[pulumi.Input['EdgeKubernetesAddonArgs']]] addons: The addon you want to install in cluster. See `addons` below.
         :param pulumi.Input[str] availability_zone: The ID of availability zone.
-        :param pulumi.Input['EdgeKubernetesCertificateAuthorityArgs'] certificate_authority: Nested attribute containing certificate authority data for your cluster.
+        :param pulumi.Input['EdgeKubernetesCertificateAuthorityArgs'] certificate_authority: (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
@@ -748,7 +748,7 @@ class _EdgeKubernetesState:
         :param pulumi.Input[str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
                * ack.standard : Standard edge clusters.
                * ack.pro.small : Professional edge clusters.
-        :param pulumi.Input['EdgeKubernetesConnectionsArgs'] connections: Map of kubernetes cluster connection information.
+        :param pulumi.Input['EdgeKubernetesConnectionsArgs'] connections: (Map) Map of kubernetes cluster connection information.
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: `true`.
@@ -926,7 +926,7 @@ class _EdgeKubernetesState:
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> Optional[pulumi.Input['EdgeKubernetesCertificateAuthorityArgs']]:
         """
-        Nested attribute containing certificate authority data for your cluster.
+        (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -990,7 +990,7 @@ class _EdgeKubernetesState:
     @pulumi.getter
     def connections(self) -> Optional[pulumi.Input['EdgeKubernetesConnectionsArgs']]:
         """
-        Map of kubernetes cluster connection information.
+        (Map) Map of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 
@@ -2033,7 +2033,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EdgeKubernetesAddonArgs']]]] addons: The addon you want to install in cluster. See `addons` below.
         :param pulumi.Input[str] availability_zone: The ID of availability zone.
-        :param pulumi.Input[pulumi.InputType['EdgeKubernetesCertificateAuthorityArgs']] certificate_authority: Nested attribute containing certificate authority data for your cluster.
+        :param pulumi.Input[pulumi.InputType['EdgeKubernetesCertificateAuthorityArgs']] certificate_authority: (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
         :param pulumi.Input[str] client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
         :param pulumi.Input[str] client_key: The path of client key, like `~/.kube/client-key.pem`.
         :param pulumi.Input[str] cluster_ca_cert: The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
@@ -2042,7 +2042,7 @@ class EdgeKubernetes(pulumi.CustomResource):
         :param pulumi.Input[str] cluster_spec: The cluster specifications of kubernetes cluster,which can be empty. Valid values:
                * ack.standard : Standard edge clusters.
                * ack.pro.small : Professional edge clusters.
-        :param pulumi.Input[pulumi.InputType['EdgeKubernetesConnectionsArgs']] connections: Map of kubernetes cluster connection information.
+        :param pulumi.Input[pulumi.InputType['EdgeKubernetesConnectionsArgs']] connections: (Map) Map of kubernetes cluster connection information.
         :param pulumi.Input[bool] deletion_protection: Whether to enable cluster deletion protection.
         :param pulumi.Input[bool] force_update: Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
         :param pulumi.Input[bool] install_cloud_monitor: Install cloud monitor agent on ECS. default: `true`.
@@ -2163,7 +2163,7 @@ class EdgeKubernetes(pulumi.CustomResource):
     @pulumi.getter(name="certificateAuthority")
     def certificate_authority(self) -> pulumi.Output['outputs.EdgeKubernetesCertificateAuthority']:
         """
-        Nested attribute containing certificate authority data for your cluster.
+        (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
         """
         return pulumi.get(self, "certificate_authority")
 
@@ -2207,7 +2207,7 @@ class EdgeKubernetes(pulumi.CustomResource):
     @pulumi.getter
     def connections(self) -> pulumi.Output['outputs.EdgeKubernetesConnections']:
         """
-        Map of kubernetes cluster connection information.
+        (Map) Map of kubernetes cluster connection information.
         """
         return pulumi.get(self, "connections")
 

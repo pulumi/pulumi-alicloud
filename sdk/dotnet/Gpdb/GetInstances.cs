@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// The vswitch id.
+        /// Used to retrieve instances belong to specified `vswitch` resources.
         /// </summary>
         [Input("vswitchId")]
         public string? VswitchId { get; set; }
@@ -264,7 +264,7 @@ namespace Pulumi.AliCloud.Gpdb
         }
 
         /// <summary>
-        /// The vswitch id.
+        /// Used to retrieve instances belong to specified `vswitch` resources.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

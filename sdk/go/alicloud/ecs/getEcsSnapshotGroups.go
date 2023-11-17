@@ -88,9 +88,9 @@ type GetEcsSnapshotGroupsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The name of the snapshot-consistent group.
 	SnapshotGroupName *string `pulumi:"snapshotGroupName"`
-	// The status of the resource.
+	// The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
 	Status *string `pulumi:"status"`
-	// List of label key-value pairs.
+	// A mapping of tags to assign to the snapshot group.
 	Tags map[string]interface{} `pulumi:"tags"`
 }
 
@@ -134,9 +134,9 @@ type GetEcsSnapshotGroupsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The name of the snapshot-consistent group.
 	SnapshotGroupName pulumi.StringPtrInput `pulumi:"snapshotGroupName"`
-	// The status of the resource.
+	// The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// List of label key-value pairs.
+	// A mapping of tags to assign to the snapshot group.
 	Tags pulumi.MapInput `pulumi:"tags"`
 }
 

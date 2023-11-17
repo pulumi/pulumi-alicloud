@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Dts.Outputs
         /// </summary>
         public readonly string PaymentType;
         /// <summary>
-        /// Resource Group ID
+        /// (ForceNew,Optional) Resource Group ID
         /// </summary>
         public readonly string ResourceGroupId;
         /// <summary>

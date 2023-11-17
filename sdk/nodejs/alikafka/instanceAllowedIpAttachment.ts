@@ -102,8 +102,6 @@ export class InstanceAllowedIpAttachment extends pulumi.CustomResource {
     public readonly instanceId!: pulumi.Output<string>;
     /**
      * The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`.
-     * - `9092/9092`: port range for a VPC whitelist.
-     * - `9093/9093`: port range for an Internet whitelist.
      */
     public readonly portRange!: pulumi.Output<string>;
 
@@ -166,8 +164,6 @@ export interface InstanceAllowedIpAttachmentState {
     instanceId?: pulumi.Input<string>;
     /**
      * The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`.
-     * - `9092/9092`: port range for a VPC whitelist.
-     * - `9093/9093`: port range for an Internet whitelist.
      */
     portRange?: pulumi.Input<string>;
 }
@@ -190,8 +186,6 @@ export interface InstanceAllowedIpAttachmentArgs {
     instanceId: pulumi.Input<string>;
     /**
      * The Port range.  Valid Value: `9092/9092`, `9093/9093`. **NOTE:** From version 1.179.0, `portRange` can be set to `9093/9093`.
-     * - `9092/9092`: port range for a VPC whitelist.
-     * - `9093/9093`: port range for an Internet whitelist.
      */
     portRange: pulumi.Input<string>;
 }

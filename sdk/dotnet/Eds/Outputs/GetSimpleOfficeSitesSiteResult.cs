@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
     public sealed class GetSimpleOfficeSitesSiteResult
     {
         /// <summary>
-        /// The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
+        /// (Deprecated from 1.142.0) The Internet Bandwidth Peak. It has been deprecated from version 1.142.0 and can be found in the new datasource alicloud_ecd_network_packages.
         /// </summary>
         public readonly int Bandwidth;
         /// <summary>
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
         /// </summary>
         public readonly bool EnableCrossDesktopAccess;
         /// <summary>
-        /// Whether the Open Internet Access Function.
+        /// (Deprecated from 1.142.0) Whether the Open Internet Access Function.
         /// </summary>
         public readonly bool EnableInternetAccess;
         /// <summary>

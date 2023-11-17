@@ -30,22 +30,22 @@ public final class GetVpdsVpd {
      */
     private String id;
     /**
-     * @return The Resource group id
+     * @return (ForceNew,Optional) The Resource group id
      * 
      */
     private String resourceGroupId;
     /**
-     * @return The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+     * @return (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
      * 
      */
     private String status;
     /**
-     * @return The id of the vpd.
+     * @return (ForceNew,Optional) The id of the vpd.
      * 
      */
     private String vpdId;
     /**
-     * @return The Name of the VPD.
+     * @return (ForceNew,Optional) The Name of the VPD.
      * 
      */
     private String vpdName;
@@ -80,28 +80,28 @@ public final class GetVpdsVpd {
         return this.id;
     }
     /**
-     * @return The Resource group id
+     * @return (ForceNew,Optional) The Resource group id
      * 
      */
     public String resourceGroupId() {
         return this.resourceGroupId;
     }
     /**
-     * @return The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
+     * @return (ForceNew,Optional) The Vpd status. Valid values: `Available`, `Not Available`, `Executing`, `Deleting`,
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The id of the vpd.
+     * @return (ForceNew,Optional) The id of the vpd.
      * 
      */
     public String vpdId() {
         return this.vpdId;
     }
     /**
-     * @return The Name of the VPD.
+     * @return (ForceNew,Optional) The Name of the VPD.
      * 
      */
     public String vpdName() {

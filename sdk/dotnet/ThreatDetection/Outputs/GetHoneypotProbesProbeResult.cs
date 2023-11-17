@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly string ControlNodeId;
         /// <summary>
-        /// Probe name
+        /// (ForceNew, Optional) Probe name
         /// </summary>
         public readonly string DisplayName;
         public readonly ImmutableArray<Outputs.GetHoneypotProbesProbeHoneypotBindListResult> HoneypotBindLists;
@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly bool Ping;
         /// <summary>
-        /// Probe type
+        /// (ForceNew, Optional) Probe type
         /// </summary>
         public readonly string ProbeType;
         /// <summary>

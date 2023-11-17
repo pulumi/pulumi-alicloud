@@ -506,7 +506,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.skipTest);
     }
     /**
-     * It has been deprecated from provider version 1.100.0 and &#39;status&#39; instead.
+     * (Deprecated) It has been deprecated from provider version 1.100.0 and &#39;status&#39; instead.
      * 
      * @deprecated
      * Field &#39;state&#39; has been deprecated from version 1.100.0. Use &#39;status&#39; instead.
@@ -517,7 +517,7 @@ public class EnterpriseInstance extends com.pulumi.resources.CustomResource {
     private Output<String> state;
 
     /**
-     * @return It has been deprecated from provider version 1.100.0 and &#39;status&#39; instead.
+     * @return (Deprecated) It has been deprecated from provider version 1.100.0 and &#39;status&#39; instead.
      * 
      */
     public Output<String> state() {

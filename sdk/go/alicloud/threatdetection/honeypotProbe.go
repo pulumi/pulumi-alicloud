@@ -80,7 +80,7 @@ type HoneypotProbe struct {
 	ControlNodeId pulumi.StringOutput `pulumi:"controlNodeId"`
 	// Probe display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// Configure the service.See the following `Block HoneypotBindList`.
+	// (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
 	HoneypotBindLists HoneypotProbeHoneypotBindListArrayOutput `pulumi:"honeypotBindLists"`
 	// The first ID of the resource
 	HoneypotProbeId pulumi.StringOutput `pulumi:"honeypotProbeId"`
@@ -88,17 +88,17 @@ type HoneypotProbe struct {
 	Ping pulumi.BoolPtrOutput `pulumi:"ping"`
 	// Probe type, support `hostProbe` and `vpcBlackHoleProbe`.
 	ProbeType pulumi.StringOutput `pulumi:"probeType"`
-	// The version of the probe.
+	// (ForceNew,Optional) The version of the probe.
 	ProbeVersion pulumi.StringOutput `pulumi:"probeVersion"`
-	// The IP address of the proxy.
+	// (ForceNew,Optional) The IP address of the proxy.
 	ProxyIp pulumi.StringPtrOutput `pulumi:"proxyIp"`
 	// Listen to the IP address list.
 	ServiceIpLists pulumi.StringArrayOutput `pulumi:"serviceIpLists"`
 	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
+	// (ForceNew,Optional) Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
 	Uuid pulumi.StringPtrOutput `pulumi:"uuid"`
-	// The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
+	// (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
 	VpcId pulumi.StringPtrOutput `pulumi:"vpcId"`
 }
 
@@ -147,7 +147,7 @@ type honeypotProbeState struct {
 	ControlNodeId *string `pulumi:"controlNodeId"`
 	// Probe display name.
 	DisplayName *string `pulumi:"displayName"`
-	// Configure the service.See the following `Block HoneypotBindList`.
+	// (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
 	HoneypotBindLists []HoneypotProbeHoneypotBindList `pulumi:"honeypotBindLists"`
 	// The first ID of the resource
 	HoneypotProbeId *string `pulumi:"honeypotProbeId"`
@@ -155,17 +155,17 @@ type honeypotProbeState struct {
 	Ping *bool `pulumi:"ping"`
 	// Probe type, support `hostProbe` and `vpcBlackHoleProbe`.
 	ProbeType *string `pulumi:"probeType"`
-	// The version of the probe.
+	// (ForceNew,Optional) The version of the probe.
 	ProbeVersion *string `pulumi:"probeVersion"`
-	// The IP address of the proxy.
+	// (ForceNew,Optional) The IP address of the proxy.
 	ProxyIp *string `pulumi:"proxyIp"`
 	// Listen to the IP address list.
 	ServiceIpLists []string `pulumi:"serviceIpLists"`
 	// The status of the resource
 	Status *string `pulumi:"status"`
-	// Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
+	// (ForceNew,Optional) Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
 	Uuid *string `pulumi:"uuid"`
-	// The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
+	// (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -176,7 +176,7 @@ type HoneypotProbeState struct {
 	ControlNodeId pulumi.StringPtrInput
 	// Probe display name.
 	DisplayName pulumi.StringPtrInput
-	// Configure the service.See the following `Block HoneypotBindList`.
+	// (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
 	HoneypotBindLists HoneypotProbeHoneypotBindListArrayInput
 	// The first ID of the resource
 	HoneypotProbeId pulumi.StringPtrInput
@@ -184,17 +184,17 @@ type HoneypotProbeState struct {
 	Ping pulumi.BoolPtrInput
 	// Probe type, support `hostProbe` and `vpcBlackHoleProbe`.
 	ProbeType pulumi.StringPtrInput
-	// The version of the probe.
+	// (ForceNew,Optional) The version of the probe.
 	ProbeVersion pulumi.StringPtrInput
-	// The IP address of the proxy.
+	// (ForceNew,Optional) The IP address of the proxy.
 	ProxyIp pulumi.StringPtrInput
 	// Listen to the IP address list.
 	ServiceIpLists pulumi.StringArrayInput
 	// The status of the resource
 	Status pulumi.StringPtrInput
-	// Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
+	// (ForceNew,Optional) Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
 	Uuid pulumi.StringPtrInput
-	// The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
+	// (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -209,21 +209,21 @@ type honeypotProbeArgs struct {
 	ControlNodeId string `pulumi:"controlNodeId"`
 	// Probe display name.
 	DisplayName string `pulumi:"displayName"`
-	// Configure the service.See the following `Block HoneypotBindList`.
+	// (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
 	HoneypotBindLists []HoneypotProbeHoneypotBindList `pulumi:"honeypotBindLists"`
 	// Ping scan detection. Value: **true**: Enable **false**: Disabled
 	Ping *bool `pulumi:"ping"`
 	// Probe type, support `hostProbe` and `vpcBlackHoleProbe`.
 	ProbeType string `pulumi:"probeType"`
-	// The version of the probe.
+	// (ForceNew,Optional) The version of the probe.
 	ProbeVersion *string `pulumi:"probeVersion"`
-	// The IP address of the proxy.
+	// (ForceNew,Optional) The IP address of the proxy.
 	ProxyIp *string `pulumi:"proxyIp"`
 	// Listen to the IP address list.
 	ServiceIpLists []string `pulumi:"serviceIpLists"`
-	// Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
+	// (ForceNew,Optional) Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
 	Uuid *string `pulumi:"uuid"`
-	// The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
+	// (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -235,21 +235,21 @@ type HoneypotProbeArgs struct {
 	ControlNodeId pulumi.StringInput
 	// Probe display name.
 	DisplayName pulumi.StringInput
-	// Configure the service.See the following `Block HoneypotBindList`.
+	// (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
 	HoneypotBindLists HoneypotProbeHoneypotBindListArrayInput
 	// Ping scan detection. Value: **true**: Enable **false**: Disabled
 	Ping pulumi.BoolPtrInput
 	// Probe type, support `hostProbe` and `vpcBlackHoleProbe`.
 	ProbeType pulumi.StringInput
-	// The version of the probe.
+	// (ForceNew,Optional) The version of the probe.
 	ProbeVersion pulumi.StringPtrInput
-	// The IP address of the proxy.
+	// (ForceNew,Optional) The IP address of the proxy.
 	ProxyIp pulumi.StringPtrInput
 	// Listen to the IP address list.
 	ServiceIpLists pulumi.StringArrayInput
-	// Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
+	// (ForceNew,Optional) Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
 	Uuid pulumi.StringPtrInput
-	// The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
+	// (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
 	VpcId pulumi.StringPtrInput
 }
 
@@ -355,7 +355,7 @@ func (o HoneypotProbeOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *HoneypotProbe) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Configure the service.See the following `Block HoneypotBindList`.
+// (ForceNew,Optional) Configure the service.See the following `Block HoneypotBindList`.
 func (o HoneypotProbeOutput) HoneypotBindLists() HoneypotProbeHoneypotBindListArrayOutput {
 	return o.ApplyT(func(v *HoneypotProbe) HoneypotProbeHoneypotBindListArrayOutput { return v.HoneypotBindLists }).(HoneypotProbeHoneypotBindListArrayOutput)
 }
@@ -375,12 +375,12 @@ func (o HoneypotProbeOutput) ProbeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *HoneypotProbe) pulumi.StringOutput { return v.ProbeType }).(pulumi.StringOutput)
 }
 
-// The version of the probe.
+// (ForceNew,Optional) The version of the probe.
 func (o HoneypotProbeOutput) ProbeVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *HoneypotProbe) pulumi.StringOutput { return v.ProbeVersion }).(pulumi.StringOutput)
 }
 
-// The IP address of the proxy.
+// (ForceNew,Optional) The IP address of the proxy.
 func (o HoneypotProbeOutput) ProxyIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HoneypotProbe) pulumi.StringPtrOutput { return v.ProxyIp }).(pulumi.StringPtrOutput)
 }
@@ -395,12 +395,12 @@ func (o HoneypotProbeOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *HoneypotProbe) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
+// (ForceNew,Optional) Machine uuid, **probe_type** is `hostProbe`. This value cannot be empty.
 func (o HoneypotProbeOutput) Uuid() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HoneypotProbe) pulumi.StringPtrOutput { return v.Uuid }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
+// (ForceNew,Optional) The ID of the VPC. **probe_type** is `vpcBlackHoleProbe`. This value cannot be empty.
 func (o HoneypotProbeOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HoneypotProbe) pulumi.StringPtrOutput { return v.VpcId }).(pulumi.StringPtrOutput)
 }

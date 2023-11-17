@@ -81,9 +81,9 @@ type GetGatewaysArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the gateway.
+	// The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
 	Status *string `pulumi:"status"`
-	// The ID of the vpc.
+	// The ID of the VPC.
 	VpcId *string `pulumi:"vpcId"`
 }
 
@@ -127,9 +127,9 @@ type GetGatewaysOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the gateway.
+	// The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The ID of the vpc.
+	// The ID of the VPC.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 }
 

@@ -22,11 +22,11 @@ namespace Pulumi.AliCloud.Emr.Outputs
         /// </summary>
         public readonly string ClusterName;
         /// <summary>
-        /// Cluster type:
+        /// The cluster type of the associated cluster.
         /// </summary>
         public readonly string ClusterType;
         /// <summary>
-        /// The cluster status.
+        /// The status  of the associated cluster.
         /// </summary>
         public readonly string Status;
 

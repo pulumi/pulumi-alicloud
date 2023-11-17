@@ -44,7 +44,7 @@ export function getEcsPrefixLists(args?: GetEcsPrefixListsArgs, opts?: pulumi.In
  */
 export interface GetEcsPrefixListsArgs {
     /**
-     * The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+     * The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
      */
     addressFamily?: string;
     enableDetails?: boolean;
@@ -107,7 +107,7 @@ export function getEcsPrefixListsOutput(args?: GetEcsPrefixListsOutputArgs, opts
  */
 export interface GetEcsPrefixListsOutputArgs {
     /**
-     * The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+     * The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
      */
     addressFamily?: pulumi.Input<string>;
     enableDetails?: pulumi.Input<boolean>;

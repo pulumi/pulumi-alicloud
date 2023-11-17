@@ -75,9 +75,6 @@ export class ServiceSubscription extends pulumi.CustomResource {
 
     /**
      * The endpoint has three format. Available values format:
-     * - `HTTP Format`: http://xxx.com/xxx
-     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - `Email Format`: mail:directmail:{MailAddress}
      */
     public readonly endpoint!: pulumi.Output<string>;
     /**
@@ -158,9 +155,6 @@ export class ServiceSubscription extends pulumi.CustomResource {
 export interface ServiceSubscriptionState {
     /**
      * The endpoint has three format. Available values format:
-     * - `HTTP Format`: http://xxx.com/xxx
-     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - `Email Format`: mail:directmail:{MailAddress}
      */
     endpoint?: pulumi.Input<string>;
     /**
@@ -195,9 +189,6 @@ export interface ServiceSubscriptionState {
 export interface ServiceSubscriptionArgs {
     /**
      * The endpoint has three format. Available values format:
-     * - `HTTP Format`: http://xxx.com/xxx
-     * - `Queue Format`: acs:mns:{REGION}:{AccountID}:queues/{QueueName}
-     * - `Email Format`: mail:directmail:{MailAddress}
      */
     endpoint: pulumi.Input<string>;
     /**

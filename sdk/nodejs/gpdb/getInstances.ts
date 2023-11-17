@@ -97,7 +97,7 @@ export interface GetInstancesArgs {
      */
     tags?: {[key: string]: any};
     /**
-     * The vswitch id.
+     * Used to retrieve instances belong to specified `vswitch` resources.
      */
     vswitchId?: string;
 }
@@ -200,7 +200,7 @@ export interface GetInstancesOutputArgs {
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The vswitch id.
+     * Used to retrieve instances belong to specified `vswitch` resources.
      */
     vswitchId?: pulumi.Input<string>;
 }

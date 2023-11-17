@@ -6600,11 +6600,11 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMet
 }
 
 type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule struct {
-	// Whether shrinkage is prohibited. The values are described as follows:
+	// Whether shrinkage is prohibited.
 	Disabled bool `pulumi:"disabled"`
-	// Expansion cooling time.
+	// Shrinkage cooling time.
 	StabilizationWindowSeconds int `pulumi:"stabilizationWindowSeconds"`
-	// Flexible expansion step. The maximum number of instances per unit time.
+	// Elastic shrinkage step. The maximum number of instances per unit time.
 	Step int `pulumi:"step"`
 }
 
@@ -6620,11 +6620,11 @@ type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleInput interface
 }
 
 type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs struct {
-	// Whether shrinkage is prohibited. The values are described as follows:
+	// Whether shrinkage is prohibited.
 	Disabled pulumi.BoolInput `pulumi:"disabled"`
-	// Expansion cooling time.
+	// Shrinkage cooling time.
 	StabilizationWindowSeconds pulumi.IntInput `pulumi:"stabilizationWindowSeconds"`
-	// Flexible expansion step. The maximum number of instances per unit time.
+	// Elastic shrinkage step. The maximum number of instances per unit time.
 	Step pulumi.IntInput `pulumi:"step"`
 }
 
@@ -6679,19 +6679,19 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) ToGe
 	return o
 }
 
-// Whether shrinkage is prohibited. The values are described as follows:
+// Whether shrinkage is prohibited.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-// Expansion cooling time.
+// Shrinkage cooling time.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) StabilizationWindowSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule) int {
 		return v.StabilizationWindowSeconds
 	}).(pulumi.IntOutput)
 }
 
-// Flexible expansion step. The maximum number of instances per unit time.
+// Elastic shrinkage step. The maximum number of instances per unit time.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) Step() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule) int { return v.Step }).(pulumi.IntOutput)
 }
@@ -7648,7 +7648,7 @@ func (o GetApplicationsApplicationArrayOutput) Index(i pulumi.IntInput) GetAppli
 }
 
 type GetApplicationsApplicationMountDesc struct {
-	// The Container mount path.
+	// Container mount path.
 	MountPath string `pulumi:"mountPath"`
 	// NAS relative file directory.
 	NasPath string `pulumi:"nasPath"`
@@ -7666,7 +7666,7 @@ type GetApplicationsApplicationMountDescInput interface {
 }
 
 type GetApplicationsApplicationMountDescArgs struct {
-	// The Container mount path.
+	// Container mount path.
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
 	// NAS relative file directory.
 	NasPath pulumi.StringInput `pulumi:"nasPath"`
@@ -7723,7 +7723,7 @@ func (o GetApplicationsApplicationMountDescOutput) ToGetApplicationsApplicationM
 	return o
 }
 
-// The Container mount path.
+// Container mount path.
 func (o GetApplicationsApplicationMountDescOutput) MountPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationsApplicationMountDesc) string { return v.MountPath }).(pulumi.StringOutput)
 }
@@ -8162,7 +8162,7 @@ func (o GetGreyTagRoutesRouteArrayOutput) Index(i pulumi.IntInput) GetGreyTagRou
 }
 
 type GetGreyTagRoutesRouteDubboRule struct {
-	// The Conditional Patterns for Grayscale Rules.
+	// The conditional Patterns for Grayscale Rules.
 	Condition string `pulumi:"condition"`
 	// The service group.
 	Group string `pulumi:"group"`
@@ -8188,7 +8188,7 @@ type GetGreyTagRoutesRouteDubboRuleInput interface {
 }
 
 type GetGreyTagRoutesRouteDubboRuleArgs struct {
-	// The Conditional Patterns for Grayscale Rules.
+	// The conditional Patterns for Grayscale Rules.
 	Condition pulumi.StringInput `pulumi:"condition"`
 	// The service group.
 	Group pulumi.StringInput `pulumi:"group"`
@@ -8253,7 +8253,7 @@ func (o GetGreyTagRoutesRouteDubboRuleOutput) ToGetGreyTagRoutesRouteDubboRuleOu
 	return o
 }
 
-// The Conditional Patterns for Grayscale Rules.
+// The conditional Patterns for Grayscale Rules.
 func (o GetGreyTagRoutesRouteDubboRuleOutput) Condition() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRule) string { return v.Condition }).(pulumi.StringOutput)
 }

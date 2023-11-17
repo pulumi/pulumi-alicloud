@@ -63,22 +63,22 @@ type GetSubnetsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// Resource Group ID.
+	// (ForceNew,Optional) Resource Group ID.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// (ForceNew,Optional) The status of the resource.
 	Status *string `pulumi:"status"`
-	// Primary key ID.
+	// (ForceNew,Optional) Primary key ID.
 	SubnetId *string `pulumi:"subnetId"`
-	// The Subnet name.
+	// (ForceNew,Optional) The Subnet name.
 	SubnetName *string `pulumi:"subnetName"`
-	// Eflo subnet usage type, optional value:
+	// (ForceNew,Optional) Eflo subnet usage type, optional value:
 	// - General type is not filled in
 	// - OOB:OOB type
 	// - LB: LB type
 	Type *string `pulumi:"type"`
-	// The Eflo VPD ID.
+	// (ForceNew,Optional) The Eflo VPD ID.
 	VpdId *string `pulumi:"vpdId"`
-	// The zone ID of the resource.
+	// (ForceNew,Optional) The zone ID of the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -133,22 +133,22 @@ type GetSubnetsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// Resource Group ID.
+	// (ForceNew,Optional) Resource Group ID.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The status of the resource.
+	// (ForceNew,Optional) The status of the resource.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// Primary key ID.
+	// (ForceNew,Optional) Primary key ID.
 	SubnetId pulumi.StringPtrInput `pulumi:"subnetId"`
-	// The Subnet name.
+	// (ForceNew,Optional) The Subnet name.
 	SubnetName pulumi.StringPtrInput `pulumi:"subnetName"`
-	// Eflo subnet usage type, optional value:
+	// (ForceNew,Optional) Eflo subnet usage type, optional value:
 	// - General type is not filled in
 	// - OOB:OOB type
 	// - LB: LB type
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The Eflo VPD ID.
+	// (ForceNew,Optional) The Eflo VPD ID.
 	VpdId pulumi.StringPtrInput `pulumi:"vpdId"`
-	// The zone ID of the resource.
+	// (ForceNew,Optional) The zone ID of the resource.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 

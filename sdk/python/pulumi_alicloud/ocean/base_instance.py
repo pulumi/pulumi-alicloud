@@ -37,7 +37,7 @@ class BaseInstanceArgs:
                - 14C70GB:200GB ~ 10000GB
                - 30C180GB:400GB ~ 10000GB
                - 62C400G:800GB ~ 10000GB.
-               The default value of each package is its minimum value.
+                 The default value of each package is its minimum value.
         :param pulumi.Input[str] instance_class: Cluster specification information.
                Four packages are currently supported:
                - 8C32GB:8 cores 32GB.
@@ -60,7 +60,7 @@ class BaseInstanceArgs:
                - receive_all: Keep all backup sets;
                - delete_all: delete all backup sets;
                - receive_last: Keep the last backup set.
-               > **NOTE:**   The default value is delete_all.
+                 > **NOTE:**   The default value is delete_all.
         :param pulumi.Input[str] disk_type: The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
                Two types are currently supported:
                - cloud_essd_pl1: cloud disk ESSD pl1.
@@ -108,7 +108,7 @@ class BaseInstanceArgs:
         - 14C70GB:200GB ~ 10000GB
         - 30C180GB:400GB ~ 10000GB
         - 62C400G:800GB ~ 10000GB.
-        The default value of each package is its minimum value.
+          The default value of each package is its minimum value.
         """
         return pulumi.get(self, "disk_size")
 
@@ -208,7 +208,7 @@ class BaseInstanceArgs:
         - receive_all: Keep all backup sets;
         - delete_all: delete all backup sets;
         - receive_last: Keep the last backup set.
-        > **NOTE:**   The default value is delete_all.
+          > **NOTE:**   The default value is delete_all.
         """
         return pulumi.get(self, "backup_retain_mode")
 
@@ -339,7 +339,7 @@ class _BaseInstanceState:
                - receive_all: Keep all backup sets;
                - delete_all: delete all backup sets;
                - receive_last: Keep the last backup set.
-               > **NOTE:**   The default value is delete_all.
+                 > **NOTE:**   The default value is delete_all.
         :param pulumi.Input[str] commodity_code: The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
         :param pulumi.Input[int] cpu: The number of CPU cores of the cluster.
         :param pulumi.Input[str] create_time: The creation time of the resource.
@@ -349,7 +349,7 @@ class _BaseInstanceState:
                - 14C70GB:200GB ~ 10000GB
                - 30C180GB:400GB ~ 10000GB
                - 62C400G:800GB ~ 10000GB.
-               The default value of each package is its minimum value.
+                 The default value of each package is its minimum value.
         :param pulumi.Input[str] disk_type: The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
                Two types are currently supported:
                - cloud_essd_pl1: cloud disk ESSD pl1.
@@ -449,7 +449,7 @@ class _BaseInstanceState:
         - receive_all: Keep all backup sets;
         - delete_all: delete all backup sets;
         - receive_last: Keep the last backup set.
-        > **NOTE:**   The default value is delete_all.
+          > **NOTE:**   The default value is delete_all.
         """
         return pulumi.get(self, "backup_retain_mode")
 
@@ -503,7 +503,7 @@ class _BaseInstanceState:
         - 14C70GB:200GB ~ 10000GB
         - 30C180GB:400GB ~ 10000GB
         - 62C400G:800GB ~ 10000GB.
-        The default value of each package is its minimum value.
+          The default value of each package is its minimum value.
         """
         return pulumi.get(self, "disk_size")
 
@@ -745,14 +745,14 @@ class BaseInstance(pulumi.CustomResource):
                - receive_all: Keep all backup sets;
                - delete_all: delete all backup sets;
                - receive_last: Keep the last backup set.
-               > **NOTE:**   The default value is delete_all.
+                 > **NOTE:**   The default value is delete_all.
         :param pulumi.Input[int] disk_size: The size of the storage space, in GB.
                The limits of storage space vary according to the cluster specifications, as follows:
                - 8C32GB:100GB ~ 10000GB
                - 14C70GB:200GB ~ 10000GB
                - 30C180GB:400GB ~ 10000GB
                - 62C400G:800GB ~ 10000GB.
-               The default value of each package is its minimum value.
+                 The default value of each package is its minimum value.
         :param pulumi.Input[str] disk_type: The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
                Two types are currently supported:
                - cloud_essd_pl1: cloud disk ESSD pl1.
@@ -941,7 +941,7 @@ class BaseInstance(pulumi.CustomResource):
                - receive_all: Keep all backup sets;
                - delete_all: delete all backup sets;
                - receive_last: Keep the last backup set.
-               > **NOTE:**   The default value is delete_all.
+                 > **NOTE:**   The default value is delete_all.
         :param pulumi.Input[str] commodity_code: The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
         :param pulumi.Input[int] cpu: The number of CPU cores of the cluster.
         :param pulumi.Input[str] create_time: The creation time of the resource.
@@ -951,7 +951,7 @@ class BaseInstance(pulumi.CustomResource):
                - 14C70GB:200GB ~ 10000GB
                - 30C180GB:400GB ~ 10000GB
                - 62C400G:800GB ~ 10000GB.
-               The default value of each package is its minimum value.
+                 The default value of each package is its minimum value.
         :param pulumi.Input[str] disk_type: The storage type of the cluster. Effective only in the standard cluster version (cloud disk).
                Two types are currently supported:
                - cloud_essd_pl1: cloud disk ESSD pl1.
@@ -1029,7 +1029,7 @@ class BaseInstance(pulumi.CustomResource):
         - receive_all: Keep all backup sets;
         - delete_all: delete all backup sets;
         - receive_last: Keep the last backup set.
-        > **NOTE:**   The default value is delete_all.
+          > **NOTE:**   The default value is delete_all.
         """
         return pulumi.get(self, "backup_retain_mode")
 
@@ -1067,7 +1067,7 @@ class BaseInstance(pulumi.CustomResource):
         - 14C70GB:200GB ~ 10000GB
         - 30C180GB:400GB ~ 10000GB
         - 62C400G:800GB ~ 10000GB.
-        The default value of each package is its minimum value.
+          The default value of each package is its minimum value.
         """
         return pulumi.get(self, "disk_size")
 

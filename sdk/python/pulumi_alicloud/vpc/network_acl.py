@@ -32,7 +32,7 @@ class NetworkAclArgs:
         :param pulumi.Input[str] description: The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
-        :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+        :param pulumi.Input[str] name: (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         :param pulumi.Input[str] network_acl_name: The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
@@ -110,7 +110,7 @@ class NetworkAclArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+        (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.""")
@@ -177,7 +177,7 @@ class _NetworkAclState:
         :param pulumi.Input[str] description: The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclEgressAclEntryArgs']]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclIngressAclEntryArgs']]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
-        :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+        :param pulumi.Input[str] name: (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         :param pulumi.Input[str] network_acl_name: The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkAclResourceArgs']]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[str] status: The status of the associated resource.
@@ -262,7 +262,7 @@ class _NetworkAclState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+        (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.""")
@@ -418,7 +418,7 @@ class NetworkAcl(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEgressAclEntryArgs']]]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclIngressAclEntryArgs']]]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
-        :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+        :param pulumi.Input[str] name: (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         :param pulumi.Input[str] network_acl_name: The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclResourceArgs']]]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of this resource.
@@ -570,7 +570,7 @@ class NetworkAcl(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclEgressAclEntryArgs']]]] egress_acl_entries: Out direction rule information. See `egress_acl_entries` below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclIngressAclEntryArgs']]]] ingress_acl_entries: Inward direction rule information. See `ingress_acl_entries` below.
-        :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+        :param pulumi.Input[str] name: (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         :param pulumi.Input[str] network_acl_name: The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkAclResourceArgs']]]] resources: The associated resource. See `resources` below.
         :param pulumi.Input[str] status: The status of the associated resource.
@@ -631,7 +631,7 @@ class NetworkAcl(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+        (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.""")

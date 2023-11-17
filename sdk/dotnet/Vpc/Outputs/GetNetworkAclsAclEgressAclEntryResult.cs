@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     public sealed class GetNetworkAclsAclEgressAclEntryResult
     {
         /// <summary>
-        /// Description of the entry direction rule.
+        /// Description of network ACL information.
         /// </summary>
         public readonly string Description;
         /// <summary>
@@ -22,19 +22,19 @@ namespace Pulumi.AliCloud.Vpc.Outputs
         /// </summary>
         public readonly string DestinationCidrIp;
         /// <summary>
-        /// The name of the entry direction rule entry.
+        /// The name of the entry for the direction rule.
         /// </summary>
         public readonly string NetworkAclEntryName;
         /// <summary>
-        /// The authorization policy.
+        /// The  authorization policy.
         /// </summary>
         public readonly string Policy;
         /// <summary>
-        /// Source port range.
+        /// Destination port range.
         /// </summary>
         public readonly string Port;
         /// <summary>
-        /// Transport layer protocol.
+        /// Transport  layer protocol.
         /// </summary>
         public readonly string Protocol;
 

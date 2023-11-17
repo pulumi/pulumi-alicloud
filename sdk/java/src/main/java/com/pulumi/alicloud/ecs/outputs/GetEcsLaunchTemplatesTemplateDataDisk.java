@@ -22,7 +22,7 @@ public final class GetEcsLaunchTemplatesTemplateDataDisk {
      */
     private Boolean deleteWithInstance;
     /**
-     * @return System disk description.
+     * @return The Description of Template.
      * 
      */
     private String description;
@@ -32,7 +32,7 @@ public final class GetEcsLaunchTemplatesTemplateDataDisk {
      */
     private Boolean encrypted;
     /**
-     * @return System disk name.
+     * @return The ENI name.
      * 
      */
     private String name;
@@ -68,7 +68,7 @@ public final class GetEcsLaunchTemplatesTemplateDataDisk {
         return this.deleteWithInstance;
     }
     /**
-     * @return System disk description.
+     * @return The Description of Template.
      * 
      */
     public String description() {
@@ -82,7 +82,7 @@ public final class GetEcsLaunchTemplatesTemplateDataDisk {
         return this.encrypted;
     }
     /**
-     * @return System disk name.
+     * @return The ENI name.
      * 
      */
     public String name() {

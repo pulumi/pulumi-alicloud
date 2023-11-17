@@ -96,7 +96,7 @@ type SecurityGroup struct {
 
 	// The security group description. Defaults to null.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	// (Deprecated) Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	//
 	// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	InnerAccess pulumi.BoolOutput `pulumi:"innerAccess"`
@@ -150,7 +150,7 @@ func GetSecurityGroup(ctx *pulumi.Context,
 type securityGroupState struct {
 	// The security group description. Defaults to null.
 	Description *string `pulumi:"description"`
-	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	// (Deprecated) Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	//
 	// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	InnerAccess *bool `pulumi:"innerAccess"`
@@ -175,7 +175,7 @@ type securityGroupState struct {
 type SecurityGroupState struct {
 	// The security group description. Defaults to null.
 	Description pulumi.StringPtrInput
-	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	// (Deprecated) Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	//
 	// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	InnerAccess pulumi.BoolPtrInput
@@ -204,7 +204,7 @@ func (SecurityGroupState) ElementType() reflect.Type {
 type securityGroupArgs struct {
 	// The security group description. Defaults to null.
 	Description *string `pulumi:"description"`
-	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	// (Deprecated) Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	//
 	// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	InnerAccess *bool `pulumi:"innerAccess"`
@@ -230,7 +230,7 @@ type securityGroupArgs struct {
 type SecurityGroupArgs struct {
 	// The security group description. Defaults to null.
 	Description pulumi.StringPtrInput
-	// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+	// (Deprecated) Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	//
 	// Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 	InnerAccess pulumi.BoolPtrInput
@@ -344,7 +344,7 @@ func (o SecurityGroupOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityGroup) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
+// (Deprecated) Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 //
 // Deprecated: Field 'inner_access' has been deprecated from provider version 1.55.3. Use 'inner_access_policy' replaces it.
 func (o SecurityGroupOutput) InnerAccess() pulumi.BoolOutput {

@@ -115,7 +115,7 @@ class NetworkAclEgressAclEntryArgs:
         :param pulumi.Input[str] policy: Authorization policy. Value:
                - accept: Allow.
                - drop: Refused.
-        :param pulumi.Input[str] port: The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+        :param pulumi.Input[str] port: The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
         :param pulumi.Input[str] protocol: The protocol type. Value:
                - icmp: Network Control Message Protocol.
                - gre: Generic Routing Encapsulation Protocol.
@@ -190,7 +190,7 @@ class NetworkAclEgressAclEntryArgs:
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[str]]:
         """
-        The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+        The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
         """
         return pulumi.get(self, "port")
 
@@ -636,7 +636,7 @@ class NetworkIpv6CidrBlockArgs:
                - **ChinaMobile**: China Mobile (single line).
                - **ChinaUnicom**: China Unicom (single line).
                - **ChinaTelecom**: China Telecom (single line).
-               > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+                 > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
         """
         if ipv6_cidr_block is not None:
             pulumi.set(__self__, "ipv6_cidr_block", ipv6_cidr_block)
@@ -664,7 +664,7 @@ class NetworkIpv6CidrBlockArgs:
         - **ChinaMobile**: China Mobile (single line).
         - **ChinaUnicom**: China Unicom (single line).
         - **ChinaTelecom**: China Telecom (single line).
-        > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+          > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
         """
         return pulumi.get(self, "ipv6_isp")
 
@@ -867,10 +867,10 @@ class TrafficMirrorFilterEgressRuleArgs:
                - ICMP: Network Control Message Protocol.
                - TCP: Transmission Control Protocol.
                - UDP: User Datagram Protocol.
-        :param pulumi.Input[str] destination_cidr_block: DestinationCidrBlock.
+        :param pulumi.Input[str] destination_cidr_block: The destination address of the outbound rule network traffic.
         :param pulumi.Input[str] destination_port_range: The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
                > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-        :param pulumi.Input[int] priority: Priority.
+        :param pulumi.Input[int] priority: The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
         :param pulumi.Input[str] source_cidr_block: The source address of the outbound rule network traffic.
         :param pulumi.Input[str] source_port_range: The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
                > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
@@ -924,7 +924,7 @@ class TrafficMirrorFilterEgressRuleArgs:
     @pulumi.getter(name="destinationCidrBlock")
     def destination_cidr_block(self) -> Optional[pulumi.Input[str]]:
         """
-        DestinationCidrBlock.
+        The destination address of the outbound rule network traffic.
         """
         return pulumi.get(self, "destination_cidr_block")
 
@@ -949,7 +949,7 @@ class TrafficMirrorFilterEgressRuleArgs:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
-        Priority.
+        The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
         """
         return pulumi.get(self, "priority")
 
@@ -1012,10 +1012,10 @@ class TrafficMirrorFilterIngressRuleArgs:
                - ICMP: Network Control Message Protocol.
                - TCP: Transmission Control Protocol.
                - UDP: User Datagram Protocol.
-        :param pulumi.Input[str] destination_cidr_block: DestinationCidrBlock.
+        :param pulumi.Input[str] destination_cidr_block: The destination address of the outbound rule network traffic.
         :param pulumi.Input[str] destination_port_range: The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
                > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-        :param pulumi.Input[int] priority: Priority.
+        :param pulumi.Input[int] priority: The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
         :param pulumi.Input[str] source_cidr_block: The source address of the outbound rule network traffic.
         :param pulumi.Input[str] source_port_range: The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
                > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
@@ -1069,7 +1069,7 @@ class TrafficMirrorFilterIngressRuleArgs:
     @pulumi.getter(name="destinationCidrBlock")
     def destination_cidr_block(self) -> Optional[pulumi.Input[str]]:
         """
-        DestinationCidrBlock.
+        The destination address of the outbound rule network traffic.
         """
         return pulumi.get(self, "destination_cidr_block")
 
@@ -1094,7 +1094,7 @@ class TrafficMirrorFilterIngressRuleArgs:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[int]]:
         """
-        Priority.
+        The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
         """
         return pulumi.get(self, "priority")
 

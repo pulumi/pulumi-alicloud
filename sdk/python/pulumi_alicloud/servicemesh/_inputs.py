@@ -1031,9 +1031,6 @@ class UserPermissionPermissionArgs:
         :param pulumi.Input[bool] is_custom: Whether the grant object is a RAM role.
         :param pulumi.Input[bool] is_ram_role: Whether the grant object is an entity.
         :param pulumi.Input[str] role_name: The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
-               - `istio-admin`:  The administrator.
-               - `istio-ops`: The administrator of the service mesh resource.
-               - `istio-readonly`: The read only permission.
         :param pulumi.Input[str] role_type: The role type. Valid Value: `custom`.
         :param pulumi.Input[str] service_mesh_id: The service mesh id.
         """
@@ -1077,9 +1074,6 @@ class UserPermissionPermissionArgs:
     def role_name(self) -> Optional[pulumi.Input[str]]:
         """
         The permission name. Valid values: `istio-admin`, `istio-ops`, `istio-readonly`.
-        - `istio-admin`:  The administrator.
-        - `istio-ops`: The administrator of the service mesh resource.
-        - `istio-readonly`: The read only permission.
         """
         return pulumi.get(self, "role_name")
 

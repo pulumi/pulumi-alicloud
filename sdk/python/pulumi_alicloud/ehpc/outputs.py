@@ -285,7 +285,7 @@ class GetClustersClusterResult(dict):
                  zone_id: str):
         """
         :param str account_type: The server type of the account.
-        :param str client_version: The version number of the client used by the cluster.
+               * `client_version` - The version number of the client used by the cluster.
         :param str cluster_id: The id of E-HPC Cluster.
         :param str cluster_name: The name of E-HPC cluster.
         :param int compute_count: The number of compute nodes in the cluster.
@@ -356,6 +356,7 @@ class GetClustersClusterResult(dict):
     def account_type(self) -> str:
         """
         The server type of the account.
+        * `client_version` - The version number of the client used by the cluster.
         """
         return pulumi.get(self, "account_type")
 
@@ -367,9 +368,6 @@ class GetClustersClusterResult(dict):
     @property
     @pulumi.getter(name="clientVersion")
     def client_version(self) -> str:
-        """
-        The version number of the client used by the cluster.
-        """
         return pulumi.get(self, "client_version")
 
     @property

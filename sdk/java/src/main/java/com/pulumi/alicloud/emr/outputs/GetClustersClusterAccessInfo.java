@@ -12,6 +12,8 @@ import java.util.Objects;
 public final class GetClustersClusterAccessInfo {
     /**
      * @return Link address information list of ZooKeeper.
+     * * `link` - The access link address of ZooKeeper.
+     * * `port` - The port of ZooKeeper.
      * 
      */
     private List<GetClustersClusterAccessInfoZkLink> zkLinks;
@@ -19,6 +21,8 @@ public final class GetClustersClusterAccessInfo {
     private GetClustersClusterAccessInfo() {}
     /**
      * @return Link address information list of ZooKeeper.
+     * * `link` - The access link address of ZooKeeper.
+     * * `port` - The port of ZooKeeper.
      * 
      */
     public List<GetClustersClusterAccessInfoZkLink> zkLinks() {

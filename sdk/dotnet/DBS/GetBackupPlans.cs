@@ -136,7 +136,7 @@ namespace Pulumi.AliCloud.DBS
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `check_pass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -192,7 +192,7 @@ namespace Pulumi.AliCloud.DBS
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `check_pass`, `init`, `locked`, `pause`, `running`, `stop`, `wait`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

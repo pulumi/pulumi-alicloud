@@ -59,11 +59,11 @@ export interface GetBgpGroupsArgs {
      */
     outputFile?: string;
     /**
-     * The ID of the VBR.
+     * The ID of the virtual border router (VBR) that is associated with the BGP group.
      */
     routerId?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
      */
     status?: string;
 }
@@ -128,11 +128,11 @@ export interface GetBgpGroupsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of the VBR.
+     * The ID of the virtual border router (VBR) that is associated with the BGP group.
      */
     routerId?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `Available`, `Deleting` and `Pending`.
      */
     status?: pulumi.Input<string>;
 }

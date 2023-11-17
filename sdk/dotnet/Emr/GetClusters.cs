@@ -434,7 +434,7 @@ namespace Pulumi.AliCloud.Emr
     public sealed class GetClustersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the associated cluster.
+        /// The ClusterName.
         /// </summary>
         [Input("clusterName")]
         public string? ClusterName { get; set; }
@@ -550,7 +550,7 @@ namespace Pulumi.AliCloud.Emr
     public sealed class GetClustersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the associated cluster.
+        /// The ClusterName.
         /// </summary>
         [Input("clusterName")]
         public Input<string>? ClusterName { get; set; }

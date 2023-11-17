@@ -45,7 +45,7 @@ export function getEcsInvocations(args?: GetEcsInvocationsArgs, opts?: pulumi.In
  */
 export interface GetEcsInvocationsArgs {
     /**
-     * The ID of the command.
+     * The execution ID of the command.
      */
     commandId?: string;
     /**
@@ -57,7 +57,7 @@ export interface GetEcsInvocationsArgs {
      */
     ids?: string[];
     /**
-     * The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+     * The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
      */
     invokeStatus?: string;
     /**
@@ -113,7 +113,7 @@ export function getEcsInvocationsOutput(args?: GetEcsInvocationsOutputArgs, opts
  */
 export interface GetEcsInvocationsOutputArgs {
     /**
-     * The ID of the command.
+     * The execution ID of the command.
      */
     commandId?: pulumi.Input<string>;
     /**
@@ -125,7 +125,7 @@ export interface GetEcsInvocationsOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+     * The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
      */
     invokeStatus?: pulumi.Input<string>;
     /**

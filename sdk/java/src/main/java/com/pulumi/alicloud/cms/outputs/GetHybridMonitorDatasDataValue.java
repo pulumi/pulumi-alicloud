@@ -15,7 +15,7 @@ public final class GetHybridMonitorDatasDataValue {
      */
     private String ts;
     /**
-     * @return Label value.
+     * @return The value of the monitoring indicator.
      * 
      */
     private String value;
@@ -29,7 +29,7 @@ public final class GetHybridMonitorDatasDataValue {
         return this.ts;
     }
     /**
-     * @return Label value.
+     * @return The value of the monitoring indicator.
      * 
      */
     public String value() {

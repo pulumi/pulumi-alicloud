@@ -96,7 +96,7 @@ namespace Pulumi.AliCloud.Alb
     public sealed class GetAscriptsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Script name.
+        /// (ForceNew,Optional) Script name.
         /// </summary>
         [Input("ascriptName")]
         public string? AscriptName { get; set; }
@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// Listener ID of script attribution
+        /// (ForceNew,Optional) Listener ID of script attribution
         /// </summary>
         [Input("listenerId")]
         public string? ListenerId { get; set; }
@@ -143,7 +143,7 @@ namespace Pulumi.AliCloud.Alb
     public sealed class GetAscriptsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Script name.
+        /// (ForceNew,Optional) Script name.
         /// </summary>
         [Input("ascriptName")]
         public Input<string>? AscriptName { get; set; }
@@ -164,7 +164,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// Listener ID of script attribution
+        /// (ForceNew,Optional) Listener ID of script attribution
         /// </summary>
         [Input("listenerId")]
         public Input<string>? ListenerId { get; set; }

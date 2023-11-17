@@ -58,14 +58,14 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Nested attribute containing certificate authority data for your cluster.
+     * (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      * 
      */
     @Import(name="certificateAuthority")
     private @Nullable Output<EdgeKubernetesCertificateAuthorityArgs> certificateAuthority;
 
     /**
-     * @return Nested attribute containing certificate authority data for your cluster.
+     * @return (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
      * 
      */
     public Optional<Output<EdgeKubernetesCertificateAuthorityArgs>> certificateAuthority() {
@@ -141,14 +141,14 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Map of kubernetes cluster connection information.
+     * (Map) Map of kubernetes cluster connection information.
      * 
      */
     @Import(name="connections")
     private @Nullable Output<EdgeKubernetesConnectionsArgs> connections;
 
     /**
-     * @return Map of kubernetes cluster connection information.
+     * @return (Map) Map of kubernetes cluster connection information.
      * 
      */
     public Optional<Output<EdgeKubernetesConnectionsArgs>> connections() {
@@ -893,7 +893,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificateAuthority Nested attribute containing certificate authority data for your cluster.
+         * @param certificateAuthority (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
          * 
          * @return builder
          * 
@@ -904,7 +904,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param certificateAuthority Nested attribute containing certificate authority data for your cluster.
+         * @param certificateAuthority (Map, Available since v1.105.0) Nested attribute containing certificate authority data for your cluster.
          * 
          * @return builder
          * 
@@ -1006,7 +1006,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param connections Map of kubernetes cluster connection information.
+         * @param connections (Map) Map of kubernetes cluster connection information.
          * 
          * @return builder
          * 
@@ -1017,7 +1017,7 @@ public final class EdgeKubernetesState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param connections Map of kubernetes cluster connection information.
+         * @param connections (Map) Map of kubernetes cluster connection information.
          * 
          * @return builder
          * 

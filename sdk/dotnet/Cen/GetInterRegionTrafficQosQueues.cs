@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Cen
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the traffic scheduling policy.
+        /// (ForceNew,Required) The ID of the traffic scheduling policy.
         /// </summary>
         [Input("trafficQosPolicyId", required: true)]
         public string TrafficQosPolicyId { get; set; } = null!;
@@ -156,7 +156,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the traffic scheduling policy.
+        /// (ForceNew,Required) The ID of the traffic scheduling policy.
         /// </summary>
         [Input("trafficQosPolicyId", required: true)]
         public Input<string> TrafficQosPolicyId { get; set; } = null!;

@@ -236,7 +236,7 @@ type NetworkAclEgressAclEntry struct {
 	// - accept: Allow.
 	// - drop: Refused.
 	Policy *string `pulumi:"policy"`
-	// The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+	// The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
 	Port *string `pulumi:"port"`
 	// The protocol type. Value:
 	// - icmp: Network Control Message Protocol.
@@ -269,7 +269,7 @@ type NetworkAclEgressAclEntryArgs struct {
 	// - accept: Allow.
 	// - drop: Refused.
 	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	// The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+	// The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
 	Port pulumi.StringPtrInput `pulumi:"port"`
 	// The protocol type. Value:
 	// - icmp: Network Control Message Protocol.
@@ -353,7 +353,7 @@ func (o NetworkAclEgressAclEntryOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
-// The destination port range of the outbound rule.When the Protocol type of the outbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the outbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
+// The source port range of the inbound rule.When the Protocol type of the inbound rule is all, icmp, or gre, the port range is - 1/-1, indicating that the port is not restricted.When the Protocol type of the inbound rule is tcp or udp, the port range is 1 to 65535, and the format is 1/200 or 80/80, indicating port 1 to port 200 or port 80.
 func (o NetworkAclEgressAclEntryOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEgressAclEntry) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
@@ -976,7 +976,7 @@ type NetworkIpv6CidrBlock struct {
 	// - **ChinaMobile**: China Mobile (single line).
 	// - **ChinaUnicom**: China Unicom (single line).
 	// - **ChinaTelecom**: China Telecom (single line).
-	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+	//   > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
 	Ipv6Isp *string `pulumi:"ipv6Isp"`
 }
 
@@ -999,7 +999,7 @@ type NetworkIpv6CidrBlockArgs struct {
 	// - **ChinaMobile**: China Mobile (single line).
 	// - **ChinaUnicom**: China Unicom (single line).
 	// - **ChinaTelecom**: China Telecom (single line).
-	// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+	//   > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
 	Ipv6Isp pulumi.StringPtrInput `pulumi:"ipv6Isp"`
 }
 
@@ -1060,11 +1060,11 @@ func (o NetworkIpv6CidrBlockOutput) Ipv6CidrBlock() pulumi.StringPtrOutput {
 }
 
 // The IPv6 address segment type of the VPC. Value:
-// - **BGP** (default): Alibaba Cloud BGP IPv6.
-// - **ChinaMobile**: China Mobile (single line).
-// - **ChinaUnicom**: China Unicom (single line).
-// - **ChinaTelecom**: China Telecom (single line).
-// > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+//   - **BGP** (default): Alibaba Cloud BGP IPv6.
+//   - **ChinaMobile**: China Mobile (single line).
+//   - **ChinaUnicom**: China Unicom (single line).
+//   - **ChinaTelecom**: China Telecom (single line).
+//     > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
 func (o NetworkIpv6CidrBlockOutput) Ipv6Isp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkIpv6CidrBlock) *string { return v.Ipv6Isp }).(pulumi.StringPtrOutput)
 }
@@ -1360,12 +1360,12 @@ type TrafficMirrorFilterEgressRuleType struct {
 	// - accept: collects network traffic.
 	// - drop: No network traffic is collected.
 	Action string `pulumi:"action"`
-	// DestinationCidrBlock.
+	// The destination address of the outbound rule network traffic.
 	DestinationCidrBlock *string `pulumi:"destinationCidrBlock"`
 	// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
 	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
 	DestinationPortRange *string `pulumi:"destinationPortRange"`
-	// Priority.
+	// The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
 	Priority *int `pulumi:"priority"`
 	// The type of protocol used by the outbound network traffic to be mirrored. Value:
 	// - ALL: ALL agreements.
@@ -1397,12 +1397,12 @@ type TrafficMirrorFilterEgressRuleTypeArgs struct {
 	// - accept: collects network traffic.
 	// - drop: No network traffic is collected.
 	Action pulumi.StringInput `pulumi:"action"`
-	// DestinationCidrBlock.
+	// The destination address of the outbound rule network traffic.
 	DestinationCidrBlock pulumi.StringPtrInput `pulumi:"destinationCidrBlock"`
 	// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
 	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
 	DestinationPortRange pulumi.StringPtrInput `pulumi:"destinationPortRange"`
-	// Priority.
+	// The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
 	// The type of protocol used by the outbound network traffic to be mirrored. Value:
 	// - ALL: ALL agreements.
@@ -1476,7 +1476,7 @@ func (o TrafficMirrorFilterEgressRuleTypeOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) string { return v.Action }).(pulumi.StringOutput)
 }
 
-// DestinationCidrBlock.
+// The destination address of the outbound rule network traffic.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) DestinationCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *string { return v.DestinationCidrBlock }).(pulumi.StringPtrOutput)
 }
@@ -1487,7 +1487,7 @@ func (o TrafficMirrorFilterEgressRuleTypeOutput) DestinationPortRange() pulumi.S
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *string { return v.DestinationPortRange }).(pulumi.StringPtrOutput)
 }
 
-// Priority.
+// The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
@@ -1541,12 +1541,12 @@ type TrafficMirrorFilterIngressRuleType struct {
 	// - accept: collects network traffic.
 	// - drop: No network traffic is collected.
 	Action string `pulumi:"action"`
-	// DestinationCidrBlock.
+	// The destination address of the outbound rule network traffic.
 	DestinationCidrBlock *string `pulumi:"destinationCidrBlock"`
 	// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
 	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
 	DestinationPortRange *string `pulumi:"destinationPortRange"`
-	// Priority.
+	// The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
 	Priority *int `pulumi:"priority"`
 	// The type of protocol used by the outbound network traffic to be mirrored. Value:
 	// - ALL: ALL agreements.
@@ -1578,12 +1578,12 @@ type TrafficMirrorFilterIngressRuleTypeArgs struct {
 	// - accept: collects network traffic.
 	// - drop: No network traffic is collected.
 	Action pulumi.StringInput `pulumi:"action"`
-	// DestinationCidrBlock.
+	// The destination address of the outbound rule network traffic.
 	DestinationCidrBlock pulumi.StringPtrInput `pulumi:"destinationCidrBlock"`
 	// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
 	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
 	DestinationPortRange pulumi.StringPtrInput `pulumi:"destinationPortRange"`
-	// Priority.
+	// The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
 	// The type of protocol used by the outbound network traffic to be mirrored. Value:
 	// - ALL: ALL agreements.
@@ -1657,7 +1657,7 @@ func (o TrafficMirrorFilterIngressRuleTypeOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) string { return v.Action }).(pulumi.StringOutput)
 }
 
-// DestinationCidrBlock.
+// The destination address of the outbound rule network traffic.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) DestinationCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *string { return v.DestinationCidrBlock }).(pulumi.StringPtrOutput)
 }
@@ -1668,7 +1668,7 @@ func (o TrafficMirrorFilterIngressRuleTypeOutput) DestinationPortRange() pulumi.
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *string { return v.DestinationPortRange }).(pulumi.StringPtrOutput)
 }
 
-// Priority.
+// The priority of the outbound rule. The smaller the number, the higher the priority. The maximum value of N is 10, that is, a maximum of 10 Outbound rules can be configured for a filter condition.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
@@ -5378,7 +5378,7 @@ func (o GetNatIpsIpArrayOutput) Index(i pulumi.IntInput) GetNatIpsIpOutput {
 }
 
 type GetNetworkAclsAcl struct {
-	// Description of the entry direction rule.
+	// Description of network ACL information.
 	Description string `pulumi:"description"`
 	// Output direction rule information.
 	EgressAclEntries []GetNetworkAclsAclEgressAclEntry `pulumi:"egressAclEntries"`
@@ -5410,7 +5410,7 @@ type GetNetworkAclsAclInput interface {
 }
 
 type GetNetworkAclsAclArgs struct {
-	// Description of the entry direction rule.
+	// Description of network ACL information.
 	Description pulumi.StringInput `pulumi:"description"`
 	// Output direction rule information.
 	EgressAclEntries GetNetworkAclsAclEgressAclEntryArrayInput `pulumi:"egressAclEntries"`
@@ -5481,7 +5481,7 @@ func (o GetNetworkAclsAclOutput) ToGetNetworkAclsAclOutputWithContext(ctx contex
 	return o
 }
 
-// Description of the entry direction rule.
+// Description of network ACL information.
 func (o GetNetworkAclsAclOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAclsAcl) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -5547,17 +5547,17 @@ func (o GetNetworkAclsAclArrayOutput) Index(i pulumi.IntInput) GetNetworkAclsAcl
 }
 
 type GetNetworkAclsAclEgressAclEntry struct {
-	// Description of the entry direction rule.
+	// Description of network ACL information.
 	Description string `pulumi:"description"`
 	// The destination address segment.
 	DestinationCidrIp string `pulumi:"destinationCidrIp"`
-	// The name of the entry direction rule entry.
+	// The name of the entry for the direction rule.
 	NetworkAclEntryName string `pulumi:"networkAclEntryName"`
-	// The authorization policy.
+	// The  authorization policy.
 	Policy string `pulumi:"policy"`
-	// Source port range.
+	// Destination port range.
 	Port string `pulumi:"port"`
-	// Transport layer protocol.
+	// Transport  layer protocol.
 	Protocol string `pulumi:"protocol"`
 }
 
@@ -5573,17 +5573,17 @@ type GetNetworkAclsAclEgressAclEntryInput interface {
 }
 
 type GetNetworkAclsAclEgressAclEntryArgs struct {
-	// Description of the entry direction rule.
+	// Description of network ACL information.
 	Description pulumi.StringInput `pulumi:"description"`
 	// The destination address segment.
 	DestinationCidrIp pulumi.StringInput `pulumi:"destinationCidrIp"`
-	// The name of the entry direction rule entry.
+	// The name of the entry for the direction rule.
 	NetworkAclEntryName pulumi.StringInput `pulumi:"networkAclEntryName"`
-	// The authorization policy.
+	// The  authorization policy.
 	Policy pulumi.StringInput `pulumi:"policy"`
-	// Source port range.
+	// Destination port range.
 	Port pulumi.StringInput `pulumi:"port"`
-	// Transport layer protocol.
+	// Transport  layer protocol.
 	Protocol pulumi.StringInput `pulumi:"protocol"`
 }
 
@@ -5638,7 +5638,7 @@ func (o GetNetworkAclsAclEgressAclEntryOutput) ToGetNetworkAclsAclEgressAclEntry
 	return o
 }
 
-// Description of the entry direction rule.
+// Description of network ACL information.
 func (o GetNetworkAclsAclEgressAclEntryOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.Description }).(pulumi.StringOutput)
 }
@@ -5648,22 +5648,22 @@ func (o GetNetworkAclsAclEgressAclEntryOutput) DestinationCidrIp() pulumi.String
 	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.DestinationCidrIp }).(pulumi.StringOutput)
 }
 
-// The name of the entry direction rule entry.
+// The name of the entry for the direction rule.
 func (o GetNetworkAclsAclEgressAclEntryOutput) NetworkAclEntryName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.NetworkAclEntryName }).(pulumi.StringOutput)
 }
 
-// The authorization policy.
+// The  authorization policy.
 func (o GetNetworkAclsAclEgressAclEntryOutput) Policy() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.Policy }).(pulumi.StringOutput)
 }
 
-// Source port range.
+// Destination port range.
 func (o GetNetworkAclsAclEgressAclEntryOutput) Port() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.Port }).(pulumi.StringOutput)
 }
 
-// Transport layer protocol.
+// Transport  layer protocol.
 func (o GetNetworkAclsAclEgressAclEntryOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAclsAclEgressAclEntry) string { return v.Protocol }).(pulumi.StringOutput)
 }
@@ -5835,7 +5835,7 @@ type GetNetworkAclsAclResource struct {
 	ResourceId string `pulumi:"resourceId"`
 	// The type of the associated resource.
 	ResourceType string `pulumi:"resourceType"`
-	// The state of the network ACL.
+	// The state of the associated resource.
 	Status string `pulumi:"status"`
 }
 
@@ -5855,7 +5855,7 @@ type GetNetworkAclsAclResourceArgs struct {
 	ResourceId pulumi.StringInput `pulumi:"resourceId"`
 	// The type of the associated resource.
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
-	// The state of the network ACL.
+	// The state of the associated resource.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -5920,7 +5920,7 @@ func (o GetNetworkAclsAclResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAclsAclResource) string { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-// The state of the network ACL.
+// The state of the associated resource.
 func (o GetNetworkAclsAclResourceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNetworkAclsAclResource) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -6356,25 +6356,17 @@ func (o GetPbrRouteEntriesEntryArrayOutput) Index(i pulumi.IntInput) GetPbrRoute
 }
 
 type GetPeerConnectionsConnection struct {
-	// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
-	AcceptingAliUid int `pulumi:"acceptingAliUid"`
-	// The region ID of the recipient of the VPC peering connection to be created.
+	AcceptingAliUid   int    `pulumi:"acceptingAliUid"`
 	AcceptingRegionId string `pulumi:"acceptingRegionId"`
-	// The VPC ID of the receiving end of the VPC peer connection.
-	AcceptingVpcId string `pulumi:"acceptingVpcId"`
-	// The bandwidth of the VPC peering connection to be modified. Unit: Mbps.
-	Bandwidth int `pulumi:"bandwidth"`
-	// The creation time of the resource.
-	CreateTime string `pulumi:"createTime"`
-	// The description of the VPC peer connection to be created.
-	Description string `pulumi:"description"`
-	// The ID of the PeerConnection.
-	Id string `pulumi:"id"`
-	// The first ID of the resource.
-	PeerConnectionId string `pulumi:"peerConnectionId"`
+	AcceptingVpcId    string `pulumi:"acceptingVpcId"`
+	Bandwidth         int    `pulumi:"bandwidth"`
+	CreateTime        string `pulumi:"createTime"`
+	Description       string `pulumi:"description"`
+	Id                string `pulumi:"id"`
+	PeerConnectionId  string `pulumi:"peerConnectionId"`
 	// The name of the resource.
 	PeerConnectionName string `pulumi:"peerConnectionName"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
 	Status string `pulumi:"status"`
 	// The ID of the requester VPC.
 	VpcId string `pulumi:"vpcId"`
@@ -6392,25 +6384,17 @@ type GetPeerConnectionsConnectionInput interface {
 }
 
 type GetPeerConnectionsConnectionArgs struct {
-	// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
-	AcceptingAliUid pulumi.IntInput `pulumi:"acceptingAliUid"`
-	// The region ID of the recipient of the VPC peering connection to be created.
+	AcceptingAliUid   pulumi.IntInput    `pulumi:"acceptingAliUid"`
 	AcceptingRegionId pulumi.StringInput `pulumi:"acceptingRegionId"`
-	// The VPC ID of the receiving end of the VPC peer connection.
-	AcceptingVpcId pulumi.StringInput `pulumi:"acceptingVpcId"`
-	// The bandwidth of the VPC peering connection to be modified. Unit: Mbps.
-	Bandwidth pulumi.IntInput `pulumi:"bandwidth"`
-	// The creation time of the resource.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// The description of the VPC peer connection to be created.
-	Description pulumi.StringInput `pulumi:"description"`
-	// The ID of the PeerConnection.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The first ID of the resource.
-	PeerConnectionId pulumi.StringInput `pulumi:"peerConnectionId"`
+	AcceptingVpcId    pulumi.StringInput `pulumi:"acceptingVpcId"`
+	Bandwidth         pulumi.IntInput    `pulumi:"bandwidth"`
+	CreateTime        pulumi.StringInput `pulumi:"createTime"`
+	Description       pulumi.StringInput `pulumi:"description"`
+	Id                pulumi.StringInput `pulumi:"id"`
+	PeerConnectionId  pulumi.StringInput `pulumi:"peerConnectionId"`
 	// The name of the resource.
 	PeerConnectionName pulumi.StringInput `pulumi:"peerConnectionName"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// The ID of the requester VPC.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -6467,42 +6451,34 @@ func (o GetPeerConnectionsConnectionOutput) ToGetPeerConnectionsConnectionOutput
 	return o
 }
 
-// The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.
 func (o GetPeerConnectionsConnectionOutput) AcceptingAliUid() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPeerConnectionsConnection) int { return v.AcceptingAliUid }).(pulumi.IntOutput)
 }
 
-// The region ID of the recipient of the VPC peering connection to be created.
 func (o GetPeerConnectionsConnectionOutput) AcceptingRegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.AcceptingRegionId }).(pulumi.StringOutput)
 }
 
-// The VPC ID of the receiving end of the VPC peer connection.
 func (o GetPeerConnectionsConnectionOutput) AcceptingVpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.AcceptingVpcId }).(pulumi.StringOutput)
 }
 
-// The bandwidth of the VPC peering connection to be modified. Unit: Mbps.
 func (o GetPeerConnectionsConnectionOutput) Bandwidth() pulumi.IntOutput {
 	return o.ApplyT(func(v GetPeerConnectionsConnection) int { return v.Bandwidth }).(pulumi.IntOutput)
 }
 
-// The creation time of the resource.
 func (o GetPeerConnectionsConnectionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The description of the VPC peer connection to be created.
 func (o GetPeerConnectionsConnectionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The ID of the PeerConnection.
 func (o GetPeerConnectionsConnectionOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The first ID of the resource.
 func (o GetPeerConnectionsConnectionOutput) PeerConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.PeerConnectionId }).(pulumi.StringOutput)
 }
@@ -6512,7 +6488,7 @@ func (o GetPeerConnectionsConnectionOutput) PeerConnectionName() pulumi.StringOu
 	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.PeerConnectionName }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values: `Accepting`, `Activated`, `Creating`, `Deleted`, `Deleting`, `Expired`, `Rejected`, `Updating`.
 func (o GetPeerConnectionsConnectionOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPeerConnectionsConnection) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -6546,6 +6522,8 @@ type GetPrefixListsList struct {
 	// The time when the prefix list was created.
 	CreateTime string `pulumi:"createTime"`
 	// The CIDR address block list of the prefix list.
+	// * `cidr` - The CIDR address block of the prefix list.
+	// * `description` - The description of the cidr entry.
 	Entrys []GetPrefixListsListEntry `pulumi:"entrys"`
 	// The ID of the Prefix List.
 	Id string `pulumi:"id"`
@@ -6578,6 +6556,8 @@ type GetPrefixListsListArgs struct {
 	// The time when the prefix list was created.
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The CIDR address block list of the prefix list.
+	// * `cidr` - The CIDR address block of the prefix list.
+	// * `description` - The description of the cidr entry.
 	Entrys GetPrefixListsListEntryArrayInput `pulumi:"entrys"`
 	// The ID of the Prefix List.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -6652,6 +6632,8 @@ func (o GetPrefixListsListOutput) CreateTime() pulumi.StringOutput {
 }
 
 // The CIDR address block list of the prefix list.
+// * `cidr` - The CIDR address block of the prefix list.
+// * `description` - The description of the cidr entry.
 func (o GetPrefixListsListOutput) Entrys() GetPrefixListsListEntryArrayOutput {
 	return o.ApplyT(func(v GetPrefixListsList) []GetPrefixListsListEntry { return v.Entrys }).(GetPrefixListsListEntryArrayOutput)
 }
@@ -6712,9 +6694,7 @@ func (o GetPrefixListsListArrayOutput) Index(i pulumi.IntInput) GetPrefixListsLi
 }
 
 type GetPrefixListsListEntry struct {
-	// The CIDR address block of the prefix list.
-	Cidr string `pulumi:"cidr"`
-	// The description of the cidr entry.
+	Cidr        string `pulumi:"cidr"`
 	Description string `pulumi:"description"`
 }
 
@@ -6730,9 +6710,7 @@ type GetPrefixListsListEntryInput interface {
 }
 
 type GetPrefixListsListEntryArgs struct {
-	// The CIDR address block of the prefix list.
-	Cidr pulumi.StringInput `pulumi:"cidr"`
-	// The description of the cidr entry.
+	Cidr        pulumi.StringInput `pulumi:"cidr"`
 	Description pulumi.StringInput `pulumi:"description"`
 }
 
@@ -6787,12 +6765,10 @@ func (o GetPrefixListsListEntryOutput) ToGetPrefixListsListEntryOutputWithContex
 	return o
 }
 
-// The CIDR address block of the prefix list.
 func (o GetPrefixListsListEntryOutput) Cidr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrefixListsListEntry) string { return v.Cidr }).(pulumi.StringOutput)
 }
 
-// The description of the cidr entry.
 func (o GetPrefixListsListEntryOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetPrefixListsListEntry) string { return v.Description }).(pulumi.StringOutput)
 }

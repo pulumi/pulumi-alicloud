@@ -144,7 +144,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Output<string> ReleaseTime { get; private set; } = null!;
 
         /// <summary>
-        /// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        /// (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
         /// </summary>
         [Output("renewPeriod")]
         public Output<int> RenewPeriod { get; private set; } = null!;
@@ -298,7 +298,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<int> Period { get; set; } = null!;
 
         /// <summary>
-        /// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        /// (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }
@@ -426,7 +426,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         public Input<string>? ReleaseTime { get; set; }
 
         /// <summary>
-        /// Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
+        /// (Deprecated since v1.209.1) Automatic renewal period. Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead.
         /// </summary>
         [Input("renewPeriod")]
         public Input<int>? RenewPeriod { get; set; }

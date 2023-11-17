@@ -41,14 +41,14 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * Instance type. Currently, you can only set the capacity reservation service for one instance type.
+     * (ForceNew,Optional) Instance type. Currently, you can only set the capacity reservation service for one instance type.
      * 
      */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
     /**
-     * @return Instance type. Currently, you can only set the capacity reservation service for one instance type.
+     * @return (ForceNew,Optional) Instance type. Currently, you can only set the capacity reservation service for one instance type.
      * 
      */
     public Optional<Output<String>> instanceType() {
@@ -86,14 +86,14 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The payment type of the resource. value range `PostPaid`, `PrePaid`.
+     * (ForceNew,Optional) The payment type of the resource. value range `PostPaid`, `PrePaid`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. value range `PostPaid`, `PrePaid`.
+     * @return (ForceNew,Optional) The payment type of the resource. value range `PostPaid`, `PrePaid`.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -101,14 +101,14 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * platform of the capacity reservation , value range `windows`, `linux`, `all`.
+     * (ForceNew,Optional) platform of the capacity reservation , value range `windows`, `linux`, `all`.
      * 
      */
     @Import(name="platform")
     private @Nullable Output<String> platform;
 
     /**
-     * @return platform of the capacity reservation , value range `windows`, `linux`, `all`.
+     * @return (ForceNew,Optional) platform of the capacity reservation , value range `windows`, `linux`, `all`.
      * 
      */
     public Optional<Output<String>> platform() {
@@ -116,14 +116,14 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The resource group id.
+     * (ForceNew,Optional) The resource group id.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The resource group id.
+     * @return (ForceNew,Optional) The resource group id.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -131,14 +131,14 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
+     * (ForceNew,Optional) The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
+     * @return (ForceNew,Optional) The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -146,14 +146,14 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The tag of the resource.
+     * (ForceNew,Optional) The tag of the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return (ForceNew,Optional) The tag of the resource.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -238,7 +238,7 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param instanceType Instance type. Currently, you can only set the capacity reservation service for one instance type.
+         * @param instanceType (ForceNew,Optional) Instance type. Currently, you can only set the capacity reservation service for one instance type.
          * 
          * @return builder
          * 
@@ -249,7 +249,7 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param instanceType Instance type. Currently, you can only set the capacity reservation service for one instance type.
+         * @param instanceType (ForceNew,Optional) Instance type. Currently, you can only set the capacity reservation service for one instance type.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param paymentType The payment type of the resource. value range `PostPaid`, `PrePaid`.
+         * @param paymentType (ForceNew,Optional) The payment type of the resource. value range `PostPaid`, `PrePaid`.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param paymentType The payment type of the resource. value range `PostPaid`, `PrePaid`.
+         * @param paymentType (ForceNew,Optional) The payment type of the resource. value range `PostPaid`, `PrePaid`.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param platform platform of the capacity reservation , value range `windows`, `linux`, `all`.
+         * @param platform (ForceNew,Optional) platform of the capacity reservation , value range `windows`, `linux`, `all`.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param platform platform of the capacity reservation , value range `windows`, `linux`, `all`.
+         * @param platform (ForceNew,Optional) platform of the capacity reservation , value range `windows`, `linux`, `all`.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param resourceGroupId The resource group id.
+         * @param resourceGroupId (ForceNew,Optional) The resource group id.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param resourceGroupId The resource group id.
+         * @param resourceGroupId (ForceNew,Optional) The resource group id.
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param status The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
+         * @param status (ForceNew,Optional) The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param status The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
+         * @param status (ForceNew,Optional) The status of the capacity reservation. value range `All`, `Pending`, `Preparing`, `Prepared`, `Active`, `Released`.
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags (ForceNew,Optional) The tag of the resource.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class GetCapacityReservationsArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags (ForceNew,Optional) The tag of the resource.
          * 
          * @return builder
          * 

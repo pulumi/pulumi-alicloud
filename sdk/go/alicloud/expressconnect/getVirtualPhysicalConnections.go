@@ -26,7 +26,7 @@ func GetVirtualPhysicalConnections(ctx *pulumi.Context, args *GetVirtualPhysical
 
 // A collection of arguments for invoking getVirtualPhysicalConnections.
 type GetVirtualPhysicalConnectionsArgs struct {
-	// The commercial status of the physical line. Value:
+	// (ForceNew,Optional) The commercial status of the physical line. Value:
 	// - **Normal**: activated.
 	// - **Financialized**: Arrears locked.
 	// - **SecurityLocked**: locked for security reasons.
@@ -38,18 +38,18 @@ type GetVirtualPhysicalConnectionsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The ID of the instance of the physical connection.
+	// (ForceNew,Optional) The ID of the instance of the physical connection.
 	ParentPhysicalConnectionId *string `pulumi:"parentPhysicalConnectionId"`
-	// The ID of the hosted connection. You can specify multiple hosted connection IDs.
+	// (ForceNew,Optional) The ID of the hosted connection. You can specify multiple hosted connection IDs.
 	VirtualPhysicalConnectionIds []string `pulumi:"virtualPhysicalConnectionIds"`
-	// The business status of the shared line. Value:
+	// (ForceNew,Optional) The business status of the shared line. Value:
 	// - **Confirmed**: The shared line has been Confirmed to receive.
 	// - **UnConfirmed**: The shared line has not been confirmed to be received.
 	// - **Deleted**: The shared line has been Deleted.
 	VirtualPhysicalConnectionStatus *string `pulumi:"virtualPhysicalConnectionStatus"`
-	// The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
+	// (ForceNew,Optional) The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
 	VlanIds []int `pulumi:"vlanIds"`
-	// The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+	// (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
 	VpconnAliUid *string `pulumi:"vpconnAliUid"`
 }
 
@@ -93,7 +93,7 @@ func GetVirtualPhysicalConnectionsOutput(ctx *pulumi.Context, args GetVirtualPhy
 
 // A collection of arguments for invoking getVirtualPhysicalConnections.
 type GetVirtualPhysicalConnectionsOutputArgs struct {
-	// The commercial status of the physical line. Value:
+	// (ForceNew,Optional) The commercial status of the physical line. Value:
 	// - **Normal**: activated.
 	// - **Financialized**: Arrears locked.
 	// - **SecurityLocked**: locked for security reasons.
@@ -105,18 +105,18 @@ type GetVirtualPhysicalConnectionsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The ID of the instance of the physical connection.
+	// (ForceNew,Optional) The ID of the instance of the physical connection.
 	ParentPhysicalConnectionId pulumi.StringPtrInput `pulumi:"parentPhysicalConnectionId"`
-	// The ID of the hosted connection. You can specify multiple hosted connection IDs.
+	// (ForceNew,Optional) The ID of the hosted connection. You can specify multiple hosted connection IDs.
 	VirtualPhysicalConnectionIds pulumi.StringArrayInput `pulumi:"virtualPhysicalConnectionIds"`
-	// The business status of the shared line. Value:
+	// (ForceNew,Optional) The business status of the shared line. Value:
 	// - **Confirmed**: The shared line has been Confirmed to receive.
 	// - **UnConfirmed**: The shared line has not been confirmed to be received.
 	// - **Deleted**: The shared line has been Deleted.
 	VirtualPhysicalConnectionStatus pulumi.StringPtrInput `pulumi:"virtualPhysicalConnectionStatus"`
-	// The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
+	// (ForceNew,Optional) The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
 	VlanIds pulumi.IntArrayInput `pulumi:"vlanIds"`
-	// The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+	// (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
 	VpconnAliUid pulumi.StringPtrInput `pulumi:"vpconnAliUid"`
 }
 

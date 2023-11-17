@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// The ID of the traffic scheduling policy.
+        /// (ForceNew,Required) The ID of the traffic scheduling policy.
         /// </summary>
         public readonly string TrafficQosPolicyId;
 

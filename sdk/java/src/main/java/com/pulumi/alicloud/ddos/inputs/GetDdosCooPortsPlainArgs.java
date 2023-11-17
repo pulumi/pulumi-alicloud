@@ -31,14 +31,14 @@ public final class GetDdosCooPortsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The forwarding protocol.
+     * The forwarding protocol. Valid values `tcp` and `udp`.
      * 
      */
     @Import(name="frontendProtocol")
     private @Nullable String frontendProtocol;
 
     /**
-     * @return The forwarding protocol.
+     * @return The forwarding protocol. Valid values `tcp` and `udp`.
      * 
      */
     public Optional<String> frontendProtocol() {
@@ -130,7 +130,7 @@ public final class GetDdosCooPortsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param frontendProtocol The forwarding protocol.
+         * @param frontendProtocol The forwarding protocol. Valid values `tcp` and `udp`.
          * 
          * @return builder
          * 

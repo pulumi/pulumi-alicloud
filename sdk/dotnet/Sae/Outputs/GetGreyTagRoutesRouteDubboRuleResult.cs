@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
     public sealed class GetGreyTagRoutesRouteDubboRuleResult
     {
         /// <summary>
-        /// The Conditional Patterns for Grayscale Rules.
+        /// The conditional Patterns for Grayscale Rules.
         /// </summary>
         public readonly string Condition;
         /// <summary>

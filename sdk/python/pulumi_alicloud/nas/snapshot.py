@@ -23,7 +23,6 @@ class SnapshotArgs:
         :param pulumi.Input[str] file_system_id: The ID of the file system.
         :param pulumi.Input[str] description: The description of the snapshot. It must be `2` to `256` characters in length and cannot start with `https://` or `https://`.
         :param pulumi.Input[int] retention_days: The retention period of the snapshot. Unit: days. Valid values:
-               * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         :param pulumi.Input[str] snapshot_name: SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
         """
         pulumi.set(__self__, "file_system_id", file_system_id)
@@ -63,7 +62,6 @@ class SnapshotArgs:
     def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
         The retention period of the snapshot. Unit: days. Valid values:
-        * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         """
         return pulumi.get(self, "retention_days")
 
@@ -97,7 +95,6 @@ class _SnapshotState:
         :param pulumi.Input[str] description: The description of the snapshot. It must be `2` to `256` characters in length and cannot start with `https://` or `https://`.
         :param pulumi.Input[str] file_system_id: The ID of the file system.
         :param pulumi.Input[int] retention_days: The retention period of the snapshot. Unit: days. Valid values:
-               * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         :param pulumi.Input[str] snapshot_name: SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
         :param pulumi.Input[str] status: The status of the snapshot.
         """
@@ -141,7 +138,6 @@ class _SnapshotState:
     def retention_days(self) -> Optional[pulumi.Input[int]]:
         """
         The retention period of the snapshot. Unit: days. Valid values:
-        * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         """
         return pulumi.get(self, "retention_days")
 
@@ -233,7 +229,6 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the snapshot. It must be `2` to `256` characters in length and cannot start with `https://` or `https://`.
         :param pulumi.Input[str] file_system_id: The ID of the file system.
         :param pulumi.Input[int] retention_days: The retention period of the snapshot. Unit: days. Valid values:
-               * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         :param pulumi.Input[str] snapshot_name: SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
         """
         ...
@@ -346,7 +341,6 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the snapshot. It must be `2` to `256` characters in length and cannot start with `https://` or `https://`.
         :param pulumi.Input[str] file_system_id: The ID of the file system.
         :param pulumi.Input[int] retention_days: The retention period of the snapshot. Unit: days. Valid values:
-               * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         :param pulumi.Input[str] snapshot_name: SnapshotName. It must be `2` to `128` characters in length and must start with a letter, but cannot start with `https://` or `https://`.
         :param pulumi.Input[str] status: The status of the snapshot.
         """
@@ -382,7 +376,6 @@ class Snapshot(pulumi.CustomResource):
     def retention_days(self) -> pulumi.Output[Optional[int]]:
         """
         The retention period of the snapshot. Unit: days. Valid values:
-        * `-1`: The default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
         """
         return pulumi.get(self, "retention_days")
 

@@ -68,7 +68,7 @@ type GetNetworkAclsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the associated resource.
 	ResourceId *string `pulumi:"resourceId"`
-	// The type of the associated resource.
+	// The type of the associated resource. Valid values `VSwitch`. `resourceType` and `resourceId` need to be specified at the same time to take effect.
 	ResourceType *string `pulumi:"resourceType"`
 	// The state of the network ACL.
 	Status *string `pulumi:"status"`
@@ -117,7 +117,7 @@ type GetNetworkAclsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the associated resource.
 	ResourceId pulumi.StringPtrInput `pulumi:"resourceId"`
-	// The type of the associated resource.
+	// The type of the associated resource. Valid values `VSwitch`. `resourceType` and `resourceId` need to be specified at the same time to take effect.
 	ResourceType pulumi.StringPtrInput `pulumi:"resourceType"`
 	// The state of the network ACL.
 	Status pulumi.StringPtrInput `pulumi:"status"`

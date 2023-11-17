@@ -88,7 +88,7 @@ namespace Pulumi.AliCloud.MarketPlace
     public sealed class GetProductArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A available region id used to filter market place Ecs images.
+        /// (Available in 1.71.1+) A available region id used to filter market place Ecs images.
         /// </summary>
         [Input("availableRegion")]
         public string? AvailableRegion { get; set; }
@@ -108,7 +108,7 @@ namespace Pulumi.AliCloud.MarketPlace
     public sealed class GetProductInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// A available region id used to filter market place Ecs images.
+        /// (Available in 1.71.1+) A available region id used to filter market place Ecs images.
         /// </summary>
         [Input("availableRegion")]
         public Input<string>? AvailableRegion { get; set; }

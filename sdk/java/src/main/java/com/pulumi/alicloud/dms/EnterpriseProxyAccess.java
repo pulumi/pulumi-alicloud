@@ -103,28 +103,28 @@ public class EnterpriseProxyAccess extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Database account.
+     * (ForceNew,Optional) Database account.
      * 
      */
     @Export(name="indepAccount", type=String.class, parameters={})
     private Output</* @Nullable */ String> indepAccount;
 
     /**
-     * @return Database account.
+     * @return (ForceNew,Optional) Database account.
      * 
      */
     public Output<Optional<String>> indepAccount() {
         return Codegen.optional(this.indepAccount);
     }
     /**
-     * Database password.
+     * (ForceNew,Optional) Database password.
      * 
      */
     @Export(name="indepPassword", type=String.class, parameters={})
     private Output</* @Nullable */ String> indepPassword;
 
     /**
-     * @return Database password.
+     * @return (ForceNew,Optional) Database password.
      * 
      */
     public Output<Optional<String>> indepPassword() {

@@ -42,18 +42,18 @@ class OssShipperArgs:
         :param pulumi.Input[str] format: Storage format, only supports three types: `json`, `parquet`, `csv`.
                **According to the different format, please select the following parameters**
                - format = `json`
-               `json_enable_tag` - (Optional) Whether to deliver the label.
+                 `json_enable_tag` - (Optional) Whether to deliver the label.
                - format = `csv`
-               `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-               `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-               `csv_config_nullidentifier` - (Optional) Invalid field content.
-               `csv_config_quote` - (Optional) Escape character under csv configuration.
-               `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-               `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
+                 `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
+                 `csv_config_columns` - (Optional) Field configuration in csv configuration format.
+                 `csv_config_nullidentifier` - (Optional) Invalid field content.
+                 `csv_config_quote` - (Optional) Escape character under csv configuration.
+                 `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
+                 `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
                - format = `parquet`
-               `parquet_config` - (Optional) Configure to use parquet storage format.
-               `name` - (Required) The name of the key.
-               `type` - (Required) Type of configuration name.
+                 `parquet_config` - (Optional) Configure to use parquet storage format.
+                 `name` - (Required) The name of the key.
+                 `type` - (Required) Type of configuration name.
         :param pulumi.Input[str] logstore_name: The name of the log logstore.
         :param pulumi.Input[str] oss_bucket: The name of the oss bucket.
         :param pulumi.Input[str] path_format: The OSS Bucket directory is dynamically generated according to the creation time of the shipper task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
@@ -125,18 +125,18 @@ class OssShipperArgs:
         Storage format, only supports three types: `json`, `parquet`, `csv`.
         **According to the different format, please select the following parameters**
         - format = `json`
-        `json_enable_tag` - (Optional) Whether to deliver the label.
+          `json_enable_tag` - (Optional) Whether to deliver the label.
         - format = `csv`
-        `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-        `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-        `csv_config_nullidentifier` - (Optional) Invalid field content.
-        `csv_config_quote` - (Optional) Escape character under csv configuration.
-        `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-        `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
+          `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
+          `csv_config_columns` - (Optional) Field configuration in csv configuration format.
+          `csv_config_nullidentifier` - (Optional) Invalid field content.
+          `csv_config_quote` - (Optional) Escape character under csv configuration.
+          `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
+          `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
         - format = `parquet`
-        `parquet_config` - (Optional) Configure to use parquet storage format.
-        `name` - (Required) The name of the key.
-        `type` - (Required) Type of configuration name.
+          `parquet_config` - (Optional) Configure to use parquet storage format.
+          `name` - (Required) The name of the key.
+          `type` - (Required) Type of configuration name.
         """
         return pulumi.get(self, "format")
 
@@ -343,18 +343,18 @@ class _OssShipperState:
         :param pulumi.Input[str] format: Storage format, only supports three types: `json`, `parquet`, `csv`.
                **According to the different format, please select the following parameters**
                - format = `json`
-               `json_enable_tag` - (Optional) Whether to deliver the label.
+                 `json_enable_tag` - (Optional) Whether to deliver the label.
                - format = `csv`
-               `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-               `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-               `csv_config_nullidentifier` - (Optional) Invalid field content.
-               `csv_config_quote` - (Optional) Escape character under csv configuration.
-               `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-               `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
+                 `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
+                 `csv_config_columns` - (Optional) Field configuration in csv configuration format.
+                 `csv_config_nullidentifier` - (Optional) Invalid field content.
+                 `csv_config_quote` - (Optional) Escape character under csv configuration.
+                 `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
+                 `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
                - format = `parquet`
-               `parquet_config` - (Optional) Configure to use parquet storage format.
-               `name` - (Required) The name of the key.
-               `type` - (Required) Type of configuration name.
+                 `parquet_config` - (Optional) Configure to use parquet storage format.
+                 `name` - (Required) The name of the key.
+                 `type` - (Required) Type of configuration name.
         :param pulumi.Input[str] logstore_name: The name of the log logstore.
         :param pulumi.Input[str] oss_bucket: The name of the oss bucket.
         :param pulumi.Input[str] oss_prefix: The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
@@ -499,18 +499,18 @@ class _OssShipperState:
         Storage format, only supports three types: `json`, `parquet`, `csv`.
         **According to the different format, please select the following parameters**
         - format = `json`
-        `json_enable_tag` - (Optional) Whether to deliver the label.
+          `json_enable_tag` - (Optional) Whether to deliver the label.
         - format = `csv`
-        `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-        `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-        `csv_config_nullidentifier` - (Optional) Invalid field content.
-        `csv_config_quote` - (Optional) Escape character under csv configuration.
-        `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-        `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
+          `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
+          `csv_config_columns` - (Optional) Field configuration in csv configuration format.
+          `csv_config_nullidentifier` - (Optional) Invalid field content.
+          `csv_config_quote` - (Optional) Escape character under csv configuration.
+          `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
+          `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
         - format = `parquet`
-        `parquet_config` - (Optional) Configure to use parquet storage format.
-        `name` - (Required) The name of the key.
-        `type` - (Required) Type of configuration name.
+          `parquet_config` - (Optional) Configure to use parquet storage format.
+          `name` - (Required) The name of the key.
+          `type` - (Required) Type of configuration name.
         """
         return pulumi.get(self, "format")
 
@@ -706,18 +706,18 @@ class OssShipper(pulumi.CustomResource):
         :param pulumi.Input[str] format: Storage format, only supports three types: `json`, `parquet`, `csv`.
                **According to the different format, please select the following parameters**
                - format = `json`
-               `json_enable_tag` - (Optional) Whether to deliver the label.
+                 `json_enable_tag` - (Optional) Whether to deliver the label.
                - format = `csv`
-               `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-               `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-               `csv_config_nullidentifier` - (Optional) Invalid field content.
-               `csv_config_quote` - (Optional) Escape character under csv configuration.
-               `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-               `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
+                 `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
+                 `csv_config_columns` - (Optional) Field configuration in csv configuration format.
+                 `csv_config_nullidentifier` - (Optional) Invalid field content.
+                 `csv_config_quote` - (Optional) Escape character under csv configuration.
+                 `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
+                 `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
                - format = `parquet`
-               `parquet_config` - (Optional) Configure to use parquet storage format.
-               `name` - (Required) The name of the key.
-               `type` - (Required) Type of configuration name.
+                 `parquet_config` - (Optional) Configure to use parquet storage format.
+                 `name` - (Required) The name of the key.
+                 `type` - (Required) Type of configuration name.
         :param pulumi.Input[str] logstore_name: The name of the log logstore.
         :param pulumi.Input[str] oss_bucket: The name of the oss bucket.
         :param pulumi.Input[str] oss_prefix: The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
@@ -904,18 +904,18 @@ class OssShipper(pulumi.CustomResource):
         :param pulumi.Input[str] format: Storage format, only supports three types: `json`, `parquet`, `csv`.
                **According to the different format, please select the following parameters**
                - format = `json`
-               `json_enable_tag` - (Optional) Whether to deliver the label.
+                 `json_enable_tag` - (Optional) Whether to deliver the label.
                - format = `csv`
-               `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-               `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-               `csv_config_nullidentifier` - (Optional) Invalid field content.
-               `csv_config_quote` - (Optional) Escape character under csv configuration.
-               `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-               `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
+                 `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
+                 `csv_config_columns` - (Optional) Field configuration in csv configuration format.
+                 `csv_config_nullidentifier` - (Optional) Invalid field content.
+                 `csv_config_quote` - (Optional) Escape character under csv configuration.
+                 `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
+                 `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
                - format = `parquet`
-               `parquet_config` - (Optional) Configure to use parquet storage format.
-               `name` - (Required) The name of the key.
-               `type` - (Required) Type of configuration name.
+                 `parquet_config` - (Optional) Configure to use parquet storage format.
+                 `name` - (Required) The name of the key.
+                 `type` - (Required) Type of configuration name.
         :param pulumi.Input[str] logstore_name: The name of the log logstore.
         :param pulumi.Input[str] oss_bucket: The name of the oss bucket.
         :param pulumi.Input[str] oss_prefix: The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
@@ -1010,18 +1010,18 @@ class OssShipper(pulumi.CustomResource):
         Storage format, only supports three types: `json`, `parquet`, `csv`.
         **According to the different format, please select the following parameters**
         - format = `json`
-        `json_enable_tag` - (Optional) Whether to deliver the label.
+          `json_enable_tag` - (Optional) Whether to deliver the label.
         - format = `csv`
-        `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
-        `csv_config_columns` - (Optional) Field configuration in csv configuration format.
-        `csv_config_nullidentifier` - (Optional) Invalid field content.
-        `csv_config_quote` - (Optional) Escape character under csv configuration.
-        `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
-        `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
+          `csv_config_delimiter` - (Optional) Separator configuration in csv configuration format.
+          `csv_config_columns` - (Optional) Field configuration in csv configuration format.
+          `csv_config_nullidentifier` - (Optional) Invalid field content.
+          `csv_config_quote` - (Optional) Escape character under csv configuration.
+          `csv_config_header` - (Optional) Indicates whether to write the field name to the CSV file, the default value is `false`.
+          `csv_config_linefeed` - (Optional) lineFeed in csv configuration.
         - format = `parquet`
-        `parquet_config` - (Optional) Configure to use parquet storage format.
-        `name` - (Required) The name of the key.
-        `type` - (Required) Type of configuration name.
+          `parquet_config` - (Optional) Configure to use parquet storage format.
+          `name` - (Required) The name of the key.
+          `type` - (Required) Type of configuration name.
         """
         return pulumi.get(self, "format")
 

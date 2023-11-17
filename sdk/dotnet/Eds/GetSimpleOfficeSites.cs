@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Eds
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+        /// Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -158,7 +158,7 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Workspace State. Possible Values: Registering: Registered in the Registered: Registered.
+        /// Workspace State. Valid values: `REGISTERED`,`REGISTERING`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

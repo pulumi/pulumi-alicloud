@@ -191,21 +191,21 @@ def get_virtual_physical_connections(business_status: Optional[str] = None,
     > **NOTE:** Available in 1.196.0+
 
 
-    :param str business_status: The commercial status of the physical line. Value:
+    :param str business_status: (ForceNew,Optional) The commercial status of the physical line. Value:
            - **Normal**: activated.
            - **Financialized**: Arrears locked.
            - **SecurityLocked**: locked for security reasons.
     :param Sequence[str] ids: A list of Virtual Physical Connection IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str parent_physical_connection_id: The ID of the instance of the physical connection.
-    :param Sequence[str] virtual_physical_connection_ids: The ID of the hosted connection. You can specify multiple hosted connection IDs.
-    :param str virtual_physical_connection_status: The business status of the shared line. Value:
+    :param str parent_physical_connection_id: (ForceNew,Optional) The ID of the instance of the physical connection.
+    :param Sequence[str] virtual_physical_connection_ids: (ForceNew,Optional) The ID of the hosted connection. You can specify multiple hosted connection IDs.
+    :param str virtual_physical_connection_status: (ForceNew,Optional) The business status of the shared line. Value:
            - **Confirmed**: The shared line has been Confirmed to receive.
            - **UnConfirmed**: The shared line has not been confirmed to be received.
            - **Deleted**: The shared line has been Deleted.
-    :param Sequence[int] vlan_ids: The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
-    :param str vpconn_ali_uid: The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+    :param Sequence[int] vlan_ids: (ForceNew,Optional) The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
+    :param str vpconn_ali_uid: (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
     """
     __args__ = dict()
     __args__['businessStatus'] = business_status
@@ -255,20 +255,20 @@ def get_virtual_physical_connections_output(business_status: Optional[pulumi.Inp
     > **NOTE:** Available in 1.196.0+
 
 
-    :param str business_status: The commercial status of the physical line. Value:
+    :param str business_status: (ForceNew,Optional) The commercial status of the physical line. Value:
            - **Normal**: activated.
            - **Financialized**: Arrears locked.
            - **SecurityLocked**: locked for security reasons.
     :param Sequence[str] ids: A list of Virtual Physical Connection IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str parent_physical_connection_id: The ID of the instance of the physical connection.
-    :param Sequence[str] virtual_physical_connection_ids: The ID of the hosted connection. You can specify multiple hosted connection IDs.
-    :param str virtual_physical_connection_status: The business status of the shared line. Value:
+    :param str parent_physical_connection_id: (ForceNew,Optional) The ID of the instance of the physical connection.
+    :param Sequence[str] virtual_physical_connection_ids: (ForceNew,Optional) The ID of the hosted connection. You can specify multiple hosted connection IDs.
+    :param str virtual_physical_connection_status: (ForceNew,Optional) The business status of the shared line. Value:
            - **Confirmed**: The shared line has been Confirmed to receive.
            - **UnConfirmed**: The shared line has not been confirmed to be received.
            - **Deleted**: The shared line has been Deleted.
-    :param Sequence[int] vlan_ids: The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
-    :param str vpconn_ali_uid: The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
+    :param Sequence[int] vlan_ids: (ForceNew,Optional) The VLAN ID of the hosted connection. You can specify multiple VLAN IDs.
+    :param str vpconn_ali_uid: (ForceNew,Optional) The ID of the Alibaba Cloud account (primary account) of the owner of the shared line.
     """
     ...

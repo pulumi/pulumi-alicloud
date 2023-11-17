@@ -46,11 +46,11 @@ class NetworkArgs:
                - **ChinaMobile**: China Mobile (single line).
                - **ChinaUnicom**: China Unicom (single line).
                - **ChinaTelecom**: China Telecom (single line).
-               > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
-        :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+                 > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        :param pulumi.Input[str] name: (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the VPC belongs.
         :param pulumi.Input[str] route_table_id: The route table ID of the router created by default on VPC creation.
-        :param pulumi.Input[str] router_table_id: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        :param pulumi.Input[str] router_table_id: (Deprecated from v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of Vpc.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: A list of user CIDRs.
@@ -169,7 +169,7 @@ class NetworkArgs:
         - **ChinaMobile**: China Mobile (single line).
         - **ChinaUnicom**: China Unicom (single line).
         - **ChinaTelecom**: China Telecom (single line).
-        > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+          > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
         """
         return pulumi.get(self, "ipv6_isp")
 
@@ -181,7 +181,7 @@ class NetworkArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+        (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.""")
@@ -220,7 +220,7 @@ class NetworkArgs:
     @pulumi.getter(name="routerTableId")
     def router_table_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        (Deprecated from v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         """
         warnings.warn("""Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""router_table_id is deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""")
@@ -326,12 +326,12 @@ class _NetworkState:
                - **ChinaMobile**: China Mobile (single line).
                - **ChinaUnicom**: China Unicom (single line).
                - **ChinaTelecom**: China Telecom (single line).
-               > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
-        :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+                 > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        :param pulumi.Input[str] name: (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the VPC belongs.
         :param pulumi.Input[str] route_table_id: The route table ID of the router created by default on VPC creation.
         :param pulumi.Input[str] router_id: The ID of the router created by default on VPC creation.
-        :param pulumi.Input[str] router_table_id: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        :param pulumi.Input[str] router_table_id: (Deprecated from v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         :param pulumi.Input[str] status: The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of Vpc.
@@ -497,7 +497,7 @@ class _NetworkState:
         - **ChinaMobile**: China Mobile (single line).
         - **ChinaUnicom**: China Unicom (single line).
         - **ChinaTelecom**: China Telecom (single line).
-        > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+          > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
         """
         return pulumi.get(self, "ipv6_isp")
 
@@ -509,7 +509,7 @@ class _NetworkState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+        (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.""")
@@ -560,7 +560,7 @@ class _NetworkState:
     @pulumi.getter(name="routerTableId")
     def router_table_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        (Deprecated from v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         """
         warnings.warn("""Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""router_table_id is deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""")
@@ -715,11 +715,11 @@ class Network(pulumi.CustomResource):
                - **ChinaMobile**: China Mobile (single line).
                - **ChinaUnicom**: China Unicom (single line).
                - **ChinaTelecom**: China Telecom (single line).
-               > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
-        :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+                 > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        :param pulumi.Input[str] name: (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the VPC belongs.
         :param pulumi.Input[str] route_table_id: The route table ID of the router created by default on VPC creation.
-        :param pulumi.Input[str] router_table_id: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        :param pulumi.Input[str] router_table_id: (Deprecated from v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of Vpc.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] user_cidrs: A list of user CIDRs.
@@ -885,12 +885,12 @@ class Network(pulumi.CustomResource):
                - **ChinaMobile**: China Mobile (single line).
                - **ChinaUnicom**: China Unicom (single line).
                - **ChinaTelecom**: China Telecom (single line).
-               > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
-        :param pulumi.Input[str] name: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+                 > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+        :param pulumi.Input[str] name: (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group to which the VPC belongs.
         :param pulumi.Input[str] route_table_id: The route table ID of the router created by default on VPC creation.
         :param pulumi.Input[str] router_id: The ID of the router created by default on VPC creation.
-        :param pulumi.Input[str] router_table_id: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        :param pulumi.Input[str] router_table_id: (Deprecated from v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] secondary_cidr_blocks: Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `vpc.Ipv4CidrBlock` resource cannot be used at the same time.
         :param pulumi.Input[str] status: The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
         :param pulumi.Input[Mapping[str, Any]] tags: The tags of Vpc.
@@ -1001,7 +1001,7 @@ class Network(pulumi.CustomResource):
         - **ChinaMobile**: China Mobile (single line).
         - **ChinaUnicom**: China Unicom (single line).
         - **ChinaTelecom**: China Telecom (single line).
-        > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
+          > **NOTE:**  If a single-line bandwidth whitelist is enabled, this field can be set to **ChinaTelecom** (China Telecom), **ChinaUnicom** (China Unicom), or **ChinaMobile** (China Mobile).
         """
         return pulumi.get(self, "ipv6_isp")
 
@@ -1009,7 +1009,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+        (Deprecated from v1.119.0+) Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.""")
@@ -1044,7 +1044,7 @@ class Network(pulumi.CustomResource):
     @pulumi.getter(name="routerTableId")
     def router_table_id(self) -> pulumi.Output[str]:
         """
-        Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        (Deprecated from v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         """
         warnings.warn("""Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""", DeprecationWarning)
         pulumi.log.warn("""router_table_id is deprecated: Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.""")

@@ -248,7 +248,7 @@ type Listener struct {
 	ServerCertificateId pulumi.StringOutput `pulumi:"serverCertificateId"`
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId pulumi.StringPtrOutput `pulumi:"serverGroupId"`
-	// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+	// (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
 	//
 	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId pulumi.StringOutput `pulumi:"sslCertificateId"`
@@ -384,7 +384,7 @@ type listenerState struct {
 	ServerCertificateId *string `pulumi:"serverCertificateId"`
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId *string `pulumi:"serverGroupId"`
-	// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+	// (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
 	//
 	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId *string `pulumi:"sslCertificateId"`
@@ -482,7 +482,7 @@ type ListenerState struct {
 	ServerCertificateId pulumi.StringPtrInput
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId pulumi.StringPtrInput
-	// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+	// (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
 	//
 	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId pulumi.StringPtrInput
@@ -584,7 +584,7 @@ type listenerArgs struct {
 	ServerCertificateId *string `pulumi:"serverCertificateId"`
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId *string `pulumi:"serverGroupId"`
-	// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+	// (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
 	//
 	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId *string `pulumi:"sslCertificateId"`
@@ -683,7 +683,7 @@ type ListenerArgs struct {
 	ServerCertificateId pulumi.StringPtrInput
 	// the id of server group to be apply on the listener, is the id of resource `slb.ServerGroup`.
 	ServerGroupId pulumi.StringPtrInput
-	// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+	// (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
 	//
 	// Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 	SslCertificateId pulumi.StringPtrInput
@@ -981,7 +981,7 @@ func (o ListenerOutput) ServerGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listener) pulumi.StringPtrOutput { return v.ServerGroupId }).(pulumi.StringPtrOutput)
 }
 
-// SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
+// (Deprecated) SLB Server certificate ID. It has been deprecated from 1.59.0 and using `serverCertificateId` instead.
 //
 // Deprecated: Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
 func (o ListenerOutput) SslCertificateId() pulumi.StringOutput {

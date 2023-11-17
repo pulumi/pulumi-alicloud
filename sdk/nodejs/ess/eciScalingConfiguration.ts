@@ -216,9 +216,9 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
     /**
      * A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
-     * be a null string.
+     *   be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
-     * a null string.
+     *   a null string.
      */
     public readonly tags!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
@@ -426,9 +426,9 @@ export interface EciScalingConfigurationState {
     /**
      * A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
-     * be a null string.
+     *   be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
-     * a null string.
+     *   a null string.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
@@ -557,9 +557,9 @@ export interface EciScalingConfigurationArgs {
     /**
      * A mapping of tags to assign to the resource. It will be applied for ECI instances finally.
      * - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "http://", or "https://". It cannot
-     * be a null string.
+     *   be a null string.
      * - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "http://", or "https://" It can be
-     * a null string.
+     *   a null string.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

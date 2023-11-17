@@ -39,8 +39,8 @@ class NetworkInterfaceArgs:
         :param pulumi.Input[str] private_ip: The primary private IP of the ENI.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
         :param pulumi.Input[int] private_ips_count: Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the network interface belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
+        :param pulumi.Input[str] resource_group_id: (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: (Require) A list of security group ids to associate with.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         pulumi.set(__self__, "vswitch_id", vswitch_id)
@@ -234,7 +234,7 @@ class NetworkInterfaceArgs:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of resource group which the network interface belongs.
+        (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -264,7 +264,7 @@ class NetworkInterfaceArgs:
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of security group ids to associate with.
+        (Require) A list of security group ids to associate with.
         """
         warnings.warn("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""", DeprecationWarning)
         pulumi.log.warn("""security_groups is deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
@@ -318,8 +318,8 @@ class _NetworkInterfaceState:
         :param pulumi.Input[str] private_ip: The primary private IP of the ENI.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
         :param pulumi.Input[int] private_ips_count: Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the network interface belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
+        :param pulumi.Input[str] resource_group_id: (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: (Require) A list of security group ids to associate with.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The VSwitch to create the ENI in.
         """
@@ -519,7 +519,7 @@ class _NetworkInterfaceState:
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Id of resource group which the network interface belongs.
+        (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -549,7 +549,7 @@ class _NetworkInterfaceState:
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        A list of security group ids to associate with.
+        (Require) A list of security group ids to associate with.
         """
         warnings.warn("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""", DeprecationWarning)
         pulumi.log.warn("""security_groups is deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")
@@ -668,8 +668,8 @@ class NetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[str] private_ip: The primary private IP of the ENI.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
         :param pulumi.Input[int] private_ips_count: Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the network interface belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
+        :param pulumi.Input[str] resource_group_id: (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: (Require) A list of security group ids to associate with.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The VSwitch to create the ENI in.
         """
@@ -827,8 +827,8 @@ class NetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[str] private_ip: The primary private IP of the ENI.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ips: List of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
         :param pulumi.Input[int] private_ips_count: Number of secondary private IPs to assign to the ENI. Don't use both private_ips and private_ips_count in the same ENI resource block.
-        :param pulumi.Input[str] resource_group_id: The Id of resource group which the network interface belongs.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: A list of security group ids to associate with.
+        :param pulumi.Input[str] resource_group_id: (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_groups: (Require) A list of security group ids to associate with.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] vswitch_id: The VSwitch to create the ENI in.
         """
@@ -951,7 +951,7 @@ class NetworkInterface(pulumi.CustomResource):
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The Id of resource group which the network interface belongs.
+        (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
         """
         return pulumi.get(self, "resource_group_id")
 
@@ -969,7 +969,7 @@ class NetworkInterface(pulumi.CustomResource):
     @pulumi.getter(name="securityGroups")
     def security_groups(self) -> pulumi.Output[Sequence[str]]:
         """
-        A list of security group ids to associate with.
+        (Require) A list of security group ids to associate with.
         """
         warnings.warn("""Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""", DeprecationWarning)
         pulumi.log.warn("""security_groups is deprecated: Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead""")

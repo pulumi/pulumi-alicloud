@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetRulesRuleRuleConditionCookieConfig {
     /**
-     * @return Add one or more IP addresses or IP address segments.
+     * @return The configuration of the cookie.
      * 
      */
     private List<GetRulesRuleRuleConditionCookieConfigValue> values;
 
     private GetRulesRuleRuleConditionCookieConfig() {}
     /**
-     * @return Add one or more IP addresses or IP address segments.
+     * @return The configuration of the cookie.
      * 
      */
     public List<GetRulesRuleRuleConditionCookieConfigValue> values() {

@@ -37,7 +37,7 @@ type GetZonesArgs struct {
 	EngineVersion *string `pulumi:"engineVersion"`
 	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
-	// It has been deprecated from version 1.137.0 and using `multiZone` instead.
+	// (Deprecated) It has been deprecated from version 1.137.0 and using `multiZone` instead.
 	Multi *bool `pulumi:"multi"`
 	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
 	MultiZone *bool `pulumi:"multiZone"`
@@ -90,7 +90,7 @@ type GetZonesOutputArgs struct {
 	EngineVersion pulumi.StringPtrInput `pulumi:"engineVersion"`
 	// Filter the results by a specific instance charge type. Valid values: `PrePaid` and `PostPaid` and `Serverless`. Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
-	// It has been deprecated from version 1.137.0 and using `multiZone` instead.
+	// (Deprecated) It has been deprecated from version 1.137.0 and using `multiZone` instead.
 	Multi pulumi.BoolPtrInput `pulumi:"multi"`
 	// Indicate whether the zones can be used in a multi AZ configuration. Default to `false`. Multi AZ is usually used to launch RDS instances.
 	MultiZone pulumi.BoolPtrInput `pulumi:"multiZone"`

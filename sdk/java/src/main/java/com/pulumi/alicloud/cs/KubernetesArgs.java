@@ -965,7 +965,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+     * (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
      * 
      * @deprecated
      * Field &#39;worker_auto_renew_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;auto_renew_period&#39; to replace it
@@ -976,7 +976,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> workerAutoRenewPeriod;
 
     /**
-     * @return Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+     * @return (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
      * 
      * @deprecated
      * Field &#39;worker_auto_renew_period&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;auto_renew_period&#39; to replace it
@@ -988,7 +988,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The data disk category of worker, use `worker_data_disks` to instead it.
+     * (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
      * 
      * @deprecated
      * Field &#39;worker_data_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks.category&#39; to replace it
@@ -999,7 +999,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> workerDataDiskCategory;
 
     /**
-     * @return The data disk category of worker, use `worker_data_disks` to instead it.
+     * @return (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
      * 
      * @deprecated
      * Field &#39;worker_data_disk_category&#39; has been deprecated from provider version 1.177.0. Please use resource &#39;alicloud_cs_kubernetes_node_pool&#39; to manage cluster worker nodes, by using field &#39;data_disks.category&#39; to replace it
@@ -2752,7 +2752,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerAutoRenewPeriod Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+         * @param workerAutoRenewPeriod (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
          * 
          * @return builder
          * 
@@ -2767,7 +2767,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerAutoRenewPeriod Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
+         * @param workerAutoRenewPeriod (Deprecated from v1.177.0) Worker payment auto-renew period, it can be one of {1, 2, 3, 6, 12}.
          * 
          * @return builder
          * 
@@ -2781,7 +2781,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerDataDiskCategory The data disk category of worker, use `worker_data_disks` to instead it.
+         * @param workerDataDiskCategory (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
          * 
          * @return builder
          * 
@@ -2796,7 +2796,7 @@ public final class KubernetesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param workerDataDiskCategory The data disk category of worker, use `worker_data_disks` to instead it.
+         * @param workerDataDiskCategory (Deprecated) The data disk category of worker, use `worker_data_disks` to instead it.
          * 
          * @return builder
          * 

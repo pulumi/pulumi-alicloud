@@ -32,14 +32,14 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The first ID of the resource
+     * (ForceNew,Optional) The first ID of the resource
      * 
      */
     @Import(name="instanceId")
     private @Nullable String instanceId;
 
     /**
-     * @return The first ID of the resource
+     * @return (ForceNew,Optional) The first ID of the resource
      * 
      */
     public Optional<String> instanceId() {
@@ -141,7 +141,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param instanceId The first ID of the resource
+         * @param instanceId (ForceNew,Optional) The first ID of the resource
          * 
          * @return builder
          * 

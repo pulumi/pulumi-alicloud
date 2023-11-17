@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Vpc
     public partial class RouteEntry : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The RouteEntry's target network segment.
+        /// (ForceNew) The RouteEntry's target network segment.
         /// </summary>
         [Output("destinationCidrblock")]
         public Output<string?> DestinationCidrblock { get; private set; } = null!;
@@ -132,13 +132,13 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The route entry's next hop. ECS instance ID or VPC router interface ID.
+        /// (ForceNew) The route entry's next hop. ECS instance ID or VPC router interface ID.
         /// </summary>
         [Output("nexthopId")]
         public Output<string?> NexthopId { get; private set; } = null!;
 
         /// <summary>
-        /// The next hop type. Available values:
+        /// (ForceNew) The next hop type. Available values:
         /// </summary>
         [Output("nexthopType")]
         public Output<string?> NexthopType { get; private set; } = null!;
@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> RouteTableId { get; private set; } = null!;
 
         /// <summary>
-        /// This argument has been deprecated. Please use other arguments to launch a custom route entry.
+        /// (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
         /// </summary>
         [Output("routerId")]
         public Output<string> RouterId { get; private set; } = null!;
@@ -202,7 +202,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class RouteEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The RouteEntry's target network segment.
+        /// (ForceNew) The RouteEntry's target network segment.
         /// </summary>
         [Input("destinationCidrblock")]
         public Input<string>? DestinationCidrblock { get; set; }
@@ -214,13 +214,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The route entry's next hop. ECS instance ID or VPC router interface ID.
+        /// (ForceNew) The route entry's next hop. ECS instance ID or VPC router interface ID.
         /// </summary>
         [Input("nexthopId")]
         public Input<string>? NexthopId { get; set; }
 
         /// <summary>
-        /// The next hop type. Available values:
+        /// (ForceNew) The next hop type. Available values:
         /// </summary>
         [Input("nexthopType")]
         public Input<string>? NexthopType { get; set; }
@@ -232,7 +232,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string> RouteTableId { get; set; } = null!;
 
         /// <summary>
-        /// This argument has been deprecated. Please use other arguments to launch a custom route entry.
+        /// (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }
@@ -246,7 +246,7 @@ namespace Pulumi.AliCloud.Vpc
     public sealed class RouteEntryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The RouteEntry's target network segment.
+        /// (ForceNew) The RouteEntry's target network segment.
         /// </summary>
         [Input("destinationCidrblock")]
         public Input<string>? DestinationCidrblock { get; set; }
@@ -258,13 +258,13 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The route entry's next hop. ECS instance ID or VPC router interface ID.
+        /// (ForceNew) The route entry's next hop. ECS instance ID or VPC router interface ID.
         /// </summary>
         [Input("nexthopId")]
         public Input<string>? NexthopId { get; set; }
 
         /// <summary>
-        /// The next hop type. Available values:
+        /// (ForceNew) The next hop type. Available values:
         /// </summary>
         [Input("nexthopType")]
         public Input<string>? NexthopType { get; set; }
@@ -276,7 +276,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? RouteTableId { get; set; }
 
         /// <summary>
-        /// This argument has been deprecated. Please use other arguments to launch a custom route entry.
+        /// (Deprecated) This argument has been deprecated. Please use other arguments to launch a custom route entry.
         /// </summary>
         [Input("routerId")]
         public Input<string>? RouterId { get; set; }

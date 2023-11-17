@@ -17,14 +17,14 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetCertificatesArgs Empty = new GetCertificatesArgs();
 
     /**
-     * The domain that you want to add to WAF.
+     * WAF domain name.
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return The domain that you want to add to WAF.
+     * @return WAF domain name.
      * 
      */
     public Optional<Output<String>> domain() {
@@ -120,7 +120,7 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param domain The domain that you want to add to WAF.
+         * @param domain WAF domain name.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GetCertificatesArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param domain The domain that you want to add to WAF.
+         * @param domain WAF domain name.
          * 
          * @return builder
          * 

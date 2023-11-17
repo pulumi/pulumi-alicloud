@@ -19,6 +19,8 @@ public final class GetPrefixListsList {
     private String createTime;
     /**
      * @return The CIDR address block list of the prefix list.
+     * * `cidr` - The CIDR address block of the prefix list.
+     * * `description` - The description of the cidr entry.
      * 
      */
     private List<GetPrefixListsListEntry> entrys;
@@ -68,6 +70,8 @@ public final class GetPrefixListsList {
     }
     /**
      * @return The CIDR address block list of the prefix list.
+     * * `cidr` - The CIDR address block of the prefix list.
+     * * `description` - The description of the cidr entry.
      * 
      */
     public List<GetPrefixListsListEntry> entrys() {

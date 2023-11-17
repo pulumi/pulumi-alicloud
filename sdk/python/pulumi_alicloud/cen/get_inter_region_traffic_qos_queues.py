@@ -137,7 +137,7 @@ def get_inter_region_traffic_qos_queues(ids: Optional[Sequence[str]] = None,
     :param Sequence[str] ids: A list of Inter Region Traffic Qos Queue IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str traffic_qos_policy_id: The ID of the traffic scheduling policy.
+    :param str traffic_qos_policy_id: (ForceNew,Required) The ID of the traffic scheduling policy.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -184,6 +184,6 @@ def get_inter_region_traffic_qos_queues_output(ids: Optional[pulumi.Input[Option
     :param Sequence[str] ids: A list of Inter Region Traffic Qos Queue IDs.
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str traffic_qos_policy_id: The ID of the traffic scheduling policy.
+    :param str traffic_qos_policy_id: (ForceNew,Required) The ID of the traffic scheduling policy.
     """
     ...

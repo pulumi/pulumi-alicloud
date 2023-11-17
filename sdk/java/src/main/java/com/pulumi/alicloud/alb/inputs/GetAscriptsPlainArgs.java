@@ -17,14 +17,14 @@ public final class GetAscriptsPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetAscriptsPlainArgs Empty = new GetAscriptsPlainArgs();
 
     /**
-     * Script name.
+     * (ForceNew,Optional) Script name.
      * 
      */
     @Import(name="ascriptName")
     private @Nullable String ascriptName;
 
     /**
-     * @return Script name.
+     * @return (ForceNew,Optional) Script name.
      * 
      */
     public Optional<String> ascriptName() {
@@ -54,14 +54,14 @@ public final class GetAscriptsPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Listener ID of script attribution
+     * (ForceNew,Optional) Listener ID of script attribution
      * 
      */
     @Import(name="listenerId")
     private @Nullable String listenerId;
 
     /**
-     * @return Listener ID of script attribution
+     * @return (ForceNew,Optional) Listener ID of script attribution
      * 
      */
     public Optional<String> listenerId() {
@@ -128,7 +128,7 @@ public final class GetAscriptsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param ascriptName Script name.
+         * @param ascriptName (ForceNew,Optional) Script name.
          * 
          * @return builder
          * 
@@ -165,7 +165,7 @@ public final class GetAscriptsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param listenerId Listener ID of script attribution
+         * @param listenerId (ForceNew,Optional) Listener ID of script attribution
          * 
          * @return builder
          * 

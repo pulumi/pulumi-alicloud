@@ -134,7 +134,7 @@ export class DdrInstance extends pulumi.CustomResource {
      */
     public readonly dbInstanceStorageType!: pulumi.Output<string>;
     /**
-     * The switch of delete protection. Valid values: 
+     * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
      *
@@ -273,7 +273,7 @@ export class DdrInstance extends pulumi.CustomResource {
      */
     public readonly restoreType!: pulumi.Output<string>;
     /**
-     * ) The list IDs to join ECS Security Group. At most supports three security groups.
+     * The list IDs to join ECS Security Group. At most supports three security groups.
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
@@ -361,9 +361,9 @@ export class DdrInstance extends pulumi.CustomResource {
      * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
      * - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-     * - rds: The instance runs RDS Basic or High-availability Edition.
-     * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-     * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+     *   - rds: The instance runs RDS Basic or High-availability Edition.
+     *   - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+     *   - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
      *
      * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -399,7 +399,7 @@ export class DdrInstance extends pulumi.CustomResource {
      */
     public readonly vpcId!: pulumi.Output<string>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+     * (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
@@ -412,7 +412,7 @@ export class DdrInstance extends pulumi.CustomResource {
      */
     public readonly whitelistNetworkType!: pulumi.Output<string | undefined>;
     /**
-     * The Zone to launch the DB instance. It supports multiple zone.
+     * (ForceNew, Optional) The Zone to launch the DB instance. It supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
@@ -700,7 +700,7 @@ export interface DdrInstanceState {
      */
     dbInstanceStorageType?: pulumi.Input<string>;
     /**
-     * The switch of delete protection. Valid values: 
+     * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
      *
@@ -839,7 +839,7 @@ export interface DdrInstanceState {
      */
     restoreType?: pulumi.Input<string>;
     /**
-     * ) The list IDs to join ECS Security Group. At most supports three security groups.
+     * The list IDs to join ECS Security Group. At most supports three security groups.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -927,9 +927,9 @@ export interface DdrInstanceState {
      * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
      * - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-     * - rds: The instance runs RDS Basic or High-availability Edition.
-     * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-     * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+     *   - rds: The instance runs RDS Basic or High-availability Edition.
+     *   - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+     *   - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
      *
      * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -965,7 +965,7 @@ export interface DdrInstanceState {
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+     * (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
     vswitchId?: pulumi.Input<string>;
     /**
@@ -978,7 +978,7 @@ export interface DdrInstanceState {
      */
     whitelistNetworkType?: pulumi.Input<string>;
     /**
-     * The Zone to launch the DB instance. It supports multiple zone.
+     * (ForceNew, Optional) The Zone to launch the DB instance. It supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */
@@ -1080,7 +1080,7 @@ export interface DdrInstanceArgs {
      */
     dbInstanceStorageType?: pulumi.Input<string>;
     /**
-     * The switch of delete protection. Valid values: 
+     * The switch of delete protection. Valid values:
      * - true: delete protect.
      * - false: no delete protect.
      *
@@ -1219,7 +1219,7 @@ export interface DdrInstanceArgs {
      */
     restoreType: pulumi.Input<string>;
     /**
-     * ) The list IDs to join ECS Security Group. At most supports three security groups.
+     * The list IDs to join ECS Security Group. At most supports three security groups.
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
@@ -1303,9 +1303,9 @@ export interface DdrInstanceArgs {
      * The minor engine version to which you want to update the instance. If you do not specify this parameter, the instance is updated to the latest minor engine version. It is valid only when `upgradeDbInstanceKernelVersion = true`. You must specify the minor engine version in one of the following formats:
      * - PostgreSQL: rds_postgres_<Major engine version>00_<Minor engine version>. Example: rds_postgres_1200_20200830.
      * - MySQL: <RDS edition>_<Minor engine version>. Examples: rds_20200229, xcluster_20200229, and xcluster80_20200229. The following RDS editions are supported:
-     * - rds: The instance runs RDS Basic or High-availability Edition.
-     * - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
-     * - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
+     *   - rds: The instance runs RDS Basic or High-availability Edition.
+     *   - xcluster: The instance runs MySQL 5.7 on RDS Enterprise Edition.
+     *   - xcluster80: The instance runs MySQL 8.0 on RDS Enterprise Edition.
      * - SQLServer: <Minor engine version>. Example: 15.0.4073.23.
      *
      * > **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
@@ -1341,7 +1341,7 @@ export interface DdrInstanceArgs {
      */
     vpcId?: pulumi.Input<string>;
     /**
-     * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
+     * (ForceNew, Optional) The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      */
     vswitchId?: pulumi.Input<string>;
     /**
@@ -1354,7 +1354,7 @@ export interface DdrInstanceArgs {
      */
     whitelistNetworkType?: pulumi.Input<string>;
     /**
-     * The Zone to launch the DB instance. It supports multiple zone.
+     * (ForceNew, Optional) The Zone to launch the DB instance. It supports multiple zone.
      * If it is a multi-zone and `vswitchId` is specified, the vswitch must in the one of them.
      * The multiple zone ID can be retrieved by setting `multi` to "true" in the data source `alicloud.getZones`.
      */

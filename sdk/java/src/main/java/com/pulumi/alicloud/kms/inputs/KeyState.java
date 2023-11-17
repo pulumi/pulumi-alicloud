@@ -95,7 +95,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+     * (Deprecated since v1.85.0) Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
      * 
      * @deprecated
      * Field &#39;deletion_window_in_days&#39; has been deprecated from provider version 1.85.0. New field &#39;pending_window_in_days&#39; instead.
@@ -106,7 +106,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Integer> deletionWindowInDays;
 
     /**
-     * @return Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+     * @return (Deprecated since v1.85.0) Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
      * 
      * @deprecated
      * Field &#39;deletion_window_in_days&#39; has been deprecated from provider version 1.85.0. New field &#39;pending_window_in_days&#39; instead.
@@ -148,7 +148,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+     * (Deprecated since v1.85.0) Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      * 
      * @deprecated
      * Field &#39;is_enabled&#39; has been deprecated from provider version 1.85.0. New field &#39;key_state&#39; instead.
@@ -159,7 +159,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> isEnabled;
 
     /**
-     * @return Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+     * @return (Deprecated since v1.85.0) Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
      * 
      * @deprecated
      * Field &#39;is_enabled&#39; has been deprecated from provider version 1.85.0. New field &#39;key_state&#39; instead.
@@ -190,7 +190,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+     * (Deprecated since v1.123.1) Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
      * 
      * @deprecated
      * Field &#39;key_state&#39; has been deprecated from provider version 1.123.1. New field &#39;status&#39; instead.
@@ -201,7 +201,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> keyState;
 
     /**
-     * @return Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+     * @return (Deprecated since v1.123.1) Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
      * 
      * @deprecated
      * Field &#39;key_state&#39; has been deprecated from provider version 1.123.1. New field &#39;status&#39; instead.
@@ -214,8 +214,6 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-     * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-     * - `SIGN/VERIFY`: generates or verifies a digital signature.
      * 
      */
     @Import(name="keyUsage")
@@ -223,8 +221,6 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-     * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-     * - `SIGN/VERIFY`: generates or verifies a digital signature.
      * 
      */
     public Optional<Output<String>> keyUsage() {
@@ -550,7 +546,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionWindowInDays Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+         * @param deletionWindowInDays (Deprecated since v1.85.0) Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
          * 
          * @return builder
          * 
@@ -565,7 +561,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionWindowInDays Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
+         * @param deletionWindowInDays (Deprecated since v1.85.0) Field `deletion_window_in_days` has been deprecated from provider version 1.85.0. New field `pending_window_in_days` instead.
          * 
          * @return builder
          * 
@@ -621,7 +617,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isEnabled Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+         * @param isEnabled (Deprecated since v1.85.0) Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
          * 
          * @return builder
          * 
@@ -636,7 +632,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param isEnabled Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
+         * @param isEnabled (Deprecated since v1.85.0) Field `is_enabled` has been deprecated from provider version 1.85.0. New field `status` instead.
          * 
          * @return builder
          * 
@@ -675,7 +671,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyState Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+         * @param keyState (Deprecated since v1.123.1) Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
          * 
          * @return builder
          * 
@@ -690,7 +686,7 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param keyState Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
+         * @param keyState (Deprecated since v1.123.1) Field `key_state` has been deprecated from provider version 1.123.1. New field `status` instead.
          * 
          * @return builder
          * 
@@ -705,8 +701,6 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param keyUsage The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-         * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-         * - `SIGN/VERIFY`: generates or verifies a digital signature.
          * 
          * @return builder
          * 
@@ -718,8 +712,6 @@ public final class KeyState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param keyUsage The usage of the CMK. Default value: `ENCRYPT/DECRYPT`. Valid values:
-         * - `ENCRYPT/DECRYPT`: encrypts or decrypts data.
-         * - `SIGN/VERIFY`: generates or verifies a digital signature.
          * 
          * @return builder
          * 

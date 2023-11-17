@@ -76,14 +76,14 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Resource Group ID
+     * (ForceNew,Optional) Resource Group ID
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable String resourceGroupId;
 
     /**
-     * @return Resource Group ID
+     * @return (ForceNew,Optional) Resource Group ID
      * 
      */
     public Optional<String> resourceGroupId() {
@@ -173,7 +173,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param resourceGroupId Resource Group ID
+         * @param resourceGroupId (ForceNew,Optional) Resource Group ID
          * 
          * @return builder
          * 

@@ -152,9 +152,6 @@ public class Delivery extends com.pulumi.resources.CustomResource {
     }
     /**
      * The ARN of the delivery destination. The value must be in one of the following formats:
-     * * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-     * * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-     * * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
      * 
      */
     @Export(name="deliveryChannelTargetArn", type=String.class, parameters={})
@@ -162,9 +159,6 @@ public class Delivery extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The ARN of the delivery destination. The value must be in one of the following formats:
-     * * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-     * * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-     * * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
      * 
      */
     public Output<String> deliveryChannelTargetArn() {

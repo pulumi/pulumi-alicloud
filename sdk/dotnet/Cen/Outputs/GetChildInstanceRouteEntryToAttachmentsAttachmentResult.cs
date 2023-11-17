@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
     public sealed class GetChildInstanceRouteEntryToAttachmentsAttachmentResult
     {
         /// <summary>
-        /// The ID of the CEN instance.
+        /// (ForceNew,Optional) The ID of the CEN instance.
         /// </summary>
         public readonly string CenId;
         /// <summary>
@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Cen.Outputs
         /// </summary>
         public readonly string Id;
         /// <summary>
-        /// ServiceType
+        /// (ForceNew,Optional) ServiceType
         /// </summary>
         public readonly string ServiceType;
         /// <summary>

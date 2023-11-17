@@ -56,7 +56,7 @@ export interface GetTransitRouterVpnAttachmentsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the transit router attachment.
+     * The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
      */
     status?: string;
     /**
@@ -123,7 +123,7 @@ export interface GetTransitRouterVpnAttachmentsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the transit router attachment.
+     * The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
      */
     status?: pulumi.Input<string>;
     /**

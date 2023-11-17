@@ -149,7 +149,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
+     * (Deprecated since v1.126.0). Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
      * @deprecated
      * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
@@ -160,7 +160,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
+     * @return (Deprecated since v1.126.0). Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
      * 
      * @deprecated
      * Field &#39;instance_charge_type&#39; has been deprecated since provider version 1.126.0. New field &#39;payment_type&#39; instead.
@@ -251,7 +251,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
+     * (Deprecated since v1.126.0). Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
@@ -262,7 +262,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> name;
 
     /**
-     * @return . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
+     * @return (Deprecated since v1.126.0). Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated since provider version 1.126.0. New field &#39;address_name&#39; instead.
@@ -656,7 +656,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
+         * @param instanceChargeType (Deprecated since v1.126.0). Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
          * 
          * @return builder
          * 
@@ -671,7 +671,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType . Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
+         * @param instanceChargeType (Deprecated since v1.126.0). Field &#39;instance_charge_type&#39; has been deprecated from provider version 1.126.0. New field &#39;payment_type&#39; instead.
          * 
          * @return builder
          * 
@@ -794,7 +794,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
+         * @param name (Deprecated since v1.126.0). Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
          * 
          * @return builder
          * 
@@ -809,7 +809,7 @@ public final class EipAddressState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
+         * @param name (Deprecated since v1.126.0). Field &#39;name&#39; has been deprecated from provider version 1.126.0. New field &#39;address_name&#39; instead.
          * 
          * @return builder
          * 

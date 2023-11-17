@@ -91,14 +91,14 @@ public final class GetNetworkAclsPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The type of the associated resource.
+     * The type of the associated resource. Valid values `VSwitch`. `resource_type` and `resource_id` need to be specified at the same time to take effect.
      * 
      */
     @Import(name="resourceType")
     private @Nullable String resourceType;
 
     /**
-     * @return The type of the associated resource.
+     * @return The type of the associated resource. Valid values `VSwitch`. `resource_type` and `resource_id` need to be specified at the same time to take effect.
      * 
      */
     public Optional<String> resourceType() {
@@ -232,7 +232,7 @@ public final class GetNetworkAclsPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param resourceType The type of the associated resource.
+         * @param resourceType The type of the associated resource. Valid values `VSwitch`. `resource_type` and `resource_id` need to be specified at the same time to take effect.
          * 
          * @return builder
          * 

@@ -44,17 +44,17 @@ public final class GetVpcFirewallsFirewall {
      */
     private String regionStatus;
     /**
-     * @return The status of the resource
+     * @return (ForceNew,Optional) The status of the resource
      * 
      */
     private String status;
     /**
-     * @return The ID of the VPC firewall instance.
+     * @return (ForceNew,Optional) The ID of the VPC firewall instance.
      * 
      */
     private String vpcFirewallId;
     /**
-     * @return The name of the VPC firewall instance.
+     * @return (ForceNew,Optional) The name of the VPC firewall instance.
      * 
      */
     private String vpcFirewallName;
@@ -103,21 +103,21 @@ public final class GetVpcFirewallsFirewall {
         return this.regionStatus;
     }
     /**
-     * @return The status of the resource
+     * @return (ForceNew,Optional) The status of the resource
      * 
      */
     public String status() {
         return this.status;
     }
     /**
-     * @return The ID of the VPC firewall instance.
+     * @return (ForceNew,Optional) The ID of the VPC firewall instance.
      * 
      */
     public String vpcFirewallId() {
         return this.vpcFirewallId;
     }
     /**
-     * @return The name of the VPC firewall instance.
+     * @return (ForceNew,Optional) The name of the VPC firewall instance.
      * 
      */
     public String vpcFirewallName() {

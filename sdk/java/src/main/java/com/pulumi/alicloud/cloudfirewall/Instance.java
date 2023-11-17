@@ -283,7 +283,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.releaseTime;
     }
     /**
-     * Automatic renewal period. Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
+     * (Deprecated since v1.209.1) Automatic renewal period. Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
      * 
      * @deprecated
      * Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
@@ -294,7 +294,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<Integer> renewPeriod;
 
     /**
-     * @return Automatic renewal period. Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
+     * @return (Deprecated since v1.209.1) Automatic renewal period. Attribute &#39;renew_period&#39; has been deprecated since 1.209.1. Using &#39;renewal_duration&#39; instead.
      * 
      */
     public Output<Integer> renewPeriod() {

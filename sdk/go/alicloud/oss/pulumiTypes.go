@@ -4593,6 +4593,7 @@ type GetInstancesInstance struct {
 	// Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the instance. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -4654,6 +4655,7 @@ type GetInstancesInstanceArgs struct {
 	// Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the instance. It must be in the format:
+	//
 	// ```go
 	// package main
 	//
@@ -4781,6 +4783,7 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the instance. It must be in the format:
+//
 // ```go
 // package main
 //

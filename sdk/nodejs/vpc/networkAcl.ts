@@ -117,7 +117,7 @@ export class NetworkAcl extends pulumi.CustomResource {
      */
     public readonly ingressAclEntries!: pulumi.Output<outputs.vpc.NetworkAclIngressAclEntry[]>;
     /**
-     * Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+     * (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
      */
@@ -210,7 +210,7 @@ export interface NetworkAclState {
      */
     ingressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclIngressAclEntry>[]>;
     /**
-     * Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+     * (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
      */
@@ -256,7 +256,7 @@ export interface NetworkAclArgs {
      */
     ingressAclEntries?: pulumi.Input<pulumi.Input<inputs.vpc.NetworkAclIngressAclEntry>[]>;
     /**
-     * Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
+     * (Deprecated from v1.122.0+) Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead.
      */

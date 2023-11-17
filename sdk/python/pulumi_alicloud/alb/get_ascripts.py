@@ -158,9 +158,9 @@ def get_ascripts(ascript_name: Optional[str] = None,
     ```
 
 
-    :param str ascript_name: Script name.
+    :param str ascript_name: (ForceNew,Optional) Script name.
     :param Sequence[str] ids: A list of AScript IDs.
-    :param str listener_id: Listener ID of script attribution
+    :param str listener_id: (ForceNew,Optional) Listener ID of script attribution
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -213,9 +213,9 @@ def get_ascripts_output(ascript_name: Optional[pulumi.Input[Optional[str]]] = No
     ```
 
 
-    :param str ascript_name: Script name.
+    :param str ascript_name: (ForceNew,Optional) Script name.
     :param Sequence[str] ids: A list of AScript IDs.
-    :param str listener_id: Listener ID of script attribution
+    :param str listener_id: (ForceNew,Optional) Listener ID of script attribution
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """

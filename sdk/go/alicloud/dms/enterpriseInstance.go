@@ -218,7 +218,7 @@ type EnterpriseInstance struct {
 	Sid pulumi.StringPtrOutput `pulumi:"sid"`
 	// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
 	SkipTest pulumi.BoolPtrOutput `pulumi:"skipTest"`
-	// It has been deprecated from provider version 1.100.0 and 'status' instead.
+	// (Deprecated) It has been deprecated from provider version 1.100.0 and 'status' instead.
 	//
 	// Deprecated: Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -355,7 +355,7 @@ type enterpriseInstanceState struct {
 	Sid *string `pulumi:"sid"`
 	// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
 	SkipTest *bool `pulumi:"skipTest"`
-	// It has been deprecated from provider version 1.100.0 and 'status' instead.
+	// (Deprecated) It has been deprecated from provider version 1.100.0 and 'status' instead.
 	//
 	// Deprecated: Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.
 	State *string `pulumi:"state"`
@@ -420,7 +420,7 @@ type EnterpriseInstanceState struct {
 	Sid pulumi.StringPtrInput
 	// Whether the instance ignores test connectivity. Valid values: `true`, `false`.
 	SkipTest pulumi.BoolPtrInput
-	// It has been deprecated from provider version 1.100.0 and 'status' instead.
+	// (Deprecated) It has been deprecated from provider version 1.100.0 and 'status' instead.
 	//
 	// Deprecated: Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.
 	State pulumi.StringPtrInput
@@ -762,7 +762,7 @@ func (o EnterpriseInstanceOutput) SkipTest() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *EnterpriseInstance) pulumi.BoolPtrOutput { return v.SkipTest }).(pulumi.BoolPtrOutput)
 }
 
-// It has been deprecated from provider version 1.100.0 and 'status' instead.
+// (Deprecated) It has been deprecated from provider version 1.100.0 and 'status' instead.
 //
 // Deprecated: Field 'state' has been deprecated from version 1.100.0. Use 'status' instead.
 func (o EnterpriseInstanceOutput) State() pulumi.StringOutput {

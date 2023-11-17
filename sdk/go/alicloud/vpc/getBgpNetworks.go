@@ -75,9 +75,9 @@ type GetBgpNetworksArgs struct {
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The ID of the vRouter.
+	// The ID of the router to which the route table belongs.
 	RouterId *string `pulumi:"routerId"`
-	// The state of the advertised BGP network.
+	// The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
 	Status *string `pulumi:"status"`
 }
 
@@ -111,9 +111,9 @@ type GetBgpNetworksOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The ID of the vRouter.
+	// The ID of the router to which the route table belongs.
 	RouterId pulumi.StringPtrInput `pulumi:"routerId"`
-	// The state of the advertised BGP network.
+	// The state of the advertised BGP network. Valid values: `Available`, `Pending`, `Deleting`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

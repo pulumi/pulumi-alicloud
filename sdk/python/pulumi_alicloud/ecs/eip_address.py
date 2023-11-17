@@ -49,14 +49,14 @@ class EipAddressArgs:
         :param pulumi.Input[str] high_definition_monitor_log_status: Whether the second-level monitoring is enabled for the EIP.
                - **OFF**: not enabled.
                - **ON**: enabled.
-        :param pulumi.Input[str] instance_charge_type: . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+        :param pulumi.Input[str] instance_charge_type: (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         :param pulumi.Input[str] internet_charge_type: Renewal Payment type.
                - **PayByBandwidth**: billed by fixed bandwidth.
                - **PayByTraffic**: Billing by traffic.
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
         :param pulumi.Input[str] log_project: The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         :param pulumi.Input[str] log_store: The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
-        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+        :param pulumi.Input[str] name: (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[int] period: When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
@@ -214,7 +214,7 @@ class EipAddressArgs:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+        (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         """
         warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
         pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
@@ -279,7 +279,7 @@ class EipAddressArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+        (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         """
         warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
@@ -445,7 +445,7 @@ class _EipAddressState:
         :param pulumi.Input[str] high_definition_monitor_log_status: Whether the second-level monitoring is enabled for the EIP.
                - **OFF**: not enabled.
                - **ON**: enabled.
-        :param pulumi.Input[str] instance_charge_type: . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+        :param pulumi.Input[str] instance_charge_type: (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         :param pulumi.Input[str] internet_charge_type: Renewal Payment type.
                - **PayByBandwidth**: billed by fixed bandwidth.
                - **PayByTraffic**: Billing by traffic.
@@ -453,7 +453,7 @@ class _EipAddressState:
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
         :param pulumi.Input[str] log_project: The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         :param pulumi.Input[str] log_store: The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
-        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+        :param pulumi.Input[str] name: (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[int] period: When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
@@ -630,7 +630,7 @@ class _EipAddressState:
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> Optional[pulumi.Input[str]]:
         """
-        . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+        (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         """
         warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
         pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
@@ -707,7 +707,7 @@ class _EipAddressState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+        (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         """
         warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")
@@ -893,14 +893,14 @@ class EipAddress(pulumi.CustomResource):
         :param pulumi.Input[str] high_definition_monitor_log_status: Whether the second-level monitoring is enabled for the EIP.
                - **OFF**: not enabled.
                - **ON**: enabled.
-        :param pulumi.Input[str] instance_charge_type: . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+        :param pulumi.Input[str] instance_charge_type: (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         :param pulumi.Input[str] internet_charge_type: Renewal Payment type.
                - **PayByBandwidth**: billed by fixed bandwidth.
                - **PayByTraffic**: Billing by traffic.
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
         :param pulumi.Input[str] log_project: The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         :param pulumi.Input[str] log_store: The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
-        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+        :param pulumi.Input[str] name: (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[int] period: When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
@@ -1055,7 +1055,7 @@ class EipAddress(pulumi.CustomResource):
         :param pulumi.Input[str] high_definition_monitor_log_status: Whether the second-level monitoring is enabled for the EIP.
                - **OFF**: not enabled.
                - **ON**: enabled.
-        :param pulumi.Input[str] instance_charge_type: . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+        :param pulumi.Input[str] instance_charge_type: (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         :param pulumi.Input[str] internet_charge_type: Renewal Payment type.
                - **PayByBandwidth**: billed by fixed bandwidth.
                - **PayByTraffic**: Billing by traffic.
@@ -1063,7 +1063,7 @@ class EipAddress(pulumi.CustomResource):
         :param pulumi.Input[str] isp: The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
         :param pulumi.Input[str] log_project: The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
         :param pulumi.Input[str] log_store: The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
-        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+        :param pulumi.Input[str] name: (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         :param pulumi.Input[str] netmode: The type of the network. Valid value is `public` (Internet).
         :param pulumi.Input[str] payment_type: The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
         :param pulumi.Input[int] period: When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
@@ -1182,7 +1182,7 @@ class EipAddress(pulumi.CustomResource):
     @pulumi.getter(name="instanceChargeType")
     def instance_charge_type(self) -> pulumi.Output[str]:
         """
-        . Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
+        (Deprecated since v1.126.0). Field 'instance_charge_type' has been deprecated from provider version 1.126.0. New field 'payment_type' instead.
         """
         warnings.warn("""Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""", DeprecationWarning)
         pulumi.log.warn("""instance_charge_type is deprecated: Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead.""")
@@ -1235,7 +1235,7 @@ class EipAddress(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        . Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
+        (Deprecated since v1.126.0). Field 'name' has been deprecated from provider version 1.126.0. New field 'address_name' instead.
         """
         warnings.warn("""Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead.""")

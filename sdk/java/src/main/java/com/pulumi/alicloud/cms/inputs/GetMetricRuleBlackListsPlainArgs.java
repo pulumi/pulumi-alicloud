@@ -17,14 +17,14 @@ public final class GetMetricRuleBlackListsPlainArgs extends com.pulumi.resources
     public static final GetMetricRuleBlackListsPlainArgs Empty = new GetMetricRuleBlackListsPlainArgs();
 
     /**
-     * Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
+     * (ForceNew,Optional) Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
      * 
      */
     @Import(name="category")
     private @Nullable String category;
 
     /**
-     * @return Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
+     * @return (ForceNew,Optional) Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
      * 
      */
     public Optional<String> category() {
@@ -47,14 +47,14 @@ public final class GetMetricRuleBlackListsPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The first ID of the resource
+     * (ForceNew,Optional) The first ID of the resource
      * 
      */
     @Import(name="metricRuleBlackListId")
     private @Nullable String metricRuleBlackListId;
 
     /**
-     * @return The first ID of the resource
+     * @return (ForceNew,Optional) The first ID of the resource
      * 
      */
     public Optional<String> metricRuleBlackListId() {
@@ -77,14 +77,14 @@ public final class GetMetricRuleBlackListsPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The data namespace of the cloud service.
+     * (ForceNew,Optional) The data namespace of the cloud service.
      * 
      */
     @Import(name="namespace")
     private @Nullable String namespace;
 
     /**
-     * @return The data namespace of the cloud service.
+     * @return (ForceNew,Optional) The data namespace of the cloud service.
      * 
      */
     public Optional<String> namespace() {
@@ -160,7 +160,7 @@ public final class GetMetricRuleBlackListsPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param category Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
+         * @param category (ForceNew,Optional) Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
          * 
          * @return builder
          * 
@@ -192,7 +192,7 @@ public final class GetMetricRuleBlackListsPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param metricRuleBlackListId The first ID of the resource
+         * @param metricRuleBlackListId (ForceNew,Optional) The first ID of the resource
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class GetMetricRuleBlackListsPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param namespace The data namespace of the cloud service.
+         * @param namespace (ForceNew,Optional) The data namespace of the cloud service.
          * 
          * @return builder
          * 

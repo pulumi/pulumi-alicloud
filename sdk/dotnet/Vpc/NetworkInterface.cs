@@ -134,7 +134,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<int> QueueNumber { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of resource group which the network interface belongs.
+        /// (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string?> ResourceGroupId { get; private set; } = null!;
@@ -146,7 +146,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// A list of security group ids to associate with.
+        /// (Require) A list of security group ids to associate with.
         /// </summary>
         [Output("securityGroups")]
         public Output<ImmutableArray<string>> SecurityGroups { get; private set; } = null!;
@@ -278,7 +278,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<int>? QueueNumber { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the network interface belongs.
+        /// (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -298,7 +298,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// A list of security group ids to associate with.
+        /// (Require) A list of security group ids to associate with.
         /// </summary>
         [Obsolete(@"Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead")]
         public InputList<string> SecurityGroups
@@ -405,7 +405,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<int>? QueueNumber { get; set; }
 
         /// <summary>
-        /// The Id of resource group which the network interface belongs.
+        /// (ForceNew, ForceNew, Available in 1.57.0+) The Id of resource group which the network interface belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
@@ -425,7 +425,7 @@ namespace Pulumi.AliCloud.Vpc
         private InputList<string>? _securityGroups;
 
         /// <summary>
-        /// A list of security group ids to associate with.
+        /// (Require) A list of security group ids to associate with.
         /// </summary>
         [Obsolete(@"Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead")]
         public InputList<string> SecurityGroups

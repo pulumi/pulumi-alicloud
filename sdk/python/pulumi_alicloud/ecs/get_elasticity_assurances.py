@@ -148,10 +148,10 @@ def get_elasticity_assurances(ids: Optional[Sequence[str]] = None,
 
     :param Sequence[str] ids: A list of Elasticity Assurance IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Sequence[str] private_pool_options_ids: The ID of the elastic protection service.
-    :param str resource_group_id: The ID of the resource group.
-    :param str status: The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
-    :param Mapping[str, Any] tags: The tag key-value pair information bound by the elastic guarantee service.
+    :param Sequence[str] private_pool_options_ids: (ForceNew,Optional) The ID of the elastic protection service.
+    :param str resource_group_id: (ForceNew,Optional) The ID of the resource group.
+    :param str status: (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+    :param Mapping[str, Any] tags: (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -200,9 +200,9 @@ def get_elasticity_assurances_output(ids: Optional[pulumi.Input[Optional[Sequenc
 
     :param Sequence[str] ids: A list of Elasticity Assurance IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Sequence[str] private_pool_options_ids: The ID of the elastic protection service.
-    :param str resource_group_id: The ID of the resource group.
-    :param str status: The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
-    :param Mapping[str, Any] tags: The tag key-value pair information bound by the elastic guarantee service.
+    :param Sequence[str] private_pool_options_ids: (ForceNew,Optional) The ID of the elastic protection service.
+    :param str resource_group_id: (ForceNew,Optional) The ID of the resource group.
+    :param str status: (ForceNew,Optional) The status of flexible guarantee services. Possible values: `All`, `Preparing`, `Prepared`, `Active`, `Released`.
+    :param Mapping[str, Any] tags: (ForceNew,Optional) The tag key-value pair information bound by the elastic guarantee service.
     """
     ...

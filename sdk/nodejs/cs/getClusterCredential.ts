@@ -28,7 +28,7 @@ export function getClusterCredential(args: GetClusterCredentialArgs, opts?: pulu
  */
 export interface GetClusterCredentialArgs {
     /**
-     * The id of target cluster.
+     * (**Required**) The id of target cluster.
      */
     clusterId: string;
     /**
@@ -88,7 +88,7 @@ export function getClusterCredentialOutput(args: GetClusterCredentialOutputArgs,
  */
 export interface GetClusterCredentialOutputArgs {
     /**
-     * The id of target cluster.
+     * (**Required**) The id of target cluster.
      */
     clusterId: pulumi.Input<string>;
     /**

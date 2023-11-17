@@ -49,7 +49,7 @@ public final class GetEcsNetworkInterfacesPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The network interface name.
+     * Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
@@ -60,7 +60,7 @@ public final class GetEcsNetworkInterfacesPlainArgs extends com.pulumi.resources
     private @Nullable String name;
 
     /**
-     * @return The network interface name.
+     * @return Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.123.1. New field &#39;network_interface_name&#39; instead
@@ -132,7 +132,7 @@ public final class GetEcsNetworkInterfacesPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The primary private IP address of the ENI.
+     * Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
      * 
      * @deprecated
      * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
@@ -143,7 +143,7 @@ public final class GetEcsNetworkInterfacesPlainArgs extends com.pulumi.resources
     private @Nullable String privateIp;
 
     /**
-     * @return The primary private IP address of the ENI.
+     * @return Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
      * 
      * @deprecated
      * Field &#39;private_ip&#39; has been deprecated from provider version 1.123.1. New field &#39;primary_ip_address&#39; instead
@@ -200,14 +200,14 @@ public final class GetEcsNetworkInterfacesPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The status of the ENI.
+     * The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the ENI.
+     * @return The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
      * 
      */
     public Optional<String> status() {
@@ -215,14 +215,14 @@ public final class GetEcsNetworkInterfacesPlainArgs extends com.pulumi.resources
     }
 
     /**
-     * The tags.
+     * A map of tags assigned to ENIs.
      * 
      */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
     /**
-     * @return The tags.
+     * @return A map of tags assigned to ENIs.
      * 
      */
     public Optional<Map<String,Object>> tags() {
@@ -346,7 +346,7 @@ public final class GetEcsNetworkInterfacesPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param name The network interface name.
+         * @param name Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
          * 
          * @return builder
          * 
@@ -405,7 +405,7 @@ public final class GetEcsNetworkInterfacesPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param privateIp The primary private IP address of the ENI.
+         * @param privateIp Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
          * 
          * @return builder
          * 
@@ -453,7 +453,7 @@ public final class GetEcsNetworkInterfacesPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param status The status of the ENI.
+         * @param status The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
          * 
          * @return builder
          * 
@@ -464,7 +464,7 @@ public final class GetEcsNetworkInterfacesPlainArgs extends com.pulumi.resources
         }
 
         /**
-         * @param tags The tags.
+         * @param tags A map of tags assigned to ENIs.
          * 
          * @return builder
          * 

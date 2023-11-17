@@ -45,7 +45,7 @@ class SecretArgs:
         :param pulumi.Input[str] secret_data_type: The type of the secret value. Valid values: text, binary. Default to "text".
         :param pulumi.Input[str] secret_type: The type of the secret. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         """
         pulumi.set(__self__, "secret_data", secret_data)
         pulumi.set(__self__, "secret_name", secret_name)
@@ -247,7 +247,7 @@ class SecretArgs:
     @pulumi.getter(name="versionStages")
     def version_stages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+        The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         """
         return pulumi.get(self, "version_stages")
 
@@ -294,7 +294,7 @@ class _SecretState:
         :param pulumi.Input[str] secret_type: The type of the secret. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version_id: The version number of the initial version. Version numbers are unique in each secret object.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
@@ -527,7 +527,7 @@ class _SecretState:
     @pulumi.getter(name="versionStages")
     def version_stages(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+        The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         """
         return pulumi.get(self, "version_stages")
 
@@ -602,7 +602,7 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] secret_type: The type of the secret. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version_id: The version number of the initial version. Version numbers are unique in each secret object.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         """
         ...
     @overload
@@ -753,7 +753,7 @@ class Secret(pulumi.CustomResource):
         :param pulumi.Input[str] secret_type: The type of the secret. Valid values:
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         :param pulumi.Input[str] version_id: The version number of the initial version. Version numbers are unique in each secret object.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] version_stages: The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -910,7 +910,7 @@ class Secret(pulumi.CustomResource):
     @pulumi.getter(name="versionStages")
     def version_stages(self) -> pulumi.Output[Sequence[str]]:
         """
-        ) The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
+        The stage labels that mark the new secret version. If you do not specify this parameter, Secrets Manager marks it with "ACSCurrent".
         """
         return pulumi.get(self, "version_stages")
 

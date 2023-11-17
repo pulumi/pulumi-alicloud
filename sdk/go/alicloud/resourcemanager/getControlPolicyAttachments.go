@@ -59,7 +59,7 @@ type GetControlPolicyAttachmentsArgs struct {
 	Language *string `pulumi:"language"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The type of policy.
+	// The policy type of control policy. Valid values: `Custom` and `System`.
 	PolicyType *string `pulumi:"policyType"`
 	// The Id of target.
 	TargetId string `pulumi:"targetId"`
@@ -96,7 +96,7 @@ type GetControlPolicyAttachmentsOutputArgs struct {
 	Language pulumi.StringPtrInput `pulumi:"language"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The type of policy.
+	// The policy type of control policy. Valid values: `Custom` and `System`.
 	PolicyType pulumi.StringPtrInput `pulumi:"policyType"`
 	// The Id of target.
 	TargetId pulumi.StringInput `pulumi:"targetId"`

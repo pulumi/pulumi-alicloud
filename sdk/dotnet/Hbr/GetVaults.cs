@@ -118,7 +118,7 @@ namespace Pulumi.AliCloud.Hbr
         public string? Status { get; set; }
 
         /// <summary>
-        /// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        /// VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
         /// </summary>
         [Input("vaultType")]
         public string? VaultType { get; set; }
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        /// VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
         /// </summary>
         [Input("vaultType")]
         public Input<string>? VaultType { get; set; }

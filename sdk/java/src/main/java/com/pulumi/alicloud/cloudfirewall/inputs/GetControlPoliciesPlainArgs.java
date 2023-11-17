@@ -75,14 +75,14 @@ public final class GetControlPoliciesPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+     * Direction. Valid values: `in`, `out`.
      * 
      */
     @Import(name="direction", required=true)
     private String direction;
 
     /**
-     * @return The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+     * @return Direction. Valid values: `in`, `out`.
      * 
      */
     public String direction() {
@@ -135,14 +135,14 @@ public final class GetControlPoliciesPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+     * The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
      * 
      */
     @Import(name="proto")
     private @Nullable String proto;
 
     /**
-     * @return The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+     * @return The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
      * 
      */
     public Optional<String> proto() {
@@ -258,7 +258,7 @@ public final class GetControlPoliciesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param direction The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+         * @param direction Direction. Valid values: `in`, `out`.
          * 
          * @return builder
          * 
@@ -302,7 +302,7 @@ public final class GetControlPoliciesPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param proto The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+         * @param proto The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
          * 
          * @return builder
          * 

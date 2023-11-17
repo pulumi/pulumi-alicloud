@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The exposed ports and protocols. Maximum: `100`.
+        /// The list of exposed ports and protocols. Maximum: 100.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetContainerGroupsGroupContainerPortResult> Ports;
         /// <summary>

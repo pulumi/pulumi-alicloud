@@ -80,7 +80,7 @@ export interface GetAccountsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
      */
     status?: string;
 }
@@ -167,7 +167,7 @@ export interface GetAccountsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
      */
     status?: pulumi.Input<string>;
 }

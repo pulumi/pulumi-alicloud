@@ -93,27 +93,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The specification of the instance.
      * - Following enumerative value for TSDB for InfluxDB️ standart edition:
-     * - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-     * - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-     * - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-     * - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-     * - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-     * - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-     * - Following enumerative value for TSDB for InfluxDB High-availability edition:
-     * - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-     * - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-     * - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-     * - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-     * - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-     * - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-     * - Following enumerative value for TSDB:
-     * - `tsdb.1x.basic` refers to basic edition I;
-     * - `tsdb.3x.basic` refers to basic edition II;
-     * - `tsdb.4x.basic` refers to basic edtion III;
-     * - `tsdb.12x.standard` refers to standard edition I;
-     * - `tsdb.24x.standard` refers to standard edition II;
-     * - `tsdb.48x.large` refers to ultimate edition I;
-     * - `tsdb.96x.large` refers to ultimate edition II.
      * 
      */
     @Import(name="instanceClass", required=true)
@@ -122,27 +101,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The specification of the instance.
      * - Following enumerative value for TSDB for InfluxDB️ standart edition:
-     * - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-     * - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-     * - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-     * - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-     * - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-     * - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-     * - Following enumerative value for TSDB for InfluxDB High-availability edition:
-     * - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-     * - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-     * - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-     * - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-     * - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-     * - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-     * - Following enumerative value for TSDB:
-     * - `tsdb.1x.basic` refers to basic edition I;
-     * - `tsdb.3x.basic` refers to basic edition II;
-     * - `tsdb.4x.basic` refers to basic edtion III;
-     * - `tsdb.12x.standard` refers to standard edition I;
-     * - `tsdb.24x.standard` refers to standard edition II;
-     * - `tsdb.48x.large` refers to ultimate edition I;
-     * - `tsdb.96x.large` refers to ultimate edition II.
      * 
      */
     public Output<String> instanceClass() {
@@ -350,27 +308,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instanceClass The specification of the instance.
          * - Following enumerative value for TSDB for InfluxDB️ standart edition:
-         * - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-         * - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-         * - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-         * - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-         * - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-         * - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-         * - Following enumerative value for TSDB for InfluxDB High-availability edition:
-         * - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-         * - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-         * - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-         * - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-         * - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-         * - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-         * - Following enumerative value for TSDB:
-         * - `tsdb.1x.basic` refers to basic edition I;
-         * - `tsdb.3x.basic` refers to basic edition II;
-         * - `tsdb.4x.basic` refers to basic edtion III;
-         * - `tsdb.12x.standard` refers to standard edition I;
-         * - `tsdb.24x.standard` refers to standard edition II;
-         * - `tsdb.48x.large` refers to ultimate edition I;
-         * - `tsdb.96x.large` refers to ultimate edition II.
          * 
          * @return builder
          * 
@@ -383,27 +320,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param instanceClass The specification of the instance.
          * - Following enumerative value for TSDB for InfluxDB️ standart edition:
-         * - `influxdata.n1.mxlarge` refers to 2 CPU 8GB memory;
-         * - `influxdata.n1.xlarge` refers to 4 CPU 16GB memory;
-         * - `influxdata.n1.2xlarge` refers to 8 CPU 32 GB memory;
-         * - `influxdata.n1.4xlarge` refers to 16 CPU 64 GB memory;
-         * - `influxdata.n1.8xlarge` refers to 32 CPU 128 GB memory;
-         * - `influxdata.n1.16xlarge` refers to 64 CPU 256 GB memory.
-         * - Following enumerative value for TSDB for InfluxDB High-availability edition:
-         * - `influxdata.n1.mxlarge_ha` refers to 2 CPU 8GB memory;
-         * - `influxdata.n1.xlarge_ha` refers to 4 CPU 16GB memory;
-         * - `influxdata.n1.2xlarge_ha` refers to 8 CPU 32 GB memory;
-         * - `influxdata.n1.4xlarge_ha` refers to 16 CPU 64 GB memory;
-         * - `influxdata.n1.8xlarge_ha` refers to 32 CPU 128 GB memory;
-         * - `influxdata.n1.16xlarge_ha` refers to 64 CPU 256 GB memory.
-         * - Following enumerative value for TSDB:
-         * - `tsdb.1x.basic` refers to basic edition I;
-         * - `tsdb.3x.basic` refers to basic edition II;
-         * - `tsdb.4x.basic` refers to basic edtion III;
-         * - `tsdb.12x.standard` refers to standard edition I;
-         * - `tsdb.24x.standard` refers to standard edition II;
-         * - `tsdb.48x.large` refers to ultimate edition I;
-         * - `tsdb.96x.large` refers to ultimate edition II.
          * 
          * @return builder
          * 

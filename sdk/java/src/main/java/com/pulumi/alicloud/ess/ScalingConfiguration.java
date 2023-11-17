@@ -263,7 +263,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.imageName);
     }
     /**
-     * It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
+     * (Deprecated) It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      * 
      * @deprecated
      * Field &#39;instance_ids&#39; has been deprecated from provider version 1.6.0. New resource &#39;alicloud_ess_attachment&#39; replaces it.
@@ -274,7 +274,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<String>> instanceIds;
 
     /**
-     * @return It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
+     * @return (Deprecated) It has been deprecated from version 1.6.0. New resource `alicloud.ess.Attachment` replaces it.
      * 
      */
     public Output<Optional<List<String>>> instanceIds() {
@@ -379,7 +379,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.internetMaxBandwidthOut);
     }
     /**
-     * It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+     * (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      * 
      * @deprecated
      * Attribute io_optimized has been deprecated on instance resource. All the launched alicloud instances will be IO optimized. Suggest to remove it from your template.
@@ -390,7 +390,7 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> ioOptimized;
 
     /**
-     * @return It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
+     * @return (Deprecated) It has been deprecated on instance resource. All the launched alicloud instances will be I/O optimized.
      * 
      */
     public Output<Optional<String>> ioOptimized() {
@@ -586,7 +586,6 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
      * 
      * &gt; **NOTE:** Restrictions on attaching ECS instances:
-     * 
      * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
      * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
      * - The attached ECS instances must in the running state.
@@ -607,7 +606,6 @@ public class ScalingConfiguration extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** If the number of attached ECS instances by `instance_ids` is smaller than MinSize, the Auto Scaling Service will automatically create ECS Pay-As-You-Go instance to cater to MinSize. For example, MinSize=5 and 2 existing ECS instances has been attached to the scaling group. When the scaling group is enabled, it will create 3 instnaces automatically based on its current active scaling configuration.
      * 
      * &gt; **NOTE:** Restrictions on attaching ECS instances:
-     * 
      * - The attached ECS instances and the scaling group must have the same region and network type(`Classic` or `VPC`).
      * - The attached ECS instances and the instance with active scaling configurations must have the same instance type.
      * - The attached ECS instances must in the running state.

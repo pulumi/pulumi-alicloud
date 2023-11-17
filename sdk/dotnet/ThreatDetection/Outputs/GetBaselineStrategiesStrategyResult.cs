@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
         /// </summary>
         public readonly string BaselineStrategyName;
         /// <summary>
-        /// The type of policy. Value:-**common**: standard policy-**custom**: custom policy
+        /// (ForceNew,Optional) The type of policy. Value:-**common**: standard policy-**custom**: custom policy
         /// </summary>
         public readonly string CustomType;
         /// <summary>

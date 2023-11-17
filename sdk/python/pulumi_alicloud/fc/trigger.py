@@ -34,8 +34,8 @@ class TriggerArgs:
                > **NOTE:** type = eventbridge, available in 1.173.0+.
         :param pulumi.Input[str] config: The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
         :param pulumi.Input[str] config_mns: The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
-        :param pulumi.Input[str] name: The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
-        :param pulumi.Input[str] name_prefix: Setting a prefix to get a only trigger name. It is conflict with "name".
+        :param pulumi.Input[str] name: (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+        :param pulumi.Input[str] name_prefix: (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
         :param pulumi.Input[str] role: RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         :param pulumi.Input[str] source_arn: Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         """
@@ -123,7 +123,7 @@ class TriggerArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+        (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
         """
         return pulumi.get(self, "name")
 
@@ -135,7 +135,7 @@ class TriggerArgs:
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        Setting a prefix to get a only trigger name. It is conflict with "name".
+        (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
         """
         return pulumi.get(self, "name_prefix")
 
@@ -188,8 +188,8 @@ class _TriggerState:
         :param pulumi.Input[str] config_mns: The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
         :param pulumi.Input[str] function: The Function Compute function name.
         :param pulumi.Input[str] last_modified: The date this resource was last modified.
-        :param pulumi.Input[str] name: The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
-        :param pulumi.Input[str] name_prefix: Setting a prefix to get a only trigger name. It is conflict with "name".
+        :param pulumi.Input[str] name: (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+        :param pulumi.Input[str] name_prefix: (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
         :param pulumi.Input[str] role: RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         :param pulumi.Input[str] service: The Function Compute service name.
         :param pulumi.Input[str] source_arn: Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
@@ -275,7 +275,7 @@ class _TriggerState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+        (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
         """
         return pulumi.get(self, "name")
 
@@ -287,7 +287,7 @@ class _TriggerState:
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> Optional[pulumi.Input[str]]:
         """
-        Setting a prefix to get a only trigger name. It is conflict with "name".
+        (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
         """
         return pulumi.get(self, "name_prefix")
 
@@ -816,8 +816,8 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] config: The config of Function Compute trigger.It is valid when `type` is not "mns_topic".See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
         :param pulumi.Input[str] config_mns: The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
         :param pulumi.Input[str] function: The Function Compute function name.
-        :param pulumi.Input[str] name: The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
-        :param pulumi.Input[str] name_prefix: Setting a prefix to get a only trigger name. It is conflict with "name".
+        :param pulumi.Input[str] name: (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+        :param pulumi.Input[str] name_prefix: (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
         :param pulumi.Input[str] role: RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         :param pulumi.Input[str] service: The Function Compute service name.
         :param pulumi.Input[str] source_arn: Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
@@ -1351,8 +1351,8 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] config_mns: The config of Function Compute trigger when the type is "mns_topic".It is conflict with `config`.
         :param pulumi.Input[str] function: The Function Compute function name.
         :param pulumi.Input[str] last_modified: The date this resource was last modified.
-        :param pulumi.Input[str] name: The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
-        :param pulumi.Input[str] name_prefix: Setting a prefix to get a only trigger name. It is conflict with "name".
+        :param pulumi.Input[str] name: (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+        :param pulumi.Input[str] name_prefix: (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
         :param pulumi.Input[str] role: RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is "acs:ram::$account-id:role/$role-name". See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
         :param pulumi.Input[str] service: The Function Compute service name.
         :param pulumi.Input[str] source_arn: Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
@@ -1416,7 +1416,7 @@ class Trigger(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
+        (ForceNew, Optional) The Function Compute trigger name. It is the only in one service and is conflict with "name_prefix".
         """
         return pulumi.get(self, "name")
 
@@ -1424,7 +1424,7 @@ class Trigger(pulumi.CustomResource):
     @pulumi.getter(name="namePrefix")
     def name_prefix(self) -> pulumi.Output[Optional[str]]:
         """
-        Setting a prefix to get a only trigger name. It is conflict with "name".
+        (ForceNew, Optional) Setting a prefix to get a only trigger name. It is conflict with "name".
         """
         return pulumi.get(self, "name_prefix")
 

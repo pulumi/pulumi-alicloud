@@ -122,7 +122,7 @@ namespace Pulumi.AliCloud.Dts
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// Resource Group ID
+        /// (ForceNew,Optional) Resource Group ID
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
@@ -166,7 +166,7 @@ namespace Pulumi.AliCloud.Dts
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// Resource Group ID
+        /// (ForceNew,Optional) Resource Group ID
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }

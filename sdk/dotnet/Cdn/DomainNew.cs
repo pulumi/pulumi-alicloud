@@ -103,7 +103,7 @@ namespace Pulumi.AliCloud.Cdn
         /// - **domestic**: Mainland China only.
         /// - **overseas**: Global (excluding Mainland China).
         /// - **global**: global.
-        /// The default value is **domestic**.
+        ///   The default value is **domestic**.
         /// </summary>
         [Output("scope")]
         public Output<string> Scope { get; private set; } = null!;
@@ -207,7 +207,7 @@ namespace Pulumi.AliCloud.Cdn
         /// - **domestic**: Mainland China only.
         /// - **overseas**: Global (excluding Mainland China).
         /// - **global**: global.
-        /// The default value is **domestic**.
+        ///   The default value is **domestic**.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }
@@ -285,7 +285,7 @@ namespace Pulumi.AliCloud.Cdn
         /// - **domestic**: Mainland China only.
         /// - **overseas**: Global (excluding Mainland China).
         /// - **global**: global.
-        /// The default value is **domestic**.
+        ///   The default value is **domestic**.
         /// </summary>
         [Input("scope")]
         public Input<string>? Scope { get; set; }

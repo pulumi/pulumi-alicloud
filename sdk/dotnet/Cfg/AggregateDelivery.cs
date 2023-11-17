@@ -65,9 +65,6 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// The ARN of the delivery destination. The value must be in one of the following formats:
-        /// * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-        /// * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-        /// * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         /// </summary>
         [Output("deliveryChannelTargetArn")]
         public Output<string> DeliveryChannelTargetArn { get; private set; } = null!;
@@ -182,9 +179,6 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// The ARN of the delivery destination. The value must be in one of the following formats:
-        /// * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-        /// * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-        /// * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         /// </summary>
         [Input("deliveryChannelTargetArn", required: true)]
         public Input<string> DeliveryChannelTargetArn { get; set; } = null!;
@@ -267,9 +261,6 @@ namespace Pulumi.AliCloud.Cfg
 
         /// <summary>
         /// The ARN of the delivery destination. The value must be in one of the following formats:
-        /// * `acs:oss:{RegionId}:{Aliuid}:{bucketName}`: if your delivery destination is an Object Storage Service (OSS) bucket.
-        /// * `acs:mns:{RegionId}:{Aliuid}:/topics/{topicName}`: if your delivery destination is a Message Service (MNS) topic.
-        /// * `acs:log:{RegionId}:{Aliuid}:project/{projectName}/logstore/{logstoreName}`: if your delivery destination is a Log Service Logstore.
         /// </summary>
         [Input("deliveryChannelTargetArn")]
         public Input<string>? DeliveryChannelTargetArn { get; set; }

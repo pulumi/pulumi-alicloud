@@ -10,26 +10,26 @@ import java.util.Objects;
 @CustomType
 public final class AlertLabel {
     /**
-     * @return Annotations&#39;s key for new alert.
+     * @return Labels&#39;s key for new alert.
      * 
      */
     private String key;
     /**
-     * @return Annotations&#39;s value for new alert.
+     * @return Labels&#39;s value for new alert.
      * 
      */
     private String value;
 
     private AlertLabel() {}
     /**
-     * @return Annotations&#39;s key for new alert.
+     * @return Labels&#39;s key for new alert.
      * 
      */
     public String key() {
         return this.key;
     }
     /**
-     * @return Annotations&#39;s value for new alert.
+     * @return Labels&#39;s value for new alert.
      * 
      */
     public String value() {

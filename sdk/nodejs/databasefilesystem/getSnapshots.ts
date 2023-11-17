@@ -62,7 +62,7 @@ export interface GetSnapshotsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+     * The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
      */
     status?: string;
 }
@@ -130,7 +130,7 @@ export interface GetSnapshotsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the snapshot. Possible values: `progressing`, `accomplished`, `failed`.
+     * The status of the snapshot. Valid values: `accomplished`, `failed`, `progressing`.
      */
     status?: pulumi.Input<string>;
 }
