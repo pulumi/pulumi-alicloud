@@ -20,9 +20,21 @@ javaGenVersion: "v0.9.8"
 team: ecosystem
 license:
   ignore:
+    # These projects don't have a LICENSE file, but do say mention (in README.md) that
+    # they are under Apache-2.0.
     - github.com/alibabacloud-go/endpoint-util/service
     - github.com/alibabacloud-go/tea-roa-utils/service
     - github.com/alibabacloud-go/tea-roa/client
     - github.com/alibabacloud-go/tea-rpc-utils/service
     - github.com/alibabacloud-go/tea-rpc/client
     - github.com/alibabacloud-go/tea-xml/service
+    - github.com/alibabacloud-go/darabonba-string/client
+
+    # These projects are generated wrapper libraries, and do not contain any mention of a
+    # license.
+    - github.com/alibabacloud-go/alibabacloud-gateway-sls-util/client
+    - github.com/alibabacloud-go/alibabacloud-gateway-sls/client
+    - github.com/alibabacloud-go/darabonba-array/client
+    - github.com/alibabacloud-go/darabonba-encode-util/client
+    - github.com/alibabacloud-go/darabonba-map/client
+    - github.com/alibabacloud-go/darabonba-signature-util/client
