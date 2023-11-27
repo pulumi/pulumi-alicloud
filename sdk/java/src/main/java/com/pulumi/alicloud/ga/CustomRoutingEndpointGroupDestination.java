@@ -122,7 +122,7 @@ public class CustomRoutingEndpointGroupDestination extends com.pulumi.resources.
      * The ID of the GA instance.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -136,7 +136,7 @@ public class CustomRoutingEndpointGroupDestination extends com.pulumi.resources.
      * The ID of the Custom Routing Endpoint Group Destination.
      * 
      */
-    @Export(name="customRoutingEndpointGroupDestinationId", type=String.class, parameters={})
+    @Export(name="customRoutingEndpointGroupDestinationId", refs={String.class}, tree="[0]")
     private Output<String> customRoutingEndpointGroupDestinationId;
 
     /**
@@ -150,7 +150,7 @@ public class CustomRoutingEndpointGroupDestination extends com.pulumi.resources.
      * The ID of the endpoint group.
      * 
      */
-    @Export(name="endpointGroupId", type=String.class, parameters={})
+    @Export(name="endpointGroupId", refs={String.class}, tree="[0]")
     private Output<String> endpointGroupId;
 
     /**
@@ -164,7 +164,7 @@ public class CustomRoutingEndpointGroupDestination extends com.pulumi.resources.
      * The start port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
      * 
      */
-    @Export(name="fromPort", type=Integer.class, parameters={})
+    @Export(name="fromPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> fromPort;
 
     /**
@@ -178,7 +178,7 @@ public class CustomRoutingEndpointGroupDestination extends com.pulumi.resources.
      * The ID of the listener.
      * 
      */
-    @Export(name="listenerId", type=String.class, parameters={})
+    @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     /**
@@ -192,7 +192,7 @@ public class CustomRoutingEndpointGroupDestination extends com.pulumi.resources.
      * The backend service protocol of the endpoint group. Valid values: `TCP`, `UDP`, `TCP, UDP`.
      * 
      */
-    @Export(name="protocols", type=List.class, parameters={String.class})
+    @Export(name="protocols", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> protocols;
 
     /**
@@ -206,7 +206,7 @@ public class CustomRoutingEndpointGroupDestination extends com.pulumi.resources.
      * The status of the Custom Routing Endpoint Group Destination.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -220,7 +220,7 @@ public class CustomRoutingEndpointGroupDestination extends com.pulumi.resources.
      * The end port of the backend service port range of the endpoint group. The `from_port` value must be smaller than or equal to the `to_port` value. Valid values: `1` to `65499`.
      * 
      */
-    @Export(name="toPort", type=Integer.class, parameters={})
+    @Export(name="toPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> toPort;
 
     /**

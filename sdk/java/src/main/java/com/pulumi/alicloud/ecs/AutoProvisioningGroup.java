@@ -126,7 +126,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The name of the auto provisioning group to be created. It must be 2 to 128 characters in length. It must start with a letter but cannot start with http:// or https://. It can contain letters, digits, colons (:), underscores (_), and hyphens (-)
      * 
      */
-    @Export(name="autoProvisioningGroupName", type=String.class, parameters={})
+    @Export(name="autoProvisioningGroupName", refs={String.class}, tree="[0]")
     private Output<String> autoProvisioningGroupName;
 
     /**
@@ -140,7 +140,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The type of the auto provisioning group. Valid values:`request` and `maintain`,Default value: `maintain`.
      * 
      */
-    @Export(name="autoProvisioningGroupType", type=String.class, parameters={})
+    @Export(name="autoProvisioningGroupType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoProvisioningGroupType;
 
     /**
@@ -154,7 +154,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The type of supplemental instances. When the total value of `PayAsYouGoTargetCapacity` and `SpotTargetCapacity` is smaller than the value of TotalTargetCapacity, the auto provisioning group will create instances of the specified type to meet the capacity requirements. Valid values:`PayAsYouGo`: Pay-as-you-go instances; `Spot`: Preemptible instances, Default value: `Spot`.
      * 
      */
-    @Export(name="defaultTargetCapacityType", type=String.class, parameters={})
+    @Export(name="defaultTargetCapacityType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultTargetCapacityType;
 
     /**
@@ -168,7 +168,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The description of the auto provisioning group.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -182,7 +182,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The shutdown policy for excess preemptible instances followed when the capacity of the auto provisioning group exceeds the target capacity. Valid values: `no-termination` and `termination`,Default value: `no-termination`.
      * 
      */
-    @Export(name="excessCapacityTerminationPolicy", type=String.class, parameters={})
+    @Export(name="excessCapacityTerminationPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> excessCapacityTerminationPolicy;
 
     /**
@@ -196,7 +196,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * DataDisk mappings to attach to ecs instance. See `block-config` below for details.
      * 
      */
-    @Export(name="launchTemplateConfigs", type=List.class, parameters={AutoProvisioningGroupLaunchTemplateConfig.class})
+    @Export(name="launchTemplateConfigs", refs={List.class,AutoProvisioningGroupLaunchTemplateConfig.class}, tree="[0,1]")
     private Output<List<AutoProvisioningGroupLaunchTemplateConfig>> launchTemplateConfigs;
 
     /**
@@ -210,7 +210,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The ID of the instance launch template associated with the auto provisioning group.
      * 
      */
-    @Export(name="launchTemplateId", type=String.class, parameters={})
+    @Export(name="launchTemplateId", refs={String.class}, tree="[0]")
     private Output<String> launchTemplateId;
 
     /**
@@ -224,7 +224,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The version of the instance launch template associated with the auto provisioning group.
      * 
      */
-    @Export(name="launchTemplateVersion", type=String.class, parameters={})
+    @Export(name="launchTemplateVersion", refs={String.class}, tree="[0]")
     private Output<String> launchTemplateVersion;
 
     /**
@@ -238,7 +238,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The global maximum price for preemptible instances in the auto provisioning group. If both the `MaxSpotPrice` and `LaunchTemplateConfig.N.MaxPrice` parameters are specified, the maximum price is the lower value of the two.
      * 
      */
-    @Export(name="maxSpotPrice", type=Double.class, parameters={})
+    @Export(name="maxSpotPrice", refs={Double.class}, tree="[0]")
     private Output<Double> maxSpotPrice;
 
     /**
@@ -252,7 +252,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The scale-out policy for pay-as-you-go instances. Valid values: `lowest-price` and `prioritized`,Default value: `lowest-price`.
      * 
      */
-    @Export(name="payAsYouGoAllocationStrategy", type=String.class, parameters={})
+    @Export(name="payAsYouGoAllocationStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> payAsYouGoAllocationStrategy;
 
     /**
@@ -266,7 +266,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The target capacity of pay-as-you-go instances in the auto provisioning group.
      * 
      */
-    @Export(name="payAsYouGoTargetCapacity", type=String.class, parameters={})
+    @Export(name="payAsYouGoTargetCapacity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> payAsYouGoTargetCapacity;
 
     /**
@@ -280,7 +280,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The scale-out policy for preemptible instances. Valid values:`lowest-price` and `diversified`,Default value: `lowest-price`.
      * 
      */
-    @Export(name="spotAllocationStrategy", type=String.class, parameters={})
+    @Export(name="spotAllocationStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spotAllocationStrategy;
 
     /**
@@ -294,7 +294,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The default behavior after preemptible instances are shut down. Valid values: `stop` and `terminate`,Default value: `stop`.
      * 
      */
-    @Export(name="spotInstanceInterruptionBehavior", type=String.class, parameters={})
+    @Export(name="spotInstanceInterruptionBehavior", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spotInstanceInterruptionBehavior;
 
     /**
@@ -308,7 +308,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * This parameter takes effect when the `SpotAllocationStrategy` parameter is set to `lowest-price`. The auto provisioning group selects instance types of the lowest cost to create instances.
      * 
      */
-    @Export(name="spotInstancePoolsToUseCount", type=Integer.class, parameters={})
+    @Export(name="spotInstancePoolsToUseCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> spotInstancePoolsToUseCount;
 
     /**
@@ -322,7 +322,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The target capacity of preemptible instances in the auto provisioning group.
      * 
      */
-    @Export(name="spotTargetCapacity", type=String.class, parameters={})
+    @Export(name="spotTargetCapacity", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> spotTargetCapacity;
 
     /**
@@ -336,7 +336,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * Specifies whether to release instances of the auto provisioning group. Valid values:`false` and `true`, default value: `false`.
      * 
      */
-    @Export(name="terminateInstances", type=Boolean.class, parameters={})
+    @Export(name="terminateInstances", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminateInstances;
 
     /**
@@ -350,7 +350,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The shutdown policy for preemptible instances when the auto provisioning group expires. Valid values: `false` and `true`, default value: `false`.
      * 
      */
-    @Export(name="terminateInstancesWithExpiration", type=Boolean.class, parameters={})
+    @Export(name="terminateInstancesWithExpiration", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> terminateInstancesWithExpiration;
 
     /**
@@ -364,7 +364,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The total target capacity of the auto provisioning group. The target capacity consists of the following three parts:PayAsYouGoTargetCapacity,SpotTargetCapacity and the supplemental capacity besides PayAsYouGoTargetCapacity and SpotTargetCapacity.
      * 
      */
-    @Export(name="totalTargetCapacity", type=String.class, parameters={})
+    @Export(name="totalTargetCapacity", refs={String.class}, tree="[0]")
     private Output<String> totalTargetCapacity;
 
     /**
@@ -378,7 +378,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The time when the auto provisioning group is started. The period of time between this point in time and the point in time specified by the `valid_until` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group is immediately started after creation.
      * 
      */
-    @Export(name="validFrom", type=String.class, parameters={})
+    @Export(name="validFrom", refs={String.class}, tree="[0]")
     private Output<String> validFrom;
 
     /**
@@ -392,7 +392,7 @@ public class AutoProvisioningGroup extends com.pulumi.resources.CustomResource {
      * The time when the auto provisioning group expires. The period of time between this point in time and the point in time specified by the `valid_from` parameter is the effective time period of the auto provisioning group.By default, an auto provisioning group never expires.
      * 
      */
-    @Export(name="validUntil", type=String.class, parameters={})
+    @Export(name="validUntil", refs={String.class}, tree="[0]")
     private Output<String> validUntil;
 
     /**

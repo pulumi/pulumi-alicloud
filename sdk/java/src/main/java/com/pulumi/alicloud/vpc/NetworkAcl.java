@@ -124,7 +124,7 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
      * The creation time of the resource.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -138,7 +138,7 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
      * The description of the network ACL.The description must be 1 to 256 characters in length and cannot start with http:// or https.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -152,7 +152,7 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
      * Out direction rule information. See `egress_acl_entries` below.
      * 
      */
-    @Export(name="egressAclEntries", type=List.class, parameters={NetworkAclEgressAclEntry.class})
+    @Export(name="egressAclEntries", refs={List.class,NetworkAclEgressAclEntry.class}, tree="[0,1]")
     private Output<List<NetworkAclEgressAclEntry>> egressAclEntries;
 
     /**
@@ -166,7 +166,7 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
      * Inward direction rule information. See `ingress_acl_entries` below.
      * 
      */
-    @Export(name="ingressAclEntries", type=List.class, parameters={NetworkAclIngressAclEntry.class})
+    @Export(name="ingressAclEntries", refs={List.class,NetworkAclIngressAclEntry.class}, tree="[0,1]")
     private Output<List<NetworkAclIngressAclEntry>> ingressAclEntries;
 
     /**
@@ -184,7 +184,7 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'network_acl_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -198,7 +198,7 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
      * The name of the network ACL.The name must be 1 to 128 characters in length and cannot start with http:// or https.
      * 
      */
-    @Export(name="networkAclName", type=String.class, parameters={})
+    @Export(name="networkAclName", refs={String.class}, tree="[0]")
     private Output<String> networkAclName;
 
     /**
@@ -212,7 +212,7 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
      * The associated resource. See `resources` below.
      * 
      */
-    @Export(name="resources", type=List.class, parameters={NetworkAclResource.class})
+    @Export(name="resources", refs={List.class,NetworkAclResource.class}, tree="[0,1]")
     private Output<List<NetworkAclResource>> resources;
 
     /**
@@ -226,7 +226,7 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
      * The status of the associated resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -240,7 +240,7 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
      * The tags of this resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -256,7 +256,7 @@ public class NetworkAcl extends com.pulumi.resources.CustomResource {
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

@@ -111,14 +111,14 @@ public final class GetMountPointsResult {
             return this;
         }
         public GetMountPointsResult build() {
-            final var o = new GetMountPointsResult();
-            o.fileSystemId = fileSystemId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.points = points;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetMountPointsResult();
+            _resultValue.fileSystemId = fileSystemId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.points = points;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

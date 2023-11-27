@@ -21,9 +21,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a DBFS Instance resource.
+ * Provides a DBFS Dbfs Instance resource. An instance of a database file system is equivalent to a file system and can store data of file types.
  * 
- * For information about DBFS Instance and how to use it.
+ * For information about DBFS Dbfs Instance and how to use it, see [What is Dbfs Instance](https://next.api.alibabacloud.com/document/DBFS/2020-04-18/CreateDbfs).
  * 
  * &gt; **NOTE:** Available since v1.136.0.
  * 
@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
  *             .category(&#34;standard&#34;)
  *             .zoneId(&#34;cn-hangzhou-i&#34;)
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DBFS Instance can be imported using the id, e.g.
+ * DBFS Dbfs Instance can be imported using the id, e.g.
  * 
  * ```sh
  *  $ pulumi import alicloud:databasefilesystem/instance:Instance example &lt;id&gt;
@@ -77,172 +77,246 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:databasefilesystem/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * The type of the Database file system. Valid values: `standard`.
+     * The number of CPU cores and the upper limit of memory used by the database file storage instance.
      * 
      */
-    @Export(name="category", type=String.class, parameters={})
+    @Export(name="advancedFeatures", refs={String.class}, tree="[0]")
+    private Output<String> advancedFeatures;
+
+    /**
+     * @return The number of CPU cores and the upper limit of memory used by the database file storage instance.
+     * 
+     */
+    public Output<String> advancedFeatures() {
+        return this.advancedFeatures;
+    }
+    /**
+     * Category of database file system.
+     * 
+     */
+    @Export(name="category", refs={String.class}, tree="[0]")
     private Output<String> category;
 
     /**
-     * @return The type of the Database file system. Valid values: `standard`.
+     * @return Category of database file system.
      * 
      */
     public Output<String> category() {
         return this.category;
     }
     /**
-     * Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+     * The creation time of the resource.
      * 
      */
-    @Export(name="deleteSnapshot", type=Boolean.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return The creation time of the resource.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
+     * Whether to delete the original snapshot after creating DBFS using the snapshot.
+     * 
+     */
+    @Export(name="deleteSnapshot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteSnapshot;
 
     /**
-     * @return Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+     * @return Whether to delete the original snapshot after creating DBFS using the snapshot.
      * 
      */
     public Output<Optional<Boolean>> deleteSnapshot() {
         return Codegen.optional(this.deleteSnapshot);
     }
     /**
-     * The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
+     * The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS. See `ecs_list` below.
      * 
      * @deprecated
      * Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
      * 
      */
     @Deprecated /* Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. */
-    @Export(name="ecsLists", type=List.class, parameters={InstanceEcsList.class})
+    @Export(name="ecsLists", refs={List.class,InstanceEcsList.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceEcsList>> ecsLists;
 
     /**
-     * @return The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
+     * @return The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS. See `ecs_list` below.
      * 
      */
     public Output<Optional<List<InstanceEcsList>>> ecsLists() {
         return Codegen.optional(this.ecsLists);
     }
     /**
-     * Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+     * Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
      * 
      */
-    @Export(name="enableRaid", type=Boolean.class, parameters={})
+    @Export(name="enableRaid", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableRaid;
 
     /**
-     * @return Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+     * @return Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
      * 
      */
     public Output<Optional<Boolean>> enableRaid() {
         return Codegen.optional(this.enableRaid);
     }
     /**
-     * Whether to encrypt the database file system. Valid values: `true` and `false`.
+     * Whether to encrypt DBFS.Valid values: true or false. Default value: false.
      * 
      */
-    @Export(name="encryption", type=Boolean.class, parameters={})
+    @Export(name="encryption", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> encryption;
 
     /**
-     * @return Whether to encrypt the database file system. Valid values: `true` and `false`.
+     * @return Whether to encrypt DBFS.Valid values: true or false. Default value: false.
      * 
      */
     public Output<Optional<Boolean>> encryption() {
         return Codegen.optional(this.encryption);
     }
     /**
-     * The name of the Database file system.
+     * Database file system name.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="fsName", refs={String.class}, tree="[0]")
+    private Output<String> fsName;
+
+    /**
+     * @return Database file system name.
+     * 
+     */
+    public Output<String> fsName() {
+        return this.fsName;
+    }
+    /**
+     * . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead. */
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
-     * @return The name of the Database file system.
+     * @return . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
      * 
      */
     public Output<String> instanceName() {
         return this.instanceName;
     }
     /**
-     * The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+     * Instance type. Value range:
+     * - dbfs.small
+     * - dbfs.medium
+     * - dbfs.large (default)
      * 
      */
-    @Export(name="kmsKeyId", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> instanceType;
+
+    /**
+     * @return Instance type. Value range:
+     * - dbfs.small
+     * - dbfs.medium
+     * - dbfs.large (default)
+     * 
+     */
+    public Output<Optional<String>> instanceType() {
+        return Codegen.optional(this.instanceType);
+    }
+    /**
+     * The ID of the KMS key used by DBFS.
+     * 
+     */
+    @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKeyId;
 
     /**
-     * @return The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+     * @return The ID of the KMS key used by DBFS.
      * 
      */
     public Output<Optional<String>> kmsKeyId() {
         return Codegen.optional(this.kmsKeyId);
     }
     /**
-     * The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+     * When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+     * - PL0: single disk maximum random read-write IOPS 10000
+     * - PL1: highest random read-write IOPS 50000 per disk (default)
+     * - PL2: single disk maximum random read-write IOPS 100000
+     * - PL3: single disk maximum random read-write IOPS 1 million.
      * 
      */
-    @Export(name="performanceLevel", type=String.class, parameters={})
+    @Export(name="performanceLevel", refs={String.class}, tree="[0]")
     private Output<String> performanceLevel;
 
     /**
-     * @return The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+     * @return When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+     * - PL0: single disk maximum random read-write IOPS 10000
+     * - PL1: highest random read-write IOPS 50000 per disk (default)
+     * - PL2: single disk maximum random read-write IOPS 100000
+     * - PL3: single disk maximum random read-write IOPS 1 million.
      * 
      */
     public Output<String> performanceLevel() {
         return this.performanceLevel;
     }
     /**
-     * The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
+     * Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
      * 
      */
-    @Export(name="raidStripeUnitNumber", type=String.class, parameters={})
-    private Output</* @Nullable */ String> raidStripeUnitNumber;
+    @Export(name="raidStripeUnitNumber", refs={Integer.class}, tree="[0]")
+    private Output</* @Nullable */ Integer> raidStripeUnitNumber;
 
     /**
-     * @return The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
+     * @return Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
      * 
      */
-    public Output<Optional<String>> raidStripeUnitNumber() {
+    public Output<Optional<Integer>> raidStripeUnitNumber() {
         return Codegen.optional(this.raidStripeUnitNumber);
     }
     /**
-     * The size Of the Database file system. Unit: GiB.
+     * Size of database file system, unit GiB.
      * 
      */
-    @Export(name="size", type=Integer.class, parameters={})
+    @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
     /**
-     * @return The size Of the Database file system. Unit: GiB.
+     * @return Size of database file system, unit GiB.
      * 
      */
     public Output<Integer> size() {
         return this.size;
     }
     /**
-     * The snapshot id of the Database file system.
+     * The ID of the snapshot used to create the DBFS instance.
      * 
      */
-    @Export(name="snapshotId", type=String.class, parameters={})
-    private Output</* @Nullable */ String> snapshotId;
+    @Export(name="snapshotId", refs={String.class}, tree="[0]")
+    private Output<String> snapshotId;
 
     /**
-     * @return The snapshot id of the Database file system.
+     * @return The ID of the snapshot used to create the DBFS instance.
      * 
      */
-    public Output<Optional<String>> snapshotId() {
-        return Codegen.optional(this.snapshotId);
+    public Output<String> snapshotId() {
+        return this.snapshotId;
     }
     /**
-     * The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+     * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {
@@ -252,7 +326,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -263,14 +337,34 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tags);
     }
     /**
-     * The Zone ID of the Database file system.
+     * The usage scenario of DBFS. Value range:
+     * - MySQL 5.7
+     * - PostgreSQL
+     * - MongoDB.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="usedScene", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> usedScene;
+
+    /**
+     * @return The usage scenario of DBFS. Value range:
+     * - MySQL 5.7
+     * - PostgreSQL
+     * - MongoDB.
+     * 
+     */
+    public Output<Optional<String>> usedScene() {
+        return Codegen.optional(this.usedScene);
+    }
+    /**
+     * The ID of the zone to which the database file system belongs.
+     * 
+     */
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The Zone ID of the Database file system.
+     * @return The ID of the zone to which the database file system belongs.
      * 
      */
     public Output<String> zoneId() {

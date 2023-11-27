@@ -61,7 +61,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The description of the api gateway group. Defaults to null.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -75,7 +75,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The id of the api gateway.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -89,7 +89,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * The name of the api gateway group. Defaults to null.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -103,7 +103,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * (Available in 1.69.0+)	Second-level domain name automatically assigned to the API group.
      * 
      */
-    @Export(name="subDomain", type=String.class, parameters={})
+    @Export(name="subDomain", refs={String.class}, tree="[0]")
     private Output<String> subDomain;
 
     /**
@@ -117,7 +117,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * (Available in 1.69.0+)	Second-level VPC domain name automatically assigned to the API group.
      * 
      */
-    @Export(name="vpcDomain", type=String.class, parameters={})
+    @Export(name="vpcDomain", refs={String.class}, tree="[0]")
     private Output<String> vpcDomain;
 
     /**

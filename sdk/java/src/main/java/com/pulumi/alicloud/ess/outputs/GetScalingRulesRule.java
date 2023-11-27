@@ -199,17 +199,17 @@ public final class GetScalingRulesRule {
             return this;
         }
         public GetScalingRulesRule build() {
-            final var o = new GetScalingRulesRule();
-            o.adjustmentType = adjustmentType;
-            o.adjustmentValue = adjustmentValue;
-            o.cooldown = cooldown;
-            o.id = id;
-            o.minAdjustmentMagnitude = minAdjustmentMagnitude;
-            o.name = name;
-            o.scalingGroupId = scalingGroupId;
-            o.scalingRuleAri = scalingRuleAri;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetScalingRulesRule();
+            _resultValue.adjustmentType = adjustmentType;
+            _resultValue.adjustmentValue = adjustmentValue;
+            _resultValue.cooldown = cooldown;
+            _resultValue.id = id;
+            _resultValue.minAdjustmentMagnitude = minAdjustmentMagnitude;
+            _resultValue.name = name;
+            _resultValue.scalingGroupId = scalingGroupId;
+            _resultValue.scalingRuleAri = scalingRuleAri;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

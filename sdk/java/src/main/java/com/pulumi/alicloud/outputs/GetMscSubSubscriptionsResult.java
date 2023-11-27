@@ -75,11 +75,11 @@ public final class GetMscSubSubscriptionsResult {
             return subscriptions(List.of(subscriptions));
         }
         public GetMscSubSubscriptionsResult build() {
-            final var o = new GetMscSubSubscriptionsResult();
-            o.id = id;
-            o.outputFile = outputFile;
-            o.subscriptions = subscriptions;
-            return o;
+            final var _resultValue = new GetMscSubSubscriptionsResult();
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            _resultValue.subscriptions = subscriptions;
+            return _resultValue;
         }
     }
 }

@@ -49,10 +49,10 @@ public final class GetVpcFirewallCensCenLocalVpcEniList {
             return this;
         }
         public GetVpcFirewallCensCenLocalVpcEniList build() {
-            final var o = new GetVpcFirewallCensCenLocalVpcEniList();
-            o.eniId = eniId;
-            o.eniPrivateIpAddress = eniPrivateIpAddress;
-            return o;
+            final var _resultValue = new GetVpcFirewallCensCenLocalVpcEniList();
+            _resultValue.eniId = eniId;
+            _resultValue.eniPrivateIpAddress = eniPrivateIpAddress;
+            return _resultValue;
         }
     }
 }

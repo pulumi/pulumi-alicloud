@@ -125,15 +125,15 @@ public final class GetVirtualHostsResult {
             return this;
         }
         public GetVirtualHostsResult build() {
-            final var o = new GetVirtualHostsResult();
-            o.hosts = hosts;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetVirtualHostsResult();
+            _resultValue.hosts = hosts;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

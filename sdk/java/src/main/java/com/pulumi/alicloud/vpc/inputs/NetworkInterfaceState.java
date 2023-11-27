@@ -34,6 +34,20 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
         return Optional.ofNullable(this.description);
     }
 
+    @Import(name="ipv4PrefixCount")
+    private @Nullable Output<Integer> ipv4PrefixCount;
+
+    public Optional<Output<Integer>> ipv4PrefixCount() {
+        return Optional.ofNullable(this.ipv4PrefixCount);
+    }
+
+    @Import(name="ipv4Prefixes")
+    private @Nullable Output<List<String>> ipv4Prefixes;
+
+    public Optional<Output<List<String>>> ipv4Prefixes() {
+        return Optional.ofNullable(this.ipv4Prefixes);
+    }
+
     @Import(name="ipv6AddressCount")
     private @Nullable Output<Integer> ipv6AddressCount;
 
@@ -276,6 +290,8 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
 
     private NetworkInterfaceState(NetworkInterfaceState $) {
         this.description = $.description;
+        this.ipv4PrefixCount = $.ipv4PrefixCount;
+        this.ipv4Prefixes = $.ipv4Prefixes;
         this.ipv6AddressCount = $.ipv6AddressCount;
         this.ipv6Addresses = $.ipv6Addresses;
         this.mac = $.mac;
@@ -333,6 +349,28 @@ public final class NetworkInterfaceState extends com.pulumi.resources.ResourceAr
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        public Builder ipv4PrefixCount(@Nullable Output<Integer> ipv4PrefixCount) {
+            $.ipv4PrefixCount = ipv4PrefixCount;
+            return this;
+        }
+
+        public Builder ipv4PrefixCount(Integer ipv4PrefixCount) {
+            return ipv4PrefixCount(Output.of(ipv4PrefixCount));
+        }
+
+        public Builder ipv4Prefixes(@Nullable Output<List<String>> ipv4Prefixes) {
+            $.ipv4Prefixes = ipv4Prefixes;
+            return this;
+        }
+
+        public Builder ipv4Prefixes(List<String> ipv4Prefixes) {
+            return ipv4Prefixes(Output.of(ipv4Prefixes));
+        }
+
+        public Builder ipv4Prefixes(String... ipv4Prefixes) {
+            return ipv4Prefixes(List.of(ipv4Prefixes));
         }
 
         public Builder ipv6AddressCount(@Nullable Output<Integer> ipv6AddressCount) {

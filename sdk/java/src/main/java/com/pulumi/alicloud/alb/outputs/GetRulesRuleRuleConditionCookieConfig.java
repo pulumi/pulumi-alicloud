@@ -50,9 +50,9 @@ public final class GetRulesRuleRuleConditionCookieConfig {
             return values(List.of(values));
         }
         public GetRulesRuleRuleConditionCookieConfig build() {
-            final var o = new GetRulesRuleRuleConditionCookieConfig();
-            o.values = values;
-            return o;
+            final var _resultValue = new GetRulesRuleRuleConditionCookieConfig();
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

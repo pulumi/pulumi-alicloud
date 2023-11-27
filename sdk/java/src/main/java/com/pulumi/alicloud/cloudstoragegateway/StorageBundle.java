@@ -68,7 +68,7 @@ public class StorageBundle extends com.pulumi.resources.CustomResource {
      * The description of storage bundle.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -82,7 +82,7 @@ public class StorageBundle extends com.pulumi.resources.CustomResource {
      * The name of storage bundle.
      * 
      */
-    @Export(name="storageBundleName", type=String.class, parameters={})
+    @Export(name="storageBundleName", refs={String.class}, tree="[0]")
     private Output<String> storageBundleName;
 
     /**

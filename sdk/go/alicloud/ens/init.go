@@ -21,10 +21,24 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:ens/disk:Disk":
+		r = &Disk{}
+	case "alicloud:ens/eip:Eip":
+		r = &Eip{}
 	case "alicloud:ens/instance:Instance":
 		r = &Instance{}
 	case "alicloud:ens/keyPair:KeyPair":
 		r = &KeyPair{}
+	case "alicloud:ens/loadBalancer:LoadBalancer":
+		r = &LoadBalancer{}
+	case "alicloud:ens/network:Network":
+		r = &Network{}
+	case "alicloud:ens/securityGroup:SecurityGroup":
+		r = &SecurityGroup{}
+	case "alicloud:ens/snapshot:Snapshot":
+		r = &Snapshot{}
+	case "alicloud:ens/vswitch:Vswitch":
+		r = &Vswitch{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -40,12 +54,47 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"ens/disk",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ens/eip",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"ens/instance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"ens/keyPair",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ens/loadBalancer",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ens/network",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ens/securityGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ens/snapshot",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"ens/vswitch",
 		&module{version},
 	)
 }

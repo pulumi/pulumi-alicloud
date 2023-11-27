@@ -375,26 +375,26 @@ public final class GetFunctionsFunction {
             return this;
         }
         public GetFunctionsFunction build() {
-            final var o = new GetFunctionsFunction();
-            o.caPort = caPort;
-            o.codeChecksum = codeChecksum;
-            o.codeSize = codeSize;
-            o.creationTime = creationTime;
-            o.customContainerConfig = customContainerConfig;
-            o.description = description;
-            o.environmentVariables = environmentVariables;
-            o.handler = handler;
-            o.id = id;
-            o.initializationTimeout = initializationTimeout;
-            o.initializer = initializer;
-            o.instanceConcurrency = instanceConcurrency;
-            o.instanceType = instanceType;
-            o.lastModificationTime = lastModificationTime;
-            o.memorySize = memorySize;
-            o.name = name;
-            o.runtime = runtime;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new GetFunctionsFunction();
+            _resultValue.caPort = caPort;
+            _resultValue.codeChecksum = codeChecksum;
+            _resultValue.codeSize = codeSize;
+            _resultValue.creationTime = creationTime;
+            _resultValue.customContainerConfig = customContainerConfig;
+            _resultValue.description = description;
+            _resultValue.environmentVariables = environmentVariables;
+            _resultValue.handler = handler;
+            _resultValue.id = id;
+            _resultValue.initializationTimeout = initializationTimeout;
+            _resultValue.initializer = initializer;
+            _resultValue.instanceConcurrency = instanceConcurrency;
+            _resultValue.instanceType = instanceType;
+            _resultValue.lastModificationTime = lastModificationTime;
+            _resultValue.memorySize = memorySize;
+            _resultValue.name = name;
+            _resultValue.runtime = runtime;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

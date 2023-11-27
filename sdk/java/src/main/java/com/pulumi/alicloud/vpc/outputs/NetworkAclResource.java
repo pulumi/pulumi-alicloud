@@ -86,11 +86,11 @@ public final class NetworkAclResource {
             return this;
         }
         public NetworkAclResource build() {
-            final var o = new NetworkAclResource();
-            o.resourceId = resourceId;
-            o.resourceType = resourceType;
-            o.status = status;
-            return o;
+            final var _resultValue = new NetworkAclResource();
+            _resultValue.resourceId = resourceId;
+            _resultValue.resourceType = resourceType;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

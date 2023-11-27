@@ -84,11 +84,11 @@ public final class GetClustersClusterBootstrapActionList {
             return this;
         }
         public GetClustersClusterBootstrapActionList build() {
-            final var o = new GetClustersClusterBootstrapActionList();
-            o.arg = arg;
-            o.name = name;
-            o.path = path;
-            return o;
+            final var _resultValue = new GetClustersClusterBootstrapActionList();
+            _resultValue.arg = arg;
+            _resultValue.name = name;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

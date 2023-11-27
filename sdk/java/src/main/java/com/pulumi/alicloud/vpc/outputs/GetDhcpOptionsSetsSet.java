@@ -195,17 +195,17 @@ public final class GetDhcpOptionsSetsSet {
             return this;
         }
         public GetDhcpOptionsSetsSet build() {
-            final var o = new GetDhcpOptionsSetsSet();
-            o.associateVpcCount = associateVpcCount;
-            o.dhcpOptionsSetDescription = dhcpOptionsSetDescription;
-            o.dhcpOptionsSetId = dhcpOptionsSetId;
-            o.dhcpOptionsSetName = dhcpOptionsSetName;
-            o.domainName = domainName;
-            o.domainNameServers = domainNameServers;
-            o.id = id;
-            o.ownerId = ownerId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDhcpOptionsSetsSet();
+            _resultValue.associateVpcCount = associateVpcCount;
+            _resultValue.dhcpOptionsSetDescription = dhcpOptionsSetDescription;
+            _resultValue.dhcpOptionsSetId = dhcpOptionsSetId;
+            _resultValue.dhcpOptionsSetName = dhcpOptionsSetName;
+            _resultValue.domainName = domainName;
+            _resultValue.domainNameServers = domainNameServers;
+            _resultValue.id = id;
+            _resultValue.ownerId = ownerId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -116,7 +116,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The public connection string of KVStore DBInstance.
      * 
      */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -130,7 +130,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The prefix of the public endpoint. The prefix can be 8 to 64 characters in length, and can contain lowercase letters and digits. It must start with a lowercase letter.
      * 
      */
-    @Export(name="connectionStringPrefix", type=String.class, parameters={})
+    @Export(name="connectionStringPrefix", refs={String.class}, tree="[0]")
     private Output<String> connectionStringPrefix;
 
     /**
@@ -144,7 +144,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The ID of the instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -158,7 +158,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The service port number of the instance.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**

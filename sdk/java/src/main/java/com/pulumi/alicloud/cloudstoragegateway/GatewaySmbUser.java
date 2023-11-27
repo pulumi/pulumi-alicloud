@@ -36,7 +36,7 @@ public class GatewaySmbUser extends com.pulumi.resources.CustomResource {
      * The Gateway ID of the Gateway SMB User.
      * 
      */
-    @Export(name="gatewayId", type=String.class, parameters={})
+    @Export(name="gatewayId", refs={String.class}, tree="[0]")
     private Output<String> gatewayId;
 
     /**
@@ -50,7 +50,7 @@ public class GatewaySmbUser extends com.pulumi.resources.CustomResource {
      * The password of the Gateway SMB User.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -64,7 +64,7 @@ public class GatewaySmbUser extends com.pulumi.resources.CustomResource {
      * The username of the Gateway SMB User.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**

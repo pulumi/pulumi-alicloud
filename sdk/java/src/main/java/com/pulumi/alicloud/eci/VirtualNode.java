@@ -129,7 +129,7 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
      * The Id of eip.
      * 
      */
-    @Export(name="eipInstanceId", type=String.class, parameters={})
+    @Export(name="eipInstanceId", refs={String.class}, tree="[0]")
     private Output<String> eipInstanceId;
 
     /**
@@ -143,7 +143,7 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
      * Whether to enable public network. **NOTE:** If `eip_instance_id` is not configured and `enable_public_network` is true, the system will create an elastic public network IP.
      * 
      */
-    @Export(name="enablePublicNetwork", type=Boolean.class, parameters={})
+    @Export(name="enablePublicNetwork", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enablePublicNetwork;
 
     /**
@@ -157,7 +157,7 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
      * The kube config for the k8s cluster. It needs to be connected after Base64 encoding.
      * 
      */
-    @Export(name="kubeConfig", type=String.class, parameters={})
+    @Export(name="kubeConfig", refs={String.class}, tree="[0]")
     private Output<String> kubeConfig;
 
     /**
@@ -171,7 +171,7 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
      * The resource group ID.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -185,7 +185,7 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
      * The security group ID.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
@@ -199,7 +199,7 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
      * The Status of the virtual node. Valid values: `Cleaned`, `Failed`, `Pending`, `Ready`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -213,7 +213,7 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -227,7 +227,7 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
      * The taint. See `taints` below.
      * 
      */
-    @Export(name="taints", type=List.class, parameters={VirtualNodeTaint.class})
+    @Export(name="taints", refs={List.class,VirtualNodeTaint.class}, tree="[0,1]")
     private Output</* @Nullable */ List<VirtualNodeTaint>> taints;
 
     /**
@@ -241,7 +241,7 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
      * The name of the virtual node. The length of the name is limited to `2` to `128` characters. It can contain uppercase and lowercase letters, Chinese characters, numbers, half-width colon (:), underscores (_), or hyphens (-), and must start with letters.
      * 
      */
-    @Export(name="virtualNodeName", type=String.class, parameters={})
+    @Export(name="virtualNodeName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> virtualNodeName;
 
     /**
@@ -255,7 +255,7 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
      * The vswitch id.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -269,7 +269,7 @@ public class VirtualNode extends com.pulumi.resources.CustomResource {
      * The Zone.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

@@ -93,7 +93,7 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * Indicates whether the event is a read or a write event. Valid values: `Read`, `Write`, and `All`. Default to `Write`.
      * 
      */
-    @Export(name="eventRw", type=String.class, parameters={})
+    @Export(name="eventRw", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> eventRw;
 
     /**
@@ -107,7 +107,7 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * Specifies whether to create a multi-account trail. Valid values:`true`: Create a multi-account trail.`false`: Create a single-account trail. It is the default value.
      * 
      */
-    @Export(name="isOrganizationTrail", type=Boolean.class, parameters={})
+    @Export(name="isOrganizationTrail", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isOrganizationTrail;
 
     /**
@@ -125,7 +125,7 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'mns_topic_arn' has been deprecated from version 1.118.0 */
-    @Export(name="mnsTopicArn", type=String.class, parameters={})
+    @Export(name="mnsTopicArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mnsTopicArn;
 
     /**
@@ -143,7 +143,7 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from version 1.95.0. Use 'trail_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -157,7 +157,7 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * The OSS bucket to which the trail delivers logs. Ensure that this is an existing OSS bucket.
      * 
      */
-    @Export(name="ossBucketName", type=String.class, parameters={})
+    @Export(name="ossBucketName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossBucketName;
 
     /**
@@ -171,7 +171,7 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * The prefix of the specified OSS bucket name. This parameter can be left empty.
      * 
      */
-    @Export(name="ossKeyPrefix", type=String.class, parameters={})
+    @Export(name="ossKeyPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossKeyPrefix;
 
     /**
@@ -185,7 +185,7 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * The unique ARN of the Oss role.
      * 
      */
-    @Export(name="ossWriteRoleArn", type=String.class, parameters={})
+    @Export(name="ossWriteRoleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossWriteRoleArn;
 
     /**
@@ -203,7 +203,7 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'role_name' has been deprecated from version 1.118.0 */
-    @Export(name="roleName", type=String.class, parameters={})
+    @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output<String> roleName;
 
     /**
@@ -217,7 +217,7 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * The unique ARN of the Log Service project. Ensure that `sls_project_arn` is valid .
      * 
      */
-    @Export(name="slsProjectArn", type=String.class, parameters={})
+    @Export(name="slsProjectArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> slsProjectArn;
 
     /**
@@ -231,7 +231,7 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * The unique ARN of the Log Service role.
      * 
      */
-    @Export(name="slsWriteRoleArn", type=String.class, parameters={})
+    @Export(name="slsWriteRoleArn", refs={String.class}, tree="[0]")
     private Output<String> slsWriteRoleArn;
 
     /**
@@ -245,7 +245,7 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * The status of ActionTrail Trail. After creation, tracking is turned on by default, and you can set the status value to `Disable` to turn off tracking. Valid values: `Enable`, `Disable`. Default to `Enable`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**
@@ -259,7 +259,7 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * The name of the trail to be created, which must be unique for an account.
      * 
      */
-    @Export(name="trailName", type=String.class, parameters={})
+    @Export(name="trailName", refs={String.class}, tree="[0]")
     private Output<String> trailName;
 
     /**
@@ -273,7 +273,7 @@ public class Trail extends com.pulumi.resources.CustomResource {
      * The regions to which the trail is applied. Default to `All`.
      * 
      */
-    @Export(name="trailRegion", type=String.class, parameters={})
+    @Export(name="trailRegion", refs={String.class}, tree="[0]")
     private Output<String> trailRegion;
 
     /**

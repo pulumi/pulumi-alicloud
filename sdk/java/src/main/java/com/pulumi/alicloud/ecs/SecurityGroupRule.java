@@ -21,6 +21,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
  * 
+ * &gt; **NOTE:** Available since v0.1.0.
+ * 
  * ## Example Usage
  * 
  * Basic Usage
@@ -74,7 +76,7 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
      * The target IP address range. The default value is 0.0.0.0/0 (which means no restriction will be applied). Other supported formats include 10.159.6.18/12. Only IPv4 is supported.
      * 
      */
-    @Export(name="cidrIp", type=String.class, parameters={})
+    @Export(name="cidrIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cidrIp;
 
     /**
@@ -88,7 +90,7 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
      * The description of the security group rule. The description can be up to 1 to 512 characters in length. Defaults to null.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -102,7 +104,7 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
      * The protocol. Can be `tcp`, `udp`, `icmp`, `gre` or `all`.
      * 
      */
-    @Export(name="ipProtocol", type=String.class, parameters={})
+    @Export(name="ipProtocol", refs={String.class}, tree="[0]")
     private Output<String> ipProtocol;
 
     /**
@@ -118,7 +120,7 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:**  You must specify one of the following field: `cidr_ip`,`source_security_group_id`,`prefix_list_id`,`ipv6_cidr_ip`.
      * 
      */
-    @Export(name="ipv6CidrIp", type=String.class, parameters={})
+    @Export(name="ipv6CidrIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipv6CidrIp;
 
     /**
@@ -134,7 +136,7 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
      * Network type, can be either `internet` or `intranet`, the default value is `internet`.
      * 
      */
-    @Export(name="nicType", type=String.class, parameters={})
+    @Export(name="nicType", refs={String.class}, tree="[0]")
     private Output<String> nicType;
 
     /**
@@ -148,7 +150,7 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
      * Authorization policy, can be either `accept` or `drop`, the default value is `accept`.
      * 
      */
-    @Export(name="policy", type=String.class, parameters={})
+    @Export(name="policy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policy;
 
     /**
@@ -163,7 +165,7 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
      * For example, `1/200` means that the range of the port numbers is 1-200. Other protocols&#39; &#39;port_range&#39; can only be &#34;-1/-1&#34;, and other values will be invalid.
      * 
      */
-    @Export(name="portRange", type=String.class, parameters={})
+    @Export(name="portRange", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> portRange;
 
     /**
@@ -178,7 +180,7 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
      * The ID of the source/destination prefix list to which you want to control access. **NOTE:** If you specify `cidr_ip`,`source_security_group_id`,`ipv6_cidr_ip` parameter, this parameter is ignored.
      * 
      */
-    @Export(name="prefixListId", type=String.class, parameters={})
+    @Export(name="prefixListId", refs={String.class}, tree="[0]")
     private Output<String> prefixListId;
 
     /**
@@ -192,7 +194,7 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
      * Authorization policy priority, with parameter values: `1-100`, default value: 1.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
@@ -206,7 +208,7 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
      * The security group to apply this rule to.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
@@ -220,7 +222,7 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
      * The Alibaba Cloud user account Id of the target security group when security groups are authorized across accounts.  This parameter is invalid if `cidr_ip` has already been set.
      * 
      */
-    @Export(name="sourceGroupOwnerAccount", type=String.class, parameters={})
+    @Export(name="sourceGroupOwnerAccount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceGroupOwnerAccount;
 
     /**
@@ -234,7 +236,7 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
      * The target security group ID within the same region. If this field is specified, the `nic_type` can only select `intranet`.
      * 
      */
-    @Export(name="sourceSecurityGroupId", type=String.class, parameters={})
+    @Export(name="sourceSecurityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceSecurityGroupId;
 
     /**
@@ -248,7 +250,7 @@ public class SecurityGroupRule extends com.pulumi.resources.CustomResource {
      * The type of rule being created. Valid options are `ingress` (inbound) or `egress` (outbound).
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

@@ -133,6 +133,10 @@ export class EndpointGroup extends pulumi.CustomResource {
      */
     public readonly endpointConfigurations!: pulumi.Output<outputs.ga.EndpointGroupEndpointConfiguration[]>;
     /**
+     * (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpointGroupIpList` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+     */
+    public /*out*/ readonly endpointGroupIpLists!: pulumi.Output<string[]>;
+    /**
      * The ID of the region where the endpoint group is deployed.
      */
     public readonly endpointGroupRegion!: pulumi.Output<string>;
@@ -208,6 +212,7 @@ export class EndpointGroup extends pulumi.CustomResource {
             resourceInputs["acceleratorId"] = state ? state.acceleratorId : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["endpointConfigurations"] = state ? state.endpointConfigurations : undefined;
+            resourceInputs["endpointGroupIpLists"] = state ? state.endpointGroupIpLists : undefined;
             resourceInputs["endpointGroupRegion"] = state ? state.endpointGroupRegion : undefined;
             resourceInputs["endpointGroupType"] = state ? state.endpointGroupType : undefined;
             resourceInputs["endpointRequestProtocol"] = state ? state.endpointRequestProtocol : undefined;
@@ -252,6 +257,7 @@ export class EndpointGroup extends pulumi.CustomResource {
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["thresholdCount"] = args ? args.thresholdCount : undefined;
             resourceInputs["trafficPercentage"] = args ? args.trafficPercentage : undefined;
+            resourceInputs["endpointGroupIpLists"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -275,6 +281,10 @@ export interface EndpointGroupState {
      * The endpointConfigurations of the endpoint group. See `endpointConfigurations` below.
      */
     endpointConfigurations?: pulumi.Input<pulumi.Input<inputs.ga.EndpointGroupEndpointConfiguration>[]>;
+    /**
+     * (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpointGroupIpList` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+     */
+    endpointGroupIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The ID of the region where the endpoint group is deployed.
      */

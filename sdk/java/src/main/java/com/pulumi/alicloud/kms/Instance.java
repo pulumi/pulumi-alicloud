@@ -33,7 +33,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Aucillary VPCs used to access this KMS instance. See `bind_vpcs` below.
      * 
      */
-    @Export(name="bindVpcs", type=List.class, parameters={InstanceBindVpc.class})
+    @Export(name="bindVpcs", refs={List.class,InstanceBindVpc.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceBindVpc>> bindVpcs;
 
     /**
@@ -47,7 +47,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * KMS instance certificate chain in PEM format.
      * 
      */
-    @Export(name="caCertificateChainPem", type=String.class, parameters={})
+    @Export(name="caCertificateChainPem", refs={String.class}, tree="[0]")
     private Output<String> caCertificateChainPem;
 
     /**
@@ -61,7 +61,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The creation time of the resource.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -75,7 +75,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of the resource.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -89,7 +89,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Maximum number of stored keys.
      * 
      */
-    @Export(name="keyNum", type=Integer.class, parameters={})
+    @Export(name="keyNum", refs={Integer.class}, tree="[0]")
     private Output<Integer> keyNum;
 
     /**
@@ -103,7 +103,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * KMS Instance commodity type (software/hardware). Currently, only version 3 is supported.
      * 
      */
-    @Export(name="productVersion", type=String.class, parameters={})
+    @Export(name="productVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> productVersion;
 
     /**
@@ -117,7 +117,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Automatic renewal period, in months.
      * 
      */
-    @Export(name="renewPeriod", type=Integer.class, parameters={})
+    @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> renewPeriod;
 
     /**
@@ -131,7 +131,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Renewal options (manual renewal, automatic renewal, no renewal).
      * 
      */
-    @Export(name="renewStatus", type=String.class, parameters={})
+    @Export(name="renewStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> renewStatus;
 
     /**
@@ -145,7 +145,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Maximum number of Secrets.
      * 
      */
-    @Export(name="secretNum", type=Integer.class, parameters={})
+    @Export(name="secretNum", refs={Integer.class}, tree="[0]")
     private Output<Integer> secretNum;
 
     /**
@@ -159,7 +159,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The computation performance level of the KMS instance.
      * 
      */
-    @Export(name="spec", type=Integer.class, parameters={})
+    @Export(name="spec", refs={Integer.class}, tree="[0]")
     private Output<Integer> spec;
 
     /**
@@ -173,7 +173,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -187,7 +187,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance VPC id.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -201,7 +201,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The number of managed accesses. The maximum number of VPCs that can access this KMS instance.
      * 
      */
-    @Export(name="vpcNum", type=Integer.class, parameters={})
+    @Export(name="vpcNum", refs={Integer.class}, tree="[0]")
     private Output<Integer> vpcNum;
 
     /**
@@ -215,7 +215,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance bind vswitches.
      * 
      */
-    @Export(name="vswitchIds", type=List.class, parameters={String.class})
+    @Export(name="vswitchIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> vswitchIds;
 
     /**
@@ -229,7 +229,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * zone id.
      * 
      */
-    @Export(name="zoneIds", type=List.class, parameters={String.class})
+    @Export(name="zoneIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> zoneIds;
 
     /**

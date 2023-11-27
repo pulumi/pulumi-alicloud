@@ -40,7 +40,7 @@ public class HybridMonitorSlsTask extends com.pulumi.resources.CustomResource {
      * The label of the monitoring task. See `attach_labels` below.
      * 
      */
-    @Export(name="attachLabels", type=List.class, parameters={HybridMonitorSlsTaskAttachLabel.class})
+    @Export(name="attachLabels", refs={List.class,HybridMonitorSlsTaskAttachLabel.class}, tree="[0,1]")
     private Output</* @Nullable */ List<HybridMonitorSlsTaskAttachLabel>> attachLabels;
 
     /**
@@ -54,7 +54,7 @@ public class HybridMonitorSlsTask extends com.pulumi.resources.CustomResource {
      * The interval at which metrics are collected. Valid values: `15`, `60`(default value). Unit: seconds.
      * 
      */
-    @Export(name="collectInterval", type=Integer.class, parameters={})
+    @Export(name="collectInterval", refs={Integer.class}, tree="[0]")
     private Output<Integer> collectInterval;
 
     /**
@@ -68,7 +68,7 @@ public class HybridMonitorSlsTask extends com.pulumi.resources.CustomResource {
      * The type of the collection target, enter the name of the Logstore group.
      * 
      */
-    @Export(name="collectTargetType", type=String.class, parameters={})
+    @Export(name="collectTargetType", refs={String.class}, tree="[0]")
     private Output<String> collectTargetType;
 
     /**
@@ -82,7 +82,7 @@ public class HybridMonitorSlsTask extends com.pulumi.resources.CustomResource {
      * The description of the metric import task.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -96,7 +96,7 @@ public class HybridMonitorSlsTask extends com.pulumi.resources.CustomResource {
      * The name of the namespace.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output<String> namespace;
 
     /**
@@ -110,7 +110,7 @@ public class HybridMonitorSlsTask extends com.pulumi.resources.CustomResource {
      * The configurations of the logs that are imported from Log Service. See `sls_process_config` below.
      * 
      */
-    @Export(name="slsProcessConfig", type=HybridMonitorSlsTaskSlsProcessConfig.class, parameters={})
+    @Export(name="slsProcessConfig", refs={HybridMonitorSlsTaskSlsProcessConfig.class}, tree="[0]")
     private Output<HybridMonitorSlsTaskSlsProcessConfig> slsProcessConfig;
 
     /**
@@ -124,7 +124,7 @@ public class HybridMonitorSlsTask extends com.pulumi.resources.CustomResource {
      * The name of the metric import task, enter the name of the metric for logs imported from Log Service.
      * 
      */
-    @Export(name="taskName", type=String.class, parameters={})
+    @Export(name="taskName", refs={String.class}, tree="[0]")
     private Output<String> taskName;
 
     /**

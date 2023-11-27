@@ -122,13 +122,13 @@ public final class GetKeyPairsPair {
             return this;
         }
         public GetKeyPairsPair build() {
-            final var o = new GetKeyPairsPair();
-            o.createTime = createTime;
-            o.id = id;
-            o.keyPairFingerPrint = keyPairFingerPrint;
-            o.keyPairName = keyPairName;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetKeyPairsPair();
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.keyPairFingerPrint = keyPairFingerPrint;
+            _resultValue.keyPairName = keyPairName;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

@@ -103,12 +103,12 @@ public final class GetAdConnectorOfficeSitesSiteLog {
             return this;
         }
         public GetAdConnectorOfficeSitesSiteLog build() {
-            final var o = new GetAdConnectorOfficeSitesSiteLog();
-            o.level = level;
-            o.message = message;
-            o.step = step;
-            o.timeStamp = timeStamp;
-            return o;
+            final var _resultValue = new GetAdConnectorOfficeSitesSiteLog();
+            _resultValue.level = level;
+            _resultValue.message = message;
+            _resultValue.step = step;
+            _resultValue.timeStamp = timeStamp;
+            return _resultValue;
         }
     }
 }

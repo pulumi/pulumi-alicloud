@@ -137,16 +137,16 @@ public final class GetEcsPrefixListsResult {
             return this;
         }
         public GetEcsPrefixListsResult build() {
-            final var o = new GetEcsPrefixListsResult();
-            o.addressFamily = addressFamily;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.lists = lists;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetEcsPrefixListsResult();
+            _resultValue.addressFamily = addressFamily;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.lists = lists;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

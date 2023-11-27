@@ -79,7 +79,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * Whether to pay automatically. Valid values:
      * 
      */
-    @Export(name="autoPay", type=Boolean.class, parameters={})
+    @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
     /**
@@ -93,7 +93,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * Auto renewal period of a bandwidth packet, in the unit of month. The value range is 1-12.
      * 
      */
-    @Export(name="autoRenewDuration", type=Integer.class, parameters={})
+    @Export(name="autoRenewDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewDuration;
 
     /**
@@ -107,7 +107,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * Whether use vouchers. Default value: `false`. Valid values:
      * 
      */
-    @Export(name="autoUseCoupon", type=Boolean.class, parameters={})
+    @Export(name="autoUseCoupon", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoUseCoupon;
 
     /**
@@ -121,7 +121,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The bandwidth value of bandwidth packet.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
@@ -135,7 +135,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The name of the bandwidth packet.
      * 
      */
-    @Export(name="bandwidthPackageName", type=String.class, parameters={})
+    @Export(name="bandwidthPackageName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bandwidthPackageName;
 
     /**
@@ -150,7 +150,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** At present, only basic can be configured to enhanced, but not enhanced and advanced to other types of accelerated bandwidth.
      * 
      */
-    @Export(name="bandwidthType", type=String.class, parameters={})
+    @Export(name="bandwidthType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bandwidthType;
 
     /**
@@ -165,7 +165,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The billing type. Valid values: `PayBy95`, `PayByTraffic`.
      * 
      */
-    @Export(name="billingType", type=String.class, parameters={})
+    @Export(name="billingType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> billingType;
 
     /**
@@ -179,7 +179,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * Interworking area A of cross domain acceleration package. Only international stations support returning this parameter. Default value: `China-mainland`.
      * 
      */
-    @Export(name="cbnGeographicRegionIda", type=String.class, parameters={})
+    @Export(name="cbnGeographicRegionIda", refs={String.class}, tree="[0]")
     private Output<String> cbnGeographicRegionIda;
 
     /**
@@ -193,7 +193,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * Interworking area B of cross domain acceleration package. Only international stations support returning this parameter. Default value: `Global`.
      * 
      */
-    @Export(name="cbnGeographicRegionIdb", type=String.class, parameters={})
+    @Export(name="cbnGeographicRegionIdb", refs={String.class}, tree="[0]")
     private Output<String> cbnGeographicRegionIdb;
 
     /**
@@ -207,7 +207,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The description of bandwidth package.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -221,7 +221,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The subscription duration. **NOTE:** The ForceNew attribute has be removed from version 1.148.0. If `payment_type` is set to `Subscription`, this parameter is required.
      * 
      */
-    @Export(name="duration", type=String.class, parameters={})
+    @Export(name="duration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> duration;
 
     /**
@@ -235,7 +235,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The payment type of the bandwidth. Default value: `Subscription`. Valid values: `PayAsYouGo`, `Subscription`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentType;
 
     /**
@@ -249,7 +249,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The code of the coupon. **NOTE:** The `promotion_option_no` takes effect only for accounts registered on the international site (alibabacloud.com).
      * 
      */
-    @Export(name="promotionOptionNo", type=String.class, parameters={})
+    @Export(name="promotionOptionNo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> promotionOptionNo;
 
     /**
@@ -263,7 +263,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The minimum percentage for the pay-by-95th-percentile metering method. Valid values: `30` to `100`.
      * 
      */
-    @Export(name="ratio", type=Integer.class, parameters={})
+    @Export(name="ratio", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ratio;
 
     /**
@@ -277,7 +277,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * Whether to renew a bandwidth packet. automatically or not. Valid values:
      * 
      */
-    @Export(name="renewalStatus", type=String.class, parameters={})
+    @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output<String> renewalStatus;
 
     /**
@@ -291,7 +291,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The status of the Bandwidth Package.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -305,7 +305,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -319,7 +319,7 @@ public class BandwidthPackage extends com.pulumi.resources.CustomResource {
      * The type of the bandwidth packet. China station only supports return to basic. Valid values: `Basic`, `CrossDomain`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

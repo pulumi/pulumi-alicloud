@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.PrivateLink
 {
     /// <summary>
-    /// Provides a Private Link Vpc Endpoint Service Resource resource.
+    /// Provides a Private Link Vpc Endpoint Service Resource resource. Endpoint service resource.
     /// 
     /// For information about Private Link Vpc Endpoint Service Resource and how to use it, see [What is Vpc Endpoint Service Resource](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-attachresourcetovpcendpointservice).
     /// 
@@ -95,35 +95,46 @@ namespace Pulumi.AliCloud.PrivateLink
     /// Private Link Vpc Endpoint Service Resource can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example &lt;service_id&gt;:&lt;resource_id&gt;
+    ///  $ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example &lt;service_id&gt;:&lt;resource_id&gt;:&lt;zone_id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource")]
     public partial class VpcEndpointServiceResource : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The dry run.
+        /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of Resource.
+        /// The service resource ID.
         /// </summary>
         [Output("resourceId")]
         public Output<string> ResourceId { get; private set; } = null!;
 
         /// <summary>
-        /// The Type of Resource.
+        /// Service resource type, value:
+        /// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+        /// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+        /// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
         /// </summary>
         [Output("resourceType")]
         public Output<string> ResourceType { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of Vpc Endpoint Service.
+        /// The endpoint service ID.
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
+
+        /// <summary>
+        /// The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+        /// </summary>
+        [Output("zoneId")]
+        public Output<string> ZoneId { get; private set; } = null!;
 
 
         /// <summary>
@@ -172,28 +183,39 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class VpcEndpointServiceResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dry run.
+        /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The ID of Resource.
+        /// The service resource ID.
         /// </summary>
         [Input("resourceId", required: true)]
         public Input<string> ResourceId { get; set; } = null!;
 
         /// <summary>
-        /// The Type of Resource.
+        /// Service resource type, value:
+        /// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+        /// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+        /// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
         /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
 
         /// <summary>
-        /// The ID of Vpc Endpoint Service.
+        /// The endpoint service ID.
         /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
+
+        /// <summary>
+        /// The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public VpcEndpointServiceResourceArgs()
         {
@@ -204,28 +226,39 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class VpcEndpointServiceResourceState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dry run.
+        /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The ID of Resource.
+        /// The service resource ID.
         /// </summary>
         [Input("resourceId")]
         public Input<string>? ResourceId { get; set; }
 
         /// <summary>
-        /// The Type of Resource.
+        /// Service resource type, value:
+        /// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+        /// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+        /// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
         /// </summary>
         [Input("resourceType")]
         public Input<string>? ResourceType { get; set; }
 
         /// <summary>
-        /// The ID of Vpc Endpoint Service.
+        /// The endpoint service ID.
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
+
+        /// <summary>
+        /// The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+        /// </summary>
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
 
         public VpcEndpointServiceResourceState()
         {

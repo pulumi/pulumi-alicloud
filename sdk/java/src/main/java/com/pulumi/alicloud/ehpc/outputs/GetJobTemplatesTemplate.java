@@ -390,27 +390,27 @@ public final class GetJobTemplatesTemplate {
             return this;
         }
         public GetJobTemplatesTemplate build() {
-            final var o = new GetJobTemplatesTemplate();
-            o.arrayRequest = arrayRequest;
-            o.clockTime = clockTime;
-            o.commandLine = commandLine;
-            o.gpu = gpu;
-            o.id = id;
-            o.jobTemplateId = jobTemplateId;
-            o.jobTemplateName = jobTemplateName;
-            o.mem = mem;
-            o.node = node;
-            o.packagePath = packagePath;
-            o.priority = priority;
-            o.queue = queue;
-            o.reRunable = reRunable;
-            o.runasUser = runasUser;
-            o.stderrRedirectPath = stderrRedirectPath;
-            o.stdoutRedirectPath = stdoutRedirectPath;
-            o.task = task;
-            o.thread = thread;
-            o.variables = variables;
-            return o;
+            final var _resultValue = new GetJobTemplatesTemplate();
+            _resultValue.arrayRequest = arrayRequest;
+            _resultValue.clockTime = clockTime;
+            _resultValue.commandLine = commandLine;
+            _resultValue.gpu = gpu;
+            _resultValue.id = id;
+            _resultValue.jobTemplateId = jobTemplateId;
+            _resultValue.jobTemplateName = jobTemplateName;
+            _resultValue.mem = mem;
+            _resultValue.node = node;
+            _resultValue.packagePath = packagePath;
+            _resultValue.priority = priority;
+            _resultValue.queue = queue;
+            _resultValue.reRunable = reRunable;
+            _resultValue.runasUser = runasUser;
+            _resultValue.stderrRedirectPath = stderrRedirectPath;
+            _resultValue.stdoutRedirectPath = stdoutRedirectPath;
+            _resultValue.task = task;
+            _resultValue.thread = thread;
+            _resultValue.variables = variables;
+            return _resultValue;
         }
     }
 }

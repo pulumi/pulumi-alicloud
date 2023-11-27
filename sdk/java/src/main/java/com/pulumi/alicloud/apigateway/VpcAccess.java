@@ -118,7 +118,7 @@ public class VpcAccess extends com.pulumi.resources.CustomResource {
      * ID of the instance in VPC (ECS/Server Load Balance).
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -132,7 +132,7 @@ public class VpcAccess extends com.pulumi.resources.CustomResource {
      * The name of the vpc authorization.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -146,7 +146,7 @@ public class VpcAccess extends com.pulumi.resources.CustomResource {
      * ID of the port corresponding to the instance.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -160,7 +160,7 @@ public class VpcAccess extends com.pulumi.resources.CustomResource {
      * The vpc id of the vpc authorization.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

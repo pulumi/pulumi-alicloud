@@ -174,19 +174,19 @@ public final class GetQuotaAlarmsResult {
             return quotaDimensions(List.of(quotaDimensions));
         }
         public GetQuotaAlarmsResult build() {
-            final var o = new GetQuotaAlarmsResult();
-            o.alarms = alarms;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.productCode = productCode;
-            o.quotaActionCode = quotaActionCode;
-            o.quotaAlarmName = quotaAlarmName;
-            o.quotaDimensions = quotaDimensions;
-            return o;
+            final var _resultValue = new GetQuotaAlarmsResult();
+            _resultValue.alarms = alarms;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.productCode = productCode;
+            _resultValue.quotaActionCode = quotaActionCode;
+            _resultValue.quotaAlarmName = quotaAlarmName;
+            _resultValue.quotaDimensions = quotaDimensions;
+            return _resultValue;
         }
     }
 }

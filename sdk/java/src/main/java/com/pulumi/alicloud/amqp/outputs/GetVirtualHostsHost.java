@@ -84,11 +84,11 @@ public final class GetVirtualHostsHost {
             return this;
         }
         public GetVirtualHostsHost build() {
-            final var o = new GetVirtualHostsHost();
-            o.id = id;
-            o.instanceId = instanceId;
-            o.virtualHostName = virtualHostName;
-            return o;
+            final var _resultValue = new GetVirtualHostsHost();
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.virtualHostName = virtualHostName;
+            return _resultValue;
         }
     }
 }

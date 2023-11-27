@@ -107,7 +107,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The multi-availability zone instance, coordinating the virtual switch ID of the availability zone, the switch must be located under the availability zone corresponding to the ArbiterZoneId. This parameter is required if you need to create multiple availability zone instances.
      * 
      */
-    @Export(name="arbiterVswitchId", type=String.class, parameters={})
+    @Export(name="arbiterVswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> arbiterVswitchId;
 
     /**
@@ -121,7 +121,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The multiple Availability Zone Instance, the availability zone ID of the coordinating availability zone. required if you need to create multiple availability zone instances.
      * 
      */
-    @Export(name="arbiterZoneId", type=String.class, parameters={})
+    @Export(name="arbiterZoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> arbiterZoneId;
 
     /**
@@ -135,7 +135,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The deployment architecture. If you do not fill in this parameter, the default is 1.0. to create multiple availability instances, fill in 2.0. if you need to create multiple availability instances, this parameter is required. Valid values: `1.0` to `2.0`.
      * 
      */
-    @Export(name="archVersion", type=String.class, parameters={})
+    @Export(name="archVersion", refs={String.class}, tree="[0]")
     private Output<String> archVersion;
 
     /**
@@ -149,7 +149,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The cold storage capacity of the instance. Unit: GB. Valid values: [800, 1000000].
      * 
      */
-    @Export(name="coldStorage", type=Integer.class, parameters={})
+    @Export(name="coldStorage", refs={Integer.class}, tree="[0]")
     private Output<Integer> coldStorage;
 
     /**
@@ -163,7 +163,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The multiple availability zone instances, CORE single node capacity. required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
      * 
      */
-    @Export(name="coreSingleStorage", type=Integer.class, parameters={})
+    @Export(name="coreSingleStorage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> coreSingleStorage;
 
     /**
@@ -179,7 +179,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - When `disk_category` is `local_hdd_pro`, the valid values is `lindorm.d2c.6xlarge`, `lindorm.d2c.12xlarge`, `lindorm.d2c.24xlarge`, `lindorm.d2s.5xlarge`, `lindorm.d2s.10xlarge`, `lindorm.d1.2xlarge`, `lindorm.d1.4xlarge`, `lindorm.d1.6xlarge`.
      * 
      */
-    @Export(name="coreSpec", type=String.class, parameters={})
+    @Export(name="coreSpec", refs={String.class}, tree="[0]")
     private Output<String> coreSpec;
 
     /**
@@ -195,7 +195,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The deletion protection of instance.
      * 
      */
-    @Export(name="deletionProection", type=Boolean.class, parameters={})
+    @Export(name="deletionProection", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deletionProection;
 
     /**
@@ -209,7 +209,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The disk type of instance. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_essd_pl0`, `capacity_cloud_storage`, `local_ssd_pro`, `local_hdd_pro`. **NOTE:** From version 1.207.0, `disk_category` can be set to `cloud_essd_pl0`.
      * 
      */
-    @Export(name="diskCategory", type=String.class, parameters={})
+    @Export(name="diskCategory", refs={String.class}, tree="[0]")
     private Output<String> diskCategory;
 
     /**
@@ -223,7 +223,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The duration of paid. Valid when the `payment_type` is `Subscription`.  When `pricing_cycle` set to `Month`, the valid value id `1` to `9`.  When `pricing_cycle` set to `Year`, the valid value id `1` to `3`.
      * 
      */
-    @Export(name="duration", type=String.class, parameters={})
+    @Export(name="duration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> duration;
 
     /**
@@ -237,7 +237,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * (Available since v1.163.0) Whether to enable file engine.
      * 
      */
-    @Export(name="enabledFileEngine", type=Boolean.class, parameters={})
+    @Export(name="enabledFileEngine", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabledFileEngine;
 
     /**
@@ -251,7 +251,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * (Available since v1.163.0) Whether to enable lts engine.
      * 
      */
-    @Export(name="enabledLtsEngine", type=Boolean.class, parameters={})
+    @Export(name="enabledLtsEngine", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabledLtsEngine;
 
     /**
@@ -265,7 +265,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * (Available since v1.163.0) Whether to enable search engine.
      * 
      */
-    @Export(name="enabledSearchEngine", type=Boolean.class, parameters={})
+    @Export(name="enabledSearchEngine", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabledSearchEngine;
 
     /**
@@ -279,7 +279,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * (Available since v1.211.0) Whether to enable streaming engine.
      * 
      */
-    @Export(name="enabledStreamEngine", type=Boolean.class, parameters={})
+    @Export(name="enabledStreamEngine", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabledStreamEngine;
 
     /**
@@ -293,7 +293,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * (Available since v1.163.0) Whether to enable table engine.
      * 
      */
-    @Export(name="enabledTableEngine", type=Boolean.class, parameters={})
+    @Export(name="enabledTableEngine", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabledTableEngine;
 
     /**
@@ -307,7 +307,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * (Available since v1.163.0) Whether to enable time serires engine.
      * 
      */
-    @Export(name="enabledTimeSeriresEngine", type=Boolean.class, parameters={})
+    @Export(name="enabledTimeSeriresEngine", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabledTimeSeriresEngine;
 
     /**
@@ -321,7 +321,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The count of file engine.
      * 
      */
-    @Export(name="fileEngineNodeCount", type=Integer.class, parameters={})
+    @Export(name="fileEngineNodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> fileEngineNodeCount;
 
     /**
@@ -335,7 +335,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The specification of file engine. Valid values: `lindorm.c.xlarge`.
      * 
      */
-    @Export(name="fileEngineSpecification", type=String.class, parameters={})
+    @Export(name="fileEngineSpecification", refs={String.class}, tree="[0]")
     private Output<String> fileEngineSpecification;
 
     /**
@@ -349,7 +349,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of the instance.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceName;
 
     /**
@@ -363,7 +363,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB.
      * 
      */
-    @Export(name="instanceStorage", type=String.class, parameters={})
+    @Export(name="instanceStorage", refs={String.class}, tree="[0]")
     private Output<String> instanceStorage;
 
     /**
@@ -377,7 +377,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ip white list of instance.
      * 
      */
-    @Export(name="ipWhiteLists", type=List.class, parameters={String.class})
+    @Export(name="ipWhiteLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ipWhiteLists;
 
     /**
@@ -391,7 +391,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The multi-available zone instance, log node disk type. required if you need to create multiple availability zone instances. Valid values: `cloud_efficiency`, `cloud_ssd`.
      * 
      */
-    @Export(name="logDiskCategory", type=String.class, parameters={})
+    @Export(name="logDiskCategory", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logDiskCategory;
 
     /**
@@ -405,7 +405,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The multiple Availability Zone Instance, number of log nodes. this parameter is required if you want to create multiple availability zone instances. Valid values: `4` to `400`.
      * 
      */
-    @Export(name="logNum", type=Integer.class, parameters={})
+    @Export(name="logNum", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> logNum;
 
     /**
@@ -419,7 +419,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The multi-availability instance, log single-node disk capacity. This parameter is required if you want to create multiple availability zone instances. Valid values: `400` to `64000`.
      * 
      */
-    @Export(name="logSingleStorage", type=Integer.class, parameters={})
+    @Export(name="logSingleStorage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> logSingleStorage;
 
     /**
@@ -433,7 +433,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The multiple availability zone instances, log node specification. required if you need to create multiple availability zone instances. Valid values: `lindorm.sn1.large`, `lindorm.sn1.2xlarge`.
      * 
      */
-    @Export(name="logSpec", type=String.class, parameters={})
+    @Export(name="logSpec", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logSpec;
 
     /**
@@ -447,7 +447,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The count of lindorm tunnel service.
      * 
      */
-    @Export(name="ltsNodeCount", type=Integer.class, parameters={})
+    @Export(name="ltsNodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> ltsNodeCount;
 
     /**
@@ -461,7 +461,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The specification of lindorm tunnel service. Valid values: `lindorm.g.2xlarge`, `lindorm.g.xlarge`.
      * 
      */
-    @Export(name="ltsNodeSpecification", type=String.class, parameters={})
+    @Export(name="ltsNodeSpecification", refs={String.class}, tree="[0]")
     private Output<String> ltsNodeSpecification;
 
     /**
@@ -475,7 +475,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The multi-zone combinations. Availability zone combinations are supported on the sale page. required if you need to create multiple availability zone instances. Valid values: `ap-southeast-5abc-aliyun`, `cn-hangzhou-ehi-aliyun`, `cn-beijing-acd-aliyun`, `ap-southeast-1-abc-aliyun`, `cn-zhangjiakou-abc-aliyun`, `cn-shanghai-efg-aliyun`, `cn-shanghai-abd-aliyun`, `cn-hangzhou-bef-aliyun`, `cn-hangzhou-bce-aliyun`, `cn-beijing-fgh-aliyun`, `cn-shenzhen-abc-aliyun`.
      * 
      */
-    @Export(name="multiZoneCombination", type=String.class, parameters={})
+    @Export(name="multiZoneCombination", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> multiZoneCombination;
 
     /**
@@ -489,7 +489,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The billing method. Valid values: `PayAsYouGo` and `Subscription`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -503,7 +503,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The pricing cycle. Valid when the `payment_type` is `Subscription`. Valid values: `Month` and `Year`.
      * 
      */
-    @Export(name="pricingCycle", type=String.class, parameters={})
+    @Export(name="pricingCycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pricingCycle;
 
     /**
@@ -517,7 +517,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Multi-available zone instances, the virtual switch ID of the primary available zone, must be under the available zone corresponding to the PrimaryZoneId. required if you need to create multiple availability zone instances.
      * 
      */
-    @Export(name="primaryVswitchId", type=String.class, parameters={})
+    @Export(name="primaryVswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> primaryVswitchId;
 
     /**
@@ -531,7 +531,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Multi-availability zone instance with the availability zone ID of the main availability zone. required if you need to create multiple availability zone instances.
      * 
      */
-    @Export(name="primaryZoneId", type=String.class, parameters={})
+    @Export(name="primaryZoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> primaryZoneId;
 
     /**
@@ -545,7 +545,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -559,7 +559,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The count of search engine.
      * 
      */
-    @Export(name="searchEngineNodeCount", type=Integer.class, parameters={})
+    @Export(name="searchEngineNodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> searchEngineNodeCount;
 
     /**
@@ -573,7 +573,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The specification of search engine. Valid values: `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.g.xlarge`.
      * 
      */
-    @Export(name="searchEngineSpecification", type=String.class, parameters={})
+    @Export(name="searchEngineSpecification", refs={String.class}, tree="[0]")
     private Output<String> searchEngineSpecification;
 
     /**
@@ -587,7 +587,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * (Available since v1.196.0) The instance type.
      * 
      */
-    @Export(name="serviceType", type=String.class, parameters={})
+    @Export(name="serviceType", refs={String.class}, tree="[0]")
     private Output<String> serviceType;
 
     /**
@@ -601,7 +601,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The multiple availability zone instances, the virtual switch ID of the ready availability zone must be under the availability zone corresponding to the StandbyZoneId. required if you need to create multiple availability zone instances.
      * 
      */
-    @Export(name="standbyVswitchId", type=String.class, parameters={})
+    @Export(name="standbyVswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> standbyVswitchId;
 
     /**
@@ -615,7 +615,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The multiple availability zone instances with availability zone IDs for the prepared availability zones. required if you need to create multiple availability zone instances.
      * 
      */
-    @Export(name="standbyZoneId", type=String.class, parameters={})
+    @Export(name="standbyZoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> standbyZoneId;
 
     /**
@@ -629,7 +629,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The status of Instance.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -643,7 +643,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The number of LindormStream nodes in the instance.
      * 
      */
-    @Export(name="streamEngineNodeCount", type=Integer.class, parameters={})
+    @Export(name="streamEngineNodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> streamEngineNodeCount;
 
     /**
@@ -657,7 +657,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The specification of the LindormStream nodes in the instance. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
      * 
      */
-    @Export(name="streamEngineSpecification", type=String.class, parameters={})
+    @Export(name="streamEngineSpecification", refs={String.class}, tree="[0]")
     private Output<String> streamEngineSpecification;
 
     /**
@@ -671,7 +671,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The count of table engine.
      * 
      */
-    @Export(name="tableEngineNodeCount", type=Integer.class, parameters={})
+    @Export(name="tableEngineNodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> tableEngineNodeCount;
 
     /**
@@ -685,7 +685,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The specification of  table engine. Valid values: `lindorm.c.2xlarge`, `lindorm.c.4xlarge`, `lindorm.c.8xlarge`, `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`.
      * 
      */
-    @Export(name="tableEngineSpecification", type=String.class, parameters={})
+    @Export(name="tableEngineSpecification", refs={String.class}, tree="[0]")
     private Output<String> tableEngineSpecification;
 
     /**
@@ -699,7 +699,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -713,7 +713,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The count of time series engine.
      * 
      */
-    @Export(name="timeSeriesEngineNodeCount", type=Integer.class, parameters={})
+    @Export(name="timeSeriesEngineNodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeSeriesEngineNodeCount;
 
     /**
@@ -727,7 +727,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The specification of time series engine. Valid values: `lindorm.g.xlarge`, `lindorm.g.2xlarge`, `lindorm.g.4xlarge`, `lindorm.g.8xlarge`, `lindorm.r.8xlarge`.
      * 
      */
-    @Export(name="timeSeriesEngineSpecification", type=String.class, parameters={})
+    @Export(name="timeSeriesEngineSpecification", refs={String.class}, tree="[0]")
     private Output<String> timeSeriesEngineSpecification;
 
     /**
@@ -745,7 +745,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field `time_serires_engine_specification` has been deprecated from provider version 1.182.0. New field `time_series_engine_specification` instead. */
-    @Export(name="timeSeriresEngineSpecification", type=String.class, parameters={})
+    @Export(name="timeSeriresEngineSpecification", refs={String.class}, tree="[0]")
     private Output<String> timeSeriresEngineSpecification;
 
     /**
@@ -759,7 +759,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The VPC ID of the instance.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -773,7 +773,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The vswitch id.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -787,7 +787,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The zone ID of the instance.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

@@ -254,22 +254,22 @@ public final class GetDBClustersResult {
             return this;
         }
         public GetDBClustersResult build() {
-            final var o = new GetDBClustersResult();
-            o.clusters = clusters;
-            o.description = description;
-            o.descriptionRegex = descriptionRegex;
-            o.descriptions = descriptions;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.totalCount = totalCount;
-            return o;
+            final var _resultValue = new GetDBClustersResult();
+            _resultValue.clusters = clusters;
+            _resultValue.description = description;
+            _resultValue.descriptionRegex = descriptionRegex;
+            _resultValue.descriptions = descriptions;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.totalCount = totalCount;
+            return _resultValue;
         }
     }
 }

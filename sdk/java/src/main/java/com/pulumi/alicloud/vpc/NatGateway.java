@@ -36,7 +36,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * - false: Disable deletion protection.
      * 
      */
-    @Export(name="deletionProtection", type=Boolean.class, parameters={})
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deletionProtection;
 
     /**
@@ -52,7 +52,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * Description of the nat gateway, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Defaults to null.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -66,7 +66,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * Specifies whether to only precheck this request. Default value: `false`.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -80,7 +80,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * The EIP binding mode of the NAT gateway. Default value: `MULTI_BINDED`. Valid values:
      * 
      */
-    @Export(name="eipBindMode", type=String.class, parameters={})
+    @Export(name="eipBindMode", refs={String.class}, tree="[0]")
     private Output<String> eipBindMode;
 
     /**
@@ -94,7 +94,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * Specifies whether to forcefully delete the NAT gateway.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -108,7 +108,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * The nat gateway will auto create a forward item.
      * 
      */
-    @Export(name="forwardTableIds", type=String.class, parameters={})
+    @Export(name="forwardTableIds", refs={String.class}, tree="[0]")
     private Output<String> forwardTableIds;
 
     /**
@@ -122,7 +122,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * Field `instance_charge_type` has been deprecated from provider version 1.121.0. New field `payment_type` instead.
      * 
      */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
     /**
@@ -136,7 +136,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * The internet charge type. Valid values `PayByLcu` and `PayBySpec`. The `PayByLcu` is only support enhanced NAT. **NOTE:** From 1.137.0+, The `PayBySpec` has been deprecated.
      * 
      */
-    @Export(name="internetChargeType", type=String.class, parameters={})
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output<String> internetChargeType;
 
     /**
@@ -150,7 +150,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * Field `name` has been deprecated from provider version 1.121.0. New field `nat_gateway_name` instead.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -164,7 +164,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * Name of the nat gateway. The value can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://. Defaults to null.
      * 
      */
-    @Export(name="natGatewayName", type=String.class, parameters={})
+    @Export(name="natGatewayName", refs={String.class}, tree="[0]")
     private Output<String> natGatewayName;
 
     /**
@@ -178,7 +178,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * The type of NAT gateway. Valid values: `Normal` and `Enhanced`. **NOTE:** From 1.137.0+,  The `Normal` has been deprecated.
      * 
      */
-    @Export(name="natType", type=String.class, parameters={})
+    @Export(name="natType", refs={String.class}, tree="[0]")
     private Output<String> natType;
 
     /**
@@ -192,7 +192,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * Indicates the type of the created NAT gateway. Valid values `internet` and `intranet`. `internet`: Internet NAT Gateway. `intranet`: VPC NAT Gateway.
      * 
      */
-    @Export(name="networkType", type=String.class, parameters={})
+    @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
@@ -206,7 +206,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * The billing method of the NAT gateway. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -221,7 +221,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -236,7 +236,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * The nat gateway will auto create a snat item.
      * 
      */
-    @Export(name="snatTableIds", type=String.class, parameters={})
+    @Export(name="snatTableIds", refs={String.class}, tree="[0]")
     private Output<String> snatTableIds;
 
     /**
@@ -250,7 +250,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * The specification of the nat gateway. Valid values are `Small`, `Middle` and `Large`. Effective when `internet_charge_type` is `PayBySpec` and `network_type` is `internet`. Details refer to [Nat Gateway Specification](https://help.aliyun.com/document_detail/203500.html).
      * 
      */
-    @Export(name="specification", type=String.class, parameters={})
+    @Export(name="specification", refs={String.class}, tree="[0]")
     private Output<String> specification;
 
     /**
@@ -264,7 +264,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * (Available since v1.121.0) The status of NAT gateway.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -278,7 +278,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * The tags of NAT gateway.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -292,7 +292,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * The VPC ID.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -306,7 +306,7 @@ public class NatGateway extends com.pulumi.resources.CustomResource {
      * The id of VSwitch.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**

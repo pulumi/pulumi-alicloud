@@ -87,7 +87,7 @@ public class TrafficMarkingPolicy extends com.pulumi.resources.CustomResource {
      * The description of the Traffic Marking Policy. The description must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -101,7 +101,7 @@ public class TrafficMarkingPolicy extends com.pulumi.resources.CustomResource {
      * The dry run.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -115,7 +115,7 @@ public class TrafficMarkingPolicy extends com.pulumi.resources.CustomResource {
      * The DSCP(Differentiated Services Code Point) of the Traffic Marking Policy. Value range: 0~63.
      * 
      */
-    @Export(name="markingDscp", type=Integer.class, parameters={})
+    @Export(name="markingDscp", refs={Integer.class}, tree="[0]")
     private Output<Integer> markingDscp;
 
     /**
@@ -129,7 +129,7 @@ public class TrafficMarkingPolicy extends com.pulumi.resources.CustomResource {
      * The Priority of the Traffic Marking Policy. Value range: 1~100.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
@@ -143,7 +143,7 @@ public class TrafficMarkingPolicy extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -157,7 +157,7 @@ public class TrafficMarkingPolicy extends com.pulumi.resources.CustomResource {
      * The ID of the Traffic Marking Policy.
      * 
      */
-    @Export(name="trafficMarkingPolicyId", type=String.class, parameters={})
+    @Export(name="trafficMarkingPolicyId", refs={String.class}, tree="[0]")
     private Output<String> trafficMarkingPolicyId;
 
     /**
@@ -171,7 +171,7 @@ public class TrafficMarkingPolicy extends com.pulumi.resources.CustomResource {
      * The name of the Traffic Marking Policy. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, underscores (_), and hyphens (-).
      * 
      */
-    @Export(name="trafficMarkingPolicyName", type=String.class, parameters={})
+    @Export(name="trafficMarkingPolicyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trafficMarkingPolicyName;
 
     /**
@@ -185,7 +185,7 @@ public class TrafficMarkingPolicy extends com.pulumi.resources.CustomResource {
      * The ID of the transit router.
      * 
      */
-    @Export(name="transitRouterId", type=String.class, parameters={})
+    @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterId;
 
     /**

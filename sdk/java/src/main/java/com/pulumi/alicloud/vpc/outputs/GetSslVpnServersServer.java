@@ -276,21 +276,21 @@ public final class GetSslVpnServersServer {
             return this;
         }
         public GetSslVpnServersServer build() {
-            final var o = new GetSslVpnServersServer();
-            o.cipher = cipher;
-            o.clientIpPool = clientIpPool;
-            o.compress = compress;
-            o.connections = connections;
-            o.createTime = createTime;
-            o.id = id;
-            o.internetIp = internetIp;
-            o.localSubnet = localSubnet;
-            o.maxConnections = maxConnections;
-            o.name = name;
-            o.port = port;
-            o.proto = proto;
-            o.vpnGatewayId = vpnGatewayId;
-            return o;
+            final var _resultValue = new GetSslVpnServersServer();
+            _resultValue.cipher = cipher;
+            _resultValue.clientIpPool = clientIpPool;
+            _resultValue.compress = compress;
+            _resultValue.connections = connections;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.internetIp = internetIp;
+            _resultValue.localSubnet = localSubnet;
+            _resultValue.maxConnections = maxConnections;
+            _resultValue.name = name;
+            _resultValue.port = port;
+            _resultValue.proto = proto;
+            _resultValue.vpnGatewayId = vpnGatewayId;
+            return _resultValue;
         }
     }
 }

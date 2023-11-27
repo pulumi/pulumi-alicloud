@@ -37,7 +37,7 @@ public class UserAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the Directory.
      * 
      */
-    @Export(name="directoryId", type=String.class, parameters={})
+    @Export(name="directoryId", refs={String.class}, tree="[0]")
     private Output<String> directoryId;
 
     /**
@@ -51,7 +51,7 @@ public class UserAttachment extends com.pulumi.resources.CustomResource {
      * The Group ID.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -65,7 +65,7 @@ public class UserAttachment extends com.pulumi.resources.CustomResource {
      * The User ID.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

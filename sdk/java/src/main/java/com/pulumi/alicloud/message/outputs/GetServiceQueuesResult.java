@@ -172,17 +172,17 @@ public final class GetServiceQueuesResult {
             return queues(List.of(queues));
         }
         public GetServiceQueuesResult build() {
-            final var o = new GetServiceQueuesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.queueName = queueName;
-            o.queues = queues;
-            return o;
+            final var _resultValue = new GetServiceQueuesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.queueName = queueName;
+            _resultValue.queues = queues;
+            return _resultValue;
         }
     }
 }

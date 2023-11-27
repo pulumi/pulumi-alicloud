@@ -132,7 +132,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. This parameter indicates the authentication method. It is allowed only when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
      * 
      */
-    @Export(name="acl", type=String.class, parameters={})
+    @Export(name="acl", refs={String.class}, tree="[0]")
     private Output<String> acl;
 
     /**
@@ -148,7 +148,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * **Manual**: It is not automatically upgraded. It is only mandatory when the current version is offline.
      * 
      */
-    @Export(name="autoUpgradeMinorVersion", type=String.class, parameters={})
+    @Export(name="autoUpgradeMinorVersion", refs={String.class}, tree="[0]")
     private Output<String> autoUpgradeMinorVersion;
 
     /**
@@ -166,7 +166,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** You must specify at least one of the BackupId and RestoreTime parameters. When `payment_type=&#34;Serverless&#34;` and when modifying, do not perform `instance_storage` check. Otherwise, check.
      * 
      */
-    @Export(name="backupId", type=String.class, parameters={})
+    @Export(name="backupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupId;
 
     /**
@@ -184,7 +184,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * **IncrementalBackup**: incremental backup
      * 
      */
-    @Export(name="backupType", type=String.class, parameters={})
+    @Export(name="backupType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupType;
 
     /**
@@ -202,7 +202,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * **custom**: use a custom certificate. Valid values: `aliyun`, `custom`.
      * 
      */
-    @Export(name="caType", type=String.class, parameters={})
+    @Export(name="caType", refs={String.class}, tree="[0]")
     private Output<String> caType;
 
     /**
@@ -226,7 +226,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * **cluster**: MySQL Cluster Edition. (Available in 1.207.0+)
      * 
      */
-    @Export(name="category", type=String.class, parameters={})
+    @Export(name="category", refs={String.class}, tree="[0]")
     private Output<String> category;
 
     /**
@@ -248,7 +248,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The file that contains the certificate used for TDE.
      * 
      */
-    @Export(name="certificate", type=String.class, parameters={})
+    @Export(name="certificate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certificate;
 
     /**
@@ -262,7 +262,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the public key of the client certification authority. If the value of client_ca_enabled is 1, this parameter must be configured.
      * 
      */
-    @Export(name="clientCaCert", type=String.class, parameters={})
+    @Export(name="clientCaCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCaCert;
 
     /**
@@ -276,7 +276,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The client ca enabled.
      * 
      */
-    @Export(name="clientCaEnabled", type=Integer.class, parameters={})
+    @Export(name="clientCaEnabled", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> clientCaEnabled;
 
     /**
@@ -290,7 +290,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * This parameter is only supported by the RDS PostgreSQL cloud disk version, which indicates that the client revokes the certificate file. If the value of client_crl_enabled is 1, this parameter must be configured.
      * 
      */
-    @Export(name="clientCertRevocationList", type=String.class, parameters={})
+    @Export(name="clientCertRevocationList", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCertRevocationList;
 
     /**
@@ -304,7 +304,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The client crl enabled.
      * 
      */
-    @Export(name="clientCrlEnabled", type=Integer.class, parameters={})
+    @Export(name="clientCrlEnabled", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> clientCrlEnabled;
 
     /**
@@ -318,7 +318,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The database connection address.
      * 
      */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -332,7 +332,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The connection string prefix.
      * 
      */
-    @Export(name="connectionStringPrefix", type=String.class, parameters={})
+    @Export(name="connectionStringPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> connectionStringPrefix;
 
     /**
@@ -346,7 +346,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The instance type of the new instance. For information, see [Primary ApsaraDB RDS instance types](https://www.alibabacloud.com/help/en/rds/product-overview/primary-apsaradb-rds-instance-types).
      * 
      */
-    @Export(name="dbInstanceClass", type=String.class, parameters={})
+    @Export(name="dbInstanceClass", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceClass;
 
     /**
@@ -360,7 +360,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The db instance description.
      * 
      */
-    @Export(name="dbInstanceDescription", type=String.class, parameters={})
+    @Export(name="dbInstanceDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbInstanceDescription;
 
     /**
@@ -376,7 +376,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The default value of this parameter is the storage capacity of the original instance.
      * 
      */
-    @Export(name="dbInstanceStorage", type=Integer.class, parameters={})
+    @Export(name="dbInstanceStorage", refs={Integer.class}, tree="[0]")
     private Output<Integer> dbInstanceStorage;
 
     /**
@@ -397,7 +397,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * **cloud_essd3**: ESSDs of PL3
      * 
      */
-    @Export(name="dbInstanceStorageType", type=String.class, parameters={})
+    @Export(name="dbInstanceStorageType", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceStorageType;
 
     /**
@@ -418,7 +418,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter is available and must be specified only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      * 
      */
-    @Export(name="dbName", type=String.class, parameters={})
+    @Export(name="dbName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbName;
 
     /**
@@ -434,7 +434,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The names of the databases that you want to create on the new instance.
      * 
      */
-    @Export(name="dbNames", type=String.class, parameters={})
+    @Export(name="dbNames", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbNames;
 
     /**
@@ -448,7 +448,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The ID of the dedicated cluster to which the new instance belongs. This parameter takes effect only when you create the new instance in a dedicated cluster.
      * 
      */
-    @Export(name="dedicatedHostGroupId", type=String.class, parameters={})
+    @Export(name="dedicatedHostGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dedicatedHostGroupId;
 
     /**
@@ -466,7 +466,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      * 
      */
-    @Export(name="deletionProtection", type=Boolean.class, parameters={})
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
@@ -484,7 +484,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The direction. Valid values: `Auto`, `Down`, `TempUpgrade`, `Up`.
      * 
      */
-    @Export(name="direction", type=String.class, parameters={})
+    @Export(name="direction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> direction;
 
     /**
@@ -498,7 +498,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The effective time.
      * 
      */
-    @Export(name="effectiveTime", type=String.class, parameters={})
+    @Export(name="effectiveTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> effectiveTime;
 
     /**
@@ -514,7 +514,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
      * 
      */
-    @Export(name="encryptionKey", type=String.class, parameters={})
+    @Export(name="encryptionKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptionKey;
 
     /**
@@ -530,7 +530,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * Database type. Value options: MySQL, SQLServer, PostgreSQL, MariaDB.
      * 
      */
-    @Export(name="engine", type=String.class, parameters={})
+    @Export(name="engine", refs={String.class}, tree="[0]")
     private Output<String> engine;
 
     /**
@@ -548,7 +548,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * MariaDB:**10.3**.
      * 
      */
-    @Export(name="engineVersion", type=String.class, parameters={})
+    @Export(name="engineVersion", refs={String.class}, tree="[0]")
     private Output<String> engineVersion;
 
     /**
@@ -566,7 +566,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      * 
      */
-    @Export(name="forceRestart", type=Boolean.class, parameters={})
+    @Export(name="forceRestart", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceRestart;
 
     /**
@@ -582,7 +582,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * **RTO**: Instance availability is preferred. The instance restores services as soon as possible to ensure availability. Use this mode if you have higher requirements on service availability.
      * 
      */
-    @Export(name="haMode", type=String.class, parameters={})
+    @Export(name="haMode", refs={String.class}, tree="[0]")
     private Output<String> haMode;
 
     /**
@@ -600,7 +600,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * **VPC**: VPC.
      * 
      */
-    @Export(name="instanceNetworkType", type=String.class, parameters={})
+    @Export(name="instanceNetworkType", refs={String.class}, tree="[0]")
     private Output<String> instanceNetworkType;
 
     /**
@@ -616,7 +616,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The maintainable time period of the instance. Format: &lt;I&gt; HH:mm&lt;/I&gt; Z-&lt;I&gt; HH:mm&lt;/I&gt; Z(UTC time).
      * 
      */
-    @Export(name="maintainTime", type=String.class, parameters={})
+    @Export(name="maintainTime", refs={String.class}, tree="[0]")
     private Output<String> maintainTime;
 
     /**
@@ -630,7 +630,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm).See `parameters` below.
      * 
      */
-    @Export(name="parameters", type=List.class, parameters={RdsCloneDbInstanceParameter.class})
+    @Export(name="parameters", refs={List.class,RdsCloneDbInstanceParameter.class}, tree="[0,1]")
     private Output<List<RdsCloneDbInstanceParameter>> parameters;
 
     /**
@@ -646,7 +646,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter is available only when the instance runs SQL Server 2019 SE or an Enterprise Edition of SQL Server.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -662,7 +662,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The billing method of the new instance. Valid values: `PayAsYouGo` and `Subscription` and `Serverless`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -678,7 +678,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the period parameter.
      * 
      */
-    @Export(name="period", type=String.class, parameters={})
+    @Export(name="period", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> period;
 
     /**
@@ -694,7 +694,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The details of the AD domain.See `pg_hba_conf` below.
      * 
      */
-    @Export(name="pgHbaConfs", type=List.class, parameters={RdsCloneDbInstancePgHbaConf.class})
+    @Export(name="pgHbaConfs", refs={List.class,RdsCloneDbInstancePgHbaConf.class}, tree="[0,1]")
     private Output<List<RdsCloneDbInstancePgHbaConf>> pgHbaConfs;
 
     /**
@@ -708,7 +708,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The port.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
@@ -722,7 +722,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The intranet IP address of the new instance must be within the specified vSwitch IP address range. By default, the system automatically allocates by using **VPCId** and **VSwitchId**.
      * 
      */
-    @Export(name="privateIpAddress", type=String.class, parameters={})
+    @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
     private Output<String> privateIpAddress;
 
     /**
@@ -736,7 +736,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The file that contains the private key used for TDE.
      * 
      */
-    @Export(name="privateKey", type=String.class, parameters={})
+    @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateKey;
 
     /**
@@ -750,7 +750,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The released keep policy.
      * 
      */
-    @Export(name="releasedKeepPolicy", type=String.class, parameters={})
+    @Export(name="releasedKeepPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> releasedKeepPolicy;
 
     /**
@@ -764,7 +764,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * This parameter is only supported by the RDS PostgreSQL cloud disk version, indicating the authentication method of the replication permission. It is only allowed when the public key of the client certificate authority is enabled. Valid values: `cert` and `perfer` and `verify-ca` and `verify-full (supported by RDS PostgreSQL above 12)`.
      * 
      */
-    @Export(name="replicationAcl", type=String.class, parameters={})
+    @Export(name="replicationAcl", refs={String.class}, tree="[0]")
     private Output<String> replicationAcl;
 
     /**
@@ -778,7 +778,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The resource group id.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -792,7 +792,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * Specifies whether to restore only the databases and tables that you specify. The value 1 specifies to restore only the specified databases and tables. If you do not want to restore only the specified databases or tables, you can choose not to specify this parameter.
      * 
      */
-    @Export(name="restoreTable", type=String.class, parameters={})
+    @Export(name="restoreTable", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> restoreTable;
 
     /**
@@ -806,7 +806,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The point in time to which you want to restore the data of the original instance. The point in time must fall within the specified log backup retention period. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      * 
      */
-    @Export(name="restoreTime", type=String.class, parameters={})
+    @Export(name="restoreTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> restoreTime;
 
     /**
@@ -822,7 +822,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter is available only when the instance runs MySQL.
      * 
      */
-    @Export(name="roleArn", type=String.class, parameters={})
+    @Export(name="roleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roleArn;
 
     /**
@@ -842,7 +842,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** each instance can add up to 1000 IP addresses or IP segments, that is, the total number of IP addresses or IP segments in all IP whitelist groups cannot exceed 1000. When there are more IP addresses, it is recommended to merge them into IP segments, for example, 10.23.12.0/24.
      * 
      */
-    @Export(name="securityIps", type=List.class, parameters={String.class})
+    @Export(name="securityIps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityIps;
 
     /**
@@ -860,7 +860,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the content of the server certificate. If the CAType value is custom, this parameter must be configured.
      * 
      */
-    @Export(name="serverCert", type=String.class, parameters={})
+    @Export(name="serverCert", refs={String.class}, tree="[0]")
     private Output<String> serverCert;
 
     /**
@@ -874,7 +874,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * This parameter is only supported by the RDS PostgreSQL cloud disk version. It indicates the private key of the server certificate. If the value of CAType is custom, this parameter must be configured.
      * 
      */
-    @Export(name="serverKey", type=String.class, parameters={})
+    @Export(name="serverKey", refs={String.class}, tree="[0]")
     private Output<String> serverKey;
 
     /**
@@ -888,7 +888,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The settings of the serverless instance. This parameter is required when you create a serverless instance. This parameter takes effect only when you create an ApsaraDB RDS for MySQL instance.See `serverless_config` below.
      * 
      */
-    @Export(name="serverlessConfigs", type=List.class, parameters={RdsCloneDbInstanceServerlessConfig.class})
+    @Export(name="serverlessConfigs", refs={List.class,RdsCloneDbInstanceServerlessConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<RdsCloneDbInstanceServerlessConfig>> serverlessConfigs;
 
     /**
@@ -902,7 +902,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The source biz.
      * 
      */
-    @Export(name="sourceBiz", type=String.class, parameters={})
+    @Export(name="sourceBiz", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceBiz;
 
     /**
@@ -916,7 +916,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The source db instance id.
      * 
      */
-    @Export(name="sourceDbInstanceId", type=String.class, parameters={})
+    @Export(name="sourceDbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> sourceDbInstanceId;
 
     /**
@@ -930,7 +930,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * Enable or disable SSL. Valid values: `0` and `1`.
      * 
      */
-    @Export(name="sslEnabled", type=Integer.class, parameters={})
+    @Export(name="sslEnabled", refs={Integer.class}, tree="[0]")
     private Output<Integer> sslEnabled;
 
     /**
@@ -944,7 +944,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The time at which you want to apply the specification changes. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      * 
      */
-    @Export(name="switchTime", type=String.class, parameters={})
+    @Export(name="switchTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> switchTime;
 
     /**
@@ -963,7 +963,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** SQL Server 2017 cluster version is currently not supported.
      * 
      */
-    @Export(name="syncMode", type=String.class, parameters={})
+    @Export(name="syncMode", refs={String.class}, tree="[0]")
     private Output<String> syncMode;
 
     /**
@@ -983,7 +983,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * [{&#34;type&#34;:&#34;db&#34;,&#34;name&#34;:&#34;The original name of Database 1&#34;,&#34;newname&#34;:&#34;The new name of Database 1&#34;,&#34;tables&#34;:[{&#34;type&#34;:&#34;table&#34;,&#34;name&#34;:&#34;The original name of Table 1 in Database 1&#34;,&#34;newname&#34;:&#34;The new name of Table 1 in Database 1&#34;},{&#34;type&#34;:&#34;table&#34;,&#34;name&#34;:&#34;The original name of Table 2 in Database 1&#34;,&#34;newname&#34;:&#34;The new name of Table 2 in Database 1&#34;}]},{&#34;type&#34;:&#34;db&#34;,&#34;name&#34;:&#34;The original name of Database 2&#34;,&#34;newname&#34;:&#34;The new name of Database 2&#34;,&#34;tables&#34;:[{&#34;type&#34;:&#34;table&#34;,&#34;name&#34;:&#34;The original name of Table 1 in Database 2&#34;,&#34;newname&#34;:&#34;The new name of Table 1 in Database 2&#34;},{&#34;type&#34;:&#34;table&#34;,&#34;name&#34;:&#34;The original name of Table 2 in Database 2&#34;,&#34;newname&#34;:&#34;The new name of Table 2 in Database 2&#34;}]}]
      * 
      */
-    @Export(name="tableMeta", type=String.class, parameters={})
+    @Export(name="tableMeta", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tableMeta;
 
     /**
@@ -1000,7 +1000,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
      * 
      */
-    @Export(name="tcpConnectionType", type=String.class, parameters={})
+    @Export(name="tcpConnectionType", refs={String.class}, tree="[0]")
     private Output<String> tcpConnectionType;
 
     /**
@@ -1018,7 +1018,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * * Disabled
      * 
      */
-    @Export(name="tdeStatus", type=String.class, parameters={})
+    @Export(name="tdeStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tdeStatus;
 
     /**
@@ -1038,7 +1038,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** If you set the payment_type parameter to Subscription, you must specify the used_time parameter.
      * 
      */
-    @Export(name="usedTime", type=Integer.class, parameters={})
+    @Export(name="usedTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> usedTime;
 
     /**
@@ -1058,7 +1058,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Make sure that the VPC resides in the specified region.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -1076,7 +1076,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Make sure that the vSwitch belongs to the specified VPC and region.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -1092,7 +1092,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The ID of the zone to which the new instance belongs. You can call the [DescribeRegions](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeregions) operation to query the most recent region list.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
@@ -1106,7 +1106,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * The region ID of the secondary instance if you create a secondary instance. If you set this parameter to the same value as the ZoneId parameter, the instance is deployed in a single zone. Otherwise, the instance is deployed in multiple zones.
      * 
      */
-    @Export(name="zoneIdSlaveA", type=String.class, parameters={})
+    @Export(name="zoneIdSlaveA", refs={String.class}, tree="[0]")
     private Output<String> zoneIdSlaveA;
 
     /**
@@ -1122,7 +1122,7 @@ public class RdsCloneDbInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The default value of this parameter is the ID of the zone to which the original instance belongs.
      * 
      */
-    @Export(name="zoneIdSlaveB", type=String.class, parameters={})
+    @Export(name="zoneIdSlaveB", refs={String.class}, tree="[0]")
     private Output<String> zoneIdSlaveB;
 
     /**

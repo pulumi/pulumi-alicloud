@@ -86,11 +86,11 @@ public final class ApplicationKafkaConfigsKafkaConfig {
             return this;
         }
         public ApplicationKafkaConfigsKafkaConfig build() {
-            final var o = new ApplicationKafkaConfigsKafkaConfig();
-            o.kafkaTopic = kafkaTopic;
-            o.logDir = logDir;
-            o.logType = logType;
-            return o;
+            final var _resultValue = new ApplicationKafkaConfigsKafkaConfig();
+            _resultValue.kafkaTopic = kafkaTopic;
+            _resultValue.logDir = logDir;
+            _resultValue.logType = logType;
+            return _resultValue;
         }
     }
 }

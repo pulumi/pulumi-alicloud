@@ -211,18 +211,18 @@ public final class GetTrailsResult {
             return trails(List.of(trails));
         }
         public GetTrailsResult build() {
-            final var o = new GetTrailsResult();
-            o.actiontrails = actiontrails;
-            o.id = id;
-            o.ids = ids;
-            o.includeOrganizationTrail = includeOrganizationTrail;
-            o.includeShadowTrails = includeShadowTrails;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.trails = trails;
-            return o;
+            final var _resultValue = new GetTrailsResult();
+            _resultValue.actiontrails = actiontrails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.includeOrganizationTrail = includeOrganizationTrail;
+            _resultValue.includeShadowTrails = includeShadowTrails;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.trails = trails;
+            return _resultValue;
         }
     }
 }

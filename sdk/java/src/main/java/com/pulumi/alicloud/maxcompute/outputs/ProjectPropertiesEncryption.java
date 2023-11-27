@@ -87,11 +87,11 @@ public final class ProjectPropertiesEncryption {
             return this;
         }
         public ProjectPropertiesEncryption build() {
-            final var o = new ProjectPropertiesEncryption();
-            o.algorithm = algorithm;
-            o.enable = enable;
-            o.key = key;
-            return o;
+            final var _resultValue = new ProjectPropertiesEncryption();
+            _resultValue.algorithm = algorithm;
+            _resultValue.enable = enable;
+            _resultValue.key = key;
+            return _resultValue;
         }
     }
 }

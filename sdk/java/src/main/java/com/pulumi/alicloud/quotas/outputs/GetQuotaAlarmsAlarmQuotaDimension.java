@@ -65,10 +65,10 @@ public final class GetQuotaAlarmsAlarmQuotaDimension {
             return this;
         }
         public GetQuotaAlarmsAlarmQuotaDimension build() {
-            final var o = new GetQuotaAlarmsAlarmQuotaDimension();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetQuotaAlarmsAlarmQuotaDimension();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

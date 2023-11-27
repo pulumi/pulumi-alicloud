@@ -34,7 +34,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * Name of the RAM group. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphen &#34;-&#34;, and must not begin with a hyphen.
      * 
      */
-    @Export(name="groupName", type=String.class, parameters={})
+    @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     /**
@@ -48,7 +48,7 @@ public class GroupMembership extends com.pulumi.resources.CustomResource {
      * Set of user name which will be added to group. Each name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
      * 
      */
-    @Export(name="userNames", type=List.class, parameters={String.class})
+    @Export(name="userNames", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> userNames;
 
     /**

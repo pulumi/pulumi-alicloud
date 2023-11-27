@@ -14,6 +14,7 @@ __all__ = [
     'HoneypotPresetMeta',
     'HoneypotProbeHoneypotBindList',
     'HoneypotProbeHoneypotBindListBindPortList',
+    'SasTrailServiceTrail',
     'GetAntiBruteForceRulesRuleResult',
     'GetAssetsAssetResult',
     'GetBackupPoliciesPolicyResult',
@@ -230,6 +231,58 @@ class HoneypotProbeHoneypotBindListBindPortList(dict):
         Destination port.
         """
         return pulumi.get(self, "target_port")
+
+
+@pulumi.output_type
+class SasTrailServiceTrail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SasTrailServiceTrail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SasTrailServiceTrail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SasTrailServiceTrail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 config: Optional[str] = None,
+                 update_time: Optional[int] = None):
+        """
+        :param str config: Service tracking on status. The value is:
+               - **on:** Open
+               - **off:** off.
+        :param int update_time: The timestamp of the last service update. Unit: milliseconds.
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[str]:
+        """
+        Service tracking on status. The value is:
+        - **on:** Open
+        - **off:** off.
+        """
+        return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[int]:
+        """
+        The timestamp of the last service update. Unit: milliseconds.
+        """
+        return pulumi.get(self, "update_time")
 
 
 @pulumi.output_type

@@ -199,17 +199,17 @@ public final class GetProjectsProject {
             return this;
         }
         public GetProjectsProject build() {
-            final var o = new GetProjectsProject();
-            o.billingType = billingType;
-            o.computeUnit = computeUnit;
-            o.createTime = createTime;
-            o.endpoint = endpoint;
-            o.id = id;
-            o.modifyTime = modifyTime;
-            o.project = project;
-            o.serviceRole = serviceRole;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetProjectsProject();
+            _resultValue.billingType = billingType;
+            _resultValue.computeUnit = computeUnit;
+            _resultValue.createTime = createTime;
+            _resultValue.endpoint = endpoint;
+            _resultValue.id = id;
+            _resultValue.modifyTime = modifyTime;
+            _resultValue.project = project;
+            _resultValue.serviceRole = serviceRole;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

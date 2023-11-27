@@ -226,24 +226,24 @@ public final class GetRulesResult {
             return this;
         }
         public GetRulesResult build() {
-            final var o = new GetRulesResult();
-            o.category = category;
-            o.contentCategory = contentCategory;
-            o.customType = customType;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.name = name;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.productId = productId;
-            o.riskLevelId = riskLevelId;
-            o.ruleType = ruleType;
-            o.rules = rules;
-            o.status = status;
-            o.warnLevel = warnLevel;
-            return o;
+            final var _resultValue = new GetRulesResult();
+            _resultValue.category = category;
+            _resultValue.contentCategory = contentCategory;
+            _resultValue.customType = customType;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.name = name;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.productId = productId;
+            _resultValue.riskLevelId = riskLevelId;
+            _resultValue.ruleType = ruleType;
+            _resultValue.rules = rules;
+            _resultValue.status = status;
+            _resultValue.warnLevel = warnLevel;
+            return _resultValue;
         }
     }
 }

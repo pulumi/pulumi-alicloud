@@ -260,20 +260,20 @@ public final class GetDomainsDomain {
             return this;
         }
         public GetDomainsDomain build() {
-            final var o = new GetDomainsDomain();
-            o.certName = certName;
-            o.cname = cname;
-            o.description = description;
-            o.domainName = domainName;
-            o.gmtModified = gmtModified;
-            o.id = id;
-            o.resourceGroupId = resourceGroupId;
-            o.scope = scope;
-            o.sources = sources;
-            o.sslProtocol = sslProtocol;
-            o.sslPub = sslPub;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDomainsDomain();
+            _resultValue.certName = certName;
+            _resultValue.cname = cname;
+            _resultValue.description = description;
+            _resultValue.domainName = domainName;
+            _resultValue.gmtModified = gmtModified;
+            _resultValue.id = id;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.scope = scope;
+            _resultValue.sources = sources;
+            _resultValue.sslProtocol = sslProtocol;
+            _resultValue.sslPub = sslPub;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

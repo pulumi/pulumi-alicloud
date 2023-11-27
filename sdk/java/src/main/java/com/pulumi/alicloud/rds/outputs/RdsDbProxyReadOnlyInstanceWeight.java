@@ -65,10 +65,10 @@ public final class RdsDbProxyReadOnlyInstanceWeight {
             return this;
         }
         public RdsDbProxyReadOnlyInstanceWeight build() {
-            final var o = new RdsDbProxyReadOnlyInstanceWeight();
-            o.instanceId = instanceId;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new RdsDbProxyReadOnlyInstanceWeight();
+            _resultValue.instanceId = instanceId;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

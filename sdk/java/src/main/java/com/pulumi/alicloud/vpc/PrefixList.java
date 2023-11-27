@@ -97,7 +97,7 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
      * The time when the prefix list was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -111,7 +111,7 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
      * The CIDR address block list of the prefix list.See the following `Block Entrys`.
      * 
      */
-    @Export(name="entrys", type=List.class, parameters={PrefixListEntry.class})
+    @Export(name="entrys", refs={List.class,PrefixListEntry.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PrefixListEntry>> entrys;
 
     /**
@@ -125,7 +125,7 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
      * The IP version of the prefix list. Value:-**IPV4**:IPv4 version.-**IPV6**:IPv6 version.
      * 
      */
-    @Export(name="ipVersion", type=String.class, parameters={})
+    @Export(name="ipVersion", refs={String.class}, tree="[0]")
     private Output<String> ipVersion;
 
     /**
@@ -139,7 +139,7 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
      * The maximum number of entries for CIDR address blocks in the prefix list.
      * 
      */
-    @Export(name="maxEntries", type=Integer.class, parameters={})
+    @Export(name="maxEntries", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxEntries;
 
     /**
@@ -153,7 +153,7 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
      * The association list information of the prefix list.
      * 
      */
-    @Export(name="prefixListAssociations", type=List.class, parameters={PrefixListPrefixListAssociation.class})
+    @Export(name="prefixListAssociations", refs={List.class,PrefixListPrefixListAssociation.class}, tree="[0,1]")
     private Output<List<PrefixListPrefixListAssociation>> prefixListAssociations;
 
     /**
@@ -167,7 +167,7 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
      * The description of the prefix list.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="prefixListDescription", type=String.class, parameters={})
+    @Export(name="prefixListDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> prefixListDescription;
 
     /**
@@ -181,7 +181,7 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
      * The ID of the query Prefix List.
      * 
      */
-    @Export(name="prefixListId", type=String.class, parameters={})
+    @Export(name="prefixListId", refs={String.class}, tree="[0]")
     private Output<String> prefixListId;
 
     /**
@@ -195,7 +195,7 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
      * The name of the prefix list. The name must be 2 to 128 characters in length, and must start with a letter. It can contain digits, periods (.), underscores (_), and hyphens (-).
      * 
      */
-    @Export(name="prefixListName", type=String.class, parameters={})
+    @Export(name="prefixListName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> prefixListName;
 
     /**
@@ -209,7 +209,7 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
      * The ID of the resource group to which the PrefixList belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -223,7 +223,7 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
      * The share type of the prefix list. Value:-**Shared**: indicates that the prefix list is a Shared prefix list.-Null: indicates that the prefix list is not a shared prefix list.
      * 
      */
-    @Export(name="shareType", type=String.class, parameters={})
+    @Export(name="shareType", refs={String.class}, tree="[0]")
     private Output<String> shareType;
 
     /**
@@ -237,7 +237,7 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
      * Resource attribute fields that represent the status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -251,7 +251,7 @@ public class PrefixList extends com.pulumi.resources.CustomResource {
      * The tags of PrefixList.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

@@ -57,10 +57,10 @@ public final class GetInstanceClassesClass {
             return this;
         }
         public GetInstanceClassesClass build() {
-            final var o = new GetInstanceClassesClass();
-            o.instanceClass = instanceClass;
-            o.price = price;
-            return o;
+            final var _resultValue = new GetInstanceClassesClass();
+            _resultValue.instanceClass = instanceClass;
+            _resultValue.price = price;
+            return _resultValue;
         }
     }
 }

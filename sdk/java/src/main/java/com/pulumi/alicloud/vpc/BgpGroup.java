@@ -104,7 +104,7 @@ public class BgpGroup extends com.pulumi.resources.CustomResource {
      * The authentication key of the BGP group.
      * 
      */
-    @Export(name="authKey", type=String.class, parameters={})
+    @Export(name="authKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> authKey;
 
     /**
@@ -118,7 +118,7 @@ public class BgpGroup extends com.pulumi.resources.CustomResource {
      * The name of the BGP group. The name must be `2` to `128` characters in length and can contain digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="bgpGroupName", type=String.class, parameters={})
+    @Export(name="bgpGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> bgpGroupName;
 
     /**
@@ -132,7 +132,7 @@ public class BgpGroup extends com.pulumi.resources.CustomResource {
      * The description of the BGP group. The description must be `2` to `256` characters in length. It must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -146,7 +146,7 @@ public class BgpGroup extends com.pulumi.resources.CustomResource {
      * The is fake asn. A router that runs BGP typically belongs to only one AS. In some cases, for example, the AS needs to be migrated or is merged with another AS, a new AS number replaces the original one.
      * 
      */
-    @Export(name="isFakeAsn", type=Boolean.class, parameters={})
+    @Export(name="isFakeAsn", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isFakeAsn;
 
     /**
@@ -160,7 +160,7 @@ public class BgpGroup extends com.pulumi.resources.CustomResource {
      * The AS number on the Alibaba Cloud side.
      * 
      */
-    @Export(name="localAsn", type=Integer.class, parameters={})
+    @Export(name="localAsn", refs={Integer.class}, tree="[0]")
     private Output<Integer> localAsn;
 
     /**
@@ -174,7 +174,7 @@ public class BgpGroup extends com.pulumi.resources.CustomResource {
      * The AS number of the BGP peer.
      * 
      */
-    @Export(name="peerAsn", type=Integer.class, parameters={})
+    @Export(name="peerAsn", refs={Integer.class}, tree="[0]")
     private Output<Integer> peerAsn;
 
     /**
@@ -188,7 +188,7 @@ public class BgpGroup extends com.pulumi.resources.CustomResource {
      * The ID of the VBR.
      * 
      */
-    @Export(name="routerId", type=String.class, parameters={})
+    @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output<String> routerId;
 
     /**
@@ -202,7 +202,7 @@ public class BgpGroup extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

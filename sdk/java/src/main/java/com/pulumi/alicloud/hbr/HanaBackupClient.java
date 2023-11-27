@@ -158,7 +158,7 @@ public class HanaBackupClient extends com.pulumi.resources.CustomResource {
      * The alert settings. Valid value: `INHERITED`.
      * 
      */
-    @Export(name="alertSetting", type=String.class, parameters={})
+    @Export(name="alertSetting", refs={String.class}, tree="[0]")
     private Output<String> alertSetting;
 
     /**
@@ -172,7 +172,7 @@ public class HanaBackupClient extends com.pulumi.resources.CustomResource {
      * The ID of the backup client.
      * 
      */
-    @Export(name="clientId", type=String.class, parameters={})
+    @Export(name="clientId", refs={String.class}, tree="[0]")
     private Output<String> clientId;
 
     /**
@@ -186,7 +186,7 @@ public class HanaBackupClient extends com.pulumi.resources.CustomResource {
      * The installation information of the HBR clients.
      * 
      */
-    @Export(name="clientInfo", type=String.class, parameters={})
+    @Export(name="clientInfo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientInfo;
 
     /**
@@ -200,7 +200,7 @@ public class HanaBackupClient extends com.pulumi.resources.CustomResource {
      * The ID of the SAP HANA instance.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -214,7 +214,7 @@ public class HanaBackupClient extends com.pulumi.resources.CustomResource {
      * The ID of the instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -228,7 +228,7 @@ public class HanaBackupClient extends com.pulumi.resources.CustomResource {
      * The status of the Hana Backup Client.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -242,7 +242,7 @@ public class HanaBackupClient extends com.pulumi.resources.CustomResource {
      * Specifies whether to transmit data over HTTPS. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="useHttps", type=Boolean.class, parameters={})
+    @Export(name="useHttps", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useHttps;
 
     /**
@@ -256,7 +256,7 @@ public class HanaBackupClient extends com.pulumi.resources.CustomResource {
      * The ID of the backup vault.
      * 
      */
-    @Export(name="vaultId", type=String.class, parameters={})
+    @Export(name="vaultId", refs={String.class}, tree="[0]")
     private Output<String> vaultId;
 
     /**

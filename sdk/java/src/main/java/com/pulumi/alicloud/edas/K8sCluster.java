@@ -39,7 +39,7 @@ public class K8sCluster extends com.pulumi.resources.CustomResource {
      * `4`: deleted.
      * 
      */
-    @Export(name="clusterImportStatus", type=Integer.class, parameters={})
+    @Export(name="clusterImportStatus", refs={Integer.class}, tree="[0]")
     private Output<Integer> clusterImportStatus;
 
     /**
@@ -57,7 +57,7 @@ public class K8sCluster extends com.pulumi.resources.CustomResource {
      * The name of the cluster that you want to create.
      * 
      */
-    @Export(name="clusterName", type=String.class, parameters={})
+    @Export(name="clusterName", refs={String.class}, tree="[0]")
     private Output<String> clusterName;
 
     /**
@@ -71,7 +71,7 @@ public class K8sCluster extends com.pulumi.resources.CustomResource {
      * The type of the cluster that you want to create. Valid values only: 5: K8s cluster.
      * 
      */
-    @Export(name="clusterType", type=Integer.class, parameters={})
+    @Export(name="clusterType", refs={Integer.class}, tree="[0]")
     private Output<Integer> clusterType;
 
     /**
@@ -85,7 +85,7 @@ public class K8sCluster extends com.pulumi.resources.CustomResource {
      * The ID of the alicloud container service kubernetes cluster that you want to import.
      * 
      */
-    @Export(name="csClusterId", type=String.class, parameters={})
+    @Export(name="csClusterId", refs={String.class}, tree="[0]")
     private Output<String> csClusterId;
 
     /**
@@ -99,7 +99,7 @@ public class K8sCluster extends com.pulumi.resources.CustomResource {
      * The ID of the namespace where you want to import. You can call the [ListUserDefineRegion](https://www.alibabacloud.com/help/en/doc-detail/149377.htm?spm=a2c63.p38356.879954.34.331054faK2yNvC#doc-api-Edas-ListUserDefineRegion) operation to query the namespace ID.
      * 
      */
-    @Export(name="namespaceId", type=String.class, parameters={})
+    @Export(name="namespaceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespaceId;
 
     /**
@@ -113,7 +113,7 @@ public class K8sCluster extends com.pulumi.resources.CustomResource {
      * The network type of the cluster that you want to create. Valid values: 1: classic network. 2: VPC.
      * 
      */
-    @Export(name="networkMode", type=Integer.class, parameters={})
+    @Export(name="networkMode", refs={Integer.class}, tree="[0]")
     private Output<Integer> networkMode;
 
     /**
@@ -127,7 +127,7 @@ public class K8sCluster extends com.pulumi.resources.CustomResource {
      * The ID of the Virtual Private Cloud (VPC) for the cluster.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

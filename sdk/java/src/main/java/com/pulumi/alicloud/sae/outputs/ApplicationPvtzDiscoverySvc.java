@@ -111,12 +111,12 @@ public final class ApplicationPvtzDiscoverySvc {
             return this;
         }
         public ApplicationPvtzDiscoverySvc build() {
-            final var o = new ApplicationPvtzDiscoverySvc();
-            o.enable = enable;
-            o.namespaceId = namespaceId;
-            o.portProtocols = portProtocols;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new ApplicationPvtzDiscoverySvc();
+            _resultValue.enable = enable;
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.portProtocols = portProtocols;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

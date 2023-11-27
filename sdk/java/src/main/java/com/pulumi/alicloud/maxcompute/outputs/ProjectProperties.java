@@ -185,16 +185,16 @@ public final class ProjectProperties {
             return this;
         }
         public ProjectProperties build() {
-            final var o = new ProjectProperties();
-            o.allowFullScan = allowFullScan;
-            o.enableDecimal2 = enableDecimal2;
-            o.encryption = encryption;
-            o.retentionDays = retentionDays;
-            o.sqlMeteringMax = sqlMeteringMax;
-            o.tableLifecycle = tableLifecycle;
-            o.timezone = timezone;
-            o.typeSystem = typeSystem;
-            return o;
+            final var _resultValue = new ProjectProperties();
+            _resultValue.allowFullScan = allowFullScan;
+            _resultValue.enableDecimal2 = enableDecimal2;
+            _resultValue.encryption = encryption;
+            _resultValue.retentionDays = retentionDays;
+            _resultValue.sqlMeteringMax = sqlMeteringMax;
+            _resultValue.tableLifecycle = tableLifecycle;
+            _resultValue.timezone = timezone;
+            _resultValue.typeSystem = typeSystem;
+            return _resultValue;
         }
     }
 }

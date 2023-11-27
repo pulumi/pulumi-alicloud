@@ -84,7 +84,7 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
      * ARP spoofing detection.**true**: Enable **false**: Disabled
      * 
      */
-    @Export(name="arp", type=Boolean.class, parameters={})
+    @Export(name="arp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> arp;
 
     /**
@@ -98,7 +98,7 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
      * The ID of the management node.
      * 
      */
-    @Export(name="controlNodeId", type=String.class, parameters={})
+    @Export(name="controlNodeId", refs={String.class}, tree="[0]")
     private Output<String> controlNodeId;
 
     /**
@@ -112,7 +112,7 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
      * Probe display name.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -126,7 +126,7 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
      * Configure the service.See the following `Block HoneypotBindList`.
      * 
      */
-    @Export(name="honeypotBindLists", type=List.class, parameters={HoneypotProbeHoneypotBindList.class})
+    @Export(name="honeypotBindLists", refs={List.class,HoneypotProbeHoneypotBindList.class}, tree="[0,1]")
     private Output</* @Nullable */ List<HoneypotProbeHoneypotBindList>> honeypotBindLists;
 
     /**
@@ -140,7 +140,7 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
      * The first ID of the resource
      * 
      */
-    @Export(name="honeypotProbeId", type=String.class, parameters={})
+    @Export(name="honeypotProbeId", refs={String.class}, tree="[0]")
     private Output<String> honeypotProbeId;
 
     /**
@@ -154,7 +154,7 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
      * Ping scan detection. Value: **true**: Enable **false**: Disabled
      * 
      */
-    @Export(name="ping", type=Boolean.class, parameters={})
+    @Export(name="ping", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> ping;
 
     /**
@@ -168,7 +168,7 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
      * Probe type, support `host_probe` and `vpc_black_hole_probe`.
      * 
      */
-    @Export(name="probeType", type=String.class, parameters={})
+    @Export(name="probeType", refs={String.class}, tree="[0]")
     private Output<String> probeType;
 
     /**
@@ -182,7 +182,7 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
      * The version of the probe.
      * 
      */
-    @Export(name="probeVersion", type=String.class, parameters={})
+    @Export(name="probeVersion", refs={String.class}, tree="[0]")
     private Output<String> probeVersion;
 
     /**
@@ -196,7 +196,7 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
      * The IP address of the proxy.
      * 
      */
-    @Export(name="proxyIp", type=String.class, parameters={})
+    @Export(name="proxyIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proxyIp;
 
     /**
@@ -210,7 +210,7 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
      * Listen to the IP address list.
      * 
      */
-    @Export(name="serviceIpLists", type=List.class, parameters={String.class})
+    @Export(name="serviceIpLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> serviceIpLists;
 
     /**
@@ -224,7 +224,7 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
      * The status of the resource
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -238,7 +238,7 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
      * Machine uuid, **probe_type** is `host_probe`. This value cannot be empty.
      * 
      */
-    @Export(name="uuid", type=String.class, parameters={})
+    @Export(name="uuid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> uuid;
 
     /**
@@ -252,7 +252,7 @@ public class HoneypotProbe extends com.pulumi.resources.CustomResource {
      * The ID of the VPC. **probe_type** is `vpc_black_hole_probe`. This value cannot be empty.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**

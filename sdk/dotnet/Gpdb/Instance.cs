@@ -33,17 +33,14 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     ///     var defaultZones = AliCloud.Gpdb.GetZones.Invoke();
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
-    ///         VpcName = name,
-    ///         CidrBlock = "10.4.0.0/16",
+    ///         NameRegex = "^default-NODELETING$",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VswitchName = name,
-    ///         CidrBlock = "10.4.0.0/24",
-    ///         VpcId = defaultNetwork.Id,
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///     });
     /// 
@@ -58,14 +55,12 @@ namespace Pulumi.AliCloud.Gpdb
     ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///         InstanceNetworkType = "VPC",
     ///         InstanceSpec = "2C16G",
-    ///         MasterNodeNum = 1,
     ///         PaymentType = "PayAsYouGo",
-    ///         PrivateIpAddress = "1.1.1.1",
     ///         SegStorageType = "cloud_essd",
     ///         SegNodeNum = 4,
     ///         StorageSize = 50,
-    ///         VpcId = defaultNetwork.Id,
-    ///         VswitchId = defaultSwitch.Id,
+    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///         IpWhitelists = new[]
     ///         {
     ///             new AliCloud.Gpdb.Inputs.InstanceIpWhitelistArgs
@@ -207,7 +202,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> MaintainStartTime { get; private set; } = null!;
 
         /// <summary>
-        /// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
+        /// The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
+        /// </summary>
+        [Output("masterCu")]
+        public Output<int> MasterCu { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
         /// </summary>
         [Output("masterNodeNum")]
         public Output<int?> MasterNodeNum { get; private set; } = null!;
@@ -231,7 +232,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Output<string> Port { get; private set; } = null!;
 
         /// <summary>
-        /// The private ip address.
+        /// The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
         /// </summary>
         [Output("privateIpAddress")]
         public Output<string?> PrivateIpAddress { get; private set; } = null!;
@@ -240,7 +241,7 @@ namespace Pulumi.AliCloud.Gpdb
         /// The ID of the enterprise resource group to which the instance belongs.
         /// </summary>
         [Output("resourceGroupId")]
-        public Output<string?> ResourceGroupId { get; private set; } = null!;
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// Field `security_ip_list` has been deprecated from provider version 1.187.0. New field `ip_whitelist` instead.
@@ -481,7 +482,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
-        /// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
+        /// The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
+        /// </summary>
+        [Input("masterCu")]
+        public Input<int>? MasterCu { get; set; }
+
+        /// <summary>
+        /// The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
         /// </summary>
         [Input("masterNodeNum")]
         public Input<int>? MasterNodeNum { get; set; }
@@ -499,7 +506,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? Period { get; set; }
 
         /// <summary>
-        /// The private ip address.
+        /// The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
         /// </summary>
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }
@@ -724,7 +731,13 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? MaintainStartTime { get; set; }
 
         /// <summary>
-        /// The number of Master nodes. Default value: `1`. Valid values: `1` to `2`. if it is not filled in, the default value is 1 Master node.
+        /// The amount of coordinator node resources. Valid values: `2`, `4`, `8`, `16`, `32`.
+        /// </summary>
+        [Input("masterCu")]
+        public Input<int>? MasterCu { get; set; }
+
+        /// <summary>
+        /// The number of Master nodes. **NOTE:** Field `master_node_num` has been deprecated from provider version 1.213.0.
         /// </summary>
         [Input("masterNodeNum")]
         public Input<int>? MasterNodeNum { get; set; }
@@ -748,7 +761,7 @@ namespace Pulumi.AliCloud.Gpdb
         public Input<string>? Port { get; set; }
 
         /// <summary>
-        /// The private ip address.
+        /// The private ip address. **NOTE:** Field `private_ip_address` has been deprecated from provider version 1.213.0.
         /// </summary>
         [Input("privateIpAddress")]
         public Input<string>? PrivateIpAddress { get; set; }

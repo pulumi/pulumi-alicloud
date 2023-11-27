@@ -160,18 +160,18 @@ public final class GetEcsImageComponentsResult {
             return this;
         }
         public GetEcsImageComponentsResult build() {
-            final var o = new GetEcsImageComponentsResult();
-            o.components = components;
-            o.id = id;
-            o.ids = ids;
-            o.imageComponentName = imageComponentName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.owner = owner;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetEcsImageComponentsResult();
+            _resultValue.components = components;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.imageComponentName = imageComponentName;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.owner = owner;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

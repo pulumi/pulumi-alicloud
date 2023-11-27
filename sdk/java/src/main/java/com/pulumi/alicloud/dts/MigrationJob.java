@@ -46,7 +46,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * Start time in Unix timestamp format.
      * 
      */
-    @Export(name="checkpoint", type=String.class, parameters={})
+    @Export(name="checkpoint", refs={String.class}, tree="[0]")
     private Output<String> checkpoint;
 
     /**
@@ -60,7 +60,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * Whether to execute DTS supports schema migration.
      * 
      */
-    @Export(name="dataInitialization", type=Boolean.class, parameters={})
+    @Export(name="dataInitialization", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> dataInitialization;
 
     /**
@@ -74,7 +74,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * Whether to perform incremental data migration.
      * 
      */
-    @Export(name="dataSynchronization", type=Boolean.class, parameters={})
+    @Export(name="dataSynchronization", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> dataSynchronization;
 
     /**
@@ -88,7 +88,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * Migration object, in the format of JSON strings. For detailed definition instructions, please refer to [the description of migration, migration or subscription objects](https://help.aliyun.com/document_detail/209545.html).
      * 
      */
-    @Export(name="dbList", type=String.class, parameters={})
+    @Export(name="dbList", refs={String.class}, tree="[0]")
     private Output<String> dbList;
 
     /**
@@ -102,7 +102,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The name of migrate the database.
      * 
      */
-    @Export(name="destinationEndpointDatabaseName", type=String.class, parameters={})
+    @Export(name="destinationEndpointDatabaseName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointDatabaseName;
 
     /**
@@ -116,7 +116,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The type of destination database. Valid values: `ADS`, `ADB30`, `AS400`, `DATAHUB`, `DB2`, `GREENPLUM`, `KAFKA`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `PostgreSQL`.
      * 
      */
-    @Export(name="destinationEndpointEngineName", type=String.class, parameters={})
+    @Export(name="destinationEndpointEngineName", refs={String.class}, tree="[0]")
     private Output<String> destinationEndpointEngineName;
 
     /**
@@ -130,7 +130,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The ID of destination instance.
      * 
      */
-    @Export(name="destinationEndpointInstanceId", type=String.class, parameters={})
+    @Export(name="destinationEndpointInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointInstanceId;
 
     /**
@@ -144,7 +144,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The type of destination instance. Valid values: `ADS`, `CEN`, `DATAHUB`, `DG`, `ECS`, `EXPRESS`, `GREENPLUM`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
      * 
      */
-    @Export(name="destinationEndpointInstanceType", type=String.class, parameters={})
+    @Export(name="destinationEndpointInstanceType", refs={String.class}, tree="[0]")
     private Output<String> destinationEndpointInstanceType;
 
     /**
@@ -158,7 +158,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The ip of source endpoint.
      * 
      */
-    @Export(name="destinationEndpointIp", type=String.class, parameters={})
+    @Export(name="destinationEndpointIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointIp;
 
     /**
@@ -172,7 +172,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The SID of Oracle database.
      * 
      */
-    @Export(name="destinationEndpointOracleSid", type=String.class, parameters={})
+    @Export(name="destinationEndpointOracleSid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointOracleSid;
 
     /**
@@ -186,7 +186,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The password of database account.
      * 
      */
-    @Export(name="destinationEndpointPassword", type=String.class, parameters={})
+    @Export(name="destinationEndpointPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointPassword;
 
     /**
@@ -200,7 +200,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The port of source endpoint.
      * 
      */
-    @Export(name="destinationEndpointPort", type=String.class, parameters={})
+    @Export(name="destinationEndpointPort", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointPort;
 
     /**
@@ -214,7 +214,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The region of destination instance.
      * 
      */
-    @Export(name="destinationEndpointRegion", type=String.class, parameters={})
+    @Export(name="destinationEndpointRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointRegion;
 
     /**
@@ -228,7 +228,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The username of database account.
      * 
      */
-    @Export(name="destinationEndpointUserName", type=String.class, parameters={})
+    @Export(name="destinationEndpointUserName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointUserName;
 
     /**
@@ -242,7 +242,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The Migration instance ID. The ID of `alicloud.dts.MigrationInstance`.
      * 
      */
-    @Export(name="dtsInstanceId", type=String.class, parameters={})
+    @Export(name="dtsInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dtsInstanceId;
 
     /**
@@ -256,7 +256,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The name of migration job.
      * 
      */
-    @Export(name="dtsJobName", type=String.class, parameters={})
+    @Export(name="dtsJobName", refs={String.class}, tree="[0]")
     private Output<String> dtsJobName;
 
     /**
@@ -270,7 +270,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
      * 
      */
-    @Export(name="instanceClass", type=String.class, parameters={})
+    @Export(name="instanceClass", refs={String.class}, tree="[0]")
     private Output<String> instanceClass;
 
     /**
@@ -284,7 +284,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The name of migrate the database.
      * 
      */
-    @Export(name="sourceEndpointDatabaseName", type=String.class, parameters={})
+    @Export(name="sourceEndpointDatabaseName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointDatabaseName;
 
     /**
@@ -298,7 +298,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The type of source database. Valid values: `AS400`, `DB2`, `DMSPOLARDB`, `HBASE`, `MONGODB`, `MSSQL`, `MySQL`, `ORACLE`, `PolarDB`, `POLARDBX20`, `POLARDB_O`, `POSTGRESQL`, `TERADATA`.
      * 
      */
-    @Export(name="sourceEndpointEngineName", type=String.class, parameters={})
+    @Export(name="sourceEndpointEngineName", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointEngineName;
 
     /**
@@ -312,7 +312,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The ID of source instance.
      * 
      */
-    @Export(name="sourceEndpointInstanceId", type=String.class, parameters={})
+    @Export(name="sourceEndpointInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointInstanceId;
 
     /**
@@ -326,7 +326,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The type of source instance. Valid values: `CEN`, `DG`, `DISTRIBUTED_DMSLOGICDB`, `ECS`, `EXPRESS`, `MONGODB`, `OTHER`, `PolarDB`, `POLARDBX20`, `RDS`.
      * 
      */
-    @Export(name="sourceEndpointInstanceType", type=String.class, parameters={})
+    @Export(name="sourceEndpointInstanceType", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointInstanceType;
 
     /**
@@ -340,7 +340,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The ip of source endpoint.
      * 
      */
-    @Export(name="sourceEndpointIp", type=String.class, parameters={})
+    @Export(name="sourceEndpointIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointIp;
 
     /**
@@ -354,7 +354,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The SID of Oracle database.
      * 
      */
-    @Export(name="sourceEndpointOracleSid", type=String.class, parameters={})
+    @Export(name="sourceEndpointOracleSid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointOracleSid;
 
     /**
@@ -368,7 +368,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The Alibaba Cloud account ID to which the source instance belongs.
      * 
      */
-    @Export(name="sourceEndpointOwnerId", type=String.class, parameters={})
+    @Export(name="sourceEndpointOwnerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointOwnerId;
 
     /**
@@ -382,7 +382,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The password of database account.
      * 
      */
-    @Export(name="sourceEndpointPassword", type=String.class, parameters={})
+    @Export(name="sourceEndpointPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointPassword;
 
     /**
@@ -396,7 +396,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The port of source endpoint.
      * 
      */
-    @Export(name="sourceEndpointPort", type=String.class, parameters={})
+    @Export(name="sourceEndpointPort", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointPort;
 
     /**
@@ -410,7 +410,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The region of source instance.
      * 
      */
-    @Export(name="sourceEndpointRegion", type=String.class, parameters={})
+    @Export(name="sourceEndpointRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointRegion;
 
     /**
@@ -424,7 +424,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The name of the role configured for the cloud account to which the source instance belongs.
      * 
      */
-    @Export(name="sourceEndpointRole", type=String.class, parameters={})
+    @Export(name="sourceEndpointRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointRole;
 
     /**
@@ -438,7 +438,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The username of database account.
      * 
      */
-    @Export(name="sourceEndpointUserName", type=String.class, parameters={})
+    @Export(name="sourceEndpointUserName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointUserName;
 
     /**
@@ -452,7 +452,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `Migrating`, `Suspending`. You can suspend the task by specifying `Suspending` and start the task by specifying `Migrating`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -466,7 +466,7 @@ public class MigrationJob extends com.pulumi.resources.CustomResource {
      * Whether to perform a database table structure to migrate.
      * 
      */
-    @Export(name="structureInitialization", type=Boolean.class, parameters={})
+    @Export(name="structureInitialization", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> structureInitialization;
 
     /**

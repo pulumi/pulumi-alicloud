@@ -104,12 +104,12 @@ public final class GetGroupMetricRulesRuleEscalationCritical {
             return this;
         }
         public GetGroupMetricRulesRuleEscalationCritical build() {
-            final var o = new GetGroupMetricRulesRuleEscalationCritical();
-            o.comparisonOperator = comparisonOperator;
-            o.statistics = statistics;
-            o.threshold = threshold;
-            o.times = times;
-            return o;
+            final var _resultValue = new GetGroupMetricRulesRuleEscalationCritical();
+            _resultValue.comparisonOperator = comparisonOperator;
+            _resultValue.statistics = statistics;
+            _resultValue.threshold = threshold;
+            _resultValue.times = times;
+            return _resultValue;
         }
     }
 }

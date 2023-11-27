@@ -109,7 +109,7 @@ public class LogTailConfig extends com.pulumi.resources.CustomResource {
      * The logtail configure the required JSON files. ([Refer to details](https://www.alibabacloud.com/help/doc-detail/29058.htm))
      * 
      */
-    @Export(name="inputDetail", type=String.class, parameters={})
+    @Export(name="inputDetail", refs={String.class}, tree="[0]")
     private Output<String> inputDetail;
 
     /**
@@ -123,7 +123,7 @@ public class LogTailConfig extends com.pulumi.resources.CustomResource {
      * The input type. Currently only two types of files and plugin are supported.
      * 
      */
-    @Export(name="inputType", type=String.class, parameters={})
+    @Export(name="inputType", refs={String.class}, tree="[0]")
     private Output<String> inputType;
 
     /**
@@ -137,7 +137,7 @@ public class LogTailConfig extends com.pulumi.resources.CustomResource {
      * （Optional）The log sample of the Logtail configuration. The log size cannot exceed 1,000 bytes.
      * 
      */
-    @Export(name="logSample", type=String.class, parameters={})
+    @Export(name="logSample", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logSample;
 
     /**
@@ -151,7 +151,7 @@ public class LogTailConfig extends com.pulumi.resources.CustomResource {
      * The log store name to the query index belongs.
      * 
      */
-    @Export(name="logstore", type=String.class, parameters={})
+    @Export(name="logstore", refs={String.class}, tree="[0]")
     private Output<String> logstore;
 
     /**
@@ -165,7 +165,7 @@ public class LogTailConfig extends com.pulumi.resources.CustomResource {
      * The Logtail configuration name, which is unique in the same project.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -179,7 +179,7 @@ public class LogTailConfig extends com.pulumi.resources.CustomResource {
      * The output type. Currently, only LogService is supported.
      * 
      */
-    @Export(name="outputType", type=String.class, parameters={})
+    @Export(name="outputType", refs={String.class}, tree="[0]")
     private Output<String> outputType;
 
     /**
@@ -193,7 +193,7 @@ public class LogTailConfig extends com.pulumi.resources.CustomResource {
      * The project name to the log store belongs.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

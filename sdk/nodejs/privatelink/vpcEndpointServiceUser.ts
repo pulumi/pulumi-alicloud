@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a Private Link Vpc Endpoint Service User resource.
+ * Provides a Private Link Vpc Endpoint Service User resource. Endpoint service user whitelist.
  *
  * For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-addusertovpcendpointservice).
  *
@@ -75,15 +75,17 @@ export class VpcEndpointServiceUser extends pulumi.CustomResource {
     }
 
     /**
-     * The dry run.
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The Id of Vpc Endpoint Service.
+     * The endpoint service ID.
      */
     public readonly serviceId!: pulumi.Output<string>;
     /**
-     * The Id of Ram User.
+     * The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
      */
     public readonly userId!: pulumi.Output<string>;
 
@@ -125,15 +127,17 @@ export class VpcEndpointServiceUser extends pulumi.CustomResource {
  */
 export interface VpcEndpointServiceUserState {
     /**
-     * The dry run.
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The Id of Vpc Endpoint Service.
+     * The endpoint service ID.
      */
     serviceId?: pulumi.Input<string>;
     /**
-     * The Id of Ram User.
+     * The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
      */
     userId?: pulumi.Input<string>;
 }
@@ -143,15 +147,17 @@ export interface VpcEndpointServiceUserState {
  */
 export interface VpcEndpointServiceUserArgs {
     /**
-     * The dry run.
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The Id of Vpc Endpoint Service.
+     * The endpoint service ID.
      */
     serviceId: pulumi.Input<string>;
     /**
-     * The Id of Ram User.
+     * The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
      */
     userId: pulumi.Input<string>;
 }

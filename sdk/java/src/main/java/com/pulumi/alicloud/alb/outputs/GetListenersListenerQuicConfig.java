@@ -66,10 +66,10 @@ public final class GetListenersListenerQuicConfig {
             return this;
         }
         public GetListenersListenerQuicConfig build() {
-            final var o = new GetListenersListenerQuicConfig();
-            o.quicListenerId = quicListenerId;
-            o.quicUpgradeEnabled = quicUpgradeEnabled;
-            return o;
+            final var _resultValue = new GetListenersListenerQuicConfig();
+            _resultValue.quicListenerId = quicListenerId;
+            _resultValue.quicUpgradeEnabled = quicUpgradeEnabled;
+            return _resultValue;
         }
     }
 }

@@ -118,7 +118,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * * The password consists of at least any three of uppercase letters, lowercase letters, numbers, and special characters. The special character is `!#$%^&amp;*()_+-=`. The MongoDB Serverless instance provides a default database login account. This account cannot be modified. You can only set or modify the password for this account.
      * 
      */
-    @Export(name="accountPassword", type=String.class, parameters={})
+    @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output<String> accountPassword;
 
     /**
@@ -134,7 +134,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * Set whether the instance is automatically renewed.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
@@ -148,7 +148,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * The I/O throughput consumed by the instance. Valid values: `100` to `8000`.
      * 
      */
-    @Export(name="capacityUnit", type=Integer.class, parameters={})
+    @Export(name="capacityUnit", refs={Integer.class}, tree="[0]")
     private Output<Integer> capacityUnit;
 
     /**
@@ -162,7 +162,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * The db instance description.
      * 
      */
-    @Export(name="dbInstanceDescription", type=String.class, parameters={})
+    @Export(name="dbInstanceDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbInstanceDescription;
 
     /**
@@ -176,7 +176,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * The db instance storage. Valid values: `1` to `100`.
      * 
      */
-    @Export(name="dbInstanceStorage", type=Integer.class, parameters={})
+    @Export(name="dbInstanceStorage", refs={Integer.class}, tree="[0]")
     private Output<Integer> dbInstanceStorage;
 
     /**
@@ -190,7 +190,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * The database engine of the instance. Valid values: `MongoDB`.
      * 
      */
-    @Export(name="engine", type=String.class, parameters={})
+    @Export(name="engine", refs={String.class}, tree="[0]")
     private Output<String> engine;
 
     /**
@@ -204,7 +204,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * The database version number. Valid values: `4.2`.
      * 
      */
-    @Export(name="engineVersion", type=String.class, parameters={})
+    @Export(name="engineVersion", refs={String.class}, tree="[0]")
     private Output<String> engineVersion;
 
     /**
@@ -218,7 +218,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * The end time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC. **NOTE:** The difference between the start time and end time must be one hour. For example, if `maintain_start_time` is `01:00Z`, `maintain_end_time` must be `02:00Z`.
      * 
      */
-    @Export(name="maintainEndTime", type=String.class, parameters={})
+    @Export(name="maintainEndTime", refs={String.class}, tree="[0]")
     private Output<String> maintainEndTime;
 
     /**
@@ -232,7 +232,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * The start time of the maintenance window. Specify the time in the `HH:mmZ` format. The time must be in UTC.
      * 
      */
-    @Export(name="maintainStartTime", type=String.class, parameters={})
+    @Export(name="maintainStartTime", refs={String.class}, tree="[0]")
     private Output<String> maintainStartTime;
 
     /**
@@ -246,7 +246,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * The purchase duration of the instance, in months. Valid values: `1` to `9`, `12`, `24`, `36`, `60`.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -260,7 +260,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * The period price type. Valid values: `Day`, `Month`.
      * 
      */
-    @Export(name="periodPriceType", type=String.class, parameters={})
+    @Export(name="periodPriceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodPriceType;
 
     /**
@@ -274,7 +274,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -288,7 +288,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * An array that consists of the information of IP whitelists.
      * 
      */
-    @Export(name="securityIpGroups", type=List.class, parameters={ServerlessInstanceSecurityIpGroup.class})
+    @Export(name="securityIpGroups", refs={List.class,ServerlessInstanceSecurityIpGroup.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ServerlessInstanceSecurityIpGroup>> securityIpGroups;
 
     /**
@@ -302,7 +302,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * The instance status. For more information, see the instance Status Table.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -316,7 +316,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * The storage engine used by the instance. Valid values: `WiredTiger`.
      * 
      */
-    @Export(name="storageEngine", type=String.class, parameters={})
+    @Export(name="storageEngine", refs={String.class}, tree="[0]")
     private Output<String> storageEngine;
 
     /**
@@ -330,7 +330,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -344,7 +344,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * The ID of the VPC network.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -358,7 +358,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * The of the vswitch.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -372,7 +372,7 @@ public class ServerlessInstance extends com.pulumi.resources.CustomResource {
      * The ID of the zone. Use this parameter to specify the zone created by the instance.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

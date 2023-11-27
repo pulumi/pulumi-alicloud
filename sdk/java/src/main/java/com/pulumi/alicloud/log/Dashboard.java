@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
  * The dashboard is a real-time data analysis platform provided by the log service. You can display frequently used query and analysis statements in the form of charts and save statistical charts to the dashboard.
  * [Refer to details](https://www.alibabacloud.com/help/doc-detail/102530.htm).
  * 
- * &gt; **NOTE:** Available in 1.86.0, parameter &#34;action&#34; in char_list is supported since 1.164.0+.
+ * &gt; **NOTE:** Available since v1.86.0.
  * 
  * ## Example Usage
  * 
@@ -70,7 +70,12 @@ import javax.annotation.Nullable;
  *         var exampleDashboard = new Dashboard(&#34;exampleDashboard&#34;, DashboardArgs.builder()        
  *             .projectName(exampleProject.name())
  *             .dashboardName(&#34;terraform-example&#34;)
- *             .attribute(&#34;{\&#34;type\&#34;:\&#34;grid\&#34;}&#34;)
+ *             .displayName(&#34;terraform-example&#34;)
+ *             .attribute(&#34;&#34;&#34;
+ *   {
+ *     &#34;type&#34;:&#34;grid&#34;
+ *   }
+ *             &#34;&#34;&#34;)
  *             .charList(&#34;&#34;&#34;
  *   [
  *     {
@@ -108,10 +113,10 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Log Dashboard can be imported using the id or name, e.g.
+ * Log Dashboard can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:log/dashboard:Dashboard example tf-project:tf-logstore:tf-dashboard
+ *  $ pulumi import alicloud:log/dashboard:Dashboard example &lt;project_name&gt;:&lt;dashboard_name&gt;
  * ```
  * 
  */
@@ -121,7 +126,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * Dashboard attribute.
      * 
      */
-    @Export(name="attribute", type=String.class, parameters={})
+    @Export(name="attribute", refs={String.class}, tree="[0]")
     private Output<String> attribute;
 
     /**
@@ -133,13 +138,15 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
     }
     /**
      * Configuration of charts in the dashboard.
+     * **Note:** From version 1.164.0, `char_list` can set parameter &#34;action&#34;.
      * 
      */
-    @Export(name="charList", type=String.class, parameters={})
+    @Export(name="charList", refs={String.class}, tree="[0]")
     private Output<String> charList;
 
     /**
      * @return Configuration of charts in the dashboard.
+     * **Note:** From version 1.164.0, `char_list` can set parameter &#34;action&#34;.
      * 
      */
     public Output<String> charList() {
@@ -149,7 +156,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * The name of the Log Dashboard.
      * 
      */
-    @Export(name="dashboardName", type=String.class, parameters={})
+    @Export(name="dashboardName", refs={String.class}, tree="[0]")
     private Output<String> dashboardName;
 
     /**
@@ -163,7 +170,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * Dashboard alias.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -177,7 +184,7 @@ public class Dashboard extends com.pulumi.resources.CustomResource {
      * The name of the log project. It is the only in one Alicloud account.
      * 
      */
-    @Export(name="projectName", type=String.class, parameters={})
+    @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**

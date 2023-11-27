@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// For information about SLS Resource and how to use it, see [Resource management](https://www.alibabacloud.com/help/en/doc-detail/207732.html)
     /// 
-    /// &gt; **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
+    /// &gt; **NOTE:** Available since v1.162.0. log resource region should be set a main region: cn-heyuan.
     /// 
     /// ## Example Usage
     /// 
@@ -30,9 +30,29 @@ namespace Pulumi.AliCloud.Log
     /// {
     ///     var example = new AliCloud.Log.Resource("example", new()
     ///     {
-    ///         Description = "user tf test resource desc",
+    ///         Description = "user tf resource desc",
     ///         ExtInfo = "{}",
-    ///         Schema = "{\"schema\":[{\"column\":\"col1\",\"desc\":\"col1 desc\",\"ext_info\":{},\"required\":true,\"type\":\"string\"},{\"column\":\"col2\",\"desc\":\"col2 desc\",\"ext_info\":\"optional\",\"required\":true,\"type\":\"string\"}]}",
+    ///         Schema = @"    {
+    ///       ""schema"": [
+    ///         {
+    ///           ""column"": ""col1"",
+    ///           ""desc"": ""col1   desc"",
+    ///           ""ext_info"": {
+    ///           },
+    ///           ""required"": true,
+    ///           ""type"": ""string""
+    ///         },
+    ///         {
+    ///           ""column"": ""col2"",
+    ///           ""desc"": ""col2   desc"",
+    ///           ""ext_info"": ""optional"",
+    ///           ""required"": true,
+    ///           ""type"": ""string""
+    ///         }
+    ///       ]
+    ///     }
+    ///   
+    /// ",
     ///         Type = "userdefine",
     ///     });
     /// 
@@ -44,7 +64,7 @@ namespace Pulumi.AliCloud.Log
     /// Log resource can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:log/resource:Resource example user.tf.test_resource
+    ///  $ pulumi import alicloud:log/resource:Resource example &lt;id&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/resource:Resource")]

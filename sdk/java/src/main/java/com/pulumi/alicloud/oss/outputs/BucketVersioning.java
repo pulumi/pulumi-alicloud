@@ -46,9 +46,9 @@ public final class BucketVersioning {
             return this;
         }
         public BucketVersioning build() {
-            final var o = new BucketVersioning();
-            o.status = status;
-            return o;
+            final var _resultValue = new BucketVersioning();
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

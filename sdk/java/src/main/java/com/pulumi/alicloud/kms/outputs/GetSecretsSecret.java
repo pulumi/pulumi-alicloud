@@ -261,20 +261,20 @@ public final class GetSecretsSecret {
             return versionStages(List.of(versionStages));
         }
         public GetSecretsSecret build() {
-            final var o = new GetSecretsSecret();
-            o.arn = arn;
-            o.description = description;
-            o.encryptionKeyId = encryptionKeyId;
-            o.id = id;
-            o.plannedDeleteTime = plannedDeleteTime;
-            o.secretData = secretData;
-            o.secretDataType = secretDataType;
-            o.secretName = secretName;
-            o.secretType = secretType;
-            o.tags = tags;
-            o.versionId = versionId;
-            o.versionStages = versionStages;
-            return o;
+            final var _resultValue = new GetSecretsSecret();
+            _resultValue.arn = arn;
+            _resultValue.description = description;
+            _resultValue.encryptionKeyId = encryptionKeyId;
+            _resultValue.id = id;
+            _resultValue.plannedDeleteTime = plannedDeleteTime;
+            _resultValue.secretData = secretData;
+            _resultValue.secretDataType = secretDataType;
+            _resultValue.secretName = secretName;
+            _resultValue.secretType = secretType;
+            _resultValue.tags = tags;
+            _resultValue.versionId = versionId;
+            _resultValue.versionStages = versionStages;
+            return _resultValue;
         }
     }
 }

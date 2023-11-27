@@ -315,23 +315,23 @@ public final class GetTemplatesTemplate {
             return this;
         }
         public GetTemplatesTemplate build() {
-            final var o = new GetTemplatesTemplate();
-            o.category = category;
-            o.createdBy = createdBy;
-            o.createdDate = createdDate;
-            o.description = description;
-            o.hasTrigger = hasTrigger;
-            o.id = id;
-            o.shareType = shareType;
-            o.tags = tags;
-            o.templateFormat = templateFormat;
-            o.templateId = templateId;
-            o.templateName = templateName;
-            o.templateType = templateType;
-            o.templateVersion = templateVersion;
-            o.updatedBy = updatedBy;
-            o.updatedDate = updatedDate;
-            return o;
+            final var _resultValue = new GetTemplatesTemplate();
+            _resultValue.category = category;
+            _resultValue.createdBy = createdBy;
+            _resultValue.createdDate = createdDate;
+            _resultValue.description = description;
+            _resultValue.hasTrigger = hasTrigger;
+            _resultValue.id = id;
+            _resultValue.shareType = shareType;
+            _resultValue.tags = tags;
+            _resultValue.templateFormat = templateFormat;
+            _resultValue.templateId = templateId;
+            _resultValue.templateName = templateName;
+            _resultValue.templateType = templateType;
+            _resultValue.templateVersion = templateVersion;
+            _resultValue.updatedBy = updatedBy;
+            _resultValue.updatedDate = updatedDate;
+            return _resultValue;
         }
     }
 }

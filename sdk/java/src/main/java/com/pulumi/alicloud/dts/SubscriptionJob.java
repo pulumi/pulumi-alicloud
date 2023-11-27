@@ -177,7 +177,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * Subscription start time in Unix timestamp format.
      * 
      */
-    @Export(name="checkpoint", type=String.class, parameters={})
+    @Export(name="checkpoint", refs={String.class}, tree="[0]")
     private Output<String> checkpoint;
 
     /**
@@ -191,7 +191,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * [ETL specifications](https://help.aliyun.com/document_detail/212324.html). The unit is the computing unit ComputeUnit (CU), 1CU=1vCPU+4 GB memory. The value range is an integer greater than or equal to 2.
      * 
      */
-    @Export(name="computeUnit", type=Integer.class, parameters={})
+    @Export(name="computeUnit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> computeUnit;
 
     /**
@@ -205,7 +205,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The number of private customized RDS instances under PolarDB-X. The default value is 1. This parameter needs to be passed only when `source_endpoint_engine_name` equals `drds`.
      * 
      */
-    @Export(name="databaseCount", type=Integer.class, parameters={})
+    @Export(name="databaseCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> databaseCount;
 
     /**
@@ -219,7 +219,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * Subscription object, in the format of JSON strings. For detailed definitions, please refer to the description of migration, synchronization or subscription objects [document](https://help.aliyun.com/document_detail/209545.html).
      * 
      */
-    @Export(name="dbList", type=String.class, parameters={})
+    @Export(name="dbList", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbList;
 
     /**
@@ -233,7 +233,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * This parameter decides whether to monitor the delay status. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="delayNotice", type=Boolean.class, parameters={})
+    @Export(name="delayNotice", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> delayNotice;
 
     /**
@@ -247,7 +247,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The mobile phone number of the contact who delayed the alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
      * 
      */
-    @Export(name="delayPhone", type=String.class, parameters={})
+    @Export(name="delayPhone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> delayPhone;
 
     /**
@@ -261,7 +261,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * When `delay_notice` is set to `true`, this parameter must be passed in. The threshold for triggering the delay alarm. The unit is second and needs to be an integer. The threshold can be set according to business needs. It is recommended to set it above 10 seconds to avoid delay fluctuations caused by network and database load.
      * 
      */
-    @Export(name="delayRuleTime", type=String.class, parameters={})
+    @Export(name="delayRuleTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> delayRuleTime;
 
     /**
@@ -275,7 +275,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The destination endpoint engine name. Valid values: `ADS`, `DB2`, `DRDS`, `DataHub`, `Greenplum`, `MSSQL`, `MySQL`, `PolarDB`, `PostgreSQL`, `Redis`, `Tablestore`, `as400`, `clickhouse`, `kafka`, `mongodb`, `odps`, `oracle`, `polardb_o`, `polardb_pg`, `tidb`.
      * 
      */
-    @Export(name="destinationEndpointEngineName", type=String.class, parameters={})
+    @Export(name="destinationEndpointEngineName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationEndpointEngineName;
 
     /**
@@ -289,7 +289,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The destination region. List of [supported regions](https://help.aliyun.com/document_detail/141033.html).
      * 
      */
-    @Export(name="destinationRegion", type=String.class, parameters={})
+    @Export(name="destinationRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationRegion;
 
     /**
@@ -303,7 +303,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The ID of subscription instance.
      * 
      */
-    @Export(name="dtsInstanceId", type=String.class, parameters={})
+    @Export(name="dtsInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dtsInstanceId;
 
     /**
@@ -317,7 +317,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The name of subscription task.
      * 
      */
-    @Export(name="dtsJobName", type=String.class, parameters={})
+    @Export(name="dtsJobName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dtsJobName;
 
     /**
@@ -331,7 +331,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * This parameter decides whether to monitor abnormal status. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="errorNotice", type=Boolean.class, parameters={})
+    @Export(name="errorNotice", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> errorNotice;
 
     /**
@@ -345,7 +345,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The mobile phone number of the contact for abnormal alarm. Multiple mobile phone numbers separated by English commas `,`. This parameter currently only supports China stations, and only supports mainland mobile phone numbers, and up to 10 mobile phone numbers can be passed in.
      * 
      */
-    @Export(name="errorPhone", type=String.class, parameters={})
+    @Export(name="errorPhone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> errorPhone;
 
     /**
@@ -359,7 +359,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The instance class. Valid values: `large`, `medium`, `micro`, `small`, `xlarge`, `xxlarge`.
      * 
      */
-    @Export(name="instanceClass", type=String.class, parameters={})
+    @Export(name="instanceClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceClass;
 
     /**
@@ -373,7 +373,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The duration of prepaid instance purchase. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
      * 
      */
-    @Export(name="paymentDuration", type=Integer.class, parameters={})
+    @Export(name="paymentDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> paymentDuration;
 
     /**
@@ -387,7 +387,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The payment duration unit. Valid values: `Month`, `Year`. When `payment_type` is `Subscription`, this parameter is valid and must be passed in.
      * 
      */
-    @Export(name="paymentDurationUnit", type=String.class, parameters={})
+    @Export(name="paymentDurationUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentDurationUnit;
 
     /**
@@ -401,7 +401,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -415,7 +415,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * DTS reserves parameters, the format is a JSON string, you can pass in this parameter to complete the source and target database information (such as the data storage format of the target Kafka database, the instance ID of the cloud enterprise network CEN). For more information, please refer to the parameter description of the [Reserve parameter](https://help.aliyun.com/document_detail/176470.html).
      * 
      */
-    @Export(name="reserve", type=String.class, parameters={})
+    @Export(name="reserve", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> reserve;
 
     /**
@@ -429,7 +429,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * To subscribe to the name of the database.
      * 
      */
-    @Export(name="sourceEndpointDatabaseName", type=String.class, parameters={})
+    @Export(name="sourceEndpointDatabaseName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointDatabaseName;
 
     /**
@@ -443,7 +443,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The source database type value is MySQL or Oracle. Valid values: `MySQL`, `Oracle`.
      * 
      */
-    @Export(name="sourceEndpointEngineName", type=String.class, parameters={})
+    @Export(name="sourceEndpointEngineName", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointEngineName;
 
     /**
@@ -457,7 +457,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The ID of source instance. Only when the type of source database instance was RDS MySQL, PolarDB-X 1.0, PolarDB MySQL, this parameter can be available and must be set.
      * 
      */
-    @Export(name="sourceEndpointInstanceId", type=String.class, parameters={})
+    @Export(name="sourceEndpointInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointInstanceId;
 
     /**
@@ -471,7 +471,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The type of source instance. Valid values: `RDS`, `PolarDB`, `DRDS`, `LocalInstance`, `ECS`, `Express`, `CEN`, `dg`.
      * 
      */
-    @Export(name="sourceEndpointInstanceType", type=String.class, parameters={})
+    @Export(name="sourceEndpointInstanceType", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointInstanceType;
 
     /**
@@ -485,7 +485,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The IP of source endpoint.
      * 
      */
-    @Export(name="sourceEndpointIp", type=String.class, parameters={})
+    @Export(name="sourceEndpointIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointIp;
 
     /**
@@ -499,7 +499,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The SID of Oracle Database. When the source database is self-built Oracle and the Oracle database is a non-RAC instance, this parameter is available and must be passed in.
      * 
      */
-    @Export(name="sourceEndpointOracleSid", type=String.class, parameters={})
+    @Export(name="sourceEndpointOracleSid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointOracleSid;
 
     /**
@@ -513,7 +513,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The Alibaba Cloud account ID to which the source instance belongs. This parameter is only available when configuring data subscriptions across Alibaba Cloud accounts and must be passed in.
      * 
      */
-    @Export(name="sourceEndpointOwnerId", type=String.class, parameters={})
+    @Export(name="sourceEndpointOwnerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointOwnerId;
 
     /**
@@ -527,7 +527,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The password of source database instance account.
      * 
      */
-    @Export(name="sourceEndpointPassword", type=String.class, parameters={})
+    @Export(name="sourceEndpointPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointPassword;
 
     /**
@@ -541,7 +541,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The port of source database.
      * 
      */
-    @Export(name="sourceEndpointPort", type=String.class, parameters={})
+    @Export(name="sourceEndpointPort", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointPort;
 
     /**
@@ -555,7 +555,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The region of source database.
      * 
      */
-    @Export(name="sourceEndpointRegion", type=String.class, parameters={})
+    @Export(name="sourceEndpointRegion", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointRegion;
 
     /**
@@ -569,7 +569,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * Both the authorization roles. When the source instance and configure subscriptions task of the Alibaba Cloud account is not the same as the need to pass the parameter, to specify the source of the authorization roles, to allow configuration subscription task of the Alibaba Cloud account to access the source of the source instance information.
      * 
      */
-    @Export(name="sourceEndpointRole", type=String.class, parameters={})
+    @Export(name="sourceEndpointRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointRole;
 
     /**
@@ -583,7 +583,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The username of source database instance account.
      * 
      */
-    @Export(name="sourceEndpointUserName", type=String.class, parameters={})
+    @Export(name="sourceEndpointUserName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceEndpointUserName;
 
     /**
@@ -597,7 +597,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The status of the task. Valid values: `Normal`, `Abnormal`. When a task created, it is in this state of `NotStarted`. You can specify this state to `Normal` to start the job, and specify this state of `Abnormal` to stop the job. **Note: We treat the state `Starting` as the state of `Normal`, and consider the two states to be consistent on the user side.**
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -611,7 +611,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * Whether to subscribe the DDL type of data. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="subscriptionDataTypeDdl", type=Boolean.class, parameters={})
+    @Export(name="subscriptionDataTypeDdl", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> subscriptionDataTypeDdl;
 
     /**
@@ -625,7 +625,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * Whether to subscribe the DML type of data. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="subscriptionDataTypeDml", type=Boolean.class, parameters={})
+    @Export(name="subscriptionDataTypeDml", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> subscriptionDataTypeDml;
 
     /**
@@ -639,7 +639,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * Subscription task type of network value: classic: classic Network. Virtual Private Cloud (vpc): a vpc. Valid values: `classic`, `vpc`.
      * 
      */
-    @Export(name="subscriptionInstanceNetworkType", type=String.class, parameters={})
+    @Export(name="subscriptionInstanceNetworkType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> subscriptionInstanceNetworkType;
 
     /**
@@ -653,7 +653,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The ID of subscription vpc instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
      * 
      */
-    @Export(name="subscriptionInstanceVpcId", type=String.class, parameters={})
+    @Export(name="subscriptionInstanceVpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> subscriptionInstanceVpcId;
 
     /**
@@ -667,7 +667,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The ID of subscription VSwitch instance. When the value of `subscription_instance_network_type` is vpc, this parameter is available and must be passed in.
      * 
      */
-    @Export(name="subscriptionInstanceVswitchId", type=String.class, parameters={})
+    @Export(name="subscriptionInstanceVswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> subscriptionInstanceVswitchId;
 
     /**
@@ -681,7 +681,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The sync architecture. Valid values: `bidirectional`, `oneway`.
      * 
      */
-    @Export(name="syncArchitecture", type=String.class, parameters={})
+    @Export(name="syncArchitecture", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> syncArchitecture;
 
     /**
@@ -695,7 +695,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * The synchronization direction. Valid values: `Forward`, `Reverse`. When the topology type of the data synchronization instance is bidirectional, it can be passed in to reverse to start the reverse synchronization link.
      * 
      */
-    @Export(name="synchronizationDirection", type=String.class, parameters={})
+    @Export(name="synchronizationDirection", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> synchronizationDirection;
 
     /**
@@ -709,7 +709,7 @@ public class SubscriptionJob extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

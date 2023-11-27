@@ -21,12 +21,24 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:arms/addonRelease:AddonRelease":
+		r = &AddonRelease{}
 	case "alicloud:arms/alertContact:AlertContact":
 		r = &AlertContact{}
 	case "alicloud:arms/alertContactGroup:AlertContactGroup":
 		r = &AlertContactGroup{}
 	case "alicloud:arms/dispatchRule:DispatchRule":
 		r = &DispatchRule{}
+	case "alicloud:arms/envCustomJob:EnvCustomJob":
+		r = &EnvCustomJob{}
+	case "alicloud:arms/envFeature:EnvFeature":
+		r = &EnvFeature{}
+	case "alicloud:arms/envPodMonitor:EnvPodMonitor":
+		r = &EnvPodMonitor{}
+	case "alicloud:arms/envServiceMonitor:EnvServiceMonitor":
+		r = &EnvServiceMonitor{}
+	case "alicloud:arms/environment:Environment":
+		r = &Environment{}
 	case "alicloud:arms/integrationExporter:IntegrationExporter":
 		r = &IntegrationExporter{}
 	case "alicloud:arms/prometheus:Prometheus":
@@ -52,6 +64,11 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"arms/addonRelease",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"arms/alertContact",
 		&module{version},
 	)
@@ -63,6 +80,31 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"arms/dispatchRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"arms/envCustomJob",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"arms/envFeature",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"arms/envPodMonitor",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"arms/envServiceMonitor",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"arms/environment",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

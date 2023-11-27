@@ -46,9 +46,9 @@ public final class GetZonesZone {
             return this;
         }
         public GetZonesZone build() {
-            final var o = new GetZonesZone();
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetZonesZone();
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

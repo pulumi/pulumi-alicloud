@@ -165,15 +165,15 @@ public final class GetRegistryEnterpriseReposRepo {
             return tags(List.of(tags));
         }
         public GetRegistryEnterpriseReposRepo build() {
-            final var o = new GetRegistryEnterpriseReposRepo();
-            o.id = id;
-            o.instanceId = instanceId;
-            o.name = name;
-            o.namespace = namespace;
-            o.repoType = repoType;
-            o.summary = summary;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetRegistryEnterpriseReposRepo();
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.name = name;
+            _resultValue.namespace = namespace;
+            _resultValue.repoType = repoType;
+            _resultValue.summary = summary;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

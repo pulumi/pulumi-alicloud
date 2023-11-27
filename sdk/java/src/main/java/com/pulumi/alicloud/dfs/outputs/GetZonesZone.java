@@ -70,10 +70,10 @@ public final class GetZonesZone {
             return this;
         }
         public GetZonesZone build() {
-            final var o = new GetZonesZone();
-            o.options = options;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetZonesZone();
+            _resultValue.options = options;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

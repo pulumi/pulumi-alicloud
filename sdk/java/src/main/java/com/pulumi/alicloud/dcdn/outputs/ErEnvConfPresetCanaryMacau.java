@@ -90,11 +90,11 @@ public final class ErEnvConfPresetCanaryMacau {
             return this;
         }
         public ErEnvConfPresetCanaryMacau build() {
-            final var o = new ErEnvConfPresetCanaryMacau();
-            o.allowedHosts = allowedHosts;
-            o.codeRev = codeRev;
-            o.specName = specName;
-            return o;
+            final var _resultValue = new ErEnvConfPresetCanaryMacau();
+            _resultValue.allowedHosts = allowedHosts;
+            _resultValue.codeRev = codeRev;
+            _resultValue.specName = specName;
+            return _resultValue;
         }
     }
 }

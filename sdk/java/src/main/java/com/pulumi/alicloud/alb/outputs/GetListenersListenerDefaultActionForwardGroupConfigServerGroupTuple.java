@@ -46,9 +46,9 @@ public final class GetListenersListenerDefaultActionForwardGroupConfigServerGrou
             return this;
         }
         public GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple build() {
-            final var o = new GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple();
-            o.serverGroupId = serverGroupId;
-            return o;
+            final var _resultValue = new GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple();
+            _resultValue.serverGroupId = serverGroupId;
+            return _resultValue;
         }
     }
 }

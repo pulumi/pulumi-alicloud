@@ -100,7 +100,7 @@ public class IpSet extends com.pulumi.resources.CustomResource {
      * The ID of an acceleration region.
      * 
      */
-    @Export(name="accelerateRegionId", type=String.class, parameters={})
+    @Export(name="accelerateRegionId", refs={String.class}, tree="[0]")
     private Output<String> accelerateRegionId;
 
     /**
@@ -114,7 +114,7 @@ public class IpSet extends com.pulumi.resources.CustomResource {
      * The ID of the Global Accelerator (GA) instance.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -129,7 +129,7 @@ public class IpSet extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The minimum bandwidth of each accelerated region is 2Mbps. The total bandwidth of the acceleration region should be less than or equal to the bandwidth of the basic bandwidth package you purchased.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> bandwidth;
 
     /**
@@ -144,7 +144,7 @@ public class IpSet extends com.pulumi.resources.CustomResource {
      * The list of accelerated IP addresses in the acceleration region.
      * 
      */
-    @Export(name="ipAddressLists", type=List.class, parameters={String.class})
+    @Export(name="ipAddressLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ipAddressLists;
 
     /**
@@ -158,7 +158,7 @@ public class IpSet extends com.pulumi.resources.CustomResource {
      * The IP protocol used by the GA instance. Valid values: `IPv4`, `IPv6`. Default value: `IPv4`.
      * 
      */
-    @Export(name="ipVersion", type=String.class, parameters={})
+    @Export(name="ipVersion", refs={String.class}, tree="[0]")
     private Output<String> ipVersion;
 
     /**
@@ -172,7 +172,7 @@ public class IpSet extends com.pulumi.resources.CustomResource {
      * The line type of the elastic IP address (EIP) in the acceleration region. Valid values: `BGP`, `BGP_PRO`.
      * 
      */
-    @Export(name="ispType", type=String.class, parameters={})
+    @Export(name="ispType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ispType;
 
     /**
@@ -186,7 +186,7 @@ public class IpSet extends com.pulumi.resources.CustomResource {
      * The status of the acceleration region.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

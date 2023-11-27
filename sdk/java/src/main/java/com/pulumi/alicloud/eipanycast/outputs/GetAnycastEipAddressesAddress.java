@@ -299,22 +299,22 @@ public final class GetAnycastEipAddressesAddress {
             return this;
         }
         public GetAnycastEipAddressesAddress build() {
-            final var o = new GetAnycastEipAddressesAddress();
-            o.aliUid = aliUid;
-            o.anycastEipAddressName = anycastEipAddressName;
-            o.anycastEipBindInfoLists = anycastEipBindInfoLists;
-            o.anycastId = anycastId;
-            o.bandwidth = bandwidth;
-            o.bid = bid;
-            o.businessStatus = businessStatus;
-            o.description = description;
-            o.id = id;
-            o.internetChargeType = internetChargeType;
-            o.ipAddress = ipAddress;
-            o.paymentType = paymentType;
-            o.serviceLocation = serviceLocation;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAnycastEipAddressesAddress();
+            _resultValue.aliUid = aliUid;
+            _resultValue.anycastEipAddressName = anycastEipAddressName;
+            _resultValue.anycastEipBindInfoLists = anycastEipBindInfoLists;
+            _resultValue.anycastId = anycastId;
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.bid = bid;
+            _resultValue.businessStatus = businessStatus;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.internetChargeType = internetChargeType;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.paymentType = paymentType;
+            _resultValue.serviceLocation = serviceLocation;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -18,18 +18,32 @@ class VpcEndpointArgs:
                  vpc_id: pulumi.Input[str],
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  endpoint_description: Optional[pulumi.Input[str]] = None,
+                 endpoint_type: Optional[pulumi.Input[str]] = None,
+                 protected_enabled: Optional[pulumi.Input[bool]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
-                 vpc_endpoint_name: Optional[pulumi.Input[str]] = None):
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
+                 zone_private_ip_address_count: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a VpcEndpoint resource.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security group associated with the terminal node network card.
-        :param pulumi.Input[str] vpc_id: The private network to which the terminal node belongs.
-        :param pulumi.Input[bool] dry_run: The dry run. Default to: `false`.
-        :param pulumi.Input[str] endpoint_description: The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
-        :param pulumi.Input[str] service_id: The terminal node service associated with the terminal node.
-        :param pulumi.Input[str] service_name: The name of the terminal node service associated with the terminal node.
-        :param pulumi.Input[str] vpc_endpoint_name: The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC to which the endpoint belongs.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] endpoint_description: The description of the endpoint.
+        :param pulumi.Input[str] endpoint_type: The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+               - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+               - **false (default)**: disables user authentication.
+        :param pulumi.Input[str] resource_group_id: The resource group ID.
+        :param pulumi.Input[str] service_id: The ID of the endpoint service with which the endpoint is associated.
+        :param pulumi.Input[str] service_name: The name of the endpoint service with which the endpoint is associated.
+        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[str] vpc_endpoint_name: The name of the endpoint.
+        :param pulumi.Input[int] zone_private_ip_address_count: The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
         """
         pulumi.set(__self__, "security_group_ids", security_group_ids)
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -37,18 +51,28 @@ class VpcEndpointArgs:
             pulumi.set(__self__, "dry_run", dry_run)
         if endpoint_description is not None:
             pulumi.set(__self__, "endpoint_description", endpoint_description)
+        if endpoint_type is not None:
+            pulumi.set(__self__, "endpoint_type", endpoint_type)
+        if protected_enabled is not None:
+            pulumi.set(__self__, "protected_enabled", protected_enabled)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if service_id is not None:
             pulumi.set(__self__, "service_id", service_id)
         if service_name is not None:
             pulumi.set(__self__, "service_name", service_name)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vpc_endpoint_name is not None:
             pulumi.set(__self__, "vpc_endpoint_name", vpc_endpoint_name)
+        if zone_private_ip_address_count is not None:
+            pulumi.set(__self__, "zone_private_ip_address_count", zone_private_ip_address_count)
 
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
         """
-        The security group associated with the terminal node network card.
+        The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -60,7 +84,7 @@ class VpcEndpointArgs:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Input[str]:
         """
-        The private network to which the terminal node belongs.
+        The ID of the VPC to which the endpoint belongs.
         """
         return pulumi.get(self, "vpc_id")
 
@@ -72,7 +96,9 @@ class VpcEndpointArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        The dry run. Default to: `false`.
+        Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
@@ -84,7 +110,7 @@ class VpcEndpointArgs:
     @pulumi.getter(name="endpointDescription")
     def endpoint_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+        The description of the endpoint.
         """
         return pulumi.get(self, "endpoint_description")
 
@@ -93,10 +119,48 @@ class VpcEndpointArgs:
         pulumi.set(self, "endpoint_description", value)
 
     @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @endpoint_type.setter
+    def endpoint_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_type", value)
+
+    @property
+    @pulumi.getter(name="protectedEnabled")
+    def protected_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+        - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+        - **false (default)**: disables user authentication.
+        """
+        return pulumi.get(self, "protected_enabled")
+
+    @protected_enabled.setter
+    def protected_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "protected_enabled", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource group ID.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="serviceId")
     def service_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The terminal node service associated with the terminal node.
+        The ID of the endpoint service with which the endpoint is associated.
         """
         return pulumi.get(self, "service_id")
 
@@ -108,7 +172,7 @@ class VpcEndpointArgs:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the terminal node service associated with the terminal node.
+        The name of the endpoint service with which the endpoint is associated.
         """
         return pulumi.get(self, "service_name")
 
@@ -117,10 +181,22 @@ class VpcEndpointArgs:
         pulumi.set(self, "service_name", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The list of tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="vpcEndpointName")
     def vpc_endpoint_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+        The name of the endpoint.
         """
         return pulumi.get(self, "vpc_endpoint_name")
 
@@ -128,41 +204,71 @@ class VpcEndpointArgs:
     def vpc_endpoint_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vpc_endpoint_name", value)
 
+    @property
+    @pulumi.getter(name="zonePrivateIpAddressCount")
+    def zone_private_ip_address_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+        """
+        return pulumi.get(self, "zone_private_ip_address_count")
+
+    @zone_private_ip_address_count.setter
+    def zone_private_ip_address_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "zone_private_ip_address_count", value)
+
 
 @pulumi.input_type
 class _VpcEndpointState:
     def __init__(__self__, *,
                  bandwidth: Optional[pulumi.Input[int]] = None,
                  connection_status: Optional[pulumi.Input[str]] = None,
+                 create_time: Optional[pulumi.Input[str]] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  endpoint_business_status: Optional[pulumi.Input[str]] = None,
                  endpoint_description: Optional[pulumi.Input[str]] = None,
                  endpoint_domain: Optional[pulumi.Input[str]] = None,
+                 endpoint_type: Optional[pulumi.Input[str]] = None,
+                 protected_enabled: Optional[pulumi.Input[bool]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
-                 vpc_id: Optional[pulumi.Input[str]] = None):
+                 vpc_id: Optional[pulumi.Input[str]] = None,
+                 zone_private_ip_address_count: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering VpcEndpoint resources.
-        :param pulumi.Input[int] bandwidth: The Bandwidth.
-        :param pulumi.Input[str] connection_status: The status of Connection.
-        :param pulumi.Input[bool] dry_run: The dry run. Default to: `false`.
-        :param pulumi.Input[str] endpoint_business_status: The status of Endpoint Business.
-        :param pulumi.Input[str] endpoint_description: The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
-        :param pulumi.Input[str] endpoint_domain: The Endpoint Domain.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security group associated with the terminal node network card.
-        :param pulumi.Input[str] service_id: The terminal node service associated with the terminal node.
-        :param pulumi.Input[str] service_name: The name of the terminal node service associated with the terminal node.
-        :param pulumi.Input[str] status: The status of Vpc Endpoint.
-        :param pulumi.Input[str] vpc_endpoint_name: The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
-        :param pulumi.Input[str] vpc_id: The private network to which the terminal node belongs.
+        :param pulumi.Input[int] bandwidth: The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+        :param pulumi.Input[str] connection_status: The state of the endpoint connection.
+        :param pulumi.Input[str] create_time: The time when the endpoint was created.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] endpoint_business_status: The service state of the endpoint.
+        :param pulumi.Input[str] endpoint_description: The description of the endpoint.
+        :param pulumi.Input[str] endpoint_domain: The domain name of the endpoint.
+        :param pulumi.Input[str] endpoint_type: The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+               - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+               - **false (default)**: disables user authentication.
+        :param pulumi.Input[str] resource_group_id: The resource group ID.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+        :param pulumi.Input[str] service_id: The ID of the endpoint service with which the endpoint is associated.
+        :param pulumi.Input[str] service_name: The name of the endpoint service with which the endpoint is associated.
+        :param pulumi.Input[str] status: The state of the endpoint.
+        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[str] vpc_endpoint_name: The name of the endpoint.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC to which the endpoint belongs.
+        :param pulumi.Input[int] zone_private_ip_address_count: The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
         """
         if bandwidth is not None:
             pulumi.set(__self__, "bandwidth", bandwidth)
         if connection_status is not None:
             pulumi.set(__self__, "connection_status", connection_status)
+        if create_time is not None:
+            pulumi.set(__self__, "create_time", create_time)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
         if endpoint_business_status is not None:
@@ -171,6 +277,12 @@ class _VpcEndpointState:
             pulumi.set(__self__, "endpoint_description", endpoint_description)
         if endpoint_domain is not None:
             pulumi.set(__self__, "endpoint_domain", endpoint_domain)
+        if endpoint_type is not None:
+            pulumi.set(__self__, "endpoint_type", endpoint_type)
+        if protected_enabled is not None:
+            pulumi.set(__self__, "protected_enabled", protected_enabled)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if security_group_ids is not None:
             pulumi.set(__self__, "security_group_ids", security_group_ids)
         if service_id is not None:
@@ -179,16 +291,20 @@ class _VpcEndpointState:
             pulumi.set(__self__, "service_name", service_name)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if vpc_endpoint_name is not None:
             pulumi.set(__self__, "vpc_endpoint_name", vpc_endpoint_name)
         if vpc_id is not None:
             pulumi.set(__self__, "vpc_id", vpc_id)
+        if zone_private_ip_address_count is not None:
+            pulumi.set(__self__, "zone_private_ip_address_count", zone_private_ip_address_count)
 
     @property
     @pulumi.getter
     def bandwidth(self) -> Optional[pulumi.Input[int]]:
         """
-        The Bandwidth.
+        The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -200,7 +316,7 @@ class _VpcEndpointState:
     @pulumi.getter(name="connectionStatus")
     def connection_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of Connection.
+        The state of the endpoint connection.
         """
         return pulumi.get(self, "connection_status")
 
@@ -209,10 +325,24 @@ class _VpcEndpointState:
         pulumi.set(self, "connection_status", value)
 
     @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        The time when the endpoint was created.
+        """
+        return pulumi.get(self, "create_time")
+
+    @create_time.setter
+    def create_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "create_time", value)
+
+    @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        The dry run. Default to: `false`.
+        Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
@@ -224,7 +354,7 @@ class _VpcEndpointState:
     @pulumi.getter(name="endpointBusinessStatus")
     def endpoint_business_status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of Endpoint Business.
+        The service state of the endpoint.
         """
         return pulumi.get(self, "endpoint_business_status")
 
@@ -236,7 +366,7 @@ class _VpcEndpointState:
     @pulumi.getter(name="endpointDescription")
     def endpoint_description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+        The description of the endpoint.
         """
         return pulumi.get(self, "endpoint_description")
 
@@ -248,7 +378,7 @@ class _VpcEndpointState:
     @pulumi.getter(name="endpointDomain")
     def endpoint_domain(self) -> Optional[pulumi.Input[str]]:
         """
-        The Endpoint Domain.
+        The domain name of the endpoint.
         """
         return pulumi.get(self, "endpoint_domain")
 
@@ -257,10 +387,48 @@ class _VpcEndpointState:
         pulumi.set(self, "endpoint_domain", value)
 
     @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @endpoint_type.setter
+    def endpoint_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "endpoint_type", value)
+
+    @property
+    @pulumi.getter(name="protectedEnabled")
+    def protected_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+        - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+        - **false (default)**: disables user authentication.
+        """
+        return pulumi.get(self, "protected_enabled")
+
+    @protected_enabled.setter
+    def protected_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "protected_enabled", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource group ID.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
+
+    @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The security group associated with the terminal node network card.
+        The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -272,7 +440,7 @@ class _VpcEndpointState:
     @pulumi.getter(name="serviceId")
     def service_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The terminal node service associated with the terminal node.
+        The ID of the endpoint service with which the endpoint is associated.
         """
         return pulumi.get(self, "service_id")
 
@@ -284,7 +452,7 @@ class _VpcEndpointState:
     @pulumi.getter(name="serviceName")
     def service_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the terminal node service associated with the terminal node.
+        The name of the endpoint service with which the endpoint is associated.
         """
         return pulumi.get(self, "service_name")
 
@@ -296,7 +464,7 @@ class _VpcEndpointState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of Vpc Endpoint.
+        The state of the endpoint.
         """
         return pulumi.get(self, "status")
 
@@ -305,10 +473,22 @@ class _VpcEndpointState:
         pulumi.set(self, "status", value)
 
     @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+        """
+        The list of tags.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
     @pulumi.getter(name="vpcEndpointName")
     def vpc_endpoint_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+        The name of the endpoint.
         """
         return pulumi.get(self, "vpc_endpoint_name")
 
@@ -320,13 +500,25 @@ class _VpcEndpointState:
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The private network to which the terminal node belongs.
+        The ID of the VPC to which the endpoint belongs.
         """
         return pulumi.get(self, "vpc_id")
 
     @vpc_id.setter
     def vpc_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "vpc_id", value)
+
+    @property
+    @pulumi.getter(name="zonePrivateIpAddressCount")
+    def zone_private_ip_address_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+        """
+        return pulumi.get(self, "zone_private_ip_address_count")
+
+    @zone_private_ip_address_count.setter
+    def zone_private_ip_address_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "zone_private_ip_address_count", value)
 
 
 class VpcEndpoint(pulumi.CustomResource):
@@ -336,11 +528,16 @@ class VpcEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  endpoint_description: Optional[pulumi.Input[str]] = None,
+                 endpoint_type: Optional[pulumi.Input[str]] = None,
+                 protected_enabled: Optional[pulumi.Input[bool]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
+                 zone_private_ip_address_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
         Provides a Private Link Vpc Endpoint resource.
@@ -381,18 +578,27 @@ class VpcEndpoint(pulumi.CustomResource):
         Private Link Vpc Endpoint can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:privatelink/vpcEndpoint:VpcEndpoint example <endpoint_id>
+         $ pulumi import alicloud:privatelink/vpcEndpoint:VpcEndpoint example <id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] dry_run: The dry run. Default to: `false`.
-        :param pulumi.Input[str] endpoint_description: The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security group associated with the terminal node network card.
-        :param pulumi.Input[str] service_id: The terminal node service associated with the terminal node.
-        :param pulumi.Input[str] service_name: The name of the terminal node service associated with the terminal node.
-        :param pulumi.Input[str] vpc_endpoint_name: The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
-        :param pulumi.Input[str] vpc_id: The private network to which the terminal node belongs.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] endpoint_description: The description of the endpoint.
+        :param pulumi.Input[str] endpoint_type: The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+               - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+               - **false (default)**: disables user authentication.
+        :param pulumi.Input[str] resource_group_id: The resource group ID.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+        :param pulumi.Input[str] service_id: The ID of the endpoint service with which the endpoint is associated.
+        :param pulumi.Input[str] service_name: The name of the endpoint service with which the endpoint is associated.
+        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[str] vpc_endpoint_name: The name of the endpoint.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC to which the endpoint belongs.
+        :param pulumi.Input[int] zone_private_ip_address_count: The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
         """
         ...
     @overload
@@ -439,7 +645,7 @@ class VpcEndpoint(pulumi.CustomResource):
         Private Link Vpc Endpoint can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:privatelink/vpcEndpoint:VpcEndpoint example <endpoint_id>
+         $ pulumi import alicloud:privatelink/vpcEndpoint:VpcEndpoint example <id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -459,11 +665,16 @@ class VpcEndpoint(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  endpoint_description: Optional[pulumi.Input[str]] = None,
+                 endpoint_type: Optional[pulumi.Input[str]] = None,
+                 protected_enabled: Optional[pulumi.Input[bool]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
                  service_name: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
                  vpc_id: Optional[pulumi.Input[str]] = None,
+                 zone_private_ip_address_count: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -475,17 +686,23 @@ class VpcEndpoint(pulumi.CustomResource):
 
             __props__.__dict__["dry_run"] = dry_run
             __props__.__dict__["endpoint_description"] = endpoint_description
+            __props__.__dict__["endpoint_type"] = endpoint_type
+            __props__.__dict__["protected_enabled"] = protected_enabled
+            __props__.__dict__["resource_group_id"] = resource_group_id
             if security_group_ids is None and not opts.urn:
                 raise TypeError("Missing required property 'security_group_ids'")
             __props__.__dict__["security_group_ids"] = security_group_ids
             __props__.__dict__["service_id"] = service_id
             __props__.__dict__["service_name"] = service_name
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["vpc_endpoint_name"] = vpc_endpoint_name
             if vpc_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vpc_id'")
             __props__.__dict__["vpc_id"] = vpc_id
+            __props__.__dict__["zone_private_ip_address_count"] = zone_private_ip_address_count
             __props__.__dict__["bandwidth"] = None
             __props__.__dict__["connection_status"] = None
+            __props__.__dict__["create_time"] = None
             __props__.__dict__["endpoint_business_status"] = None
             __props__.__dict__["endpoint_domain"] = None
             __props__.__dict__["status"] = None
@@ -501,16 +718,22 @@ class VpcEndpoint(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             bandwidth: Optional[pulumi.Input[int]] = None,
             connection_status: Optional[pulumi.Input[str]] = None,
+            create_time: Optional[pulumi.Input[str]] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             endpoint_business_status: Optional[pulumi.Input[str]] = None,
             endpoint_description: Optional[pulumi.Input[str]] = None,
             endpoint_domain: Optional[pulumi.Input[str]] = None,
+            endpoint_type: Optional[pulumi.Input[str]] = None,
+            protected_enabled: Optional[pulumi.Input[bool]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             security_group_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             service_id: Optional[pulumi.Input[str]] = None,
             service_name: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             vpc_endpoint_name: Optional[pulumi.Input[str]] = None,
-            vpc_id: Optional[pulumi.Input[str]] = None) -> 'VpcEndpoint':
+            vpc_id: Optional[pulumi.Input[str]] = None,
+            zone_private_ip_address_count: Optional[pulumi.Input[int]] = None) -> 'VpcEndpoint':
         """
         Get an existing VpcEndpoint resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -518,18 +741,28 @@ class VpcEndpoint(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] bandwidth: The Bandwidth.
-        :param pulumi.Input[str] connection_status: The status of Connection.
-        :param pulumi.Input[bool] dry_run: The dry run. Default to: `false`.
-        :param pulumi.Input[str] endpoint_business_status: The status of Endpoint Business.
-        :param pulumi.Input[str] endpoint_description: The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
-        :param pulumi.Input[str] endpoint_domain: The Endpoint Domain.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security group associated with the terminal node network card.
-        :param pulumi.Input[str] service_id: The terminal node service associated with the terminal node.
-        :param pulumi.Input[str] service_name: The name of the terminal node service associated with the terminal node.
-        :param pulumi.Input[str] status: The status of Vpc Endpoint.
-        :param pulumi.Input[str] vpc_endpoint_name: The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
-        :param pulumi.Input[str] vpc_id: The private network to which the terminal node belongs.
+        :param pulumi.Input[int] bandwidth: The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
+        :param pulumi.Input[str] connection_status: The state of the endpoint connection.
+        :param pulumi.Input[str] create_time: The time when the endpoint was created.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] endpoint_business_status: The service state of the endpoint.
+        :param pulumi.Input[str] endpoint_description: The description of the endpoint.
+        :param pulumi.Input[str] endpoint_domain: The domain name of the endpoint.
+        :param pulumi.Input[str] endpoint_type: The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        :param pulumi.Input[bool] protected_enabled: Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+               - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+               - **false (default)**: disables user authentication.
+        :param pulumi.Input[str] resource_group_id: The resource group ID.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
+        :param pulumi.Input[str] service_id: The ID of the endpoint service with which the endpoint is associated.
+        :param pulumi.Input[str] service_name: The name of the endpoint service with which the endpoint is associated.
+        :param pulumi.Input[str] status: The state of the endpoint.
+        :param pulumi.Input[Mapping[str, Any]] tags: The list of tags.
+        :param pulumi.Input[str] vpc_endpoint_name: The name of the endpoint.
+        :param pulumi.Input[str] vpc_id: The ID of the VPC to which the endpoint belongs.
+        :param pulumi.Input[int] zone_private_ip_address_count: The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -537,23 +770,29 @@ class VpcEndpoint(pulumi.CustomResource):
 
         __props__.__dict__["bandwidth"] = bandwidth
         __props__.__dict__["connection_status"] = connection_status
+        __props__.__dict__["create_time"] = create_time
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["endpoint_business_status"] = endpoint_business_status
         __props__.__dict__["endpoint_description"] = endpoint_description
         __props__.__dict__["endpoint_domain"] = endpoint_domain
+        __props__.__dict__["endpoint_type"] = endpoint_type
+        __props__.__dict__["protected_enabled"] = protected_enabled
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["security_group_ids"] = security_group_ids
         __props__.__dict__["service_id"] = service_id
         __props__.__dict__["service_name"] = service_name
         __props__.__dict__["status"] = status
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["vpc_endpoint_name"] = vpc_endpoint_name
         __props__.__dict__["vpc_id"] = vpc_id
+        __props__.__dict__["zone_private_ip_address_count"] = zone_private_ip_address_count
         return VpcEndpoint(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
     def bandwidth(self) -> pulumi.Output[int]:
         """
-        The Bandwidth.
+        The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
         """
         return pulumi.get(self, "bandwidth")
 
@@ -561,15 +800,25 @@ class VpcEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="connectionStatus")
     def connection_status(self) -> pulumi.Output[str]:
         """
-        The status of Connection.
+        The state of the endpoint connection.
         """
         return pulumi.get(self, "connection_status")
+
+    @property
+    @pulumi.getter(name="createTime")
+    def create_time(self) -> pulumi.Output[str]:
+        """
+        The time when the endpoint was created.
+        """
+        return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        The dry run. Default to: `false`.
+        Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
@@ -577,7 +826,7 @@ class VpcEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="endpointBusinessStatus")
     def endpoint_business_status(self) -> pulumi.Output[str]:
         """
-        The status of Endpoint Business.
+        The service state of the endpoint.
         """
         return pulumi.get(self, "endpoint_business_status")
 
@@ -585,7 +834,7 @@ class VpcEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="endpointDescription")
     def endpoint_description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+        The description of the endpoint.
         """
         return pulumi.get(self, "endpoint_description")
 
@@ -593,15 +842,41 @@ class VpcEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="endpointDomain")
     def endpoint_domain(self) -> pulumi.Output[str]:
         """
-        The Endpoint Domain.
+        The domain name of the endpoint.
         """
         return pulumi.get(self, "endpoint_domain")
+
+    @property
+    @pulumi.getter(name="endpointType")
+    def endpoint_type(self) -> pulumi.Output[str]:
+        """
+        The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+        """
+        return pulumi.get(self, "endpoint_type")
+
+    @property
+    @pulumi.getter(name="protectedEnabled")
+    def protected_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+        - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+        - **false (default)**: disables user authentication.
+        """
+        return pulumi.get(self, "protected_enabled")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The resource group ID.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter(name="securityGroupIds")
     def security_group_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        The security group associated with the terminal node network card.
+        The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
         """
         return pulumi.get(self, "security_group_ids")
 
@@ -609,7 +884,7 @@ class VpcEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The terminal node service associated with the terminal node.
+        The ID of the endpoint service with which the endpoint is associated.
         """
         return pulumi.get(self, "service_id")
 
@@ -617,7 +892,7 @@ class VpcEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Output[str]:
         """
-        The name of the terminal node service associated with the terminal node.
+        The name of the endpoint service with which the endpoint is associated.
         """
         return pulumi.get(self, "service_name")
 
@@ -625,15 +900,23 @@ class VpcEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of Vpc Endpoint.
+        The state of the endpoint.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, Any]]]:
+        """
+        The list of tags.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter(name="vpcEndpointName")
     def vpc_endpoint_name(self) -> pulumi.Output[Optional[str]]:
         """
-        The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+        The name of the endpoint.
         """
         return pulumi.get(self, "vpc_endpoint_name")
 
@@ -641,7 +924,15 @@ class VpcEndpoint(pulumi.CustomResource):
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> pulumi.Output[str]:
         """
-        The private network to which the terminal node belongs.
+        The ID of the VPC to which the endpoint belongs.
         """
         return pulumi.get(self, "vpc_id")
+
+    @property
+    @pulumi.getter(name="zonePrivateIpAddressCount")
+    def zone_private_ip_address_count(self) -> pulumi.Output[int]:
+        """
+        The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+        """
+        return pulumi.get(self, "zone_private_ip_address_count")
 

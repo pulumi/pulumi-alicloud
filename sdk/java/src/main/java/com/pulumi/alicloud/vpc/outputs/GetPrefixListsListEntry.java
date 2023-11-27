@@ -65,10 +65,10 @@ public final class GetPrefixListsListEntry {
             return this;
         }
         public GetPrefixListsListEntry build() {
-            final var o = new GetPrefixListsListEntry();
-            o.cidr = cidr;
-            o.description = description;
-            return o;
+            final var _resultValue = new GetPrefixListsListEntry();
+            _resultValue.cidr = cidr;
+            _resultValue.description = description;
+            return _resultValue;
         }
     }
 }

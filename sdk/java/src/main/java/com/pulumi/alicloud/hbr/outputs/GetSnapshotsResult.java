@@ -211,23 +211,23 @@ public final class GetSnapshotsResult {
             return this;
         }
         public GetSnapshotsResult build() {
-            final var o = new GetSnapshotsResult();
-            o.bucket = bucket;
-            o.completeTime = completeTime;
-            o.completeTimeChecker = completeTimeChecker;
-            o.createTime = createTime;
-            o.fileSystemId = fileSystemId;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.limit = limit;
-            o.outputFile = outputFile;
-            o.query = query;
-            o.snapshots = snapshots;
-            o.sourceType = sourceType;
-            o.status = status;
-            o.vaultId = vaultId;
-            return o;
+            final var _resultValue = new GetSnapshotsResult();
+            _resultValue.bucket = bucket;
+            _resultValue.completeTime = completeTime;
+            _resultValue.completeTimeChecker = completeTimeChecker;
+            _resultValue.createTime = createTime;
+            _resultValue.fileSystemId = fileSystemId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.limit = limit;
+            _resultValue.outputFile = outputFile;
+            _resultValue.query = query;
+            _resultValue.snapshots = snapshots;
+            _resultValue.sourceType = sourceType;
+            _resultValue.status = status;
+            _resultValue.vaultId = vaultId;
+            return _resultValue;
         }
     }
 }

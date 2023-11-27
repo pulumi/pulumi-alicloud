@@ -103,12 +103,12 @@ public final class InstanceBabelfishConfig {
             return this;
         }
         public InstanceBabelfishConfig build() {
-            final var o = new InstanceBabelfishConfig();
-            o.babelfishEnabled = babelfishEnabled;
-            o.masterUserPassword = masterUserPassword;
-            o.masterUsername = masterUsername;
-            o.migrationMode = migrationMode;
-            return o;
+            final var _resultValue = new InstanceBabelfishConfig();
+            _resultValue.babelfishEnabled = babelfishEnabled;
+            _resultValue.masterUserPassword = masterUserPassword;
+            _resultValue.masterUsername = masterUsername;
+            _resultValue.migrationMode = migrationMode;
+            return _resultValue;
         }
     }
 }

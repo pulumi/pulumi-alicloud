@@ -46,9 +46,9 @@ public final class GetInstancesInstanceEcsList {
             return this;
         }
         public GetInstancesInstanceEcsList build() {
-            final var o = new GetInstancesInstanceEcsList();
-            o.ecsId = ecsId;
-            return o;
+            final var _resultValue = new GetInstancesInstanceEcsList();
+            _resultValue.ecsId = ecsId;
+            return _resultValue;
         }
     }
 }

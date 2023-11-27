@@ -276,21 +276,21 @@ public final class GetHanaInstancesInstance {
             return this;
         }
         public GetHanaInstancesInstance build() {
-            final var o = new GetHanaInstancesInstance();
-            o.alertSetting = alertSetting;
-            o.hanaInstanceId = hanaInstanceId;
-            o.hanaName = hanaName;
-            o.host = host;
-            o.id = id;
-            o.instanceNumber = instanceNumber;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.statusMessage = statusMessage;
-            o.useSsl = useSsl;
-            o.userName = userName;
-            o.validateCertificate = validateCertificate;
-            o.vaultId = vaultId;
-            return o;
+            final var _resultValue = new GetHanaInstancesInstance();
+            _resultValue.alertSetting = alertSetting;
+            _resultValue.hanaInstanceId = hanaInstanceId;
+            _resultValue.hanaName = hanaName;
+            _resultValue.host = host;
+            _resultValue.id = id;
+            _resultValue.instanceNumber = instanceNumber;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.statusMessage = statusMessage;
+            _resultValue.useSsl = useSsl;
+            _resultValue.userName = userName;
+            _resultValue.validateCertificate = validateCertificate;
+            _resultValue.vaultId = vaultId;
+            return _resultValue;
         }
     }
 }

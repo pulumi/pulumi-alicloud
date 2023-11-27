@@ -111,14 +111,14 @@ public final class GetEngineNamespacesResult {
             return this;
         }
         public GetEngineNamespacesResult build() {
-            final var o = new GetEngineNamespacesResult();
-            o.acceptLanguage = acceptLanguage;
-            o.clusterId = clusterId;
-            o.id = id;
-            o.ids = ids;
-            o.namespaces = namespaces;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetEngineNamespacesResult();
+            _resultValue.acceptLanguage = acceptLanguage;
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.namespaces = namespaces;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

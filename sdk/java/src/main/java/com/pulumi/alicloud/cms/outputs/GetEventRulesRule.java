@@ -185,16 +185,16 @@ public final class GetEventRulesRule {
             return this;
         }
         public GetEventRulesRule build() {
-            final var o = new GetEventRulesRule();
-            o.description = description;
-            o.eventPatterns = eventPatterns;
-            o.eventRuleName = eventRuleName;
-            o.eventType = eventType;
-            o.groupId = groupId;
-            o.id = id;
-            o.silenceTime = silenceTime;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetEventRulesRule();
+            _resultValue.description = description;
+            _resultValue.eventPatterns = eventPatterns;
+            _resultValue.eventRuleName = eventRuleName;
+            _resultValue.eventType = eventType;
+            _resultValue.groupId = groupId;
+            _resultValue.id = id;
+            _resultValue.silenceTime = silenceTime;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

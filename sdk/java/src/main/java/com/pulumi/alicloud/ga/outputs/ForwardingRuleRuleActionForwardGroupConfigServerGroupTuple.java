@@ -46,9 +46,9 @@ public final class ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
             return this;
         }
         public ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple build() {
-            final var o = new ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple();
-            o.endpointGroupId = endpointGroupId;
-            return o;
+            final var _resultValue = new ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple();
+            _resultValue.endpointGroupId = endpointGroupId;
+            return _resultValue;
         }
     }
 }

@@ -146,14 +146,14 @@ public final class GetConfigurationRecordersRecorder {
             return this;
         }
         public GetConfigurationRecordersRecorder build() {
-            final var o = new GetConfigurationRecordersRecorder();
-            o.accountId = accountId;
-            o.id = id;
-            o.organizationEnableStatus = organizationEnableStatus;
-            o.organizationMasterId = organizationMasterId;
-            o.resourceTypes = resourceTypes;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetConfigurationRecordersRecorder();
+            _resultValue.accountId = accountId;
+            _resultValue.id = id;
+            _resultValue.organizationEnableStatus = organizationEnableStatus;
+            _resultValue.organizationMasterId = organizationMasterId;
+            _resultValue.resourceTypes = resourceTypes;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

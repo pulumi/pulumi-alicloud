@@ -327,24 +327,24 @@ public final class ClusterHostGroup {
             return this;
         }
         public ClusterHostGroup build() {
-            final var o = new ClusterHostGroup();
-            o.autoRenew = autoRenew;
-            o.chargeType = chargeType;
-            o.decommissionTimeout = decommissionTimeout;
-            o.diskCapacity = diskCapacity;
-            o.diskCount = diskCount;
-            o.diskType = diskType;
-            o.enableGracefulDecommission = enableGracefulDecommission;
-            o.gpuDriver = gpuDriver;
-            o.hostGroupName = hostGroupName;
-            o.hostGroupType = hostGroupType;
-            o.instanceList = instanceList;
-            o.instanceType = instanceType;
-            o.nodeCount = nodeCount;
-            o.period = period;
-            o.sysDiskCapacity = sysDiskCapacity;
-            o.sysDiskType = sysDiskType;
-            return o;
+            final var _resultValue = new ClusterHostGroup();
+            _resultValue.autoRenew = autoRenew;
+            _resultValue.chargeType = chargeType;
+            _resultValue.decommissionTimeout = decommissionTimeout;
+            _resultValue.diskCapacity = diskCapacity;
+            _resultValue.diskCount = diskCount;
+            _resultValue.diskType = diskType;
+            _resultValue.enableGracefulDecommission = enableGracefulDecommission;
+            _resultValue.gpuDriver = gpuDriver;
+            _resultValue.hostGroupName = hostGroupName;
+            _resultValue.hostGroupType = hostGroupType;
+            _resultValue.instanceList = instanceList;
+            _resultValue.instanceType = instanceType;
+            _resultValue.nodeCount = nodeCount;
+            _resultValue.period = period;
+            _resultValue.sysDiskCapacity = sysDiskCapacity;
+            _resultValue.sysDiskType = sysDiskType;
+            return _resultValue;
         }
     }
 }

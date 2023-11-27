@@ -203,17 +203,17 @@ public final class GetStackInstancesInstance {
             return this;
         }
         public GetStackInstancesInstance build() {
-            final var o = new GetStackInstancesInstance();
-            o.id = id;
-            o.parameterOverrides = parameterOverrides;
-            o.stackGroupId = stackGroupId;
-            o.stackGroupName = stackGroupName;
-            o.stackId = stackId;
-            o.stackInstanceAccountId = stackInstanceAccountId;
-            o.stackInstanceRegionId = stackInstanceRegionId;
-            o.status = status;
-            o.statusReason = statusReason;
-            return o;
+            final var _resultValue = new GetStackInstancesInstance();
+            _resultValue.id = id;
+            _resultValue.parameterOverrides = parameterOverrides;
+            _resultValue.stackGroupId = stackGroupId;
+            _resultValue.stackGroupName = stackGroupName;
+            _resultValue.stackId = stackId;
+            _resultValue.stackInstanceAccountId = stackInstanceAccountId;
+            _resultValue.stackInstanceRegionId = stackInstanceRegionId;
+            _resultValue.status = status;
+            _resultValue.statusReason = statusReason;
+            return _resultValue;
         }
     }
 }

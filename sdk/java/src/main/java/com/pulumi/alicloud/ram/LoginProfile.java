@@ -77,7 +77,7 @@ public class LoginProfile extends com.pulumi.resources.CustomResource {
      * This parameter indicates whether the MFA needs to be bind when the user first logs in. Default value is `false`.
      * 
      */
-    @Export(name="mfaBindRequired", type=Boolean.class, parameters={})
+    @Export(name="mfaBindRequired", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> mfaBindRequired;
 
     /**
@@ -91,7 +91,7 @@ public class LoginProfile extends com.pulumi.resources.CustomResource {
      * Password of the RAM user.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -105,7 +105,7 @@ public class LoginProfile extends com.pulumi.resources.CustomResource {
      * This parameter indicates whether the password needs to be reset when the user first logs in. Default value is `false`.
      * 
      */
-    @Export(name="passwordResetRequired", type=Boolean.class, parameters={})
+    @Export(name="passwordResetRequired", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> passwordResetRequired;
 
     /**
@@ -119,7 +119,7 @@ public class LoginProfile extends com.pulumi.resources.CustomResource {
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
      * 
      */
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**

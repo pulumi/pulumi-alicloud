@@ -433,35 +433,35 @@ public final class GetLoadBalancersResult {
             return this;
         }
         public GetLoadBalancersResult build() {
-            final var o = new GetLoadBalancersResult();
-            o.address = address;
-            o.addressIpVersion = addressIpVersion;
-            o.addressType = addressType;
-            o.balancers = balancers;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.internetChargeType = internetChargeType;
-            o.loadBalancerName = loadBalancerName;
-            o.masterZoneId = masterZoneId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.networkType = networkType;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.paymentType = paymentType;
-            o.resourceGroupId = resourceGroupId;
-            o.serverId = serverId;
-            o.serverIntranetAddress = serverIntranetAddress;
-            o.slaveZoneId = slaveZoneId;
-            o.slbs = slbs;
-            o.status = status;
-            o.tags = tags;
-            o.totalCount = totalCount;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetLoadBalancersResult();
+            _resultValue.address = address;
+            _resultValue.addressIpVersion = addressIpVersion;
+            _resultValue.addressType = addressType;
+            _resultValue.balancers = balancers;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.internetChargeType = internetChargeType;
+            _resultValue.loadBalancerName = loadBalancerName;
+            _resultValue.masterZoneId = masterZoneId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.networkType = networkType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.paymentType = paymentType;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.serverId = serverId;
+            _resultValue.serverIntranetAddress = serverIntranetAddress;
+            _resultValue.slaveZoneId = slaveZoneId;
+            _resultValue.slbs = slbs;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.totalCount = totalCount;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

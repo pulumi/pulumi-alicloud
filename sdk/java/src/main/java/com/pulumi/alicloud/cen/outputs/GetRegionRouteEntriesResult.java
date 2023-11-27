@@ -105,13 +105,13 @@ public final class GetRegionRouteEntriesResult {
             return this;
         }
         public GetRegionRouteEntriesResult build() {
-            final var o = new GetRegionRouteEntriesResult();
-            o.entries = entries;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.outputFile = outputFile;
-            o.regionId = regionId;
-            return o;
+            final var _resultValue = new GetRegionRouteEntriesResult();
+            _resultValue.entries = entries;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.regionId = regionId;
+            return _resultValue;
         }
     }
 }

@@ -38,9 +38,9 @@ public final class GetNetworkInterfacesInterfaceAssociatedPublicIp {
             return this;
         }
         public GetNetworkInterfacesInterfaceAssociatedPublicIp build() {
-            final var o = new GetNetworkInterfacesInterfaceAssociatedPublicIp();
-            o.publicIpAddress = publicIpAddress;
-            return o;
+            final var _resultValue = new GetNetworkInterfacesInterfaceAssociatedPublicIp();
+            _resultValue.publicIpAddress = publicIpAddress;
+            return _resultValue;
         }
     }
 }

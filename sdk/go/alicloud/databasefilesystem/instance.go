@@ -12,9 +12,9 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a DBFS Instance resource.
+// Provides a DBFS Dbfs Instance resource. An instance of a database file system is equivalent to a file system and can store data of file types.
 //
-// For information about DBFS Instance and how to use it.
+// For information about DBFS Dbfs Instance and how to use it, see [What is Dbfs Instance](https://next.api.alibabacloud.com/document/DBFS/2020-04-18/CreateDbfs).
 //
 // > **NOTE:** Available since v1.136.0.
 //
@@ -36,7 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-example"
+//			name := "terraform-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -58,7 +58,7 @@ import (
 //
 // ## Import
 //
-// DBFS Instance can be imported using the id, e.g.
+// DBFS Dbfs Instance can be imported using the id, e.g.
 //
 // ```sh
 //
@@ -68,35 +68,57 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// The type of the Database file system. Valid values: `standard`.
+	// The number of CPU cores and the upper limit of memory used by the database file storage instance.
+	AdvancedFeatures pulumi.StringOutput `pulumi:"advancedFeatures"`
+	// Category of database file system.
 	Category pulumi.StringOutput `pulumi:"category"`
-	// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+	// The creation time of the resource.
+	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Whether to delete the original snapshot after creating DBFS using the snapshot.
 	DeleteSnapshot pulumi.BoolPtrOutput `pulumi:"deleteSnapshot"`
-	// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+	// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecsList` below.
 	//
 	// Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	EcsLists InstanceEcsListArrayOutput `pulumi:"ecsLists"`
-	// Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+	// Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
 	EnableRaid pulumi.BoolPtrOutput `pulumi:"enableRaid"`
-	// Whether to encrypt the database file system. Valid values: `true` and `false`.
+	// Whether to encrypt DBFS.Valid values: true or false. Default value: false.
 	Encryption pulumi.BoolPtrOutput `pulumi:"encryption"`
-	// The name of the Database file system.
+	// Database file system name.
+	FsName pulumi.StringOutput `pulumi:"fsName"`
+	// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+	//
+	// Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
-	// The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+	// Instance type. Value range:
+	// - dbfs.small
+	// - dbfs.medium
+	// - dbfs.large (default)
+	InstanceType pulumi.StringPtrOutput `pulumi:"instanceType"`
+	// The ID of the KMS key used by DBFS.
 	KmsKeyId pulumi.StringPtrOutput `pulumi:"kmsKeyId"`
-	// The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+	// When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+	// - PL0: single disk maximum random read-write IOPS 10000
+	// - PL1: highest random read-write IOPS 50000 per disk (default)
+	// - PL2: single disk maximum random read-write IOPS 100000
+	// - PL3: single disk maximum random read-write IOPS 1 million.
 	PerformanceLevel pulumi.StringOutput `pulumi:"performanceLevel"`
-	// The number of strip. This parameter is valid When `enableRaid` parameter is set to `true`.
-	RaidStripeUnitNumber pulumi.StringPtrOutput `pulumi:"raidStripeUnitNumber"`
-	// The size Of the Database file system. Unit: GiB.
+	// Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
+	RaidStripeUnitNumber pulumi.IntPtrOutput `pulumi:"raidStripeUnitNumber"`
+	// Size of database file system, unit GiB.
 	Size pulumi.IntOutput `pulumi:"size"`
-	// The snapshot id of the Database file system.
-	SnapshotId pulumi.StringPtrOutput `pulumi:"snapshotId"`
-	// The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+	// The ID of the snapshot used to create the DBFS instance.
+	SnapshotId pulumi.StringOutput `pulumi:"snapshotId"`
+	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
-	// The Zone ID of the Database file system.
+	// The usage scenario of DBFS. Value range:
+	// - MySQL 5.7
+	// - PostgreSQL
+	// - MongoDB.
+	UsedScene pulumi.StringPtrOutput `pulumi:"usedScene"`
+	// The ID of the zone to which the database file system belongs.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -107,8 +129,8 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.InstanceName == nil {
-		return nil, errors.New("invalid value for required argument 'InstanceName'")
+	if args.Category == nil {
+		return nil, errors.New("invalid value for required argument 'Category'")
 	}
 	if args.Size == nil {
 		return nil, errors.New("invalid value for required argument 'Size'")
@@ -139,68 +161,112 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// The type of the Database file system. Valid values: `standard`.
+	// The number of CPU cores and the upper limit of memory used by the database file storage instance.
+	AdvancedFeatures *string `pulumi:"advancedFeatures"`
+	// Category of database file system.
 	Category *string `pulumi:"category"`
-	// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+	// The creation time of the resource.
+	CreateTime *string `pulumi:"createTime"`
+	// Whether to delete the original snapshot after creating DBFS using the snapshot.
 	DeleteSnapshot *bool `pulumi:"deleteSnapshot"`
-	// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+	// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecsList` below.
 	//
 	// Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	EcsLists []InstanceEcsList `pulumi:"ecsLists"`
-	// Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+	// Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
 	EnableRaid *bool `pulumi:"enableRaid"`
-	// Whether to encrypt the database file system. Valid values: `true` and `false`.
+	// Whether to encrypt DBFS.Valid values: true or false. Default value: false.
 	Encryption *bool `pulumi:"encryption"`
-	// The name of the Database file system.
+	// Database file system name.
+	FsName *string `pulumi:"fsName"`
+	// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+	//
+	// Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
 	InstanceName *string `pulumi:"instanceName"`
-	// The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+	// Instance type. Value range:
+	// - dbfs.small
+	// - dbfs.medium
+	// - dbfs.large (default)
+	InstanceType *string `pulumi:"instanceType"`
+	// The ID of the KMS key used by DBFS.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+	// When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+	// - PL0: single disk maximum random read-write IOPS 10000
+	// - PL1: highest random read-write IOPS 50000 per disk (default)
+	// - PL2: single disk maximum random read-write IOPS 100000
+	// - PL3: single disk maximum random read-write IOPS 1 million.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// The number of strip. This parameter is valid When `enableRaid` parameter is set to `true`.
-	RaidStripeUnitNumber *string `pulumi:"raidStripeUnitNumber"`
-	// The size Of the Database file system. Unit: GiB.
+	// Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
+	RaidStripeUnitNumber *int `pulumi:"raidStripeUnitNumber"`
+	// Size of database file system, unit GiB.
 	Size *int `pulumi:"size"`
-	// The snapshot id of the Database file system.
+	// The ID of the snapshot used to create the DBFS instance.
 	SnapshotId *string `pulumi:"snapshotId"`
-	// The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The Zone ID of the Database file system.
+	// The usage scenario of DBFS. Value range:
+	// - MySQL 5.7
+	// - PostgreSQL
+	// - MongoDB.
+	UsedScene *string `pulumi:"usedScene"`
+	// The ID of the zone to which the database file system belongs.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
 type InstanceState struct {
-	// The type of the Database file system. Valid values: `standard`.
+	// The number of CPU cores and the upper limit of memory used by the database file storage instance.
+	AdvancedFeatures pulumi.StringPtrInput
+	// Category of database file system.
 	Category pulumi.StringPtrInput
-	// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+	// The creation time of the resource.
+	CreateTime pulumi.StringPtrInput
+	// Whether to delete the original snapshot after creating DBFS using the snapshot.
 	DeleteSnapshot pulumi.BoolPtrInput
-	// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+	// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecsList` below.
 	//
 	// Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	EcsLists InstanceEcsListArrayInput
-	// Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+	// Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
 	EnableRaid pulumi.BoolPtrInput
-	// Whether to encrypt the database file system. Valid values: `true` and `false`.
+	// Whether to encrypt DBFS.Valid values: true or false. Default value: false.
 	Encryption pulumi.BoolPtrInput
-	// The name of the Database file system.
+	// Database file system name.
+	FsName pulumi.StringPtrInput
+	// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+	//
+	// Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
 	InstanceName pulumi.StringPtrInput
-	// The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+	// Instance type. Value range:
+	// - dbfs.small
+	// - dbfs.medium
+	// - dbfs.large (default)
+	InstanceType pulumi.StringPtrInput
+	// The ID of the KMS key used by DBFS.
 	KmsKeyId pulumi.StringPtrInput
-	// The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+	// When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+	// - PL0: single disk maximum random read-write IOPS 10000
+	// - PL1: highest random read-write IOPS 50000 per disk (default)
+	// - PL2: single disk maximum random read-write IOPS 100000
+	// - PL3: single disk maximum random read-write IOPS 1 million.
 	PerformanceLevel pulumi.StringPtrInput
-	// The number of strip. This parameter is valid When `enableRaid` parameter is set to `true`.
-	RaidStripeUnitNumber pulumi.StringPtrInput
-	// The size Of the Database file system. Unit: GiB.
+	// Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
+	RaidStripeUnitNumber pulumi.IntPtrInput
+	// Size of database file system, unit GiB.
 	Size pulumi.IntPtrInput
-	// The snapshot id of the Database file system.
+	// The ID of the snapshot used to create the DBFS instance.
 	SnapshotId pulumi.StringPtrInput
-	// The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The Zone ID of the Database file system.
+	// The usage scenario of DBFS. Value range:
+	// - MySQL 5.7
+	// - PostgreSQL
+	// - MongoDB.
+	UsedScene pulumi.StringPtrInput
+	// The ID of the zone to which the database file system belongs.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -209,65 +275,105 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// The type of the Database file system. Valid values: `standard`.
-	Category *string `pulumi:"category"`
-	// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+	// The number of CPU cores and the upper limit of memory used by the database file storage instance.
+	AdvancedFeatures *string `pulumi:"advancedFeatures"`
+	// Category of database file system.
+	Category string `pulumi:"category"`
+	// Whether to delete the original snapshot after creating DBFS using the snapshot.
 	DeleteSnapshot *bool `pulumi:"deleteSnapshot"`
-	// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+	// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecsList` below.
 	//
 	// Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	EcsLists []InstanceEcsList `pulumi:"ecsLists"`
-	// Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+	// Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
 	EnableRaid *bool `pulumi:"enableRaid"`
-	// Whether to encrypt the database file system. Valid values: `true` and `false`.
+	// Whether to encrypt DBFS.Valid values: true or false. Default value: false.
 	Encryption *bool `pulumi:"encryption"`
-	// The name of the Database file system.
-	InstanceName string `pulumi:"instanceName"`
-	// The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+	// Database file system name.
+	FsName *string `pulumi:"fsName"`
+	// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+	//
+	// Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
+	InstanceName *string `pulumi:"instanceName"`
+	// Instance type. Value range:
+	// - dbfs.small
+	// - dbfs.medium
+	// - dbfs.large (default)
+	InstanceType *string `pulumi:"instanceType"`
+	// The ID of the KMS key used by DBFS.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
-	// The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+	// When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+	// - PL0: single disk maximum random read-write IOPS 10000
+	// - PL1: highest random read-write IOPS 50000 per disk (default)
+	// - PL2: single disk maximum random read-write IOPS 100000
+	// - PL3: single disk maximum random read-write IOPS 1 million.
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// The number of strip. This parameter is valid When `enableRaid` parameter is set to `true`.
-	RaidStripeUnitNumber *string `pulumi:"raidStripeUnitNumber"`
-	// The size Of the Database file system. Unit: GiB.
+	// Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
+	RaidStripeUnitNumber *int `pulumi:"raidStripeUnitNumber"`
+	// Size of database file system, unit GiB.
 	Size int `pulumi:"size"`
-	// The snapshot id of the Database file system.
+	// The ID of the snapshot used to create the DBFS instance.
 	SnapshotId *string `pulumi:"snapshotId"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The Zone ID of the Database file system.
+	// The usage scenario of DBFS. Value range:
+	// - MySQL 5.7
+	// - PostgreSQL
+	// - MongoDB.
+	UsedScene *string `pulumi:"usedScene"`
+	// The ID of the zone to which the database file system belongs.
 	ZoneId string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// The type of the Database file system. Valid values: `standard`.
-	Category pulumi.StringPtrInput
-	// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+	// The number of CPU cores and the upper limit of memory used by the database file storage instance.
+	AdvancedFeatures pulumi.StringPtrInput
+	// Category of database file system.
+	Category pulumi.StringInput
+	// Whether to delete the original snapshot after creating DBFS using the snapshot.
 	DeleteSnapshot pulumi.BoolPtrInput
-	// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+	// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecsList` below.
 	//
 	// Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 	EcsLists InstanceEcsListArrayInput
-	// Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+	// Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
 	EnableRaid pulumi.BoolPtrInput
-	// Whether to encrypt the database file system. Valid values: `true` and `false`.
+	// Whether to encrypt DBFS.Valid values: true or false. Default value: false.
 	Encryption pulumi.BoolPtrInput
-	// The name of the Database file system.
-	InstanceName pulumi.StringInput
-	// The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+	// Database file system name.
+	FsName pulumi.StringPtrInput
+	// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+	//
+	// Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
+	InstanceName pulumi.StringPtrInput
+	// Instance type. Value range:
+	// - dbfs.small
+	// - dbfs.medium
+	// - dbfs.large (default)
+	InstanceType pulumi.StringPtrInput
+	// The ID of the KMS key used by DBFS.
 	KmsKeyId pulumi.StringPtrInput
-	// The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+	// When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+	// - PL0: single disk maximum random read-write IOPS 10000
+	// - PL1: highest random read-write IOPS 50000 per disk (default)
+	// - PL2: single disk maximum random read-write IOPS 100000
+	// - PL3: single disk maximum random read-write IOPS 1 million.
 	PerformanceLevel pulumi.StringPtrInput
-	// The number of strip. This parameter is valid When `enableRaid` parameter is set to `true`.
-	RaidStripeUnitNumber pulumi.StringPtrInput
-	// The size Of the Database file system. Unit: GiB.
+	// Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
+	RaidStripeUnitNumber pulumi.IntPtrInput
+	// Size of database file system, unit GiB.
 	Size pulumi.IntInput
-	// The snapshot id of the Database file system.
+	// The ID of the snapshot used to create the DBFS instance.
 	SnapshotId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
-	// The Zone ID of the Database file system.
+	// The usage scenario of DBFS. Value range:
+	// - MySQL 5.7
+	// - PostgreSQL
+	// - MongoDB.
+	UsedScene pulumi.StringPtrInput
+	// The ID of the zone to which the database file system belongs.
 	ZoneId pulumi.StringInput
 }
 
@@ -358,64 +464,93 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// The type of the Database file system. Valid values: `standard`.
+// The number of CPU cores and the upper limit of memory used by the database file storage instance.
+func (o InstanceOutput) AdvancedFeatures() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.AdvancedFeatures }).(pulumi.StringOutput)
+}
+
+// Category of database file system.
 func (o InstanceOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
 }
 
-// Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+// The creation time of the resource.
+func (o InstanceOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Whether to delete the original snapshot after creating DBFS using the snapshot.
 func (o InstanceOutput) DeleteSnapshot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.DeleteSnapshot }).(pulumi.BoolPtrOutput)
 }
 
-// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
+// The collection of ECS instances mounted to the Database file system. See `ecsList` below.  **NOTE:** Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS. See `ecsList` below.
 //
 // Deprecated: Field 'ecs_list' has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource 'alicloud_dbfs_instance_attachment' to attach ECS and DBFS.
 func (o InstanceOutput) EcsLists() InstanceEcsListArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceEcsListArrayOutput { return v.EcsLists }).(InstanceEcsListArrayOutput)
 }
 
-// Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+// Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
 func (o InstanceOutput) EnableRaid() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.EnableRaid }).(pulumi.BoolPtrOutput)
 }
 
-// Whether to encrypt the database file system. Valid values: `true` and `false`.
+// Whether to encrypt DBFS.Valid values: true or false. Default value: false.
 func (o InstanceOutput) Encryption() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.Encryption }).(pulumi.BoolPtrOutput)
 }
 
-// The name of the Database file system.
+// Database file system name.
+func (o InstanceOutput) FsName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.FsName }).(pulumi.StringOutput)
+}
+
+// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
+//
+// Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
 func (o InstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)
 }
 
-// The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+// Instance type. Value range:
+// - dbfs.small
+// - dbfs.medium
+// - dbfs.large (default)
+func (o InstanceOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.InstanceType }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the KMS key used by DBFS.
 func (o InstanceOutput) KmsKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KmsKeyId }).(pulumi.StringPtrOutput)
 }
 
-// The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+// When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+// - PL0: single disk maximum random read-write IOPS 10000
+// - PL1: highest random read-write IOPS 50000 per disk (default)
+// - PL2: single disk maximum random read-write IOPS 100000
+// - PL3: single disk maximum random read-write IOPS 1 million.
 func (o InstanceOutput) PerformanceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.PerformanceLevel }).(pulumi.StringOutput)
 }
 
-// The number of strip. This parameter is valid When `enableRaid` parameter is set to `true`.
-func (o InstanceOutput) RaidStripeUnitNumber() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.RaidStripeUnitNumber }).(pulumi.StringPtrOutput)
+// Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
+func (o InstanceOutput) RaidStripeUnitNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.RaidStripeUnitNumber }).(pulumi.IntPtrOutput)
 }
 
-// The size Of the Database file system. Unit: GiB.
+// Size of database file system, unit GiB.
 func (o InstanceOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Size }).(pulumi.IntOutput)
 }
 
-// The snapshot id of the Database file system.
-func (o InstanceOutput) SnapshotId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SnapshotId }).(pulumi.StringPtrOutput)
+// The ID of the snapshot used to create the DBFS instance.
+func (o InstanceOutput) SnapshotId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.SnapshotId }).(pulumi.StringOutput)
 }
 
-// The status of Database file system. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
+// The status of the resource.
 func (o InstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
@@ -425,7 +560,15 @@ func (o InstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
 }
 
-// The Zone ID of the Database file system.
+// The usage scenario of DBFS. Value range:
+// - MySQL 5.7
+// - PostgreSQL
+// - MongoDB.
+func (o InstanceOutput) UsedScene() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.UsedScene }).(pulumi.StringPtrOutput)
+}
+
+// The ID of the zone to which the database file system belongs.
 func (o InstanceOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

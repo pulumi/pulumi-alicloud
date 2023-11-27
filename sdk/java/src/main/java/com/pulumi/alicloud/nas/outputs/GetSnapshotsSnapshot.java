@@ -275,21 +275,21 @@ public final class GetSnapshotsSnapshot {
             return this;
         }
         public GetSnapshotsSnapshot build() {
-            final var o = new GetSnapshotsSnapshot();
-            o.createTime = createTime;
-            o.description = description;
-            o.encryptType = encryptType;
-            o.id = id;
-            o.progress = progress;
-            o.remainTime = remainTime;
-            o.retentionDays = retentionDays;
-            o.snapshotId = snapshotId;
-            o.snapshotName = snapshotName;
-            o.sourceFileSystemId = sourceFileSystemId;
-            o.sourceFileSystemSize = sourceFileSystemSize;
-            o.sourceFileSystemVersion = sourceFileSystemVersion;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetSnapshotsSnapshot();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.encryptType = encryptType;
+            _resultValue.id = id;
+            _resultValue.progress = progress;
+            _resultValue.remainTime = remainTime;
+            _resultValue.retentionDays = retentionDays;
+            _resultValue.snapshotId = snapshotId;
+            _resultValue.snapshotName = snapshotName;
+            _resultValue.sourceFileSystemId = sourceFileSystemId;
+            _resultValue.sourceFileSystemSize = sourceFileSystemSize;
+            _resultValue.sourceFileSystemVersion = sourceFileSystemVersion;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

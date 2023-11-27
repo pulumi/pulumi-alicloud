@@ -100,13 +100,13 @@ public final class GetAccessRulesResult {
             return rules(List.of(rules));
         }
         public GetAccessRulesResult build() {
-            final var o = new GetAccessRulesResult();
-            o.accessGroupId = accessGroupId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.rules = rules;
-            return o;
+            final var _resultValue = new GetAccessRulesResult();
+            _resultValue.accessGroupId = accessGroupId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.rules = rules;
+            return _resultValue;
         }
     }
 }

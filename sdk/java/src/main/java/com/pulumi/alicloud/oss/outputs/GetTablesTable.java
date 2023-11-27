@@ -162,15 +162,15 @@ public final class GetTablesTable {
             return this;
         }
         public GetTablesTable build() {
-            final var o = new GetTablesTable();
-            o.definedColumns = definedColumns;
-            o.id = id;
-            o.instanceName = instanceName;
-            o.maxVersion = maxVersion;
-            o.primaryKeys = primaryKeys;
-            o.tableName = tableName;
-            o.timeToLive = timeToLive;
-            return o;
+            final var _resultValue = new GetTablesTable();
+            _resultValue.definedColumns = definedColumns;
+            _resultValue.id = id;
+            _resultValue.instanceName = instanceName;
+            _resultValue.maxVersion = maxVersion;
+            _resultValue.primaryKeys = primaryKeys;
+            _resultValue.tableName = tableName;
+            _resultValue.timeToLive = timeToLive;
+            return _resultValue;
         }
     }
 }

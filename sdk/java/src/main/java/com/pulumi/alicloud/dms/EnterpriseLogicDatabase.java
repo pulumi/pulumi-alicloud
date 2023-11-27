@@ -72,7 +72,7 @@ public class EnterpriseLogicDatabase extends com.pulumi.resources.CustomResource
      * Logical Library alias.
      * 
      */
-    @Export(name="alias", type=String.class, parameters={})
+    @Export(name="alias", refs={String.class}, tree="[0]")
     private Output<String> alias;
 
     /**
@@ -86,7 +86,7 @@ public class EnterpriseLogicDatabase extends com.pulumi.resources.CustomResource
      * Sub-Database ID
      * 
      */
-    @Export(name="databaseIds", type=List.class, parameters={String.class})
+    @Export(name="databaseIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> databaseIds;
 
     /**
@@ -100,7 +100,7 @@ public class EnterpriseLogicDatabase extends com.pulumi.resources.CustomResource
      * Database type.
      * 
      */
-    @Export(name="dbType", type=String.class, parameters={})
+    @Export(name="dbType", refs={String.class}, tree="[0]")
     private Output<String> dbType;
 
     /**
@@ -114,7 +114,7 @@ public class EnterpriseLogicDatabase extends com.pulumi.resources.CustomResource
      * Environment type, return value is as follows:-product: production environment-dev: development environment-pre: Advance Environment-test: test environment-sit:SIT environment-uat:UAT environment-pet: Pressure measurement environment-stag:STAG environment
      * 
      */
-    @Export(name="envType", type=String.class, parameters={})
+    @Export(name="envType", refs={String.class}, tree="[0]")
     private Output<String> envType;
 
     /**
@@ -128,7 +128,7 @@ public class EnterpriseLogicDatabase extends com.pulumi.resources.CustomResource
      * Whether it is a logical Library, the return value is true.
      * 
      */
-    @Export(name="logic", type=Boolean.class, parameters={})
+    @Export(name="logic", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> logic;
 
     /**
@@ -142,7 +142,7 @@ public class EnterpriseLogicDatabase extends com.pulumi.resources.CustomResource
      * The ID of the logical Library.
      * 
      */
-    @Export(name="logicDatabaseId", type=String.class, parameters={})
+    @Export(name="logicDatabaseId", refs={String.class}, tree="[0]")
     private Output<String> logicDatabaseId;
 
     /**
@@ -156,7 +156,7 @@ public class EnterpriseLogicDatabase extends com.pulumi.resources.CustomResource
      * The user ID list of the logical library Owner.
      * 
      */
-    @Export(name="ownerIdLists", type=List.class, parameters={String.class})
+    @Export(name="ownerIdLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ownerIdLists;
 
     /**
@@ -170,7 +170,7 @@ public class EnterpriseLogicDatabase extends com.pulumi.resources.CustomResource
      * The nickname list of the logical library Owner.
      * 
      */
-    @Export(name="ownerNameLists", type=List.class, parameters={String.class})
+    @Export(name="ownerNameLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ownerNameLists;
 
     /**
@@ -184,7 +184,7 @@ public class EnterpriseLogicDatabase extends com.pulumi.resources.CustomResource
      * Logical Library name.
      * 
      */
-    @Export(name="schemaName", type=String.class, parameters={})
+    @Export(name="schemaName", refs={String.class}, tree="[0]")
     private Output<String> schemaName;
 
     /**
@@ -198,7 +198,7 @@ public class EnterpriseLogicDatabase extends com.pulumi.resources.CustomResource
      * Logical library search name.
      * 
      */
-    @Export(name="searchName", type=String.class, parameters={})
+    @Export(name="searchName", refs={String.class}, tree="[0]")
     private Output<String> searchName;
 
     /**

@@ -86,12 +86,12 @@ public final class GetResolverZonesResult {
             return zones(List.of(zones));
         }
         public GetResolverZonesResult build() {
-            final var o = new GetResolverZonesResult();
-            o.id = id;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GetResolverZonesResult();
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

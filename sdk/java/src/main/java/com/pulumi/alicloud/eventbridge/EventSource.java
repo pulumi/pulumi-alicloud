@@ -87,7 +87,7 @@ public class EventSource extends com.pulumi.resources.CustomResource {
      * The detail describe of event source.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -101,7 +101,7 @@ public class EventSource extends com.pulumi.resources.CustomResource {
      * The name of event bus.
      * 
      */
-    @Export(name="eventBusName", type=String.class, parameters={})
+    @Export(name="eventBusName", refs={String.class}, tree="[0]")
     private Output<String> eventBusName;
 
     /**
@@ -115,7 +115,7 @@ public class EventSource extends com.pulumi.resources.CustomResource {
      * The code name of event source.
      * 
      */
-    @Export(name="eventSourceName", type=String.class, parameters={})
+    @Export(name="eventSourceName", refs={String.class}, tree="[0]")
     private Output<String> eventSourceName;
 
     /**
@@ -142,7 +142,7 @@ public class EventSource extends com.pulumi.resources.CustomResource {
      * `QueueName` - The queue name of MNS.
      * 
      */
-    @Export(name="externalSourceConfig", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="externalSourceConfig", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> externalSourceConfig;
 
     /**
@@ -169,7 +169,7 @@ public class EventSource extends com.pulumi.resources.CustomResource {
      * The type of external data source. Valid value : `RabbitMQ`, `RocketMQ` and `MNS`. **NOTE:** Only When `linked_external_source` is `true`, This field is valid.
      * 
      */
-    @Export(name="externalSourceType", type=String.class, parameters={})
+    @Export(name="externalSourceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalSourceType;
 
     /**
@@ -183,7 +183,7 @@ public class EventSource extends com.pulumi.resources.CustomResource {
      * Whether to connect to an external data source. Default value: `false`
      * 
      */
-    @Export(name="linkedExternalSource", type=Boolean.class, parameters={})
+    @Export(name="linkedExternalSource", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> linkedExternalSource;
 
     /**

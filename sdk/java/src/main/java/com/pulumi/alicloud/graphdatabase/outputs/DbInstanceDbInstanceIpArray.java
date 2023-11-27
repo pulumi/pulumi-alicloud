@@ -86,11 +86,11 @@ public final class DbInstanceDbInstanceIpArray {
             return this;
         }
         public DbInstanceDbInstanceIpArray build() {
-            final var o = new DbInstanceDbInstanceIpArray();
-            o.dbInstanceIpArrayAttribute = dbInstanceIpArrayAttribute;
-            o.dbInstanceIpArrayName = dbInstanceIpArrayName;
-            o.securityIps = securityIps;
-            return o;
+            final var _resultValue = new DbInstanceDbInstanceIpArray();
+            _resultValue.dbInstanceIpArrayAttribute = dbInstanceIpArrayAttribute;
+            _resultValue.dbInstanceIpArrayName = dbInstanceIpArrayName;
+            _resultValue.securityIps = securityIps;
+            return _resultValue;
         }
     }
 }

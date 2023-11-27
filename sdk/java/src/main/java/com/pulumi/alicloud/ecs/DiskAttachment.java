@@ -90,19 +90,19 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/diskAttachment:DiskAttachment")
 public class DiskAttachment extends com.pulumi.resources.CustomResource {
-    @Export(name="bootable", type=Boolean.class, parameters={})
+    @Export(name="bootable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> bootable;
 
     public Output<Optional<Boolean>> bootable() {
         return Codegen.optional(this.bootable);
     }
-    @Export(name="deleteWithInstance", type=Boolean.class, parameters={})
+    @Export(name="deleteWithInstance", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteWithInstance;
 
     public Output<Optional<Boolean>> deleteWithInstance() {
         return Codegen.optional(this.deleteWithInstance);
     }
-    @Export(name="device", type=String.class, parameters={})
+    @Export(name="device", refs={String.class}, tree="[0]")
     private Output<String> device;
 
     public Output<String> device() {
@@ -112,7 +112,7 @@ public class DiskAttachment extends com.pulumi.resources.CustomResource {
      * ID of the Disk to be attached.
      * 
      */
-    @Export(name="diskId", type=String.class, parameters={})
+    @Export(name="diskId", refs={String.class}, tree="[0]")
     private Output<String> diskId;
 
     /**
@@ -126,7 +126,7 @@ public class DiskAttachment extends com.pulumi.resources.CustomResource {
      * ID of the Instance to attach to.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -136,13 +136,13 @@ public class DiskAttachment extends com.pulumi.resources.CustomResource {
     public Output<String> instanceId() {
         return this.instanceId;
     }
-    @Export(name="keyPairName", type=String.class, parameters={})
+    @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyPairName;
 
     public Output<Optional<String>> keyPairName() {
         return Codegen.optional(this.keyPairName);
     }
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     public Output<Optional<String>> password() {

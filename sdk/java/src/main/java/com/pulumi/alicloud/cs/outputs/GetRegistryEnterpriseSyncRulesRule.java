@@ -293,22 +293,22 @@ public final class GetRegistryEnterpriseSyncRulesRule {
             return this;
         }
         public GetRegistryEnterpriseSyncRulesRule build() {
-            final var o = new GetRegistryEnterpriseSyncRulesRule();
-            o.id = id;
-            o.instanceId = instanceId;
-            o.name = name;
-            o.namespaceName = namespaceName;
-            o.regionId = regionId;
-            o.repoName = repoName;
-            o.syncDirection = syncDirection;
-            o.syncScope = syncScope;
-            o.syncTrigger = syncTrigger;
-            o.tagFilter = tagFilter;
-            o.targetInstanceId = targetInstanceId;
-            o.targetNamespaceName = targetNamespaceName;
-            o.targetRegionId = targetRegionId;
-            o.targetRepoName = targetRepoName;
-            return o;
+            final var _resultValue = new GetRegistryEnterpriseSyncRulesRule();
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.name = name;
+            _resultValue.namespaceName = namespaceName;
+            _resultValue.regionId = regionId;
+            _resultValue.repoName = repoName;
+            _resultValue.syncDirection = syncDirection;
+            _resultValue.syncScope = syncScope;
+            _resultValue.syncTrigger = syncTrigger;
+            _resultValue.tagFilter = tagFilter;
+            _resultValue.targetInstanceId = targetInstanceId;
+            _resultValue.targetNamespaceName = targetNamespaceName;
+            _resultValue.targetRegionId = targetRegionId;
+            _resultValue.targetRepoName = targetRepoName;
+            return _resultValue;
         }
     }
 }

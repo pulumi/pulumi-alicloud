@@ -176,16 +176,16 @@ public final class GetSecondaryIndexesResult {
             return this;
         }
         public GetSecondaryIndexesResult build() {
-            final var o = new GetSecondaryIndexesResult();
-            o.id = id;
-            o.ids = ids;
-            o.indexes = indexes;
-            o.instanceName = instanceName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.tableName = tableName;
-            return o;
+            final var _resultValue = new GetSecondaryIndexesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.indexes = indexes;
+            _resultValue.instanceName = instanceName;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.tableName = tableName;
+            return _resultValue;
         }
     }
 }

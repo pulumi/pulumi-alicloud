@@ -260,27 +260,27 @@ public final class GetEcsSnapshotsResult {
             return this;
         }
         public GetEcsSnapshotsResult build() {
-            final var o = new GetEcsSnapshotsResult();
-            o.category = category;
-            o.dryRun = dryRun;
-            o.encrypted = encrypted;
-            o.id = id;
-            o.ids = ids;
-            o.kmsKeyId = kmsKeyId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.snapshotLinkId = snapshotLinkId;
-            o.snapshotName = snapshotName;
-            o.snapshotType = snapshotType;
-            o.snapshots = snapshots;
-            o.sourceDiskType = sourceDiskType;
-            o.status = status;
-            o.tags = tags;
-            o.type = type;
-            o.usage = usage;
-            return o;
+            final var _resultValue = new GetEcsSnapshotsResult();
+            _resultValue.category = category;
+            _resultValue.dryRun = dryRun;
+            _resultValue.encrypted = encrypted;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.kmsKeyId = kmsKeyId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.snapshotLinkId = snapshotLinkId;
+            _resultValue.snapshotName = snapshotName;
+            _resultValue.snapshotType = snapshotType;
+            _resultValue.snapshots = snapshots;
+            _resultValue.sourceDiskType = sourceDiskType;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            _resultValue.usage = usage;
+            return _resultValue;
         }
     }
 }

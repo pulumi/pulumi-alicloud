@@ -107,12 +107,12 @@ public final class ConnectionAuthParametersOauthParameters {
             return this;
         }
         public ConnectionAuthParametersOauthParameters build() {
-            final var o = new ConnectionAuthParametersOauthParameters();
-            o.authorizationEndpoint = authorizationEndpoint;
-            o.clientParameters = clientParameters;
-            o.httpMethod = httpMethod;
-            o.oauthHttpParameters = oauthHttpParameters;
-            return o;
+            final var _resultValue = new ConnectionAuthParametersOauthParameters();
+            _resultValue.authorizationEndpoint = authorizationEndpoint;
+            _resultValue.clientParameters = clientParameters;
+            _resultValue.httpMethod = httpMethod;
+            _resultValue.oauthHttpParameters = oauthHttpParameters;
+            return _resultValue;
         }
     }
 }

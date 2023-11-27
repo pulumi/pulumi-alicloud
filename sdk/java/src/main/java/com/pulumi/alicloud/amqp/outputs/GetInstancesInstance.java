@@ -295,22 +295,22 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.createTime = createTime;
-            o.expireTime = expireTime;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.instanceType = instanceType;
-            o.paymentType = paymentType;
-            o.privateEndPoint = privateEndPoint;
-            o.publicEndpoint = publicEndpoint;
-            o.renewalDuration = renewalDuration;
-            o.renewalDurationUnit = renewalDurationUnit;
-            o.renewalStatus = renewalStatus;
-            o.status = status;
-            o.supportEip = supportEip;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.createTime = createTime;
+            _resultValue.expireTime = expireTime;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.instanceType = instanceType;
+            _resultValue.paymentType = paymentType;
+            _resultValue.privateEndPoint = privateEndPoint;
+            _resultValue.publicEndpoint = publicEndpoint;
+            _resultValue.renewalDuration = renewalDuration;
+            _resultValue.renewalDurationUnit = renewalDurationUnit;
+            _resultValue.renewalStatus = renewalStatus;
+            _resultValue.status = status;
+            _resultValue.supportEip = supportEip;
+            return _resultValue;
         }
     }
 }

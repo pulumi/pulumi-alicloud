@@ -97,7 +97,7 @@ public class MonitorGroupInstances extends com.pulumi.resources.CustomResource {
      * The id of Cms Group.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -111,7 +111,7 @@ public class MonitorGroupInstances extends com.pulumi.resources.CustomResource {
      * Instance information added to the Cms Group. See `instances` below.
      * 
      */
-    @Export(name="instances", type=List.class, parameters={MonitorGroupInstancesInstance.class})
+    @Export(name="instances", refs={List.class,MonitorGroupInstancesInstance.class}, tree="[0,1]")
     private Output<List<MonitorGroupInstancesInstance>> instances;
 
     /**

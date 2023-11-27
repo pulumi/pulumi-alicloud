@@ -35,7 +35,7 @@ public class DbInstanceEndpointAddress extends com.pulumi.resources.CustomResour
      * The endpoint of the instance.
      * 
      */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -49,7 +49,7 @@ public class DbInstanceEndpointAddress extends com.pulumi.resources.CustomResour
      * The prefix of the public endpoint.
      * 
      */
-    @Export(name="connectionStringPrefix", type=String.class, parameters={})
+    @Export(name="connectionStringPrefix", refs={String.class}, tree="[0]")
     private Output<String> connectionStringPrefix;
 
     /**
@@ -63,7 +63,7 @@ public class DbInstanceEndpointAddress extends com.pulumi.resources.CustomResour
      * The Endpoint ID of the instance.
      * 
      */
-    @Export(name="dbInstanceEndpointId", type=String.class, parameters={})
+    @Export(name="dbInstanceEndpointId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceEndpointId;
 
     /**
@@ -77,7 +77,7 @@ public class DbInstanceEndpointAddress extends com.pulumi.resources.CustomResour
      * The ID of the instance.
      * 
      */
-    @Export(name="dbInstanceId", type=String.class, parameters={})
+    @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     /**
@@ -91,7 +91,7 @@ public class DbInstanceEndpointAddress extends com.pulumi.resources.CustomResour
      * The IP address of the endpoint.
      * 
      */
-    @Export(name="ipAddress", type=String.class, parameters={})
+    @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**
@@ -105,7 +105,7 @@ public class DbInstanceEndpointAddress extends com.pulumi.resources.CustomResour
      * The type of the IP address.
      * 
      */
-    @Export(name="ipType", type=String.class, parameters={})
+    @Export(name="ipType", refs={String.class}, tree="[0]")
     private Output<String> ipType;
 
     /**
@@ -119,7 +119,7 @@ public class DbInstanceEndpointAddress extends com.pulumi.resources.CustomResour
      * The port number of the public endpoint.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**

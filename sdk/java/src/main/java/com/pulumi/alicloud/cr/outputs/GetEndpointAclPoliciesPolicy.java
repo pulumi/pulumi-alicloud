@@ -122,13 +122,13 @@ public final class GetEndpointAclPoliciesPolicy {
             return this;
         }
         public GetEndpointAclPoliciesPolicy build() {
-            final var o = new GetEndpointAclPoliciesPolicy();
-            o.description = description;
-            o.endpointType = endpointType;
-            o.entry = entry;
-            o.id = id;
-            o.instanceId = instanceId;
-            return o;
+            final var _resultValue = new GetEndpointAclPoliciesPolicy();
+            _resultValue.description = description;
+            _resultValue.endpointType = endpointType;
+            _resultValue.entry = entry;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            return _resultValue;
         }
     }
 }

@@ -259,22 +259,22 @@ public final class GetEnterpriseInstancesResult {
             return this;
         }
         public GetEnterpriseInstancesResult build() {
-            final var o = new GetEnterpriseInstancesResult();
-            o.envType = envType;
-            o.id = id;
-            o.ids = ids;
-            o.instanceAliasRegex = instanceAliasRegex;
-            o.instanceSource = instanceSource;
-            o.instanceType = instanceType;
-            o.instances = instances;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.netType = netType;
-            o.outputFile = outputFile;
-            o.searchKey = searchKey;
-            o.status = status;
-            o.tid = tid;
-            return o;
+            final var _resultValue = new GetEnterpriseInstancesResult();
+            _resultValue.envType = envType;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceAliasRegex = instanceAliasRegex;
+            _resultValue.instanceSource = instanceSource;
+            _resultValue.instanceType = instanceType;
+            _resultValue.instances = instances;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.netType = netType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.searchKey = searchKey;
+            _resultValue.status = status;
+            _resultValue.tid = tid;
+            return _resultValue;
         }
     }
 }

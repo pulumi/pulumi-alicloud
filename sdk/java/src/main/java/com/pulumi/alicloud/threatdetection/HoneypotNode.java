@@ -75,7 +75,7 @@ public class HoneypotNode extends com.pulumi.resources.CustomResource {
      * Whether to allow honeypot access to the external network. Value:-**true**: Allow-**false**: Disabled
      * 
      */
-    @Export(name="allowHoneypotAccessInternet", type=Boolean.class, parameters={})
+    @Export(name="allowHoneypotAccessInternet", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> allowHoneypotAccessInternet;
 
     /**
@@ -89,7 +89,7 @@ public class HoneypotNode extends com.pulumi.resources.CustomResource {
      * Number of probes available.
      * 
      */
-    @Export(name="availableProbeNum", type=Integer.class, parameters={})
+    @Export(name="availableProbeNum", refs={Integer.class}, tree="[0]")
     private Output<Integer> availableProbeNum;
 
     /**
@@ -103,7 +103,7 @@ public class HoneypotNode extends com.pulumi.resources.CustomResource {
      * The creation time of the resource
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -117,7 +117,7 @@ public class HoneypotNode extends com.pulumi.resources.CustomResource {
      * Management node name.
      * 
      */
-    @Export(name="nodeName", type=String.class, parameters={})
+    @Export(name="nodeName", refs={String.class}, tree="[0]")
     private Output<String> nodeName;
 
     /**
@@ -131,7 +131,7 @@ public class HoneypotNode extends com.pulumi.resources.CustomResource {
      * Release the collection of network segments.
      * 
      */
-    @Export(name="securityGroupProbeIpLists", type=List.class, parameters={String.class})
+    @Export(name="securityGroupProbeIpLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityGroupProbeIpLists;
 
     /**
@@ -145,7 +145,7 @@ public class HoneypotNode extends com.pulumi.resources.CustomResource {
      * The status of the resource
      * 
      */
-    @Export(name="status", type=Integer.class, parameters={})
+    @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output<Integer> status;
 
     /**

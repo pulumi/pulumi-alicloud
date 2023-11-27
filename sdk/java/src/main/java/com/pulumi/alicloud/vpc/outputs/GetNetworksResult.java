@@ -336,28 +336,28 @@ public final class GetNetworksResult {
             return this;
         }
         public GetNetworksResult build() {
-            final var o = new GetNetworksResult();
-            o.cidrBlock = cidrBlock;
-            o.dhcpOptionsSetId = dhcpOptionsSetId;
-            o.dryRun = dryRun;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.isDefault = isDefault;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.totalCount = totalCount;
-            o.vpcName = vpcName;
-            o.vpcOwnerId = vpcOwnerId;
-            o.vpcs = vpcs;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetNetworksResult();
+            _resultValue.cidrBlock = cidrBlock;
+            _resultValue.dhcpOptionsSetId = dhcpOptionsSetId;
+            _resultValue.dryRun = dryRun;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.isDefault = isDefault;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.totalCount = totalCount;
+            _resultValue.vpcName = vpcName;
+            _resultValue.vpcOwnerId = vpcOwnerId;
+            _resultValue.vpcs = vpcs;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

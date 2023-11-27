@@ -65,10 +65,10 @@ public final class GetResolverZonesZone {
             return this;
         }
         public GetResolverZonesZone build() {
-            final var o = new GetResolverZonesZone();
-            o.status = status;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetResolverZonesZone();
+            _resultValue.status = status;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

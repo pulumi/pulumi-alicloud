@@ -35,7 +35,7 @@ public class AdditionalCertificate extends com.pulumi.resources.CustomResource {
      * The ID of the GA instance.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -49,7 +49,7 @@ public class AdditionalCertificate extends com.pulumi.resources.CustomResource {
      * The Certificate ID. **NOTE:** From version 1.209.1, `certificate_id` can be modified.
      * 
      */
-    @Export(name="certificateId", type=String.class, parameters={})
+    @Export(name="certificateId", refs={String.class}, tree="[0]")
     private Output<String> certificateId;
 
     /**
@@ -63,7 +63,7 @@ public class AdditionalCertificate extends com.pulumi.resources.CustomResource {
      * The domain name specified by the certificate. **NOTE:** You can associate each domain name with only one additional certificate.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -77,7 +77,7 @@ public class AdditionalCertificate extends com.pulumi.resources.CustomResource {
      * The ID of the listener. **NOTE:** Only HTTPS listeners support this parameter.
      * 
      */
-    @Export(name="listenerId", type=String.class, parameters={})
+    @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     /**

@@ -75,11 +75,11 @@ public final class GetInstanceTypesResult {
             return this;
         }
         public GetInstanceTypesResult build() {
-            final var o = new GetInstanceTypesResult();
-            o.id = id;
-            o.instanceTypes = instanceTypes;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetInstanceTypesResult();
+            _resultValue.id = id;
+            _resultValue.instanceTypes = instanceTypes;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

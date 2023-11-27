@@ -167,16 +167,16 @@ public final class AlertSchedule {
             return this;
         }
         public AlertSchedule build() {
-            final var o = new AlertSchedule();
-            o.cronExpression = cronExpression;
-            o.dayOfWeek = dayOfWeek;
-            o.delay = delay;
-            o.hour = hour;
-            o.interval = interval;
-            o.runImmediately = runImmediately;
-            o.timeZone = timeZone;
-            o.type = type;
-            return o;
+            final var _resultValue = new AlertSchedule();
+            _resultValue.cronExpression = cronExpression;
+            _resultValue.dayOfWeek = dayOfWeek;
+            _resultValue.delay = delay;
+            _resultValue.hour = hour;
+            _resultValue.interval = interval;
+            _resultValue.runImmediately = runImmediately;
+            _resultValue.timeZone = timeZone;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

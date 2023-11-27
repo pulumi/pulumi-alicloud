@@ -48,9 +48,9 @@ public final class ListenerCertificates {
             return this;
         }
         public ListenerCertificates build() {
-            final var o = new ListenerCertificates();
-            o.certificateId = certificateId;
-            return o;
+            final var _resultValue = new ListenerCertificates();
+            _resultValue.certificateId = certificateId;
+            return _resultValue;
         }
     }
 }

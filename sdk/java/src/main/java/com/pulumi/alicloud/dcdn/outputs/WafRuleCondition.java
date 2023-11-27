@@ -105,12 +105,12 @@ public final class WafRuleCondition {
             return this;
         }
         public WafRuleCondition build() {
-            final var o = new WafRuleCondition();
-            o.key = key;
-            o.opValue = opValue;
-            o.subKey = subKey;
-            o.values = values;
-            return o;
+            final var _resultValue = new WafRuleCondition();
+            _resultValue.key = key;
+            _resultValue.opValue = opValue;
+            _resultValue.subKey = subKey;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

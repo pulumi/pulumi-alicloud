@@ -338,24 +338,24 @@ public final class GetQuotaApplicationsApplication {
             return this;
         }
         public GetQuotaApplicationsApplication build() {
-            final var o = new GetQuotaApplicationsApplication();
-            o.applicationId = applicationId;
-            o.approveValue = approveValue;
-            o.auditReason = auditReason;
-            o.desireValue = desireValue;
-            o.dimensions = dimensions;
-            o.effectiveTime = effectiveTime;
-            o.expireTime = expireTime;
-            o.id = id;
-            o.noticeType = noticeType;
-            o.productCode = productCode;
-            o.quotaActionCode = quotaActionCode;
-            o.quotaDescription = quotaDescription;
-            o.quotaName = quotaName;
-            o.quotaUnit = quotaUnit;
-            o.reason = reason;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetQuotaApplicationsApplication();
+            _resultValue.applicationId = applicationId;
+            _resultValue.approveValue = approveValue;
+            _resultValue.auditReason = auditReason;
+            _resultValue.desireValue = desireValue;
+            _resultValue.dimensions = dimensions;
+            _resultValue.effectiveTime = effectiveTime;
+            _resultValue.expireTime = expireTime;
+            _resultValue.id = id;
+            _resultValue.noticeType = noticeType;
+            _resultValue.productCode = productCode;
+            _resultValue.quotaActionCode = quotaActionCode;
+            _resultValue.quotaDescription = quotaDescription;
+            _resultValue.quotaName = quotaName;
+            _resultValue.quotaUnit = quotaUnit;
+            _resultValue.reason = reason;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

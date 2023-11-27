@@ -65,10 +65,10 @@ public final class ClusterParameter {
             return this;
         }
         public ClusterParameter build() {
-            final var o = new ClusterParameter();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new ClusterParameter();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

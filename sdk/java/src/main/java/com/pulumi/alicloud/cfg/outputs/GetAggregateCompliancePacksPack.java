@@ -204,17 +204,17 @@ public final class GetAggregateCompliancePacksPack {
             return this;
         }
         public GetAggregateCompliancePacksPack build() {
-            final var o = new GetAggregateCompliancePacksPack();
-            o.accountId = accountId;
-            o.aggregateCompliancePackName = aggregateCompliancePackName;
-            o.aggregatorCompliancePackId = aggregatorCompliancePackId;
-            o.compliancePackTemplateId = compliancePackTemplateId;
-            o.configRules = configRules;
-            o.description = description;
-            o.id = id;
-            o.riskLevel = riskLevel;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAggregateCompliancePacksPack();
+            _resultValue.accountId = accountId;
+            _resultValue.aggregateCompliancePackName = aggregateCompliancePackName;
+            _resultValue.aggregatorCompliancePackId = aggregatorCompliancePackId;
+            _resultValue.compliancePackTemplateId = compliancePackTemplateId;
+            _resultValue.configRules = configRules;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.riskLevel = riskLevel;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

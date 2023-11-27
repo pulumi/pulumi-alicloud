@@ -93,7 +93,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The ID of the CEN Instance.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
@@ -107,7 +107,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The description of flowlog.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -121,7 +121,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The name of flowlog.
      * 
      */
-    @Export(name="flowLogName", type=String.class, parameters={})
+    @Export(name="flowLogName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> flowLogName;
 
     /**
@@ -135,7 +135,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The name of the log store which is in the  `project_name` SLS project.
      * 
      */
-    @Export(name="logStoreName", type=String.class, parameters={})
+    @Export(name="logStoreName", refs={String.class}, tree="[0]")
     private Output<String> logStoreName;
 
     /**
@@ -149,7 +149,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The name of the SLS project.
      * 
      */
-    @Export(name="projectName", type=String.class, parameters={})
+    @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
@@ -163,7 +163,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The status of flowlog. Valid values: [&#34;Active&#34;, &#34;Inactive&#34;]. Default to &#34;Active&#34;.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**

@@ -199,17 +199,17 @@ public final class GetNatIpsIp {
             return this;
         }
         public GetNatIpsIp build() {
-            final var o = new GetNatIpsIp();
-            o.id = id;
-            o.isDefault = isDefault;
-            o.natGatewayId = natGatewayId;
-            o.natIp = natIp;
-            o.natIpCidr = natIpCidr;
-            o.natIpDescription = natIpDescription;
-            o.natIpId = natIpId;
-            o.natIpName = natIpName;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetNatIpsIp();
+            _resultValue.id = id;
+            _resultValue.isDefault = isDefault;
+            _resultValue.natGatewayId = natGatewayId;
+            _resultValue.natIp = natIp;
+            _resultValue.natIpCidr = natIpCidr;
+            _resultValue.natIpDescription = natIpDescription;
+            _resultValue.natIpId = natIpId;
+            _resultValue.natIpName = natIpName;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

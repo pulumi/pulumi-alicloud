@@ -123,15 +123,15 @@ public final class GetSynchronizationJobsResult {
             return this;
         }
         public GetSynchronizationJobsResult build() {
-            final var o = new GetSynchronizationJobsResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.jobs = jobs;
-            o.nameRegex = nameRegex;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetSynchronizationJobsResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.jobs = jobs;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

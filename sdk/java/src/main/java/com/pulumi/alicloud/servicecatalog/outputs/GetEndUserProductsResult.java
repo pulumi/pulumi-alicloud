@@ -161,17 +161,17 @@ public final class GetEndUserProductsResult {
             return this;
         }
         public GetEndUserProductsResult build() {
-            final var o = new GetEndUserProductsResult();
-            o.endUserProducts = endUserProducts;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.sortBy = sortBy;
-            o.sortOrder = sortOrder;
-            return o;
+            final var _resultValue = new GetEndUserProductsResult();
+            _resultValue.endUserProducts = endUserProducts;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.sortBy = sortBy;
+            _resultValue.sortOrder = sortOrder;
+            return _resultValue;
         }
     }
 }

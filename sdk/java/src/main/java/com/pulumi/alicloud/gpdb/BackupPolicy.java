@@ -31,7 +31,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Data backup retention days.
      * 
      */
-    @Export(name="backupRetentionPeriod", type=Integer.class, parameters={})
+    @Export(name="backupRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> backupRetentionPeriod;
 
     /**
@@ -46,7 +46,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:**  You can call the DescribeDBInstances operation to view the details of all AnalyticDB PostgreSQL instances in the target region, including the instance ID.
      * 
      */
-    @Export(name="dbInstanceId", type=String.class, parameters={})
+    @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     /**
@@ -63,7 +63,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * - **false**: Closed.
      * 
      */
-    @Export(name="enableRecoveryPoint", type=Boolean.class, parameters={})
+    @Export(name="enableRecoveryPoint", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableRecoveryPoint;
 
     /**
@@ -86,7 +86,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * - **Sunday**: Sunday.
      * 
      */
-    @Export(name="preferredBackupPeriod", type=String.class, parameters={})
+    @Export(name="preferredBackupPeriod", refs={String.class}, tree="[0]")
     private Output<String> preferredBackupPeriod;
 
     /**
@@ -107,7 +107,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Data backup time. Format: HH:mmZ-HH:mmZ(UTC time).
      * 
      */
-    @Export(name="preferredBackupTime", type=String.class, parameters={})
+    @Export(name="preferredBackupTime", refs={String.class}, tree="[0]")
     private Output<String> preferredBackupTime;
 
     /**
@@ -125,7 +125,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * - **8**: Every eight hours.
      * 
      */
-    @Export(name="recoveryPointPeriod", type=String.class, parameters={})
+    @Export(name="recoveryPointPeriod", refs={String.class}, tree="[0]")
     private Output<String> recoveryPointPeriod;
 
     /**

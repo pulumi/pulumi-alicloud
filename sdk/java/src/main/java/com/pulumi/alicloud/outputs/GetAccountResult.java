@@ -46,9 +46,9 @@ public final class GetAccountResult {
             return this;
         }
         public GetAccountResult build() {
-            final var o = new GetAccountResult();
-            o.id = id;
-            return o;
+            final var _resultValue = new GetAccountResult();
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

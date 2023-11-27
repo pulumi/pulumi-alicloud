@@ -77,10 +77,10 @@ public final class NetworkIpv6CidrBlock {
             return this;
         }
         public NetworkIpv6CidrBlock build() {
-            final var o = new NetworkIpv6CidrBlock();
-            o.ipv6CidrBlock = ipv6CidrBlock;
-            o.ipv6Isp = ipv6Isp;
-            return o;
+            final var _resultValue = new NetworkIpv6CidrBlock();
+            _resultValue.ipv6CidrBlock = ipv6CidrBlock;
+            _resultValue.ipv6Isp = ipv6Isp;
+            return _resultValue;
         }
     }
 }

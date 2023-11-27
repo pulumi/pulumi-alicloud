@@ -93,7 +93,7 @@ public class Exchange extends com.pulumi.resources.CustomResource {
      * The alternate exchange. An alternate exchange is configured for an existing exchange. It is used to receive messages that fail to be routed to queues from the existing exchange.
      * 
      */
-    @Export(name="alternateExchange", type=String.class, parameters={})
+    @Export(name="alternateExchange", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alternateExchange;
 
     /**
@@ -109,7 +109,7 @@ public class Exchange extends com.pulumi.resources.CustomResource {
      * * false: The Auto Delete attribute is not configured. If the last queue that is bound to an exchange is unbound, the exchange is not automatically deleted.
      * 
      */
-    @Export(name="autoDeleteState", type=Boolean.class, parameters={})
+    @Export(name="autoDeleteState", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoDeleteState;
 
     /**
@@ -125,7 +125,7 @@ public class Exchange extends com.pulumi.resources.CustomResource {
      * The name of the exchange. It must be 1 to 255 characters in length, and can contain only letters, digits, hyphens (-), underscores (_), periods (.), and at signs (@).
      * 
      */
-    @Export(name="exchangeName", type=String.class, parameters={})
+    @Export(name="exchangeName", refs={String.class}, tree="[0]")
     private Output<String> exchangeName;
 
     /**
@@ -146,7 +146,7 @@ public class Exchange extends com.pulumi.resources.CustomResource {
      *   The message is routed to the bound Queue by comparing the attribute key-value pair and the bound attribute key-value pair.
      * 
      */
-    @Export(name="exchangeType", type=String.class, parameters={})
+    @Export(name="exchangeType", refs={String.class}, tree="[0]")
     private Output<String> exchangeType;
 
     /**
@@ -167,7 +167,7 @@ public class Exchange extends com.pulumi.resources.CustomResource {
      * The ID of the instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -183,7 +183,7 @@ public class Exchange extends com.pulumi.resources.CustomResource {
      * * true: The exchange is an internal exchange.
      * 
      */
-    @Export(name="internal", type=Boolean.class, parameters={})
+    @Export(name="internal", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> internal;
 
     /**
@@ -199,7 +199,7 @@ public class Exchange extends com.pulumi.resources.CustomResource {
      * The name of virtual host where an exchange resides.
      * 
      */
-    @Export(name="virtualHostName", type=String.class, parameters={})
+    @Export(name="virtualHostName", refs={String.class}, tree="[0]")
     private Output<String> virtualHostName;
 
     /**

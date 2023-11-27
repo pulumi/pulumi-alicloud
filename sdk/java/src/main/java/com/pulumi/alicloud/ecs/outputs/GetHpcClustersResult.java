@@ -114,14 +114,14 @@ public final class GetHpcClustersResult {
             return this;
         }
         public GetHpcClustersResult build() {
-            final var o = new GetHpcClustersResult();
-            o.clusters = clusters;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetHpcClustersResult();
+            _resultValue.clusters = clusters;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

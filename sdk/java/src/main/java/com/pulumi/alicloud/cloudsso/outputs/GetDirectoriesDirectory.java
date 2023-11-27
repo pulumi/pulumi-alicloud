@@ -207,17 +207,17 @@ public final class GetDirectoriesDirectory {
             return tasks(List.of(tasks));
         }
         public GetDirectoriesDirectory build() {
-            final var o = new GetDirectoriesDirectory();
-            o.createTime = createTime;
-            o.directoryId = directoryId;
-            o.directoryName = directoryName;
-            o.id = id;
-            o.mfaAuthenticationStatus = mfaAuthenticationStatus;
-            o.region = region;
-            o.samlIdentityProviderConfigurations = samlIdentityProviderConfigurations;
-            o.scimSynchronizationStatus = scimSynchronizationStatus;
-            o.tasks = tasks;
-            return o;
+            final var _resultValue = new GetDirectoriesDirectory();
+            _resultValue.createTime = createTime;
+            _resultValue.directoryId = directoryId;
+            _resultValue.directoryName = directoryName;
+            _resultValue.id = id;
+            _resultValue.mfaAuthenticationStatus = mfaAuthenticationStatus;
+            _resultValue.region = region;
+            _resultValue.samlIdentityProviderConfigurations = samlIdentityProviderConfigurations;
+            _resultValue.scimSynchronizationStatus = scimSynchronizationStatus;
+            _resultValue.tasks = tasks;
+            return _resultValue;
         }
     }
 }

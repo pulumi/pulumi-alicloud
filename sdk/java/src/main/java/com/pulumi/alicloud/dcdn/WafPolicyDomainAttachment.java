@@ -102,7 +102,7 @@ public class WafPolicyDomainAttachment extends com.pulumi.resources.CustomResour
      * Access the accelerated domain name of the specified protection policy.
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
@@ -116,7 +116,7 @@ public class WafPolicyDomainAttachment extends com.pulumi.resources.CustomResour
      * The protection policy ID. Only one input is supported.
      * 
      */
-    @Export(name="policyId", type=String.class, parameters={})
+    @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output<String> policyId;
 
     /**

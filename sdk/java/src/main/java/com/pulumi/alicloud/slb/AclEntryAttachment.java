@@ -74,7 +74,7 @@ public class AclEntryAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the Acl.
      * 
      */
-    @Export(name="aclId", type=String.class, parameters={})
+    @Export(name="aclId", refs={String.class}, tree="[0]")
     private Output<String> aclId;
 
     /**
@@ -88,7 +88,7 @@ public class AclEntryAttachment extends com.pulumi.resources.CustomResource {
      * The comment of the entry.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -102,7 +102,7 @@ public class AclEntryAttachment extends com.pulumi.resources.CustomResource {
      * The CIDR blocks.
      * 
      */
-    @Export(name="entry", type=String.class, parameters={})
+    @Export(name="entry", refs={String.class}, tree="[0]")
     private Output<String> entry;
 
     /**

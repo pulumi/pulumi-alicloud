@@ -101,7 +101,7 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      * Compute node specifications.
      * 
      */
-    @Export(name="cnClass", type=String.class, parameters={})
+    @Export(name="cnClass", refs={String.class}, tree="[0]")
     private Output<String> cnClass;
 
     /**
@@ -115,7 +115,7 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      * Number of computing nodes.
      * 
      */
-    @Export(name="cnNodeCount", type=Integer.class, parameters={})
+    @Export(name="cnNodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> cnNodeCount;
 
     /**
@@ -129,7 +129,7 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      * The creation time of the resource.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -143,7 +143,7 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      * Storage node specifications.
      * 
      */
-    @Export(name="dnClass", type=String.class, parameters={})
+    @Export(name="dnClass", refs={String.class}, tree="[0]")
     private Output<String> dnClass;
 
     /**
@@ -157,7 +157,7 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      * The number of storage nodes.
      * 
      */
-    @Export(name="dnNodeCount", type=Integer.class, parameters={})
+    @Export(name="dnNodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> dnNodeCount;
 
     /**
@@ -171,7 +171,7 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      * Primary Availability Zone.
      * 
      */
-    @Export(name="primaryZone", type=String.class, parameters={})
+    @Export(name="primaryZone", refs={String.class}, tree="[0]")
     private Output<String> primaryZone;
 
     /**
@@ -185,7 +185,7 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      * The resource group ID can be empty. This parameter is not supported for the time being.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -199,7 +199,7 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      * Secondary availability zone.
      * 
      */
-    @Export(name="secondaryZone", type=String.class, parameters={})
+    @Export(name="secondaryZone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secondaryZone;
 
     /**
@@ -213,7 +213,7 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -227,7 +227,7 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      * Third Availability Zone.
      * 
      */
-    @Export(name="tertiaryZone", type=String.class, parameters={})
+    @Export(name="tertiaryZone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tertiaryZone;
 
     /**
@@ -243,7 +243,7 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      * - **1azone**: Single zone.
      * 
      */
-    @Export(name="topologyType", type=String.class, parameters={})
+    @Export(name="topologyType", refs={String.class}, tree="[0]")
     private Output<String> topologyType;
 
     /**
@@ -259,7 +259,7 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      * The VPC ID.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -273,7 +273,7 @@ public class PolardbxInstance extends com.pulumi.resources.CustomResource {
      * The ID of the virtual switch.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

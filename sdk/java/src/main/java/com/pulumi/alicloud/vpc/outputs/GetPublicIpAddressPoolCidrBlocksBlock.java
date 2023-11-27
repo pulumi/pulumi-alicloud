@@ -161,15 +161,15 @@ public final class GetPublicIpAddressPoolCidrBlocksBlock {
             return this;
         }
         public GetPublicIpAddressPoolCidrBlocksBlock build() {
-            final var o = new GetPublicIpAddressPoolCidrBlocksBlock();
-            o.cidrBlock = cidrBlock;
-            o.createTime = createTime;
-            o.id = id;
-            o.publicIpAddressPoolId = publicIpAddressPoolId;
-            o.status = status;
-            o.totalIpNum = totalIpNum;
-            o.usedIpNum = usedIpNum;
-            return o;
+            final var _resultValue = new GetPublicIpAddressPoolCidrBlocksBlock();
+            _resultValue.cidrBlock = cidrBlock;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.publicIpAddressPoolId = publicIpAddressPoolId;
+            _resultValue.status = status;
+            _resultValue.totalIpNum = totalIpNum;
+            _resultValue.usedIpNum = usedIpNum;
+            return _resultValue;
         }
     }
 }

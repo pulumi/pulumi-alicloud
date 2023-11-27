@@ -84,11 +84,11 @@ public final class GetGlobalDatabaseNetworksNetworkDbCluster {
             return this;
         }
         public GetGlobalDatabaseNetworksNetworkDbCluster build() {
-            final var o = new GetGlobalDatabaseNetworksNetworkDbCluster();
-            o.dbClusterId = dbClusterId;
-            o.regionId = regionId;
-            o.role = role;
-            return o;
+            final var _resultValue = new GetGlobalDatabaseNetworksNetworkDbCluster();
+            _resultValue.dbClusterId = dbClusterId;
+            _resultValue.regionId = regionId;
+            _resultValue.role = role;
+            return _resultValue;
         }
     }
 }

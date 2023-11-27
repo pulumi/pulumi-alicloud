@@ -463,29 +463,29 @@ public final class GetRdsBackupsBackup {
             return this;
         }
         public GetRdsBackupsBackup build() {
-            final var o = new GetRdsBackupsBackup();
-            o.backupDownloadUrl = backupDownloadUrl;
-            o.backupEndTime = backupEndTime;
-            o.backupId = backupId;
-            o.backupInitiator = backupInitiator;
-            o.backupIntranetDownloadUrl = backupIntranetDownloadUrl;
-            o.backupMethod = backupMethod;
-            o.backupMode = backupMode;
-            o.backupSize = backupSize;
-            o.backupStartTime = backupStartTime;
-            o.backupStatus = backupStatus;
-            o.backupType = backupType;
-            o.consistentTime = consistentTime;
-            o.copyOnlyBackup = copyOnlyBackup;
-            o.dbInstanceId = dbInstanceId;
-            o.encryption = encryption;
-            o.hostInstanceId = hostInstanceId;
-            o.id = id;
-            o.isAvail = isAvail;
-            o.metaStatus = metaStatus;
-            o.storageClass = storageClass;
-            o.storeStatus = storeStatus;
-            return o;
+            final var _resultValue = new GetRdsBackupsBackup();
+            _resultValue.backupDownloadUrl = backupDownloadUrl;
+            _resultValue.backupEndTime = backupEndTime;
+            _resultValue.backupId = backupId;
+            _resultValue.backupInitiator = backupInitiator;
+            _resultValue.backupIntranetDownloadUrl = backupIntranetDownloadUrl;
+            _resultValue.backupMethod = backupMethod;
+            _resultValue.backupMode = backupMode;
+            _resultValue.backupSize = backupSize;
+            _resultValue.backupStartTime = backupStartTime;
+            _resultValue.backupStatus = backupStatus;
+            _resultValue.backupType = backupType;
+            _resultValue.consistentTime = consistentTime;
+            _resultValue.copyOnlyBackup = copyOnlyBackup;
+            _resultValue.dbInstanceId = dbInstanceId;
+            _resultValue.encryption = encryption;
+            _resultValue.hostInstanceId = hostInstanceId;
+            _resultValue.id = id;
+            _resultValue.isAvail = isAvail;
+            _resultValue.metaStatus = metaStatus;
+            _resultValue.storageClass = storageClass;
+            _resultValue.storeStatus = storeStatus;
+            return _resultValue;
         }
     }
 }

@@ -103,12 +103,12 @@ public final class GetAccessStrategiesStrategyLine {
             return this;
         }
         public GetAccessStrategiesStrategyLine build() {
-            final var o = new GetAccessStrategiesStrategyLine();
-            o.groupCode = groupCode;
-            o.groupName = groupName;
-            o.lineCode = lineCode;
-            o.lineName = lineName;
-            return o;
+            final var _resultValue = new GetAccessStrategiesStrategyLine();
+            _resultValue.groupCode = groupCode;
+            _resultValue.groupName = groupName;
+            _resultValue.lineCode = lineCode;
+            _resultValue.lineName = lineName;
+            return _resultValue;
         }
     }
 }

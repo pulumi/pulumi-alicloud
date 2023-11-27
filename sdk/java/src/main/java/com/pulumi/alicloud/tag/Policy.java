@@ -76,7 +76,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * The content of the policy.
      * 
      */
-    @Export(name="policyContent", type=String.class, parameters={})
+    @Export(name="policyContent", refs={String.class}, tree="[0]")
     private Output<String> policyContent;
 
     /**
@@ -90,7 +90,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * The description of the policy. The description must be 1 to 512 characters in length.
      * 
      */
-    @Export(name="policyDesc", type=String.class, parameters={})
+    @Export(name="policyDesc", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policyDesc;
 
     /**
@@ -105,7 +105,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * digits, and hyphens (-).
      * 
      */
-    @Export(name="policyName", type=String.class, parameters={})
+    @Export(name="policyName", refs={String.class}, tree="[0]")
     private Output<String> policyName;
 
     /**
@@ -120,7 +120,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * The type of the tag policy. Valid values: `USER`, `RD`.
      * 
      */
-    @Export(name="userType", type=String.class, parameters={})
+    @Export(name="userType", refs={String.class}, tree="[0]")
     private Output<String> userType;
 
     /**

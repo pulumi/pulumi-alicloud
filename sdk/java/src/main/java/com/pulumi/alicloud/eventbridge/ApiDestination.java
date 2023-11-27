@@ -90,7 +90,7 @@ public class ApiDestination extends com.pulumi.resources.CustomResource {
      * The name of the API destination.
      * 
      */
-    @Export(name="apiDestinationName", type=String.class, parameters={})
+    @Export(name="apiDestinationName", refs={String.class}, tree="[0]")
     private Output<String> apiDestinationName;
 
     /**
@@ -104,7 +104,7 @@ public class ApiDestination extends com.pulumi.resources.CustomResource {
      * The name of the connection.
      * 
      */
-    @Export(name="connectionName", type=String.class, parameters={})
+    @Export(name="connectionName", refs={String.class}, tree="[0]")
     private Output<String> connectionName;
 
     /**
@@ -118,7 +118,7 @@ public class ApiDestination extends com.pulumi.resources.CustomResource {
      * The creation time of the Api Destination.
      * 
      */
-    @Export(name="createTime", type=Integer.class, parameters={})
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> createTime;
 
     /**
@@ -132,7 +132,7 @@ public class ApiDestination extends com.pulumi.resources.CustomResource {
      * The description of the API destination.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -146,7 +146,7 @@ public class ApiDestination extends com.pulumi.resources.CustomResource {
      * The parameters that are configured for the API destination. See `http_api_parameters` below.
      * 
      */
-    @Export(name="httpApiParameters", type=ApiDestinationHttpApiParameters.class, parameters={})
+    @Export(name="httpApiParameters", refs={ApiDestinationHttpApiParameters.class}, tree="[0]")
     private Output<ApiDestinationHttpApiParameters> httpApiParameters;
 
     /**

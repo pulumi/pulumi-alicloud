@@ -90,11 +90,11 @@ public final class ErEnvConfPresetCanaryHubei {
             return this;
         }
         public ErEnvConfPresetCanaryHubei build() {
-            final var o = new ErEnvConfPresetCanaryHubei();
-            o.allowedHosts = allowedHosts;
-            o.codeRev = codeRev;
-            o.specName = specName;
-            return o;
+            final var _resultValue = new ErEnvConfPresetCanaryHubei();
+            _resultValue.allowedHosts = allowedHosts;
+            _resultValue.codeRev = codeRev;
+            _resultValue.specName = specName;
+            return _resultValue;
         }
     }
 }

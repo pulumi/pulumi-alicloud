@@ -150,7 +150,7 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
      * The category of the snapshot. Valid Values: `standard` and `flash`.
      * 
      */
-    @Export(name="category", type=String.class, parameters={})
+    @Export(name="category", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> category;
 
     /**
@@ -164,7 +164,7 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
      * The description of the snapshot.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -178,7 +178,7 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
      * The ID of the disk.
      * 
      */
-    @Export(name="diskId", type=String.class, parameters={})
+    @Export(name="diskId", refs={String.class}, tree="[0]")
     private Output<String> diskId;
 
     /**
@@ -192,7 +192,7 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
      * Specifies whether to forcibly delete the snapshot that has been used to create disks.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -206,7 +206,7 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable the instant access feature.
      * 
      */
-    @Export(name="instantAccess", type=Boolean.class, parameters={})
+    @Export(name="instantAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> instantAccess;
 
     /**
@@ -220,7 +220,7 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
      * Specifies the retention period of the instant access feature. After the retention period ends, the snapshot is automatically released.
      * 
      */
-    @Export(name="instantAccessRetentionDays", type=Integer.class, parameters={})
+    @Export(name="instantAccessRetentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> instantAccessRetentionDays;
 
     /**
@@ -238,7 +238,7 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -252,7 +252,7 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
      * The resource group id.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -266,7 +266,7 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
      * The retention period of the snapshot.
      * 
      */
-    @Export(name="retentionDays", type=Integer.class, parameters={})
+    @Export(name="retentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retentionDays;
 
     /**
@@ -280,7 +280,7 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
      * The name of the snapshot.
      * 
      */
-    @Export(name="snapshotName", type=String.class, parameters={})
+    @Export(name="snapshotName", refs={String.class}, tree="[0]")
     private Output<String> snapshotName;
 
     /**
@@ -294,7 +294,7 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
      * The status of snapshot.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -310,7 +310,7 @@ public class EcsSnapshot extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** If `force` is true, After an snapshot is deleted, the disks created from this snapshot cannot be re-initialized.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

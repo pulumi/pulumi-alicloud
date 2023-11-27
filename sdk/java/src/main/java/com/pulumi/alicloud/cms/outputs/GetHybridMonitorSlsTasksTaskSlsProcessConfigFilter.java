@@ -70,10 +70,10 @@ public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter {
             return this;
         }
         public GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter build() {
-            final var o = new GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter();
-            o.filters = filters;
-            o.relation = relation;
-            return o;
+            final var _resultValue = new GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter();
+            _resultValue.filters = filters;
+            _resultValue.relation = relation;
+            return _resultValue;
         }
     }
 }

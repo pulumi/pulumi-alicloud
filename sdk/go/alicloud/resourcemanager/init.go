@@ -47,6 +47,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ResourceShare{}
 	case "alicloud:resourcemanager/role:Role":
 		r = &Role{}
+	case "alicloud:resourcemanager/savedQuery:SavedQuery":
+		r = &SavedQuery{}
 	case "alicloud:resourcemanager/serviceLinkedRole:ServiceLinkedRole":
 		r = &ServiceLinkedRole{}
 	case "alicloud:resourcemanager/sharedResource:SharedResource":
@@ -129,6 +131,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"resourcemanager/role",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"resourcemanager/savedQuery",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

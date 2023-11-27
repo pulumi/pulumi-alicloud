@@ -147,17 +147,17 @@ public final class GetTrafficMarkingPoliciesResult {
             return this;
         }
         public GetTrafficMarkingPoliciesResult build() {
-            final var o = new GetTrafficMarkingPoliciesResult();
-            o.description = description;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            o.status = status;
-            o.transitRouterId = transitRouterId;
-            return o;
+            final var _resultValue = new GetTrafficMarkingPoliciesResult();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policies = policies;
+            _resultValue.status = status;
+            _resultValue.transitRouterId = transitRouterId;
+            return _resultValue;
         }
     }
 }

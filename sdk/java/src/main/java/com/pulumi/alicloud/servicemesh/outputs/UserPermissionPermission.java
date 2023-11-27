@@ -131,13 +131,13 @@ public final class UserPermissionPermission {
             return this;
         }
         public UserPermissionPermission build() {
-            final var o = new UserPermissionPermission();
-            o.isCustom = isCustom;
-            o.isRamRole = isRamRole;
-            o.roleName = roleName;
-            o.roleType = roleType;
-            o.serviceMeshId = serviceMeshId;
-            return o;
+            final var _resultValue = new UserPermissionPermission();
+            _resultValue.isCustom = isCustom;
+            _resultValue.isRamRole = isRamRole;
+            _resultValue.roleName = roleName;
+            _resultValue.roleType = roleType;
+            _resultValue.serviceMeshId = serviceMeshId;
+            return _resultValue;
         }
     }
 }

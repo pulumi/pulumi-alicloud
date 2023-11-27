@@ -205,22 +205,22 @@ public final class GetAnycastEipAddressesResult {
             return this;
         }
         public GetAnycastEipAddressesResult build() {
-            final var o = new GetAnycastEipAddressesResult();
-            o.addresses = addresses;
-            o.anycastEipAddressName = anycastEipAddressName;
-            o.bindInstanceIds = bindInstanceIds;
-            o.businessStatus = businessStatus;
-            o.id = id;
-            o.ids = ids;
-            o.internetChargeType = internetChargeType;
-            o.ipAddress = ipAddress;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.paymentType = paymentType;
-            o.serviceLocation = serviceLocation;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAnycastEipAddressesResult();
+            _resultValue.addresses = addresses;
+            _resultValue.anycastEipAddressName = anycastEipAddressName;
+            _resultValue.bindInstanceIds = bindInstanceIds;
+            _resultValue.businessStatus = businessStatus;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.internetChargeType = internetChargeType;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.paymentType = paymentType;
+            _resultValue.serviceLocation = serviceLocation;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

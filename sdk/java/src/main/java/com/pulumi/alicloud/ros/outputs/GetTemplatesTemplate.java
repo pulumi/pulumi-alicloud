@@ -238,19 +238,19 @@ public final class GetTemplatesTemplate {
             return this;
         }
         public GetTemplatesTemplate build() {
-            final var o = new GetTemplatesTemplate();
-            o.changeSetId = changeSetId;
-            o.description = description;
-            o.id = id;
-            o.shareType = shareType;
-            o.stackGroupName = stackGroupName;
-            o.stackId = stackId;
-            o.tags = tags;
-            o.templateBody = templateBody;
-            o.templateId = templateId;
-            o.templateName = templateName;
-            o.templateVersion = templateVersion;
-            return o;
+            final var _resultValue = new GetTemplatesTemplate();
+            _resultValue.changeSetId = changeSetId;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.shareType = shareType;
+            _resultValue.stackGroupName = stackGroupName;
+            _resultValue.stackId = stackId;
+            _resultValue.tags = tags;
+            _resultValue.templateBody = templateBody;
+            _resultValue.templateId = templateId;
+            _resultValue.templateName = templateName;
+            _resultValue.templateVersion = templateVersion;
+            return _resultValue;
         }
     }
 }

@@ -149,16 +149,16 @@ public final class GetInstanceTypeFamiliesResult {
             return this;
         }
         public GetInstanceTypeFamiliesResult build() {
-            final var o = new GetInstanceTypeFamiliesResult();
-            o.families = families;
-            o.generation = generation;
-            o.id = id;
-            o.ids = ids;
-            o.instanceChargeType = instanceChargeType;
-            o.outputFile = outputFile;
-            o.spotStrategy = spotStrategy;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstanceTypeFamiliesResult();
+            _resultValue.families = families;
+            _resultValue.generation = generation;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceChargeType = instanceChargeType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.spotStrategy = spotStrategy;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

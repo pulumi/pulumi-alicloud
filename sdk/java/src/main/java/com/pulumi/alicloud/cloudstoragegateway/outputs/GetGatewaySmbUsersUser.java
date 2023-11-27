@@ -84,11 +84,11 @@ public final class GetGatewaySmbUsersUser {
             return this;
         }
         public GetGatewaySmbUsersUser build() {
-            final var o = new GetGatewaySmbUsersUser();
-            o.gatewayId = gatewayId;
-            o.id = id;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetGatewaySmbUsersUser();
+            _resultValue.gatewayId = gatewayId;
+            _resultValue.id = id;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

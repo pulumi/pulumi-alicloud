@@ -76,7 +76,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
      * 
      */
-    @Export(name="aclAction", type=String.class, parameters={})
+    @Export(name="aclAction", refs={String.class}, tree="[0]")
     private Output<String> aclAction;
 
     /**
@@ -90,7 +90,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * (Available in v1.148.0+) The unique ID of the access control policy.
      * 
      */
-    @Export(name="aclUuid", type=String.class, parameters={})
+    @Export(name="aclUuid", refs={String.class}, tree="[0]")
     private Output<String> aclUuid;
 
     /**
@@ -104,7 +104,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
      * 
      */
-    @Export(name="applicationName", type=String.class, parameters={})
+    @Export(name="applicationName", refs={String.class}, tree="[0]")
     private Output<String> applicationName;
 
     /**
@@ -118,7 +118,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * The description of the access control policy.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -132,7 +132,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * The destination port defined in the access control policy.
      * 
      */
-    @Export(name="destPort", type=String.class, parameters={})
+    @Export(name="destPort", refs={String.class}, tree="[0]")
     private Output<String> destPort;
 
     /**
@@ -146,7 +146,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * The destination port address book defined in the access control policy.
      * 
      */
-    @Export(name="destPortGroup", type=String.class, parameters={})
+    @Export(name="destPortGroup", refs={String.class}, tree="[0]")
     private Output<String> destPortGroup;
 
     /**
@@ -160,7 +160,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * The destination port type defined in the access control policy. Valid values: `group`, `port`.
      * 
      */
-    @Export(name="destPortType", type=String.class, parameters={})
+    @Export(name="destPortType", refs={String.class}, tree="[0]")
     private Output<String> destPortType;
 
     /**
@@ -174,7 +174,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * The destination address defined in the access control policy.
      * 
      */
-    @Export(name="destination", type=String.class, parameters={})
+    @Export(name="destination", refs={String.class}, tree="[0]")
     private Output<String> destination;
 
     /**
@@ -188,7 +188,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * DestinationType. Valid values: If Direction is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
      * 
      */
-    @Export(name="destinationType", type=String.class, parameters={})
+    @Export(name="destinationType", refs={String.class}, tree="[0]")
     private Output<String> destinationType;
 
     /**
@@ -202,7 +202,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * Direction. Valid values: `in`, `out`.
      * 
      */
-    @Export(name="direction", type=String.class, parameters={})
+    @Export(name="direction", refs={String.class}, tree="[0]")
     private Output<String> direction;
 
     /**
@@ -216,7 +216,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * The ip version.
      * 
      */
-    @Export(name="ipVersion", type=String.class, parameters={})
+    @Export(name="ipVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipVersion;
 
     /**
@@ -230,7 +230,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * DestPortGroupPorts. Valid values: `en`, `zh`.
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
@@ -244,7 +244,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * Proto. Valid values: `  TCP `, `  UDP `, `ANY`, `ICMP`.
      * 
      */
-    @Export(name="proto", type=String.class, parameters={})
+    @Export(name="proto", refs={String.class}, tree="[0]")
     private Output<String> proto;
 
     /**
@@ -258,7 +258,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="release", type=String.class, parameters={})
+    @Export(name="release", refs={String.class}, tree="[0]")
     private Output<String> release;
 
     /**
@@ -272,7 +272,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * Source.
      * 
      */
-    @Export(name="source", type=String.class, parameters={})
+    @Export(name="source", refs={String.class}, tree="[0]")
     private Output<String> source;
 
     /**
@@ -286,7 +286,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * The source ip.
      * 
      */
-    @Export(name="sourceIp", type=String.class, parameters={})
+    @Export(name="sourceIp", refs={String.class}, tree="[0]")
     private Output<String> sourceIp;
 
     /**
@@ -300,7 +300,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * SourceType. Valid values: If `direction` is `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
      * 
      */
-    @Export(name="sourceType", type=String.class, parameters={})
+    @Export(name="sourceType", refs={String.class}, tree="[0]")
     private Output<String> sourceType;
 
     /**

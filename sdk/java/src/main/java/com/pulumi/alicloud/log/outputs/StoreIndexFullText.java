@@ -87,11 +87,11 @@ public final class StoreIndexFullText {
             return this;
         }
         public StoreIndexFullText build() {
-            final var o = new StoreIndexFullText();
-            o.caseSensitive = caseSensitive;
-            o.includeChinese = includeChinese;
-            o.token = token;
-            return o;
+            final var _resultValue = new StoreIndexFullText();
+            _resultValue.caseSensitive = caseSensitive;
+            _resultValue.includeChinese = includeChinese;
+            _resultValue.token = token;
+            return _resultValue;
         }
     }
 }

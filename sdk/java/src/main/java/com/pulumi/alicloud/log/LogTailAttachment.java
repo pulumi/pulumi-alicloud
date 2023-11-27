@@ -127,7 +127,7 @@ public class LogTailAttachment extends com.pulumi.resources.CustomResource {
      * The Logtail configuration name, which is unique in the same project.
      * 
      */
-    @Export(name="logtailConfigName", type=String.class, parameters={})
+    @Export(name="logtailConfigName", refs={String.class}, tree="[0]")
     private Output<String> logtailConfigName;
 
     /**
@@ -141,7 +141,7 @@ public class LogTailAttachment extends com.pulumi.resources.CustomResource {
      * The machine group name, which is unique in the same project.
      * 
      */
-    @Export(name="machineGroupName", type=String.class, parameters={})
+    @Export(name="machineGroupName", refs={String.class}, tree="[0]")
     private Output<String> machineGroupName;
 
     /**
@@ -155,7 +155,7 @@ public class LogTailAttachment extends com.pulumi.resources.CustomResource {
      * The project name to the log store belongs.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**

@@ -46,9 +46,9 @@ public final class GetReplicationVaultRegionsRegion {
             return this;
         }
         public GetReplicationVaultRegionsRegion build() {
-            final var o = new GetReplicationVaultRegionsRegion();
-            o.replicationRegionId = replicationRegionId;
-            return o;
+            final var _resultValue = new GetReplicationVaultRegionsRegion();
+            _resultValue.replicationRegionId = replicationRegionId;
+            return _resultValue;
         }
     }
 }

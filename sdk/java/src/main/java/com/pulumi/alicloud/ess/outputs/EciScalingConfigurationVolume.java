@@ -274,20 +274,20 @@ public final class EciScalingConfigurationVolume {
             return this;
         }
         public EciScalingConfigurationVolume build() {
-            final var o = new EciScalingConfigurationVolume();
-            o.configFileVolumeConfigFileToPaths = configFileVolumeConfigFileToPaths;
-            o.diskVolumeDiskId = diskVolumeDiskId;
-            o.diskVolumeDiskSize = diskVolumeDiskSize;
-            o.diskVolumeFsType = diskVolumeFsType;
-            o.flexVolumeDriver = flexVolumeDriver;
-            o.flexVolumeFsType = flexVolumeFsType;
-            o.flexVolumeOptions = flexVolumeOptions;
-            o.name = name;
-            o.nfsVolumePath = nfsVolumePath;
-            o.nfsVolumeReadOnly = nfsVolumeReadOnly;
-            o.nfsVolumeServer = nfsVolumeServer;
-            o.type = type;
-            return o;
+            final var _resultValue = new EciScalingConfigurationVolume();
+            _resultValue.configFileVolumeConfigFileToPaths = configFileVolumeConfigFileToPaths;
+            _resultValue.diskVolumeDiskId = diskVolumeDiskId;
+            _resultValue.diskVolumeDiskSize = diskVolumeDiskSize;
+            _resultValue.diskVolumeFsType = diskVolumeFsType;
+            _resultValue.flexVolumeDriver = flexVolumeDriver;
+            _resultValue.flexVolumeFsType = flexVolumeFsType;
+            _resultValue.flexVolumeOptions = flexVolumeOptions;
+            _resultValue.name = name;
+            _resultValue.nfsVolumePath = nfsVolumePath;
+            _resultValue.nfsVolumeReadOnly = nfsVolumeReadOnly;
+            _resultValue.nfsVolumeServer = nfsVolumeServer;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

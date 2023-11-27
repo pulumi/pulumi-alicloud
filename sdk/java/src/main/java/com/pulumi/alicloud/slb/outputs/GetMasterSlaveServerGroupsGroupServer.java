@@ -123,13 +123,13 @@ public final class GetMasterSlaveServerGroupsGroupServer {
             return this;
         }
         public GetMasterSlaveServerGroupsGroupServer build() {
-            final var o = new GetMasterSlaveServerGroupsGroupServer();
-            o.instanceId = instanceId;
-            o.isBackup = isBackup;
-            o.port = port;
-            o.serverType = serverType;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new GetMasterSlaveServerGroupsGroupServer();
+            _resultValue.instanceId = instanceId;
+            _resultValue.isBackup = isBackup;
+            _resultValue.port = port;
+            _resultValue.serverType = serverType;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

@@ -153,7 +153,7 @@ public class RoleAttachment extends com.pulumi.resources.CustomResource {
      * The list of ECS instance&#39;s IDs.
      * 
      */
-    @Export(name="instanceIds", type=List.class, parameters={String.class})
+    @Export(name="instanceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> instanceIds;
 
     /**
@@ -167,7 +167,7 @@ public class RoleAttachment extends com.pulumi.resources.CustomResource {
      * The name of role used to bind. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;_&#34;, and must not begin with a hyphen.
      * 
      */
-    @Export(name="roleName", type=String.class, parameters={})
+    @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output<String> roleName;
 
     /**

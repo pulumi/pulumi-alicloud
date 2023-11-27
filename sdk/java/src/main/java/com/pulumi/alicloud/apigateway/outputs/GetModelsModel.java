@@ -198,17 +198,17 @@ public final class GetModelsModel {
             return this;
         }
         public GetModelsModel build() {
-            final var o = new GetModelsModel();
-            o.createTime = createTime;
-            o.description = description;
-            o.groupId = groupId;
-            o.id = id;
-            o.modelId = modelId;
-            o.modelName = modelName;
-            o.modelRef = modelRef;
-            o.modifiedTime = modifiedTime;
-            o.schema = schema;
-            return o;
+            final var _resultValue = new GetModelsModel();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.groupId = groupId;
+            _resultValue.id = id;
+            _resultValue.modelId = modelId;
+            _resultValue.modelName = modelName;
+            _resultValue.modelRef = modelRef;
+            _resultValue.modifiedTime = modifiedTime;
+            _resultValue.schema = schema;
+            return _resultValue;
         }
     }
 }

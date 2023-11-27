@@ -27,151 +27,151 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="alicloud:fc/v2Function:V2Function")
 public class V2Function extends com.pulumi.resources.CustomResource {
-    @Export(name="caPort", type=Integer.class, parameters={})
+    @Export(name="caPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> caPort;
 
     public Output<Integer> caPort() {
         return this.caPort;
     }
-    @Export(name="code", type=V2FunctionCode.class, parameters={})
+    @Export(name="code", refs={V2FunctionCode.class}, tree="[0]")
     private Output</* @Nullable */ V2FunctionCode> code;
 
     public Output<Optional<V2FunctionCode>> code() {
         return Codegen.optional(this.code);
     }
-    @Export(name="codeChecksum", type=String.class, parameters={})
+    @Export(name="codeChecksum", refs={String.class}, tree="[0]")
     private Output<String> codeChecksum;
 
     public Output<String> codeChecksum() {
         return this.codeChecksum;
     }
-    @Export(name="cpu", type=Double.class, parameters={})
+    @Export(name="cpu", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> cpu;
 
     public Output<Optional<Double>> cpu() {
         return Codegen.optional(this.cpu);
     }
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     public Output<String> createTime() {
         return this.createTime;
     }
-    @Export(name="customContainerConfig", type=V2FunctionCustomContainerConfig.class, parameters={})
+    @Export(name="customContainerConfig", refs={V2FunctionCustomContainerConfig.class}, tree="[0]")
     private Output</* @Nullable */ V2FunctionCustomContainerConfig> customContainerConfig;
 
     public Output<Optional<V2FunctionCustomContainerConfig>> customContainerConfig() {
         return Codegen.optional(this.customContainerConfig);
     }
-    @Export(name="customDns", type=V2FunctionCustomDns.class, parameters={})
+    @Export(name="customDns", refs={V2FunctionCustomDns.class}, tree="[0]")
     private Output</* @Nullable */ V2FunctionCustomDns> customDns;
 
     public Output<Optional<V2FunctionCustomDns>> customDns() {
         return Codegen.optional(this.customDns);
     }
-    @Export(name="customHealthCheckConfig", type=V2FunctionCustomHealthCheckConfig.class, parameters={})
+    @Export(name="customHealthCheckConfig", refs={V2FunctionCustomHealthCheckConfig.class}, tree="[0]")
     private Output</* @Nullable */ V2FunctionCustomHealthCheckConfig> customHealthCheckConfig;
 
     public Output<Optional<V2FunctionCustomHealthCheckConfig>> customHealthCheckConfig() {
         return Codegen.optional(this.customHealthCheckConfig);
     }
-    @Export(name="customRuntimeConfig", type=V2FunctionCustomRuntimeConfig.class, parameters={})
+    @Export(name="customRuntimeConfig", refs={V2FunctionCustomRuntimeConfig.class}, tree="[0]")
     private Output</* @Nullable */ V2FunctionCustomRuntimeConfig> customRuntimeConfig;
 
     public Output<Optional<V2FunctionCustomRuntimeConfig>> customRuntimeConfig() {
         return Codegen.optional(this.customRuntimeConfig);
     }
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="diskSize", type=Integer.class, parameters={})
+    @Export(name="diskSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> diskSize;
 
     public Output<Optional<Integer>> diskSize() {
         return Codegen.optional(this.diskSize);
     }
-    @Export(name="environmentVariables", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="environmentVariables", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> environmentVariables;
 
     public Output<Optional<Map<String,Object>>> environmentVariables() {
         return Codegen.optional(this.environmentVariables);
     }
-    @Export(name="functionName", type=String.class, parameters={})
+    @Export(name="functionName", refs={String.class}, tree="[0]")
     private Output<String> functionName;
 
     public Output<String> functionName() {
         return this.functionName;
     }
-    @Export(name="gpuMemorySize", type=Integer.class, parameters={})
+    @Export(name="gpuMemorySize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> gpuMemorySize;
 
     public Output<Optional<Integer>> gpuMemorySize() {
         return Codegen.optional(this.gpuMemorySize);
     }
-    @Export(name="handler", type=String.class, parameters={})
+    @Export(name="handler", refs={String.class}, tree="[0]")
     private Output<String> handler;
 
     public Output<String> handler() {
         return this.handler;
     }
-    @Export(name="initializationTimeout", type=Integer.class, parameters={})
+    @Export(name="initializationTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> initializationTimeout;
 
     public Output<Integer> initializationTimeout() {
         return this.initializationTimeout;
     }
-    @Export(name="initializer", type=String.class, parameters={})
+    @Export(name="initializer", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> initializer;
 
     public Output<Optional<String>> initializer() {
         return Codegen.optional(this.initializer);
     }
-    @Export(name="instanceConcurrency", type=Integer.class, parameters={})
+    @Export(name="instanceConcurrency", refs={Integer.class}, tree="[0]")
     private Output<Integer> instanceConcurrency;
 
     public Output<Integer> instanceConcurrency() {
         return this.instanceConcurrency;
     }
-    @Export(name="instanceLifecycleConfig", type=V2FunctionInstanceLifecycleConfig.class, parameters={})
+    @Export(name="instanceLifecycleConfig", refs={V2FunctionInstanceLifecycleConfig.class}, tree="[0]")
     private Output</* @Nullable */ V2FunctionInstanceLifecycleConfig> instanceLifecycleConfig;
 
     public Output<Optional<V2FunctionInstanceLifecycleConfig>> instanceLifecycleConfig() {
         return Codegen.optional(this.instanceLifecycleConfig);
     }
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     public Output<String> instanceType() {
         return this.instanceType;
     }
-    @Export(name="layers", type=List.class, parameters={String.class})
+    @Export(name="layers", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> layers;
 
     public Output<Optional<List<String>>> layers() {
         return Codegen.optional(this.layers);
     }
-    @Export(name="memorySize", type=Integer.class, parameters={})
+    @Export(name="memorySize", refs={Integer.class}, tree="[0]")
     private Output<Integer> memorySize;
 
     public Output<Integer> memorySize() {
         return this.memorySize;
     }
-    @Export(name="runtime", type=String.class, parameters={})
+    @Export(name="runtime", refs={String.class}, tree="[0]")
     private Output<String> runtime;
 
     public Output<String> runtime() {
         return this.runtime;
     }
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     public Output<String> serviceName() {
         return this.serviceName;
     }
-    @Export(name="timeout", type=Integer.class, parameters={})
+    @Export(name="timeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeout;
 
     public Output<Integer> timeout() {

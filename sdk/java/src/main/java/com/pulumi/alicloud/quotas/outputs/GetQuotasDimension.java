@@ -67,10 +67,10 @@ public final class GetQuotasDimension {
             return this;
         }
         public GetQuotasDimension build() {
-            final var o = new GetQuotasDimension();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetQuotasDimension();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

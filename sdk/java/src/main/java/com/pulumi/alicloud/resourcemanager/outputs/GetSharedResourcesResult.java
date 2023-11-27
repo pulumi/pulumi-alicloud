@@ -135,14 +135,14 @@ public final class GetSharedResourcesResult {
             return this;
         }
         public GetSharedResourcesResult build() {
-            final var o = new GetSharedResourcesResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.resourceShareId = resourceShareId;
-            o.resources = resources;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetSharedResourcesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceShareId = resourceShareId;
+            _resultValue.resources = resources;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

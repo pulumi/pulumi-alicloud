@@ -115,13 +115,13 @@ public final class GetInstanceKeywordsResult {
             return this;
         }
         public GetInstanceKeywordsResult build() {
-            final var o = new GetInstanceKeywordsResult();
-            o.id = id;
-            o.ids = ids;
-            o.key = key;
-            o.keywords = keywords;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetInstanceKeywordsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.key = key;
+            _resultValue.keywords = keywords;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

@@ -152,7 +152,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * A match statement. It indicates the mode in which the AS path attribute is matched. Valid values: [&#34;Include&#34;, &#34;Complete&#34;].
      * 
      */
-    @Export(name="asPathMatchMode", type=String.class, parameters={})
+    @Export(name="asPathMatchMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> asPathMatchMode;
 
     /**
@@ -166,7 +166,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * The ID of the CEN instance.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
@@ -180,7 +180,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * The ID of the region to which the CEN instance belongs.
      * 
      */
-    @Export(name="cenRegionId", type=String.class, parameters={})
+    @Export(name="cenRegionId", refs={String.class}, tree="[0]")
     private Output<String> cenRegionId;
 
     /**
@@ -194,7 +194,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * A match statement. It indicates the mode in which the prefix attribute is matched. Valid values: [&#34;Include&#34;, &#34;Complete&#34;].
      * 
      */
-    @Export(name="cidrMatchMode", type=String.class, parameters={})
+    @Export(name="cidrMatchMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cidrMatchMode;
 
     /**
@@ -208,7 +208,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * A match statement. It indicates the mode in which the community attribute is matched. Valid values: [&#34;Include&#34;, &#34;Complete&#34;].
      * 
      */
-    @Export(name="communityMatchMode", type=String.class, parameters={})
+    @Export(name="communityMatchMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> communityMatchMode;
 
     /**
@@ -222,7 +222,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * An action statement. It indicates the mode in which the community attribute is operated. Valid values: [&#34;Additive&#34;, &#34;Replace&#34;].
      * 
      */
-    @Export(name="communityOperateMode", type=String.class, parameters={})
+    @Export(name="communityOperateMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> communityOperateMode;
 
     /**
@@ -236,7 +236,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * The description of the route map.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -250,7 +250,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * A match statement that indicates the list of destination instance types. Valid values: [&#34;VPC&#34;, &#34;VBR&#34;, &#34;CCN&#34;, &#34;VPN&#34;].
      * 
      */
-    @Export(name="destinationChildInstanceTypes", type=List.class, parameters={String.class})
+    @Export(name="destinationChildInstanceTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> destinationChildInstanceTypes;
 
     /**
@@ -264,7 +264,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * A match statement that indicates the prefix list. The prefix is in the CIDR format. You can enter a maximum of 32 CIDR blocks.
      * 
      */
-    @Export(name="destinationCidrBlocks", type=List.class, parameters={String.class})
+    @Export(name="destinationCidrBlocks", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> destinationCidrBlocks;
 
     /**
@@ -278,7 +278,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * A match statement that indicates the list of IDs of the destination instances.
      * 
      */
-    @Export(name="destinationInstanceIds", type=List.class, parameters={String.class})
+    @Export(name="destinationInstanceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> destinationInstanceIds;
 
     /**
@@ -292,7 +292,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * Indicates whether to enable the reverse match method for the DestinationInstanceIds match condition. Valid values: [&#34;false&#34;, &#34;true&#34;]. Default to &#34;false&#34;.
      * 
      */
-    @Export(name="destinationInstanceIdsReverseMatch", type=Boolean.class, parameters={})
+    @Export(name="destinationInstanceIdsReverseMatch", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> destinationInstanceIdsReverseMatch;
 
     /**
@@ -306,7 +306,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * A match statement that indicates the list of IDs of the destination route tables. You can enter a maximum of 32 route table IDs.
      * 
      */
-    @Export(name="destinationRouteTableIds", type=List.class, parameters={String.class})
+    @Export(name="destinationRouteTableIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> destinationRouteTableIds;
 
     /**
@@ -320,7 +320,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * The action that is performed to a route if the route matches all the match conditions. Valid values: [&#34;Permit&#34;, &#34;Deny&#34;].
      * 
      */
-    @Export(name="mapResult", type=String.class, parameters={})
+    @Export(name="mapResult", refs={String.class}, tree="[0]")
     private Output<String> mapResult;
 
     /**
@@ -334,7 +334,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * A match statement that indicates the AS path list. The AS path is a well-known mandatory attribute, which describes the numbers of the ASs that a BGP route passes through during transmission.
      * 
      */
-    @Export(name="matchAsns", type=List.class, parameters={String.class})
+    @Export(name="matchAsns", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> matchAsns;
 
     /**
@@ -348,7 +348,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * A match statement that indicates the community set. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
      * 
      */
-    @Export(name="matchCommunitySets", type=List.class, parameters={String.class})
+    @Export(name="matchCommunitySets", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> matchCommunitySets;
 
     /**
@@ -362,7 +362,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * The priority of the next route map that is associated with the current route map. Value range: 1 to 100.
      * 
      */
-    @Export(name="nextPriority", type=Integer.class, parameters={})
+    @Export(name="nextPriority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> nextPriority;
 
     /**
@@ -376,7 +376,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * An action statement that operates the community attribute. The format of each community is nn:nn, which ranges from 1 to 65535. You can enter a maximum of 32 communities. Communities must comply with RFC 1997. Large communities (RFC 8092) are not supported.
      * 
      */
-    @Export(name="operateCommunitySets", type=List.class, parameters={String.class})
+    @Export(name="operateCommunitySets", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> operateCommunitySets;
 
     /**
@@ -390,7 +390,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * An action statement that modifies the priority of the route. Value range: 1 to 100. The default priority of a route is 50. A lower value indicates a higher preference.
      * 
      */
-    @Export(name="preference", type=Integer.class, parameters={})
+    @Export(name="preference", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> preference;
 
     /**
@@ -404,7 +404,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * An action statement that indicates an AS path is prepended when the regional gateway receives or advertises a route.
      * 
      */
-    @Export(name="prependAsPaths", type=List.class, parameters={String.class})
+    @Export(name="prependAsPaths", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> prependAsPaths;
 
     /**
@@ -418,7 +418,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * The priority of the route map. Value range: 1 to 100. A lower value indicates a higher priority.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
@@ -432,7 +432,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * ID of the RouteMap. It is available in 1.161.0+.
      * 
      */
-    @Export(name="routeMapId", type=String.class, parameters={})
+    @Export(name="routeMapId", refs={String.class}, tree="[0]")
     private Output<String> routeMapId;
 
     /**
@@ -446,7 +446,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * A match statement that indicates the list of route types. Valid values: [&#34;System&#34;, &#34;Custom&#34;, &#34;BGP&#34;].
      * 
      */
-    @Export(name="routeTypes", type=List.class, parameters={String.class})
+    @Export(name="routeTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> routeTypes;
 
     /**
@@ -460,7 +460,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * A match statement that indicates the list of source instance types. Valid values: [&#34;VPC&#34;, &#34;VBR&#34;, &#34;CCN&#34;].
      * 
      */
-    @Export(name="sourceChildInstanceTypes", type=List.class, parameters={String.class})
+    @Export(name="sourceChildInstanceTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> sourceChildInstanceTypes;
 
     /**
@@ -474,7 +474,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * A match statement that indicates the list of IDs of the source instances.
      * 
      */
-    @Export(name="sourceInstanceIds", type=List.class, parameters={String.class})
+    @Export(name="sourceInstanceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> sourceInstanceIds;
 
     /**
@@ -488,7 +488,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * Indicates whether to enable the reverse match method for the SourceInstanceIds match condition. Valid values: [&#34;false&#34;, &#34;true&#34;]. Default to &#34;false&#34;.
      * 
      */
-    @Export(name="sourceInstanceIdsReverseMatch", type=Boolean.class, parameters={})
+    @Export(name="sourceInstanceIdsReverseMatch", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sourceInstanceIdsReverseMatch;
 
     /**
@@ -502,7 +502,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * A match statement that indicates the list of IDs of the source regions. You can enter a maximum of 32 region IDs.
      * 
      */
-    @Export(name="sourceRegionIds", type=List.class, parameters={String.class})
+    @Export(name="sourceRegionIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> sourceRegionIds;
 
     /**
@@ -516,7 +516,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * A match statement that indicates the list of IDs of the source route tables. You can enter a maximum of 32 route table IDs.
      * 
      */
-    @Export(name="sourceRouteTableIds", type=List.class, parameters={String.class})
+    @Export(name="sourceRouteTableIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> sourceRouteTableIds;
 
     /**
@@ -530,7 +530,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * (Computed) The status of route map. Valid values: [&#34;Creating&#34;, &#34;Active&#34;, &#34;Deleting&#34;].
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -544,7 +544,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * The routing table ID of the forwarding router. If you do not enter the routing table ID, the routing policy is automatically associated with the default routing table of the forwarding router.
      * 
      */
-    @Export(name="transitRouterRouteTableId", type=String.class, parameters={})
+    @Export(name="transitRouterRouteTableId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterRouteTableId;
 
     /**
@@ -558,7 +558,7 @@ public class RouteMap extends com.pulumi.resources.CustomResource {
      * The direction in which the route map is applied. Valid values: [&#34;RegionIn&#34;, &#34;RegionOut&#34;].
      * 
      */
-    @Export(name="transmitDirection", type=String.class, parameters={})
+    @Export(name="transmitDirection", refs={String.class}, tree="[0]")
     private Output<String> transmitDirection;
 
     /**

@@ -186,16 +186,16 @@ public final class GetEngineNamespacesNamespace {
             return this;
         }
         public GetEngineNamespacesNamespace build() {
-            final var o = new GetEngineNamespacesNamespace();
-            o.configCount = configCount;
-            o.id = id;
-            o.namespaceDesc = namespaceDesc;
-            o.namespaceId = namespaceId;
-            o.namespaceShowName = namespaceShowName;
-            o.quota = quota;
-            o.serviceCount = serviceCount;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetEngineNamespacesNamespace();
+            _resultValue.configCount = configCount;
+            _resultValue.id = id;
+            _resultValue.namespaceDesc = namespaceDesc;
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.namespaceShowName = namespaceShowName;
+            _resultValue.quota = quota;
+            _resultValue.serviceCount = serviceCount;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

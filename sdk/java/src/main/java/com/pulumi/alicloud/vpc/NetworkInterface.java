@@ -105,7 +105,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
      * Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -115,13 +115,25 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="ipv6AddressCount", type=Integer.class, parameters={})
+    @Export(name="ipv4PrefixCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> ipv4PrefixCount;
+
+    public Output<Integer> ipv4PrefixCount() {
+        return this.ipv4PrefixCount;
+    }
+    @Export(name="ipv4Prefixes", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> ipv4Prefixes;
+
+    public Output<List<String>> ipv4Prefixes() {
+        return this.ipv4Prefixes;
+    }
+    @Export(name="ipv6AddressCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> ipv6AddressCount;
 
     public Output<Integer> ipv6AddressCount() {
         return this.ipv6AddressCount;
     }
-    @Export(name="ipv6Addresses", type=List.class, parameters={String.class})
+    @Export(name="ipv6Addresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ipv6Addresses;
 
     public Output<List<String>> ipv6Addresses() {
@@ -131,7 +143,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
      * (Available in 1.54.0+) The MAC address of an ENI.
      * 
      */
-    @Export(name="mac", type=String.class, parameters={})
+    @Export(name="mac", refs={String.class}, tree="[0]")
     private Output<String> mac;
 
     /**
@@ -149,7 +161,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -159,13 +171,13 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="networkInterfaceName", type=String.class, parameters={})
+    @Export(name="networkInterfaceName", refs={String.class}, tree="[0]")
     private Output<String> networkInterfaceName;
 
     public Output<String> networkInterfaceName() {
         return this.networkInterfaceName;
     }
-    @Export(name="primaryIpAddress", type=String.class, parameters={})
+    @Export(name="primaryIpAddress", refs={String.class}, tree="[0]")
     private Output<String> primaryIpAddress;
 
     public Output<String> primaryIpAddress() {
@@ -179,7 +191,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead */
-    @Export(name="privateIp", type=String.class, parameters={})
+    @Export(name="privateIp", refs={String.class}, tree="[0]")
     private Output<String> privateIp;
 
     /**
@@ -189,7 +201,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     public Output<String> privateIp() {
         return this.privateIp;
     }
-    @Export(name="privateIpAddresses", type=List.class, parameters={String.class})
+    @Export(name="privateIpAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> privateIpAddresses;
 
     public Output<List<String>> privateIpAddresses() {
@@ -203,7 +215,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead */
-    @Export(name="privateIps", type=List.class, parameters={String.class})
+    @Export(name="privateIps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> privateIps;
 
     /**
@@ -221,7 +233,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead */
-    @Export(name="privateIpsCount", type=Integer.class, parameters={})
+    @Export(name="privateIpsCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> privateIpsCount;
 
     /**
@@ -231,7 +243,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     public Output<Integer> privateIpsCount() {
         return this.privateIpsCount;
     }
-    @Export(name="queueNumber", type=Integer.class, parameters={})
+    @Export(name="queueNumber", refs={Integer.class}, tree="[0]")
     private Output<Integer> queueNumber;
 
     public Output<Integer> queueNumber() {
@@ -241,7 +253,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the network interface belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -251,13 +263,13 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> resourceGroupId() {
         return Codegen.optional(this.resourceGroupId);
     }
-    @Export(name="secondaryPrivateIpAddressCount", type=Integer.class, parameters={})
+    @Export(name="secondaryPrivateIpAddressCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> secondaryPrivateIpAddressCount;
 
     public Output<Integer> secondaryPrivateIpAddressCount() {
         return this.secondaryPrivateIpAddressCount;
     }
-    @Export(name="securityGroupIds", type=List.class, parameters={String.class})
+    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroupIds;
 
     public Output<List<String>> securityGroupIds() {
@@ -271,7 +283,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead */
-    @Export(name="securityGroups", type=List.class, parameters={String.class})
+    @Export(name="securityGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroups;
 
     /**
@@ -281,7 +293,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     public Output<List<String>> securityGroups() {
         return this.securityGroups;
     }
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     public Output<String> status() {
@@ -291,7 +303,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -305,7 +317,7 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
      * The VSwitch to create the ENI in.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

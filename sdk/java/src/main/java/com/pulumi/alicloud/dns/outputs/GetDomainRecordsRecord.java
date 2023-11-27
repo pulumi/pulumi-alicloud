@@ -140,18 +140,18 @@ public final class GetDomainRecordsRecord {
             return this;
         }
         public GetDomainRecordsRecord build() {
-            final var o = new GetDomainRecordsRecord();
-            o.domainName = domainName;
-            o.hostRecord = hostRecord;
-            o.line = line;
-            o.locked = locked;
-            o.priority = priority;
-            o.recordId = recordId;
-            o.status = status;
-            o.ttl = ttl;
-            o.type = type;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetDomainRecordsRecord();
+            _resultValue.domainName = domainName;
+            _resultValue.hostRecord = hostRecord;
+            _resultValue.line = line;
+            _resultValue.locked = locked;
+            _resultValue.priority = priority;
+            _resultValue.recordId = recordId;
+            _resultValue.status = status;
+            _resultValue.ttl = ttl;
+            _resultValue.type = type;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -125,15 +125,15 @@ public final class GetEcsStorageCapacityUnitsResult {
             return units(List.of(units));
         }
         public GetEcsStorageCapacityUnitsResult build() {
-            final var o = new GetEcsStorageCapacityUnitsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.units = units;
-            return o;
+            final var _resultValue = new GetEcsStorageCapacityUnitsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.units = units;
+            return _resultValue;
         }
     }
 }

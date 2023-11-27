@@ -177,7 +177,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable Application-Layer Protocol Negotiation (ALPN).
      * 
      */
-    @Export(name="alpnEnabled", type=Boolean.class, parameters={})
+    @Export(name="alpnEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> alpnEnabled;
 
     /**
@@ -191,7 +191,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The ALPN policy.
      * 
      */
-    @Export(name="alpnPolicy", type=String.class, parameters={})
+    @Export(name="alpnPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alpnPolicy;
 
     /**
@@ -205,7 +205,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The list of certificate authority (CA) certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one CA certificate is supported.
      * 
      */
-    @Export(name="caCertificateIds", type=List.class, parameters={String.class})
+    @Export(name="caCertificateIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> caCertificateIds;
 
     /**
@@ -219,7 +219,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable mutual authentication.
      * 
      */
-    @Export(name="caEnabled", type=Boolean.class, parameters={})
+    @Export(name="caEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> caEnabled;
 
     /**
@@ -233,7 +233,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The list of server certificates. This parameter takes effect only for listeners that use SSL over TCP. **Note:** Only one server certificate is supported.
      * 
      */
-    @Export(name="certificateIds", type=List.class, parameters={String.class})
+    @Export(name="certificateIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> certificateIds;
 
     /**
@@ -247,7 +247,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The maximum number of connections that can be created per second on the NLB instance. Valid values: 0 to 1000000. 0 specifies that the number of connections is unlimited.
      * 
      */
-    @Export(name="cps", type=Integer.class, parameters={})
+    @Export(name="cps", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cps;
 
     /**
@@ -261,7 +261,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Full port listening end port. Valid values: `0` ~ `65535`. The value of the end port is less than the start port.
      * 
      */
-    @Export(name="endPort", type=Integer.class, parameters={})
+    @Export(name="endPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endPort;
 
     /**
@@ -275,7 +275,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The timeout period of an idle connection. Unit: seconds. Valid values: `1` to `900`. Default value: `900`.
      * 
      */
-    @Export(name="idleTimeout", type=Integer.class, parameters={})
+    @Export(name="idleTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> idleTimeout;
 
     /**
@@ -289,7 +289,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Custom listener name. The length is limited to 2 to 256 characters, supports Chinese and English letters, and can include numbers, commas (,), half-width periods (.), half-width semicolons (;), forward slashes (/), at(@), underscores (_), and dashes (-).
      * 
      */
-    @Export(name="listenerDescription", type=String.class, parameters={})
+    @Export(name="listenerDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> listenerDescription;
 
     /**
@@ -303,7 +303,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Listening port. Valid values: 0 ~ 65535. `0`: indicates that full port listening is used. When set to `0`, you must configure `StartPort` and `EndPort`.
      * 
      */
-    @Export(name="listenerPort", type=Integer.class, parameters={})
+    @Export(name="listenerPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> listenerPort;
 
     /**
@@ -317,7 +317,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The listening protocol. Valid values: `TCP`, `UDP`, or `TCPSSL`.
      * 
      */
-    @Export(name="listenerProtocol", type=String.class, parameters={})
+    @Export(name="listenerProtocol", refs={String.class}, tree="[0]")
     private Output<String> listenerProtocol;
 
     /**
@@ -331,7 +331,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The ID of the network-based server load balancer instance.
      * 
      */
-    @Export(name="loadBalancerId", type=String.class, parameters={})
+    @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
@@ -345,7 +345,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The maximum size of a TCP segment. Unit: bytes. Valid values: 0 to 1500. 0 specifies that the maximum segment size remains unchanged. **Note:** This parameter is supported only by listeners that use SSL over TCP.
      * 
      */
-    @Export(name="mss", type=Integer.class, parameters={})
+    @Export(name="mss", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> mss;
 
     /**
@@ -359,7 +359,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers.
      * 
      */
-    @Export(name="proxyProtocolEnabled", type=Boolean.class, parameters={})
+    @Export(name="proxyProtocolEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> proxyProtocolEnabled;
 
     /**
@@ -373,7 +373,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable fine-grained monitoring.
      * 
      */
-    @Export(name="secSensorEnabled", type=Boolean.class, parameters={})
+    @Export(name="secSensorEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> secSensorEnabled;
 
     /**
@@ -389,7 +389,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Custom security policies can be created by resource `alicloud.nlb.SecurityPolicy`.
      * 
      */
-    @Export(name="securityPolicyId", type=String.class, parameters={})
+    @Export(name="securityPolicyId", refs={String.class}, tree="[0]")
     private Output<String> securityPolicyId;
 
     /**
@@ -405,7 +405,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The ID of the server group.
      * 
      */
-    @Export(name="serverGroupId", type=String.class, parameters={})
+    @Export(name="serverGroupId", refs={String.class}, tree="[0]")
     private Output<String> serverGroupId;
 
     /**
@@ -419,7 +419,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * Full Port listens to the starting port. Valid values: `0` ~ `65535`.
      * 
      */
-    @Export(name="startPort", type=Integer.class, parameters={})
+    @Export(name="startPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startPort;
 
     /**
@@ -433,7 +433,7 @@ public class Listener extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `Running`, `Stopped`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

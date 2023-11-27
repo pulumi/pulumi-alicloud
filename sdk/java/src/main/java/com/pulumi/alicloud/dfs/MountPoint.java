@@ -115,7 +115,7 @@ public class MountPoint extends com.pulumi.resources.CustomResource {
      * The ID of the Access Group.
      * 
      */
-    @Export(name="accessGroupId", type=String.class, parameters={})
+    @Export(name="accessGroupId", refs={String.class}, tree="[0]")
     private Output<String> accessGroupId;
 
     /**
@@ -129,7 +129,7 @@ public class MountPoint extends com.pulumi.resources.CustomResource {
      * The description of the Mount Point.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -143,7 +143,7 @@ public class MountPoint extends com.pulumi.resources.CustomResource {
      * The ID of the File System.
      * 
      */
-    @Export(name="fileSystemId", type=String.class, parameters={})
+    @Export(name="fileSystemId", refs={String.class}, tree="[0]")
     private Output<String> fileSystemId;
 
     /**
@@ -157,7 +157,7 @@ public class MountPoint extends com.pulumi.resources.CustomResource {
      * The ID of the Mount Point.
      * 
      */
-    @Export(name="mountPointId", type=String.class, parameters={})
+    @Export(name="mountPointId", refs={String.class}, tree="[0]")
     private Output<String> mountPointId;
 
     /**
@@ -171,7 +171,7 @@ public class MountPoint extends com.pulumi.resources.CustomResource {
      * The network type of the Mount Point. Valid values: `VPC`.
      * 
      */
-    @Export(name="networkType", type=String.class, parameters={})
+    @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
@@ -185,7 +185,7 @@ public class MountPoint extends com.pulumi.resources.CustomResource {
      * The status of the Mount Point. Valid values: `Active`, `Inactive`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -199,7 +199,7 @@ public class MountPoint extends com.pulumi.resources.CustomResource {
      * The vpc id.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -213,7 +213,7 @@ public class MountPoint extends com.pulumi.resources.CustomResource {
      * The vswitch id.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

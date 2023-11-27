@@ -95,7 +95,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The description of rule.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -109,7 +109,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The name of event bus.
      * 
      */
-    @Export(name="eventBusName", type=String.class, parameters={})
+    @Export(name="eventBusName", refs={String.class}, tree="[0]")
     private Output<String> eventBusName;
 
     /**
@@ -123,7 +123,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The pattern to match interested events. Event mode, JSON format. The value description is as follows: `stringEqual` mode. `stringExpression` mode. Each field has up to 5 expressions (map structure).
      * 
      */
-    @Export(name="filterPattern", type=String.class, parameters={})
+    @Export(name="filterPattern", refs={String.class}, tree="[0]")
     private Output<String> filterPattern;
 
     /**
@@ -137,7 +137,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The name of rule.
      * 
      */
-    @Export(name="ruleName", type=String.class, parameters={})
+    @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output<String> ruleName;
 
     /**
@@ -151,7 +151,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Rule status, either Enable or Disable. Valid values: `DISABLE`, `ENABLE`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -165,7 +165,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The target of rule. See `targets` below.
      * 
      */
-    @Export(name="targets", type=List.class, parameters={RuleTarget.class})
+    @Export(name="targets", refs={List.class,RuleTarget.class}, tree="[0,1]")
     private Output<List<RuleTarget>> targets;
 
     /**

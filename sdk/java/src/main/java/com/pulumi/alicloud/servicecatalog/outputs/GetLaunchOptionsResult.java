@@ -150,15 +150,15 @@ public final class GetLaunchOptionsResult {
             return this;
         }
         public GetLaunchOptionsResult build() {
-            final var o = new GetLaunchOptionsResult();
-            o.id = id;
-            o.ids = ids;
-            o.launchOptions = launchOptions;
-            o.nameRegex = nameRegex;
-            o.options = options;
-            o.outputFile = outputFile;
-            o.productId = productId;
-            return o;
+            final var _resultValue = new GetLaunchOptionsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.launchOptions = launchOptions;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.options = options;
+            _resultValue.outputFile = outputFile;
+            _resultValue.productId = productId;
+            return _resultValue;
         }
     }
 }

@@ -161,12 +161,12 @@ public final class RuleTargetParamList {
             return this;
         }
         public RuleTargetParamList build() {
-            final var o = new RuleTargetParamList();
-            o.form = form;
-            o.resourceKey = resourceKey;
-            o.template = template;
-            o.value = value;
-            return o;
+            final var _resultValue = new RuleTargetParamList();
+            _resultValue.form = form;
+            _resultValue.resourceKey = resourceKey;
+            _resultValue.template = template;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

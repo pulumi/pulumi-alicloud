@@ -16,7 +16,7 @@ import (
 //
 // For information about SLS Resource and how to use it, see [Resource management](https://www.alibabacloud.com/help/en/doc-detail/207732.html)
 //
-// > **NOTE:** Available in 1.162.0+, log resource region should be set a main region: cn-heyuan
+// > **NOTE:** Available since v1.162.0. log resource region should be set a main region: cn-heyuan.
 //
 // ## Example Usage
 //
@@ -35,10 +35,31 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := log.NewResource(ctx, "example", &log.ResourceArgs{
-//				Description: pulumi.String("user tf test resource desc"),
+//				Description: pulumi.String("user tf resource desc"),
 //				ExtInfo:     pulumi.String("{}"),
-//				Schema:      pulumi.String("{\"schema\":[{\"column\":\"col1\",\"desc\":\"col1 desc\",\"ext_info\":{},\"required\":true,\"type\":\"string\"},{\"column\":\"col2\",\"desc\":\"col2 desc\",\"ext_info\":\"optional\",\"required\":true,\"type\":\"string\"}]}"),
-//				Type:        pulumi.String("userdefine"),
+//				Schema: pulumi.String(`    {
+//	      "schema": [
+//	        {
+//	          "column": "col1",
+//	          "desc": "col1   desc",
+//	          "ext_info": {
+//	          },
+//	          "required": true,
+//	          "type": "string"
+//	        },
+//	        {
+//	          "column": "col2",
+//	          "desc": "col2   desc",
+//	          "ext_info": "optional",
+//	          "required": true,
+//	          "type": "string"
+//	        }
+//	      ]
+//	    }
+//
+// `),
+//
+//				Type: pulumi.String("userdefine"),
 //			})
 //			if err != nil {
 //				return err
@@ -55,7 +76,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:log/resource:Resource example user.tf.test_resource
+//	$ pulumi import alicloud:log/resource:Resource example <id>
 //
 // ```
 type Resource struct {

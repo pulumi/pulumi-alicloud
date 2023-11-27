@@ -125,15 +125,15 @@ public final class GetGatewayFileSharesResult {
             return shares(List.of(shares));
         }
         public GetGatewayFileSharesResult build() {
-            final var o = new GetGatewayFileSharesResult();
-            o.gatewayId = gatewayId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.shares = shares;
-            return o;
+            final var _resultValue = new GetGatewayFileSharesResult();
+            _resultValue.gatewayId = gatewayId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.shares = shares;
+            return _resultValue;
         }
     }
 }

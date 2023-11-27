@@ -128,7 +128,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The number of instances that you want to create. Valid values: `1` to `100`.
      * 
      */
-    @Export(name="amount", type=Integer.class, parameters={})
+    @Export(name="amount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> amount;
 
     /**
@@ -142,7 +142,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The automatic release time of the `PostPaid` instance.
      * 
      */
-    @Export(name="autoReleaseTime", type=String.class, parameters={})
+    @Export(name="autoReleaseTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoReleaseTime;
 
     /**
@@ -156,7 +156,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * Whether to enable auto-renewal for the instance. This parameter is valid only when the `instance_charge_type` is set to `PrePaid`.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
@@ -172,7 +172,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
      * 
      */
-    @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
@@ -188,7 +188,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * Indicate how to check instance ready to use.
      * 
      */
-    @Export(name="bootCheckOsWithAssistant", type=Boolean.class, parameters={})
+    @Export(name="bootCheckOsWithAssistant", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> bootCheckOsWithAssistant;
 
     /**
@@ -202,7 +202,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The list of data disks created with instance. See `data_disks` below..
      * 
      */
-    @Export(name="dataDisks", type=List.class, parameters={EcsInstanceSetDataDisk.class})
+    @Export(name="dataDisks", refs={List.class,EcsInstanceSetDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EcsInstanceSetDataDisk>> dataDisks;
 
     /**
@@ -216,7 +216,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The ID of the dedicated host on which to create the instance. If the `dedicated_host_id` is specified, the `spot_strategy` and `spot_price_limit`  are ignored. This is because preemptible instances cannot be created on dedicated hosts.
      * 
      */
-    @Export(name="dedicatedHostId", type=String.class, parameters={})
+    @Export(name="dedicatedHostId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dedicatedHostId;
 
     /**
@@ -230,7 +230,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * Whether to enable release protection for the instance.
      * 
      */
-    @Export(name="deletionProtection", type=Boolean.class, parameters={})
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deletionProtection;
 
     /**
@@ -244,7 +244,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The ID of the deployment set to which to deploy the instance.
      * 
      */
-    @Export(name="deploymentSetId", type=String.class, parameters={})
+    @Export(name="deploymentSetId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deploymentSetId;
 
     /**
@@ -258,7 +258,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The description of the instance, This description can have a string of 2 to 256 characters, It cannot begin with `http://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -272,7 +272,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The instances that need to be excluded from the Instance Set.  See `exclude_instance_filter` below.
      * 
      */
-    @Export(name="excludeInstanceFilter", type=EcsInstanceSetExcludeInstanceFilter.class, parameters={})
+    @Export(name="excludeInstanceFilter", refs={EcsInstanceSetExcludeInstanceFilter.class}, tree="[0]")
     private Output</* @Nullable */ EcsInstanceSetExcludeInstanceFilter> excludeInstanceFilter;
 
     /**
@@ -286,7 +286,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The hostname of instance.
      * 
      */
-    @Export(name="hostName", type=String.class, parameters={})
+    @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output<String> hostName;
 
     /**
@@ -300,7 +300,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The ID of the Elastic High Performance Computing (E-HPC) cluster to which to assign the instance.
      * 
      */
-    @Export(name="hpcClusterId", type=String.class, parameters={})
+    @Export(name="hpcClusterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hpcClusterId;
 
     /**
@@ -314,7 +314,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The Image to use for the instance.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     /**
@@ -328,7 +328,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The billing method of the instance. Valid values: `PrePaid`, `PostPaid`.
      * 
      */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceChargeType;
 
     /**
@@ -342,7 +342,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * A list of ECS Instance ID.
      * 
      */
-    @Export(name="instanceIds", type=List.class, parameters={String.class})
+    @Export(name="instanceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> instanceIds;
 
     /**
@@ -356,7 +356,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The name of the ECS. This instance_name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen, and must not begin with `http://` or `https://`.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceName;
 
     /**
@@ -370,7 +370,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The type of instance to start.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -384,7 +384,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The Internet charge type of the instance. Valid values are `PayByBandwidth`, `PayByTraffic`.
      * 
      */
-    @Export(name="internetChargeType", type=String.class, parameters={})
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output<String> internetChargeType;
 
     /**
@@ -398,7 +398,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The Maximum outgoing bandwidth to the public network, measured in Mbps (Mega bit per second). Valid values: `1` to `100`.
      * 
      */
-    @Export(name="internetMaxBandwidthOut", type=Integer.class, parameters={})
+    @Export(name="internetMaxBandwidthOut", refs={Integer.class}, tree="[0]")
     private Output<Integer> internetMaxBandwidthOut;
 
     /**
@@ -412,7 +412,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The name of key pair that can login ECS instance successfully without password.
      * 
      */
-    @Export(name="keyPairName", type=String.class, parameters={})
+    @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyPairName;
 
     /**
@@ -426,7 +426,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The ID of the launch template.
      * 
      */
-    @Export(name="launchTemplateId", type=String.class, parameters={})
+    @Export(name="launchTemplateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> launchTemplateId;
 
     /**
@@ -440,7 +440,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The name of the launch template. To use a launch template to create an instance, you must use the `launch_template_id` or `launch_template_name` parameter to specify the launch template.
      * 
      */
-    @Export(name="launchTemplateName", type=String.class, parameters={})
+    @Export(name="launchTemplateName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> launchTemplateName;
 
     /**
@@ -454,7 +454,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The version of the launch template.
      * 
      */
-    @Export(name="launchTemplateVersion", type=String.class, parameters={})
+    @Export(name="launchTemplateVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> launchTemplateVersion;
 
     /**
@@ -468,7 +468,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * A list of NetworkInterface. See `network_interfaces` below..
      * 
      */
-    @Export(name="networkInterfaces", type=List.class, parameters={EcsInstanceSetNetworkInterface.class})
+    @Export(name="networkInterfaces", refs={List.class,EcsInstanceSetNetworkInterface.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EcsInstanceSetNetworkInterface>> networkInterfaces;
 
     /**
@@ -482,7 +482,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -496,7 +496,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * Whether to use the password preset in the image.
      * 
      */
-    @Export(name="passwordInherit", type=Boolean.class, parameters={})
+    @Export(name="passwordInherit", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> passwordInherit;
 
     /**
@@ -512,7 +512,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * - When `period_unit` is `Week`, Valid values: `1`, `2`, `3`.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -528,7 +528,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The duration unit that you will buy the resource. It is valid when `instance_charge_type` is &#39;PrePaid&#39;. Valid value: `Week`, `Month`.
      * 
      */
-    @Export(name="periodUnit", type=String.class, parameters={})
+    @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
@@ -542,7 +542,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The Instance RAM role name.
      * 
      */
-    @Export(name="ramRoleName", type=String.class, parameters={})
+    @Export(name="ramRoleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ramRoleName;
 
     /**
@@ -556,7 +556,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The ID of resource group which the instance belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -570,7 +570,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The security enhancement strategy.
      * 
      */
-    @Export(name="securityEnhancementStrategy", type=String.class, parameters={})
+    @Export(name="securityEnhancementStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityEnhancementStrategy;
 
     /**
@@ -584,7 +584,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * A list of security group ids to associate with.
      * 
      */
-    @Export(name="securityGroupIds", type=List.class, parameters={String.class})
+    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroupIds;
 
     /**
@@ -598,7 +598,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The hourly price threshold of a instance, and it takes effect only when parameter &#39;spot_strategy&#39; is &#39;SpotWithPriceLimit&#39;. Three decimals is allowed at most.
      * 
      */
-    @Export(name="spotPriceLimit", type=Double.class, parameters={})
+    @Export(name="spotPriceLimit", refs={Double.class}, tree="[0]")
     private Output<Double> spotPriceLimit;
 
     /**
@@ -612,7 +612,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The spot strategy of a Pay-As-You-Go instance, and it takes effect only when parameter `instance_charge_type` is &#39;PostPaid&#39;.
      * 
      */
-    @Export(name="spotStrategy", type=String.class, parameters={})
+    @Export(name="spotStrategy", refs={String.class}, tree="[0]")
     private Output<String> spotStrategy;
 
     /**
@@ -626,7 +626,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The ID of the automatic snapshot policy applied to the system disk.
      * 
      */
-    @Export(name="systemDiskAutoSnapshotPolicyId", type=String.class, parameters={})
+    @Export(name="systemDiskAutoSnapshotPolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskAutoSnapshotPolicyId;
 
     /**
@@ -640,7 +640,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The category of the system disk. Valid values are `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud`.
      * 
      */
-    @Export(name="systemDiskCategory", type=String.class, parameters={})
+    @Export(name="systemDiskCategory", refs={String.class}, tree="[0]")
     private Output<String> systemDiskCategory;
 
     /**
@@ -654,7 +654,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The description of the system disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="systemDiskDescription", type=String.class, parameters={})
+    @Export(name="systemDiskDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskDescription;
 
     /**
@@ -668,7 +668,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The name of the system disk.
      * 
      */
-    @Export(name="systemDiskName", type=String.class, parameters={})
+    @Export(name="systemDiskName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskName;
 
     /**
@@ -682,7 +682,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The performance level of the ESSD used as the system disk. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
      * 
      */
-    @Export(name="systemDiskPerformanceLevel", type=String.class, parameters={})
+    @Export(name="systemDiskPerformanceLevel", refs={String.class}, tree="[0]")
     private Output<String> systemDiskPerformanceLevel;
 
     /**
@@ -696,7 +696,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The size of the system disk, measured in GiB. Value range:  values: `20` to `500`.
      * 
      */
-    @Export(name="systemDiskSize", type=Integer.class, parameters={})
+    @Export(name="systemDiskSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> systemDiskSize;
 
     /**
@@ -710,7 +710,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, String.class})
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> tags;
 
     /**
@@ -724,7 +724,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * Whether to automatically append incremental suffixes to the hostname specified by the HostName parameter and to the instance name specified by the InstanceName parameter when you batch create instances. The incremental suffixes can range from `001` to `999`.
      * 
      */
-    @Export(name="uniqueSuffix", type=Boolean.class, parameters={})
+    @Export(name="uniqueSuffix", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> uniqueSuffix;
 
     /**
@@ -738,7 +738,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The virtual switch ID to launch in VPC.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
@@ -752,7 +752,7 @@ public class EcsInstanceSet extends com.pulumi.resources.CustomResource {
      * The ID of the zone in which to create the instance.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

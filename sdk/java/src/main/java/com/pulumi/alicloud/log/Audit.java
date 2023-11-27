@@ -284,7 +284,7 @@ public class Audit extends com.pulumi.resources.CustomResource {
      * Aliuid value of your account.
      * 
      */
-    @Export(name="aliuid", type=String.class, parameters={})
+    @Export(name="aliuid", refs={String.class}, tree="[0]")
     private Output<String> aliuid;
 
     /**
@@ -298,7 +298,7 @@ public class Audit extends com.pulumi.resources.CustomResource {
      * Name of SLS log audit.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -312,7 +312,7 @@ public class Audit extends com.pulumi.resources.CustomResource {
      * Multi-account configuration, please fill in multiple aliuid.
      * 
      */
-    @Export(name="multiAccounts", type=List.class, parameters={String.class})
+    @Export(name="multiAccounts", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> multiAccounts;
 
     /**
@@ -326,7 +326,7 @@ public class Audit extends com.pulumi.resources.CustomResource {
      * Resource Directory type. Optional values are all or custom. If the value is custom, argument multi_account should be provided.
      * 
      */
-    @Export(name="resourceDirectoryType", type=String.class, parameters={})
+    @Export(name="resourceDirectoryType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceDirectoryType;
 
     /**
@@ -340,7 +340,7 @@ public class Audit extends com.pulumi.resources.CustomResource {
      * Log audit detailed configuration.
      * 
      */
-    @Export(name="variableMap", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="variableMap", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> variableMap;
 
     /**

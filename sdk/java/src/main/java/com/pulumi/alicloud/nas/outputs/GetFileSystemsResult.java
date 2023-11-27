@@ -176,16 +176,16 @@ public final class GetFileSystemsResult {
             return systems(List.of(systems));
         }
         public GetFileSystemsResult build() {
-            final var o = new GetFileSystemsResult();
-            o.descriptionRegex = descriptionRegex;
-            o.descriptions = descriptions;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.protocolType = protocolType;
-            o.storageType = storageType;
-            o.systems = systems;
-            return o;
+            final var _resultValue = new GetFileSystemsResult();
+            _resultValue.descriptionRegex = descriptionRegex;
+            _resultValue.descriptions = descriptions;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.protocolType = protocolType;
+            _resultValue.storageType = storageType;
+            _resultValue.systems = systems;
+            return _resultValue;
         }
     }
 }

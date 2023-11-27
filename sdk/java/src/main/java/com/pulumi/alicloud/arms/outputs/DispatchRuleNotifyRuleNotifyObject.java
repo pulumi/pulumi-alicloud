@@ -84,11 +84,11 @@ public final class DispatchRuleNotifyRuleNotifyObject {
             return this;
         }
         public DispatchRuleNotifyRuleNotifyObject build() {
-            final var o = new DispatchRuleNotifyRuleNotifyObject();
-            o.name = name;
-            o.notifyObjectId = notifyObjectId;
-            o.notifyType = notifyType;
-            return o;
+            final var _resultValue = new DispatchRuleNotifyRuleNotifyObject();
+            _resultValue.name = name;
+            _resultValue.notifyObjectId = notifyObjectId;
+            _resultValue.notifyType = notifyType;
+            return _resultValue;
         }
     }
 }

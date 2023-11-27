@@ -71,12 +71,12 @@ public final class GetDomainsDomainRecordLine {
             return this;
         }
         public GetDomainsDomainRecordLine build() {
-            final var o = new GetDomainsDomainRecordLine();
-            o.fatherCode = fatherCode;
-            o.lineCode = lineCode;
-            o.lineDisplayName = lineDisplayName;
-            o.lineName = lineName;
-            return o;
+            final var _resultValue = new GetDomainsDomainRecordLine();
+            _resultValue.fatherCode = fatherCode;
+            _resultValue.lineCode = lineCode;
+            _resultValue.lineDisplayName = lineDisplayName;
+            _resultValue.lineName = lineName;
+            return _resultValue;
         }
     }
 }

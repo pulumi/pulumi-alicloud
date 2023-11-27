@@ -542,35 +542,35 @@ public final class GetBackupPlansPlan {
             return this;
         }
         public GetBackupPlansPlan build() {
-            final var o = new GetBackupPlansPlan();
-            o.backupGatewayId = backupGatewayId;
-            o.backupMethod = backupMethod;
-            o.backupObjects = backupObjects;
-            o.backupPeriod = backupPeriod;
-            o.backupPlanId = backupPlanId;
-            o.backupPlanName = backupPlanName;
-            o.backupRetentionPeriod = backupRetentionPeriod;
-            o.backupStartTime = backupStartTime;
-            o.backupStorageType = backupStorageType;
-            o.crossAliyunId = crossAliyunId;
-            o.crossRoleName = crossRoleName;
-            o.databaseType = databaseType;
-            o.duplicationArchivePeriod = duplicationArchivePeriod;
-            o.duplicationInfrequentAccessPeriod = duplicationInfrequentAccessPeriod;
-            o.enableBackupLog = enableBackupLog;
-            o.id = id;
-            o.instanceClass = instanceClass;
-            o.ossBucketName = ossBucketName;
-            o.paymentType = paymentType;
-            o.resourceGroupId = resourceGroupId;
-            o.sourceEndpointDatabaseName = sourceEndpointDatabaseName;
-            o.sourceEndpointInstanceId = sourceEndpointInstanceId;
-            o.sourceEndpointInstanceType = sourceEndpointInstanceType;
-            o.sourceEndpointRegion = sourceEndpointRegion;
-            o.sourceEndpointSid = sourceEndpointSid;
-            o.sourceEndpointUserName = sourceEndpointUserName;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBackupPlansPlan();
+            _resultValue.backupGatewayId = backupGatewayId;
+            _resultValue.backupMethod = backupMethod;
+            _resultValue.backupObjects = backupObjects;
+            _resultValue.backupPeriod = backupPeriod;
+            _resultValue.backupPlanId = backupPlanId;
+            _resultValue.backupPlanName = backupPlanName;
+            _resultValue.backupRetentionPeriod = backupRetentionPeriod;
+            _resultValue.backupStartTime = backupStartTime;
+            _resultValue.backupStorageType = backupStorageType;
+            _resultValue.crossAliyunId = crossAliyunId;
+            _resultValue.crossRoleName = crossRoleName;
+            _resultValue.databaseType = databaseType;
+            _resultValue.duplicationArchivePeriod = duplicationArchivePeriod;
+            _resultValue.duplicationInfrequentAccessPeriod = duplicationInfrequentAccessPeriod;
+            _resultValue.enableBackupLog = enableBackupLog;
+            _resultValue.id = id;
+            _resultValue.instanceClass = instanceClass;
+            _resultValue.ossBucketName = ossBucketName;
+            _resultValue.paymentType = paymentType;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.sourceEndpointDatabaseName = sourceEndpointDatabaseName;
+            _resultValue.sourceEndpointInstanceId = sourceEndpointInstanceId;
+            _resultValue.sourceEndpointInstanceType = sourceEndpointInstanceType;
+            _resultValue.sourceEndpointRegion = sourceEndpointRegion;
+            _resultValue.sourceEndpointSid = sourceEndpointSid;
+            _resultValue.sourceEndpointUserName = sourceEndpointUserName;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

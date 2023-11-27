@@ -68,10 +68,10 @@ public final class NestServiceInstanceCommodity {
             return this;
         }
         public NestServiceInstanceCommodity build() {
-            final var o = new NestServiceInstanceCommodity();
-            o.payPeriod = payPeriod;
-            o.payPeriodUnit = payPeriodUnit;
-            return o;
+            final var _resultValue = new NestServiceInstanceCommodity();
+            _resultValue.payPeriod = payPeriod;
+            _resultValue.payPeriodUnit = payPeriodUnit;
+            return _resultValue;
         }
     }
 }

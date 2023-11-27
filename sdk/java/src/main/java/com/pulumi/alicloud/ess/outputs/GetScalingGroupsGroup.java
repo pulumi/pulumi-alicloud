@@ -561,35 +561,35 @@ public final class GetScalingGroupsGroup {
             return vswitchIds(List.of(vswitchIds));
         }
         public GetScalingGroupsGroup build() {
-            final var o = new GetScalingGroupsGroup();
-            o.activeCapacity = activeCapacity;
-            o.activeScalingConfiguration = activeScalingConfiguration;
-            o.cooldownTime = cooldownTime;
-            o.creationTime = creationTime;
-            o.dbInstanceIds = dbInstanceIds;
-            o.groupDeletionProtection = groupDeletionProtection;
-            o.healthCheckType = healthCheckType;
-            o.id = id;
-            o.launchTemplateId = launchTemplateId;
-            o.launchTemplateVersion = launchTemplateVersion;
-            o.lifecycleState = lifecycleState;
-            o.loadBalancerIds = loadBalancerIds;
-            o.maxSize = maxSize;
-            o.minSize = minSize;
-            o.modificationTime = modificationTime;
-            o.name = name;
-            o.pendingCapacity = pendingCapacity;
-            o.regionId = regionId;
-            o.removalPolicies = removalPolicies;
-            o.removingCapacity = removingCapacity;
-            o.suspendedProcesses = suspendedProcesses;
-            o.tags = tags;
-            o.totalCapacity = totalCapacity;
-            o.totalInstanceCount = totalInstanceCount;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.vswitchIds = vswitchIds;
-            return o;
+            final var _resultValue = new GetScalingGroupsGroup();
+            _resultValue.activeCapacity = activeCapacity;
+            _resultValue.activeScalingConfiguration = activeScalingConfiguration;
+            _resultValue.cooldownTime = cooldownTime;
+            _resultValue.creationTime = creationTime;
+            _resultValue.dbInstanceIds = dbInstanceIds;
+            _resultValue.groupDeletionProtection = groupDeletionProtection;
+            _resultValue.healthCheckType = healthCheckType;
+            _resultValue.id = id;
+            _resultValue.launchTemplateId = launchTemplateId;
+            _resultValue.launchTemplateVersion = launchTemplateVersion;
+            _resultValue.lifecycleState = lifecycleState;
+            _resultValue.loadBalancerIds = loadBalancerIds;
+            _resultValue.maxSize = maxSize;
+            _resultValue.minSize = minSize;
+            _resultValue.modificationTime = modificationTime;
+            _resultValue.name = name;
+            _resultValue.pendingCapacity = pendingCapacity;
+            _resultValue.regionId = regionId;
+            _resultValue.removalPolicies = removalPolicies;
+            _resultValue.removingCapacity = removingCapacity;
+            _resultValue.suspendedProcesses = suspendedProcesses;
+            _resultValue.tags = tags;
+            _resultValue.totalCapacity = totalCapacity;
+            _resultValue.totalInstanceCount = totalInstanceCount;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.vswitchIds = vswitchIds;
+            return _resultValue;
         }
     }
 }

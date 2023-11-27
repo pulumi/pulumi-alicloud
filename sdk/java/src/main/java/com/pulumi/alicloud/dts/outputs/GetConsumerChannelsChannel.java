@@ -161,15 +161,15 @@ public final class GetConsumerChannelsChannel {
             return this;
         }
         public GetConsumerChannelsChannel build() {
-            final var o = new GetConsumerChannelsChannel();
-            o.consumerGroupId = consumerGroupId;
-            o.consumerGroupName = consumerGroupName;
-            o.consumerGroupUserName = consumerGroupUserName;
-            o.consumptionCheckpoint = consumptionCheckpoint;
-            o.id = id;
-            o.messageDelay = messageDelay;
-            o.unconsumedData = unconsumedData;
-            return o;
+            final var _resultValue = new GetConsumerChannelsChannel();
+            _resultValue.consumerGroupId = consumerGroupId;
+            _resultValue.consumerGroupName = consumerGroupName;
+            _resultValue.consumerGroupUserName = consumerGroupUserName;
+            _resultValue.consumptionCheckpoint = consumptionCheckpoint;
+            _resultValue.id = id;
+            _resultValue.messageDelay = messageDelay;
+            _resultValue.unconsumedData = unconsumedData;
+            return _resultValue;
         }
     }
 }

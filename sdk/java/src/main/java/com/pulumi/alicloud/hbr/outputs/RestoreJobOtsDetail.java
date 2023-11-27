@@ -48,9 +48,9 @@ public final class RestoreJobOtsDetail {
             return this;
         }
         public RestoreJobOtsDetail build() {
-            final var o = new RestoreJobOtsDetail();
-            o.overwriteExisting = overwriteExisting;
-            return o;
+            final var _resultValue = new RestoreJobOtsDetail();
+            _resultValue.overwriteExisting = overwriteExisting;
+            return _resultValue;
         }
     }
 }

@@ -35,7 +35,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * Special activity ID. This parameter is not required.
      * 
      */
-    @Export(name="activityId", type=String.class, parameters={})
+    @Export(name="activityId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> activityId;
 
     /**
@@ -49,7 +49,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
      * 
      */
-    @Export(name="addressName", type=String.class, parameters={})
+    @Export(name="addressName", refs={String.class}, tree="[0]")
     private Output<String> addressName;
 
     /**
@@ -63,7 +63,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * Whether to pay automatically. Valid values: `true` and `false`. Default value: `true`. When `auto_pay` is `true`, The order will be automatically paid. When `auto_pay` is `false`, The order needs to go to the order center to complete the payment. **NOTE:** When `payment_type` is `Subscription`, this parameter is valid.
      * 
      */
-    @Export(name="autoPay", type=Boolean.class, parameters={})
+    @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
     /**
@@ -77,7 +77,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * The maximum bandwidth of the EIP. Valid values: `1` to `200`. Unit: Mbit/s. Default value: `5`.
      * 
      */
-    @Export(name="bandwidth", type=String.class, parameters={})
+    @Export(name="bandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidth;
 
     /**
@@ -91,7 +91,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * The time when the EIP was created.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -107,7 +107,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * - **false**: not enabled.
      * 
      */
-    @Export(name="deletionProtection", type=Boolean.class, parameters={})
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deletionProtection;
 
     /**
@@ -123,7 +123,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * The description of the EIP.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -139,7 +139,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * - **ON**: enabled.
      * 
      */
-    @Export(name="highDefinitionMonitorLogStatus", type=String.class, parameters={})
+    @Export(name="highDefinitionMonitorLogStatus", refs={String.class}, tree="[0]")
     private Output<String> highDefinitionMonitorLogStatus;
 
     /**
@@ -159,7 +159,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead. */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
     /**
@@ -175,7 +175,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * - **PayByTraffic**: Billing by traffic.
      * 
      */
-    @Export(name="internetChargeType", type=String.class, parameters={})
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output<String> internetChargeType;
 
     /**
@@ -191,7 +191,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * The IP address of the EIP.
      * 
      */
-    @Export(name="ipAddress", type=String.class, parameters={})
+    @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**
@@ -205,7 +205,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * The line type. You can set this parameter only when you create a `PayAsYouGo` EIP. Valid values:
      * 
      */
-    @Export(name="isp", type=String.class, parameters={})
+    @Export(name="isp", refs={String.class}, tree="[0]")
     private Output<String> isp;
 
     /**
@@ -219,7 +219,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * The Name of the logging service LogProject. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
      * 
      */
-    @Export(name="logProject", type=String.class, parameters={})
+    @Export(name="logProject", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logProject;
 
     /**
@@ -233,7 +233,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * The Name of the logging service LogStore. Current parameter is required when configuring high precision second-by-second monitoring for EIP.
      * 
      */
-    @Export(name="logStore", type=String.class, parameters={})
+    @Export(name="logStore", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logStore;
 
     /**
@@ -251,7 +251,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -265,7 +265,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * The type of the network. Valid value is `public` (Internet).
      * 
      */
-    @Export(name="netmode", type=String.class, parameters={})
+    @Export(name="netmode", refs={String.class}, tree="[0]")
     private Output<String> netmode;
 
     /**
@@ -279,7 +279,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * The billing method of the EIP. Valid values:  `Subscription`, `PayAsYouGo`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -293,7 +293,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * When the PricingCycle is set to Month, the Period value ranges from 1 to 9.When the PricingCycle is set to Year, the Period range is 1 to 5.If the value of the InstanceChargeType parameter is PrePaid, this parameter is required. If the value of the InstanceChargeType parameter is PostPaid, this parameter is not filled in.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -307,7 +307,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * Value:Month (default): Pay monthly.Year: Pay per Year.This parameter is required when the value of the InstanceChargeType parameter is Subscription(PrePaid). This parameter is optional when the value of the InstanceChargeType parameter is PayAsYouGo(PostPaid).
      * 
      */
-    @Export(name="pricingCycle", type=String.class, parameters={})
+    @Export(name="pricingCycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pricingCycle;
 
     /**
@@ -321,7 +321,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * The ID of the IP address pool to which the EIP belongs.
      * 
      */
-    @Export(name="publicIpAddressPoolId", type=String.class, parameters={})
+    @Export(name="publicIpAddressPoolId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> publicIpAddressPoolId;
 
     /**
@@ -335,7 +335,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -351,7 +351,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * - When **antidos_enhanced** is returned, it indicates DDoS protection (enhanced version).
      * 
      */
-    @Export(name="securityProtectionTypes", type=List.class, parameters={String.class})
+    @Export(name="securityProtectionTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityProtectionTypes;
 
     /**
@@ -367,7 +367,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * The status of the EIP.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -381,7 +381,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * The tag of the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -397,7 +397,7 @@ public class EipAddress extends com.pulumi.resources.CustomResource {
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     /**

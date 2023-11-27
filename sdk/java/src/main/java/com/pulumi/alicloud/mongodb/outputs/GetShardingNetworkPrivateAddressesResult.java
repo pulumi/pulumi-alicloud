@@ -108,14 +108,14 @@ public final class GetShardingNetworkPrivateAddressesResult {
             return this;
         }
         public GetShardingNetworkPrivateAddressesResult build() {
-            final var o = new GetShardingNetworkPrivateAddressesResult();
-            o.addresses = addresses;
-            o.dbInstanceId = dbInstanceId;
-            o.id = id;
-            o.nodeId = nodeId;
-            o.outputFile = outputFile;
-            o.role = role;
-            return o;
+            final var _resultValue = new GetShardingNetworkPrivateAddressesResult();
+            _resultValue.addresses = addresses;
+            _resultValue.dbInstanceId = dbInstanceId;
+            _resultValue.id = id;
+            _resultValue.nodeId = nodeId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.role = role;
+            return _resultValue;
         }
     }
 }

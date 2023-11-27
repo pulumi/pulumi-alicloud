@@ -48,9 +48,9 @@ public final class ClusterAdditionalVolumeRole {
             return this;
         }
         public ClusterAdditionalVolumeRole build() {
-            final var o = new ClusterAdditionalVolumeRole();
-            o.name = name;
-            return o;
+            final var _resultValue = new ClusterAdditionalVolumeRole();
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

@@ -164,7 +164,7 @@ public class Ingress extends com.pulumi.resources.CustomResource {
      * The certificate ID of the HTTPS listener. The `cert_id` takes effect only when `load_balance_type` is set to `clb`.
      * 
      */
-    @Export(name="certId", type=String.class, parameters={})
+    @Export(name="certId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certId;
 
     /**
@@ -178,7 +178,7 @@ public class Ingress extends com.pulumi.resources.CustomResource {
      * The certificate IDs of the HTTPS listener, and multiple certificate IDs are separated by commas. The `cert_ids` takes effect only when `load_balance_type` is set to `alb`.
      * 
      */
-    @Export(name="certIds", type=String.class, parameters={})
+    @Export(name="certIds", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> certIds;
 
     /**
@@ -192,7 +192,7 @@ public class Ingress extends com.pulumi.resources.CustomResource {
      * Default Rule. See `default_rule` below.
      * 
      */
-    @Export(name="defaultRule", type=IngressDefaultRule.class, parameters={})
+    @Export(name="defaultRule", refs={IngressDefaultRule.class}, tree="[0]")
     private Output</* @Nullable */ IngressDefaultRule> defaultRule;
 
     /**
@@ -206,7 +206,7 @@ public class Ingress extends com.pulumi.resources.CustomResource {
      * Description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -220,7 +220,7 @@ public class Ingress extends com.pulumi.resources.CustomResource {
      * SLB listening port.
      * 
      */
-    @Export(name="listenerPort", type=Integer.class, parameters={})
+    @Export(name="listenerPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> listenerPort;
 
     /**
@@ -234,7 +234,7 @@ public class Ingress extends com.pulumi.resources.CustomResource {
      * The protocol that is used to forward requests. Default value: `HTTP`. Valid values: `HTTP`, `HTTPS`.
      * 
      */
-    @Export(name="listenerProtocol", type=String.class, parameters={})
+    @Export(name="listenerProtocol", refs={String.class}, tree="[0]")
     private Output<String> listenerProtocol;
 
     /**
@@ -248,7 +248,7 @@ public class Ingress extends com.pulumi.resources.CustomResource {
      * The type of the SLB instance. Default value: `clb`. Valid values: `clb`, `alb`.
      * 
      */
-    @Export(name="loadBalanceType", type=String.class, parameters={})
+    @Export(name="loadBalanceType", refs={String.class}, tree="[0]")
     private Output<String> loadBalanceType;
 
     /**
@@ -262,7 +262,7 @@ public class Ingress extends com.pulumi.resources.CustomResource {
      * The ID of Namespace. It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`.
      * 
      */
-    @Export(name="namespaceId", type=String.class, parameters={})
+    @Export(name="namespaceId", refs={String.class}, tree="[0]")
     private Output<String> namespaceId;
 
     /**
@@ -276,7 +276,7 @@ public class Ingress extends com.pulumi.resources.CustomResource {
      * Forwarding rules. Forward traffic to the specified application according to the domain name and path. See `rules` below.
      * 
      */
-    @Export(name="rules", type=List.class, parameters={IngressRule.class})
+    @Export(name="rules", refs={List.class,IngressRule.class}, tree="[0,1]")
     private Output<List<IngressRule>> rules;
 
     /**
@@ -290,7 +290,7 @@ public class Ingress extends com.pulumi.resources.CustomResource {
      * SLB ID.
      * 
      */
-    @Export(name="slbId", type=String.class, parameters={})
+    @Export(name="slbId", refs={String.class}, tree="[0]")
     private Output<String> slbId;
 
     /**

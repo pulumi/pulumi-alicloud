@@ -37,7 +37,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * Network Rules in JSON struct.
      * 
      */
-    @Export(name="accessControlRules", type=String.class, parameters={})
+    @Export(name="accessControlRules", refs={String.class}, tree="[0]")
     private Output<String> accessControlRules;
 
     /**
@@ -51,7 +51,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * Description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -65,7 +65,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * KMS instance .
      * 
      */
-    @Export(name="kmsInstanceId", type=String.class, parameters={})
+    @Export(name="kmsInstanceId", refs={String.class}, tree="[0]")
     private Output<String> kmsInstanceId;
 
     /**
@@ -79,7 +79,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * Allowed permissions (RBAC)Optional values:&#34;RbacPermission/Template/CryptoServiceKeyUser&#34; and &#34;RbacPermission/Template/CryptoServiceSecretUser&#34;.
      * 
      */
-    @Export(name="permissions", type=List.class, parameters={String.class})
+    @Export(name="permissions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> permissions;
 
     /**
@@ -93,7 +93,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * Policy Name.
      * 
      */
-    @Export(name="policyName", type=String.class, parameters={})
+    @Export(name="policyName", refs={String.class}, tree="[0]")
     private Output<String> policyName;
 
     /**
@@ -107,7 +107,7 @@ public class Policy extends com.pulumi.resources.CustomResource {
      * The resources that the permission policy allows to access.Use &#34;key/${KeyId}&#34; or &#34;key/*&#34;  to specify a key or all keys.Use &#34;secret/${SecretName}&#34; or &#34;secret/*&#34; to specify a secret or all secrets.
      * 
      */
-    @Export(name="resources", type=List.class, parameters={String.class})
+    @Export(name="resources", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> resources;
 
     /**

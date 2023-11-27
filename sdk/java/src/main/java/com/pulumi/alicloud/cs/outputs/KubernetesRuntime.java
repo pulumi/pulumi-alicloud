@@ -67,10 +67,10 @@ public final class KubernetesRuntime {
             return this;
         }
         public KubernetesRuntime build() {
-            final var o = new KubernetesRuntime();
-            o.name = name;
-            o.version = version;
-            return o;
+            final var _resultValue = new KubernetesRuntime();
+            _resultValue.name = name;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

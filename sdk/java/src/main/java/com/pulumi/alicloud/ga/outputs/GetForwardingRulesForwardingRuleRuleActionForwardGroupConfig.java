@@ -42,9 +42,9 @@ public final class GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig 
             return serverGroupTuples(List.of(serverGroupTuples));
         }
         public GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig build() {
-            final var o = new GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig();
-            o.serverGroupTuples = serverGroupTuples;
-            return o;
+            final var _resultValue = new GetForwardingRulesForwardingRuleRuleActionForwardGroupConfig();
+            _resultValue.serverGroupTuples = serverGroupTuples;
+            return _resultValue;
         }
     }
 }

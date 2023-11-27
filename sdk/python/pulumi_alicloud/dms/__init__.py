@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .enterprise_authority_template import *
 from .enterprise_instance import *
 from .enterprise_logic_database import *
 from .enterprise_proxy import *

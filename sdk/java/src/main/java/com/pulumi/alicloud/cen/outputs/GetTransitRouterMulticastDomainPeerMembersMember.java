@@ -122,13 +122,13 @@ public final class GetTransitRouterMulticastDomainPeerMembersMember {
             return this;
         }
         public GetTransitRouterMulticastDomainPeerMembersMember build() {
-            final var o = new GetTransitRouterMulticastDomainPeerMembersMember();
-            o.groupIpAddress = groupIpAddress;
-            o.id = id;
-            o.peerTransitRouterMulticastDomainId = peerTransitRouterMulticastDomainId;
-            o.status = status;
-            o.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
-            return o;
+            final var _resultValue = new GetTransitRouterMulticastDomainPeerMembersMember();
+            _resultValue.groupIpAddress = groupIpAddress;
+            _resultValue.id = id;
+            _resultValue.peerTransitRouterMulticastDomainId = peerTransitRouterMulticastDomainId;
+            _resultValue.status = status;
+            _resultValue.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
+            return _resultValue;
         }
     }
 }

@@ -32,43 +32,43 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead. */
-    @Export(name="availabilityZone", type=String.class, parameters={})
+    @Export(name="availabilityZone", refs={String.class}, tree="[0]")
     private Output<String> availabilityZone;
 
     public Output<String> availabilityZone() {
         return this.availabilityZone;
     }
-    @Export(name="cidrBlock", type=String.class, parameters={})
+    @Export(name="cidrBlock", refs={String.class}, tree="[0]")
     private Output<String> cidrBlock;
 
     public Output<String> cidrBlock() {
         return this.cidrBlock;
     }
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     public Output<String> createTime() {
         return this.createTime;
     }
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="enableIpv6", type=Boolean.class, parameters={})
+    @Export(name="enableIpv6", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableIpv6;
 
     public Output<Optional<Boolean>> enableIpv6() {
         return Codegen.optional(this.enableIpv6);
     }
-    @Export(name="ipv6CidrBlock", type=String.class, parameters={})
+    @Export(name="ipv6CidrBlock", refs={String.class}, tree="[0]")
     private Output<String> ipv6CidrBlock;
 
     public Output<String> ipv6CidrBlock() {
         return this.ipv6CidrBlock;
     }
-    @Export(name="ipv6CidrBlockMask", type=Integer.class, parameters={})
+    @Export(name="ipv6CidrBlockMask", refs={Integer.class}, tree="[0]")
     private Output<Integer> ipv6CidrBlockMask;
 
     public Output<Integer> ipv6CidrBlockMask() {
@@ -80,37 +80,37 @@ public class Subnet extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     public Output<String> status() {
         return this.status;
     }
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     public Output<String> vpcId() {
         return this.vpcId;
     }
-    @Export(name="vswitchName", type=String.class, parameters={})
+    @Export(name="vswitchName", refs={String.class}, tree="[0]")
     private Output<String> vswitchName;
 
     public Output<String> vswitchName() {
         return this.vswitchName;
     }
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     public Output<String> zoneId() {

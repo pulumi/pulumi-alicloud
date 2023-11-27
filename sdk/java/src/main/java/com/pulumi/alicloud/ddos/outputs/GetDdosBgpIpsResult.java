@@ -145,17 +145,17 @@ public final class GetDdosBgpIpsResult {
             return this;
         }
         public GetDdosBgpIpsResult build() {
-            final var o = new GetDdosBgpIpsResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.ips = ips;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.productName = productName;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDdosBgpIpsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.ips = ips;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.productName = productName;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

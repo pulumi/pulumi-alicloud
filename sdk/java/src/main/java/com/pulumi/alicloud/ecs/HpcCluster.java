@@ -68,7 +68,7 @@ public class HpcCluster extends com.pulumi.resources.CustomResource {
      * The description of ECS Hpc Cluster.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -82,7 +82,7 @@ public class HpcCluster extends com.pulumi.resources.CustomResource {
      * The name of ECS Hpc Cluster.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

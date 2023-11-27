@@ -532,35 +532,35 @@ public final class GetSnapshotsSnapshot {
             return this;
         }
         public GetSnapshotsSnapshot build() {
-            final var o = new GetSnapshotsSnapshot();
-            o.actualBytes = actualBytes;
-            o.actualItems = actualItems;
-            o.backupType = backupType;
-            o.bucket = bucket;
-            o.bytesDone = bytesDone;
-            o.bytesTotal = bytesTotal;
-            o.clientId = clientId;
-            o.completeTime = completeTime;
-            o.createTime = createTime;
-            o.createdTime = createdTime;
-            o.errorFile = errorFile;
-            o.fileSystemId = fileSystemId;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.itemsDone = itemsDone;
-            o.itemsTotal = itemsTotal;
-            o.jobId = jobId;
-            o.parentSnapshotHash = parentSnapshotHash;
-            o.path = path;
-            o.prefix = prefix;
-            o.retention = retention;
-            o.snapshotHash = snapshotHash;
-            o.snapshotId = snapshotId;
-            o.sourceType = sourceType;
-            o.startTime = startTime;
-            o.status = status;
-            o.updatedTime = updatedTime;
-            return o;
+            final var _resultValue = new GetSnapshotsSnapshot();
+            _resultValue.actualBytes = actualBytes;
+            _resultValue.actualItems = actualItems;
+            _resultValue.backupType = backupType;
+            _resultValue.bucket = bucket;
+            _resultValue.bytesDone = bytesDone;
+            _resultValue.bytesTotal = bytesTotal;
+            _resultValue.clientId = clientId;
+            _resultValue.completeTime = completeTime;
+            _resultValue.createTime = createTime;
+            _resultValue.createdTime = createdTime;
+            _resultValue.errorFile = errorFile;
+            _resultValue.fileSystemId = fileSystemId;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.itemsDone = itemsDone;
+            _resultValue.itemsTotal = itemsTotal;
+            _resultValue.jobId = jobId;
+            _resultValue.parentSnapshotHash = parentSnapshotHash;
+            _resultValue.path = path;
+            _resultValue.prefix = prefix;
+            _resultValue.retention = retention;
+            _resultValue.snapshotHash = snapshotHash;
+            _resultValue.snapshotId = snapshotId;
+            _resultValue.sourceType = sourceType;
+            _resultValue.startTime = startTime;
+            _resultValue.status = status;
+            _resultValue.updatedTime = updatedTime;
+            return _resultValue;
         }
     }
 }

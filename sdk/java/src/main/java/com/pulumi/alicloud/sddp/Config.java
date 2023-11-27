@@ -69,7 +69,7 @@ public class Config extends com.pulumi.resources.CustomResource {
      * Abnormal Alarm General Configuration Module by Using the Encoding. Valid values: `access_failed_cnt`, `access_permission_exprie_max_days`, `log_datasize_avg_days`.
      * 
      */
-    @Export(name="code", type=String.class, parameters={})
+    @Export(name="code", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> code;
 
     /**
@@ -83,7 +83,7 @@ public class Config extends com.pulumi.resources.CustomResource {
      * Abnormal Alarm General Description of the Configuration Item.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -97,7 +97,7 @@ public class Config extends com.pulumi.resources.CustomResource {
      * The language of the request and response. Valid values: `zh`,`en`.
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
@@ -111,7 +111,7 @@ public class Config extends com.pulumi.resources.CustomResource {
      * The Specified Exception Alarm Generic by Using the Value. Code Different Values for This Parameter the Specific Meaning of Different:
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> value;
 
     /**

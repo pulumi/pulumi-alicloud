@@ -151,14 +151,14 @@ public final class RuleTarget {
             return this;
         }
         public RuleTarget build() {
-            final var o = new RuleTarget();
-            o.deadLetterQueue = deadLetterQueue;
-            o.endpoint = endpoint;
-            o.paramLists = paramLists;
-            o.pushRetryStrategy = pushRetryStrategy;
-            o.targetId = targetId;
-            o.type = type;
-            return o;
+            final var _resultValue = new RuleTarget();
+            _resultValue.deadLetterQueue = deadLetterQueue;
+            _resultValue.endpoint = endpoint;
+            _resultValue.paramLists = paramLists;
+            _resultValue.pushRetryStrategy = pushRetryStrategy;
+            _resultValue.targetId = targetId;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

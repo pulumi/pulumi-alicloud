@@ -143,14 +143,14 @@ public final class GetAccountDeletionCheckTaskResult {
             return this;
         }
         public GetAccountDeletionCheckTaskResult build() {
-            final var o = new GetAccountDeletionCheckTaskResult();
-            o.abandonAbleChecks = abandonAbleChecks;
-            o.accountId = accountId;
-            o.allowDelete = allowDelete;
-            o.id = id;
-            o.notAllowReasons = notAllowReasons;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAccountDeletionCheckTaskResult();
+            _resultValue.abandonAbleChecks = abandonAbleChecks;
+            _resultValue.accountId = accountId;
+            _resultValue.allowDelete = allowDelete;
+            _resultValue.id = id;
+            _resultValue.notAllowReasons = notAllowReasons;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

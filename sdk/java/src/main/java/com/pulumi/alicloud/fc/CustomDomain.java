@@ -183,7 +183,7 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
      * The account id.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -197,7 +197,7 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
      * The api version of Function Compute.
      * 
      */
-    @Export(name="apiVersion", type=String.class, parameters={})
+    @Export(name="apiVersion", refs={String.class}, tree="[0]")
     private Output<String> apiVersion;
 
     /**
@@ -211,7 +211,7 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
      * The configuration of HTTPS certificate.See `cert_config` below.
      * 
      */
-    @Export(name="certConfig", type=CustomDomainCertConfig.class, parameters={})
+    @Export(name="certConfig", refs={CustomDomainCertConfig.class}, tree="[0]")
     private Output</* @Nullable */ CustomDomainCertConfig> certConfig;
 
     /**
@@ -225,7 +225,7 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
      * The date this resource was created.
      * 
      */
-    @Export(name="createdTime", type=String.class, parameters={})
+    @Export(name="createdTime", refs={String.class}, tree="[0]")
     private Output<String> createdTime;
 
     /**
@@ -239,7 +239,7 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
      * The custom domain name. For example, &#34;example.com&#34;.
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
@@ -253,7 +253,7 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
      * The date this resource was last modified.
      * 
      */
-    @Export(name="lastModifiedTime", type=String.class, parameters={})
+    @Export(name="lastModifiedTime", refs={String.class}, tree="[0]")
     private Output<String> lastModifiedTime;
 
     /**
@@ -267,7 +267,7 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
      * The protocol, `HTTP` or `HTTP,HTTPS`.
      * 
      */
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
@@ -281,7 +281,7 @@ public class CustomDomain extends com.pulumi.resources.CustomResource {
      * The configuration of domain route, mapping the path and Function Compute function.See `route_config` below.
      * 
      */
-    @Export(name="routeConfigs", type=List.class, parameters={CustomDomainRouteConfig.class})
+    @Export(name="routeConfigs", refs={List.class,CustomDomainRouteConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CustomDomainRouteConfig>> routeConfigs;
 
     /**

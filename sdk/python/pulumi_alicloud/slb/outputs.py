@@ -295,6 +295,12 @@ class ServerGroupServer(dict):
                  server_ids: Sequence[str],
                  type: Optional[str] = None,
                  weight: Optional[int] = None):
+        """
+        :param int port: The port used by the backend server. Valid value range: [1-65535].
+        :param Sequence[str] server_ids: A list backend server ID (ECS instance ID).
+        :param str type: Type of the backend server. Valid value ecs, eni. Default to eni.
+        :param int weight: Weight of the backend server. Valid value range: [0-100]. Default to 100.
+        """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "server_ids", server_ids)
         if type is not None:
@@ -305,21 +311,33 @@ class ServerGroupServer(dict):
     @property
     @pulumi.getter
     def port(self) -> int:
+        """
+        The port used by the backend server. Valid value range: [1-65535].
+        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="serverIds")
     def server_ids(self) -> Sequence[str]:
+        """
+        A list backend server ID (ECS instance ID).
+        """
         return pulumi.get(self, "server_ids")
 
     @property
     @pulumi.getter
     def type(self) -> Optional[str]:
+        """
+        Type of the backend server. Valid value ecs, eni. Default to eni.
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def weight(self) -> Optional[int]:
+        """
+        Weight of the backend server. Valid value range: [0-100]. Default to 100.
+        """
         return pulumi.get(self, "weight")
 
 

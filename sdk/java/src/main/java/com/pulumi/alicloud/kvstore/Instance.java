@@ -36,7 +36,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to renewal a KVStore DBInstance automatically or not. It is valid when payment_type is `PrePaid`. Default value: `false`.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
@@ -50,7 +50,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Auto-renewal period of an KVStore DBInstance, in the unit of the month. It is valid when payment_type is `PrePaid`. Valid values: [1~12]. Default value: `1`.
      * 
      */
-    @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
@@ -64,7 +64,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Specifies whether to use a coupon. Default value: `false`.
      * 
      */
-    @Export(name="autoUseCoupon", type=Boolean.class, parameters={})
+    @Export(name="autoUseCoupon", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoUseCoupon;
 
     /**
@@ -82,7 +82,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'availability_zone' has been deprecated from version 1.101.0. Use 'zone_id' instead. */
-    @Export(name="availabilityZone", type=String.class, parameters={})
+    @Export(name="availabilityZone", refs={String.class}, tree="[0]")
     private Output<String> availabilityZone;
 
     /**
@@ -96,7 +96,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the backup file of the source instance.
      * 
      */
-    @Export(name="backupId", type=String.class, parameters={})
+    @Export(name="backupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupId;
 
     /**
@@ -110,7 +110,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Backup period.
      * 
      */
-    @Export(name="backupPeriods", type=List.class, parameters={String.class})
+    @Export(name="backupPeriods", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> backupPeriods;
 
     /**
@@ -124,7 +124,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Backup time, the format is HH:mmZ-HH:mmZ (UTC time).
      * 
      */
-    @Export(name="backupTime", type=String.class, parameters={})
+    @Export(name="backupTime", refs={String.class}, tree="[0]")
     private Output<String> backupTime;
 
     /**
@@ -138,7 +138,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The bandwidth.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
@@ -152,7 +152,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the event or the business information.
      * 
      */
-    @Export(name="businessInfo", type=String.class, parameters={})
+    @Export(name="businessInfo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> businessInfo;
 
     /**
@@ -166,7 +166,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The storage capacity of the KVStore DBInstance. Unit: MB.
      * 
      */
-    @Export(name="capacity", type=Integer.class, parameters={})
+    @Export(name="capacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> capacity;
 
     /**
@@ -180,7 +180,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/doc-detail/61209.htm) .
      * 
      */
-    @Export(name="config", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="config", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> config;
 
     /**
@@ -194,7 +194,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Intranet connection address of the KVStore instance.
      * 
      */
-    @Export(name="connectionDomain", type=String.class, parameters={})
+    @Export(name="connectionDomain", refs={String.class}, tree="[0]")
     private Output<String> connectionDomain;
 
     /**
@@ -220,7 +220,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'connection_string' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead. */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -246,7 +246,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'connection_string_prefix' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead. */
-    @Export(name="connectionStringPrefix", type=String.class, parameters={})
+    @Export(name="connectionStringPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> connectionStringPrefix;
 
     /**
@@ -260,7 +260,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The coupon code. Default value: `youhuiquan_promotion_option_id_for_blank`.
      * 
      */
-    @Export(name="couponNo", type=String.class, parameters={})
+    @Export(name="couponNo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> couponNo;
 
     /**
@@ -274,7 +274,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of KVStore DBInstance. It is a string of 2 to 256 characters.
      * 
      */
-    @Export(name="dbInstanceName", type=String.class, parameters={})
+    @Export(name="dbInstanceName", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceName;
 
     /**
@@ -288,7 +288,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
      * 
      */
-    @Export(name="dedicatedHostGroupId", type=String.class, parameters={})
+    @Export(name="dedicatedHostGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dedicatedHostGroupId;
 
     /**
@@ -302,7 +302,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Specifies whether to precheck the request. Valid values:
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -317,7 +317,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * or when the major version is upgraded, or when the instance class is upgraded. Valid values:
      * 
      */
-    @Export(name="effectiveTime", type=String.class, parameters={})
+    @Export(name="effectiveTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> effectiveTime;
 
     /**
@@ -332,7 +332,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Turn on or off incremental backup. Valid values: `1`, `0`. Default value: `0`
      * 
      */
-    @Export(name="enableBackupLog", type=Integer.class, parameters={})
+    @Export(name="enableBackupLog", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> enableBackupLog;
 
     /**
@@ -350,7 +350,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'enable_public' has been deprecated from version 1.101.0. Please use resource 'alicloud_kvstore_connection' instead. */
-    @Export(name="enablePublic", type=Boolean.class, parameters={})
+    @Export(name="enablePublic", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enablePublic;
 
     /**
@@ -364,7 +364,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Custom key ID, which you can get by calling DescribeEncryptionKeyList.If this parameter is not passed, the key is automatically generated by the key management service. To create a custom key, you can call the CreateKey interface of the key management service.
      * 
      */
-    @Export(name="encryptionKey", type=String.class, parameters={})
+    @Export(name="encryptionKey", refs={String.class}, tree="[0]")
     private Output<String> encryptionKey;
 
     /**
@@ -378,7 +378,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Encryption algorithm, default AES-CTR-256.Note that this parameter is only available when the TDEStatus parameter is Enabled.
      * 
      */
-    @Export(name="encryptionName", type=String.class, parameters={})
+    @Export(name="encryptionName", refs={String.class}, tree="[0]")
     private Output<String> encryptionName;
 
     /**
@@ -392,7 +392,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The expiration time of the prepaid instance.
      * 
      */
-    @Export(name="endTime", type=String.class, parameters={})
+    @Export(name="endTime", refs={String.class}, tree="[0]")
     private Output<String> endTime;
 
     /**
@@ -407,7 +407,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * **NOTE:** When `instance_type = Memcache`, the `engine_version` only supports &#34;4.0&#34;.
      * 
      */
-    @Export(name="engineVersion", type=String.class, parameters={})
+    @Export(name="engineVersion", refs={String.class}, tree="[0]")
     private Output<String> engineVersion;
 
     /**
@@ -422,7 +422,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Specifies whether to forcibly change the type. Default value: `true`.
      * 
      */
-    @Export(name="forceUpgrade", type=Boolean.class, parameters={})
+    @Export(name="forceUpgrade", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceUpgrade;
 
     /**
@@ -436,7 +436,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to create a distributed cache. Default value: `false`.
      * 
      */
-    @Export(name="globalInstance", type=Boolean.class, parameters={})
+    @Export(name="globalInstance", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> globalInstance;
 
     /**
@@ -450,7 +450,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of distributed cache.
      * 
      */
-    @Export(name="globalInstanceId", type=String.class, parameters={})
+    @Export(name="globalInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> globalInstanceId;
 
     /**
@@ -468,7 +468,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'instance_charge_type' has been deprecated from version 1.101.0. Use 'payment_type' instead. */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
     /**
@@ -483,7 +483,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * or referring to help-docs [Instance type table](https://www.alibabacloud.com/help/doc-detail/26350.htm).
      * 
      */
-    @Export(name="instanceClass", type=String.class, parameters={})
+    @Export(name="instanceClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceClass;
 
     /**
@@ -502,7 +502,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field `instance_name` has been deprecated from version 1.101.0. Use `db_instance_name` instead. */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -516,7 +516,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to open the release protection.
      * 
      */
-    @Export(name="instanceReleaseProtection", type=Boolean.class, parameters={})
+    @Export(name="instanceReleaseProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> instanceReleaseProtection;
 
     /**
@@ -530,7 +530,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The engine type of the KVStore DBInstance. Valid values: `Redis` or `Memcache`. Default value: `Redis`.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceType;
 
     /**
@@ -544,7 +544,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
      * 
      */
-    @Export(name="kmsEncryptedPassword", type=String.class, parameters={})
+    @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
@@ -558,7 +558,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      */
-    @Export(name="kmsEncryptionContext", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="kmsEncryptionContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> kmsEncryptionContext;
 
     /**
@@ -572,7 +572,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The end time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
      * 
      */
-    @Export(name="maintainEndTime", type=String.class, parameters={})
+    @Export(name="maintainEndTime", refs={String.class}, tree="[0]")
     private Output<String> maintainEndTime;
 
     /**
@@ -586,7 +586,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The start time of the operation and maintenance time period of the KVStore DBInstance, in the format of HH:mmZ (UTC time).
      * 
      */
-    @Export(name="maintainStartTime", type=String.class, parameters={})
+    @Export(name="maintainStartTime", refs={String.class}, tree="[0]")
     private Output<String> maintainStartTime;
 
     /**
@@ -600,7 +600,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The method of modifying the whitelist. Valid values: `0`, `1` and `2`. Default value: `0`. `0` means overwrites the original whitelist. `1` means adds the IP addresses to the whitelist. `2` means deletes the IP addresses from the whitelist.
      * 
      */
-    @Export(name="modifyMode", type=Integer.class, parameters={})
+    @Export(name="modifyMode", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> modifyMode;
 
     /**
@@ -618,7 +618,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'node_type' has been deprecated from version 1.120.1 */
-    @Export(name="nodeType", type=String.class, parameters={})
+    @Export(name="nodeType", refs={String.class}, tree="[0]")
     private Output<String> nodeType;
 
     /**
@@ -632,7 +632,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Specifies a change type when you change the configuration of a subscription instance. Valid values: `UPGRADE`, `DOWNGRADE`. Default value: `UPGRADE`. `UPGRADE` means upgrades the configuration of a subscription instance. `DOWNGRADE` means downgrades the configuration of a subscription instance.
      * 
      */
-    @Export(name="orderType", type=String.class, parameters={})
+    @Export(name="orderType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> orderType;
 
     /**
@@ -650,7 +650,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'parameters' has been deprecated from version 1.101.0. Use 'config' instead. */
-    @Export(name="parameters", type=List.class, parameters={InstanceParameter.class})
+    @Export(name="parameters", refs={List.class,InstanceParameter.class}, tree="[0,1]")
     private Output<List<InstanceParameter>> parameters;
 
     /**
@@ -664,7 +664,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The password of the KVStore DBInstance. The password that is used to connect to the instance. The password must be 8 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, special characters, and digits. Special characters include: `! @ # $ % ^ &amp; * ( ) _ + - =`
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -678,7 +678,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The billing method of the KVStore DBInstance. Valid values: `PrePaid`, `PostPaid`. Default value: `PostPaid`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -692,7 +692,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The duration that you will buy KVStore DBInstance (in month). It is valid when payment_type is `PrePaid`. Valid values: `[1~9]`, `12`, `24`, `36`.
      * 
      */
-    @Export(name="period", type=String.class, parameters={})
+    @Export(name="period", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> period;
 
     /**
@@ -706,7 +706,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * It has been deprecated from provider version 1.101.0 and resource `alicloud.kvstore.Connection` instead.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> port;
 
     /**
@@ -720,7 +720,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Private network connection port, used to modify the private network connection port.
      * 
      */
-    @Export(name="privateConnectionPort", type=String.class, parameters={})
+    @Export(name="privateConnectionPort", refs={String.class}, tree="[0]")
     private Output<String> privateConnectionPort;
 
     /**
@@ -734,7 +734,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Private network connection prefix, used to modify the private network connection address. Only supports updating private network connections for existing instance.
      * 
      */
-    @Export(name="privateConnectionPrefix", type=String.class, parameters={})
+    @Export(name="privateConnectionPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateConnectionPrefix;
 
     /**
@@ -748,7 +748,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The internal IP address of the instance.
      * 
      */
-    @Export(name="privateIp", type=String.class, parameters={})
+    @Export(name="privateIp", refs={String.class}, tree="[0]")
     private Output<String> privateIp;
 
     /**
@@ -762,7 +762,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Theoretical maximum QPS value.
      * 
      */
-    @Export(name="qps", type=Integer.class, parameters={})
+    @Export(name="qps", refs={Integer.class}, tree="[0]")
     private Output<Integer> qps;
 
     /**
@@ -776,7 +776,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of resource group which the resource belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -790,7 +790,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The point in time of a backup file.
      * 
      */
-    @Export(name="restoreTime", type=String.class, parameters={})
+    @Export(name="restoreTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> restoreTime;
 
     /**
@@ -804,7 +804,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Specify the global resource descriptor ARN (Alibaba Cloud Resource Name) information of the role to be authorized, and use the related key management services after the authorization is completed, in the format: `acs:ram::$accountID:role/$roleName`.
      * 
      */
-    @Export(name="roleArn", type=String.class, parameters={})
+    @Export(name="roleArn", refs={String.class}, tree="[0]")
     private Output<String> roleArn;
 
     /**
@@ -819,7 +819,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** If you specify this parameter, the master node and replica node of the instance can be deployed in different zones and disaster recovery is implemented across zones. The instance can withstand failures in data centers.
      * 
      */
-    @Export(name="secondaryZoneId", type=String.class, parameters={})
+    @Export(name="secondaryZoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secondaryZoneId;
 
     /**
@@ -834,7 +834,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of security groups.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityGroupId;
 
     /**
@@ -848,7 +848,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The value of this parameter is empty by default. The attribute of the whitelist group. The console does not display the whitelist group whose value of this parameter is hidden.
      * 
      */
-    @Export(name="securityIpGroupAttribute", type=String.class, parameters={})
+    @Export(name="securityIpGroupAttribute", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityIpGroupAttribute;
 
     /**
@@ -862,7 +862,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of the whitelist group.
      * 
      */
-    @Export(name="securityIpGroupName", type=String.class, parameters={})
+    @Export(name="securityIpGroupName", refs={String.class}, tree="[0]")
     private Output<String> securityIpGroupName;
 
     /**
@@ -876,7 +876,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The IP addresses in the whitelist group. The maximum number of IP addresses in the whitelist group is 1000.
      * 
      */
-    @Export(name="securityIps", type=List.class, parameters={String.class})
+    @Export(name="securityIps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityIps;
 
     /**
@@ -890,7 +890,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The number of data shards. This parameter is available only if you create a cluster instance that uses cloud disks. You can use this parameter to specify a custom number of data shards.
      * 
      */
-    @Export(name="shardCount", type=Integer.class, parameters={})
+    @Export(name="shardCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> shardCount;
 
     /**
@@ -904,7 +904,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the source instance.
      * 
      */
-    @Export(name="srcdbInstanceId", type=String.class, parameters={})
+    @Export(name="srcdbInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> srcdbInstanceId;
 
     /**
@@ -919,7 +919,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * **NOTE:** This functionality is supported by Cluster mode (Redis 2.8, 4.0, 5.0) and Standard mode( Redis 2.8 only).
      * 
      */
-    @Export(name="sslEnable", type=String.class, parameters={})
+    @Export(name="sslEnable", refs={String.class}, tree="[0]")
     private Output<String> sslEnable;
 
     /**
@@ -934,7 +934,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The status of KVStore DBInstance.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -948,7 +948,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -964,7 +964,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * your business. For more information, see [Enable TDE](https://www.alibabacloud.com/help/en/redis/user-guide/enable-tde).
      * 
      */
-    @Export(name="tdeStatus", type=String.class, parameters={})
+    @Export(name="tdeStatus", refs={String.class}, tree="[0]")
     private Output<String> tdeStatus;
 
     /**
@@ -980,7 +980,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Only meaningful if instance_type is `Redis` and network type is VPC. Valid values: `Close`, `Open`. Default value: `Open`. `Close` means the redis instance can be accessed without authentication. `Open` means authentication is required.
      * 
      */
-    @Export(name="vpcAuthMode", type=String.class, parameters={})
+    @Export(name="vpcAuthMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcAuthMode;
 
     /**
@@ -994,7 +994,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of VSwitch.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
@@ -1008,7 +1008,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the zone.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

@@ -73,10 +73,10 @@ public final class DispatchRuleNotifyRule {
             return notifyObjects(List.of(notifyObjects));
         }
         public DispatchRuleNotifyRule build() {
-            final var o = new DispatchRuleNotifyRule();
-            o.notifyChannels = notifyChannels;
-            o.notifyObjects = notifyObjects;
-            return o;
+            final var _resultValue = new DispatchRuleNotifyRule();
+            _resultValue.notifyChannels = notifyChannels;
+            _resultValue.notifyObjects = notifyObjects;
+            return _resultValue;
         }
     }
 }

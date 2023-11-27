@@ -86,11 +86,11 @@ public final class ImageCacheImageRegistryCredential {
             return this;
         }
         public ImageCacheImageRegistryCredential build() {
-            final var o = new ImageCacheImageRegistryCredential();
-            o.password = password;
-            o.server = server;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new ImageCacheImageRegistryCredential();
+            _resultValue.password = password;
+            _resultValue.server = server;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

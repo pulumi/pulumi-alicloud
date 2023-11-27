@@ -125,15 +125,15 @@ public final class GetGreyTagRoutesResult {
             return routes(List.of(routes));
         }
         public GetGreyTagRoutesResult build() {
-            final var o = new GetGreyTagRoutesResult();
-            o.appId = appId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.routes = routes;
-            return o;
+            final var _resultValue = new GetGreyTagRoutesResult();
+            _resultValue.appId = appId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.routes = routes;
+            return _resultValue;
         }
     }
 }

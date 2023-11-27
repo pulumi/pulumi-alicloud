@@ -259,20 +259,20 @@ public final class GetTopicsTopic {
             return this;
         }
         public GetTopicsTopic build() {
-            final var o = new GetTopicsTopic();
-            o.id = id;
-            o.independentNaming = independentNaming;
-            o.instanceId = instanceId;
-            o.messageType = messageType;
-            o.owner = owner;
-            o.perm = perm;
-            o.relation = relation;
-            o.relationName = relationName;
-            o.remark = remark;
-            o.tags = tags;
-            o.topic = topic;
-            o.topicName = topicName;
-            return o;
+            final var _resultValue = new GetTopicsTopic();
+            _resultValue.id = id;
+            _resultValue.independentNaming = independentNaming;
+            _resultValue.instanceId = instanceId;
+            _resultValue.messageType = messageType;
+            _resultValue.owner = owner;
+            _resultValue.perm = perm;
+            _resultValue.relation = relation;
+            _resultValue.relationName = relationName;
+            _resultValue.remark = remark;
+            _resultValue.tags = tags;
+            _resultValue.topic = topic;
+            _resultValue.topicName = topicName;
+            return _resultValue;
         }
     }
 }

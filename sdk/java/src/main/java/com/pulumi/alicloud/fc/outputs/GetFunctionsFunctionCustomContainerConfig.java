@@ -84,11 +84,11 @@ public final class GetFunctionsFunctionCustomContainerConfig {
             return this;
         }
         public GetFunctionsFunctionCustomContainerConfig build() {
-            final var o = new GetFunctionsFunctionCustomContainerConfig();
-            o.args = args;
-            o.command = command;
-            o.image = image;
-            return o;
+            final var _resultValue = new GetFunctionsFunctionCustomContainerConfig();
+            _resultValue.args = args;
+            _resultValue.command = command;
+            _resultValue.image = image;
+            return _resultValue;
         }
     }
 }

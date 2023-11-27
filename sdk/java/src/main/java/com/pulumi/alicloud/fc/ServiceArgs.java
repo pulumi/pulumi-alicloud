@@ -11,6 +11,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -76,6 +77,13 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.role);
     }
 
+    @Import(name="tags")
+    private @Nullable Output<Map<String,String>> tags;
+
+    public Optional<Output<Map<String,String>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
     @Import(name="tracingConfig")
     private @Nullable Output<ServiceTracingConfigArgs> tracingConfig;
 
@@ -101,6 +109,7 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         this.nasConfig = $.nasConfig;
         this.publish = $.publish;
         this.role = $.role;
+        this.tags = $.tags;
         this.tracingConfig = $.tracingConfig;
         this.vpcConfig = $.vpcConfig;
     }
@@ -193,6 +202,15 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder role(String role) {
             return role(Output.of(role));
+        }
+
+        public Builder tags(@Nullable Output<Map<String,String>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        public Builder tags(Map<String,String> tags) {
+            return tags(Output.of(tags));
         }
 
         public Builder tracingConfig(@Nullable Output<ServiceTracingConfigArgs> tracingConfig) {

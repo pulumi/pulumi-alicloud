@@ -68,7 +68,7 @@ public class ServiceLinkedRole extends com.pulumi.resources.CustomResource {
      * The Alibaba Cloud Resource Name (ARN) of the role.
      * 
      */
-    @Export(name="arn", type=String.class, parameters={})
+    @Export(name="arn", refs={String.class}, tree="[0]")
     private Output<String> arn;
 
     /**
@@ -82,7 +82,7 @@ public class ServiceLinkedRole extends com.pulumi.resources.CustomResource {
      * The suffix of the role name. Only a few service linked roles support custom suffixes. The role name (including its suffix) must be 1 to 64 characters in length and can contain letters, digits, periods (.), and hyphens (-). For example, if the suffix is Example, the role name is ServiceLinkedRoleName_Example.
      * 
      */
-    @Export(name="customSuffix", type=String.class, parameters={})
+    @Export(name="customSuffix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customSuffix;
 
     /**
@@ -96,7 +96,7 @@ public class ServiceLinkedRole extends com.pulumi.resources.CustomResource {
      * The description of the service linked role.  This parameter must be specified for only the service linked roles that support custom suffixes. Otherwise, the preset value is used and cannot be modified. The description must be 1 to 1,024 characters in length.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -110,7 +110,7 @@ public class ServiceLinkedRole extends com.pulumi.resources.CustomResource {
      * The ID of the role.
      * 
      */
-    @Export(name="roleId", type=String.class, parameters={})
+    @Export(name="roleId", refs={String.class}, tree="[0]")
     private Output<String> roleId;
 
     /**
@@ -124,7 +124,7 @@ public class ServiceLinkedRole extends com.pulumi.resources.CustomResource {
      * The name of the role.
      * 
      */
-    @Export(name="roleName", type=String.class, parameters={})
+    @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output<String> roleName;
 
     /**
@@ -138,7 +138,7 @@ public class ServiceLinkedRole extends com.pulumi.resources.CustomResource {
      * The service name. For more information about the service name, see [Cloud services that support service linked roles](https://www.alibabacloud.com/help/en/doc-detail/160674.htm)
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**

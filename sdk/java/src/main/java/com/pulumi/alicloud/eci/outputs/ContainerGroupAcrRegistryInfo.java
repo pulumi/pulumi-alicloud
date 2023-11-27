@@ -109,12 +109,12 @@ public final class ContainerGroupAcrRegistryInfo {
             return this;
         }
         public ContainerGroupAcrRegistryInfo build() {
-            final var o = new ContainerGroupAcrRegistryInfo();
-            o.domains = domains;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.regionId = regionId;
-            return o;
+            final var _resultValue = new ContainerGroupAcrRegistryInfo();
+            _resultValue.domains = domains;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.regionId = regionId;
+            return _resultValue;
         }
     }
 }

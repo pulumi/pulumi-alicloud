@@ -127,13 +127,13 @@ public final class GetSlsGroupsGroup {
             return this;
         }
         public GetSlsGroupsGroup build() {
-            final var o = new GetSlsGroupsGroup();
-            o.createTime = createTime;
-            o.id = id;
-            o.slsGroupConfigs = slsGroupConfigs;
-            o.slsGroupDescription = slsGroupDescription;
-            o.slsGroupName = slsGroupName;
-            return o;
+            final var _resultValue = new GetSlsGroupsGroup();
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.slsGroupConfigs = slsGroupConfigs;
+            _resultValue.slsGroupDescription = slsGroupDescription;
+            _resultValue.slsGroupName = slsGroupName;
+            return _resultValue;
         }
     }
 }

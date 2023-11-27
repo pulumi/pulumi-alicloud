@@ -71,7 +71,7 @@ public class Portfolio extends com.pulumi.resources.CustomResource {
      * The creation time of the portfolio.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -85,7 +85,7 @@ public class Portfolio extends com.pulumi.resources.CustomResource {
      * The description of the portfolio. The value must be 1 to 128 characters in length.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -99,7 +99,7 @@ public class Portfolio extends com.pulumi.resources.CustomResource {
      * The ARN of the portfolio.
      * 
      */
-    @Export(name="portfolioArn", type=String.class, parameters={})
+    @Export(name="portfolioArn", refs={String.class}, tree="[0]")
     private Output<String> portfolioArn;
 
     /**
@@ -113,7 +113,7 @@ public class Portfolio extends com.pulumi.resources.CustomResource {
      * The name of the portfolio. The value must be 1 to 128 characters in length.
      * 
      */
-    @Export(name="portfolioName", type=String.class, parameters={})
+    @Export(name="portfolioName", refs={String.class}, tree="[0]")
     private Output<String> portfolioName;
 
     /**
@@ -127,7 +127,7 @@ public class Portfolio extends com.pulumi.resources.CustomResource {
      * The provider name of the portfolio. The value must be 1 to 128 characters in length.
      * 
      */
-    @Export(name="providerName", type=String.class, parameters={})
+    @Export(name="providerName", refs={String.class}, tree="[0]")
     private Output<String> providerName;
 
     /**

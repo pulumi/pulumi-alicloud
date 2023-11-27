@@ -273,27 +273,27 @@ public final class GetExecutionsResult {
             return this;
         }
         public GetExecutionsResult build() {
-            final var o = new GetExecutionsResult();
-            o.category = category;
-            o.endDate = endDate;
-            o.endDateAfter = endDateAfter;
-            o.executedBy = executedBy;
-            o.executions = executions;
-            o.id = id;
-            o.ids = ids;
-            o.includeChildExecution = includeChildExecution;
-            o.mode = mode;
-            o.outputFile = outputFile;
-            o.parentExecutionId = parentExecutionId;
-            o.ramRole = ramRole;
-            o.sortField = sortField;
-            o.sortOrder = sortOrder;
-            o.startDateAfter = startDateAfter;
-            o.startDateBefore = startDateBefore;
-            o.status = status;
-            o.tags = tags;
-            o.templateName = templateName;
-            return o;
+            final var _resultValue = new GetExecutionsResult();
+            _resultValue.category = category;
+            _resultValue.endDate = endDate;
+            _resultValue.endDateAfter = endDateAfter;
+            _resultValue.executedBy = executedBy;
+            _resultValue.executions = executions;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.includeChildExecution = includeChildExecution;
+            _resultValue.mode = mode;
+            _resultValue.outputFile = outputFile;
+            _resultValue.parentExecutionId = parentExecutionId;
+            _resultValue.ramRole = ramRole;
+            _resultValue.sortField = sortField;
+            _resultValue.sortOrder = sortOrder;
+            _resultValue.startDateAfter = startDateAfter;
+            _resultValue.startDateBefore = startDateBefore;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.templateName = templateName;
+            return _resultValue;
         }
     }
 }

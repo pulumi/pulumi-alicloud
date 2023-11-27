@@ -220,20 +220,20 @@ public final class GetInterRegionTrafficQosPoliciesResult {
             return this;
         }
         public GetInterRegionTrafficQosPoliciesResult build() {
-            final var o = new GetInterRegionTrafficQosPoliciesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            o.status = status;
-            o.trafficQosPolicyDescription = trafficQosPolicyDescription;
-            o.trafficQosPolicyId = trafficQosPolicyId;
-            o.trafficQosPolicyName = trafficQosPolicyName;
-            o.transitRouterAttachmentId = transitRouterAttachmentId;
-            o.transitRouterId = transitRouterId;
-            return o;
+            final var _resultValue = new GetInterRegionTrafficQosPoliciesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policies = policies;
+            _resultValue.status = status;
+            _resultValue.trafficQosPolicyDescription = trafficQosPolicyDescription;
+            _resultValue.trafficQosPolicyId = trafficQosPolicyId;
+            _resultValue.trafficQosPolicyName = trafficQosPolicyName;
+            _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
+            _resultValue.transitRouterId = transitRouterId;
+            return _resultValue;
         }
     }
 }

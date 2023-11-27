@@ -76,7 +76,7 @@ public class TopicSubscription extends com.pulumi.resources.CustomResource {
      * - `Email Format`: mail:directmail:{MailAddress}
      * 
      */
-    @Export(name="endpoint", type=String.class, parameters={})
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
     /**
@@ -93,7 +93,7 @@ public class TopicSubscription extends com.pulumi.resources.CustomResource {
      * The length should be shorter than 16.
      * 
      */
-    @Export(name="filterTag", type=String.class, parameters={})
+    @Export(name="filterTag", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> filterTag;
 
     /**
@@ -107,7 +107,7 @@ public class TopicSubscription extends com.pulumi.resources.CustomResource {
      * Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -121,7 +121,7 @@ public class TopicSubscription extends com.pulumi.resources.CustomResource {
      * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. The valid values: `SIMPLIFIED`, `XML` and `JSON`. Default to `SIMPLIFIED`.
      * 
      */
-    @Export(name="notifyContentFormat", type=String.class, parameters={})
+    @Export(name="notifyContentFormat", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notifyContentFormat;
 
     /**
@@ -135,7 +135,7 @@ public class TopicSubscription extends com.pulumi.resources.CustomResource {
      * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. The Valid values: `EXPONENTIAL_DECAY_RETRY` and `BACKOFF_RETRY`. Default value to `BACKOFF_RETRY` .
      * 
      */
-    @Export(name="notifyStrategy", type=String.class, parameters={})
+    @Export(name="notifyStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notifyStrategy;
 
     /**
@@ -149,7 +149,7 @@ public class TopicSubscription extends com.pulumi.resources.CustomResource {
      * The topic which The subscription belongs to was named with the name.A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 256 characters.
      * 
      */
-    @Export(name="topicName", type=String.class, parameters={})
+    @Export(name="topicName", refs={String.class}, tree="[0]")
     private Output<String> topicName;
 
     /**

@@ -135,7 +135,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * Auto publish route enabled. The system default value is `false`.
      * 
      */
-    @Export(name="autoPublishRouteEnabled", type=Boolean.class, parameters={})
+    @Export(name="autoPublishRouteEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPublishRouteEnabled;
 
     /**
@@ -149,7 +149,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * The bandwidth of the bandwidth package.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> bandwidth;
 
     /**
@@ -163,7 +163,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * The method that is used to allocate bandwidth to the cross-region connection. Valid values: `BandwidthPackage` and `DataTransfer`.
      * 
      */
-    @Export(name="bandwidthType", type=String.class, parameters={})
+    @Export(name="bandwidthType", refs={String.class}, tree="[0]")
     private Output<String> bandwidthType;
 
     /**
@@ -177,7 +177,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * The ID of the bandwidth package. If you do not enter the ID of the package, it means you are using the test. The system default test is 1bps, demonstrating that you test network connectivity
      * 
      */
-    @Export(name="cenBandwidthPackageId", type=String.class, parameters={})
+    @Export(name="cenBandwidthPackageId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cenBandwidthPackageId;
 
     /**
@@ -191,7 +191,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * The ID of the CEN.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
@@ -205,7 +205,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * Whether to perform pre-check for this request, including permission, instance status verification, etc.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -219,7 +219,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * The ID of the peer transit router.
      * 
      */
-    @Export(name="peerTransitRouterId", type=String.class, parameters={})
+    @Export(name="peerTransitRouterId", refs={String.class}, tree="[0]")
     private Output<String> peerTransitRouterId;
 
     /**
@@ -233,7 +233,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * The region ID of peer transit router.
      * 
      */
-    @Export(name="peerTransitRouterRegionId", type=String.class, parameters={})
+    @Export(name="peerTransitRouterRegionId", refs={String.class}, tree="[0]")
     private Output<String> peerTransitRouterRegionId;
 
     /**
@@ -247,7 +247,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * The resource type to attachment. Only support `VR` and default value is `VR`.
      * 
      */
-    @Export(name="resourceType", type=String.class, parameters={})
+    @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceType;
 
     /**
@@ -261,7 +261,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * Whether to association route table. System default is `false`.
      * 
      */
-    @Export(name="routeTableAssociationEnabled", type=Boolean.class, parameters={})
+    @Export(name="routeTableAssociationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTableAssociationEnabled;
 
     /**
@@ -275,7 +275,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * Whether to propagation route table. System default is `false`.
      * 
      */
-    @Export(name="routeTablePropagationEnabled", type=Boolean.class, parameters={})
+    @Export(name="routeTablePropagationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTablePropagationEnabled;
 
     /**
@@ -289,7 +289,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * The associating status of the network.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -303,7 +303,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * The description of transit router attachment. The description is 2~256 characters long and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="transitRouterAttachmentDescription", type=String.class, parameters={})
+    @Export(name="transitRouterAttachmentDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterAttachmentDescription;
 
     /**
@@ -317,7 +317,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * The ID of transit router attachment id.
      * 
      */
-    @Export(name="transitRouterAttachmentId", type=String.class, parameters={})
+    @Export(name="transitRouterAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentId;
 
     /**
@@ -331,7 +331,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * The name of transit router attachment. The name is 2~128 characters in length, starts with uppercase and lowercase letters or Chinese, and can contain numbers, underscores (_) and dashes (-)
      * 
      */
-    @Export(name="transitRouterAttachmentName", type=String.class, parameters={})
+    @Export(name="transitRouterAttachmentName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterAttachmentName;
 
     /**
@@ -345,7 +345,7 @@ public class TransitRouterPeerAttachment extends com.pulumi.resources.CustomReso
      * The ID of the transit router to attach.
      * 
      */
-    @Export(name="transitRouterId", type=String.class, parameters={})
+    @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterId;
 
     /**

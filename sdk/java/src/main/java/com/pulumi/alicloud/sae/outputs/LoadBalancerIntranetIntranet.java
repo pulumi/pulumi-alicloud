@@ -106,12 +106,12 @@ public final class LoadBalancerIntranetIntranet {
             return this;
         }
         public LoadBalancerIntranetIntranet build() {
-            final var o = new LoadBalancerIntranetIntranet();
-            o.httpsCertId = httpsCertId;
-            o.port = port;
-            o.protocol = protocol;
-            o.targetPort = targetPort;
-            return o;
+            final var _resultValue = new LoadBalancerIntranetIntranet();
+            _resultValue.httpsCertId = httpsCertId;
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            _resultValue.targetPort = targetPort;
+            return _resultValue;
         }
     }
 }

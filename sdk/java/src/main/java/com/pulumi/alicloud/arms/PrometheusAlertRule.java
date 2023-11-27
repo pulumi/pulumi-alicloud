@@ -40,7 +40,7 @@ public class PrometheusAlertRule extends com.pulumi.resources.CustomResource {
      * The annotations of the alert rule. See `annotations` below.
      * 
      */
-    @Export(name="annotations", type=List.class, parameters={PrometheusAlertRuleAnnotation.class})
+    @Export(name="annotations", refs={List.class,PrometheusAlertRuleAnnotation.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PrometheusAlertRuleAnnotation>> annotations;
 
     /**
@@ -54,7 +54,7 @@ public class PrometheusAlertRule extends com.pulumi.resources.CustomResource {
      * The ID of the cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -68,7 +68,7 @@ public class PrometheusAlertRule extends com.pulumi.resources.CustomResource {
      * The ID of the notification policy. This parameter is required when the `notify_type` parameter is set to `DISPATCH_RULE`.
      * 
      */
-    @Export(name="dispatchRuleId", type=String.class, parameters={})
+    @Export(name="dispatchRuleId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dispatchRuleId;
 
     /**
@@ -82,7 +82,7 @@ public class PrometheusAlertRule extends com.pulumi.resources.CustomResource {
      * The duration of the alert.
      * 
      */
-    @Export(name="duration", type=String.class, parameters={})
+    @Export(name="duration", refs={String.class}, tree="[0]")
     private Output<String> duration;
 
     /**
@@ -96,7 +96,7 @@ public class PrometheusAlertRule extends com.pulumi.resources.CustomResource {
      * The alert rule expression that follows the PromQL syntax.
      * 
      */
-    @Export(name="expression", type=String.class, parameters={})
+    @Export(name="expression", refs={String.class}, tree="[0]")
     private Output<String> expression;
 
     /**
@@ -110,7 +110,7 @@ public class PrometheusAlertRule extends com.pulumi.resources.CustomResource {
      * The labels of the resource. See `labels` below.
      * 
      */
-    @Export(name="labels", type=List.class, parameters={PrometheusAlertRuleLabel.class})
+    @Export(name="labels", refs={List.class,PrometheusAlertRuleLabel.class}, tree="[0,1]")
     private Output</* @Nullable */ List<PrometheusAlertRuleLabel>> labels;
 
     /**
@@ -124,7 +124,7 @@ public class PrometheusAlertRule extends com.pulumi.resources.CustomResource {
      * The message of the alert notification.
      * 
      */
-    @Export(name="message", type=String.class, parameters={})
+    @Export(name="message", refs={String.class}, tree="[0]")
     private Output<String> message;
 
     /**
@@ -138,7 +138,7 @@ public class PrometheusAlertRule extends com.pulumi.resources.CustomResource {
      * The method of sending the alert notification. Valid values: `ALERT_MANAGER`, `DISPATCH_RULE`.
      * 
      */
-    @Export(name="notifyType", type=String.class, parameters={})
+    @Export(name="notifyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notifyType;
 
     /**
@@ -152,7 +152,7 @@ public class PrometheusAlertRule extends com.pulumi.resources.CustomResource {
      * The first ID of the resource.
      * 
      */
-    @Export(name="prometheusAlertRuleId", type=Integer.class, parameters={})
+    @Export(name="prometheusAlertRuleId", refs={Integer.class}, tree="[0]")
     private Output<Integer> prometheusAlertRuleId;
 
     /**
@@ -166,7 +166,7 @@ public class PrometheusAlertRule extends com.pulumi.resources.CustomResource {
      * The name of the resource.
      * 
      */
-    @Export(name="prometheusAlertRuleName", type=String.class, parameters={})
+    @Export(name="prometheusAlertRuleName", refs={String.class}, tree="[0]")
     private Output<String> prometheusAlertRuleName;
 
     /**
@@ -180,7 +180,7 @@ public class PrometheusAlertRule extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `0`, `1`.
      * 
      */
-    @Export(name="status", type=Integer.class, parameters={})
+    @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output<Integer> status;
 
     /**
@@ -194,7 +194,7 @@ public class PrometheusAlertRule extends com.pulumi.resources.CustomResource {
      * The type of the alert rule.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

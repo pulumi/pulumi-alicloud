@@ -37,7 +37,7 @@ public class LoadBalancerCommonBandwidthPackageAttachment extends com.pulumi.res
      * The ID of the bound shared bandwidth package.
      * 
      */
-    @Export(name="bandwidthPackageId", type=String.class, parameters={})
+    @Export(name="bandwidthPackageId", refs={String.class}, tree="[0]")
     private Output<String> bandwidthPackageId;
 
     /**
@@ -51,7 +51,7 @@ public class LoadBalancerCommonBandwidthPackageAttachment extends com.pulumi.res
      * Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind the shared bandwidth package to the load balancing instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -65,7 +65,7 @@ public class LoadBalancerCommonBandwidthPackageAttachment extends com.pulumi.res
      * The ID of the applied server load balancer instance.
      * 
      */
-    @Export(name="loadBalancerId", type=String.class, parameters={})
+    @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
@@ -79,7 +79,7 @@ public class LoadBalancerCommonBandwidthPackageAttachment extends com.pulumi.res
      * The status of the Application Load balancing instance. Value:-**Inactive**: Stopped, indicating that the instance listener will no longer forward traffic.-**Active**: running.-**Provisioning**: The project is being created.-**Configuring**: The configuration is being changed.-**CreateFailed**: The instance cannot be deleted without any charge.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

@@ -299,22 +299,22 @@ public final class GetTrafficMirrorSessionsSession {
             return this;
         }
         public GetTrafficMirrorSessionsSession build() {
-            final var o = new GetTrafficMirrorSessionsSession();
-            o.enabled = enabled;
-            o.id = id;
-            o.packetLength = packetLength;
-            o.priority = priority;
-            o.status = status;
-            o.trafficMirrorFilterId = trafficMirrorFilterId;
-            o.trafficMirrorSessionBusinessStatus = trafficMirrorSessionBusinessStatus;
-            o.trafficMirrorSessionDescription = trafficMirrorSessionDescription;
-            o.trafficMirrorSessionId = trafficMirrorSessionId;
-            o.trafficMirrorSessionName = trafficMirrorSessionName;
-            o.trafficMirrorSourceIds = trafficMirrorSourceIds;
-            o.trafficMirrorTargetId = trafficMirrorTargetId;
-            o.trafficMirrorTargetType = trafficMirrorTargetType;
-            o.virtualNetworkId = virtualNetworkId;
-            return o;
+            final var _resultValue = new GetTrafficMirrorSessionsSession();
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.packetLength = packetLength;
+            _resultValue.priority = priority;
+            _resultValue.status = status;
+            _resultValue.trafficMirrorFilterId = trafficMirrorFilterId;
+            _resultValue.trafficMirrorSessionBusinessStatus = trafficMirrorSessionBusinessStatus;
+            _resultValue.trafficMirrorSessionDescription = trafficMirrorSessionDescription;
+            _resultValue.trafficMirrorSessionId = trafficMirrorSessionId;
+            _resultValue.trafficMirrorSessionName = trafficMirrorSessionName;
+            _resultValue.trafficMirrorSourceIds = trafficMirrorSourceIds;
+            _resultValue.trafficMirrorTargetId = trafficMirrorTargetId;
+            _resultValue.trafficMirrorTargetType = trafficMirrorTargetType;
+            _resultValue.virtualNetworkId = virtualNetworkId;
+            return _resultValue;
         }
     }
 }

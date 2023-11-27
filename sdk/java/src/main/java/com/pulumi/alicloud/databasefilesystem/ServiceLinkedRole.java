@@ -66,7 +66,7 @@ public class ServiceLinkedRole extends com.pulumi.resources.CustomResource {
      * The product name for SLR. Dbfs can automatically create the following service-linked roles: `AliyunServiceRoleForDbfs`.
      * 
      */
-    @Export(name="productName", type=String.class, parameters={})
+    @Export(name="productName", refs={String.class}, tree="[0]")
     private Output<String> productName;
 
     /**
@@ -80,7 +80,7 @@ public class ServiceLinkedRole extends com.pulumi.resources.CustomResource {
      * The status of the service Associated role. Valid Values: `true`: Created. `false`: not created.
      * 
      */
-    @Export(name="status", type=Boolean.class, parameters={})
+    @Export(name="status", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> status;
 
     /**

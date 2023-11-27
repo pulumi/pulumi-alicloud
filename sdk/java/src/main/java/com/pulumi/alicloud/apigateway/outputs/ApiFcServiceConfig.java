@@ -125,13 +125,13 @@ public final class ApiFcServiceConfig {
             return this;
         }
         public ApiFcServiceConfig build() {
-            final var o = new ApiFcServiceConfig();
-            o.arnRole = arnRole;
-            o.functionName = functionName;
-            o.region = region;
-            o.serviceName = serviceName;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new ApiFcServiceConfig();
+            _resultValue.arnRole = arnRole;
+            _resultValue.functionName = functionName;
+            _resultValue.region = region;
+            _resultValue.serviceName = serviceName;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

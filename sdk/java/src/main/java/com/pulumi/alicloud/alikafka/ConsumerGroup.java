@@ -105,7 +105,7 @@ public class ConsumerGroup extends com.pulumi.resources.CustomResource {
      * ID of the consumer group. The length cannot exceed 64 characters.
      * 
      */
-    @Export(name="consumerId", type=String.class, parameters={})
+    @Export(name="consumerId", refs={String.class}, tree="[0]")
     private Output<String> consumerId;
 
     /**
@@ -119,7 +119,7 @@ public class ConsumerGroup extends com.pulumi.resources.CustomResource {
      * The description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -133,7 +133,7 @@ public class ConsumerGroup extends com.pulumi.resources.CustomResource {
      * ID of the ALIKAFKA Instance that owns the groups.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -147,7 +147,7 @@ public class ConsumerGroup extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

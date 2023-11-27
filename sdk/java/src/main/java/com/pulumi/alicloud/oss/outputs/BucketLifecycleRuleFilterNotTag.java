@@ -65,10 +65,10 @@ public final class BucketLifecycleRuleFilterNotTag {
             return this;
         }
         public BucketLifecycleRuleFilterNotTag build() {
-            final var o = new BucketLifecycleRuleFilterNotTag();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new BucketLifecycleRuleFilterNotTag();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

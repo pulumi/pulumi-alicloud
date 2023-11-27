@@ -257,20 +257,20 @@ public final class GetImagesImage {
             return this;
         }
         public GetImagesImage build() {
-            final var o = new GetImagesImage();
-            o.createTime = createTime;
-            o.dataDiskSize = dataDiskSize;
-            o.description = description;
-            o.gpuCategory = gpuCategory;
-            o.id = id;
-            o.imageId = imageId;
-            o.imageName = imageName;
-            o.imageType = imageType;
-            o.osType = osType;
-            o.progress = progress;
-            o.size = size;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetImagesImage();
+            _resultValue.createTime = createTime;
+            _resultValue.dataDiskSize = dataDiskSize;
+            _resultValue.description = description;
+            _resultValue.gpuCategory = gpuCategory;
+            _resultValue.id = id;
+            _resultValue.imageId = imageId;
+            _resultValue.imageName = imageName;
+            _resultValue.imageType = imageType;
+            _resultValue.osType = osType;
+            _resultValue.progress = progress;
+            _resultValue.size = size;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -122,13 +122,13 @@ public final class GetUsersUser {
             return this;
         }
         public GetUsersUser build() {
-            final var o = new GetUsersUser();
-            o.email = email;
-            o.endUserId = endUserId;
-            o.id = id;
-            o.phone = phone;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetUsersUser();
+            _resultValue.email = email;
+            _resultValue.endUserId = endUserId;
+            _resultValue.id = id;
+            _resultValue.phone = phone;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

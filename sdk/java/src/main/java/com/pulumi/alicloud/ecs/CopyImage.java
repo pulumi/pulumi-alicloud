@@ -19,37 +19,37 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="alicloud:ecs/copyImage:CopyImage")
 public class CopyImage extends com.pulumi.resources.CustomResource {
-    @Export(name="deleteAutoSnapshot", type=Boolean.class, parameters={})
+    @Export(name="deleteAutoSnapshot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteAutoSnapshot;
 
     public Output<Optional<Boolean>> deleteAutoSnapshot() {
         return Codegen.optional(this.deleteAutoSnapshot);
     }
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="encrypted", type=Boolean.class, parameters={})
+    @Export(name="encrypted", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> encrypted;
 
     public Output<Optional<Boolean>> encrypted() {
         return Codegen.optional(this.encrypted);
     }
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
-    @Export(name="imageName", type=String.class, parameters={})
+    @Export(name="imageName", refs={String.class}, tree="[0]")
     private Output<String> imageName;
 
     public Output<String> imageName() {
         return this.imageName;
     }
-    @Export(name="kmsKeyId", type=String.class, parameters={})
+    @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKeyId;
 
     public Output<Optional<String>> kmsKeyId() {
@@ -61,25 +61,25 @@ public class CopyImage extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="sourceImageId", type=String.class, parameters={})
+    @Export(name="sourceImageId", refs={String.class}, tree="[0]")
     private Output<String> sourceImageId;
 
     public Output<String> sourceImageId() {
         return this.sourceImageId;
     }
-    @Export(name="sourceRegionId", type=String.class, parameters={})
+    @Export(name="sourceRegionId", refs={String.class}, tree="[0]")
     private Output<String> sourceRegionId;
 
     public Output<String> sourceRegionId() {
         return this.sourceRegionId;
     }
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     public Output<Optional<Map<String,Object>>> tags() {

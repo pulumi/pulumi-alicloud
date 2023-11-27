@@ -161,15 +161,15 @@ public final class GetReceiversReceiverse {
             return this;
         }
         public GetReceiversReceiverse build() {
-            final var o = new GetReceiversReceiverse();
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.receiversAlias = receiversAlias;
-            o.receiversId = receiversId;
-            o.receiversName = receiversName;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetReceiversReceiverse();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.receiversAlias = receiversAlias;
+            _resultValue.receiversId = receiversId;
+            _resultValue.receiversName = receiversName;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

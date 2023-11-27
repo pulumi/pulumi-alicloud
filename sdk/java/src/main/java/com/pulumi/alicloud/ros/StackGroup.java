@@ -76,7 +76,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * The list of target account IDs, in JSON format. A maximum of 20 accounts can be specified.
      * 
      */
-    @Export(name="accountIds", type=String.class, parameters={})
+    @Export(name="accountIds", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountIds;
 
     /**
@@ -90,7 +90,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * The name of the RAM administrator role assumed by ROS. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
      * 
      */
-    @Export(name="administrationRoleName", type=String.class, parameters={})
+    @Export(name="administrationRoleName", refs={String.class}, tree="[0]")
     private Output<String> administrationRoleName;
 
     /**
@@ -104,7 +104,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * The description of the stack group.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -118,7 +118,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * The name of the RAM execution role assumed by the administrator role. ROS assumes this role to perform operations on the stack corresponding to the stack instance in the stack group.
      * 
      */
-    @Export(name="executionRoleName", type=String.class, parameters={})
+    @Export(name="executionRoleName", refs={String.class}, tree="[0]")
     private Output<String> executionRoleName;
 
     /**
@@ -132,7 +132,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * The description of the operation.
      * 
      */
-    @Export(name="operationDescription", type=String.class, parameters={})
+    @Export(name="operationDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> operationDescription;
 
     /**
@@ -146,7 +146,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * The operation settings, in JSON format.
      * 
      */
-    @Export(name="operationPreferences", type=String.class, parameters={})
+    @Export(name="operationPreferences", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> operationPreferences;
 
     /**
@@ -160,7 +160,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * The parameters. If the parameter name and value are not specified, ROS will use the default value specified in the template.
      * 
      */
-    @Export(name="parameters", type=List.class, parameters={StackGroupParameter.class})
+    @Export(name="parameters", refs={List.class,StackGroupParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StackGroupParameter>> parameters;
 
     /**
@@ -174,7 +174,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * The list of target regions, in JSON format. A maximum of 20 accounts can be specified.
      * 
      */
-    @Export(name="regionIds", type=String.class, parameters={})
+    @Export(name="regionIds", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> regionIds;
 
     /**
@@ -188,7 +188,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * The id of Stack Group.
      * 
      */
-    @Export(name="stackGroupId", type=String.class, parameters={})
+    @Export(name="stackGroupId", refs={String.class}, tree="[0]")
     private Output<String> stackGroupId;
 
     /**
@@ -202,7 +202,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * The name of the stack group. The name must be unique in a region.
      * 
      */
-    @Export(name="stackGroupName", type=String.class, parameters={})
+    @Export(name="stackGroupName", refs={String.class}, tree="[0]")
     private Output<String> stackGroupName;
 
     /**
@@ -216,7 +216,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * The status of Stack Group.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -230,7 +230,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * The structure that contains the template body. The template body must be 1 to 524,288 bytes in length. If the length of the template body is longer than required, we recommend that you add parameters to the HTTP POST request body to avoid request failures due to excessive length of URLs.
      * 
      */
-    @Export(name="templateBody", type=String.class, parameters={})
+    @Export(name="templateBody", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> templateBody;
 
     /**
@@ -244,7 +244,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * The URL of the file that contains the template body. The URL must point to a template located in an HTTP or HTTPS web server or an Alibaba Cloud OSS bucket. Examples: oss://ros/template/demo and oss://ros/template/demo?RegionId=cn-hangzhou. The template must be 1 to 524,288 bytes in length. If the region of the OSS bucket is not specified, the RegionId value is used by default.
      * 
      */
-    @Export(name="templateUrl", type=String.class, parameters={})
+    @Export(name="templateUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> templateUrl;
 
     /**
@@ -258,7 +258,7 @@ public class StackGroup extends com.pulumi.resources.CustomResource {
      * The version of the template.
      * 
      */
-    @Export(name="templateVersion", type=String.class, parameters={})
+    @Export(name="templateVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> templateVersion;
 
     /**

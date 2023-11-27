@@ -126,13 +126,13 @@ public final class GetModifyParameterLogsLog {
             return this;
         }
         public GetModifyParameterLogsLog build() {
-            final var o = new GetModifyParameterLogsLog();
-            o.modifyTime = modifyTime;
-            o.newParameterValue = newParameterValue;
-            o.oldParameterValue = oldParameterValue;
-            o.parameterName = parameterName;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetModifyParameterLogsLog();
+            _resultValue.modifyTime = modifyTime;
+            _resultValue.newParameterValue = newParameterValue;
+            _resultValue.oldParameterValue = oldParameterValue;
+            _resultValue.parameterName = parameterName;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -98,11 +98,11 @@ public final class GetListenersListenerAccessLogTracingConfig {
             return this;
         }
         public GetListenersListenerAccessLogTracingConfig build() {
-            final var o = new GetListenersListenerAccessLogTracingConfig();
-            o.tracingEnabled = tracingEnabled;
-            o.tracingSample = tracingSample;
-            o.tracingType = tracingType;
-            return o;
+            final var _resultValue = new GetListenersListenerAccessLogTracingConfig();
+            _resultValue.tracingEnabled = tracingEnabled;
+            _resultValue.tracingSample = tracingSample;
+            _resultValue.tracingType = tracingType;
+            return _resultValue;
         }
     }
 }

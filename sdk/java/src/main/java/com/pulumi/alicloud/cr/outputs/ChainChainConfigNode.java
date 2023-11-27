@@ -92,11 +92,11 @@ public final class ChainChainConfigNode {
             return this;
         }
         public ChainChainConfigNode build() {
-            final var o = new ChainChainConfigNode();
-            o.enable = enable;
-            o.nodeConfigs = nodeConfigs;
-            o.nodeName = nodeName;
-            return o;
+            final var _resultValue = new ChainChainConfigNode();
+            _resultValue.enable = enable;
+            _resultValue.nodeConfigs = nodeConfigs;
+            _resultValue.nodeName = nodeName;
+            return _resultValue;
         }
     }
 }

@@ -88,7 +88,7 @@ public class Schedule extends com.pulumi.resources.CustomResource {
      * The CRON expression of the time-based schedule to be created.
      * 
      */
-    @Export(name="cronExpression", type=String.class, parameters={})
+    @Export(name="cronExpression", refs={String.class}, tree="[0]")
     private Output<String> cronExpression;
 
     /**
@@ -102,7 +102,7 @@ public class Schedule extends com.pulumi.resources.CustomResource {
      * The description of the time-based schedule to be created.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -116,7 +116,7 @@ public class Schedule extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable the time-based schedule you want to create. Valid values: `false`, `true`.
      * 
      */
-    @Export(name="enable", type=Boolean.class, parameters={})
+    @Export(name="enable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enable;
 
     /**
@@ -130,7 +130,7 @@ public class Schedule extends com.pulumi.resources.CustomResource {
      * The name of the flow bound to the time-based schedule you want to create.
      * 
      */
-    @Export(name="flowName", type=String.class, parameters={})
+    @Export(name="flowName", refs={String.class}, tree="[0]")
     private Output<String> flowName;
 
     /**
@@ -144,7 +144,7 @@ public class Schedule extends com.pulumi.resources.CustomResource {
      * The time when the time-based schedule was last updated.
      * 
      */
-    @Export(name="lastModifiedTime", type=String.class, parameters={})
+    @Export(name="lastModifiedTime", refs={String.class}, tree="[0]")
     private Output<String> lastModifiedTime;
 
     /**
@@ -158,7 +158,7 @@ public class Schedule extends com.pulumi.resources.CustomResource {
      * The trigger message of the time-based schedule to be created. It must be in JSON object format.
      * 
      */
-    @Export(name="payload", type=String.class, parameters={})
+    @Export(name="payload", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> payload;
 
     /**
@@ -172,7 +172,7 @@ public class Schedule extends com.pulumi.resources.CustomResource {
      * The ID of the time-based schedule.
      * 
      */
-    @Export(name="scheduleId", type=String.class, parameters={})
+    @Export(name="scheduleId", refs={String.class}, tree="[0]")
     private Output<String> scheduleId;
 
     /**
@@ -186,7 +186,7 @@ public class Schedule extends com.pulumi.resources.CustomResource {
      * The name of the time-based schedule to be created.
      * 
      */
-    @Export(name="scheduleName", type=String.class, parameters={})
+    @Export(name="scheduleName", refs={String.class}, tree="[0]")
     private Output<String> scheduleName;
 
     /**

@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/snapshot:Snapshot")
 public class Snapshot extends com.pulumi.resources.CustomResource {
-    @Export(name="category", type=String.class, parameters={})
+    @Export(name="category", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> category;
 
     public Output<Optional<String>> category() {
@@ -78,7 +78,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * Description of the snapshot. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -92,7 +92,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The source disk ID.
      * 
      */
-    @Export(name="diskId", type=String.class, parameters={})
+    @Export(name="diskId", refs={String.class}, tree="[0]")
     private Output<String> diskId;
 
     /**
@@ -102,19 +102,19 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     public Output<String> diskId() {
         return this.diskId;
     }
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     public Output<Optional<Boolean>> force() {
         return Codegen.optional(this.force);
     }
-    @Export(name="instantAccess", type=Boolean.class, parameters={})
+    @Export(name="instantAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> instantAccess;
 
     public Output<Optional<Boolean>> instantAccess() {
         return Codegen.optional(this.instantAccess);
     }
-    @Export(name="instantAccessRetentionDays", type=Integer.class, parameters={})
+    @Export(name="instantAccessRetentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> instantAccessRetentionDays;
 
     public Output<Optional<Integer>> instantAccessRetentionDays() {
@@ -129,7 +129,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.120.0. New field 'snapshot_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -144,7 +144,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -154,19 +154,19 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> resourceGroupId() {
         return Codegen.optional(this.resourceGroupId);
     }
-    @Export(name="retentionDays", type=Integer.class, parameters={})
+    @Export(name="retentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retentionDays;
 
     public Output<Optional<Integer>> retentionDays() {
         return Codegen.optional(this.retentionDays);
     }
-    @Export(name="snapshotName", type=String.class, parameters={})
+    @Export(name="snapshotName", refs={String.class}, tree="[0]")
     private Output<String> snapshotName;
 
     public Output<String> snapshotName() {
         return this.snapshotName;
     }
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     public Output<String> status() {
@@ -176,7 +176,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

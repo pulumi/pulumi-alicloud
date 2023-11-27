@@ -136,16 +136,16 @@ public final class GetTransitRouterCidrsResult {
             return this;
         }
         public GetTransitRouterCidrsResult build() {
-            final var o = new GetTransitRouterCidrsResult();
-            o.cidrs = cidrs;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.transitRouterCidrId = transitRouterCidrId;
-            o.transitRouterId = transitRouterId;
-            return o;
+            final var _resultValue = new GetTransitRouterCidrsResult();
+            _resultValue.cidrs = cidrs;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.transitRouterCidrId = transitRouterCidrId;
+            _resultValue.transitRouterId = transitRouterId;
+            return _resultValue;
         }
     }
 }

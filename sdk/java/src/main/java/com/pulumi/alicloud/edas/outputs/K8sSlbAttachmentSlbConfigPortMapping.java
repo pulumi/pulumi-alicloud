@@ -87,11 +87,11 @@ public final class K8sSlbAttachmentSlbConfigPortMapping {
             return this;
         }
         public K8sSlbAttachmentSlbConfigPortMapping build() {
-            final var o = new K8sSlbAttachmentSlbConfigPortMapping();
-            o.certId = certId;
-            o.loadbalancerProtocol = loadbalancerProtocol;
-            o.servicePort = servicePort;
-            return o;
+            final var _resultValue = new K8sSlbAttachmentSlbConfigPortMapping();
+            _resultValue.certId = certId;
+            _resultValue.loadbalancerProtocol = loadbalancerProtocol;
+            _resultValue.servicePort = servicePort;
+            return _resultValue;
         }
     }
 }

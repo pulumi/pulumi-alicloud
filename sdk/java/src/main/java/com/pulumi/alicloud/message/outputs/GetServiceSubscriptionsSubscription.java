@@ -237,19 +237,19 @@ public final class GetServiceSubscriptionsSubscription {
             return this;
         }
         public GetServiceSubscriptionsSubscription build() {
-            final var o = new GetServiceSubscriptionsSubscription();
-            o.createTime = createTime;
-            o.endpoint = endpoint;
-            o.filterTag = filterTag;
-            o.id = id;
-            o.lastModifyTime = lastModifyTime;
-            o.notifyContentFormat = notifyContentFormat;
-            o.notifyStrategy = notifyStrategy;
-            o.subscriptionName = subscriptionName;
-            o.subscriptionUrl = subscriptionUrl;
-            o.topicName = topicName;
-            o.topicOwner = topicOwner;
-            return o;
+            final var _resultValue = new GetServiceSubscriptionsSubscription();
+            _resultValue.createTime = createTime;
+            _resultValue.endpoint = endpoint;
+            _resultValue.filterTag = filterTag;
+            _resultValue.id = id;
+            _resultValue.lastModifyTime = lastModifyTime;
+            _resultValue.notifyContentFormat = notifyContentFormat;
+            _resultValue.notifyStrategy = notifyStrategy;
+            _resultValue.subscriptionName = subscriptionName;
+            _resultValue.subscriptionUrl = subscriptionUrl;
+            _resultValue.topicName = topicName;
+            _resultValue.topicOwner = topicOwner;
+            return _resultValue;
         }
     }
 }

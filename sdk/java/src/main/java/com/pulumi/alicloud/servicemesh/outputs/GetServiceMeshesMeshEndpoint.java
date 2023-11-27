@@ -103,12 +103,12 @@ public final class GetServiceMeshesMeshEndpoint {
             return this;
         }
         public GetServiceMeshesMeshEndpoint build() {
-            final var o = new GetServiceMeshesMeshEndpoint();
-            o.intranetApiServerEndpoint = intranetApiServerEndpoint;
-            o.intranetPilotEndpoint = intranetPilotEndpoint;
-            o.publicApiServerEndpoint = publicApiServerEndpoint;
-            o.publicPilotEndpoint = publicPilotEndpoint;
-            return o;
+            final var _resultValue = new GetServiceMeshesMeshEndpoint();
+            _resultValue.intranetApiServerEndpoint = intranetApiServerEndpoint;
+            _resultValue.intranetPilotEndpoint = intranetPilotEndpoint;
+            _resultValue.publicApiServerEndpoint = publicApiServerEndpoint;
+            _resultValue.publicPilotEndpoint = publicPilotEndpoint;
+            return _resultValue;
         }
     }
 }

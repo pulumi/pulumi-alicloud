@@ -198,17 +198,17 @@ public final class GetTransitRoutersTransitRouter {
             return this;
         }
         public GetTransitRoutersTransitRouter build() {
-            final var o = new GetTransitRoutersTransitRouter();
-            o.aliUid = aliUid;
-            o.cenId = cenId;
-            o.id = id;
-            o.status = status;
-            o.transitRouterDescription = transitRouterDescription;
-            o.transitRouterId = transitRouterId;
-            o.transitRouterName = transitRouterName;
-            o.type = type;
-            o.xgwVip = xgwVip;
-            return o;
+            final var _resultValue = new GetTransitRoutersTransitRouter();
+            _resultValue.aliUid = aliUid;
+            _resultValue.cenId = cenId;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            _resultValue.transitRouterDescription = transitRouterDescription;
+            _resultValue.transitRouterId = transitRouterId;
+            _resultValue.transitRouterName = transitRouterName;
+            _resultValue.type = type;
+            _resultValue.xgwVip = xgwVip;
+            return _resultValue;
         }
     }
 }

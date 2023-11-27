@@ -65,10 +65,10 @@ public final class GetDbClustersClusterScaleOutStatus {
             return this;
         }
         public GetDbClustersClusterScaleOutStatus build() {
-            final var o = new GetDbClustersClusterScaleOutStatus();
-            o.progress = progress;
-            o.ratio = ratio;
-            return o;
+            final var _resultValue = new GetDbClustersClusterScaleOutStatus();
+            _resultValue.progress = progress;
+            _resultValue.ratio = ratio;
+            return _resultValue;
         }
     }
 }

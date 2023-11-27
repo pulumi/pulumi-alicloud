@@ -276,21 +276,21 @@ public final class GetVbrPconnAssociationsAssociation {
             return this;
         }
         public GetVbrPconnAssociationsAssociation build() {
-            final var o = new GetVbrPconnAssociationsAssociation();
-            o.circuitCode = circuitCode;
-            o.enableIpv6 = enableIpv6;
-            o.id = id;
-            o.localGatewayIp = localGatewayIp;
-            o.localIpv6GatewayIp = localIpv6GatewayIp;
-            o.peerGatewayIp = peerGatewayIp;
-            o.peerIpv6GatewayIp = peerIpv6GatewayIp;
-            o.peeringIpv6SubnetMask = peeringIpv6SubnetMask;
-            o.peeringSubnetMask = peeringSubnetMask;
-            o.physicalConnectionId = physicalConnectionId;
-            o.status = status;
-            o.vbrId = vbrId;
-            o.vlanId = vlanId;
-            return o;
+            final var _resultValue = new GetVbrPconnAssociationsAssociation();
+            _resultValue.circuitCode = circuitCode;
+            _resultValue.enableIpv6 = enableIpv6;
+            _resultValue.id = id;
+            _resultValue.localGatewayIp = localGatewayIp;
+            _resultValue.localIpv6GatewayIp = localIpv6GatewayIp;
+            _resultValue.peerGatewayIp = peerGatewayIp;
+            _resultValue.peerIpv6GatewayIp = peerIpv6GatewayIp;
+            _resultValue.peeringIpv6SubnetMask = peeringIpv6SubnetMask;
+            _resultValue.peeringSubnetMask = peeringSubnetMask;
+            _resultValue.physicalConnectionId = physicalConnectionId;
+            _resultValue.status = status;
+            _resultValue.vbrId = vbrId;
+            _resultValue.vlanId = vlanId;
+            return _resultValue;
         }
     }
 }

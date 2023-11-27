@@ -275,21 +275,21 @@ public final class GetDataFlowsFlow {
             return this;
         }
         public GetDataFlowsFlow build() {
-            final var o = new GetDataFlowsFlow();
-            o.createTime = createTime;
-            o.dataFlowId = dataFlowId;
-            o.description = description;
-            o.errorMessage = errorMessage;
-            o.fileSystemId = fileSystemId;
-            o.fileSystemPath = fileSystemPath;
-            o.fsetDescription = fsetDescription;
-            o.fsetId = fsetId;
-            o.id = id;
-            o.sourceSecurityType = sourceSecurityType;
-            o.sourceStorage = sourceStorage;
-            o.status = status;
-            o.throughput = throughput;
-            return o;
+            final var _resultValue = new GetDataFlowsFlow();
+            _resultValue.createTime = createTime;
+            _resultValue.dataFlowId = dataFlowId;
+            _resultValue.description = description;
+            _resultValue.errorMessage = errorMessage;
+            _resultValue.fileSystemId = fileSystemId;
+            _resultValue.fileSystemPath = fileSystemPath;
+            _resultValue.fsetDescription = fsetDescription;
+            _resultValue.fsetId = fsetId;
+            _resultValue.id = id;
+            _resultValue.sourceSecurityType = sourceSecurityType;
+            _resultValue.sourceStorage = sourceStorage;
+            _resultValue.status = status;
+            _resultValue.throughput = throughput;
+            return _resultValue;
         }
     }
 }

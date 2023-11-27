@@ -65,10 +65,10 @@ public final class GetAddressBooksBookEcsTag {
             return this;
         }
         public GetAddressBooksBookEcsTag build() {
-            final var o = new GetAddressBooksBookEcsTag();
-            o.tagKey = tagKey;
-            o.tagValue = tagValue;
-            return o;
+            final var _resultValue = new GetAddressBooksBookEcsTag();
+            _resultValue.tagKey = tagKey;
+            _resultValue.tagValue = tagValue;
+            return _resultValue;
         }
     }
 }

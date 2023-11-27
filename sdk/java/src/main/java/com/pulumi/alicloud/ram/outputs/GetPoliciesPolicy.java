@@ -275,21 +275,21 @@ public final class GetPoliciesPolicy {
             return this;
         }
         public GetPoliciesPolicy build() {
-            final var o = new GetPoliciesPolicy();
-            o.attachmentCount = attachmentCount;
-            o.createDate = createDate;
-            o.defaultVersion = defaultVersion;
-            o.description = description;
-            o.document = document;
-            o.id = id;
-            o.name = name;
-            o.policyDocument = policyDocument;
-            o.policyName = policyName;
-            o.type = type;
-            o.updateDate = updateDate;
-            o.userName = userName;
-            o.versionId = versionId;
-            return o;
+            final var _resultValue = new GetPoliciesPolicy();
+            _resultValue.attachmentCount = attachmentCount;
+            _resultValue.createDate = createDate;
+            _resultValue.defaultVersion = defaultVersion;
+            _resultValue.description = description;
+            _resultValue.document = document;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.policyDocument = policyDocument;
+            _resultValue.policyName = policyName;
+            _resultValue.type = type;
+            _resultValue.updateDate = updateDate;
+            _resultValue.userName = userName;
+            _resultValue.versionId = versionId;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class GetEdgeKubernetesClustersClusterConnections {
             return this;
         }
         public GetEdgeKubernetesClustersClusterConnections build() {
-            final var o = new GetEdgeKubernetesClustersClusterConnections();
-            o.apiServerInternet = apiServerInternet;
-            o.apiServerIntranet = apiServerIntranet;
-            return o;
+            final var _resultValue = new GetEdgeKubernetesClustersClusterConnections();
+            _resultValue.apiServerInternet = apiServerInternet;
+            _resultValue.apiServerIntranet = apiServerIntranet;
+            return _resultValue;
         }
     }
 }

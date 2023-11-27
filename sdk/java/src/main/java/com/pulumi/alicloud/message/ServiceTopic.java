@@ -74,7 +74,7 @@ public class ServiceTopic extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable the log management feature. Default value: false. Valid values:
      * 
      */
-    @Export(name="loggingEnabled", type=Boolean.class, parameters={})
+    @Export(name="loggingEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> loggingEnabled;
 
     /**
@@ -88,7 +88,7 @@ public class ServiceTopic extends com.pulumi.resources.CustomResource {
      * The maximum size of a message body that can be sent to the topic. Unit: bytes. Valid values: 1024-65536. Default value: 65536.
      * 
      */
-    @Export(name="maxMessageSize", type=Integer.class, parameters={})
+    @Export(name="maxMessageSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxMessageSize;
 
     /**
@@ -102,7 +102,7 @@ public class ServiceTopic extends com.pulumi.resources.CustomResource {
      * Two topics on a single account in the same region cannot have the same name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
      * 
      */
-    @Export(name="topicName", type=String.class, parameters={})
+    @Export(name="topicName", refs={String.class}, tree="[0]")
     private Output<String> topicName;
 
     /**

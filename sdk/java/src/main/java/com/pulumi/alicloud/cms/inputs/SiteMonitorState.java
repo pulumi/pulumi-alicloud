@@ -94,14 +94,14 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+     * The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
      * 
      */
     @Import(name="optionsJson")
     private @Nullable Output<String> optionsJson;
 
     /**
-     * @return The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+     * @return The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
      * 
      */
     public Optional<Output<String>> optionsJson() {
@@ -327,7 +327,7 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param optionsJson The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+         * @param optionsJson The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
          * 
          * @return builder
          * 
@@ -338,7 +338,7 @@ public final class SiteMonitorState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param optionsJson The extended options of the protocol of the site monitoring task. The options vary according to the protocol.
+         * @param optionsJson The extended options of the protocol of the site monitoring task. The options vary according to the protocol. See [extended options](https://www.alibabacloud.com/help/en/cms/developer-reference/api-cms-2019-01-01-createsitemonitor#api-detail-35).
          * 
          * @return builder
          * 

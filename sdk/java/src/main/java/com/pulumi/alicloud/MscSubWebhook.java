@@ -33,7 +33,7 @@ public class MscSubWebhook extends com.pulumi.resources.CustomResource {
      * The serverUrl of the Webhook. This url must start with `https://oapi.dingtalk.com/robot/send?access_token=`.
      * 
      */
-    @Export(name="serverUrl", type=String.class, parameters={})
+    @Export(name="serverUrl", refs={String.class}, tree="[0]")
     private Output<String> serverUrl;
 
     /**
@@ -47,7 +47,7 @@ public class MscSubWebhook extends com.pulumi.resources.CustomResource {
      * The name of the Webhook. **Note:** The name must be `2` to `12` characters in length, and can contain uppercase and lowercase letters.
      * 
      */
-    @Export(name="webhookName", type=String.class, parameters={})
+    @Export(name="webhookName", refs={String.class}, tree="[0]")
     private Output<String> webhookName;
 
     /**

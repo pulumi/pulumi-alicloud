@@ -180,16 +180,16 @@ public final class GetHostAccountsAccount {
             return this;
         }
         public GetHostAccountsAccount build() {
-            final var o = new GetHostAccountsAccount();
-            o.hasPassword = hasPassword;
-            o.hostAccountId = hostAccountId;
-            o.hostAccountName = hostAccountName;
-            o.hostId = hostId;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.privateKeyFingerprint = privateKeyFingerprint;
-            o.protocolName = protocolName;
-            return o;
+            final var _resultValue = new GetHostAccountsAccount();
+            _resultValue.hasPassword = hasPassword;
+            _resultValue.hostAccountId = hostAccountId;
+            _resultValue.hostAccountName = hostAccountName;
+            _resultValue.hostId = hostId;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.privateKeyFingerprint = privateKeyFingerprint;
+            _resultValue.protocolName = protocolName;
+            return _resultValue;
         }
     }
 }

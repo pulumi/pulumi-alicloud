@@ -144,6 +144,23 @@ export interface ProviderEndpoint {
     waf?: pulumi.Input<string>;
     wafOpenapi?: pulumi.Input<string>;
 }
+export namespace ackone {
+    export interface ClusterNetwork {
+        /**
+         * Security group to which the cluster belongs.
+         */
+        securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * VpcId to which the cluster belongs.
+         */
+        vpcId: pulumi.Input<string>;
+        /**
+         * Switch to which the cluster belongs.
+         */
+        vswitches: pulumi.Input<pulumi.Input<string>[]>;
+    }
+}
+
 export namespace actiontrail {
 }
 
@@ -1773,6 +1790,81 @@ export namespace cloudfirewall {
 
 }
 
+export namespace cloudmonitor {
+    export interface ServiceGroupMonitoringAgentProcessAlertConfig {
+        /**
+         * The operator that is used to compare the metric value with the threshold. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
+         */
+        comparisonOperator: pulumi.Input<string>;
+        /**
+         * The time period during which the alert rule is effective.
+         */
+        effectiveInterval?: pulumi.Input<string>;
+        /**
+         * The alert level. Valid values: `critical`, `warn`, `info`.
+         */
+        escalationsLevel: pulumi.Input<string>;
+        /**
+         * The mute period during which new alert notifications are not sent even if the trigger conditions are met. Unit: seconds.
+         */
+        silenceTime?: pulumi.Input<number>;
+        /**
+         * The statistical method for alerts. Valid values: `Average`.
+         */
+        statistics: pulumi.Input<string>;
+        /**
+         * The alert triggers. See `targetList` below.
+         */
+        targetLists?: pulumi.Input<pulumi.Input<inputs.cloudmonitor.ServiceGroupMonitoringAgentProcessAlertConfigTargetList>[]>;
+        /**
+         * The alert threshold.
+         */
+        threshold: pulumi.Input<string>;
+        /**
+         * The number of times for which the threshold can be consecutively exceeded.
+         */
+        times: pulumi.Input<string>;
+        /**
+         * The callback URL.
+         */
+        webhook?: pulumi.Input<string>;
+    }
+
+    export interface ServiceGroupMonitoringAgentProcessAlertConfigTargetList {
+        /**
+         * The Alibaba Cloud Resource Name (ARN) of the resource.
+         */
+        arn?: pulumi.Input<string>;
+        /**
+         * The parameters of the alert callback. Specify the parameters in the JSON format.
+         */
+        jsonParams?: pulumi.Input<string>;
+        /**
+         * The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
+         */
+        level?: pulumi.Input<string>;
+        /**
+         * The ID of the resource for which alerts are triggered.
+         */
+        targetListId?: pulumi.Input<string>;
+    }
+
+    export interface ServiceGroupMonitoringAgentProcessMatchExpress {
+        /**
+         * The matching condition. Valid values: `all`, `startWith`, `endWith`, `contains`, `notContains`, `equals`.
+         */
+        function?: pulumi.Input<string>;
+        /**
+         * The criteria based on which the instances are matched.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The keyword used to match the instance name.
+         */
+        value?: pulumi.Input<string>;
+    }
+}
+
 export namespace cloudsso {
     export interface AccessConfigurationPermissionPolicy {
         /**
@@ -2125,6 +2217,7 @@ export namespace cms {
     export interface GroupMetricRuleTarget {
         /**
          * The Alibaba Cloud Resource Name (ARN) of the resource.
+         * > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
          */
         arn?: pulumi.Input<string>;
         /**
@@ -2133,8 +2226,6 @@ export namespace cms {
         id?: pulumi.Input<string>;
         /**
          * The parameters of the alert callback. The parameters are in the JSON format.
-         *
-         * > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
          */
         jsonParams?: pulumi.Input<string>;
         /**
@@ -2775,6 +2866,10 @@ export namespace cs {
          * Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
          */
         name?: pulumi.Input<string>;
+        /**
+         * The version of the component.
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface KubernetesAutoscalerNodepool {
@@ -2828,15 +2923,15 @@ export namespace cs {
 
     export interface KubernetesMasterNode {
         /**
-         * The id of a node.
+         * ID of the node.
          */
         id?: pulumi.Input<string>;
         /**
-         * The name of a node.
+         * The kubernetes cluster's name. It is unique in one Alicloud account.
          */
         name?: pulumi.Input<string>;
         /**
-         * The private ip of a node.
+         * The private IP address of node.
          */
         privateIp?: pulumi.Input<string>;
     }
@@ -2879,75 +2974,6 @@ export namespace cs {
         version?: pulumi.Input<string>;
     }
 
-    export interface KubernetesTaint {
-        /**
-         * The scheduling policy. Valid values: NoSchedule | NoExecute | PreferNoSchedule. Default value: NoSchedule.
-         */
-        effect?: pulumi.Input<string>;
-        /**
-         * The key of a taint.
-         */
-        key?: pulumi.Input<string>;
-        /**
-         * The key of a taint.
-         */
-        value?: pulumi.Input<string>;
-    }
-
-    export interface KubernetesWorkerDataDisk {
-        /**
-         * Worker node data disk auto snapshot policy.
-         */
-        autoSnapshotPolicyId?: pulumi.Input<string>;
-        /**
-         * The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-         */
-        category?: pulumi.Input<string>;
-        /**
-         * The device of the data disks.
-         */
-        device?: pulumi.Input<string>;
-        /**
-         * Specifies whether to encrypt data disks. Valid values: true and false.
-         */
-        encrypted?: pulumi.Input<string>;
-        /**
-         * The id of the kms key.
-         */
-        kmsKeyId?: pulumi.Input<string>;
-        /**
-         * The name of the data disks.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-         */
-        performanceLevel?: pulumi.Input<string>;
-        /**
-         * The size of a data disk, Its valid value range [40~32768] in GB. Unit: GiB.
-         */
-        size?: pulumi.Input<string>;
-        /**
-         * The id of snapshot.
-         */
-        snapshotId?: pulumi.Input<string>;
-    }
-
-    export interface KubernetesWorkerNode {
-        /**
-         * ID of the node.
-         */
-        id?: pulumi.Input<string>;
-        /**
-         * Node name.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * The private IP address of node.
-         */
-        privateIp?: pulumi.Input<string>;
-    }
-
     export interface ManagedKubernetesAddon {
         /**
          * If this parameter is left empty, no configurations are required.
@@ -2956,7 +2982,7 @@ export namespace cs {
         /**
          * It specifies whether to disable automatic installation. 
          *
-         * It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+         * It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
          *
          * You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
          *
@@ -2974,6 +3000,10 @@ export namespace cs {
          * This parameter specifies the name of the component.
          */
         name?: pulumi.Input<string>;
+        /**
+         * It specifies the version of the component.
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface ManagedKubernetesCertificateAuthority {
@@ -3051,106 +3081,6 @@ export namespace cs {
          * The issuer URL of RRSA OIDC Token.
          */
         rrsaOidcIssuerUrl?: pulumi.Input<string>;
-    }
-
-    export interface ManagedKubernetesRuntime {
-        /**
-         * This parameter specifies the name of the component.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
-         */
-        version?: pulumi.Input<string>;
-    }
-
-    export interface ManagedKubernetesTaint {
-        /**
-         * The taint effect.
-         *
-         * The following example is the definition of taints block:
-         *
-         * ```typescript
-         * import * as pulumi from "@pulumi/pulumi";
-         * import * as alicloud from "@pulumi/alicloud";
-         *
-         * const k8s = new alicloud.cs.ManagedKubernetes("k8s", {taints: [
-         *     {
-         *         effect: "NoSchedule",
-         *         key: "key-a",
-         *         value: "value-a",
-         *     },
-         *     {
-         *         effect: "NoSchedule",
-         *         key: "key-b",
-         *         value: "value-b",
-         *     },
-         * ]});
-         * ```
-         */
-        effect?: pulumi.Input<string>;
-        /**
-         * The taint key.
-         */
-        key?: pulumi.Input<string>;
-        /**
-         * The taint value.
-         */
-        value?: pulumi.Input<string>;
-    }
-
-    export interface ManagedKubernetesWorkerDataDisk {
-        /**
-         * (Optional, Available in 1.120.0+) Worker node data disk auto snapshot policy.
-         */
-        autoSnapshotPolicyId?: pulumi.Input<string>;
-        /**
-         * (Optional)The type of the data disks. Valid values: `cloud`, `cloudEfficiency`, `cloudSsd` and `cloudEssd`. Default to `cloudEfficiency`.
-         */
-        category?: pulumi.Input<string>;
-        /**
-         * The mount point of data disk N.
-         */
-        device?: pulumi.Input<string>;
-        /**
-         * (Optional)Specifies whether to encrypt data disks. Valid values: true and false. Default to `false`.
-         */
-        encrypted?: pulumi.Input<string>;
-        /**
-         * The ID of the Key Management Service (KMS) key to use for data disk N.
-         */
-        kmsKeyId?: pulumi.Input<string>;
-        /**
-         * The name of data disk N. The name must be 2 to 128 characters in length. It must start with a letter and cannot start with http:// or https://. It can contain letters, digits, colons (.), underscores (_), and hyphens (-).
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * (Optional, Available in 1.120.0+) Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
-         */
-        performanceLevel?: pulumi.Input<string>;
-        /**
-         * (Optional)The size of a data disk, at least 40. Unit: GiB.
-         */
-        size?: pulumi.Input<string>;
-        /**
-         * The ID of the snapshot to be used to create data disk N. Valid values of N: 1 to 16. When DataDisk.N.SnapshotId is specified, DataDisk.N.Size is ignored. The data disk is created based on the size of the specified snapshot. Use snapshots that were created on or after July 15, 2013. Otherwise, an error is returned and your request is rejected.
-         */
-        snapshotId?: pulumi.Input<string>;
-    }
-
-    export interface ManagedKubernetesWorkerNode {
-        /**
-         * (Deprecated from version 1.177.0) ID of the node.
-         */
-        id?: pulumi.Input<string>;
-        /**
-         * This parameter specifies the name of the component.
-         */
-        name?: pulumi.Input<string>;
-        /**
-         * (Deprecated from version 1.177.0) The private IP address of node.
-         */
-        privateIp?: pulumi.Input<string>;
     }
 
     export interface NodePoolDataDisk {
@@ -3397,6 +3327,8 @@ export namespace databasefilesystem {
     export interface InstanceEcsList {
         /**
          * The ID of the ECS instance.
+         *
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          */
         ecsId?: pulumi.Input<string>;
     }
@@ -5279,6 +5211,13 @@ export namespace ecs {
          * The start time of maintenance. The time must be on the hour at exactly 0 minute and 0 second. The `startTime` and `endTime` parameters must be specified at the same time. The `endTime` value must be 1 to 23 hours later than the `startTime` value. Specify the time in the HH:mm:ss format. The time must be in UTC+8.
          */
         startTime?: pulumi.Input<string>;
+    }
+
+    export interface InstanceNetworkInterfaces {
+        /**
+         * The ID of the secondary ENI.
+         */
+        networkInterfaceId?: pulumi.Input<string>;
     }
 
     export interface LaunchTemplateDataDisk {
@@ -7613,6 +7552,39 @@ export namespace hbr {
     }
 }
 
+export namespace hologram {
+    export interface InstanceEndpoint {
+        /**
+         * Some old instances have both AnyTunnel and SingleTunnel enabled. When switching from AnyTunnel to SingleTunnel, the endpoints of both are retained. Therefore, one more field is required to store the Endpoint.
+         */
+        alternativeEndpoints?: pulumi.Input<string>;
+        /**
+         * Whether to turn on the network.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Domain name.
+         */
+        endpoint?: pulumi.Input<string>;
+        /**
+         * The network type.
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * VPC primary key.
+         */
+        vpcId?: pulumi.Input<string>;
+        /**
+         * The vpc instance ID.
+         */
+        vpcInstanceId?: pulumi.Input<string>;
+        /**
+         * The ID of the virtual switch.
+         */
+        vswitchId?: pulumi.Input<string>;
+    }
+}
+
 export namespace imm {
 }
 
@@ -8211,11 +8183,11 @@ export namespace mongodb {
          */
         connectionPort?: pulumi.Input<string>;
         /**
-         * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+         * The network type of the instance. Valid values:`Classic`, `VPC`.
          */
         networkType?: pulumi.Input<string>;
         /**
-         * The role of the node. Valid values: `Primary`,`Secondary`.
+         * The role of the node.
          */
         replicaSetRole?: pulumi.Input<string>;
         /**
@@ -8223,7 +8195,7 @@ export namespace mongodb {
          */
         vpcCloudInstanceId?: pulumi.Input<string>;
         /**
-         * The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+         * The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
          */
         vpcId?: pulumi.Input<string>;
         /**
@@ -9818,6 +9790,118 @@ export namespace resourcemanager {
 }
 
 export namespace rocketmq {
+    export interface ConsumerGroupConsumeRetryPolicy {
+        /**
+         * Maximum number of retries.
+         */
+        maxRetryTimes?: pulumi.Input<number>;
+        /**
+         * Consume retry policy.
+         */
+        retryPolicy?: pulumi.Input<string>;
+    }
+
+    export interface RocketMQInstanceNetworkInfo {
+        /**
+         * Access point list.
+         */
+        endpoints?: pulumi.Input<pulumi.Input<inputs.rocketmq.RocketMQInstanceNetworkInfoEndpoint>[]>;
+        /**
+         * instance internet info. See `internetInfo` below.
+         */
+        internetInfo: pulumi.Input<inputs.rocketmq.RocketMQInstanceNetworkInfoInternetInfo>;
+        /**
+         * Proprietary network information. See `vpcInfo` below.
+         */
+        vpcInfo: pulumi.Input<inputs.rocketmq.RocketMQInstanceNetworkInfoVpcInfo>;
+    }
+
+    export interface RocketMQInstanceNetworkInfoEndpoint {
+        /**
+         * Access point type.
+         */
+        endpointType?: pulumi.Input<string>;
+        /**
+         * Access point address.
+         */
+        endpointUrl?: pulumi.Input<string>;
+        /**
+         * White list of access addresses.
+         */
+        ipWhiteLists?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RocketMQInstanceNetworkInfoInternetInfo {
+        /**
+         * Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
+         */
+        flowOutBandwidth?: pulumi.Input<number>;
+        /**
+         * Public network billing type. The parameter values are as follows:
+         * - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
+         * - uninvolved: Not involved. Set this value when disabling public network access.
+         */
+        flowOutType: pulumi.Input<string>;
+        /**
+         * Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
+         * - enable: Enable public network access
+         * - disable: Disable public network access
+         */
+        internetSpec: pulumi.Input<string>;
+        /**
+         * internet ip whitelist.
+         */
+        ipWhitelists?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RocketMQInstanceNetworkInfoVpcInfo {
+        /**
+         * Proprietary Network.
+         */
+        vpcId: pulumi.Input<string>;
+        /**
+         * VPC network switch.
+         */
+        vswitchId: pulumi.Input<string>;
+    }
+
+    export interface RocketMQInstanceProductInfo {
+        /**
+         * is open auto scaling.
+         */
+        autoScaling?: pulumi.Input<boolean>;
+        /**
+         * Duration of message retention. Unit: hours.For the range of values, please refer to [Usage Limits](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/usage-limits)>Resource Quotas>Limitations on Message Retention.The message storage in AlibabaCloud RocketMQ is fully implemented in a serverless and elastic manner, with charges based on the actual storage space. You can control the storage capacity of messages by adjusting the duration of message retention. For more information, please see [Storage Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/storage-fees).
+         */
+        messageRetentionTime?: pulumi.Input<number>;
+        /**
+         * Message sending and receiving calculation specifications. For details about the upper limit for sending and receiving messages, see [Instance Specifications](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/instance-specifications).
+         */
+        msgProcessSpec: pulumi.Input<string>;
+        /**
+         * message send receive ratio.Value range: [0.2, 0.5].
+         */
+        sendReceiveRatio?: pulumi.Input<number>;
+        /**
+         * is support auto scaling.
+         */
+        supportAutoScaling?: pulumi.Input<boolean>;
+    }
+
+    export interface RocketMQInstanceSoftware {
+        /**
+         * Upgrade time period.
+         */
+        maintainTime?: pulumi.Input<string>;
+        /**
+         * Software version.
+         */
+        softwareVersion?: pulumi.Input<string>;
+        /**
+         * Upgrade method.
+         */
+        upgradeMethod?: pulumi.Input<string>;
+    }
 }
 
 export namespace ros {
@@ -10680,15 +10764,15 @@ export namespace servicemesh {
 
     export interface ServiceMeshMeshConfig {
         /**
-         * The access logging configuration. See `mesh_config-access_log` below.
+         * The access logging configuration. See `accessLog` below.
          */
         accessLog?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigAccessLog>;
         /**
-         * Audit information. See `mesh_config-audit` below.
+         * Audit information. See `audit` below.
          */
         audit?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigAudit>;
         /**
-         * Control plane log collection configuration. See `mesh_config-control_plane_log` below.
+         * Control plane log collection configuration. See `controlPlaneLog` below.
          */
         controlPlaneLog?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigControlPlaneLog>;
         /**
@@ -10704,11 +10788,11 @@ export namespace servicemesh {
          */
         includeIpRanges?: pulumi.Input<string>;
         /**
-         * Kiali configuration. See `mesh_config-kiali` below.
+         * Kiali configuration. See `kiali` below.
          */
         kiali?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigKiali>;
         /**
-         * The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
+         * The open-door policy of agent (OPA) plug-in information. See `opa` below.
          */
         opa?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigOpa>;
         /**
@@ -10716,7 +10800,7 @@ export namespace servicemesh {
          */
         outboundTrafficPolicy?: pulumi.Input<string>;
         /**
-         * Link trace sampling information. See `mesh_config-pilot` below.
+         * Link trace sampling information. See `pilot` below.
          */
         pilot?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigPilot>;
         /**
@@ -10724,11 +10808,11 @@ export namespace servicemesh {
          */
         prometheus?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigPrometheus>;
         /**
-         * Proxy configuration. See `mesh_config-proxy` below.
+         * Proxy configuration. See `proxy` below.
          */
         proxy?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigProxy>;
         /**
-         * Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
+         * Sidecar injector configuration. See `sidecarInjector` below.
          */
         sidecarInjector?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigSidecarInjector>;
         /**
@@ -10867,7 +10951,7 @@ export namespace servicemesh {
          */
         enableNamespacesByDefault?: pulumi.Input<boolean>;
         /**
-         * CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+         * CNI configuration. See `initCniConfiguration` below.
          */
         initCniConfiguration?: pulumi.Input<inputs.servicemesh.ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration>;
         /**
@@ -10990,9 +11074,21 @@ export namespace slb {
     }
 
     export interface ServerGroupServer {
+        /**
+         * The port used by the backend server. Valid value range: [1-65535].
+         */
         port: pulumi.Input<number>;
+        /**
+         * A list backend server ID (ECS instance ID).
+         */
         serverIds: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Type of the backend server. Valid value ecs, eni. Default to eni.
+         */
         type?: pulumi.Input<string>;
+        /**
+         * Weight of the backend server. Valid value range: [0-100]. Default to 100.
+         */
         weight?: pulumi.Input<number>;
     }
 }
@@ -11048,6 +11144,19 @@ export namespace threatdetection {
          * Destination port.
          */
         targetPort?: pulumi.Input<number>;
+    }
+
+    export interface SasTrailServiceTrail {
+        /**
+         * Service tracking on status. The value is:
+         * - **on:** Open
+         * - **off:** off.
+         */
+        config?: pulumi.Input<string>;
+        /**
+         * The timestamp of the last service update. Unit: milliseconds.
+         */
+        updateTime?: pulumi.Input<number>;
     }
 }
 

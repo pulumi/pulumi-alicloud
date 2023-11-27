@@ -170,19 +170,19 @@ public final class GetGatewaysResult {
             return this;
         }
         public GetGatewaysResult build() {
-            final var o = new GetGatewaysResult();
-            o.gateways = gateways;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.status = status;
-            o.storageBundleId = storageBundleId;
-            o.totalCount = totalCount;
-            return o;
+            final var _resultValue = new GetGatewaysResult();
+            _resultValue.gateways = gateways;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.status = status;
+            _resultValue.storageBundleId = storageBundleId;
+            _resultValue.totalCount = totalCount;
+            return _resultValue;
         }
     }
 }

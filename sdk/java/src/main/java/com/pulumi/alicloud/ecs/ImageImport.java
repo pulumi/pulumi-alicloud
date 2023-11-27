@@ -86,7 +86,7 @@ public class ImageImport extends com.pulumi.resources.CustomResource {
      * Specifies the architecture of the system disk after you specify a data disk snapshot as the data source of the system disk for creating an image. Valid values: `i386` , Default is `x86_64`.
      * 
      */
-    @Export(name="architecture", type=String.class, parameters={})
+    @Export(name="architecture", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> architecture;
 
     /**
@@ -100,7 +100,7 @@ public class ImageImport extends com.pulumi.resources.CustomResource {
      * Description of the image. The length is 2 to 256 English or Chinese characters, and cannot begin with http: // and https: //.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -114,7 +114,7 @@ public class ImageImport extends com.pulumi.resources.CustomResource {
      * Description of the system with disks and snapshots under the image.
      * 
      */
-    @Export(name="diskDeviceMappings", type=List.class, parameters={ImageImportDiskDeviceMapping.class})
+    @Export(name="diskDeviceMappings", refs={List.class,ImageImportDiskDeviceMapping.class}, tree="[0,1]")
     private Output<List<ImageImportDiskDeviceMapping>> diskDeviceMappings;
 
     /**
@@ -128,7 +128,7 @@ public class ImageImport extends com.pulumi.resources.CustomResource {
      * The image name. The length is 2 ~ 128 English or Chinese characters. Must start with a english letter or Chinese, and cannot start with http: // and https: //. Can contain numbers, colons (:), underscores (_), or hyphens (-).
      * 
      */
-    @Export(name="imageName", type=String.class, parameters={})
+    @Export(name="imageName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageName;
 
     /**
@@ -142,7 +142,7 @@ public class ImageImport extends com.pulumi.resources.CustomResource {
      * The type of the license used to activate the operating system after the image is imported. Default value: `Auto`. Valid values: `Auto`,`Aliyun`,`BYOL`.
      * 
      */
-    @Export(name="licenseType", type=String.class, parameters={})
+    @Export(name="licenseType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> licenseType;
 
     /**
@@ -156,7 +156,7 @@ public class ImageImport extends com.pulumi.resources.CustomResource {
      * Operating system platform type. Valid values: `windows`, Default is `linux`.
      * 
      */
-    @Export(name="osType", type=String.class, parameters={})
+    @Export(name="osType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> osType;
 
     /**
@@ -172,7 +172,7 @@ public class ImageImport extends com.pulumi.resources.CustomResource {
      * **NOTE**: It&#39;s default value is Ubuntu before version 1.197.0.
      * 
      */
-    @Export(name="platform", type=String.class, parameters={})
+    @Export(name="platform", refs={String.class}, tree="[0]")
     private Output<String> platform;
 
     /**

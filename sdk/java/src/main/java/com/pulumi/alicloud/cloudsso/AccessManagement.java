@@ -40,7 +40,7 @@ public class AccessManagement extends com.pulumi.resources.CustomResource {
      * The Access configuration ID.
      * 
      */
-    @Export(name="accessConfigurationId", type=String.class, parameters={})
+    @Export(name="accessConfigurationId", refs={String.class}, tree="[0]")
     private Output<String> accessConfigurationId;
 
     /**
@@ -54,7 +54,7 @@ public class AccessManagement extends com.pulumi.resources.CustomResource {
      * The deprovision strategy. Valid values: `DeprovisionForLastAccessAssignmentOnAccount` and `None`. Default Value: `DeprovisionForLastAccessAssignmentOnAccount`. **NOTE:** When `deprovision_strategy` is `DeprovisionForLastAccessAssignmentOnAccount`, and the access assignment to be deleted is the last access assignment for the same account and the same AC, this option is used for the undeployment operation。
      * 
      */
-    @Export(name="deprovisionStrategy", type=String.class, parameters={})
+    @Export(name="deprovisionStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deprovisionStrategy;
 
     /**
@@ -68,7 +68,7 @@ public class AccessManagement extends com.pulumi.resources.CustomResource {
      * The ID of the Directory.
      * 
      */
-    @Export(name="directoryId", type=String.class, parameters={})
+    @Export(name="directoryId", refs={String.class}, tree="[0]")
     private Output<String> directoryId;
 
     /**
@@ -82,7 +82,7 @@ public class AccessManagement extends com.pulumi.resources.CustomResource {
      * The ID of the access assignment.
      * 
      */
-    @Export(name="principalId", type=String.class, parameters={})
+    @Export(name="principalId", refs={String.class}, tree="[0]")
     private Output<String> principalId;
 
     /**
@@ -96,7 +96,7 @@ public class AccessManagement extends com.pulumi.resources.CustomResource {
      * The identity type of the access assignment, which can be a user or a user group. Valid values: `Group`, `User`.
      * 
      */
-    @Export(name="principalType", type=String.class, parameters={})
+    @Export(name="principalType", refs={String.class}, tree="[0]")
     private Output<String> principalType;
 
     /**
@@ -110,7 +110,7 @@ public class AccessManagement extends com.pulumi.resources.CustomResource {
      * The ID of the target to create the resource range.
      * 
      */
-    @Export(name="targetId", type=String.class, parameters={})
+    @Export(name="targetId", refs={String.class}, tree="[0]")
     private Output<String> targetId;
 
     /**
@@ -124,7 +124,7 @@ public class AccessManagement extends com.pulumi.resources.CustomResource {
      * The type of the resource range target to be accessed. Valid values: `RD-Account`.
      * 
      */
-    @Export(name="targetType", type=String.class, parameters={})
+    @Export(name="targetType", refs={String.class}, tree="[0]")
     private Output<String> targetType;
 
     /**

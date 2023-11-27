@@ -65,10 +65,10 @@ public final class ReadOnlyInstanceParameter {
             return this;
         }
         public ReadOnlyInstanceParameter build() {
-            final var o = new ReadOnlyInstanceParameter();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new ReadOnlyInstanceParameter();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

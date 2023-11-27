@@ -35,7 +35,7 @@ public class TransitRouterMulticastDomainSource extends com.pulumi.resources.Cus
      * The IP address of the multicast group to which the multicast source belongs. Value range: **224.0.0.1** to **239.255.255.254**. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you.
      * 
      */
-    @Export(name="groupIpAddress", type=String.class, parameters={})
+    @Export(name="groupIpAddress", refs={String.class}, tree="[0]")
     private Output<String> groupIpAddress;
 
     /**
@@ -49,7 +49,7 @@ public class TransitRouterMulticastDomainSource extends com.pulumi.resources.Cus
      * ENI ID of the multicast source.
      * 
      */
-    @Export(name="networkInterfaceId", type=String.class, parameters={})
+    @Export(name="networkInterfaceId", refs={String.class}, tree="[0]")
     private Output<String> networkInterfaceId;
 
     /**
@@ -63,7 +63,7 @@ public class TransitRouterMulticastDomainSource extends com.pulumi.resources.Cus
      * The status of the resource
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -77,7 +77,7 @@ public class TransitRouterMulticastDomainSource extends com.pulumi.resources.Cus
      * The ID of the multicast domain to which the multicast source belongs.
      * 
      */
-    @Export(name="transitRouterMulticastDomainId", type=String.class, parameters={})
+    @Export(name="transitRouterMulticastDomainId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterMulticastDomainId;
 
     /**
@@ -91,7 +91,7 @@ public class TransitRouterMulticastDomainSource extends com.pulumi.resources.Cus
      * The VPC to which the ENI of the multicast source belongs. This field is mandatory for VPCs that is owned by another accounts.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

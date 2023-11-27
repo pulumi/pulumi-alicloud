@@ -70,7 +70,7 @@ public class KeyVersion extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The minimum interval for creating a Alikms key version is 7 days.
      * 
      */
-    @Export(name="keyId", type=String.class, parameters={})
+    @Export(name="keyId", refs={String.class}, tree="[0]")
     private Output<String> keyId;
 
     /**
@@ -86,7 +86,7 @@ public class KeyVersion extends com.pulumi.resources.CustomResource {
      * The id of the Alikms key version.
      * 
      */
-    @Export(name="keyVersionId", type=String.class, parameters={})
+    @Export(name="keyVersionId", refs={String.class}, tree="[0]")
     private Output<String> keyVersionId;
 
     /**

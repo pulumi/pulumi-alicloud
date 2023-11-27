@@ -88,11 +88,11 @@ public final class AppGroupOrder {
             return this;
         }
         public AppGroupOrder build() {
-            final var o = new AppGroupOrder();
-            o.autoRenew = autoRenew;
-            o.duration = duration;
-            o.pricingCycle = pricingCycle;
-            return o;
+            final var _resultValue = new AppGroupOrder();
+            _resultValue.autoRenew = autoRenew;
+            _resultValue.duration = duration;
+            _resultValue.pricingCycle = pricingCycle;
+            return _resultValue;
         }
     }
 }

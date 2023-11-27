@@ -147,20 +147,6 @@ type Instance struct {
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks InstanceDataDiskArrayOutput `pulumi:"dataDisks"`
 	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
-	//
-	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-	//
-	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
-	//
-	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-	//
-	// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-	//
-	// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-	// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-	// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-	//
-	// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
 	DedicatedHostId pulumi.StringPtrOutput `pulumi:"dedicatedHostId"`
 	// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
 	// - true: Enable deletion protection.
@@ -236,8 +222,10 @@ type Instance struct {
 	MaintenanceTime InstanceMaintenanceTimePtrOutput `pulumi:"maintenanceTime"`
 	// The memory size of the instance. Unit: MiB.
 	Memory pulumi.IntOutput `pulumi:"memory"`
-	// The ID of the ENI.
+	// The ID of the secondary ENI.
 	NetworkInterfaceId pulumi.StringOutput `pulumi:"networkInterfaceId"`
+	// The list of network interfaces created with instance. See `networkInterfaces` below.
+	NetworkInterfaces InstanceNetworkInterfacesOutput `pulumi:"networkInterfaces"`
 	// The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
 	OperatorType pulumi.StringPtrOutput `pulumi:"operatorType"`
 	// The name of the operating system of the instance.
@@ -310,7 +298,7 @@ type Instance struct {
 	SystemDiskPerformanceLevel pulumi.StringOutput `pulumi:"systemDiskPerformanceLevel"`
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrOutput `pulumi:"systemDiskSize"`
-	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
 	SystemDiskStorageClusterId pulumi.StringPtrOutput `pulumi:"systemDiskStorageClusterId"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -392,20 +380,6 @@ type instanceState struct {
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks []InstanceDataDisk `pulumi:"dataDisks"`
 	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
-	//
-	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-	//
-	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
-	//
-	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-	//
-	// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-	//
-	// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-	// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-	// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-	//
-	// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
 	DedicatedHostId *string `pulumi:"dedicatedHostId"`
 	// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
 	// - true: Enable deletion protection.
@@ -481,8 +455,10 @@ type instanceState struct {
 	MaintenanceTime *InstanceMaintenanceTime `pulumi:"maintenanceTime"`
 	// The memory size of the instance. Unit: MiB.
 	Memory *int `pulumi:"memory"`
-	// The ID of the ENI.
+	// The ID of the secondary ENI.
 	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
+	// The list of network interfaces created with instance. See `networkInterfaces` below.
+	NetworkInterfaces *InstanceNetworkInterfaces `pulumi:"networkInterfaces"`
 	// The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
 	OperatorType *string `pulumi:"operatorType"`
 	// The name of the operating system of the instance.
@@ -555,7 +531,7 @@ type instanceState struct {
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
-	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
 	SystemDiskStorageClusterId *string `pulumi:"systemDiskStorageClusterId"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -592,20 +568,6 @@ type InstanceState struct {
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks InstanceDataDiskArrayInput
 	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
-	//
-	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-	//
-	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
-	//
-	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-	//
-	// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-	//
-	// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-	// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-	// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-	//
-	// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
 	DedicatedHostId pulumi.StringPtrInput
 	// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
 	// - true: Enable deletion protection.
@@ -681,8 +643,10 @@ type InstanceState struct {
 	MaintenanceTime InstanceMaintenanceTimePtrInput
 	// The memory size of the instance. Unit: MiB.
 	Memory pulumi.IntPtrInput
-	// The ID of the ENI.
+	// The ID of the secondary ENI.
 	NetworkInterfaceId pulumi.StringPtrInput
+	// The list of network interfaces created with instance. See `networkInterfaces` below.
+	NetworkInterfaces InstanceNetworkInterfacesPtrInput
 	// The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
 	OperatorType pulumi.StringPtrInput
 	// The name of the operating system of the instance.
@@ -755,7 +719,7 @@ type InstanceState struct {
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrInput
-	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
 	SystemDiskStorageClusterId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -794,20 +758,6 @@ type instanceArgs struct {
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks []InstanceDataDisk `pulumi:"dataDisks"`
 	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
-	//
-	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-	//
-	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
-	//
-	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-	//
-	// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-	//
-	// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-	// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-	// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-	//
-	// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
 	DedicatedHostId *string `pulumi:"dedicatedHostId"`
 	// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
 	// - true: Enable deletion protection.
@@ -879,6 +829,8 @@ type instanceArgs struct {
 	MaintenanceNotify *bool `pulumi:"maintenanceNotify"`
 	// The time of maintenance. See `maintenanceTime` below.
 	MaintenanceTime *InstanceMaintenanceTime `pulumi:"maintenanceTime"`
+	// The list of network interfaces created with instance. See `networkInterfaces` below.
+	NetworkInterfaces *InstanceNetworkInterfaces `pulumi:"networkInterfaces"`
 	// The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
 	OperatorType *string `pulumi:"operatorType"`
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
@@ -941,7 +893,7 @@ type instanceArgs struct {
 	SystemDiskPerformanceLevel *string `pulumi:"systemDiskPerformanceLevel"`
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize *int `pulumi:"systemDiskSize"`
-	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
 	SystemDiskStorageClusterId *string `pulumi:"systemDiskStorageClusterId"`
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -977,20 +929,6 @@ type InstanceArgs struct {
 	// The list of data disks created with instance. See `dataDisks` below.
 	DataDisks InstanceDataDiskArrayInput
 	// The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
-	//
-	// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-	//
-	// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
-	//
-	// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-	//
-	// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-	//
-	// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-	// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-	// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-	//
-	// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
 	DedicatedHostId pulumi.StringPtrInput
 	// Whether enable the deletion protection or not. It does not work when the instance is spot. Default value: `false`.
 	// - true: Enable deletion protection.
@@ -1062,6 +1000,8 @@ type InstanceArgs struct {
 	MaintenanceNotify pulumi.BoolPtrInput
 	// The time of maintenance. See `maintenanceTime` below.
 	MaintenanceTime InstanceMaintenanceTimePtrInput
+	// The list of network interfaces created with instance. See `networkInterfaces` below.
+	NetworkInterfaces InstanceNetworkInterfacesPtrInput
 	// The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
 	OperatorType pulumi.StringPtrInput
 	// Password to an instance is a string of 8 to 30 characters. It must contain uppercase/lowercase letters and numerals, but cannot contain special symbols. When it is changed, the instance will reboot to make the change take effect.
@@ -1124,7 +1064,7 @@ type InstanceArgs struct {
 	SystemDiskPerformanceLevel pulumi.StringPtrInput
 	// Size of the system disk, measured in GiB. Value range: [20, 500]. The specified value must be equal to or greater than max{20, Imagesize}. Default value: max{40, ImageSize}.
 	SystemDiskSize pulumi.IntPtrInput
-	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+	// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
 	SystemDiskStorageClusterId pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	// - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
@@ -1268,20 +1208,6 @@ func (o InstanceOutput) DataDisks() InstanceDataDiskArrayOutput {
 }
 
 // The ID of the dedicated host on which to create the instance. If you set the DedicatedHostId parameter, the `spotStrategy` and `spotPriceLimit` parameters cannot be set. This is because preemptible instances cannot be created on dedicated hosts.
-//
-// > **NOTE:** System disk category `cloud` has been outdated and it only can be used none I/O Optimized ECS instances. Recommend `cloudEfficiency` and `cloudSsd` disk.
-//
-// > **NOTE:** From version 1.5.0, instance's charge type can be changed to "PrePaid" by specifying `period` and `periodUnit`, but it is irreversible.
-//
-// > **NOTE:** From version 1.5.0, instance's private IP address can be specified when creating VPC network instance.
-//
-// > **NOTE:** From version 1.5.0, instance's vswitch and private IP can be changed in the same availability zone. When they are changed, the instance will reboot to make the change take effect.
-//
-// > **NOTE:** From version 1.7.0, setting "internetMaxBandwidthOut" larger than 0 can allocate a public IP for an instance.
-// Setting "internetMaxBandwidthOut" to 0 can release allocated public IP for VPC instance(For Classic instnace, its public IP cannot be release once it allocated, even thougth its bandwidth out is 0).
-// However, at present, 'PrePaid' instance cannot narrow its max bandwidth out when its 'internet_charge_type' is "PayByBandwidth".
-//
-// > **NOTE:** From version 1.7.0, instance's type can be changed. When it is changed, the instance will reboot to make the change take effect.
 func (o InstanceOutput) DedicatedHostId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DedicatedHostId }).(pulumi.StringPtrOutput)
 }
@@ -1450,9 +1376,14 @@ func (o InstanceOutput) Memory() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Memory }).(pulumi.IntOutput)
 }
 
-// The ID of the ENI.
+// The ID of the secondary ENI.
 func (o InstanceOutput) NetworkInterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.NetworkInterfaceId }).(pulumi.StringOutput)
+}
+
+// The list of network interfaces created with instance. See `networkInterfaces` below.
+func (o InstanceOutput) NetworkInterfaces() InstanceNetworkInterfacesOutput {
+	return o.ApplyT(func(v *Instance) InstanceNetworkInterfacesOutput { return v.NetworkInterfaces }).(InstanceNetworkInterfacesOutput)
 }
 
 // The operation type. It is valid when `instanceChargeType` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instanceType` parameter has lower specifications than the current instance type, you must set `operatorType` to `downgrade`.
@@ -1620,7 +1551,7 @@ func (o InstanceOutput) SystemDiskSize() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.SystemDiskSize }).(pulumi.IntPtrOutput)
 }
 
-// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters, see [What is Dedicated Block Storage Cluster?](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/dedicated-block-storage-clusters-overview).
+// The ID of the dedicated block storage cluster. If you want to use disks in a dedicated block storage cluster as system disks when you create instances, you must specify this parameter. For more information about dedicated block storage clusters.
 func (o InstanceOutput) SystemDiskStorageClusterId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.SystemDiskStorageClusterId }).(pulumi.StringPtrOutput)
 }

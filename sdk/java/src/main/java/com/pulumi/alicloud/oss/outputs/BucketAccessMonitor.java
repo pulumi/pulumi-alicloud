@@ -48,9 +48,9 @@ public final class BucketAccessMonitor {
             return this;
         }
         public BucketAccessMonitor build() {
-            final var o = new BucketAccessMonitor();
-            o.status = status;
-            return o;
+            final var _resultValue = new BucketAccessMonitor();
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

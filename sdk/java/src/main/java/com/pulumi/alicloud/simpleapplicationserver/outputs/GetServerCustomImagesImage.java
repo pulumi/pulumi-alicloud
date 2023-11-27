@@ -122,13 +122,13 @@ public final class GetServerCustomImagesImage {
             return this;
         }
         public GetServerCustomImagesImage build() {
-            final var o = new GetServerCustomImagesImage();
-            o.customImageId = customImageId;
-            o.customImageName = customImageName;
-            o.description = description;
-            o.id = id;
-            o.platform = platform;
-            return o;
+            final var _resultValue = new GetServerCustomImagesImage();
+            _resultValue.customImageId = customImageId;
+            _resultValue.customImageName = customImageName;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.platform = platform;
+            return _resultValue;
         }
     }
 }

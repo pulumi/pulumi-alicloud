@@ -65,10 +65,10 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryL
             return this;
         }
         public FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList build() {
-            final var o = new FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList();
-            o.peerDestinationCidr = peerDestinationCidr;
-            o.peerNextHopInstanceId = peerNextHopInstanceId;
-            return o;
+            final var _resultValue = new FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList();
+            _resultValue.peerDestinationCidr = peerDestinationCidr;
+            _resultValue.peerNextHopInstanceId = peerNextHopInstanceId;
+            return _resultValue;
         }
     }
 }

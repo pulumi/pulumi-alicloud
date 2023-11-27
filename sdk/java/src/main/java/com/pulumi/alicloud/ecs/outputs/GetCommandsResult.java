@@ -169,19 +169,19 @@ public final class GetCommandsResult {
             return this;
         }
         public GetCommandsResult build() {
-            final var o = new GetCommandsResult();
-            o.commandProvider = commandProvider;
-            o.commands = commands;
-            o.contentEncoding = contentEncoding;
-            o.description = description;
-            o.id = id;
-            o.ids = ids;
-            o.name = name;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetCommandsResult();
+            _resultValue.commandProvider = commandProvider;
+            _resultValue.commands = commands;
+            _resultValue.contentEncoding = contentEncoding;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.name = name;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

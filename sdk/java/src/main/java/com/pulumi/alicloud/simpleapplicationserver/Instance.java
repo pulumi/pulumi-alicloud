@@ -32,7 +32,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable auto-renewal. Unit: months. Valid values: `true` and `false`.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
@@ -46,7 +46,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The auto renew period. Valid values: `1`,`3`, `6`, `12`, `24`, `36`. **NOTE:** The attribute `auto_renew` is valid when the attribute is `true`.
      * 
      */
-    @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
@@ -60,7 +60,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The size of the data disk. Unit: GB. Valid values: `0` to `16380`.
      * 
      */
-    @Export(name="dataDiskSize", type=Integer.class, parameters={})
+    @Export(name="dataDiskSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> dataDiskSize;
 
     /**
@@ -74,7 +74,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the image.  You can use the `alicloud.simpleapplicationserver.getImages` to query the available images in the specified region. The value must be an integral multiple of 20.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     /**
@@ -88,7 +88,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of the simple application server.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceName;
 
     /**
@@ -102,7 +102,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The password of the simple application server. The password must be 8 to 30 characters in length. It must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include: `( ) ~ ! @ # $ % ^ &amp; * - + = | { } [ ] : ; &lt; &gt; , . ? /`.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -116,7 +116,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The paymen type of the resource. Valid values: `Subscription`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -130,7 +130,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The period. Unit: months. Valid values: `1`,`3`, `6`, `12`, `24`, `36`.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output<Integer> period;
 
     /**
@@ -144,7 +144,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the plan. You can use the `alicloud.simpleapplicationserver.getServerPlans`  to query all the plans provided by Simple Application Server in the specified region.
      * 
      */
-    @Export(name="planId", type=String.class, parameters={})
+    @Export(name="planId", refs={String.class}, tree="[0]")
     private Output<String> planId;
 
     /**
@@ -158,7 +158,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The status of the simple application server. Valid values: `Resetting`, `Running`, `Stopped`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

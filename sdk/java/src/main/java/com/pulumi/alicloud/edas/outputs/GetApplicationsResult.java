@@ -138,14 +138,14 @@ public final class GetApplicationsResult {
             return this;
         }
         public GetApplicationsResult build() {
-            final var o = new GetApplicationsResult();
-            o.applications = applications;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetApplicationsResult();
+            _resultValue.applications = applications;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

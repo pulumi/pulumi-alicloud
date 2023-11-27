@@ -35,7 +35,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable auto-renewal for the instance. Default value: false. Valid values: true(enables auto-renewal), false(disables auto-renewal).
      * 
      */
-    @Export(name="autoRenew", type=String.class, parameters={})
+    @Export(name="autoRenew", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoRenew;
 
     /**
@@ -49,7 +49,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The subscription duration that is supported by auto-renewal. Unit: months. Valid values: 1, 2, 3, 6, and 12. This parameter is required only if the AutoRenew parameter is set to true.
      * 
      */
-    @Export(name="autoRenewPeriod", type=String.class, parameters={})
+    @Export(name="autoRenewPeriod", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoRenewPeriod;
 
     /**
@@ -63,7 +63,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The time when the instance was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -77,7 +77,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The time when to change the configurations. Default value: Immediately. Valid values: Immediately (The configurations are immediately changed), MaintainTime (The configurations are changed within the maintenance window).
      * 
      */
-    @Export(name="effectiveTime", type=String.class, parameters={})
+    @Export(name="effectiveTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> effectiveTime;
 
     /**
@@ -91,7 +91,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The database engine version of the instance. Default value: 1.0. The default version is developed by Alibaba Cloud and compatible with Redis 5.0.
      * 
      */
-    @Export(name="engineVersion", type=String.class, parameters={})
+    @Export(name="engineVersion", refs={String.class}, tree="[0]")
     private Output<String> engineVersion;
 
     /**
@@ -105,7 +105,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * Specifies whether to forcefully change the configurations of the instance. Default value: true. Valid values: false (The system does not forcefully change the configurations), true (The system forcefully changes the configurations).
      * 
      */
-    @Export(name="forceUpgrade", type=Boolean.class, parameters={})
+    @Export(name="forceUpgrade", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceUpgrade;
 
     /**
@@ -119,7 +119,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The instance type of the instance. For more information, see [Instance types](https://www.alibabacloud.com/help/en/apsaradb-for-redis/latest/instance-types).
      * 
      */
-    @Export(name="instanceClass", type=String.class, parameters={})
+    @Export(name="instanceClass", refs={String.class}, tree="[0]")
     private Output<String> instanceClass;
 
     /**
@@ -133,7 +133,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The storage medium of the instance. Valid values: tair_rdb, tair_scm, tair_essd.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -147,7 +147,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The password that is used to connect to the instance. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include ! @ # $ % ^ &amp; * ( ) _ + - =.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -161,7 +161,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * Payment type: Subscription (prepaid), PayAsYouGo (postpaid). Default PayAsYouGo.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -175,7 +175,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The subscription duration. Unit: months. Valid values: 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24,36, and 60. This parameter is required only if you set the PaymentType parameter to Subscription.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -189,7 +189,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The Tair service port. The service port of the instance. Valid values: 1024 to 65535. Default value: 6379.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -203,7 +203,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The ID of the resource group to which the instance belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -217,7 +217,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The ID of the secondary zone.This parameter is returned only if the instance is deployed in two zones.
      * 
      */
-    @Export(name="secondaryZoneId", type=String.class, parameters={})
+    @Export(name="secondaryZoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> secondaryZoneId;
 
     /**
@@ -231,7 +231,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The number of data nodes in the instance. When 1 is passed, it means that the instance created is a standard architecture with only one data node. You can create an instance in the standard architecture that contains only a single data node. 2 to 32: You can create an instance in the cluster architecture that contains the specified number of data nodes. Only persistent memory-optimized instances can use the cluster architecture. Therefore, you can set this parameter to an integer from 2 to 32 only if you set the InstanceType parameter to tair_scm. It is not allowed to modify the number of shards by modifying this parameter after creating a master-slave architecture instance with or without passing 1.
      * 
      */
-    @Export(name="shardCount", type=Integer.class, parameters={})
+    @Export(name="shardCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> shardCount;
 
     /**
@@ -245,7 +245,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -259,7 +259,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The storage type. The value range is [PL1, PL2, and PL3]. The default value is PL1. When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
      * 
      */
-    @Export(name="storagePerformanceLevel", type=String.class, parameters={})
+    @Export(name="storagePerformanceLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storagePerformanceLevel;
 
     /**
@@ -273,7 +273,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The value range of different specifications is different, see [ESSD-based instances](https://www.alibabacloud.com/help/en/tair/product-overview/essd-based-instances). When the value of instance_type is &#34;tair_essd&#34;, this attribute takes effect and is required.
      * 
      */
-    @Export(name="storageSizeGb", type=Integer.class, parameters={})
+    @Export(name="storageSizeGb", refs={Integer.class}, tree="[0]")
     private Output<Integer> storageSizeGb;
 
     /**
@@ -287,7 +287,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The tag of the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -301,7 +301,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The name of the resource.
      * 
      */
-    @Export(name="tairInstanceName", type=String.class, parameters={})
+    @Export(name="tairInstanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tairInstanceName;
 
     /**
@@ -315,7 +315,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The ID of the virtual private cloud (VPC).
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -329,7 +329,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * The ID of the vSwitch to which the instance is connected.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -343,7 +343,7 @@ public class TairInstance extends com.pulumi.resources.CustomResource {
      * Zone ID.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

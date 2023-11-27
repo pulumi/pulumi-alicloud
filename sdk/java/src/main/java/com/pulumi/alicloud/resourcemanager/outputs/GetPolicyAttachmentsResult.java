@@ -211,18 +211,18 @@ public final class GetPolicyAttachmentsResult {
             return this;
         }
         public GetPolicyAttachmentsResult build() {
-            final var o = new GetPolicyAttachmentsResult();
-            o.attachments = attachments;
-            o.id = id;
-            o.ids = ids;
-            o.language = language;
-            o.outputFile = outputFile;
-            o.policyName = policyName;
-            o.policyType = policyType;
-            o.principalName = principalName;
-            o.principalType = principalType;
-            o.resourceGroupId = resourceGroupId;
-            return o;
+            final var _resultValue = new GetPolicyAttachmentsResult();
+            _resultValue.attachments = attachments;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.language = language;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policyName = policyName;
+            _resultValue.policyType = policyType;
+            _resultValue.principalName = principalName;
+            _resultValue.principalType = principalType;
+            _resultValue.resourceGroupId = resourceGroupId;
+            return _resultValue;
         }
     }
 }

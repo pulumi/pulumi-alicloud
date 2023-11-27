@@ -55,10 +55,10 @@ public final class DomainParameterFilterConfig {
             return hashKeyArgs(List.of(hashKeyArgs));
         }
         public DomainParameterFilterConfig build() {
-            final var o = new DomainParameterFilterConfig();
-            o.enable = enable;
-            o.hashKeyArgs = hashKeyArgs;
-            return o;
+            final var _resultValue = new DomainParameterFilterConfig();
+            _resultValue.enable = enable;
+            _resultValue.hashKeyArgs = hashKeyArgs;
+            return _resultValue;
         }
     }
 }

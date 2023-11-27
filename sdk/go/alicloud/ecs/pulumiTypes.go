@@ -2110,6 +2110,143 @@ func (o InstanceMaintenanceTimePtrOutput) StartTime() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstanceNetworkInterfaces struct {
+	// The ID of the secondary ENI.
+	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
+}
+
+// InstanceNetworkInterfacesInput is an input type that accepts InstanceNetworkInterfacesArgs and InstanceNetworkInterfacesOutput values.
+// You can construct a concrete instance of `InstanceNetworkInterfacesInput` via:
+//
+//	InstanceNetworkInterfacesArgs{...}
+type InstanceNetworkInterfacesInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkInterfacesOutput() InstanceNetworkInterfacesOutput
+	ToInstanceNetworkInterfacesOutputWithContext(context.Context) InstanceNetworkInterfacesOutput
+}
+
+type InstanceNetworkInterfacesArgs struct {
+	// The ID of the secondary ENI.
+	NetworkInterfaceId pulumi.StringPtrInput `pulumi:"networkInterfaceId"`
+}
+
+func (InstanceNetworkInterfacesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkInterfaces)(nil)).Elem()
+}
+
+func (i InstanceNetworkInterfacesArgs) ToInstanceNetworkInterfacesOutput() InstanceNetworkInterfacesOutput {
+	return i.ToInstanceNetworkInterfacesOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkInterfacesArgs) ToInstanceNetworkInterfacesOutputWithContext(ctx context.Context) InstanceNetworkInterfacesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkInterfacesOutput)
+}
+
+func (i InstanceNetworkInterfacesArgs) ToInstanceNetworkInterfacesPtrOutput() InstanceNetworkInterfacesPtrOutput {
+	return i.ToInstanceNetworkInterfacesPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceNetworkInterfacesArgs) ToInstanceNetworkInterfacesPtrOutputWithContext(ctx context.Context) InstanceNetworkInterfacesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkInterfacesOutput).ToInstanceNetworkInterfacesPtrOutputWithContext(ctx)
+}
+
+// InstanceNetworkInterfacesPtrInput is an input type that accepts InstanceNetworkInterfacesArgs, InstanceNetworkInterfacesPtr and InstanceNetworkInterfacesPtrOutput values.
+// You can construct a concrete instance of `InstanceNetworkInterfacesPtrInput` via:
+//
+//	        InstanceNetworkInterfacesArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceNetworkInterfacesPtrInput interface {
+	pulumi.Input
+
+	ToInstanceNetworkInterfacesPtrOutput() InstanceNetworkInterfacesPtrOutput
+	ToInstanceNetworkInterfacesPtrOutputWithContext(context.Context) InstanceNetworkInterfacesPtrOutput
+}
+
+type instanceNetworkInterfacesPtrType InstanceNetworkInterfacesArgs
+
+func InstanceNetworkInterfacesPtr(v *InstanceNetworkInterfacesArgs) InstanceNetworkInterfacesPtrInput {
+	return (*instanceNetworkInterfacesPtrType)(v)
+}
+
+func (*instanceNetworkInterfacesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkInterfaces)(nil)).Elem()
+}
+
+func (i *instanceNetworkInterfacesPtrType) ToInstanceNetworkInterfacesPtrOutput() InstanceNetworkInterfacesPtrOutput {
+	return i.ToInstanceNetworkInterfacesPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceNetworkInterfacesPtrType) ToInstanceNetworkInterfacesPtrOutputWithContext(ctx context.Context) InstanceNetworkInterfacesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceNetworkInterfacesPtrOutput)
+}
+
+type InstanceNetworkInterfacesOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkInterfacesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceNetworkInterfaces)(nil)).Elem()
+}
+
+func (o InstanceNetworkInterfacesOutput) ToInstanceNetworkInterfacesOutput() InstanceNetworkInterfacesOutput {
+	return o
+}
+
+func (o InstanceNetworkInterfacesOutput) ToInstanceNetworkInterfacesOutputWithContext(ctx context.Context) InstanceNetworkInterfacesOutput {
+	return o
+}
+
+func (o InstanceNetworkInterfacesOutput) ToInstanceNetworkInterfacesPtrOutput() InstanceNetworkInterfacesPtrOutput {
+	return o.ToInstanceNetworkInterfacesPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceNetworkInterfacesOutput) ToInstanceNetworkInterfacesPtrOutputWithContext(ctx context.Context) InstanceNetworkInterfacesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceNetworkInterfaces) *InstanceNetworkInterfaces {
+		return &v
+	}).(InstanceNetworkInterfacesPtrOutput)
+}
+
+// The ID of the secondary ENI.
+func (o InstanceNetworkInterfacesOutput) NetworkInterfaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceNetworkInterfaces) *string { return v.NetworkInterfaceId }).(pulumi.StringPtrOutput)
+}
+
+type InstanceNetworkInterfacesPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceNetworkInterfacesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceNetworkInterfaces)(nil)).Elem()
+}
+
+func (o InstanceNetworkInterfacesPtrOutput) ToInstanceNetworkInterfacesPtrOutput() InstanceNetworkInterfacesPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkInterfacesPtrOutput) ToInstanceNetworkInterfacesPtrOutputWithContext(ctx context.Context) InstanceNetworkInterfacesPtrOutput {
+	return o
+}
+
+func (o InstanceNetworkInterfacesPtrOutput) Elem() InstanceNetworkInterfacesOutput {
+	return o.ApplyT(func(v *InstanceNetworkInterfaces) InstanceNetworkInterfaces {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceNetworkInterfaces
+		return ret
+	}).(InstanceNetworkInterfacesOutput)
+}
+
+// The ID of the secondary ENI.
+func (o InstanceNetworkInterfacesPtrOutput) NetworkInterfaceId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstanceNetworkInterfaces) *string {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkInterfaceId
+	}).(pulumi.StringPtrOutput)
+}
+
 type LaunchTemplateDataDisk struct {
 	// The category of the disk:
 	// - cloud: Basic cloud disk.
@@ -15351,6 +15488,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceDataDiskArrayInput)(nil)).Elem(), InstanceDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceTimeInput)(nil)).Elem(), InstanceMaintenanceTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenanceTimePtrInput)(nil)).Elem(), InstanceMaintenanceTimeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkInterfacesInput)(nil)).Elem(), InstanceNetworkInterfacesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkInterfacesPtrInput)(nil)).Elem(), InstanceNetworkInterfacesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateDataDiskInput)(nil)).Elem(), LaunchTemplateDataDiskArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateDataDiskArrayInput)(nil)).Elem(), LaunchTemplateDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LaunchTemplateNetworkInterfacesInput)(nil)).Elem(), LaunchTemplateNetworkInterfacesArgs{})
@@ -15514,6 +15653,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenanceTimeOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenanceTimePtrOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkInterfacesOutput{})
+	pulumi.RegisterOutputType(InstanceNetworkInterfacesPtrOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateDataDiskOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(LaunchTemplateNetworkInterfacesOutput{})

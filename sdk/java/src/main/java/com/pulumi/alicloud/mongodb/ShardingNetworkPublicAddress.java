@@ -125,7 +125,7 @@ public class ShardingNetworkPublicAddress extends com.pulumi.resources.CustomRes
      * The ID of the instance.
      * 
      */
-    @Export(name="dbInstanceId", type=String.class, parameters={})
+    @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     /**
@@ -139,7 +139,7 @@ public class ShardingNetworkPublicAddress extends com.pulumi.resources.CustomRes
      * The endpoint of the instance.
      * 
      */
-    @Export(name="networkAddresses", type=List.class, parameters={ShardingNetworkPublicAddressNetworkAddress.class})
+    @Export(name="networkAddresses", refs={List.class,ShardingNetworkPublicAddressNetworkAddress.class}, tree="[0,1]")
     private Output<List<ShardingNetworkPublicAddressNetworkAddress>> networkAddresses;
 
     /**
@@ -153,7 +153,7 @@ public class ShardingNetworkPublicAddress extends com.pulumi.resources.CustomRes
      * The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
      * 
      */
-    @Export(name="nodeId", type=String.class, parameters={})
+    @Export(name="nodeId", refs={String.class}, tree="[0]")
     private Output<String> nodeId;
 
     /**

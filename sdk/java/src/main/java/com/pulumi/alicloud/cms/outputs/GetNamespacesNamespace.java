@@ -160,15 +160,15 @@ public final class GetNamespacesNamespace {
             return this;
         }
         public GetNamespacesNamespace build() {
-            final var o = new GetNamespacesNamespace();
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.modifyTime = modifyTime;
-            o.namespace = namespace;
-            o.namespaceId = namespaceId;
-            o.specification = specification;
-            return o;
+            final var _resultValue = new GetNamespacesNamespace();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.modifyTime = modifyTime;
+            _resultValue.namespace = namespace;
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.specification = specification;
+            return _resultValue;
         }
     }
 }

@@ -85,11 +85,11 @@ public final class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacit
             return this;
         }
         public GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity build() {
-            final var o = new GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity();
-            o.availableDisk = availableDisk;
-            o.dataDiskCategory = dataDiskCategory;
-            o.totalDisk = totalDisk;
-            return o;
+            final var _resultValue = new GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity();
+            _resultValue.availableDisk = availableDisk;
+            _resultValue.dataDiskCategory = dataDiskCategory;
+            _resultValue.totalDisk = totalDisk;
+            return _resultValue;
         }
     }
 }

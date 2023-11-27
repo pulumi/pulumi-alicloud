@@ -238,19 +238,19 @@ public final class GetGatewayCacheDisksDisk {
             return this;
         }
         public GetGatewayCacheDisksDisk build() {
-            final var o = new GetGatewayCacheDisksDisk();
-            o.cacheDiskCategory = cacheDiskCategory;
-            o.cacheDiskSizeInGb = cacheDiskSizeInGb;
-            o.cacheId = cacheId;
-            o.expiredTime = expiredTime;
-            o.gatewayId = gatewayId;
-            o.id = id;
-            o.iops = iops;
-            o.isUsed = isUsed;
-            o.localFilePath = localFilePath;
-            o.renewUrl = renewUrl;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetGatewayCacheDisksDisk();
+            _resultValue.cacheDiskCategory = cacheDiskCategory;
+            _resultValue.cacheDiskSizeInGb = cacheDiskSizeInGb;
+            _resultValue.cacheId = cacheId;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.gatewayId = gatewayId;
+            _resultValue.id = id;
+            _resultValue.iops = iops;
+            _resultValue.isUsed = isUsed;
+            _resultValue.localFilePath = localFilePath;
+            _resultValue.renewUrl = renewUrl;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

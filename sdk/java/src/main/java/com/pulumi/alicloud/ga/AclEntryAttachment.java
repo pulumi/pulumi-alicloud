@@ -77,7 +77,7 @@ public class AclEntryAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the global acceleration instance.
      * 
      */
-    @Export(name="aclId", type=String.class, parameters={})
+    @Export(name="aclId", refs={String.class}, tree="[0]")
     private Output<String> aclId;
 
     /**
@@ -91,7 +91,7 @@ public class AclEntryAttachment extends com.pulumi.resources.CustomResource {
      * The IP address(192.168.XX.XX) or CIDR(10.0.XX.XX/24) block that you want to add to the network ACL.
      * 
      */
-    @Export(name="entry", type=String.class, parameters={})
+    @Export(name="entry", refs={String.class}, tree="[0]")
     private Output<String> entry;
 
     /**
@@ -105,7 +105,7 @@ public class AclEntryAttachment extends com.pulumi.resources.CustomResource {
      * The description of the entry. The description must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
      * 
      */
-    @Export(name="entryDescription", type=String.class, parameters={})
+    @Export(name="entryDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> entryDescription;
 
     /**
@@ -119,7 +119,7 @@ public class AclEntryAttachment extends com.pulumi.resources.CustomResource {
      * The status of the network ACL.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

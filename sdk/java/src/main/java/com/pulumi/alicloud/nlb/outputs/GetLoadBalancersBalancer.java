@@ -404,27 +404,27 @@ public final class GetLoadBalancersBalancer {
             return zoneMappings(List.of(zoneMappings));
         }
         public GetLoadBalancersBalancer build() {
-            final var o = new GetLoadBalancersBalancer();
-            o.addressIpVersion = addressIpVersion;
-            o.addressType = addressType;
-            o.bandwidthPackageId = bandwidthPackageId;
-            o.createTime = createTime;
-            o.crossZoneEnabled = crossZoneEnabled;
-            o.dnsName = dnsName;
-            o.id = id;
-            o.ipv6AddressType = ipv6AddressType;
-            o.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
-            o.loadBalancerId = loadBalancerId;
-            o.loadBalancerName = loadBalancerName;
-            o.loadBalancerType = loadBalancerType;
-            o.operationLocks = operationLocks;
-            o.resourceGroupId = resourceGroupId;
-            o.securityGroupIds = securityGroupIds;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.zoneMappings = zoneMappings;
-            return o;
+            final var _resultValue = new GetLoadBalancersBalancer();
+            _resultValue.addressIpVersion = addressIpVersion;
+            _resultValue.addressType = addressType;
+            _resultValue.bandwidthPackageId = bandwidthPackageId;
+            _resultValue.createTime = createTime;
+            _resultValue.crossZoneEnabled = crossZoneEnabled;
+            _resultValue.dnsName = dnsName;
+            _resultValue.id = id;
+            _resultValue.ipv6AddressType = ipv6AddressType;
+            _resultValue.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
+            _resultValue.loadBalancerId = loadBalancerId;
+            _resultValue.loadBalancerName = loadBalancerName;
+            _resultValue.loadBalancerType = loadBalancerType;
+            _resultValue.operationLocks = operationLocks;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.securityGroupIds = securityGroupIds;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            _resultValue.zoneMappings = zoneMappings;
+            return _resultValue;
         }
     }
 }

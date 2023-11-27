@@ -113,14 +113,14 @@ public final class GetHistoryDeliveryJobsResult {
             return this;
         }
         public GetHistoryDeliveryJobsResult build() {
-            final var o = new GetHistoryDeliveryJobsResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.jobs = jobs;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetHistoryDeliveryJobsResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.jobs = jobs;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -116,14 +116,14 @@ public final class GetBucketObjectsResult {
             return this;
         }
         public GetBucketObjectsResult build() {
-            final var o = new GetBucketObjectsResult();
-            o.bucketName = bucketName;
-            o.id = id;
-            o.keyPrefix = keyPrefix;
-            o.keyRegex = keyRegex;
-            o.objects = objects;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetBucketObjectsResult();
+            _resultValue.bucketName = bucketName;
+            _resultValue.id = id;
+            _resultValue.keyPrefix = keyPrefix;
+            _resultValue.keyRegex = keyRegex;
+            _resultValue.objects = objects;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

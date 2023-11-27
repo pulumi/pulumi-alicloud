@@ -465,29 +465,29 @@ public final class GetListenersListener {
             return xforwardedForConfigs(List.of(xforwardedForConfigs));
         }
         public GetListenersListener build() {
-            final var o = new GetListenersListener();
-            o.accessLogRecordCustomizedHeadersEnabled = accessLogRecordCustomizedHeadersEnabled;
-            o.accessLogTracingConfigs = accessLogTracingConfigs;
-            o.aclConfigs = aclConfigs;
-            o.certificates = certificates;
-            o.defaultActions = defaultActions;
-            o.gzipEnabled = gzipEnabled;
-            o.http2Enabled = http2Enabled;
-            o.id = id;
-            o.idleTimeout = idleTimeout;
-            o.listenerDescription = listenerDescription;
-            o.listenerId = listenerId;
-            o.listenerPort = listenerPort;
-            o.listenerProtocol = listenerProtocol;
-            o.loadBalancerId = loadBalancerId;
-            o.maxResults = maxResults;
-            o.nextToken = nextToken;
-            o.quicConfigs = quicConfigs;
-            o.requestTimeout = requestTimeout;
-            o.securityPolicyId = securityPolicyId;
-            o.status = status;
-            o.xforwardedForConfigs = xforwardedForConfigs;
-            return o;
+            final var _resultValue = new GetListenersListener();
+            _resultValue.accessLogRecordCustomizedHeadersEnabled = accessLogRecordCustomizedHeadersEnabled;
+            _resultValue.accessLogTracingConfigs = accessLogTracingConfigs;
+            _resultValue.aclConfigs = aclConfigs;
+            _resultValue.certificates = certificates;
+            _resultValue.defaultActions = defaultActions;
+            _resultValue.gzipEnabled = gzipEnabled;
+            _resultValue.http2Enabled = http2Enabled;
+            _resultValue.id = id;
+            _resultValue.idleTimeout = idleTimeout;
+            _resultValue.listenerDescription = listenerDescription;
+            _resultValue.listenerId = listenerId;
+            _resultValue.listenerPort = listenerPort;
+            _resultValue.listenerProtocol = listenerProtocol;
+            _resultValue.loadBalancerId = loadBalancerId;
+            _resultValue.maxResults = maxResults;
+            _resultValue.nextToken = nextToken;
+            _resultValue.quicConfigs = quicConfigs;
+            _resultValue.requestTimeout = requestTimeout;
+            _resultValue.securityPolicyId = securityPolicyId;
+            _resultValue.status = status;
+            _resultValue.xforwardedForConfigs = xforwardedForConfigs;
+            return _resultValue;
         }
     }
 }

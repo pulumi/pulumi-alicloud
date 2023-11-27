@@ -70,7 +70,7 @@ public class ShortUrl extends com.pulumi.resources.CustomResource {
      * Short chain service use validity period. Valid values: `30`, `60`, `90`. The unit is days, and the maximum validity period is 90 days.
      * 
      */
-    @Export(name="effectiveDays", type=Integer.class, parameters={})
+    @Export(name="effectiveDays", refs={Integer.class}, tree="[0]")
     private Output<Integer> effectiveDays;
 
     /**
@@ -84,7 +84,7 @@ public class ShortUrl extends com.pulumi.resources.CustomResource {
      * The name of the resource.
      * 
      */
-    @Export(name="shortUrlName", type=String.class, parameters={})
+    @Export(name="shortUrlName", refs={String.class}, tree="[0]")
     private Output<String> shortUrlName;
 
     /**
@@ -98,7 +98,7 @@ public class ShortUrl extends com.pulumi.resources.CustomResource {
      * The original link address.
      * 
      */
-    @Export(name="sourceUrl", type=String.class, parameters={})
+    @Export(name="sourceUrl", refs={String.class}, tree="[0]")
     private Output<String> sourceUrl;
 
     /**
@@ -112,7 +112,7 @@ public class ShortUrl extends com.pulumi.resources.CustomResource {
      * Short chain status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

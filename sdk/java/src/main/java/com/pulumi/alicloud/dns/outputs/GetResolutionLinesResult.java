@@ -174,17 +174,17 @@ public final class GetResolutionLinesResult {
             return this;
         }
         public GetResolutionLinesResult build() {
-            final var o = new GetResolutionLinesResult();
-            o.domainName = domainName;
-            o.id = id;
-            o.lang = lang;
-            o.lineCodes = lineCodes;
-            o.lineDisplayNames = lineDisplayNames;
-            o.lineNames = lineNames;
-            o.lines = lines;
-            o.outputFile = outputFile;
-            o.userClientIp = userClientIp;
-            return o;
+            final var _resultValue = new GetResolutionLinesResult();
+            _resultValue.domainName = domainName;
+            _resultValue.id = id;
+            _resultValue.lang = lang;
+            _resultValue.lineCodes = lineCodes;
+            _resultValue.lineDisplayNames = lineDisplayNames;
+            _resultValue.lineNames = lineNames;
+            _resultValue.lines = lines;
+            _resultValue.outputFile = outputFile;
+            _resultValue.userClientIp = userClientIp;
+            return _resultValue;
         }
     }
 }

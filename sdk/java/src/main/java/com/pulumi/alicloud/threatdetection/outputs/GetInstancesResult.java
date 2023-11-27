@@ -158,16 +158,16 @@ public final class GetInstancesResult {
             return this;
         }
         public GetInstancesResult build() {
-            final var o = new GetInstancesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.instances = instances;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.renewStatus = renewStatus;
-            return o;
+            final var _resultValue = new GetInstancesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instances = instances;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.renewStatus = renewStatus;
+            return _resultValue;
         }
     }
 }

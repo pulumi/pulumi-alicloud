@@ -148,17 +148,17 @@ public final class GetAppsResult {
             return this;
         }
         public GetAppsResult build() {
-            final var o = new GetAppsResult();
-            o.apps = apps;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.osType = osType;
-            o.outputFile = outputFile;
-            o.productId = productId;
-            return o;
+            final var _resultValue = new GetAppsResult();
+            _resultValue.apps = apps;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.osType = osType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.productId = productId;
+            return _resultValue;
         }
     }
 }

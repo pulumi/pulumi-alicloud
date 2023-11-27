@@ -111,14 +111,14 @@ public final class GetBgpNetworksResult {
             return this;
         }
         public GetBgpNetworksResult build() {
-            final var o = new GetBgpNetworksResult();
-            o.id = id;
-            o.ids = ids;
-            o.networks = networks;
-            o.outputFile = outputFile;
-            o.routerId = routerId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBgpNetworksResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.networks = networks;
+            _resultValue.outputFile = outputFile;
+            _resultValue.routerId = routerId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

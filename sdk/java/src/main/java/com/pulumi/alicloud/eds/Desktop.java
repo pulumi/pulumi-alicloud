@@ -118,7 +118,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The amount of the Desktop.
      * 
      */
-    @Export(name="amount", type=Integer.class, parameters={})
+    @Export(name="amount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> amount;
 
     /**
@@ -132,7 +132,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The auto-pay of the Desktop whether to pay automatically. values: `true`, `false`.
      * 
      */
-    @Export(name="autoPay", type=Boolean.class, parameters={})
+    @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
     /**
@@ -146,7 +146,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The auto-renewal of the Desktop whether to renew automatically. It takes effect only when the parameter ChargeType is set to PrePaid. values: `true`, `false`.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
@@ -160,7 +160,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The bundle id of the Desktop.
      * 
      */
-    @Export(name="bundleId", type=String.class, parameters={})
+    @Export(name="bundleId", refs={String.class}, tree="[0]")
     private Output<String> bundleId;
 
     /**
@@ -174,7 +174,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The desktop name of the Desktop.
      * 
      */
-    @Export(name="desktopName", type=String.class, parameters={})
+    @Export(name="desktopName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> desktopName;
 
     /**
@@ -188,7 +188,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The desktop type of the Desktop.
      * 
      */
-    @Export(name="desktopType", type=String.class, parameters={})
+    @Export(name="desktopType", refs={String.class}, tree="[0]")
     private Output<String> desktopType;
 
     /**
@@ -202,7 +202,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The desktop end user id of the Desktop.
      * 
      */
-    @Export(name="endUserIds", type=List.class, parameters={String.class})
+    @Export(name="endUserIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> endUserIds;
 
     /**
@@ -216,7 +216,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The hostname of the Desktop.
      * 
      */
-    @Export(name="hostName", type=String.class, parameters={})
+    @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostName;
 
     /**
@@ -230,7 +230,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The ID of the Simple Office Site.
      * 
      */
-    @Export(name="officeSiteId", type=String.class, parameters={})
+    @Export(name="officeSiteId", refs={String.class}, tree="[0]")
     private Output<String> officeSiteId;
 
     /**
@@ -244,7 +244,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The payment type of the Desktop. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -258,7 +258,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The period of the Desktop.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -272,7 +272,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The period unit of the Desktop.
      * 
      */
-    @Export(name="periodUnit", type=String.class, parameters={})
+    @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
@@ -286,7 +286,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The policy group id of the Desktop.
      * 
      */
-    @Export(name="policyGroupId", type=String.class, parameters={})
+    @Export(name="policyGroupId", refs={String.class}, tree="[0]")
     private Output<String> policyGroupId;
 
     /**
@@ -300,7 +300,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The root disk size gib of the Desktop.
      * 
      */
-    @Export(name="rootDiskSizeGib", type=Integer.class, parameters={})
+    @Export(name="rootDiskSizeGib", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> rootDiskSizeGib;
 
     /**
@@ -314,7 +314,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The status of the Desktop. Valid values: `Deleted`, `Expired`, `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -328,7 +328,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The stopped mode of the Desktop.
      * 
      */
-    @Export(name="stoppedMode", type=String.class, parameters={})
+    @Export(name="stoppedMode", refs={String.class}, tree="[0]")
     private Output<String> stoppedMode;
 
     /**
@@ -342,7 +342,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -356,7 +356,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The user assign mode of the Desktop. Valid values: `ALL`, `PER_USER`. Default to `ALL`.
      * 
      */
-    @Export(name="userAssignMode", type=String.class, parameters={})
+    @Export(name="userAssignMode", refs={String.class}, tree="[0]")
     private Output<String> userAssignMode;
 
     /**
@@ -370,7 +370,7 @@ public class Desktop extends com.pulumi.resources.CustomResource {
      * The user disk size gib of the Desktop.
      * 
      */
-    @Export(name="userDiskSizeGib", type=Integer.class, parameters={})
+    @Export(name="userDiskSizeGib", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> userDiskSizeGib;
 
     /**

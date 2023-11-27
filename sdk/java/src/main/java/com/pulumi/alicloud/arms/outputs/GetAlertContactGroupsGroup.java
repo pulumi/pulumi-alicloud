@@ -126,13 +126,13 @@ public final class GetAlertContactGroupsGroup {
             return this;
         }
         public GetAlertContactGroupsGroup build() {
-            final var o = new GetAlertContactGroupsGroup();
-            o.alertContactGroupId = alertContactGroupId;
-            o.alertContactGroupName = alertContactGroupName;
-            o.contactIds = contactIds;
-            o.createTime = createTime;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetAlertContactGroupsGroup();
+            _resultValue.alertContactGroupId = alertContactGroupId;
+            _resultValue.alertContactGroupName = alertContactGroupName;
+            _resultValue.contactIds = contactIds;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

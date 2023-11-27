@@ -86,11 +86,11 @@ public final class StudioApplicationInstance {
             return this;
         }
         public StudioApplicationInstance build() {
-            final var o = new StudioApplicationInstance();
-            o.id = id;
-            o.nodeName = nodeName;
-            o.nodeType = nodeType;
-            return o;
+            final var _resultValue = new StudioApplicationInstance();
+            _resultValue.id = id;
+            _resultValue.nodeName = nodeName;
+            _resultValue.nodeType = nodeType;
+            return _resultValue;
         }
     }
 }

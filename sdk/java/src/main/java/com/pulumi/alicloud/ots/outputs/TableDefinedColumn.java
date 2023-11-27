@@ -65,10 +65,10 @@ public final class TableDefinedColumn {
             return this;
         }
         public TableDefinedColumn build() {
-            final var o = new TableDefinedColumn();
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new TableDefinedColumn();
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

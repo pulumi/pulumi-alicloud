@@ -71,7 +71,7 @@ public class SecurityPreference extends com.pulumi.resources.CustomResource {
      * Specifies whether RAM users can change their passwords. Valid values: `true` and `false`
      * 
      */
-    @Export(name="allowUserToChangePassword", type=Boolean.class, parameters={})
+    @Export(name="allowUserToChangePassword", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowUserToChangePassword;
 
     /**
@@ -85,7 +85,7 @@ public class SecurityPreference extends com.pulumi.resources.CustomResource {
      * Specifies whether RAM users can manage their AccessKey pairs. Valid values: `true` and `false`
      * 
      */
-    @Export(name="allowUserToManageAccessKeys", type=Boolean.class, parameters={})
+    @Export(name="allowUserToManageAccessKeys", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowUserToManageAccessKeys;
 
     /**
@@ -99,7 +99,7 @@ public class SecurityPreference extends com.pulumi.resources.CustomResource {
      * Specifies whether RAM users can manage their MFA devices. Valid values: `true` and `false`
      * 
      */
-    @Export(name="allowUserToManageMfaDevices", type=Boolean.class, parameters={})
+    @Export(name="allowUserToManageMfaDevices", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowUserToManageMfaDevices;
 
     /**
@@ -113,7 +113,7 @@ public class SecurityPreference extends com.pulumi.resources.CustomResource {
      * Specifies whether to remember the MFA devices for seven days. Valid values: `true` and `false`
      * 
      */
-    @Export(name="enableSaveMfaTicket", type=Boolean.class, parameters={})
+    @Export(name="enableSaveMfaTicket", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableSaveMfaTicket;
 
     /**
@@ -127,7 +127,7 @@ public class SecurityPreference extends com.pulumi.resources.CustomResource {
      * Specifies whether MFA is required for all RAM users when they log on to the Alibaba Cloud Management Console by using usernames and passwords. Valid values: `true` and `false`
      * 
      */
-    @Export(name="enforceMfaForLogin", type=Boolean.class, parameters={})
+    @Export(name="enforceMfaForLogin", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enforceMfaForLogin;
 
     /**
@@ -144,7 +144,7 @@ public class SecurityPreference extends com.pulumi.resources.CustomResource {
      * * If you need to specify multiple subnet masks, separate the subnet masks with semicolons (;). Example: 192.168.0.0/16;10.0.0.0/8.
      * 
      */
-    @Export(name="loginNetworkMasks", type=String.class, parameters={})
+    @Export(name="loginNetworkMasks", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loginNetworkMasks;
 
     /**
@@ -161,7 +161,7 @@ public class SecurityPreference extends com.pulumi.resources.CustomResource {
      * The validity period of the logon session of RAM users. Valid values: 6 to 24. Unit: hours. Default value: 6.
      * 
      */
-    @Export(name="loginSessionDuration", type=Integer.class, parameters={})
+    @Export(name="loginSessionDuration", refs={Integer.class}, tree="[0]")
     private Output<Integer> loginSessionDuration;
 
     /**

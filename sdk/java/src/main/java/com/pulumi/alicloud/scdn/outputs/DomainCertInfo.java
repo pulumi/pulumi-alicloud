@@ -130,13 +130,13 @@ public final class DomainCertInfo {
             return this;
         }
         public DomainCertInfo build() {
-            final var o = new DomainCertInfo();
-            o.certName = certName;
-            o.certType = certType;
-            o.sslPri = sslPri;
-            o.sslProtocol = sslProtocol;
-            o.sslPub = sslPub;
-            return o;
+            final var _resultValue = new DomainCertInfo();
+            _resultValue.certName = certName;
+            _resultValue.certType = certType;
+            _resultValue.sslPri = sslPri;
+            _resultValue.sslProtocol = sslProtocol;
+            _resultValue.sslPub = sslPub;
+            return _resultValue;
         }
     }
 }

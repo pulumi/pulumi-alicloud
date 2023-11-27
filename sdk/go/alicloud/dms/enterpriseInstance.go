@@ -132,7 +132,7 @@ import (
 //			}
 //			_, err = dms.NewEnterpriseInstance(ctx, "defaultEnterpriseInstance", &dms.EnterpriseInstanceArgs{
 //				Tid:              *pulumi.String(defaultUserTenants.Ids[0]),
-//				InstanceType:     pulumi.String("MySQL"),
+//				InstanceType:     pulumi.String("mysql"),
 //				InstanceSource:   pulumi.String("RDS"),
 //				NetworkType:      pulumi.String("VPC"),
 //				EnvType:          pulumi.String("dev"),
@@ -142,7 +142,8 @@ import (
 //				DatabasePassword: defaultAccount.AccountPassword,
 //				InstanceName:     pulumi.String(name),
 //				DbaUid:           *pulumi.String(current.Id),
-//				SafeRule:         pulumi.String("自由操作"),
+//				SafeRule:         pulumi.String("904496"),
+//				UseDsql:          pulumi.Int(1),
 //				QueryTimeout:     pulumi.Int(60),
 //				ExportTimeout:    pulumi.Int(600),
 //				EcsRegion:        *pulumi.String(defaultRegions.Regions[0].Id),

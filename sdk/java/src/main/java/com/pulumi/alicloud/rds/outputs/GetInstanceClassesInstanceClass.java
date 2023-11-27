@@ -101,12 +101,12 @@ public final class GetInstanceClassesInstanceClass {
             return zoneIds(List.of(zoneIds));
         }
         public GetInstanceClassesInstanceClass build() {
-            final var o = new GetInstanceClassesInstanceClass();
-            o.instanceClass = instanceClass;
-            o.price = price;
-            o.storageRange = storageRange;
-            o.zoneIds = zoneIds;
-            return o;
+            final var _resultValue = new GetInstanceClassesInstanceClass();
+            _resultValue.instanceClass = instanceClass;
+            _resultValue.price = price;
+            _resultValue.storageRange = storageRange;
+            _resultValue.zoneIds = zoneIds;
+            return _resultValue;
         }
     }
 }

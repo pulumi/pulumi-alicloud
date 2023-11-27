@@ -126,13 +126,13 @@ public final class BucketLifecycleRuleTransition {
             return this;
         }
         public BucketLifecycleRuleTransition build() {
-            final var o = new BucketLifecycleRuleTransition();
-            o.createdBeforeDate = createdBeforeDate;
-            o.days = days;
-            o.isAccessTime = isAccessTime;
-            o.returnToStdWhenVisit = returnToStdWhenVisit;
-            o.storageClass = storageClass;
-            return o;
+            final var _resultValue = new BucketLifecycleRuleTransition();
+            _resultValue.createdBeforeDate = createdBeforeDate;
+            _resultValue.days = days;
+            _resultValue.isAccessTime = isAccessTime;
+            _resultValue.returnToStdWhenVisit = returnToStdWhenVisit;
+            _resultValue.storageClass = storageClass;
+            return _resultValue;
         }
     }
 }

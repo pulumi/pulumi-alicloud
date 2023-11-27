@@ -135,7 +135,7 @@ public class SuspendProcess extends com.pulumi.resources.CustomResource {
      * Activity type N that you want to suspend. Valid values are: `SCALE_OUT`,`SCALE_IN`,`HealthCheck`,`AlarmNotification` and `ScheduledAction`.
      * 
      */
-    @Export(name="process", type=String.class, parameters={})
+    @Export(name="process", refs={String.class}, tree="[0]")
     private Output<String> process;
 
     /**
@@ -149,7 +149,7 @@ public class SuspendProcess extends com.pulumi.resources.CustomResource {
      * ID of the scaling group.
      * 
      */
-    @Export(name="scalingGroupId", type=String.class, parameters={})
+    @Export(name="scalingGroupId", refs={String.class}, tree="[0]")
     private Output<String> scalingGroupId;
 
     /**

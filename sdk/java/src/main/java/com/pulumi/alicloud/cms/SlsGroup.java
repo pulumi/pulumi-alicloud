@@ -38,7 +38,7 @@ public class SlsGroup extends com.pulumi.resources.CustomResource {
      * The Config of the Sls Group. You can specify up to 25 Config. See `sls_group_config` below.
      * 
      */
-    @Export(name="slsGroupConfigs", type=List.class, parameters={SlsGroupSlsGroupConfig.class})
+    @Export(name="slsGroupConfigs", refs={List.class,SlsGroupSlsGroupConfig.class}, tree="[0,1]")
     private Output<List<SlsGroupSlsGroupConfig>> slsGroupConfigs;
 
     /**
@@ -52,7 +52,7 @@ public class SlsGroup extends com.pulumi.resources.CustomResource {
      * The Description of the Sls Group.
      * 
      */
-    @Export(name="slsGroupDescription", type=String.class, parameters={})
+    @Export(name="slsGroupDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> slsGroupDescription;
 
     /**
@@ -66,7 +66,7 @@ public class SlsGroup extends com.pulumi.resources.CustomResource {
      * The name of the resource. The name must be `2` to `32` characters in length, and can contain letters, digits and underscores (_). It must start with a letter.
      * 
      */
-    @Export(name="slsGroupName", type=String.class, parameters={})
+    @Export(name="slsGroupName", refs={String.class}, tree="[0]")
     private Output<String> slsGroupName;
 
     /**

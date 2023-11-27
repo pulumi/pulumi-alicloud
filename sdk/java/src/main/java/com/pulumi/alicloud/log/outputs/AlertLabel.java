@@ -65,10 +65,10 @@ public final class AlertLabel {
             return this;
         }
         public AlertLabel build() {
-            final var o = new AlertLabel();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new AlertLabel();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

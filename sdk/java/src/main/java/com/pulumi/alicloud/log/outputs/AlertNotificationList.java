@@ -131,13 +131,13 @@ public final class AlertNotificationList {
             return this;
         }
         public AlertNotificationList build() {
-            final var o = new AlertNotificationList();
-            o.content = content;
-            o.emailLists = emailLists;
-            o.mobileLists = mobileLists;
-            o.serviceUri = serviceUri;
-            o.type = type;
-            return o;
+            final var _resultValue = new AlertNotificationList();
+            _resultValue.content = content;
+            _resultValue.emailLists = emailLists;
+            _resultValue.mobileLists = mobileLists;
+            _resultValue.serviceUri = serviceUri;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

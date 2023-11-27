@@ -163,15 +163,15 @@ public final class IngressRule {
             return this;
         }
         public IngressRule build() {
-            final var o = new IngressRule();
-            o.appId = appId;
-            o.appName = appName;
-            o.backendProtocol = backendProtocol;
-            o.containerPort = containerPort;
-            o.domain = domain;
-            o.path = path;
-            o.rewritePath = rewritePath;
-            return o;
+            final var _resultValue = new IngressRule();
+            _resultValue.appId = appId;
+            _resultValue.appName = appName;
+            _resultValue.backendProtocol = backendProtocol;
+            _resultValue.containerPort = containerPort;
+            _resultValue.domain = domain;
+            _resultValue.path = path;
+            _resultValue.rewritePath = rewritePath;
+            return _resultValue;
         }
     }
 }

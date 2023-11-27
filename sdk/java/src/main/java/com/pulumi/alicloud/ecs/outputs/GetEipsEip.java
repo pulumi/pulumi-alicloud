@@ -199,17 +199,17 @@ public final class GetEipsEip {
             return this;
         }
         public GetEipsEip build() {
-            final var o = new GetEipsEip();
-            o.bandwidth = bandwidth;
-            o.creationTime = creationTime;
-            o.deletionProtection = deletionProtection;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.instanceType = instanceType;
-            o.internetChargeType = internetChargeType;
-            o.ipAddress = ipAddress;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetEipsEip();
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.creationTime = creationTime;
+            _resultValue.deletionProtection = deletionProtection;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceType = instanceType;
+            _resultValue.internetChargeType = internetChargeType;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

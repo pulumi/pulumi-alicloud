@@ -27,6 +27,10 @@ namespace Pulumi.AliCloud.CS.Outputs
         /// Name of the ACK add-on. The name must match one of the names returned by [DescribeAddons](https://help.aliyun.com/document_detail/171524.html).
         /// </summary>
         public readonly string? Name;
+        /// <summary>
+        /// The version of the component.
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
         private KubernetesAddon(
@@ -34,11 +38,14 @@ namespace Pulumi.AliCloud.CS.Outputs
 
             bool? disabled,
 
-            string? name)
+            string? name,
+
+            string? version)
         {
             Config = config;
             Disabled = disabled;
             Name = name;
+            Version = version;
         }
     }
 }

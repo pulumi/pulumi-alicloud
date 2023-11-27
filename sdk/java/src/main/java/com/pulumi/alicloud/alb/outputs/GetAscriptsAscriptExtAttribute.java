@@ -65,10 +65,10 @@ public final class GetAscriptsAscriptExtAttribute {
             return this;
         }
         public GetAscriptsAscriptExtAttribute build() {
-            final var o = new GetAscriptsAscriptExtAttribute();
-            o.attributeKey = attributeKey;
-            o.attributeValue = attributeValue;
-            return o;
+            final var _resultValue = new GetAscriptsAscriptExtAttribute();
+            _resultValue.attributeKey = attributeKey;
+            _resultValue.attributeValue = attributeValue;
+            return _resultValue;
         }
     }
 }

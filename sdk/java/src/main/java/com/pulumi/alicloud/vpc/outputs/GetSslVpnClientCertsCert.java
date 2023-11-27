@@ -142,14 +142,14 @@ public final class GetSslVpnClientCertsCert {
             return this;
         }
         public GetSslVpnClientCertsCert build() {
-            final var o = new GetSslVpnClientCertsCert();
-            o.createTime = createTime;
-            o.endTime = endTime;
-            o.id = id;
-            o.name = name;
-            o.sslVpnServerId = sslVpnServerId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetSslVpnClientCertsCert();
+            _resultValue.createTime = createTime;
+            _resultValue.endTime = endTime;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.sslVpnServerId = sslVpnServerId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

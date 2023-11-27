@@ -135,14 +135,14 @@ public final class GetDeployGroupsResult {
             return this;
         }
         public GetDeployGroupsResult build() {
-            final var o = new GetDeployGroupsResult();
-            o.appId = appId;
-            o.groups = groups;
-            o.id = id;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetDeployGroupsResult();
+            _resultValue.appId = appId;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

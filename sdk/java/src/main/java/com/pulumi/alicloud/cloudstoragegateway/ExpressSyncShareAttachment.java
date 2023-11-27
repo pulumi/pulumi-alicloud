@@ -35,7 +35,7 @@ public class ExpressSyncShareAttachment extends com.pulumi.resources.CustomResou
      * The ID of the ExpressSync.
      * 
      */
-    @Export(name="expressSyncId", type=String.class, parameters={})
+    @Export(name="expressSyncId", refs={String.class}, tree="[0]")
     private Output<String> expressSyncId;
 
     /**
@@ -49,7 +49,7 @@ public class ExpressSyncShareAttachment extends com.pulumi.resources.CustomResou
      * The ID of the Gateway.
      * 
      */
-    @Export(name="gatewayId", type=String.class, parameters={})
+    @Export(name="gatewayId", refs={String.class}, tree="[0]")
     private Output<String> gatewayId;
 
     /**
@@ -63,7 +63,7 @@ public class ExpressSyncShareAttachment extends com.pulumi.resources.CustomResou
      * The name of the GatewayFileShare. **NOTE:** When GatewayFileShare is associated with a speed sync group, its reverse synchronization function will be turned off by default.
      * 
      */
-    @Export(name="shareName", type=String.class, parameters={})
+    @Export(name="shareName", refs={String.class}, tree="[0]")
     private Output<String> shareName;
 
     /**

@@ -108,12 +108,12 @@ public final class ShardingInstanceShardList {
             return this;
         }
         public ShardingInstanceShardList build() {
-            final var o = new ShardingInstanceShardList();
-            o.nodeClass = nodeClass;
-            o.nodeId = nodeId;
-            o.nodeStorage = nodeStorage;
-            o.readonlyReplicas = readonlyReplicas;
-            return o;
+            final var _resultValue = new ShardingInstanceShardList();
+            _resultValue.nodeClass = nodeClass;
+            _resultValue.nodeId = nodeId;
+            _resultValue.nodeStorage = nodeStorage;
+            _resultValue.readonlyReplicas = readonlyReplicas;
+            return _resultValue;
         }
     }
 }

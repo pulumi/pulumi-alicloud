@@ -69,10 +69,10 @@ public final class GetInstancesInstanceAllowedListVpcList {
             return this;
         }
         public GetInstancesInstanceAllowedListVpcList build() {
-            final var o = new GetInstancesInstanceAllowedListVpcList();
-            o.allowedIpLists = allowedIpLists;
-            o.portRange = portRange;
-            return o;
+            final var _resultValue = new GetInstancesInstanceAllowedListVpcList();
+            _resultValue.allowedIpLists = allowedIpLists;
+            _resultValue.portRange = portRange;
+            return _resultValue;
         }
     }
 }

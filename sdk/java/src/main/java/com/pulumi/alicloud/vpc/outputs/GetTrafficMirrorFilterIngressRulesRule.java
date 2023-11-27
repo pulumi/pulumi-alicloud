@@ -237,19 +237,19 @@ public final class GetTrafficMirrorFilterIngressRulesRule {
             return this;
         }
         public GetTrafficMirrorFilterIngressRulesRule build() {
-            final var o = new GetTrafficMirrorFilterIngressRulesRule();
-            o.destinationCidrBlock = destinationCidrBlock;
-            o.destinationPortRange = destinationPortRange;
-            o.id = id;
-            o.priority = priority;
-            o.protocol = protocol;
-            o.ruleAction = ruleAction;
-            o.sourceCidrBlock = sourceCidrBlock;
-            o.sourcePortRange = sourcePortRange;
-            o.status = status;
-            o.trafficMirrorFilterId = trafficMirrorFilterId;
-            o.trafficMirrorFilterRuleId = trafficMirrorFilterRuleId;
-            return o;
+            final var _resultValue = new GetTrafficMirrorFilterIngressRulesRule();
+            _resultValue.destinationCidrBlock = destinationCidrBlock;
+            _resultValue.destinationPortRange = destinationPortRange;
+            _resultValue.id = id;
+            _resultValue.priority = priority;
+            _resultValue.protocol = protocol;
+            _resultValue.ruleAction = ruleAction;
+            _resultValue.sourceCidrBlock = sourceCidrBlock;
+            _resultValue.sourcePortRange = sourcePortRange;
+            _resultValue.status = status;
+            _resultValue.trafficMirrorFilterId = trafficMirrorFilterId;
+            _resultValue.trafficMirrorFilterRuleId = trafficMirrorFilterRuleId;
+            return _resultValue;
         }
     }
 }

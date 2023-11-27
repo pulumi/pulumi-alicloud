@@ -136,7 +136,7 @@ public class MonitorConfig extends com.pulumi.resources.CustomResource {
      * The ID of the address pool.
      * 
      */
-    @Export(name="addrPoolId", type=String.class, parameters={})
+    @Export(name="addrPoolId", refs={String.class}, tree="[0]")
     private Output<String> addrPoolId;
 
     /**
@@ -150,7 +150,7 @@ public class MonitorConfig extends com.pulumi.resources.CustomResource {
      * The number of consecutive times of failed health check attempts. Valid values: `1`, `2`, `3`.
      * 
      */
-    @Export(name="evaluationCount", type=Integer.class, parameters={})
+    @Export(name="evaluationCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> evaluationCount;
 
     /**
@@ -164,7 +164,7 @@ public class MonitorConfig extends com.pulumi.resources.CustomResource {
      * The health check interval. Unit: seconds. Valid values: `60`.
      * 
      */
-    @Export(name="interval", type=Integer.class, parameters={})
+    @Export(name="interval", refs={Integer.class}, tree="[0]")
     private Output<Integer> interval;
 
     /**
@@ -178,7 +178,7 @@ public class MonitorConfig extends com.pulumi.resources.CustomResource {
      * The Monitoring node. See `isp_city_node` below for details.
      * 
      */
-    @Export(name="ispCityNodes", type=List.class, parameters={MonitorConfigIspCityNode.class})
+    @Export(name="ispCityNodes", refs={List.class,MonitorConfigIspCityNode.class}, tree="[0,1]")
     private Output<List<MonitorConfigIspCityNode>> ispCityNodes;
 
     /**
@@ -192,7 +192,7 @@ public class MonitorConfig extends com.pulumi.resources.CustomResource {
      * The lang.
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
@@ -206,7 +206,7 @@ public class MonitorConfig extends com.pulumi.resources.CustomResource {
      * The extended information. This value follows the json format. For more details, see the [description of MonitorExtendInfo in the Request parameters table for details](https://www.alibabacloud.com/help/en/alibaba-cloud-dns/latest/api-alidns-2015-01-09-adddnsgtmmonitor).
      * 
      */
-    @Export(name="monitorExtendInfo", type=String.class, parameters={})
+    @Export(name="monitorExtendInfo", refs={String.class}, tree="[0]")
     private Output<String> monitorExtendInfo;
 
     /**
@@ -220,7 +220,7 @@ public class MonitorConfig extends com.pulumi.resources.CustomResource {
      * The health check protocol. Valid values: `HTTP`, `HTTPS`, `PING`, `TCP`.
      * 
      */
-    @Export(name="protocolType", type=String.class, parameters={})
+    @Export(name="protocolType", refs={String.class}, tree="[0]")
     private Output<String> protocolType;
 
     /**
@@ -234,7 +234,7 @@ public class MonitorConfig extends com.pulumi.resources.CustomResource {
      * The timeout period. Unit: milliseconds. Valid values: `2000`, `3000`, `5000`, `10000`.
      * 
      */
-    @Export(name="timeout", type=Integer.class, parameters={})
+    @Export(name="timeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeout;
 
     /**

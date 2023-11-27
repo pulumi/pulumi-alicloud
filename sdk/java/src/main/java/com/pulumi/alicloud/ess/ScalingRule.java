@@ -160,7 +160,7 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
      * - TotalCapacity: It is used to adjust the quantity of ECS instances in the current scaling group to a specified value.
      * 
      */
-    @Export(name="adjustmentType", type=String.class, parameters={})
+    @Export(name="adjustmentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> adjustmentType;
 
     /**
@@ -180,7 +180,7 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
      * - TotalCapacity：[0, 1000]
      * 
      */
-    @Export(name="adjustmentValue", type=Integer.class, parameters={})
+    @Export(name="adjustmentValue", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> adjustmentValue;
 
     /**
@@ -197,7 +197,7 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
      * The unique identifier of the scaling rule.
      * 
      */
-    @Export(name="ari", type=String.class, parameters={})
+    @Export(name="ari", refs={String.class}, tree="[0]")
     private Output<String> ari;
 
     /**
@@ -211,7 +211,7 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
      * The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
      * 
      */
-    @Export(name="cooldown", type=Integer.class, parameters={})
+    @Export(name="cooldown", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cooldown;
 
     /**
@@ -225,7 +225,7 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
      * Indicates whether scale in by the target tracking policy is disabled. Default to false.
      * 
      */
-    @Export(name="disableScaleIn", type=Boolean.class, parameters={})
+    @Export(name="disableScaleIn", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disableScaleIn;
 
     /**
@@ -239,7 +239,7 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
      * The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
      * 
      */
-    @Export(name="estimatedInstanceWarmup", type=Integer.class, parameters={})
+    @Export(name="estimatedInstanceWarmup", refs={Integer.class}, tree="[0]")
     private Output<Integer> estimatedInstanceWarmup;
 
     /**
@@ -253,7 +253,7 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
      * A CloudMonitor metric name.
      * 
      */
-    @Export(name="metricName", type=String.class, parameters={})
+    @Export(name="metricName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> metricName;
 
     /**
@@ -267,7 +267,7 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
      * ID of the scaling group of a scaling rule.
      * 
      */
-    @Export(name="scalingGroupId", type=String.class, parameters={})
+    @Export(name="scalingGroupId", refs={String.class}, tree="[0]")
     private Output<String> scalingGroupId;
 
     /**
@@ -281,7 +281,7 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
      * Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
      * 
      */
-    @Export(name="scalingRuleName", type=String.class, parameters={})
+    @Export(name="scalingRuleName", refs={String.class}, tree="[0]")
     private Output<String> scalingRuleName;
 
     /**
@@ -295,7 +295,7 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
      * The scaling rule type, either &#34;SimpleScalingRule&#34;, &#34;TargetTrackingScalingRule&#34;, &#34;StepScalingRule&#34;. Default to &#34;SimpleScalingRule&#34;.
      * 
      */
-    @Export(name="scalingRuleType", type=String.class, parameters={})
+    @Export(name="scalingRuleType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scalingRuleType;
 
     /**
@@ -309,7 +309,7 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
      * Steps for StepScalingRule. See `step_adjustment` below.
      * 
      */
-    @Export(name="stepAdjustments", type=List.class, parameters={ScalingRuleStepAdjustment.class})
+    @Export(name="stepAdjustments", refs={List.class,ScalingRuleStepAdjustment.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ScalingRuleStepAdjustment>> stepAdjustments;
 
     /**
@@ -323,7 +323,7 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
      * The target value for the metric.
      * 
      */
-    @Export(name="targetValue", type=Double.class, parameters={})
+    @Export(name="targetValue", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> targetValue;
 
     /**

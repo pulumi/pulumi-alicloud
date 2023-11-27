@@ -218,18 +218,18 @@ public final class GetDeviceGroupsGroup {
             return this;
         }
         public GetDeviceGroupsGroup build() {
-            final var o = new GetDeviceGroupsGroup();
-            o.createTime = createTime;
-            o.deviceActive = deviceActive;
-            o.deviceCount = deviceCount;
-            o.deviceOnline = deviceOnline;
-            o.errorMessage = errorMessage;
-            o.groupDesc = groupDesc;
-            o.groupId = groupId;
-            o.groupName = groupName;
-            o.id = id;
-            o.success = success;
-            return o;
+            final var _resultValue = new GetDeviceGroupsGroup();
+            _resultValue.createTime = createTime;
+            _resultValue.deviceActive = deviceActive;
+            _resultValue.deviceCount = deviceCount;
+            _resultValue.deviceOnline = deviceOnline;
+            _resultValue.errorMessage = errorMessage;
+            _resultValue.groupDesc = groupDesc;
+            _resultValue.groupId = groupId;
+            _resultValue.groupName = groupName;
+            _resultValue.id = id;
+            _resultValue.success = success;
+            return _resultValue;
         }
     }
 }

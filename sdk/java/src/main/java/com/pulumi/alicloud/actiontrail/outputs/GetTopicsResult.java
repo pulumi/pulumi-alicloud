@@ -202,19 +202,19 @@ public final class GetTopicsResult {
             return this;
         }
         public GetTopicsResult build() {
-            final var o = new GetTopicsResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.topic = topic;
-            o.topics = topics;
-            o.totalCount = totalCount;
-            return o;
+            final var _resultValue = new GetTopicsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.topic = topic;
+            _resultValue.topics = topics;
+            _resultValue.totalCount = totalCount;
+            return _resultValue;
         }
     }
 }

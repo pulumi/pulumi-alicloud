@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a Private Link Vpc Endpoint Service Resource resource.
+// Provides a Private Link Vpc Endpoint Service Resource resource. Endpoint service resource.
 //
 // For information about Private Link Vpc Endpoint Service Resource and how to use it, see [What is Vpc Endpoint Service Resource](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-attachresourcetovpcendpointservice).
 //
@@ -120,20 +120,27 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example <service_id>:<resource_id>
+//	$ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example <service_id>:<resource_id>:<zone_id>
 //
 // ```
 type VpcEndpointServiceResource struct {
 	pulumi.CustomResourceState
 
-	// The dry run.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
-	// The ID of Resource.
+	// The service resource ID.
 	ResourceId pulumi.StringOutput `pulumi:"resourceId"`
-	// The Type of Resource.
+	// Service resource type, value:
+	// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+	// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+	// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
 	ResourceType pulumi.StringOutput `pulumi:"resourceType"`
-	// The ID of Vpc Endpoint Service.
+	// The endpoint service ID.
 	ServiceId pulumi.StringOutput `pulumi:"serviceId"`
+	// The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
 // NewVpcEndpointServiceResource registers a new resource with the given unique name, arguments, and options.
@@ -175,25 +182,39 @@ func GetVpcEndpointServiceResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering VpcEndpointServiceResource resources.
 type vpcEndpointServiceResourceState struct {
-	// The dry run.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `pulumi:"dryRun"`
-	// The ID of Resource.
+	// The service resource ID.
 	ResourceId *string `pulumi:"resourceId"`
-	// The Type of Resource.
+	// Service resource type, value:
+	// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+	// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+	// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
 	ResourceType *string `pulumi:"resourceType"`
-	// The ID of Vpc Endpoint Service.
+	// The endpoint service ID.
 	ServiceId *string `pulumi:"serviceId"`
+	// The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 type VpcEndpointServiceResourceState struct {
-	// The dry run.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrInput
-	// The ID of Resource.
+	// The service resource ID.
 	ResourceId pulumi.StringPtrInput
-	// The Type of Resource.
+	// Service resource type, value:
+	// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+	// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+	// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
 	ResourceType pulumi.StringPtrInput
-	// The ID of Vpc Endpoint Service.
+	// The endpoint service ID.
 	ServiceId pulumi.StringPtrInput
+	// The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+	ZoneId pulumi.StringPtrInput
 }
 
 func (VpcEndpointServiceResourceState) ElementType() reflect.Type {
@@ -201,26 +222,40 @@ func (VpcEndpointServiceResourceState) ElementType() reflect.Type {
 }
 
 type vpcEndpointServiceResourceArgs struct {
-	// The dry run.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun *bool `pulumi:"dryRun"`
-	// The ID of Resource.
+	// The service resource ID.
 	ResourceId string `pulumi:"resourceId"`
-	// The Type of Resource.
+	// Service resource type, value:
+	// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+	// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+	// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
 	ResourceType string `pulumi:"resourceType"`
-	// The ID of Vpc Endpoint Service.
+	// The endpoint service ID.
 	ServiceId string `pulumi:"serviceId"`
+	// The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+	ZoneId *string `pulumi:"zoneId"`
 }
 
 // The set of arguments for constructing a VpcEndpointServiceResource resource.
 type VpcEndpointServiceResourceArgs struct {
-	// The dry run.
+	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 	DryRun pulumi.BoolPtrInput
-	// The ID of Resource.
+	// The service resource ID.
 	ResourceId pulumi.StringInput
-	// The Type of Resource.
+	// Service resource type, value:
+	// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+	// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+	// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
 	ResourceType pulumi.StringInput
-	// The ID of Vpc Endpoint Service.
+	// The endpoint service ID.
 	ServiceId pulumi.StringInput
+	// The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+	ZoneId pulumi.StringPtrInput
 }
 
 func (VpcEndpointServiceResourceArgs) ElementType() reflect.Type {
@@ -310,24 +345,34 @@ func (o VpcEndpointServiceResourceOutput) ToVpcEndpointServiceResourceOutputWith
 	return o
 }
 
-// The dry run.
+// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
 func (o VpcEndpointServiceResourceOutput) DryRun() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VpcEndpointServiceResource) pulumi.BoolPtrOutput { return v.DryRun }).(pulumi.BoolPtrOutput)
 }
 
-// The ID of Resource.
+// The service resource ID.
 func (o VpcEndpointServiceResourceOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointServiceResource) pulumi.StringOutput { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// The Type of Resource.
+// Service resource type, value:
+// - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+// - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+// - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
 func (o VpcEndpointServiceResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointServiceResource) pulumi.StringOutput { return v.ResourceType }).(pulumi.StringOutput)
 }
 
-// The ID of Vpc Endpoint Service.
+// The endpoint service ID.
 func (o VpcEndpointServiceResourceOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *VpcEndpointServiceResource) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+// The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+func (o VpcEndpointServiceResourceOutput) ZoneId() pulumi.StringOutput {
+	return o.ApplyT(func(v *VpcEndpointServiceResource) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
 type VpcEndpointServiceResourceArrayOutput struct{ *pulumi.OutputState }

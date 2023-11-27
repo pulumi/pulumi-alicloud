@@ -125,7 +125,7 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
      * Bgp configuration information. See `bgp_config` below.
      * 
      */
-    @Export(name="bgpConfig", type=GatewayVpnAttachmentBgpConfig.class, parameters={})
+    @Export(name="bgpConfig", refs={GatewayVpnAttachmentBgpConfig.class}, tree="[0]")
     private Output<GatewayVpnAttachmentBgpConfig> bgpConfig;
 
     /**
@@ -139,7 +139,7 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the customer gateway. From version 1.196.0, `customer_gateway_id` can be modified.
      * 
      */
-    @Export(name="customerGatewayId", type=String.class, parameters={})
+    @Export(name="customerGatewayId", refs={String.class}, tree="[0]")
     private Output<String> customerGatewayId;
 
     /**
@@ -153,7 +153,7 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
      * Indicates whether IPsec-VPN negotiations are initiated immediately. Valid values.
      * 
      */
-    @Export(name="effectImmediately", type=Boolean.class, parameters={})
+    @Export(name="effectImmediately", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> effectImmediately;
 
     /**
@@ -167,7 +167,7 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
      * Whether to enable the DPD (peer survival detection) function.
      * 
      */
-    @Export(name="enableDpd", type=Boolean.class, parameters={})
+    @Export(name="enableDpd", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableDpd;
 
     /**
@@ -181,7 +181,7 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
      * Allow NAT penetration.
      * 
      */
-    @Export(name="enableNatTraversal", type=Boolean.class, parameters={})
+    @Export(name="enableNatTraversal", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableNatTraversal;
 
     /**
@@ -195,7 +195,7 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
      * Health check configuration information. See `health_check_config` below.
      * 
      */
-    @Export(name="healthCheckConfig", type=GatewayVpnAttachmentHealthCheckConfig.class, parameters={})
+    @Export(name="healthCheckConfig", refs={GatewayVpnAttachmentHealthCheckConfig.class}, tree="[0]")
     private Output<GatewayVpnAttachmentHealthCheckConfig> healthCheckConfig;
 
     /**
@@ -209,7 +209,7 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
      * Configuration negotiated in the second stage. See `ike_config` below.
      * 
      */
-    @Export(name="ikeConfig", type=GatewayVpnAttachmentIkeConfig.class, parameters={})
+    @Export(name="ikeConfig", refs={GatewayVpnAttachmentIkeConfig.class}, tree="[0]")
     private Output<GatewayVpnAttachmentIkeConfig> ikeConfig;
 
     /**
@@ -223,7 +223,7 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
      * The VPN gateway IP.
      * 
      */
-    @Export(name="internetIp", type=String.class, parameters={})
+    @Export(name="internetIp", refs={String.class}, tree="[0]")
     private Output<String> internetIp;
 
     /**
@@ -237,7 +237,7 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
      * Configuration negotiated in the second stage. See `ipsec_config` below.
      * 
      */
-    @Export(name="ipsecConfig", type=GatewayVpnAttachmentIpsecConfig.class, parameters={})
+    @Export(name="ipsecConfig", refs={GatewayVpnAttachmentIpsecConfig.class}, tree="[0]")
     private Output<GatewayVpnAttachmentIpsecConfig> ipsecConfig;
 
     /**
@@ -251,7 +251,7 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
      * The CIDR block of the virtual private cloud (VPC).
      * 
      */
-    @Export(name="localSubnet", type=String.class, parameters={})
+    @Export(name="localSubnet", refs={String.class}, tree="[0]")
     private Output<String> localSubnet;
 
     /**
@@ -265,7 +265,7 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
      * The network type of the IPsec connection. Valid values: `public`, `private`.
      * 
      */
-    @Export(name="networkType", type=String.class, parameters={})
+    @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
@@ -279,7 +279,7 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
      * The CIDR block of the on-premises data center.
      * 
      */
-    @Export(name="remoteSubnet", type=String.class, parameters={})
+    @Export(name="remoteSubnet", refs={String.class}, tree="[0]")
     private Output<String> remoteSubnet;
 
     /**
@@ -293,7 +293,7 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -307,7 +307,7 @@ public class GatewayVpnAttachment extends com.pulumi.resources.CustomResource {
      * The name of the vpn attachment.
      * 
      */
-    @Export(name="vpnAttachmentName", type=String.class, parameters={})
+    @Export(name="vpnAttachmentName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpnAttachmentName;
 
     /**

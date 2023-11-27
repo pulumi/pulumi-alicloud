@@ -89,12 +89,12 @@ public final class GetCustomPropertiesResult {
             return properties(List.of(properties));
         }
         public GetCustomPropertiesResult build() {
-            final var o = new GetCustomPropertiesResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.properties = properties;
-            return o;
+            final var _resultValue = new GetCustomPropertiesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.properties = properties;
+            return _resultValue;
         }
     }
 }

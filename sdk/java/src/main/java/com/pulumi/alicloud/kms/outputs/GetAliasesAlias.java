@@ -84,11 +84,11 @@ public final class GetAliasesAlias {
             return this;
         }
         public GetAliasesAlias build() {
-            final var o = new GetAliasesAlias();
-            o.aliasName = aliasName;
-            o.id = id;
-            o.keyId = keyId;
-            return o;
+            final var _resultValue = new GetAliasesAlias();
+            _resultValue.aliasName = aliasName;
+            _resultValue.id = id;
+            _resultValue.keyId = keyId;
+            return _resultValue;
         }
     }
 }

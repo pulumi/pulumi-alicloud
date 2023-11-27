@@ -252,21 +252,21 @@ public final class GetInstanceTypesResult {
             return this;
         }
         public GetInstanceTypesResult build() {
-            final var o = new GetInstanceTypesResult();
-            o.chargeType = chargeType;
-            o.coreInstanceTypes = coreInstanceTypes;
-            o.diskType = diskType;
-            o.engine = engine;
-            o.id = id;
-            o.ids = ids;
-            o.instanceType = instanceType;
-            o.masterInstanceTypes = masterInstanceTypes;
-            o.outputFile = outputFile;
-            o.regionId = regionId;
-            o.types = types;
-            o.version = version;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstanceTypesResult();
+            _resultValue.chargeType = chargeType;
+            _resultValue.coreInstanceTypes = coreInstanceTypes;
+            _resultValue.diskType = diskType;
+            _resultValue.engine = engine;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceType = instanceType;
+            _resultValue.masterInstanceTypes = masterInstanceTypes;
+            _resultValue.outputFile = outputFile;
+            _resultValue.regionId = regionId;
+            _resultValue.types = types;
+            _resultValue.version = version;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

@@ -107,12 +107,12 @@ public final class GetNotificationsNotification {
             return this;
         }
         public GetNotificationsNotification build() {
-            final var o = new GetNotificationsNotification();
-            o.id = id;
-            o.notificationArn = notificationArn;
-            o.notificationTypes = notificationTypes;
-            o.scalingGroupId = scalingGroupId;
-            return o;
+            final var _resultValue = new GetNotificationsNotification();
+            _resultValue.id = id;
+            _resultValue.notificationArn = notificationArn;
+            _resultValue.notificationTypes = notificationTypes;
+            _resultValue.scalingGroupId = scalingGroupId;
+            return _resultValue;
         }
     }
 }

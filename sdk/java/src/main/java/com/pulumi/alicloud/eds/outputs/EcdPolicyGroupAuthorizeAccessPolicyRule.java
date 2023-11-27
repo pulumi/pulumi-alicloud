@@ -67,10 +67,10 @@ public final class EcdPolicyGroupAuthorizeAccessPolicyRule {
             return this;
         }
         public EcdPolicyGroupAuthorizeAccessPolicyRule build() {
-            final var o = new EcdPolicyGroupAuthorizeAccessPolicyRule();
-            o.cidrIp = cidrIp;
-            o.description = description;
-            return o;
+            final var _resultValue = new EcdPolicyGroupAuthorizeAccessPolicyRule();
+            _resultValue.cidrIp = cidrIp;
+            _resultValue.description = description;
+            return _resultValue;
         }
     }
 }

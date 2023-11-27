@@ -108,12 +108,12 @@ public final class AlarmPrometheus {
             return this;
         }
         public AlarmPrometheus build() {
-            final var o = new AlarmPrometheus();
-            o.annotations = annotations;
-            o.level = level;
-            o.promQl = promQl;
-            o.times = times;
-            return o;
+            final var _resultValue = new AlarmPrometheus();
+            _resultValue.annotations = annotations;
+            _resultValue.level = level;
+            _resultValue.promQl = promQl;
+            _resultValue.times = times;
+            return _resultValue;
         }
     }
 }

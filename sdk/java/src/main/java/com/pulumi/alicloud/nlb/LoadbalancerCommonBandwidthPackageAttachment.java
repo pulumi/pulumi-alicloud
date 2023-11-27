@@ -141,7 +141,7 @@ public class LoadbalancerCommonBandwidthPackageAttachment extends com.pulumi.res
      * The ID of the bound shared bandwidth package.
      * 
      */
-    @Export(name="bandwidthPackageId", type=String.class, parameters={})
+    @Export(name="bandwidthPackageId", refs={String.class}, tree="[0]")
     private Output<String> bandwidthPackageId;
 
     /**
@@ -155,7 +155,7 @@ public class LoadbalancerCommonBandwidthPackageAttachment extends com.pulumi.res
      * The ID of the network-based server load balancer instance.
      * 
      */
-    @Export(name="loadBalancerId", type=String.class, parameters={})
+    @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
@@ -169,7 +169,7 @@ public class LoadbalancerCommonBandwidthPackageAttachment extends com.pulumi.res
      * Network-based load balancing instance status. Value:, indicating that the instance listener will no longer forward traffic.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

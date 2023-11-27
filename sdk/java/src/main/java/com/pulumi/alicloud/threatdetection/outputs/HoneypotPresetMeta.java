@@ -87,11 +87,11 @@ public final class HoneypotPresetMeta {
             return this;
         }
         public HoneypotPresetMeta build() {
-            final var o = new HoneypotPresetMeta();
-            o.burp = burp;
-            o.portraitOption = portraitOption;
-            o.trojanGit = trojanGit;
-            return o;
+            final var _resultValue = new HoneypotPresetMeta();
+            _resultValue.burp = burp;
+            _resultValue.portraitOption = portraitOption;
+            _resultValue.trojanGit = trojanGit;
+            return _resultValue;
         }
     }
 }

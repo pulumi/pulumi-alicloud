@@ -103,12 +103,12 @@ public final class GetEventBusesBus {
             return this;
         }
         public GetEventBusesBus build() {
-            final var o = new GetEventBusesBus();
-            o.createTime = createTime;
-            o.description = description;
-            o.eventBusName = eventBusName;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetEventBusesBus();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.eventBusName = eventBusName;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

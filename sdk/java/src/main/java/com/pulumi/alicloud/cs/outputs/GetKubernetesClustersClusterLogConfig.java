@@ -65,10 +65,10 @@ public final class GetKubernetesClustersClusterLogConfig {
             return this;
         }
         public GetKubernetesClustersClusterLogConfig build() {
-            final var o = new GetKubernetesClustersClusterLogConfig();
-            o.project = project;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetKubernetesClustersClusterLogConfig();
+            _resultValue.project = project;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

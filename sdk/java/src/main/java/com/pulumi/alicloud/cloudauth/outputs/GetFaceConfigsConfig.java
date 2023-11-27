@@ -84,11 +84,11 @@ public final class GetFaceConfigsConfig {
             return this;
         }
         public GetFaceConfigsConfig build() {
-            final var o = new GetFaceConfigsConfig();
-            o.bizName = bizName;
-            o.bizType = bizType;
-            o.gmtUpdated = gmtUpdated;
-            return o;
+            final var _resultValue = new GetFaceConfigsConfig();
+            _resultValue.bizName = bizName;
+            _resultValue.bizType = bizType;
+            _resultValue.gmtUpdated = gmtUpdated;
+            return _resultValue;
         }
     }
 }

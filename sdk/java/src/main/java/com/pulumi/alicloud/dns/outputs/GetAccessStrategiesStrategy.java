@@ -497,32 +497,32 @@ public final class GetAccessStrategiesStrategy {
             return this;
         }
         public GetAccessStrategiesStrategy build() {
-            final var o = new GetAccessStrategiesStrategy();
-            o.accessMode = accessMode;
-            o.accessStrategyId = accessStrategyId;
-            o.createTime = createTime;
-            o.createTimestamp = createTimestamp;
-            o.defaultAddrPoolType = defaultAddrPoolType;
-            o.defaultAddrPools = defaultAddrPools;
-            o.defaultAvailableAddrNum = defaultAvailableAddrNum;
-            o.defaultLatencyOptimization = defaultLatencyOptimization;
-            o.defaultLbaStrategy = defaultLbaStrategy;
-            o.defaultMaxReturnAddrNum = defaultMaxReturnAddrNum;
-            o.defaultMinAvailableAddrNum = defaultMinAvailableAddrNum;
-            o.effectiveAddrPoolGroupType = effectiveAddrPoolGroupType;
-            o.failoverAddrPoolType = failoverAddrPoolType;
-            o.failoverAddrPools = failoverAddrPools;
-            o.failoverAvailableAddrNum = failoverAvailableAddrNum;
-            o.failoverLatencyOptimization = failoverLatencyOptimization;
-            o.failoverLbaStrategy = failoverLbaStrategy;
-            o.failoverMaxReturnAddrNum = failoverMaxReturnAddrNum;
-            o.failoverMinAvailableAddrNum = failoverMinAvailableAddrNum;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.lines = lines;
-            o.strategyMode = strategyMode;
-            o.strategyName = strategyName;
-            return o;
+            final var _resultValue = new GetAccessStrategiesStrategy();
+            _resultValue.accessMode = accessMode;
+            _resultValue.accessStrategyId = accessStrategyId;
+            _resultValue.createTime = createTime;
+            _resultValue.createTimestamp = createTimestamp;
+            _resultValue.defaultAddrPoolType = defaultAddrPoolType;
+            _resultValue.defaultAddrPools = defaultAddrPools;
+            _resultValue.defaultAvailableAddrNum = defaultAvailableAddrNum;
+            _resultValue.defaultLatencyOptimization = defaultLatencyOptimization;
+            _resultValue.defaultLbaStrategy = defaultLbaStrategy;
+            _resultValue.defaultMaxReturnAddrNum = defaultMaxReturnAddrNum;
+            _resultValue.defaultMinAvailableAddrNum = defaultMinAvailableAddrNum;
+            _resultValue.effectiveAddrPoolGroupType = effectiveAddrPoolGroupType;
+            _resultValue.failoverAddrPoolType = failoverAddrPoolType;
+            _resultValue.failoverAddrPools = failoverAddrPools;
+            _resultValue.failoverAvailableAddrNum = failoverAvailableAddrNum;
+            _resultValue.failoverLatencyOptimization = failoverLatencyOptimization;
+            _resultValue.failoverLbaStrategy = failoverLbaStrategy;
+            _resultValue.failoverMaxReturnAddrNum = failoverMaxReturnAddrNum;
+            _resultValue.failoverMinAvailableAddrNum = failoverMinAvailableAddrNum;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.lines = lines;
+            _resultValue.strategyMode = strategyMode;
+            _resultValue.strategyName = strategyName;
+            return _resultValue;
         }
     }
 }

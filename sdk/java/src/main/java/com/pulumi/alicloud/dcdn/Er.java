@@ -85,7 +85,7 @@ public class Er extends com.pulumi.resources.CustomResource {
      * Routine The description of the routine.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -99,7 +99,7 @@ public class Er extends com.pulumi.resources.CustomResource {
      * The configurations of the specified environment. See `env_conf` below.
      * 
      */
-    @Export(name="envConf", type=ErEnvConf.class, parameters={})
+    @Export(name="envConf", refs={ErEnvConf.class}, tree="[0]")
     private Output<ErEnvConf> envConf;
 
     /**
@@ -113,7 +113,7 @@ public class Er extends com.pulumi.resources.CustomResource {
      * The name of the routine. The name must be unique among the routines that belong to the same Alibaba Cloud account.
      * 
      */
-    @Export(name="erName", type=String.class, parameters={})
+    @Export(name="erName", refs={String.class}, tree="[0]")
     private Output<String> erName;
 
     /**

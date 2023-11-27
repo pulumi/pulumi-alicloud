@@ -130,7 +130,7 @@ public class BasicThreshold extends com.pulumi.resources.CustomResource {
      * Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
      * 
      */
-    @Export(name="bps", type=Integer.class, parameters={})
+    @Export(name="bps", refs={Integer.class}, tree="[0]")
     private Output<Integer> bps;
 
     /**
@@ -144,7 +144,7 @@ public class BasicThreshold extends com.pulumi.resources.CustomResource {
      * The ID of the instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -158,7 +158,7 @@ public class BasicThreshold extends com.pulumi.resources.CustomResource {
      * The type of the Instance. Valid values: `ecs`,`slb`,`eip`.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -172,7 +172,7 @@ public class BasicThreshold extends com.pulumi.resources.CustomResource {
      * The IP address of the public IP address asset.
      * 
      */
-    @Export(name="internetIp", type=String.class, parameters={})
+    @Export(name="internetIp", refs={String.class}, tree="[0]")
     private Output<String> internetIp;
 
     /**
@@ -186,7 +186,7 @@ public class BasicThreshold extends com.pulumi.resources.CustomResource {
      * Maximum flow cleaning threshold. Unit: Mbps.
      * 
      */
-    @Export(name="maxBps", type=Integer.class, parameters={})
+    @Export(name="maxBps", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxBps;
 
     /**
@@ -200,7 +200,7 @@ public class BasicThreshold extends com.pulumi.resources.CustomResource {
      * The maximum number of messages cleaning threshold. Unit: pps.
      * 
      */
-    @Export(name="maxPps", type=Integer.class, parameters={})
+    @Export(name="maxPps", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxPps;
 
     /**
@@ -214,7 +214,7 @@ public class BasicThreshold extends com.pulumi.resources.CustomResource {
      * The current message number cleaning threshold. Unit: pps.
      * 
      */
-    @Export(name="pps", type=Integer.class, parameters={})
+    @Export(name="pps", refs={Integer.class}, tree="[0]")
     private Output<Integer> pps;
 
     /**

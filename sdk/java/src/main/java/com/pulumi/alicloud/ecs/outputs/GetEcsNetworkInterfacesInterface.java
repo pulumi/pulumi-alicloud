@@ -553,35 +553,35 @@ public final class GetEcsNetworkInterfacesInterface {
             return this;
         }
         public GetEcsNetworkInterfacesInterface build() {
-            final var o = new GetEcsNetworkInterfacesInterface();
-            o.associatedPublicIps = associatedPublicIps;
-            o.creationTime = creationTime;
-            o.description = description;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.mac = mac;
-            o.name = name;
-            o.networkInterfaceId = networkInterfaceId;
-            o.networkInterfaceName = networkInterfaceName;
-            o.networkInterfaceTrafficMode = networkInterfaceTrafficMode;
-            o.ownerId = ownerId;
-            o.primaryIpAddress = primaryIpAddress;
-            o.privateIp = privateIp;
-            o.privateIpAddresses = privateIpAddresses;
-            o.privateIps = privateIps;
-            o.queueNumber = queueNumber;
-            o.resourceGroupId = resourceGroupId;
-            o.securityGroupIds = securityGroupIds;
-            o.securityGroups = securityGroups;
-            o.serviceId = serviceId;
-            o.serviceManaged = serviceManaged;
-            o.status = status;
-            o.tags = tags;
-            o.type = type;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetEcsNetworkInterfacesInterface();
+            _resultValue.associatedPublicIps = associatedPublicIps;
+            _resultValue.creationTime = creationTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.mac = mac;
+            _resultValue.name = name;
+            _resultValue.networkInterfaceId = networkInterfaceId;
+            _resultValue.networkInterfaceName = networkInterfaceName;
+            _resultValue.networkInterfaceTrafficMode = networkInterfaceTrafficMode;
+            _resultValue.ownerId = ownerId;
+            _resultValue.primaryIpAddress = primaryIpAddress;
+            _resultValue.privateIp = privateIp;
+            _resultValue.privateIpAddresses = privateIpAddresses;
+            _resultValue.privateIps = privateIps;
+            _resultValue.queueNumber = queueNumber;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.securityGroupIds = securityGroupIds;
+            _resultValue.securityGroups = securityGroups;
+            _resultValue.serviceId = serviceId;
+            _resultValue.serviceManaged = serviceManaged;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

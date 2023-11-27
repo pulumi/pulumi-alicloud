@@ -65,10 +65,10 @@ public final class GetDomainsDomainRedirectRequestHeader {
             return this;
         }
         public GetDomainsDomainRedirectRequestHeader build() {
-            final var o = new GetDomainsDomainRedirectRequestHeader();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetDomainsDomainRedirectRequestHeader();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -201,18 +201,18 @@ public final class GetTransitRoutersResult {
             return transitRouters(List.of(transitRouters));
         }
         public GetTransitRoutersResult build() {
-            final var o = new GetTransitRoutersResult();
-            o.cenId = cenId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.transitRouterId = transitRouterId;
-            o.transitRouterIds = transitRouterIds;
-            o.transitRouters = transitRouters;
-            return o;
+            final var _resultValue = new GetTransitRoutersResult();
+            _resultValue.cenId = cenId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.transitRouterId = transitRouterId;
+            _resultValue.transitRouterIds = transitRouterIds;
+            _resultValue.transitRouters = transitRouters;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class GetLaunchOptionsLaunchOptionConstraintSummary {
             return this;
         }
         public GetLaunchOptionsLaunchOptionConstraintSummary build() {
-            final var o = new GetLaunchOptionsLaunchOptionConstraintSummary();
-            o.constraintType = constraintType;
-            o.description = description;
-            return o;
+            final var _resultValue = new GetLaunchOptionsLaunchOptionConstraintSummary();
+            _resultValue.constraintType = constraintType;
+            _resultValue.description = description;
+            return _resultValue;
         }
     }
 }

@@ -122,13 +122,13 @@ public final class GetRegionRouteEntriesEntry {
             return this;
         }
         public GetRegionRouteEntriesEntry build() {
-            final var o = new GetRegionRouteEntriesEntry();
-            o.cidrBlock = cidrBlock;
-            o.nextHopId = nextHopId;
-            o.nextHopRegionId = nextHopRegionId;
-            o.nextHopType = nextHopType;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetRegionRouteEntriesEntry();
+            _resultValue.cidrBlock = cidrBlock;
+            _resultValue.nextHopId = nextHopId;
+            _resultValue.nextHopRegionId = nextHopRegionId;
+            _resultValue.nextHopType = nextHopType;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

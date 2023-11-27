@@ -108,12 +108,12 @@ public final class GetInstanceEnginesInstanceEngine {
             return zoneIds(List.of(zoneIds));
         }
         public GetInstanceEnginesInstanceEngine build() {
-            final var o = new GetInstanceEnginesInstanceEngine();
-            o.category = category;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.zoneIds = zoneIds;
-            return o;
+            final var _resultValue = new GetInstanceEnginesInstanceEngine();
+            _resultValue.category = category;
+            _resultValue.engine = engine;
+            _resultValue.engineVersion = engineVersion;
+            _resultValue.zoneIds = zoneIds;
+            return _resultValue;
         }
     }
 }

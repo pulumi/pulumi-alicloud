@@ -127,7 +127,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * * Be 2 to 256 characters in length.
      * 
      */
-    @Export(name="accountDescription", type=String.class, parameters={})
+    @Export(name="accountDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountDescription;
 
     /**
@@ -149,7 +149,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * * Contains no reserved keywords.
      * 
      */
-    @Export(name="accountName", type=String.class, parameters={})
+    @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
@@ -167,7 +167,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The password of the account. The password must be 8 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters. Special characters include `! @ # $ % ^ &amp; * ( ) _ + - =`.
      * 
      */
-    @Export(name="accountPassword", type=String.class, parameters={})
+    @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output<String> accountPassword;
 
     /**
@@ -181,7 +181,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The ID of the instance.
      * 
      */
-    @Export(name="dbInstanceId", type=String.class, parameters={})
+    @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     /**
@@ -195,7 +195,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The status of the account. Valid values: `Active`, `Creating` and `Deleting`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

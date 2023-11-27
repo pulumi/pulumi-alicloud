@@ -50,9 +50,9 @@ public final class GetListenersListenerDefaultActionForwardGroupConfig {
             return serverGroupTuples(List.of(serverGroupTuples));
         }
         public GetListenersListenerDefaultActionForwardGroupConfig build() {
-            final var o = new GetListenersListenerDefaultActionForwardGroupConfig();
-            o.serverGroupTuples = serverGroupTuples;
-            return o;
+            final var _resultValue = new GetListenersListenerDefaultActionForwardGroupConfig();
+            _resultValue.serverGroupTuples = serverGroupTuples;
+            return _resultValue;
         }
     }
 }

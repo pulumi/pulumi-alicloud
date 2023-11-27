@@ -136,16 +136,16 @@ public final class GetTrafficMirrorFiltersResult {
             return this;
         }
         public GetTrafficMirrorFiltersResult build() {
-            final var o = new GetTrafficMirrorFiltersResult();
-            o.filters = filters;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.trafficMirrorFilterName = trafficMirrorFilterName;
-            return o;
+            final var _resultValue = new GetTrafficMirrorFiltersResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.trafficMirrorFilterName = trafficMirrorFilterName;
+            return _resultValue;
         }
     }
 }

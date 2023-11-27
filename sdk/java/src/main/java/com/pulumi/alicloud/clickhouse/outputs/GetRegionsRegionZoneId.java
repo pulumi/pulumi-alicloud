@@ -66,10 +66,10 @@ public final class GetRegionsRegionZoneId {
             return this;
         }
         public GetRegionsRegionZoneId build() {
-            final var o = new GetRegionsRegionZoneId();
-            o.vpcEnabled = vpcEnabled;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetRegionsRegionZoneId();
+            _resultValue.vpcEnabled = vpcEnabled;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

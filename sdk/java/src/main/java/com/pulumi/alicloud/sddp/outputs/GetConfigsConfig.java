@@ -141,14 +141,14 @@ public final class GetConfigsConfig {
             return this;
         }
         public GetConfigsConfig build() {
-            final var o = new GetConfigsConfig();
-            o.code = code;
-            o.configId = configId;
-            o.defaultValue = defaultValue;
-            o.description = description;
-            o.id = id;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetConfigsConfig();
+            _resultValue.code = code;
+            _resultValue.configId = configId;
+            _resultValue.defaultValue = defaultValue;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

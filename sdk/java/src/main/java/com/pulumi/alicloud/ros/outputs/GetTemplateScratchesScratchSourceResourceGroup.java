@@ -69,10 +69,10 @@ public final class GetTemplateScratchesScratchSourceResourceGroup {
             return resourceTypeFilters(List.of(resourceTypeFilters));
         }
         public GetTemplateScratchesScratchSourceResourceGroup build() {
-            final var o = new GetTemplateScratchesScratchSourceResourceGroup();
-            o.resourceGroupId = resourceGroupId;
-            o.resourceTypeFilters = resourceTypeFilters;
-            return o;
+            final var _resultValue = new GetTemplateScratchesScratchSourceResourceGroup();
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.resourceTypeFilters = resourceTypeFilters;
+            return _resultValue;
         }
     }
 }

@@ -303,22 +303,22 @@ public final class GetAcceleratorsAccelerator {
             return this;
         }
         public GetAcceleratorsAccelerator build() {
-            final var o = new GetAcceleratorsAccelerator();
-            o.acceleratorId = acceleratorId;
-            o.acceleratorName = acceleratorName;
-            o.basicBandwidthPackages = basicBandwidthPackages;
-            o.cenId = cenId;
-            o.crossDomainBandwidthPackages = crossDomainBandwidthPackages;
-            o.ddosId = ddosId;
-            o.description = description;
-            o.dnsName = dnsName;
-            o.expiredTime = expiredTime;
-            o.id = id;
-            o.paymentType = paymentType;
-            o.secondDnsName = secondDnsName;
-            o.spec = spec;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAcceleratorsAccelerator();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.acceleratorName = acceleratorName;
+            _resultValue.basicBandwidthPackages = basicBandwidthPackages;
+            _resultValue.cenId = cenId;
+            _resultValue.crossDomainBandwidthPackages = crossDomainBandwidthPackages;
+            _resultValue.ddosId = ddosId;
+            _resultValue.description = description;
+            _resultValue.dnsName = dnsName;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.id = id;
+            _resultValue.paymentType = paymentType;
+            _resultValue.secondDnsName = secondDnsName;
+            _resultValue.spec = spec;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

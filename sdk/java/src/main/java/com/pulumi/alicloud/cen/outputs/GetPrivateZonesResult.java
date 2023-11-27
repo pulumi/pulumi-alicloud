@@ -164,15 +164,15 @@ public final class GetPrivateZonesResult {
             return zones(List.of(zones));
         }
         public GetPrivateZonesResult build() {
-            final var o = new GetPrivateZonesResult();
-            o.cenId = cenId;
-            o.hostRegionId = hostRegionId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GetPrivateZonesResult();
+            _resultValue.cenId = cenId;
+            _resultValue.hostRegionId = hostRegionId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

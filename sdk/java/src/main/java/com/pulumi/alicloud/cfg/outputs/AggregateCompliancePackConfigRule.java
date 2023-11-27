@@ -71,10 +71,10 @@ public final class AggregateCompliancePackConfigRule {
             return this;
         }
         public AggregateCompliancePackConfigRule build() {
-            final var o = new AggregateCompliancePackConfigRule();
-            o.configRuleParameters = configRuleParameters;
-            o.managedRuleIdentifier = managedRuleIdentifier;
-            return o;
+            final var _resultValue = new AggregateCompliancePackConfigRule();
+            _resultValue.configRuleParameters = configRuleParameters;
+            _resultValue.managedRuleIdentifier = managedRuleIdentifier;
+            return _resultValue;
         }
     }
 }

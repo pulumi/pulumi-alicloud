@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="alicloud:eventbridge/slr:Slr")
 public class Slr extends com.pulumi.resources.CustomResource {
-    @Export(name="productName", type=String.class, parameters={})
+    @Export(name="productName", refs={String.class}, tree="[0]")
     private Output<String> productName;
 
     public Output<String> productName() {

@@ -159,18 +159,18 @@ public final class GetVpcEndpointServicesResult {
             return this;
         }
         public GetVpcEndpointServicesResult build() {
-            final var o = new GetVpcEndpointServicesResult();
-            o.autoAcceptConnection = autoAcceptConnection;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.serviceBusinessStatus = serviceBusinessStatus;
-            o.services = services;
-            o.status = status;
-            o.vpcEndpointServiceName = vpcEndpointServiceName;
-            return o;
+            final var _resultValue = new GetVpcEndpointServicesResult();
+            _resultValue.autoAcceptConnection = autoAcceptConnection;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.serviceBusinessStatus = serviceBusinessStatus;
+            _resultValue.services = services;
+            _resultValue.status = status;
+            _resultValue.vpcEndpointServiceName = vpcEndpointServiceName;
+            return _resultValue;
         }
     }
 }

@@ -145,17 +145,17 @@ public final class GetGatewayVcoRoutesResult {
             return this;
         }
         public GetGatewayVcoRoutesResult build() {
-            final var o = new GetGatewayVcoRoutesResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.routeEntryType = routeEntryType;
-            o.routes = routes;
-            o.status = status;
-            o.vpnConnectionId = vpnConnectionId;
-            return o;
+            final var _resultValue = new GetGatewayVcoRoutesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.routeEntryType = routeEntryType;
+            _resultValue.routes = routes;
+            _resultValue.status = status;
+            _resultValue.vpnConnectionId = vpnConnectionId;
+            return _resultValue;
         }
     }
 }

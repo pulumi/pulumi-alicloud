@@ -36,7 +36,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      * Valid values: [2, 20000] for China-Site account; [1, 5000] for International-Site account. See Account Guide details.
      * 
      */
-    @Export(name="bandwidth", type=String.class, parameters={})
+    @Export(name="bandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidth;
 
     /**
@@ -51,7 +51,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      * The name of the Internet Shared Bandwidth instance.
      * 
      */
-    @Export(name="bandwidthPackageName", type=String.class, parameters={})
+    @Export(name="bandwidthPackageName", refs={String.class}, tree="[0]")
     private Output<String> bandwidthPackageName;
 
     /**
@@ -65,7 +65,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      * The create time.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -81,7 +81,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      * - **false**: Disable deletion protection.
      * 
      */
-    @Export(name="deletionProtection", type=Boolean.class, parameters={})
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
@@ -97,7 +97,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      * The description of the shared bandwidth.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -113,7 +113,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      * - **true**: removes all EIPs from the internet shared bandwidth instance and deletes the internet shared bandwidth.
      * 
      */
-    @Export(name="force", type=String.class, parameters={})
+    @Export(name="force", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> force;
 
     /**
@@ -129,7 +129,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      * The billing method of the common bandwidth package. Valid values are `PayByBandwidth` and `PayBy95` and `PayByTraffic`, `PayByDominantTraffic`. `PayBy95` is pay by classic 95th percentile pricing. International-Site Account doesn&#39;t support `PayByBandwidth` and `PayBy95`. Default to `PayByTraffic`. **NOTE:** From 1.176.0+, `PayByDominantTraffic` is available.
      * 
      */
-    @Export(name="internetChargeType", type=String.class, parameters={})
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
@@ -143,7 +143,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      * The type of the Internet Service Provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2` and `BGP_FinanceCloud`. Default to `BGP`. **NOTE:** From version 1.203.0, isp can be set to `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`, `BGP_International`.
      * 
      */
-    @Export(name="isp", type=String.class, parameters={})
+    @Export(name="isp", refs={String.class}, tree="[0]")
     private Output<String> isp;
 
     /**
@@ -161,7 +161,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated since provider version 1.120.0. New field 'bandwidth_package_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -175,7 +175,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      * The billing type of the Internet Shared Bandwidth instance. Valid values: `PayAsYouGo`, `Subscription`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -189,7 +189,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      * Ratio of the common bandwidth package. It is valid when `internet_charge_type` is `PayBy95`. Default to 100. Valid values: [10-100].
      * 
      */
-    @Export(name="ratio", type=Integer.class, parameters={})
+    @Export(name="ratio", refs={Integer.class}, tree="[0]")
     private Output<Integer> ratio;
 
     /**
@@ -203,7 +203,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the common bandwidth package belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -217,7 +217,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      * The edition of Anti-DDoS. If you do not set this parameter, Anti-DDoS Origin Basic is used. If you set the value to AntiDDoS_Enhanced, Anti-DDoS Pro(Premium) is used. It is valid when `internet_charge_type` is `PayBy95`.
      * 
      */
-    @Export(name="securityProtectionTypes", type=List.class, parameters={String.class})
+    @Export(name="securityProtectionTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityProtectionTypes;
 
     /**
@@ -231,7 +231,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      * The status of the Internet Shared Bandwidth instance. Default value: **Available**.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -245,7 +245,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      * The tag of the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -261,7 +261,7 @@ public class CommonBandwithPackage extends com.pulumi.resources.CustomResource {
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zone;
 
     /**

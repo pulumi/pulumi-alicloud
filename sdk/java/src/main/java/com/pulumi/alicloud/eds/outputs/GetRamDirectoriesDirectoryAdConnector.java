@@ -103,12 +103,12 @@ public final class GetRamDirectoriesDirectoryAdConnector {
             return this;
         }
         public GetRamDirectoriesDirectoryAdConnector build() {
-            final var o = new GetRamDirectoriesDirectoryAdConnector();
-            o.adConnectorAddress = adConnectorAddress;
-            o.connectorStatus = connectorStatus;
-            o.networkInterfaceId = networkInterfaceId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetRamDirectoriesDirectoryAdConnector();
+            _resultValue.adConnectorAddress = adConnectorAddress;
+            _resultValue.connectorStatus = connectorStatus;
+            _resultValue.networkInterfaceId = networkInterfaceId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

@@ -66,10 +66,10 @@ public final class GetHistoryDeliveryJobsJobJobStatus {
             return this;
         }
         public GetHistoryDeliveryJobsJobJobStatus build() {
-            final var o = new GetHistoryDeliveryJobsJobJobStatus();
-            o.region = region;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetHistoryDeliveryJobsJobJobStatus();
+            _resultValue.region = region;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

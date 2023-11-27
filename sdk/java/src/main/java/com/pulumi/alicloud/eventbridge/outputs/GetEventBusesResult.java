@@ -136,16 +136,16 @@ public final class GetEventBusesResult {
             return this;
         }
         public GetEventBusesResult build() {
-            final var o = new GetEventBusesResult();
-            o.buses = buses;
-            o.eventBusType = eventBusType;
-            o.id = id;
-            o.ids = ids;
-            o.namePrefix = namePrefix;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetEventBusesResult();
+            _resultValue.buses = buses;
+            _resultValue.eventBusType = eventBusType;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.namePrefix = namePrefix;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

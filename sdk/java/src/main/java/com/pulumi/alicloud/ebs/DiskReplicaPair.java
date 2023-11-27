@@ -36,7 +36,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The bandwidth for asynchronous data replication between cloud disks. The unit is Kbps. Value range:-10240 Kbps: equal to 10 Mbps.-20480 Kbps: equal to 20 Mbps.-51200 Kbps: equal to 50 Mbps.-102400 Kbps: equal to 100 Mbps.Default value: 10240.This parameter cannot be specified when the ChargeType value is POSTPAY. The system value is 0, which indicates that the disk is dynamically allocated according to data write changes during asynchronous replication.
      * 
      */
-    @Export(name="bandwidth", type=String.class, parameters={})
+    @Export(name="bandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidth;
 
     /**
@@ -50,7 +50,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The creation time of the resource
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -64,7 +64,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The description of the asynchronous replication relationship. 2 to 256 English or Chinese characters in length and cannot start with&#39; http:// &#39;or&#39; https.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -78,7 +78,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The ID of the standby disk.
      * 
      */
-    @Export(name="destinationDiskId", type=String.class, parameters={})
+    @Export(name="destinationDiskId", refs={String.class}, tree="[0]")
     private Output<String> destinationDiskId;
 
     /**
@@ -92,7 +92,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The ID of the region to which the disaster recovery site belongs.
      * 
      */
-    @Export(name="destinationRegionId", type=String.class, parameters={})
+    @Export(name="destinationRegionId", refs={String.class}, tree="[0]")
     private Output<String> destinationRegionId;
 
     /**
@@ -106,7 +106,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The ID of the zone to which the disaster recovery site belongs.
      * 
      */
-    @Export(name="destinationZoneId", type=String.class, parameters={})
+    @Export(name="destinationZoneId", refs={String.class}, tree="[0]")
     private Output<String> destinationZoneId;
 
     /**
@@ -120,7 +120,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The ID of the primary disk.
      * 
      */
-    @Export(name="diskId", type=String.class, parameters={})
+    @Export(name="diskId", refs={String.class}, tree="[0]")
     private Output<String> diskId;
 
     /**
@@ -134,7 +134,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The name of the asynchronous replication relationship. The length must be 2 to 128 characters in length and must start with a letter or Chinese name. It cannot start with http:// or https. It can contain Chinese, English, numbers, half-width colons (:), underscores (_), half-width periods (.), or dashes (-).
      * 
      */
-    @Export(name="pairName", type=String.class, parameters={})
+    @Export(name="pairName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pairName;
 
     /**
@@ -148,7 +148,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The payment type of the resource
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentType;
 
     /**
@@ -162,7 +162,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The length of the purchase for the asynchronous replication relationship. When ChargeType=PrePay, this parameter is mandatory. The unit of duration is specified by PeriodUnit and takes on a range of values. When PeriodUnit=Week, this parameter takes values in the range `1`, `2`, `3` and `4`. When PeriodUnit=Month, the parameter takes on the values `1`, `2`, `3`, `4`, `5`, `6`, `7`, `8`, `9`, `12`, `24`, `36`, `48`, `60`.
      * 
      */
-    @Export(name="period", type=String.class, parameters={})
+    @Export(name="period", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> period;
 
     /**
@@ -176,7 +176,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The units of asynchronous replication relationship purchase length. Valid values: `Week` and `Month`. Default value: `Month`.
      * 
      */
-    @Export(name="periodUnit", type=String.class, parameters={})
+    @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
@@ -190,7 +190,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The first ID of the resource.
      * 
      */
-    @Export(name="replicaPairId", type=String.class, parameters={})
+    @Export(name="replicaPairId", refs={String.class}, tree="[0]")
     private Output<String> replicaPairId;
 
     /**
@@ -204,7 +204,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The ID of the resource group
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -218,7 +218,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The RPO value set by the consistency group in seconds. Currently only 900 seconds are supported.
      * 
      */
-    @Export(name="rpo", type=String.class, parameters={})
+    @Export(name="rpo", refs={String.class}, tree="[0]")
     private Output<String> rpo;
 
     /**
@@ -232,7 +232,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The ID of the zone to which the production site belongs.
      * 
      */
-    @Export(name="sourceZoneId", type=String.class, parameters={})
+    @Export(name="sourceZoneId", refs={String.class}, tree="[0]")
     private Output<String> sourceZoneId;
 
     /**
@@ -246,7 +246,7 @@ public class DiskReplicaPair extends com.pulumi.resources.CustomResource {
      * The status of the resource
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

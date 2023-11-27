@@ -161,18 +161,18 @@ public final class GetEcsLaunchTemplatesResult {
             return templates(List.of(templates));
         }
         public GetEcsLaunchTemplatesResult build() {
-            final var o = new GetEcsLaunchTemplatesResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.launchTemplateName = launchTemplateName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.templateResourceGroupId = templateResourceGroupId;
-            o.templateTags = templateTags;
-            o.templates = templates;
-            return o;
+            final var _resultValue = new GetEcsLaunchTemplatesResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.launchTemplateName = launchTemplateName;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.templateResourceGroupId = templateResourceGroupId;
+            _resultValue.templateTags = templateTags;
+            _resultValue.templates = templates;
+            return _resultValue;
         }
     }
 }

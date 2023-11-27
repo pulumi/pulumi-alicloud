@@ -93,7 +93,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - **true**: Yes.
      * 
      */
-    @Export(name="autoPay", type=Boolean.class, parameters={})
+    @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
     /**
@@ -111,7 +111,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - **true**: Yes.
      * 
      */
-    @Export(name="autoStart", type=Boolean.class, parameters={})
+    @Export(name="autoStart", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoStart;
 
     /**
@@ -127,7 +127,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Specifications of ETL. The unit is compute unit (CU),1CU = 1vCPU +4GB of memory. The value range is an integer greater than or equal to 2. **NOTE:** Enter this parameter and enable ETL to clean and convert data.
      * 
      */
-    @Export(name="computeUnit", type=Integer.class, parameters={})
+    @Export(name="computeUnit", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> computeUnit;
 
     /**
@@ -141,7 +141,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance creation time
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -155,7 +155,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The number of private custom RDS instances in the PolarDB-X. The default value is **1**. **NOTE:** This parameter is required only when **source_endpoint_engine_name** is **DRDS**.
      * 
      */
-    @Export(name="databaseCount", type=Integer.class, parameters={})
+    @Export(name="databaseCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> databaseCount;
 
     /**
@@ -194,7 +194,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - This parameter or **job_id** must be passed in.
      * 
      */
-    @Export(name="destinationEndpointEngineName", type=String.class, parameters={})
+    @Export(name="destinationEndpointEngineName", refs={String.class}, tree="[0]")
     private Output<String> destinationEndpointEngineName;
 
     /**
@@ -233,7 +233,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The target instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
      * 
      */
-    @Export(name="destinationRegion", type=String.class, parameters={})
+    @Export(name="destinationRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> destinationRegion;
 
     /**
@@ -247,7 +247,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the subscription instance.
      * 
      */
-    @Export(name="dtsInstanceId", type=String.class, parameters={})
+    @Export(name="dtsInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dtsInstanceId;
 
     /**
@@ -261,7 +261,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Assign a specified number of DU resources to DTS tasks in the DTS exclusive cluster. Valid values: **1** ~ **100**. **NOTE:** The value of this parameter must be within the range of the number of DUs available for the DTS dedicated cluster.
      * 
      */
-    @Export(name="du", type=Integer.class, parameters={})
+    @Export(name="du", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> du;
 
     /**
@@ -275,7 +275,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Subscription billing type, Valid values: `ONLY_CONFIGURATION_FEE`: charges only configuration fees; `CONFIGURATION_FEE_AND_DATA_FEE`: charges configuration fees and data traffic fees.
      * 
      */
-    @Export(name="feeType", type=String.class, parameters={})
+    @Export(name="feeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> feeType;
 
     /**
@@ -292,7 +292,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - **NOTE:** For performance descriptions of different specifications, see [Data Migration Link Specifications](https://www.alibabacloud.com/help/en/data-transmission-service/latest/cd773b) and [Data Synchronization Link Specifications](https://www.alibabacloud.com/help/en/data-transmission-service/latest/6bce7c).
      * 
      */
-    @Export(name="instanceClass", type=String.class, parameters={})
+    @Export(name="instanceClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceClass;
 
     /**
@@ -309,7 +309,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of Dts instance.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -323,7 +323,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of the task obtained by calling the **ConfigureDtsJob** operation (**DtsJobId**).&gt; After you pass in this parameter, you do not need to pass the **source_region**, **destination_region**, **type**, **source_endpoint_engine_name**, or **destination_endpoint_engine_name** parameters. Even if the input is passed in, the configuration in **job_id** shall prevail.
      * 
      */
-    @Export(name="jobId", type=String.class, parameters={})
+    @Export(name="jobId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jobId;
 
     /**
@@ -337,7 +337,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentType;
 
     /**
@@ -351,7 +351,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The billing method of the subscription instance. Value: `Year`, `Month`. **NOTE:** This parameter is valid and must be passed in only when `payment_type` is `Subscription`.
      * 
      */
-    @Export(name="period", type=String.class, parameters={})
+    @Export(name="period", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> period;
 
     /**
@@ -365,7 +365,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Resource Group ID.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -404,7 +404,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - This parameter or **job_id** must be passed in.
      * 
      */
-    @Export(name="sourceEndpointEngineName", type=String.class, parameters={})
+    @Export(name="sourceEndpointEngineName", refs={String.class}, tree="[0]")
     private Output<String> sourceEndpointEngineName;
 
     /**
@@ -443,7 +443,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The source instance region. For more information, see [List of supported regions](https://www.alibabacloud.com/help/en/data-transmission-service/latest/list-of-supported-regions). **NOTE:** This parameter or **job_id** must be passed in.
      * 
      */
-    @Export(name="sourceRegion", type=String.class, parameters={})
+    @Export(name="sourceRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceRegion;
 
     /**
@@ -457,7 +457,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -473,7 +473,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - **bidirectional**: two-way synchronization.
      * 
      */
-    @Export(name="syncArchitecture", type=String.class, parameters={})
+    @Export(name="syncArchitecture", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> syncArchitecture;
 
     /**
@@ -489,7 +489,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The synchronization direction. Default value: `Forward`. Valid values:
      * 
      */
-    @Export(name="synchronizationDirection", type=String.class, parameters={})
+    @Export(name="synchronizationDirection", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> synchronizationDirection;
 
     /**
@@ -503,7 +503,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The tag value corresponding to the tag key.See the following `Block Tags`.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -521,7 +521,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - **NOTE:** This parameter or **job_id** must be passed in.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -544,7 +544,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - The billing method of the subscription instance. You can set the parameter `period`.
      * 
      */
-    @Export(name="usedTime", type=Integer.class, parameters={})
+    @Export(name="usedTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> usedTime;
 
     /**

@@ -49,10 +49,10 @@ public final class OssShipperParquetConfig {
             return this;
         }
         public OssShipperParquetConfig build() {
-            final var o = new OssShipperParquetConfig();
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new OssShipperParquetConfig();
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -16,7 +16,7 @@ import (
 //
 // For information about ECS Network Interface and how to use it, see [What is Network Interface](https://www.alibabacloud.com/help/en/doc-detail/58504.htm).
 //
-// > **NOTE:** Available in v1.123.1+.
+// > **NOTE:** Available since v1.123.1.
 //
 // > **NOTE** Only one of `privateIpAddresses` or `secondaryPrivateIpAddressCount` can be specified when assign private IPs.
 //
@@ -41,7 +41,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
-//			name := "tf-testAcc"
+//			name := "tf-example"
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
@@ -116,6 +116,10 @@ type EcsNetworkInterface struct {
 
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
+	Ipv4PrefixCount pulumi.IntOutput `pulumi:"ipv4PrefixCount"`
+	// A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+	Ipv4Prefixes pulumi.StringArrayOutput `pulumi:"ipv4Prefixes"`
 	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
 	Ipv6AddressCount pulumi.IntOutput `pulumi:"ipv6AddressCount"`
 	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
@@ -199,6 +203,10 @@ func GetEcsNetworkInterface(ctx *pulumi.Context,
 type ecsNetworkInterfaceState struct {
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
+	// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
+	Ipv4PrefixCount *int `pulumi:"ipv4PrefixCount"`
+	// A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+	Ipv4Prefixes []string `pulumi:"ipv4Prefixes"`
 	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
 	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
 	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
@@ -250,6 +258,10 @@ type ecsNetworkInterfaceState struct {
 type EcsNetworkInterfaceState struct {
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
+	// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
+	Ipv4PrefixCount pulumi.IntPtrInput
+	// A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+	Ipv4Prefixes pulumi.StringArrayInput
 	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
 	Ipv6AddressCount pulumi.IntPtrInput
 	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
@@ -305,6 +317,10 @@ func (EcsNetworkInterfaceState) ElementType() reflect.Type {
 type ecsNetworkInterfaceArgs struct {
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
+	// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
+	Ipv4PrefixCount *int `pulumi:"ipv4PrefixCount"`
+	// A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+	Ipv4Prefixes []string `pulumi:"ipv4Prefixes"`
 	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
 	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
 	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
@@ -353,6 +369,10 @@ type ecsNetworkInterfaceArgs struct {
 type EcsNetworkInterfaceArgs struct {
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
+	// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
+	Ipv4PrefixCount pulumi.IntPtrInput
+	// A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+	Ipv4Prefixes pulumi.StringArrayInput
 	// The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.
 	Ipv6AddressCount pulumi.IntPtrInput
 	// A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
@@ -487,6 +507,16 @@ func (o EcsNetworkInterfaceOutput) ToEcsNetworkInterfaceOutputWithContext(ctx co
 // The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 func (o EcsNetworkInterfaceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
+func (o EcsNetworkInterfaceOutput) Ipv4PrefixCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.IntOutput { return v.Ipv4PrefixCount }).(pulumi.IntOutput)
+}
+
+// A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+func (o EcsNetworkInterfaceOutput) Ipv4Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringArrayOutput { return v.Ipv4Prefixes }).(pulumi.StringArrayOutput)
 }
 
 // The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6Addresses` and `ipv6AddressCount` parameters.

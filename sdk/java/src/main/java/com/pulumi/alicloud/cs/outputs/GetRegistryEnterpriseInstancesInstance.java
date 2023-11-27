@@ -262,20 +262,20 @@ public final class GetRegistryEnterpriseInstancesInstance {
             return vpcEndpoints(List.of(vpcEndpoints));
         }
         public GetRegistryEnterpriseInstancesInstance build() {
-            final var o = new GetRegistryEnterpriseInstancesInstance();
-            o.authorizationToken = authorizationToken;
-            o.id = id;
-            o.name = name;
-            o.namespaceQuota = namespaceQuota;
-            o.namespaceUsage = namespaceUsage;
-            o.publicEndpoints = publicEndpoints;
-            o.region = region;
-            o.repoQuota = repoQuota;
-            o.repoUsage = repoUsage;
-            o.specification = specification;
-            o.tempUsername = tempUsername;
-            o.vpcEndpoints = vpcEndpoints;
-            return o;
+            final var _resultValue = new GetRegistryEnterpriseInstancesInstance();
+            _resultValue.authorizationToken = authorizationToken;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.namespaceQuota = namespaceQuota;
+            _resultValue.namespaceUsage = namespaceUsage;
+            _resultValue.publicEndpoints = publicEndpoints;
+            _resultValue.region = region;
+            _resultValue.repoQuota = repoQuota;
+            _resultValue.repoUsage = repoUsage;
+            _resultValue.specification = specification;
+            _resultValue.tempUsername = tempUsername;
+            _resultValue.vpcEndpoints = vpcEndpoints;
+            return _resultValue;
         }
     }
 }

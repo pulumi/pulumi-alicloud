@@ -104,12 +104,12 @@ public final class GetAlidnsDomainGroupsGroup {
             return this;
         }
         public GetAlidnsDomainGroupsGroup build() {
-            final var o = new GetAlidnsDomainGroupsGroup();
-            o.domainCount = domainCount;
-            o.groupId = groupId;
-            o.groupName = groupName;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetAlidnsDomainGroupsGroup();
+            _resultValue.domainCount = domainCount;
+            _resultValue.groupId = groupId;
+            _resultValue.groupName = groupName;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

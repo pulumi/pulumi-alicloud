@@ -208,17 +208,17 @@ public final class GetRulesRule {
             return this;
         }
         public GetRulesRule build() {
-            final var o = new GetRulesRule();
-            o.id = id;
-            o.listenerId = listenerId;
-            o.loadBalancerId = loadBalancerId;
-            o.priority = priority;
-            o.ruleActions = ruleActions;
-            o.ruleConditions = ruleConditions;
-            o.ruleId = ruleId;
-            o.ruleName = ruleName;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetRulesRule();
+            _resultValue.id = id;
+            _resultValue.listenerId = listenerId;
+            _resultValue.loadBalancerId = loadBalancerId;
+            _resultValue.priority = priority;
+            _resultValue.ruleActions = ruleActions;
+            _resultValue.ruleConditions = ruleConditions;
+            _resultValue.ruleId = ruleId;
+            _resultValue.ruleName = ruleName;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

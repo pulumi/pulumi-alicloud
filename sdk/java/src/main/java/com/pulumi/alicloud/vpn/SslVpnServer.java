@@ -35,7 +35,7 @@ public class SslVpnServer extends com.pulumi.resources.CustomResource {
      * * `AES-256-CBC` - the AES-256-CBC algorithm.
      * 
      */
-    @Export(name="cipher", type=String.class, parameters={})
+    @Export(name="cipher", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cipher;
 
     /**
@@ -52,7 +52,7 @@ public class SslVpnServer extends com.pulumi.resources.CustomResource {
      * The CIDR block from which access addresses are allocated to the virtual network interface card of the client.
      * 
      */
-    @Export(name="clientIpPool", type=String.class, parameters={})
+    @Export(name="clientIpPool", refs={String.class}, tree="[0]")
     private Output<String> clientIpPool;
 
     /**
@@ -66,7 +66,7 @@ public class SslVpnServer extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable data compression. Valid values: `true`,`false`. Default value: `false`
      * 
      */
-    @Export(name="compress", type=Boolean.class, parameters={})
+    @Export(name="compress", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> compress;
 
     /**
@@ -80,7 +80,7 @@ public class SslVpnServer extends com.pulumi.resources.CustomResource {
      * The number of current connections.
      * 
      */
-    @Export(name="connections", type=Integer.class, parameters={})
+    @Export(name="connections", refs={Integer.class}, tree="[0]")
     private Output<Integer> connections;
 
     /**
@@ -94,7 +94,7 @@ public class SslVpnServer extends com.pulumi.resources.CustomResource {
      * The internet IP of the SSL-VPN server.
      * 
      */
-    @Export(name="internetIp", type=String.class, parameters={})
+    @Export(name="internetIp", refs={String.class}, tree="[0]")
     private Output<String> internetIp;
 
     /**
@@ -108,7 +108,7 @@ public class SslVpnServer extends com.pulumi.resources.CustomResource {
      * The CIDR block to be accessed by the client through the SSL-VPN connection. It supports to set multi CIDRs by comma join ways, like `10.0.1.0/24,10.0.2.0/24,10.0.3.0/24`.
      * 
      */
-    @Export(name="localSubnet", type=String.class, parameters={})
+    @Export(name="localSubnet", refs={String.class}, tree="[0]")
     private Output<String> localSubnet;
 
     /**
@@ -122,7 +122,7 @@ public class SslVpnServer extends com.pulumi.resources.CustomResource {
      * The maximum number of connections.
      * 
      */
-    @Export(name="maxConnections", type=Integer.class, parameters={})
+    @Export(name="maxConnections", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxConnections;
 
     /**
@@ -136,7 +136,7 @@ public class SslVpnServer extends com.pulumi.resources.CustomResource {
      * The name of the SSL-VPN server.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -150,7 +150,7 @@ public class SslVpnServer extends com.pulumi.resources.CustomResource {
      * The port used by the SSL-VPN server. The default value is `1194`.The following ports cannot be used: [22, 2222, 22222, 9000, 9001, 9002, 7505, 80, 443, 53, 68, 123, 4510, 4560, 500, 4500].
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> port;
 
     /**
@@ -164,7 +164,7 @@ public class SslVpnServer extends com.pulumi.resources.CustomResource {
      * The protocol used by the SSL-VPN server. Valid value: UDP(default) |TCP
      * 
      */
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> protocol;
 
     /**
@@ -178,7 +178,7 @@ public class SslVpnServer extends com.pulumi.resources.CustomResource {
      * The ID of the VPN gateway.
      * 
      */
-    @Export(name="vpnGatewayId", type=String.class, parameters={})
+    @Export(name="vpnGatewayId", refs={String.class}, tree="[0]")
     private Output<String> vpnGatewayId;
 
     /**

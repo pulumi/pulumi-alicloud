@@ -35,7 +35,7 @@ public class PrometheusMonitoring extends com.pulumi.resources.CustomResource {
      * The ID of the prometheus instance.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -49,7 +49,7 @@ public class PrometheusMonitoring extends com.pulumi.resources.CustomResource {
      * Yaml configuration for monitoring.
      * 
      */
-    @Export(name="configYaml", type=String.class, parameters={})
+    @Export(name="configYaml", refs={String.class}, tree="[0]")
     private Output<String> configYaml;
 
     /**
@@ -63,7 +63,7 @@ public class PrometheusMonitoring extends com.pulumi.resources.CustomResource {
      * The name of the resource.
      * 
      */
-    @Export(name="monitoringName", type=String.class, parameters={})
+    @Export(name="monitoringName", refs={String.class}, tree="[0]")
     private Output<String> monitoringName;
 
     /**
@@ -77,7 +77,7 @@ public class PrometheusMonitoring extends com.pulumi.resources.CustomResource {
      * Valid values: `stop`, `run`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -91,7 +91,7 @@ public class PrometheusMonitoring extends com.pulumi.resources.CustomResource {
      * Monitoring type: `serviceMonitor`, `podMonitor`, `customJob`, `probe`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

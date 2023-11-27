@@ -17,25 +17,34 @@ class VpcEndpointServiceResourceArgs:
                  resource_id: pulumi.Input[str],
                  resource_type: pulumi.Input[str],
                  service_id: pulumi.Input[str],
-                 dry_run: Optional[pulumi.Input[bool]] = None):
+                 dry_run: Optional[pulumi.Input[bool]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a VpcEndpointServiceResource resource.
-        :param pulumi.Input[str] resource_id: The ID of Resource.
-        :param pulumi.Input[str] resource_type: The Type of Resource.
-        :param pulumi.Input[str] service_id: The ID of Vpc Endpoint Service.
-        :param pulumi.Input[bool] dry_run: The dry run.
+        :param pulumi.Input[str] resource_id: The service resource ID.
+        :param pulumi.Input[str] resource_type: Service resource type, value:
+               - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+               - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+               - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+        :param pulumi.Input[str] service_id: The endpoint service ID.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] zone_id: The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
         """
         pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "resource_type", resource_type)
         pulumi.set(__self__, "service_id", service_id)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Input[str]:
         """
-        The ID of Resource.
+        The service resource ID.
         """
         return pulumi.get(self, "resource_id")
 
@@ -47,7 +56,10 @@ class VpcEndpointServiceResourceArgs:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Input[str]:
         """
-        The Type of Resource.
+        Service resource type, value:
+        - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+        - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+        - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
         """
         return pulumi.get(self, "resource_type")
 
@@ -59,7 +71,7 @@ class VpcEndpointServiceResourceArgs:
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Input[str]:
         """
-        The ID of Vpc Endpoint Service.
+        The endpoint service ID.
         """
         return pulumi.get(self, "service_id")
 
@@ -71,13 +83,27 @@ class VpcEndpointServiceResourceArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        The dry run.
+        Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
     @dry_run.setter
     def dry_run(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "dry_run", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 @pulumi.input_type
@@ -86,13 +112,20 @@ class _VpcEndpointServiceResourceState:
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  resource_id: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
-                 service_id: Optional[pulumi.Input[str]] = None):
+                 service_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering VpcEndpointServiceResource resources.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] resource_id: The ID of Resource.
-        :param pulumi.Input[str] resource_type: The Type of Resource.
-        :param pulumi.Input[str] service_id: The ID of Vpc Endpoint Service.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] resource_id: The service resource ID.
+        :param pulumi.Input[str] resource_type: Service resource type, value:
+               - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+               - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+               - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+        :param pulumi.Input[str] service_id: The endpoint service ID.
+        :param pulumi.Input[str] zone_id: The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
         """
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
@@ -102,12 +135,16 @@ class _VpcEndpointServiceResourceState:
             pulumi.set(__self__, "resource_type", resource_type)
         if service_id is not None:
             pulumi.set(__self__, "service_id", service_id)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        The dry run.
+        Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
@@ -119,7 +156,7 @@ class _VpcEndpointServiceResourceState:
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of Resource.
+        The service resource ID.
         """
         return pulumi.get(self, "resource_id")
 
@@ -131,7 +168,10 @@ class _VpcEndpointServiceResourceState:
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The Type of Resource.
+        Service resource type, value:
+        - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+        - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+        - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
         """
         return pulumi.get(self, "resource_type")
 
@@ -143,13 +183,25 @@ class _VpcEndpointServiceResourceState:
     @pulumi.getter(name="serviceId")
     def service_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of Vpc Endpoint Service.
+        The endpoint service ID.
         """
         return pulumi.get(self, "service_id")
 
     @service_id.setter
     def service_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "service_id", value)
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+        """
+        return pulumi.get(self, "zone_id")
+
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
 
 
 class VpcEndpointServiceResource(pulumi.CustomResource):
@@ -161,9 +213,10 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
                  resource_id: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a Private Link Vpc Endpoint Service Resource resource.
+        Provides a Private Link Vpc Endpoint Service Resource resource. Endpoint service resource.
 
         For information about Private Link Vpc Endpoint Service Resource and how to use it, see [What is Vpc Endpoint Service Resource](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-attachresourcetovpcendpointservice).
 
@@ -216,15 +269,21 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
         Private Link Vpc Endpoint Service Resource can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example <service_id>:<resource_id>
+         $ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example <service_id>:<resource_id>:<zone_id>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] resource_id: The ID of Resource.
-        :param pulumi.Input[str] resource_type: The Type of Resource.
-        :param pulumi.Input[str] service_id: The ID of Vpc Endpoint Service.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] resource_id: The service resource ID.
+        :param pulumi.Input[str] resource_type: Service resource type, value:
+               - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+               - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+               - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+        :param pulumi.Input[str] service_id: The endpoint service ID.
+        :param pulumi.Input[str] zone_id: The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
         """
         ...
     @overload
@@ -233,7 +292,7 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
                  args: VpcEndpointServiceResourceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a Private Link Vpc Endpoint Service Resource resource.
+        Provides a Private Link Vpc Endpoint Service Resource resource. Endpoint service resource.
 
         For information about Private Link Vpc Endpoint Service Resource and how to use it, see [What is Vpc Endpoint Service Resource](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-attachresourcetovpcendpointservice).
 
@@ -286,7 +345,7 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
         Private Link Vpc Endpoint Service Resource can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example <service_id>:<resource_id>
+         $ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example <service_id>:<resource_id>:<zone_id>
         ```
 
         :param str resource_name: The name of the resource.
@@ -308,6 +367,7 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
                  resource_id: Optional[pulumi.Input[str]] = None,
                  resource_type: Optional[pulumi.Input[str]] = None,
                  service_id: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -327,6 +387,7 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
             if service_id is None and not opts.urn:
                 raise TypeError("Missing required property 'service_id'")
             __props__.__dict__["service_id"] = service_id
+            __props__.__dict__["zone_id"] = zone_id
         super(VpcEndpointServiceResource, __self__).__init__(
             'alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource',
             resource_name,
@@ -340,7 +401,8 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
             dry_run: Optional[pulumi.Input[bool]] = None,
             resource_id: Optional[pulumi.Input[str]] = None,
             resource_type: Optional[pulumi.Input[str]] = None,
-            service_id: Optional[pulumi.Input[str]] = None) -> 'VpcEndpointServiceResource':
+            service_id: Optional[pulumi.Input[str]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None) -> 'VpcEndpointServiceResource':
         """
         Get an existing VpcEndpointServiceResource resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -348,10 +410,16 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] resource_id: The ID of Resource.
-        :param pulumi.Input[str] resource_type: The Type of Resource.
-        :param pulumi.Input[str] service_id: The ID of Vpc Endpoint Service.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] resource_id: The service resource ID.
+        :param pulumi.Input[str] resource_type: Service resource type, value:
+               - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+               - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+               - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+        :param pulumi.Input[str] service_id: The endpoint service ID.
+        :param pulumi.Input[str] zone_id: The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -361,13 +429,16 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
         __props__.__dict__["resource_id"] = resource_id
         __props__.__dict__["resource_type"] = resource_type
         __props__.__dict__["service_id"] = service_id
+        __props__.__dict__["zone_id"] = zone_id
         return VpcEndpointServiceResource(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        The dry run.
+        Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
@@ -375,7 +446,7 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Output[str]:
         """
-        The ID of Resource.
+        The service resource ID.
         """
         return pulumi.get(self, "resource_id")
 
@@ -383,7 +454,10 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Output[str]:
         """
-        The Type of Resource.
+        Service resource type, value:
+        - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+        - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+        - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
         """
         return pulumi.get(self, "resource_type")
 
@@ -391,7 +465,15 @@ class VpcEndpointServiceResource(pulumi.CustomResource):
     @pulumi.getter(name="serviceId")
     def service_id(self) -> pulumi.Output[str]:
         """
-        The ID of Vpc Endpoint Service.
+        The endpoint service ID.
         """
         return pulumi.get(self, "service_id")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+        """
+        return pulumi.get(self, "zone_id")
 

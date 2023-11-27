@@ -198,17 +198,17 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.clientInstanceId = clientInstanceId;
-            o.clientInstanceName = clientInstanceName;
-            o.clientInstanceType = clientInstanceType;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.instanceType = instanceType;
-            o.status = status;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.clientInstanceId = clientInstanceId;
+            _resultValue.clientInstanceName = clientInstanceName;
+            _resultValue.clientInstanceType = clientInstanceType;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.instanceType = instanceType;
+            _resultValue.status = status;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

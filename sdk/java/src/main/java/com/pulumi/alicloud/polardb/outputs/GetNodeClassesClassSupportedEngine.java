@@ -70,10 +70,10 @@ public final class GetNodeClassesClassSupportedEngine {
             return this;
         }
         public GetNodeClassesClassSupportedEngine build() {
-            final var o = new GetNodeClassesClassSupportedEngine();
-            o.availableResources = availableResources;
-            o.engine = engine;
-            return o;
+            final var _resultValue = new GetNodeClassesClassSupportedEngine();
+            _resultValue.availableResources = availableResources;
+            _resultValue.engine = engine;
+            return _resultValue;
         }
     }
 }

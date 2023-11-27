@@ -184,16 +184,16 @@ public final class GetBackupPoliciesPolicy {
             return uuidLists(List.of(uuidLists));
         }
         public GetBackupPoliciesPolicy build() {
-            final var o = new GetBackupPoliciesPolicy();
-            o.backupPolicyId = backupPolicyId;
-            o.backupPolicyName = backupPolicyName;
-            o.id = id;
-            o.policy = policy;
-            o.policyRegionId = policyRegionId;
-            o.policyVersion = policyVersion;
-            o.status = status;
-            o.uuidLists = uuidLists;
-            return o;
+            final var _resultValue = new GetBackupPoliciesPolicy();
+            _resultValue.backupPolicyId = backupPolicyId;
+            _resultValue.backupPolicyName = backupPolicyName;
+            _resultValue.id = id;
+            _resultValue.policy = policy;
+            _resultValue.policyRegionId = policyRegionId;
+            _resultValue.policyVersion = policyVersion;
+            _resultValue.status = status;
+            _resultValue.uuidLists = uuidLists;
+            return _resultValue;
         }
     }
 }

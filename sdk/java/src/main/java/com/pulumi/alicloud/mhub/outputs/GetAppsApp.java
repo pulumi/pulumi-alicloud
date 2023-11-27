@@ -217,18 +217,18 @@ public final class GetAppsApp {
             return this;
         }
         public GetAppsApp build() {
-            final var o = new GetAppsApp();
-            o.appKey = appKey;
-            o.appName = appName;
-            o.bundleId = bundleId;
-            o.createTime = createTime;
-            o.encodedIcon = encodedIcon;
-            o.id = id;
-            o.industryId = industryId;
-            o.packageName = packageName;
-            o.productId = productId;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetAppsApp();
+            _resultValue.appKey = appKey;
+            _resultValue.appName = appName;
+            _resultValue.bundleId = bundleId;
+            _resultValue.createTime = createTime;
+            _resultValue.encodedIcon = encodedIcon;
+            _resultValue.id = id;
+            _resultValue.industryId = industryId;
+            _resultValue.packageName = packageName;
+            _resultValue.productId = productId;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

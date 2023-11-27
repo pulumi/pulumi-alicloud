@@ -82,7 +82,7 @@ public class EcsImageComponent extends com.pulumi.resources.CustomResource {
      * The type of the image component. Only image building components are supported. Valid values: `Build`.
      * 
      */
-    @Export(name="componentType", type=String.class, parameters={})
+    @Export(name="componentType", refs={String.class}, tree="[0]")
     private Output<String> componentType;
 
     /**
@@ -96,7 +96,7 @@ public class EcsImageComponent extends com.pulumi.resources.CustomResource {
      * The content of the image component. The content can consist of up to 127 commands.
      * 
      */
-    @Export(name="content", type=String.class, parameters={})
+    @Export(name="content", refs={String.class}, tree="[0]")
     private Output<String> content;
 
     /**
@@ -110,7 +110,7 @@ public class EcsImageComponent extends com.pulumi.resources.CustomResource {
      * The description of the image component. The description must be `2` to `256` characters in length and cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -124,7 +124,7 @@ public class EcsImageComponent extends com.pulumi.resources.CustomResource {
      * The name of the image component. The name must be `2` to `128` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.), and hyphens (-).
      * 
      */
-    @Export(name="imageComponentName", type=String.class, parameters={})
+    @Export(name="imageComponentName", refs={String.class}, tree="[0]")
     private Output<String> imageComponentName;
 
     /**
@@ -138,7 +138,7 @@ public class EcsImageComponent extends com.pulumi.resources.CustomResource {
      * The ID of the resource group to which to assign the image component.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -152,7 +152,7 @@ public class EcsImageComponent extends com.pulumi.resources.CustomResource {
      * The operating system type supported by the image component. Only Linux is supported. Valid values: `Linux`.
      * 
      */
-    @Export(name="systemType", type=String.class, parameters={})
+    @Export(name="systemType", refs={String.class}, tree="[0]")
     private Output<String> systemType;
 
     /**
@@ -166,7 +166,7 @@ public class EcsImageComponent extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

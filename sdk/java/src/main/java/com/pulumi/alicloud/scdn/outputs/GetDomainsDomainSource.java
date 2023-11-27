@@ -123,13 +123,13 @@ public final class GetDomainsDomainSource {
             return this;
         }
         public GetDomainsDomainSource build() {
-            final var o = new GetDomainsDomainSource();
-            o.content = content;
-            o.enabled = enabled;
-            o.port = port;
-            o.priority = priority;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetDomainsDomainSource();
+            _resultValue.content = content;
+            _resultValue.enabled = enabled;
+            _resultValue.port = port;
+            _resultValue.priority = priority;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

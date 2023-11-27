@@ -126,13 +126,13 @@ public final class ClusterNodeGroupSubscriptionConfig {
             return this;
         }
         public ClusterNodeGroupSubscriptionConfig build() {
-            final var o = new ClusterNodeGroupSubscriptionConfig();
-            o.autoRenew = autoRenew;
-            o.autoRenewDuration = autoRenewDuration;
-            o.autoRenewDurationUnit = autoRenewDurationUnit;
-            o.paymentDuration = paymentDuration;
-            o.paymentDurationUnit = paymentDurationUnit;
-            return o;
+            final var _resultValue = new ClusterNodeGroupSubscriptionConfig();
+            _resultValue.autoRenew = autoRenew;
+            _resultValue.autoRenewDuration = autoRenewDuration;
+            _resultValue.autoRenewDurationUnit = autoRenewDurationUnit;
+            _resultValue.paymentDuration = paymentDuration;
+            _resultValue.paymentDurationUnit = paymentDurationUnit;
+            return _resultValue;
         }
     }
 }

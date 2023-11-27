@@ -103,7 +103,7 @@ public class Remediation extends com.pulumi.resources.CustomResource {
      * Rule ID.
      * 
      */
-    @Export(name="configRuleId", type=String.class, parameters={})
+    @Export(name="configRuleId", refs={String.class}, tree="[0]")
     private Output<String> configRuleId;
 
     /**
@@ -117,7 +117,7 @@ public class Remediation extends com.pulumi.resources.CustomResource {
      * Execution type, valid values: `Manual`, `Automatic`.
      * 
      */
-    @Export(name="invokeType", type=String.class, parameters={})
+    @Export(name="invokeType", refs={String.class}, tree="[0]")
     private Output<String> invokeType;
 
     /**
@@ -131,7 +131,7 @@ public class Remediation extends com.pulumi.resources.CustomResource {
      * Remediation parameter.
      * 
      */
-    @Export(name="params", type=String.class, parameters={})
+    @Export(name="params", refs={String.class}, tree="[0]")
     private Output<String> params;
 
     /**
@@ -145,7 +145,7 @@ public class Remediation extends com.pulumi.resources.CustomResource {
      * Remediation ID.
      * 
      */
-    @Export(name="remediationId", type=String.class, parameters={})
+    @Export(name="remediationId", refs={String.class}, tree="[0]")
     private Output<String> remediationId;
 
     /**
@@ -159,7 +159,7 @@ public class Remediation extends com.pulumi.resources.CustomResource {
      * Remediation resource type, valid values: `ALIYUN` , `CUSTOMER`.
      * 
      */
-    @Export(name="remediationSourceType", type=String.class, parameters={})
+    @Export(name="remediationSourceType", refs={String.class}, tree="[0]")
     private Output<String> remediationSourceType;
 
     /**
@@ -173,7 +173,7 @@ public class Remediation extends com.pulumi.resources.CustomResource {
      * Remediation template ID.
      * 
      */
-    @Export(name="remediationTemplateId", type=String.class, parameters={})
+    @Export(name="remediationTemplateId", refs={String.class}, tree="[0]")
     private Output<String> remediationTemplateId;
 
     /**
@@ -189,7 +189,7 @@ public class Remediation extends com.pulumi.resources.CustomResource {
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
-    @Export(name="remediationType", type=String.class, parameters={})
+    @Export(name="remediationType", refs={String.class}, tree="[0]")
     private Output<String> remediationType;
 
     /**

@@ -67,7 +67,7 @@ public class Handshake extends com.pulumi.resources.CustomResource {
      * The expiration time of the invitation.
      * 
      */
-    @Export(name="expireTime", type=String.class, parameters={})
+    @Export(name="expireTime", refs={String.class}, tree="[0]")
     private Output<String> expireTime;
 
     /**
@@ -81,7 +81,7 @@ public class Handshake extends com.pulumi.resources.CustomResource {
      * Resource account master account ID.
      * 
      */
-    @Export(name="masterAccountId", type=String.class, parameters={})
+    @Export(name="masterAccountId", refs={String.class}, tree="[0]")
     private Output<String> masterAccountId;
 
     /**
@@ -95,7 +95,7 @@ public class Handshake extends com.pulumi.resources.CustomResource {
      * The name of the main account of the resource directory.
      * 
      */
-    @Export(name="masterAccountName", type=String.class, parameters={})
+    @Export(name="masterAccountName", refs={String.class}, tree="[0]")
     private Output<String> masterAccountName;
 
     /**
@@ -109,7 +109,7 @@ public class Handshake extends com.pulumi.resources.CustomResource {
      * The modification time of the invitation.
      * 
      */
-    @Export(name="modifyTime", type=String.class, parameters={})
+    @Export(name="modifyTime", refs={String.class}, tree="[0]")
     private Output<String> modifyTime;
 
     /**
@@ -123,7 +123,7 @@ public class Handshake extends com.pulumi.resources.CustomResource {
      * Remarks. The maximum length is 1024 characters.
      * 
      */
-    @Export(name="note", type=String.class, parameters={})
+    @Export(name="note", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> note;
 
     /**
@@ -137,7 +137,7 @@ public class Handshake extends com.pulumi.resources.CustomResource {
      * Resource directory ID.
      * 
      */
-    @Export(name="resourceDirectoryId", type=String.class, parameters={})
+    @Export(name="resourceDirectoryId", refs={String.class}, tree="[0]")
     private Output<String> resourceDirectoryId;
 
     /**
@@ -151,7 +151,7 @@ public class Handshake extends com.pulumi.resources.CustomResource {
      * Invitation status. Valid values: `Pending` waiting for confirmation, `Accepted`, `Cancelled`, `Declined`, `Expired`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -165,7 +165,7 @@ public class Handshake extends com.pulumi.resources.CustomResource {
      * Invited account ID or login email.
      * 
      */
-    @Export(name="targetEntity", type=String.class, parameters={})
+    @Export(name="targetEntity", refs={String.class}, tree="[0]")
     private Output<String> targetEntity;
 
     /**
@@ -179,7 +179,7 @@ public class Handshake extends com.pulumi.resources.CustomResource {
      * Type of account being invited. Valid values: `Account`, `Email`.
      * 
      */
-    @Export(name="targetType", type=String.class, parameters={})
+    @Export(name="targetType", refs={String.class}, tree="[0]")
     private Output<String> targetType;
 
     /**

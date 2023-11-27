@@ -128,13 +128,13 @@ public final class CustomDomainRouteConfig {
             return this;
         }
         public CustomDomainRouteConfig build() {
-            final var o = new CustomDomainRouteConfig();
-            o.functionName = functionName;
-            o.methods = methods;
-            o.path = path;
-            o.qualifier = qualifier;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new CustomDomainRouteConfig();
+            _resultValue.functionName = functionName;
+            _resultValue.methods = methods;
+            _resultValue.path = path;
+            _resultValue.qualifier = qualifier;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

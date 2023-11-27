@@ -98,7 +98,7 @@ public class AlarmContact extends com.pulumi.resources.CustomResource {
      * The name of the alarm contact. The length should between 2 and 40 characters.
      * 
      */
-    @Export(name="alarmContactName", type=String.class, parameters={})
+    @Export(name="alarmContactName", refs={String.class}, tree="[0]")
     private Output<String> alarmContactName;
 
     /**
@@ -112,7 +112,7 @@ public class AlarmContact extends com.pulumi.resources.CustomResource {
      * The TradeManager ID of the alarm contact.
      * 
      */
-    @Export(name="channelsAliim", type=String.class, parameters={})
+    @Export(name="channelsAliim", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> channelsAliim;
 
     /**
@@ -126,7 +126,7 @@ public class AlarmContact extends com.pulumi.resources.CustomResource {
      * The webhook URL of the DingTalk chatbot.
      * 
      */
-    @Export(name="channelsDingWebHook", type=String.class, parameters={})
+    @Export(name="channelsDingWebHook", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> channelsDingWebHook;
 
     /**
@@ -140,7 +140,7 @@ public class AlarmContact extends com.pulumi.resources.CustomResource {
      * The email address of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
      * 
      */
-    @Export(name="channelsMail", type=String.class, parameters={})
+    @Export(name="channelsMail", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> channelsMail;
 
     /**
@@ -154,7 +154,7 @@ public class AlarmContact extends com.pulumi.resources.CustomResource {
      * The phone number of the alarm contact. After you add or modify an email address, the recipient receives an email that contains an activation link. The system adds the recipient to the list of alarm contacts only after the recipient activates the email address.
      * 
      */
-    @Export(name="channelsSms", type=String.class, parameters={})
+    @Export(name="channelsSms", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> channelsSms;
 
     /**
@@ -168,7 +168,7 @@ public class AlarmContact extends com.pulumi.resources.CustomResource {
      * The description of the alarm contact.
      * 
      */
-    @Export(name="describe", type=String.class, parameters={})
+    @Export(name="describe", refs={String.class}, tree="[0]")
     private Output<String> describe;
 
     /**
@@ -184,7 +184,7 @@ public class AlarmContact extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Specify at least one of the following alarm notification targets: `channels_aliim`, `channels_ding_web_hook`, `channels_mail`, `channels_sms`.
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**

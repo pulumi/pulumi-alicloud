@@ -67,10 +67,10 @@ public final class FirewallVpcFirewallCenLocalVpcEniList {
             return this;
         }
         public FirewallVpcFirewallCenLocalVpcEniList build() {
-            final var o = new FirewallVpcFirewallCenLocalVpcEniList();
-            o.eniId = eniId;
-            o.eniPrivateIpAddress = eniPrivateIpAddress;
-            return o;
+            final var _resultValue = new FirewallVpcFirewallCenLocalVpcEniList();
+            _resultValue.eniId = eniId;
+            _resultValue.eniPrivateIpAddress = eniPrivateIpAddress;
+            return _resultValue;
         }
     }
 }

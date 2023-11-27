@@ -77,7 +77,7 @@ public class SimpleOfficeSite extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'bandwidth' has been deprecated from provider version 1.142.0. */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
@@ -91,7 +91,7 @@ public class SimpleOfficeSite extends com.pulumi.resources.CustomResource {
      * Cloud Enterprise Network Instance ID.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cenId;
 
     /**
@@ -105,7 +105,7 @@ public class SimpleOfficeSite extends com.pulumi.resources.CustomResource {
      * The cen owner id.
      * 
      */
-    @Export(name="cenOwnerId", type=String.class, parameters={})
+    @Export(name="cenOwnerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cenOwnerId;
 
     /**
@@ -119,7 +119,7 @@ public class SimpleOfficeSite extends com.pulumi.resources.CustomResource {
      * Workspace Corresponds to the Security Office Network of IPv4 Segment.
      * 
      */
-    @Export(name="cidrBlock", type=String.class, parameters={})
+    @Export(name="cidrBlock", refs={String.class}, tree="[0]")
     private Output<String> cidrBlock;
 
     /**
@@ -133,7 +133,7 @@ public class SimpleOfficeSite extends com.pulumi.resources.CustomResource {
      * Connect to the Cloud Desktop Allows the Use of the Access Mode of. Valid values: `Any`, `Internet`, `VPC`.
      * 
      */
-    @Export(name="desktopAccessType", type=String.class, parameters={})
+    @Export(name="desktopAccessType", refs={String.class}, tree="[0]")
     private Output<String> desktopAccessType;
 
     /**
@@ -147,7 +147,7 @@ public class SimpleOfficeSite extends com.pulumi.resources.CustomResource {
      * Whether to Use Cloud Desktop User Empowerment of Local Administrator Permissions.
      * 
      */
-    @Export(name="enableAdminAccess", type=Boolean.class, parameters={})
+    @Export(name="enableAdminAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableAdminAccess;
 
     /**
@@ -161,7 +161,7 @@ public class SimpleOfficeSite extends com.pulumi.resources.CustomResource {
      * Enable Cross-Desktop Access.
      * 
      */
-    @Export(name="enableCrossDesktopAccess", type=Boolean.class, parameters={})
+    @Export(name="enableCrossDesktopAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableCrossDesktopAccess;
 
     /**
@@ -179,7 +179,7 @@ public class SimpleOfficeSite extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'enable_internet_access' has been deprecated from provider version 1.142.0. */
-    @Export(name="enableInternetAccess", type=Boolean.class, parameters={})
+    @Export(name="enableInternetAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableInternetAccess;
 
     /**
@@ -193,7 +193,7 @@ public class SimpleOfficeSite extends com.pulumi.resources.CustomResource {
      * Whether to Enable Multi-Factor Authentication MFA.
      * 
      */
-    @Export(name="mfaEnabled", type=Boolean.class, parameters={})
+    @Export(name="mfaEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> mfaEnabled;
 
     /**
@@ -207,7 +207,7 @@ public class SimpleOfficeSite extends com.pulumi.resources.CustomResource {
      * The office site name.
      * 
      */
-    @Export(name="officeSiteName", type=String.class, parameters={})
+    @Export(name="officeSiteName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> officeSiteName;
 
     /**
@@ -221,7 +221,7 @@ public class SimpleOfficeSite extends com.pulumi.resources.CustomResource {
      * Whether to Enable Single Sign-on (SSO) for User-Based SSO.
      * 
      */
-    @Export(name="ssoEnabled", type=Boolean.class, parameters={})
+    @Export(name="ssoEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ssoEnabled;
 
     /**
@@ -235,7 +235,7 @@ public class SimpleOfficeSite extends com.pulumi.resources.CustomResource {
      * Workspace State. Valid Values: `REGISTERED`,`REGISTERING`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

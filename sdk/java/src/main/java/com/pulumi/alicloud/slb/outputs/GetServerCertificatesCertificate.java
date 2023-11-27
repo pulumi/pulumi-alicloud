@@ -303,22 +303,22 @@ public final class GetServerCertificatesCertificate {
             return this;
         }
         public GetServerCertificatesCertificate build() {
-            final var o = new GetServerCertificatesCertificate();
-            o.alicloudCertificateId = alicloudCertificateId;
-            o.alicloudCertificateName = alicloudCertificateName;
-            o.commonName = commonName;
-            o.createdTime = createdTime;
-            o.createdTimestamp = createdTimestamp;
-            o.expiredTime = expiredTime;
-            o.expiredTimestamp = expiredTimestamp;
-            o.fingerprint = fingerprint;
-            o.id = id;
-            o.isAlicloudCertificate = isAlicloudCertificate;
-            o.name = name;
-            o.resourceGroupId = resourceGroupId;
-            o.subjectAlternativeNames = subjectAlternativeNames;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetServerCertificatesCertificate();
+            _resultValue.alicloudCertificateId = alicloudCertificateId;
+            _resultValue.alicloudCertificateName = alicloudCertificateName;
+            _resultValue.commonName = commonName;
+            _resultValue.createdTime = createdTime;
+            _resultValue.createdTimestamp = createdTimestamp;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.expiredTimestamp = expiredTimestamp;
+            _resultValue.fingerprint = fingerprint;
+            _resultValue.id = id;
+            _resultValue.isAlicloudCertificate = isAlicloudCertificate;
+            _resultValue.name = name;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.subjectAlternativeNames = subjectAlternativeNames;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

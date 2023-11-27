@@ -196,7 +196,7 @@ public class FunctionAsyncInvokeConfig extends com.pulumi.resources.CustomResour
      * The date this resource was created.
      * 
      */
-    @Export(name="createdTime", type=String.class, parameters={})
+    @Export(name="createdTime", refs={String.class}, tree="[0]")
     private Output<String> createdTime;
 
     /**
@@ -210,7 +210,7 @@ public class FunctionAsyncInvokeConfig extends com.pulumi.resources.CustomResour
      * Configuration block with destination configuration. See `destination_config` below.
      * 
      */
-    @Export(name="destinationConfig", type=FunctionAsyncInvokeConfigDestinationConfig.class, parameters={})
+    @Export(name="destinationConfig", refs={FunctionAsyncInvokeConfigDestinationConfig.class}, tree="[0]")
     private Output</* @Nullable */ FunctionAsyncInvokeConfigDestinationConfig> destinationConfig;
 
     /**
@@ -224,7 +224,7 @@ public class FunctionAsyncInvokeConfig extends com.pulumi.resources.CustomResour
      * Name of the Function Compute Function.
      * 
      */
-    @Export(name="functionName", type=String.class, parameters={})
+    @Export(name="functionName", refs={String.class}, tree="[0]")
     private Output<String> functionName;
 
     /**
@@ -238,7 +238,7 @@ public class FunctionAsyncInvokeConfig extends com.pulumi.resources.CustomResour
      * The date this resource was last modified.
      * 
      */
-    @Export(name="lastModifiedTime", type=String.class, parameters={})
+    @Export(name="lastModifiedTime", refs={String.class}, tree="[0]")
     private Output<String> lastModifiedTime;
 
     /**
@@ -252,7 +252,7 @@ public class FunctionAsyncInvokeConfig extends com.pulumi.resources.CustomResour
      * Maximum age of a request that Function Compute sends to a function for processing in seconds. Valid values between 1 and 2592000 (between 60 and 21600 before v1.167.0).
      * 
      */
-    @Export(name="maximumEventAgeInSeconds", type=Integer.class, parameters={})
+    @Export(name="maximumEventAgeInSeconds", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maximumEventAgeInSeconds;
 
     /**
@@ -266,7 +266,7 @@ public class FunctionAsyncInvokeConfig extends com.pulumi.resources.CustomResour
      * Maximum number of times to retry when the function returns an error. Valid values between 0 and 8 (between 0 and 2 before v1.167.0). Defaults to 2.
      * 
      */
-    @Export(name="maximumRetryAttempts", type=Integer.class, parameters={})
+    @Export(name="maximumRetryAttempts", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maximumRetryAttempts;
 
     /**
@@ -280,7 +280,7 @@ public class FunctionAsyncInvokeConfig extends com.pulumi.resources.CustomResour
      * Function Compute Function published version, `LATEST`, or Function Compute Alias name. The default value is `LATEST`.
      * 
      */
-    @Export(name="qualifier", type=String.class, parameters={})
+    @Export(name="qualifier", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> qualifier;
 
     /**
@@ -294,7 +294,7 @@ public class FunctionAsyncInvokeConfig extends com.pulumi.resources.CustomResour
      * Name of the Function Compute Function, omitting any version or alias qualifier.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -308,7 +308,7 @@ public class FunctionAsyncInvokeConfig extends com.pulumi.resources.CustomResour
      * Function Compute async job configuration(also known as Task Mode). valid values true or false, default `false`
      * 
      */
-    @Export(name="statefulInvocation", type=Boolean.class, parameters={})
+    @Export(name="statefulInvocation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> statefulInvocation;
 
     /**

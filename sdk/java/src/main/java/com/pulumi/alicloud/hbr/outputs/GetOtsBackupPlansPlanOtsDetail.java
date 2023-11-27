@@ -42,9 +42,9 @@ public final class GetOtsBackupPlansPlanOtsDetail {
             return tableNames(List.of(tableNames));
         }
         public GetOtsBackupPlansPlanOtsDetail build() {
-            final var o = new GetOtsBackupPlansPlanOtsDetail();
-            o.tableNames = tableNames;
-            return o;
+            final var _resultValue = new GetOtsBackupPlansPlanOtsDetail();
+            _resultValue.tableNames = tableNames;
+            return _resultValue;
         }
     }
 }

@@ -108,7 +108,7 @@ public class Znode extends com.pulumi.resources.CustomResource {
      * The language type of the returned information. Valid values: `zh` or `en`.
      * 
      */
-    @Export(name="acceptLanguage", type=String.class, parameters={})
+    @Export(name="acceptLanguage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> acceptLanguage;
 
     /**
@@ -122,7 +122,7 @@ public class Znode extends com.pulumi.resources.CustomResource {
      * The ID of the Cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -136,7 +136,7 @@ public class Znode extends com.pulumi.resources.CustomResource {
      * The Node data.
      * 
      */
-    @Export(name="data", type=String.class, parameters={})
+    @Export(name="data", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> data;
 
     /**
@@ -150,7 +150,7 @@ public class Znode extends com.pulumi.resources.CustomResource {
      * The Node path. The value must start with a forward slash (/).
      * 
      */
-    @Export(name="path", type=String.class, parameters={})
+    @Export(name="path", refs={String.class}, tree="[0]")
     private Output<String> path;
 
     /**

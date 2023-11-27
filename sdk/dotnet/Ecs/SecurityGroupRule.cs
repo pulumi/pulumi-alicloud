@@ -15,6 +15,8 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// &gt; **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
     /// 
+    /// &gt; **NOTE:** Available since v0.1.0.
+    /// 
     /// ## Example Usage
     /// 
     /// Basic Usage

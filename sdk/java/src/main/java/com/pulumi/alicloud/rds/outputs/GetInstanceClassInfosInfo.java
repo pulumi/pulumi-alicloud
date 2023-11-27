@@ -200,17 +200,17 @@ public final class GetInstanceClassInfosInfo {
             return this;
         }
         public GetInstanceClassInfosInfo build() {
-            final var o = new GetInstanceClassInfosInfo();
-            o.classCode = classCode;
-            o.classGroup = classGroup;
-            o.cpu = cpu;
-            o.instructionSetArch = instructionSetArch;
-            o.maxConnections = maxConnections;
-            o.maxIombps = maxIombps;
-            o.maxIops = maxIops;
-            o.memoryClass = memoryClass;
-            o.referencePrice = referencePrice;
-            return o;
+            final var _resultValue = new GetInstanceClassInfosInfo();
+            _resultValue.classCode = classCode;
+            _resultValue.classGroup = classGroup;
+            _resultValue.cpu = cpu;
+            _resultValue.instructionSetArch = instructionSetArch;
+            _resultValue.maxConnections = maxConnections;
+            _resultValue.maxIombps = maxIombps;
+            _resultValue.maxIops = maxIops;
+            _resultValue.memoryClass = memoryClass;
+            _resultValue.referencePrice = referencePrice;
+            return _resultValue;
         }
     }
 }

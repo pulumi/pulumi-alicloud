@@ -199,16 +199,16 @@ public final class LaunchTemplateSystemDisk {
             return this;
         }
         public LaunchTemplateSystemDisk build() {
-            final var o = new LaunchTemplateSystemDisk();
-            o.category = category;
-            o.deleteWithInstance = deleteWithInstance;
-            o.description = description;
-            o.encrypted = encrypted;
-            o.iops = iops;
-            o.name = name;
-            o.performanceLevel = performanceLevel;
-            o.size = size;
-            return o;
+            final var _resultValue = new LaunchTemplateSystemDisk();
+            _resultValue.category = category;
+            _resultValue.deleteWithInstance = deleteWithInstance;
+            _resultValue.description = description;
+            _resultValue.encrypted = encrypted;
+            _resultValue.iops = iops;
+            _resultValue.name = name;
+            _resultValue.performanceLevel = performanceLevel;
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

@@ -84,11 +84,11 @@ public final class GetEdgeKubernetesClustersClusterWorkerNode {
             return this;
         }
         public GetEdgeKubernetesClustersClusterWorkerNode build() {
-            final var o = new GetEdgeKubernetesClustersClusterWorkerNode();
-            o.id = id;
-            o.name = name;
-            o.privateIp = privateIp;
-            return o;
+            final var _resultValue = new GetEdgeKubernetesClustersClusterWorkerNode();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.privateIp = privateIp;
+            return _resultValue;
         }
     }
 }

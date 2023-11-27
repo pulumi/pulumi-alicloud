@@ -96,11 +96,11 @@ public final class GetGroupMetricRulesRuleEscalation {
             return warns(List.of(warns));
         }
         public GetGroupMetricRulesRuleEscalation build() {
-            final var o = new GetGroupMetricRulesRuleEscalation();
-            o.criticals = criticals;
-            o.infos = infos;
-            o.warns = warns;
-            return o;
+            final var _resultValue = new GetGroupMetricRulesRuleEscalation();
+            _resultValue.criticals = criticals;
+            _resultValue.infos = infos;
+            _resultValue.warns = warns;
+            return _resultValue;
         }
     }
 }

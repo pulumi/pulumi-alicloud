@@ -78,11 +78,11 @@ public final class GetTransitRouterServiceResult {
             return this;
         }
         public GetTransitRouterServiceResult build() {
-            final var o = new GetTransitRouterServiceResult();
-            o.enable = enable;
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetTransitRouterServiceResult();
+            _resultValue.enable = enable;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

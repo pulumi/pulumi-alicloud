@@ -85,7 +85,7 @@ public class StateConfiguration extends com.pulumi.resources.CustomResource {
      * Configuration mode. Valid values: `ApplyAndAutoCorrect`, `ApplyAndMonitor`, `ApplyOnly`.
      * 
      */
-    @Export(name="configureMode", type=String.class, parameters={})
+    @Export(name="configureMode", refs={String.class}, tree="[0]")
     private Output<String> configureMode;
 
     /**
@@ -99,7 +99,7 @@ public class StateConfiguration extends com.pulumi.resources.CustomResource {
      * The description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -113,7 +113,7 @@ public class StateConfiguration extends com.pulumi.resources.CustomResource {
      * The parameter of the Template. This field is in the format of JSON strings. For detailed definition instructions, please refer to [Metadata types that are supported by a configuration list](https://www.alibabacloud.com/help/en/doc-detail/208276.html).
      * 
      */
-    @Export(name="parameters", type=String.class, parameters={})
+    @Export(name="parameters", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parameters;
 
     /**
@@ -127,7 +127,7 @@ public class StateConfiguration extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -141,7 +141,7 @@ public class StateConfiguration extends com.pulumi.resources.CustomResource {
      * Timing expression.
      * 
      */
-    @Export(name="scheduleExpression", type=String.class, parameters={})
+    @Export(name="scheduleExpression", refs={String.class}, tree="[0]")
     private Output<String> scheduleExpression;
 
     /**
@@ -155,7 +155,7 @@ public class StateConfiguration extends com.pulumi.resources.CustomResource {
      * Timing type. Valid values: `rate`.
      * 
      */
-    @Export(name="scheduleType", type=String.class, parameters={})
+    @Export(name="scheduleType", refs={String.class}, tree="[0]")
     private Output<String> scheduleType;
 
     /**
@@ -169,7 +169,7 @@ public class StateConfiguration extends com.pulumi.resources.CustomResource {
      * The tag of the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -183,7 +183,7 @@ public class StateConfiguration extends com.pulumi.resources.CustomResource {
      * The Target resources.  This field is in the format of JSON strings. For detailed definition instructions, please refer to [Parameter](https://www.alibabacloud.com/help/en/doc-detail/120674.html).
      * 
      */
-    @Export(name="targets", type=String.class, parameters={})
+    @Export(name="targets", refs={String.class}, tree="[0]")
     private Output<String> targets;
 
     /**
@@ -197,7 +197,7 @@ public class StateConfiguration extends com.pulumi.resources.CustomResource {
      * The name of the template.
      * 
      */
-    @Export(name="templateName", type=String.class, parameters={})
+    @Export(name="templateName", refs={String.class}, tree="[0]")
     private Output<String> templateName;
 
     /**
@@ -211,7 +211,7 @@ public class StateConfiguration extends com.pulumi.resources.CustomResource {
      * The version number. If you do not specify this parameter, the system uses the latest version.
      * 
      */
-    @Export(name="templateVersion", type=String.class, parameters={})
+    @Export(name="templateVersion", refs={String.class}, tree="[0]")
     private Output<String> templateVersion;
 
     /**

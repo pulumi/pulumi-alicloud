@@ -65,10 +65,10 @@ public final class GetListenersListenerCertificate {
             return this;
         }
         public GetListenersListenerCertificate build() {
-            final var o = new GetListenersListenerCertificate();
-            o.id = id;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetListenersListenerCertificate();
+            _resultValue.id = id;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

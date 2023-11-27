@@ -51,9 +51,9 @@ public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
             return serverGroupTuples(List.of(serverGroupTuples));
         }
         public RuleRuleActionTrafficMirrorConfigMirrorGroupConfig build() {
-            final var o = new RuleRuleActionTrafficMirrorConfigMirrorGroupConfig();
-            o.serverGroupTuples = serverGroupTuples;
-            return o;
+            final var _resultValue = new RuleRuleActionTrafficMirrorConfigMirrorGroupConfig();
+            _resultValue.serverGroupTuples = serverGroupTuples;
+            return _resultValue;
         }
     }
 }

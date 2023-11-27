@@ -297,22 +297,22 @@ public final class GetMetricRuleBlackListsList {
             return scopeValues(List.of(scopeValues));
         }
         public GetMetricRuleBlackListsList build() {
-            final var o = new GetMetricRuleBlackListsList();
-            o.category = category;
-            o.createTime = createTime;
-            o.effectiveTime = effectiveTime;
-            o.enableEndTime = enableEndTime;
-            o.enableStartTime = enableStartTime;
-            o.id = id;
-            o.instances = instances;
-            o.isEnable = isEnable;
-            o.metricRuleBlackListId = metricRuleBlackListId;
-            o.metricRuleBlackListName = metricRuleBlackListName;
-            o.metrics = metrics;
-            o.namespace = namespace;
-            o.scopeType = scopeType;
-            o.scopeValues = scopeValues;
-            return o;
+            final var _resultValue = new GetMetricRuleBlackListsList();
+            _resultValue.category = category;
+            _resultValue.createTime = createTime;
+            _resultValue.effectiveTime = effectiveTime;
+            _resultValue.enableEndTime = enableEndTime;
+            _resultValue.enableStartTime = enableStartTime;
+            _resultValue.id = id;
+            _resultValue.instances = instances;
+            _resultValue.isEnable = isEnable;
+            _resultValue.metricRuleBlackListId = metricRuleBlackListId;
+            _resultValue.metricRuleBlackListName = metricRuleBlackListName;
+            _resultValue.metrics = metrics;
+            _resultValue.namespace = namespace;
+            _resultValue.scopeType = scopeType;
+            _resultValue.scopeValues = scopeValues;
+            return _resultValue;
         }
     }
 }

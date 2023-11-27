@@ -104,7 +104,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * The name of the rule.
      * 
      */
-    @Export(name="aggregateConfigRuleName", type=String.class, parameters={})
+    @Export(name="aggregateConfigRuleName", refs={String.class}, tree="[0]")
     private Output<String> aggregateConfigRuleName;
 
     /**
@@ -118,7 +118,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * The Aggregator Id.
      * 
      */
-    @Export(name="aggregatorId", type=String.class, parameters={})
+    @Export(name="aggregatorId", refs={String.class}, tree="[0]")
     private Output<String> aggregatorId;
 
     /**
@@ -132,7 +132,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * (Available since v1.141.0) The rule ID of Aggregate Config Rule.
      * 
      */
-    @Export(name="configRuleId", type=String.class, parameters={})
+    @Export(name="configRuleId", refs={String.class}, tree="[0]")
     private Output<String> configRuleId;
 
     /**
@@ -146,7 +146,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * The trigger type of the rule. Valid values: `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
      * 
      */
-    @Export(name="configRuleTriggerTypes", type=String.class, parameters={})
+    @Export(name="configRuleTriggerTypes", refs={String.class}, tree="[0]")
     private Output<String> configRuleTriggerTypes;
 
     /**
@@ -160,7 +160,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * The description of the rule.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -174,7 +174,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
      * 
      */
-    @Export(name="excludeResourceIdsScope", type=String.class, parameters={})
+    @Export(name="excludeResourceIdsScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> excludeResourceIdsScope;
 
     /**
@@ -188,7 +188,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * The settings map of the input parameters for the rule.
      * 
      */
-    @Export(name="inputParameters", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="inputParameters", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> inputParameters;
 
     /**
@@ -202,7 +202,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * The frequency of the compliance evaluations. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`. System default value is `TwentyFour_Hours` and valid when the `config_rule_trigger_types` is `ScheduledNotification`.
      * 
      */
-    @Export(name="maximumExecutionFrequency", type=String.class, parameters={})
+    @Export(name="maximumExecutionFrequency", refs={String.class}, tree="[0]")
     private Output<String> maximumExecutionFrequency;
 
     /**
@@ -216,7 +216,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
      * 
      */
-    @Export(name="regionIdsScope", type=String.class, parameters={})
+    @Export(name="regionIdsScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> regionIdsScope;
 
     /**
@@ -230,7 +230,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
      * 
      */
-    @Export(name="resourceGroupIdsScope", type=String.class, parameters={})
+    @Export(name="resourceGroupIdsScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupIdsScope;
 
     /**
@@ -244,7 +244,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * Resource types to be evaluated. [Alibaba Cloud services that support Cloud Config.](https://www.alibabacloud.com/help/en/doc-detail/127411.htm)
      * 
      */
-    @Export(name="resourceTypesScopes", type=List.class, parameters={String.class})
+    @Export(name="resourceTypesScopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> resourceTypesScopes;
 
     /**
@@ -258,7 +258,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info.
      * 
      */
-    @Export(name="riskLevel", type=Integer.class, parameters={})
+    @Export(name="riskLevel", refs={Integer.class}, tree="[0]")
     private Output<Integer> riskLevel;
 
     /**
@@ -272,7 +272,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * The identifier of the rule. For a managed rule, the value is the identifier of the managed rule. For a custom rule, the value is the ARN of the custom rule. Using managed rules, refer to [List of Managed rules.](https://www.alibabacloud.com/help/en/doc-detail/127404.htm)
      * 
      */
-    @Export(name="sourceIdentifier", type=String.class, parameters={})
+    @Export(name="sourceIdentifier", refs={String.class}, tree="[0]")
     private Output<String> sourceIdentifier;
 
     /**
@@ -286,7 +286,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values: `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule.
      * 
      */
-    @Export(name="sourceOwner", type=String.class, parameters={})
+    @Export(name="sourceOwner", refs={String.class}, tree="[0]")
     private Output<String> sourceOwner;
 
     /**
@@ -300,7 +300,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * The rule status. The valid values: `ACTIVE`, `INACTIVE`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -314,7 +314,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * The rule monitors the tag key, only applies to rules created based on managed rules.
      * 
      */
-    @Export(name="tagKeyScope", type=String.class, parameters={})
+    @Export(name="tagKeyScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tagKeyScope;
 
     /**
@@ -328,7 +328,7 @@ public class AggregateConfigRule extends com.pulumi.resources.CustomResource {
      * The rule monitors the tag value, use with the `tag_key_scope` options. only applies to rules created based on managed rules.
      * 
      */
-    @Export(name="tagValueScope", type=String.class, parameters={})
+    @Export(name="tagValueScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tagValueScope;
 
     /**

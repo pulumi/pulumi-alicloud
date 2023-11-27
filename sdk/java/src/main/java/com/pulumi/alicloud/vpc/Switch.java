@@ -203,7 +203,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.119.0. New field 'zone_id' instead. */
-    @Export(name="availabilityZone", type=String.class, parameters={})
+    @Export(name="availabilityZone", refs={String.class}, tree="[0]")
     private Output<String> availabilityZone;
 
     /**
@@ -217,7 +217,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * The IPv4 CIDR block of the VSwitch.
      * 
      */
-    @Export(name="cidrBlock", type=String.class, parameters={})
+    @Export(name="cidrBlock", refs={String.class}, tree="[0]")
     private Output<String> cidrBlock;
 
     /**
@@ -231,7 +231,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * The creation time of the VSwitch.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -245,7 +245,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * The description of VSwitch.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -261,7 +261,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * - **false** (default): IPv6 is not enabled.
      * 
      */
-    @Export(name="enableIpv6", type=Boolean.class, parameters={})
+    @Export(name="enableIpv6", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableIpv6;
 
     /**
@@ -277,7 +277,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * The IPv6 CIDR block of the VSwitch.
      * 
      */
-    @Export(name="ipv6CidrBlock", type=String.class, parameters={})
+    @Export(name="ipv6CidrBlock", refs={String.class}, tree="[0]")
     private Output<String> ipv6CidrBlock;
 
     /**
@@ -291,7 +291,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * The IPv6 CIDR block of the VSwitch.
      * 
      */
-    @Export(name="ipv6CidrBlockMask", type=Integer.class, parameters={})
+    @Export(name="ipv6CidrBlockMask", refs={Integer.class}, tree="[0]")
     private Output<Integer> ipv6CidrBlockMask;
 
     /**
@@ -309,7 +309,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.119.0. New field 'vswitch_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -323,7 +323,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -337,7 +337,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * The tags of VSwitch.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -353,7 +353,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -369,7 +369,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * The name of the VSwitch.
      * 
      */
-    @Export(name="vswitchName", type=String.class, parameters={})
+    @Export(name="vswitchName", refs={String.class}, tree="[0]")
     private Output<String> vswitchName;
 
     /**
@@ -383,7 +383,7 @@ public class Switch extends com.pulumi.resources.CustomResource {
      * The AZ for the VSwitch. **Note:** Required for a VPC VSwitch.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

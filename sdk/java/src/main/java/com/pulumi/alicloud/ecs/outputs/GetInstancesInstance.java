@@ -557,32 +557,32 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.availabilityZone = availabilityZone;
-            o.creationTime = creationTime;
-            o.description = description;
-            o.diskDeviceMappings = diskDeviceMappings;
-            o.eip = eip;
-            o.id = id;
-            o.imageId = imageId;
-            o.instanceChargeType = instanceChargeType;
-            o.instanceType = instanceType;
-            o.internetChargeType = internetChargeType;
-            o.internetMaxBandwidthOut = internetMaxBandwidthOut;
-            o.keyName = keyName;
-            o.name = name;
-            o.privateIp = privateIp;
-            o.publicIp = publicIp;
-            o.ramRoleName = ramRoleName;
-            o.regionId = regionId;
-            o.resourceGroupId = resourceGroupId;
-            o.securityGroups = securityGroups;
-            o.spotStrategy = spotStrategy;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.availabilityZone = availabilityZone;
+            _resultValue.creationTime = creationTime;
+            _resultValue.description = description;
+            _resultValue.diskDeviceMappings = diskDeviceMappings;
+            _resultValue.eip = eip;
+            _resultValue.id = id;
+            _resultValue.imageId = imageId;
+            _resultValue.instanceChargeType = instanceChargeType;
+            _resultValue.instanceType = instanceType;
+            _resultValue.internetChargeType = internetChargeType;
+            _resultValue.internetMaxBandwidthOut = internetMaxBandwidthOut;
+            _resultValue.keyName = keyName;
+            _resultValue.name = name;
+            _resultValue.privateIp = privateIp;
+            _resultValue.publicIp = publicIp;
+            _resultValue.ramRoleName = ramRoleName;
+            _resultValue.regionId = regionId;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.securityGroups = securityGroups;
+            _resultValue.spotStrategy = spotStrategy;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

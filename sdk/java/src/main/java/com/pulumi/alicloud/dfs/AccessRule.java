@@ -83,7 +83,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * The resource ID of Access Group.
      * 
      */
-    @Export(name="accessGroupId", type=String.class, parameters={})
+    @Export(name="accessGroupId", refs={String.class}, tree="[0]")
     private Output<String> accessGroupId;
 
     /**
@@ -97,7 +97,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * The ID of the Access Rule.
      * 
      */
-    @Export(name="accessRuleId", type=String.class, parameters={})
+    @Export(name="accessRuleId", refs={String.class}, tree="[0]")
     private Output<String> accessRuleId;
 
     /**
@@ -111,7 +111,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * The Description of the Access Rule.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -125,7 +125,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * The NetworkSegment of the Access Rule.
      * 
      */
-    @Export(name="networkSegment", type=String.class, parameters={})
+    @Export(name="networkSegment", refs={String.class}, tree="[0]")
     private Output<String> networkSegment;
 
     /**
@@ -139,7 +139,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * The Priority of the Access Rule. Valid values: `1` to `100`. **NOTE:** When multiple rules are matched by the same authorized object, the high-priority rule takes effect. `1` is the highest priority.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
@@ -153,7 +153,7 @@ public class AccessRule extends com.pulumi.resources.CustomResource {
      * The RWAccessType of the Access Rule. Valid values: `RDONLY`, `RDWR`.
      * 
      */
-    @Export(name="rwAccessType", type=String.class, parameters={})
+    @Export(name="rwAccessType", refs={String.class}, tree="[0]")
     private Output<String> rwAccessType;
 
     /**

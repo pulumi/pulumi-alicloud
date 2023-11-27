@@ -389,7 +389,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Alert description.
      * 
      */
-    @Export(name="alertDescription", type=String.class, parameters={})
+    @Export(name="alertDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alertDescription;
 
     /**
@@ -403,7 +403,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Alert displayname.
      * 
      */
-    @Export(name="alertDisplayname", type=String.class, parameters={})
+    @Export(name="alertDisplayname", refs={String.class}, tree="[0]")
     private Output<String> alertDisplayname;
 
     /**
@@ -417,7 +417,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Name of logstore for configuring alarm service.
      * 
      */
-    @Export(name="alertName", type=String.class, parameters={})
+    @Export(name="alertName", refs={String.class}, tree="[0]")
     private Output<String> alertName;
 
     /**
@@ -431,7 +431,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Alert template annotations.
      * 
      */
-    @Export(name="annotations", type=List.class, parameters={AlertAnnotation.class})
+    @Export(name="annotations", refs={List.class,AlertAnnotation.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertAnnotation>> annotations;
 
     /**
@@ -445,7 +445,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * whether to add automatic annotation, default is false.
      * 
      */
-    @Export(name="autoAnnotation", type=Boolean.class, parameters={})
+    @Export(name="autoAnnotation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoAnnotation;
 
     /**
@@ -463,7 +463,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Deprecated from 1.161.0+, use eval_condition in severity_configurations */
-    @Export(name="condition", type=String.class, parameters={})
+    @Export(name="condition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> condition;
 
     /**
@@ -479,7 +479,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Deprecated from 1.161.0+, use dashboardId in query_list */
-    @Export(name="dashboard", type=String.class, parameters={})
+    @Export(name="dashboard", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dashboard;
 
     public Output<Optional<String>> dashboard() {
@@ -489,7 +489,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Group configuration for new alert.
      * 
      */
-    @Export(name="groupConfiguration", type=AlertGroupConfiguration.class, parameters={})
+    @Export(name="groupConfiguration", refs={AlertGroupConfiguration.class}, tree="[0]")
     private Output</* @Nullable */ AlertGroupConfiguration> groupConfiguration;
 
     /**
@@ -503,7 +503,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Join configuration for different queries.
      * 
      */
-    @Export(name="joinConfigurations", type=List.class, parameters={AlertJoinConfiguration.class})
+    @Export(name="joinConfigurations", refs={List.class,AlertJoinConfiguration.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertJoinConfiguration>> joinConfigurations;
 
     /**
@@ -517,7 +517,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Labels for new alert.
      * 
      */
-    @Export(name="labels", type=List.class, parameters={AlertLabel.class})
+    @Export(name="labels", refs={List.class,AlertLabel.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertLabel>> labels;
 
     /**
@@ -531,7 +531,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Timestamp, notifications before closing again.
      * 
      */
-    @Export(name="muteUntil", type=Integer.class, parameters={})
+    @Export(name="muteUntil", refs={Integer.class}, tree="[0]")
     private Output<Integer> muteUntil;
 
     /**
@@ -545,7 +545,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Switch for whether new alert fires when no data happens, default is false.
      * 
      */
-    @Export(name="noDataFire", type=Boolean.class, parameters={})
+    @Export(name="noDataFire", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> noDataFire;
 
     /**
@@ -559,7 +559,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * when no data happens, the severity of new alert.
      * 
      */
-    @Export(name="noDataSeverity", type=Integer.class, parameters={})
+    @Export(name="noDataSeverity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> noDataSeverity;
 
     /**
@@ -577,7 +577,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Deprecated from 1.161.0+, use policy_configuration for notification */
-    @Export(name="notificationLists", type=List.class, parameters={AlertNotificationList.class})
+    @Export(name="notificationLists", refs={List.class,AlertNotificationList.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertNotificationList>> notificationLists;
 
     /**
@@ -595,7 +595,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Deprecated from 1.161.0+, use threshold */
-    @Export(name="notifyThreshold", type=Integer.class, parameters={})
+    @Export(name="notifyThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> notifyThreshold;
 
     /**
@@ -609,7 +609,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Policy configuration for new alert.
      * 
      */
-    @Export(name="policyConfiguration", type=AlertPolicyConfiguration.class, parameters={})
+    @Export(name="policyConfiguration", refs={AlertPolicyConfiguration.class}, tree="[0]")
     private Output</* @Nullable */ AlertPolicyConfiguration> policyConfiguration;
 
     /**
@@ -623,7 +623,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * The project name.
      * 
      */
-    @Export(name="projectName", type=String.class, parameters={})
+    @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
@@ -637,7 +637,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Multiple conditions for configured alarm query.
      * 
      */
-    @Export(name="queryLists", type=List.class, parameters={AlertQueryList.class})
+    @Export(name="queryLists", refs={List.class,AlertQueryList.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertQueryList>> queryLists;
 
     /**
@@ -651,7 +651,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * schedule for alert.
      * 
      */
-    @Export(name="schedule", type=AlertSchedule.class, parameters={})
+    @Export(name="schedule", refs={AlertSchedule.class}, tree="[0]")
     private Output</* @Nullable */ AlertSchedule> schedule;
 
     /**
@@ -669,7 +669,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'schedule_interval' has been deprecated from provider version 1.176.0. New field 'schedule' instead. */
-    @Export(name="scheduleInterval", type=String.class, parameters={})
+    @Export(name="scheduleInterval", refs={String.class}, tree="[0]")
     private Output<String> scheduleInterval;
 
     /**
@@ -687,7 +687,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'schedule_type' has been deprecated from provider version 1.176.0. New field 'schedule' instead. */
-    @Export(name="scheduleType", type=String.class, parameters={})
+    @Export(name="scheduleType", refs={String.class}, tree="[0]")
     private Output<String> scheduleType;
 
     /**
@@ -701,7 +701,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * when new alert is resolved, whether to notify, default is false.
      * 
      */
-    @Export(name="sendResolved", type=Boolean.class, parameters={})
+    @Export(name="sendResolved", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> sendResolved;
 
     /**
@@ -715,7 +715,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Severity configuration for new alert.
      * 
      */
-    @Export(name="severityConfigurations", type=List.class, parameters={AlertSeverityConfiguration.class})
+    @Export(name="severityConfigurations", refs={List.class,AlertSeverityConfiguration.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertSeverityConfiguration>> severityConfigurations;
 
     /**
@@ -729,7 +729,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Template configuration for alert, when `type` is `tpl`.
      * 
      */
-    @Export(name="templateConfiguration", type=AlertTemplateConfiguration.class, parameters={})
+    @Export(name="templateConfiguration", refs={AlertTemplateConfiguration.class}, tree="[0]")
     private Output</* @Nullable */ AlertTemplateConfiguration> templateConfiguration;
 
     /**
@@ -743,7 +743,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * Evaluation threshold, alert will not fire until the number of triggers is reached. The default is 1.
      * 
      */
-    @Export(name="threshold", type=Integer.class, parameters={})
+    @Export(name="threshold", refs={Integer.class}, tree="[0]")
     private Output<Integer> threshold;
 
     /**
@@ -761,7 +761,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Deprecated from 1.161.0+, use repeat_interval in policy_configuration */
-    @Export(name="throttling", type=String.class, parameters={})
+    @Export(name="throttling", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> throttling;
 
     /**
@@ -775,7 +775,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * including FixedRate,Hourly,Daily,Weekly,Cron.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -789,7 +789,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
      * The version of alert, new alert is 2.0.
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> version;
 
     /**

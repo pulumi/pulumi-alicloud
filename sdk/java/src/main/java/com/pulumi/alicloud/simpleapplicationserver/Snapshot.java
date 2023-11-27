@@ -93,7 +93,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The ID of the disk.
      * 
      */
-    @Export(name="diskId", type=String.class, parameters={})
+    @Export(name="diskId", refs={String.class}, tree="[0]")
     private Output<String> diskId;
 
     /**
@@ -107,7 +107,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The name of the snapshot. The name must be `2` to `50` characters in length. It must start with a letter and cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), periods (.),and hyphens (-).
      * 
      */
-    @Export(name="snapshotName", type=String.class, parameters={})
+    @Export(name="snapshotName", refs={String.class}, tree="[0]")
     private Output<String> snapshotName;
 
     /**
@@ -121,7 +121,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The status of the snapshot. Valid values: `Progressing`, `Accomplished` and `Failed`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

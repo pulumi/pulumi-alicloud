@@ -133,14 +133,14 @@ public final class GetTransitRouterRouteTablesTable {
             return this;
         }
         public GetTransitRouterRouteTablesTable build() {
-            final var o = new GetTransitRouterRouteTablesTable();
-            o.id = id;
-            o.status = status;
-            o.transitRouterRouteTableDescription = transitRouterRouteTableDescription;
-            o.transitRouterRouteTableId = transitRouterRouteTableId;
-            o.transitRouterRouteTableName = transitRouterRouteTableName;
-            o.transitRouterRouteTableType = transitRouterRouteTableType;
-            return o;
+            final var _resultValue = new GetTransitRouterRouteTablesTable();
+            _resultValue.id = id;
+            _resultValue.status = status;
+            _resultValue.transitRouterRouteTableDescription = transitRouterRouteTableDescription;
+            _resultValue.transitRouterRouteTableId = transitRouterRouteTableId;
+            _resultValue.transitRouterRouteTableName = transitRouterRouteTableName;
+            _resultValue.transitRouterRouteTableType = transitRouterRouteTableType;
+            return _resultValue;
         }
     }
 }

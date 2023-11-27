@@ -101,7 +101,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * Capacity reservation service name.
      * 
      */
-    @Export(name="capacityReservationName", type=String.class, parameters={})
+    @Export(name="capacityReservationName", refs={String.class}, tree="[0]")
     private Output<String> capacityReservationName;
 
     /**
@@ -115,7 +115,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * description of the capacity reservation instance.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -129,7 +129,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * Specifies whether to pre-check the API request. Valid values: `true` and `false`.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -143,7 +143,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * end time of the capacity reservation. the capacity reservation will be  released at the end time automatically if set. otherwise it will last until manually released
      * 
      */
-    @Export(name="endTime", type=String.class, parameters={})
+    @Export(name="endTime", refs={String.class}, tree="[0]")
     private Output<String> endTime;
 
     /**
@@ -157,7 +157,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * Release mode of capacity reservation service. Value range:Limited: release at specified time. The EndTime parameter must be specified at the same time.Unlimited: manual release. No time limit.
      * 
      */
-    @Export(name="endTimeType", type=String.class, parameters={})
+    @Export(name="endTimeType", refs={String.class}, tree="[0]")
     private Output<String> endTimeType;
 
     /**
@@ -171,7 +171,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * The total number of instances that need to be reserved within the capacity reservation.
      * 
      */
-    @Export(name="instanceAmount", type=Integer.class, parameters={})
+    @Export(name="instanceAmount", refs={Integer.class}, tree="[0]")
     private Output<Integer> instanceAmount;
 
     /**
@@ -185,7 +185,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * Instance type. Currently, you can only set the capacity reservation service for one instance type.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -199,7 +199,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * The type of private resource pool generated after the capacity reservation service takes effect. Value range:Open: Open mode.Target: dedicated mode.Default value: Open
      * 
      */
-    @Export(name="matchCriteria", type=String.class, parameters={})
+    @Export(name="matchCriteria", refs={String.class}, tree="[0]")
     private Output<String> matchCriteria;
 
     /**
@@ -213,7 +213,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * The payment type of the resource
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -227,7 +227,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * platform of the capacity reservation, value range `windows`, `linux`.
      * 
      */
-    @Export(name="platform", type=String.class, parameters={})
+    @Export(name="platform", refs={String.class}, tree="[0]")
     private Output<String> platform;
 
     /**
@@ -241,7 +241,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * The resource group id.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -255,7 +255,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * time of the capacity reservation which become active.
      * 
      */
-    @Export(name="startTime", type=String.class, parameters={})
+    @Export(name="startTime", refs={String.class}, tree="[0]")
     private Output<String> startTime;
 
     /**
@@ -269,7 +269,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * The capacity is scheduled to take effect. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
      * 
      */
-    @Export(name="startTimeType", type=String.class, parameters={})
+    @Export(name="startTimeType", refs={String.class}, tree="[0]")
     private Output<String> startTimeType;
 
     /**
@@ -283,7 +283,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * The status of the capacity reservation.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -297,7 +297,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * The tag of the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -311,7 +311,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * This parameter is under test and is not yet open for use.
      * 
      */
-    @Export(name="timeSlot", type=String.class, parameters={})
+    @Export(name="timeSlot", refs={String.class}, tree="[0]")
     private Output<String> timeSlot;
 
     /**
@@ -325,7 +325,7 @@ public class CapacityReservation extends com.pulumi.resources.CustomResource {
      * The ID of the zone in the region to which the capacity reservation service belongs. Currently, it is only supported to create a capacity reservation service in one zone.
      * 
      */
-    @Export(name="zoneIds", type=List.class, parameters={String.class})
+    @Export(name="zoneIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> zoneIds;
 
     /**

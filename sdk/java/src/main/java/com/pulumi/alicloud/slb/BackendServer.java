@@ -46,7 +46,7 @@ public class BackendServer extends com.pulumi.resources.CustomResource {
      * A list of instances to added backend server in the SLB. It contains three sub-fields as `Block server` follows.
      * 
      */
-    @Export(name="backendServers", type=List.class, parameters={BackendServerBackendServer.class})
+    @Export(name="backendServers", refs={List.class,BackendServerBackendServer.class}, tree="[0,1]")
     private Output</* @Nullable */ List<BackendServerBackendServer>> backendServers;
 
     /**
@@ -60,7 +60,7 @@ public class BackendServer extends com.pulumi.resources.CustomResource {
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      * 
      */
-    @Export(name="deleteProtectionValidation", type=Boolean.class, parameters={})
+    @Export(name="deleteProtectionValidation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteProtectionValidation;
 
     /**
@@ -74,7 +74,7 @@ public class BackendServer extends com.pulumi.resources.CustomResource {
      * ID of the load balancer.
      * 
      */
-    @Export(name="loadBalancerId", type=String.class, parameters={})
+    @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**

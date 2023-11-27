@@ -67,10 +67,10 @@ public final class ContainerGroupVolumeConfigFileVolumeConfigFileToPath {
             return this;
         }
         public ContainerGroupVolumeConfigFileVolumeConfigFileToPath build() {
-            final var o = new ContainerGroupVolumeConfigFileVolumeConfigFileToPath();
-            o.content = content;
-            o.path = path;
-            return o;
+            final var _resultValue = new ContainerGroupVolumeConfigFileVolumeConfigFileToPath();
+            _resultValue.content = content;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

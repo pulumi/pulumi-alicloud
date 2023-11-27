@@ -117,7 +117,7 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
      * The external ip address, the ip must along bandwidth package public ip which `alicloud.vpc.NatGateway` argument `bandwidth_packages`.
      * 
      */
-    @Export(name="externalIp", type=String.class, parameters={})
+    @Export(name="externalIp", refs={String.class}, tree="[0]")
     private Output<String> externalIp;
 
     /**
@@ -131,7 +131,7 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
      * The external port, valid value is 1~65535|any.
      * 
      */
-    @Export(name="externalPort", type=String.class, parameters={})
+    @Export(name="externalPort", refs={String.class}, tree="[0]")
     private Output<String> externalPort;
 
     /**
@@ -145,7 +145,7 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
      * The id of the forward entry on the server.
      * 
      */
-    @Export(name="forwardEntryId", type=String.class, parameters={})
+    @Export(name="forwardEntryId", refs={String.class}, tree="[0]")
     private Output<String> forwardEntryId;
 
     /**
@@ -159,7 +159,7 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
      * The name of forward entry.
      * 
      */
-    @Export(name="forwardEntryName", type=String.class, parameters={})
+    @Export(name="forwardEntryName", refs={String.class}, tree="[0]")
     private Output<String> forwardEntryName;
 
     /**
@@ -173,7 +173,7 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
      * The value can get from `alicloud.vpc.NatGateway` Attributes &#34;forward_table_ids&#34;.
      * 
      */
-    @Export(name="forwardTableId", type=String.class, parameters={})
+    @Export(name="forwardTableId", refs={String.class}, tree="[0]")
     private Output<String> forwardTableId;
 
     /**
@@ -187,7 +187,7 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
      * The internal ip, must a private ip.
      * 
      */
-    @Export(name="internalIp", type=String.class, parameters={})
+    @Export(name="internalIp", refs={String.class}, tree="[0]")
     private Output<String> internalIp;
 
     /**
@@ -201,7 +201,7 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
      * The internal port, valid value is 1~65535|any.
      * 
      */
-    @Export(name="internalPort", type=String.class, parameters={})
+    @Export(name="internalPort", refs={String.class}, tree="[0]")
     private Output<String> internalPort;
 
     /**
@@ -215,7 +215,7 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
      * The ip protocol, valid value is tcp|udp|any.
      * 
      */
-    @Export(name="ipProtocol", type=String.class, parameters={})
+    @Export(name="ipProtocol", refs={String.class}, tree="[0]")
     private Output<String> ipProtocol;
 
     /**
@@ -233,7 +233,7 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.119.1. New field 'forward_entry_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -249,7 +249,7 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** A SNAT entry and a DNAT entry may use the same public IP address. If you want to specify a port number greater than 1024 in this case, set `port_break` to true.
      * 
      */
-    @Export(name="portBreak", type=Boolean.class, parameters={})
+    @Export(name="portBreak", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> portBreak;
 
     /**
@@ -265,7 +265,7 @@ public class ForwardEntry extends com.pulumi.resources.CustomResource {
      * (Available in 1.119.1+) The status of forward entry.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

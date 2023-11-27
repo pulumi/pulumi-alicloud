@@ -188,17 +188,17 @@ public final class GetAscriptsResult {
             return this;
         }
         public GetAscriptsResult build() {
-            final var o = new GetAscriptsResult();
-            o.ascriptName = ascriptName;
-            o.ascripts = ascripts;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.listenerId = listenerId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetAscriptsResult();
+            _resultValue.ascriptName = ascriptName;
+            _resultValue.ascripts = ascripts;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.listenerId = listenerId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

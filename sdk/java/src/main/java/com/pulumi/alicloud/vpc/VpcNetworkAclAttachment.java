@@ -35,7 +35,7 @@ public class VpcNetworkAclAttachment extends com.pulumi.resources.CustomResource
      * The ID of the network ACL.
      * 
      */
-    @Export(name="networkAclId", type=String.class, parameters={})
+    @Export(name="networkAclId", refs={String.class}, tree="[0]")
     private Output<String> networkAclId;
 
     /**
@@ -49,7 +49,7 @@ public class VpcNetworkAclAttachment extends com.pulumi.resources.CustomResource
      * The ID of the associated resource.
      * 
      */
-    @Export(name="resourceId", type=String.class, parameters={})
+    @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output<String> resourceId;
 
     /**
@@ -63,7 +63,7 @@ public class VpcNetworkAclAttachment extends com.pulumi.resources.CustomResource
      * The type of the associated resource. Valid values: `VSwitch`.
      * 
      */
-    @Export(name="resourceType", type=String.class, parameters={})
+    @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output<String> resourceType;
 
     /**
@@ -77,7 +77,7 @@ public class VpcNetworkAclAttachment extends com.pulumi.resources.CustomResource
      * The status of the Network Acl Attachment.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

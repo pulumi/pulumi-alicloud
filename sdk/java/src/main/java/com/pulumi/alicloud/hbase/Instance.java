@@ -113,7 +113,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The account of the cluster web ui. Size [0-128].
      * 
      */
-    @Export(name="account", type=String.class, parameters={})
+    @Export(name="account", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> account;
 
     /**
@@ -127,7 +127,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Valid values are `true`, `false`, system default to `false`, valid when pay_type = PrePaid.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoRenew;
 
     /**
@@ -141,7 +141,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 0 or [800, 100000000], step:10-GB increments. 0 means is_cold_storage = false. [800, 100000000] means is_cold_storage = true.
      * 
      */
-    @Export(name="coldStorageSize", type=Integer.class, parameters={})
+    @Export(name="coldStorageSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> coldStorageSize;
 
     /**
@@ -158,7 +158,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - Single [20-500GB], step:1-GB increments.
      * 
      */
-    @Export(name="coreDiskSize", type=Integer.class, parameters={})
+    @Export(name="coreDiskSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> coreDiskSize;
 
     /**
@@ -175,7 +175,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Valid values are `cloud_ssd`, `cloud_essd_pl1`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`，``, local_disk size is fixed. When engine=bds, no need to set disk type(or empty string).
      * 
      */
-    @Export(name="coreDiskType", type=String.class, parameters={})
+    @Export(name="coreDiskType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> coreDiskType;
 
     /**
@@ -189,7 +189,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Default=2, [1-200]. If core_instance_quantity &gt; 1, this is cluster&#39;s instance. If core_instance_quantity = 1, this is a single instance.
      * 
      */
-    @Export(name="coreInstanceQuantity", type=Integer.class, parameters={})
+    @Export(name="coreInstanceQuantity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> coreInstanceQuantity;
 
     /**
@@ -203,7 +203,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      * 
      */
-    @Export(name="coreInstanceType", type=String.class, parameters={})
+    @Export(name="coreInstanceType", refs={String.class}, tree="[0]")
     private Output<String> coreInstanceType;
 
     /**
@@ -217,7 +217,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The switch of delete protection. True: delete protect, False: no delete protect. You must set false when you want to delete cluster.
      * 
      */
-    @Export(name="deletionProtection", type=Boolean.class, parameters={})
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
@@ -231,7 +231,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, valid when pay_type = PrePaid,  unit: month. 12, 24, 36 mean 1, 2, 3 years.
      * 
      */
-    @Export(name="duration", type=Integer.class, parameters={})
+    @Export(name="duration", refs={Integer.class}, tree="[0]")
     private Output<Integer> duration;
 
     /**
@@ -245,7 +245,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Valid values are &#34;hbase/hbaseue/bds&#34;. The following types are supported after v1.73.0: `hbaseue` and `bds`. Single hbase instance need to set engine=hbase, core_instance_quantity=1.
      * 
      */
-    @Export(name="engine", type=String.class, parameters={})
+    @Export(name="engine", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> engine;
 
     /**
@@ -259,7 +259,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * HBase major version. hbase:1.1/2.0, hbaseue:2.0, bds:1.0, unsupport other engine temporarily. Value options can refer to the latest docs [CreateInstance](https://www.alibabacloud.com/help/en/data-lake-analytics/latest/createinstance).
      * 
      */
-    @Export(name="engineVersion", type=String.class, parameters={})
+    @Export(name="engineVersion", refs={String.class}, tree="[0]")
     private Output<String> engineVersion;
 
     /**
@@ -273,7 +273,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The switch of delete immediate. True: delete immediate, False: delete delay. You will not found the cluster no matter set true or false.
      * 
      */
-    @Export(name="immediateDeleteFlag", type=Boolean.class, parameters={})
+    @Export(name="immediateDeleteFlag", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> immediateDeleteFlag;
 
     /**
@@ -287,7 +287,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The white ip list of the cluster.
      * 
      */
-    @Export(name="ipWhite", type=String.class, parameters={})
+    @Export(name="ipWhite", refs={String.class}, tree="[0]")
     private Output<String> ipWhite;
 
     /**
@@ -301,7 +301,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The end time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 04:00Z.
      * 
      */
-    @Export(name="maintainEndTime", type=String.class, parameters={})
+    @Export(name="maintainEndTime", refs={String.class}, tree="[0]")
     private Output<String> maintainEndTime;
 
     /**
@@ -315,7 +315,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The start time of the operation and maintenance time period of the instance, in the format of HH:mmZ (UTC time), for example 02:00Z.
      * 
      */
-    @Export(name="maintainStartTime", type=String.class, parameters={})
+    @Export(name="maintainStartTime", refs={String.class}, tree="[0]")
     private Output<String> maintainStartTime;
 
     /**
@@ -329,7 +329,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Count nodes of the master node.
      * 
      */
-    @Export(name="masterInstanceQuantity", type=Integer.class, parameters={})
+    @Export(name="masterInstanceQuantity", refs={Integer.class}, tree="[0]")
     private Output<Integer> masterInstanceQuantity;
 
     /**
@@ -343,7 +343,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/53532.html), or you can call describeInstanceType api.
      * 
      */
-    @Export(name="masterInstanceType", type=String.class, parameters={})
+    @Export(name="masterInstanceType", refs={String.class}, tree="[0]")
     private Output<String> masterInstanceType;
 
     /**
@@ -357,7 +357,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * HBase instance name. Length must be 2-128 characters long. Only Chinese characters, English letters, numbers, period (.), underline (_), or dash (-) are permitted.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -371,7 +371,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The password of the cluster web ui account. Size [0-128].
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -385,7 +385,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. You can also convert PostPaid to PrePaid. And support convert PrePaid to PostPaid from 1.115.0+.
      * 
      */
-    @Export(name="payType", type=String.class, parameters={})
+    @Export(name="payType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> payType;
 
     /**
@@ -399,7 +399,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The security group resource of the cluster.
      * 
      */
-    @Export(name="securityGroups", type=List.class, parameters={String.class})
+    @Export(name="securityGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroups;
 
     /**
@@ -415,7 +415,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Now only instance name can be change. The others(instance_type, disk_size, core_instance_quantity and so on) will be supported in the furture.
      * 
      */
-    @Export(name="slbConnAddrs", type=List.class, parameters={InstanceSlbConnAddr.class})
+    @Export(name="slbConnAddrs", refs={List.class,InstanceSlbConnAddr.class}, tree="[0,1]")
     private Output<List<InstanceSlbConnAddr>> slbConnAddrs;
 
     /**
@@ -431,7 +431,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -445,7 +445,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Web UI proxy addresses of the cluster. See `ui_proxy_conn_addrs` below.
      * 
      */
-    @Export(name="uiProxyConnAddrs", type=List.class, parameters={InstanceUiProxyConnAddr.class})
+    @Export(name="uiProxyConnAddrs", refs={List.class,InstanceUiProxyConnAddr.class}, tree="[0,1]")
     private Output<List<InstanceUiProxyConnAddr>> uiProxyConnAddrs;
 
     /**
@@ -459,7 +459,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The id of the VPC.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**
@@ -473,7 +473,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * If vswitch_id is not empty, that mean net_type = vpc and has a same region. If vswitch_id is empty, net_type=classic. Intl site not support classic network.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
@@ -487,7 +487,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The zookeeper addresses of the cluster. See `zk_conn_addrs` below.
      * 
      */
-    @Export(name="zkConnAddrs", type=List.class, parameters={InstanceZkConnAddr.class})
+    @Export(name="zkConnAddrs", refs={List.class,InstanceZkConnAddr.class}, tree="[0,1]")
     private Output<List<InstanceZkConnAddr>> zkConnAddrs;
 
     /**
@@ -501,7 +501,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Zone to launch the HBase instance. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

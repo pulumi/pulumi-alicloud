@@ -324,24 +324,24 @@ public final class GetDiskReplicaGroupsGroup {
             return this;
         }
         public GetDiskReplicaGroupsGroup build() {
-            final var o = new GetDiskReplicaGroupsGroup();
-            o.description = description;
-            o.destinationRegionId = destinationRegionId;
-            o.destinationZoneId = destinationZoneId;
-            o.groupName = groupName;
-            o.id = id;
-            o.lastRecoverPoint = lastRecoverPoint;
-            o.primaryRegion = primaryRegion;
-            o.primaryZone = primaryZone;
-            o.replicaGroupId = replicaGroupId;
-            o.rpo = rpo;
-            o.site = site;
-            o.sourceRegionId = sourceRegionId;
-            o.sourceZoneId = sourceZoneId;
-            o.standbyRegion = standbyRegion;
-            o.standbyZone = standbyZone;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDiskReplicaGroupsGroup();
+            _resultValue.description = description;
+            _resultValue.destinationRegionId = destinationRegionId;
+            _resultValue.destinationZoneId = destinationZoneId;
+            _resultValue.groupName = groupName;
+            _resultValue.id = id;
+            _resultValue.lastRecoverPoint = lastRecoverPoint;
+            _resultValue.primaryRegion = primaryRegion;
+            _resultValue.primaryZone = primaryZone;
+            _resultValue.replicaGroupId = replicaGroupId;
+            _resultValue.rpo = rpo;
+            _resultValue.site = site;
+            _resultValue.sourceRegionId = sourceRegionId;
+            _resultValue.sourceZoneId = sourceZoneId;
+            _resultValue.standbyRegion = standbyRegion;
+            _resultValue.standbyZone = standbyZone;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

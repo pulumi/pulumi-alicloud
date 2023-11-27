@@ -183,16 +183,16 @@ public final class EcsLaunchTemplateDataDisk {
             return this;
         }
         public EcsLaunchTemplateDataDisk build() {
-            final var o = new EcsLaunchTemplateDataDisk();
-            o.category = category;
-            o.deleteWithInstance = deleteWithInstance;
-            o.description = description;
-            o.encrypted = encrypted;
-            o.name = name;
-            o.performanceLevel = performanceLevel;
-            o.size = size;
-            o.snapshotId = snapshotId;
-            return o;
+            final var _resultValue = new EcsLaunchTemplateDataDisk();
+            _resultValue.category = category;
+            _resultValue.deleteWithInstance = deleteWithInstance;
+            _resultValue.description = description;
+            _resultValue.encrypted = encrypted;
+            _resultValue.name = name;
+            _resultValue.performanceLevel = performanceLevel;
+            _resultValue.size = size;
+            _resultValue.snapshotId = snapshotId;
+            return _resultValue;
         }
     }
 }

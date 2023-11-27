@@ -99,7 +99,7 @@ public class ReplicationVault extends com.pulumi.resources.CustomResource {
      * The description of the backup vault. The description must be 0 to 255 characters in length.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -113,7 +113,7 @@ public class ReplicationVault extends com.pulumi.resources.CustomResource {
      * The ID of the region where the source vault resides.
      * 
      */
-    @Export(name="replicationSourceRegionId", type=String.class, parameters={})
+    @Export(name="replicationSourceRegionId", refs={String.class}, tree="[0]")
     private Output<String> replicationSourceRegionId;
 
     /**
@@ -127,7 +127,7 @@ public class ReplicationVault extends com.pulumi.resources.CustomResource {
      * The ID of the source vault.
      * 
      */
-    @Export(name="replicationSourceVaultId", type=String.class, parameters={})
+    @Export(name="replicationSourceVaultId", refs={String.class}, tree="[0]")
     private Output<String> replicationSourceVaultId;
 
     /**
@@ -141,7 +141,7 @@ public class ReplicationVault extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -155,7 +155,7 @@ public class ReplicationVault extends com.pulumi.resources.CustomResource {
      * The name of the backup vault. The name must be 1 to 64 characters in length.
      * 
      */
-    @Export(name="vaultName", type=String.class, parameters={})
+    @Export(name="vaultName", refs={String.class}, tree="[0]")
     private Output<String> vaultName;
 
     /**
@@ -169,7 +169,7 @@ public class ReplicationVault extends com.pulumi.resources.CustomResource {
      * The storage type of the backup vault. Valid values: `STANDARD`.
      * 
      */
-    @Export(name="vaultStorageClass", type=String.class, parameters={})
+    @Export(name="vaultStorageClass", refs={String.class}, tree="[0]")
     private Output<String> vaultStorageClass;
 
     /**

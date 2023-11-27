@@ -65,10 +65,10 @@ public final class GetAclsAcl {
             return this;
         }
         public GetAclsAcl build() {
-            final var o = new GetAclsAcl();
-            o.id = id;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetAclsAcl();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

@@ -134,14 +134,14 @@ public final class GetImageCachesCachEvent {
             return this;
         }
         public GetImageCachesCachEvent build() {
-            final var o = new GetImageCachesCachEvent();
-            o.count = count;
-            o.firstTimestamp = firstTimestamp;
-            o.lastTimestamp = lastTimestamp;
-            o.message = message;
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetImageCachesCachEvent();
+            _resultValue.count = count;
+            _resultValue.firstTimestamp = firstTimestamp;
+            _resultValue.lastTimestamp = lastTimestamp;
+            _resultValue.message = message;
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

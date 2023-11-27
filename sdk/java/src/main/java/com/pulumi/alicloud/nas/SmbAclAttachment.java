@@ -79,7 +79,7 @@ public class SmbAclAttachment extends com.pulumi.resources.CustomResource {
      * The method that is used to authenticate network identities.
      * 
      */
-    @Export(name="authMethod", type=String.class, parameters={})
+    @Export(name="authMethod", refs={String.class}, tree="[0]")
     private Output<String> authMethod;
 
     /**
@@ -95,7 +95,7 @@ public class SmbAclAttachment extends com.pulumi.resources.CustomResource {
      * false: The file system denies anonymous access. Default value: false.
      * 
      */
-    @Export(name="enableAnonymousAccess", type=Boolean.class, parameters={})
+    @Export(name="enableAnonymousAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableAnonymousAccess;
 
     /**
@@ -113,7 +113,7 @@ public class SmbAclAttachment extends com.pulumi.resources.CustomResource {
      * false: disables the ACL feature.
      * 
      */
-    @Export(name="enabled", type=String.class, parameters={})
+    @Export(name="enabled", refs={String.class}, tree="[0]")
     private Output<String> enabled;
 
     /**
@@ -131,7 +131,7 @@ public class SmbAclAttachment extends com.pulumi.resources.CustomResource {
      * false: disables encryption in transit. Default value: false.
      * 
      */
-    @Export(name="encryptData", type=Boolean.class, parameters={})
+    @Export(name="encryptData", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> encryptData;
 
     /**
@@ -147,7 +147,7 @@ public class SmbAclAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the file system.
      * 
      */
-    @Export(name="fileSystemId", type=String.class, parameters={})
+    @Export(name="fileSystemId", refs={String.class}, tree="[0]")
     private Output<String> fileSystemId;
 
     /**
@@ -166,7 +166,7 @@ public class SmbAclAttachment extends com.pulumi.resources.CustomResource {
      * For example, if you create a user named A and the home directory is /home, the file system automatically creates a directory named /home/A when User A logs on to the file system. If the /home/A directory already exists, the file system does not create the directory.
      * 
      */
-    @Export(name="homeDirPath", type=String.class, parameters={})
+    @Export(name="homeDirPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> homeDirPath;
 
     /**
@@ -185,7 +185,7 @@ public class SmbAclAttachment extends com.pulumi.resources.CustomResource {
      * The string that is generated after the system encodes the keytab file by using Base64.
      * 
      */
-    @Export(name="keytab", type=String.class, parameters={})
+    @Export(name="keytab", refs={String.class}, tree="[0]")
     private Output<String> keytab;
 
     /**
@@ -199,7 +199,7 @@ public class SmbAclAttachment extends com.pulumi.resources.CustomResource {
      * RThe string that is generated after the system encodes the keytab file by using MD5.
      * 
      */
-    @Export(name="keytabMd5", type=String.class, parameters={})
+    @Export(name="keytabMd5", refs={String.class}, tree="[0]")
     private Output<String> keytabMd5;
 
     /**
@@ -215,7 +215,7 @@ public class SmbAclAttachment extends com.pulumi.resources.CustomResource {
      * false: The file system allows access from non-encrypted clients. Default value: false.
      * 
      */
-    @Export(name="rejectUnencryptedAccess", type=Boolean.class, parameters={})
+    @Export(name="rejectUnencryptedAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> rejectUnencryptedAccess;
 
     /**
@@ -234,7 +234,7 @@ public class SmbAclAttachment extends com.pulumi.resources.CustomResource {
      * Example: S-1-5-22 and S-1-5-22-23.
      * 
      */
-    @Export(name="superAdminSid", type=String.class, parameters={})
+    @Export(name="superAdminSid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> superAdminSid;
 
     /**

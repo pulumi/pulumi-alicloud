@@ -48,9 +48,9 @@ public final class InstanceSystemDisk {
             return this;
         }
         public InstanceSystemDisk build() {
-            final var o = new InstanceSystemDisk();
-            o.size = size;
-            return o;
+            final var _resultValue = new InstanceSystemDisk();
+            _resultValue.size = size;
+            return _resultValue;
         }
     }
 }

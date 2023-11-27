@@ -17,8 +17,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The project is the resource management unit in Log Service and is used to isolate and control resources.
- * You can manage all the logs and the related log sources of an application by using projects. [Refer to details](https://www.alibabacloud.com/help/doc-detail/48873.htm).
+ * Provides a SLS Project resource.
+ * 
+ * For information about SLS Project and how to use it, see [What is Project](https://www.alibabacloud.com/help/en/sls/developer-reference/api-createproject).
  * 
  * &gt; **NOTE:** Available since v1.9.5.
  * 
@@ -130,20 +131,34 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Log project can be imported using the id or name, e.g.
+ * SLS Project can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:log/project:Project example tf-log
+ *  $ pulumi import alicloud:log/project:Project example &lt;id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:log/project:Project")
 public class Project extends com.pulumi.resources.CustomResource {
     /**
+     * CreateTime.
+     * 
+     */
+    @Export(name="createTime", refs={String.class}, tree="[0]")
+    private Output<String> createTime;
+
+    /**
+     * @return CreateTime.
+     * 
+     */
+    public Output<String> createTime() {
+        return this.createTime;
+    }
+    /**
      * Description of the log project.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -154,14 +169,18 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The name of the log project. It is the only in one Alicloud account.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.212.0. New field &#39;project_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.212.0. New field &#39;project_name&#39; instead.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead. */
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the log project. It is the only in one Alicloud account.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.212.0. New field &#39;project_name&#39; instead.
      * 
      */
     public Output<String> name() {
@@ -171,7 +190,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * Log project policy, used to set a policy for a project.
      * 
      */
-    @Export(name="policy", type=String.class, parameters={})
+    @Export(name="policy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policy;
 
     /**
@@ -182,18 +201,60 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.policy);
     }
     /**
-     * Log project tags.
-     * - Key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
-     * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
+     * The name of the log project. It is the only in one Alicloud account.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="projectName", refs={String.class}, tree="[0]")
+    private Output<String> projectName;
+
+    /**
+     * @return The name of the log project. It is the only in one Alicloud account.
+     * 
+     */
+    public Output<String> projectName() {
+        return this.projectName;
+    }
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
+    private Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Output<String> resourceGroupId() {
+        return this.resourceGroupId;
+    }
+    /**
+     * The status of the resource.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
+    private Output<String> status;
+
+    /**
+     * @return The status of the resource.
+     * 
+     */
+    public Output<String> status() {
+        return this.status;
+    }
+    /**
+     * Tag.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
-     * @return Log project tags.
-     * - Key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
-     * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
+     * @return Tag.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Output<Optional<Map<String,Object>>> tags() {

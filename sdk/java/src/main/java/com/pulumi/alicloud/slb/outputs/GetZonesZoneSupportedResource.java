@@ -65,10 +65,10 @@ public final class GetZonesZoneSupportedResource {
             return this;
         }
         public GetZonesZoneSupportedResource build() {
-            final var o = new GetZonesZoneSupportedResource();
-            o.addressIpVersion = addressIpVersion;
-            o.addressType = addressType;
-            return o;
+            final var _resultValue = new GetZonesZoneSupportedResource();
+            _resultValue.addressIpVersion = addressIpVersion;
+            _resultValue.addressType = addressType;
+            return _resultValue;
         }
     }
 }

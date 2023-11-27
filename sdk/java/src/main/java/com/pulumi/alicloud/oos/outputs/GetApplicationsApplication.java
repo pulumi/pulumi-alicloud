@@ -162,15 +162,15 @@ public final class GetApplicationsApplication {
             return this;
         }
         public GetApplicationsApplication build() {
-            final var o = new GetApplicationsApplication();
-            o.applicationName = applicationName;
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetApplicationsApplication();
+            _resultValue.applicationName = applicationName;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.tags = tags;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

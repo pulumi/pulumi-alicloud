@@ -180,16 +180,16 @@ public final class GetIpv6InternetBandwidthsBandwidth {
             return this;
         }
         public GetIpv6InternetBandwidthsBandwidth build() {
-            final var o = new GetIpv6InternetBandwidthsBandwidth();
-            o.bandwidth = bandwidth;
-            o.id = id;
-            o.internetChargeType = internetChargeType;
-            o.ipv6AddressId = ipv6AddressId;
-            o.ipv6GatewayId = ipv6GatewayId;
-            o.ipv6InternetBandwidthId = ipv6InternetBandwidthId;
-            o.paymentType = paymentType;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetIpv6InternetBandwidthsBandwidth();
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.id = id;
+            _resultValue.internetChargeType = internetChargeType;
+            _resultValue.ipv6AddressId = ipv6AddressId;
+            _resultValue.ipv6GatewayId = ipv6GatewayId;
+            _resultValue.ipv6InternetBandwidthId = ipv6InternetBandwidthId;
+            _resultValue.paymentType = paymentType;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -202,17 +202,17 @@ public final class GetHoneyPotsPot {
             return this;
         }
         public GetHoneyPotsPot build() {
-            final var o = new GetHoneyPotsPot();
-            o.honeypotId = honeypotId;
-            o.honeypotImageId = honeypotImageId;
-            o.honeypotImageName = honeypotImageName;
-            o.honeypotName = honeypotName;
-            o.id = id;
-            o.nodeId = nodeId;
-            o.presetId = presetId;
-            o.states = states;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetHoneyPotsPot();
+            _resultValue.honeypotId = honeypotId;
+            _resultValue.honeypotImageId = honeypotImageId;
+            _resultValue.honeypotImageName = honeypotImageName;
+            _resultValue.honeypotName = honeypotName;
+            _resultValue.id = id;
+            _resultValue.nodeId = nodeId;
+            _resultValue.presetId = presetId;
+            _resultValue.states = states;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

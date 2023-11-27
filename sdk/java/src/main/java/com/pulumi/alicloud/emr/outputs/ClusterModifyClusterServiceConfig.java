@@ -205,17 +205,17 @@ public final class ClusterModifyClusterServiceConfig {
             return this;
         }
         public ClusterModifyClusterServiceConfig build() {
-            final var o = new ClusterModifyClusterServiceConfig();
-            o.comment = comment;
-            o.configParams = configParams;
-            o.configType = configType;
-            o.customConfigParams = customConfigParams;
-            o.gatewayClusterIdLists = gatewayClusterIdLists;
-            o.groupId = groupId;
-            o.hostInstanceId = hostInstanceId;
-            o.refreshHostConfig = refreshHostConfig;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new ClusterModifyClusterServiceConfig();
+            _resultValue.comment = comment;
+            _resultValue.configParams = configParams;
+            _resultValue.configType = configType;
+            _resultValue.customConfigParams = customConfigParams;
+            _resultValue.gatewayClusterIdLists = gatewayClusterIdLists;
+            _resultValue.groupId = groupId;
+            _resultValue.hostInstanceId = hostInstanceId;
+            _resultValue.refreshHostConfig = refreshHostConfig;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

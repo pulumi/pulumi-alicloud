@@ -183,17 +183,17 @@ public final class GetTransitRouterVbrAttachmentsAttachment {
             return this;
         }
         public GetTransitRouterVbrAttachmentsAttachment build() {
-            final var o = new GetTransitRouterVbrAttachmentsAttachment();
-            o.autoPublishRouteEnabled = autoPublishRouteEnabled;
-            o.id = id;
-            o.resourceType = resourceType;
-            o.status = status;
-            o.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
-            o.transitRouterAttachmentId = transitRouterAttachmentId;
-            o.transitRouterAttachmentName = transitRouterAttachmentName;
-            o.vbrId = vbrId;
-            o.vbrOwnerId = vbrOwnerId;
-            return o;
+            final var _resultValue = new GetTransitRouterVbrAttachmentsAttachment();
+            _resultValue.autoPublishRouteEnabled = autoPublishRouteEnabled;
+            _resultValue.id = id;
+            _resultValue.resourceType = resourceType;
+            _resultValue.status = status;
+            _resultValue.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
+            _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
+            _resultValue.transitRouterAttachmentName = transitRouterAttachmentName;
+            _resultValue.vbrId = vbrId;
+            _resultValue.vbrOwnerId = vbrOwnerId;
+            return _resultValue;
         }
     }
 }

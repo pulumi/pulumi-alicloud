@@ -65,10 +65,10 @@ public final class GetProjectsProjectPropertiesTableLifecycle {
             return this;
         }
         public GetProjectsProjectPropertiesTableLifecycle build() {
-            final var o = new GetProjectsProjectPropertiesTableLifecycle();
-            o.type = type;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetProjectsProjectPropertiesTableLifecycle();
+            _resultValue.type = type;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

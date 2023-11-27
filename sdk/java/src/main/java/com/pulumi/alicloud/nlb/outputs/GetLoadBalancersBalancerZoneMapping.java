@@ -160,15 +160,15 @@ public final class GetLoadBalancersBalancerZoneMapping {
             return this;
         }
         public GetLoadBalancersBalancerZoneMapping build() {
-            final var o = new GetLoadBalancersBalancerZoneMapping();
-            o.allocationId = allocationId;
-            o.eniId = eniId;
-            o.ipv6Address = ipv6Address;
-            o.privateIpv4Address = privateIpv4Address;
-            o.publicIpv4Address = publicIpv4Address;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetLoadBalancersBalancerZoneMapping();
+            _resultValue.allocationId = allocationId;
+            _resultValue.eniId = eniId;
+            _resultValue.ipv6Address = ipv6Address;
+            _resultValue.privateIpv4Address = privateIpv4Address;
+            _resultValue.publicIpv4Address = publicIpv4Address;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

@@ -100,13 +100,13 @@ public final class GetConfigsResult {
             return this;
         }
         public GetConfigsResult build() {
-            final var o = new GetConfigsResult();
-            o.configs = configs;
-            o.id = id;
-            o.ids = ids;
-            o.lang = lang;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetConfigsResult();
+            _resultValue.configs = configs;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.lang = lang;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

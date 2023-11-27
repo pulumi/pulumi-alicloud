@@ -168,7 +168,7 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
      * Whether to allow the forwarding router instance to automatically publish routing entries to IPsec connections.
      * 
      */
-    @Export(name="autoPublishRouteEnabled", type=Boolean.class, parameters={})
+    @Export(name="autoPublishRouteEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoPublishRouteEnabled;
 
     /**
@@ -182,7 +182,7 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
      * The id of the cen.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cenId;
 
     /**
@@ -196,7 +196,7 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
      * The associating status of the network.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -210,7 +210,7 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -224,7 +224,7 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
      * The description of the VPN connection. The description can contain `2` to `256` characters. The description must start with English letters, but cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="transitRouterAttachmentDescription", type=String.class, parameters={})
+    @Export(name="transitRouterAttachmentDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterAttachmentDescription;
 
     /**
@@ -238,7 +238,7 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
      * The name of the VPN connection. The name must be `2` to `128` characters in length, and can contain digits, underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
-    @Export(name="transitRouterAttachmentName", type=String.class, parameters={})
+    @Export(name="transitRouterAttachmentName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterAttachmentName;
 
     /**
@@ -252,7 +252,7 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
      * The ID of the forwarding router instance.
      * 
      */
-    @Export(name="transitRouterId", type=String.class, parameters={})
+    @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterId;
 
     /**
@@ -266,7 +266,7 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
      * The id of the vpn.
      * 
      */
-    @Export(name="vpnId", type=String.class, parameters={})
+    @Export(name="vpnId", refs={String.class}, tree="[0]")
     private Output<String> vpnId;
 
     /**
@@ -280,7 +280,7 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
      * The owner id of vpn. **NOTE:** You must set `vpn_owner_id`, if you want to connect the transit router to an IPsec-VPN connection that belongs to another Alibaba Cloud account.
      * 
      */
-    @Export(name="vpnOwnerId", type=String.class, parameters={})
+    @Export(name="vpnOwnerId", refs={String.class}, tree="[0]")
     private Output<String> vpnOwnerId;
 
     /**
@@ -294,7 +294,7 @@ public class TransitRouterVpnAttachment extends com.pulumi.resources.CustomResou
      * The list of zone mapping. See `zone` below.
      * 
      */
-    @Export(name="zones", type=List.class, parameters={TransitRouterVpnAttachmentZone.class})
+    @Export(name="zones", refs={List.class,TransitRouterVpnAttachmentZone.class}, tree="[0,1]")
     private Output<List<TransitRouterVpnAttachmentZone>> zones;
 
     /**

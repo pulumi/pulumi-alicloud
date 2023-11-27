@@ -103,12 +103,12 @@ public final class GetGatewayVpnAttachmentsAttachmentIpsecConfig {
             return this;
         }
         public GetGatewayVpnAttachmentsAttachmentIpsecConfig build() {
-            final var o = new GetGatewayVpnAttachmentsAttachmentIpsecConfig();
-            o.ipsecAuthAlg = ipsecAuthAlg;
-            o.ipsecEncAlg = ipsecEncAlg;
-            o.ipsecLifetime = ipsecLifetime;
-            o.ipsecPfs = ipsecPfs;
-            return o;
+            final var _resultValue = new GetGatewayVpnAttachmentsAttachmentIpsecConfig();
+            _resultValue.ipsecAuthAlg = ipsecAuthAlg;
+            _resultValue.ipsecEncAlg = ipsecEncAlg;
+            _resultValue.ipsecLifetime = ipsecLifetime;
+            _resultValue.ipsecPfs = ipsecPfs;
+            return _resultValue;
         }
     }
 }

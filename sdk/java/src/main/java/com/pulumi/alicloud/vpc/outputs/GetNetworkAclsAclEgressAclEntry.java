@@ -141,14 +141,14 @@ public final class GetNetworkAclsAclEgressAclEntry {
             return this;
         }
         public GetNetworkAclsAclEgressAclEntry build() {
-            final var o = new GetNetworkAclsAclEgressAclEntry();
-            o.description = description;
-            o.destinationCidrIp = destinationCidrIp;
-            o.networkAclEntryName = networkAclEntryName;
-            o.policy = policy;
-            o.port = port;
-            o.protocol = protocol;
-            return o;
+            final var _resultValue = new GetNetworkAclsAclEgressAclEntry();
+            _resultValue.description = description;
+            _resultValue.destinationCidrIp = destinationCidrIp;
+            _resultValue.networkAclEntryName = networkAclEntryName;
+            _resultValue.policy = policy;
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            return _resultValue;
         }
     }
 }

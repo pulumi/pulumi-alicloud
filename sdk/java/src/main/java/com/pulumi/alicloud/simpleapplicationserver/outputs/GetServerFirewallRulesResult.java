@@ -100,13 +100,13 @@ public final class GetServerFirewallRulesResult {
             return rules(List.of(rules));
         }
         public GetServerFirewallRulesResult build() {
-            final var o = new GetServerFirewallRulesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.outputFile = outputFile;
-            o.rules = rules;
-            return o;
+            final var _resultValue = new GetServerFirewallRulesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.rules = rules;
+            return _resultValue;
         }
     }
 }

@@ -89,7 +89,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * The name of control policy.
      * 
      */
-    @Export(name="controlPolicyName", type=String.class, parameters={})
+    @Export(name="controlPolicyName", refs={String.class}, tree="[0]")
     private Output<String> controlPolicyName;
 
     /**
@@ -103,7 +103,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * The description of control policy.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -117,7 +117,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * The effect scope. Valid values `RAM`.
      * 
      */
-    @Export(name="effectScope", type=String.class, parameters={})
+    @Export(name="effectScope", refs={String.class}, tree="[0]")
     private Output<String> effectScope;
 
     /**
@@ -131,7 +131,7 @@ public class ControlPolicy extends com.pulumi.resources.CustomResource {
      * The policy document of control policy.
      * 
      */
-    @Export(name="policyDocument", type=String.class, parameters={})
+    @Export(name="policyDocument", refs={String.class}, tree="[0]")
     private Output<String> policyDocument;
 
     /**

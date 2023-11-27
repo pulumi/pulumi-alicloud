@@ -194,21 +194,21 @@ public final class GetParametersResult {
             return this;
         }
         public GetParametersResult build() {
-            final var o = new GetParametersResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.parameterName = parameterName;
-            o.parameters = parameters;
-            o.resourceGroupId = resourceGroupId;
-            o.sortField = sortField;
-            o.sortOrder = sortOrder;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetParametersResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.parameterName = parameterName;
+            _resultValue.parameters = parameters;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.sortField = sortField;
+            _resultValue.sortOrder = sortOrder;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -105,13 +105,13 @@ public final class GetPolicyDocumentResult {
             return this;
         }
         public GetPolicyDocumentResult build() {
-            final var o = new GetPolicyDocumentResult();
-            o.document = document;
-            o.id = id;
-            o.outputFile = outputFile;
-            o.statements = statements;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetPolicyDocumentResult();
+            _resultValue.document = document;
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            _resultValue.statements = statements;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

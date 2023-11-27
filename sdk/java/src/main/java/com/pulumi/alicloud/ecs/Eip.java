@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
 @Deprecated /* This resource has been deprecated in favour of the EipAddress resource */
 @ResourceType(type="alicloud:ecs/eip:Eip")
 public class Eip extends com.pulumi.resources.CustomResource {
-    @Export(name="activityId", type=String.class, parameters={})
+    @Export(name="activityId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> activityId;
 
     public Output<Optional<String>> activityId() {
@@ -89,7 +89,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
      * The name of the EIP instance. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with http:// or https://.
      * 
      */
-    @Export(name="addressName", type=String.class, parameters={})
+    @Export(name="addressName", refs={String.class}, tree="[0]")
     private Output<String> addressName;
 
     /**
@@ -99,7 +99,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
     public Output<String> addressName() {
         return this.addressName;
     }
-    @Export(name="autoPay", type=Boolean.class, parameters={})
+    @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
     public Output<Optional<Boolean>> autoPay() {
@@ -109,7 +109,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
      * Maximum bandwidth to the elastic public network, measured in Mbps (Mega bit per second). If this value is not specified, then automatically sets it to 5 Mbps.
      * 
      */
-    @Export(name="bandwidth", type=String.class, parameters={})
+    @Export(name="bandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidth;
 
     /**
@@ -119,7 +119,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
     public Output<String> bandwidth() {
         return this.bandwidth;
     }
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     public Output<String> createTime() {
@@ -131,7 +131,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
      * - false: Disable deletion protection.
      * 
      */
-    @Export(name="deletionProtection", type=Boolean.class, parameters={})
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deletionProtection;
 
     /**
@@ -147,7 +147,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
      * Description of the EIP instance, This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -157,7 +157,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
-    @Export(name="highDefinitionMonitorLogStatus", type=String.class, parameters={})
+    @Export(name="highDefinitionMonitorLogStatus", refs={String.class}, tree="[0]")
     private Output<String> highDefinitionMonitorLogStatus;
 
     public Output<String> highDefinitionMonitorLogStatus() {
@@ -171,7 +171,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'instance_charge_type' has been deprecated since provider version 1.126.0. New field 'payment_type' instead. */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
     /**
@@ -185,7 +185,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
      * Internet charge type of the EIP, Valid values are `PayByBandwidth`, `PayByTraffic`. Default to `PayByBandwidth`. **NOTE:** From version `1.7.1` to `1.125.0`, it defaults to `PayByTraffic`. It is only &#34;PayByBandwidth&#34; when `instance_charge_type` is PrePaid.
      * 
      */
-    @Export(name="internetChargeType", type=String.class, parameters={})
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output<String> internetChargeType;
 
     /**
@@ -199,7 +199,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
      * The elastic ip address
      * 
      */
-    @Export(name="ipAddress", type=String.class, parameters={})
+    @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**
@@ -213,7 +213,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
      * The line type of the Elastic IP instance. Default to `BGP`. Other type of the isp need to open a whitelist.
      * 
      */
-    @Export(name="isp", type=String.class, parameters={})
+    @Export(name="isp", refs={String.class}, tree="[0]")
     private Output<String> isp;
 
     /**
@@ -223,13 +223,13 @@ public class Eip extends com.pulumi.resources.CustomResource {
     public Output<String> isp() {
         return this.isp;
     }
-    @Export(name="logProject", type=String.class, parameters={})
+    @Export(name="logProject", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logProject;
 
     public Output<Optional<String>> logProject() {
         return Codegen.optional(this.logProject);
     }
-    @Export(name="logStore", type=String.class, parameters={})
+    @Export(name="logStore", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logStore;
 
     public Output<Optional<String>> logStore() {
@@ -243,7 +243,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated since provider version 1.126.0. New field 'address_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -253,7 +253,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="netmode", type=String.class, parameters={})
+    @Export(name="netmode", refs={String.class}, tree="[0]")
     private Output<String> netmode;
 
     public Output<String> netmode() {
@@ -263,7 +263,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
      * The billing method of the EIP. Valid values: `Subscription` and `PayAsYouGo`. Default value is `PayAsYouGo`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -278,7 +278,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
      * **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -289,13 +289,13 @@ public class Eip extends com.pulumi.resources.CustomResource {
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
-    @Export(name="pricingCycle", type=String.class, parameters={})
+    @Export(name="pricingCycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pricingCycle;
 
     public Output<Optional<String>> pricingCycle() {
         return Codegen.optional(this.pricingCycle);
     }
-    @Export(name="publicIpAddressPoolId", type=String.class, parameters={})
+    @Export(name="publicIpAddressPoolId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> publicIpAddressPoolId;
 
     public Output<Optional<String>> publicIpAddressPoolId() {
@@ -305,7 +305,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the eip belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -315,7 +315,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
-    @Export(name="securityProtectionTypes", type=List.class, parameters={String.class})
+    @Export(name="securityProtectionTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> securityProtectionTypes;
 
     public Output<Optional<List<String>>> securityProtectionTypes() {
@@ -325,7 +325,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
      * The EIP current status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -339,7 +339,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -349,7 +349,7 @@ public class Eip extends com.pulumi.resources.CustomResource {
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="zone", type=String.class, parameters={})
+    @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     public Output<String> zone() {

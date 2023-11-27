@@ -46,9 +46,9 @@ public final class GetChainsChainChainConfigRouterFrom {
             return this;
         }
         public GetChainsChainChainConfigRouterFrom build() {
-            final var o = new GetChainsChainChainConfigRouterFrom();
-            o.nodeName = nodeName;
-            return o;
+            final var _resultValue = new GetChainsChainChainConfigRouterFrom();
+            _resultValue.nodeName = nodeName;
+            return _resultValue;
         }
     }
 }

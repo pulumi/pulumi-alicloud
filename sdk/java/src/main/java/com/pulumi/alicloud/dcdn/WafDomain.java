@@ -86,7 +86,7 @@ public class WafDomain extends com.pulumi.resources.CustomResource {
      * The client ip tag.
      * 
      */
-    @Export(name="clientIpTag", type=String.class, parameters={})
+    @Export(name="clientIpTag", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientIpTag;
 
     /**
@@ -100,7 +100,7 @@ public class WafDomain extends com.pulumi.resources.CustomResource {
      * The accelerated domain name.
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**

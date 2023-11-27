@@ -65,10 +65,10 @@ public final class GetVpcEndpointServiceUsersUser {
             return this;
         }
         public GetVpcEndpointServiceUsersUser build() {
-            final var o = new GetVpcEndpointServiceUsersUser();
-            o.id = id;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new GetVpcEndpointServiceUsersUser();
+            _resultValue.id = id;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

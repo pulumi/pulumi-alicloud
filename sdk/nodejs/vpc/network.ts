@@ -9,9 +9,11 @@ import * as utilities from "../utilities";
 /**
  * Provides a Vpc Vpc resource. A VPC instance creates a VPC. You can fully control your own VPC, such as selecting IP address ranges, configuring routing tables, and gateways. You can use Alibaba cloud resources such as cloud servers, apsaradb for RDS, and load balancer in your own VPC.
  *
+ * > **NOTE:** Available since v1.0.0.
+ *
  * > **NOTE:** This resource will auto build a router and a route table while it uses `alicloud.vpc.Network` to build a vpc resource.
  *
- * > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+ * > **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://www.alibabacloud.com/help/en/vpc/getting-started/create-a-vpc-with-an-ipv6-cidr-block).
  *
  * ## Module Support
  *
@@ -133,17 +135,17 @@ export class Network extends pulumi.CustomResource {
     /**
      * The route table ID of the router created by default on VPC creation.
      */
-    public readonly routeTableId!: pulumi.Output<string>;
+    public /*out*/ readonly routeTableId!: pulumi.Output<string>;
     /**
      * The ID of the router created by default on VPC creation.
      */
     public /*out*/ readonly routerId!: pulumi.Output<string>;
     /**
-     * Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+     * (Deprecated since v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
      *
      * @deprecated Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
      */
-    public readonly routerTableId!: pulumi.Output<string>;
+    public /*out*/ readonly routerTableId!: pulumi.Output<string>;
     /**
      * Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      *
@@ -211,8 +213,6 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["ipv6Isp"] = args ? args.ipv6Isp : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
-            resourceInputs["routeTableId"] = args ? args.routeTableId : undefined;
-            resourceInputs["routerTableId"] = args ? args.routerTableId : undefined;
             resourceInputs["secondaryCidrBlocks"] = args ? args.secondaryCidrBlocks : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["userCidrs"] = args ? args.userCidrs : undefined;
@@ -220,7 +220,9 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["ipv6CidrBlock"] = undefined /*out*/;
             resourceInputs["ipv6CidrBlocks"] = undefined /*out*/;
+            resourceInputs["routeTableId"] = undefined /*out*/;
             resourceInputs["routerId"] = undefined /*out*/;
+            resourceInputs["routerTableId"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -296,7 +298,7 @@ export interface NetworkState {
      */
     routerId?: pulumi.Input<string>;
     /**
-     * Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+     * (Deprecated since v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
      *
      * @deprecated Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
      */
@@ -374,16 +376,6 @@ export interface NetworkArgs {
      * The ID of the resource group to which the VPC belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
-    /**
-     * The route table ID of the router created by default on VPC creation.
-     */
-    routeTableId?: pulumi.Input<string>;
-    /**
-     * Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
-     *
-     * @deprecated Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
-     */
-    routerTableId?: pulumi.Input<string>;
     /**
      * Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      *

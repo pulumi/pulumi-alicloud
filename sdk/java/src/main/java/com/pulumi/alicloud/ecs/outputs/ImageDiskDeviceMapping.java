@@ -106,12 +106,12 @@ public final class ImageDiskDeviceMapping {
             return this;
         }
         public ImageDiskDeviceMapping build() {
-            final var o = new ImageDiskDeviceMapping();
-            o.device = device;
-            o.diskType = diskType;
-            o.size = size;
-            o.snapshotId = snapshotId;
-            return o;
+            final var _resultValue = new ImageDiskDeviceMapping();
+            _resultValue.device = device;
+            _resultValue.diskType = diskType;
+            _resultValue.size = size;
+            _resultValue.snapshotId = snapshotId;
+            return _resultValue;
         }
     }
 }

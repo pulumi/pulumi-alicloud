@@ -48,9 +48,9 @@ public final class ChainChainConfigRouterTo {
             return this;
         }
         public ChainChainConfigRouterTo build() {
-            final var o = new ChainChainConfigRouterTo();
-            o.nodeName = nodeName;
-            return o;
+            final var _resultValue = new ChainChainConfigRouterTo();
+            _resultValue.nodeName = nodeName;
+            return _resultValue;
         }
     }
 }

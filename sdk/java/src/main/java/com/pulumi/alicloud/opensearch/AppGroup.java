@@ -81,7 +81,7 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      * Application Group Name.
      * 
      */
-    @Export(name="appGroupName", type=String.class, parameters={})
+    @Export(name="appGroupName", refs={String.class}, tree="[0]")
     private Output<String> appGroupName;
 
     /**
@@ -95,7 +95,7 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      * Billing model. Valid values:`compute_resource` and `qps`.
      * 
      */
-    @Export(name="chargeWay", type=String.class, parameters={})
+    @Export(name="chargeWay", refs={String.class}, tree="[0]")
     private Output<String> chargeWay;
 
     /**
@@ -109,7 +109,7 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      * The version of Application Group Name.
      * 
      */
-    @Export(name="currentVersion", type=String.class, parameters={})
+    @Export(name="currentVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> currentVersion;
 
     /**
@@ -123,7 +123,7 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      * The description of the resource.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -137,7 +137,7 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      * The instance id.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -151,7 +151,7 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      * Order change type. Valid values: `UPGRADE` and `DOWNGRADE`.
      * 
      */
-    @Export(name="orderType", type=String.class, parameters={})
+    @Export(name="orderType", refs={String.class}, tree="[0]")
     private Output<String> orderType;
 
     /**
@@ -165,7 +165,7 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      * Order cycle information. The details see Block order.
      * 
      */
-    @Export(name="orders", type=List.class, parameters={AppGroupOrder.class})
+    @Export(name="orders", refs={List.class,AppGroupOrder.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AppGroupOrder>> orders;
 
     /**
@@ -179,7 +179,7 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      * The billing method of the resource. Valid values: `Subscription` and `PayAsYouGo`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -193,7 +193,7 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      * Quota information.  The details see Block quota.
      * 
      */
-    @Export(name="quota", type=AppGroupQuota.class, parameters={})
+    @Export(name="quota", refs={AppGroupQuota.class}, tree="[0]")
     private Output<AppGroupQuota> quota;
 
     /**
@@ -207,7 +207,7 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `producing`,`review_pending`,`config_pending`,`normal`,`frozen`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -221,7 +221,7 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
      * Application type. Valid Values: `standard`, `enhanced`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

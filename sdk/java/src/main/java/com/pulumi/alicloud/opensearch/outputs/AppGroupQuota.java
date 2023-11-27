@@ -120,12 +120,12 @@ public final class AppGroupQuota {
             return this;
         }
         public AppGroupQuota build() {
-            final var o = new AppGroupQuota();
-            o.computeResource = computeResource;
-            o.docSize = docSize;
-            o.qps = qps;
-            o.spec = spec;
-            return o;
+            final var _resultValue = new AppGroupQuota();
+            _resultValue.computeResource = computeResource;
+            _resultValue.docSize = docSize;
+            _resultValue.qps = qps;
+            _resultValue.spec = spec;
+            return _resultValue;
         }
     }
 }

@@ -89,11 +89,11 @@ public final class GetClustersClusterSoftwareInfo {
             return softwares(List.of(softwares));
         }
         public GetClustersClusterSoftwareInfo build() {
-            final var o = new GetClustersClusterSoftwareInfo();
-            o.clusterType = clusterType;
-            o.emrVer = emrVer;
-            o.softwares = softwares;
-            return o;
+            final var _resultValue = new GetClustersClusterSoftwareInfo();
+            _resultValue.clusterType = clusterType;
+            _resultValue.emrVer = emrVer;
+            _resultValue.softwares = softwares;
+            return _resultValue;
         }
     }
 }

@@ -179,16 +179,16 @@ public final class GetScimServerCredentialsCredential {
             return this;
         }
         public GetScimServerCredentialsCredential build() {
-            final var o = new GetScimServerCredentialsCredential();
-            o.createTime = createTime;
-            o.credentialId = credentialId;
-            o.credentialSecret = credentialSecret;
-            o.credentialType = credentialType;
-            o.directoryId = directoryId;
-            o.expireTime = expireTime;
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetScimServerCredentialsCredential();
+            _resultValue.createTime = createTime;
+            _resultValue.credentialId = credentialId;
+            _resultValue.credentialSecret = credentialSecret;
+            _resultValue.credentialType = credentialType;
+            _resultValue.directoryId = directoryId;
+            _resultValue.expireTime = expireTime;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

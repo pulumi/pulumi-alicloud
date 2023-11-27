@@ -66,10 +66,10 @@ public final class ClusterNodeGroupSpotBidPrice {
             return this;
         }
         public ClusterNodeGroupSpotBidPrice build() {
-            final var o = new ClusterNodeGroupSpotBidPrice();
-            o.bidPrice = bidPrice;
-            o.instanceType = instanceType;
-            return o;
+            final var _resultValue = new ClusterNodeGroupSpotBidPrice();
+            _resultValue.bidPrice = bidPrice;
+            _resultValue.instanceType = instanceType;
+            return _resultValue;
         }
     }
 }

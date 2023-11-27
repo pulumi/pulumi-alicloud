@@ -60,11 +60,11 @@ public final class GetProvisionedProductsProvisionedProductOutput {
             return this;
         }
         public GetProvisionedProductsProvisionedProductOutput build() {
-            final var o = new GetProvisionedProductsProvisionedProductOutput();
-            o.description = description;
-            o.outputKey = outputKey;
-            o.outputValue = outputValue;
-            return o;
+            final var _resultValue = new GetProvisionedProductsProvisionedProductOutput();
+            _resultValue.description = description;
+            _resultValue.outputKey = outputKey;
+            _resultValue.outputValue = outputValue;
+            return _resultValue;
         }
     }
 }

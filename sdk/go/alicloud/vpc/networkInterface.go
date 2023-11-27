@@ -101,6 +101,8 @@ type NetworkInterface struct {
 
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description      pulumi.StringPtrOutput   `pulumi:"description"`
+	Ipv4PrefixCount  pulumi.IntOutput         `pulumi:"ipv4PrefixCount"`
+	Ipv4Prefixes     pulumi.StringArrayOutput `pulumi:"ipv4Prefixes"`
 	Ipv6AddressCount pulumi.IntOutput         `pulumi:"ipv6AddressCount"`
 	Ipv6Addresses    pulumi.StringArrayOutput `pulumi:"ipv6Addresses"`
 	// (Available in 1.54.0+) The MAC address of an ENI.
@@ -175,6 +177,8 @@ func GetNetworkInterface(ctx *pulumi.Context,
 type networkInterfaceState struct {
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description      *string  `pulumi:"description"`
+	Ipv4PrefixCount  *int     `pulumi:"ipv4PrefixCount"`
+	Ipv4Prefixes     []string `pulumi:"ipv4Prefixes"`
 	Ipv6AddressCount *int     `pulumi:"ipv6AddressCount"`
 	Ipv6Addresses    []string `pulumi:"ipv6Addresses"`
 	// (Available in 1.54.0+) The MAC address of an ENI.
@@ -217,6 +221,8 @@ type networkInterfaceState struct {
 type NetworkInterfaceState struct {
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description      pulumi.StringPtrInput
+	Ipv4PrefixCount  pulumi.IntPtrInput
+	Ipv4Prefixes     pulumi.StringArrayInput
 	Ipv6AddressCount pulumi.IntPtrInput
 	Ipv6Addresses    pulumi.StringArrayInput
 	// (Available in 1.54.0+) The MAC address of an ENI.
@@ -263,6 +269,8 @@ func (NetworkInterfaceState) ElementType() reflect.Type {
 type networkInterfaceArgs struct {
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description      *string  `pulumi:"description"`
+	Ipv4PrefixCount  *int     `pulumi:"ipv4PrefixCount"`
+	Ipv4Prefixes     []string `pulumi:"ipv4Prefixes"`
 	Ipv6AddressCount *int     `pulumi:"ipv6AddressCount"`
 	Ipv6Addresses    []string `pulumi:"ipv6Addresses"`
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
@@ -303,6 +311,8 @@ type networkInterfaceArgs struct {
 type NetworkInterfaceArgs struct {
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description      pulumi.StringPtrInput
+	Ipv4PrefixCount  pulumi.IntPtrInput
+	Ipv4Prefixes     pulumi.StringArrayInput
 	Ipv6AddressCount pulumi.IntPtrInput
 	Ipv6Addresses    pulumi.StringArrayInput
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
@@ -429,6 +439,14 @@ func (o NetworkInterfaceOutput) ToNetworkInterfaceOutputWithContext(ctx context.
 // Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 func (o NetworkInterfaceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o NetworkInterfaceOutput) Ipv4PrefixCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.IntOutput { return v.Ipv4PrefixCount }).(pulumi.IntOutput)
+}
+
+func (o NetworkInterfaceOutput) Ipv4Prefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringArrayOutput { return v.Ipv4Prefixes }).(pulumi.StringArrayOutput)
 }
 
 func (o NetworkInterfaceOutput) Ipv6AddressCount() pulumi.IntOutput {

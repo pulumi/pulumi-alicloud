@@ -81,7 +81,7 @@ public class FcTrigger extends com.pulumi.resources.CustomResource {
      * The name of the Event.
      * 
      */
-    @Export(name="eventMetaName", type=String.class, parameters={})
+    @Export(name="eventMetaName", refs={String.class}, tree="[0]")
     private Output<String> eventMetaName;
 
     /**
@@ -95,7 +95,7 @@ public class FcTrigger extends com.pulumi.resources.CustomResource {
      * The version of the Event.
      * 
      */
-    @Export(name="eventMetaVersion", type=String.class, parameters={})
+    @Export(name="eventMetaVersion", refs={String.class}, tree="[0]")
     private Output<String> eventMetaVersion;
 
     /**
@@ -109,7 +109,7 @@ public class FcTrigger extends com.pulumi.resources.CustomResource {
      * The function arn. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`.
      * 
      */
-    @Export(name="functionArn", type=String.class, parameters={})
+    @Export(name="functionArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> functionArn;
 
     /**
@@ -123,7 +123,7 @@ public class FcTrigger extends com.pulumi.resources.CustomResource {
      * The Note information.
      * 
      */
-    @Export(name="notes", type=String.class, parameters={})
+    @Export(name="notes", refs={String.class}, tree="[0]")
     private Output<String> notes;
 
     /**
@@ -137,7 +137,7 @@ public class FcTrigger extends com.pulumi.resources.CustomResource {
      * The role authorized by RAM. The value formats as `acs:ram::{AccountID}:role/{RoleName}`.
      * 
      */
-    @Export(name="roleArn", type=String.class, parameters={})
+    @Export(name="roleArn", refs={String.class}, tree="[0]")
     private Output<String> roleArn;
 
     /**
@@ -151,7 +151,7 @@ public class FcTrigger extends com.pulumi.resources.CustomResource {
      * Resources and filters for event listening. The value formats as `acs:cdn:{RegionID}:{AccountID}:{Filter}`.
      * 
      */
-    @Export(name="sourceArn", type=String.class, parameters={})
+    @Export(name="sourceArn", refs={String.class}, tree="[0]")
     private Output<String> sourceArn;
 
     /**
@@ -165,7 +165,7 @@ public class FcTrigger extends com.pulumi.resources.CustomResource {
      * The trigger corresponding to the function Compute Service. The value formats as `acs:fc:{RegionID}:{AccountID}:{Filter}`. See [Create a CDN Fc Trigger](https://www.alibabacloud.com/help/en/cdn/developer-reference/api-cdn-2018-05-10-addfctrigger) for more details.
      * 
      */
-    @Export(name="triggerArn", type=String.class, parameters={})
+    @Export(name="triggerArn", refs={String.class}, tree="[0]")
     private Output<String> triggerArn;
 
     /**

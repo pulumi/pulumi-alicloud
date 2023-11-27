@@ -207,19 +207,19 @@ class ServiceMeshMeshConfig(dict):
                  telemetry: Optional[bool] = None,
                  tracing: Optional[bool] = None):
         """
-        :param 'ServiceMeshMeshConfigAccessLogArgs' access_log: The access logging configuration. See `mesh_config-access_log` below.
-        :param 'ServiceMeshMeshConfigAuditArgs' audit: Audit information. See `mesh_config-audit` below.
-        :param 'ServiceMeshMeshConfigControlPlaneLogArgs' control_plane_log: Control plane log collection configuration. See `mesh_config-control_plane_log` below.
+        :param 'ServiceMeshMeshConfigAccessLogArgs' access_log: The access logging configuration. See `access_log` below.
+        :param 'ServiceMeshMeshConfigAuditArgs' audit: Audit information. See `audit` below.
+        :param 'ServiceMeshMeshConfigControlPlaneLogArgs' control_plane_log: Control plane log collection configuration. See `control_plane_log` below.
         :param bool customized_zipkin: Whether or not to enable the use of a custom zipkin.
         :param bool enable_locality_lb: Whether to enable service can access the service through the nearest node access.
         :param str include_ip_ranges: The IP ADDRESS range.
-        :param 'ServiceMeshMeshConfigKialiArgs' kiali: Kiali configuration. See `mesh_config-kiali` below.
-        :param 'ServiceMeshMeshConfigOpaArgs' opa: The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
+        :param 'ServiceMeshMeshConfigKialiArgs' kiali: Kiali configuration. See `kiali` below.
+        :param 'ServiceMeshMeshConfigOpaArgs' opa: The open-door policy of agent (OPA) plug-in information. See `opa` below.
         :param str outbound_traffic_policy: Out to the traffic policy.
-        :param 'ServiceMeshMeshConfigPilotArgs' pilot: Link trace sampling information. See `mesh_config-pilot` below.
+        :param 'ServiceMeshMeshConfigPilotArgs' pilot: Link trace sampling information. See `pilot` below.
         :param 'ServiceMeshMeshConfigPrometheusArgs' prometheus: Prometheus configuration.
-        :param 'ServiceMeshMeshConfigProxyArgs' proxy: Proxy configuration. See `mesh_config-proxy` below.
-        :param 'ServiceMeshMeshConfigSidecarInjectorArgs' sidecar_injector: Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
+        :param 'ServiceMeshMeshConfigProxyArgs' proxy: Proxy configuration. See `proxy` below.
+        :param 'ServiceMeshMeshConfigSidecarInjectorArgs' sidecar_injector: Sidecar injector configuration. See `sidecar_injector` below.
         :param bool telemetry: Whether to enable acquisition Prometheus metrics (it is recommended that you use [Alibaba Cloud Prometheus monitoring](https://arms.console.aliyun.com/).
         :param bool tracing: Whether to enable link trace (you need to have [Alibaba Cloud link tracking service](https://tracing-analysis.console.aliyun.com/).
         """
@@ -258,7 +258,7 @@ class ServiceMeshMeshConfig(dict):
     @pulumi.getter(name="accessLog")
     def access_log(self) -> Optional['outputs.ServiceMeshMeshConfigAccessLog']:
         """
-        The access logging configuration. See `mesh_config-access_log` below.
+        The access logging configuration. See `access_log` below.
         """
         return pulumi.get(self, "access_log")
 
@@ -266,7 +266,7 @@ class ServiceMeshMeshConfig(dict):
     @pulumi.getter
     def audit(self) -> Optional['outputs.ServiceMeshMeshConfigAudit']:
         """
-        Audit information. See `mesh_config-audit` below.
+        Audit information. See `audit` below.
         """
         return pulumi.get(self, "audit")
 
@@ -274,7 +274,7 @@ class ServiceMeshMeshConfig(dict):
     @pulumi.getter(name="controlPlaneLog")
     def control_plane_log(self) -> Optional['outputs.ServiceMeshMeshConfigControlPlaneLog']:
         """
-        Control plane log collection configuration. See `mesh_config-control_plane_log` below.
+        Control plane log collection configuration. See `control_plane_log` below.
         """
         return pulumi.get(self, "control_plane_log")
 
@@ -306,7 +306,7 @@ class ServiceMeshMeshConfig(dict):
     @pulumi.getter
     def kiali(self) -> Optional['outputs.ServiceMeshMeshConfigKiali']:
         """
-        Kiali configuration. See `mesh_config-kiali` below.
+        Kiali configuration. See `kiali` below.
         """
         return pulumi.get(self, "kiali")
 
@@ -314,7 +314,7 @@ class ServiceMeshMeshConfig(dict):
     @pulumi.getter
     def opa(self) -> Optional['outputs.ServiceMeshMeshConfigOpa']:
         """
-        The open-door policy of agent (OPA) plug-in information. See `mesh_config-opa` below.
+        The open-door policy of agent (OPA) plug-in information. See `opa` below.
         """
         return pulumi.get(self, "opa")
 
@@ -330,7 +330,7 @@ class ServiceMeshMeshConfig(dict):
     @pulumi.getter
     def pilot(self) -> Optional['outputs.ServiceMeshMeshConfigPilot']:
         """
-        Link trace sampling information. See `mesh_config-pilot` below.
+        Link trace sampling information. See `pilot` below.
         """
         return pulumi.get(self, "pilot")
 
@@ -346,7 +346,7 @@ class ServiceMeshMeshConfig(dict):
     @pulumi.getter
     def proxy(self) -> Optional['outputs.ServiceMeshMeshConfigProxy']:
         """
-        Proxy configuration. See `mesh_config-proxy` below.
+        Proxy configuration. See `proxy` below.
         """
         return pulumi.get(self, "proxy")
 
@@ -354,7 +354,7 @@ class ServiceMeshMeshConfig(dict):
     @pulumi.getter(name="sidecarInjector")
     def sidecar_injector(self) -> Optional['outputs.ServiceMeshMeshConfigSidecarInjector']:
         """
-        Sidecar injector configuration. See `mesh_config-sidecar_injector` below.
+        Sidecar injector configuration. See `sidecar_injector` below.
         """
         return pulumi.get(self, "sidecar_injector")
 
@@ -840,7 +840,7 @@ class ServiceMeshMeshConfigSidecarInjector(dict):
         """
         :param bool auto_injection_policy_enabled: Whether to enable by Pod Annotations automatic injection Sidecar.
         :param bool enable_namespaces_by_default: Whether it is the all namespaces you turn on the auto injection capabilities.
-        :param 'ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs' init_cni_configuration: CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+        :param 'ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs' init_cni_configuration: CNI configuration. See `init_cni_configuration` below.
         :param str limit_cpu: Sidecar injector Pods on the throttle.
         :param str limit_memory: Sidecar injector Pods on the throttle.
         :param str request_cpu: Sidecar injector Pods on the requested resource.
@@ -884,7 +884,7 @@ class ServiceMeshMeshConfigSidecarInjector(dict):
     @pulumi.getter(name="initCniConfiguration")
     def init_cni_configuration(self) -> Optional['outputs.ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration']:
         """
-        CNI configuration. See `mesh_config-sidecar_injector-init_cni_configuration` below.
+        CNI configuration. See `init_cni_configuration` below.
         """
         return pulumi.get(self, "init_cni_configuration")
 
@@ -1209,6 +1209,7 @@ class GetServiceMeshesMeshResult(dict):
                  error_message: str,
                  id: str,
                  istio_operator_version: str,
+                 kube_config: str,
                  load_balancers: Sequence['outputs.GetServiceMeshesMeshLoadBalancerResult'],
                  mesh_configs: Sequence['outputs.GetServiceMeshesMeshMeshConfigResult'],
                  networks: Sequence['outputs.GetServiceMeshesMeshNetworkResult'],
@@ -1225,6 +1226,7 @@ class GetServiceMeshesMeshResult(dict):
         :param str error_message: The Cause of the Error.
         :param str id: The ID of the Service Mesh.
         :param str istio_operator_version: The Istio Operator Version. **Note:** the `istio_operator_version` is available from the version v1.170.0.
+        :param str kube_config: The content of Kube config.
         :param Sequence['GetServiceMeshesMeshLoadBalancerArgs'] load_balancers: The configuration of the Load Balancer.
         :param Sequence['GetServiceMeshesMeshMeshConfigArgs'] mesh_configs: The configuration of the Service grid.
         :param Sequence['GetServiceMeshesMeshNetworkArgs'] networks: The configuration of the Service grid network.
@@ -1241,6 +1243,7 @@ class GetServiceMeshesMeshResult(dict):
         pulumi.set(__self__, "error_message", error_message)
         pulumi.set(__self__, "id", id)
         pulumi.set(__self__, "istio_operator_version", istio_operator_version)
+        pulumi.set(__self__, "kube_config", kube_config)
         pulumi.set(__self__, "load_balancers", load_balancers)
         pulumi.set(__self__, "mesh_configs", mesh_configs)
         pulumi.set(__self__, "networks", networks)
@@ -1305,6 +1308,14 @@ class GetServiceMeshesMeshResult(dict):
         The Istio Operator Version. **Note:** the `istio_operator_version` is available from the version v1.170.0.
         """
         return pulumi.get(self, "istio_operator_version")
+
+    @property
+    @pulumi.getter(name="kubeConfig")
+    def kube_config(self) -> str:
+        """
+        The content of Kube config.
+        """
+        return pulumi.get(self, "kube_config")
 
     @property
     @pulumi.getter(name="loadBalancers")

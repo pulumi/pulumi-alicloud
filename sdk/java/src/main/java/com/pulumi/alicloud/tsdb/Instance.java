@@ -91,7 +91,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The app key.
      * 
      */
-    @Export(name="appKey", type=String.class, parameters={})
+    @Export(name="appKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> appKey;
 
     /**
@@ -105,7 +105,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The disk type of instance. Valid when the engine type is `tsdb_influxdb`. `cloud_ssd` refers to SSD disk, `cloud_efficiency` refers to efficiency disk, `cloud_essd` refers to ESSD PL1 disk. Valid values: `cloud_efficiency`, `cloud_essd`, `cloud_ssd`.
      * 
      */
-    @Export(name="diskCategory", type=String.class, parameters={})
+    @Export(name="diskCategory", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> diskCategory;
 
     /**
@@ -119,7 +119,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The duration.
      * 
      */
-    @Export(name="duration", type=String.class, parameters={})
+    @Export(name="duration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> duration;
 
     /**
@@ -133,7 +133,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The engine type of instance Enumerative: `tsdb_tsdb` refers to TSDB, `tsdb_influxdb` refers to TSDB for InfluxDB️.
      * 
      */
-    @Export(name="engineType", type=String.class, parameters={})
+    @Export(name="engineType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> engineType;
 
     /**
@@ -147,7 +147,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The alias of the instance.
      * 
      */
-    @Export(name="instanceAlias", type=String.class, parameters={})
+    @Export(name="instanceAlias", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceAlias;
 
     /**
@@ -183,7 +183,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - `tsdb.96x.large` refers to ultimate edition II.
      * 
      */
-    @Export(name="instanceClass", type=String.class, parameters={})
+    @Export(name="instanceClass", refs={String.class}, tree="[0]")
     private Output<String> instanceClass;
 
     /**
@@ -219,7 +219,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The storage capacity of the instance. Unit: GB. For example, the value 50 indicates 50 GB. Does not support shrink storage.
      * 
      */
-    @Export(name="instanceStorage", type=String.class, parameters={})
+    @Export(name="instanceStorage", refs={String.class}, tree="[0]")
     private Output<String> instanceStorage;
 
     /**
@@ -233,7 +233,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The billing method. Valid values: `PayAsYouGo` and `Subscription`. The `PayAsYouGo` value indicates the pay-as-you-go method, and the `Subscription` value indicates the subscription method.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -247,7 +247,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance status, enumerative: `ACTIVATION`, `DELETED`, `CREATING`, `CLASS_CHANGING`, `LOCKED`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -261,7 +261,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The vswitch id.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -275,7 +275,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The zone ID of the instance.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

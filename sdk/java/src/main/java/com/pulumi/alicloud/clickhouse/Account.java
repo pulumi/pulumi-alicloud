@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Click House Account resource.
  * 
- * For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createaccount).
+ * For information about Click House Account and how to use it, see [What is Account](https://www.alibabacloud.com/help/zh/clickhouse/latest/api-clickhouse-2019-11-11-createaccount).
  * 
  * &gt; **NOTE:** Available since v1.134.0.
  * 
@@ -111,7 +111,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * In Chinese, English letter. May contain Chinese and English characters, lowercase letters, numbers, and underscores (_), the dash (-). Cannot start with http:// and https:// at the beginning. Length is from 2 to 256 characters.
      * 
      */
-    @Export(name="accountDescription", type=String.class, parameters={})
+    @Export(name="accountDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountDescription;
 
     /**
@@ -125,7 +125,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Account name: lowercase letters, numbers, underscores, lowercase letter; length no more than 16 characters.
      * 
      */
-    @Export(name="accountName", type=String.class, parameters={})
+    @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
@@ -139,7 +139,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The account password: uppercase letters, lowercase letters, lowercase letters, numbers, and special characters (special character! #$%^&amp; author (s):_+-=) in a length of 8-32 bit.
      * 
      */
-    @Export(name="accountPassword", type=String.class, parameters={})
+    @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output<String> accountPassword;
 
     /**
@@ -153,7 +153,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The list of databases to which you want to grant permissions. Separate databases with commas (,).
      * 
      */
-    @Export(name="allowDatabases", type=String.class, parameters={})
+    @Export(name="allowDatabases", refs={String.class}, tree="[0]")
     private Output<String> allowDatabases;
 
     /**
@@ -167,7 +167,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The list of dictionaries to which you want to grant permissions. Separate dictionaries with commas (,).
      * 
      */
-    @Export(name="allowDictionaries", type=String.class, parameters={})
+    @Export(name="allowDictionaries", refs={String.class}, tree="[0]")
     private Output<String> allowDictionaries;
 
     /**
@@ -181,7 +181,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The db cluster id.
      * 
      */
-    @Export(name="dbClusterId", type=String.class, parameters={})
+    @Export(name="dbClusterId", refs={String.class}, tree="[0]")
     private Output<String> dbClusterId;
 
     /**
@@ -195,7 +195,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Specifies whether to grant DDL permissions to the database account. Valid values: `true` and `false`.
      * 
      */
-    @Export(name="ddlAuthority", type=Boolean.class, parameters={})
+    @Export(name="ddlAuthority", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ddlAuthority;
 
     /**
@@ -209,7 +209,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * Specifies whether to grant DML permissions to the database account. Valid values: `all` and `readOnly,modify`.
      * 
      */
-    @Export(name="dmlAuthority", type=String.class, parameters={})
+    @Export(name="dmlAuthority", refs={String.class}, tree="[0]")
     private Output<String> dmlAuthority;
 
     /**
@@ -223,7 +223,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid Status: `Creating`,`Available`,`Deleting`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -237,7 +237,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The list of all databases. Separate databases with commas (,).
      * 
      */
-    @Export(name="totalDatabases", type=String.class, parameters={})
+    @Export(name="totalDatabases", refs={String.class}, tree="[0]")
     private Output<String> totalDatabases;
 
     /**
@@ -251,7 +251,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The list of all dictionaries. Separate dictionaries with commas (,).
      * 
      */
-    @Export(name="totalDictionaries", type=String.class, parameters={})
+    @Export(name="totalDictionaries", refs={String.class}, tree="[0]")
     private Output<String> totalDictionaries;
 
     /**
@@ -265,7 +265,7 @@ public class Account extends com.pulumi.resources.CustomResource {
      * The type of the database account. Valid values: `Normal` or `Super`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

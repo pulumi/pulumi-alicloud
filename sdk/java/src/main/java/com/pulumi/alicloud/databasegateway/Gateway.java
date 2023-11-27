@@ -68,7 +68,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The description of Gateway.
      * 
      */
-    @Export(name="gatewayDesc", type=String.class, parameters={})
+    @Export(name="gatewayDesc", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gatewayDesc;
 
     /**
@@ -82,7 +82,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The name of the Gateway.
      * 
      */
-    @Export(name="gatewayName", type=String.class, parameters={})
+    @Export(name="gatewayName", refs={String.class}, tree="[0]")
     private Output<String> gatewayName;
 
     /**
@@ -96,7 +96,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The status of gateway. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

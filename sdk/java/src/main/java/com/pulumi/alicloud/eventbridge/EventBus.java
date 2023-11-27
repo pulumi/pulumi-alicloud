@@ -70,7 +70,7 @@ public class EventBus extends com.pulumi.resources.CustomResource {
      * The description of event bus.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -84,7 +84,7 @@ public class EventBus extends com.pulumi.resources.CustomResource {
      * The name of event bus. The length is limited to 2 ~ 127 characters, which can be composed of letters, numbers or hyphens (-)
      * 
      */
-    @Export(name="eventBusName", type=String.class, parameters={})
+    @Export(name="eventBusName", refs={String.class}, tree="[0]")
     private Output<String> eventBusName;
 
     /**

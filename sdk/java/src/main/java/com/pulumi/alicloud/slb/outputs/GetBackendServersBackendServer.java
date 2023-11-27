@@ -85,11 +85,11 @@ public final class GetBackendServersBackendServer {
             return this;
         }
         public GetBackendServersBackendServer build() {
-            final var o = new GetBackendServersBackendServer();
-            o.id = id;
-            o.serverType = serverType;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new GetBackendServersBackendServer();
+            _resultValue.id = id;
+            _resultValue.serverType = serverType;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

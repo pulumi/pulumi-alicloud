@@ -80,7 +80,7 @@ public class OidcProvider extends com.pulumi.resources.CustomResource {
      * Client ID.
      * 
      */
-    @Export(name="clientIds", type=List.class, parameters={String.class})
+    @Export(name="clientIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> clientIds;
 
     /**
@@ -94,7 +94,7 @@ public class OidcProvider extends com.pulumi.resources.CustomResource {
      * Creation Time (UTC time).
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -108,7 +108,7 @@ public class OidcProvider extends com.pulumi.resources.CustomResource {
      * Description of OIDC identity provider.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -122,7 +122,7 @@ public class OidcProvider extends com.pulumi.resources.CustomResource {
      * The authentication fingerprint of the HTTPS CA certificate.
      * 
      */
-    @Export(name="fingerprints", type=List.class, parameters={String.class})
+    @Export(name="fingerprints", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> fingerprints;
 
     /**
@@ -136,7 +136,7 @@ public class OidcProvider extends com.pulumi.resources.CustomResource {
      * The earliest time when an external IdP is allowed to issue an ID Token. If the iat field in the ID Token is greater than the current time, the request is rejected.Unit: hours. Value range: 1~168.
      * 
      */
-    @Export(name="issuanceLimitTime", type=Integer.class, parameters={})
+    @Export(name="issuanceLimitTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> issuanceLimitTime;
 
     /**
@@ -150,7 +150,7 @@ public class OidcProvider extends com.pulumi.resources.CustomResource {
      * The issuer URL of the OIDC identity provider.
      * 
      */
-    @Export(name="issuerUrl", type=String.class, parameters={})
+    @Export(name="issuerUrl", refs={String.class}, tree="[0]")
     private Output<String> issuerUrl;
 
     /**
@@ -164,7 +164,7 @@ public class OidcProvider extends com.pulumi.resources.CustomResource {
      * The name of the OIDC identity provider.
      * 
      */
-    @Export(name="oidcProviderName", type=String.class, parameters={})
+    @Export(name="oidcProviderName", refs={String.class}, tree="[0]")
     private Output<String> oidcProviderName;
 
     /**

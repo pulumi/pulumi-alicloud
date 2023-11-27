@@ -146,14 +146,14 @@ public final class GetAclsAcl {
             return this;
         }
         public GetAclsAcl build() {
-            final var o = new GetAclsAcl();
-            o.aclEntries = aclEntries;
-            o.aclId = aclId;
-            o.aclName = aclName;
-            o.addressIpVersion = addressIpVersion;
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAclsAcl();
+            _resultValue.aclEntries = aclEntries;
+            _resultValue.aclId = aclId;
+            _resultValue.aclName = aclName;
+            _resultValue.addressIpVersion = addressIpVersion;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

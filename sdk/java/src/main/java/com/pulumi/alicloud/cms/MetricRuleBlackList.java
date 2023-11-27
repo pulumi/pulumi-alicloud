@@ -135,7 +135,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * Cloud service classification. For example, Redis includes kvstore_standard, kvstore_sharding, and kvstore_splitrw.
      * 
      */
-    @Export(name="category", type=String.class, parameters={})
+    @Export(name="category", refs={String.class}, tree="[0]")
     private Output<String> category;
 
     /**
@@ -149,7 +149,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * The timestamp for creating an alert blacklist policy.Unit: milliseconds.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -163,7 +163,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * The effective time range of the alert blacklist policy.
      * 
      */
-    @Export(name="effectiveTime", type=String.class, parameters={})
+    @Export(name="effectiveTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> effectiveTime;
 
     /**
@@ -177,7 +177,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * The start timestamp of the alert blacklist policy.Unit: milliseconds.
      * 
      */
-    @Export(name="enableEndTime", type=String.class, parameters={})
+    @Export(name="enableEndTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> enableEndTime;
 
     /**
@@ -191,7 +191,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * The end timestamp of the alert blacklist policy.Unit: milliseconds.
      * 
      */
-    @Export(name="enableStartTime", type=String.class, parameters={})
+    @Export(name="enableStartTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> enableStartTime;
 
     /**
@@ -205,7 +205,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * The list of instances of cloud services specified in the alert blacklist policy.
      * 
      */
-    @Export(name="instances", type=List.class, parameters={String.class})
+    @Export(name="instances", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> instances;
 
     /**
@@ -219,7 +219,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * The status of the alert blacklist policy. Value:-true: enabled.-false: disabled.
      * 
      */
-    @Export(name="isEnable", type=Boolean.class, parameters={})
+    @Export(name="isEnable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isEnable;
 
     /**
@@ -233,7 +233,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * The ID of the blacklist policy.
      * 
      */
-    @Export(name="metricRuleBlackListId", type=String.class, parameters={})
+    @Export(name="metricRuleBlackListId", refs={String.class}, tree="[0]")
     private Output<String> metricRuleBlackListId;
 
     /**
@@ -247,7 +247,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * The name of the alert blacklist policy.
      * 
      */
-    @Export(name="metricRuleBlackListName", type=String.class, parameters={})
+    @Export(name="metricRuleBlackListName", refs={String.class}, tree="[0]")
     private Output<String> metricRuleBlackListName;
 
     /**
@@ -261,7 +261,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * Monitoring metrics in the instance. See `metrics` below.
      * 
      */
-    @Export(name="metrics", type=List.class, parameters={MetricRuleBlackListMetric.class})
+    @Export(name="metrics", refs={List.class,MetricRuleBlackListMetric.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MetricRuleBlackListMetric>> metrics;
 
     /**
@@ -275,7 +275,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * The data namespace of the cloud service.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output<String> namespace;
 
     /**
@@ -289,7 +289,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * The effective range of the alert blacklist policy. Value:-USER: The alert blacklist policy only takes effect in the current Alibaba cloud account.-GROUP: The alert blacklist policy takes effect in the specified application GROUP.
      * 
      */
-    @Export(name="scopeType", type=String.class, parameters={})
+    @Export(name="scopeType", refs={String.class}, tree="[0]")
     private Output<String> scopeType;
 
     /**
@@ -303,7 +303,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * Application Group ID list. The format is JSON Array.&gt; This parameter is displayed only when &#39;ScopeType&#39; is &#39;GROUP.
      * 
      */
-    @Export(name="scopeValues", type=List.class, parameters={String.class})
+    @Export(name="scopeValues", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> scopeValues;
 
     /**
@@ -317,7 +317,7 @@ public class MetricRuleBlackList extends com.pulumi.resources.CustomResource {
      * Modify the timestamp of the alert blacklist policy.Unit: milliseconds.
      * 
      */
-    @Export(name="updateTime", type=String.class, parameters={})
+    @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**

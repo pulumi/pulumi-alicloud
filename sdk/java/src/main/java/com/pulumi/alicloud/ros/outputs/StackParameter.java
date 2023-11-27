@@ -67,10 +67,10 @@ public final class StackParameter {
             return this;
         }
         public StackParameter build() {
-            final var o = new StackParameter();
-            o.parameterKey = parameterKey;
-            o.parameterValue = parameterValue;
-            return o;
+            final var _resultValue = new StackParameter();
+            _resultValue.parameterKey = parameterKey;
+            _resultValue.parameterValue = parameterValue;
+            return _resultValue;
         }
     }
 }

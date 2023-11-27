@@ -116,13 +116,13 @@ public final class GetTopicsResult {
             return topics(List.of(topics));
         }
         public GetTopicsResult build() {
-            final var o = new GetTopicsResult();
-            o.id = id;
-            o.namePrefix = namePrefix;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.topics = topics;
-            return o;
+            final var _resultValue = new GetTopicsResult();
+            _resultValue.id = id;
+            _resultValue.namePrefix = namePrefix;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.topics = topics;
+            return _resultValue;
         }
     }
 }

@@ -90,7 +90,7 @@ public class ChartRepository extends com.pulumi.resources.CustomResource {
      * The ID of the Container Registry instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -104,7 +104,7 @@ public class ChartRepository extends com.pulumi.resources.CustomResource {
      * The name of the repository that you want to create.
      * 
      */
-    @Export(name="repoName", type=String.class, parameters={})
+    @Export(name="repoName", refs={String.class}, tree="[0]")
     private Output<String> repoName;
 
     /**
@@ -118,7 +118,7 @@ public class ChartRepository extends com.pulumi.resources.CustomResource {
      * The namespace to which the repository belongs.
      * 
      */
-    @Export(name="repoNamespaceName", type=String.class, parameters={})
+    @Export(name="repoNamespaceName", refs={String.class}, tree="[0]")
     private Output<String> repoNamespaceName;
 
     /**
@@ -132,7 +132,7 @@ public class ChartRepository extends com.pulumi.resources.CustomResource {
      * The default repository type. Valid values: `PUBLIC`,`PRIVATE`.
      * 
      */
-    @Export(name="repoType", type=String.class, parameters={})
+    @Export(name="repoType", refs={String.class}, tree="[0]")
     private Output<String> repoType;
 
     /**
@@ -146,7 +146,7 @@ public class ChartRepository extends com.pulumi.resources.CustomResource {
      * The summary about the repository.
      * 
      */
-    @Export(name="summary", type=String.class, parameters={})
+    @Export(name="summary", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> summary;
 
     /**

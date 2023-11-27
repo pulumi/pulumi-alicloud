@@ -100,13 +100,13 @@ public final class GetConsumerChannelsResult {
             return this;
         }
         public GetConsumerChannelsResult build() {
-            final var o = new GetConsumerChannelsResult();
-            o.channels = channels;
-            o.dtsInstanceId = dtsInstanceId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetConsumerChannelsResult();
+            _resultValue.channels = channels;
+            _resultValue.dtsInstanceId = dtsInstanceId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

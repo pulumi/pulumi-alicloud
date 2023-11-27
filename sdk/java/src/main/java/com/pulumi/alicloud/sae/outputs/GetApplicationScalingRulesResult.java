@@ -100,13 +100,13 @@ public final class GetApplicationScalingRulesResult {
             return rules(List.of(rules));
         }
         public GetApplicationScalingRulesResult build() {
-            final var o = new GetApplicationScalingRulesResult();
-            o.appId = appId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.rules = rules;
-            return o;
+            final var _resultValue = new GetApplicationScalingRulesResult();
+            _resultValue.appId = appId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.rules = rules;
+            return _resultValue;
         }
     }
 }

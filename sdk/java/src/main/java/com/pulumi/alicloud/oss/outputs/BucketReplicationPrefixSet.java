@@ -54,9 +54,9 @@ public final class BucketReplicationPrefixSet {
             return prefixes(List.of(prefixes));
         }
         public BucketReplicationPrefixSet build() {
-            final var o = new BucketReplicationPrefixSet();
-            o.prefixes = prefixes;
-            return o;
+            final var _resultValue = new BucketReplicationPrefixSet();
+            _resultValue.prefixes = prefixes;
+            return _resultValue;
         }
     }
 }

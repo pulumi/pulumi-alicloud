@@ -85,6 +85,12 @@ namespace Pulumi.AliCloud.Vpc
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        [Output("ipv4PrefixCount")]
+        public Output<int> Ipv4PrefixCount { get; private set; } = null!;
+
+        [Output("ipv4Prefixes")]
+        public Output<ImmutableArray<string>> Ipv4Prefixes { get; private set; } = null!;
+
         [Output("ipv6AddressCount")]
         public Output<int> Ipv6AddressCount { get; private set; } = null!;
 
@@ -218,6 +224,17 @@ namespace Pulumi.AliCloud.Vpc
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("ipv4PrefixCount")]
+        public Input<int>? Ipv4PrefixCount { get; set; }
+
+        [Input("ipv4Prefixes")]
+        private InputList<string>? _ipv4Prefixes;
+        public InputList<string> Ipv4Prefixes
+        {
+            get => _ipv4Prefixes ?? (_ipv4Prefixes = new InputList<string>());
+            set => _ipv4Prefixes = value;
+        }
+
         [Input("ipv6AddressCount")]
         public Input<int>? Ipv6AddressCount { get; set; }
 
@@ -338,6 +355,17 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("ipv4PrefixCount")]
+        public Input<int>? Ipv4PrefixCount { get; set; }
+
+        [Input("ipv4Prefixes")]
+        private InputList<string>? _ipv4Prefixes;
+        public InputList<string> Ipv4Prefixes
+        {
+            get => _ipv4Prefixes ?? (_ipv4Prefixes = new InputList<string>());
+            set => _ipv4Prefixes = value;
+        }
 
         [Input("ipv6AddressCount")]
         public Input<int>? Ipv6AddressCount { get; set; }

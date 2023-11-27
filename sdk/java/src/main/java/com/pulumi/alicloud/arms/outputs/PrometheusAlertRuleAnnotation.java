@@ -67,10 +67,10 @@ public final class PrometheusAlertRuleAnnotation {
             return this;
         }
         public PrometheusAlertRuleAnnotation build() {
-            final var o = new PrometheusAlertRuleAnnotation();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new PrometheusAlertRuleAnnotation();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

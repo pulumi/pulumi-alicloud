@@ -157,14 +157,14 @@ public final class NetworkAclIngressAclEntry {
             return this;
         }
         public NetworkAclIngressAclEntry build() {
-            final var o = new NetworkAclIngressAclEntry();
-            o.description = description;
-            o.networkAclEntryName = networkAclEntryName;
-            o.policy = policy;
-            o.port = port;
-            o.protocol = protocol;
-            o.sourceCidrIp = sourceCidrIp;
-            return o;
+            final var _resultValue = new NetworkAclIngressAclEntry();
+            _resultValue.description = description;
+            _resultValue.networkAclEntryName = networkAclEntryName;
+            _resultValue.policy = policy;
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            _resultValue.sourceCidrIp = sourceCidrIp;
+            return _resultValue;
         }
     }
 }

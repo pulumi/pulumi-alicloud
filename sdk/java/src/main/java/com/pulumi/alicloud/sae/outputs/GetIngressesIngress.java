@@ -180,16 +180,16 @@ public final class GetIngressesIngress {
             return this;
         }
         public GetIngressesIngress build() {
-            final var o = new GetIngressesIngress();
-            o.certId = certId;
-            o.defaultRule = defaultRule;
-            o.description = description;
-            o.id = id;
-            o.ingressId = ingressId;
-            o.listenerPort = listenerPort;
-            o.namespaceId = namespaceId;
-            o.slbId = slbId;
-            return o;
+            final var _resultValue = new GetIngressesIngress();
+            _resultValue.certId = certId;
+            _resultValue.defaultRule = defaultRule;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.ingressId = ingressId;
+            _resultValue.listenerPort = listenerPort;
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.slbId = slbId;
+            return _resultValue;
         }
     }
 }

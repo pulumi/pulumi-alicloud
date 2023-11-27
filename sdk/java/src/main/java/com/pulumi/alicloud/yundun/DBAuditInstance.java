@@ -33,7 +33,7 @@ public class DBAuditInstance extends com.pulumi.resources.CustomResource {
      * Description of the instance. This name can have a string of 1 to 63 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -48,7 +48,7 @@ public class DBAuditInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output<Integer> period;
 
     /**
@@ -63,7 +63,7 @@ public class DBAuditInstance extends com.pulumi.resources.CustomResource {
      * Plan code of the Cloud DBAudit to produce. (alpha.professional, alpha.basic, alpha.premium)
      * 
      */
-    @Export(name="planCode", type=String.class, parameters={})
+    @Export(name="planCode", refs={String.class}, tree="[0]")
     private Output<String> planCode;
 
     /**
@@ -77,7 +77,7 @@ public class DBAuditInstance extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the DBaudit Instance belongs. If not set, the resource is created in the default resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -91,7 +91,7 @@ public class DBAuditInstance extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -105,7 +105,7 @@ public class DBAuditInstance extends com.pulumi.resources.CustomResource {
      * vSwtich ID configured to audit
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

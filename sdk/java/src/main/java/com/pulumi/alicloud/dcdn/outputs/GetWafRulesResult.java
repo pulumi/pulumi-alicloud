@@ -131,15 +131,15 @@ public final class GetWafRulesResult {
             return wafRules(List.of(wafRules));
         }
         public GetWafRulesResult build() {
-            final var o = new GetWafRulesResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.queryArgs = queryArgs;
-            o.wafRules = wafRules;
-            return o;
+            final var _resultValue = new GetWafRulesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.queryArgs = queryArgs;
+            _resultValue.wafRules = wafRules;
+            return _resultValue;
         }
     }
 }

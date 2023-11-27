@@ -130,7 +130,7 @@ public class UserPermission extends com.pulumi.resources.CustomResource {
      * List of permissions. **Warning:** The list requires the full amount of permission information to be passed. Adding permissions means adding items to the list, and deleting them or inputting nothing means removing items. See `permissions` below.
      * 
      */
-    @Export(name="permissions", type=List.class, parameters={UserPermissionPermission.class})
+    @Export(name="permissions", refs={List.class,UserPermissionPermission.class}, tree="[0,1]")
     private Output<List<UserPermissionPermission>> permissions;
 
     /**
@@ -144,7 +144,7 @@ public class UserPermission extends com.pulumi.resources.CustomResource {
      * The configuration of the Load Balancer. See the following `Block load_balancer`.
      * 
      */
-    @Export(name="subAccountUserId", type=String.class, parameters={})
+    @Export(name="subAccountUserId", refs={String.class}, tree="[0]")
     private Output<String> subAccountUserId;
 
     /**

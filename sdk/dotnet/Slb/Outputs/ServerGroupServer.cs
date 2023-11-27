@@ -13,9 +13,21 @@ namespace Pulumi.AliCloud.Slb.Outputs
     [OutputType]
     public sealed class ServerGroupServer
     {
+        /// <summary>
+        /// The port used by the backend server. Valid value range: [1-65535].
+        /// </summary>
         public readonly int Port;
+        /// <summary>
+        /// A list backend server ID (ECS instance ID).
+        /// </summary>
         public readonly ImmutableArray<string> ServerIds;
+        /// <summary>
+        /// Type of the backend server. Valid value ecs, eni. Default to eni.
+        /// </summary>
         public readonly string? Type;
+        /// <summary>
+        /// Weight of the backend server. Valid value range: [0-100]. Default to 100.
+        /// </summary>
         public readonly int? Weight;
 
         [OutputConstructor]

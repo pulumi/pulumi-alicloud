@@ -71,10 +71,10 @@ public final class GetNestServiceInstancesFilter {
             return values(List.of(values));
         }
         public GetNestServiceInstancesFilter build() {
-            final var o = new GetNestServiceInstancesFilter();
-            o.name = name;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetNestServiceInstancesFilter();
+            _resultValue.name = name;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

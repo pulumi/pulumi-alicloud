@@ -89,11 +89,11 @@ public final class ServiceNasConfig {
             return this;
         }
         public ServiceNasConfig build() {
-            final var o = new ServiceNasConfig();
-            o.groupId = groupId;
-            o.mountPoints = mountPoints;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new ServiceNasConfig();
+            _resultValue.groupId = groupId;
+            _resultValue.mountPoints = mountPoints;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

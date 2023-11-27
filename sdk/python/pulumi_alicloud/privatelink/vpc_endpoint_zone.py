@@ -17,18 +17,24 @@ class VpcEndpointZoneArgs:
                  endpoint_id: pulumi.Input[str],
                  vswitch_id: pulumi.Input[str],
                  dry_run: Optional[pulumi.Input[bool]] = None,
+                 eni_ip: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a VpcEndpointZone resource.
-        :param pulumi.Input[str] endpoint_id: The ID of the Vpc Endpoint.
-        :param pulumi.Input[str] vswitch_id: The VSwitch id.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] zone_id: The Zone Id.
+        :param pulumi.Input[str] endpoint_id: The endpoint ID.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch in the zone. .
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] eni_ip: The IP address of the endpoint ENI.
+        :param pulumi.Input[str] zone_id: The zone ID.
         """
         pulumi.set(__self__, "endpoint_id", endpoint_id)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
+        if eni_ip is not None:
+            pulumi.set(__self__, "eni_ip", eni_ip)
         if zone_id is not None:
             pulumi.set(__self__, "zone_id", zone_id)
 
@@ -36,7 +42,7 @@ class VpcEndpointZoneArgs:
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> pulumi.Input[str]:
         """
-        The ID of the Vpc Endpoint.
+        The endpoint ID.
         """
         return pulumi.get(self, "endpoint_id")
 
@@ -48,7 +54,7 @@ class VpcEndpointZoneArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[str]:
         """
-        The VSwitch id.
+        The ID of the vSwitch in the zone. .
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -60,7 +66,9 @@ class VpcEndpointZoneArgs:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        The dry run.
+        Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
@@ -69,10 +77,22 @@ class VpcEndpointZoneArgs:
         pulumi.set(self, "dry_run", value)
 
     @property
+    @pulumi.getter(name="eniIp")
+    def eni_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address of the endpoint ENI.
+        """
+        return pulumi.get(self, "eni_ip")
+
+    @eni_ip.setter
+    def eni_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "eni_ip", value)
+
+    @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Zone Id.
+        The zone ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -86,21 +106,27 @@ class _VpcEndpointZoneState:
     def __init__(__self__, *,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  endpoint_id: Optional[pulumi.Input[str]] = None,
+                 eni_ip: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering VpcEndpointZone resources.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] endpoint_id: The ID of the Vpc Endpoint.
-        :param pulumi.Input[str] status: Status.
-        :param pulumi.Input[str] vswitch_id: The VSwitch id.
-        :param pulumi.Input[str] zone_id: The Zone Id.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] endpoint_id: The endpoint ID.
+        :param pulumi.Input[str] eni_ip: The IP address of the endpoint ENI.
+        :param pulumi.Input[str] status: The state of the zone.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch in the zone. .
+        :param pulumi.Input[str] zone_id: The zone ID.
         """
         if dry_run is not None:
             pulumi.set(__self__, "dry_run", dry_run)
         if endpoint_id is not None:
             pulumi.set(__self__, "endpoint_id", endpoint_id)
+        if eni_ip is not None:
+            pulumi.set(__self__, "eni_ip", eni_ip)
         if status is not None:
             pulumi.set(__self__, "status", status)
         if vswitch_id is not None:
@@ -112,7 +138,9 @@ class _VpcEndpointZoneState:
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        The dry run.
+        Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
@@ -124,7 +152,7 @@ class _VpcEndpointZoneState:
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the Vpc Endpoint.
+        The endpoint ID.
         """
         return pulumi.get(self, "endpoint_id")
 
@@ -133,10 +161,22 @@ class _VpcEndpointZoneState:
         pulumi.set(self, "endpoint_id", value)
 
     @property
+    @pulumi.getter(name="eniIp")
+    def eni_ip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The IP address of the endpoint ENI.
+        """
+        return pulumi.get(self, "eni_ip")
+
+    @eni_ip.setter
+    def eni_ip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "eni_ip", value)
+
+    @property
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Status.
+        The state of the zone.
         """
         return pulumi.get(self, "status")
 
@@ -148,7 +188,7 @@ class _VpcEndpointZoneState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VSwitch id.
+        The ID of the vSwitch in the zone. .
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -160,7 +200,7 @@ class _VpcEndpointZoneState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The Zone Id.
+        The zone ID.
         """
         return pulumi.get(self, "zone_id")
 
@@ -176,6 +216,7 @@ class VpcEndpointZone(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  endpoint_id: Optional[pulumi.Input[str]] = None,
+                 eni_ip: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -242,10 +283,13 @@ class VpcEndpointZone(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] endpoint_id: The ID of the Vpc Endpoint.
-        :param pulumi.Input[str] vswitch_id: The VSwitch id.
-        :param pulumi.Input[str] zone_id: The Zone Id.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] endpoint_id: The endpoint ID.
+        :param pulumi.Input[str] eni_ip: The IP address of the endpoint ENI.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch in the zone. .
+        :param pulumi.Input[str] zone_id: The zone ID.
         """
         ...
     @overload
@@ -331,6 +375,7 @@ class VpcEndpointZone(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  dry_run: Optional[pulumi.Input[bool]] = None,
                  endpoint_id: Optional[pulumi.Input[str]] = None,
+                 eni_ip: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -346,6 +391,7 @@ class VpcEndpointZone(pulumi.CustomResource):
             if endpoint_id is None and not opts.urn:
                 raise TypeError("Missing required property 'endpoint_id'")
             __props__.__dict__["endpoint_id"] = endpoint_id
+            __props__.__dict__["eni_ip"] = eni_ip
             if vswitch_id is None and not opts.urn:
                 raise TypeError("Missing required property 'vswitch_id'")
             __props__.__dict__["vswitch_id"] = vswitch_id
@@ -363,6 +409,7 @@ class VpcEndpointZone(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             dry_run: Optional[pulumi.Input[bool]] = None,
             endpoint_id: Optional[pulumi.Input[str]] = None,
+            eni_ip: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None,
             vswitch_id: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None) -> 'VpcEndpointZone':
@@ -373,11 +420,14 @@ class VpcEndpointZone(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] dry_run: The dry run.
-        :param pulumi.Input[str] endpoint_id: The ID of the Vpc Endpoint.
-        :param pulumi.Input[str] status: Status.
-        :param pulumi.Input[str] vswitch_id: The VSwitch id.
-        :param pulumi.Input[str] zone_id: The Zone Id.
+        :param pulumi.Input[bool] dry_run: Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+               - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+               - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        :param pulumi.Input[str] endpoint_id: The endpoint ID.
+        :param pulumi.Input[str] eni_ip: The IP address of the endpoint ENI.
+        :param pulumi.Input[str] status: The state of the zone.
+        :param pulumi.Input[str] vswitch_id: The ID of the vSwitch in the zone. .
+        :param pulumi.Input[str] zone_id: The zone ID.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -385,6 +435,7 @@ class VpcEndpointZone(pulumi.CustomResource):
 
         __props__.__dict__["dry_run"] = dry_run
         __props__.__dict__["endpoint_id"] = endpoint_id
+        __props__.__dict__["eni_ip"] = eni_ip
         __props__.__dict__["status"] = status
         __props__.__dict__["vswitch_id"] = vswitch_id
         __props__.__dict__["zone_id"] = zone_id
@@ -394,7 +445,9 @@ class VpcEndpointZone(pulumi.CustomResource):
     @pulumi.getter(name="dryRun")
     def dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        The dry run.
+        Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         """
         return pulumi.get(self, "dry_run")
 
@@ -402,15 +455,23 @@ class VpcEndpointZone(pulumi.CustomResource):
     @pulumi.getter(name="endpointId")
     def endpoint_id(self) -> pulumi.Output[str]:
         """
-        The ID of the Vpc Endpoint.
+        The endpoint ID.
         """
         return pulumi.get(self, "endpoint_id")
+
+    @property
+    @pulumi.getter(name="eniIp")
+    def eni_ip(self) -> pulumi.Output[str]:
+        """
+        The IP address of the endpoint ENI.
+        """
+        return pulumi.get(self, "eni_ip")
 
     @property
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Status.
+        The state of the zone.
         """
         return pulumi.get(self, "status")
 
@@ -418,15 +479,15 @@ class VpcEndpointZone(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[str]:
         """
-        The VSwitch id.
+        The ID of the vSwitch in the zone. .
         """
         return pulumi.get(self, "vswitch_id")
 
     @property
     @pulumi.getter(name="zoneId")
-    def zone_id(self) -> pulumi.Output[str]:
+    def zone_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The Zone Id.
+        The zone ID.
         """
         return pulumi.get(self, "zone_id")
 

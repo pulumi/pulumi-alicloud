@@ -137,16 +137,16 @@ public final class GetSchedulesResult {
             return schedules(List.of(schedules));
         }
         public GetSchedulesResult build() {
-            final var o = new GetSchedulesResult();
-            o.flowName = flowName;
-            o.id = id;
-            o.ids = ids;
-            o.limit = limit;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.schedules = schedules;
-            return o;
+            final var _resultValue = new GetSchedulesResult();
+            _resultValue.flowName = flowName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.limit = limit;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.schedules = schedules;
+            return _resultValue;
         }
     }
 }

@@ -135,14 +135,14 @@ public final class GetTopicSubscriptionsResult {
             return this;
         }
         public GetTopicSubscriptionsResult build() {
-            final var o = new GetTopicSubscriptionsResult();
-            o.id = id;
-            o.namePrefix = namePrefix;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.subscriptions = subscriptions;
-            o.topicName = topicName;
-            return o;
+            final var _resultValue = new GetTopicSubscriptionsResult();
+            _resultValue.id = id;
+            _resultValue.namePrefix = namePrefix;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.subscriptions = subscriptions;
+            _resultValue.topicName = topicName;
+            return _resultValue;
         }
     }
 }

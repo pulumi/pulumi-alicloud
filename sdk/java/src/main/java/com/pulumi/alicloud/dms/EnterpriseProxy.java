@@ -178,7 +178,7 @@ public class EnterpriseProxy extends com.pulumi.resources.CustomResource {
      * The ID of the database instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -192,7 +192,7 @@ public class EnterpriseProxy extends com.pulumi.resources.CustomResource {
      * The password of the database account.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -206,7 +206,7 @@ public class EnterpriseProxy extends com.pulumi.resources.CustomResource {
      * The ID of the tenant.
      * 
      */
-    @Export(name="tid", type=String.class, parameters={})
+    @Export(name="tid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tid;
 
     /**
@@ -220,7 +220,7 @@ public class EnterpriseProxy extends com.pulumi.resources.CustomResource {
      * The username of the database account.
      * 
      */
-    @Export(name="username", type=String.class, parameters={})
+    @Export(name="username", refs={String.class}, tree="[0]")
     private Output<String> username;
 
     /**

@@ -141,14 +141,14 @@ public final class GetImagesImage {
             return this;
         }
         public GetImagesImage build() {
-            final var o = new GetImagesImage();
-            o.description = description;
-            o.id = id;
-            o.imageId = imageId;
-            o.imageName = imageName;
-            o.imageType = imageType;
-            o.platform = platform;
-            return o;
+            final var _resultValue = new GetImagesImage();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.imageId = imageId;
+            _resultValue.imageName = imageName;
+            _resultValue.imageType = imageType;
+            _resultValue.platform = platform;
+            return _resultValue;
         }
     }
 }

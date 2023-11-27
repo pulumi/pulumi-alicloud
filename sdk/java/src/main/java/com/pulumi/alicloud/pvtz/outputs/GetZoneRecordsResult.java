@@ -190,19 +190,19 @@ public final class GetZoneRecordsResult {
             return this;
         }
         public GetZoneRecordsResult build() {
-            final var o = new GetZoneRecordsResult();
-            o.id = id;
-            o.ids = ids;
-            o.keyword = keyword;
-            o.lang = lang;
-            o.outputFile = outputFile;
-            o.records = records;
-            o.searchMode = searchMode;
-            o.status = status;
-            o.tag = tag;
-            o.userClientIp = userClientIp;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetZoneRecordsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.keyword = keyword;
+            _resultValue.lang = lang;
+            _resultValue.outputFile = outputFile;
+            _resultValue.records = records;
+            _resultValue.searchMode = searchMode;
+            _resultValue.status = status;
+            _resultValue.tag = tag;
+            _resultValue.userClientIp = userClientIp;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

@@ -159,18 +159,18 @@ public final class GetStorageBundlesResult {
             return this;
         }
         public GetStorageBundlesResult build() {
-            final var o = new GetStorageBundlesResult();
-            o.backendBucketRegionId = backendBucketRegionId;
-            o.bundles = bundles;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.totalCount = totalCount;
-            return o;
+            final var _resultValue = new GetStorageBundlesResult();
+            _resultValue.backendBucketRegionId = backendBucketRegionId;
+            _resultValue.bundles = bundles;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.totalCount = totalCount;
+            return _resultValue;
         }
     }
 }

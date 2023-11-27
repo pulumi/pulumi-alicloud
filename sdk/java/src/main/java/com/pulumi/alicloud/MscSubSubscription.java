@@ -73,7 +73,7 @@ public class MscSubSubscription extends com.pulumi.resources.CustomResource {
      * The channel the Subscription.
      * 
      */
-    @Export(name="channel", type=String.class, parameters={})
+    @Export(name="channel", refs={String.class}, tree="[0]")
     private Output<String> channel;
 
     /**
@@ -90,7 +90,7 @@ public class MscSubSubscription extends com.pulumi.resources.CustomResource {
      * and you can use tolist to convert it to a list.
      * 
      */
-    @Export(name="contactIds", type=List.class, parameters={String.class})
+    @Export(name="contactIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> contactIds;
 
     /**
@@ -107,7 +107,7 @@ public class MscSubSubscription extends com.pulumi.resources.CustomResource {
      * The description of the Subscription.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -121,7 +121,7 @@ public class MscSubSubscription extends com.pulumi.resources.CustomResource {
      * The status of email subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      * 
      */
-    @Export(name="emailStatus", type=Integer.class, parameters={})
+    @Export(name="emailStatus", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> emailStatus;
 
     /**
@@ -135,7 +135,7 @@ public class MscSubSubscription extends com.pulumi.resources.CustomResource {
      * The name of the Subscription. **NOTE:**  You should use the `alicloud.getMscSubSubscriptions` to query the available subscription item name.
      * 
      */
-    @Export(name="itemName", type=String.class, parameters={})
+    @Export(name="itemName", refs={String.class}, tree="[0]")
     private Output<String> itemName;
 
     /**
@@ -149,7 +149,7 @@ public class MscSubSubscription extends com.pulumi.resources.CustomResource {
      * The status of pmsg subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      * 
      */
-    @Export(name="pmsgStatus", type=Integer.class, parameters={})
+    @Export(name="pmsgStatus", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> pmsgStatus;
 
     /**
@@ -163,7 +163,7 @@ public class MscSubSubscription extends com.pulumi.resources.CustomResource {
      * The status of sms subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      * 
      */
-    @Export(name="smsStatus", type=Integer.class, parameters={})
+    @Export(name="smsStatus", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> smsStatus;
 
     /**
@@ -177,7 +177,7 @@ public class MscSubSubscription extends com.pulumi.resources.CustomResource {
      * The status of tts subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      * 
      */
-    @Export(name="ttsStatus", type=Integer.class, parameters={})
+    @Export(name="ttsStatus", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ttsStatus;
 
     /**
@@ -191,7 +191,7 @@ public class MscSubSubscription extends com.pulumi.resources.CustomResource {
      * The ids of subscribed webhooks.
      * 
      */
-    @Export(name="webhookIds", type=List.class, parameters={String.class})
+    @Export(name="webhookIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> webhookIds;
 
     /**
@@ -205,7 +205,7 @@ public class MscSubSubscription extends com.pulumi.resources.CustomResource {
      * The status of webhook subscription. Valid values: `-1`, `-2`, `0`, `1`. `-1` means required, `-2` means banned; `1` means subscribed; `0` means not subscribed.
      * 
      */
-    @Export(name="webhookStatus", type=Integer.class, parameters={})
+    @Export(name="webhookStatus", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> webhookStatus;
 
     /**

@@ -90,11 +90,11 @@ public final class ErEnvConfPresetCanaryChongqing {
             return this;
         }
         public ErEnvConfPresetCanaryChongqing build() {
-            final var o = new ErEnvConfPresetCanaryChongqing();
-            o.allowedHosts = allowedHosts;
-            o.codeRev = codeRev;
-            o.specName = specName;
-            return o;
+            final var _resultValue = new ErEnvConfPresetCanaryChongqing();
+            _resultValue.allowedHosts = allowedHosts;
+            _resultValue.codeRev = codeRev;
+            _resultValue.specName = specName;
+            return _resultValue;
         }
     }
 }

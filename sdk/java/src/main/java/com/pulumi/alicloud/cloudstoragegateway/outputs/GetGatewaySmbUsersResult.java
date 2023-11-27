@@ -111,14 +111,14 @@ public final class GetGatewaySmbUsersResult {
             return users(List.of(users));
         }
         public GetGatewaySmbUsersResult build() {
-            final var o = new GetGatewaySmbUsersResult();
-            o.gatewayId = gatewayId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.outputFile = outputFile;
-            o.users = users;
-            return o;
+            final var _resultValue = new GetGatewaySmbUsersResult();
+            _resultValue.gatewayId = gatewayId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.outputFile = outputFile;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

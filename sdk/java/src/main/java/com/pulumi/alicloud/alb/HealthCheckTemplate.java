@@ -71,7 +71,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      * Whether to precheck the API request.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -85,7 +85,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      * The HTTP status code that indicates a successful health check. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
      * 
      */
-    @Export(name="healthCheckCodes", type=List.class, parameters={String.class})
+    @Export(name="healthCheckCodes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> healthCheckCodes;
 
     /**
@@ -99,7 +99,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      * The number of the port that is used for health checks.  Valid values: `0` to `65535`.  Default value: `0`. This default value indicates that the backend server is used for health checks.
      * 
      */
-    @Export(name="healthCheckConnectPort", type=Integer.class, parameters={})
+    @Export(name="healthCheckConnectPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> healthCheckConnectPort;
 
     /**
@@ -113,7 +113,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      * The domain name that is used for health checks. Default value:  `$SERVER_IP`. The domain name must be 1 to 80 characters in length.  **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
      * 
      */
-    @Export(name="healthCheckHost", type=String.class, parameters={})
+    @Export(name="healthCheckHost", refs={String.class}, tree="[0]")
     private Output<String> healthCheckHost;
 
     /**
@@ -127,7 +127,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      * The version of the HTTP protocol.  Valid values: `HTTP1.0` and `HTTP1.1`.  Default value: `HTTP1.1`. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
      * 
      */
-    @Export(name="healthCheckHttpVersion", type=String.class, parameters={})
+    @Export(name="healthCheckHttpVersion", refs={String.class}, tree="[0]")
     private Output<String> healthCheckHttpVersion;
 
     /**
@@ -141,7 +141,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      * The time interval between two consecutive health checks.  Valid values: `1` to `50`. Unit: seconds.  Default value: `2`.
      * 
      */
-    @Export(name="healthCheckInterval", type=Integer.class, parameters={})
+    @Export(name="healthCheckInterval", refs={Integer.class}, tree="[0]")
     private Output<Integer> healthCheckInterval;
 
     /**
@@ -155,7 +155,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      * The health check method.  Valid values: GET and HEAD.  Default value: HEAD. **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
      * 
      */
-    @Export(name="healthCheckMethod", type=String.class, parameters={})
+    @Export(name="healthCheckMethod", refs={String.class}, tree="[0]")
     private Output<String> healthCheckMethod;
 
     /**
@@ -169,7 +169,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      * The URL that is used for health checks.  The URL must be 1 to 80 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URL can also contain the following extended characters: _ ; ~ ! ( )* [ ] @ $ ^ : &#39; , +. The URL must start with a forward slash (/). **NOTE:** The attribute `HealthCheckProtocol` is valid when the attribute is  `HTTP` .
      * 
      */
-    @Export(name="healthCheckPath", type=String.class, parameters={})
+    @Export(name="healthCheckPath", refs={String.class}, tree="[0]")
     private Output<String> healthCheckPath;
 
     /**
@@ -183,7 +183,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      * The protocol that is used for health checks.  Valid values: `HTTP` and `TCP`.  Default value: `HTTP`.
      * 
      */
-    @Export(name="healthCheckProtocol", type=String.class, parameters={})
+    @Export(name="healthCheckProtocol", refs={String.class}, tree="[0]")
     private Output<String> healthCheckProtocol;
 
     /**
@@ -197,7 +197,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      * The name of the health check template.  The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
-    @Export(name="healthCheckTemplateName", type=String.class, parameters={})
+    @Export(name="healthCheckTemplateName", refs={String.class}, tree="[0]")
     private Output<String> healthCheckTemplateName;
 
     /**
@@ -211,7 +211,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      * The timeout period of a health check response. If the backend Elastic Compute Service (ECS) instance does not send an expected response within the specified period of time, the health check fails.  Valid values: `1` to `300`. Unit: seconds.  Default value: `5`.
      * 
      */
-    @Export(name="healthCheckTimeout", type=Integer.class, parameters={})
+    @Export(name="healthCheckTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> healthCheckTimeout;
 
     /**
@@ -225,7 +225,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy (from fail to success).  Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
      * 
      */
-    @Export(name="healthyThreshold", type=Integer.class, parameters={})
+    @Export(name="healthyThreshold", refs={Integer.class}, tree="[0]")
     private Output<Integer> healthyThreshold;
 
     /**
@@ -239,7 +239,7 @@ public class HealthCheckTemplate extends com.pulumi.resources.CustomResource {
      * The number of times that an healthy backend server must consecutively fail health checks before it is declared unhealthy (from success to fail). Valid values: `2` to `10`.  Default value: `3`. Unit: seconds.
      * 
      */
-    @Export(name="unhealthyThreshold", type=Integer.class, parameters={})
+    @Export(name="unhealthyThreshold", refs={Integer.class}, tree="[0]")
     private Output<Integer> unhealthyThreshold;
 
     /**

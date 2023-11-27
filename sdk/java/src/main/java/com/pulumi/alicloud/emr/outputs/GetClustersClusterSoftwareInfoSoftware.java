@@ -124,13 +124,13 @@ public final class GetClustersClusterSoftwareInfoSoftware {
             return this;
         }
         public GetClustersClusterSoftwareInfoSoftware build() {
-            final var o = new GetClustersClusterSoftwareInfoSoftware();
-            o.displayName = displayName;
-            o.name = name;
-            o.onlyDisplay = onlyDisplay;
-            o.startTpe = startTpe;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetClustersClusterSoftwareInfoSoftware();
+            _resultValue.displayName = displayName;
+            _resultValue.name = name;
+            _resultValue.onlyDisplay = onlyDisplay;
+            _resultValue.startTpe = startTpe;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

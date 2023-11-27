@@ -191,18 +191,18 @@ public final class GetServiceSubscriptionsResult {
             return this;
         }
         public GetServiceSubscriptionsResult build() {
-            final var o = new GetServiceSubscriptionsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.subscriptionName = subscriptionName;
-            o.subscriptions = subscriptions;
-            o.topicName = topicName;
-            return o;
+            final var _resultValue = new GetServiceSubscriptionsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.subscriptionName = subscriptionName;
+            _resultValue.subscriptions = subscriptions;
+            _resultValue.topicName = topicName;
+            return _resultValue;
         }
     }
 }

@@ -72,12 +72,12 @@ public final class GetAclsAclRelatedListener {
             return this;
         }
         public GetAclsAclRelatedListener build() {
-            final var o = new GetAclsAclRelatedListener();
-            o.aclType = aclType;
-            o.frontendPort = frontendPort;
-            o.loadBalancerId = loadBalancerId;
-            o.protocol = protocol;
-            return o;
+            final var _resultValue = new GetAclsAclRelatedListener();
+            _resultValue.aclType = aclType;
+            _resultValue.frontendPort = frontendPort;
+            _resultValue.loadBalancerId = loadBalancerId;
+            _resultValue.protocol = protocol;
+            return _resultValue;
         }
     }
 }

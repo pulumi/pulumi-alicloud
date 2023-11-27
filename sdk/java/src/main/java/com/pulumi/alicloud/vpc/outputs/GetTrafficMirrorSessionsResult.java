@@ -193,21 +193,21 @@ public final class GetTrafficMirrorSessionsResult {
             return this;
         }
         public GetTrafficMirrorSessionsResult build() {
-            final var o = new GetTrafficMirrorSessionsResult();
-            o.enabled = enabled;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.priority = priority;
-            o.sessions = sessions;
-            o.status = status;
-            o.trafficMirrorFilterId = trafficMirrorFilterId;
-            o.trafficMirrorSessionName = trafficMirrorSessionName;
-            o.trafficMirrorSourceId = trafficMirrorSourceId;
-            o.trafficMirrorTargetId = trafficMirrorTargetId;
-            return o;
+            final var _resultValue = new GetTrafficMirrorSessionsResult();
+            _resultValue.enabled = enabled;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.priority = priority;
+            _resultValue.sessions = sessions;
+            _resultValue.status = status;
+            _resultValue.trafficMirrorFilterId = trafficMirrorFilterId;
+            _resultValue.trafficMirrorSessionName = trafficMirrorSessionName;
+            _resultValue.trafficMirrorSourceId = trafficMirrorSourceId;
+            _resultValue.trafficMirrorTargetId = trafficMirrorTargetId;
+            return _resultValue;
         }
     }
 }

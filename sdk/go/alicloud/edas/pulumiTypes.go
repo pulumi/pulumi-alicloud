@@ -353,7 +353,7 @@ type GetApplicationsApplication struct {
 	BuildPackageId int `pulumi:"buildPackageId"`
 	// The ID of the cluster that you want to create the application.
 	ClusterId string `pulumi:"clusterId"`
-	// The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+	// The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
 	ClusterType int `pulumi:"clusterType"`
 	// The ID of the namespace the application belongs to.
 	RegionId string `pulumi:"regionId"`
@@ -381,7 +381,7 @@ type GetApplicationsApplicationArgs struct {
 	BuildPackageId pulumi.IntInput `pulumi:"buildPackageId"`
 	// The ID of the cluster that you want to create the application.
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+	// The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
 	ClusterType pulumi.IntInput `pulumi:"clusterType"`
 	// The ID of the namespace the application belongs to.
 	RegionId pulumi.StringInput `pulumi:"regionId"`
@@ -463,7 +463,7 @@ func (o GetApplicationsApplicationOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationsApplication) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+// The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
 func (o GetApplicationsApplicationOutput) ClusterType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationsApplication) int { return v.ClusterType }).(pulumi.IntOutput)
 }
@@ -498,7 +498,7 @@ type GetClustersCluster struct {
 	ClusterId string `pulumi:"clusterId"`
 	// The name of the cluster.
 	ClusterName string `pulumi:"clusterName"`
-	// The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+	// The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
 	ClusterType int `pulumi:"clusterType"`
 	// The total number of CPUs in the cluster.
 	Cpu int `pulumi:"cpu"`
@@ -538,7 +538,7 @@ type GetClustersClusterArgs struct {
 	ClusterId pulumi.StringInput `pulumi:"clusterId"`
 	// The name of the cluster.
 	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+	// The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
 	ClusterType pulumi.IntInput `pulumi:"clusterType"`
 	// The total number of CPUs in the cluster.
 	Cpu pulumi.IntInput `pulumi:"cpu"`
@@ -623,7 +623,7 @@ func (o GetClustersClusterOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
-// The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+// The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
 func (o GetClustersClusterOutput) ClusterType() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClustersCluster) int { return v.ClusterType }).(pulumi.IntOutput)
 }

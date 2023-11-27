@@ -152,14 +152,14 @@ public final class MetricRuleTemplateAlertTemplate {
             return this;
         }
         public MetricRuleTemplateAlertTemplate build() {
-            final var o = new MetricRuleTemplateAlertTemplate();
-            o.category = category;
-            o.escalations = escalations;
-            o.metricName = metricName;
-            o.namespace = namespace;
-            o.ruleName = ruleName;
-            o.webhook = webhook;
-            return o;
+            final var _resultValue = new MetricRuleTemplateAlertTemplate();
+            _resultValue.category = category;
+            _resultValue.escalations = escalations;
+            _resultValue.metricName = metricName;
+            _resultValue.namespace = namespace;
+            _resultValue.ruleName = ruleName;
+            _resultValue.webhook = webhook;
+            return _resultValue;
         }
     }
 }

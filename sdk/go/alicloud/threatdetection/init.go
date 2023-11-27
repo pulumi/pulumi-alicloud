@@ -27,6 +27,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BackupPolicy{}
 	case "alicloud:threatdetection/baselineStrategy:BaselineStrategy":
 		r = &BaselineStrategy{}
+	case "alicloud:threatdetection/clientFileProtect:ClientFileProtect":
+		r = &ClientFileProtect{}
+	case "alicloud:threatdetection/clientUserDefineRule:ClientUserDefineRule":
+		r = &ClientUserDefineRule{}
+	case "alicloud:threatdetection/fileUploadLimit:FileUploadLimit":
+		r = &FileUploadLimit{}
 	case "alicloud:threatdetection/honeyPot:HoneyPot":
 		r = &HoneyPot{}
 	case "alicloud:threatdetection/honeypotNode:HoneypotNode":
@@ -35,8 +41,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HoneypotPreset{}
 	case "alicloud:threatdetection/honeypotProbe:HoneypotProbe":
 		r = &HoneypotProbe{}
+	case "alicloud:threatdetection/imageEventOperation:ImageEventOperation":
+		r = &ImageEventOperation{}
 	case "alicloud:threatdetection/instance:Instance":
 		r = &Instance{}
+	case "alicloud:threatdetection/sasTrail:SasTrail":
+		r = &SasTrail{}
 	case "alicloud:threatdetection/vulWhitelist:VulWhitelist":
 		r = &VulWhitelist{}
 	case "alicloud:threatdetection/webLockConfig:WebLockConfig":
@@ -71,6 +81,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"threatdetection/clientFileProtect",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"threatdetection/clientUserDefineRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"threatdetection/fileUploadLimit",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"threatdetection/honeyPot",
 		&module{version},
 	)
@@ -91,7 +116,17 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"threatdetection/imageEventOperation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"threatdetection/instance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"threatdetection/sasTrail",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

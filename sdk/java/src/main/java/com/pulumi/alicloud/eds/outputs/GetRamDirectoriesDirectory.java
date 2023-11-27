@@ -562,35 +562,35 @@ public final class GetRamDirectoriesDirectory {
             return vswitchIds(List.of(vswitchIds));
         }
         public GetRamDirectoriesDirectory build() {
-            final var o = new GetRamDirectoriesDirectory();
-            o.adConnectors = adConnectors;
-            o.createTime = createTime;
-            o.customSecurityGroupId = customSecurityGroupId;
-            o.desktopAccessType = desktopAccessType;
-            o.desktopVpcEndpoint = desktopVpcEndpoint;
-            o.directoryType = directoryType;
-            o.dnsAddresses = dnsAddresses;
-            o.dnsUserName = dnsUserName;
-            o.domainName = domainName;
-            o.domainPassword = domainPassword;
-            o.domainUserName = domainUserName;
-            o.enableAdminAccess = enableAdminAccess;
-            o.enableCrossDesktopAccess = enableCrossDesktopAccess;
-            o.enableInternetAccess = enableInternetAccess;
-            o.fileSystemIds = fileSystemIds;
-            o.id = id;
-            o.logs = logs;
-            o.mfaEnabled = mfaEnabled;
-            o.ramDirectoryId = ramDirectoryId;
-            o.ramDirectoryName = ramDirectoryName;
-            o.ssoEnabled = ssoEnabled;
-            o.status = status;
-            o.subDnsAddresses = subDnsAddresses;
-            o.subDomainName = subDomainName;
-            o.trustPassword = trustPassword;
-            o.vpcId = vpcId;
-            o.vswitchIds = vswitchIds;
-            return o;
+            final var _resultValue = new GetRamDirectoriesDirectory();
+            _resultValue.adConnectors = adConnectors;
+            _resultValue.createTime = createTime;
+            _resultValue.customSecurityGroupId = customSecurityGroupId;
+            _resultValue.desktopAccessType = desktopAccessType;
+            _resultValue.desktopVpcEndpoint = desktopVpcEndpoint;
+            _resultValue.directoryType = directoryType;
+            _resultValue.dnsAddresses = dnsAddresses;
+            _resultValue.dnsUserName = dnsUserName;
+            _resultValue.domainName = domainName;
+            _resultValue.domainPassword = domainPassword;
+            _resultValue.domainUserName = domainUserName;
+            _resultValue.enableAdminAccess = enableAdminAccess;
+            _resultValue.enableCrossDesktopAccess = enableCrossDesktopAccess;
+            _resultValue.enableInternetAccess = enableInternetAccess;
+            _resultValue.fileSystemIds = fileSystemIds;
+            _resultValue.id = id;
+            _resultValue.logs = logs;
+            _resultValue.mfaEnabled = mfaEnabled;
+            _resultValue.ramDirectoryId = ramDirectoryId;
+            _resultValue.ramDirectoryName = ramDirectoryName;
+            _resultValue.ssoEnabled = ssoEnabled;
+            _resultValue.status = status;
+            _resultValue.subDnsAddresses = subDnsAddresses;
+            _resultValue.subDomainName = subDomainName;
+            _resultValue.trustPassword = trustPassword;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchIds = vswitchIds;
+            return _resultValue;
         }
     }
 }

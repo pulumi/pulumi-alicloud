@@ -147,7 +147,7 @@ public class ChildInstanceRouteEntryToAttachment extends com.pulumi.resources.Cu
      * The ID of the CEN instance.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
@@ -161,7 +161,7 @@ public class ChildInstanceRouteEntryToAttachment extends com.pulumi.resources.Cu
      * The first ID of the resource
      * 
      */
-    @Export(name="childInstanceRouteTableId", type=String.class, parameters={})
+    @Export(name="childInstanceRouteTableId", refs={String.class}, tree="[0]")
     private Output<String> childInstanceRouteTableId;
 
     /**
@@ -175,7 +175,7 @@ public class ChildInstanceRouteEntryToAttachment extends com.pulumi.resources.Cu
      * DestinationCidrBlock
      * 
      */
-    @Export(name="destinationCidrBlock", type=String.class, parameters={})
+    @Export(name="destinationCidrBlock", refs={String.class}, tree="[0]")
     private Output<String> destinationCidrBlock;
 
     /**
@@ -189,7 +189,7 @@ public class ChildInstanceRouteEntryToAttachment extends com.pulumi.resources.Cu
      * Whether to perform pre-check on this request, including permission and instance status verification.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -203,7 +203,7 @@ public class ChildInstanceRouteEntryToAttachment extends com.pulumi.resources.Cu
      * ServiceType
      * 
      */
-    @Export(name="serviceType", type=String.class, parameters={})
+    @Export(name="serviceType", refs={String.class}, tree="[0]")
     private Output<String> serviceType;
 
     /**
@@ -217,7 +217,7 @@ public class ChildInstanceRouteEntryToAttachment extends com.pulumi.resources.Cu
      * The status of the resource
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -231,7 +231,7 @@ public class ChildInstanceRouteEntryToAttachment extends com.pulumi.resources.Cu
      * TransitRouterAttachmentId
      * 
      */
-    @Export(name="transitRouterAttachmentId", type=String.class, parameters={})
+    @Export(name="transitRouterAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentId;
 
     /**

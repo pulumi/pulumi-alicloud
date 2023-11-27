@@ -288,22 +288,22 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.createTime = createTime;
-            o.destinationEndpointEngineName = destinationEndpointEngineName;
-            o.destinationRegion = destinationRegion;
-            o.dtsInstanceId = dtsInstanceId;
-            o.id = id;
-            o.instanceClass = instanceClass;
-            o.instanceName = instanceName;
-            o.paymentType = paymentType;
-            o.resourceGroupId = resourceGroupId;
-            o.sourceEndpointEngineName = sourceEndpointEngineName;
-            o.sourceRegion = sourceRegion;
-            o.status = status;
-            o.tags = tags;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.createTime = createTime;
+            _resultValue.destinationEndpointEngineName = destinationEndpointEngineName;
+            _resultValue.destinationRegion = destinationRegion;
+            _resultValue.dtsInstanceId = dtsInstanceId;
+            _resultValue.id = id;
+            _resultValue.instanceClass = instanceClass;
+            _resultValue.instanceName = instanceName;
+            _resultValue.paymentType = paymentType;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.sourceEndpointEngineName = sourceEndpointEngineName;
+            _resultValue.sourceRegion = sourceRegion;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

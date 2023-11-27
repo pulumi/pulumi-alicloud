@@ -142,7 +142,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * Description of the snapshot. The description must be `2` to `256` characters in length. It must start with a letter, and cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -156,7 +156,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * Whether to force deletion of snapshots.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -170,7 +170,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The ID of the database file system.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -184,7 +184,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The retention time of the snapshot. Unit: days. Snapshots are automatically released after the retention time expires. Valid values: `1` to `65536`.
      * 
      */
-    @Export(name="retentionDays", type=Integer.class, parameters={})
+    @Export(name="retentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retentionDays;
 
     /**
@@ -198,7 +198,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The display name of the snapshot. The length is `2` to `128` characters. It must start with a large or small letter or Chinese, and cannot start with `http://` and `https://`. It can contain numbers, colons (:), underscores (_), or hyphens (-). To prevent name conflicts with automatic snapshots, you cannot start with `auto`.
      * 
      */
-    @Export(name="snapshotName", type=String.class, parameters={})
+    @Export(name="snapshotName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snapshotName;
 
     /**
@@ -212,7 +212,7 @@ public class Snapshot extends com.pulumi.resources.CustomResource {
      * The status of the Snapshot.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

@@ -114,14 +114,14 @@ public final class GetListenersResult {
             return this;
         }
         public GetListenersResult build() {
-            final var o = new GetListenersResult();
-            o.id = id;
-            o.ids = ids;
-            o.listenerProtocol = listenerProtocol;
-            o.listeners = listeners;
-            o.loadBalancerIds = loadBalancerIds;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetListenersResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.listenerProtocol = listenerProtocol;
+            _resultValue.listeners = listeners;
+            _resultValue.loadBalancerIds = loadBalancerIds;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

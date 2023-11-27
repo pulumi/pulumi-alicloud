@@ -296,26 +296,26 @@ public final class GetInstanceClassesResult {
             return this;
         }
         public GetInstanceClassesResult build() {
-            final var o = new GetInstanceClassesResult();
-            o.architecture = architecture;
-            o.classes = classes;
-            o.editionType = editionType;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.id = id;
-            o.instanceChargeType = instanceChargeType;
-            o.instanceClasses = instanceClasses;
-            o.nodeType = nodeType;
-            o.outputFile = outputFile;
-            o.packageType = packageType;
-            o.performanceType = performanceType;
-            o.productType = productType;
-            o.seriesType = seriesType;
-            o.shardNumber = shardNumber;
-            o.sortedBy = sortedBy;
-            o.storageType = storageType;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstanceClassesResult();
+            _resultValue.architecture = architecture;
+            _resultValue.classes = classes;
+            _resultValue.editionType = editionType;
+            _resultValue.engine = engine;
+            _resultValue.engineVersion = engineVersion;
+            _resultValue.id = id;
+            _resultValue.instanceChargeType = instanceChargeType;
+            _resultValue.instanceClasses = instanceClasses;
+            _resultValue.nodeType = nodeType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.packageType = packageType;
+            _resultValue.performanceType = performanceType;
+            _resultValue.productType = productType;
+            _resultValue.seriesType = seriesType;
+            _resultValue.shardNumber = shardNumber;
+            _resultValue.sortedBy = sortedBy;
+            _resultValue.storageType = storageType;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

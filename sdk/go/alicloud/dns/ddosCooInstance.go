@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-describeinstances).
+// BGP-Line Anti-DDoS instance resource. "Ddoscoo" is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/en/ddos-protection/latest/create-an-anti-ddos-pro-or-anti-ddos-premium-instance-by-calling-an-api-operation).
 //
 // > **NOTE:** The product region only support cn-hangzhou.
 //
@@ -43,13 +43,13 @@ import (
 //				name = param
 //			}
 //			_, err := ddos.NewDdosCooInstance(ctx, "default", &ddos.DdosCooInstanceArgs{
-//				Bandwidth:        pulumi.String("30"),
 //				BaseBandwidth:    pulumi.String("30"),
+//				Bandwidth:        pulumi.String("30"),
 //				ServiceBandwidth: pulumi.String("100"),
 //				PortCount:        pulumi.String("50"),
 //				DomainCount:      pulumi.String("50"),
-//				Period:           pulumi.Int(1),
 //				ProductType:      pulumi.String("ddoscoo"),
+//				Period:           pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
@@ -74,22 +74,27 @@ import (
 type DdosCooInstance struct {
 	pulumi.CustomResourceState
 
+	// The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+	AddressType pulumi.StringOutput `pulumi:"addressType"`
 	// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
 	Bandwidth pulumi.StringOutput `pulumi:"bandwidth"`
-	// Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+	// The mitigation plan of the instance. Valid values:
+	BandwidthMode pulumi.StringPtrOutput `pulumi:"bandwidthMode"`
+	// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
 	BaseBandwidth pulumi.StringOutput `pulumi:"baseBandwidth"`
 	// Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	DomainCount pulumi.StringOutput `pulumi:"domainCount"`
+	// The mitigation plan of the instance. Default value: `coop`. Valid values:
+	EditionSale pulumi.StringOutput `pulumi:"editionSale"`
+	// (Available since v1.212.0) The IP address of the instance.
+	Ip pulumi.StringOutput `pulumi:"ip"`
 	// Name of the instance. This name can have a string of 1 to 63 characters.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+	// The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
 	Period pulumi.IntPtrOutput `pulumi:"period"`
 	// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	PortCount pulumi.StringOutput `pulumi:"portCount"`
-	// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
-	// - ddoscoo: Only supports domestic account.
-	// - ddoscoo_intl: Only supports to international account.
-	//   Default to ddoscoo.
+	// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
 	ProductType pulumi.StringPtrOutput `pulumi:"productType"`
 	// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
 	ServiceBandwidth pulumi.StringOutput `pulumi:"serviceBandwidth"`
@@ -140,44 +145,54 @@ func GetDdosCooInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DdosCooInstance resources.
 type ddosCooInstanceState struct {
+	// The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+	AddressType *string `pulumi:"addressType"`
 	// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
 	Bandwidth *string `pulumi:"bandwidth"`
-	// Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+	// The mitigation plan of the instance. Valid values:
+	BandwidthMode *string `pulumi:"bandwidthMode"`
+	// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
 	BaseBandwidth *string `pulumi:"baseBandwidth"`
 	// Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	DomainCount *string `pulumi:"domainCount"`
+	// The mitigation plan of the instance. Default value: `coop`. Valid values:
+	EditionSale *string `pulumi:"editionSale"`
+	// (Available since v1.212.0) The IP address of the instance.
+	Ip *string `pulumi:"ip"`
 	// Name of the instance. This name can have a string of 1 to 63 characters.
 	Name *string `pulumi:"name"`
-	// The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+	// The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
 	Period *int `pulumi:"period"`
 	// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	PortCount *string `pulumi:"portCount"`
-	// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
-	// - ddoscoo: Only supports domestic account.
-	// - ddoscoo_intl: Only supports to international account.
-	//   Default to ddoscoo.
+	// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
 	ProductType *string `pulumi:"productType"`
 	// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
 	ServiceBandwidth *string `pulumi:"serviceBandwidth"`
 }
 
 type DdosCooInstanceState struct {
+	// The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+	AddressType pulumi.StringPtrInput
 	// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
 	Bandwidth pulumi.StringPtrInput
-	// Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+	// The mitigation plan of the instance. Valid values:
+	BandwidthMode pulumi.StringPtrInput
+	// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
 	BaseBandwidth pulumi.StringPtrInput
 	// Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	DomainCount pulumi.StringPtrInput
+	// The mitigation plan of the instance. Default value: `coop`. Valid values:
+	EditionSale pulumi.StringPtrInput
+	// (Available since v1.212.0) The IP address of the instance.
+	Ip pulumi.StringPtrInput
 	// Name of the instance. This name can have a string of 1 to 63 characters.
 	Name pulumi.StringPtrInput
-	// The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+	// The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
 	Period pulumi.IntPtrInput
 	// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	PortCount pulumi.StringPtrInput
-	// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
-	// - ddoscoo: Only supports domestic account.
-	// - ddoscoo_intl: Only supports to international account.
-	//   Default to ddoscoo.
+	// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
 	ProductType pulumi.StringPtrInput
 	// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
 	ServiceBandwidth pulumi.StringPtrInput
@@ -188,22 +203,25 @@ func (DdosCooInstanceState) ElementType() reflect.Type {
 }
 
 type ddosCooInstanceArgs struct {
+	// The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+	AddressType *string `pulumi:"addressType"`
 	// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
 	Bandwidth string `pulumi:"bandwidth"`
-	// Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+	// The mitigation plan of the instance. Valid values:
+	BandwidthMode *string `pulumi:"bandwidthMode"`
+	// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
 	BaseBandwidth string `pulumi:"baseBandwidth"`
 	// Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	DomainCount string `pulumi:"domainCount"`
+	// The mitigation plan of the instance. Default value: `coop`. Valid values:
+	EditionSale *string `pulumi:"editionSale"`
 	// Name of the instance. This name can have a string of 1 to 63 characters.
 	Name *string `pulumi:"name"`
-	// The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+	// The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
 	Period *int `pulumi:"period"`
 	// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	PortCount string `pulumi:"portCount"`
-	// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
-	// - ddoscoo: Only supports domestic account.
-	// - ddoscoo_intl: Only supports to international account.
-	//   Default to ddoscoo.
+	// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
 	ProductType *string `pulumi:"productType"`
 	// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
 	ServiceBandwidth string `pulumi:"serviceBandwidth"`
@@ -211,22 +229,25 @@ type ddosCooInstanceArgs struct {
 
 // The set of arguments for constructing a DdosCooInstance resource.
 type DdosCooInstanceArgs struct {
+	// The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+	AddressType pulumi.StringPtrInput
 	// Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
 	Bandwidth pulumi.StringInput
-	// Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+	// The mitigation plan of the instance. Valid values:
+	BandwidthMode pulumi.StringPtrInput
+	// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
 	BaseBandwidth pulumi.StringInput
 	// Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	DomainCount pulumi.StringInput
+	// The mitigation plan of the instance. Default value: `coop`. Valid values:
+	EditionSale pulumi.StringPtrInput
 	// Name of the instance. This name can have a string of 1 to 63 characters.
 	Name pulumi.StringPtrInput
-	// The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+	// The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
 	Period pulumi.IntPtrInput
 	// Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
 	PortCount pulumi.StringInput
-	// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
-	// - ddoscoo: Only supports domestic account.
-	// - ddoscoo_intl: Only supports to international account.
-	//   Default to ddoscoo.
+	// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
 	ProductType pulumi.StringPtrInput
 	// Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
 	ServiceBandwidth pulumi.StringInput
@@ -319,12 +340,22 @@ func (o DdosCooInstanceOutput) ToDdosCooInstanceOutputWithContext(ctx context.Co
 	return o
 }
 
+// The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+func (o DdosCooInstanceOutput) AddressType() pulumi.StringOutput {
+	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.AddressType }).(pulumi.StringOutput)
+}
+
 // Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
 func (o DdosCooInstanceOutput) Bandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.Bandwidth }).(pulumi.StringOutput)
 }
 
-// Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+// The mitigation plan of the instance. Valid values:
+func (o DdosCooInstanceOutput) BandwidthMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringPtrOutput { return v.BandwidthMode }).(pulumi.StringPtrOutput)
+}
+
+// Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
 func (o DdosCooInstanceOutput) BaseBandwidth() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.BaseBandwidth }).(pulumi.StringOutput)
 }
@@ -334,12 +365,22 @@ func (o DdosCooInstanceOutput) DomainCount() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.DomainCount }).(pulumi.StringOutput)
 }
 
+// The mitigation plan of the instance. Default value: `coop`. Valid values:
+func (o DdosCooInstanceOutput) EditionSale() pulumi.StringOutput {
+	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.EditionSale }).(pulumi.StringOutput)
+}
+
+// (Available since v1.212.0) The IP address of the instance.
+func (o DdosCooInstanceOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.Ip }).(pulumi.StringOutput)
+}
+
 // Name of the instance. This name can have a string of 1 to 63 characters.
 func (o DdosCooInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify "period".
+// The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
 func (o DdosCooInstanceOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.IntPtrOutput { return v.Period }).(pulumi.IntPtrOutput)
 }
@@ -349,10 +390,7 @@ func (o DdosCooInstanceOutput) PortCount() pulumi.StringOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringOutput { return v.PortCount }).(pulumi.StringOutput)
 }
 
-// The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
-//   - ddoscoo: Only supports domestic account.
-//   - ddoscoo_intl: Only supports to international account.
-//     Default to ddoscoo.
+// The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
 func (o DdosCooInstanceOutput) ProductType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DdosCooInstance) pulumi.StringPtrOutput { return v.ProductType }).(pulumi.StringPtrOutput)
 }

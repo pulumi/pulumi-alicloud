@@ -65,10 +65,10 @@ public final class GetCustomDomainsDomainCertConfig {
             return this;
         }
         public GetCustomDomainsDomainCertConfig build() {
-            final var o = new GetCustomDomainsDomainCertConfig();
-            o.certName = certName;
-            o.certificate = certificate;
-            return o;
+            final var _resultValue = new GetCustomDomainsDomainCertConfig();
+            _resultValue.certName = certName;
+            _resultValue.certificate = certificate;
+            return _resultValue;
         }
     }
 }

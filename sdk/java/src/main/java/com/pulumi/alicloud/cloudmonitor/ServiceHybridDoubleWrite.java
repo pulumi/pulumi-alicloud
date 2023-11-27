@@ -80,7 +80,7 @@ public class ServiceHybridDoubleWrite extends com.pulumi.resources.CustomResourc
      * Target Namespace.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output<String> namespace;
 
     /**
@@ -94,7 +94,7 @@ public class ServiceHybridDoubleWrite extends com.pulumi.resources.CustomResourc
      * Source Namespace.
      * 
      */
-    @Export(name="sourceNamespace", type=String.class, parameters={})
+    @Export(name="sourceNamespace", refs={String.class}, tree="[0]")
     private Output<String> sourceNamespace;
 
     /**
@@ -108,7 +108,7 @@ public class ServiceHybridDoubleWrite extends com.pulumi.resources.CustomResourc
      * Source UserId.
      * 
      */
-    @Export(name="sourceUserId", type=String.class, parameters={})
+    @Export(name="sourceUserId", refs={String.class}, tree="[0]")
     private Output<String> sourceUserId;
 
     /**
@@ -122,7 +122,7 @@ public class ServiceHybridDoubleWrite extends com.pulumi.resources.CustomResourc
      * Target UserId.
      * 
      */
-    @Export(name="userId", type=String.class, parameters={})
+    @Export(name="userId", refs={String.class}, tree="[0]")
     private Output<String> userId;
 
     /**

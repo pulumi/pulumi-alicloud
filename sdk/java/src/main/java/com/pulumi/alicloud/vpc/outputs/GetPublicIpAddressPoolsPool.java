@@ -257,20 +257,20 @@ public final class GetPublicIpAddressPoolsPool {
             return this;
         }
         public GetPublicIpAddressPoolsPool build() {
-            final var o = new GetPublicIpAddressPoolsPool();
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.ipAddressRemaining = ipAddressRemaining;
-            o.isp = isp;
-            o.publicIpAddressPoolId = publicIpAddressPoolId;
-            o.publicIpAddressPoolName = publicIpAddressPoolName;
-            o.regionId = regionId;
-            o.status = status;
-            o.totalIpNum = totalIpNum;
-            o.usedIpNum = usedIpNum;
-            o.userType = userType;
-            return o;
+            final var _resultValue = new GetPublicIpAddressPoolsPool();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.ipAddressRemaining = ipAddressRemaining;
+            _resultValue.isp = isp;
+            _resultValue.publicIpAddressPoolId = publicIpAddressPoolId;
+            _resultValue.publicIpAddressPoolName = publicIpAddressPoolName;
+            _resultValue.regionId = regionId;
+            _resultValue.status = status;
+            _resultValue.totalIpNum = totalIpNum;
+            _resultValue.usedIpNum = usedIpNum;
+            _resultValue.userType = userType;
+            return _resultValue;
         }
     }
 }

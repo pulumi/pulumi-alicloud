@@ -76,7 +76,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * (Available in 1.196.0+) The connection string of the DRDS instance.
      * 
      */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -90,7 +90,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Description of the DRDS instance, This description can have a string of 2 to 256 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -104,7 +104,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
      * 
      */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceChargeType;
 
     /**
@@ -121,7 +121,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - `drds.sn2.16c64g` Enterprise Edition.
      * 
      */
-    @Export(name="instanceSeries", type=String.class, parameters={})
+    @Export(name="instanceSeries", refs={String.class}, tree="[0]")
     private Output<String> instanceSeries;
 
     /**
@@ -138,7 +138,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The MySQL version supported by the instance, with the following range of values. `5`: Fully compatible with MySQL 5.x (default) `8`: Fully compatible with MySQL 8.0. This parameter takes effect when the primary instance is created, and the read-only instance has the same MySQL version as the primary instance by default.
      * 
      */
-    @Export(name="mysqlVersion", type=Integer.class, parameters={})
+    @Export(name="mysqlVersion", refs={Integer.class}, tree="[0]")
     private Output<Integer> mysqlVersion;
 
     /**
@@ -152,7 +152,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * (Available in 1.196.0+) The connection port of the DRDS instance.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
@@ -174,7 +174,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * - value range : `drds.sn1.32c64g.128c256g`
      * 
      */
-    @Export(name="specification", type=String.class, parameters={})
+    @Export(name="specification", refs={String.class}, tree="[0]")
     private Output<String> specification;
 
     /**
@@ -196,7 +196,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The id of the VPC.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -210,7 +210,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The VSwitch ID to launch in.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -224,7 +224,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Zone to launch the DRDS instance.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

@@ -63,7 +63,7 @@ public class CustomerGateway extends com.pulumi.resources.CustomResource {
      * The autonomous system number of the gateway device in the data center. The `asn` is a 4-byte number. You can enter the number in two segments and separate the first 16 bits from the following 16 bits with a period (.). Enter the number in each segment in the decimal format.
      * 
      */
-    @Export(name="asn", type=String.class, parameters={})
+    @Export(name="asn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> asn;
 
     /**
@@ -77,7 +77,7 @@ public class CustomerGateway extends com.pulumi.resources.CustomResource {
      * The description of the VPN customer gateway instance.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -91,7 +91,7 @@ public class CustomerGateway extends com.pulumi.resources.CustomResource {
      * The IP address of the customer gateway.
      * 
      */
-    @Export(name="ipAddress", type=String.class, parameters={})
+    @Export(name="ipAddress", refs={String.class}, tree="[0]")
     private Output<String> ipAddress;
 
     /**
@@ -105,7 +105,7 @@ public class CustomerGateway extends com.pulumi.resources.CustomResource {
      * The name of the VPN customer gateway. Defaults to null.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

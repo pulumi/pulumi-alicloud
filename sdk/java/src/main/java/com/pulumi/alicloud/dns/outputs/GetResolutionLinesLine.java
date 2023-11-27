@@ -76,11 +76,11 @@ public final class GetResolutionLinesLine {
             return this;
         }
         public GetResolutionLinesLine build() {
-            final var o = new GetResolutionLinesLine();
-            o.lineCode = lineCode;
-            o.lineDisplayName = lineDisplayName;
-            o.lineName = lineName;
-            return o;
+            final var _resultValue = new GetResolutionLinesLine();
+            _resultValue.lineCode = lineCode;
+            _resultValue.lineDisplayName = lineDisplayName;
+            _resultValue.lineName = lineName;
+            return _resultValue;
         }
     }
 }

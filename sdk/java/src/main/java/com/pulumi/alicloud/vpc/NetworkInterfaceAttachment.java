@@ -37,7 +37,7 @@ public class NetworkInterfaceAttachment extends com.pulumi.resources.CustomResou
      * The instance ID to attach.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -51,7 +51,7 @@ public class NetworkInterfaceAttachment extends com.pulumi.resources.CustomResou
      * The ENI ID to attach.
      * 
      */
-    @Export(name="networkInterfaceId", type=String.class, parameters={})
+    @Export(name="networkInterfaceId", refs={String.class}, tree="[0]")
     private Output<String> networkInterfaceId;
 
     /**
@@ -61,13 +61,13 @@ public class NetworkInterfaceAttachment extends com.pulumi.resources.CustomResou
     public Output<String> networkInterfaceId() {
         return this.networkInterfaceId;
     }
-    @Export(name="trunkNetworkInstanceId", type=String.class, parameters={})
+    @Export(name="trunkNetworkInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trunkNetworkInstanceId;
 
     public Output<Optional<String>> trunkNetworkInstanceId() {
         return Codegen.optional(this.trunkNetworkInstanceId);
     }
-    @Export(name="waitForNetworkConfigurationReady", type=Boolean.class, parameters={})
+    @Export(name="waitForNetworkConfigurationReady", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> waitForNetworkConfigurationReady;
 
     public Output<Optional<Boolean>> waitForNetworkConfigurationReady() {

@@ -522,34 +522,34 @@ public final class GetEcsBackupClientsClient {
             return this;
         }
         public GetEcsBackupClientsClient build() {
-            final var o = new GetEcsBackupClientsClient();
-            o.archType = archType;
-            o.backupStatus = backupStatus;
-            o.clientType = clientType;
-            o.clientVersion = clientVersion;
-            o.createTime = createTime;
-            o.dataNetworkType = dataNetworkType;
-            o.dataProxySetting = dataProxySetting;
-            o.ecsBackupClientId = ecsBackupClientId;
-            o.hostname = hostname;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.lastHeartBeatTime = lastHeartBeatTime;
-            o.maxClientVersion = maxClientVersion;
-            o.maxCpuCore = maxCpuCore;
-            o.maxWorker = maxWorker;
-            o.osType = osType;
-            o.privateIpv4 = privateIpv4;
-            o.proxyHost = proxyHost;
-            o.proxyPassword = proxyPassword;
-            o.proxyPort = proxyPort;
-            o.proxyUser = proxyUser;
-            o.status = status;
-            o.updatedTime = updatedTime;
-            o.useHttps = useHttps;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetEcsBackupClientsClient();
+            _resultValue.archType = archType;
+            _resultValue.backupStatus = backupStatus;
+            _resultValue.clientType = clientType;
+            _resultValue.clientVersion = clientVersion;
+            _resultValue.createTime = createTime;
+            _resultValue.dataNetworkType = dataNetworkType;
+            _resultValue.dataProxySetting = dataProxySetting;
+            _resultValue.ecsBackupClientId = ecsBackupClientId;
+            _resultValue.hostname = hostname;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.lastHeartBeatTime = lastHeartBeatTime;
+            _resultValue.maxClientVersion = maxClientVersion;
+            _resultValue.maxCpuCore = maxCpuCore;
+            _resultValue.maxWorker = maxWorker;
+            _resultValue.osType = osType;
+            _resultValue.privateIpv4 = privateIpv4;
+            _resultValue.proxyHost = proxyHost;
+            _resultValue.proxyPassword = proxyPassword;
+            _resultValue.proxyPort = proxyPort;
+            _resultValue.proxyUser = proxyUser;
+            _resultValue.status = status;
+            _resultValue.updatedTime = updatedTime;
+            _resultValue.useHttps = useHttps;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

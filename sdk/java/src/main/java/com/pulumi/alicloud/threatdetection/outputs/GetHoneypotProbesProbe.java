@@ -256,20 +256,20 @@ public final class GetHoneypotProbesProbe {
             return this;
         }
         public GetHoneypotProbesProbe build() {
-            final var o = new GetHoneypotProbesProbe();
-            o.arp = arp;
-            o.controlNodeId = controlNodeId;
-            o.displayName = displayName;
-            o.honeypotBindLists = honeypotBindLists;
-            o.honeypotProbeId = honeypotProbeId;
-            o.id = id;
-            o.ping = ping;
-            o.probeType = probeType;
-            o.serviceIpLists = serviceIpLists;
-            o.status = status;
-            o.uuid = uuid;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetHoneypotProbesProbe();
+            _resultValue.arp = arp;
+            _resultValue.controlNodeId = controlNodeId;
+            _resultValue.displayName = displayName;
+            _resultValue.honeypotBindLists = honeypotBindLists;
+            _resultValue.honeypotProbeId = honeypotProbeId;
+            _resultValue.id = id;
+            _resultValue.ping = ping;
+            _resultValue.probeType = probeType;
+            _resultValue.serviceIpLists = serviceIpLists;
+            _resultValue.status = status;
+            _resultValue.uuid = uuid;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

@@ -148,17 +148,17 @@ public final class GetSlsGroupsResult {
             return this;
         }
         public GetSlsGroupsResult build() {
-            final var o = new GetSlsGroupsResult();
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.keyword = keyword;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+            final var _resultValue = new GetSlsGroupsResult();
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.keyword = keyword;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            return _resultValue;
         }
     }
 }

@@ -139,15 +139,15 @@ public final class GetInstanceMembersResult {
             return this;
         }
         public GetInstanceMembersResult build() {
-            final var o = new GetInstanceMembersResult();
-            o.currentPage = currentPage;
-            o.id = id;
-            o.ids = ids;
-            o.members = members;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+            final var _resultValue = new GetInstanceMembersResult();
+            _resultValue.currentPage = currentPage;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.members = members;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            return _resultValue;
         }
     }
 }

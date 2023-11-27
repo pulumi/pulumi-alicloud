@@ -51,9 +51,9 @@ public final class ContainerGroupContainerReadinessProbeExec {
             return commands(List.of(commands));
         }
         public ContainerGroupContainerReadinessProbeExec build() {
-            final var o = new ContainerGroupContainerReadinessProbeExec();
-            o.commands = commands;
-            return o;
+            final var _resultValue = new ContainerGroupContainerReadinessProbeExec();
+            _resultValue.commands = commands;
+            return _resultValue;
         }
     }
 }

@@ -69,10 +69,10 @@ public final class EciScalingConfigurationContainerEnvironmentVar {
             return this;
         }
         public EciScalingConfigurationContainerEnvironmentVar build() {
-            final var o = new EciScalingConfigurationContainerEnvironmentVar();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new EciScalingConfigurationContainerEnvironmentVar();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

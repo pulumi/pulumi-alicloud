@@ -1008,7 +1008,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             account_type="Normal")
         default_enterprise_instance = alicloud.dms.EnterpriseInstance("defaultEnterpriseInstance",
             tid=default_user_tenants.ids[0],
-            instance_type="MySQL",
+            instance_type="mysql",
             instance_source="RDS",
             network_type="VPC",
             env_type="dev",
@@ -1018,7 +1018,8 @@ class EnterpriseInstance(pulumi.CustomResource):
             database_password=default_account.account_password,
             instance_name=name,
             dba_uid=current.id,
-            safe_rule="自由操作",
+            safe_rule="904496",
+            use_dsql=1,
             query_timeout=60,
             export_timeout=600,
             ecs_region=default_regions.regions[0].id)
@@ -1130,7 +1131,7 @@ class EnterpriseInstance(pulumi.CustomResource):
             account_type="Normal")
         default_enterprise_instance = alicloud.dms.EnterpriseInstance("defaultEnterpriseInstance",
             tid=default_user_tenants.ids[0],
-            instance_type="MySQL",
+            instance_type="mysql",
             instance_source="RDS",
             network_type="VPC",
             env_type="dev",
@@ -1140,7 +1141,8 @@ class EnterpriseInstance(pulumi.CustomResource):
             database_password=default_account.account_password,
             instance_name=name,
             dba_uid=current.id,
-            safe_rule="自由操作",
+            safe_rule="904496",
+            use_dsql=1,
             query_timeout=60,
             export_timeout=600,
             ecs_region=default_regions.regions[0].id)

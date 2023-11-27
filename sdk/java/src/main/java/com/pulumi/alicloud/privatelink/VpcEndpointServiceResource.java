@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a Private Link Vpc Endpoint Service Resource resource.
+ * Provides a Private Link Vpc Endpoint Service Resource resource. Endpoint service resource.
  * 
  * For information about Private Link Vpc Endpoint Service Resource and how to use it, see [What is Vpc Endpoint Service Resource](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-attachresourcetovpcendpointservice).
  * 
@@ -117,67 +117,91 @@ import javax.annotation.Nullable;
  * Private Link Vpc Endpoint Service Resource can be imported using the id, e.g.
  * 
  * ```sh
- *  $ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example &lt;service_id&gt;:&lt;resource_id&gt;
+ *  $ pulumi import alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource example &lt;service_id&gt;:&lt;resource_id&gt;:&lt;zone_id&gt;
  * ```
  * 
  */
 @ResourceType(type="alicloud:privatelink/vpcEndpointServiceResource:VpcEndpointServiceResource")
 public class VpcEndpointServiceResource extends com.pulumi.resources.CustomResource {
     /**
-     * The dry run.
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error code is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The ID of Resource.
+     * The service resource ID.
      * 
      */
-    @Export(name="resourceId", type=String.class, parameters={})
+    @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output<String> resourceId;
 
     /**
-     * @return The ID of Resource.
+     * @return The service resource ID.
      * 
      */
     public Output<String> resourceId() {
         return this.resourceId;
     }
     /**
-     * The Type of Resource.
+     * Service resource type, value:
+     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      * 
      */
-    @Export(name="resourceType", type=String.class, parameters={})
+    @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output<String> resourceType;
 
     /**
-     * @return The Type of Resource.
+     * @return Service resource type, value:
+     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
      * 
      */
     public Output<String> resourceType() {
         return this.resourceType;
     }
     /**
-     * The ID of Vpc Endpoint Service.
+     * The endpoint service ID.
      * 
      */
-    @Export(name="serviceId", type=String.class, parameters={})
+    @Export(name="serviceId", refs={String.class}, tree="[0]")
     private Output<String> serviceId;
 
     /**
-     * @return The ID of Vpc Endpoint Service.
+     * @return The endpoint service ID.
      * 
      */
     public Output<String> serviceId() {
         return this.serviceId;
+    }
+    /**
+     * The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+     * 
+     */
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    private Output<String> zoneId;
+
+    /**
+     * @return The ID of the zone to which the service resource belongs. (valid when the resource type is nlb/alb).
+     * 
+     */
+    public Output<String> zoneId() {
+        return this.zoneId;
     }
 
     /**

@@ -120,14 +120,14 @@ public final class GetDomainExtensionsResult {
             return this;
         }
         public GetDomainExtensionsResult build() {
-            final var o = new GetDomainExtensionsResult();
-            o.extensions = extensions;
-            o.frontendPort = frontendPort;
-            o.id = id;
-            o.ids = ids;
-            o.loadBalancerId = loadBalancerId;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetDomainExtensionsResult();
+            _resultValue.extensions = extensions;
+            _resultValue.frontendPort = frontendPort;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.loadBalancerId = loadBalancerId;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

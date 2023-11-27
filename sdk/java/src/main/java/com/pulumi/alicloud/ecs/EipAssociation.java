@@ -142,7 +142,7 @@ public class EipAssociation extends com.pulumi.resources.CustomResource {
      * The allocation EIP ID.
      * 
      */
-    @Export(name="allocationId", type=String.class, parameters={})
+    @Export(name="allocationId", refs={String.class}, tree="[0]")
     private Output<String> allocationId;
 
     /**
@@ -156,7 +156,7 @@ public class EipAssociation extends com.pulumi.resources.CustomResource {
      * When EIP is bound to a NAT gateway, and the NAT gateway adds a DNAT or SNAT entry, set it for `true` can unassociation any way. Default to `false`.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -170,7 +170,7 @@ public class EipAssociation extends com.pulumi.resources.CustomResource {
      * The ID of the ECS or SLB instance or Nat Gateway or NetworkInterface or HaVip.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -184,7 +184,7 @@ public class EipAssociation extends com.pulumi.resources.CustomResource {
      * The type of cloud product that the eip instance to bind. Valid values: `EcsInstance`, `SlbInstance`, `Nat`, `NetworkInterface`, `HaVip` and `IpAddress`.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -198,7 +198,7 @@ public class EipAssociation extends com.pulumi.resources.CustomResource {
      * The private IP address in the network segment of the vswitch which has been assigned.
      * 
      */
-    @Export(name="privateIpAddress", type=String.class, parameters={})
+    @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
     private Output<String> privateIpAddress;
 
     /**
@@ -212,7 +212,7 @@ public class EipAssociation extends com.pulumi.resources.CustomResource {
      * The ID of the VPC that has IPv4 gateways enabled and that is deployed in the same region as the EIP. When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations. **Note:** This parameter is required if `instance_type` is set to IpAddress. In this case, the EIP is associated with an IP address.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**

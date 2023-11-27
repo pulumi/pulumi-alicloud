@@ -69,7 +69,7 @@ public class Product extends com.pulumi.resources.CustomResource {
      * ProductName.
      * 
      */
-    @Export(name="productName", type=String.class, parameters={})
+    @Export(name="productName", refs={String.class}, tree="[0]")
     private Output<String> productName;
 
     /**

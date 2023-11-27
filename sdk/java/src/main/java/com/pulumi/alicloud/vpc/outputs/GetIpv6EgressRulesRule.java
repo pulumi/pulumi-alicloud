@@ -179,16 +179,16 @@ public final class GetIpv6EgressRulesRule {
             return this;
         }
         public GetIpv6EgressRulesRule build() {
-            final var o = new GetIpv6EgressRulesRule();
-            o.description = description;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.instanceType = instanceType;
-            o.ipv6EgressRuleId = ipv6EgressRuleId;
-            o.ipv6EgressRuleName = ipv6EgressRuleName;
-            o.ipv6GatewayId = ipv6GatewayId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetIpv6EgressRulesRule();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceType = instanceType;
+            _resultValue.ipv6EgressRuleId = ipv6EgressRuleId;
+            _resultValue.ipv6EgressRuleName = ipv6EgressRuleName;
+            _resultValue.ipv6GatewayId = ipv6GatewayId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

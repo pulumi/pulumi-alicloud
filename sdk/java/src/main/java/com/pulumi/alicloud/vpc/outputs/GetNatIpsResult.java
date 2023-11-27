@@ -175,19 +175,19 @@ public final class GetNatIpsResult {
             return this;
         }
         public GetNatIpsResult build() {
-            final var o = new GetNatIpsResult();
-            o.id = id;
-            o.ids = ids;
-            o.ips = ips;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.natGatewayId = natGatewayId;
-            o.natIpCidr = natIpCidr;
-            o.natIpIds = natIpIds;
-            o.natIpNames = natIpNames;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetNatIpsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.ips = ips;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.natGatewayId = natGatewayId;
+            _resultValue.natIpCidr = natIpCidr;
+            _resultValue.natIpIds = natIpIds;
+            _resultValue.natIpNames = natIpNames;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -255,20 +255,20 @@ public final class GetUsersUser {
             return this;
         }
         public GetUsersUser build() {
-            final var o = new GetUsersUser();
-            o.comment = comment;
-            o.displayName = displayName;
-            o.email = email;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.mobile = mobile;
-            o.mobileCountryCode = mobileCountryCode;
-            o.source = source;
-            o.sourceUserId = sourceUserId;
-            o.status = status;
-            o.userId = userId;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new GetUsersUser();
+            _resultValue.comment = comment;
+            _resultValue.displayName = displayName;
+            _resultValue.email = email;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.mobile = mobile;
+            _resultValue.mobileCountryCode = mobileCountryCode;
+            _resultValue.source = source;
+            _resultValue.sourceUserId = sourceUserId;
+            _resultValue.status = status;
+            _resultValue.userId = userId;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

@@ -86,12 +86,12 @@ public final class GetAuditPoliciesResult {
             return policies(List.of(policies));
         }
         public GetAuditPoliciesResult build() {
-            final var o = new GetAuditPoliciesResult();
-            o.dbInstanceId = dbInstanceId;
-            o.id = id;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            return o;
+            final var _resultValue = new GetAuditPoliciesResult();
+            _resultValue.dbInstanceId = dbInstanceId;
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policies = policies;
+            return _resultValue;
         }
     }
 }

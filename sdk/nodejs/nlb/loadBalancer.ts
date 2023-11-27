@@ -132,7 +132,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The reason why the deletion protection feature is enabled or disabled. The `deletionProtectionReason` takes effect only when `deletionProtectionEnabled` is set to `true`.
      */
-    public readonly deletionProtectionReason!: pulumi.Output<string | undefined>;
+    public readonly deletionProtectionReason!: pulumi.Output<string>;
     /**
      * The domain name of the NLB instance.
      */
@@ -156,7 +156,7 @@ export class LoadBalancer extends pulumi.CustomResource {
     /**
      * The reason why the configuration read-only mode is enabled. The `modificationProtectionReason` takes effect only when `modificationProtectionStatus` is set to `ConsoleProtection`.
      */
-    public readonly modificationProtectionReason!: pulumi.Output<string | undefined>;
+    public readonly modificationProtectionReason!: pulumi.Output<string>;
     /**
      * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
      */

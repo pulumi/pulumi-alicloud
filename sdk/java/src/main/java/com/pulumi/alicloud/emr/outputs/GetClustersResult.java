@@ -276,28 +276,28 @@ public final class GetClustersResult {
             return this;
         }
         public GetClustersResult build() {
-            final var o = new GetClustersResult();
-            o.clusterName = clusterName;
-            o.clusterTypeLists = clusterTypeLists;
-            o.clusters = clusters;
-            o.createType = createType;
-            o.defaultStatus = defaultStatus;
-            o.depositType = depositType;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.isDesc = isDesc;
-            o.machineType = machineType;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.resourceGroupId = resourceGroupId;
-            o.statusLists = statusLists;
-            o.totalCount = totalCount;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetClustersResult();
+            _resultValue.clusterName = clusterName;
+            _resultValue.clusterTypeLists = clusterTypeLists;
+            _resultValue.clusters = clusters;
+            _resultValue.createType = createType;
+            _resultValue.defaultStatus = defaultStatus;
+            _resultValue.depositType = depositType;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.isDesc = isDesc;
+            _resultValue.machineType = machineType;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.statusLists = statusLists;
+            _resultValue.totalCount = totalCount;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

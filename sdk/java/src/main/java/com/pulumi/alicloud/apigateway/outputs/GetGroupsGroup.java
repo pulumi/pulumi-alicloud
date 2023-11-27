@@ -226,18 +226,18 @@ public final class GetGroupsGroup {
             return this;
         }
         public GetGroupsGroup build() {
-            final var o = new GetGroupsGroup();
-            o.billingStatus = billingStatus;
-            o.createdTime = createdTime;
-            o.description = description;
-            o.id = id;
-            o.illegalStatus = illegalStatus;
-            o.modifiedTime = modifiedTime;
-            o.name = name;
-            o.regionId = regionId;
-            o.subDomain = subDomain;
-            o.trafficLimit = trafficLimit;
-            return o;
+            final var _resultValue = new GetGroupsGroup();
+            _resultValue.billingStatus = billingStatus;
+            _resultValue.createdTime = createdTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.illegalStatus = illegalStatus;
+            _resultValue.modifiedTime = modifiedTime;
+            _resultValue.name = name;
+            _resultValue.regionId = regionId;
+            _resultValue.subDomain = subDomain;
+            _resultValue.trafficLimit = trafficLimit;
+            return _resultValue;
         }
     }
 }

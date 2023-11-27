@@ -143,14 +143,14 @@ public final class GetTransitRouterRouteTablePropagationsResult {
             return this;
         }
         public GetTransitRouterRouteTablePropagationsResult build() {
-            final var o = new GetTransitRouterRouteTablePropagationsResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.propagations = propagations;
-            o.status = status;
-            o.transitRouterRouteTableId = transitRouterRouteTableId;
-            return o;
+            final var _resultValue = new GetTransitRouterRouteTablePropagationsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.propagations = propagations;
+            _resultValue.status = status;
+            _resultValue.transitRouterRouteTableId = transitRouterRouteTableId;
+            return _resultValue;
         }
     }
 }

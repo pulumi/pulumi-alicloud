@@ -159,18 +159,18 @@ public final class GetChangeSetsResult {
             return this;
         }
         public GetChangeSetsResult build() {
-            final var o = new GetChangeSetsResult();
-            o.changeSetName = changeSetName;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.sets = sets;
-            o.stackId = stackId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetChangeSetsResult();
+            _resultValue.changeSetName = changeSetName;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.sets = sets;
+            _resultValue.stackId = stackId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

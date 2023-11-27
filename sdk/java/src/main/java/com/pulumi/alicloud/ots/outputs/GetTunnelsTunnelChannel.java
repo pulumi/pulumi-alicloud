@@ -123,13 +123,13 @@ public final class GetTunnelsTunnelChannel {
             return this;
         }
         public GetTunnelsTunnelChannel build() {
-            final var o = new GetTunnelsTunnelChannel();
-            o.channelId = channelId;
-            o.channelRpo = channelRpo;
-            o.channelStatus = channelStatus;
-            o.channelType = channelType;
-            o.clientId = clientId;
-            return o;
+            final var _resultValue = new GetTunnelsTunnelChannel();
+            _resultValue.channelId = channelId;
+            _resultValue.channelRpo = channelRpo;
+            _resultValue.channelStatus = channelStatus;
+            _resultValue.channelType = channelType;
+            _resultValue.clientId = clientId;
+            return _resultValue;
         }
     }
 }

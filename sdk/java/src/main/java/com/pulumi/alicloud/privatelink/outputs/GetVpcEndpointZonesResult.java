@@ -111,14 +111,14 @@ public final class GetVpcEndpointZonesResult {
             return zones(List.of(zones));
         }
         public GetVpcEndpointZonesResult build() {
-            final var o = new GetVpcEndpointZonesResult();
-            o.endpointId = endpointId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GetVpcEndpointZonesResult();
+            _resultValue.endpointId = endpointId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

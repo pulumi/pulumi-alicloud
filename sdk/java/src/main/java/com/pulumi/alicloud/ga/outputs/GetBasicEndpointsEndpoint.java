@@ -236,19 +236,19 @@ public final class GetBasicEndpointsEndpoint {
             return this;
         }
         public GetBasicEndpointsEndpoint build() {
-            final var o = new GetBasicEndpointsEndpoint();
-            o.acceleratorId = acceleratorId;
-            o.basicEndpointName = basicEndpointName;
-            o.endpointAddress = endpointAddress;
-            o.endpointGroupId = endpointGroupId;
-            o.endpointId = endpointId;
-            o.endpointSubAddress = endpointSubAddress;
-            o.endpointSubAddressType = endpointSubAddressType;
-            o.endpointType = endpointType;
-            o.endpointZoneId = endpointZoneId;
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBasicEndpointsEndpoint();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.basicEndpointName = basicEndpointName;
+            _resultValue.endpointAddress = endpointAddress;
+            _resultValue.endpointGroupId = endpointGroupId;
+            _resultValue.endpointId = endpointId;
+            _resultValue.endpointSubAddress = endpointSubAddress;
+            _resultValue.endpointSubAddressType = endpointSubAddressType;
+            _resultValue.endpointType = endpointType;
+            _resultValue.endpointZoneId = endpointZoneId;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

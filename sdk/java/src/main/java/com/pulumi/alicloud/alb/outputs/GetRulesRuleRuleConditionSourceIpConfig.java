@@ -50,9 +50,9 @@ public final class GetRulesRuleRuleConditionSourceIpConfig {
             return values(List.of(values));
         }
         public GetRulesRuleRuleConditionSourceIpConfig build() {
-            final var o = new GetRulesRuleRuleConditionSourceIpConfig();
-            o.values = values;
-            return o;
+            final var _resultValue = new GetRulesRuleRuleConditionSourceIpConfig();
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

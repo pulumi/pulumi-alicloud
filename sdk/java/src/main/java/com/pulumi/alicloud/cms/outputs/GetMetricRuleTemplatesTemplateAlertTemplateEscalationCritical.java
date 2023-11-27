@@ -105,12 +105,12 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical
             return this;
         }
         public GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical build() {
-            final var o = new GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical();
-            o.comparisonOperator = comparisonOperator;
-            o.statistics = statistics;
-            o.threshold = threshold;
-            o.times = times;
-            return o;
+            final var _resultValue = new GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical();
+            _resultValue.comparisonOperator = comparisonOperator;
+            _resultValue.statistics = statistics;
+            _resultValue.threshold = threshold;
+            _resultValue.times = times;
+            return _resultValue;
         }
     }
 }

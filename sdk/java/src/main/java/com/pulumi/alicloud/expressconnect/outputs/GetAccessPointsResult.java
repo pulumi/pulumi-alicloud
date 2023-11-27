@@ -125,15 +125,15 @@ public final class GetAccessPointsResult {
             return this;
         }
         public GetAccessPointsResult build() {
-            final var o = new GetAccessPointsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.points = points;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAccessPointsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.points = points;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

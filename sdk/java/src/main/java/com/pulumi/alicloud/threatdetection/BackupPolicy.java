@@ -78,7 +78,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Protection of the Name of the Policy.
      * 
      */
-    @Export(name="backupPolicyName", type=String.class, parameters={})
+    @Export(name="backupPolicyName", refs={String.class}, tree="[0]")
     private Output<String> backupPolicyName;
 
     /**
@@ -92,7 +92,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The Specified Protection Policies of the Specific Configuration. see [how to use it](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-createbackuppolicy).
      * 
      */
-    @Export(name="policy", type=String.class, parameters={})
+    @Export(name="policy", refs={String.class}, tree="[0]")
     private Output<String> policy;
 
     /**
@@ -106,7 +106,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The region ID of the non-Alibaba cloud server. You can call the [DescribeSupportRegion](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describesupportregion) interface to view the region supported by anti-ransomware, and then select the region supported by anti-ransomware according to the region where your non-Alibaba cloud server is located.
      * 
      */
-    @Export(name="policyRegionId", type=String.class, parameters={})
+    @Export(name="policyRegionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policyRegionId;
 
     /**
@@ -120,7 +120,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Anti-Blackmail Policy Version. Valid values: `1.0.0`, `2.0.0`.
      * 
      */
-    @Export(name="policyVersion", type=String.class, parameters={})
+    @Export(name="policyVersion", refs={String.class}, tree="[0]")
     private Output<String> policyVersion;
 
     /**
@@ -134,7 +134,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The status of the Backup Policy instance.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -148,7 +148,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Specify the Protection of Server UUID List.
      * 
      */
-    @Export(name="uuidLists", type=List.class, parameters={String.class})
+    @Export(name="uuidLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> uuidLists;
 
     /**

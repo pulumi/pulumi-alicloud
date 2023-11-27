@@ -220,19 +220,19 @@ public final class GetConnectionsConnection {
             return this;
         }
         public GetConnectionsConnection build() {
-            final var o = new GetConnectionsConnection();
-            o.connectionString = connectionString;
-            o.dbInstanceNetType = dbInstanceNetType;
-            o.expiredTime = expiredTime;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.ipAddress = ipAddress;
-            o.port = port;
-            o.upgradeable = upgradeable;
-            o.vpcId = vpcId;
-            o.vpcInstanceId = vpcInstanceId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetConnectionsConnection();
+            _resultValue.connectionString = connectionString;
+            _resultValue.dbInstanceNetType = dbInstanceNetType;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.port = port;
+            _resultValue.upgradeable = upgradeable;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vpcInstanceId = vpcInstanceId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

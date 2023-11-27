@@ -199,17 +199,17 @@ public final class GetInstanceTypesCoreInstanceType {
             return this;
         }
         public GetInstanceTypesCoreInstanceType build() {
-            final var o = new GetInstanceTypesCoreInstanceType();
-            o.category = category;
-            o.cpuSize = cpuSize;
-            o.engine = engine;
-            o.instanceType = instanceType;
-            o.maxCoreCount = maxCoreCount;
-            o.memSize = memSize;
-            o.storageType = storageType;
-            o.version = version;
-            o.zone = zone;
-            return o;
+            final var _resultValue = new GetInstanceTypesCoreInstanceType();
+            _resultValue.category = category;
+            _resultValue.cpuSize = cpuSize;
+            _resultValue.engine = engine;
+            _resultValue.instanceType = instanceType;
+            _resultValue.maxCoreCount = maxCoreCount;
+            _resultValue.memSize = memSize;
+            _resultValue.storageType = storageType;
+            _resultValue.version = version;
+            _resultValue.zone = zone;
+            return _resultValue;
         }
     }
 }

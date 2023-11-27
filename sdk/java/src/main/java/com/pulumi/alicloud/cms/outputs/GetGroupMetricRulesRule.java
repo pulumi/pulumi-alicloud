@@ -395,27 +395,27 @@ public final class GetGroupMetricRulesRule {
             return this;
         }
         public GetGroupMetricRulesRule build() {
-            final var o = new GetGroupMetricRulesRule();
-            o.contactGroups = contactGroups;
-            o.dimensions = dimensions;
-            o.effectiveInterval = effectiveInterval;
-            o.emailSubject = emailSubject;
-            o.enableState = enableState;
-            o.escalations = escalations;
-            o.groupId = groupId;
-            o.groupMetricRuleName = groupMetricRuleName;
-            o.id = id;
-            o.metricName = metricName;
-            o.namespace = namespace;
-            o.noEffectiveInterval = noEffectiveInterval;
-            o.period = period;
-            o.resources = resources;
-            o.ruleId = ruleId;
-            o.silenceTime = silenceTime;
-            o.sourceType = sourceType;
-            o.status = status;
-            o.webhook = webhook;
-            return o;
+            final var _resultValue = new GetGroupMetricRulesRule();
+            _resultValue.contactGroups = contactGroups;
+            _resultValue.dimensions = dimensions;
+            _resultValue.effectiveInterval = effectiveInterval;
+            _resultValue.emailSubject = emailSubject;
+            _resultValue.enableState = enableState;
+            _resultValue.escalations = escalations;
+            _resultValue.groupId = groupId;
+            _resultValue.groupMetricRuleName = groupMetricRuleName;
+            _resultValue.id = id;
+            _resultValue.metricName = metricName;
+            _resultValue.namespace = namespace;
+            _resultValue.noEffectiveInterval = noEffectiveInterval;
+            _resultValue.period = period;
+            _resultValue.resources = resources;
+            _resultValue.ruleId = ruleId;
+            _resultValue.silenceTime = silenceTime;
+            _resultValue.sourceType = sourceType;
+            _resultValue.status = status;
+            _resultValue.webhook = webhook;
+            return _resultValue;
         }
     }
 }

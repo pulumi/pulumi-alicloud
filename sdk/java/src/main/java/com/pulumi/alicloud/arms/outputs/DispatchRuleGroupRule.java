@@ -129,13 +129,13 @@ public final class DispatchRuleGroupRule {
             return this;
         }
         public DispatchRuleGroupRule build() {
-            final var o = new DispatchRuleGroupRule();
-            o.groupId = groupId;
-            o.groupInterval = groupInterval;
-            o.groupWaitTime = groupWaitTime;
-            o.groupingFields = groupingFields;
-            o.repeatInterval = repeatInterval;
-            return o;
+            final var _resultValue = new DispatchRuleGroupRule();
+            _resultValue.groupId = groupId;
+            _resultValue.groupInterval = groupInterval;
+            _resultValue.groupWaitTime = groupWaitTime;
+            _resultValue.groupingFields = groupingFields;
+            _resultValue.repeatInterval = repeatInterval;
+            return _resultValue;
         }
     }
 }

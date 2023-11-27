@@ -106,12 +106,12 @@ public final class ConnectionIpsecConfig {
             return this;
         }
         public ConnectionIpsecConfig build() {
-            final var o = new ConnectionIpsecConfig();
-            o.ipsecAuthAlg = ipsecAuthAlg;
-            o.ipsecEncAlg = ipsecEncAlg;
-            o.ipsecLifetime = ipsecLifetime;
-            o.ipsecPfs = ipsecPfs;
-            return o;
+            final var _resultValue = new ConnectionIpsecConfig();
+            _resultValue.ipsecAuthAlg = ipsecAuthAlg;
+            _resultValue.ipsecEncAlg = ipsecEncAlg;
+            _resultValue.ipsecLifetime = ipsecLifetime;
+            _resultValue.ipsecPfs = ipsecPfs;
+            return _resultValue;
         }
     }
 }

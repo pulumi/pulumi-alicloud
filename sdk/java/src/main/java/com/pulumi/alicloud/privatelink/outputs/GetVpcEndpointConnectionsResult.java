@@ -134,16 +134,16 @@ public final class GetVpcEndpointConnectionsResult {
             return this;
         }
         public GetVpcEndpointConnectionsResult build() {
-            final var o = new GetVpcEndpointConnectionsResult();
-            o.connections = connections;
-            o.endpointId = endpointId;
-            o.endpointOwnerId = endpointOwnerId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.serviceId = serviceId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetVpcEndpointConnectionsResult();
+            _resultValue.connections = connections;
+            _resultValue.endpointId = endpointId;
+            _resultValue.endpointOwnerId = endpointOwnerId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.serviceId = serviceId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

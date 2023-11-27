@@ -218,18 +218,18 @@ public final class GetRulesRule {
             return this;
         }
         public GetRulesRule build() {
-            final var o = new GetRulesRule();
-            o.bindVpcs = bindVpcs;
-            o.createTime = createTime;
-            o.endpointId = endpointId;
-            o.endpointName = endpointName;
-            o.forwardIps = forwardIps;
-            o.id = id;
-            o.ruleId = ruleId;
-            o.ruleName = ruleName;
-            o.type = type;
-            o.zoneName = zoneName;
-            return o;
+            final var _resultValue = new GetRulesRule();
+            _resultValue.bindVpcs = bindVpcs;
+            _resultValue.createTime = createTime;
+            _resultValue.endpointId = endpointId;
+            _resultValue.endpointName = endpointName;
+            _resultValue.forwardIps = forwardIps;
+            _resultValue.id = id;
+            _resultValue.ruleId = ruleId;
+            _resultValue.ruleName = ruleName;
+            _resultValue.type = type;
+            _resultValue.zoneName = zoneName;
+            return _resultValue;
         }
     }
 }

@@ -103,12 +103,12 @@ public final class GetWafRulesWafRuleCondition {
             return this;
         }
         public GetWafRulesWafRuleCondition build() {
-            final var o = new GetWafRulesWafRuleCondition();
-            o.key = key;
-            o.opValue = opValue;
-            o.subKey = subKey;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetWafRulesWafRuleCondition();
+            _resultValue.key = key;
+            _resultValue.opValue = opValue;
+            _resultValue.subKey = subKey;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

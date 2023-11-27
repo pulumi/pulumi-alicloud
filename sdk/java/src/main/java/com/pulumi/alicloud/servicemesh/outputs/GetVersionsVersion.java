@@ -84,11 +84,11 @@ public final class GetVersionsVersion {
             return this;
         }
         public GetVersionsVersion build() {
-            final var o = new GetVersionsVersion();
-            o.edition = edition;
-            o.id = id;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetVersionsVersion();
+            _resultValue.edition = edition;
+            _resultValue.id = id;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

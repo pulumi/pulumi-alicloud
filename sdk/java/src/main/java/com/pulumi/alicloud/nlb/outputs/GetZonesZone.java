@@ -84,11 +84,11 @@ public final class GetZonesZone {
             return this;
         }
         public GetZonesZone build() {
-            final var o = new GetZonesZone();
-            o.id = id;
-            o.localName = localName;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetZonesZone();
+            _resultValue.id = id;
+            _resultValue.localName = localName;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

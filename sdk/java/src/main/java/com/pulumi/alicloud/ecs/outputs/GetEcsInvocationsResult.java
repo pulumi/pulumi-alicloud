@@ -145,17 +145,17 @@ public final class GetEcsInvocationsResult {
             return this;
         }
         public GetEcsInvocationsResult build() {
-            final var o = new GetEcsInvocationsResult();
-            o.commandId = commandId;
-            o.contentEncoding = contentEncoding;
-            o.id = id;
-            o.ids = ids;
-            o.invocations = invocations;
-            o.invokeStatus = invokeStatus;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+            final var _resultValue = new GetEcsInvocationsResult();
+            _resultValue.commandId = commandId;
+            _resultValue.contentEncoding = contentEncoding;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.invocations = invocations;
+            _resultValue.invokeStatus = invokeStatus;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            return _resultValue;
         }
     }
 }

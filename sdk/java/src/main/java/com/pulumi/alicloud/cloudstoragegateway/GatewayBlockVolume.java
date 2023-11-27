@@ -38,7 +38,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * The Block volume set mode to cache mode. Valid values: `Cache`, `WriteThrough`.
      * 
      */
-    @Export(name="cacheMode", type=String.class, parameters={})
+    @Export(name="cacheMode", refs={String.class}, tree="[0]")
     private Output<String> cacheMode;
 
     /**
@@ -52,7 +52,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * Whether to enable iSCSI access of CHAP authentication, which currently supports both CHAP inbound authentication.  Default value: `false`.
      * 
      */
-    @Export(name="chapEnabled", type=Boolean.class, parameters={})
+    @Export(name="chapEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> chapEnabled;
 
     /**
@@ -66,7 +66,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * The password for inbound authentication when the block volume enables iSCSI access to CHAP authentication. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
      * 
      */
-    @Export(name="chapInPassword", type=String.class, parameters={})
+    @Export(name="chapInPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> chapInPassword;
 
     /**
@@ -80,7 +80,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * The Inbound CHAP user. The `chap_in_user` must be 1 to 32 characters in length, and can contain letters and digits. **NOTE:** When the `chap_enabled` is  `true` is,The `chap_in_password` is valid.
      * 
      */
-    @Export(name="chapInUser", type=String.class, parameters={})
+    @Export(name="chapInUser", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> chapInUser;
 
     /**
@@ -94,7 +94,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * The Block volume storage allocation unit.  Valid values: `8192`, `16384`, `32768`, `65536`, `131072`. Default value: `32768`. Unit: `Byte`.
      * 
      */
-    @Export(name="chunkSize", type=Integer.class, parameters={})
+    @Export(name="chunkSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> chunkSize;
 
     /**
@@ -108,7 +108,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * The Block volume name. The name must be 1 to 32 characters in length, and can contain lower case letters and digits.
      * 
      */
-    @Export(name="gatewayBlockVolumeName", type=String.class, parameters={})
+    @Export(name="gatewayBlockVolumeName", refs={String.class}, tree="[0]")
     private Output<String> gatewayBlockVolumeName;
 
     /**
@@ -122,7 +122,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * The Gateway ID.
      * 
      */
-    @Export(name="gatewayId", type=String.class, parameters={})
+    @Export(name="gatewayId", refs={String.class}, tree="[0]")
     private Output<String> gatewayId;
 
     /**
@@ -136,7 +136,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * The ID of the index.
      * 
      */
-    @Export(name="indexId", type=String.class, parameters={})
+    @Export(name="indexId", refs={String.class}, tree="[0]")
     private Output<String> indexId;
 
     /**
@@ -150,7 +150,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * Whether to delete the source data. Default value `true`. **NOTE:** When `is_source_deletion` is `true`, the data in the OSS Bucket on the cloud is also deleted when deleting the block gateway volume. Please operate with caution.
      * 
      */
-    @Export(name="isSourceDeletion", type=Boolean.class, parameters={})
+    @Export(name="isSourceDeletion", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isSourceDeletion;
 
     /**
@@ -164,7 +164,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * The Cache disk to local path. **NOTE:**  When the `cache_mode` is  `Cache` is,The `chap_in_password` is valid.
      * 
      */
-    @Export(name="localPath", type=String.class, parameters={})
+    @Export(name="localPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> localPath;
 
     /**
@@ -178,7 +178,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * The name of the OSS Bucket.
      * 
      */
-    @Export(name="ossBucketName", type=String.class, parameters={})
+    @Export(name="ossBucketName", refs={String.class}, tree="[0]")
     private Output<String> ossBucketName;
 
     /**
@@ -192,7 +192,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * Whether to enable SSL access your OSS Buckets. Default value: `true`.
      * 
      */
-    @Export(name="ossBucketSsl", type=Boolean.class, parameters={})
+    @Export(name="ossBucketSsl", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ossBucketSsl;
 
     /**
@@ -206,7 +206,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * The endpoint of the OSS Bucket.
      * 
      */
-    @Export(name="ossEndpoint", type=String.class, parameters={})
+    @Export(name="ossEndpoint", refs={String.class}, tree="[0]")
     private Output<String> ossEndpoint;
 
     /**
@@ -220,7 +220,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * The Protocol. Valid values: `iSCSI`.
      * 
      */
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
@@ -234,7 +234,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * The recovery.
      * 
      */
-    @Export(name="recovery", type=Boolean.class, parameters={})
+    @Export(name="recovery", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> recovery;
 
     /**
@@ -248,7 +248,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * The Volume size. Valid values: `1` to `262144`. Unit: `Byte`.
      * 
      */
-    @Export(name="size", type=Integer.class, parameters={})
+    @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
     /**
@@ -262,7 +262,7 @@ public class GatewayBlockVolume extends com.pulumi.resources.CustomResource {
      * The status of volume. Valid values:
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

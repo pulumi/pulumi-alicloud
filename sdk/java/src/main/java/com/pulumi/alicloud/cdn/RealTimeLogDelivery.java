@@ -115,7 +115,7 @@ public class RealTimeLogDelivery extends com.pulumi.resources.CustomResource {
      * The accelerated domain name for which you want to configure real-time log delivery. You can specify multiple domain names and separate them with commas (,).
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -129,7 +129,7 @@ public class RealTimeLogDelivery extends com.pulumi.resources.CustomResource {
      * The name of the Logstore that collects log data from Alibaba Cloud Content Delivery Network (CDN) in real time.
      * 
      */
-    @Export(name="logstore", type=String.class, parameters={})
+    @Export(name="logstore", refs={String.class}, tree="[0]")
     private Output<String> logstore;
 
     /**
@@ -143,7 +143,7 @@ public class RealTimeLogDelivery extends com.pulumi.resources.CustomResource {
      * The name of the Log Service project that is used for real-time log delivery.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -159,7 +159,7 @@ public class RealTimeLogDelivery extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** If your Project and Logstore services already exist, if you continue to create existing content, the created content will overwrite your existing indexes and custom reports. Please be careful to create your existing services to avoid affecting your online services after coverage.
      * 
      */
-    @Export(name="slsRegion", type=String.class, parameters={})
+    @Export(name="slsRegion", refs={String.class}, tree="[0]")
     private Output<String> slsRegion;
 
     /**
@@ -175,7 +175,7 @@ public class RealTimeLogDelivery extends com.pulumi.resources.CustomResource {
      * The status of the real-time log delivery feature. Valid Values: `online` and `offline`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

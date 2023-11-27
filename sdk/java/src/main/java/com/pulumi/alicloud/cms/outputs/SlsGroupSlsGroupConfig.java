@@ -105,12 +105,12 @@ public final class SlsGroupSlsGroupConfig {
             return this;
         }
         public SlsGroupSlsGroupConfig build() {
-            final var o = new SlsGroupSlsGroupConfig();
-            o.slsLogstore = slsLogstore;
-            o.slsProject = slsProject;
-            o.slsRegion = slsRegion;
-            o.slsUserId = slsUserId;
-            return o;
+            final var _resultValue = new SlsGroupSlsGroupConfig();
+            _resultValue.slsLogstore = slsLogstore;
+            _resultValue.slsProject = slsProject;
+            _resultValue.slsRegion = slsRegion;
+            _resultValue.slsUserId = slsUserId;
+            return _resultValue;
         }
     }
 }

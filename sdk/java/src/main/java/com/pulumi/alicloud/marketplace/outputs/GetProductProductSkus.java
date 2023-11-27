@@ -112,12 +112,12 @@ public final class GetProductProductSkus {
             return this;
         }
         public GetProductProductSkus build() {
-            final var o = new GetProductProductSkus();
-            o.images = images;
-            o.packageVersions = packageVersions;
-            o.skuCode = skuCode;
-            o.skuName = skuName;
-            return o;
+            final var _resultValue = new GetProductProductSkus();
+            _resultValue.images = images;
+            _resultValue.packageVersions = packageVersions;
+            _resultValue.skuCode = skuCode;
+            _resultValue.skuName = skuName;
+            return _resultValue;
         }
     }
 }

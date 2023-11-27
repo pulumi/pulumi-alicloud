@@ -34,7 +34,7 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * Time of Container Registry Enterprise Edition instance creation.
      * 
      */
-    @Export(name="createdTime", type=String.class, parameters={})
+    @Export(name="createdTime", refs={String.class}, tree="[0]")
     private Output<String> createdTime;
 
     /**
@@ -48,7 +48,7 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * Name of your customized oss bucket. Use this bucket as instance storage if set.
      * 
      */
-    @Export(name="customOssBucket", type=String.class, parameters={})
+    @Export(name="customOssBucket", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customOssBucket;
 
     /**
@@ -62,7 +62,7 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * Time of Container Registry Enterprise Edition instance expiration.
      * 
      */
-    @Export(name="endTime", type=String.class, parameters={})
+    @Export(name="endTime", refs={String.class}, tree="[0]")
     private Output<String> endTime;
 
     /**
@@ -76,7 +76,7 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * Name of Container Registry Enterprise Edition instance.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -90,7 +90,7 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * Type of Container Registry Enterprise Edition instance. Valid values: `Basic`, `Standard`, `Advanced`. **NOTE:** International Account doesn&#39;t supports `Standard`.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -104,7 +104,7 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored.
      * 
      */
-    @Export(name="kmsEncryptedPassword", type=String.class, parameters={})
+    @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
@@ -118,7 +118,7 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      */
-    @Export(name="kmsEncryptionContext", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="kmsEncryptionContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> kmsEncryptionContext;
 
     /**
@@ -132,7 +132,7 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * The password of the Instance. The password is a string of 8 to 30 characters and must contain uppercase letters, lowercase letters, and numbers.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -146,7 +146,7 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * Subscription of Container Registry Enterprise Edition instance. Default value: `Subscription`. Valid values: `Subscription`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentType;
 
     /**
@@ -160,7 +160,7 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * Service time of Container Registry Enterprise Edition instance. Default value: `12`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`, `48`, `60`. Unit: `month`.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -174,7 +174,7 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * Renewal period of Container Registry Enterprise Edition instance. Unit: `month`.
      * 
      */
-    @Export(name="renewPeriod", type=Integer.class, parameters={})
+    @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> renewPeriod;
 
     /**
@@ -188,7 +188,7 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * Renewal status of Container Registry Enterprise Edition instance. Valid values: `AutoRenewal`, `ManualRenewal`.
      * 
      */
-    @Export(name="renewalStatus", type=String.class, parameters={})
+    @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> renewalStatus;
 
     /**
@@ -202,7 +202,7 @@ public class RegistryEnterpriseInstance extends com.pulumi.resources.CustomResou
      * Status of Container Registry Enterprise Edition instance.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

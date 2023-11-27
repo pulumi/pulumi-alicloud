@@ -142,6 +142,12 @@ namespace Pulumi.AliCloud.Ga
         public Output<ImmutableArray<Outputs.EndpointGroupEndpointConfiguration>> EndpointConfigurations { get; private set; } = null!;
 
         /// <summary>
+        /// (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+        /// </summary>
+        [Output("endpointGroupIpLists")]
+        public Output<ImmutableArray<string>> EndpointGroupIpLists { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the region where the endpoint group is deployed.
         /// </summary>
         [Output("endpointGroupRegion")]
@@ -415,6 +421,18 @@ namespace Pulumi.AliCloud.Ga
         {
             get => _endpointConfigurations ?? (_endpointConfigurations = new InputList<Inputs.EndpointGroupEndpointConfigurationGetArgs>());
             set => _endpointConfigurations = value;
+        }
+
+        [Input("endpointGroupIpLists")]
+        private InputList<string>? _endpointGroupIpLists;
+
+        /// <summary>
+        /// (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
+        /// </summary>
+        public InputList<string> EndpointGroupIpLists
+        {
+            get => _endpointGroupIpLists ?? (_endpointGroupIpLists = new InputList<string>());
+            set => _endpointGroupIpLists = value;
         }
 
         /// <summary>

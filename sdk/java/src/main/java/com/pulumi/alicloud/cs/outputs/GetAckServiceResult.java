@@ -89,12 +89,12 @@ public final class GetAckServiceResult {
             return this;
         }
         public GetAckServiceResult build() {
-            final var o = new GetAckServiceResult();
-            o.enable = enable;
-            o.id = id;
-            o.status = status;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetAckServiceResult();
+            _resultValue.enable = enable;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

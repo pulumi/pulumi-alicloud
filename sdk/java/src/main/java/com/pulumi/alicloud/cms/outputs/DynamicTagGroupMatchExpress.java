@@ -65,10 +65,10 @@ public final class DynamicTagGroupMatchExpress {
             return this;
         }
         public DynamicTagGroupMatchExpress build() {
-            final var o = new DynamicTagGroupMatchExpress();
-            o.tagValue = tagValue;
-            o.tagValueMatchFunction = tagValueMatchFunction;
-            return o;
+            final var _resultValue = new DynamicTagGroupMatchExpress();
+            _resultValue.tagValue = tagValue;
+            _resultValue.tagValueMatchFunction = tagValueMatchFunction;
+            return _resultValue;
         }
     }
 }

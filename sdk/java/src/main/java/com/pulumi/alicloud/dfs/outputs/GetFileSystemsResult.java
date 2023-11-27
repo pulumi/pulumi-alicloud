@@ -114,14 +114,14 @@ public final class GetFileSystemsResult {
             return systems(List.of(systems));
         }
         public GetFileSystemsResult build() {
-            final var o = new GetFileSystemsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.systems = systems;
-            return o;
+            final var _resultValue = new GetFileSystemsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.systems = systems;
+            return _resultValue;
         }
     }
 }

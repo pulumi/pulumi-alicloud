@@ -164,16 +164,16 @@ public final class GetBaselineStrategiesResult {
             return this;
         }
         public GetBaselineStrategiesResult build() {
-            final var o = new GetBaselineStrategiesResult();
-            o.customType = customType;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.strategies = strategies;
-            o.strategyIds = strategyIds;
-            return o;
+            final var _resultValue = new GetBaselineStrategiesResult();
+            _resultValue.customType = customType;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.strategies = strategies;
+            _resultValue.strategyIds = strategyIds;
+            return _resultValue;
         }
     }
 }

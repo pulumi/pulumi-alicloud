@@ -179,16 +179,16 @@ public final class GetBindingsBinding {
             return this;
         }
         public GetBindingsBinding build() {
-            final var o = new GetBindingsBinding();
-            o.argument = argument;
-            o.bindingKey = bindingKey;
-            o.bindingType = bindingType;
-            o.destinationName = destinationName;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.sourceExchange = sourceExchange;
-            o.virtualHostName = virtualHostName;
-            return o;
+            final var _resultValue = new GetBindingsBinding();
+            _resultValue.argument = argument;
+            _resultValue.bindingKey = bindingKey;
+            _resultValue.bindingType = bindingType;
+            _resultValue.destinationName = destinationName;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.sourceExchange = sourceExchange;
+            _resultValue.virtualHostName = virtualHostName;
+            return _resultValue;
         }
     }
 }

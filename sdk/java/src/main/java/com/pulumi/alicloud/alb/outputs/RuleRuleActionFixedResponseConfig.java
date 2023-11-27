@@ -86,11 +86,11 @@ public final class RuleRuleActionFixedResponseConfig {
             return this;
         }
         public RuleRuleActionFixedResponseConfig build() {
-            final var o = new RuleRuleActionFixedResponseConfig();
-            o.content = content;
-            o.contentType = contentType;
-            o.httpCode = httpCode;
-            return o;
+            final var _resultValue = new RuleRuleActionFixedResponseConfig();
+            _resultValue.content = content;
+            _resultValue.contentType = contentType;
+            _resultValue.httpCode = httpCode;
+            return _resultValue;
         }
     }
 }

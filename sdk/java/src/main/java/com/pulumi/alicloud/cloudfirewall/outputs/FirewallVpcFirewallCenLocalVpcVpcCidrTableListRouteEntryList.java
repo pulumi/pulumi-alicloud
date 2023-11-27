@@ -67,10 +67,10 @@ public final class FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList 
             return this;
         }
         public FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList build() {
-            final var o = new FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList();
-            o.destinationCidr = destinationCidr;
-            o.nextHopInstanceId = nextHopInstanceId;
-            return o;
+            final var _resultValue = new FirewallVpcFirewallCenLocalVpcVpcCidrTableListRouteEntryList();
+            _resultValue.destinationCidr = destinationCidr;
+            _resultValue.nextHopInstanceId = nextHopInstanceId;
+            return _resultValue;
         }
     }
 }

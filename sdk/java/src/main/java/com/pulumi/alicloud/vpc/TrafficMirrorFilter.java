@@ -112,7 +112,7 @@ public class TrafficMirrorFilter extends com.pulumi.resources.CustomResource {
      * - **false** (default): Sends a normal request, returns a 2xx HTTP status code after passing the check, and directly creates a filter condition.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -128,7 +128,7 @@ public class TrafficMirrorFilter extends com.pulumi.resources.CustomResource {
      * Information about the outbound rule. See the following `Block EgressRules`.
      * 
      */
-    @Export(name="egressRules", type=List.class, parameters={TrafficMirrorFilterEgressRule.class})
+    @Export(name="egressRules", refs={List.class,TrafficMirrorFilterEgressRule.class}, tree="[0,1]")
     private Output<List<TrafficMirrorFilterEgressRule>> egressRules;
 
     /**
@@ -142,7 +142,7 @@ public class TrafficMirrorFilter extends com.pulumi.resources.CustomResource {
      * Inward direction rule information. See the following `Block IngressRules`.
      * 
      */
-    @Export(name="ingressRules", type=List.class, parameters={TrafficMirrorFilterIngressRule.class})
+    @Export(name="ingressRules", refs={List.class,TrafficMirrorFilterIngressRule.class}, tree="[0,1]")
     private Output<List<TrafficMirrorFilterIngressRule>> ingressRules;
 
     /**
@@ -156,7 +156,7 @@ public class TrafficMirrorFilter extends com.pulumi.resources.CustomResource {
      * The ID of the resource group to which the VPC belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -170,7 +170,7 @@ public class TrafficMirrorFilter extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -184,7 +184,7 @@ public class TrafficMirrorFilter extends com.pulumi.resources.CustomResource {
      * The tags of this resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -198,7 +198,7 @@ public class TrafficMirrorFilter extends com.pulumi.resources.CustomResource {
      * The description of the TrafficMirrorFilter.
      * 
      */
-    @Export(name="trafficMirrorFilterDescription", type=String.class, parameters={})
+    @Export(name="trafficMirrorFilterDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trafficMirrorFilterDescription;
 
     /**
@@ -212,7 +212,7 @@ public class TrafficMirrorFilter extends com.pulumi.resources.CustomResource {
      * The name of the TrafficMirrorFilter.
      * 
      */
-    @Export(name="trafficMirrorFilterName", type=String.class, parameters={})
+    @Export(name="trafficMirrorFilterName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> trafficMirrorFilterName;
 
     /**

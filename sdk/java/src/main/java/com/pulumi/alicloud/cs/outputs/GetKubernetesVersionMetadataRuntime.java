@@ -65,10 +65,10 @@ public final class GetKubernetesVersionMetadataRuntime {
             return this;
         }
         public GetKubernetesVersionMetadataRuntime build() {
-            final var o = new GetKubernetesVersionMetadataRuntime();
-            o.name = name;
-            o.version = version;
-            return o;
+            final var _resultValue = new GetKubernetesVersionMetadataRuntime();
+            _resultValue.name = name;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

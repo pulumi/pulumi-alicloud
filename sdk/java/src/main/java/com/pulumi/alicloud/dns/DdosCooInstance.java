@@ -16,7 +16,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * BGP-Line Anti-DDoS instance resource. &#34;Ddoscoo&#34; is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/en/ddos-protection/latest/api-ddoscoo-2020-01-01-describeinstances).
+ * BGP-Line Anti-DDoS instance resource. &#34;Ddoscoo&#34; is the short term of this product. See [What is Anti-DDoS Pro](https://www.alibabacloud.com/help/en/ddos-protection/latest/create-an-anti-ddos-pro-or-anti-ddos-premium-instance-by-calling-an-api-operation).
  * 
  * &gt; **NOTE:** The product region only support cn-hangzhou.
  * 
@@ -51,13 +51,13 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var default_ = new DdosCooInstance(&#34;default&#34;, DdosCooInstanceArgs.builder()        
- *             .bandwidth(&#34;30&#34;)
  *             .baseBandwidth(&#34;30&#34;)
+ *             .bandwidth(&#34;30&#34;)
  *             .serviceBandwidth(&#34;100&#34;)
  *             .portCount(&#34;50&#34;)
  *             .domainCount(&#34;50&#34;)
- *             .period(&#34;1&#34;)
  *             .productType(&#34;ddoscoo&#34;)
+ *             .period(&#34;1&#34;)
  *             .build());
  * 
  *     }
@@ -80,10 +80,24 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:dns/ddosCooInstance:DdosCooInstance")
 public class DdosCooInstance extends com.pulumi.resources.CustomResource {
     /**
+     * The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+     * 
+     */
+    @Export(name="addressType", refs={String.class}, tree="[0]")
+    private Output<String> addressType;
+
+    /**
+     * @return The IP version of the IP address. Default value: `Ipv4`. Valid values: `Ipv4`, `Ipv6`.
+     * 
+     */
+    public Output<String> addressType() {
+        return this.addressType;
+    }
+    /**
      * Elastic defend bandwidth of the instance. This value must be larger than the base defend bandwidth. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
      * 
      */
-    @Export(name="bandwidth", type=String.class, parameters={})
+    @Export(name="bandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidth;
 
     /**
@@ -94,14 +108,28 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
         return this.bandwidth;
     }
     /**
-     * Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+     * The mitigation plan of the instance. Valid values:
      * 
      */
-    @Export(name="baseBandwidth", type=String.class, parameters={})
+    @Export(name="bandwidthMode", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> bandwidthMode;
+
+    /**
+     * @return The mitigation plan of the instance. Valid values:
+     * 
+     */
+    public Output<Optional<String>> bandwidthMode() {
+        return Codegen.optional(this.bandwidthMode);
+    }
+    /**
+     * Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
+     * 
+     */
+    @Export(name="baseBandwidth", refs={String.class}, tree="[0]")
     private Output<String> baseBandwidth;
 
     /**
-     * @return Base defend bandwidth of the instance. Valid values: 30, 60, 100, 300, 400, 500, 600. The unit is Gbps. Only support upgrade.
+     * @return Base defend bandwidth of the instance. Valid values: `30`, `60`, `100`, `300`, `400`, `500`, `600`. The unit is Gbps. Only support upgrade.
      * 
      */
     public Output<String> baseBandwidth() {
@@ -111,7 +139,7 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
      * Domain retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      * 
      */
-    @Export(name="domainCount", type=String.class, parameters={})
+    @Export(name="domainCount", refs={String.class}, tree="[0]")
     private Output<String> domainCount;
 
     /**
@@ -122,10 +150,38 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
         return this.domainCount;
     }
     /**
+     * The mitigation plan of the instance. Default value: `coop`. Valid values:
+     * 
+     */
+    @Export(name="editionSale", refs={String.class}, tree="[0]")
+    private Output<String> editionSale;
+
+    /**
+     * @return The mitigation plan of the instance. Default value: `coop`. Valid values:
+     * 
+     */
+    public Output<String> editionSale() {
+        return this.editionSale;
+    }
+    /**
+     * (Available since v1.212.0) The IP address of the instance.
+     * 
+     */
+    @Export(name="ip", refs={String.class}, tree="[0]")
+    private Output<String> ip;
+
+    /**
+     * @return (Available since v1.212.0) The IP address of the instance.
+     * 
+     */
+    public Output<String> ip() {
+        return this.ip;
+    }
+    /**
      * Name of the instance. This name can have a string of 1 to 63 characters.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -136,14 +192,14 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify &#34;period&#34;.
+     * The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
-     * @return The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], 12, 24, 36. Default to 1. At present, the provider does not support modify &#34;period&#34;.
+     * @return The duration that you will buy Ddoscoo instance (in month). Valid values: [1~9], `12`, `24`, `36`. Default value: `1`. At present, the provider does not support modify `period`.
      * 
      */
     public Output<Optional<Integer>> period() {
@@ -153,7 +209,7 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
      * Port retransmission rule count of the instance. At least 50. Increase 5 per step, such as 55, 60, 65. Only support upgrade.
      * 
      */
-    @Export(name="portCount", type=String.class, parameters={})
+    @Export(name="portCount", refs={String.class}, tree="[0]")
     private Output<String> portCount;
 
     /**
@@ -164,20 +220,14 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
         return this.portCount;
     }
     /**
-     * The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
-     * - ddoscoo: Only supports domestic account.
-     * - ddoscoo_intl: Only supports to international account.
-     *   Default to ddoscoo.
+     * The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
      * 
      */
-    @Export(name="productType", type=String.class, parameters={})
+    @Export(name="productType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> productType;
 
     /**
-     * @return The product type for purchasing DDoSCOO instances used to differ different account type. Valid values:
-     * - ddoscoo: Only supports domestic account.
-     * - ddoscoo_intl: Only supports to international account.
-     *   Default to ddoscoo.
+     * @return The product type for purchasing DDOSCOO instances used to differ different account type. Default value: `ddoscoo`. Valid values:
      * 
      */
     public Output<Optional<String>> productType() {
@@ -187,7 +237,7 @@ public class DdosCooInstance extends com.pulumi.resources.CustomResource {
      * Business bandwidth of the instance. At leaset 100. Increased 100 per step, such as 100, 200, 300. The unit is Mbps. Only support upgrade.
      * 
      */
-    @Export(name="serviceBandwidth", type=String.class, parameters={})
+    @Export(name="serviceBandwidth", refs={String.class}, tree="[0]")
     private Output<String> serviceBandwidth;
 
     /**

@@ -122,13 +122,13 @@ public final class GetRouteEntriesEntryConflict {
             return this;
         }
         public GetRouteEntriesEntryConflict build() {
-            final var o = new GetRouteEntriesEntryConflict();
-            o.cidrBlock = cidrBlock;
-            o.instanceId = instanceId;
-            o.instanceType = instanceType;
-            o.regionId = regionId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetRouteEntriesEntryConflict();
+            _resultValue.cidrBlock = cidrBlock;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceType = instanceType;
+            _resultValue.regionId = regionId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

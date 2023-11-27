@@ -118,13 +118,13 @@ public final class GetSystemSecurityPoliciesResult {
             return this;
         }
         public GetSystemSecurityPoliciesResult build() {
-            final var o = new GetSystemSecurityPoliciesResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetSystemSecurityPoliciesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policies = policies;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

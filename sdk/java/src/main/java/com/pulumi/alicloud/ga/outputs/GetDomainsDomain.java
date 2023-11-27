@@ -103,12 +103,12 @@ public final class GetDomainsDomain {
             return this;
         }
         public GetDomainsDomain build() {
-            final var o = new GetDomainsDomain();
-            o.acceleratorId = acceleratorId;
-            o.domain = domain;
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDomainsDomain();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.domain = domain;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

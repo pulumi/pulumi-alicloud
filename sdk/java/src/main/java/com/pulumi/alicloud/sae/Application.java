@@ -141,7 +141,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The ARN of the RAM role required when pulling images across accounts. Only necessary if the image_url is pointing to an ACR EE instance.
      * 
      */
-    @Export(name="acrAssumeRoleArn", type=String.class, parameters={})
+    @Export(name="acrAssumeRoleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> acrAssumeRoleArn;
 
     /**
@@ -155,7 +155,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The ID of the ACR EE instance. Only necessary if the image_url is pointing to an ACR EE instance.
      * 
      */
-    @Export(name="acrInstanceId", type=String.class, parameters={})
+    @Export(name="acrInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> acrInstanceId;
 
     /**
@@ -169,7 +169,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Application description information. No more than 1024 characters. **NOTE:** From version 1.211.0, `app_description` can be modified.
      * 
      */
-    @Export(name="appDescription", type=String.class, parameters={})
+    @Export(name="appDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> appDescription;
 
     /**
@@ -183,7 +183,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
      * 
      */
-    @Export(name="appName", type=String.class, parameters={})
+    @Export(name="appName", refs={String.class}, tree="[0]")
     private Output<String> appName;
 
     /**
@@ -197,7 +197,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The auto config. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="autoConfig", type=Boolean.class, parameters={})
+    @Export(name="autoConfig", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoConfig;
 
     /**
@@ -211,7 +211,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The auto enable application scaling rule. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="autoEnableApplicationScalingRule", type=Boolean.class, parameters={})
+    @Export(name="autoEnableApplicationScalingRule", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoEnableApplicationScalingRule;
 
     /**
@@ -225,7 +225,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The batch wait time.
      * 
      */
-    @Export(name="batchWaitTime", type=Integer.class, parameters={})
+    @Export(name="batchWaitTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> batchWaitTime;
 
     /**
@@ -239,7 +239,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The change order desc.
      * 
      */
-    @Export(name="changeOrderDesc", type=String.class, parameters={})
+    @Export(name="changeOrderDesc", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> changeOrderDesc;
 
     /**
@@ -253,7 +253,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Mirror start command. The command must be an executable object in the container. For example: sleep. Setting this command will cause the original startup command of the mirror to become invalid.
      * 
      */
-    @Export(name="command", type=String.class, parameters={})
+    @Export(name="command", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> command;
 
     /**
@@ -271,7 +271,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field `command_args` has been deprecated from provider version 1.211.0. New field `command_args_v2` instead. */
-    @Export(name="commandArgs", type=String.class, parameters={})
+    @Export(name="commandArgs", refs={String.class}, tree="[0]")
     private Output<String> commandArgs;
 
     /**
@@ -285,7 +285,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The parameters of the image startup command.
      * 
      */
-    @Export(name="commandArgsV2s", type=List.class, parameters={String.class})
+    @Export(name="commandArgsV2s", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> commandArgsV2s;
 
     /**
@@ -303,7 +303,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field `config_map_mount_desc` has been deprecated from provider version 1.211.0. New field `config_map_mount_desc_v2` instead. */
-    @Export(name="configMapMountDesc", type=String.class, parameters={})
+    @Export(name="configMapMountDesc", refs={String.class}, tree="[0]")
     private Output<String> configMapMountDesc;
 
     /**
@@ -317,7 +317,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The description of the ConfigMap that is mounted to the application. A ConfigMap that is created on the ConfigMaps page of a namespace is used to inject configurations into containers. See `config_map_mount_desc_v2` below.
      * 
      */
-    @Export(name="configMapMountDescV2s", type=List.class, parameters={ApplicationConfigMapMountDescV2.class})
+    @Export(name="configMapMountDescV2s", refs={List.class,ApplicationConfigMapMountDescV2.class}, tree="[0,1]")
     private Output<List<ApplicationConfigMapMountDescV2>> configMapMountDescV2s;
 
     /**
@@ -331,7 +331,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The CPU required for each instance, in millicores, cannot be 0. Valid values: `500`, `1000`, `2000`, `4000`, `8000`, `16000`, `32000`.
      * 
      */
-    @Export(name="cpu", type=Integer.class, parameters={})
+    @Export(name="cpu", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cpu;
 
     /**
@@ -349,7 +349,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field `custom_host_alias` has been deprecated from provider version 1.211.0. New field `custom_host_alias_v2` instead. */
-    @Export(name="customHostAlias", type=String.class, parameters={})
+    @Export(name="customHostAlias", refs={String.class}, tree="[0]")
     private Output<String> customHostAlias;
 
     /**
@@ -363,7 +363,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The custom mapping between the hostname and IP address in the container. See `custom_host_alias_v2` below.
      * 
      */
-    @Export(name="customHostAliasV2s", type=List.class, parameters={ApplicationCustomHostAliasV2.class})
+    @Export(name="customHostAliasV2s", refs={List.class,ApplicationCustomHostAliasV2.class}, tree="[0,1]")
     private Output<List<ApplicationCustomHostAliasV2>> customHostAliasV2s;
 
     /**
@@ -377,7 +377,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The deploy. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="deploy", type=Boolean.class, parameters={})
+    @Export(name="deploy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deploy;
 
     /**
@@ -391,7 +391,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The operating environment used by the Pandora application.
      * 
      */
-    @Export(name="edasContainerVersion", type=String.class, parameters={})
+    @Export(name="edasContainerVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> edasContainerVersion;
 
     /**
@@ -405,7 +405,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The enable ahas. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="enableAhas", type=String.class, parameters={})
+    @Export(name="enableAhas", refs={String.class}, tree="[0]")
     private Output<String> enableAhas;
 
     /**
@@ -419,7 +419,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The enable grey tag route. Default value: `false`. Valid values:
      * 
      */
-    @Export(name="enableGreyTagRoute", type=Boolean.class, parameters={})
+    @Export(name="enableGreyTagRoute", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableGreyTagRoute;
 
     /**
@@ -433,7 +433,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Container environment variable parameters. For example,`	[{&#34;name&#34;:&#34;envtmp&#34;,&#34;value&#34;:&#34;0&#34;}]`. The value description is as follows:
      * 
      */
-    @Export(name="envs", type=String.class, parameters={})
+    @Export(name="envs", refs={String.class}, tree="[0]")
     private Output<String> envs;
 
     /**
@@ -447,7 +447,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The ID of the corresponding Secret.
      * 
      */
-    @Export(name="imagePullSecrets", type=String.class, parameters={})
+    @Export(name="imagePullSecrets", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imagePullSecrets;
 
     /**
@@ -461,7 +461,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Mirror address. Only Image type applications can configure the mirror address.
      * 
      */
-    @Export(name="imageUrl", type=String.class, parameters={})
+    @Export(name="imageUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageUrl;
 
     /**
@@ -475,7 +475,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The JAR package starts application parameters. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS &#34;$package_path&#34; $JarStartArgs.
      * 
      */
-    @Export(name="jarStartArgs", type=String.class, parameters={})
+    @Export(name="jarStartArgs", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jarStartArgs;
 
     /**
@@ -489,7 +489,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The JAR package starts the application option. Application default startup command: $JAVA_HOME/bin/java $JarStartOptions -jar $CATALINA_OPTS &#34;$package_path&#34; $JarStartArgs.
      * 
      */
-    @Export(name="jarStartOptions", type=String.class, parameters={})
+    @Export(name="jarStartOptions", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jarStartOptions;
 
     /**
@@ -503,7 +503,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The JDK version that the deployment package depends on. Image type applications are not supported.
      * 
      */
-    @Export(name="jdk", type=String.class, parameters={})
+    @Export(name="jdk", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jdk;
 
     /**
@@ -517,7 +517,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The logging configurations of ApsaraMQ for Kafka. See `kafka_configs` below.
      * 
      */
-    @Export(name="kafkaConfigs", type=ApplicationKafkaConfigs.class, parameters={})
+    @Export(name="kafkaConfigs", refs={ApplicationKafkaConfigs.class}, tree="[0]")
     private Output</* @Nullable */ ApplicationKafkaConfigs> kafkaConfigs;
 
     /**
@@ -536,7 +536,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field `liveness` has been deprecated from provider version 1.211.0. New field `liveness_v2` instead. */
-    @Export(name="liveness", type=String.class, parameters={})
+    @Export(name="liveness", refs={String.class}, tree="[0]")
     private Output<String> liveness;
 
     /**
@@ -551,7 +551,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The liveness check settings of the container. See `liveness_v2` below.
      * 
      */
-    @Export(name="livenessV2", type=ApplicationLivenessV2.class, parameters={})
+    @Export(name="livenessV2", refs={ApplicationLivenessV2.class}, tree="[0]")
     private Output<ApplicationLivenessV2> livenessV2;
 
     /**
@@ -565,7 +565,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The memory required for each instance, in MB, cannot be 0. One-to-one correspondence with CPU. Valid values: `1024`, `2048`, `4096`, `8192`, `12288`, `16384`, `24576`, `32768`, `65536`, `131072`.
      * 
      */
-    @Export(name="memory", type=Integer.class, parameters={})
+    @Export(name="memory", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> memory;
 
     /**
@@ -579,7 +579,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Select the Nacos registry. Valid values: `0`, `1`, `2`.
      * 
      */
-    @Export(name="microRegistration", type=String.class, parameters={})
+    @Export(name="microRegistration", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> microRegistration;
 
     /**
@@ -595,7 +595,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * * `0~100`: The unit is percentage, rounded up. For example, if it is set to 50%, if there are currently 5 instances, the minimum number of surviving instances is 3.
      * 
      */
-    @Export(name="minReadyInstanceRatio", type=Integer.class, parameters={})
+    @Export(name="minReadyInstanceRatio", refs={Integer.class}, tree="[0]")
     private Output<Integer> minReadyInstanceRatio;
 
     /**
@@ -611,7 +611,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The Minimum Available Instance. On the Change Had Promised during the Available Number of Instances to Be.
      * 
      */
-    @Export(name="minReadyInstances", type=Integer.class, parameters={})
+    @Export(name="minReadyInstances", refs={Integer.class}, tree="[0]")
     private Output<Integer> minReadyInstances;
 
     /**
@@ -625,7 +625,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * SAE namespace ID. Only namespaces whose names are lowercase letters and dashes (-) are supported, and must start with a letter. The namespace can be obtained by calling the DescribeNamespaceList interface.
      * 
      */
-    @Export(name="namespaceId", type=String.class, parameters={})
+    @Export(name="namespaceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespaceId;
 
     /**
@@ -639,7 +639,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The configurations for mounting the NAS file system. See `nas_configs` below.
      * 
      */
-    @Export(name="nasConfigs", type=List.class, parameters={ApplicationNasConfig.class})
+    @Export(name="nasConfigs", refs={List.class,ApplicationNasConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApplicationNasConfig>> nasConfigs;
 
     /**
@@ -653,7 +653,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * OSS AccessKey ID.
      * 
      */
-    @Export(name="ossAkId", type=String.class, parameters={})
+    @Export(name="ossAkId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossAkId;
 
     /**
@@ -667,7 +667,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * OSS  AccessKey Secret.
      * 
      */
-    @Export(name="ossAkSecret", type=String.class, parameters={})
+    @Export(name="ossAkSecret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ossAkSecret;
 
     /**
@@ -685,7 +685,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field `oss_mount_descs` has been deprecated from provider version 1.211.0. New field `oss_mount_descs_v2` instead. */
-    @Export(name="ossMountDescs", type=String.class, parameters={})
+    @Export(name="ossMountDescs", refs={String.class}, tree="[0]")
     private Output<String> ossMountDescs;
 
     /**
@@ -699,7 +699,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The description of the mounted Object Storage Service (OSS) bucket. See `oss_mount_descs_v2` below.
      * 
      */
-    @Export(name="ossMountDescsV2s", type=List.class, parameters={ApplicationOssMountDescsV2.class})
+    @Export(name="ossMountDescsV2s", refs={List.class,ApplicationOssMountDescsV2.class}, tree="[0,1]")
     private Output<List<ApplicationOssMountDescsV2>> ossMountDescsV2s;
 
     /**
@@ -713,7 +713,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Application package type. Valid values: `FatJar`, `War`, `Image`, `PhpZip`, `IMAGE_PHP_5_4`, `IMAGE_PHP_5_4_ALPINE`, `IMAGE_PHP_5_5`, `IMAGE_PHP_5_5_ALPINE`, `IMAGE_PHP_5_6`, `IMAGE_PHP_5_6_ALPINE`, `IMAGE_PHP_7_0`, `IMAGE_PHP_7_0_ALPINE`, `IMAGE_PHP_7_1`, `IMAGE_PHP_7_1_ALPINE`, `IMAGE_PHP_7_2`, `IMAGE_PHP_7_2_ALPINE`, `IMAGE_PHP_7_3`, `IMAGE_PHP_7_3_ALPINE`, `PythonZip`.
      * 
      */
-    @Export(name="packageType", type=String.class, parameters={})
+    @Export(name="packageType", refs={String.class}, tree="[0]")
     private Output<String> packageType;
 
     /**
@@ -727,7 +727,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Deployment package address. Only FatJar or War type applications can configure the deployment package address.
      * 
      */
-    @Export(name="packageUrl", type=String.class, parameters={})
+    @Export(name="packageUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> packageUrl;
 
     /**
@@ -741,7 +741,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The version number of the deployment package. Required when the Package Type is War and FatJar.
      * 
      */
-    @Export(name="packageVersion", type=String.class, parameters={})
+    @Export(name="packageVersion", refs={String.class}, tree="[0]")
     private Output<String> packageVersion;
 
     /**
@@ -755,7 +755,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The Php environment.
      * 
      */
-    @Export(name="php", type=String.class, parameters={})
+    @Export(name="php", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> php;
 
     /**
@@ -769,7 +769,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The PHP application monitors the mount path, and you need to ensure that the PHP server will load the configuration file of this path. You don&#39;t need to pay attention to the configuration content, SAE will automatically render the correct configuration file.
      * 
      */
-    @Export(name="phpArmsConfigLocation", type=String.class, parameters={})
+    @Export(name="phpArmsConfigLocation", refs={String.class}, tree="[0]")
     private Output<String> phpArmsConfigLocation;
 
     /**
@@ -783,7 +783,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * PHP configuration file content.
      * 
      */
-    @Export(name="phpConfig", type=String.class, parameters={})
+    @Export(name="phpConfig", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> phpConfig;
 
     /**
@@ -797,7 +797,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * PHP application startup configuration mount path, you need to ensure that the PHP server will start using this configuration file.
      * 
      */
-    @Export(name="phpConfigLocation", type=String.class, parameters={})
+    @Export(name="phpConfigLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> phpConfigLocation;
 
     /**
@@ -815,7 +815,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field `post_start` has been deprecated from provider version 1.211.0. New field `post_start_v2` instead. */
-    @Export(name="postStart", type=String.class, parameters={})
+    @Export(name="postStart", refs={String.class}, tree="[0]")
     private Output<String> postStart;
 
     /**
@@ -829,7 +829,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The script that is run immediately after the container is started. See `post_start_v2` below.
      * 
      */
-    @Export(name="postStartV2", type=ApplicationPostStartV2.class, parameters={})
+    @Export(name="postStartV2", refs={ApplicationPostStartV2.class}, tree="[0]")
     private Output<ApplicationPostStartV2> postStartV2;
 
     /**
@@ -847,7 +847,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field `pre_stop` has been deprecated from provider version 1.211.0. New field `pre_stop_v2` instead. */
-    @Export(name="preStop", type=String.class, parameters={})
+    @Export(name="preStop", refs={String.class}, tree="[0]")
     private Output<String> preStop;
 
     /**
@@ -861,7 +861,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The script that is run before the container is stopped. See `pre_stop_v2` below.
      * 
      */
-    @Export(name="preStopV2", type=ApplicationPreStopV2.class, parameters={})
+    @Export(name="preStopV2", refs={ApplicationPreStopV2.class}, tree="[0]")
     private Output<ApplicationPreStopV2> preStopV2;
 
     /**
@@ -875,7 +875,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The programming language that is used to create the application. Valid values: `java`, `php`, `other`.
      * 
      */
-    @Export(name="programmingLanguage", type=String.class, parameters={})
+    @Export(name="programmingLanguage", refs={String.class}, tree="[0]")
     private Output<String> programmingLanguage;
 
     /**
@@ -889,7 +889,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The configurations of Kubernetes Service-based service registration and discovery. See `pvtz_discovery_svc` below.
      * 
      */
-    @Export(name="pvtzDiscoverySvc", type=ApplicationPvtzDiscoverySvc.class, parameters={})
+    @Export(name="pvtzDiscoverySvc", refs={ApplicationPvtzDiscoverySvc.class}, tree="[0]")
     private Output</* @Nullable */ ApplicationPvtzDiscoverySvc> pvtzDiscoverySvc;
 
     /**
@@ -908,7 +908,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field `readiness` has been deprecated from provider version 1.211.0. New field `readiness_v2` instead. */
-    @Export(name="readiness", type=String.class, parameters={})
+    @Export(name="readiness", refs={String.class}, tree="[0]")
     private Output<String> readiness;
 
     /**
@@ -923,7 +923,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The readiness check settings of the container. If a container fails this health check multiple times, the container is stopped and then restarted. See `readiness_v2` below.
      * 
      */
-    @Export(name="readinessV2", type=ApplicationReadinessV2.class, parameters={})
+    @Export(name="readinessV2", refs={ApplicationReadinessV2.class}, tree="[0]")
     private Output<ApplicationReadinessV2> readinessV2;
 
     /**
@@ -937,7 +937,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Initial number of instances.
      * 
      */
-    @Export(name="replicas", type=Integer.class, parameters={})
+    @Export(name="replicas", refs={Integer.class}, tree="[0]")
     private Output<Integer> replicas;
 
     /**
@@ -951,7 +951,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Security group ID.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
@@ -965,7 +965,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * SLS  configuration.
      * 
      */
-    @Export(name="slsConfigs", type=String.class, parameters={})
+    @Export(name="slsConfigs", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> slsConfigs;
 
     /**
@@ -979,7 +979,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `RUNNING`, `STOPPED`, `UNKNOWN`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -993,7 +993,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -1007,7 +1007,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Graceful offline timeout, the default is 30, the unit is seconds. The value range is 1~60. Valid values: [1,60].
      * 
      */
-    @Export(name="terminationGracePeriodSeconds", type=Integer.class, parameters={})
+    @Export(name="terminationGracePeriodSeconds", refs={Integer.class}, tree="[0]")
     private Output<Integer> terminationGracePeriodSeconds;
 
     /**
@@ -1021,7 +1021,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * Time zone. Default value: `Asia/Shanghai`.
      * 
      */
-    @Export(name="timezone", type=String.class, parameters={})
+    @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output<String> timezone;
 
     /**
@@ -1040,7 +1040,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field `tomcat_config` has been deprecated from provider version 1.211.0. New field `tomcat_config_v2` instead. */
-    @Export(name="tomcatConfig", type=String.class, parameters={})
+    @Export(name="tomcatConfig", refs={String.class}, tree="[0]")
     private Output<String> tomcatConfig;
 
     /**
@@ -1055,7 +1055,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The Tomcat configuration. See `tomcat_config_v2` below.
      * 
      */
-    @Export(name="tomcatConfigV2", type=ApplicationTomcatConfigV2.class, parameters={})
+    @Export(name="tomcatConfigV2", refs={ApplicationTomcatConfigV2.class}, tree="[0]")
     private Output<ApplicationTomcatConfigV2> tomcatConfigV2;
 
     /**
@@ -1073,7 +1073,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field `update_strategy` has been deprecated from provider version 1.211.0. New field `update_strategy_v2` instead. */
-    @Export(name="updateStrategy", type=String.class, parameters={})
+    @Export(name="updateStrategy", refs={String.class}, tree="[0]")
     private Output<String> updateStrategy;
 
     /**
@@ -1087,7 +1087,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The release policy. See `update_strategy_v2` below.
      * 
      */
-    @Export(name="updateStrategyV2", type=ApplicationUpdateStrategyV2.class, parameters={})
+    @Export(name="updateStrategyV2", refs={ApplicationUpdateStrategyV2.class}, tree="[0]")
     private Output<ApplicationUpdateStrategyV2> updateStrategyV2;
 
     /**
@@ -1101,7 +1101,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The vpc id.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**
@@ -1115,7 +1115,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The vswitch id. **NOTE:** From version 1.211.0, `vswitch_id` can be modified.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
@@ -1129,7 +1129,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * WAR package launch application option. Application default startup command: java $JAVA_OPTS $CATALINA_OPTS [-Options] org.apache.catalina.startup.Bootstrap &#34;$@&#34; start.
      * 
      */
-    @Export(name="warStartOptions", type=String.class, parameters={})
+    @Export(name="warStartOptions", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> warStartOptions;
 
     /**
@@ -1143,7 +1143,7 @@ public class Application extends com.pulumi.resources.CustomResource {
      * The version of tomcat that the deployment package depends on. Image type applications are not supported.
      * 
      */
-    @Export(name="webContainer", type=String.class, parameters={})
+    @Export(name="webContainer", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> webContainer;
 
     /**

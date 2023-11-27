@@ -137,16 +137,16 @@ public final class GetAggregateDeliveriesResult {
             return this;
         }
         public GetAggregateDeliveriesResult build() {
-            final var o = new GetAggregateDeliveriesResult();
-            o.aggregatorId = aggregatorId;
-            o.deliveries = deliveries;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAggregateDeliveriesResult();
+            _resultValue.aggregatorId = aggregatorId;
+            _resultValue.deliveries = deliveries;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

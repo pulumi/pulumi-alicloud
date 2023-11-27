@@ -134,7 +134,7 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:**  If the value of this parameter is **False**, the Master instance bound to HaVip cannot be unbound.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -151,7 +151,7 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the HaVip instance.
      * 
      */
-    @Export(name="haVipId", type=String.class, parameters={})
+    @Export(name="haVipId", refs={String.class}, tree="[0]")
     private Output<String> haVipId;
 
     /**
@@ -169,7 +169,7 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'havip_id' has been deprecated since provider version 1.211.0. New field 'ha_vip_id' instead. */
-    @Export(name="havipId", type=String.class, parameters={})
+    @Export(name="havipId", refs={String.class}, tree="[0]")
     private Output<String> havipId;
 
     /**
@@ -183,7 +183,7 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the ECS instance bound to the HaVip instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -199,7 +199,7 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -215,7 +215,7 @@ public class HAVipAttachment extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

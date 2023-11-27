@@ -51,10 +51,10 @@ public final class ApplicationInfoDimension {
             return this;
         }
         public ApplicationInfoDimension build() {
-            final var o = new ApplicationInfoDimension();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new ApplicationInfoDimension();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -229,20 +229,20 @@ public final class GetCustomRoutingEndpointGroupsResult {
             return this;
         }
         public GetCustomRoutingEndpointGroupsResult build() {
-            final var o = new GetCustomRoutingEndpointGroupsResult();
-            o.acceleratorId = acceleratorId;
-            o.endpointGroupId = endpointGroupId;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.listenerId = listenerId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetCustomRoutingEndpointGroupsResult();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.endpointGroupId = endpointGroupId;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.listenerId = listenerId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

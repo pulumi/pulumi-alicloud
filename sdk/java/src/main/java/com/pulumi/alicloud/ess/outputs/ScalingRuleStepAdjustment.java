@@ -87,11 +87,11 @@ public final class ScalingRuleStepAdjustment {
             return this;
         }
         public ScalingRuleStepAdjustment build() {
-            final var o = new ScalingRuleStepAdjustment();
-            o.metricIntervalLowerBound = metricIntervalLowerBound;
-            o.metricIntervalUpperBound = metricIntervalUpperBound;
-            o.scalingAdjustment = scalingAdjustment;
-            return o;
+            final var _resultValue = new ScalingRuleStepAdjustment();
+            _resultValue.metricIntervalLowerBound = metricIntervalLowerBound;
+            _resultValue.metricIntervalUpperBound = metricIntervalUpperBound;
+            _resultValue.scalingAdjustment = scalingAdjustment;
+            return _resultValue;
         }
     }
 }

@@ -67,10 +67,10 @@ public final class TransitRouterVpcAttachmentZoneMapping {
             return this;
         }
         public TransitRouterVpcAttachmentZoneMapping build() {
-            final var o = new TransitRouterVpcAttachmentZoneMapping();
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new TransitRouterVpcAttachmentZoneMapping();
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

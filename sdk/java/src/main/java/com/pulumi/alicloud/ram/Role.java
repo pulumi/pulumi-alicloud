@@ -87,7 +87,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The role arn.
      * 
      */
-    @Export(name="arn", type=String.class, parameters={})
+    @Export(name="arn", refs={String.class}, tree="[0]")
     private Output<String> arn;
 
     /**
@@ -101,7 +101,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * Description of the RAM role. This name can have a string of 1 to 1024 characters. **NOTE:** The `description` supports modification since V1.144.0.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -115,7 +115,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * Authorization strategy of the RAM role. It is required when the `services` and `ram_users` are not specified.
      * 
      */
-    @Export(name="document", type=String.class, parameters={})
+    @Export(name="document", refs={String.class}, tree="[0]")
     private Output<String> document;
 
     /**
@@ -129,7 +129,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * This parameter is used for resource destroy. Default value is `false`.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -143,7 +143,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The maximum session duration of the RAM role. Valid values: 3600 to 43200. Unit: seconds. Default value: 3600. The default value is used if the parameter is not specified.
      * 
      */
-    @Export(name="maxSessionDuration", type=Integer.class, parameters={})
+    @Export(name="maxSessionDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxSessionDuration;
 
     /**
@@ -157,7 +157,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * Name of the RAM role. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;, &#34;_&#34;, and must not begin with a hyphen.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -175,7 +175,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'ram_users' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
-    @Export(name="ramUsers", type=List.class, parameters={String.class})
+    @Export(name="ramUsers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ramUsers;
 
     /**
@@ -189,7 +189,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * The role ID.
      * 
      */
-    @Export(name="roleId", type=String.class, parameters={})
+    @Export(name="roleId", refs={String.class}, tree="[0]")
     private Output<String> roleId;
 
     /**
@@ -207,7 +207,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'services' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
-    @Export(name="services", type=List.class, parameters={String.class})
+    @Export(name="services", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> services;
 
     /**
@@ -225,7 +225,7 @@ public class Role extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'version' has been deprecated from version 1.49.0, and use field 'document' to replace.  */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> version;
 
     /**

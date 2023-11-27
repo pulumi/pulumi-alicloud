@@ -79,7 +79,7 @@ public class EcsKeyPair extends com.pulumi.resources.CustomResource {
      * The finger print of the key pair.
      * 
      */
-    @Export(name="fingerPrint", type=String.class, parameters={})
+    @Export(name="fingerPrint", refs={String.class}, tree="[0]")
     private Output<String> fingerPrint;
 
     /**
@@ -93,7 +93,7 @@ public class EcsKeyPair extends com.pulumi.resources.CustomResource {
      * The key file.
      * 
      */
-    @Export(name="keyFile", type=String.class, parameters={})
+    @Export(name="keyFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyFile;
 
     /**
@@ -111,7 +111,7 @@ public class EcsKeyPair extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'key_name' has been deprecated from provider version 1.121.0. New field 'key_pair_name' instead. */
-    @Export(name="keyName", type=String.class, parameters={})
+    @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output<String> keyName;
 
     /**
@@ -121,7 +121,7 @@ public class EcsKeyPair extends com.pulumi.resources.CustomResource {
     public Output<String> keyName() {
         return this.keyName;
     }
-    @Export(name="keyNamePrefix", type=String.class, parameters={})
+    @Export(name="keyNamePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyNamePrefix;
 
     public Output<Optional<String>> keyNamePrefix() {
@@ -131,7 +131,7 @@ public class EcsKeyPair extends com.pulumi.resources.CustomResource {
      * The key pair&#39;s name. It is the only in one Alicloud account, the key pair&#39;s name. must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
-    @Export(name="keyPairName", type=String.class, parameters={})
+    @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output<String> keyPairName;
 
     /**
@@ -145,7 +145,7 @@ public class EcsKeyPair extends com.pulumi.resources.CustomResource {
      * You can import an existing public key and using Alicloud key pair to manage it. If this parameter is specified, `resource_group_id` is the key pair belongs.
      * 
      */
-    @Export(name="publicKey", type=String.class, parameters={})
+    @Export(name="publicKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> publicKey;
 
     /**
@@ -159,7 +159,7 @@ public class EcsKeyPair extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the key pair belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -169,7 +169,7 @@ public class EcsKeyPair extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> resourceGroupId() {
         return Codegen.optional(this.resourceGroupId);
     }
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     public Output<Optional<Map<String,Object>>> tags() {

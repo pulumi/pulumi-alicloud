@@ -51,9 +51,9 @@ public final class ApplicationPostStartV2Exec {
             return commands(List.of(commands));
         }
         public ApplicationPostStartV2Exec build() {
-            final var o = new ApplicationPostStartV2Exec();
-            o.commands = commands;
-            return o;
+            final var _resultValue = new ApplicationPostStartV2Exec();
+            _resultValue.commands = commands;
+            return _resultValue;
         }
     }
 }

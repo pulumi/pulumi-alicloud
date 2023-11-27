@@ -66,10 +66,10 @@ public final class ListenerDefaultAction {
             return this;
         }
         public ListenerDefaultAction build() {
-            final var o = new ListenerDefaultAction();
-            o.forwardGroupConfig = forwardGroupConfig;
-            o.type = type;
-            return o;
+            final var _resultValue = new ListenerDefaultAction();
+            _resultValue.forwardGroupConfig = forwardGroupConfig;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

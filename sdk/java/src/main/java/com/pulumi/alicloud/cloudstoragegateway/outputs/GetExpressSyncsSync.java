@@ -171,16 +171,16 @@ public final class GetExpressSyncsSync {
             return this;
         }
         public GetExpressSyncsSync build() {
-            final var o = new GetExpressSyncsSync();
-            o.bucketName = bucketName;
-            o.bucketPrefix = bucketPrefix;
-            o.bucketRegion = bucketRegion;
-            o.description = description;
-            o.expressSyncId = expressSyncId;
-            o.expressSyncName = expressSyncName;
-            o.id = id;
-            o.mnsTopic = mnsTopic;
-            return o;
+            final var _resultValue = new GetExpressSyncsSync();
+            _resultValue.bucketName = bucketName;
+            _resultValue.bucketPrefix = bucketPrefix;
+            _resultValue.bucketRegion = bucketRegion;
+            _resultValue.description = description;
+            _resultValue.expressSyncId = expressSyncId;
+            _resultValue.expressSyncName = expressSyncName;
+            _resultValue.id = id;
+            _resultValue.mnsTopic = mnsTopic;
+            return _resultValue;
         }
     }
 }

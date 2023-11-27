@@ -297,22 +297,22 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.httpInternalEndpoint = httpInternalEndpoint;
-            o.httpInternetEndpoint = httpInternetEndpoint;
-            o.httpInternetSecureEndpoint = httpInternetSecureEndpoint;
-            o.id = id;
-            o.independentNaming = independentNaming;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.instanceStatus = instanceStatus;
-            o.instanceType = instanceType;
-            o.releaseTime = releaseTime;
-            o.remark = remark;
-            o.status = status;
-            o.tags = tags;
-            o.tcpEndpoint = tcpEndpoint;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.httpInternalEndpoint = httpInternalEndpoint;
+            _resultValue.httpInternetEndpoint = httpInternetEndpoint;
+            _resultValue.httpInternetSecureEndpoint = httpInternetSecureEndpoint;
+            _resultValue.id = id;
+            _resultValue.independentNaming = independentNaming;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.instanceStatus = instanceStatus;
+            _resultValue.instanceType = instanceType;
+            _resultValue.releaseTime = releaseTime;
+            _resultValue.remark = remark;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.tcpEndpoint = tcpEndpoint;
+            return _resultValue;
         }
     }
 }

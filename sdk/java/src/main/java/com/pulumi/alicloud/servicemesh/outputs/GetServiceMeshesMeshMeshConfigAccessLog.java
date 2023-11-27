@@ -66,10 +66,10 @@ public final class GetServiceMeshesMeshMeshConfigAccessLog {
             return this;
         }
         public GetServiceMeshesMeshMeshConfigAccessLog build() {
-            final var o = new GetServiceMeshesMeshMeshConfigAccessLog();
-            o.enabled = enabled;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetServiceMeshesMeshMeshConfigAccessLog();
+            _resultValue.enabled = enabled;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

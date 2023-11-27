@@ -135,7 +135,7 @@ public class ServerBackupPlan extends com.pulumi.resources.CustomResource {
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      * 
      */
-    @Export(name="crossAccountRoleName", type=String.class, parameters={})
+    @Export(name="crossAccountRoleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> crossAccountRoleName;
 
     /**
@@ -149,7 +149,7 @@ public class ServerBackupPlan extends com.pulumi.resources.CustomResource {
      * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
      * 
      */
-    @Export(name="crossAccountType", type=String.class, parameters={})
+    @Export(name="crossAccountType", refs={String.class}, tree="[0]")
     private Output<String> crossAccountType;
 
     /**
@@ -163,7 +163,7 @@ public class ServerBackupPlan extends com.pulumi.resources.CustomResource {
      * The original account ID of the cross account backup managed by the current account.
      * 
      */
-    @Export(name="crossAccountUserId", type=Integer.class, parameters={})
+    @Export(name="crossAccountUserId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> crossAccountUserId;
 
     /**
@@ -177,7 +177,7 @@ public class ServerBackupPlan extends com.pulumi.resources.CustomResource {
      * ECS server backup plan details.
      * 
      */
-    @Export(name="details", type=List.class, parameters={ServerBackupPlanDetail.class})
+    @Export(name="details", refs={List.class,ServerBackupPlanDetail.class}, tree="[0,1]")
     private Output<List<ServerBackupPlanDetail>> details;
 
     /**
@@ -191,7 +191,7 @@ public class ServerBackupPlan extends com.pulumi.resources.CustomResource {
      * Whether to disable the backup task. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="disabled", type=Boolean.class, parameters={})
+    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disabled;
 
     /**
@@ -205,7 +205,7 @@ public class ServerBackupPlan extends com.pulumi.resources.CustomResource {
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      * 
      */
-    @Export(name="ecsServerBackupPlanName", type=String.class, parameters={})
+    @Export(name="ecsServerBackupPlanName", refs={String.class}, tree="[0]")
     private Output<String> ecsServerBackupPlanName;
 
     /**
@@ -219,7 +219,7 @@ public class ServerBackupPlan extends com.pulumi.resources.CustomResource {
      * The ID of ECS instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -233,7 +233,7 @@ public class ServerBackupPlan extends com.pulumi.resources.CustomResource {
      * Backup retention days, the minimum is 1.
      * 
      */
-    @Export(name="retention", type=Integer.class, parameters={})
+    @Export(name="retention", refs={Integer.class}, tree="[0]")
     private Output<Integer> retention;
 
     /**
@@ -247,7 +247,7 @@ public class ServerBackupPlan extends com.pulumi.resources.CustomResource {
      * Backup strategy. Optional format: `I|{startTime}|{interval}`
      * 
      */
-    @Export(name="schedule", type=String.class, parameters={})
+    @Export(name="schedule", refs={String.class}, tree="[0]")
     private Output<String> schedule;
 
     /**

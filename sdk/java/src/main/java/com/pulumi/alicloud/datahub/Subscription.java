@@ -86,7 +86,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Comment of the datahub subscription. It cannot be longer than 255 characters.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -100,7 +100,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Create time of the datahub subscription. It is a human-readable string rather than 64-bits UTC.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -114,7 +114,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * Last modify time of the datahub subscription. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
      * 
      */
-    @Export(name="lastModifyTime", type=String.class, parameters={})
+    @Export(name="lastModifyTime", refs={String.class}, tree="[0]")
     private Output<String> lastModifyTime;
 
     /**
@@ -128,7 +128,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * The name of the datahub project that the subscription belongs to. Its length is limited to 3-32 and only characters such as letters, digits and &#39;_&#39; are allowed. It is case-insensitive.
      * 
      */
-    @Export(name="projectName", type=String.class, parameters={})
+    @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
@@ -142,7 +142,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * The identidy of the subscription, generate from server side.
      * 
      */
-    @Export(name="subId", type=String.class, parameters={})
+    @Export(name="subId", refs={String.class}, tree="[0]")
     private Output<String> subId;
 
     /**
@@ -156,7 +156,7 @@ public class Subscription extends com.pulumi.resources.CustomResource {
      * The name of the datahub topic that the subscription belongs to. Its length is limited to 1-128 and only characters such as letters, digits and &#39;_&#39; are allowed. It is case-insensitive.
      * 
      */
-    @Export(name="topicName", type=String.class, parameters={})
+    @Export(name="topicName", refs={String.class}, tree="[0]")
     private Output<String> topicName;
 
     /**

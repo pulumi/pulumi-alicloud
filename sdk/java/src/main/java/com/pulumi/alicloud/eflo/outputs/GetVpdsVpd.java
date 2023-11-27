@@ -179,16 +179,16 @@ public final class GetVpdsVpd {
             return this;
         }
         public GetVpdsVpd build() {
-            final var o = new GetVpdsVpd();
-            o.cidr = cidr;
-            o.createTime = createTime;
-            o.gmtModified = gmtModified;
-            o.id = id;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.vpdId = vpdId;
-            o.vpdName = vpdName;
-            return o;
+            final var _resultValue = new GetVpdsVpd();
+            _resultValue.cidr = cidr;
+            _resultValue.createTime = createTime;
+            _resultValue.gmtModified = gmtModified;
+            _resultValue.id = id;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.vpdId = vpdId;
+            _resultValue.vpdName = vpdName;
+            return _resultValue;
         }
     }
 }

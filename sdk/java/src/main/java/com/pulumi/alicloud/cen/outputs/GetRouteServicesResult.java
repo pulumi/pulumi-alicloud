@@ -219,18 +219,18 @@ public final class GetRouteServicesResult {
             return this;
         }
         public GetRouteServicesResult build() {
-            final var o = new GetRouteServicesResult();
-            o.accessRegionId = accessRegionId;
-            o.cenId = cenId;
-            o.host = host;
-            o.hostRegionId = hostRegionId;
-            o.hostVpcId = hostVpcId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.services = services;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetRouteServicesResult();
+            _resultValue.accessRegionId = accessRegionId;
+            _resultValue.cenId = cenId;
+            _resultValue.host = host;
+            _resultValue.hostRegionId = hostRegionId;
+            _resultValue.hostVpcId = hostVpcId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.services = services;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -85,7 +85,7 @@ public class BasicIpSet extends com.pulumi.resources.CustomResource {
      * The ID of the acceleration region.
      * 
      */
-    @Export(name="accelerateRegionId", type=String.class, parameters={})
+    @Export(name="accelerateRegionId", refs={String.class}, tree="[0]")
     private Output<String> accelerateRegionId;
 
     /**
@@ -99,7 +99,7 @@ public class BasicIpSet extends com.pulumi.resources.CustomResource {
      * The ID of the basic GA instance.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -113,7 +113,7 @@ public class BasicIpSet extends com.pulumi.resources.CustomResource {
      * The bandwidth of the acceleration region. Unit: Mbit/s.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
@@ -127,7 +127,7 @@ public class BasicIpSet extends com.pulumi.resources.CustomResource {
      * The line type of the elastic IP address (EIP) in the acceleration region. Default value: `BGP`. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`.
      * 
      */
-    @Export(name="ispType", type=String.class, parameters={})
+    @Export(name="ispType", refs={String.class}, tree="[0]")
     private Output<String> ispType;
 
     /**
@@ -141,7 +141,7 @@ public class BasicIpSet extends com.pulumi.resources.CustomResource {
      * The status of the Basic Ip Set instance.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

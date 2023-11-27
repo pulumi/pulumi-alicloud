@@ -214,18 +214,18 @@ public final class GetDbInstancePlansPlan {
             return this;
         }
         public GetDbInstancePlansPlan build() {
-            final var o = new GetDbInstancePlansPlan();
-            o.dbInstancePlanName = dbInstancePlanName;
-            o.id = id;
-            o.planConfigs = planConfigs;
-            o.planDesc = planDesc;
-            o.planEndDate = planEndDate;
-            o.planId = planId;
-            o.planScheduleType = planScheduleType;
-            o.planStartDate = planStartDate;
-            o.planType = planType;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDbInstancePlansPlan();
+            _resultValue.dbInstancePlanName = dbInstancePlanName;
+            _resultValue.id = id;
+            _resultValue.planConfigs = planConfigs;
+            _resultValue.planDesc = planDesc;
+            _resultValue.planEndDate = planEndDate;
+            _resultValue.planId = planId;
+            _resultValue.planScheduleType = planScheduleType;
+            _resultValue.planStartDate = planStartDate;
+            _resultValue.planType = planType;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

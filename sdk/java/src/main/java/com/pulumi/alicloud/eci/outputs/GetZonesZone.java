@@ -69,10 +69,10 @@ public final class GetZonesZone {
             return zoneIds(List.of(zoneIds));
         }
         public GetZonesZone build() {
-            final var o = new GetZonesZone();
-            o.regionEndpoint = regionEndpoint;
-            o.zoneIds = zoneIds;
-            return o;
+            final var _resultValue = new GetZonesZone();
+            _resultValue.regionEndpoint = regionEndpoint;
+            _resultValue.zoneIds = zoneIds;
+            return _resultValue;
         }
     }
 }

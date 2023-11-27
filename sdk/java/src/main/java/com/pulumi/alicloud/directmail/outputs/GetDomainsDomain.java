@@ -407,28 +407,28 @@ public final class GetDomainsDomain {
             return this;
         }
         public GetDomainsDomain build() {
-            final var o = new GetDomainsDomain();
-            o.cnameAuthStatus = cnameAuthStatus;
-            o.cnameConfirmStatus = cnameConfirmStatus;
-            o.cnameRecord = cnameRecord;
-            o.createTime = createTime;
-            o.defaultDomain = defaultDomain;
-            o.dnsMx = dnsMx;
-            o.dnsSpf = dnsSpf;
-            o.dnsTxt = dnsTxt;
-            o.domainId = domainId;
-            o.domainName = domainName;
-            o.domainType = domainType;
-            o.icpStatus = icpStatus;
-            o.id = id;
-            o.mxAuthStatus = mxAuthStatus;
-            o.mxRecord = mxRecord;
-            o.spfAuthStatus = spfAuthStatus;
-            o.spfRecord = spfRecord;
-            o.status = status;
-            o.tlDomainName = tlDomainName;
-            o.tracefRecord = tracefRecord;
-            return o;
+            final var _resultValue = new GetDomainsDomain();
+            _resultValue.cnameAuthStatus = cnameAuthStatus;
+            _resultValue.cnameConfirmStatus = cnameConfirmStatus;
+            _resultValue.cnameRecord = cnameRecord;
+            _resultValue.createTime = createTime;
+            _resultValue.defaultDomain = defaultDomain;
+            _resultValue.dnsMx = dnsMx;
+            _resultValue.dnsSpf = dnsSpf;
+            _resultValue.dnsTxt = dnsTxt;
+            _resultValue.domainId = domainId;
+            _resultValue.domainName = domainName;
+            _resultValue.domainType = domainType;
+            _resultValue.icpStatus = icpStatus;
+            _resultValue.id = id;
+            _resultValue.mxAuthStatus = mxAuthStatus;
+            _resultValue.mxRecord = mxRecord;
+            _resultValue.spfAuthStatus = spfAuthStatus;
+            _resultValue.spfRecord = spfRecord;
+            _resultValue.status = status;
+            _resultValue.tlDomainName = tlDomainName;
+            _resultValue.tracefRecord = tracefRecord;
+            return _resultValue;
         }
     }
 }

@@ -149,17 +149,17 @@ public final class GetDomainsResult {
             return this;
         }
         public GetDomainsResult build() {
-            final var o = new GetDomainsResult();
-            o.domainSearchType = domainSearchType;
-            o.domains = domains;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetDomainsResult();
+            _resultValue.domainSearchType = domainSearchType;
+            _resultValue.domains = domains;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

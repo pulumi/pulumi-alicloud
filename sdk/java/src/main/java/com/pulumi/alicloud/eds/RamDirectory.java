@@ -95,7 +95,7 @@ public class RamDirectory extends com.pulumi.resources.CustomResource {
      * The desktop access type. Valid values: `VPC`, `INTERNET`, `ANY`.
      * 
      */
-    @Export(name="desktopAccessType", type=String.class, parameters={})
+    @Export(name="desktopAccessType", refs={String.class}, tree="[0]")
     private Output<String> desktopAccessType;
 
     /**
@@ -109,7 +109,7 @@ public class RamDirectory extends com.pulumi.resources.CustomResource {
      * Whether to enable public network access.
      * 
      */
-    @Export(name="enableAdminAccess", type=Boolean.class, parameters={})
+    @Export(name="enableAdminAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableAdminAccess;
 
     /**
@@ -123,7 +123,7 @@ public class RamDirectory extends com.pulumi.resources.CustomResource {
      * Whether to grant local administrator rights to users who use cloud desktops.
      * 
      */
-    @Export(name="enableInternetAccess", type=Boolean.class, parameters={})
+    @Export(name="enableInternetAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableInternetAccess;
 
     /**
@@ -137,7 +137,7 @@ public class RamDirectory extends com.pulumi.resources.CustomResource {
      * The name of the directory. The name must be 2 to 255 characters in length. It must start with a letter but cannot start with `http://` or `https://`. It can contain letters, digits, colons (:), underscores (_), and hyphens (-).
      * 
      */
-    @Export(name="ramDirectoryName", type=String.class, parameters={})
+    @Export(name="ramDirectoryName", refs={String.class}, tree="[0]")
     private Output<String> ramDirectoryName;
 
     /**
@@ -151,7 +151,7 @@ public class RamDirectory extends com.pulumi.resources.CustomResource {
      * The status of directory.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -165,7 +165,7 @@ public class RamDirectory extends com.pulumi.resources.CustomResource {
      * List of VSwitch IDs in the directory.
      * 
      */
-    @Export(name="vswitchIds", type=List.class, parameters={String.class})
+    @Export(name="vswitchIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> vswitchIds;
 
     /**

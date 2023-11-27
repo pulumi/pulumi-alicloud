@@ -69,10 +69,10 @@ public final class GetEventRulesRuleEventPatternKeywordFilter {
             return this;
         }
         public GetEventRulesRuleEventPatternKeywordFilter build() {
-            final var o = new GetEventRulesRuleEventPatternKeywordFilter();
-            o.keyWords = keyWords;
-            o.relation = relation;
-            return o;
+            final var _resultValue = new GetEventRulesRuleEventPatternKeywordFilter();
+            _resultValue.keyWords = keyWords;
+            _resultValue.relation = relation;
+            return _resultValue;
         }
     }
 }

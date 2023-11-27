@@ -333,24 +333,24 @@ public final class GetFileSystemsSystem {
             return this;
         }
         public GetFileSystemsSystem build() {
-            final var o = new GetFileSystemsSystem();
-            o.createTime = createTime;
-            o.description = description;
-            o.fileSystemId = fileSystemId;
-            o.fileSystemName = fileSystemName;
-            o.id = id;
-            o.mountPointCount = mountPointCount;
-            o.numberOfDirectories = numberOfDirectories;
-            o.numberOfFiles = numberOfFiles;
-            o.protocolType = protocolType;
-            o.provisionedThroughputInMiBps = provisionedThroughputInMiBps;
-            o.spaceCapacity = spaceCapacity;
-            o.storagePackageId = storagePackageId;
-            o.storageType = storageType;
-            o.throughputMode = throughputMode;
-            o.usedSpaceSize = usedSpaceSize;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetFileSystemsSystem();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.fileSystemId = fileSystemId;
+            _resultValue.fileSystemName = fileSystemName;
+            _resultValue.id = id;
+            _resultValue.mountPointCount = mountPointCount;
+            _resultValue.numberOfDirectories = numberOfDirectories;
+            _resultValue.numberOfFiles = numberOfFiles;
+            _resultValue.protocolType = protocolType;
+            _resultValue.provisionedThroughputInMiBps = provisionedThroughputInMiBps;
+            _resultValue.spaceCapacity = spaceCapacity;
+            _resultValue.storagePackageId = storagePackageId;
+            _resultValue.storageType = storageType;
+            _resultValue.throughputMode = throughputMode;
+            _resultValue.usedSpaceSize = usedSpaceSize;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

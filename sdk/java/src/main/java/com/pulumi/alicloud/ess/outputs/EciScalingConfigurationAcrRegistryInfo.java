@@ -117,12 +117,12 @@ public final class EciScalingConfigurationAcrRegistryInfo {
             return this;
         }
         public EciScalingConfigurationAcrRegistryInfo build() {
-            final var o = new EciScalingConfigurationAcrRegistryInfo();
-            o.domains = domains;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.regionId = regionId;
-            return o;
+            final var _resultValue = new EciScalingConfigurationAcrRegistryInfo();
+            _resultValue.domains = domains;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.regionId = regionId;
+            return _resultValue;
         }
     }
 }

@@ -96,14 +96,14 @@ public final class MasterSlaveServerGroupServer {
             return this;
         }
         public MasterSlaveServerGroupServer build() {
-            final var o = new MasterSlaveServerGroupServer();
-            o.isBackup = isBackup;
-            o.port = port;
-            o.serverId = serverId;
-            o.serverType = serverType;
-            o.type = type;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new MasterSlaveServerGroupServer();
+            _resultValue.isBackup = isBackup;
+            _resultValue.port = port;
+            _resultValue.serverId = serverId;
+            _resultValue.serverType = serverType;
+            _resultValue.type = type;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

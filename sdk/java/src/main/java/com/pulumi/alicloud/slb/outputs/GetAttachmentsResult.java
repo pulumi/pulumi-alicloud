@@ -108,13 +108,13 @@ public final class GetAttachmentsResult {
             return slbAttachments(List.of(slbAttachments));
         }
         public GetAttachmentsResult build() {
-            final var o = new GetAttachmentsResult();
-            o.id = id;
-            o.instanceIds = instanceIds;
-            o.loadBalancerId = loadBalancerId;
-            o.outputFile = outputFile;
-            o.slbAttachments = slbAttachments;
-            return o;
+            final var _resultValue = new GetAttachmentsResult();
+            _resultValue.id = id;
+            _resultValue.instanceIds = instanceIds;
+            _resultValue.loadBalancerId = loadBalancerId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.slbAttachments = slbAttachments;
+            return _resultValue;
         }
     }
 }

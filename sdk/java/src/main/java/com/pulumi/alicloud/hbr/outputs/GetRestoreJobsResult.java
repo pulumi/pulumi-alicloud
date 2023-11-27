@@ -195,20 +195,20 @@ public final class GetRestoreJobsResult {
             return vaultIds(List.of(vaultIds));
         }
         public GetRestoreJobsResult build() {
-            final var o = new GetRestoreJobsResult();
-            o.id = id;
-            o.ids = ids;
-            o.jobs = jobs;
-            o.outputFile = outputFile;
-            o.restoreIds = restoreIds;
-            o.restoreType = restoreType;
-            o.sourceTypes = sourceTypes;
-            o.status = status;
-            o.targetBuckets = targetBuckets;
-            o.targetFileSystemIds = targetFileSystemIds;
-            o.targetInstanceIds = targetInstanceIds;
-            o.vaultIds = vaultIds;
-            return o;
+            final var _resultValue = new GetRestoreJobsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.jobs = jobs;
+            _resultValue.outputFile = outputFile;
+            _resultValue.restoreIds = restoreIds;
+            _resultValue.restoreType = restoreType;
+            _resultValue.sourceTypes = sourceTypes;
+            _resultValue.status = status;
+            _resultValue.targetBuckets = targetBuckets;
+            _resultValue.targetFileSystemIds = targetFileSystemIds;
+            _resultValue.targetInstanceIds = targetInstanceIds;
+            _resultValue.vaultIds = vaultIds;
+            return _resultValue;
         }
     }
 }

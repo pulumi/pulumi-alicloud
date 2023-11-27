@@ -201,17 +201,17 @@ public final class GetQueuesQueue {
             return this;
         }
         public GetQueuesQueue build() {
-            final var o = new GetQueuesQueue();
-            o.attributes = attributes;
-            o.autoDeleteState = autoDeleteState;
-            o.createTime = createTime;
-            o.exclusiveState = exclusiveState;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.lastConsumeTime = lastConsumeTime;
-            o.queueName = queueName;
-            o.virtualHostName = virtualHostName;
-            return o;
+            final var _resultValue = new GetQueuesQueue();
+            _resultValue.attributes = attributes;
+            _resultValue.autoDeleteState = autoDeleteState;
+            _resultValue.createTime = createTime;
+            _resultValue.exclusiveState = exclusiveState;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.lastConsumeTime = lastConsumeTime;
+            _resultValue.queueName = queueName;
+            _resultValue.virtualHostName = virtualHostName;
+            return _resultValue;
         }
     }
 }

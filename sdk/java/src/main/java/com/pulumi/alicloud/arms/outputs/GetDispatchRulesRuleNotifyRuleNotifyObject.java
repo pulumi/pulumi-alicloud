@@ -84,11 +84,11 @@ public final class GetDispatchRulesRuleNotifyRuleNotifyObject {
             return this;
         }
         public GetDispatchRulesRuleNotifyRuleNotifyObject build() {
-            final var o = new GetDispatchRulesRuleNotifyRuleNotifyObject();
-            o.name = name;
-            o.notifyObjectId = notifyObjectId;
-            o.notifyType = notifyType;
-            return o;
+            final var _resultValue = new GetDispatchRulesRuleNotifyRuleNotifyObject();
+            _resultValue.name = name;
+            _resultValue.notifyObjectId = notifyObjectId;
+            _resultValue.notifyType = notifyType;
+            return _resultValue;
         }
     }
 }

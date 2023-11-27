@@ -180,16 +180,16 @@ public final class GetTrafficMarkingPoliciesPolicy {
             return this;
         }
         public GetTrafficMarkingPoliciesPolicy build() {
-            final var o = new GetTrafficMarkingPoliciesPolicy();
-            o.description = description;
-            o.id = id;
-            o.markingDscp = markingDscp;
-            o.priority = priority;
-            o.status = status;
-            o.trafficMarkingPolicyId = trafficMarkingPolicyId;
-            o.trafficMarkingPolicyName = trafficMarkingPolicyName;
-            o.transitRouterId = transitRouterId;
-            return o;
+            final var _resultValue = new GetTrafficMarkingPoliciesPolicy();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.markingDscp = markingDscp;
+            _resultValue.priority = priority;
+            _resultValue.status = status;
+            _resultValue.trafficMarkingPolicyId = trafficMarkingPolicyId;
+            _resultValue.trafficMarkingPolicyName = trafficMarkingPolicyName;
+            _resultValue.transitRouterId = transitRouterId;
+            return _resultValue;
         }
     }
 }

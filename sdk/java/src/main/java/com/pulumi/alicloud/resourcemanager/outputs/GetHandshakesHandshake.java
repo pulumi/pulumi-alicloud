@@ -274,21 +274,21 @@ public final class GetHandshakesHandshake {
             return this;
         }
         public GetHandshakesHandshake build() {
-            final var o = new GetHandshakesHandshake();
-            o.expireTime = expireTime;
-            o.handshakeId = handshakeId;
-            o.id = id;
-            o.invitedAccountRealName = invitedAccountRealName;
-            o.masterAccountId = masterAccountId;
-            o.masterAccountName = masterAccountName;
-            o.masterAccountRealName = masterAccountRealName;
-            o.modifyTime = modifyTime;
-            o.note = note;
-            o.resourceDirectoryId = resourceDirectoryId;
-            o.status = status;
-            o.targetEntity = targetEntity;
-            o.targetType = targetType;
-            return o;
+            final var _resultValue = new GetHandshakesHandshake();
+            _resultValue.expireTime = expireTime;
+            _resultValue.handshakeId = handshakeId;
+            _resultValue.id = id;
+            _resultValue.invitedAccountRealName = invitedAccountRealName;
+            _resultValue.masterAccountId = masterAccountId;
+            _resultValue.masterAccountName = masterAccountName;
+            _resultValue.masterAccountRealName = masterAccountRealName;
+            _resultValue.modifyTime = modifyTime;
+            _resultValue.note = note;
+            _resultValue.resourceDirectoryId = resourceDirectoryId;
+            _resultValue.status = status;
+            _resultValue.targetEntity = targetEntity;
+            _resultValue.targetType = targetType;
+            return _resultValue;
         }
     }
 }

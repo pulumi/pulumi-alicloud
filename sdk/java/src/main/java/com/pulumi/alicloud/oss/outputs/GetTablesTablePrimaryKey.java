@@ -49,10 +49,10 @@ public final class GetTablesTablePrimaryKey {
             return this;
         }
         public GetTablesTablePrimaryKey build() {
-            final var o = new GetTablesTablePrimaryKey();
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetTablesTablePrimaryKey();
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

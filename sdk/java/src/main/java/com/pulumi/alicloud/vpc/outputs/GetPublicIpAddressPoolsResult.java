@@ -161,18 +161,18 @@ public final class GetPublicIpAddressPoolsResult {
             return this;
         }
         public GetPublicIpAddressPoolsResult build() {
-            final var o = new GetPublicIpAddressPoolsResult();
-            o.id = id;
-            o.ids = ids;
-            o.isp = isp;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pools = pools;
-            o.publicIpAddressPoolIds = publicIpAddressPoolIds;
-            o.publicIpAddressPoolName = publicIpAddressPoolName;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetPublicIpAddressPoolsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.isp = isp;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pools = pools;
+            _resultValue.publicIpAddressPoolIds = publicIpAddressPoolIds;
+            _resultValue.publicIpAddressPoolName = publicIpAddressPoolName;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

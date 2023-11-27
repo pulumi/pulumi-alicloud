@@ -92,7 +92,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * -&gt;**NOTE:** Ensure that the child instance is not used in Express Connect.
      * 
      */
-    @Export(name="cenOwnerId", type=Integer.class, parameters={})
+    @Export(name="cenOwnerId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cenOwnerId;
 
     /**
@@ -108,7 +108,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the child instance to attach.
      * 
      */
-    @Export(name="childInstanceId", type=String.class, parameters={})
+    @Export(name="childInstanceId", refs={String.class}, tree="[0]")
     private Output<String> childInstanceId;
 
     /**
@@ -122,7 +122,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * The uid of the child instance. Only used when attach a child instance of other account.
      * 
      */
-    @Export(name="childInstanceOwnerId", type=Integer.class, parameters={})
+    @Export(name="childInstanceOwnerId", refs={Integer.class}, tree="[0]")
     private Output<Integer> childInstanceOwnerId;
 
     /**
@@ -136,7 +136,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * The region ID of the child instance to attach.
      * 
      */
-    @Export(name="childInstanceRegionId", type=String.class, parameters={})
+    @Export(name="childInstanceRegionId", refs={String.class}, tree="[0]")
     private Output<String> childInstanceRegionId;
 
     /**
@@ -150,7 +150,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * The type of the associated network. Valid values: `VPC`, `VBR` and `CCN`.
      * 
      */
-    @Export(name="childInstanceType", type=String.class, parameters={})
+    @Export(name="childInstanceType", refs={String.class}, tree="[0]")
     private Output<String> childInstanceType;
 
     /**
@@ -164,7 +164,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the CEN.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -178,7 +178,7 @@ public class InstanceAttachment extends com.pulumi.resources.CustomResource {
      * The associating status of the network.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

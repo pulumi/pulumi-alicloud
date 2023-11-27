@@ -100,7 +100,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * The total number of times that the elasticity assurance can be applied. Set the value to Unlimited. This value indicates that the elasticity assurance can be applied an unlimited number of times within its effective duration. Default value: Unlimited.
      * 
      */
-    @Export(name="assuranceTimes", type=String.class, parameters={})
+    @Export(name="assuranceTimes", refs={String.class}, tree="[0]")
     private Output<String> assuranceTimes;
 
     /**
@@ -114,7 +114,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * Description of flexible guarantee service.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -128,7 +128,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * The first ID of the resource
      * 
      */
-    @Export(name="elasticityAssuranceId", type=String.class, parameters={})
+    @Export(name="elasticityAssuranceId", refs={String.class}, tree="[0]")
     private Output<String> elasticityAssuranceId;
 
     /**
@@ -142,7 +142,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * Flexible guarantee service failure time.
      * 
      */
-    @Export(name="endTime", type=String.class, parameters={})
+    @Export(name="endTime", refs={String.class}, tree="[0]")
     private Output<String> endTime;
 
     /**
@@ -156,7 +156,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * The total number of instances for which to reserve the capacity of an instance type. Valid values: 1 to 1000.
      * 
      */
-    @Export(name="instanceAmount", type=Integer.class, parameters={})
+    @Export(name="instanceAmount", refs={Integer.class}, tree="[0]")
     private Output<Integer> instanceAmount;
 
     /**
@@ -170,7 +170,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * The billing method of the instance. Possible value: PostPaid. Currently, only pay-as-you-go is supported.
      * 
      */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
     /**
@@ -184,7 +184,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * Instance type. Currently, only one instance type is supported.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -200,7 +200,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * - When the `period_unit` parameter is set to Year, the valid values are 1, 2, 3, 4, and 5.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -216,7 +216,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * Duration unit. Value range:-Month: Month-Year: YearDefault value: Year
      * 
      */
-    @Export(name="periodUnit", type=String.class, parameters={})
+    @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
@@ -230,7 +230,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * The matching mode of flexible guarantee service. Possible values:-Open: flexible guarantee service for Open mode.-Target: specifies the flexible guarantee service of the mode.
      * 
      */
-    @Export(name="privatePoolOptionsMatchCriteria", type=String.class, parameters={})
+    @Export(name="privatePoolOptionsMatchCriteria", refs={String.class}, tree="[0]")
     private Output<String> privatePoolOptionsMatchCriteria;
 
     /**
@@ -244,7 +244,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * The name of the flexible protection service.
      * 
      */
-    @Export(name="privatePoolOptionsName", type=String.class, parameters={})
+    @Export(name="privatePoolOptionsName", refs={String.class}, tree="[0]")
     private Output<String> privatePoolOptionsName;
 
     /**
@@ -258,7 +258,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -272,7 +272,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * Flexible guarantee service effective time.
      * 
      */
-    @Export(name="startTime", type=String.class, parameters={})
+    @Export(name="startTime", refs={String.class}, tree="[0]")
     private Output<String> startTime;
 
     /**
@@ -286,7 +286,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * Flexible guarantee effective way. Possible values:-Now: Effective immediately.-Later: the specified time takes effect.
      * 
      */
-    @Export(name="startTimeType", type=String.class, parameters={})
+    @Export(name="startTimeType", refs={String.class}, tree="[0]")
     private Output<String> startTimeType;
 
     /**
@@ -300,7 +300,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * The status of flexible guarantee services. Possible values:-Preparing: in preparation.-Prepared: to take effect.-Active: in effect.-Released: Released.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -314,7 +314,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * The tag key-value pair information bound by the elastic guarantee service.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -328,7 +328,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * This parameter is not yet available.
      * 
      */
-    @Export(name="usedAssuranceTimes", type=Integer.class, parameters={})
+    @Export(name="usedAssuranceTimes", refs={Integer.class}, tree="[0]")
     private Output<Integer> usedAssuranceTimes;
 
     /**
@@ -342,7 +342,7 @@ public class ElasticityAssurance extends com.pulumi.resources.CustomResource {
      * The zone ID of the region to which the elastic Protection Service belongs. Currently, only the creation of flexible protection services in one available area is supported.
      * 
      */
-    @Export(name="zoneIds", type=List.class, parameters={String.class})
+    @Export(name="zoneIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> zoneIds;
 
     /**

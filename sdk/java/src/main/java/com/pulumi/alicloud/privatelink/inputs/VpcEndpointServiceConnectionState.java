@@ -18,14 +18,14 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
     public static final VpcEndpointServiceConnectionState Empty = new VpcEndpointServiceConnectionState();
 
     /**
-     * The Bandwidth.
+     * The bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return The Bandwidth.
+     * @return The bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -33,14 +33,18 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
     }
 
     /**
-     * The dry run.
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -48,14 +52,14 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
     }
 
     /**
-     * The ID of the Vpc Endpoint.
+     * The endpoint ID.
      * 
      */
     @Import(name="endpointId")
     private @Nullable Output<String> endpointId;
 
     /**
-     * @return The ID of the Vpc Endpoint.
+     * @return The endpoint ID.
      * 
      */
     public Optional<Output<String>> endpointId() {
@@ -63,14 +67,14 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
     }
 
     /**
-     * The ID of the Vpc Endpoint Service.
+     * The endpoint service ID.
      * 
      */
     @Import(name="serviceId")
     private @Nullable Output<String> serviceId;
 
     /**
-     * @return The ID of the Vpc Endpoint Service.
+     * @return The endpoint service ID.
      * 
      */
     public Optional<Output<String>> serviceId() {
@@ -78,14 +82,14 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
     }
 
     /**
-     * The status of Vpc Endpoint Connection.
+     * The state of the endpoint connection.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of Vpc Endpoint Connection.
+     * @return The state of the endpoint connection.
      * 
      */
     public Optional<Output<String>> status() {
@@ -121,7 +125,7 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
         }
 
         /**
-         * @param bandwidth The Bandwidth.
+         * @param bandwidth The bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
          * 
          * @return builder
          * 
@@ -132,7 +136,7 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
         }
 
         /**
-         * @param bandwidth The Bandwidth.
+         * @param bandwidth The bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
          * 
          * @return builder
          * 
@@ -142,7 +146,9 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -153,7 +159,9 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
         }
 
         /**
-         * @param dryRun The dry run.
+         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -163,7 +171,7 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
         }
 
         /**
-         * @param endpointId The ID of the Vpc Endpoint.
+         * @param endpointId The endpoint ID.
          * 
          * @return builder
          * 
@@ -174,7 +182,7 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
         }
 
         /**
-         * @param endpointId The ID of the Vpc Endpoint.
+         * @param endpointId The endpoint ID.
          * 
          * @return builder
          * 
@@ -184,7 +192,7 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
         }
 
         /**
-         * @param serviceId The ID of the Vpc Endpoint Service.
+         * @param serviceId The endpoint service ID.
          * 
          * @return builder
          * 
@@ -195,7 +203,7 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
         }
 
         /**
-         * @param serviceId The ID of the Vpc Endpoint Service.
+         * @param serviceId The endpoint service ID.
          * 
          * @return builder
          * 
@@ -205,7 +213,7 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
         }
 
         /**
-         * @param status The status of Vpc Endpoint Connection.
+         * @param status The state of the endpoint connection.
          * 
          * @return builder
          * 
@@ -216,7 +224,7 @@ public final class VpcEndpointServiceConnectionState extends com.pulumi.resource
         }
 
         /**
-         * @param status The status of Vpc Endpoint Connection.
+         * @param status The state of the endpoint connection.
          * 
          * @return builder
          * 

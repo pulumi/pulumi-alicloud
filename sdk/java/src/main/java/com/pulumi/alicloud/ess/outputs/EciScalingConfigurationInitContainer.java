@@ -280,20 +280,20 @@ public final class EciScalingConfigurationInitContainer {
             return this;
         }
         public EciScalingConfigurationInitContainer build() {
-            final var o = new EciScalingConfigurationInitContainer();
-            o.args = args;
-            o.commands = commands;
-            o.cpu = cpu;
-            o.environmentVars = environmentVars;
-            o.gpu = gpu;
-            o.image = image;
-            o.imagePullPolicy = imagePullPolicy;
-            o.memory = memory;
-            o.name = name;
-            o.ports = ports;
-            o.volumeMounts = volumeMounts;
-            o.workingDir = workingDir;
-            return o;
+            final var _resultValue = new EciScalingConfigurationInitContainer();
+            _resultValue.args = args;
+            _resultValue.commands = commands;
+            _resultValue.cpu = cpu;
+            _resultValue.environmentVars = environmentVars;
+            _resultValue.gpu = gpu;
+            _resultValue.image = image;
+            _resultValue.imagePullPolicy = imagePullPolicy;
+            _resultValue.memory = memory;
+            _resultValue.name = name;
+            _resultValue.ports = ports;
+            _resultValue.volumeMounts = volumeMounts;
+            _resultValue.workingDir = workingDir;
+            return _resultValue;
         }
     }
 }

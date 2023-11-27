@@ -88,11 +88,11 @@ public final class GroupMetricRuleEscalations {
             return this;
         }
         public GroupMetricRuleEscalations build() {
-            final var o = new GroupMetricRuleEscalations();
-            o.critical = critical;
-            o.info = info;
-            o.warn = warn;
-            return o;
+            final var _resultValue = new GroupMetricRuleEscalations();
+            _resultValue.critical = critical;
+            _resultValue.info = info;
+            _resultValue.warn = warn;
+            return _resultValue;
         }
     }
 }

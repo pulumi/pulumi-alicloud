@@ -255,21 +255,21 @@ public final class GetVirtualPhysicalConnectionsResult {
             return this;
         }
         public GetVirtualPhysicalConnectionsResult build() {
-            final var o = new GetVirtualPhysicalConnectionsResult();
-            o.businessStatus = businessStatus;
-            o.connections = connections;
-            o.id = id;
-            o.ids = ids;
-            o.isConfirmed = isConfirmed;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.parentPhysicalConnectionId = parentPhysicalConnectionId;
-            o.virtualPhysicalConnectionIds = virtualPhysicalConnectionIds;
-            o.virtualPhysicalConnectionStatus = virtualPhysicalConnectionStatus;
-            o.vlanIds = vlanIds;
-            o.vpconnAliUid = vpconnAliUid;
-            return o;
+            final var _resultValue = new GetVirtualPhysicalConnectionsResult();
+            _resultValue.businessStatus = businessStatus;
+            _resultValue.connections = connections;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.isConfirmed = isConfirmed;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.parentPhysicalConnectionId = parentPhysicalConnectionId;
+            _resultValue.virtualPhysicalConnectionIds = virtualPhysicalConnectionIds;
+            _resultValue.virtualPhysicalConnectionStatus = virtualPhysicalConnectionStatus;
+            _resultValue.vlanIds = vlanIds;
+            _resultValue.vpconnAliUid = vpconnAliUid;
+            return _resultValue;
         }
     }
 }

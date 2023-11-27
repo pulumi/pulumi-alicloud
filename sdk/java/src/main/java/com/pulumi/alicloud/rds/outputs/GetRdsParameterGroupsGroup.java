@@ -143,18 +143,18 @@ public final class GetRdsParameterGroupsGroup {
             return this;
         }
         public GetRdsParameterGroupsGroup build() {
-            final var o = new GetRdsParameterGroupsGroup();
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.forceRestart = forceRestart;
-            o.id = id;
-            o.paramCounts = paramCounts;
-            o.paramDetails = paramDetails;
-            o.parameterGroupDesc = parameterGroupDesc;
-            o.parameterGroupId = parameterGroupId;
-            o.parameterGroupName = parameterGroupName;
-            o.parameterGroupType = parameterGroupType;
-            return o;
+            final var _resultValue = new GetRdsParameterGroupsGroup();
+            _resultValue.engine = engine;
+            _resultValue.engineVersion = engineVersion;
+            _resultValue.forceRestart = forceRestart;
+            _resultValue.id = id;
+            _resultValue.paramCounts = paramCounts;
+            _resultValue.paramDetails = paramDetails;
+            _resultValue.parameterGroupDesc = parameterGroupDesc;
+            _resultValue.parameterGroupId = parameterGroupId;
+            _resultValue.parameterGroupName = parameterGroupName;
+            _resultValue.parameterGroupType = parameterGroupType;
+            return _resultValue;
         }
     }
 }

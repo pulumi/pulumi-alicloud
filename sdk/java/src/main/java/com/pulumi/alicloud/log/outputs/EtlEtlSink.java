@@ -223,18 +223,18 @@ public final class EtlEtlSink {
             return this;
         }
         public EtlEtlSink build() {
-            final var o = new EtlEtlSink();
-            o.accessKeyId = accessKeyId;
-            o.accessKeySecret = accessKeySecret;
-            o.endpoint = endpoint;
-            o.kmsEncryptedAccessKeyId = kmsEncryptedAccessKeyId;
-            o.kmsEncryptedAccessKeySecret = kmsEncryptedAccessKeySecret;
-            o.logstore = logstore;
-            o.name = name;
-            o.project = project;
-            o.roleArn = roleArn;
-            o.type = type;
-            return o;
+            final var _resultValue = new EtlEtlSink();
+            _resultValue.accessKeyId = accessKeyId;
+            _resultValue.accessKeySecret = accessKeySecret;
+            _resultValue.endpoint = endpoint;
+            _resultValue.kmsEncryptedAccessKeyId = kmsEncryptedAccessKeyId;
+            _resultValue.kmsEncryptedAccessKeySecret = kmsEncryptedAccessKeySecret;
+            _resultValue.logstore = logstore;
+            _resultValue.name = name;
+            _resultValue.project = project;
+            _resultValue.roleArn = roleArn;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

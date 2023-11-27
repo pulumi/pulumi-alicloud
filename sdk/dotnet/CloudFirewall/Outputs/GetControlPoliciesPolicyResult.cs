@@ -21,9 +21,12 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// The unique ID of the access control policy.
         /// </summary>
         public readonly string AclUuid;
+        /// <summary>
+        /// The application ID in the access control policy.
+        /// </summary>
         public readonly string ApplicationId;
         /// <summary>
-        /// The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+        /// The type of the application that the access control policy supports.
         /// </summary>
         public readonly string ApplicationName;
         /// <summary>
@@ -31,56 +34,83 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The destination port defined in the access control policy.
+        /// The destination port in the access control policy.
         /// </summary>
         public readonly string DestPort;
         /// <summary>
-        /// The destination port address book defined in the access control policy.
+        /// The name of the destination port address book in the access control policy.
         /// </summary>
         public readonly string DestPortGroup;
+        /// <summary>
+        /// The ports in the destination port address book.
+        /// </summary>
         public readonly ImmutableArray<string> DestPortGroupPorts;
         /// <summary>
-        /// The destination port type defined in the access control policy. Valid values: `group`, `port`.
+        /// The type of the destination port in the access control policy.
         /// </summary>
         public readonly string DestPortType;
         /// <summary>
         /// The destination address defined in the access control policy.
         /// </summary>
         public readonly string Destination;
+        /// <summary>
+        /// The CIDR blocks in the destination address book.
+        /// </summary>
         public readonly ImmutableArray<string> DestinationGroupCidrs;
+        /// <summary>
+        /// The type of the destination address book in the access control policy.
+        /// </summary>
         public readonly string DestinationGroupType;
         /// <summary>
-        /// The destination address type defined in the access control policy.Valid values: If `direction` is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+        /// The type of the destination address in the access control policy.
         /// </summary>
         public readonly string DestinationType;
         /// <summary>
-        /// The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+        /// The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
         /// </summary>
         public readonly string Direction;
+        /// <summary>
+        /// The DNS resolution result.
+        /// </summary>
         public readonly string DnsResult;
+        /// <summary>
+        /// The timestamp of the DNS resolution result.
+        /// </summary>
         public readonly string DnsResultTime;
+        /// <summary>
+        /// The number of hits for the access control policy.
+        /// </summary>
         public readonly string HitTimes;
         /// <summary>
-        /// The ID of the Control Policy.
+        /// The ID of the Control Policy. It formats as `&lt;acl_uuid&gt;:&lt;direction&gt;`.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// The priority of the access control policy.
+        /// </summary>
         public readonly int Order;
         /// <summary>
-        /// The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+        /// The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
         /// </summary>
         public readonly string Proto;
         /// <summary>
-        /// Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+        /// Indicates whether the access control policy is enabled.
         /// </summary>
         public readonly bool Release;
         /// <summary>
-        /// The source address defined in the access control policy.
+        /// The source address in the access control policy.
         /// </summary>
         public readonly string Source;
+        /// <summary>
+        /// The CIDR blocks in the source address book.
+        /// </summary>
         public readonly ImmutableArray<string> SourceGroupCidrs;
+        /// <summary>
+        /// The type of the source address book in the access control policy.
+        /// </summary>
         public readonly string SourceGroupType;
         /// <summary>
-        /// The type of the source address book defined in the access control policy. Valid values: If `direction` is to `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+        /// The type of the source address in the access control policy.
         /// </summary>
         public readonly string SourceType;
 

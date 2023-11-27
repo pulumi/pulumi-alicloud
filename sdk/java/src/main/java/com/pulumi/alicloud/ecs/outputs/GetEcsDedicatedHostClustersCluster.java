@@ -208,17 +208,17 @@ public final class GetEcsDedicatedHostClustersCluster {
             return this;
         }
         public GetEcsDedicatedHostClustersCluster build() {
-            final var o = new GetEcsDedicatedHostClustersCluster();
-            o.dedicatedHostClusterCapacities = dedicatedHostClusterCapacities;
-            o.dedicatedHostClusterId = dedicatedHostClusterId;
-            o.dedicatedHostClusterName = dedicatedHostClusterName;
-            o.dedicatedHostIds = dedicatedHostIds;
-            o.description = description;
-            o.id = id;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetEcsDedicatedHostClustersCluster();
+            _resultValue.dedicatedHostClusterCapacities = dedicatedHostClusterCapacities;
+            _resultValue.dedicatedHostClusterId = dedicatedHostClusterId;
+            _resultValue.dedicatedHostClusterName = dedicatedHostClusterName;
+            _resultValue.dedicatedHostIds = dedicatedHostIds;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.tags = tags;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

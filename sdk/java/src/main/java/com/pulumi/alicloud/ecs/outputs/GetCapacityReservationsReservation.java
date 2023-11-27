@@ -376,26 +376,26 @@ public final class GetCapacityReservationsReservation {
             return zoneIds(List.of(zoneIds));
         }
         public GetCapacityReservationsReservation build() {
-            final var o = new GetCapacityReservationsReservation();
-            o.capacityReservationId = capacityReservationId;
-            o.capacityReservationName = capacityReservationName;
-            o.description = description;
-            o.endTime = endTime;
-            o.endTimeType = endTimeType;
-            o.id = id;
-            o.instanceAmount = instanceAmount;
-            o.instanceType = instanceType;
-            o.matchCriteria = matchCriteria;
-            o.paymentType = paymentType;
-            o.platform = platform;
-            o.resourceGroupId = resourceGroupId;
-            o.startTime = startTime;
-            o.startTimeType = startTimeType;
-            o.status = status;
-            o.tags = tags;
-            o.timeSlot = timeSlot;
-            o.zoneIds = zoneIds;
-            return o;
+            final var _resultValue = new GetCapacityReservationsReservation();
+            _resultValue.capacityReservationId = capacityReservationId;
+            _resultValue.capacityReservationName = capacityReservationName;
+            _resultValue.description = description;
+            _resultValue.endTime = endTime;
+            _resultValue.endTimeType = endTimeType;
+            _resultValue.id = id;
+            _resultValue.instanceAmount = instanceAmount;
+            _resultValue.instanceType = instanceType;
+            _resultValue.matchCriteria = matchCriteria;
+            _resultValue.paymentType = paymentType;
+            _resultValue.platform = platform;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.startTime = startTime;
+            _resultValue.startTimeType = startTimeType;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.timeSlot = timeSlot;
+            _resultValue.zoneIds = zoneIds;
+            return _resultValue;
         }
     }
 }

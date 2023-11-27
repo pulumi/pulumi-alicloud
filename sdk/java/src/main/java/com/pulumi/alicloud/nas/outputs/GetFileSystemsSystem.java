@@ -272,20 +272,20 @@ public final class GetFileSystemsSystem {
             return this;
         }
         public GetFileSystemsSystem build() {
-            final var o = new GetFileSystemsSystem();
-            o.capacity = capacity;
-            o.createTime = createTime;
-            o.description = description;
-            o.encryptType = encryptType;
-            o.fileSystemType = fileSystemType;
-            o.id = id;
-            o.kmsKeyId = kmsKeyId;
-            o.meteredSize = meteredSize;
-            o.protocolType = protocolType;
-            o.regionId = regionId;
-            o.storageType = storageType;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetFileSystemsSystem();
+            _resultValue.capacity = capacity;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.encryptType = encryptType;
+            _resultValue.fileSystemType = fileSystemType;
+            _resultValue.id = id;
+            _resultValue.kmsKeyId = kmsKeyId;
+            _resultValue.meteredSize = meteredSize;
+            _resultValue.protocolType = protocolType;
+            _resultValue.regionId = regionId;
+            _resultValue.storageType = storageType;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

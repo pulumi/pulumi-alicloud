@@ -747,7 +747,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * The config of Function Compute trigger.It is valid when `type` is not &#34;mns_topic&#34;.See [Configure triggers and events](https://www.alibabacloud.com/help/doc-detail/70140.htm) for more details.
      * 
      */
-    @Export(name="config", type=String.class, parameters={})
+    @Export(name="config", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> config;
 
     /**
@@ -761,7 +761,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * The config of Function Compute trigger when the type is &#34;mns_topic&#34;.It is conflict with `config`.
      * 
      */
-    @Export(name="configMns", type=String.class, parameters={})
+    @Export(name="configMns", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> configMns;
 
     /**
@@ -775,7 +775,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * The Function Compute function name.
      * 
      */
-    @Export(name="function", type=String.class, parameters={})
+    @Export(name="function", refs={String.class}, tree="[0]")
     private Output<String> function;
 
     /**
@@ -789,7 +789,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * The date this resource was last modified.
      * 
      */
-    @Export(name="lastModified", type=String.class, parameters={})
+    @Export(name="lastModified", refs={String.class}, tree="[0]")
     private Output<String> lastModified;
 
     /**
@@ -803,7 +803,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * The Function Compute trigger name. It is the only in one service and is conflict with &#34;name_prefix&#34;.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -817,7 +817,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Setting a prefix to get a only trigger name. It is conflict with &#34;name&#34;.
      * 
      */
-    @Export(name="namePrefix", type=String.class, parameters={})
+    @Export(name="namePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namePrefix;
 
     /**
@@ -831,7 +831,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * RAM role arn attached to the Function Compute trigger. Role used by the event source to call the function. The value format is &#34;acs:ram::$account-id:role/$role-name&#34;. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> role;
 
     /**
@@ -845,7 +845,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * The Function Compute service name.
      * 
      */
-    @Export(name="service", type=String.class, parameters={})
+    @Export(name="service", refs={String.class}, tree="[0]")
     private Output<String> service;
 
     /**
@@ -859,7 +859,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * Event source resource address. See [Create a trigger](https://www.alibabacloud.com/help/doc-detail/53102.htm) for more details.
      * 
      */
-    @Export(name="sourceArn", type=String.class, parameters={})
+    @Export(name="sourceArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceArn;
 
     /**
@@ -873,7 +873,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * The Function Compute trigger ID.
      * 
      */
-    @Export(name="triggerId", type=String.class, parameters={})
+    @Export(name="triggerId", refs={String.class}, tree="[0]")
     private Output<String> triggerId;
 
     /**
@@ -891,7 +891,7 @@ public class Trigger extends com.pulumi.resources.CustomResource {
      * **NOTE:** type = eventbridge, available in 1.173.0+.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

@@ -42,6 +42,10 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
         /// </summary>
         public readonly string IstioOperatorVersion;
         /// <summary>
+        /// The content of Kube config.
+        /// </summary>
+        public readonly string KubeConfig;
+        /// <summary>
         /// The configuration of the Load Balancer.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetServiceMeshesMeshLoadBalancerResult> LoadBalancers;
@@ -90,6 +94,8 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
 
             string istioOperatorVersion,
 
+            string kubeConfig,
+
             ImmutableArray<Outputs.GetServiceMeshesMeshLoadBalancerResult> loadBalancers,
 
             ImmutableArray<Outputs.GetServiceMeshesMeshMeshConfigResult> meshConfigs,
@@ -113,6 +119,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
             ErrorMessage = errorMessage;
             Id = id;
             IstioOperatorVersion = istioOperatorVersion;
+            KubeConfig = kubeConfig;
             LoadBalancers = loadBalancers;
             MeshConfigs = meshConfigs;
             Networks = networks;

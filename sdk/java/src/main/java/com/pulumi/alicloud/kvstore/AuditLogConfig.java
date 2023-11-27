@@ -119,7 +119,7 @@ public class AuditLogConfig extends com.pulumi.resources.CustomResource {
      * Instance Creation Time.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -137,7 +137,7 @@ public class AuditLogConfig extends com.pulumi.resources.CustomResource {
      * Note: When the Instance for the Cluster Architecture Or Read/Write Split Architecture, at the Same Time to Open Or Close the Data Node and the Proxy Node of the Audit Log Doesn&#39;t Support Separate Open.
      * 
      */
-    @Export(name="dbAudit", type=Boolean.class, parameters={})
+    @Export(name="dbAudit", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dbAudit;
 
     /**
@@ -155,7 +155,7 @@ public class AuditLogConfig extends com.pulumi.resources.CustomResource {
      * Instance ID, Call the Describeinstances Get.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -171,7 +171,7 @@ public class AuditLogConfig extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE**: When the Instance dbaudit Value Is Set to True, This Parameter Entry into Force. The Parameter Setting of the Current Region of All an Apsaradb for Redis Instance for a Data Entry into Force.
      * 
      */
-    @Export(name="retention", type=Integer.class, parameters={})
+    @Export(name="retention", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retention;
 
     /**
@@ -187,7 +187,7 @@ public class AuditLogConfig extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

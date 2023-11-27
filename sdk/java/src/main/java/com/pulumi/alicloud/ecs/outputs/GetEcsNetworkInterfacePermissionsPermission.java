@@ -160,15 +160,15 @@ public final class GetEcsNetworkInterfacePermissionsPermission {
             return this;
         }
         public GetEcsNetworkInterfacePermissionsPermission build() {
-            final var o = new GetEcsNetworkInterfacePermissionsPermission();
-            o.accountId = accountId;
-            o.id = id;
-            o.networkInterfaceId = networkInterfaceId;
-            o.networkInterfacePermissionId = networkInterfacePermissionId;
-            o.permission = permission;
-            o.serviceName = serviceName;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetEcsNetworkInterfacePermissionsPermission();
+            _resultValue.accountId = accountId;
+            _resultValue.id = id;
+            _resultValue.networkInterfaceId = networkInterfaceId;
+            _resultValue.networkInterfacePermissionId = networkInterfacePermissionId;
+            _resultValue.permission = permission;
+            _resultValue.serviceName = serviceName;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -8,6 +8,9 @@ import typing
 from .anti_brute_force_rule import *
 from .backup_policy import *
 from .baseline_strategy import *
+from .client_file_protect import *
+from .client_user_define_rule import *
+from .file_upload_limit import *
 from .get_anti_brute_force_rules import *
 from .get_assets import *
 from .get_backup_policies import *
@@ -25,7 +28,9 @@ from .honey_pot import *
 from .honeypot_node import *
 from .honeypot_preset import *
 from .honeypot_probe import *
+from .image_event_operation import *
 from .instance import *
+from .sas_trail import *
 from .vul_whitelist import *
 from .web_lock_config import *
 from ._inputs import *

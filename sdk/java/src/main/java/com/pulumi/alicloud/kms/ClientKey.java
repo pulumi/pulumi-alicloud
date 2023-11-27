@@ -85,7 +85,7 @@ public class ClientKey extends com.pulumi.resources.CustomResource {
      * ClientKey&#39;s parent Application Access Point name.
      * 
      */
-    @Export(name="aapName", type=String.class, parameters={})
+    @Export(name="aapName", refs={String.class}, tree="[0]")
     private Output<String> aapName;
 
     /**
@@ -99,7 +99,7 @@ public class ClientKey extends com.pulumi.resources.CustomResource {
      * Create timestamp, e.g. &#34;2022-08-10T08:03:30Z&#34;.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -113,7 +113,7 @@ public class ClientKey extends com.pulumi.resources.CustomResource {
      * The ClientKey expiration time. Example: &#34;2027-08-10 T08:03:30Z&#34;.
      * 
      */
-    @Export(name="notAfter", type=String.class, parameters={})
+    @Export(name="notAfter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notAfter;
 
     /**
@@ -127,7 +127,7 @@ public class ClientKey extends com.pulumi.resources.CustomResource {
      * The valid start time of the ClientKey. Example: &#34;2022-08-10 T08:03:30Z&#34;.
      * 
      */
-    @Export(name="notBefore", type=String.class, parameters={})
+    @Export(name="notBefore", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notBefore;
 
     /**
@@ -141,7 +141,7 @@ public class ClientKey extends com.pulumi.resources.CustomResource {
      * To enhance security, set a password for the downloaded Client Key,When an application accesses KMS, you must use the ClientKey content and this password to initialize the SDK client.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -155,7 +155,7 @@ public class ClientKey extends com.pulumi.resources.CustomResource {
      * The name of file that can save access key id and access key secret. Strongly suggest you to specified it when you creating access key, otherwise, you wouldn&#39;t get its secret ever.
      * 
      */
-    @Export(name="privateKeyDataFile", type=String.class, parameters={})
+    @Export(name="privateKeyDataFile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateKeyDataFile;
 
     /**

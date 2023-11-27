@@ -155,15 +155,15 @@ public final class GetEventSourcesSource {
             return this;
         }
         public GetEventSourcesSource build() {
-            final var o = new GetEventSourcesSource();
-            o.description = description;
-            o.eventSourceName = eventSourceName;
-            o.externalSourceConfig = externalSourceConfig;
-            o.externalSourceType = externalSourceType;
-            o.id = id;
-            o.linkedExternalSource = linkedExternalSource;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetEventSourcesSource();
+            _resultValue.description = description;
+            _resultValue.eventSourceName = eventSourceName;
+            _resultValue.externalSourceConfig = externalSourceConfig;
+            _resultValue.externalSourceType = externalSourceType;
+            _resultValue.id = id;
+            _resultValue.linkedExternalSource = linkedExternalSource;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

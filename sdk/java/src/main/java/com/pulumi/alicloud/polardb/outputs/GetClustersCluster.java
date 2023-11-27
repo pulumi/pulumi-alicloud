@@ -451,30 +451,30 @@ public final class GetClustersCluster {
             return this;
         }
         public GetClustersCluster build() {
-            final var o = new GetClustersCluster();
-            o.chargeType = chargeType;
-            o.connectionString = connectionString;
-            o.createTime = createTime;
-            o.dbNodeClass = dbNodeClass;
-            o.dbNodeNumber = dbNodeNumber;
-            o.dbNodes = dbNodes;
-            o.dbType = dbType;
-            o.dbVersion = dbVersion;
-            o.deleteLock = deleteLock;
-            o.description = description;
-            o.engine = engine;
-            o.expireTime = expireTime;
-            o.expired = expired;
-            o.id = id;
-            o.lockMode = lockMode;
-            o.networkType = networkType;
-            o.port = port;
-            o.regionId = regionId;
-            o.status = status;
-            o.storageUsed = storageUsed;
-            o.vpcId = vpcId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetClustersCluster();
+            _resultValue.chargeType = chargeType;
+            _resultValue.connectionString = connectionString;
+            _resultValue.createTime = createTime;
+            _resultValue.dbNodeClass = dbNodeClass;
+            _resultValue.dbNodeNumber = dbNodeNumber;
+            _resultValue.dbNodes = dbNodes;
+            _resultValue.dbType = dbType;
+            _resultValue.dbVersion = dbVersion;
+            _resultValue.deleteLock = deleteLock;
+            _resultValue.description = description;
+            _resultValue.engine = engine;
+            _resultValue.expireTime = expireTime;
+            _resultValue.expired = expired;
+            _resultValue.id = id;
+            _resultValue.lockMode = lockMode;
+            _resultValue.networkType = networkType;
+            _resultValue.port = port;
+            _resultValue.regionId = regionId;
+            _resultValue.status = status;
+            _resultValue.storageUsed = storageUsed;
+            _resultValue.vpcId = vpcId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

@@ -124,13 +124,13 @@ public final class ApiRequestConfig {
             return this;
         }
         public ApiRequestConfig build() {
-            final var o = new ApiRequestConfig();
-            o.bodyFormat = bodyFormat;
-            o.method = method;
-            o.mode = mode;
-            o.path = path;
-            o.protocol = protocol;
-            return o;
+            final var _resultValue = new ApiRequestConfig();
+            _resultValue.bodyFormat = bodyFormat;
+            _resultValue.method = method;
+            _resultValue.mode = mode;
+            _resultValue.path = path;
+            _resultValue.protocol = protocol;
+            return _resultValue;
         }
     }
 }

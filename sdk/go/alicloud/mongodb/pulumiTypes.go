@@ -124,13 +124,13 @@ type InstanceReplicaSet struct {
 	ConnectionDomain *string `pulumi:"connectionDomain"`
 	// The connection port of the node.
 	ConnectionPort *string `pulumi:"connectionPort"`
-	// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+	// The network type of the instance. Valid values:`Classic`, `VPC`.
 	NetworkType *string `pulumi:"networkType"`
-	// The role of the node. Valid values: `Primary`,`Secondary`.
+	// The role of the node.
 	ReplicaSetRole *string `pulumi:"replicaSetRole"`
 	// VPC instance ID.
 	VpcCloudInstanceId *string `pulumi:"vpcCloudInstanceId"`
-	// The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
 	VpcId *string `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -152,13 +152,13 @@ type InstanceReplicaSetArgs struct {
 	ConnectionDomain pulumi.StringPtrInput `pulumi:"connectionDomain"`
 	// The connection port of the node.
 	ConnectionPort pulumi.StringPtrInput `pulumi:"connectionPort"`
-	// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+	// The network type of the instance. Valid values:`Classic`, `VPC`.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
-	// The role of the node. Valid values: `Primary`,`Secondary`.
+	// The role of the node.
 	ReplicaSetRole pulumi.StringPtrInput `pulumi:"replicaSetRole"`
 	// VPC instance ID.
 	VpcCloudInstanceId pulumi.StringPtrInput `pulumi:"vpcCloudInstanceId"`
-	// The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+	// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 	// The virtual switch ID to launch DB instances in one VPC.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`
@@ -225,12 +225,12 @@ func (o InstanceReplicaSetOutput) ConnectionPort() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.ConnectionPort }).(pulumi.StringPtrOutput)
 }
 
-// The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+// The network type of the instance. Valid values:`Classic`, `VPC`.
 func (o InstanceReplicaSetOutput) NetworkType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.NetworkType }).(pulumi.StringPtrOutput)
 }
 
-// The role of the node. Valid values: `Primary`,`Secondary`.
+// The role of the node.
 func (o InstanceReplicaSetOutput) ReplicaSetRole() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.ReplicaSetRole }).(pulumi.StringPtrOutput)
 }
@@ -240,7 +240,7 @@ func (o InstanceReplicaSetOutput) VpcCloudInstanceId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.VpcCloudInstanceId }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the VPC. > **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+// The ID of the VPC. > **NOTE:** `vpcId` is valid only when `networkType` is set to `VPC`.
 func (o InstanceReplicaSetOutput) VpcId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v InstanceReplicaSet) *string { return v.VpcId }).(pulumi.StringPtrOutput)
 }

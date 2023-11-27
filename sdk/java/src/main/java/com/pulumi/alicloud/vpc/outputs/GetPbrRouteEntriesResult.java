@@ -116,13 +116,13 @@ public final class GetPbrRouteEntriesResult {
             return this;
         }
         public GetPbrRouteEntriesResult build() {
-            final var o = new GetPbrRouteEntriesResult();
-            o.entries = entries;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.vpnGatewayId = vpnGatewayId;
-            return o;
+            final var _resultValue = new GetPbrRouteEntriesResult();
+            _resultValue.entries = entries;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.vpnGatewayId = vpnGatewayId;
+            return _resultValue;
         }
     }
 }

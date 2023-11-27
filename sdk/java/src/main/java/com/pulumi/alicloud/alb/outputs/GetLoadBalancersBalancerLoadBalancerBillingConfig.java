@@ -46,9 +46,9 @@ public final class GetLoadBalancersBalancerLoadBalancerBillingConfig {
             return this;
         }
         public GetLoadBalancersBalancerLoadBalancerBillingConfig build() {
-            final var o = new GetLoadBalancersBalancerLoadBalancerBillingConfig();
-            o.payType = payType;
-            return o;
+            final var _resultValue = new GetLoadBalancersBalancerLoadBalancerBillingConfig();
+            _resultValue.payType = payType;
+            return _resultValue;
         }
     }
 }

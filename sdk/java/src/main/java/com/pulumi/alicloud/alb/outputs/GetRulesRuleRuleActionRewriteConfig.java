@@ -84,11 +84,11 @@ public final class GetRulesRuleRuleActionRewriteConfig {
             return this;
         }
         public GetRulesRuleRuleActionRewriteConfig build() {
-            final var o = new GetRulesRuleRuleActionRewriteConfig();
-            o.host = host;
-            o.path = path;
-            o.query = query;
-            return o;
+            final var _resultValue = new GetRulesRuleRuleActionRewriteConfig();
+            _resultValue.host = host;
+            _resultValue.path = path;
+            _resultValue.query = query;
+            return _resultValue;
         }
     }
 }

@@ -66,10 +66,10 @@ public final class GetContainerGroupsGroupContainerPort {
             return this;
         }
         public GetContainerGroupsGroupContainerPort build() {
-            final var o = new GetContainerGroupsGroupContainerPort();
-            o.port = port;
-            o.protocol = protocol;
-            return o;
+            final var _resultValue = new GetContainerGroupsGroupContainerPort();
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            return _resultValue;
         }
     }
 }

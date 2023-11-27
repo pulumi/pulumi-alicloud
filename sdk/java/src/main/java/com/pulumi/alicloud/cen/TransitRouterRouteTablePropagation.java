@@ -143,7 +143,7 @@ public class TransitRouterRouteTablePropagation extends com.pulumi.resources.Cus
      * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -159,7 +159,7 @@ public class TransitRouterRouteTablePropagation extends com.pulumi.resources.Cus
      * The associating status of the network.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -173,7 +173,7 @@ public class TransitRouterRouteTablePropagation extends com.pulumi.resources.Cus
      * The ID the transit router attachment.
      * 
      */
-    @Export(name="transitRouterAttachmentId", type=String.class, parameters={})
+    @Export(name="transitRouterAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentId;
 
     /**
@@ -187,7 +187,7 @@ public class TransitRouterRouteTablePropagation extends com.pulumi.resources.Cus
      * The ID of the transit router route table.
      * 
      */
-    @Export(name="transitRouterRouteTableId", type=String.class, parameters={})
+    @Export(name="transitRouterRouteTableId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterRouteTableId;
 
     /**

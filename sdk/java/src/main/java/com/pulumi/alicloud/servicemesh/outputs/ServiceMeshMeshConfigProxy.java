@@ -124,13 +124,13 @@ public final class ServiceMeshMeshConfigProxy {
             return this;
         }
         public ServiceMeshMeshConfigProxy build() {
-            final var o = new ServiceMeshMeshConfigProxy();
-            o.clusterDomain = clusterDomain;
-            o.limitCpu = limitCpu;
-            o.limitMemory = limitMemory;
-            o.requestCpu = requestCpu;
-            o.requestMemory = requestMemory;
-            return o;
+            final var _resultValue = new ServiceMeshMeshConfigProxy();
+            _resultValue.clusterDomain = clusterDomain;
+            _resultValue.limitCpu = limitCpu;
+            _resultValue.limitMemory = limitMemory;
+            _resultValue.requestCpu = requestCpu;
+            _resultValue.requestMemory = requestMemory;
+            return _resultValue;
         }
     }
 }

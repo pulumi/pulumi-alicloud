@@ -549,35 +549,35 @@ public final class GetHybridMonitorSlsTasksTask {
             return this;
         }
         public GetHybridMonitorSlsTasksTask build() {
-            final var o = new GetHybridMonitorSlsTasksTask();
-            o.attachLabels = attachLabels;
-            o.collectInterval = collectInterval;
-            o.collectTargetEndpoint = collectTargetEndpoint;
-            o.collectTargetPath = collectTargetPath;
-            o.collectTargetType = collectTargetType;
-            o.collectTimout = collectTimout;
-            o.createTime = createTime;
-            o.description = description;
-            o.extraInfo = extraInfo;
-            o.groupId = groupId;
-            o.hybridMonitorSlsTaskId = hybridMonitorSlsTaskId;
-            o.id = id;
-            o.instances = instances;
-            o.logFilePath = logFilePath;
-            o.logProcess = logProcess;
-            o.logSample = logSample;
-            o.logSplit = logSplit;
-            o.matchExpressRelation = matchExpressRelation;
-            o.matchExpresses = matchExpresses;
-            o.namespace = namespace;
-            o.networkType = networkType;
-            o.slsProcess = slsProcess;
-            o.slsProcessConfigs = slsProcessConfigs;
-            o.taskName = taskName;
-            o.taskType = taskType;
-            o.uploadRegion = uploadRegion;
-            o.yarmConfig = yarmConfig;
-            return o;
+            final var _resultValue = new GetHybridMonitorSlsTasksTask();
+            _resultValue.attachLabels = attachLabels;
+            _resultValue.collectInterval = collectInterval;
+            _resultValue.collectTargetEndpoint = collectTargetEndpoint;
+            _resultValue.collectTargetPath = collectTargetPath;
+            _resultValue.collectTargetType = collectTargetType;
+            _resultValue.collectTimout = collectTimout;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.extraInfo = extraInfo;
+            _resultValue.groupId = groupId;
+            _resultValue.hybridMonitorSlsTaskId = hybridMonitorSlsTaskId;
+            _resultValue.id = id;
+            _resultValue.instances = instances;
+            _resultValue.logFilePath = logFilePath;
+            _resultValue.logProcess = logProcess;
+            _resultValue.logSample = logSample;
+            _resultValue.logSplit = logSplit;
+            _resultValue.matchExpressRelation = matchExpressRelation;
+            _resultValue.matchExpresses = matchExpresses;
+            _resultValue.namespace = namespace;
+            _resultValue.networkType = networkType;
+            _resultValue.slsProcess = slsProcess;
+            _resultValue.slsProcessConfigs = slsProcessConfigs;
+            _resultValue.taskName = taskName;
+            _resultValue.taskType = taskType;
+            _resultValue.uploadRegion = uploadRegion;
+            _resultValue.yarmConfig = yarmConfig;
+            return _resultValue;
         }
     }
 }

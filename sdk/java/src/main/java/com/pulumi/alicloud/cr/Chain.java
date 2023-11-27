@@ -212,7 +212,7 @@ public class Chain extends com.pulumi.resources.CustomResource {
      * The configuration of delivery chain. See `chain_config` below. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
      * 
      */
-    @Export(name="chainConfigs", type=List.class, parameters={ChainChainConfig.class})
+    @Export(name="chainConfigs", refs={List.class,ChainChainConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ChainChainConfig>> chainConfigs;
 
     /**
@@ -226,7 +226,7 @@ public class Chain extends com.pulumi.resources.CustomResource {
      * Delivery chain ID.
      * 
      */
-    @Export(name="chainId", type=String.class, parameters={})
+    @Export(name="chainId", refs={String.class}, tree="[0]")
     private Output<String> chainId;
 
     /**
@@ -240,7 +240,7 @@ public class Chain extends com.pulumi.resources.CustomResource {
      * The name of delivery chain. The length of the name is 1-64 characters, lowercase English letters and numbers, and the separators &#34;_&#34;, &#34;-&#34;, &#34;.&#34; can be used, noted that the separator cannot be at the first or last position.
      * 
      */
-    @Export(name="chainName", type=String.class, parameters={})
+    @Export(name="chainName", refs={String.class}, tree="[0]")
     private Output<String> chainName;
 
     /**
@@ -254,7 +254,7 @@ public class Chain extends com.pulumi.resources.CustomResource {
      * The description delivery chain.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -268,7 +268,7 @@ public class Chain extends com.pulumi.resources.CustomResource {
      * The ID of CR Enterprise Edition instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -282,7 +282,7 @@ public class Chain extends com.pulumi.resources.CustomResource {
      * The name of CR Enterprise Edition repository. **NOTE:** This parameter must specify a correct value, otherwise the created resource will be incorrect.
      * 
      */
-    @Export(name="repoName", type=String.class, parameters={})
+    @Export(name="repoName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repoName;
 
     /**
@@ -296,7 +296,7 @@ public class Chain extends com.pulumi.resources.CustomResource {
      * The name of CR Enterprise Edition namespace. **NOTE:** This parameter must specify the correct value, otherwise the created resource will be incorrect.
      * 
      */
-    @Export(name="repoNamespaceName", type=String.class, parameters={})
+    @Export(name="repoNamespaceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repoNamespaceName;
 
     /**

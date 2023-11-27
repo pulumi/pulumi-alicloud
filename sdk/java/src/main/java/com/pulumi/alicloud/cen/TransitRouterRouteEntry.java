@@ -135,7 +135,7 @@ public class TransitRouterRouteEntry extends com.pulumi.resources.CustomResource
      * If transit_router_route_entry_next_hop_type is `BlackHole`, transit_router_route_entry_next_hop_id cannot be filled.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -152,7 +152,7 @@ public class TransitRouterRouteEntry extends com.pulumi.resources.CustomResource
      * The associating status of the Transit Router.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -166,7 +166,7 @@ public class TransitRouterRouteEntry extends com.pulumi.resources.CustomResource
      * The description of the transit router route entry.
      * 
      */
-    @Export(name="transitRouterRouteEntryDescription", type=String.class, parameters={})
+    @Export(name="transitRouterRouteEntryDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterRouteEntryDescription;
 
     /**
@@ -180,7 +180,7 @@ public class TransitRouterRouteEntry extends com.pulumi.resources.CustomResource
      * The CIDR of the transit router route entry.
      * 
      */
-    @Export(name="transitRouterRouteEntryDestinationCidrBlock", type=String.class, parameters={})
+    @Export(name="transitRouterRouteEntryDestinationCidrBlock", refs={String.class}, tree="[0]")
     private Output<String> transitRouterRouteEntryDestinationCidrBlock;
 
     /**
@@ -194,7 +194,7 @@ public class TransitRouterRouteEntry extends com.pulumi.resources.CustomResource
      * The ID of the route entry.
      * 
      */
-    @Export(name="transitRouterRouteEntryId", type=String.class, parameters={})
+    @Export(name="transitRouterRouteEntryId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterRouteEntryId;
 
     /**
@@ -208,7 +208,7 @@ public class TransitRouterRouteEntry extends com.pulumi.resources.CustomResource
      * The name of the transit router route entry.
      * 
      */
-    @Export(name="transitRouterRouteEntryName", type=String.class, parameters={})
+    @Export(name="transitRouterRouteEntryName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterRouteEntryName;
 
     /**
@@ -222,7 +222,7 @@ public class TransitRouterRouteEntry extends com.pulumi.resources.CustomResource
      * The ID of the transit router route entry next hop.
      * 
      */
-    @Export(name="transitRouterRouteEntryNextHopId", type=String.class, parameters={})
+    @Export(name="transitRouterRouteEntryNextHopId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterRouteEntryNextHopId;
 
     /**
@@ -236,7 +236,7 @@ public class TransitRouterRouteEntry extends com.pulumi.resources.CustomResource
      * The Type of the transit router route entry next hop,Valid values `Attachment` and `BlackHole`.
      * 
      */
-    @Export(name="transitRouterRouteEntryNextHopType", type=String.class, parameters={})
+    @Export(name="transitRouterRouteEntryNextHopType", refs={String.class}, tree="[0]")
     private Output<String> transitRouterRouteEntryNextHopType;
 
     /**
@@ -250,7 +250,7 @@ public class TransitRouterRouteEntry extends com.pulumi.resources.CustomResource
      * The ID of the transit router route table.
      * 
      */
-    @Export(name="transitRouterRouteTableId", type=String.class, parameters={})
+    @Export(name="transitRouterRouteTableId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterRouteTableId;
 
     /**

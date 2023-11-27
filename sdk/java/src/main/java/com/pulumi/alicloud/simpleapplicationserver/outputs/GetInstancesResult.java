@@ -136,16 +136,16 @@ public final class GetInstancesResult {
             return this;
         }
         public GetInstancesResult build() {
-            final var o = new GetInstancesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instances = instances;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.paymentType = paymentType;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetInstancesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instances = instances;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.paymentType = paymentType;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

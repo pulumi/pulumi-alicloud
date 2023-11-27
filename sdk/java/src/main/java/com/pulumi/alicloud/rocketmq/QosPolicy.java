@@ -40,7 +40,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * The description of the QoS policy.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -54,7 +54,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * The destination CIDR block.
      * 
      */
-    @Export(name="destCidr", type=String.class, parameters={})
+    @Export(name="destCidr", refs={String.class}, tree="[0]")
     private Output<String> destCidr;
 
     /**
@@ -68,7 +68,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * The destination port range.
      * 
      */
-    @Export(name="destPortRange", type=String.class, parameters={})
+    @Export(name="destPortRange", refs={String.class}, tree="[0]")
     private Output<String> destPortRange;
 
     /**
@@ -82,7 +82,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * The expiration time of the quintuple rule.
      * 
      */
-    @Export(name="endTime", type=String.class, parameters={})
+    @Export(name="endTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endTime;
 
     /**
@@ -96,7 +96,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * The transport layer protocol.
      * 
      */
-    @Export(name="ipProtocol", type=String.class, parameters={})
+    @Export(name="ipProtocol", refs={String.class}, tree="[0]")
     private Output<String> ipProtocol;
 
     /**
@@ -110,7 +110,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * The name of the QoS policy.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -124,7 +124,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * The priority of the quintuple rule. A smaller value indicates a higher priority. If the priorities of two quintuple rules are the same, the rule created earlier is applied first.Value range: 1 to 7.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
@@ -138,7 +138,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * The instance ID of the QoS policy to which the quintuple rule is created.
      * 
      */
-    @Export(name="qosId", type=String.class, parameters={})
+    @Export(name="qosId", refs={String.class}, tree="[0]")
     private Output<String> qosId;
 
     /**
@@ -152,7 +152,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * The source CIDR block.
      * 
      */
-    @Export(name="sourceCidr", type=String.class, parameters={})
+    @Export(name="sourceCidr", refs={String.class}, tree="[0]")
     private Output<String> sourceCidr;
 
     /**
@@ -166,7 +166,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * The source port range of the transport layer.
      * 
      */
-    @Export(name="sourcePortRange", type=String.class, parameters={})
+    @Export(name="sourcePortRange", refs={String.class}, tree="[0]")
     private Output<String> sourcePortRange;
 
     /**
@@ -180,7 +180,7 @@ public class QosPolicy extends com.pulumi.resources.CustomResource {
      * The time when the quintuple rule takes effect.
      * 
      */
-    @Export(name="startTime", type=String.class, parameters={})
+    @Export(name="startTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> startTime;
 
     /**

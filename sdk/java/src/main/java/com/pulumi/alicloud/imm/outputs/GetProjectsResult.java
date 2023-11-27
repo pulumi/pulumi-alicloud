@@ -89,12 +89,12 @@ public final class GetProjectsResult {
             return projects(List.of(projects));
         }
         public GetProjectsResult build() {
-            final var o = new GetProjectsResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.projects = projects;
-            return o;
+            final var _resultValue = new GetProjectsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.projects = projects;
+            return _resultValue;
         }
     }
 }

@@ -164,15 +164,15 @@ public final class GetLifecyclePoliciesPolicy {
             return this;
         }
         public GetLifecyclePoliciesPolicy build() {
-            final var o = new GetLifecyclePoliciesPolicy();
-            o.createTime = createTime;
-            o.fileSystemId = fileSystemId;
-            o.id = id;
-            o.lifecyclePolicyName = lifecyclePolicyName;
-            o.lifecycleRuleName = lifecycleRuleName;
-            o.paths = paths;
-            o.storageType = storageType;
-            return o;
+            final var _resultValue = new GetLifecyclePoliciesPolicy();
+            _resultValue.createTime = createTime;
+            _resultValue.fileSystemId = fileSystemId;
+            _resultValue.id = id;
+            _resultValue.lifecyclePolicyName = lifecyclePolicyName;
+            _resultValue.lifecycleRuleName = lifecycleRuleName;
+            _resultValue.paths = paths;
+            _resultValue.storageType = storageType;
+            return _resultValue;
         }
     }
 }

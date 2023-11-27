@@ -125,13 +125,13 @@ public final class GetConsumerGroupsGroup {
             return this;
         }
         public GetConsumerGroupsGroup build() {
-            final var o = new GetConsumerGroupsGroup();
-            o.consumerId = consumerId;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.remark = remark;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetConsumerGroupsGroup();
+            _resultValue.consumerId = consumerId;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.remark = remark;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

@@ -255,20 +255,20 @@ public final class GetBasicAccelerateIpEndpointRelationsRelation {
             return this;
         }
         public GetBasicAccelerateIpEndpointRelationsRelation build() {
-            final var o = new GetBasicAccelerateIpEndpointRelationsRelation();
-            o.accelerateIpId = accelerateIpId;
-            o.acceleratorId = acceleratorId;
-            o.basicEndpointName = basicEndpointName;
-            o.endpointAddress = endpointAddress;
-            o.endpointId = endpointId;
-            o.endpointSubAddress = endpointSubAddress;
-            o.endpointSubAddressType = endpointSubAddressType;
-            o.endpointType = endpointType;
-            o.endpointZoneId = endpointZoneId;
-            o.id = id;
-            o.ipAddress = ipAddress;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBasicAccelerateIpEndpointRelationsRelation();
+            _resultValue.accelerateIpId = accelerateIpId;
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.basicEndpointName = basicEndpointName;
+            _resultValue.endpointAddress = endpointAddress;
+            _resultValue.endpointId = endpointId;
+            _resultValue.endpointSubAddress = endpointSubAddress;
+            _resultValue.endpointSubAddressType = endpointSubAddressType;
+            _resultValue.endpointType = endpointType;
+            _resultValue.endpointZoneId = endpointZoneId;
+            _resultValue.id = id;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

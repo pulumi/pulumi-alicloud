@@ -66,10 +66,10 @@ public final class GetServiceMeshesMeshMeshConfigControlPlaneLog {
             return this;
         }
         public GetServiceMeshesMeshMeshConfigControlPlaneLog build() {
-            final var o = new GetServiceMeshesMeshMeshConfigControlPlaneLog();
-            o.enabled = enabled;
-            o.project = project;
-            return o;
+            final var _resultValue = new GetServiceMeshesMeshMeshConfigControlPlaneLog();
+            _resultValue.enabled = enabled;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

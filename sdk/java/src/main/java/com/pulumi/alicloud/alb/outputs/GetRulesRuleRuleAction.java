@@ -228,17 +228,17 @@ public final class GetRulesRuleRuleAction {
             return this;
         }
         public GetRulesRuleRuleAction build() {
-            final var o = new GetRulesRuleRuleAction();
-            o.fixedResponseConfigs = fixedResponseConfigs;
-            o.forwardGroupConfigs = forwardGroupConfigs;
-            o.insertHeaderConfigs = insertHeaderConfigs;
-            o.order = order;
-            o.redirectConfigs = redirectConfigs;
-            o.rewriteConfigs = rewriteConfigs;
-            o.trafficLimitConfigs = trafficLimitConfigs;
-            o.trafficMirrorConfigs = trafficMirrorConfigs;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetRulesRuleRuleAction();
+            _resultValue.fixedResponseConfigs = fixedResponseConfigs;
+            _resultValue.forwardGroupConfigs = forwardGroupConfigs;
+            _resultValue.insertHeaderConfigs = insertHeaderConfigs;
+            _resultValue.order = order;
+            _resultValue.redirectConfigs = redirectConfigs;
+            _resultValue.rewriteConfigs = rewriteConfigs;
+            _resultValue.trafficLimitConfigs = trafficLimitConfigs;
+            _resultValue.trafficMirrorConfigs = trafficMirrorConfigs;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

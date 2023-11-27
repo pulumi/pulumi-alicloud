@@ -41,7 +41,7 @@ public class SearchIndex extends com.pulumi.resources.CustomResource {
      * The search index create time.
      * 
      */
-    @Export(name="createTime", type=Integer.class, parameters={})
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> createTime;
 
     /**
@@ -55,7 +55,7 @@ public class SearchIndex extends com.pulumi.resources.CustomResource {
      * The timestamp for sync phase.
      * 
      */
-    @Export(name="currentSyncTimestamp", type=Integer.class, parameters={})
+    @Export(name="currentSyncTimestamp", refs={Integer.class}, tree="[0]")
     private Output<Integer> currentSyncTimestamp;
 
     /**
@@ -69,7 +69,7 @@ public class SearchIndex extends com.pulumi.resources.CustomResource {
      * The index id of the search index which could not be changed.
      * 
      */
-    @Export(name="indexId", type=String.class, parameters={})
+    @Export(name="indexId", refs={String.class}, tree="[0]")
     private Output<String> indexId;
 
     /**
@@ -83,7 +83,7 @@ public class SearchIndex extends com.pulumi.resources.CustomResource {
      * The index name of the OTS Table. If changed, a new index would be created.
      * 
      */
-    @Export(name="indexName", type=String.class, parameters={})
+    @Export(name="indexName", refs={String.class}, tree="[0]")
     private Output<String> indexName;
 
     /**
@@ -97,7 +97,7 @@ public class SearchIndex extends com.pulumi.resources.CustomResource {
      * The name of the OTS instance in which table will located.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -111,7 +111,7 @@ public class SearchIndex extends com.pulumi.resources.CustomResource {
      * The schema of the search index. If changed, a new index would be created. See `schema` below.
      * 
      */
-    @Export(name="schemas", type=List.class, parameters={SearchIndexSchema.class})
+    @Export(name="schemas", refs={List.class,SearchIndexSchema.class}, tree="[0,1]")
     private Output<List<SearchIndexSchema>> schemas;
 
     /**
@@ -125,7 +125,7 @@ public class SearchIndex extends com.pulumi.resources.CustomResource {
      * The search index sync phase. possible values: `Full`, `Incr`.
      * 
      */
-    @Export(name="syncPhase", type=String.class, parameters={})
+    @Export(name="syncPhase", refs={String.class}, tree="[0]")
     private Output<String> syncPhase;
 
     /**
@@ -139,7 +139,7 @@ public class SearchIndex extends com.pulumi.resources.CustomResource {
      * The name of the OTS table. If changed, a new table would be created.
      * 
      */
-    @Export(name="tableName", type=String.class, parameters={})
+    @Export(name="tableName", refs={String.class}, tree="[0]")
     private Output<String> tableName;
 
     /**
@@ -154,7 +154,7 @@ public class SearchIndex extends com.pulumi.resources.CustomResource {
      * If the retention period exceeds the TTL value, OTS automatically deletes expired data.
      * 
      */
-    @Export(name="timeToLive", type=Integer.class, parameters={})
+    @Export(name="timeToLive", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> timeToLive;
 
     /**

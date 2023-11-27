@@ -84,11 +84,11 @@ public final class GetRulesRuleRuleActionInsertHeaderConfig {
             return this;
         }
         public GetRulesRuleRuleActionInsertHeaderConfig build() {
-            final var o = new GetRulesRuleRuleActionInsertHeaderConfig();
-            o.key = key;
-            o.value = value;
-            o.valueType = valueType;
-            return o;
+            final var _resultValue = new GetRulesRuleRuleActionInsertHeaderConfig();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            _resultValue.valueType = valueType;
+            return _resultValue;
         }
     }
 }

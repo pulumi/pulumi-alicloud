@@ -141,7 +141,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      * 
      */
-    @Export(name="crossAccountRoleName", type=String.class, parameters={})
+    @Export(name="crossAccountRoleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> crossAccountRoleName;
 
     /**
@@ -155,7 +155,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
      * 
      */
-    @Export(name="crossAccountType", type=String.class, parameters={})
+    @Export(name="crossAccountType", refs={String.class}, tree="[0]")
     private Output<String> crossAccountType;
 
     /**
@@ -169,7 +169,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The original account ID of the cross account backup managed by the current account.
      * 
      */
-    @Export(name="crossAccountUserId", type=Integer.class, parameters={})
+    @Export(name="crossAccountUserId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> crossAccountUserId;
 
     /**
@@ -183,7 +183,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The exclude path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/excludePath]`, up to 255 characters. **WARNING:** If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
-    @Export(name="exclude", type=String.class, parameters={})
+    @Export(name="exclude", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> exclude;
 
     /**
@@ -197,7 +197,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The include path. **NOTE:** Invalid while source_type equals `OSS` or `NAS`. It&#39;s a json string with format:`[&#34;/includePath&#34;]`, Up to 255 characters. **WARNING:** The field is required while source_type equals `OTS_TABLE` which means source table name. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
-    @Export(name="include", type=String.class, parameters={})
+    @Export(name="include", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> include;
 
     /**
@@ -211,7 +211,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * Recovery options. **NOTE:** Required while source_type equals `OSS` or `NAS`, invalid while source_type equals `ECS_FILE`. It&#39;s a json string with format:`&#34;{&#34;includes&#34;:[],&#34;excludes&#34;:[]}&#34;,`. Recovery options. When restores OTS_TABLE and real target time is the rangEnd time of the snapshot, it should be a string with format: `{&#34;UI_TargetTime&#34;:1650032529018}`.
      * 
      */
-    @Export(name="options", type=String.class, parameters={})
+    @Export(name="options", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> options;
 
     /**
@@ -225,7 +225,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The details about the Tablestore instance. See the following `Block ots_detail`.
      * 
      */
-    @Export(name="otsDetail", type=RestoreJobOtsDetail.class, parameters={})
+    @Export(name="otsDetail", refs={RestoreJobOtsDetail.class}, tree="[0]")
     private Output<RestoreJobOtsDetail> otsDetail;
 
     /**
@@ -239,7 +239,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * Restore Job ID. It&#39;s the unique key of this resource, if you want to set this argument by yourself, you must specify a unique keyword that never appears.
      * 
      */
-    @Export(name="restoreJobId", type=String.class, parameters={})
+    @Export(name="restoreJobId", refs={String.class}, tree="[0]")
     private Output<String> restoreJobId;
 
     /**
@@ -253,7 +253,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The type of recovery destination. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS_ROLLBACK`. **Note**: Currently, there is a one-to-one correspondence between the data source type with the recovery destination type.
      * 
      */
-    @Export(name="restoreType", type=String.class, parameters={})
+    @Export(name="restoreType", refs={String.class}, tree="[0]")
     private Output<String> restoreType;
 
     /**
@@ -267,7 +267,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The hashcode of Snapshot.
      * 
      */
-    @Export(name="snapshotHash", type=String.class, parameters={})
+    @Export(name="snapshotHash", refs={String.class}, tree="[0]")
     private Output<String> snapshotHash;
 
     /**
@@ -281,7 +281,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The ID of Snapshot.
      * 
      */
-    @Export(name="snapshotId", type=String.class, parameters={})
+    @Export(name="snapshotId", refs={String.class}, tree="[0]")
     private Output<String> snapshotId;
 
     /**
@@ -295,7 +295,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The type of data source. Valid values: `ECS_FILE`, `NAS`, `OSS`,`OTS_TABLE`,`UDM_ECS`.
      * 
      */
-    @Export(name="sourceType", type=String.class, parameters={})
+    @Export(name="sourceType", refs={String.class}, tree="[0]")
     private Output<String> sourceType;
 
     /**
@@ -309,7 +309,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The Restore Job Status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -323,7 +323,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The target name of OSS bucket. **NOTE:** Required while source_type equals `OSS`,
      * 
      */
-    @Export(name="targetBucket", type=String.class, parameters={})
+    @Export(name="targetBucket", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetBucket;
 
     /**
@@ -337,7 +337,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The target client ID.
      * 
      */
-    @Export(name="targetClientId", type=String.class, parameters={})
+    @Export(name="targetClientId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetClientId;
 
     /**
@@ -351,7 +351,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The creation time of destination File System. **NOTE:** While source_type equals `NAS`, this parameter must be set. **Note:** The time format of the API adopts the ISO 8601 format, such as `2021-07-09T15:45:30CST` or `2021-07-09T07:45:30Z`.
      * 
      */
-    @Export(name="targetCreateTime", type=String.class, parameters={})
+    @Export(name="targetCreateTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetCreateTime;
 
     /**
@@ -365,7 +365,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The target data source ID.
      * 
      */
-    @Export(name="targetDataSourceId", type=String.class, parameters={})
+    @Export(name="targetDataSourceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetDataSourceId;
 
     /**
@@ -379,7 +379,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The ID of destination File System. **NOTE:** Required while source_type equals `NAS`
      * 
      */
-    @Export(name="targetFileSystemId", type=String.class, parameters={})
+    @Export(name="targetFileSystemId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetFileSystemId;
 
     /**
@@ -393,7 +393,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The target ID of ECS instance. **NOTE:** Required while source_type equals `ECS_FILE`
      * 
      */
-    @Export(name="targetInstanceId", type=String.class, parameters={})
+    @Export(name="targetInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetInstanceId;
 
     /**
@@ -407,7 +407,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The name of the Table store instance to which you want to restore data.**WARNING:** Required while source_type equals `OTS_TABLE`.
      * 
      */
-    @Export(name="targetInstanceName", type=String.class, parameters={})
+    @Export(name="targetInstanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetInstanceName;
 
     /**
@@ -421,7 +421,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The target file path of (ECS) instance. **WARNING:** Required while source_type equals `NAS` or `ECS_FILE`, If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
-    @Export(name="targetPath", type=String.class, parameters={})
+    @Export(name="targetPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetPath;
 
     /**
@@ -435,7 +435,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The target prefix of the OSS object. **WARNING:** Required while source_type equals `OSS`. If this value filled in incorrectly, the task may not start correctly, so please check the parameters before executing the plan.
      * 
      */
-    @Export(name="targetPrefix", type=String.class, parameters={})
+    @Export(name="targetPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetPrefix;
 
     /**
@@ -449,7 +449,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The name of the table that stores the restored data. **WARNING:** Required while source_type equals `OTS_TABLE`.
      * 
      */
-    @Export(name="targetTableName", type=String.class, parameters={})
+    @Export(name="targetTableName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetTableName;
 
     /**
@@ -463,7 +463,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The time when data is restored to the Table store instance. This value is a UNIX timestamp. Unit: seconds. **WARNING:** Required while source_type equals `OTS_TABLE`. **Note:** The time when data is restored to the Tablestore instance. It should be 0 if restores data at the End time of the snapshot.
      * 
      */
-    @Export(name="targetTime", type=String.class, parameters={})
+    @Export(name="targetTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetTime;
 
     /**
@@ -477,7 +477,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The full machine backup details.
      * 
      */
-    @Export(name="udmDetail", type=String.class, parameters={})
+    @Export(name="udmDetail", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> udmDetail;
 
     /**
@@ -491,7 +491,7 @@ public class RestoreJob extends com.pulumi.resources.CustomResource {
      * The ID of backup vault.
      * 
      */
-    @Export(name="vaultId", type=String.class, parameters={})
+    @Export(name="vaultId", refs={String.class}, tree="[0]")
     private Output<String> vaultId;
 
     /**

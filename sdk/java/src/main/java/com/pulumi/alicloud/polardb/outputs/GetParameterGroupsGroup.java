@@ -218,18 +218,18 @@ public final class GetParameterGroupsGroup {
             return this;
         }
         public GetParameterGroupsGroup build() {
-            final var o = new GetParameterGroupsGroup();
-            o.createTime = createTime;
-            o.dbType = dbType;
-            o.dbVersion = dbVersion;
-            o.forceRestart = forceRestart;
-            o.id = id;
-            o.parameterCounts = parameterCounts;
-            o.parameterGroupDesc = parameterGroupDesc;
-            o.parameterGroupId = parameterGroupId;
-            o.parameterGroupName = parameterGroupName;
-            o.parameterGroupType = parameterGroupType;
-            return o;
+            final var _resultValue = new GetParameterGroupsGroup();
+            _resultValue.createTime = createTime;
+            _resultValue.dbType = dbType;
+            _resultValue.dbVersion = dbVersion;
+            _resultValue.forceRestart = forceRestart;
+            _resultValue.id = id;
+            _resultValue.parameterCounts = parameterCounts;
+            _resultValue.parameterGroupDesc = parameterGroupDesc;
+            _resultValue.parameterGroupId = parameterGroupId;
+            _resultValue.parameterGroupName = parameterGroupName;
+            _resultValue.parameterGroupType = parameterGroupType;
+            return _resultValue;
         }
     }
 }

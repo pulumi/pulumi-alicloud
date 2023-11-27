@@ -171,19 +171,19 @@ public final class GetQuotaApplicationsResult {
             return this;
         }
         public GetQuotaApplicationsResult build() {
-            final var o = new GetQuotaApplicationsResult();
-            o.applications = applications;
-            o.dimensions = dimensions;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.keyWord = keyWord;
-            o.outputFile = outputFile;
-            o.productCode = productCode;
-            o.quotaActionCode = quotaActionCode;
-            o.quotaCategory = quotaCategory;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetQuotaApplicationsResult();
+            _resultValue.applications = applications;
+            _resultValue.dimensions = dimensions;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.keyWord = keyWord;
+            _resultValue.outputFile = outputFile;
+            _resultValue.productCode = productCode;
+            _resultValue.quotaActionCode = quotaActionCode;
+            _resultValue.quotaCategory = quotaCategory;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

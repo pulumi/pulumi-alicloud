@@ -24,9 +24,17 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** If you call this operation as a RAM user, make sure that this RAM user has the permissions to grant other RAM users the permissions to manage ACK clusters. Otherwise, the `StatusForbidden` or `ForbiddenGrantPermissions` errors will be returned. For more information, see [Use a RAM user to grant RBAC permissions to other RAM users](https://www.alibabacloud.com/help/faq-detail/119035.htm).
  * 
- * &gt; **NOTE:** This operation overwrites the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
+ * &gt; **NOTE:** This operation **overwrites** the permissions that have been granted to the specified RAM user. When you call this operation, make sure that the required permissions are included.
  * 
  * &gt; **NOTE:** Available since v1.122.0.
+ * 
+ * ## Import
+ * 
+ * alicloud_cs_kubernetes_permissions can be imported using the RAM user id or Ram Role id, e.g.
+ * 
+ * ```sh
+ *  $ pulumi import alicloud:cs/kubernetesPermission:KubernetesPermission user &lt;uid&gt;
+ * ```
  * 
  */
 @ResourceType(type="alicloud:cs/kubernetesPermission:KubernetesPermission")
@@ -35,7 +43,7 @@ public class KubernetesPermission extends com.pulumi.resources.CustomResource {
      * A list of user permission. See `permissions` below.
      * 
      */
-    @Export(name="permissions", type=List.class, parameters={KubernetesPermissionPermission.class})
+    @Export(name="permissions", refs={List.class,KubernetesPermissionPermission.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KubernetesPermissionPermission>> permissions;
 
     /**
@@ -49,7 +57,7 @@ public class KubernetesPermission extends com.pulumi.resources.CustomResource {
      * The ID of the Ram user, and it can also be the id of the Ram Role. If you use Ram Role id, you need to set `is_ram_role` to `true` during authorization.
      * 
      */
-    @Export(name="uid", type=String.class, parameters={})
+    @Export(name="uid", refs={String.class}, tree="[0]")
     private Output<String> uid;
 
     /**

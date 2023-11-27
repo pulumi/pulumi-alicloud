@@ -70,10 +70,10 @@ public final class GetNodeClassesClass {
             return this;
         }
         public GetNodeClassesClass build() {
-            final var o = new GetNodeClassesClass();
-            o.supportedEngines = supportedEngines;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetNodeClassesClass();
+            _resultValue.supportedEngines = supportedEngines;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

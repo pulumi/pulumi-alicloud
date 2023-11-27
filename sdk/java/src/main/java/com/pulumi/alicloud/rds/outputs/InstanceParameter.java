@@ -65,10 +65,10 @@ public final class InstanceParameter {
             return this;
         }
         public InstanceParameter build() {
-            final var o = new InstanceParameter();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new InstanceParameter();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

@@ -453,32 +453,32 @@ public final class GetImagesImage {
             return this;
         }
         public GetImagesImage build() {
-            final var o = new GetImagesImage();
-            o.architecture = architecture;
-            o.creationTime = creationTime;
-            o.description = description;
-            o.diskDeviceMappings = diskDeviceMappings;
-            o.id = id;
-            o.imageId = imageId;
-            o.imageOwnerAlias = imageOwnerAlias;
-            o.imageVersion = imageVersion;
-            o.isCopied = isCopied;
-            o.isSelfShared = isSelfShared;
-            o.isSubscribed = isSubscribed;
-            o.isSupportIoOptimized = isSupportIoOptimized;
-            o.name = name;
-            o.osName = osName;
-            o.osNameEn = osNameEn;
-            o.osType = osType;
-            o.platform = platform;
-            o.productCode = productCode;
-            o.progress = progress;
-            o.size = size;
-            o.state = state;
-            o.status = status;
-            o.tags = tags;
-            o.usage = usage;
-            return o;
+            final var _resultValue = new GetImagesImage();
+            _resultValue.architecture = architecture;
+            _resultValue.creationTime = creationTime;
+            _resultValue.description = description;
+            _resultValue.diskDeviceMappings = diskDeviceMappings;
+            _resultValue.id = id;
+            _resultValue.imageId = imageId;
+            _resultValue.imageOwnerAlias = imageOwnerAlias;
+            _resultValue.imageVersion = imageVersion;
+            _resultValue.isCopied = isCopied;
+            _resultValue.isSelfShared = isSelfShared;
+            _resultValue.isSubscribed = isSubscribed;
+            _resultValue.isSupportIoOptimized = isSupportIoOptimized;
+            _resultValue.name = name;
+            _resultValue.osName = osName;
+            _resultValue.osNameEn = osNameEn;
+            _resultValue.osType = osType;
+            _resultValue.platform = platform;
+            _resultValue.productCode = productCode;
+            _resultValue.progress = progress;
+            _resultValue.size = size;
+            _resultValue.state = state;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.usage = usage;
+            return _resultValue;
         }
     }
 }

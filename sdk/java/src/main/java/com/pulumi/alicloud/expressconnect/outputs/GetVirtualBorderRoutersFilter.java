@@ -73,10 +73,10 @@ public final class GetVirtualBorderRoutersFilter {
             return values(List.of(values));
         }
         public GetVirtualBorderRoutersFilter build() {
-            final var o = new GetVirtualBorderRoutersFilter();
-            o.key = key;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetVirtualBorderRoutersFilter();
+            _resultValue.key = key;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

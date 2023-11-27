@@ -100,13 +100,13 @@ public final class GetNetworkPackagesResult {
             return this;
         }
         public GetNetworkPackagesResult build() {
-            final var o = new GetNetworkPackagesResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.packages = packages;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetNetworkPackagesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.packages = packages;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

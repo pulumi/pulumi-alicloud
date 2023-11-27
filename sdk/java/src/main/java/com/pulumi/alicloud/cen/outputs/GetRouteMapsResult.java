@@ -192,17 +192,17 @@ public final class GetRouteMapsResult {
             return this;
         }
         public GetRouteMapsResult build() {
-            final var o = new GetRouteMapsResult();
-            o.cenId = cenId;
-            o.cenRegionId = cenRegionId;
-            o.descriptionRegex = descriptionRegex;
-            o.id = id;
-            o.ids = ids;
-            o.maps = maps;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.transmitDirection = transmitDirection;
-            return o;
+            final var _resultValue = new GetRouteMapsResult();
+            _resultValue.cenId = cenId;
+            _resultValue.cenRegionId = cenRegionId;
+            _resultValue.descriptionRegex = descriptionRegex;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.maps = maps;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.transmitDirection = transmitDirection;
+            return _resultValue;
         }
     }
 }

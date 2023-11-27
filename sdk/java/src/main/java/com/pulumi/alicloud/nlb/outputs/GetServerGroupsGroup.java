@@ -343,24 +343,24 @@ public final class GetServerGroupsGroup {
             return this;
         }
         public GetServerGroupsGroup build() {
-            final var o = new GetServerGroupsGroup();
-            o.addressIpVersion = addressIpVersion;
-            o.connectionDrain = connectionDrain;
-            o.connectionDrainTimeout = connectionDrainTimeout;
-            o.healthChecks = healthChecks;
-            o.id = id;
-            o.preserveClientIpEnabled = preserveClientIpEnabled;
-            o.protocol = protocol;
-            o.relatedLoadBalancerIds = relatedLoadBalancerIds;
-            o.resourceGroupId = resourceGroupId;
-            o.scheduler = scheduler;
-            o.serverCount = serverCount;
-            o.serverGroupName = serverGroupName;
-            o.serverGroupType = serverGroupType;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetServerGroupsGroup();
+            _resultValue.addressIpVersion = addressIpVersion;
+            _resultValue.connectionDrain = connectionDrain;
+            _resultValue.connectionDrainTimeout = connectionDrainTimeout;
+            _resultValue.healthChecks = healthChecks;
+            _resultValue.id = id;
+            _resultValue.preserveClientIpEnabled = preserveClientIpEnabled;
+            _resultValue.protocol = protocol;
+            _resultValue.relatedLoadBalancerIds = relatedLoadBalancerIds;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.scheduler = scheduler;
+            _resultValue.serverCount = serverCount;
+            _resultValue.serverGroupName = serverGroupName;
+            _resultValue.serverGroupType = serverGroupType;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

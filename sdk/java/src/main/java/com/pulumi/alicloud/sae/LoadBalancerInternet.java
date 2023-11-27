@@ -155,7 +155,7 @@ public class LoadBalancerInternet extends com.pulumi.resources.CustomResource {
      * The target application ID that needs to be bound to the SLB.
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -169,7 +169,7 @@ public class LoadBalancerInternet extends com.pulumi.resources.CustomResource {
      * Use designated public network SLBs that have been purchased to support non-shared instances.
      * 
      */
-    @Export(name="internetIp", type=String.class, parameters={})
+    @Export(name="internetIp", refs={String.class}, tree="[0]")
     private Output<String> internetIp;
 
     /**
@@ -183,7 +183,7 @@ public class LoadBalancerInternet extends com.pulumi.resources.CustomResource {
      * The internet SLB ID.
      * 
      */
-    @Export(name="internetSlbId", type=String.class, parameters={})
+    @Export(name="internetSlbId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetSlbId;
 
     /**
@@ -197,7 +197,7 @@ public class LoadBalancerInternet extends com.pulumi.resources.CustomResource {
      * The bound private network SLB. See `internet` below.
      * 
      */
-    @Export(name="internets", type=List.class, parameters={LoadBalancerInternetInternet.class})
+    @Export(name="internets", refs={List.class,LoadBalancerInternetInternet.class}, tree="[0,1]")
     private Output<List<LoadBalancerInternetInternet>> internets;
 
     /**

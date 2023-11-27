@@ -70,10 +70,10 @@ public final class GetListenersListenerDefaultAction {
             return this;
         }
         public GetListenersListenerDefaultAction build() {
-            final var o = new GetListenersListenerDefaultAction();
-            o.forwardGroupConfigs = forwardGroupConfigs;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetListenersListenerDefaultAction();
+            _resultValue.forwardGroupConfigs = forwardGroupConfigs;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

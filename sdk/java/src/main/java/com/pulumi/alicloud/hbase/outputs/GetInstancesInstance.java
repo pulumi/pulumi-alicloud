@@ -450,30 +450,30 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.backupStatus = backupStatus;
-            o.coreDiskSize = coreDiskSize;
-            o.coreDiskType = coreDiskType;
-            o.coreInstanceType = coreInstanceType;
-            o.coreNodeCount = coreNodeCount;
-            o.createdTime = createdTime;
-            o.deletionProtection = deletionProtection;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.expireTime = expireTime;
-            o.id = id;
-            o.masterInstanceType = masterInstanceType;
-            o.masterNodeCount = masterNodeCount;
-            o.name = name;
-            o.networkType = networkType;
-            o.payType = payType;
-            o.regionId = regionId;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.backupStatus = backupStatus;
+            _resultValue.coreDiskSize = coreDiskSize;
+            _resultValue.coreDiskType = coreDiskType;
+            _resultValue.coreInstanceType = coreInstanceType;
+            _resultValue.coreNodeCount = coreNodeCount;
+            _resultValue.createdTime = createdTime;
+            _resultValue.deletionProtection = deletionProtection;
+            _resultValue.engine = engine;
+            _resultValue.engineVersion = engineVersion;
+            _resultValue.expireTime = expireTime;
+            _resultValue.id = id;
+            _resultValue.masterInstanceType = masterInstanceType;
+            _resultValue.masterNodeCount = masterNodeCount;
+            _resultValue.name = name;
+            _resultValue.networkType = networkType;
+            _resultValue.payType = payType;
+            _resultValue.regionId = regionId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

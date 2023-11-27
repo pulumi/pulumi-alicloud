@@ -451,30 +451,30 @@ public final class GetClustersCluster {
             return this;
         }
         public GetClustersCluster build() {
-            final var o = new GetClustersCluster();
-            o.aclId = aclId;
-            o.appVersion = appVersion;
-            o.clusterId = clusterId;
-            o.clusterName = clusterName;
-            o.clusterType = clusterType;
-            o.cpu = cpu;
-            o.healthStatus = healthStatus;
-            o.id = id;
-            o.initCostTime = initCostTime;
-            o.instanceCount = instanceCount;
-            o.instanceId = instanceId;
-            o.instanceModels = instanceModels;
-            o.internetAddress = internetAddress;
-            o.internetDomain = internetDomain;
-            o.internetPort = internetPort;
-            o.intranetAddress = intranetAddress;
-            o.intranetDomain = intranetDomain;
-            o.intranetPort = intranetPort;
-            o.memoryCapacity = memoryCapacity;
-            o.payInfo = payInfo;
-            o.pubNetworkFlow = pubNetworkFlow;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetClustersCluster();
+            _resultValue.aclId = aclId;
+            _resultValue.appVersion = appVersion;
+            _resultValue.clusterId = clusterId;
+            _resultValue.clusterName = clusterName;
+            _resultValue.clusterType = clusterType;
+            _resultValue.cpu = cpu;
+            _resultValue.healthStatus = healthStatus;
+            _resultValue.id = id;
+            _resultValue.initCostTime = initCostTime;
+            _resultValue.instanceCount = instanceCount;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceModels = instanceModels;
+            _resultValue.internetAddress = internetAddress;
+            _resultValue.internetDomain = internetDomain;
+            _resultValue.internetPort = internetPort;
+            _resultValue.intranetAddress = intranetAddress;
+            _resultValue.intranetDomain = intranetDomain;
+            _resultValue.intranetPort = intranetPort;
+            _resultValue.memoryCapacity = memoryCapacity;
+            _resultValue.payInfo = payInfo;
+            _resultValue.pubNetworkFlow = pubNetworkFlow;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

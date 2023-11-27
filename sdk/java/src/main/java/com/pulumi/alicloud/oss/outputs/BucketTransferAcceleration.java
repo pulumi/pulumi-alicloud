@@ -46,9 +46,9 @@ public final class BucketTransferAcceleration {
             return this;
         }
         public BucketTransferAcceleration build() {
-            final var o = new BucketTransferAcceleration();
-            o.enabled = enabled;
-            return o;
+            final var _resultValue = new BucketTransferAcceleration();
+            _resultValue.enabled = enabled;
+            return _resultValue;
         }
     }
 }

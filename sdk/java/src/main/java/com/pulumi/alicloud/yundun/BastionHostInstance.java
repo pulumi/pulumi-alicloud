@@ -23,103 +23,103 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="alicloud:yundun/bastionHostInstance:BastionHostInstance")
 public class BastionHostInstance extends com.pulumi.resources.CustomResource {
-    @Export(name="adAuthServers", type=List.class, parameters={BastionHostInstanceAdAuthServer.class})
+    @Export(name="adAuthServers", refs={List.class,BastionHostInstanceAdAuthServer.class}, tree="[0,1]")
     private Output<List<BastionHostInstanceAdAuthServer>> adAuthServers;
 
     public Output<List<BastionHostInstanceAdAuthServer>> adAuthServers() {
         return this.adAuthServers;
     }
-    @Export(name="bandwidth", type=String.class, parameters={})
+    @Export(name="bandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidth;
 
     public Output<String> bandwidth() {
         return this.bandwidth;
     }
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     public Output<String> description() {
         return this.description;
     }
-    @Export(name="enablePublicAccess", type=Boolean.class, parameters={})
+    @Export(name="enablePublicAccess", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enablePublicAccess;
 
     public Output<Boolean> enablePublicAccess() {
         return this.enablePublicAccess;
     }
-    @Export(name="ldapAuthServers", type=List.class, parameters={BastionHostInstanceLdapAuthServer.class})
+    @Export(name="ldapAuthServers", refs={List.class,BastionHostInstanceLdapAuthServer.class}, tree="[0,1]")
     private Output<List<BastionHostInstanceLdapAuthServer>> ldapAuthServers;
 
     public Output<List<BastionHostInstanceLdapAuthServer>> ldapAuthServers() {
         return this.ldapAuthServers;
     }
-    @Export(name="licenseCode", type=String.class, parameters={})
+    @Export(name="licenseCode", refs={String.class}, tree="[0]")
     private Output<String> licenseCode;
 
     public Output<String> licenseCode() {
         return this.licenseCode;
     }
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
-    @Export(name="planCode", type=String.class, parameters={})
+    @Export(name="planCode", refs={String.class}, tree="[0]")
     private Output<String> planCode;
 
     public Output<String> planCode() {
         return this.planCode;
     }
-    @Export(name="publicWhiteLists", type=List.class, parameters={String.class})
+    @Export(name="publicWhiteLists", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> publicWhiteLists;
 
     public Output<Optional<List<String>>> publicWhiteLists() {
         return Codegen.optional(this.publicWhiteLists);
     }
-    @Export(name="renewPeriod", type=Integer.class, parameters={})
+    @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> renewPeriod;
 
     public Output<Optional<Integer>> renewPeriod() {
         return Codegen.optional(this.renewPeriod);
     }
-    @Export(name="renewalPeriodUnit", type=String.class, parameters={})
+    @Export(name="renewalPeriodUnit", refs={String.class}, tree="[0]")
     private Output<String> renewalPeriodUnit;
 
     public Output<String> renewalPeriodUnit() {
         return this.renewalPeriodUnit;
     }
-    @Export(name="renewalStatus", type=String.class, parameters={})
+    @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output<String> renewalStatus;
 
     public Output<String> renewalStatus() {
         return this.renewalStatus;
     }
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
-    @Export(name="securityGroupIds", type=List.class, parameters={String.class})
+    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroupIds;
 
     public Output<List<String>> securityGroupIds() {
         return this.securityGroupIds;
     }
-    @Export(name="storage", type=String.class, parameters={})
+    @Export(name="storage", refs={String.class}, tree="[0]")
     private Output<String> storage;
 
     public Output<String> storage() {
         return this.storage;
     }
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     public Output<String> vswitchId() {

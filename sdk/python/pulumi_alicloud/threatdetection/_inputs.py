@@ -13,6 +13,7 @@ __all__ = [
     'HoneypotPresetMetaArgs',
     'HoneypotProbeHoneypotBindListArgs',
     'HoneypotProbeHoneypotBindListBindPortListArgs',
+    'SasTrailServiceTrailArgs',
 ]
 
 @pulumi.input_type
@@ -193,5 +194,48 @@ class HoneypotProbeHoneypotBindListBindPortListArgs:
     @target_port.setter
     def target_port(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "target_port", value)
+
+
+@pulumi.input_type
+class SasTrailServiceTrailArgs:
+    def __init__(__self__, *,
+                 config: Optional[pulumi.Input[str]] = None,
+                 update_time: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[str] config: Service tracking on status. The value is:
+               - **on:** Open
+               - **off:** off.
+        :param pulumi.Input[int] update_time: The timestamp of the last service update. Unit: milliseconds.
+        """
+        if config is not None:
+            pulumi.set(__self__, "config", config)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def config(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service tracking on status. The value is:
+        - **on:** Open
+        - **off:** off.
+        """
+        return pulumi.get(self, "config")
+
+    @config.setter
+    def config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        The timestamp of the last service update. Unit: milliseconds.
+        """
+        return pulumi.get(self, "update_time")
+
+    @update_time.setter
+    def update_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "update_time", value)
 
 

@@ -67,10 +67,10 @@ public final class ConnectionAuthParametersBasicAuthParameters {
             return this;
         }
         public ConnectionAuthParametersBasicAuthParameters build() {
-            final var o = new ConnectionAuthParametersBasicAuthParameters();
-            o.password = password;
-            o.username = username;
-            return o;
+            final var _resultValue = new ConnectionAuthParametersBasicAuthParameters();
+            _resultValue.password = password;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

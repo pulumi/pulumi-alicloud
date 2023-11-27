@@ -205,18 +205,18 @@ public final class GetServerlessKubernetesClustersCluster {
             return this;
         }
         public GetServerlessKubernetesClustersCluster build() {
-            final var o = new GetServerlessKubernetesClustersCluster();
-            o.connections = connections;
-            o.deletionProtection = deletionProtection;
-            o.endpointPublicAccessEnabled = endpointPublicAccessEnabled;
-            o.id = id;
-            o.name = name;
-            o.natGatewayId = natGatewayId;
-            o.securityGroupId = securityGroupId;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetServerlessKubernetesClustersCluster();
+            _resultValue.connections = connections;
+            _resultValue.deletionProtection = deletionProtection;
+            _resultValue.endpointPublicAccessEnabled = endpointPublicAccessEnabled;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.natGatewayId = natGatewayId;
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

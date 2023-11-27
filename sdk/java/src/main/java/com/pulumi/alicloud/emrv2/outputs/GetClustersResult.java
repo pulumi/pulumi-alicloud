@@ -225,23 +225,23 @@ public final class GetClustersResult {
             return this;
         }
         public GetClustersResult build() {
-            final var o = new GetClustersResult();
-            o.clusterName = clusterName;
-            o.clusterStates = clusterStates;
-            o.clusterTypes = clusterTypes;
-            o.clusters = clusters;
-            o.id = id;
-            o.ids = ids;
-            o.maxResults = maxResults;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.nextToken = nextToken;
-            o.outputFile = outputFile;
-            o.paymentTypes = paymentTypes;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            o.totalCount = totalCount;
-            return o;
+            final var _resultValue = new GetClustersResult();
+            _resultValue.clusterName = clusterName;
+            _resultValue.clusterStates = clusterStates;
+            _resultValue.clusterTypes = clusterTypes;
+            _resultValue.clusters = clusters;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.maxResults = maxResults;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.nextToken = nextToken;
+            _resultValue.outputFile = outputFile;
+            _resultValue.paymentTypes = paymentTypes;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.tags = tags;
+            _resultValue.totalCount = totalCount;
+            return _resultValue;
         }
     }
 }

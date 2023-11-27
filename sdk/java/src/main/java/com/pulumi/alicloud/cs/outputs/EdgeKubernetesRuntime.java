@@ -67,10 +67,10 @@ public final class EdgeKubernetesRuntime {
             return this;
         }
         public EdgeKubernetesRuntime build() {
-            final var o = new EdgeKubernetesRuntime();
-            o.name = name;
-            o.version = version;
-            return o;
+            final var _resultValue = new EdgeKubernetesRuntime();
+            _resultValue.name = name;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

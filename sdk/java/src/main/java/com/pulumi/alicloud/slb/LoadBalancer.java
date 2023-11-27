@@ -116,7 +116,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Specify the IP address of the private network for the SLB instance, which must be in the destination CIDR block of the correspond ing switch.
      * 
      */
-    @Export(name="address", type=String.class, parameters={})
+    @Export(name="address", refs={String.class}, tree="[0]")
     private Output<String> address;
 
     /**
@@ -130,7 +130,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The IP version of the SLB instance to be created, which can be set to ipv4 or ipv6 . Default to &#34;ipv4&#34;. Now, only internet instance support ipv6 address.
      * 
      */
-    @Export(name="addressIpVersion", type=String.class, parameters={})
+    @Export(name="addressIpVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> addressIpVersion;
 
     /**
@@ -146,7 +146,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * - intranet: After an intranet SLB instance is created, the system allocates an intranet IP address so that the instance can only forward intranet requests.
      * 
      */
-    @Export(name="addressType", type=String.class, parameters={})
+    @Export(name="addressType", refs={String.class}, tree="[0]")
     private Output<String> addressType;
 
     /**
@@ -163,7 +163,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * value is between 1 and 1000, If argument &#34;internet_charge_type&#34; is &#34;paybytraffic&#34;, then this value will be ignore.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> bandwidth;
 
     /**
@@ -178,7 +178,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Whether enable the deletion protection or not. on: Enable deletion protection. off: Disable deletion protection. Default to off. Only postpaid instance support this function.
      * 
      */
-    @Export(name="deleteProtection", type=String.class, parameters={})
+    @Export(name="deleteProtection", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deleteProtection;
 
     /**
@@ -192,7 +192,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The billing method of the load balancer. Valid values are &#34;PrePaid&#34; and &#34;PostPaid&#34;. Default to &#34;PostPaid&#34;.
      * 
      */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output<String> instanceChargeType;
 
     /**
@@ -208,7 +208,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Before version 1.10.1, the valid values are &#34;paybybandwidth&#34; and &#34;paybytraffic&#34;.
      * 
      */
-    @Export(name="internetChargeType", type=String.class, parameters={})
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
@@ -220,7 +220,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> internetChargeType() {
         return Codegen.optional(this.internetChargeType);
     }
-    @Export(name="loadBalancerName", type=String.class, parameters={})
+    @Export(name="loadBalancerName", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerName;
 
     public Output<String> loadBalancerName() {
@@ -230,7 +230,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The specification of the Server Load Balancer instance. Default to empty string indicating it is &#34;Shared-Performance&#34; instance. Launching &#34;Performance-guaranteed&#34; instance, it must be specified. Valid values: `slb.s1.small`, `slb.s2.small`, `slb.s2.medium`.
      * 
      */
-    @Export(name="loadBalancerSpec", type=String.class, parameters={})
+    @Export(name="loadBalancerSpec", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerSpec;
 
     /**
@@ -244,7 +244,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The primary zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
      * 
      */
-    @Export(name="masterZoneId", type=String.class, parameters={})
+    @Export(name="masterZoneId", refs={String.class}, tree="[0]")
     private Output<String> masterZoneId;
 
     /**
@@ -258,7 +258,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The reason of modification protection. It&#39;s effective when `modification_protection_status` is `ConsoleProtection`.
      * 
      */
-    @Export(name="modificationProtectionReason", type=String.class, parameters={})
+    @Export(name="modificationProtectionReason", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modificationProtectionReason;
 
     /**
@@ -272,7 +272,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The status of modification protection. Valid values: `ConsoleProtection` and `NonProtection`. Default value: `NonProtection`.
      * 
      */
-    @Export(name="modificationProtectionStatus", type=String.class, parameters={})
+    @Export(name="modificationProtectionStatus", refs={String.class}, tree="[0]")
     private Output<String> modificationProtectionStatus;
 
     /**
@@ -290,7 +290,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'load_balancer_name' instead */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -304,7 +304,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The billing method of the load balancer. Valid values are `PayAsYouGo` and `Subscription`. Default to `PayAsYouGo`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -319,7 +319,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -334,7 +334,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the SLB belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -348,7 +348,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The standby zone ID of the SLB instance. If not specified, the system will be randomly assigned. You can query the primary and standby zones in a region by calling the DescribeZone API.
      * 
      */
-    @Export(name="slaveZoneId", type=String.class, parameters={})
+    @Export(name="slaveZoneId", refs={String.class}, tree="[0]")
     private Output<String> slaveZoneId;
 
     /**
@@ -368,7 +368,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'specification' has been deprecated from provider version 1.123.1. New field 'load_balancer_spec' instead */
-    @Export(name="specification", type=String.class, parameters={})
+    @Export(name="specification", refs={String.class}, tree="[0]")
     private Output<String> specification;
 
     /**
@@ -390,7 +390,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Currently, the alibaba cloud international account does not support creating a PrePaid SLB instance.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -410,7 +410,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource. The `tags` can have a maximum of 10 tag for every load balancer instance.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -424,7 +424,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The VSwitch ID to launch in. If `address_type` is internet, it will be ignore.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**

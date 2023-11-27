@@ -241,19 +241,19 @@ public final class GetTopicsTopic {
             return this;
         }
         public GetTopicsTopic build() {
-            final var o = new GetTopicsTopic();
-            o.compactTopic = compactTopic;
-            o.createTime = createTime;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.localTopic = localTopic;
-            o.partitionNum = partitionNum;
-            o.remark = remark;
-            o.status = status;
-            o.statusName = statusName;
-            o.tags = tags;
-            o.topic = topic;
-            return o;
+            final var _resultValue = new GetTopicsTopic();
+            _resultValue.compactTopic = compactTopic;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.localTopic = localTopic;
+            _resultValue.partitionNum = partitionNum;
+            _resultValue.remark = remark;
+            _resultValue.status = status;
+            _resultValue.statusName = statusName;
+            _resultValue.tags = tags;
+            _resultValue.topic = topic;
+            return _resultValue;
         }
     }
 }

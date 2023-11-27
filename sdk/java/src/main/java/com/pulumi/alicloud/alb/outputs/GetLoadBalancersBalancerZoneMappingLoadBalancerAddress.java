@@ -38,9 +38,9 @@ public final class GetLoadBalancersBalancerZoneMappingLoadBalancerAddress {
             return this;
         }
         public GetLoadBalancersBalancerZoneMappingLoadBalancerAddress build() {
-            final var o = new GetLoadBalancersBalancerZoneMappingLoadBalancerAddress();
-            o.address = address;
-            return o;
+            final var _resultValue = new GetLoadBalancersBalancerZoneMappingLoadBalancerAddress();
+            _resultValue.address = address;
+            return _resultValue;
         }
     }
 }

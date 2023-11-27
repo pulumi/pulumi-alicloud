@@ -120,7 +120,7 @@ public class ImageCache extends com.pulumi.resources.CustomResource {
      * The ID of the container group job that is used to create the image cache.
      * 
      */
-    @Export(name="containerGroupId", type=String.class, parameters={})
+    @Export(name="containerGroupId", refs={String.class}, tree="[0]")
     private Output<String> containerGroupId;
 
     /**
@@ -134,7 +134,7 @@ public class ImageCache extends com.pulumi.resources.CustomResource {
      * The instance ID of the Elastic IP Address (EIP). If you want to pull images from the Internet, you must specify an EIP to make sure that the container group can access the Internet. You can also configure the network address translation (NAT) gateway. We recommend that you configure the NAT gateway for the Internet access. Refer to [Public Network Access Method](https://help.aliyun.com/document_detail/99146.html)
      * 
      */
-    @Export(name="eipInstanceId", type=String.class, parameters={})
+    @Export(name="eipInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> eipInstanceId;
 
     /**
@@ -148,7 +148,7 @@ public class ImageCache extends com.pulumi.resources.CustomResource {
      * The name of the image cache.
      * 
      */
-    @Export(name="imageCacheName", type=String.class, parameters={})
+    @Export(name="imageCacheName", refs={String.class}, tree="[0]")
     private Output<String> imageCacheName;
 
     /**
@@ -162,7 +162,7 @@ public class ImageCache extends com.pulumi.resources.CustomResource {
      * The size of the image cache. Default to `20`. Unit: GiB.
      * 
      */
-    @Export(name="imageCacheSize", type=Integer.class, parameters={})
+    @Export(name="imageCacheSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> imageCacheSize;
 
     /**
@@ -176,7 +176,7 @@ public class ImageCache extends com.pulumi.resources.CustomResource {
      * The Image Registry parameters about the image to be cached. See `image_registry_credential` below.
      * 
      */
-    @Export(name="imageRegistryCredentials", type=List.class, parameters={ImageCacheImageRegistryCredential.class})
+    @Export(name="imageRegistryCredentials", refs={List.class,ImageCacheImageRegistryCredential.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ImageCacheImageRegistryCredential>> imageRegistryCredentials;
 
     /**
@@ -190,7 +190,7 @@ public class ImageCache extends com.pulumi.resources.CustomResource {
      * The images to be cached. The image name must be versioned.
      * 
      */
-    @Export(name="images", type=List.class, parameters={String.class})
+    @Export(name="images", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> images;
 
     /**
@@ -204,7 +204,7 @@ public class ImageCache extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -218,7 +218,7 @@ public class ImageCache extends com.pulumi.resources.CustomResource {
      * The retention days of the image cache. Once the image cache expires, it will be cleared. By default, the image cache never expires. Note: The image cache that fails to be created is retained for only one day.
      * 
      */
-    @Export(name="retentionDays", type=Integer.class, parameters={})
+    @Export(name="retentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retentionDays;
 
     /**
@@ -232,7 +232,7 @@ public class ImageCache extends com.pulumi.resources.CustomResource {
      * The ID of the security group. You do not need to specify the same security group as the container group.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
@@ -246,7 +246,7 @@ public class ImageCache extends com.pulumi.resources.CustomResource {
      * The status of the image cache.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -260,7 +260,7 @@ public class ImageCache extends com.pulumi.resources.CustomResource {
      * The ID of the VSwitch. You do not need to specify the same VSwitch as the container group.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -274,7 +274,7 @@ public class ImageCache extends com.pulumi.resources.CustomResource {
      * The zone id to cache image.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     /**

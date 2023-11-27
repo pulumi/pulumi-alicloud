@@ -103,12 +103,12 @@ public final class GetDbInstancePlansPlanPlanConfigScaleOut {
             return this;
         }
         public GetDbInstancePlansPlanPlanConfigScaleOut build() {
-            final var o = new GetDbInstancePlansPlanPlanConfigScaleOut();
-            o.executeTime = executeTime;
-            o.planCronTime = planCronTime;
-            o.planTaskStatus = planTaskStatus;
-            o.segmentNodeNum = segmentNodeNum;
-            return o;
+            final var _resultValue = new GetDbInstancePlansPlanPlanConfigScaleOut();
+            _resultValue.executeTime = executeTime;
+            _resultValue.planCronTime = planCronTime;
+            _resultValue.planTaskStatus = planTaskStatus;
+            _resultValue.segmentNodeNum = segmentNodeNum;
+            return _resultValue;
         }
     }
 }

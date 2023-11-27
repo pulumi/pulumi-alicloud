@@ -167,15 +167,15 @@ public final class GetResourceGroupsGroup {
             return this;
         }
         public GetResourceGroupsGroup build() {
-            final var o = new GetResourceGroupsGroup();
-            o.createTime = createTime;
-            o.dbClusterId = dbClusterId;
-            o.groupName = groupName;
-            o.groupType = groupType;
-            o.id = id;
-            o.nodeNum = nodeNum;
-            o.user = user;
-            return o;
+            final var _resultValue = new GetResourceGroupsGroup();
+            _resultValue.createTime = createTime;
+            _resultValue.dbClusterId = dbClusterId;
+            _resultValue.groupName = groupName;
+            _resultValue.groupType = groupType;
+            _resultValue.id = id;
+            _resultValue.nodeNum = nodeNum;
+            _resultValue.user = user;
+            return _resultValue;
         }
     }
 }

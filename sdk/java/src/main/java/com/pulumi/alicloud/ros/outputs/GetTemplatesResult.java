@@ -161,18 +161,18 @@ public final class GetTemplatesResult {
             return templates(List.of(templates));
         }
         public GetTemplatesResult build() {
-            final var o = new GetTemplatesResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.shareType = shareType;
-            o.tags = tags;
-            o.templateName = templateName;
-            o.templates = templates;
-            return o;
+            final var _resultValue = new GetTemplatesResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.shareType = shareType;
+            _resultValue.tags = tags;
+            _resultValue.templateName = templateName;
+            _resultValue.templates = templates;
+            return _resultValue;
         }
     }
 }

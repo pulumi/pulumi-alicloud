@@ -100,13 +100,13 @@ public final class GetVersionsResult {
             return versions(List.of(versions));
         }
         public GetVersionsResult build() {
-            final var o = new GetVersionsResult();
-            o.edition = edition;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.versions = versions;
-            return o;
+            final var _resultValue = new GetVersionsResult();
+            _resultValue.edition = edition;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.versions = versions;
+            return _resultValue;
         }
     }
 }

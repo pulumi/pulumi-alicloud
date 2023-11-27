@@ -126,15 +126,15 @@ public final class GetFlowsResult {
             return this;
         }
         public GetFlowsResult build() {
-            final var o = new GetFlowsResult();
-            o.flows = flows;
-            o.id = id;
-            o.ids = ids;
-            o.limit = limit;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetFlowsResult();
+            _resultValue.flows = flows;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.limit = limit;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

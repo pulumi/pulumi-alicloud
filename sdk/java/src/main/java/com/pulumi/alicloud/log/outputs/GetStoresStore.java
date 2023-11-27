@@ -65,10 +65,10 @@ public final class GetStoresStore {
             return this;
         }
         public GetStoresStore build() {
-            final var o = new GetStoresStore();
-            o.id = id;
-            o.storeName = storeName;
-            return o;
+            final var _resultValue = new GetStoresStore();
+            _resultValue.id = id;
+            _resultValue.storeName = storeName;
+            return _resultValue;
         }
     }
 }

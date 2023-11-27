@@ -184,16 +184,16 @@ public final class GetGlobalDatabaseNetworksNetwork {
             return this;
         }
         public GetGlobalDatabaseNetworksNetwork build() {
-            final var o = new GetGlobalDatabaseNetworksNetwork();
-            o.createTime = createTime;
-            o.dbClusters = dbClusters;
-            o.dbType = dbType;
-            o.dbVersion = dbVersion;
-            o.description = description;
-            o.gdnId = gdnId;
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetGlobalDatabaseNetworksNetwork();
+            _resultValue.createTime = createTime;
+            _resultValue.dbClusters = dbClusters;
+            _resultValue.dbType = dbType;
+            _resultValue.dbVersion = dbVersion;
+            _resultValue.description = description;
+            _resultValue.gdnId = gdnId;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

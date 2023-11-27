@@ -123,7 +123,7 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
      * The ID of the Alibaba Cloud account (primary account) of the receiving end of the VPC peering connection to be created.-Enter the ID of your Alibaba Cloud account to create a peer-to-peer connection to the VPC account.-Enter the ID of another Alibaba Cloud account to create a cross-account VPC peer-to-peer connection.&gt; If the recipient account is a RAM user (sub-account), enter the ID of the Alibaba Cloud account corresponding to the RAM user.
      * 
      */
-    @Export(name="acceptingOwnerUid", type=Integer.class, parameters={})
+    @Export(name="acceptingOwnerUid", refs={Integer.class}, tree="[0]")
     private Output<Integer> acceptingOwnerUid;
 
     /**
@@ -137,7 +137,7 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
      * The region ID of the recipient of the VPC peering connection to be created.-When creating a VPC peer-to-peer connection in the same region, enter the same region ID as the region ID of the initiator.-When creating a cross-region VPC peer-to-peer connection, enter a region ID that is different from the region ID of the initiator.
      * 
      */
-    @Export(name="acceptingRegionId", type=String.class, parameters={})
+    @Export(name="acceptingRegionId", refs={String.class}, tree="[0]")
     private Output<String> acceptingRegionId;
 
     /**
@@ -151,7 +151,7 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
      * The VPC ID of the receiving end of the VPC peer connection.
      * 
      */
-    @Export(name="acceptingVpcId", type=String.class, parameters={})
+    @Export(name="acceptingVpcId", refs={String.class}, tree="[0]")
     private Output<String> acceptingVpcId;
 
     /**
@@ -165,7 +165,7 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
      * The bandwidth of the VPC peering connection to be modified. Unit: Mbps. The value range is an integer greater than 0.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
@@ -179,7 +179,7 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
      * The description of the VPC peer connection to be created.It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with http:// or https.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -193,7 +193,7 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
      * The dry run.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -207,7 +207,7 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
      * The ID of the instance of the created VPC peer connection.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -221,7 +221,7 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
      * The name of the resource
      * 
      */
-    @Export(name="peerConnectionAccepterName", type=String.class, parameters={})
+    @Export(name="peerConnectionAccepterName", refs={String.class}, tree="[0]")
     private Output<String> peerConnectionAccepterName;
 
     /**
@@ -235,7 +235,7 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
      * The status of the resource
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -249,7 +249,7 @@ public class PeerConnectionAccepter extends com.pulumi.resources.CustomResource 
      * You must create a VPC ID on the initiator of a VPC peer connection.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

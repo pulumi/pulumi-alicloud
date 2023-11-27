@@ -202,22 +202,22 @@ public final class GetServerlessInstancesResult {
             return this;
         }
         public GetServerlessInstancesResult build() {
-            final var o = new GetServerlessInstancesResult();
-            o.dbInstanceClass = dbInstanceClass;
-            o.dbInstanceDescription = dbInstanceDescription;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.instances = instances;
-            o.networkType = networkType;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetServerlessInstancesResult();
+            _resultValue.dbInstanceClass = dbInstanceClass;
+            _resultValue.dbInstanceDescription = dbInstanceDescription;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instances = instances;
+            _resultValue.networkType = networkType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

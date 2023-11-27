@@ -101,7 +101,7 @@ public class PrivateZone extends com.pulumi.resources.CustomResource {
      * The access region. The access region is the region of the cloud resource that accesses the PrivateZone service through CEN.
      * 
      */
-    @Export(name="accessRegionId", type=String.class, parameters={})
+    @Export(name="accessRegionId", refs={String.class}, tree="[0]")
     private Output<String> accessRegionId;
 
     /**
@@ -115,7 +115,7 @@ public class PrivateZone extends com.pulumi.resources.CustomResource {
      * The ID of the CEN instance.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
@@ -129,7 +129,7 @@ public class PrivateZone extends com.pulumi.resources.CustomResource {
      * The service region. The service region is the target region of the PrivateZone service to be accessed through CEN.
      * 
      */
-    @Export(name="hostRegionId", type=String.class, parameters={})
+    @Export(name="hostRegionId", refs={String.class}, tree="[0]")
     private Output<String> hostRegionId;
 
     /**
@@ -145,7 +145,7 @@ public class PrivateZone extends com.pulumi.resources.CustomResource {
      * -&gt;**NOTE:** The &#34;alicloud.cen.PrivateZone&#34; resource depends on the related &#34;alicloud.cen.InstanceAttachment&#34; resource.
      * 
      */
-    @Export(name="hostVpcId", type=String.class, parameters={})
+    @Export(name="hostVpcId", refs={String.class}, tree="[0]")
     private Output<String> hostVpcId;
 
     /**
@@ -161,7 +161,7 @@ public class PrivateZone extends com.pulumi.resources.CustomResource {
      * The status of the PrivateZone service. Valid values: [&#34;Creating&#34;, &#34;Active&#34;, &#34;Deleting&#34;].
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

@@ -139,15 +139,15 @@ public final class GetVbrPconnAssociationsResult {
             return this;
         }
         public GetVbrPconnAssociationsResult build() {
-            final var o = new GetVbrPconnAssociationsResult();
-            o.associations = associations;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.vbrId = vbrId;
-            return o;
+            final var _resultValue = new GetVbrPconnAssociationsResult();
+            _resultValue.associations = associations;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.vbrId = vbrId;
+            return _resultValue;
         }
     }
 }

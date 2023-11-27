@@ -72,10 +72,10 @@ public final class RuleRuleActionForwardGroupConfig {
             return serverGroupTuples(List.of(serverGroupTuples));
         }
         public RuleRuleActionForwardGroupConfig build() {
-            final var o = new RuleRuleActionForwardGroupConfig();
-            o.serverGroupStickySession = serverGroupStickySession;
-            o.serverGroupTuples = serverGroupTuples;
-            return o;
+            final var _resultValue = new RuleRuleActionForwardGroupConfig();
+            _resultValue.serverGroupStickySession = serverGroupStickySession;
+            _resultValue.serverGroupTuples = serverGroupTuples;
+            return _resultValue;
         }
     }
 }

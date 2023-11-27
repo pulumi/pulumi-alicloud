@@ -35,7 +35,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Auto-renewal period of an Elasticsearch Instance, in the unit of the month. It is valid when `instance_charge_type` is `PrePaid` and `renew_status` is `AutoRenewal`.
      * 
      */
-    @Export(name="autoRenewDuration", type=Integer.class, parameters={})
+    @Export(name="autoRenewDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewDuration;
 
     /**
@@ -49,7 +49,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Elasticsearch cluster&#39;s client node quantity, between 2 and 25.
      * 
      */
-    @Export(name="clientNodeAmount", type=Integer.class, parameters={})
+    @Export(name="clientNodeAmount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> clientNodeAmount;
 
     /**
@@ -63,7 +63,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The client node spec. If specified, client node will be created.
      * 
      */
-    @Export(name="clientNodeSpec", type=String.class, parameters={})
+    @Export(name="clientNodeSpec", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientNodeSpec;
 
     /**
@@ -77,7 +77,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Elasticsearch cluster&#39;s data node quantity, between 2 and 50.
      * 
      */
-    @Export(name="dataNodeAmount", type=Integer.class, parameters={})
+    @Export(name="dataNodeAmount", refs={Integer.class}, tree="[0]")
     private Output<Integer> dataNodeAmount;
 
     /**
@@ -91,7 +91,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * If encrypt the data node disk. Valid values are `true`, `false`. Default to `false`.
      * 
      */
-    @Export(name="dataNodeDiskEncrypted", type=Boolean.class, parameters={})
+    @Export(name="dataNodeDiskEncrypted", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dataNodeDiskEncrypted;
 
     /**
@@ -105,7 +105,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Cloud disk performance level. Valid values are `PL0`, `PL1`, `PL2`, `PL3`. The `data_node_disk_type` muse be `cloud_essd`.
      * 
      */
-    @Export(name="dataNodeDiskPerformanceLevel", type=String.class, parameters={})
+    @Export(name="dataNodeDiskPerformanceLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataNodeDiskPerformanceLevel;
 
     /**
@@ -119,7 +119,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The single data node storage space.
      * 
      */
-    @Export(name="dataNodeDiskSize", type=Integer.class, parameters={})
+    @Export(name="dataNodeDiskSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> dataNodeDiskSize;
 
     /**
@@ -133,7 +133,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The data node disk type. Supported values: cloud_ssd, cloud_efficiency.
      * 
      */
-    @Export(name="dataNodeDiskType", type=String.class, parameters={})
+    @Export(name="dataNodeDiskType", refs={String.class}, tree="[0]")
     private Output<String> dataNodeDiskType;
 
     /**
@@ -147,7 +147,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The data node specifications of the Elasticsearch instance.
      * 
      */
-    @Export(name="dataNodeSpec", type=String.class, parameters={})
+    @Export(name="dataNodeSpec", refs={String.class}, tree="[0]")
     private Output<String> dataNodeSpec;
 
     /**
@@ -161,7 +161,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The description of instance. It a string of 0 to 30 characters.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -175,7 +175,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance connection domain (only VPC network access supported).
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
@@ -189,7 +189,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Bool, default to false. When it set to true, the instance can close kibana private network access。
      * 
      */
-    @Export(name="enableKibanaPrivateNetwork", type=Boolean.class, parameters={})
+    @Export(name="enableKibanaPrivateNetwork", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableKibanaPrivateNetwork;
 
     /**
@@ -203,7 +203,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Bool, default to true. When it set to false, the instance can enable kibana public network access。
      * 
      */
-    @Export(name="enableKibanaPublicNetwork", type=Boolean.class, parameters={})
+    @Export(name="enableKibanaPublicNetwork", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableKibanaPublicNetwork;
 
     /**
@@ -217,7 +217,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Bool, default to false. When it set to true, the instance can enable public network access。
      * 
      */
-    @Export(name="enablePublic", type=Boolean.class, parameters={})
+    @Export(name="enablePublic", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enablePublic;
 
     /**
@@ -231,7 +231,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Valid values are `PrePaid`, `PostPaid`. Default to `PostPaid`. From version 1.69.0, the Elasticsearch cluster allows you to update your instance_charge_ype from `PostPaid` to `PrePaid`, the following attributes are required: `period`. But, updating from `PostPaid` to `PrePaid` is not supported.
      * 
      */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceChargeType;
 
     /**
@@ -245,7 +245,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Kibana console domain (Internet access supported).
      * 
      */
-    @Export(name="kibanaDomain", type=String.class, parameters={})
+    @Export(name="kibanaDomain", refs={String.class}, tree="[0]")
     private Output<String> kibanaDomain;
 
     /**
@@ -259,7 +259,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The kibana node specifications of the Elasticsearch instance. Default is `elasticsearch.n4.small`.
      * 
      */
-    @Export(name="kibanaNodeSpec", type=String.class, parameters={})
+    @Export(name="kibanaNodeSpec", refs={String.class}, tree="[0]")
     private Output<String> kibanaNodeSpec;
 
     /**
@@ -273,7 +273,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Kibana console port.
      * 
      */
-    @Export(name="kibanaPort", type=Integer.class, parameters={})
+    @Export(name="kibanaPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> kibanaPort;
 
     /**
@@ -287,7 +287,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Set the Kibana&#39;s IP whitelist in private network.
      * 
      */
-    @Export(name="kibanaPrivateWhitelists", type=List.class, parameters={String.class})
+    @Export(name="kibanaPrivateWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> kibanaPrivateWhitelists;
 
     /**
@@ -301,7 +301,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Set the Kibana&#39;s IP whitelist in internet network.
      * 
      */
-    @Export(name="kibanaWhitelists", type=List.class, parameters={String.class})
+    @Export(name="kibanaWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> kibanaWhitelists;
 
     /**
@@ -315,7 +315,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * An KMS encrypts password used to an instance. If the `password` is filled in, this field will be ignored, but you have to specify one of `password` and `kms_encrypted_password` fields.
      * 
      */
-    @Export(name="kmsEncryptedPassword", type=String.class, parameters={})
+    @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
@@ -329,7 +329,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating instance with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      */
-    @Export(name="kmsEncryptionContext", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="kmsEncryptionContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> kmsEncryptionContext;
 
     /**
@@ -343,7 +343,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The single master node storage space. Valid values are `PrePaid`, `PostPaid`.
      * 
      */
-    @Export(name="masterNodeDiskType", type=String.class, parameters={})
+    @Export(name="masterNodeDiskType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> masterNodeDiskType;
 
     /**
@@ -357,7 +357,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The dedicated master node spec. If specified, dedicated master node will be created.
      * 
      */
-    @Export(name="masterNodeSpec", type=String.class, parameters={})
+    @Export(name="masterNodeSpec", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> masterNodeSpec;
 
     /**
@@ -371,7 +371,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The password of the instance. The password can be 8 to 30 characters in length and must contain three of the following conditions: uppercase letters, lowercase letters, numbers, and special characters (`!@#$%^&amp;*()_+-=`).
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -385,7 +385,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The duration that you will buy Elasticsearch instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. Default to 1. From version 1.69.2, when to modify this value, the resource can renewal a `PrePaid` instance.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -399,7 +399,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance connection port.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output<Integer> port;
 
     /**
@@ -413,7 +413,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Set the instance&#39;s IP whitelist in VPC network.
      * 
      */
-    @Export(name="privateWhitelists", type=List.class, parameters={String.class})
+    @Export(name="privateWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> privateWhitelists;
 
     /**
@@ -427,7 +427,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Elasticsearch protocol. Supported values: `HTTP`, `HTTPS`.default is `HTTP`.
      * 
      */
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> protocol;
 
     /**
@@ -441,7 +441,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance connection public domain.
      * 
      */
-    @Export(name="publicDomain", type=String.class, parameters={})
+    @Export(name="publicDomain", refs={String.class}, tree="[0]")
     private Output<String> publicDomain;
 
     /**
@@ -455,7 +455,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance connection public port.
      * 
      */
-    @Export(name="publicPort", type=Integer.class, parameters={})
+    @Export(name="publicPort", refs={Integer.class}, tree="[0]")
     private Output<Integer> publicPort;
 
     /**
@@ -469,7 +469,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Set the instance&#39;s IP whitelist in internet network.
      * 
      */
-    @Export(name="publicWhitelists", type=List.class, parameters={String.class})
+    @Export(name="publicWhitelists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> publicWhitelists;
 
     /**
@@ -483,7 +483,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The renewal status of the specified instance. Valid values: `AutoRenewal`, `ManualRenewal`, `NotRenewal`.The `instance_charge_type` must be `PrePaid`.
      * 
      */
-    @Export(name="renewStatus", type=String.class, parameters={})
+    @Export(name="renewStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> renewStatus;
 
     /**
@@ -497,7 +497,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `M`, `Y`.
      * 
      */
-    @Export(name="renewalDurationUnit", type=String.class, parameters={})
+    @Export(name="renewalDurationUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> renewalDurationUnit;
 
     /**
@@ -511,7 +511,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of resource group which the Elasticsearch instance belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -525,7 +525,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The YML configuration of the instance.[Detailed introduction](https://www.alibabacloud.com/help/doc-detail/61336.html).
      * 
      */
-    @Export(name="settingConfig", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="settingConfig", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> settingConfig;
 
     /**
@@ -539,7 +539,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Elasticsearch instance status. Includes `active`, `activating`, `inactive`. Some operations are denied when status is not `active`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -553,7 +553,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -567,7 +567,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Elasticsearch version. Supported values: `5.5.3_with_X-Pack`, `6.3_with_X-Pack`, `6.7_with_X-Pack`, `6.8_with_X-Pack`, `7.4_with_X-Pack` and `7.7_with_X-Pack`.
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
@@ -581,7 +581,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID of VSwitch.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -595,7 +595,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Multi-AZ supported for Elasticsearch, between 1 and 3. The `data_node_amount` value must be an integral multiple of the `zone_count` value.
      * 
      */
-    @Export(name="zoneCount", type=Integer.class, parameters={})
+    @Export(name="zoneCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> zoneCount;
 
     /**

@@ -104,12 +104,12 @@ public final class GetElasticityAssurancesAssuranceAllocatedResource {
             return this;
         }
         public GetElasticityAssurancesAssuranceAllocatedResource build() {
-            final var o = new GetElasticityAssurancesAssuranceAllocatedResource();
-            o.instanceType = instanceType;
-            o.totalAmount = totalAmount;
-            o.usedAmount = usedAmount;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetElasticityAssurancesAssuranceAllocatedResource();
+            _resultValue.instanceType = instanceType;
+            _resultValue.totalAmount = totalAmount;
+            _resultValue.usedAmount = usedAmount;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

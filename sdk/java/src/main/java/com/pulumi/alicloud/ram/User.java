@@ -74,7 +74,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Comment of the RAM user. This parameter can have a string of 1 to 128 characters.
      * 
      */
-    @Export(name="comments", type=String.class, parameters={})
+    @Export(name="comments", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comments;
 
     /**
@@ -88,7 +88,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Name of the RAM user which for display. This name can have a string of 1 to 128 characters or Chinese characters, must contain only alphanumeric characters or Chinese characters or hyphens, such as &#34;-&#34;,&#34;.&#34;, and must not end with a hyphen.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -102,7 +102,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Email of the RAM user.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> email;
 
     /**
@@ -116,7 +116,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * This parameter is used for resource destroy. Default value: `false`.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -130,7 +130,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Phone number of the RAM user. This number must contain an international area code prefix, just look like this: 86-18600008888.
      * 
      */
-    @Export(name="mobile", type=String.class, parameters={})
+    @Export(name="mobile", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mobile;
 
     /**
@@ -144,7 +144,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * Name of the RAM user. This name can have a string of 1 to 64 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin with a hyphen.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

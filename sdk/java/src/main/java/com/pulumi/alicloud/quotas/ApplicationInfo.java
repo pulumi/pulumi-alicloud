@@ -20,109 +20,109 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="alicloud:quotas/applicationInfo:ApplicationInfo")
 public class ApplicationInfo extends com.pulumi.resources.CustomResource {
-    @Export(name="approveValue", type=String.class, parameters={})
+    @Export(name="approveValue", refs={String.class}, tree="[0]")
     private Output<String> approveValue;
 
     public Output<String> approveValue() {
         return this.approveValue;
     }
-    @Export(name="auditMode", type=String.class, parameters={})
+    @Export(name="auditMode", refs={String.class}, tree="[0]")
     private Output<String> auditMode;
 
     public Output<String> auditMode() {
         return this.auditMode;
     }
-    @Export(name="auditReason", type=String.class, parameters={})
+    @Export(name="auditReason", refs={String.class}, tree="[0]")
     private Output<String> auditReason;
 
     public Output<String> auditReason() {
         return this.auditReason;
     }
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     public Output<String> createTime() {
         return this.createTime;
     }
-    @Export(name="desireValue", type=Double.class, parameters={})
+    @Export(name="desireValue", refs={Double.class}, tree="[0]")
     private Output<Double> desireValue;
 
     public Output<Double> desireValue() {
         return this.desireValue;
     }
-    @Export(name="dimensions", type=List.class, parameters={ApplicationInfoDimension.class})
+    @Export(name="dimensions", refs={List.class,ApplicationInfoDimension.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApplicationInfoDimension>> dimensions;
 
     public Output<Optional<List<ApplicationInfoDimension>>> dimensions() {
         return Codegen.optional(this.dimensions);
     }
-    @Export(name="effectiveTime", type=String.class, parameters={})
+    @Export(name="effectiveTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> effectiveTime;
 
     public Output<Optional<String>> effectiveTime() {
         return Codegen.optional(this.effectiveTime);
     }
-    @Export(name="envLanguage", type=String.class, parameters={})
+    @Export(name="envLanguage", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> envLanguage;
 
     public Output<Optional<String>> envLanguage() {
         return Codegen.optional(this.envLanguage);
     }
-    @Export(name="expireTime", type=String.class, parameters={})
+    @Export(name="expireTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expireTime;
 
     public Output<Optional<String>> expireTime() {
         return Codegen.optional(this.expireTime);
     }
-    @Export(name="noticeType", type=Integer.class, parameters={})
+    @Export(name="noticeType", refs={Integer.class}, tree="[0]")
     private Output<Integer> noticeType;
 
     public Output<Integer> noticeType() {
         return this.noticeType;
     }
-    @Export(name="productCode", type=String.class, parameters={})
+    @Export(name="productCode", refs={String.class}, tree="[0]")
     private Output<String> productCode;
 
     public Output<String> productCode() {
         return this.productCode;
     }
-    @Export(name="quotaActionCode", type=String.class, parameters={})
+    @Export(name="quotaActionCode", refs={String.class}, tree="[0]")
     private Output<String> quotaActionCode;
 
     public Output<String> quotaActionCode() {
         return this.quotaActionCode;
     }
-    @Export(name="quotaCategory", type=String.class, parameters={})
+    @Export(name="quotaCategory", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> quotaCategory;
 
     public Output<Optional<String>> quotaCategory() {
         return Codegen.optional(this.quotaCategory);
     }
-    @Export(name="quotaDescription", type=String.class, parameters={})
+    @Export(name="quotaDescription", refs={String.class}, tree="[0]")
     private Output<String> quotaDescription;
 
     public Output<String> quotaDescription() {
         return this.quotaDescription;
     }
-    @Export(name="quotaName", type=String.class, parameters={})
+    @Export(name="quotaName", refs={String.class}, tree="[0]")
     private Output<String> quotaName;
 
     public Output<String> quotaName() {
         return this.quotaName;
     }
-    @Export(name="quotaUnit", type=String.class, parameters={})
+    @Export(name="quotaUnit", refs={String.class}, tree="[0]")
     private Output<String> quotaUnit;
 
     public Output<String> quotaUnit() {
         return this.quotaUnit;
     }
-    @Export(name="reason", type=String.class, parameters={})
+    @Export(name="reason", refs={String.class}, tree="[0]")
     private Output<String> reason;
 
     public Output<String> reason() {
         return this.reason;
     }
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     public Output<String> status() {

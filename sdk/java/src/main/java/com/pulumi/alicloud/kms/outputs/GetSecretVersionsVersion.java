@@ -126,13 +126,13 @@ public final class GetSecretVersionsVersion {
             return versionStages(List.of(versionStages));
         }
         public GetSecretVersionsVersion build() {
-            final var o = new GetSecretVersionsVersion();
-            o.secretData = secretData;
-            o.secretDataType = secretDataType;
-            o.secretName = secretName;
-            o.versionId = versionId;
-            o.versionStages = versionStages;
-            return o;
+            final var _resultValue = new GetSecretVersionsVersion();
+            _resultValue.secretData = secretData;
+            _resultValue.secretDataType = secretDataType;
+            _resultValue.secretName = secretName;
+            _resultValue.versionId = versionId;
+            _resultValue.versionStages = versionStages;
+            return _resultValue;
         }
     }
 }

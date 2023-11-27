@@ -273,18 +273,18 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.description = description;
-            o.id = id;
-            o.instanceStatus = instanceStatus;
-            o.licenseCode = licenseCode;
-            o.privateDomain = privateDomain;
-            o.publicDomain = publicDomain;
-            o.publicNetworkAccess = publicNetworkAccess;
-            o.securityGroupIds = securityGroupIds;
-            o.tags = tags;
-            o.userVswitchId = userVswitchId;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.instanceStatus = instanceStatus;
+            _resultValue.licenseCode = licenseCode;
+            _resultValue.privateDomain = privateDomain;
+            _resultValue.publicDomain = publicDomain;
+            _resultValue.publicNetworkAccess = publicNetworkAccess;
+            _resultValue.securityGroupIds = securityGroupIds;
+            _resultValue.tags = tags;
+            _resultValue.userVswitchId = userVswitchId;
+            return _resultValue;
         }
     }
 }

@@ -44,7 +44,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of defined column. The number of `defined_column` should not be more than 32. See `defined_column` below.
      * 
      */
-    @Export(name="definedColumns", type=List.class, parameters={TableDefinedColumn.class})
+    @Export(name="definedColumns", refs={List.class,TableDefinedColumn.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TableDefinedColumn>> definedColumns;
 
     /**
@@ -58,7 +58,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * The max version offset of the table. The valid value is 1-9223372036854775807. Defaults to 86400.
      * 
      */
-    @Export(name="deviationCellVersionInSec", type=String.class, parameters={})
+    @Export(name="deviationCellVersionInSec", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> deviationCellVersionInSec;
 
     /**
@@ -72,7 +72,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * Whether enable OTS server side encryption. Default value is false.
      * 
      */
-    @Export(name="enableSse", type=Boolean.class, parameters={})
+    @Export(name="enableSse", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableSse;
 
     /**
@@ -86,7 +86,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * The name of the OTS instance in which table will located.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -100,7 +100,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * The maximum number of versions stored in this table. The valid value is 1-2147483647.
      * 
      */
-    @Export(name="maxVersion", type=Integer.class, parameters={})
+    @Export(name="maxVersion", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxVersion;
 
     /**
@@ -114,7 +114,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * The property of `TableMeta` which indicates the structure information of a table. It describes the attribute value of primary key. The number of `primary_key` should not be less than one and not be more than four. See `primary_key` below.
      * 
      */
-    @Export(name="primaryKeys", type=List.class, parameters={TablePrimaryKey.class})
+    @Export(name="primaryKeys", refs={List.class,TablePrimaryKey.class}, tree="[0,1]")
     private Output<List<TablePrimaryKey>> primaryKeys;
 
     /**
@@ -128,7 +128,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * The key type of OTS server side encryption. Only `SSE_KMS_SERVICE` is allowed.
      * 
      */
-    @Export(name="sseKeyType", type=String.class, parameters={})
+    @Export(name="sseKeyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sseKeyType;
 
     /**
@@ -142,7 +142,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * The table name of the OTS instance. If changed, a new table would be created.
      * 
      */
-    @Export(name="tableName", type=String.class, parameters={})
+    @Export(name="tableName", refs={String.class}, tree="[0]")
     private Output<String> tableName;
 
     /**
@@ -156,7 +156,7 @@ public class Table extends com.pulumi.resources.CustomResource {
      * The retention time of data stored in this table (unit: second). The value maximum is 2147483647 and -1 means never expired.
      * 
      */
-    @Export(name="timeToLive", type=Integer.class, parameters={})
+    @Export(name="timeToLive", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeToLive;
 
     /**

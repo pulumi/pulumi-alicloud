@@ -68,7 +68,7 @@ public class Vault extends com.pulumi.resources.CustomResource {
      * The description of Vault. Defaults to an empty string.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -82,7 +82,7 @@ public class Vault extends com.pulumi.resources.CustomResource {
      * Source Encryption Type，It is valid only when vault_type is `STANDARD` or `OTS_BACKUP`. Default value: `HBR_PRIVATE`. Valid values:
      * 
      */
-    @Export(name="encryptType", type=String.class, parameters={})
+    @Export(name="encryptType", refs={String.class}, tree="[0]")
     private Output<String> encryptType;
 
     /**
@@ -96,7 +96,7 @@ public class Vault extends com.pulumi.resources.CustomResource {
      * The key id or alias name of Alibaba Cloud Kms. It is required and valid only when encrypt_type is `KMS`.
      * 
      */
-    @Export(name="kmsKeyId", type=String.class, parameters={})
+    @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKeyId;
 
     /**
@@ -110,7 +110,7 @@ public class Vault extends com.pulumi.resources.CustomResource {
      * The status of the Vault.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -124,7 +124,7 @@ public class Vault extends com.pulumi.resources.CustomResource {
      * The name of Vault.
      * 
      */
-    @Export(name="vaultName", type=String.class, parameters={})
+    @Export(name="vaultName", refs={String.class}, tree="[0]")
     private Output<String> vaultName;
 
     /**
@@ -138,7 +138,7 @@ public class Vault extends com.pulumi.resources.CustomResource {
      * The storage class of Vault. Valid values: `STANDARD`.
      * 
      */
-    @Export(name="vaultStorageClass", type=String.class, parameters={})
+    @Export(name="vaultStorageClass", refs={String.class}, tree="[0]")
     private Output<String> vaultStorageClass;
 
     /**
@@ -152,7 +152,7 @@ public class Vault extends com.pulumi.resources.CustomResource {
      * The type of Vault. Valid values: `STANDARD`, `OTS_BACKUP`.
      * 
      */
-    @Export(name="vaultType", type=String.class, parameters={})
+    @Export(name="vaultType", refs={String.class}, tree="[0]")
     private Output<String> vaultType;
 
     /**

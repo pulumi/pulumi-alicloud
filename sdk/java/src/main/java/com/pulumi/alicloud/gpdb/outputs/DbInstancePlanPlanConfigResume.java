@@ -67,10 +67,10 @@ public final class DbInstancePlanPlanConfigResume {
             return this;
         }
         public DbInstancePlanPlanConfigResume build() {
-            final var o = new DbInstancePlanPlanConfigResume();
-            o.executeTime = executeTime;
-            o.planCronTime = planCronTime;
-            return o;
+            final var _resultValue = new DbInstancePlanPlanConfigResume();
+            _resultValue.executeTime = executeTime;
+            _resultValue.planCronTime = planCronTime;
+            return _resultValue;
         }
     }
 }

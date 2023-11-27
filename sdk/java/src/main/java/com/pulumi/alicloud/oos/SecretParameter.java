@@ -92,7 +92,7 @@ public class SecretParameter extends com.pulumi.resources.CustomResource {
      * The constraints of the encryption parameter. By default, this parameter is null. Valid values:
      * 
      */
-    @Export(name="constraints", type=String.class, parameters={})
+    @Export(name="constraints", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> constraints;
 
     /**
@@ -106,7 +106,7 @@ public class SecretParameter extends com.pulumi.resources.CustomResource {
      * The description of the encryption parameter. The description must be `1` to `200` characters in length.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -120,7 +120,7 @@ public class SecretParameter extends com.pulumi.resources.CustomResource {
      * The Customer Master Key (CMK) of Key Management Service (KMS) that is used to encrypt the parameter.
      * 
      */
-    @Export(name="keyId", type=String.class, parameters={})
+    @Export(name="keyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyId;
 
     /**
@@ -134,7 +134,7 @@ public class SecretParameter extends com.pulumi.resources.CustomResource {
      * The ID of the Resource Group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -148,7 +148,7 @@ public class SecretParameter extends com.pulumi.resources.CustomResource {
      * The name of the encryption parameter.  The name must be `2` to `180` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/) and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, `ALICLOUD`, or `OOS`.
      * 
      */
-    @Export(name="secretParameterName", type=String.class, parameters={})
+    @Export(name="secretParameterName", refs={String.class}, tree="[0]")
     private Output<String> secretParameterName;
 
     /**
@@ -162,7 +162,7 @@ public class SecretParameter extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -176,7 +176,7 @@ public class SecretParameter extends com.pulumi.resources.CustomResource {
      * The data type of the encryption parameter. Valid values: `Secret`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -190,7 +190,7 @@ public class SecretParameter extends com.pulumi.resources.CustomResource {
      * The value of the encryption parameter. The value must be `1` to `4096` characters in length.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**

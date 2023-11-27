@@ -138,14 +138,14 @@ public final class GetKubernetesAddonsResult {
             return names(List.of(names));
         }
         public GetKubernetesAddonsResult build() {
-            final var o = new GetKubernetesAddonsResult();
-            o.addons = addons;
-            o.clusterId = clusterId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            return o;
+            final var _resultValue = new GetKubernetesAddonsResult();
+            _resultValue.addons = addons;
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            return _resultValue;
         }
     }
 }

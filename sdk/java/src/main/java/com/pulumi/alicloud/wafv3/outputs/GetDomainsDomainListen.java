@@ -308,22 +308,22 @@ public final class GetDomainsDomainListen {
             return xffHeaders(List.of(xffHeaders));
         }
         public GetDomainsDomainListen build() {
-            final var o = new GetDomainsDomainListen();
-            o.certId = certId;
-            o.cipherSuite = cipherSuite;
-            o.customCiphers = customCiphers;
-            o.enableTlsv3 = enableTlsv3;
-            o.exclusiveIp = exclusiveIp;
-            o.focusHttps = focusHttps;
-            o.http2Enabled = http2Enabled;
-            o.httpPorts = httpPorts;
-            o.httpsPorts = httpsPorts;
-            o.ipv6Enabled = ipv6Enabled;
-            o.protectionResource = protectionResource;
-            o.tlsVersion = tlsVersion;
-            o.xffHeaderMode = xffHeaderMode;
-            o.xffHeaders = xffHeaders;
-            return o;
+            final var _resultValue = new GetDomainsDomainListen();
+            _resultValue.certId = certId;
+            _resultValue.cipherSuite = cipherSuite;
+            _resultValue.customCiphers = customCiphers;
+            _resultValue.enableTlsv3 = enableTlsv3;
+            _resultValue.exclusiveIp = exclusiveIp;
+            _resultValue.focusHttps = focusHttps;
+            _resultValue.http2Enabled = http2Enabled;
+            _resultValue.httpPorts = httpPorts;
+            _resultValue.httpsPorts = httpsPorts;
+            _resultValue.ipv6Enabled = ipv6Enabled;
+            _resultValue.protectionResource = protectionResource;
+            _resultValue.tlsVersion = tlsVersion;
+            _resultValue.xffHeaderMode = xffHeaderMode;
+            _resultValue.xffHeaders = xffHeaders;
+            return _resultValue;
         }
     }
 }

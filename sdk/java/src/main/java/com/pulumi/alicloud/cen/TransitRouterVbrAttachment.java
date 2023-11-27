@@ -108,7 +108,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * Auto publish route enabled.Default value is `false`.
      * 
      */
-    @Export(name="autoPublishRouteEnabled", type=Boolean.class, parameters={})
+    @Export(name="autoPublishRouteEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoPublishRouteEnabled;
 
     /**
@@ -122,7 +122,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * The ID of the CEN.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
@@ -136,7 +136,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * The dry run.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -152,7 +152,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * -&gt;**NOTE:** Ensure that the vbr is not used in Express Connect.
      * 
      */
-    @Export(name="resourceType", type=String.class, parameters={})
+    @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceType;
 
     /**
@@ -168,7 +168,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * Whether to enabled route table association. The system default value is `true`.
      * 
      */
-    @Export(name="routeTableAssociationEnabled", type=Boolean.class, parameters={})
+    @Export(name="routeTableAssociationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTableAssociationEnabled;
 
     /**
@@ -182,7 +182,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * Whether to enabled route table propagation. The system default value is `true`.
      * 
      */
-    @Export(name="routeTablePropagationEnabled", type=Boolean.class, parameters={})
+    @Export(name="routeTablePropagationEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> routeTablePropagationEnabled;
 
     /**
@@ -196,7 +196,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * The associating status of the network.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -210,7 +210,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -224,7 +224,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * The description of the transit router vbr attachment.
      * 
      */
-    @Export(name="transitRouterAttachmentDescription", type=String.class, parameters={})
+    @Export(name="transitRouterAttachmentDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterAttachmentDescription;
 
     /**
@@ -238,7 +238,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * The id of the transit router vbr attachment.
      * 
      */
-    @Export(name="transitRouterAttachmentId", type=String.class, parameters={})
+    @Export(name="transitRouterAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentId;
 
     /**
@@ -252,7 +252,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * The name of the transit router vbr attachment.
      * 
      */
-    @Export(name="transitRouterAttachmentName", type=String.class, parameters={})
+    @Export(name="transitRouterAttachmentName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterAttachmentName;
 
     /**
@@ -266,7 +266,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * The ID of the transit router.
      * 
      */
-    @Export(name="transitRouterId", type=String.class, parameters={})
+    @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterId;
 
     /**
@@ -280,7 +280,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * The ID of the VBR.
      * 
      */
-    @Export(name="vbrId", type=String.class, parameters={})
+    @Export(name="vbrId", refs={String.class}, tree="[0]")
     private Output<String> vbrId;
 
     /**
@@ -294,7 +294,7 @@ public class TransitRouterVbrAttachment extends com.pulumi.resources.CustomResou
      * The owner id of the transit router vbr attachment.
      * 
      */
-    @Export(name="vbrOwnerId", type=String.class, parameters={})
+    @Export(name="vbrOwnerId", refs={String.class}, tree="[0]")
     private Output<String> vbrOwnerId;
 
     /**

@@ -67,10 +67,10 @@ public final class ClusterPostInstallScript {
             return this;
         }
         public ClusterPostInstallScript build() {
-            final var o = new ClusterPostInstallScript();
-            o.args = args;
-            o.url = url;
-            return o;
+            final var _resultValue = new ClusterPostInstallScript();
+            _resultValue.args = args;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

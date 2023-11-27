@@ -7,8 +7,10 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -19,14 +21,14 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     public static final VpcEndpointState Empty = new VpcEndpointState();
 
     /**
-     * The Bandwidth.
+     * The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
      * 
      */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
     /**
-     * @return The Bandwidth.
+     * @return The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
      * 
      */
     public Optional<Output<Integer>> bandwidth() {
@@ -34,14 +36,14 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of Connection.
+     * The state of the endpoint connection.
      * 
      */
     @Import(name="connectionStatus")
     private @Nullable Output<String> connectionStatus;
 
     /**
-     * @return The status of Connection.
+     * @return The state of the endpoint connection.
      * 
      */
     public Optional<Output<String>> connectionStatus() {
@@ -49,14 +51,33 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The dry run. Default to: `false`.
+     * The time when the endpoint was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The time when the endpoint was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return The dry run. Default to: `false`.
+     * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -64,14 +85,14 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of Endpoint Business.
+     * The service state of the endpoint.
      * 
      */
     @Import(name="endpointBusinessStatus")
     private @Nullable Output<String> endpointBusinessStatus;
 
     /**
-     * @return The status of Endpoint Business.
+     * @return The service state of the endpoint.
      * 
      */
     public Optional<Output<String>> endpointBusinessStatus() {
@@ -79,14 +100,14 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+     * The description of the endpoint.
      * 
      */
     @Import(name="endpointDescription")
     private @Nullable Output<String> endpointDescription;
 
     /**
-     * @return The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+     * @return The description of the endpoint.
      * 
      */
     public Optional<Output<String>> endpointDescription() {
@@ -94,14 +115,14 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Endpoint Domain.
+     * The domain name of the endpoint.
      * 
      */
     @Import(name="endpointDomain")
     private @Nullable Output<String> endpointDomain;
 
     /**
-     * @return The Endpoint Domain.
+     * @return The domain name of the endpoint.
      * 
      */
     public Optional<Output<String>> endpointDomain() {
@@ -109,14 +130,63 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The security group associated with the terminal node network card.
+     * The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * 
+     */
+    @Import(name="endpointType")
+    private @Nullable Output<String> endpointType;
+
+    /**
+     * @return The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+     * 
+     */
+    public Optional<Output<String>> endpointType() {
+        return Optional.ofNullable(this.endpointType);
+    }
+
+    /**
+     * Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+     * - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+     * - **false (default)**: disables user authentication.
+     * 
+     */
+    @Import(name="protectedEnabled")
+    private @Nullable Output<Boolean> protectedEnabled;
+
+    /**
+     * @return Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+     * - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+     * - **false (default)**: disables user authentication.
+     * 
+     */
+    public Optional<Output<Boolean>> protectedEnabled() {
+        return Optional.ofNullable(this.protectedEnabled);
+    }
+
+    /**
+     * The resource group ID.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The resource group ID.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
      * 
      */
     @Import(name="securityGroupIds")
     private @Nullable Output<List<String>> securityGroupIds;
 
     /**
-     * @return The security group associated with the terminal node network card.
+     * @return The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
      * 
      */
     public Optional<Output<List<String>>> securityGroupIds() {
@@ -124,14 +194,14 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The terminal node service associated with the terminal node.
+     * The ID of the endpoint service with which the endpoint is associated.
      * 
      */
     @Import(name="serviceId")
     private @Nullable Output<String> serviceId;
 
     /**
-     * @return The terminal node service associated with the terminal node.
+     * @return The ID of the endpoint service with which the endpoint is associated.
      * 
      */
     public Optional<Output<String>> serviceId() {
@@ -139,14 +209,14 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the terminal node service associated with the terminal node.
+     * The name of the endpoint service with which the endpoint is associated.
      * 
      */
     @Import(name="serviceName")
     private @Nullable Output<String> serviceName;
 
     /**
-     * @return The name of the terminal node service associated with the terminal node.
+     * @return The name of the endpoint service with which the endpoint is associated.
      * 
      */
     public Optional<Output<String>> serviceName() {
@@ -154,14 +224,14 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The status of Vpc Endpoint.
+     * The state of the endpoint.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of Vpc Endpoint.
+     * @return The state of the endpoint.
      * 
      */
     public Optional<Output<String>> status() {
@@ -169,14 +239,29 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+     * The list of tags.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return The list of tags.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The name of the endpoint.
      * 
      */
     @Import(name="vpcEndpointName")
     private @Nullable Output<String> vpcEndpointName;
 
     /**
-     * @return The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+     * @return The name of the endpoint.
      * 
      */
     public Optional<Output<String>> vpcEndpointName() {
@@ -184,18 +269,33 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The private network to which the terminal node belongs.
+     * The ID of the VPC to which the endpoint belongs.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The private network to which the terminal node belongs.
+     * @return The ID of the VPC to which the endpoint belongs.
      * 
      */
     public Optional<Output<String>> vpcId() {
         return Optional.ofNullable(this.vpcId);
+    }
+
+    /**
+     * The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+     * 
+     */
+    @Import(name="zonePrivateIpAddressCount")
+    private @Nullable Output<Integer> zonePrivateIpAddressCount;
+
+    /**
+     * @return The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+     * 
+     */
+    public Optional<Output<Integer>> zonePrivateIpAddressCount() {
+        return Optional.ofNullable(this.zonePrivateIpAddressCount);
     }
 
     private VpcEndpointState() {}
@@ -203,16 +303,22 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
     private VpcEndpointState(VpcEndpointState $) {
         this.bandwidth = $.bandwidth;
         this.connectionStatus = $.connectionStatus;
+        this.createTime = $.createTime;
         this.dryRun = $.dryRun;
         this.endpointBusinessStatus = $.endpointBusinessStatus;
         this.endpointDescription = $.endpointDescription;
         this.endpointDomain = $.endpointDomain;
+        this.endpointType = $.endpointType;
+        this.protectedEnabled = $.protectedEnabled;
+        this.resourceGroupId = $.resourceGroupId;
         this.securityGroupIds = $.securityGroupIds;
         this.serviceId = $.serviceId;
         this.serviceName = $.serviceName;
         this.status = $.status;
+        this.tags = $.tags;
         this.vpcEndpointName = $.vpcEndpointName;
         this.vpcId = $.vpcId;
+        this.zonePrivateIpAddressCount = $.zonePrivateIpAddressCount;
     }
 
     public static Builder builder() {
@@ -234,7 +340,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth The Bandwidth.
+         * @param bandwidth The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
          * 
          * @return builder
          * 
@@ -245,7 +351,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param bandwidth The Bandwidth.
+         * @param bandwidth The bandwidth of the endpoint connection.  1024 to 10240. Unit: Mbit/s.Note: The bandwidth of an endpoint connection is in the range of 100 to 10,240 Mbit/s. The default bandwidth is 1,024 Mbit/s. When the endpoint is connected to the endpoint service, the default bandwidth is the minimum bandwidth. In this case, the connection bandwidth range is 1,024 to 10,240 Mbit/s.
          * 
          * @return builder
          * 
@@ -255,7 +361,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionStatus The status of Connection.
+         * @param connectionStatus The state of the endpoint connection.
          * 
          * @return builder
          * 
@@ -266,7 +372,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionStatus The status of Connection.
+         * @param connectionStatus The state of the endpoint connection.
          * 
          * @return builder
          * 
@@ -276,7 +382,30 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun The dry run. Default to: `false`.
+         * @param createTime The time when the endpoint was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The time when the endpoint was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -287,7 +416,9 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param dryRun The dry run. Default to: `false`.
+         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -297,7 +428,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointBusinessStatus The status of Endpoint Business.
+         * @param endpointBusinessStatus The service state of the endpoint.
          * 
          * @return builder
          * 
@@ -308,7 +439,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointBusinessStatus The status of Endpoint Business.
+         * @param endpointBusinessStatus The service state of the endpoint.
          * 
          * @return builder
          * 
@@ -318,7 +449,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointDescription The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+         * @param endpointDescription The description of the endpoint.
          * 
          * @return builder
          * 
@@ -329,7 +460,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointDescription The description of Vpc Endpoint. The length is 2~256 characters and cannot start with `http://` and `https://`.
+         * @param endpointDescription The description of the endpoint.
          * 
          * @return builder
          * 
@@ -339,7 +470,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointDomain The Endpoint Domain.
+         * @param endpointDomain The domain name of the endpoint.
          * 
          * @return builder
          * 
@@ -350,7 +481,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param endpointDomain The Endpoint Domain.
+         * @param endpointDomain The domain name of the endpoint.
          * 
          * @return builder
          * 
@@ -360,7 +491,74 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds The security group associated with the terminal node network card.
+         * @param endpointType The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointType(@Nullable Output<String> endpointType) {
+            $.endpointType = endpointType;
+            return this;
+        }
+
+        /**
+         * @param endpointType The endpoint type.Only the value: Interface, indicating the Interface endpoint. You can add the service resource types of Application Load Balancer (ALB), Classic Load Balancer (CLB), and Network Load Balancer (NLB).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder endpointType(String endpointType) {
+            return endpointType(Output.of(endpointType));
+        }
+
+        /**
+         * @param protectedEnabled Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+         * - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+         * - **false (default)**: disables user authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protectedEnabled(@Nullable Output<Boolean> protectedEnabled) {
+            $.protectedEnabled = protectedEnabled;
+            return this;
+        }
+
+        /**
+         * @param protectedEnabled Specifies whether to enable user authentication. This parameter is available in Security Token Service (STS) mode. Valid values:
+         * - **true**: enables user authentication. After user authentication is enabled, only the user who creates the endpoint can modify or delete the endpoint in STS mode.
+         * - **false (default)**: disables user authentication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder protectedEnabled(Boolean protectedEnabled) {
+            return protectedEnabled(Output.of(protectedEnabled));
+        }
+
+        /**
+         * @param resourceGroupId The resource group ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The resource group ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param securityGroupIds The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
          * 
          * @return builder
          * 
@@ -371,7 +569,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds The security group associated with the terminal node network card.
+         * @param securityGroupIds The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
          * 
          * @return builder
          * 
@@ -381,7 +579,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param securityGroupIds The security group associated with the terminal node network card.
+         * @param securityGroupIds The ID of the security group that is associated with the endpoint ENI. The security group can be used to control data transfer between the VPC and the endpoint ENI.The endpoint can be associated with up to 10 security groups.
          * 
          * @return builder
          * 
@@ -391,7 +589,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceId The terminal node service associated with the terminal node.
+         * @param serviceId The ID of the endpoint service with which the endpoint is associated.
          * 
          * @return builder
          * 
@@ -402,7 +600,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceId The terminal node service associated with the terminal node.
+         * @param serviceId The ID of the endpoint service with which the endpoint is associated.
          * 
          * @return builder
          * 
@@ -412,7 +610,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The name of the terminal node service associated with the terminal node.
+         * @param serviceName The name of the endpoint service with which the endpoint is associated.
          * 
          * @return builder
          * 
@@ -423,7 +621,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceName The name of the terminal node service associated with the terminal node.
+         * @param serviceName The name of the endpoint service with which the endpoint is associated.
          * 
          * @return builder
          * 
@@ -433,7 +631,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of Vpc Endpoint.
+         * @param status The state of the endpoint.
          * 
          * @return builder
          * 
@@ -444,7 +642,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status The status of Vpc Endpoint.
+         * @param status The state of the endpoint.
          * 
          * @return builder
          * 
@@ -454,7 +652,28 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcEndpointName The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+         * @param tags The list of tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The list of tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param vpcEndpointName The name of the endpoint.
          * 
          * @return builder
          * 
@@ -465,7 +684,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcEndpointName The name of Vpc Endpoint. The length is between 2 and 128 characters, starting with English letters or Chinese, and can include numbers, hyphens (-) and underscores (_).
+         * @param vpcEndpointName The name of the endpoint.
          * 
          * @return builder
          * 
@@ -475,7 +694,7 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The private network to which the terminal node belongs.
+         * @param vpcId The ID of the VPC to which the endpoint belongs.
          * 
          * @return builder
          * 
@@ -486,13 +705,34 @@ public final class VpcEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The private network to which the terminal node belongs.
+         * @param vpcId The ID of the VPC to which the endpoint belongs.
          * 
          * @return builder
          * 
          */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
+        }
+
+        /**
+         * @param zonePrivateIpAddressCount The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zonePrivateIpAddressCount(@Nullable Output<Integer> zonePrivateIpAddressCount) {
+            $.zonePrivateIpAddressCount = zonePrivateIpAddressCount;
+            return this;
+        }
+
+        /**
+         * @param zonePrivateIpAddressCount The number of private IP addresses that are assigned to an elastic network interface (ENI) in each zone. Only 1 is returned.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zonePrivateIpAddressCount(Integer zonePrivateIpAddressCount) {
+            return zonePrivateIpAddressCount(Output.of(zonePrivateIpAddressCount));
         }
 
         public VpcEndpointState build() {

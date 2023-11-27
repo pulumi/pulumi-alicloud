@@ -85,12 +85,12 @@ public final class GetCharacterSetNamesResult {
             return this;
         }
         public GetCharacterSetNamesResult build() {
-            final var o = new GetCharacterSetNamesResult();
-            o.engine = engine;
-            o.id = id;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetCharacterSetNamesResult();
+            _resultValue.engine = engine;
+            _resultValue.id = id;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

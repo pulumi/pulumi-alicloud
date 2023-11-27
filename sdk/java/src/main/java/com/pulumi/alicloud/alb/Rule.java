@@ -43,7 +43,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The direction to which the forwarding rule is applied. Default value: `Request`. Valid values:
      * 
      */
-    @Export(name="direction", type=String.class, parameters={})
+    @Export(name="direction", refs={String.class}, tree="[0]")
     private Output<String> direction;
 
     /**
@@ -57,7 +57,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Specifies whether to precheck this request.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -71,7 +71,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The ID of the listener to which the forwarding rule belongs.
      * 
      */
-    @Export(name="listenerId", type=String.class, parameters={})
+    @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     /**
@@ -85,7 +85,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The priority of the rule. Valid values: 1 to 10000. A smaller value indicates a higher priority. **Note*:* The priority of each rule within the same listener must be unique.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
@@ -99,7 +99,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The actions of the forwarding rules. See `rule_actions` below.
      * 
      */
-    @Export(name="ruleActions", type=List.class, parameters={RuleRuleAction.class})
+    @Export(name="ruleActions", refs={List.class,RuleRuleAction.class}, tree="[0,1]")
     private Output<List<RuleRuleAction>> ruleActions;
 
     /**
@@ -113,7 +113,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The conditions of the forwarding rule. See `rule_conditions` below.
      * 
      */
-    @Export(name="ruleConditions", type=List.class, parameters={RuleRuleCondition.class})
+    @Export(name="ruleConditions", refs={List.class,RuleRuleCondition.class}, tree="[0,1]")
     private Output<List<RuleRuleCondition>> ruleConditions;
 
     /**
@@ -127,7 +127,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The name of the forwarding rule. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
-    @Export(name="ruleName", type=String.class, parameters={})
+    @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output<String> ruleName;
 
     /**
@@ -141,7 +141,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

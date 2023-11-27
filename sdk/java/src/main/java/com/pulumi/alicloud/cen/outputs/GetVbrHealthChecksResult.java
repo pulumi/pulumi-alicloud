@@ -174,16 +174,16 @@ public final class GetVbrHealthChecksResult {
             return this;
         }
         public GetVbrHealthChecksResult build() {
-            final var o = new GetVbrHealthChecksResult();
-            o.cenId = cenId;
-            o.checks = checks;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.vbrInstanceId = vbrInstanceId;
-            o.vbrInstanceOwnerId = vbrInstanceOwnerId;
-            o.vbrInstanceRegionId = vbrInstanceRegionId;
-            return o;
+            final var _resultValue = new GetVbrHealthChecksResult();
+            _resultValue.cenId = cenId;
+            _resultValue.checks = checks;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.vbrInstanceId = vbrInstanceId;
+            _resultValue.vbrInstanceOwnerId = vbrInstanceOwnerId;
+            _resultValue.vbrInstanceRegionId = vbrInstanceRegionId;
+            return _resultValue;
         }
     }
 }

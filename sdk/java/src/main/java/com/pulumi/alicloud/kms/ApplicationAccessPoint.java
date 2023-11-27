@@ -76,7 +76,7 @@ public class ApplicationAccessPoint extends com.pulumi.resources.CustomResource 
      * Application Access Point Name.
      * 
      */
-    @Export(name="applicationAccessPointName", type=String.class, parameters={})
+    @Export(name="applicationAccessPointName", refs={String.class}, tree="[0]")
     private Output<String> applicationAccessPointName;
 
     /**
@@ -90,7 +90,7 @@ public class ApplicationAccessPoint extends com.pulumi.resources.CustomResource 
      * Description .
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -104,7 +104,7 @@ public class ApplicationAccessPoint extends com.pulumi.resources.CustomResource 
      * The policies that have bound to the Application Access Point (AAP).
      * 
      */
-    @Export(name="policies", type=List.class, parameters={String.class})
+    @Export(name="policies", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> policies;
 
     /**

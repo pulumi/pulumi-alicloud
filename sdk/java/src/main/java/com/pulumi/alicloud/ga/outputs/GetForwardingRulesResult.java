@@ -122,15 +122,15 @@ public final class GetForwardingRulesResult {
             return this;
         }
         public GetForwardingRulesResult build() {
-            final var o = new GetForwardingRulesResult();
-            o.acceleratorId = acceleratorId;
-            o.forwardingRules = forwardingRules;
-            o.id = id;
-            o.ids = ids;
-            o.listenerId = listenerId;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetForwardingRulesResult();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.forwardingRules = forwardingRules;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.listenerId = listenerId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

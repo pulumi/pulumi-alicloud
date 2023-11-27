@@ -136,14 +136,14 @@ public final class GetEnterpriseProxyAccessesResult {
             return this;
         }
         public GetEnterpriseProxyAccessesResult build() {
-            final var o = new GetEnterpriseProxyAccessesResult();
-            o.accesses = accesses;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.proxyId = proxyId;
-            return o;
+            final var _resultValue = new GetEnterpriseProxyAccessesResult();
+            _resultValue.accesses = accesses;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.proxyId = proxyId;
+            return _resultValue;
         }
     }
 }

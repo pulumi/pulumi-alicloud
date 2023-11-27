@@ -97,7 +97,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * When deleting a template, whether to delete its related executions. Default to `false`.
      * 
      */
-    @Export(name="autoDeleteExecutions", type=Boolean.class, parameters={})
+    @Export(name="autoDeleteExecutions", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoDeleteExecutions;
 
     /**
@@ -111,7 +111,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The content of the template. The template must be in the JSON or YAML format. Maximum size: 64 KB.
      * 
      */
-    @Export(name="content", type=String.class, parameters={})
+    @Export(name="content", refs={String.class}, tree="[0]")
     private Output<String> content;
 
     /**
@@ -125,7 +125,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The creator of the template.
      * 
      */
-    @Export(name="createdBy", type=String.class, parameters={})
+    @Export(name="createdBy", refs={String.class}, tree="[0]")
     private Output<String> createdBy;
 
     /**
@@ -139,7 +139,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The time when the template is created.
      * 
      */
-    @Export(name="createdDate", type=String.class, parameters={})
+    @Export(name="createdDate", refs={String.class}, tree="[0]")
     private Output<String> createdDate;
 
     /**
@@ -153,7 +153,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The description of the template.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -167,7 +167,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * Is it triggered successfully.
      * 
      */
-    @Export(name="hasTrigger", type=Boolean.class, parameters={})
+    @Export(name="hasTrigger", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> hasTrigger;
 
     /**
@@ -181,7 +181,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The ID of resource group which the template belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -195,7 +195,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The sharing type of the template. The sharing type of templates created by users are set to Private. The sharing type of common templates provided by OOS are set to Public.
      * 
      */
-    @Export(name="shareType", type=String.class, parameters={})
+    @Export(name="shareType", refs={String.class}, tree="[0]")
     private Output<String> shareType;
 
     /**
@@ -209,7 +209,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -223,7 +223,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The format of the template. The format can be JSON or YAML. The system automatically identifies the format.
      * 
      */
-    @Export(name="templateFormat", type=String.class, parameters={})
+    @Export(name="templateFormat", refs={String.class}, tree="[0]")
     private Output<String> templateFormat;
 
     /**
@@ -237,7 +237,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The id of OOS Template.
      * 
      */
-    @Export(name="templateId", type=String.class, parameters={})
+    @Export(name="templateId", refs={String.class}, tree="[0]")
     private Output<String> templateId;
 
     /**
@@ -251,7 +251,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The name of the template. The template name can be up to 200 characters in length. The name can contain letters, digits, hyphens (-), and underscores (_). It cannot start with `ALIYUN`, `ACS`, `ALIBABA`, or `ALICLOUD`.
      * 
      */
-    @Export(name="templateName", type=String.class, parameters={})
+    @Export(name="templateName", refs={String.class}, tree="[0]")
     private Output<String> templateName;
 
     /**
@@ -265,7 +265,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The type of OOS Template. `Automation` means the implementation of Alibaba Cloud API template, `Package` means represents a template for installing software.
      * 
      */
-    @Export(name="templateType", type=String.class, parameters={})
+    @Export(name="templateType", refs={String.class}, tree="[0]")
     private Output<String> templateType;
 
     /**
@@ -279,7 +279,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The version of OOS Template.
      * 
      */
-    @Export(name="templateVersion", type=String.class, parameters={})
+    @Export(name="templateVersion", refs={String.class}, tree="[0]")
     private Output<String> templateVersion;
 
     /**
@@ -293,7 +293,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The user who updated the template.
      * 
      */
-    @Export(name="updatedBy", type=String.class, parameters={})
+    @Export(name="updatedBy", refs={String.class}, tree="[0]")
     private Output<String> updatedBy;
 
     /**
@@ -307,7 +307,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The time when the template was updated.
      * 
      */
-    @Export(name="updatedDate", type=String.class, parameters={})
+    @Export(name="updatedDate", refs={String.class}, tree="[0]")
     private Output<String> updatedDate;
 
     /**
@@ -321,7 +321,7 @@ public class Template extends com.pulumi.resources.CustomResource {
      * The name of template version.
      * 
      */
-    @Export(name="versionName", type=String.class, parameters={})
+    @Export(name="versionName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> versionName;
 
     /**

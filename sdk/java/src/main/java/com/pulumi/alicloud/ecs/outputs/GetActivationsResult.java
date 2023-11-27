@@ -134,16 +134,16 @@ public final class GetActivationsResult {
             return this;
         }
         public GetActivationsResult build() {
-            final var o = new GetActivationsResult();
-            o.activations = activations;
-            o.id = id;
-            o.ids = ids;
-            o.instanceName = instanceName;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.totalCount = totalCount;
-            return o;
+            final var _resultValue = new GetActivationsResult();
+            _resultValue.activations = activations;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceName = instanceName;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.totalCount = totalCount;
+            return _resultValue;
         }
     }
 }

@@ -76,7 +76,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The number of multi account. It will be ignored when `cfw_account = false`.
      * 
      */
-    @Export(name="accountNumber", type=Integer.class, parameters={})
+    @Export(name="accountNumber", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> accountNumber;
 
     /**
@@ -90,7 +90,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      * 
      */
-    @Export(name="bandWidth", type=Integer.class, parameters={})
+    @Export(name="bandWidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandWidth;
 
     /**
@@ -104,7 +104,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to use multi-account. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="cfwAccount", type=Boolean.class, parameters={})
+    @Export(name="cfwAccount", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cfwAccount;
 
     /**
@@ -118,7 +118,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to use log audit. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="cfwLog", type=Boolean.class, parameters={})
+    @Export(name="cfwLog", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> cfwLog;
 
     /**
@@ -132,7 +132,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The log storage capacity. It will be ignored when `cfw_log = false`.
      * 
      */
-    @Export(name="cfwLogStorage", type=Integer.class, parameters={})
+    @Export(name="cfwLogStorage", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cfwLogStorage;
 
     /**
@@ -146,7 +146,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The creation time.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -160,7 +160,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The end time.
      * 
      */
-    @Export(name="endTime", type=String.class, parameters={})
+    @Export(name="endTime", refs={String.class}, tree="[0]")
     private Output<String> endTime;
 
     /**
@@ -174,7 +174,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The number of protected VPCs. It will be ignored when `spec = &#34;premium_version&#34;`. Valid values between 2 and 500.
      * 
      */
-    @Export(name="fwVpcNumber", type=Integer.class, parameters={})
+    @Export(name="fwVpcNumber", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> fwVpcNumber;
 
     /**
@@ -188,7 +188,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The number of assets.
      * 
      */
-    @Export(name="instanceCount", type=Integer.class, parameters={})
+    @Export(name="instanceCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> instanceCount;
 
     /**
@@ -202,7 +202,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The number of public IPs that can be protected. Valid values: 20 to 4000.
      * 
      */
-    @Export(name="ipNumber", type=Integer.class, parameters={})
+    @Export(name="ipNumber", refs={Integer.class}, tree="[0]")
     private Output<Integer> ipNumber;
 
     /**
@@ -216,7 +216,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The logistics.
      * 
      */
-    @Export(name="logistics", type=String.class, parameters={})
+    @Export(name="logistics", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logistics;
 
     /**
@@ -230,7 +230,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
      * 
      */
-    @Export(name="modifyType", type=String.class, parameters={})
+    @Export(name="modifyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modifyType;
 
     /**
@@ -244,7 +244,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The payment type of the resource. Valid values: `Subscription`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -258,7 +258,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available in 1.204.1+.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output<Integer> period;
 
     /**
@@ -272,7 +272,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The release time.
      * 
      */
-    @Export(name="releaseTime", type=String.class, parameters={})
+    @Export(name="releaseTime", refs={String.class}, tree="[0]")
     private Output<String> releaseTime;
 
     /**
@@ -290,7 +290,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'renew_period' has been deprecated since 1.209.1. Using 'renewal_duration' instead. */
-    @Export(name="renewPeriod", type=Integer.class, parameters={})
+    @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> renewPeriod;
 
     /**
@@ -304,7 +304,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Auto-Renewal Duration. It is required under the condition that renewal_status is `AutoRenewal`. Valid values: `1`, `2`, `3`, `6`, `12`.
      * 
      */
-    @Export(name="renewalDuration", type=Integer.class, parameters={})
+    @Export(name="renewalDuration", refs={Integer.class}, tree="[0]")
     private Output<Integer> renewalDuration;
 
     /**
@@ -318,7 +318,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
      * 
      */
-    @Export(name="renewalDurationUnit", type=String.class, parameters={})
+    @Export(name="renewalDurationUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> renewalDurationUnit;
 
     /**
@@ -332,7 +332,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
      * 
      */
-    @Export(name="renewalStatus", type=String.class, parameters={})
+    @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output<String> renewalStatus;
 
     /**
@@ -346,7 +346,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
      * 
      */
-    @Export(name="spec", type=String.class, parameters={})
+    @Export(name="spec", refs={String.class}, tree="[0]")
     private Output<String> spec;
 
     /**
@@ -360,7 +360,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The status of Instance.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

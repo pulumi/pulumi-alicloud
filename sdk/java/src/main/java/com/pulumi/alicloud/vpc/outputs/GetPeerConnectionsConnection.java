@@ -237,19 +237,19 @@ public final class GetPeerConnectionsConnection {
             return this;
         }
         public GetPeerConnectionsConnection build() {
-            final var o = new GetPeerConnectionsConnection();
-            o.acceptingAliUid = acceptingAliUid;
-            o.acceptingRegionId = acceptingRegionId;
-            o.acceptingVpcId = acceptingVpcId;
-            o.bandwidth = bandwidth;
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.peerConnectionId = peerConnectionId;
-            o.peerConnectionName = peerConnectionName;
-            o.status = status;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetPeerConnectionsConnection();
+            _resultValue.acceptingAliUid = acceptingAliUid;
+            _resultValue.acceptingRegionId = acceptingRegionId;
+            _resultValue.acceptingVpcId = acceptingVpcId;
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.peerConnectionId = peerConnectionId;
+            _resultValue.peerConnectionName = peerConnectionName;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

@@ -223,18 +223,18 @@ public final class GetClustersClusterHostGroupListNode {
             return this;
         }
         public GetClustersClusterHostGroupListNode build() {
-            final var o = new GetClustersClusterHostGroupListNode();
-            o.createTime = createTime;
-            o.diskInfos = diskInfos;
-            o.emrExpiredTime = emrExpiredTime;
-            o.expiredTime = expiredTime;
-            o.innerIp = innerIp;
-            o.instanceId = instanceId;
-            o.pubIp = pubIp;
-            o.status = status;
-            o.supportIpv6 = supportIpv6;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetClustersClusterHostGroupListNode();
+            _resultValue.createTime = createTime;
+            _resultValue.diskInfos = diskInfos;
+            _resultValue.emrExpiredTime = emrExpiredTime;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.innerIp = innerIp;
+            _resultValue.instanceId = instanceId;
+            _resultValue.pubIp = pubIp;
+            _resultValue.status = status;
+            _resultValue.supportIpv6 = supportIpv6;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

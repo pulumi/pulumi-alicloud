@@ -86,12 +86,12 @@ public final class GetMetaTagsResult {
             return tags(List.of(tags));
         }
         public GetMetaTagsResult build() {
-            final var o = new GetMetaTagsResult();
-            o.id = id;
-            o.keyName = keyName;
-            o.outputFile = outputFile;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetMetaTagsResult();
+            _resultValue.id = id;
+            _resultValue.keyName = keyName;
+            _resultValue.outputFile = outputFile;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

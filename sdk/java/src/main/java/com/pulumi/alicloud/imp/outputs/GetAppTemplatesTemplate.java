@@ -263,20 +263,20 @@ public final class GetAppTemplatesTemplate {
             return this;
         }
         public GetAppTemplatesTemplate build() {
-            final var o = new GetAppTemplatesTemplate();
-            o.appTemplateCreator = appTemplateCreator;
-            o.appTemplateId = appTemplateId;
-            o.appTemplateName = appTemplateName;
-            o.componentLists = componentLists;
-            o.configLists = configLists;
-            o.createTime = createTime;
-            o.id = id;
-            o.integrationMode = integrationMode;
-            o.scene = scene;
-            o.sdkInfo = sdkInfo;
-            o.standardRoomInfo = standardRoomInfo;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAppTemplatesTemplate();
+            _resultValue.appTemplateCreator = appTemplateCreator;
+            _resultValue.appTemplateId = appTemplateId;
+            _resultValue.appTemplateName = appTemplateName;
+            _resultValue.componentLists = componentLists;
+            _resultValue.configLists = configLists;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.integrationMode = integrationMode;
+            _resultValue.scene = scene;
+            _resultValue.sdkInfo = sdkInfo;
+            _resultValue.standardRoomInfo = standardRoomInfo;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

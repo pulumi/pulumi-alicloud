@@ -257,20 +257,20 @@ public final class GetEnterpriseProxiesProxy {
             return this;
         }
         public GetEnterpriseProxiesProxy build() {
-            final var o = new GetEnterpriseProxiesProxy();
-            o.creatorId = creatorId;
-            o.creatorName = creatorName;
-            o.httpsPort = httpsPort;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.privateEnable = privateEnable;
-            o.privateHost = privateHost;
-            o.protocolPort = protocolPort;
-            o.protocolType = protocolType;
-            o.proxyId = proxyId;
-            o.publicEnable = publicEnable;
-            o.publicHost = publicHost;
-            return o;
+            final var _resultValue = new GetEnterpriseProxiesProxy();
+            _resultValue.creatorId = creatorId;
+            _resultValue.creatorName = creatorName;
+            _resultValue.httpsPort = httpsPort;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.privateEnable = privateEnable;
+            _resultValue.privateHost = privateHost;
+            _resultValue.protocolPort = protocolPort;
+            _resultValue.protocolType = protocolType;
+            _resultValue.proxyId = proxyId;
+            _resultValue.publicEnable = publicEnable;
+            _resultValue.publicHost = publicHost;
+            return _resultValue;
         }
     }
 }

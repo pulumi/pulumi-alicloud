@@ -307,23 +307,23 @@ public final class GetConnectionsConnection {
             return this;
         }
         public GetConnectionsConnection build() {
-            final var o = new GetConnectionsConnection();
-            o.createTime = createTime;
-            o.customerGatewayId = customerGatewayId;
-            o.effectImmediately = effectImmediately;
-            o.enableDpd = enableDpd;
-            o.enableNatTraversal = enableNatTraversal;
-            o.id = id;
-            o.ikeConfigs = ikeConfigs;
-            o.ipsecConfigs = ipsecConfigs;
-            o.localSubnet = localSubnet;
-            o.name = name;
-            o.remoteSubnet = remoteSubnet;
-            o.status = status;
-            o.vcoHealthChecks = vcoHealthChecks;
-            o.vpnBgpConfigs = vpnBgpConfigs;
-            o.vpnGatewayId = vpnGatewayId;
-            return o;
+            final var _resultValue = new GetConnectionsConnection();
+            _resultValue.createTime = createTime;
+            _resultValue.customerGatewayId = customerGatewayId;
+            _resultValue.effectImmediately = effectImmediately;
+            _resultValue.enableDpd = enableDpd;
+            _resultValue.enableNatTraversal = enableNatTraversal;
+            _resultValue.id = id;
+            _resultValue.ikeConfigs = ikeConfigs;
+            _resultValue.ipsecConfigs = ipsecConfigs;
+            _resultValue.localSubnet = localSubnet;
+            _resultValue.name = name;
+            _resultValue.remoteSubnet = remoteSubnet;
+            _resultValue.status = status;
+            _resultValue.vcoHealthChecks = vcoHealthChecks;
+            _resultValue.vpnBgpConfigs = vpnBgpConfigs;
+            _resultValue.vpnGatewayId = vpnGatewayId;
+            return _resultValue;
         }
     }
 }

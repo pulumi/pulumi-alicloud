@@ -322,23 +322,23 @@ public final class GetEndpointGroupsGroup {
             return this;
         }
         public GetEndpointGroupsGroup build() {
-            final var o = new GetEndpointGroupsGroup();
-            o.description = description;
-            o.endpointConfigurations = endpointConfigurations;
-            o.endpointGroupId = endpointGroupId;
-            o.endpointGroupRegion = endpointGroupRegion;
-            o.healthCheckIntervalSeconds = healthCheckIntervalSeconds;
-            o.healthCheckPath = healthCheckPath;
-            o.healthCheckPort = healthCheckPort;
-            o.healthCheckProtocol = healthCheckProtocol;
-            o.id = id;
-            o.listenerId = listenerId;
-            o.name = name;
-            o.portOverrides = portOverrides;
-            o.status = status;
-            o.thresholdCount = thresholdCount;
-            o.trafficPercentage = trafficPercentage;
-            return o;
+            final var _resultValue = new GetEndpointGroupsGroup();
+            _resultValue.description = description;
+            _resultValue.endpointConfigurations = endpointConfigurations;
+            _resultValue.endpointGroupId = endpointGroupId;
+            _resultValue.endpointGroupRegion = endpointGroupRegion;
+            _resultValue.healthCheckIntervalSeconds = healthCheckIntervalSeconds;
+            _resultValue.healthCheckPath = healthCheckPath;
+            _resultValue.healthCheckPort = healthCheckPort;
+            _resultValue.healthCheckProtocol = healthCheckProtocol;
+            _resultValue.id = id;
+            _resultValue.listenerId = listenerId;
+            _resultValue.name = name;
+            _resultValue.portOverrides = portOverrides;
+            _resultValue.status = status;
+            _resultValue.thresholdCount = thresholdCount;
+            _resultValue.trafficPercentage = trafficPercentage;
+            return _resultValue;
         }
     }
 }

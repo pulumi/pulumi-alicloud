@@ -160,15 +160,15 @@ public final class GetInstanceAttachmentsAttachment {
             return this;
         }
         public GetInstanceAttachmentsAttachment build() {
-            final var o = new GetInstanceAttachmentsAttachment();
-            o.domain = domain;
-            o.endpoint = endpoint;
-            o.id = id;
-            o.instanceName = instanceName;
-            o.region = region;
-            o.vpcId = vpcId;
-            o.vpcName = vpcName;
-            return o;
+            final var _resultValue = new GetInstanceAttachmentsAttachment();
+            _resultValue.domain = domain;
+            _resultValue.endpoint = endpoint;
+            _resultValue.id = id;
+            _resultValue.instanceName = instanceName;
+            _resultValue.region = region;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vpcName = vpcName;
+            return _resultValue;
         }
     }
 }

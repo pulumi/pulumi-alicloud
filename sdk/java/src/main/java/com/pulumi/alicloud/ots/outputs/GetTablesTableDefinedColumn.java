@@ -49,10 +49,10 @@ public final class GetTablesTableDefinedColumn {
             return this;
         }
         public GetTablesTableDefinedColumn build() {
-            final var o = new GetTablesTableDefinedColumn();
-            o.name = name;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetTablesTableDefinedColumn();
+            _resultValue.name = name;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

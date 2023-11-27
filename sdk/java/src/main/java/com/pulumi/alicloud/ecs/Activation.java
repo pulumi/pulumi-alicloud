@@ -73,7 +73,7 @@ public class Activation extends com.pulumi.resources.CustomResource {
      * The description of the activation code. The description can be 1 to 100 characters in length and cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -87,7 +87,7 @@ public class Activation extends com.pulumi.resources.CustomResource {
      * The maximum number of times that the activation code can be used to register managed instances. Valid values: `1` to `1000`. Default value: `10`.
      * 
      */
-    @Export(name="instanceCount", type=Integer.class, parameters={})
+    @Export(name="instanceCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> instanceCount;
 
     /**
@@ -103,7 +103,7 @@ public class Activation extends com.pulumi.resources.CustomResource {
      * - If you specify InstanceName when you register a managed instance, an instance name in the format of `&lt;InstanceName&gt;-&lt;Number&gt;` is generated. The number of digits in the &lt;Number&gt; value is determined by that in the InstanceCount value. Example: 001. If you do not specify InstanceName, the hostname (Hostname) is used as the instance name.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceName;
 
     /**
@@ -119,7 +119,7 @@ public class Activation extends com.pulumi.resources.CustomResource {
      * The IP addresses of hosts that are allowed to use the activation code. The value can be IPv4 addresses, IPv6 addresses, or CIDR blocks.
      * 
      */
-    @Export(name="ipAddressRange", type=String.class, parameters={})
+    @Export(name="ipAddressRange", refs={String.class}, tree="[0]")
     private Output<String> ipAddressRange;
 
     /**
@@ -133,7 +133,7 @@ public class Activation extends com.pulumi.resources.CustomResource {
      * The validity period of the activation code. The activation code cannot be used to register new instances after the validity period expires. Unit: hours. Valid values: `1` to `24`. Default value: `4`.
      * 
      */
-    @Export(name="timeToLiveInHours", type=Integer.class, parameters={})
+    @Export(name="timeToLiveInHours", refs={Integer.class}, tree="[0]")
     private Output<Integer> timeToLiveInHours;
 
     /**

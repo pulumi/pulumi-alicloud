@@ -78,7 +78,7 @@ public class InstanceMember extends com.pulumi.resources.CustomResource {
      * When the cloud firewall member account was added.&gt; use second-level timestamp format.
      * 
      */
-    @Export(name="createTime", type=Integer.class, parameters={})
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> createTime;
 
     /**
@@ -92,7 +92,7 @@ public class InstanceMember extends com.pulumi.resources.CustomResource {
      * Remarks of cloud firewall member accounts.
      * 
      */
-    @Export(name="memberDesc", type=String.class, parameters={})
+    @Export(name="memberDesc", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> memberDesc;
 
     /**
@@ -106,7 +106,7 @@ public class InstanceMember extends com.pulumi.resources.CustomResource {
      * The name of the cloud firewall member account.
      * 
      */
-    @Export(name="memberDisplayName", type=String.class, parameters={})
+    @Export(name="memberDisplayName", refs={String.class}, tree="[0]")
     private Output<String> memberDisplayName;
 
     /**
@@ -120,7 +120,7 @@ public class InstanceMember extends com.pulumi.resources.CustomResource {
      * The UID of the cloud firewall member account.
      * 
      */
-    @Export(name="memberUid", type=String.class, parameters={})
+    @Export(name="memberUid", refs={String.class}, tree="[0]")
     private Output<String> memberUid;
 
     /**
@@ -134,7 +134,7 @@ public class InstanceMember extends com.pulumi.resources.CustomResource {
      * The last modification time of the cloud firewall member account.&gt; use second-level timestamp format.
      * 
      */
-    @Export(name="modifyTime", type=Integer.class, parameters={})
+    @Export(name="modifyTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> modifyTime;
 
     /**
@@ -148,7 +148,7 @@ public class InstanceMember extends com.pulumi.resources.CustomResource {
      * The resource attribute field that represents the resource status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

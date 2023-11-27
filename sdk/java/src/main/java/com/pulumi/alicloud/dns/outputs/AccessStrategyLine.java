@@ -48,9 +48,9 @@ public final class AccessStrategyLine {
             return this;
         }
         public AccessStrategyLine build() {
-            final var o = new AccessStrategyLine();
-            o.lineCode = lineCode;
-            return o;
+            final var _resultValue = new AccessStrategyLine();
+            _resultValue.lineCode = lineCode;
+            return _resultValue;
         }
     }
 }

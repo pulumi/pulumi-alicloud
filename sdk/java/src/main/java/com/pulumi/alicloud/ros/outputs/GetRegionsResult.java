@@ -75,11 +75,11 @@ public final class GetRegionsResult {
             return regions(List.of(regions));
         }
         public GetRegionsResult build() {
-            final var o = new GetRegionsResult();
-            o.id = id;
-            o.outputFile = outputFile;
-            o.regions = regions;
-            return o;
+            final var _resultValue = new GetRegionsResult();
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            _resultValue.regions = regions;
+            return _resultValue;
         }
     }
 }

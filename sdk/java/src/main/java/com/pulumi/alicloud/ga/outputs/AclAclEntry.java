@@ -67,10 +67,10 @@ public final class AclAclEntry {
             return this;
         }
         public AclAclEntry build() {
-            final var o = new AclAclEntry();
-            o.entry = entry;
-            o.entryDescription = entryDescription;
-            return o;
+            final var _resultValue = new AclAclEntry();
+            _resultValue.entry = entry;
+            _resultValue.entryDescription = entryDescription;
+            return _resultValue;
         }
     }
 }

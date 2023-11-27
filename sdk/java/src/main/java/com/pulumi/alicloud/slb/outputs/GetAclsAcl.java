@@ -164,15 +164,15 @@ public final class GetAclsAcl {
             return this;
         }
         public GetAclsAcl build() {
-            final var o = new GetAclsAcl();
-            o.entryLists = entryLists;
-            o.id = id;
-            o.ipVersion = ipVersion;
-            o.name = name;
-            o.relatedListeners = relatedListeners;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetAclsAcl();
+            _resultValue.entryLists = entryLists;
+            _resultValue.id = id;
+            _resultValue.ipVersion = ipVersion;
+            _resultValue.name = name;
+            _resultValue.relatedListeners = relatedListeners;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

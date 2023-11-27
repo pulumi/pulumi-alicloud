@@ -104,7 +104,7 @@ public class GlobalDatabaseNetwork extends com.pulumi.resources.CustomResource {
      * The ID of the primary cluster.
      * 
      */
-    @Export(name="dbClusterId", type=String.class, parameters={})
+    @Export(name="dbClusterId", refs={String.class}, tree="[0]")
     private Output<String> dbClusterId;
 
     /**
@@ -118,7 +118,7 @@ public class GlobalDatabaseNetwork extends com.pulumi.resources.CustomResource {
      * The description of the Global Database Network.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -132,7 +132,7 @@ public class GlobalDatabaseNetwork extends com.pulumi.resources.CustomResource {
      * The status of the Global Database Network.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

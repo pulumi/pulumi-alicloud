@@ -66,10 +66,10 @@ public final class GetServiceMeshesMeshMeshConfigPrometheus {
             return this;
         }
         public GetServiceMeshesMeshMeshConfigPrometheus build() {
-            final var o = new GetServiceMeshesMeshMeshConfigPrometheus();
-            o.externalUrl = externalUrl;
-            o.useExternal = useExternal;
-            return o;
+            final var _resultValue = new GetServiceMeshesMeshMeshConfigPrometheus();
+            _resultValue.externalUrl = externalUrl;
+            _resultValue.useExternal = useExternal;
+            return _resultValue;
         }
     }
 }

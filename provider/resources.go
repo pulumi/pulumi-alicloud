@@ -38,6 +38,7 @@ const (
 	alicloudPkg = "alicloud"
 	// modules:
 	alicloudMod            = "index"
+	ackOneMod              = "AckOne"
 	actionTrailMod         = "ActionTrail"
 	adbMod                 = "Adb"
 	albMod                 = "Alb"
@@ -54,27 +55,27 @@ const (
 	cddcMod                = "Cddc"
 	cdnMod                 = "Cdn"
 	cenMod                 = "Cen"
+	cfgMod                 = "Cfg"
 	clickHouseMod          = "ClickHouse"
 	cloudAuthMod           = "CloudAuth"
 	cloudConnectMod        = "CloudConnect"
 	cloudFirewallMod       = "CloudFirewall"
 	cloudMonitorMod        = "CloudMonitor"
-	cloudStorageGatewayMod = "CloudStorageGateway"
 	cloudSsoMod            = "CloudSso"
+	cloudStorageGatewayMod = "CloudStorageGateway"
 	cmsMod                 = "Cms"
-	cfgMod                 = "Cfg"
 	computeMod             = "Compute"
 	crMod                  = "CR"
 	csMod                  = "CS"
 	dasMod                 = "Das"
-	datahubMod             = "Datahub"
 	dataWorksMod           = "DataWorks"
 	databaseFilesystemMod  = "DatabaseFilesystem"
 	databaseGatewayMod     = "DatabaseGateway"
+	datahubMod             = "Datahub"
 	dbsMod                 = "DBS"
 	dcdnMod                = "Dcdn"
-	ddsMod                 = "Dds"
 	ddosMod                = "Ddos"
+	ddsMod                 = "Dds"
 	dfsMod                 = "Dfs"
 	directMailMod          = "DirectMail"
 	dmsMod                 = "Dms"
@@ -82,10 +83,10 @@ const (
 	drdsMod                = "Drds"
 	dtsMod                 = "Dts"
 	eaisMod                = "Eais"
+	ebsMod                 = "Ebs"
 	eciMod                 = "Eci"
 	ecpMod                 = "Ecp"
 	ecsMod                 = "Ecs"
-	ebsMod                 = "Ebs"
 	edasMod                = "Edas"
 	edsMod                 = "Eds"
 	ehpcMod                = "Ehpc"
@@ -103,10 +104,11 @@ const (
 	graphDatabaseMod       = "GraphDatabase"
 	hbaseMod               = "Hbase"
 	hbrMod                 = "Hbr"
-	iotMod                 = "Iot"
+	hologramMod            = "Hologram"
 	immMod                 = "Imm"
 	impMod                 = "Imp"
 	imsMod                 = "Ims"
+	iotMod                 = "Iot"
 	kmsMod                 = "Kms"
 	kvstoreMod             = "KVStore"
 	lindormMod             = "Lindorm"
@@ -115,8 +117,8 @@ const (
 	maxComputeMod          = "MaxCompute"
 	messageMod             = "Message"
 	mhubMod                = "Mhub"
-	mongoDbMod             = "MongoDB"
 	mnsMod                 = "Mns"
+	mongoDbMod             = "MongoDB"
 	mseMod                 = "Mse"
 	nasMod                 = "Nas"
 	nlbMod                 = "Nlb"
@@ -131,29 +133,29 @@ const (
 	quotasMod              = "Quotas"
 	ramMod                 = "Ram"
 	rdcMod                 = "Rdc"
+	rdsMod                 = "Rds"
 	redisMod               = "Redis"
 	resourceManagerMod     = "ResourceManager"
 	rocketMqMod            = "RocketMQ"
 	rosMod                 = "Ros"
-	rdsMod                 = "Rds"
 	saeMod                 = "Sae"
 	sagMod                 = "Sag"
-	serviceMeshMod         = "ServiceMesh"
-	serviceCatalogMod      = "ServiceCatalog"
 	sasMod                 = "SimpleApplicationServer"
 	scdnMod                = "Scdn"
+	schedulerXMod          = "SchedulerX"
 	sddpMod                = "Sddp"
 	securityCenterMod      = "SecurityCenter"
-	schedulerXMod          = "SchedulerX"
+	serviceCatalogMod      = "ServiceCatalog"
+	serviceMeshMod         = "ServiceMesh"
 	slbMod                 = "Slb"
 	smsMod                 = "Sms"
 	tagMod                 = "Tag"
 	threatDetectionMod     = "ThreatDetection"
 	tsdbMod                = "Tsdb"
-	vpcMod                 = "Vpc"
-	vsMod                  = "VideoSurveillance"
 	vodMod                 = "Vod"
+	vpcMod                 = "Vpc"
 	vpnMod                 = "Vpn"
+	vsMod                  = "VideoSurveillance"
 	wafMod                 = "Waf"
 	wafv3Mod               = "Wafv3"
 	yundunMod              = "Yundun"
@@ -164,6 +166,7 @@ const (
 var mappedMods = map[string]string{
 	"actiontrail":           actionTrailMod,
 	"adb":                   adbMod,
+	"ack_one":               ackOneMod,
 	"alb":                   albMod,
 	"alikafa":               aliKafaMod,
 	"amqp":                  amqpMod,
@@ -230,6 +233,7 @@ var mappedMods = map[string]string{
 	"graph_database":        graphDatabaseMod,
 	"hbase":                 hbaseMod,
 	"hbr":                   hbrMod,
+	"hologram":              hologramMod,
 	"imm":                   immMod,
 	"imp":                   impMod,
 	"ims":                   imsMod,
@@ -263,6 +267,7 @@ var mappedMods = map[string]string{
 	"rds":                   rdsMod,
 	"redis":                 redisMod,
 	"resource_manager":      resourceManagerMod,
+	"rocketmq":              rocketMqMod,
 	"ros":                   rosMod,
 	"sae":                   saeMod,
 	"sag":                   sagMod,
@@ -1269,8 +1274,17 @@ func Provider() tfbridge.ProviderInfo {
 			"alicloud_resource_manager_delegated_administrator": {Tok: resource(resourceManagerMod, "DelegatedAdministrator")},
 
 			// RocketMQ
-			"alicloud_ons_group":    {Tok: resource(rocketMqMod, "Group")},
-			"alicloud_ons_instance": {Tok: resource(rocketMqMod, "Instance")},
+			//
+			// During the next major update, we should rename alicloud_ons_*
+			// to alicloud:ons:* to avoid conflicts with
+			// alicloud_rocketmq_*. Right now the two namespaces are merged,
+			// which introduces issues.
+			//
+			// We cannot disentangle them without a breaking change.
+			"alicloud_rocketmq_instance": {Tok: resource(rocketMqMod, "RocketMQInstance")},
+			"alicloud_rocketmq_topic":    {Tok: resource(rocketMqMod, "RocketMQTopic")},
+			"alicloud_ons_group":         {Tok: resource(rocketMqMod, "Group")},
+			"alicloud_ons_instance":      {Tok: resource(rocketMqMod, "Instance")},
 			"alicloud_ons_topic": {
 				Tok: resource(rocketMqMod, "Topic"),
 				Fields: map[string]*tfbridge.SchemaInfo{

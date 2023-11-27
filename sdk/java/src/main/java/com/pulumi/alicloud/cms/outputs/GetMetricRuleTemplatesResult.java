@@ -159,18 +159,18 @@ public final class GetMetricRuleTemplatesResult {
             return templates(List.of(templates));
         }
         public GetMetricRuleTemplatesResult build() {
-            final var o = new GetMetricRuleTemplatesResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.keyword = keyword;
-            o.metricRuleTemplateName = metricRuleTemplateName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.templateId = templateId;
-            o.templates = templates;
-            return o;
+            final var _resultValue = new GetMetricRuleTemplatesResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.keyword = keyword;
+            _resultValue.metricRuleTemplateName = metricRuleTemplateName;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.templateId = templateId;
+            _resultValue.templates = templates;
+            return _resultValue;
         }
     }
 }

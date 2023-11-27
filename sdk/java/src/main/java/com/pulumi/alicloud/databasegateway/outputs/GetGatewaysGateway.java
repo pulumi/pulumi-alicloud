@@ -214,18 +214,18 @@ public final class GetGatewaysGateway {
             return this;
         }
         public GetGatewaysGateway build() {
-            final var o = new GetGatewaysGateway();
-            o.createTime = createTime;
-            o.gatewayDesc = gatewayDesc;
-            o.gatewayInstances = gatewayInstances;
-            o.gatewayName = gatewayName;
-            o.hosts = hosts;
-            o.id = id;
-            o.modifiedTime = modifiedTime;
-            o.parentId = parentId;
-            o.status = status;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new GetGatewaysGateway();
+            _resultValue.createTime = createTime;
+            _resultValue.gatewayDesc = gatewayDesc;
+            _resultValue.gatewayInstances = gatewayInstances;
+            _resultValue.gatewayName = gatewayName;
+            _resultValue.hosts = hosts;
+            _resultValue.id = id;
+            _resultValue.modifiedTime = modifiedTime;
+            _resultValue.parentId = parentId;
+            _resultValue.status = status;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

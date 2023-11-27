@@ -65,10 +65,10 @@ public final class GetDomainsDomainLogHeader {
             return this;
         }
         public GetDomainsDomainLogHeader build() {
-            final var o = new GetDomainsDomainLogHeader();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetDomainsDomainLogHeader();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

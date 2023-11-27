@@ -90,11 +90,11 @@ public final class GetKubernetesPermissionResult {
             return this;
         }
         public GetKubernetesPermissionResult build() {
-            final var o = new GetKubernetesPermissionResult();
-            o.id = id;
-            o.permissions = permissions;
-            o.uid = uid;
-            return o;
+            final var _resultValue = new GetKubernetesPermissionResult();
+            _resultValue.id = id;
+            _resultValue.permissions = permissions;
+            _resultValue.uid = uid;
+            return _resultValue;
         }
     }
 }

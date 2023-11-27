@@ -68,10 +68,10 @@ public final class RuleRuleActionForwardGroupConfigServerGroupStickySession {
             return this;
         }
         public RuleRuleActionForwardGroupConfigServerGroupStickySession build() {
-            final var o = new RuleRuleActionForwardGroupConfigServerGroupStickySession();
-            o.enabled = enabled;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new RuleRuleActionForwardGroupConfigServerGroupStickySession();
+            _resultValue.enabled = enabled;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

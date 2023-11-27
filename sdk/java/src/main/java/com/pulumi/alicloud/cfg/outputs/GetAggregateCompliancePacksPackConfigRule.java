@@ -89,11 +89,11 @@ public final class GetAggregateCompliancePacksPackConfigRule {
             return this;
         }
         public GetAggregateCompliancePacksPackConfigRule build() {
-            final var o = new GetAggregateCompliancePacksPackConfigRule();
-            o.configRuleId = configRuleId;
-            o.configRuleParameters = configRuleParameters;
-            o.managedRuleIdentifier = managedRuleIdentifier;
-            return o;
+            final var _resultValue = new GetAggregateCompliancePacksPackConfigRule();
+            _resultValue.configRuleId = configRuleId;
+            _resultValue.configRuleParameters = configRuleParameters;
+            _resultValue.managedRuleIdentifier = managedRuleIdentifier;
+            return _resultValue;
         }
     }
 }

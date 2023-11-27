@@ -182,17 +182,17 @@ public final class GetCustomRoutingPortMappingsResult {
             return this;
         }
         public GetCustomRoutingPortMappingsResult build() {
-            final var o = new GetCustomRoutingPortMappingsResult();
-            o.acceleratorId = acceleratorId;
-            o.customRoutingPortMappings = customRoutingPortMappings;
-            o.endpointGroupId = endpointGroupId;
-            o.id = id;
-            o.listenerId = listenerId;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetCustomRoutingPortMappingsResult();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.customRoutingPortMappings = customRoutingPortMappings;
+            _resultValue.endpointGroupId = endpointGroupId;
+            _resultValue.id = id;
+            _resultValue.listenerId = listenerId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -90,7 +90,7 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
      * The details of alert rules that are generated based on the alert template. See `alert_templates` below.
      * 
      */
-    @Export(name="alertTemplates", type=List.class, parameters={MetricRuleTemplateAlertTemplate.class})
+    @Export(name="alertTemplates", refs={List.class,MetricRuleTemplateAlertTemplate.class}, tree="[0,1]")
     private Output</* @Nullable */ List<MetricRuleTemplateAlertTemplate>> alertTemplates;
 
     /**
@@ -104,7 +104,7 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
      * The mode in which the alert template is applied. Valid values:`GROUP_INSTANCE_FIRST`or `ALARM_TEMPLATE_FIRST`. GROUP_INSTANCE_FIRST: The metrics in the application group take precedence. If a metric specified in the alert template does not exist in the application group, the system does not generate an alert rule for the metric based on the alert template. ALARM_TEMPLATE_FIRST: The metrics specified in the alert template take precedence. If a metric specified in the alert template does not exist in the application group, the system still generates an alert rule for the metric based on the alert template.
      * 
      */
-    @Export(name="applyMode", type=String.class, parameters={})
+    @Export(name="applyMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> applyMode;
 
     /**
@@ -118,7 +118,7 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
      * The description of the alert template.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -132,7 +132,7 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
      * The end of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:59 and the value 23 indicates 23:59.
      * 
      */
-    @Export(name="enableEndTime", type=String.class, parameters={})
+    @Export(name="enableEndTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> enableEndTime;
 
     /**
@@ -146,7 +146,7 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
      * The beginning of the time period during which the alert rule is effective. Valid values: 00 to 23. The value 00 indicates 00:00 and the value 23 indicates 23:00.
      * 
      */
-    @Export(name="enableStartTime", type=String.class, parameters={})
+    @Export(name="enableStartTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> enableStartTime;
 
     /**
@@ -160,7 +160,7 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
      * The ID of the application group.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupId;
 
     /**
@@ -174,7 +174,7 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
      * The name of the alert template.
      * 
      */
-    @Export(name="metricRuleTemplateName", type=String.class, parameters={})
+    @Export(name="metricRuleTemplateName", refs={String.class}, tree="[0]")
     private Output<String> metricRuleTemplateName;
 
     /**
@@ -188,7 +188,7 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
      * The alert notification method. Valid values:Set the value to 4. The value 4 indicates that alert notifications are sent by using TradeManager and DingTalk chatbots.
      * 
      */
-    @Export(name="notifyLevel", type=String.class, parameters={})
+    @Export(name="notifyLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> notifyLevel;
 
     /**
@@ -204,7 +204,7 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The version changes with the number of times that the alert template is modified.
      * 
      */
-    @Export(name="restVersion", type=String.class, parameters={})
+    @Export(name="restVersion", refs={String.class}, tree="[0]")
     private Output<String> restVersion;
 
     /**
@@ -222,7 +222,7 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Only one alert notification is sent during each mute period even if the metric value exceeds the alert threshold several times.
      * 
      */
-    @Export(name="silenceTime", type=Integer.class, parameters={})
+    @Export(name="silenceTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> silenceTime;
 
     /**
@@ -238,7 +238,7 @@ public class MetricRuleTemplate extends com.pulumi.resources.CustomResource {
      * The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
      * 
      */
-    @Export(name="webhook", type=String.class, parameters={})
+    @Export(name="webhook", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> webhook;
 
     /**

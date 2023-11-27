@@ -143,7 +143,7 @@ public class HostAccountShareKeyAttachment extends com.pulumi.resources.CustomRe
      * The ID list of the host account.
      * 
      */
-    @Export(name="hostAccountId", type=String.class, parameters={})
+    @Export(name="hostAccountId", refs={String.class}, tree="[0]")
     private Output<String> hostAccountId;
 
     /**
@@ -157,7 +157,7 @@ public class HostAccountShareKeyAttachment extends com.pulumi.resources.CustomRe
      * The ID of the host shared key.
      * 
      */
-    @Export(name="hostShareKeyId", type=String.class, parameters={})
+    @Export(name="hostShareKeyId", refs={String.class}, tree="[0]")
     private Output<String> hostShareKeyId;
 
     /**
@@ -171,7 +171,7 @@ public class HostAccountShareKeyAttachment extends com.pulumi.resources.CustomRe
      * The ID of the Bastion machine instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**

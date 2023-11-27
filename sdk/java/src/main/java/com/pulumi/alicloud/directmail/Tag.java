@@ -69,7 +69,7 @@ public class Tag extends com.pulumi.resources.CustomResource {
      * The name of the tag. The name must be `1` to `50` characters in length, and can contain letters and digits.
      * 
      */
-    @Export(name="tagName", type=String.class, parameters={})
+    @Export(name="tagName", refs={String.class}, tree="[0]")
     private Output<String> tagName;
 
     /**

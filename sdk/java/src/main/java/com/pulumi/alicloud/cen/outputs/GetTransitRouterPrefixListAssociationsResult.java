@@ -167,19 +167,19 @@ public final class GetTransitRouterPrefixListAssociationsResult {
             return this;
         }
         public GetTransitRouterPrefixListAssociationsResult build() {
-            final var o = new GetTransitRouterPrefixListAssociationsResult();
-            o.associations = associations;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.ownerUid = ownerUid;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.prefixListId = prefixListId;
-            o.status = status;
-            o.transitRouterId = transitRouterId;
-            o.transitRouterTableId = transitRouterTableId;
-            return o;
+            final var _resultValue = new GetTransitRouterPrefixListAssociationsResult();
+            _resultValue.associations = associations;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.ownerUid = ownerUid;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.prefixListId = prefixListId;
+            _resultValue.status = status;
+            _resultValue.transitRouterId = transitRouterId;
+            _resultValue.transitRouterTableId = transitRouterTableId;
+            return _resultValue;
         }
     }
 }

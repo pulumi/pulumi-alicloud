@@ -123,15 +123,15 @@ public final class GetDbInstancesResult {
             return this;
         }
         public GetDbInstancesResult build() {
-            final var o = new GetDbInstancesResult();
-            o.dbInstanceDescription = dbInstanceDescription;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.instances = instances;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDbInstancesResult();
+            _resultValue.dbInstanceDescription = dbInstanceDescription;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instances = instances;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

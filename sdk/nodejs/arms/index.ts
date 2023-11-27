@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { AddonReleaseArgs, AddonReleaseState } from "./addonRelease";
+export type AddonRelease = import("./addonRelease").AddonRelease;
+export const AddonRelease: typeof import("./addonRelease").AddonRelease = null as any;
+utilities.lazyLoad(exports, ["AddonRelease"], () => require("./addonRelease"));
+
 export { AlertContactArgs, AlertContactState } from "./alertContact";
 export type AlertContact = import("./alertContact").AlertContact;
 export const AlertContact: typeof import("./alertContact").AlertContact = null as any;
@@ -19,6 +24,31 @@ export { DispatchRuleArgs, DispatchRuleState } from "./dispatchRule";
 export type DispatchRule = import("./dispatchRule").DispatchRule;
 export const DispatchRule: typeof import("./dispatchRule").DispatchRule = null as any;
 utilities.lazyLoad(exports, ["DispatchRule"], () => require("./dispatchRule"));
+
+export { EnvCustomJobArgs, EnvCustomJobState } from "./envCustomJob";
+export type EnvCustomJob = import("./envCustomJob").EnvCustomJob;
+export const EnvCustomJob: typeof import("./envCustomJob").EnvCustomJob = null as any;
+utilities.lazyLoad(exports, ["EnvCustomJob"], () => require("./envCustomJob"));
+
+export { EnvFeatureArgs, EnvFeatureState } from "./envFeature";
+export type EnvFeature = import("./envFeature").EnvFeature;
+export const EnvFeature: typeof import("./envFeature").EnvFeature = null as any;
+utilities.lazyLoad(exports, ["EnvFeature"], () => require("./envFeature"));
+
+export { EnvPodMonitorArgs, EnvPodMonitorState } from "./envPodMonitor";
+export type EnvPodMonitor = import("./envPodMonitor").EnvPodMonitor;
+export const EnvPodMonitor: typeof import("./envPodMonitor").EnvPodMonitor = null as any;
+utilities.lazyLoad(exports, ["EnvPodMonitor"], () => require("./envPodMonitor"));
+
+export { EnvServiceMonitorArgs, EnvServiceMonitorState } from "./envServiceMonitor";
+export type EnvServiceMonitor = import("./envServiceMonitor").EnvServiceMonitor;
+export const EnvServiceMonitor: typeof import("./envServiceMonitor").EnvServiceMonitor = null as any;
+utilities.lazyLoad(exports, ["EnvServiceMonitor"], () => require("./envServiceMonitor"));
+
+export { EnvironmentArgs, EnvironmentState } from "./environment";
+export type Environment = import("./environment").Environment;
+export const Environment: typeof import("./environment").Environment = null as any;
+utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
 export { GetAlertContactGroupsArgs, GetAlertContactGroupsResult, GetAlertContactGroupsOutputArgs } from "./getAlertContactGroups";
 export const getAlertContactGroups: typeof import("./getAlertContactGroups").getAlertContactGroups = null as any;
@@ -90,12 +120,24 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "alicloud:arms/addonRelease:AddonRelease":
+                return new AddonRelease(name, <any>undefined, { urn })
             case "alicloud:arms/alertContact:AlertContact":
                 return new AlertContact(name, <any>undefined, { urn })
             case "alicloud:arms/alertContactGroup:AlertContactGroup":
                 return new AlertContactGroup(name, <any>undefined, { urn })
             case "alicloud:arms/dispatchRule:DispatchRule":
                 return new DispatchRule(name, <any>undefined, { urn })
+            case "alicloud:arms/envCustomJob:EnvCustomJob":
+                return new EnvCustomJob(name, <any>undefined, { urn })
+            case "alicloud:arms/envFeature:EnvFeature":
+                return new EnvFeature(name, <any>undefined, { urn })
+            case "alicloud:arms/envPodMonitor:EnvPodMonitor":
+                return new EnvPodMonitor(name, <any>undefined, { urn })
+            case "alicloud:arms/envServiceMonitor:EnvServiceMonitor":
+                return new EnvServiceMonitor(name, <any>undefined, { urn })
+            case "alicloud:arms/environment:Environment":
+                return new Environment(name, <any>undefined, { urn })
             case "alicloud:arms/integrationExporter:IntegrationExporter":
                 return new IntegrationExporter(name, <any>undefined, { urn })
             case "alicloud:arms/prometheus:Prometheus":
@@ -111,9 +153,15 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("alicloud", "arms/addonRelease", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/alertContact", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/alertContactGroup", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/dispatchRule", _module)
+pulumi.runtime.registerResourceModule("alicloud", "arms/envCustomJob", _module)
+pulumi.runtime.registerResourceModule("alicloud", "arms/envFeature", _module)
+pulumi.runtime.registerResourceModule("alicloud", "arms/envPodMonitor", _module)
+pulumi.runtime.registerResourceModule("alicloud", "arms/envServiceMonitor", _module)
+pulumi.runtime.registerResourceModule("alicloud", "arms/environment", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/integrationExporter", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/prometheus", _module)
 pulumi.runtime.registerResourceModule("alicloud", "arms/prometheusAlertRule", _module)

@@ -85,7 +85,7 @@ public class TransitRouterRouteTable extends com.pulumi.resources.CustomResource
      * The dry run.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -99,7 +99,7 @@ public class TransitRouterRouteTable extends com.pulumi.resources.CustomResource
      * The associating status of the Transit Router.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -113,7 +113,7 @@ public class TransitRouterRouteTable extends com.pulumi.resources.CustomResource
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -127,7 +127,7 @@ public class TransitRouterRouteTable extends com.pulumi.resources.CustomResource
      * The ID of the transit router.
      * 
      */
-    @Export(name="transitRouterId", type=String.class, parameters={})
+    @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterId;
 
     /**
@@ -141,7 +141,7 @@ public class TransitRouterRouteTable extends com.pulumi.resources.CustomResource
      * The description of the transit router route table.
      * 
      */
-    @Export(name="transitRouterRouteTableDescription", type=String.class, parameters={})
+    @Export(name="transitRouterRouteTableDescription", refs={String.class}, tree="[0]")
     private Output<String> transitRouterRouteTableDescription;
 
     /**
@@ -155,7 +155,7 @@ public class TransitRouterRouteTable extends com.pulumi.resources.CustomResource
      * The id of the transit router route table.
      * 
      */
-    @Export(name="transitRouterRouteTableId", type=String.class, parameters={})
+    @Export(name="transitRouterRouteTableId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterRouteTableId;
 
     /**
@@ -169,7 +169,7 @@ public class TransitRouterRouteTable extends com.pulumi.resources.CustomResource
      * The name of the transit router route table.
      * 
      */
-    @Export(name="transitRouterRouteTableName", type=String.class, parameters={})
+    @Export(name="transitRouterRouteTableName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterRouteTableName;
 
     /**
@@ -183,7 +183,7 @@ public class TransitRouterRouteTable extends com.pulumi.resources.CustomResource
      * The type of the transit router route table. Valid values: `Custom`, `System`.
      * 
      */
-    @Export(name="transitRouterRouteTableType", type=String.class, parameters={})
+    @Export(name="transitRouterRouteTableType", refs={String.class}, tree="[0]")
     private Output<String> transitRouterRouteTableType;
 
     /**

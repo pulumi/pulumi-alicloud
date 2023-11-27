@@ -237,20 +237,20 @@ public final class GetRecordsResult {
             return this;
         }
         public GetRecordsResult build() {
-            final var o = new GetRecordsResult();
-            o.domainName = domainName;
-            o.hostRecordRegex = hostRecordRegex;
-            o.id = id;
-            o.ids = ids;
-            o.isLocked = isLocked;
-            o.line = line;
-            o.outputFile = outputFile;
-            o.records = records;
-            o.status = status;
-            o.type = type;
-            o.urls = urls;
-            o.valueRegex = valueRegex;
-            return o;
+            final var _resultValue = new GetRecordsResult();
+            _resultValue.domainName = domainName;
+            _resultValue.hostRecordRegex = hostRecordRegex;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.isLocked = isLocked;
+            _resultValue.line = line;
+            _resultValue.outputFile = outputFile;
+            _resultValue.records = records;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            _resultValue.urls = urls;
+            _resultValue.valueRegex = valueRegex;
+            return _resultValue;
         }
     }
 }

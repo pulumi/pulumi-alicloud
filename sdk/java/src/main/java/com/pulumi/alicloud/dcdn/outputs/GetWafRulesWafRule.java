@@ -409,27 +409,27 @@ public final class GetWafRulesWafRule {
             return this;
         }
         public GetWafRulesWafRule build() {
-            final var o = new GetWafRulesWafRule();
-            o.action = action;
-            o.ccStatus = ccStatus;
-            o.cnRegionList = cnRegionList;
-            o.conditions = conditions;
-            o.defenseScene = defenseScene;
-            o.effect = effect;
-            o.gmtModified = gmtModified;
-            o.id = id;
-            o.otherRegionList = otherRegionList;
-            o.policyId = policyId;
-            o.rateLimits = rateLimits;
-            o.regularRules = regularRules;
-            o.regularTypes = regularTypes;
-            o.remoteAddrs = remoteAddrs;
-            o.ruleName = ruleName;
-            o.scenes = scenes;
-            o.status = status;
-            o.wafGroupIds = wafGroupIds;
-            o.wafRuleId = wafRuleId;
-            return o;
+            final var _resultValue = new GetWafRulesWafRule();
+            _resultValue.action = action;
+            _resultValue.ccStatus = ccStatus;
+            _resultValue.cnRegionList = cnRegionList;
+            _resultValue.conditions = conditions;
+            _resultValue.defenseScene = defenseScene;
+            _resultValue.effect = effect;
+            _resultValue.gmtModified = gmtModified;
+            _resultValue.id = id;
+            _resultValue.otherRegionList = otherRegionList;
+            _resultValue.policyId = policyId;
+            _resultValue.rateLimits = rateLimits;
+            _resultValue.regularRules = regularRules;
+            _resultValue.regularTypes = regularTypes;
+            _resultValue.remoteAddrs = remoteAddrs;
+            _resultValue.ruleName = ruleName;
+            _resultValue.scenes = scenes;
+            _resultValue.status = status;
+            _resultValue.wafGroupIds = wafGroupIds;
+            _resultValue.wafRuleId = wafRuleId;
+            return _resultValue;
         }
     }
 }

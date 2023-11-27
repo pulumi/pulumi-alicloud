@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.AliCloud.PrivateLink
 {
     /// <summary>
-    /// Provides a Private Link Vpc Endpoint Service User resource.
+    /// Provides a Private Link Vpc Endpoint Service User resource. Endpoint service user whitelist.
     /// 
     /// For information about Private Link Vpc Endpoint Service User and how to use it, see [What is Vpc Endpoint Service User](https://www.alibabacloud.com/help/en/privatelink/latest/api-privatelink-2020-04-15-addusertovpcendpointservice).
     /// 
@@ -66,19 +66,21 @@ namespace Pulumi.AliCloud.PrivateLink
     public partial class VpcEndpointServiceUser : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The dry run.
+        /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Output("dryRun")]
         public Output<bool?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of Vpc Endpoint Service.
+        /// The endpoint service ID.
         /// </summary>
         [Output("serviceId")]
         public Output<string> ServiceId { get; private set; } = null!;
 
         /// <summary>
-        /// The Id of Ram User.
+        /// The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
         /// </summary>
         [Output("userId")]
         public Output<string> UserId { get; private set; } = null!;
@@ -130,19 +132,21 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class VpcEndpointServiceUserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dry run.
+        /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The Id of Vpc Endpoint Service.
+        /// The endpoint service ID.
         /// </summary>
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
 
         /// <summary>
-        /// The Id of Ram User.
+        /// The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
         /// </summary>
         [Input("userId", required: true)]
         public Input<string> UserId { get; set; } = null!;
@@ -156,19 +160,21 @@ namespace Pulumi.AliCloud.PrivateLink
     public sealed class VpcEndpointServiceUserState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The dry run.
+        /// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+        /// - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+        /// - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         /// </summary>
         [Input("dryRun")]
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// The Id of Vpc Endpoint Service.
+        /// The endpoint service ID.
         /// </summary>
         [Input("serviceId")]
         public Input<string>? ServiceId { get; set; }
 
         /// <summary>
-        /// The Id of Ram User.
+        /// The ID of the Alibaba Cloud account in the whitelist of the endpoint service.
         /// </summary>
         [Input("userId")]
         public Input<string>? UserId { get; set; }

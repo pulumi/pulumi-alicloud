@@ -20,91 +20,91 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="alicloud:cs/swarm:Swarm")
 public class Swarm extends com.pulumi.resources.CustomResource {
-    @Export(name="agentVersion", type=String.class, parameters={})
+    @Export(name="agentVersion", refs={String.class}, tree="[0]")
     private Output<String> agentVersion;
 
     public Output<String> agentVersion() {
         return this.agentVersion;
     }
-    @Export(name="cidrBlock", type=String.class, parameters={})
+    @Export(name="cidrBlock", refs={String.class}, tree="[0]")
     private Output<String> cidrBlock;
 
     public Output<String> cidrBlock() {
         return this.cidrBlock;
     }
-    @Export(name="diskCategory", type=String.class, parameters={})
+    @Export(name="diskCategory", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> diskCategory;
 
     public Output<Optional<String>> diskCategory() {
         return Codegen.optional(this.diskCategory);
     }
-    @Export(name="diskSize", type=Integer.class, parameters={})
+    @Export(name="diskSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> diskSize;
 
     public Output<Optional<Integer>> diskSize() {
         return Codegen.optional(this.diskSize);
     }
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageId;
 
     public Output<Optional<String>> imageId() {
         return Codegen.optional(this.imageId);
     }
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     public Output<String> instanceType() {
         return this.instanceType;
     }
-    @Export(name="isOutdated", type=Boolean.class, parameters={})
+    @Export(name="isOutdated", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isOutdated;
 
     public Output<Optional<Boolean>> isOutdated() {
         return Codegen.optional(this.isOutdated);
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="namePrefix", type=String.class, parameters={})
+    @Export(name="namePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namePrefix;
 
     public Output<Optional<String>> namePrefix() {
         return Codegen.optional(this.namePrefix);
     }
-    @Export(name="needSlb", type=Boolean.class, parameters={})
+    @Export(name="needSlb", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> needSlb;
 
     public Output<Optional<Boolean>> needSlb() {
         return Codegen.optional(this.needSlb);
     }
-    @Export(name="nodeNumber", type=Integer.class, parameters={})
+    @Export(name="nodeNumber", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> nodeNumber;
 
     public Output<Optional<Integer>> nodeNumber() {
         return Codegen.optional(this.nodeNumber);
     }
-    @Export(name="nodes", type=List.class, parameters={SwarmNode.class})
+    @Export(name="nodes", refs={List.class,SwarmNode.class}, tree="[0,1]")
     private Output<List<SwarmNode>> nodes;
 
     public Output<List<SwarmNode>> nodes() {
         return this.nodes;
     }
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     public Output<String> password() {
         return this.password;
     }
-    @Export(name="releaseEip", type=Boolean.class, parameters={})
+    @Export(name="releaseEip", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> releaseEip;
 
     public Output<Optional<Boolean>> releaseEip() {
         return Codegen.optional(this.releaseEip);
     }
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     public Output<String> securityGroupId() {
@@ -116,25 +116,25 @@ public class Swarm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'size' has been deprecated from provider version 1.9.1. New field 'node_number' replaces it. */
-    @Export(name="size", type=Integer.class, parameters={})
+    @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> size;
 
     public Output<Optional<Integer>> size() {
         return Codegen.optional(this.size);
     }
-    @Export(name="slbId", type=String.class, parameters={})
+    @Export(name="slbId", refs={String.class}, tree="[0]")
     private Output<String> slbId;
 
     public Output<String> slbId() {
         return this.slbId;
     }
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     public Output<String> vpcId() {
         return this.vpcId;
     }
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     public Output<String> vswitchId() {

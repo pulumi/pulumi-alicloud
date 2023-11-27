@@ -105,12 +105,12 @@ public final class GetChainsChainChainConfigNodeNodeConfigDenyPolicy {
             return this;
         }
         public GetChainsChainChainConfigNodeNodeConfigDenyPolicy build() {
-            final var o = new GetChainsChainChainConfigNodeNodeConfigDenyPolicy();
-            o.action = action;
-            o.issueCount = issueCount;
-            o.issueLevel = issueLevel;
-            o.logic = logic;
-            return o;
+            final var _resultValue = new GetChainsChainChainConfigNodeNodeConfigDenyPolicy();
+            _resultValue.action = action;
+            _resultValue.issueCount = issueCount;
+            _resultValue.issueLevel = issueLevel;
+            _resultValue.logic = logic;
+            return _resultValue;
         }
     }
 }

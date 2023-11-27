@@ -70,7 +70,7 @@ public class SamlProvider extends com.pulumi.resources.CustomResource {
      * The Alibaba Cloud Resource Name (ARN) of the IdP.
      * 
      */
-    @Export(name="arn", type=String.class, parameters={})
+    @Export(name="arn", refs={String.class}, tree="[0]")
     private Output<String> arn;
 
     /**
@@ -84,7 +84,7 @@ public class SamlProvider extends com.pulumi.resources.CustomResource {
      * The description of SAML Provider.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -98,7 +98,7 @@ public class SamlProvider extends com.pulumi.resources.CustomResource {
      * The metadata file, which is Base64 encoded. The file is provided by an IdP that supports SAML 2.0.
      * 
      */
-    @Export(name="encodedsamlMetadataDocument", type=String.class, parameters={})
+    @Export(name="encodedsamlMetadataDocument", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encodedsamlMetadataDocument;
 
     /**
@@ -112,7 +112,7 @@ public class SamlProvider extends com.pulumi.resources.CustomResource {
      * The name of SAML Provider.
      * 
      */
-    @Export(name="samlProviderName", type=String.class, parameters={})
+    @Export(name="samlProviderName", refs={String.class}, tree="[0]")
     private Output<String> samlProviderName;
 
     /**
@@ -126,7 +126,7 @@ public class SamlProvider extends com.pulumi.resources.CustomResource {
      * The update time.
      * 
      */
-    @Export(name="updateDate", type=String.class, parameters={})
+    @Export(name="updateDate", refs={String.class}, tree="[0]")
     private Output<String> updateDate;
 
     /**

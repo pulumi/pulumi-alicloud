@@ -149,7 +149,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * List contact groups of the alarm rule, which must have been created on the console.
      * 
      */
-    @Export(name="contactGroups", type=List.class, parameters={String.class})
+    @Export(name="contactGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> contactGroups;
 
     /**
@@ -167,7 +167,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'dimensions' has been deprecated from version 1.173.0. Use 'metric_dimensions' instead. */
-    @Export(name="dimensions", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="dimensions", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> dimensions;
 
     /**
@@ -181,7 +181,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The interval of effecting alarm rule. It format as &#34;hh:mm-hh:mm&#34;, like &#34;0:00-4:00&#34;. Default to &#34;00:00-23:59&#34;.
      * 
      */
-    @Export(name="effectiveInterval", type=String.class, parameters={})
+    @Export(name="effectiveInterval", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> effectiveInterval;
 
     /**
@@ -195,7 +195,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * Whether to enable alarm rule. Default to true.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enabled;
 
     /**
@@ -213,7 +213,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'end_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead. */
-    @Export(name="endTime", type=Integer.class, parameters={})
+    @Export(name="endTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> endTime;
 
     /**
@@ -227,7 +227,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * A configuration of critical alarm. See `escalations_critical` below.
      * 
      */
-    @Export(name="escalationsCritical", type=AlarmEscalationsCritical.class, parameters={})
+    @Export(name="escalationsCritical", refs={AlarmEscalationsCritical.class}, tree="[0]")
     private Output</* @Nullable */ AlarmEscalationsCritical> escalationsCritical;
 
     /**
@@ -241,7 +241,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * A configuration of critical info. See `escalations_info` below.
      * 
      */
-    @Export(name="escalationsInfo", type=AlarmEscalationsInfo.class, parameters={})
+    @Export(name="escalationsInfo", refs={AlarmEscalationsInfo.class}, tree="[0]")
     private Output</* @Nullable */ AlarmEscalationsInfo> escalationsInfo;
 
     /**
@@ -255,7 +255,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * A configuration of critical warn. See `escalations_warn` below.
      * 
      */
-    @Export(name="escalationsWarn", type=AlarmEscalationsWarn.class, parameters={})
+    @Export(name="escalationsWarn", refs={AlarmEscalationsWarn.class}, tree="[0]")
     private Output</* @Nullable */ AlarmEscalationsWarn> escalationsWarn;
 
     /**
@@ -269,7 +269,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * Name of the monitoring metrics corresponding to a project, such as &#34;CPUUtilization&#34; and &#34;networkin_rate&#34;. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
-    @Export(name="metric", type=String.class, parameters={})
+    @Export(name="metric", refs={String.class}, tree="[0]")
     private Output<String> metric;
 
     /**
@@ -283,7 +283,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * Map of the resources associated with the alarm rule, such as &#34;instanceId&#34;, &#34;device&#34; and &#34;port&#34;. Each key&#39;s value is a string, and it uses comma to split multiple items. For more information, see [Metrics Reference](https://www.alibabacloud.com/help/doc-detail/28619.htm).
      * 
      */
-    @Export(name="metricDimensions", type=String.class, parameters={})
+    @Export(name="metricDimensions", refs={String.class}, tree="[0]")
     private Output<String> metricDimensions;
 
     /**
@@ -297,7 +297,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The alarm rule name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -315,7 +315,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'operator' has been deprecated from provider version 1.94.0. New field 'escalations_critical.comparison_operator' instead. */
-    @Export(name="operator", type=String.class, parameters={})
+    @Export(name="operator", refs={String.class}, tree="[0]")
     private Output<String> operator;
 
     /**
@@ -329,7 +329,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * Index query cycle, which must be consistent with that defined for metrics. Default to 300, in seconds.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -344,7 +344,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * **NOTE:** The `dimensions` and `metric_dimensions` must be empty when `project` is `acs_prometheus`, otherwise, one of them must be set.
      * 
      */
-    @Export(name="project", type=String.class, parameters={})
+    @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
@@ -359,7 +359,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The Prometheus alert rule. See `prometheus` below. **Note:** This parameter is required only when you create a Prometheus alert rule for Hybrid Cloud Monitoring.
      * 
      */
-    @Export(name="prometheuses", type=List.class, parameters={AlarmPrometheus.class})
+    @Export(name="prometheuses", refs={List.class,AlarmPrometheus.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlarmPrometheus>> prometheuses;
 
     /**
@@ -373,7 +373,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * Notification silence period in the alarm state, in seconds. Valid value range: [300, 86400]. Default to 86400
      * 
      */
-    @Export(name="silenceTime", type=Integer.class, parameters={})
+    @Export(name="silenceTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> silenceTime;
 
     /**
@@ -391,7 +391,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'start_time' has been deprecated from provider version 1.50.0. New field 'effective_interval' instead. */
-    @Export(name="startTime", type=Integer.class, parameters={})
+    @Export(name="startTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> startTime;
 
     /**
@@ -409,7 +409,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'statistics' has been deprecated from provider version 1.94.0. New field 'escalations_critical.statistics' instead. */
-    @Export(name="statistics", type=String.class, parameters={})
+    @Export(name="statistics", refs={String.class}, tree="[0]")
     private Output<String> statistics;
 
     /**
@@ -423,7 +423,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The current alarm rule status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -439,7 +439,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Each resource supports the creation of one of the following three levels.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -459,7 +459,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'threshold' has been deprecated from provider version 1.94.0. New field 'escalations_critical.threshold' instead. */
-    @Export(name="threshold", type=String.class, parameters={})
+    @Export(name="threshold", refs={String.class}, tree="[0]")
     private Output<String> threshold;
 
     /**
@@ -477,7 +477,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'triggered_count' has been deprecated from provider version 1.94.0. New field 'escalations_critical.times' instead. */
-    @Export(name="triggeredCount", type=Integer.class, parameters={})
+    @Export(name="triggeredCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> triggeredCount;
 
     /**
@@ -491,7 +491,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The webhook that should be called when the alarm is triggered. Currently, only http protocol is supported. Default is empty string.
      * 
      */
-    @Export(name="webhook", type=String.class, parameters={})
+    @Export(name="webhook", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> webhook;
 
     /**

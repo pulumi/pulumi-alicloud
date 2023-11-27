@@ -222,18 +222,18 @@ public final class GetChainsChain {
             return this;
         }
         public GetChainsChain build() {
-            final var o = new GetChainsChain();
-            o.chainConfigs = chainConfigs;
-            o.chainId = chainId;
-            o.chainName = chainName;
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.modifiedTime = modifiedTime;
-            o.scopeId = scopeId;
-            o.scopeType = scopeType;
-            return o;
+            final var _resultValue = new GetChainsChain();
+            _resultValue.chainConfigs = chainConfigs;
+            _resultValue.chainId = chainId;
+            _resultValue.chainName = chainName;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.modifiedTime = modifiedTime;
+            _resultValue.scopeId = scopeId;
+            _resultValue.scopeType = scopeType;
+            return _resultValue;
         }
     }
 }

@@ -104,14 +104,14 @@ public final class GetEndpointAclServiceResult {
             return this;
         }
         public GetEndpointAclServiceResult build() {
-            final var o = new GetEndpointAclServiceResult();
-            o.enable = enable;
-            o.endpointType = endpointType;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.moduleName = moduleName;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetEndpointAclServiceResult();
+            _resultValue.enable = enable;
+            _resultValue.endpointType = endpointType;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.moduleName = moduleName;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -84,11 +84,11 @@ public final class GetKeyPairsPair {
             return this;
         }
         public GetKeyPairsPair build() {
-            final var o = new GetKeyPairsPair();
-            o.id = id;
-            o.keyPairFingerPrint = keyPairFingerPrint;
-            o.keyPairName = keyPairName;
-            return o;
+            final var _resultValue = new GetKeyPairsPair();
+            _resultValue.id = id;
+            _resultValue.keyPairFingerPrint = keyPairFingerPrint;
+            _resultValue.keyPairName = keyPairName;
+            return _resultValue;
         }
     }
 }

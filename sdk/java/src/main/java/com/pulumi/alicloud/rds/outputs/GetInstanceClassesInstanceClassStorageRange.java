@@ -84,11 +84,11 @@ public final class GetInstanceClassesInstanceClassStorageRange {
             return this;
         }
         public GetInstanceClassesInstanceClassStorageRange build() {
-            final var o = new GetInstanceClassesInstanceClassStorageRange();
-            o.max = max;
-            o.min = min;
-            o.step = step;
-            return o;
+            final var _resultValue = new GetInstanceClassesInstanceClassStorageRange();
+            _resultValue.max = max;
+            _resultValue.min = min;
+            _resultValue.step = step;
+            return _resultValue;
         }
     }
 }

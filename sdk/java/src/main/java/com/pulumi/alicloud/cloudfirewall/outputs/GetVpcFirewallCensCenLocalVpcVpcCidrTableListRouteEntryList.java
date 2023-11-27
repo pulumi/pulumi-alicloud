@@ -65,10 +65,10 @@ public final class GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList {
             return this;
         }
         public GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList build() {
-            final var o = new GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList();
-            o.destinationCidr = destinationCidr;
-            o.nextHopInstanceId = nextHopInstanceId;
-            return o;
+            final var _resultValue = new GetVpcFirewallCensCenLocalVpcVpcCidrTableListRouteEntryList();
+            _resultValue.destinationCidr = destinationCidr;
+            _resultValue.nextHopInstanceId = nextHopInstanceId;
+            return _resultValue;
         }
     }
 }

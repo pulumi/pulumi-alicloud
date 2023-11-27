@@ -250,7 +250,7 @@ class GetApplicationsApplicationResult(dict):
         :param str application_type: The type of the package for the deployment of the application that you want to create. The valid values are: WAR and JAR. We strongly recommend you to set this parameter when creating the application.
         :param int build_package_id: The package ID of Enterprise Distributed Application Service (EDAS) Container.
         :param str cluster_id: The ID of the cluster that you want to create the application.
-        :param int cluster_type: The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+        :param int cluster_type: The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
         :param str region_id: The ID of the namespace the application belongs to.
         """
         pulumi.set(__self__, "app_id", app_id)
@@ -305,7 +305,7 @@ class GetApplicationsApplicationResult(dict):
     @pulumi.getter(name="clusterType")
     def cluster_type(self) -> int:
         """
-        The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+        The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
         """
         return pulumi.get(self, "cluster_type")
 
@@ -337,7 +337,7 @@ class GetClustersClusterResult(dict):
         """
         :param str cluster_id: The ID of the cluster that you want to create the application.
         :param str cluster_name: The name of the cluster.
-        :param int cluster_type: The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+        :param int cluster_type: The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
         :param int cpu: The total number of CPUs in the cluster.
         :param int cpu_used: The number of used CPUs in the cluster.
         :param int create_time: Cluster's creation time.
@@ -383,7 +383,7 @@ class GetClustersClusterResult(dict):
     @pulumi.getter(name="clusterType")
     def cluster_type(self) -> int:
         """
-        The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+        The type of the cluster, Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
         """
         return pulumi.get(self, "cluster_type")
 

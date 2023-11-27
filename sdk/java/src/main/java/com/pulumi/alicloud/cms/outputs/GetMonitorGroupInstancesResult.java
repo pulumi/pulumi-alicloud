@@ -97,13 +97,13 @@ public final class GetMonitorGroupInstancesResult {
             return this;
         }
         public GetMonitorGroupInstancesResult build() {
-            final var o = new GetMonitorGroupInstancesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instances = instances;
-            o.keyword = keyword;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetMonitorGroupInstancesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instances = instances;
+            _resultValue.keyword = keyword;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

@@ -122,13 +122,13 @@ public final class GetHostShareKeysKey {
             return this;
         }
         public GetHostShareKeysKey build() {
-            final var o = new GetHostShareKeysKey();
-            o.hostShareKeyId = hostShareKeyId;
-            o.hostShareKeyName = hostShareKeyName;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.privateKeyFingerPrint = privateKeyFingerPrint;
-            return o;
+            final var _resultValue = new GetHostShareKeysKey();
+            _resultValue.hostShareKeyId = hostShareKeyId;
+            _resultValue.hostShareKeyName = hostShareKeyName;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.privateKeyFingerPrint = privateKeyFingerPrint;
+            return _resultValue;
         }
     }
 }

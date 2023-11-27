@@ -122,13 +122,13 @@ public final class GetDirectoriesDirectorySamlIdentityProviderConfiguration {
             return this;
         }
         public GetDirectoriesDirectorySamlIdentityProviderConfiguration build() {
-            final var o = new GetDirectoriesDirectorySamlIdentityProviderConfiguration();
-            o.createTime = createTime;
-            o.encodedMetadataDocument = encodedMetadataDocument;
-            o.entityId = entityId;
-            o.loginUrl = loginUrl;
-            o.ssoStatus = ssoStatus;
-            return o;
+            final var _resultValue = new GetDirectoriesDirectorySamlIdentityProviderConfiguration();
+            _resultValue.createTime = createTime;
+            _resultValue.encodedMetadataDocument = encodedMetadataDocument;
+            _resultValue.entityId = entityId;
+            _resultValue.loginUrl = loginUrl;
+            _resultValue.ssoStatus = ssoStatus;
+            return _resultValue;
         }
     }
 }

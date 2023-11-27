@@ -125,7 +125,7 @@ public class LifecycleHook extends com.pulumi.resources.CustomResource {
      * Defines the action the Auto Scaling group should take when the lifecycle hook timeout elapses. Applicable value: CONTINUE, ABANDON, ROLLBACK, default value: CONTINUE.
      * 
      */
-    @Export(name="defaultResult", type=String.class, parameters={})
+    @Export(name="defaultResult", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> defaultResult;
 
     /**
@@ -139,7 +139,7 @@ public class LifecycleHook extends com.pulumi.resources.CustomResource {
      * Defines the amount of time, in seconds, that can elapse before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action defined in the default_result parameter. Default value: 600.
      * 
      */
-    @Export(name="heartbeatTimeout", type=Integer.class, parameters={})
+    @Export(name="heartbeatTimeout", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> heartbeatTimeout;
 
     /**
@@ -153,7 +153,7 @@ public class LifecycleHook extends com.pulumi.resources.CustomResource {
      * Type of Scaling activity attached to lifecycle hook. Supported value: SCALE_OUT, SCALE_IN.
      * 
      */
-    @Export(name="lifecycleTransition", type=String.class, parameters={})
+    @Export(name="lifecycleTransition", refs={String.class}, tree="[0]")
     private Output<String> lifecycleTransition;
 
     /**
@@ -167,7 +167,7 @@ public class LifecycleHook extends com.pulumi.resources.CustomResource {
      * The name of the lifecycle hook, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is lifecycle hook id.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -181,7 +181,7 @@ public class LifecycleHook extends com.pulumi.resources.CustomResource {
      * The Arn of notification target.
      * 
      */
-    @Export(name="notificationArn", type=String.class, parameters={})
+    @Export(name="notificationArn", refs={String.class}, tree="[0]")
     private Output<String> notificationArn;
 
     /**
@@ -195,7 +195,7 @@ public class LifecycleHook extends com.pulumi.resources.CustomResource {
      * Additional information that you want to include when Auto Scaling sends a message to the notification target.
      * 
      */
-    @Export(name="notificationMetadata", type=String.class, parameters={})
+    @Export(name="notificationMetadata", refs={String.class}, tree="[0]")
     private Output<String> notificationMetadata;
 
     /**
@@ -209,7 +209,7 @@ public class LifecycleHook extends com.pulumi.resources.CustomResource {
      * The ID of the Auto Scaling group to which you want to assign the lifecycle hook.
      * 
      */
-    @Export(name="scalingGroupId", type=String.class, parameters={})
+    @Export(name="scalingGroupId", refs={String.class}, tree="[0]")
     private Output<String> scalingGroupId;
 
     /**

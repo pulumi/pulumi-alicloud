@@ -164,15 +164,15 @@ public final class ClusterBootstrapScript {
             return this;
         }
         public ClusterBootstrapScript build() {
-            final var o = new ClusterBootstrapScript();
-            o.executionFailStrategy = executionFailStrategy;
-            o.executionMoment = executionMoment;
-            o.nodeSelector = nodeSelector;
-            o.priority = priority;
-            o.scriptArgs = scriptArgs;
-            o.scriptName = scriptName;
-            o.scriptPath = scriptPath;
-            return o;
+            final var _resultValue = new ClusterBootstrapScript();
+            _resultValue.executionFailStrategy = executionFailStrategy;
+            _resultValue.executionMoment = executionMoment;
+            _resultValue.nodeSelector = nodeSelector;
+            _resultValue.priority = priority;
+            _resultValue.scriptArgs = scriptArgs;
+            _resultValue.scriptName = scriptName;
+            _resultValue.scriptPath = scriptPath;
+            return _resultValue;
         }
     }
 }

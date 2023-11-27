@@ -83,7 +83,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The name of the certificate. The value of this parameter is returned if HTTPS is enabled.
      * 
      */
-    @Export(name="certName", type=String.class, parameters={})
+    @Export(name="certName", refs={String.class}, tree="[0]")
     private Output<String> certName;
 
     /**
@@ -97,7 +97,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The URL that is used for health checks.
      * 
      */
-    @Export(name="checkUrl", type=String.class, parameters={})
+    @Export(name="checkUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> checkUrl;
 
     /**
@@ -111,7 +111,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The CNAME that is assigned to the domain name for CDN. You must add a CNAME record in the system of your Domain Name System (DNS) service provider to map the domain name for CDN to the CNAME.
      * 
      */
-    @Export(name="cname", type=String.class, parameters={})
+    @Export(name="cname", refs={String.class}, tree="[0]")
     private Output<String> cname;
 
     /**
@@ -125,7 +125,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The description of the domain name for CDN.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -139,7 +139,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The domain name for CDN that you want to add to ApsaraVideo VOD. Wildcard domain names are supported. Start the domain name with a period (.). Example: `.example.com.`.
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
@@ -153,7 +153,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The time when the domain name for CDN was added. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
-    @Export(name="gmtCreated", type=String.class, parameters={})
+    @Export(name="gmtCreated", refs={String.class}, tree="[0]")
     private Output<String> gmtCreated;
 
     /**
@@ -167,7 +167,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The last time when the domain name for CDN was modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
-    @Export(name="gmtModified", type=String.class, parameters={})
+    @Export(name="gmtModified", refs={String.class}, tree="[0]")
     private Output<String> gmtModified;
 
     /**
@@ -181,7 +181,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * This parameter is applicable to users of level 3 or higher in mainland China and users outside mainland China. Valid values:
      * 
      */
-    @Export(name="scope", type=String.class, parameters={})
+    @Export(name="scope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scope;
 
     /**
@@ -195,7 +195,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The information about the address of the origin server. For more information about the Sources parameter, See the following `Block sources`.
      * 
      */
-    @Export(name="sources", type=List.class, parameters={DomainSource.class})
+    @Export(name="sources", refs={List.class,DomainSource.class}, tree="[0,1]")
     private Output<List<DomainSource>> sources;
 
     /**
@@ -209,7 +209,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Indicates whether the Secure Sockets Layer (SSL) certificate is enabled. Valid values: `on`,`off`.
      * 
      */
-    @Export(name="sslProtocol", type=String.class, parameters={})
+    @Export(name="sslProtocol", refs={String.class}, tree="[0]")
     private Output<String> sslProtocol;
 
     /**
@@ -223,7 +223,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The public key of the certificate. The value of this parameter is returned if HTTPS is enabled.
      * 
      */
-    @Export(name="sslPub", type=String.class, parameters={})
+    @Export(name="sslPub", refs={String.class}, tree="[0]")
     private Output<String> sslPub;
 
     /**
@@ -237,7 +237,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The status of the domain name for CDN. Valid values:
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -251,7 +251,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -265,7 +265,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The top-level domain name.
      * 
      */
-    @Export(name="topLevelDomain", type=String.class, parameters={})
+    @Export(name="topLevelDomain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> topLevelDomain;
 
     /**
@@ -279,7 +279,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The weight of the origin server.
      * 
      */
-    @Export(name="weight", type=String.class, parameters={})
+    @Export(name="weight", refs={String.class}, tree="[0]")
     private Output<String> weight;
 
     /**

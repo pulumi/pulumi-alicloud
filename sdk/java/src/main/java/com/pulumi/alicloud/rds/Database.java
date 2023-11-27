@@ -109,7 +109,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * More details refer to [API Docs](https://www.alibabacloud.com/help/zh/doc-detail/26258.htm)
      * 
      */
-    @Export(name="characterSet", type=String.class, parameters={})
+    @Export(name="characterSet", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> characterSet;
 
     /**
@@ -134,7 +134,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The value of &#34;name&#34; or &#34;character_set&#34;  does not support modification.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -150,7 +150,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * The Id of instance that can run database.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -164,7 +164,7 @@ public class Database extends com.pulumi.resources.CustomResource {
      * Name of the database requiring a uniqueness check. It may consist of lower case letters, numbers, and underlines, and must start with a letter and have no more than 64 characters.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

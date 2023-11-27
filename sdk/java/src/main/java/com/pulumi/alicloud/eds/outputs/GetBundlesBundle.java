@@ -226,18 +226,18 @@ public final class GetBundlesBundle {
             return this;
         }
         public GetBundlesBundle build() {
-            final var o = new GetBundlesBundle();
-            o.bundleId = bundleId;
-            o.bundleName = bundleName;
-            o.bundleType = bundleType;
-            o.description = description;
-            o.desktopType = desktopType;
-            o.desktopTypeAttributes = desktopTypeAttributes;
-            o.disks = disks;
-            o.id = id;
-            o.imageId = imageId;
-            o.osType = osType;
-            return o;
+            final var _resultValue = new GetBundlesBundle();
+            _resultValue.bundleId = bundleId;
+            _resultValue.bundleName = bundleName;
+            _resultValue.bundleType = bundleType;
+            _resultValue.description = description;
+            _resultValue.desktopType = desktopType;
+            _resultValue.desktopTypeAttributes = desktopTypeAttributes;
+            _resultValue.disks = disks;
+            _resultValue.id = id;
+            _resultValue.imageId = imageId;
+            _resultValue.osType = osType;
+            return _resultValue;
         }
     }
 }

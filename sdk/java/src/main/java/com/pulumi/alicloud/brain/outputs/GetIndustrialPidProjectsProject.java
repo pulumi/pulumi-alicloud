@@ -122,13 +122,13 @@ public final class GetIndustrialPidProjectsProject {
             return this;
         }
         public GetIndustrialPidProjectsProject build() {
-            final var o = new GetIndustrialPidProjectsProject();
-            o.id = id;
-            o.pidOrganizationId = pidOrganizationId;
-            o.pidProjectDesc = pidProjectDesc;
-            o.pidProjectId = pidProjectId;
-            o.pidProjectName = pidProjectName;
-            return o;
+            final var _resultValue = new GetIndustrialPidProjectsProject();
+            _resultValue.id = id;
+            _resultValue.pidOrganizationId = pidOrganizationId;
+            _resultValue.pidProjectDesc = pidProjectDesc;
+            _resultValue.pidProjectId = pidProjectId;
+            _resultValue.pidProjectName = pidProjectName;
+            return _resultValue;
         }
     }
 }

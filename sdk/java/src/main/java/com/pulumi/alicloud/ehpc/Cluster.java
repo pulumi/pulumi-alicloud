@@ -145,7 +145,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The type of the domain account service. Valid values: `nis`, `ldap`. Default value: `nis`
      * 
      */
-    @Export(name="accountType", type=String.class, parameters={})
+    @Export(name="accountType", refs={String.class}, tree="[0]")
     private Output<String> accountType;
 
     /**
@@ -159,7 +159,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The additional volumes. See `additional_volumes` below.
      * 
      */
-    @Export(name="additionalVolumes", type=List.class, parameters={ClusterAdditionalVolume.class})
+    @Export(name="additionalVolumes", refs={List.class,ClusterAdditionalVolume.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterAdditionalVolume>> additionalVolumes;
 
     /**
@@ -173,7 +173,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The application. See `application` below.
      * 
      */
-    @Export(name="applications", type=List.class, parameters={ClusterApplication.class})
+    @Export(name="applications", refs={List.class,ClusterApplication.class}, tree="[0,1]")
     private Output<List<ClusterApplication>> applications;
 
     /**
@@ -187,7 +187,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable auto-renewal for the subscription. Default value: `false`.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
@@ -201,7 +201,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The auto-renewal period of the subscription compute nodes. The parameter takes effect when AutoRenew is set to true.
      * 
      */
-    @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
@@ -215,7 +215,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The version of the E-HPC client. By default, the parameter is set to the latest version number.
      * 
      */
-    @Export(name="clientVersion", type=String.class, parameters={})
+    @Export(name="clientVersion", refs={String.class}, tree="[0]")
     private Output<String> clientVersion;
 
     /**
@@ -229,7 +229,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The name of the cluster. The name must be `2` to `64` characters in length.
      * 
      */
-    @Export(name="clusterName", type=String.class, parameters={})
+    @Export(name="clusterName", refs={String.class}, tree="[0]")
     private Output<String> clusterName;
 
     /**
@@ -243,7 +243,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The version of the cluster. Default value: `1.0`.
      * 
      */
-    @Export(name="clusterVersion", type=String.class, parameters={})
+    @Export(name="clusterVersion", refs={String.class}, tree="[0]")
     private Output<String> clusterVersion;
 
     /**
@@ -257,7 +257,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The number of the compute nodes. Valid values: `1` to `99`.
      * 
      */
-    @Export(name="computeCount", type=Integer.class, parameters={})
+    @Export(name="computeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> computeCount;
 
     /**
@@ -271,7 +271,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Specifies whether the compute nodes support hyper-threading. Default value: `true`.
      * 
      */
-    @Export(name="computeEnableHt", type=Boolean.class, parameters={})
+    @Export(name="computeEnableHt", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> computeEnableHt;
 
     /**
@@ -285,7 +285,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The instance type of the compute nodes.
      * 
      */
-    @Export(name="computeInstanceType", type=String.class, parameters={})
+    @Export(name="computeInstanceType", refs={String.class}, tree="[0]")
     private Output<String> computeInstanceType;
 
     /**
@@ -299,7 +299,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The maximum hourly price of the compute nodes. A maximum of three decimal places can be used in the value of the parameter. The parameter is valid only when the ComputeSpotStrategy parameter is set to SpotWithPriceLimit.
      * 
      */
-    @Export(name="computeSpotPriceLimit", type=String.class, parameters={})
+    @Export(name="computeSpotPriceLimit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> computeSpotPriceLimit;
 
     /**
@@ -313,7 +313,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The bidding method of the compute nodes. Default value: `NoSpot`. Valid values:
      * 
      */
-    @Export(name="computeSpotStrategy", type=String.class, parameters={})
+    @Export(name="computeSpotStrategy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> computeSpotStrategy;
 
     /**
@@ -327,7 +327,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The mode in which the cluster is deployed. Valid values: `Standard`, `Simple`, `Tiny`. Default value: Standard.
      * 
      */
-    @Export(name="deployMode", type=String.class, parameters={})
+    @Export(name="deployMode", refs={String.class}, tree="[0]")
     private Output<String> deployMode;
 
     /**
@@ -341,7 +341,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The description of the cluster. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -355,7 +355,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The domain name of the on-premises cluster. This parameter takes effect only when the AccoutType parameter is set to Idap.
      * 
      */
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> domain;
 
     /**
@@ -369,7 +369,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The billing method of the nodes.
      * 
      */
-    @Export(name="ecsChargeType", type=String.class, parameters={})
+    @Export(name="ecsChargeType", refs={String.class}, tree="[0]")
     private Output<String> ecsChargeType;
 
     /**
@@ -383,7 +383,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The version of E-HPC. By default, the parameter is set to the latest version number.
      * 
      */
-    @Export(name="ehpcVersion", type=String.class, parameters={})
+    @Export(name="ehpcVersion", refs={String.class}, tree="[0]")
     private Output<String> ehpcVersion;
 
     /**
@@ -397,7 +397,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable the high availability feature. Default value: `false`.  **Note:** If high availability is enabled, a primary management node and a secondary management node are used.
      * 
      */
-    @Export(name="haEnable", type=Boolean.class, parameters={})
+    @Export(name="haEnable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> haEnable;
 
     /**
@@ -411,7 +411,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The ID of the image.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     /**
@@ -425,7 +425,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The type of the image. Valid values: `others`, `self`, `system`, `marketplace`. Default value: `system`.
      * 
      */
-    @Export(name="imageOwnerAlias", type=String.class, parameters={})
+    @Export(name="imageOwnerAlias", refs={String.class}, tree="[0]")
     private Output<String> imageOwnerAlias;
 
     /**
@@ -439,7 +439,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The URL of the job files that are uploaded to an Object Storage Service (OSS) bucket.
      * 
      */
-    @Export(name="inputFileUrl", type=String.class, parameters={})
+    @Export(name="inputFileUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> inputFileUrl;
 
     /**
@@ -453,7 +453,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable auto scaling. Default value: `false`.
      * 
      */
-    @Export(name="isComputeEss", type=Boolean.class, parameters={})
+    @Export(name="isComputeEss", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isComputeEss;
 
     /**
@@ -467,7 +467,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The queue to which the compute nodes are added.
      * 
      */
-    @Export(name="jobQueue", type=String.class, parameters={})
+    @Export(name="jobQueue", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jobQueue;
 
     /**
@@ -481,7 +481,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The name of the AccessKey pair.
      * 
      */
-    @Export(name="keyPairName", type=String.class, parameters={})
+    @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyPairName;
 
     /**
@@ -495,7 +495,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The number of the logon nodes. Valid values: `1`.
      * 
      */
-    @Export(name="loginCount", type=Integer.class, parameters={})
+    @Export(name="loginCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> loginCount;
 
     /**
@@ -509,7 +509,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The instance type of the logon nodes.
      * 
      */
-    @Export(name="loginInstanceType", type=String.class, parameters={})
+    @Export(name="loginInstanceType", refs={String.class}, tree="[0]")
     private Output<String> loginInstanceType;
 
     /**
@@ -523,7 +523,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The number of the management nodes. Valid values: 1 and 2.
      * 
      */
-    @Export(name="managerCount", type=Integer.class, parameters={})
+    @Export(name="managerCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> managerCount;
 
     /**
@@ -537,7 +537,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The instance type of the management nodes.
      * 
      */
-    @Export(name="managerInstanceType", type=String.class, parameters={})
+    @Export(name="managerInstanceType", refs={String.class}, tree="[0]")
     private Output<String> managerInstanceType;
 
     /**
@@ -551,7 +551,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The image tag of the operating system.
      * 
      */
-    @Export(name="osTag", type=String.class, parameters={})
+    @Export(name="osTag", refs={String.class}, tree="[0]")
     private Output<String> osTag;
 
     /**
@@ -565,7 +565,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The root password of the logon node. The password must be 8 to 30 characters in length and contain at least three of the following items: uppercase letters, lowercase letters, digits, and special characters. The password can contain the following special characters: `( ) ~ ! @ # $ % ^ &amp; * - + = { } [ ] : ; ‘ &lt; &gt; , . ? /`. You must specify either `password` or `key_pair_name`. If both are specified, the Password parameter prevails.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -582,7 +582,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * * If you set PriceUnit to Hour, the valid value of the Period parameter is 1.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -599,7 +599,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The unit of the subscription duration. Valid values: `Year`, `Month`, `Hour`. Default value: `Month`.
      * 
      */
-    @Export(name="periodUnit", type=String.class, parameters={})
+    @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
@@ -618,7 +618,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * - pluginOssPath: the remote path where the plug-in is stored in OSS. This parameter takes effect only when the pluginMod parameter is set to oss.
      * 
      */
-    @Export(name="plugin", type=String.class, parameters={})
+    @Export(name="plugin", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> plugin;
 
     /**
@@ -637,7 +637,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The post install script. See `post_install_script` below.
      * 
      */
-    @Export(name="postInstallScripts", type=List.class, parameters={ClusterPostInstallScript.class})
+    @Export(name="postInstallScripts", refs={List.class,ClusterPostInstallScript.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ClusterPostInstallScript>> postInstallScripts;
 
     /**
@@ -651,7 +651,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The node of the RAM role.
      * 
      */
-    @Export(name="ramNodeTypes", type=List.class, parameters={String.class})
+    @Export(name="ramNodeTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> ramNodeTypes;
 
     /**
@@ -665,7 +665,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The name of the Resource Access Management (RAM) role.
      * 
      */
-    @Export(name="ramRoleName", type=String.class, parameters={})
+    @Export(name="ramRoleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ramRoleName;
 
     /**
@@ -679,7 +679,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The release instance. Valid values: `true`.
      * 
      */
-    @Export(name="releaseInstance", type=Boolean.class, parameters={})
+    @Export(name="releaseInstance", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> releaseInstance;
 
     /**
@@ -693,7 +693,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The remote directory to which the file system is mounted.
      * 
      */
-    @Export(name="remoteDirectory", type=String.class, parameters={})
+    @Export(name="remoteDirectory", refs={String.class}, tree="[0]")
     private Output<String> remoteDirectory;
 
     /**
@@ -707,7 +707,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable Virtual Network Computing (VNC). Default value: `false`.
      * 
      */
-    @Export(name="remoteVisEnable", type=Boolean.class, parameters={})
+    @Export(name="remoteVisEnable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> remoteVisEnable;
 
     /**
@@ -721,7 +721,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -735,7 +735,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The ID of the Super Computing Cluster (SCC) instance. If you specify the parameter, the SCC instance is moved to a new SCC cluster.
      * 
      */
-    @Export(name="sccClusterId", type=String.class, parameters={})
+    @Export(name="sccClusterId", refs={String.class}, tree="[0]")
     private Output<String> sccClusterId;
 
     /**
@@ -749,7 +749,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The type of the scheduler. Valid values: `pbs`, `slurm`, `opengridscheduler` and `deadline`. Default value: `pbs`.
      * 
      */
-    @Export(name="schedulerType", type=String.class, parameters={})
+    @Export(name="schedulerType", refs={String.class}, tree="[0]")
     private Output<String> schedulerType;
 
     /**
@@ -763,7 +763,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The ID of the security group to which the cluster belongs.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
@@ -777,7 +777,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * If you do not use an existing security group, set the parameter to the name of a new security group. A default policy is applied to the new security group.
      * 
      */
-    @Export(name="securityGroupName", type=String.class, parameters={})
+    @Export(name="securityGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityGroupName;
 
     /**
@@ -791,7 +791,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -805,7 +805,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The performance level of the ESSD that is used as the system disk. Default value: `PL1` For more information, see [ESSDs](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/essds). Valid values:
      * 
      */
-    @Export(name="systemDiskLevel", type=String.class, parameters={})
+    @Export(name="systemDiskLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskLevel;
 
     /**
@@ -819,7 +819,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The size of the system disk. Unit: `GB`. Valid values: `40` to `500`. Default value: `40`.
      * 
      */
-    @Export(name="systemDiskSize", type=Integer.class, parameters={})
+    @Export(name="systemDiskSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> systemDiskSize;
 
     /**
@@ -833,7 +833,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The type of the system disk. Valid values: `cloud_efficiency`, `cloud_ssd`, `cloud_essd` or `cloud`. Default value: `cloud_ssd`.
      * 
      */
-    @Export(name="systemDiskType", type=String.class, parameters={})
+    @Export(name="systemDiskType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskType;
 
     /**
@@ -847,7 +847,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The ID of the file system. If you leave the parameter empty, a Performance NAS file system is created by default.
      * 
      */
-    @Export(name="volumeId", type=String.class, parameters={})
+    @Export(name="volumeId", refs={String.class}, tree="[0]")
     private Output<String> volumeId;
 
     /**
@@ -861,7 +861,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The mount options of the file system.
      * 
      */
-    @Export(name="volumeMountOption", type=String.class, parameters={})
+    @Export(name="volumeMountOption", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> volumeMountOption;
 
     /**
@@ -877,7 +877,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * - If you specify the VolumeId parameter, the VolumeMountpoint parameter is required.
      * 
      */
-    @Export(name="volumeMountpoint", type=String.class, parameters={})
+    @Export(name="volumeMountpoint", refs={String.class}, tree="[0]")
     private Output<String> volumeMountpoint;
 
     /**
@@ -893,7 +893,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The type of the protocol that is used by the file system. Valid values: `NFS`, `SMB`. Default value: `NFS`.
      * 
      */
-    @Export(name="volumeProtocol", type=String.class, parameters={})
+    @Export(name="volumeProtocol", refs={String.class}, tree="[0]")
     private Output<String> volumeProtocol;
 
     /**
@@ -907,7 +907,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The type of the shared storage. Only Apsara File Storage NAS file systems are supported.
      * 
      */
-    @Export(name="volumeType", type=String.class, parameters={})
+    @Export(name="volumeType", refs={String.class}, tree="[0]")
     private Output<String> volumeType;
 
     /**
@@ -921,7 +921,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The ID of the virtual private cloud (VPC) to which the cluster belongs.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -935,7 +935,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The ID of the vSwitch. E-HPC supports only VPC networks.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -949,7 +949,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Specifies whether not to install the agent. Default value: `false`.
      * 
      */
-    @Export(name="withoutAgent", type=Boolean.class, parameters={})
+    @Export(name="withoutAgent", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> withoutAgent;
 
     /**
@@ -963,7 +963,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Specifies whether the logon node uses an elastic IP address (EIP). Default value: `false`.
      * 
      */
-    @Export(name="withoutElasticIp", type=Boolean.class, parameters={})
+    @Export(name="withoutElasticIp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> withoutElasticIp;
 
     /**
@@ -977,7 +977,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The ID of the zone.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

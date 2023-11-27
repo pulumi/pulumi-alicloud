@@ -117,7 +117,7 @@ public class CompliancePack extends com.pulumi.resources.CustomResource {
      * The Compliance Package Name. **NOTE:** From version 1.146.0, `compliance_pack_name` can be modified.
      * 
      */
-    @Export(name="compliancePackName", type=String.class, parameters={})
+    @Export(name="compliancePackName", refs={String.class}, tree="[0]")
     private Output<String> compliancePackName;
 
     /**
@@ -131,7 +131,7 @@ public class CompliancePack extends com.pulumi.resources.CustomResource {
      * Compliance Package Template Id.
      * 
      */
-    @Export(name="compliancePackTemplateId", type=String.class, parameters={})
+    @Export(name="compliancePackTemplateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> compliancePackTemplateId;
 
     /**
@@ -145,7 +145,7 @@ public class CompliancePack extends com.pulumi.resources.CustomResource {
      * A list of Config Rule IDs. See `config_rule_ids` below.
      * 
      */
-    @Export(name="configRuleIds", type=List.class, parameters={CompliancePackConfigRuleId.class})
+    @Export(name="configRuleIds", refs={List.class,CompliancePackConfigRuleId.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CompliancePackConfigRuleId>> configRuleIds;
 
     /**
@@ -163,7 +163,7 @@ public class CompliancePack extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field `config_rules` has been deprecated from provider version 1.141.0. New field `config_rule_ids` instead. */
-    @Export(name="configRules", type=List.class, parameters={CompliancePackConfigRule.class})
+    @Export(name="configRules", refs={List.class,CompliancePackConfigRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<CompliancePackConfigRule>> configRules;
 
     /**
@@ -177,7 +177,7 @@ public class CompliancePack extends com.pulumi.resources.CustomResource {
      * The Description of compliance pack.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -191,7 +191,7 @@ public class CompliancePack extends com.pulumi.resources.CustomResource {
      * The Risk Level. Valid values:
      * 
      */
-    @Export(name="riskLevel", type=Integer.class, parameters={})
+    @Export(name="riskLevel", refs={Integer.class}, tree="[0]")
     private Output<Integer> riskLevel;
 
     /**
@@ -205,7 +205,7 @@ public class CompliancePack extends com.pulumi.resources.CustomResource {
      * The status of the Compliance Pack.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

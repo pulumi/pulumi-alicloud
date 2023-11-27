@@ -140,13 +140,13 @@ public final class GetZonesZone {
             return supportedResources(List.of(supportedResources));
         }
         public GetZonesZone build() {
-            final var o = new GetZonesZone();
-            o.id = id;
-            o.masterZoneId = masterZoneId;
-            o.slaveZoneId = slaveZoneId;
-            o.slbSlaveZoneIds = slbSlaveZoneIds;
-            o.supportedResources = supportedResources;
-            return o;
+            final var _resultValue = new GetZonesZone();
+            _resultValue.id = id;
+            _resultValue.masterZoneId = masterZoneId;
+            _resultValue.slaveZoneId = slaveZoneId;
+            _resultValue.slbSlaveZoneIds = slbSlaveZoneIds;
+            _resultValue.supportedResources = supportedResources;
+            return _resultValue;
         }
     }
 }

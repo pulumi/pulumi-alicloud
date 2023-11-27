@@ -239,19 +239,19 @@ public final class GetCaCertificatesCertificate {
             return this;
         }
         public GetCaCertificatesCertificate build() {
-            final var o = new GetCaCertificatesCertificate();
-            o.caCertificateId = caCertificateId;
-            o.caCertificateName = caCertificateName;
-            o.commonName = commonName;
-            o.createdTimestamp = createdTimestamp;
-            o.expiredTime = expiredTime;
-            o.expiredTimestamp = expiredTimestamp;
-            o.fingerprint = fingerprint;
-            o.id = id;
-            o.name = name;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetCaCertificatesCertificate();
+            _resultValue.caCertificateId = caCertificateId;
+            _resultValue.caCertificateName = caCertificateName;
+            _resultValue.commonName = commonName;
+            _resultValue.createdTimestamp = createdTimestamp;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.expiredTimestamp = expiredTimestamp;
+            _resultValue.fingerprint = fingerprint;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

@@ -210,18 +210,18 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.authed = authed;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.instanceNum = instanceNum;
-            o.odpsSet = odpsSet;
-            o.ossBucketSet = ossBucketSet;
-            o.ossSize = ossSize;
-            o.paymentType = paymentType;
-            o.rdsSet = rdsSet;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.authed = authed;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceNum = instanceNum;
+            _resultValue.odpsSet = odpsSet;
+            _resultValue.ossBucketSet = ossBucketSet;
+            _resultValue.ossSize = ossSize;
+            _resultValue.paymentType = paymentType;
+            _resultValue.rdsSet = rdsSet;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

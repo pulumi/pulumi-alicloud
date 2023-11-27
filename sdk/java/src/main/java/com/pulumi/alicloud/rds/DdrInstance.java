@@ -41,7 +41,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      * 
      */
-    @Export(name="acl", type=String.class, parameters={})
+    @Export(name="acl", refs={String.class}, tree="[0]")
     private Output<String> acl;
 
     /**
@@ -59,7 +59,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * Whether to renewal a DB instance automatically or not. It is valid when payment_type is `Subscription`. Default to `false`.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoRenew;
 
     /**
@@ -73,7 +73,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * Auto-renewal period of an instance, in the unit of the month. It is valid when payment_type is `Subscription`. Valid value:[1~12], Default to 1.
      * 
      */
-    @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> autoRenewPeriod;
 
     /**
@@ -91,7 +91,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * See more [details and limitation](https://www.alibabacloud.com/help/doc-detail/123605.htm).
      * 
      */
-    @Export(name="autoUpgradeMinorVersion", type=String.class, parameters={})
+    @Export(name="autoUpgradeMinorVersion", refs={String.class}, tree="[0]")
     private Output<String> autoUpgradeMinorVersion;
 
     /**
@@ -109,7 +109,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The ID of the backup set that is used for the restoration. You can call the DescribeCrossRegionBackups operation to query the ID of the backup set.
      * 
      */
-    @Export(name="backupSetId", type=String.class, parameters={})
+    @Export(name="backupSetId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupSetId;
 
     /**
@@ -125,7 +125,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * - custom: a custom certificate
      * 
      */
-    @Export(name="caType", type=String.class, parameters={})
+    @Export(name="caType", refs={String.class}, tree="[0]")
     private Output<String> caType;
 
     /**
@@ -141,7 +141,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The RDS edition of the instance.
      * 
      */
-    @Export(name="category", type=String.class, parameters={})
+    @Export(name="category", refs={String.class}, tree="[0]")
     private Output<String> category;
 
     /**
@@ -155,7 +155,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The public key of the CA that issues client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCAEbabled parameter to 1, you must also specify this parameter.
      * 
      */
-    @Export(name="clientCaCert", type=String.class, parameters={})
+    @Export(name="clientCaCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCaCert;
 
     /**
@@ -171,7 +171,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * - 0: disables the public key
      * 
      */
-    @Export(name="clientCaEnabled", type=Integer.class, parameters={})
+    @Export(name="clientCaEnabled", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> clientCaEnabled;
 
     /**
@@ -187,7 +187,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The CRL that contains revoked client certificates. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the ClientCrlEnabled parameter to 1, you must also specify this parameter.
      * 
      */
-    @Export(name="clientCertRevocationList", type=String.class, parameters={})
+    @Export(name="clientCertRevocationList", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCertRevocationList;
 
     /**
@@ -203,7 +203,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * - 0: disables the CRL
      * 
      */
-    @Export(name="clientCrlEnabled", type=Integer.class, parameters={})
+    @Export(name="clientCrlEnabled", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> clientCrlEnabled;
 
     /**
@@ -219,7 +219,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * RDS database connection string.
      * 
      */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -234,7 +234,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The prefix must be 8 to 64 characters in length and can contain letters, digits, and hyphens (-). It cannot contain Chinese characters and special characters ~!#%^&amp;*=+\|{};:&#39;&#34;,&lt;&gt;/?
      * 
      */
-    @Export(name="connectionStringPrefix", type=String.class, parameters={})
+    @Export(name="connectionStringPrefix", refs={String.class}, tree="[0]")
     private Output<String> connectionStringPrefix;
 
     /**
@@ -251,7 +251,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The IP address whitelists that have the hidden attribute are not displayed in the ApsaraDB RDS console. These IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
      * 
      */
-    @Export(name="dbInstanceIpArrayAttribute", type=String.class, parameters={})
+    @Export(name="dbInstanceIpArrayAttribute", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbInstanceIpArrayAttribute;
 
     /**
@@ -269,7 +269,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** A maximum of 200 IP address whitelists can be configured for each instance.
      * 
      */
-    @Export(name="dbInstanceIpArrayName", type=String.class, parameters={})
+    @Export(name="dbInstanceIpArrayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbInstanceIpArrayName;
 
     /**
@@ -292,7 +292,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** You can specify the time zone when you create a primary instance. You cannot specify the time zone when you create a read-only instance. Read-only instances inherit the time zone of their primary instance. If you do not specify this parameter, the system assigns the default time zone of the region where the instance resides.
      * 
      */
-    @Export(name="dbInstanceStorageType", type=String.class, parameters={})
+    @Export(name="dbInstanceStorageType", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceStorageType;
 
     /**
@@ -317,7 +317,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** `deletion_protection` is valid only when attribute `payment_type` is set to `PayAsYouGo`, supported engine type: **MySQL**, **PostgreSQL**, **MariaDB**, **MSSQL**.
      * 
      */
-    @Export(name="deletionProtection", type=Boolean.class, parameters={})
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deletionProtection;
 
     /**
@@ -337,7 +337,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * - MaintainTime: The change takes effect during the specified maintenance window. For more information, see ModifyDBInstanceMaintainTime.
      * 
      */
-    @Export(name="effectiveTime", type=String.class, parameters={})
+    @Export(name="effectiveTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> effectiveTime;
 
     /**
@@ -353,7 +353,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The key id of the KMS. Used for encrypting a disk if not null. Only for PostgreSQL, MySQL and SQLServer.
      * 
      */
-    @Export(name="encryptionKey", type=String.class, parameters={})
+    @Export(name="encryptionKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptionKey;
 
     /**
@@ -369,7 +369,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** When the &#39;EngineVersion&#39; changes, it can be used as the target database version for the large version upgrade of RDS for MySQL instance.
      * 
      */
-    @Export(name="engine", type=String.class, parameters={})
+    @Export(name="engine", refs={String.class}, tree="[0]")
     private Output<String> engine;
 
     /**
@@ -385,7 +385,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * Database version. Value options can refer to the latest docs [CreateDdrInstance](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/restore-data-to-a-new-instance-across-regions) `EngineVersion`.
      * 
      */
-    @Export(name="engineVersion", type=String.class, parameters={})
+    @Export(name="engineVersion", refs={String.class}, tree="[0]")
     private Output<String> engineVersion;
 
     /**
@@ -399,7 +399,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * Set it to true to make some parameter efficient when modifying them. Default to false.
      * 
      */
-    @Export(name="forceRestart", type=Boolean.class, parameters={})
+    @Export(name="forceRestart", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> forceRestart;
 
     /**
@@ -415,7 +415,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * * If the instance is not attached with a read-only instance, this parameter is empty.
      * 
      */
-    @Export(name="freshWhiteListReadins", type=String.class, parameters={})
+    @Export(name="freshWhiteListReadins", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> freshWhiteListReadins;
 
     /**
@@ -435,7 +435,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** If you set this parameter to Manual, you must specify the ManualHATime parameter.
      * 
      */
-    @Export(name="haConfig", type=String.class, parameters={})
+    @Export(name="haConfig", refs={String.class}, tree="[0]")
     private Output<String> haConfig;
 
     /**
@@ -453,7 +453,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The name of DB instance. It a string of 2 to 256 characters.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceName;
 
     /**
@@ -469,7 +469,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * This value must be a multiple of 5 GB. For more information, see Primary ApsaraDB RDS instance types.
      * 
      */
-    @Export(name="instanceStorage", type=Integer.class, parameters={})
+    @Export(name="instanceStorage", refs={Integer.class}, tree="[0]")
     private Output<Integer> instanceStorage;
 
     /**
@@ -487,7 +487,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** When `storage_auto_scale=&#34;Enable&#34;`, do not perform `instance_storage` check. when `storage_auto_scale=&#34;Disable&#34;`, if the instance itself `instance_storage`has changed. You need to manually revise the `instance_storage` in the template value.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -503,7 +503,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      * 
      */
-    @Export(name="maintainTime", type=String.class, parameters={})
+    @Export(name="maintainTime", refs={String.class}, tree="[0]")
     private Output<String> maintainTime;
 
     /**
@@ -519,7 +519,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter only takes effect when the HAConfig parameter is set to Manual.
      * 
      */
-    @Export(name="manualHaTime", type=String.class, parameters={})
+    @Export(name="manualHaTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> manualHaTime;
 
     /**
@@ -538,7 +538,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * - Delete: Delete IP addresses and CIDR blocks that are specified in the SecurityIps parameter from the IP address whitelist. You must retain at least one IP address or CIDR block.
      * 
      */
-    @Export(name="modifyMode", type=String.class, parameters={})
+    @Export(name="modifyMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modifyMode;
 
     /**
@@ -555,7 +555,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The monitoring frequency in seconds. Valid values are 5, 60, 300. Defaults to 300.
      * 
      */
-    @Export(name="monitoringPeriod", type=Integer.class, parameters={})
+    @Export(name="monitoringPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> monitoringPeriod;
 
     /**
@@ -569,7 +569,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * Set of parameters needs to be set after DB instance was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/doc-detail/26284.htm) . See `parameters` below.
      * 
      */
-    @Export(name="parameters", type=List.class, parameters={DdrInstanceParameter.class})
+    @Export(name="parameters", refs={List.class,DdrInstanceParameter.class}, tree="[0,1]")
     private Output<List<DdrInstanceParameter>> parameters;
 
     /**
@@ -583,7 +583,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * Valid values are `Subscription`, `PayAsYouGo`, Default to `PayAsYouGo`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -598,7 +598,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -613,7 +613,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The configuration of [AD domain](https://www.alibabacloud.com/help/en/doc-detail/349288.htm) . See `pg_hba_conf` below.
      * 
      */
-    @Export(name="pgHbaConfs", type=List.class, parameters={DdrInstancePgHbaConf.class})
+    @Export(name="pgHbaConfs", refs={List.class,DdrInstancePgHbaConf.class}, tree="[0,1]")
     private Output<List<DdrInstancePgHbaConf>> pgHbaConfs;
 
     /**
@@ -627,7 +627,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The private port of the database service. If you want to update public port, please use resource alicloud.rds.Connection port.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
@@ -641,7 +641,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The private IP address of the instance. The private IP address must be within the Classless Inter-Domain Routing (CIDR) block of the vSwitch that is specified by the VSwitchId parameter.
      * 
      */
-    @Export(name="privateIpAddress", type=String.class, parameters={})
+    @Export(name="privateIpAddress", refs={String.class}, tree="[0]")
     private Output<String> privateIpAddress;
 
     /**
@@ -660,7 +660,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter is supported only when the instance runs the MySQL database engine.
      * 
      */
-    @Export(name="releasedKeepPolicy", type=String.class, parameters={})
+    @Export(name="releasedKeepPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> releasedKeepPolicy;
 
     /**
@@ -683,7 +683,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * - verify-full (supported only when the instance runs PostgreSQL 12 or later)
      * 
      */
-    @Export(name="replicationAcl", type=String.class, parameters={})
+    @Export(name="replicationAcl", refs={String.class}, tree="[0]")
     private Output<String> replicationAcl;
 
     /**
@@ -701,7 +701,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The ID of resource group which the DB instance belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -715,7 +715,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The point in time to which you want to restore data. The point in time that you specify must be earlier than the current time. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
      * 
      */
-    @Export(name="restoreTime", type=String.class, parameters={})
+    @Export(name="restoreTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> restoreTime;
 
     /**
@@ -731,7 +731,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * - BackupTime: restores data to a point in time. You must also specify the RestoreTime, SourceRegion, and SourceDBInstanceName parameters.
      * 
      */
-    @Export(name="restoreType", type=String.class, parameters={})
+    @Export(name="restoreType", refs={String.class}, tree="[0]")
     private Output<String> restoreType;
 
     /**
@@ -747,7 +747,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * ) The list IDs to join ECS Security Group. At most supports three security groups.
      * 
      */
-    @Export(name="securityGroupIds", type=List.class, parameters={String.class})
+    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroupIds;
 
     /**
@@ -761,7 +761,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * Valid values are `normal`, `safety`, Default to `normal`. support `safety` switch to high security access mode.
      * 
      */
-    @Export(name="securityIpMode", type=String.class, parameters={})
+    @Export(name="securityIpMode", refs={String.class}, tree="[0]")
     private Output<String> securityIpMode;
 
     /**
@@ -775,7 +775,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The type of IP address in the IP address whitelist.
      * 
      */
-    @Export(name="securityIpType", type=String.class, parameters={})
+    @Export(name="securityIpType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityIpType;
 
     /**
@@ -789,7 +789,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      * 
      */
-    @Export(name="securityIps", type=List.class, parameters={String.class})
+    @Export(name="securityIps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityIps;
 
     /**
@@ -803,7 +803,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The content of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
      * 
      */
-    @Export(name="serverCert", type=String.class, parameters={})
+    @Export(name="serverCert", refs={String.class}, tree="[0]")
     private Output<String> serverCert;
 
     /**
@@ -817,7 +817,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The private key of the server certificate. This parameter is supported only when the instance runs PostgreSQL with standard or enhanced SSDs. If you set the CAType parameter to custom, you must also specify this parameter.
      * 
      */
-    @Export(name="serverKey", type=String.class, parameters={})
+    @Export(name="serverKey", refs={String.class}, tree="[0]")
     private Output<String> serverKey;
 
     /**
@@ -831,7 +831,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The ID of the source instance if you want to restore data to a point in time.
      * 
      */
-    @Export(name="sourceDbInstanceName", type=String.class, parameters={})
+    @Export(name="sourceDbInstanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceDbInstanceName;
 
     /**
@@ -845,7 +845,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The region ID of the source instance if you want to restore data to a point in time.
      * 
      */
-    @Export(name="sourceRegion", type=String.class, parameters={})
+    @Export(name="sourceRegion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceRegion;
 
     /**
@@ -859,7 +859,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The sql collector keep time of the instance. Valid values are `30`, `180`, `365`, `1095`, `1825`, Default to `30`.
      * 
      */
-    @Export(name="sqlCollectorConfigValue", type=Integer.class, parameters={})
+    @Export(name="sqlCollectorConfigValue", refs={Integer.class}, tree="[0]")
     private Output<Integer> sqlCollectorConfigValue;
 
     /**
@@ -873,7 +873,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The sql collector status of the instance. Valid values are `Enabled`, `Disabled`, Default to `Disabled`.
      * 
      */
-    @Export(name="sqlCollectorStatus", type=String.class, parameters={})
+    @Export(name="sqlCollectorStatus", refs={String.class}, tree="[0]")
     private Output<String> sqlCollectorStatus;
 
     /**
@@ -887,7 +887,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26254.htm).
      * 
      */
-    @Export(name="sslAction", type=String.class, parameters={})
+    @Export(name="sslAction", refs={String.class}, tree="[0]")
     private Output<String> sslAction;
 
     /**
@@ -901,7 +901,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * Status of the SSL feature. `Yes`: SSL is turned on; `No`: SSL is turned off.
      * 
      */
-    @Export(name="sslStatus", type=String.class, parameters={})
+    @Export(name="sslStatus", refs={String.class}, tree="[0]")
     private Output<String> sslStatus;
 
     /**
@@ -919,7 +919,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable.
      * 
      */
-    @Export(name="storageAutoScale", type=String.class, parameters={})
+    @Export(name="storageAutoScale", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageAutoScale;
 
     /**
@@ -944,7 +944,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter only takes effect when the StorageAutoScale parameter is set to Enable. The value must be greater than or equal to the total size of the current storage space of the instance.
      * 
      */
-    @Export(name="storageThreshold", type=Integer.class, parameters={})
+    @Export(name="storageThreshold", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> storageThreshold;
 
     /**
@@ -967,7 +967,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Because of data backup and migration, change DB instance type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      * 
      */
-    @Export(name="storageUpperBound", type=Integer.class, parameters={})
+    @Export(name="storageUpperBound", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> storageUpperBound;
 
     /**
@@ -985,7 +985,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter takes effect only when you set the UpgradeTime parameter to SpecifyTime.
      * 
      */
-    @Export(name="switchTime", type=String.class, parameters={})
+    @Export(name="switchTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> switchTime;
 
     /**
@@ -1003,7 +1003,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -1027,7 +1027,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** For more information about minor engine versions, see Release notes of minor AliPG versions, Release notes of minor AliSQL versions, and Release notes of minor engine versions of ApsaraDB RDS for SQL Server.
      * 
      */
-    @Export(name="targetMinorVersion", type=String.class, parameters={})
+    @Export(name="targetMinorVersion", refs={String.class}, tree="[0]")
     private Output<String> targetMinorVersion;
 
     /**
@@ -1051,7 +1051,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * - **LONG**: Alibaba Cloud uses persistent connections to check the availability of the instance.
      * 
      */
-    @Export(name="tcpConnectionType", type=String.class, parameters={})
+    @Export(name="tcpConnectionType", refs={String.class}, tree="[0]")
     private Output<String> tcpConnectionType;
 
     /**
@@ -1067,7 +1067,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The TDE(Transparent Data Encryption) status. See more [engine and engineVersion limitation](https://www.alibabacloud.com/help/zh/doc-detail/26256.htm).
      * 
      */
-    @Export(name="tdeStatus", type=String.class, parameters={})
+    @Export(name="tdeStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tdeStatus;
 
     /**
@@ -1083,7 +1083,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * - false: not to upgrade
      * 
      */
-    @Export(name="upgradeDbInstanceKernelVersion", type=Boolean.class, parameters={})
+    @Export(name="upgradeDbInstanceKernelVersion", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> upgradeDbInstanceKernelVersion;
 
     /**
@@ -1102,7 +1102,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * - SpecifyTime: The minor engine version is updated at the point in time you specify.
      * 
      */
-    @Export(name="upgradeTime", type=String.class, parameters={})
+    @Export(name="upgradeTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> upgradeTime;
 
     /**
@@ -1121,7 +1121,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter applies only to ApsaraDB RDS for MySQL instances. For more information about Upgrade the major engine version of an ApsaraDB RDS for MySQL instance, see [Upgrade the major engine version of an RDS instance in the ApsaraDB RDS console](https://www.alibabacloud.com/help/en/apsaradb-for-rds/latest/upgrade-the-major-engine-version-of-an-apsaradb-rds-for-mysql-instance-1).
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -1137,7 +1137,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The virtual switch ID to launch DB instances in one VPC. If there are multiple vswitches, separate them with commas.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
@@ -1156,7 +1156,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** In standard whitelist mode, IP addresses and CIDR blocks can be added only to the default IP address whitelist. In enhanced whitelist mode, IP addresses and CIDR blocks can be added to both IP address whitelists of the classic network type and those of the VPC network type.
      * 
      */
-    @Export(name="whitelistNetworkType", type=String.class, parameters={})
+    @Export(name="whitelistNetworkType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> whitelistNetworkType;
 
     /**
@@ -1177,7 +1177,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The multiple zone ID can be retrieved by setting `multi` to &#34;true&#34; in the data source `alicloud.getZones`.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
@@ -1193,7 +1193,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The region ID of the secondary instance if you create a secondary instance.
      * 
      */
-    @Export(name="zoneIdSlaveA", type=String.class, parameters={})
+    @Export(name="zoneIdSlaveA", refs={String.class}, tree="[0]")
     private Output<String> zoneIdSlaveA;
 
     /**
@@ -1207,7 +1207,7 @@ public class DdrInstance extends com.pulumi.resources.CustomResource {
      * The region ID of the log instance if you create a log instance.
      * 
      */
-    @Export(name="zoneIdSlaveB", type=String.class, parameters={})
+    @Export(name="zoneIdSlaveB", refs={String.class}, tree="[0]")
     private Output<String> zoneIdSlaveB;
 
     /**

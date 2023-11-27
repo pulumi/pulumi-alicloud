@@ -48,9 +48,9 @@ public final class BucketReplicationSourceSelectionCriteria {
             return this;
         }
         public BucketReplicationSourceSelectionCriteria build() {
-            final var o = new BucketReplicationSourceSelectionCriteria();
-            o.sseKmsEncryptedObjects = sseKmsEncryptedObjects;
-            return o;
+            final var _resultValue = new BucketReplicationSourceSelectionCriteria();
+            _resultValue.sseKmsEncryptedObjects = sseKmsEncryptedObjects;
+            return _resultValue;
         }
     }
 }

@@ -68,10 +68,10 @@ public final class AccessStrategyFailoverAddrPool {
             return this;
         }
         public AccessStrategyFailoverAddrPool build() {
-            final var o = new AccessStrategyFailoverAddrPool();
-            o.addrPoolId = addrPoolId;
-            o.lbaWeight = lbaWeight;
-            return o;
+            final var _resultValue = new AccessStrategyFailoverAddrPool();
+            _resultValue.addrPoolId = addrPoolId;
+            _resultValue.lbaWeight = lbaWeight;
+            return _resultValue;
         }
     }
 }

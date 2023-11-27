@@ -507,34 +507,34 @@ public final class GetGatewaysGateway {
             return this;
         }
         public GetGatewaysGateway build() {
-            final var o = new GetGatewaysGateway();
-            o.activatedTime = activatedTime;
-            o.buyUrl = buyUrl;
-            o.category = category;
-            o.createTime = createTime;
-            o.description = description;
-            o.ecsInstanceId = ecsInstanceId;
-            o.expireStatus = expireStatus;
-            o.expiredTime = expiredTime;
-            o.gatewayClass = gatewayClass;
-            o.gatewayId = gatewayId;
-            o.gatewayName = gatewayName;
-            o.gatewayVersion = gatewayVersion;
-            o.id = id;
-            o.innerIp = innerIp;
-            o.ip = ip;
-            o.isReleaseAfterExpiration = isReleaseAfterExpiration;
-            o.location = location;
-            o.paymentType = paymentType;
-            o.publicNetworkBandwidth = publicNetworkBandwidth;
-            o.renewUrl = renewUrl;
-            o.status = status;
-            o.storageBundleId = storageBundleId;
-            o.taskId = taskId;
-            o.type = type;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetGatewaysGateway();
+            _resultValue.activatedTime = activatedTime;
+            _resultValue.buyUrl = buyUrl;
+            _resultValue.category = category;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.ecsInstanceId = ecsInstanceId;
+            _resultValue.expireStatus = expireStatus;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.gatewayClass = gatewayClass;
+            _resultValue.gatewayId = gatewayId;
+            _resultValue.gatewayName = gatewayName;
+            _resultValue.gatewayVersion = gatewayVersion;
+            _resultValue.id = id;
+            _resultValue.innerIp = innerIp;
+            _resultValue.ip = ip;
+            _resultValue.isReleaseAfterExpiration = isReleaseAfterExpiration;
+            _resultValue.location = location;
+            _resultValue.paymentType = paymentType;
+            _resultValue.publicNetworkBandwidth = publicNetworkBandwidth;
+            _resultValue.renewUrl = renewUrl;
+            _resultValue.status = status;
+            _resultValue.storageBundleId = storageBundleId;
+            _resultValue.taskId = taskId;
+            _resultValue.type = type;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

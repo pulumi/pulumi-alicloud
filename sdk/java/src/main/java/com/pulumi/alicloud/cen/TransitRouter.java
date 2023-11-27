@@ -77,7 +77,7 @@ public class TransitRouter extends com.pulumi.resources.CustomResource {
      * The ID of the CEN.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
@@ -91,7 +91,7 @@ public class TransitRouter extends com.pulumi.resources.CustomResource {
      * The dry run.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -105,7 +105,7 @@ public class TransitRouter extends com.pulumi.resources.CustomResource {
      * The associating status of the Transit Router.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -119,7 +119,7 @@ public class TransitRouter extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable the multicast feature for the Enterprise Edition transit router. Valid values: `false`, `true`. Default Value: `false`. The multicast feature is supported only in specific regions. You can call [ListTransitRouterAvailableResource](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource) to query the regions that support multicast.
      * 
      */
-    @Export(name="supportMulticast", type=Boolean.class, parameters={})
+    @Export(name="supportMulticast", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> supportMulticast;
 
     /**
@@ -133,7 +133,7 @@ public class TransitRouter extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -147,7 +147,7 @@ public class TransitRouter extends com.pulumi.resources.CustomResource {
      * The description of the transit router.
      * 
      */
-    @Export(name="transitRouterDescription", type=String.class, parameters={})
+    @Export(name="transitRouterDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterDescription;
 
     /**
@@ -161,7 +161,7 @@ public class TransitRouter extends com.pulumi.resources.CustomResource {
      * The transit router id of the transit router.
      * 
      */
-    @Export(name="transitRouterId", type=String.class, parameters={})
+    @Export(name="transitRouterId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterId;
 
     /**
@@ -175,7 +175,7 @@ public class TransitRouter extends com.pulumi.resources.CustomResource {
      * The name of the transit router.
      * 
      */
-    @Export(name="transitRouterName", type=String.class, parameters={})
+    @Export(name="transitRouterName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitRouterName;
 
     /**
@@ -189,7 +189,7 @@ public class TransitRouter extends com.pulumi.resources.CustomResource {
      * The Type of the Transit Router. Valid values: `Enterprise`, `Basic`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

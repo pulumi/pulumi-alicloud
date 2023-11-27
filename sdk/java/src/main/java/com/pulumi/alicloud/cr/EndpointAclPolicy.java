@@ -93,7 +93,7 @@ public class EndpointAclPolicy extends com.pulumi.resources.CustomResource {
      * The description of the entry.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -107,7 +107,7 @@ public class EndpointAclPolicy extends com.pulumi.resources.CustomResource {
      * The type of endpoint. Valid values: `internet`.
      * 
      */
-    @Export(name="endpointType", type=String.class, parameters={})
+    @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output<String> endpointType;
 
     /**
@@ -121,7 +121,7 @@ public class EndpointAclPolicy extends com.pulumi.resources.CustomResource {
      * The IP segment that allowed to access.
      * 
      */
-    @Export(name="entry", type=String.class, parameters={})
+    @Export(name="entry", refs={String.class}, tree="[0]")
     private Output<String> entry;
 
     /**
@@ -135,7 +135,7 @@ public class EndpointAclPolicy extends com.pulumi.resources.CustomResource {
      * The ID of the CR Instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -149,7 +149,7 @@ public class EndpointAclPolicy extends com.pulumi.resources.CustomResource {
      * The module that needs to set the access policy. Valid values: `Registry`.
      * 
      */
-    @Export(name="moduleName", type=String.class, parameters={})
+    @Export(name="moduleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> moduleName;
 
     /**

@@ -173,16 +173,16 @@ public final class GetLogShipperResult {
             return this;
         }
         public GetLogShipperResult build() {
-            final var o = new GetLogShipperResult();
-            o.authStatus = authStatus;
-            o.buyStatus = buyStatus;
-            o.enable = enable;
-            o.id = id;
-            o.openStatus = openStatus;
-            o.slsProjectStatus = slsProjectStatus;
-            o.slsServiceStatus = slsServiceStatus;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetLogShipperResult();
+            _resultValue.authStatus = authStatus;
+            _resultValue.buyStatus = buyStatus;
+            _resultValue.enable = enable;
+            _resultValue.id = id;
+            _resultValue.openStatus = openStatus;
+            _resultValue.slsProjectStatus = slsProjectStatus;
+            _resultValue.slsServiceStatus = slsServiceStatus;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

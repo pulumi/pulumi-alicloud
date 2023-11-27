@@ -217,18 +217,18 @@ public final class GetGatewaysGatewayGatewayInstance {
             return this;
         }
         public GetGatewaysGatewayGatewayInstance build() {
-            final var o = new GetGatewaysGatewayGatewayInstance();
-            o.connectEndpointType = connectEndpointType;
-            o.currentDaemonVersion = currentDaemonVersion;
-            o.currentVersion = currentVersion;
-            o.endPoint = endPoint;
-            o.gatewayInstanceId = gatewayInstanceId;
-            o.gatewayInstanceStatus = gatewayInstanceStatus;
-            o.lastUpdateTime = lastUpdateTime;
-            o.localIp = localIp;
-            o.message = message;
-            o.outputIp = outputIp;
-            return o;
+            final var _resultValue = new GetGatewaysGatewayGatewayInstance();
+            _resultValue.connectEndpointType = connectEndpointType;
+            _resultValue.currentDaemonVersion = currentDaemonVersion;
+            _resultValue.currentVersion = currentVersion;
+            _resultValue.endPoint = endPoint;
+            _resultValue.gatewayInstanceId = gatewayInstanceId;
+            _resultValue.gatewayInstanceStatus = gatewayInstanceStatus;
+            _resultValue.lastUpdateTime = lastUpdateTime;
+            _resultValue.localIp = localIp;
+            _resultValue.message = message;
+            _resultValue.outputIp = outputIp;
+            return _resultValue;
         }
     }
 }

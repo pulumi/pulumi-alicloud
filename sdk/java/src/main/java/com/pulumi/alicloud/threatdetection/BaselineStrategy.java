@@ -74,7 +74,7 @@ public class BaselineStrategy extends com.pulumi.resources.CustomResource {
      * The ID of the baseline check policy.
      * 
      */
-    @Export(name="baselineStrategyId", type=String.class, parameters={})
+    @Export(name="baselineStrategyId", refs={String.class}, tree="[0]")
     private Output<String> baselineStrategyId;
 
     /**
@@ -88,7 +88,7 @@ public class BaselineStrategy extends com.pulumi.resources.CustomResource {
      * Policy name.
      * 
      */
-    @Export(name="baselineStrategyName", type=String.class, parameters={})
+    @Export(name="baselineStrategyName", refs={String.class}, tree="[0]")
     private Output<String> baselineStrategyName;
 
     /**
@@ -104,7 +104,7 @@ public class BaselineStrategy extends com.pulumi.resources.CustomResource {
      * * **custom**: custom policy
      * 
      */
-    @Export(name="customType", type=String.class, parameters={})
+    @Export(name="customType", refs={String.class}, tree="[0]")
     private Output<String> customType;
 
     /**
@@ -120,7 +120,7 @@ public class BaselineStrategy extends com.pulumi.resources.CustomResource {
      * The detection period of the policy.
      * 
      */
-    @Export(name="cycleDays", type=Integer.class, parameters={})
+    @Export(name="cycleDays", refs={Integer.class}, tree="[0]")
     private Output<Integer> cycleDays;
 
     /**
@@ -138,7 +138,7 @@ public class BaselineStrategy extends com.pulumi.resources.CustomResource {
      * * **18**: 18:00~24:00
      * 
      */
-    @Export(name="cycleStartTime", type=Integer.class, parameters={})
+    @Export(name="cycleStartTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> cycleStartTime;
 
     /**
@@ -156,7 +156,7 @@ public class BaselineStrategy extends com.pulumi.resources.CustomResource {
      * The baseline check policy execution end time.
      * 
      */
-    @Export(name="endTime", type=String.class, parameters={})
+    @Export(name="endTime", refs={String.class}, tree="[0]")
     private Output<String> endTime;
 
     /**
@@ -170,7 +170,7 @@ public class BaselineStrategy extends com.pulumi.resources.CustomResource {
      * Detection item subtype.
      * 
      */
-    @Export(name="riskSubTypeName", type=String.class, parameters={})
+    @Export(name="riskSubTypeName", refs={String.class}, tree="[0]")
     private Output<String> riskSubTypeName;
 
     /**
@@ -184,7 +184,7 @@ public class BaselineStrategy extends com.pulumi.resources.CustomResource {
      * The baseline check policy start time.
      * 
      */
-    @Export(name="startTime", type=String.class, parameters={})
+    @Export(name="startTime", refs={String.class}, tree="[0]")
     private Output<String> startTime;
 
     /**
@@ -200,7 +200,7 @@ public class BaselineStrategy extends com.pulumi.resources.CustomResource {
      * * **uuid**: Add by single asset.
      * 
      */
-    @Export(name="targetType", type=String.class, parameters={})
+    @Export(name="targetType", refs={String.class}, tree="[0]")
     private Output<String> targetType;
 
     /**

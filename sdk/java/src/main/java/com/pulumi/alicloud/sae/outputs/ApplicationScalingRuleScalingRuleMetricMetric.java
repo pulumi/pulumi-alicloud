@@ -164,14 +164,14 @@ public final class ApplicationScalingRuleScalingRuleMetricMetric {
             return this;
         }
         public ApplicationScalingRuleScalingRuleMetricMetric build() {
-            final var o = new ApplicationScalingRuleScalingRuleMetricMetric();
-            o.metricTargetAverageUtilization = metricTargetAverageUtilization;
-            o.metricType = metricType;
-            o.slbId = slbId;
-            o.slbLogStore = slbLogStore;
-            o.slbProject = slbProject;
-            o.vport = vport;
-            return o;
+            final var _resultValue = new ApplicationScalingRuleScalingRuleMetricMetric();
+            _resultValue.metricTargetAverageUtilization = metricTargetAverageUtilization;
+            _resultValue.metricType = metricType;
+            _resultValue.slbId = slbId;
+            _resultValue.slbLogStore = slbLogStore;
+            _resultValue.slbProject = slbProject;
+            _resultValue.vport = vport;
+            return _resultValue;
         }
     }
 }

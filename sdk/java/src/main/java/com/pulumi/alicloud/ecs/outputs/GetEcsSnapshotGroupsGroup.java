@@ -182,16 +182,16 @@ public final class GetEcsSnapshotGroupsGroup {
             return this;
         }
         public GetEcsSnapshotGroupsGroup build() {
-            final var o = new GetEcsSnapshotGroupsGroup();
-            o.description = description;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.resourceGroupId = resourceGroupId;
-            o.snapshotGroupId = snapshotGroupId;
-            o.snapshotGroupName = snapshotGroupName;
-            o.status = status;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetEcsSnapshotGroupsGroup();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.snapshotGroupId = snapshotGroupId;
+            _resultValue.snapshotGroupName = snapshotGroupName;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

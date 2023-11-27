@@ -51,9 +51,9 @@ public final class RuleRuleConditionMethodConfig {
             return values(List.of(values));
         }
         public RuleRuleConditionMethodConfig build() {
-            final var o = new RuleRuleConditionMethodConfig();
-            o.values = values;
-            return o;
+            final var _resultValue = new RuleRuleConditionMethodConfig();
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

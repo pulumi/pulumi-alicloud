@@ -256,20 +256,20 @@ public final class GetSnapshotsSnapshot {
             return this;
         }
         public GetSnapshotsSnapshot build() {
-            final var o = new GetSnapshotsSnapshot();
-            o.createTime = createTime;
-            o.description = description;
-            o.desktopId = desktopId;
-            o.id = id;
-            o.progress = progress;
-            o.remainTime = remainTime;
-            o.snapshotId = snapshotId;
-            o.snapshotName = snapshotName;
-            o.snapshotType = snapshotType;
-            o.sourceDiskSize = sourceDiskSize;
-            o.sourceDiskType = sourceDiskType;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetSnapshotsSnapshot();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.desktopId = desktopId;
+            _resultValue.id = id;
+            _resultValue.progress = progress;
+            _resultValue.remainTime = remainTime;
+            _resultValue.snapshotId = snapshotId;
+            _resultValue.snapshotName = snapshotName;
+            _resultValue.snapshotType = snapshotType;
+            _resultValue.sourceDiskSize = sourceDiskSize;
+            _resultValue.sourceDiskType = sourceDiskType;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

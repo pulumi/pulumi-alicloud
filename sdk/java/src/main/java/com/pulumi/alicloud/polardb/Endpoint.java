@@ -118,19 +118,19 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:polardb/endpoint:Endpoint")
 public class Endpoint extends com.pulumi.resources.CustomResource {
-    @Export(name="autoAddNewNodes", type=String.class, parameters={})
+    @Export(name="autoAddNewNodes", refs={String.class}, tree="[0]")
     private Output<String> autoAddNewNodes;
 
     public Output<String> autoAddNewNodes() {
         return this.autoAddNewNodes;
     }
-    @Export(name="dbClusterId", type=String.class, parameters={})
+    @Export(name="dbClusterId", refs={String.class}, tree="[0]")
     private Output<String> dbClusterId;
 
     public Output<String> dbClusterId() {
         return this.dbClusterId;
     }
-    @Export(name="dbEndpointDescription", type=String.class, parameters={})
+    @Export(name="dbEndpointDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbEndpointDescription;
 
     public Output<Optional<String>> dbEndpointDescription() {
@@ -140,7 +140,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * (Available in v1.161.0+) The ID of the cluster endpoint.
      * 
      */
-    @Export(name="dbEndpointId", type=String.class, parameters={})
+    @Export(name="dbEndpointId", refs={String.class}, tree="[0]")
     private Output<String> dbEndpointId;
 
     /**
@@ -150,7 +150,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
     public Output<String> dbEndpointId() {
         return this.dbEndpointId;
     }
-    @Export(name="endpointConfig", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="endpointConfig", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> endpointConfig;
 
     public Output<Map<String,Object>> endpointConfig() {
@@ -160,7 +160,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * Type of endpoint.
      * 
      */
-    @Export(name="endpointType", type=String.class, parameters={})
+    @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> endpointType;
 
     /**
@@ -170,31 +170,31 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> endpointType() {
         return Codegen.optional(this.endpointType);
     }
-    @Export(name="netType", type=String.class, parameters={})
+    @Export(name="netType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> netType;
 
     public Output<Optional<String>> netType() {
         return Codegen.optional(this.netType);
     }
-    @Export(name="nodes", type=List.class, parameters={String.class})
+    @Export(name="nodes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> nodes;
 
     public Output<List<String>> nodes() {
         return this.nodes;
     }
-    @Export(name="readWriteMode", type=String.class, parameters={})
+    @Export(name="readWriteMode", refs={String.class}, tree="[0]")
     private Output<String> readWriteMode;
 
     public Output<String> readWriteMode() {
         return this.readWriteMode;
     }
-    @Export(name="sslAutoRotate", type=String.class, parameters={})
+    @Export(name="sslAutoRotate", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslAutoRotate;
 
     public Output<Optional<String>> sslAutoRotate() {
         return Codegen.optional(this.sslAutoRotate);
     }
-    @Export(name="sslCertificateUrl", type=String.class, parameters={})
+    @Export(name="sslCertificateUrl", refs={String.class}, tree="[0]")
     private Output<String> sslCertificateUrl;
 
     public Output<String> sslCertificateUrl() {
@@ -204,7 +204,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * (Available in v1.121.0+) The SSL connection string.
      * 
      */
-    @Export(name="sslConnectionString", type=String.class, parameters={})
+    @Export(name="sslConnectionString", refs={String.class}, tree="[0]")
     private Output<String> sslConnectionString;
 
     /**
@@ -214,7 +214,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
     public Output<String> sslConnectionString() {
         return this.sslConnectionString;
     }
-    @Export(name="sslEnabled", type=String.class, parameters={})
+    @Export(name="sslEnabled", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sslEnabled;
 
     public Output<Optional<String>> sslEnabled() {
@@ -224,7 +224,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * (Available in v1.121.0+) The time when the SSL certificate expires. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
      * 
      */
-    @Export(name="sslExpireTime", type=String.class, parameters={})
+    @Export(name="sslExpireTime", refs={String.class}, tree="[0]")
     private Output<String> sslExpireTime;
 
     /**

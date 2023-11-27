@@ -71,10 +71,10 @@ public final class ContainerGroupHostAlias {
             return this;
         }
         public ContainerGroupHostAlias build() {
-            final var o = new ContainerGroupHostAlias();
-            o.hostnames = hostnames;
-            o.ip = ip;
-            return o;
+            final var _resultValue = new ContainerGroupHostAlias();
+            _resultValue.hostnames = hostnames;
+            _resultValue.ip = ip;
+            return _resultValue;
         }
     }
 }

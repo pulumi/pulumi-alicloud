@@ -116,7 +116,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * The [canned ACL](https://www.alibabacloud.com/help/doc-detail/52284.htm) to apply. Defaults to &#34;private&#34;.
      * 
      */
-    @Export(name="acl", type=String.class, parameters={})
+    @Export(name="acl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> acl;
 
     /**
@@ -130,7 +130,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * The name of the bucket to put the file in.
      * 
      */
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     /**
@@ -144,7 +144,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * Specifies caching behavior along the request/reply chain. Read [RFC2616 Cache-Control](https://www.ietf.org/rfc/rfc2616.txt) for further details.
      * 
      */
-    @Export(name="cacheControl", type=String.class, parameters={})
+    @Export(name="cacheControl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cacheControl;
 
     /**
@@ -158,7 +158,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * The literal content being uploaded to the bucket.
      * 
      */
-    @Export(name="content", type=String.class, parameters={})
+    @Export(name="content", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> content;
 
     /**
@@ -172,7 +172,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * Specifies presentational information for the object. Read [RFC2616 Content-Disposition](https://www.ietf.org/rfc/rfc2616.txt) for further details.
      * 
      */
-    @Export(name="contentDisposition", type=String.class, parameters={})
+    @Export(name="contentDisposition", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentDisposition;
 
     /**
@@ -186,7 +186,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * Specifies what content encodings have been applied to the object and thus what decoding mechanisms must be applied to obtain the media-type referenced by the Content-Type header field. Read [RFC2616 Content-Encoding](https://www.ietf.org/rfc/rfc2616.txt) for further details.
      * 
      */
-    @Export(name="contentEncoding", type=String.class, parameters={})
+    @Export(name="contentEncoding", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentEncoding;
 
     /**
@@ -200,7 +200,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * the content length of request.
      * 
      */
-    @Export(name="contentLength", type=String.class, parameters={})
+    @Export(name="contentLength", refs={String.class}, tree="[0]")
     private Output<String> contentLength;
 
     /**
@@ -214,7 +214,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * The MD5 value of the content. Read [MD5](https://www.alibabacloud.com/help/doc-detail/31978.htm) for computing method.
      * 
      */
-    @Export(name="contentMd5", type=String.class, parameters={})
+    @Export(name="contentMd5", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> contentMd5;
 
     /**
@@ -228,7 +228,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * A standard MIME type describing the format of the object data, e.g. application/octet-stream. All Valid MIME Types are valid for this input.
      * 
      */
-    @Export(name="contentType", type=String.class, parameters={})
+    @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output<String> contentType;
 
     /**
@@ -242,7 +242,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * the ETag generated for the object (an MD5 sum of the object content).
      * 
      */
-    @Export(name="etag", type=String.class, parameters={})
+    @Export(name="etag", refs={String.class}, tree="[0]")
     private Output<String> etag;
 
     /**
@@ -256,7 +256,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * Specifies expire date for the the request/response. Read [RFC2616 Expires](https://www.ietf.org/rfc/rfc2616.txt) for further details.
      * 
      */
-    @Export(name="expires", type=String.class, parameters={})
+    @Export(name="expires", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> expires;
 
     /**
@@ -270,7 +270,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * The name of the object once it is in the bucket.
      * 
      */
-    @Export(name="key", type=String.class, parameters={})
+    @Export(name="key", refs={String.class}, tree="[0]")
     private Output<String> key;
 
     /**
@@ -287,7 +287,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * These two arguments are mutually-exclusive.
      * 
      */
-    @Export(name="kmsKeyId", type=String.class, parameters={})
+    @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKeyId;
 
     /**
@@ -304,7 +304,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * Specifies server-side encryption of the object in OSS. Valid values are `AES256`, `KMS`. Default value is `AES256`.
      * 
      */
-    @Export(name="serverSideEncryption", type=String.class, parameters={})
+    @Export(name="serverSideEncryption", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverSideEncryption;
 
     /**
@@ -318,7 +318,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * The path to the source file being uploaded to the bucket.
      * 
      */
-    @Export(name="source", type=String.class, parameters={})
+    @Export(name="source", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> source;
 
     /**
@@ -332,7 +332,7 @@ public class BucketObject extends com.pulumi.resources.CustomResource {
      * A unique version ID value for the object, if bucket versioning is enabled.
      * 
      */
-    @Export(name="versionId", type=String.class, parameters={})
+    @Export(name="versionId", refs={String.class}, tree="[0]")
     private Output<String> versionId;
 
     /**

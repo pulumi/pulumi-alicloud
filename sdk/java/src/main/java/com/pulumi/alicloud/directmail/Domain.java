@@ -69,7 +69,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * Domain, length `1` to `50`, including numbers or capitals or lowercase letters or `.` or `-`
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output<String> domainName;
 
     /**
@@ -83,7 +83,7 @@ public class Domain extends com.pulumi.resources.CustomResource {
      * The status of the domain name. Valid values:`0` to `4`. `0`:Available, Passed. `1`: Unavailable, No passed. `2`: Available, cname no passed, icp no passed. `3`: Available, icp no passed. `4`: Available, cname no passed.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

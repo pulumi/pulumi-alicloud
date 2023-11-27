@@ -84,11 +84,11 @@ public final class GetDomainExtensionsExtension {
             return this;
         }
         public GetDomainExtensionsExtension build() {
-            final var o = new GetDomainExtensionsExtension();
-            o.domain = domain;
-            o.id = id;
-            o.serverCertificateId = serverCertificateId;
-            return o;
+            final var _resultValue = new GetDomainExtensionsExtension();
+            _resultValue.domain = domain;
+            _resultValue.id = id;
+            _resultValue.serverCertificateId = serverCertificateId;
+            return _resultValue;
         }
     }
 }

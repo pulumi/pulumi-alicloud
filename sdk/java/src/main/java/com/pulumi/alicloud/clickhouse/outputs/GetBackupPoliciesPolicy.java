@@ -146,14 +146,14 @@ public final class GetBackupPoliciesPolicy {
             return this;
         }
         public GetBackupPoliciesPolicy build() {
-            final var o = new GetBackupPoliciesPolicy();
-            o.backupRetentionPeriod = backupRetentionPeriod;
-            o.dbClusterId = dbClusterId;
-            o.id = id;
-            o.preferredBackupPeriods = preferredBackupPeriods;
-            o.preferredBackupTime = preferredBackupTime;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBackupPoliciesPolicy();
+            _resultValue.backupRetentionPeriod = backupRetentionPeriod;
+            _resultValue.dbClusterId = dbClusterId;
+            _resultValue.id = id;
+            _resultValue.preferredBackupPeriods = preferredBackupPeriods;
+            _resultValue.preferredBackupTime = preferredBackupTime;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

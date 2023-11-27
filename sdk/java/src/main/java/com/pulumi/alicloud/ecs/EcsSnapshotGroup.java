@@ -152,7 +152,7 @@ public class EcsSnapshotGroup extends com.pulumi.resources.CustomResource {
      * The description of the snapshot-consistent group. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -166,7 +166,7 @@ public class EcsSnapshotGroup extends com.pulumi.resources.CustomResource {
      * The ID of disk for which to create snapshots. You can specify multiple disk IDs across instances with the same zone.
      * 
      */
-    @Export(name="diskIds", type=List.class, parameters={String.class})
+    @Export(name="diskIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> diskIds;
 
     /**
@@ -180,7 +180,7 @@ public class EcsSnapshotGroup extends com.pulumi.resources.CustomResource {
      * The ID of disk N for which you do not need to create snapshots. After this parameter is specified, the created snapshot-consistent group does not contain snapshots of the disk.
      * 
      */
-    @Export(name="excludeDiskIds", type=List.class, parameters={String.class})
+    @Export(name="excludeDiskIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> excludeDiskIds;
 
     /**
@@ -194,7 +194,7 @@ public class EcsSnapshotGroup extends com.pulumi.resources.CustomResource {
      * The ID of the instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceId;
 
     /**
@@ -208,7 +208,7 @@ public class EcsSnapshotGroup extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable the instant access feature.
      * 
      */
-    @Export(name="instantAccess", type=Boolean.class, parameters={})
+    @Export(name="instantAccess", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> instantAccess;
 
     /**
@@ -222,7 +222,7 @@ public class EcsSnapshotGroup extends com.pulumi.resources.CustomResource {
      * Specify the number of days for which the instant access feature is available. Unit: days. Valid values: `1` to `65535`.
      * 
      */
-    @Export(name="instantAccessRetentionDays", type=Integer.class, parameters={})
+    @Export(name="instantAccessRetentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> instantAccessRetentionDays;
 
     /**
@@ -236,7 +236,7 @@ public class EcsSnapshotGroup extends com.pulumi.resources.CustomResource {
      * The ID of the resource group to which the snapshot consistency group belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -250,7 +250,7 @@ public class EcsSnapshotGroup extends com.pulumi.resources.CustomResource {
      * The name of the snapshot-consistent group. The name must be `2` to `128` characters in length, and can contain letters, digits, periods (.), underscores (_), hyphens (-), and colons (:). It must start with a letter or a digit and cannot start with `http://` or `https://`.
      * 
      */
-    @Export(name="snapshotGroupName", type=String.class, parameters={})
+    @Export(name="snapshotGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snapshotGroupName;
 
     /**
@@ -264,7 +264,7 @@ public class EcsSnapshotGroup extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -278,7 +278,7 @@ public class EcsSnapshotGroup extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the snapshot group.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

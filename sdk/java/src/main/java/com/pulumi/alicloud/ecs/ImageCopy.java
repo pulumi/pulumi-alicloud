@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/imageCopy:ImageCopy")
 public class ImageCopy extends com.pulumi.resources.CustomResource {
-    @Export(name="deleteAutoSnapshot", type=Boolean.class, parameters={})
+    @Export(name="deleteAutoSnapshot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteAutoSnapshot;
 
     public Output<Optional<Boolean>> deleteAutoSnapshot() {
@@ -171,7 +171,7 @@ public class ImageCopy extends com.pulumi.resources.CustomResource {
      * The description of the image. It must be 2 to 256 characters in length and must not start with http:// or https://. Default value: null.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -185,7 +185,7 @@ public class ImageCopy extends com.pulumi.resources.CustomResource {
      * Indicates whether to encrypt the image.
      * 
      */
-    @Export(name="encrypted", type=Boolean.class, parameters={})
+    @Export(name="encrypted", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> encrypted;
 
     /**
@@ -201,7 +201,7 @@ public class ImageCopy extends com.pulumi.resources.CustomResource {
      * - false：Verifies that the image is not currently in use by any other instances before deleting the image.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -217,7 +217,7 @@ public class ImageCopy extends com.pulumi.resources.CustomResource {
      * The image name. It must be 2 to 128 characters in length, and must begin with a letter or Chinese character (beginning with http:// or https:// is not allowed). It can contain digits, colons (:), underscores (_), or hyphens (-). Default value: null.
      * 
      */
-    @Export(name="imageName", type=String.class, parameters={})
+    @Export(name="imageName", refs={String.class}, tree="[0]")
     private Output<String> imageName;
 
     /**
@@ -231,7 +231,7 @@ public class ImageCopy extends com.pulumi.resources.CustomResource {
      * Key ID used to encrypt the image.
      * 
      */
-    @Export(name="kmsKeyId", type=String.class, parameters={})
+    @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKeyId;
 
     /**
@@ -247,7 +247,7 @@ public class ImageCopy extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'name' has been deprecated from version 1.69.0. Use `image_name` instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
@@ -257,7 +257,7 @@ public class ImageCopy extends com.pulumi.resources.CustomResource {
      * The source image ID.
      * 
      */
-    @Export(name="sourceImageId", type=String.class, parameters={})
+    @Export(name="sourceImageId", refs={String.class}, tree="[0]")
     private Output<String> sourceImageId;
 
     /**
@@ -271,7 +271,7 @@ public class ImageCopy extends com.pulumi.resources.CustomResource {
      * The ID of the region to which the source custom image belongs. You can call [DescribeRegions](https://www.alibabacloud.com/help/doc-detail/25609.htm) to view the latest regions of Alibaba Cloud.
      * 
      */
-    @Export(name="sourceRegionId", type=String.class, parameters={})
+    @Export(name="sourceRegionId", refs={String.class}, tree="[0]")
     private Output<String> sourceRegionId;
 
     /**
@@ -285,7 +285,7 @@ public class ImageCopy extends com.pulumi.resources.CustomResource {
      * The tag value of an image. The value of N ranges from 1 to 20.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

@@ -16,9 +16,17 @@ public final class GetServiceMeshesPlainArgs extends com.pulumi.resources.Invoke
 
     public static final GetServiceMeshesPlainArgs Empty = new GetServiceMeshesPlainArgs();
 
+    /**
+     * Whether to query the detailed list of resource attributes.
+     * 
+     */
     @Import(name="enableDetails")
     private @Nullable Boolean enableDetails;
 
+    /**
+     * @return Whether to query the detailed list of resource attributes.
+     * 
+     */
     public Optional<Boolean> enableDetails() {
         return Optional.ofNullable(this.enableDetails);
     }
@@ -111,6 +119,12 @@ public final class GetServiceMeshesPlainArgs extends com.pulumi.resources.Invoke
             $ = new GetServiceMeshesPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param enableDetails Whether to query the detailed list of resource attributes.
+         * 
+         * @return builder
+         * 
+         */
         public Builder enableDetails(@Nullable Boolean enableDetails) {
             $.enableDetails = enableDetails;
             return this;

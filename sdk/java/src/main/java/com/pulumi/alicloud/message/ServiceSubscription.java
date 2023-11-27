@@ -87,7 +87,7 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
      * - `Email Format`: mail:directmail:{MailAddress}
      * 
      */
-    @Export(name="endpoint", type=String.class, parameters={})
+    @Export(name="endpoint", refs={String.class}, tree="[0]")
     private Output<String> endpoint;
 
     /**
@@ -104,7 +104,7 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
      * The tag that is used to filter messages. Only the messages that have the same tag can be pushed. A tag is a string that can be up to 16 characters in length. By default, no tag is specified to filter messages.
      * 
      */
-    @Export(name="filterTag", type=String.class, parameters={})
+    @Export(name="filterTag", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> filterTag;
 
     /**
@@ -118,7 +118,7 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
      * The NotifyContentFormat attribute of Subscription. This attribute specifies the content format of the messages pushed to users. Valid values: `XML`, `JSON` and `SIMPLIFIED`. Default value: `XML`.
      * 
      */
-    @Export(name="notifyContentFormat", type=String.class, parameters={})
+    @Export(name="notifyContentFormat", refs={String.class}, tree="[0]")
     private Output<String> notifyContentFormat;
 
     /**
@@ -132,7 +132,7 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
      * The NotifyStrategy attribute of Subscription. This attribute specifies the retry strategy when message sending fails. Default value: `BACKOFF_RETRY`. Valid values:
      * 
      */
-    @Export(name="notifyStrategy", type=String.class, parameters={})
+    @Export(name="notifyStrategy", refs={String.class}, tree="[0]")
     private Output<String> notifyStrategy;
 
     /**
@@ -146,7 +146,7 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
      * The Push type of Subscription. The Valid values: `http`, `queue`, `mpush`, `alisms` and `email`.
      * 
      */
-    @Export(name="pushType", type=String.class, parameters={})
+    @Export(name="pushType", refs={String.class}, tree="[0]")
     private Output<String> pushType;
 
     /**
@@ -160,7 +160,7 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
      * Two topics subscription on a single account in the same topic cannot have the same name. A topic subscription name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
      * 
      */
-    @Export(name="subscriptionName", type=String.class, parameters={})
+    @Export(name="subscriptionName", refs={String.class}, tree="[0]")
     private Output<String> subscriptionName;
 
     /**
@@ -174,7 +174,7 @@ public class ServiceSubscription extends com.pulumi.resources.CustomResource {
      * The topic which The subscription belongs to was named with the name. A topic name must start with an English letter or a digit, and can contain English letters, digits, and hyphens, with the length not exceeding 255 characters.
      * 
      */
-    @Export(name="topicName", type=String.class, parameters={})
+    @Export(name="topicName", refs={String.class}, tree="[0]")
     private Output<String> topicName;
 
     /**

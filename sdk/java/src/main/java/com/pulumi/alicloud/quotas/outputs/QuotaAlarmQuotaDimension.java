@@ -67,10 +67,10 @@ public final class QuotaAlarmQuotaDimension {
             return this;
         }
         public QuotaAlarmQuotaDimension build() {
-            final var o = new QuotaAlarmQuotaDimension();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new QuotaAlarmQuotaDimension();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

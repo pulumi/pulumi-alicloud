@@ -65,10 +65,10 @@ public final class GetClustersClusterAccessInfoZkLink {
             return this;
         }
         public GetClustersClusterAccessInfoZkLink build() {
-            final var o = new GetClustersClusterAccessInfoZkLink();
-            o.link = link;
-            o.port = port;
-            return o;
+            final var _resultValue = new GetClustersClusterAccessInfoZkLink();
+            _resultValue.link = link;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

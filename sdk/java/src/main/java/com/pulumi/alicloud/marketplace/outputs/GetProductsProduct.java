@@ -313,23 +313,23 @@ public final class GetProductsProduct {
             return this;
         }
         public GetProductsProduct build() {
-            final var o = new GetProductsProduct();
-            o.categoryId = categoryId;
-            o.code = code;
-            o.deliveryDate = deliveryDate;
-            o.deliveryWay = deliveryWay;
-            o.imageUrl = imageUrl;
-            o.name = name;
-            o.operationSystem = operationSystem;
-            o.score = score;
-            o.shortDescription = shortDescription;
-            o.suggestedPrice = suggestedPrice;
-            o.supplierId = supplierId;
-            o.supplierName = supplierName;
-            o.tags = tags;
-            o.targetUrl = targetUrl;
-            o.warrantyDate = warrantyDate;
-            return o;
+            final var _resultValue = new GetProductsProduct();
+            _resultValue.categoryId = categoryId;
+            _resultValue.code = code;
+            _resultValue.deliveryDate = deliveryDate;
+            _resultValue.deliveryWay = deliveryWay;
+            _resultValue.imageUrl = imageUrl;
+            _resultValue.name = name;
+            _resultValue.operationSystem = operationSystem;
+            _resultValue.score = score;
+            _resultValue.shortDescription = shortDescription;
+            _resultValue.suggestedPrice = suggestedPrice;
+            _resultValue.supplierId = supplierId;
+            _resultValue.supplierName = supplierName;
+            _resultValue.tags = tags;
+            _resultValue.targetUrl = targetUrl;
+            _resultValue.warrantyDate = warrantyDate;
+            return _resultValue;
         }
     }
 }

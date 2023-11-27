@@ -103,12 +103,12 @@ public final class GetUsersUserMfaDevice {
             return this;
         }
         public GetUsersUserMfaDevice build() {
-            final var o = new GetUsersUserMfaDevice();
-            o.deviceId = deviceId;
-            o.deviceName = deviceName;
-            o.deviceType = deviceType;
-            o.effectiveTime = effectiveTime;
-            return o;
+            final var _resultValue = new GetUsersUserMfaDevice();
+            _resultValue.deviceId = deviceId;
+            _resultValue.deviceName = deviceName;
+            _resultValue.deviceType = deviceType;
+            _resultValue.effectiveTime = effectiveTime;
+            return _resultValue;
         }
     }
 }

@@ -204,17 +204,17 @@ public final class GetCompliancePacksPack {
             return this;
         }
         public GetCompliancePacksPack build() {
-            final var o = new GetCompliancePacksPack();
-            o.accountId = accountId;
-            o.compliancePackId = compliancePackId;
-            o.compliancePackName = compliancePackName;
-            o.compliancePackTemplateId = compliancePackTemplateId;
-            o.configRules = configRules;
-            o.description = description;
-            o.id = id;
-            o.riskLevel = riskLevel;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetCompliancePacksPack();
+            _resultValue.accountId = accountId;
+            _resultValue.compliancePackId = compliancePackId;
+            _resultValue.compliancePackName = compliancePackName;
+            _resultValue.compliancePackTemplateId = compliancePackTemplateId;
+            _resultValue.configRules = configRules;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.riskLevel = riskLevel;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

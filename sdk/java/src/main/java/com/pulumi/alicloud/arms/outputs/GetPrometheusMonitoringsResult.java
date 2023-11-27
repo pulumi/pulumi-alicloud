@@ -187,17 +187,17 @@ public final class GetPrometheusMonitoringsResult {
             return this;
         }
         public GetPrometheusMonitoringsResult build() {
-            final var o = new GetPrometheusMonitoringsResult();
-            o.clusterId = clusterId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.prometheusMonitorings = prometheusMonitorings;
-            o.status = status;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetPrometheusMonitoringsResult();
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.prometheusMonitorings = prometheusMonitorings;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

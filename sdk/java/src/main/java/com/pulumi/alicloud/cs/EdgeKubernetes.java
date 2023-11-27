@@ -237,7 +237,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The addon you want to install in cluster. See `addons` below.
      * 
      */
-    @Export(name="addons", type=List.class, parameters={EdgeKubernetesAddon.class})
+    @Export(name="addons", refs={List.class,EdgeKubernetesAddon.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EdgeKubernetesAddon>> addons;
 
     /**
@@ -251,7 +251,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The ID of availability zone.
      * 
      */
-    @Export(name="availabilityZone", type=String.class, parameters={})
+    @Export(name="availabilityZone", refs={String.class}, tree="[0]")
     private Output<String> availabilityZone;
 
     /**
@@ -265,7 +265,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * Nested attribute containing certificate authority data for your cluster.
      * 
      */
-    @Export(name="certificateAuthority", type=EdgeKubernetesCertificateAuthority.class, parameters={})
+    @Export(name="certificateAuthority", refs={EdgeKubernetesCertificateAuthority.class}, tree="[0]")
     private Output<EdgeKubernetesCertificateAuthority> certificateAuthority;
 
     /**
@@ -279,7 +279,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The path of client certificate, like `~/.kube/client-cert.pem`.
      * 
      */
-    @Export(name="clientCert", type=String.class, parameters={})
+    @Export(name="clientCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCert;
 
     /**
@@ -293,7 +293,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The path of client key, like `~/.kube/client-key.pem`.
      * 
      */
-    @Export(name="clientKey", type=String.class, parameters={})
+    @Export(name="clientKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientKey;
 
     /**
@@ -309,7 +309,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * *Removed params*
      * 
      */
-    @Export(name="clusterCaCert", type=String.class, parameters={})
+    @Export(name="clusterCaCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterCaCert;
 
     /**
@@ -327,7 +327,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * * ack.pro.small : Professional edge clusters.
      * 
      */
-    @Export(name="clusterSpec", type=String.class, parameters={})
+    @Export(name="clusterSpec", refs={String.class}, tree="[0]")
     private Output<String> clusterSpec;
 
     /**
@@ -343,7 +343,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * Map of kubernetes cluster connection information.
      * 
      */
-    @Export(name="connections", type=EdgeKubernetesConnections.class, parameters={})
+    @Export(name="connections", refs={EdgeKubernetesConnections.class}, tree="[0]")
     private Output<EdgeKubernetesConnections> connections;
 
     /**
@@ -357,7 +357,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * Whether to enable cluster deletion protection.
      * 
      */
-    @Export(name="deletionProtection", type=Boolean.class, parameters={})
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
     /**
@@ -371,7 +371,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * Default false, when you want to change `vpc_id`, you have to set this field to true, then the cluster will be recreated.
      * 
      */
-    @Export(name="forceUpdate", type=Boolean.class, parameters={})
+    @Export(name="forceUpdate", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> forceUpdate;
 
     /**
@@ -385,7 +385,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * Install cloud monitor agent on ECS. default: `true`.
      * 
      */
-    @Export(name="installCloudMonitor", type=Boolean.class, parameters={})
+    @Export(name="installCloudMonitor", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> installCloudMonitor;
 
     /**
@@ -399,7 +399,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
      * 
      */
-    @Export(name="isEnterpriseSecurityGroup", type=Boolean.class, parameters={})
+    @Export(name="isEnterpriseSecurityGroup", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isEnterpriseSecurityGroup;
 
     /**
@@ -413,7 +413,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
      * 
      */
-    @Export(name="keyName", type=String.class, parameters={})
+    @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyName;
 
     /**
@@ -431,7 +431,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'kube_config' has been deprecated from provider version 1.187.0. New DataSource 'alicloud_cs_cluster_credential' manage your cluster's kube config. */
-    @Export(name="kubeConfig", type=String.class, parameters={})
+    @Export(name="kubeConfig", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kubeConfig;
 
     /**
@@ -448,7 +448,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * *Worker params*
      * 
      */
-    @Export(name="loadBalancerSpec", type=String.class, parameters={})
+    @Export(name="loadBalancerSpec", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerSpec;
 
     /**
@@ -469,7 +469,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'log_config' has been removed from provider version 1.103.0. New field 'addons' replaces it. */
-    @Export(name="logConfig", type=EdgeKubernetesLogConfig.class, parameters={})
+    @Export(name="logConfig", refs={EdgeKubernetesLogConfig.class}, tree="[0]")
     private Output</* @Nullable */ EdgeKubernetesLogConfig> logConfig;
 
     /**
@@ -483,7 +483,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -493,7 +493,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="namePrefix", type=String.class, parameters={})
+    @Export(name="namePrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namePrefix;
 
     public Output<Optional<String>> namePrefix() {
@@ -503,7 +503,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The ID of nat gateway used to launch kubernetes cluster.
      * 
      */
-    @Export(name="natGatewayId", type=String.class, parameters={})
+    @Export(name="natGatewayId", refs={String.class}, tree="[0]")
     private Output<String> natGatewayId;
 
     /**
@@ -517,7 +517,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
      * 
      */
-    @Export(name="newNatGateway", type=Boolean.class, parameters={})
+    @Export(name="newNatGateway", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> newNatGateway;
 
     /**
@@ -531,7 +531,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
      * 
      */
-    @Export(name="nodeCidrMask", type=Integer.class, parameters={})
+    @Export(name="nodeCidrMask", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> nodeCidrMask;
 
     /**
@@ -545,7 +545,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The password of ssh login cluster node. You have to specify one of `password`, `key_name` `kms_encrypted_password` fields.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -559,7 +559,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * [Flannel Specific] The CIDR block for the pod network when using Flannel.
      * 
      */
-    @Export(name="podCidr", type=String.class, parameters={})
+    @Export(name="podCidr", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> podCidr;
 
     /**
@@ -573,7 +573,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
      * 
      */
-    @Export(name="proxyMode", type=String.class, parameters={})
+    @Export(name="proxyMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proxyMode;
 
     /**
@@ -587,7 +587,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * RDS instance list, You can choose which RDS instances whitelist to add instances to.
      * 
      */
-    @Export(name="rdsInstances", type=List.class, parameters={String.class})
+    @Export(name="rdsInstances", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> rdsInstances;
 
     /**
@@ -601,7 +601,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -611,7 +611,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
-    @Export(name="retainResources", type=List.class, parameters={String.class})
+    @Export(name="retainResources", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> retainResources;
 
     public Output<Optional<List<String>>> retainResources() {
@@ -621,7 +621,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The runtime of containers. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm). Detailed below.
      * 
      */
-    @Export(name="runtime", type=EdgeKubernetesRuntime.class, parameters={})
+    @Export(name="runtime", refs={EdgeKubernetesRuntime.class}, tree="[0]")
     private Output</* @Nullable */ EdgeKubernetesRuntime> runtime;
 
     /**
@@ -635,7 +635,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
@@ -649,7 +649,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
      * 
      */
-    @Export(name="serviceCidr", type=String.class, parameters={})
+    @Export(name="serviceCidr", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceCidr;
 
     /**
@@ -663,7 +663,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The public ip of load balancer.
      * 
      */
-    @Export(name="slbInternet", type=String.class, parameters={})
+    @Export(name="slbInternet", refs={String.class}, tree="[0]")
     private Output<String> slbInternet;
 
     /**
@@ -677,7 +677,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * Whether to create internet load balancer for API Server. Default to true.
      * 
      */
-    @Export(name="slbInternetEnabled", type=Boolean.class, parameters={})
+    @Export(name="slbInternetEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> slbInternetEnabled;
 
     /**
@@ -691,7 +691,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The ID of private load balancer where the current cluster master node is located.
      * 
      */
-    @Export(name="slbIntranet", type=String.class, parameters={})
+    @Export(name="slbIntranet", refs={String.class}, tree="[0]")
     private Output<String> slbIntranet;
 
     /**
@@ -705,7 +705,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * Default nil, A map of tags assigned to the kubernetes cluster and work node.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -719,7 +719,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      * 
      */
-    @Export(name="userData", type=String.class, parameters={})
+    @Export(name="userData", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userData;
 
     /**
@@ -733,7 +733,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * Desired Kubernetes version. If you do not specify a value, the latest available version at resource creation is used and no upgrades will occur except you set a higher version number. The value must be configured and increased to upgrade the version when desired. Downgrades are not supported by ACK.
      * 
      */
-    @Export(name="version", type=String.class, parameters={})
+    @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
     /**
@@ -747,7 +747,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The ID of VPC where the current cluster is located.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -761,7 +761,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The data disk configurations of worker nodes, such as the disk type and disk size. See `worker_data_disks` below.
      * 
      */
-    @Export(name="workerDataDisks", type=List.class, parameters={EdgeKubernetesWorkerDataDisk.class})
+    @Export(name="workerDataDisks", refs={List.class,EdgeKubernetesWorkerDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<EdgeKubernetesWorkerDataDisk>> workerDataDisks;
 
     /**
@@ -775,7 +775,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The system disk category of worker node. Its valid value are `cloud_efficiency`, `cloud_ssd` and `cloud_essd` and . Default to `cloud_efficiency`.
      * 
      */
-    @Export(name="workerDiskCategory", type=String.class, parameters={})
+    @Export(name="workerDiskCategory", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> workerDiskCategory;
 
     /**
@@ -789,7 +789,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * Worker node system disk performance level, when `worker_disk_category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity. For more information, see [Enhanced SSDs](https://www.alibabacloud.com/help/doc-detail/122389.htm). Default is `PL1`.
      * 
      */
-    @Export(name="workerDiskPerformanceLevel", type=String.class, parameters={})
+    @Export(name="workerDiskPerformanceLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> workerDiskPerformanceLevel;
 
     /**
@@ -803,7 +803,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The system disk size of worker node. Its valid value range [20~32768] in GB. Default to 40.
      * 
      */
-    @Export(name="workerDiskSize", type=Integer.class, parameters={})
+    @Export(name="workerDiskSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> workerDiskSize;
 
     /**
@@ -821,7 +821,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * You can set some file paths to save kube_config information, but this way is cumbersome. Since version 1.105.0, we&#39;ve written it to tf state file. About its use，see export attribute certificate_authority. From version 1.187.0+, new DataSource `alicloud.cs.getClusterCredential` is recommended to manage cluster&#39;s kube_config.
      * 
      */
-    @Export(name="workerDiskSnapshotPolicyId", type=String.class, parameters={})
+    @Export(name="workerDiskSnapshotPolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> workerDiskSnapshotPolicyId;
 
     /**
@@ -839,7 +839,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * Worker payment type, its valid value is `PostPaid`. Defaults to `PostPaid`. More charge details in [ACK@edge charge](https://help.aliyun.com/document_detail/178718.html).
      * 
      */
-    @Export(name="workerInstanceChargeType", type=String.class, parameters={})
+    @Export(name="workerInstanceChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> workerInstanceChargeType;
 
     /**
@@ -853,7 +853,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The instance types of worker node, you can set multiple types to avoid NoStock of a certain type.
      * 
      */
-    @Export(name="workerInstanceTypes", type=List.class, parameters={String.class})
+    @Export(name="workerInstanceTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> workerInstanceTypes;
 
     /**
@@ -867,7 +867,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * List of cluster worker nodes.
      * 
      */
-    @Export(name="workerNodes", type=List.class, parameters={EdgeKubernetesWorkerNode.class})
+    @Export(name="workerNodes", refs={List.class,EdgeKubernetesWorkerNode.class}, tree="[0,1]")
     private Output<List<EdgeKubernetesWorkerNode>> workerNodes;
 
     /**
@@ -881,7 +881,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The cloud worker node number of the edge kubernetes cluster. Default to 1. It is limited up to 50 and if you want to enlarge it, please apply white list or contact with us.
      * 
      */
-    @Export(name="workerNumber", type=Integer.class, parameters={})
+    @Export(name="workerNumber", refs={Integer.class}, tree="[0]")
     private Output<Integer> workerNumber;
 
     /**
@@ -895,7 +895,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The RamRole Name attached to worker node.
      * 
      */
-    @Export(name="workerRamRoleName", type=String.class, parameters={})
+    @Export(name="workerRamRoleName", refs={String.class}, tree="[0]")
     private Output<String> workerRamRoleName;
 
     /**
@@ -909,7 +909,7 @@ public class EdgeKubernetes extends com.pulumi.resources.CustomResource {
      * The vswitches used by workers.
      * 
      */
-    @Export(name="workerVswitchIds", type=List.class, parameters={String.class})
+    @Export(name="workerVswitchIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> workerVswitchIds;
 
     /**

@@ -89,12 +89,12 @@ public final class GetEnhancedNatAvailableZonesResult {
             return zones(List.of(zones));
         }
         public GetEnhancedNatAvailableZonesResult build() {
-            final var o = new GetEnhancedNatAvailableZonesResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GetEnhancedNatAvailableZonesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

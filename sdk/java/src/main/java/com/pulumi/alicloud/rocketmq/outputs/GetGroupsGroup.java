@@ -182,16 +182,16 @@ public final class GetGroupsGroup {
             return this;
         }
         public GetGroupsGroup build() {
-            final var o = new GetGroupsGroup();
-            o.groupName = groupName;
-            o.groupType = groupType;
-            o.id = id;
-            o.independentNaming = independentNaming;
-            o.instanceId = instanceId;
-            o.owner = owner;
-            o.remark = remark;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetGroupsGroup();
+            _resultValue.groupName = groupName;
+            _resultValue.groupType = groupType;
+            _resultValue.id = id;
+            _resultValue.independentNaming = independentNaming;
+            _resultValue.instanceId = instanceId;
+            _resultValue.owner = owner;
+            _resultValue.remark = remark;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

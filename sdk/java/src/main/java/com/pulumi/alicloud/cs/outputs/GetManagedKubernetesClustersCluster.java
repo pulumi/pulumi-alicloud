@@ -441,35 +441,35 @@ public final class GetManagedKubernetesClustersCluster {
             return this;
         }
         public GetManagedKubernetesClustersCluster build() {
-            final var o = new GetManagedKubernetesClustersCluster();
-            o.availabilityZone = availabilityZone;
-            o.clusterNetworkType = clusterNetworkType;
-            o.connections = connections;
-            o.id = id;
-            o.imageId = imageId;
-            o.keyName = keyName;
-            o.logConfigs = logConfigs;
-            o.name = name;
-            o.natGatewayId = natGatewayId;
-            o.podCidr = podCidr;
-            o.securityGroupId = securityGroupId;
-            o.serviceCidr = serviceCidr;
-            o.slbInternetEnabled = slbInternetEnabled;
-            o.vpcId = vpcId;
-            o.vswitchIds = vswitchIds;
-            o.workerAutoRenew = workerAutoRenew;
-            o.workerAutoRenewPeriod = workerAutoRenewPeriod;
-            o.workerDataDiskCategory = workerDataDiskCategory;
-            o.workerDataDiskSize = workerDataDiskSize;
-            o.workerDiskCategory = workerDiskCategory;
-            o.workerDiskSize = workerDiskSize;
-            o.workerInstanceChargeType = workerInstanceChargeType;
-            o.workerInstanceTypes = workerInstanceTypes;
-            o.workerNodes = workerNodes;
-            o.workerNumbers = workerNumbers;
-            o.workerPeriod = workerPeriod;
-            o.workerPeriodUnit = workerPeriodUnit;
-            return o;
+            final var _resultValue = new GetManagedKubernetesClustersCluster();
+            _resultValue.availabilityZone = availabilityZone;
+            _resultValue.clusterNetworkType = clusterNetworkType;
+            _resultValue.connections = connections;
+            _resultValue.id = id;
+            _resultValue.imageId = imageId;
+            _resultValue.keyName = keyName;
+            _resultValue.logConfigs = logConfigs;
+            _resultValue.name = name;
+            _resultValue.natGatewayId = natGatewayId;
+            _resultValue.podCidr = podCidr;
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.serviceCidr = serviceCidr;
+            _resultValue.slbInternetEnabled = slbInternetEnabled;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchIds = vswitchIds;
+            _resultValue.workerAutoRenew = workerAutoRenew;
+            _resultValue.workerAutoRenewPeriod = workerAutoRenewPeriod;
+            _resultValue.workerDataDiskCategory = workerDataDiskCategory;
+            _resultValue.workerDataDiskSize = workerDataDiskSize;
+            _resultValue.workerDiskCategory = workerDiskCategory;
+            _resultValue.workerDiskSize = workerDiskSize;
+            _resultValue.workerInstanceChargeType = workerInstanceChargeType;
+            _resultValue.workerInstanceTypes = workerInstanceTypes;
+            _resultValue.workerNodes = workerNodes;
+            _resultValue.workerNumbers = workerNumbers;
+            _resultValue.workerPeriod = workerPeriod;
+            _resultValue.workerPeriodUnit = workerPeriodUnit;
+            return _resultValue;
         }
     }
 }

@@ -38,7 +38,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Auto renew for prepaid, true of false. Default is false.
+     * Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      * 
      */
@@ -46,12 +46,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Auto renew for prepaid, true of false. Default is false.
+     * @return Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
      * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
         return Optional.ofNullable(this.autoRenew);
+    }
+
+    /**
+     * The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+     * 
+     */
+    @Import(name="backupInterval")
+    private @Nullable Output<String> backupInterval;
+
+    /**
+     * @return The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+     * 
+     */
+    public Optional<Output<String>> backupInterval() {
+        return Optional.ofNullable(this.backupInterval);
     }
 
     /**
@@ -82,6 +97,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> backupTime() {
         return Optional.ofNullable(this.backupTime);
+    }
+
+    /**
+     * The ID of the encryption key.
+     * 
+     */
+    @Import(name="cloudDiskEncryptionKey")
+    private @Nullable Output<String> cloudDiskEncryptionKey;
+
+    /**
+     * @return The ID of the encryption key.
+     * 
+     */
+    public Optional<Output<String>> cloudDiskEncryptionKey() {
+        return Optional.ofNullable(this.cloudDiskEncryptionKey);
     }
 
     /**
@@ -119,6 +149,43 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    @Import(name="encrypted")
+    private @Nullable Output<Boolean> encrypted;
+
+    /**
+     * @return Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> encrypted() {
+        return Optional.ofNullable(this.encrypted);
+    }
+
+    @Import(name="encryptionKey")
+    private @Nullable Output<String> encryptionKey;
+
+    public Optional<Output<String>> encryptionKey() {
+        return Optional.ofNullable(this.encryptionKey);
+    }
+
+    /**
+     * The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+     * 
+     */
+    @Import(name="encryptorName")
+    private @Nullable Output<String> encryptorName;
+
+    /**
+     * @return The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+     * 
+     */
+    public Optional<Output<String>> encryptorName() {
+        return Optional.ofNullable(this.encryptorName);
+    }
+
+    /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
      * 
      */
@@ -149,14 +216,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+     * The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      * 
      */
     @Import(name="instanceChargeType")
     private @Nullable Output<String> instanceChargeType;
 
     /**
-     * @return Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+     * @return The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
      * 
      */
     public Optional<Output<String>> instanceChargeType() {
@@ -239,14 +306,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     * The network type of the instance. Valid values:`Classic`, `VPC`.
      * 
      */
     @Import(name="networkType")
     private @Nullable Output<String> networkType;
 
     /**
-     * @return The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+     * @return The network type of the instance. Valid values:`Classic`, `VPC`.
      * 
      */
     public Optional<Output<String>> networkType() {
@@ -254,20 +321,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-     * * UPGRADE: The specifications are upgraded.
-     * * DOWNGRADE: The specifications are downgraded.
-     *   **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+     * The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * 
      */
     @Import(name="orderType")
     private @Nullable Output<String> orderType;
 
     /**
-     * @return The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-     * * UPGRADE: The specifications are upgraded.
-     * * DOWNGRADE: The specifications are downgraded.
-     *   **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+     * @return The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
      * 
      */
     public Optional<Output<String>> orderType() {
@@ -290,14 +351,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+     * The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+     * @return The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -320,14 +381,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the mongo replica set
+     * The name of the mongo replica set.
      * 
      */
     @Import(name="replicaSetName")
     private @Nullable Output<String> replicaSetName;
 
     /**
-     * @return The name of the mongo replica set
+     * @return The name of the mongo replica set.
      * 
      */
     public Optional<Output<String>> replicaSetName() {
@@ -335,14 +396,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
+     * Replica set instance information.
      * 
      */
     @Import(name="replicaSets")
     private @Nullable Output<List<InstanceReplicaSetArgs>> replicaSets;
 
     /**
-     * @return Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
+     * @return Replica set instance information.
      * 
      */
     public Optional<Output<List<InstanceReplicaSetArgs>>> replicaSets() {
@@ -350,14 +411,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Number of replica set nodes. Valid values: [1, 3, 5, 7]
+     * Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
      * 
      */
     @Import(name="replicationFactor")
     private @Nullable Output<Integer> replicationFactor;
 
     /**
-     * @return Number of replica set nodes. Valid values: [1, 3, 5, 7]
+     * @return Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
      * 
      */
     public Optional<Output<Integer>> replicationFactor() {
@@ -380,18 +441,25 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Instance log backup retention days. Available in 1.42.0+.
+     * Instance data backup retention days. Available since v1.42.0.
      * 
      */
     @Import(name="retentionPeriod")
     private @Nullable Output<Integer> retentionPeriod;
 
     /**
-     * @return Instance log backup retention days. Available in 1.42.0+.
+     * @return Instance data backup retention days. Available since v1.42.0.
      * 
      */
     public Optional<Output<Integer>> retentionPeriod() {
         return Optional.ofNullable(this.retentionPeriod);
+    }
+
+    @Import(name="roleArn")
+    private @Nullable Output<String> roleArn;
+
+    public Optional<Output<String>> roleArn() {
+        return Optional.ofNullable(this.roleArn);
     }
 
     /**
@@ -440,14 +508,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+     * The snapshot backup type. Default value: `Standard`. Valid values:
+     * 
+     */
+    @Import(name="snapshotBackupType")
+    private @Nullable Output<String> snapshotBackupType;
+
+    /**
+     * @return The snapshot backup type. Default value: `Standard`. Valid values:
+     * 
+     */
+    public Optional<Output<String>> snapshotBackupType() {
+        return Optional.ofNullable(this.snapshotBackupType);
+    }
+
+    /**
+     * Actions performed on SSL functions. Valid values:
      * 
      */
     @Import(name="sslAction")
     private @Nullable Output<String> sslAction;
 
     /**
-     * @return Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+     * @return Actions performed on SSL functions. Valid values:
      * 
      */
     public Optional<Output<String>> sslAction() {
@@ -455,14 +538,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
+     * Status of the SSL feature.
      * 
      */
     @Import(name="sslStatus")
     private @Nullable Output<String> sslStatus;
 
     /**
-     * @return Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
+     * @return Status of the SSL feature.
      * 
      */
     public Optional<Output<String>> sslStatus() {
@@ -470,14 +553,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     * The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      * 
      */
     @Import(name="storageEngine")
     private @Nullable Output<String> storageEngine;
 
     /**
-     * @return Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+     * @return The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
      * 
      */
     public Optional<Output<String>> storageEngine() {
@@ -515,14 +598,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The TDE(Transparent Data Encryption) status.
+     * The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
      * 
      */
     @Import(name="tdeStatus")
     private @Nullable Output<String> tdeStatus;
 
     /**
-     * @return The TDE(Transparent Data Encryption) status.
+     * @return The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
      * 
      */
     public Optional<Output<String>> tdeStatus() {
@@ -530,14 +613,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     * The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
      * 
      */
     @Import(name="vpcId")
     private @Nullable Output<String> vpcId;
 
     /**
-     * @return The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+     * @return The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
      * 
      */
     public Optional<Output<String>> vpcId() {
@@ -583,10 +666,15 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private InstanceState(InstanceState $) {
         this.accountPassword = $.accountPassword;
         this.autoRenew = $.autoRenew;
+        this.backupInterval = $.backupInterval;
         this.backupPeriods = $.backupPeriods;
         this.backupTime = $.backupTime;
+        this.cloudDiskEncryptionKey = $.cloudDiskEncryptionKey;
         this.dbInstanceClass = $.dbInstanceClass;
         this.dbInstanceStorage = $.dbInstanceStorage;
+        this.encrypted = $.encrypted;
+        this.encryptionKey = $.encryptionKey;
+        this.encryptorName = $.encryptorName;
         this.engineVersion = $.engineVersion;
         this.hiddenZoneId = $.hiddenZoneId;
         this.instanceChargeType = $.instanceChargeType;
@@ -605,9 +693,11 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.replicationFactor = $.replicationFactor;
         this.resourceGroupId = $.resourceGroupId;
         this.retentionPeriod = $.retentionPeriod;
+        this.roleArn = $.roleArn;
         this.secondaryZoneId = $.secondaryZoneId;
         this.securityGroupId = $.securityGroupId;
         this.securityIpLists = $.securityIpLists;
+        this.snapshotBackupType = $.snapshotBackupType;
         this.sslAction = $.sslAction;
         this.sslStatus = $.sslStatus;
         this.storageEngine = $.storageEngine;
@@ -659,7 +749,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Auto renew for prepaid, true of false. Default is false.
+         * @param autoRenew Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
          * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
          * 
          * @return builder
@@ -671,7 +761,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param autoRenew Auto renew for prepaid, true of false. Default is false.
+         * @param autoRenew Auto renew for prepaid. Default value: `false`. Valid values: `true`, `false`.
          * &gt; **NOTE:** The start time to the end time must be 1 hour. For example, the MaintainStartTime is 01:00Z, then the MaintainEndTime must be 02:00Z.
          * 
          * @return builder
@@ -679,6 +769,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder autoRenew(Boolean autoRenew) {
             return autoRenew(Output.of(autoRenew));
+        }
+
+        /**
+         * @param backupInterval The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupInterval(@Nullable Output<String> backupInterval) {
+            $.backupInterval = backupInterval;
+            return this;
+        }
+
+        /**
+         * @param backupInterval The frequency at which high-frequency backups are created. Valid values: `-1`, `15`, `30`, `60`, `120`, `180`, `240`, `360`, `480`, `720`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder backupInterval(String backupInterval) {
+            return backupInterval(Output.of(backupInterval));
         }
 
         /**
@@ -734,6 +845,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param cloudDiskEncryptionKey The ID of the encryption key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudDiskEncryptionKey(@Nullable Output<String> cloudDiskEncryptionKey) {
+            $.cloudDiskEncryptionKey = cloudDiskEncryptionKey;
+            return this;
+        }
+
+        /**
+         * @param cloudDiskEncryptionKey The ID of the encryption key.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cloudDiskEncryptionKey(String cloudDiskEncryptionKey) {
+            return cloudDiskEncryptionKey(Output.of(cloudDiskEncryptionKey));
+        }
+
+        /**
          * @param dbInstanceClass Instance specification. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
          * 
          * @return builder
@@ -780,6 +912,57 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param encrypted Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encrypted(@Nullable Output<Boolean> encrypted) {
+            $.encrypted = encrypted;
+            return this;
+        }
+
+        /**
+         * @param encrypted Whether to enable cloud disk encryption. Default value: `false`. Valid values: `true`, `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encrypted(Boolean encrypted) {
+            return encrypted(Output.of(encrypted));
+        }
+
+        public Builder encryptionKey(@Nullable Output<String> encryptionKey) {
+            $.encryptionKey = encryptionKey;
+            return this;
+        }
+
+        public Builder encryptionKey(String encryptionKey) {
+            return encryptionKey(Output.of(encryptionKey));
+        }
+
+        /**
+         * @param encryptorName The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptorName(@Nullable Output<String> encryptorName) {
+            $.encryptorName = encryptorName;
+            return this;
+        }
+
+        /**
+         * @param encryptorName The encryption method. **NOTE:** `encryptor_name` is valid only when `tde_status` is set to `enabled`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder encryptorName(String encryptorName) {
+            return encryptorName(Output.of(encryptorName));
+        }
+
+        /**
          * @param engineVersion Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/doc-detail/61763.htm) `EngineVersion`.
          * 
          * @return builder
@@ -822,7 +1005,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+         * @param instanceChargeType The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
          * 
          * @return builder
          * 
@@ -833,7 +1016,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceChargeType Valid values are `PrePaid`, `PostPaid`, System default to `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
+         * @param instanceChargeType The billing method of the instance. Default value: `PostPaid`. Valid values: `PrePaid`, `PostPaid`. **NOTE:** It can be modified from `PostPaid` to `PrePaid` after version 1.63.0.
          * 
          * @return builder
          * 
@@ -948,7 +1131,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkType The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+         * @param networkType The network type of the instance. Valid values:`Classic`, `VPC`.
          * 
          * @return builder
          * 
@@ -959,7 +1142,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkType The network type of the instance. Valid values:`Classic` or `VPC`. Default value: `Classic`.
+         * @param networkType The network type of the instance. Valid values:`Classic`, `VPC`.
          * 
          * @return builder
          * 
@@ -969,10 +1152,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orderType The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-         * * UPGRADE: The specifications are upgraded.
-         * * DOWNGRADE: The specifications are downgraded.
-         *   **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+         * @param orderType The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
          * 
          * @return builder
          * 
@@ -983,10 +1163,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param orderType The type of configuration changes performed. Default value: DOWNGRADE. Valid values:
-         * * UPGRADE: The specifications are upgraded.
-         * * DOWNGRADE: The specifications are downgraded.
-         *   **NOTE:** This parameter is only applicable to instances when `instance_charge_type` is PrePaid.
+         * @param orderType The type of configuration changes performed. Default value: `DOWNGRADE`. Valid values:
          * 
          * @return builder
          * 
@@ -1027,7 +1204,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+         * @param period The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
          * 
          * @return builder
          * 
@@ -1038,7 +1215,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param period The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
+         * @param period The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Default value: `1`. Valid values: [1~9], 12, 24, 36.
          * 
          * @return builder
          * 
@@ -1069,7 +1246,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicaSetName The name of the mongo replica set
+         * @param replicaSetName The name of the mongo replica set.
          * 
          * @return builder
          * 
@@ -1080,7 +1257,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicaSetName The name of the mongo replica set
+         * @param replicaSetName The name of the mongo replica set.
          * 
          * @return builder
          * 
@@ -1090,7 +1267,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicaSets Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
+         * @param replicaSets Replica set instance information.
          * 
          * @return builder
          * 
@@ -1101,7 +1278,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicaSets Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
+         * @param replicaSets Replica set instance information.
          * 
          * @return builder
          * 
@@ -1111,7 +1288,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicaSets Replica set instance information. The details see Block replica_sets. **NOTE:** Available since v1.140. See `replica_sets` below.
+         * @param replicaSets Replica set instance information.
          * 
          * @return builder
          * 
@@ -1121,7 +1298,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicationFactor Number of replica set nodes. Valid values: [1, 3, 5, 7]
+         * @param replicationFactor Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
          * 
          * @return builder
          * 
@@ -1132,7 +1309,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param replicationFactor Number of replica set nodes. Valid values: [1, 3, 5, 7]
+         * @param replicationFactor Number of replica set nodes. Valid values: `1`, `3`, `5`, `7`.
          * 
          * @return builder
          * 
@@ -1163,7 +1340,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionPeriod Instance log backup retention days. Available in 1.42.0+.
+         * @param retentionPeriod Instance data backup retention days. Available since v1.42.0.
          * 
          * @return builder
          * 
@@ -1174,13 +1351,22 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param retentionPeriod Instance log backup retention days. Available in 1.42.0+.
+         * @param retentionPeriod Instance data backup retention days. Available since v1.42.0.
          * 
          * @return builder
          * 
          */
         public Builder retentionPeriod(Integer retentionPeriod) {
             return retentionPeriod(Output.of(retentionPeriod));
+        }
+
+        public Builder roleArn(@Nullable Output<String> roleArn) {
+            $.roleArn = roleArn;
+            return this;
+        }
+
+        public Builder roleArn(String roleArn) {
+            return roleArn(Output.of(roleArn));
         }
 
         /**
@@ -1257,7 +1443,28 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslAction Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+         * @param snapshotBackupType The snapshot backup type. Default value: `Standard`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapshotBackupType(@Nullable Output<String> snapshotBackupType) {
+            $.snapshotBackupType = snapshotBackupType;
+            return this;
+        }
+
+        /**
+         * @param snapshotBackupType The snapshot backup type. Default value: `Standard`. Valid values:
+         * 
+         * @return builder
+         * 
+         */
+        public Builder snapshotBackupType(String snapshotBackupType) {
+            return snapshotBackupType(Output.of(snapshotBackupType));
+        }
+
+        /**
+         * @param sslAction Actions performed on SSL functions. Valid values:
          * 
          * @return builder
          * 
@@ -1268,7 +1475,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslAction Actions performed on SSL functions, Valid values: `Open`: turn on SSL encryption; `Close`: turn off SSL encryption; `Update`: update SSL certificate.
+         * @param sslAction Actions performed on SSL functions. Valid values:
          * 
          * @return builder
          * 
@@ -1278,7 +1485,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslStatus Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
+         * @param sslStatus Status of the SSL feature.
          * 
          * @return builder
          * 
@@ -1289,7 +1496,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslStatus Status of the SSL feature. `Open`: SSL is turned on; `Closed`: SSL is turned off.
+         * @param sslStatus Status of the SSL feature.
          * 
          * @return builder
          * 
@@ -1299,7 +1506,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageEngine Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+         * @param storageEngine The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
          * 
          * @return builder
          * 
@@ -1310,7 +1517,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storageEngine Storage engine: WiredTiger or RocksDB. System Default value: WiredTiger.
+         * @param storageEngine The storage engine of the instance. Default value: `WiredTiger`. Valid values: `WiredTiger`, `RocksDB`.
          * 
          * @return builder
          * 
@@ -1362,7 +1569,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tdeStatus The TDE(Transparent Data Encryption) status.
+         * @param tdeStatus The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
          * 
          * @return builder
          * 
@@ -1373,7 +1580,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tdeStatus The TDE(Transparent Data Encryption) status.
+         * @param tdeStatus The TDE(Transparent Data Encryption) status. Valid values: `enabled`.
          * 
          * @return builder
          * 
@@ -1383,7 +1590,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+         * @param vpcId The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
          * 
          * @return builder
          * 
@@ -1394,7 +1601,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param vpcId The ID of the VPC. &gt; **NOTE:** This parameter is valid only when NetworkType is set to VPC.
+         * @param vpcId The ID of the VPC. &gt; **NOTE:** `vpc_id` is valid only when `network_type` is set to `VPC`.
          * 
          * @return builder
          * 

@@ -137,7 +137,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * ID of Container Registry Enterprise Edition source instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -151,7 +151,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * Name of Container Registry Enterprise Edition sync rule.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -165,7 +165,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * Name of Container Registry Enterprise Edition source namespace. It can contain 2 to 30 characters.
      * 
      */
-    @Export(name="namespaceName", type=String.class, parameters={})
+    @Export(name="namespaceName", refs={String.class}, tree="[0]")
     private Output<String> namespaceName;
 
     /**
@@ -179,7 +179,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * Name of the source repository which should be set together with `target_repo_name`, if empty means that the synchronization scope is the entire namespace level.
      * 
      */
-    @Export(name="repoName", type=String.class, parameters={})
+    @Export(name="repoName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> repoName;
 
     /**
@@ -193,7 +193,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * The uuid of Container Registry Enterprise Edition sync rule.
      * 
      */
-    @Export(name="ruleId", type=String.class, parameters={})
+    @Export(name="ruleId", refs={String.class}, tree="[0]")
     private Output<String> ruleId;
 
     /**
@@ -207,7 +207,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * `FROM` or `TO`, the direction of synchronization. `FROM` means source instance, `TO` means target instance.
      * 
      */
-    @Export(name="syncDirection", type=String.class, parameters={})
+    @Export(name="syncDirection", refs={String.class}, tree="[0]")
     private Output<String> syncDirection;
 
     /**
@@ -221,7 +221,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * `REPO` or `NAMESPACE`,the scope that the synchronization rule applies.
      * 
      */
-    @Export(name="syncScope", type=String.class, parameters={})
+    @Export(name="syncScope", refs={String.class}, tree="[0]")
     private Output<String> syncScope;
 
     /**
@@ -235,7 +235,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * The regular expression used to filter image tags for synchronization in the source repository.
      * 
      */
-    @Export(name="tagFilter", type=String.class, parameters={})
+    @Export(name="tagFilter", refs={String.class}, tree="[0]")
     private Output<String> tagFilter;
 
     /**
@@ -249,7 +249,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * ID of Container Registry Enterprise Edition target instance to be synchronized.
      * 
      */
-    @Export(name="targetInstanceId", type=String.class, parameters={})
+    @Export(name="targetInstanceId", refs={String.class}, tree="[0]")
     private Output<String> targetInstanceId;
 
     /**
@@ -263,7 +263,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * Name of Container Registry Enterprise Edition target namespace to be synchronized. It can contain 2 to 30 characters.
      * 
      */
-    @Export(name="targetNamespaceName", type=String.class, parameters={})
+    @Export(name="targetNamespaceName", refs={String.class}, tree="[0]")
     private Output<String> targetNamespaceName;
 
     /**
@@ -277,7 +277,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * The target region to be synchronized.
      * 
      */
-    @Export(name="targetRegionId", type=String.class, parameters={})
+    @Export(name="targetRegionId", refs={String.class}, tree="[0]")
     private Output<String> targetRegionId;
 
     /**
@@ -291,7 +291,7 @@ public class RegistryEnterpriseSyncRule extends com.pulumi.resources.CustomResou
      * Name of the target repository.
      * 
      */
-    @Export(name="targetRepoName", type=String.class, parameters={})
+    @Export(name="targetRepoName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> targetRepoName;
 
     /**

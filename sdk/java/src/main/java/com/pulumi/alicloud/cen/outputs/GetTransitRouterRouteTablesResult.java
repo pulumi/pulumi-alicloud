@@ -207,19 +207,19 @@ public final class GetTransitRouterRouteTablesResult {
             return this;
         }
         public GetTransitRouterRouteTablesResult build() {
-            final var o = new GetTransitRouterRouteTablesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.tables = tables;
-            o.transitRouterId = transitRouterId;
-            o.transitRouterRouteTableIds = transitRouterRouteTableIds;
-            o.transitRouterRouteTableNames = transitRouterRouteTableNames;
-            o.transitRouterRouteTableStatus = transitRouterRouteTableStatus;
-            return o;
+            final var _resultValue = new GetTransitRouterRouteTablesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.tables = tables;
+            _resultValue.transitRouterId = transitRouterId;
+            _resultValue.transitRouterRouteTableIds = transitRouterRouteTableIds;
+            _resultValue.transitRouterRouteTableNames = transitRouterRouteTableNames;
+            _resultValue.transitRouterRouteTableStatus = transitRouterRouteTableStatus;
+            return _resultValue;
         }
     }
 }

@@ -160,15 +160,15 @@ public final class GetSlotsSlot {
             return this;
         }
         public GetSlotsSlot build() {
-            final var o = new GetSlotsSlot();
-            o.database = database;
-            o.plugin = plugin;
-            o.slotName = slotName;
-            o.slotStatus = slotStatus;
-            o.slotType = slotType;
-            o.temporary = temporary;
-            o.walDelay = walDelay;
-            return o;
+            final var _resultValue = new GetSlotsSlot();
+            _resultValue.database = database;
+            _resultValue.plugin = plugin;
+            _resultValue.slotName = slotName;
+            _resultValue.slotStatus = slotStatus;
+            _resultValue.slotType = slotType;
+            _resultValue.temporary = temporary;
+            _resultValue.walDelay = walDelay;
+            return _resultValue;
         }
     }
 }

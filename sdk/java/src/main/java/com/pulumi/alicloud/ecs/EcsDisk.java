@@ -30,7 +30,7 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/ecsDisk:EcsDisk")
 public class EcsDisk extends com.pulumi.resources.CustomResource {
-    @Export(name="advancedFeatures", type=String.class, parameters={})
+    @Export(name="advancedFeatures", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> advancedFeatures;
 
     public Output<Optional<String>> advancedFeatures() {
@@ -44,7 +44,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead */
-    @Export(name="availabilityZone", type=String.class, parameters={})
+    @Export(name="availabilityZone", refs={String.class}, tree="[0]")
     private Output<String> availabilityZone;
 
     /**
@@ -58,7 +58,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * Category of the disk. Valid values are `cloud`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd`, `cloud_auto`. Default is `cloud_efficiency`.
      * 
      */
-    @Export(name="category", type=String.class, parameters={})
+    @Export(name="category", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> category;
 
     /**
@@ -72,7 +72,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * Indicates whether the automatic snapshot is deleted when the disk is released. Default value: `false`.
      * 
      */
-    @Export(name="deleteAutoSnapshot", type=Boolean.class, parameters={})
+    @Export(name="deleteAutoSnapshot", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteAutoSnapshot;
 
     /**
@@ -86,7 +86,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * Indicates whether the disk is released together with the instance. Default value: `false`.
      * 
      */
-    @Export(name="deleteWithInstance", type=Boolean.class, parameters={})
+    @Export(name="deleteWithInstance", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deleteWithInstance;
 
     /**
@@ -100,7 +100,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * Description of the disk. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -114,7 +114,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * Name of the ECS disk. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as &#34;-&#34;,&#34;.&#34;,&#34;_&#34;, and must not begin or end with a hyphen, and must not begin with `http://` or `https://`. Default value is `null`.
      * 
      */
-    @Export(name="diskName", type=String.class, parameters={})
+    @Export(name="diskName", refs={String.class}, tree="[0]")
     private Output<String> diskName;
 
     /**
@@ -128,7 +128,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -142,7 +142,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * Indicates whether to enable creating snapshot automatically.
      * 
      */
-    @Export(name="enableAutoSnapshot", type=Boolean.class, parameters={})
+    @Export(name="enableAutoSnapshot", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableAutoSnapshot;
 
     /**
@@ -152,7 +152,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
     public Output<Boolean> enableAutoSnapshot() {
         return this.enableAutoSnapshot;
     }
-    @Export(name="encryptAlgorithm", type=String.class, parameters={})
+    @Export(name="encryptAlgorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptAlgorithm;
 
     public Output<Optional<String>> encryptAlgorithm() {
@@ -162,7 +162,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * If true, the disk will be encrypted, conflict with `snapshot_id`.
      * 
      */
-    @Export(name="encrypted", type=Boolean.class, parameters={})
+    @Export(name="encrypted", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> encrypted;
 
     /**
@@ -178,7 +178,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * * One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -194,7 +194,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * The ID of the KMS key corresponding to the data disk, The specified parameter `Encrypted` must be `true` when KmsKeyId is not empty.
      * 
      */
-    @Export(name="kmsKeyId", type=String.class, parameters={})
+    @Export(name="kmsKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsKeyId;
 
     /**
@@ -212,7 +212,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.122.0. New field 'disk_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -226,7 +226,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * Payment method for disk. Valid values: `PayAsYouGo`, `Subscription`. Default to `PayAsYouGo`. If you want to change the disk payment type, the `instance_id` is required.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -240,7 +240,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * Specifies the performance level of an ESSD when you create the ESSD. Valid values:
      * 
      */
-    @Export(name="performanceLevel", type=String.class, parameters={})
+    @Export(name="performanceLevel", refs={String.class}, tree="[0]")
     private Output<String> performanceLevel;
 
     /**
@@ -254,7 +254,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * The Id of resource group which the disk belongs. This attribute only supports adding or updating, not destroying.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -268,7 +268,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * The size of the disk in GiBs. When resize the disk, the new size must be greater than the former value, or you would get an error `InvalidDiskSize.TooSmall`.
      * 
      */
-    @Export(name="size", type=Integer.class, parameters={})
+    @Export(name="size", refs={Integer.class}, tree="[0]")
     private Output<Integer> size;
 
     /**
@@ -282,7 +282,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * A snapshot to base the disk off of. If the disk size required by snapshot is greater than `size`, the `size` will be ignored, conflict with `encrypted`.
      * 
      */
-    @Export(name="snapshotId", type=String.class, parameters={})
+    @Export(name="snapshotId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> snapshotId;
 
     /**
@@ -296,7 +296,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * The disk status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -310,7 +310,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * The ID of the storage set.
      * 
      */
-    @Export(name="storageSetId", type=String.class, parameters={})
+    @Export(name="storageSetId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageSetId;
 
     /**
@@ -324,7 +324,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * The number of partitions in the storage set.
      * 
      */
-    @Export(name="storageSetPartitionNumber", type=Integer.class, parameters={})
+    @Export(name="storageSetPartitionNumber", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> storageSetPartitionNumber;
 
     /**
@@ -338,7 +338,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -352,7 +352,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * The type to expand cloud disks. Valid Values: `online`, `offline`. Default to `offline`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -366,7 +366,7 @@ public class EcsDisk extends com.pulumi.resources.CustomResource {
      * ID of the free zone to which the disk belongs. One of the `zone_id` and `instance_id` must be set but can not be set at the same time.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

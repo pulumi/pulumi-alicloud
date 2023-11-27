@@ -949,7 +949,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="deletionProtectionReason")
-    def deletion_protection_reason(self) -> pulumi.Output[Optional[str]]:
+    def deletion_protection_reason(self) -> pulumi.Output[str]:
         """
         The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
         """
@@ -997,7 +997,7 @@ class LoadBalancer(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="modificationProtectionReason")
-    def modification_protection_reason(self) -> pulumi.Output[Optional[str]]:
+    def modification_protection_reason(self) -> pulumi.Output[str]:
         """
         The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
         """

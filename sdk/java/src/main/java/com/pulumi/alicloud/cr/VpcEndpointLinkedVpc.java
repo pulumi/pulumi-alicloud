@@ -108,7 +108,7 @@ public class VpcEndpointLinkedVpc extends com.pulumi.resources.CustomResource {
      * Specifies whether to automatically create an Alibaba Cloud DNS PrivateZone record. Valid Values:
      * 
      */
-    @Export(name="enableCreateDnsRecordInPvzt", type=Boolean.class, parameters={})
+    @Export(name="enableCreateDnsRecordInPvzt", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableCreateDnsRecordInPvzt;
 
     /**
@@ -122,7 +122,7 @@ public class VpcEndpointLinkedVpc extends com.pulumi.resources.CustomResource {
      * The ID of the instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -136,7 +136,7 @@ public class VpcEndpointLinkedVpc extends com.pulumi.resources.CustomResource {
      * The name of the module that you want to access. Valid Values:
      * 
      */
-    @Export(name="moduleName", type=String.class, parameters={})
+    @Export(name="moduleName", refs={String.class}, tree="[0]")
     private Output<String> moduleName;
 
     /**
@@ -150,7 +150,7 @@ public class VpcEndpointLinkedVpc extends com.pulumi.resources.CustomResource {
      * The status of the Vpc Endpoint Linked Vpc.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -164,7 +164,7 @@ public class VpcEndpointLinkedVpc extends com.pulumi.resources.CustomResource {
      * The ID of the VPC.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -178,7 +178,7 @@ public class VpcEndpointLinkedVpc extends com.pulumi.resources.CustomResource {
      * The ID of the vSwitch.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

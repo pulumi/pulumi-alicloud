@@ -105,7 +105,7 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
      * Auto renew of dataCenter-2,`true` or `false`. System default to `false`, valid when pay_type = Subscription.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
@@ -119,7 +119,7 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
      * Period of dataCenter-2 auto renew, if auto renew is `true`, one of `1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 24, 36, 60`, valid when pay_type = Subscription. Unit: month.
      * 
      */
-    @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
@@ -133,7 +133,7 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
      * Cassandra cluster id of dataCenter-2 belongs to.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -143,7 +143,7 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
     public Output<String> clusterId() {
         return this.clusterId;
     }
-    @Export(name="dataCenterId", type=String.class, parameters={})
+    @Export(name="dataCenterId", refs={String.class}, tree="[0]")
     private Output<String> dataCenterId;
 
     public Output<String> dataCenterId() {
@@ -153,7 +153,7 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
      * Cassandra dataCenter-2 name. Length must be 2~128 characters long. Only Chinese characters, English letters, numbers, period `.`, underline `_`, or dash `-` are permitted.
      * 
      */
-    @Export(name="dataCenterName", type=String.class, parameters={})
+    @Export(name="dataCenterName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataCenterName;
 
     /**
@@ -169,7 +169,7 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
      * - 80-GB increments.
      * 
      */
-    @Export(name="diskSize", type=Integer.class, parameters={})
+    @Export(name="diskSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> diskSize;
 
     /**
@@ -185,7 +185,7 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
      * The disk type of Cassandra dataCenter-2. Valid values are `cloud_ssd`, `cloud_efficiency`, `local_hdd_pro`, `local_ssd_pro`, local_disk size is fixed.
      * 
      */
-    @Export(name="diskType", type=String.class, parameters={})
+    @Export(name="diskType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> diskType;
 
     /**
@@ -195,7 +195,7 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> diskType() {
         return Codegen.optional(this.diskType);
     }
-    @Export(name="enablePublic", type=Boolean.class, parameters={})
+    @Export(name="enablePublic", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enablePublic;
 
     public Output<Optional<Boolean>> enablePublic() {
@@ -205,7 +205,7 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
      * Instance specification. See [Instance specifications](https://help.aliyun.com/document_detail/157445.html). Or you can call describeInstanceType api.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -219,7 +219,7 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
      * The node count of Cassandra dataCenter-2, default to 2.
      * 
      */
-    @Export(name="nodeCount", type=Integer.class, parameters={})
+    @Export(name="nodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> nodeCount;
 
     /**
@@ -233,7 +233,7 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
      * The pay type of Cassandra dataCenter-2. Valid values are `Subscription`, `PayAsYouGo`. System default to `PayAsYouGo`.
      * 
      */
-    @Export(name="payType", type=String.class, parameters={})
+    @Export(name="payType", refs={String.class}, tree="[0]")
     private Output<String> payType;
 
     /**
@@ -243,25 +243,25 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
     public Output<String> payType() {
         return this.payType;
     }
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     public Output<Optional<Integer>> period() {
         return Codegen.optional(this.period);
     }
-    @Export(name="periodUnit", type=String.class, parameters={})
+    @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     public Output<Optional<String>> periodUnit() {
         return Codegen.optional(this.periodUnit);
     }
-    @Export(name="publicPoints", type=List.class, parameters={String.class})
+    @Export(name="publicPoints", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> publicPoints;
 
     public Output<List<String>> publicPoints() {
         return this.publicPoints;
     }
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     public Output<String> status() {
@@ -273,7 +273,7 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Now data_center_name,instance_type,node_count,disk_type,disk_size can be change. The others(auto_renew, auto_renew_period and so on) will be supported in the furture.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -289,7 +289,7 @@ public class DataCenter extends com.pulumi.resources.CustomResource {
      * The Zone to launch the Cassandra dataCenter-2. If vswitch_id is not empty, this zone_id can be &#34;&#34; or consistent.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

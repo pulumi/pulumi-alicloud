@@ -69,10 +69,10 @@ public final class RuleRuleConditionQueryStringConfigValue {
             return this;
         }
         public RuleRuleConditionQueryStringConfigValue build() {
-            final var o = new RuleRuleConditionQueryStringConfigValue();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new RuleRuleConditionQueryStringConfigValue();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

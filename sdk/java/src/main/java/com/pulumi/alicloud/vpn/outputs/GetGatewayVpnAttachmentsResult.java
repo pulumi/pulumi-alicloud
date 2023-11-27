@@ -171,18 +171,18 @@ public final class GetGatewayVpnAttachmentsResult {
             return this;
         }
         public GetGatewayVpnAttachmentsResult build() {
-            final var o = new GetGatewayVpnAttachmentsResult();
-            o.attachments = attachments;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.status = status;
-            o.vpnGatewayId = vpnGatewayId;
-            return o;
+            final var _resultValue = new GetGatewayVpnAttachmentsResult();
+            _resultValue.attachments = attachments;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.status = status;
+            _resultValue.vpnGatewayId = vpnGatewayId;
+            return _resultValue;
         }
     }
 }

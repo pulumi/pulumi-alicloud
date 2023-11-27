@@ -34,7 +34,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when `payment_type` is `Subscription`. Valid values: `1`, `2`, `3`, `6`, `12`, `24`, `36`. Default Value: `1`.
      * 
      */
-    @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> autoRenewPeriod;
 
     /**
@@ -48,7 +48,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The specifications of computing resources in elastic mode. The increase of resources can speed up queries. AnalyticDB for MySQL automatically scales computing resources. For more information, see [ComputeResource](https://www.alibabacloud.com/help/en/analyticdb-for-mysql/developer-reference/api-adb-2019-03-15-describecomputeresource)
      * 
      */
-    @Export(name="computeResource", type=String.class, parameters={})
+    @Export(name="computeResource", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> computeResource;
 
     /**
@@ -62,7 +62,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The connection string of the cluster.
      * 
      */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -76,7 +76,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The db cluster category. Valid values: `Basic`, `Cluster`, `MixedStorage`.
      * 
      */
-    @Export(name="dbClusterCategory", type=String.class, parameters={})
+    @Export(name="dbClusterCategory", refs={String.class}, tree="[0]")
     private Output<String> dbClusterCategory;
 
     /**
@@ -94,7 +94,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* It duplicates with attribute db_node_class and is deprecated from 1.121.2. */
-    @Export(name="dbClusterClass", type=String.class, parameters={})
+    @Export(name="dbClusterClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbClusterClass;
 
     /**
@@ -108,7 +108,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The db cluster version. Valid values: `3.0`. Default Value: `3.0`.
      * 
      */
-    @Export(name="dbClusterVersion", type=String.class, parameters={})
+    @Export(name="dbClusterVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbClusterVersion;
 
     /**
@@ -122,7 +122,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The db node class. For more information, see [DBClusterClass](https://help.aliyun.com/document_detail/190519.html)
      * 
      */
-    @Export(name="dbNodeClass", type=String.class, parameters={})
+    @Export(name="dbNodeClass", refs={String.class}, tree="[0]")
     private Output<String> dbNodeClass;
 
     /**
@@ -136,7 +136,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The db node count.
      * 
      */
-    @Export(name="dbNodeCount", type=Integer.class, parameters={})
+    @Export(name="dbNodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> dbNodeCount;
 
     /**
@@ -150,7 +150,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The db node storage.
      * 
      */
-    @Export(name="dbNodeStorage", type=Integer.class, parameters={})
+    @Export(name="dbNodeStorage", refs={Integer.class}, tree="[0]")
     private Output<Integer> dbNodeStorage;
 
     /**
@@ -164,7 +164,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The description of DBCluster.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -178,7 +178,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The ESSD performance level. Default Value: `PL1`. Valid values: `PL1`, `PL2`, `PL3`.
      * 
      */
-    @Export(name="diskPerformanceLevel", type=String.class, parameters={})
+    @Export(name="diskPerformanceLevel", refs={String.class}, tree="[0]")
     private Output<String> diskPerformanceLevel;
 
     /**
@@ -192,7 +192,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The elastic io resource.
      * 
      */
-    @Export(name="elasticIoResource", type=Integer.class, parameters={})
+    @Export(name="elasticIoResource", refs={Integer.class}, tree="[0]")
     private Output<Integer> elasticIoResource;
 
     /**
@@ -206,7 +206,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The specifications of a single elastic resource node. Default Value: `8Core64GB`. Valid values:
      * 
      */
-    @Export(name="elasticIoResourceSize", type=String.class, parameters={})
+    @Export(name="elasticIoResourceSize", refs={String.class}, tree="[0]")
     private Output<String> elasticIoResourceSize;
 
     /**
@@ -220,7 +220,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The maintenance window of the cluster. Format: hh:mmZ-hh:mmZ.
      * 
      */
-    @Export(name="maintainTime", type=String.class, parameters={})
+    @Export(name="maintainTime", refs={String.class}, tree="[0]")
     private Output<String> maintainTime;
 
     /**
@@ -234,7 +234,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The mode of the cluster. Valid values: `reserver`, `flexible`.
      * 
      */
-    @Export(name="mode", type=String.class, parameters={})
+    @Export(name="mode", refs={String.class}, tree="[0]")
     private Output<String> mode;
 
     /**
@@ -248,7 +248,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The modify type.
      * 
      */
-    @Export(name="modifyType", type=String.class, parameters={})
+    @Export(name="modifyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modifyType;
 
     /**
@@ -266,7 +266,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute 'pay_type' has been deprecated from the provider version 1.166.0 and it will be remove in the future version. Please use the new attribute 'payment_type' instead. */
-    @Export(name="payType", type=String.class, parameters={})
+    @Export(name="payType", refs={String.class}, tree="[0]")
     private Output<String> payType;
 
     /**
@@ -280,7 +280,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The payment type of the resource. Valid values: `PayAsYouGo` and `Subscription`. Default Value: `PayAsYouGo`. **Note:** The `payment_type` supports updating from v1.166.0+.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -295,7 +295,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not affect the resource.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -310,7 +310,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * (Available since v1.196.0) The connection port of the ADB cluster.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
@@ -324,7 +324,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      * 
      */
-    @Export(name="renewalStatus", type=String.class, parameters={})
+    @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output<String> renewalStatus;
 
     /**
@@ -338,7 +338,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -352,7 +352,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * List of IP addresses allowed to access all databases of an cluster. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]).
      * 
      */
-    @Export(name="securityIps", type=List.class, parameters={String.class})
+    @Export(name="securityIps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityIps;
 
     /**
@@ -366,7 +366,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -384,7 +384,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~30 minutes. Please make full preparation before changing them.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -402,7 +402,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The vpc ID of the resource.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -416,7 +416,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The vswitch id.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
@@ -430,7 +430,7 @@ public class DBCluster extends com.pulumi.resources.CustomResource {
      * The zone ID of the resource.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

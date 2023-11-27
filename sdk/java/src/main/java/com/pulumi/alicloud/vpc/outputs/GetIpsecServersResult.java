@@ -136,16 +136,16 @@ public final class GetIpsecServersResult {
             return this;
         }
         public GetIpsecServersResult build() {
-            final var o = new GetIpsecServersResult();
-            o.id = id;
-            o.ids = ids;
-            o.ipsecServerName = ipsecServerName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.servers = servers;
-            o.vpnGatewayId = vpnGatewayId;
-            return o;
+            final var _resultValue = new GetIpsecServersResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.ipsecServerName = ipsecServerName;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.servers = servers;
+            _resultValue.vpnGatewayId = vpnGatewayId;
+            return _resultValue;
         }
     }
 }

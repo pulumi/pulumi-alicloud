@@ -17,6 +17,7 @@ public final class GroupMetricRuleTargetArgs extends com.pulumi.resources.Resour
 
     /**
      * The Alibaba Cloud Resource Name (ARN) of the resource.
+     * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
      * 
      */
     @Import(name="arn")
@@ -24,6 +25,7 @@ public final class GroupMetricRuleTargetArgs extends com.pulumi.resources.Resour
 
     /**
      * @return The Alibaba Cloud Resource Name (ARN) of the resource.
+     * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
      * 
      */
     public Optional<Output<String>> arn() {
@@ -48,16 +50,12 @@ public final class GroupMetricRuleTargetArgs extends com.pulumi.resources.Resour
     /**
      * The parameters of the alert callback. The parameters are in the JSON format.
      * 
-     * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
-     * 
      */
     @Import(name="jsonParams")
     private @Nullable Output<String> jsonParams;
 
     /**
      * @return The parameters of the alert callback. The parameters are in the JSON format.
-     * 
-     * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
      * 
      */
     public Optional<Output<String>> jsonParams() {
@@ -108,6 +106,7 @@ public final class GroupMetricRuleTargetArgs extends com.pulumi.resources.Resour
 
         /**
          * @param arn The Alibaba Cloud Resource Name (ARN) of the resource.
+         * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
          * 
          * @return builder
          * 
@@ -119,6 +118,7 @@ public final class GroupMetricRuleTargetArgs extends com.pulumi.resources.Resour
 
         /**
          * @param arn The Alibaba Cloud Resource Name (ARN) of the resource.
+         * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
          * 
          * @return builder
          * 
@@ -151,8 +151,6 @@ public final class GroupMetricRuleTargetArgs extends com.pulumi.resources.Resour
         /**
          * @param jsonParams The parameters of the alert callback. The parameters are in the JSON format.
          * 
-         * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
-         * 
          * @return builder
          * 
          */
@@ -163,8 +161,6 @@ public final class GroupMetricRuleTargetArgs extends com.pulumi.resources.Resour
 
         /**
          * @param jsonParams The parameters of the alert callback. The parameters are in the JSON format.
-         * 
-         * &gt; **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
          * 
          * @return builder
          * 

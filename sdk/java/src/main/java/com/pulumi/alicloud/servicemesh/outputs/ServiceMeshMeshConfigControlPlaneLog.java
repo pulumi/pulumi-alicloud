@@ -68,10 +68,10 @@ public final class ServiceMeshMeshConfigControlPlaneLog {
             return this;
         }
         public ServiceMeshMeshConfigControlPlaneLog build() {
-            final var o = new ServiceMeshMeshConfigControlPlaneLog();
-            o.enabled = enabled;
-            o.project = project;
-            return o;
+            final var _resultValue = new ServiceMeshMeshConfigControlPlaneLog();
+            _resultValue.enabled = enabled;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

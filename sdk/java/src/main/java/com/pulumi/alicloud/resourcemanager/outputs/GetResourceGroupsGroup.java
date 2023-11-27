@@ -165,15 +165,15 @@ public final class GetResourceGroupsGroup {
             return this;
         }
         public GetResourceGroupsGroup build() {
-            final var o = new GetResourceGroupsGroup();
-            o.accountId = accountId;
-            o.displayName = displayName;
-            o.id = id;
-            o.name = name;
-            o.regionStatuses = regionStatuses;
-            o.resourceGroupName = resourceGroupName;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetResourceGroupsGroup();
+            _resultValue.accountId = accountId;
+            _resultValue.displayName = displayName;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.regionStatuses = regionStatuses;
+            _resultValue.resourceGroupName = resourceGroupName;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

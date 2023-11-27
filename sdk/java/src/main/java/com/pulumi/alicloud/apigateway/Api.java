@@ -109,7 +109,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * The ID of the api of api gateway.
      * 
      */
-    @Export(name="apiId", type=String.class, parameters={})
+    @Export(name="apiId", refs={String.class}, tree="[0]")
     private Output<String> apiId;
 
     /**
@@ -123,7 +123,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * The authorization Type including APP and ANONYMOUS. Defaults to null.
      * 
      */
-    @Export(name="authType", type=String.class, parameters={})
+    @Export(name="authType", refs={String.class}, tree="[0]")
     private Output<String> authType;
 
     /**
@@ -137,7 +137,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * constant_parameters defines the constant parameters of the api. See `constant_parameters` below.
      * 
      */
-    @Export(name="constantParameters", type=List.class, parameters={ApiConstantParameter.class})
+    @Export(name="constantParameters", refs={List.class,ApiConstantParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApiConstantParameter>> constantParameters;
 
     /**
@@ -151,7 +151,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * The description of the api. Defaults to null.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -165,7 +165,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * fc_service_config defines the config when service_type selected &#39;FunctionCompute&#39;. See `fc_service_config` below.
      * 
      */
-    @Export(name="fcServiceConfig", type=ApiFcServiceConfig.class, parameters={})
+    @Export(name="fcServiceConfig", refs={ApiFcServiceConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApiFcServiceConfig> fcServiceConfig;
 
     /**
@@ -179,7 +179,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * Whether to prevent API replay attack. Default value: `false`.
      * 
      */
-    @Export(name="forceNonceCheck", type=Boolean.class, parameters={})
+    @Export(name="forceNonceCheck", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> forceNonceCheck;
 
     /**
@@ -193,7 +193,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * The api gateway that the api belongs to. Defaults to null.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -207,7 +207,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * http_service_config defines the config when service_type selected &#39;HTTP&#39;. See `http_service_config` below.
      * 
      */
-    @Export(name="httpServiceConfig", type=ApiHttpServiceConfig.class, parameters={})
+    @Export(name="httpServiceConfig", refs={ApiHttpServiceConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApiHttpServiceConfig> httpServiceConfig;
 
     /**
@@ -221,7 +221,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * http_vpc_service_config defines the config when service_type selected &#39;HTTP-VPC&#39;. See `http_vpc_service_config` below.
      * 
      */
-    @Export(name="httpVpcServiceConfig", type=ApiHttpVpcServiceConfig.class, parameters={})
+    @Export(name="httpVpcServiceConfig", refs={ApiHttpVpcServiceConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApiHttpVpcServiceConfig> httpVpcServiceConfig;
 
     /**
@@ -235,7 +235,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * http_service_config defines the config when service_type selected &#39;MOCK&#39;. See `mock_service_config` below.
      * 
      */
-    @Export(name="mockServiceConfig", type=ApiMockServiceConfig.class, parameters={})
+    @Export(name="mockServiceConfig", refs={ApiMockServiceConfig.class}, tree="[0]")
     private Output</* @Nullable */ ApiMockServiceConfig> mockServiceConfig;
 
     /**
@@ -249,7 +249,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * The name of the api gateway api. Defaults to null.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -263,7 +263,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * Request_config defines how users can send requests to your API. See `request_config` below.
      * 
      */
-    @Export(name="requestConfig", type=ApiRequestConfig.class, parameters={})
+    @Export(name="requestConfig", refs={ApiRequestConfig.class}, tree="[0]")
     private Output<ApiRequestConfig> requestConfig;
 
     /**
@@ -277,7 +277,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * request_parameters defines the request parameters of the api. See `request_parameters` below.
      * 
      */
-    @Export(name="requestParameters", type=List.class, parameters={ApiRequestParameter.class})
+    @Export(name="requestParameters", refs={List.class,ApiRequestParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApiRequestParameter>> requestParameters;
 
     /**
@@ -291,7 +291,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * The type of backend service. Type including HTTP,VPC and MOCK. Defaults to null.
      * 
      */
-    @Export(name="serviceType", type=String.class, parameters={})
+    @Export(name="serviceType", refs={String.class}, tree="[0]")
     private Output<String> serviceType;
 
     /**
@@ -305,7 +305,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * Stages that the api need to be deployed. Valid value: `RELEASE`,`PRE`,`TEST`.
      * 
      */
-    @Export(name="stageNames", type=List.class, parameters={String.class})
+    @Export(name="stageNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> stageNames;
 
     /**
@@ -319,7 +319,7 @@ public class Api extends com.pulumi.resources.CustomResource {
      * system_parameters defines the system parameters of the api. See `system_parameters` below.
      * 
      */
-    @Export(name="systemParameters", type=List.class, parameters={ApiSystemParameter.class})
+    @Export(name="systemParameters", refs={List.class,ApiSystemParameter.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ApiSystemParameter>> systemParameters;
 
     /**

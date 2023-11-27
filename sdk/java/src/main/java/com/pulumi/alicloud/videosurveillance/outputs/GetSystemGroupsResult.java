@@ -147,17 +147,17 @@ public final class GetSystemGroupsResult {
             return this;
         }
         public GetSystemGroupsResult build() {
-            final var o = new GetSystemGroupsResult();
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.inProtocol = inProtocol;
-            o.name = name;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetSystemGroupsResult();
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.inProtocol = inProtocol;
+            _resultValue.name = name;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -51,9 +51,9 @@ public final class ContainerGroupEciSecurityContext {
             return sysctls(List.of(sysctls));
         }
         public ContainerGroupEciSecurityContext build() {
-            final var o = new ContainerGroupEciSecurityContext();
-            o.sysctls = sysctls;
-            return o;
+            final var _resultValue = new ContainerGroupEciSecurityContext();
+            _resultValue.sysctls = sysctls;
+            return _resultValue;
         }
     }
 }

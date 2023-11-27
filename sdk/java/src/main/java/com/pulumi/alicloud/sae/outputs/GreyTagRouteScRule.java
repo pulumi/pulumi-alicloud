@@ -91,11 +91,11 @@ public final class GreyTagRouteScRule {
             return this;
         }
         public GreyTagRouteScRule build() {
-            final var o = new GreyTagRouteScRule();
-            o.condition = condition;
-            o.items = items;
-            o.path = path;
-            return o;
+            final var _resultValue = new GreyTagRouteScRule();
+            _resultValue.condition = condition;
+            _resultValue.items = items;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

@@ -263,20 +263,20 @@ public final class GetMscSubSubscriptionsSubscription {
             return this;
         }
         public GetMscSubSubscriptionsSubscription build() {
-            final var o = new GetMscSubSubscriptionsSubscription();
-            o.channel = channel;
-            o.contactIds = contactIds;
-            o.description = description;
-            o.emailStatus = emailStatus;
-            o.id = id;
-            o.itemId = itemId;
-            o.itemName = itemName;
-            o.pmsgStatus = pmsgStatus;
-            o.smsStatus = smsStatus;
-            o.ttsStatus = ttsStatus;
-            o.webhookIds = webhookIds;
-            o.webhookStatus = webhookStatus;
-            return o;
+            final var _resultValue = new GetMscSubSubscriptionsSubscription();
+            _resultValue.channel = channel;
+            _resultValue.contactIds = contactIds;
+            _resultValue.description = description;
+            _resultValue.emailStatus = emailStatus;
+            _resultValue.id = id;
+            _resultValue.itemId = itemId;
+            _resultValue.itemName = itemName;
+            _resultValue.pmsgStatus = pmsgStatus;
+            _resultValue.smsStatus = smsStatus;
+            _resultValue.ttsStatus = ttsStatus;
+            _resultValue.webhookIds = webhookIds;
+            _resultValue.webhookStatus = webhookStatus;
+            return _resultValue;
         }
     }
 }

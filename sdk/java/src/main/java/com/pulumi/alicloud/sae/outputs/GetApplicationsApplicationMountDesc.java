@@ -65,10 +65,10 @@ public final class GetApplicationsApplicationMountDesc {
             return this;
         }
         public GetApplicationsApplicationMountDesc build() {
-            final var o = new GetApplicationsApplicationMountDesc();
-            o.mountPath = mountPath;
-            o.nasPath = nasPath;
-            return o;
+            final var _resultValue = new GetApplicationsApplicationMountDesc();
+            _resultValue.mountPath = mountPath;
+            _resultValue.nasPath = nasPath;
+            return _resultValue;
         }
     }
 }

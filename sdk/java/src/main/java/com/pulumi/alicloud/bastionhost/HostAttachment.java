@@ -128,7 +128,7 @@ public class HostAttachment extends com.pulumi.resources.CustomResource {
      * Specifies the added to the host group ID.
      * 
      */
-    @Export(name="hostGroupId", type=String.class, parameters={})
+    @Export(name="hostGroupId", refs={String.class}, tree="[0]")
     private Output<String> hostGroupId;
 
     /**
@@ -142,7 +142,7 @@ public class HostAttachment extends com.pulumi.resources.CustomResource {
      * Specified to be part of a host group of host ID.
      * 
      */
-    @Export(name="hostId", type=String.class, parameters={})
+    @Export(name="hostId", refs={String.class}, tree="[0]")
     private Output<String> hostId;
 
     /**
@@ -156,7 +156,7 @@ public class HostAttachment extends com.pulumi.resources.CustomResource {
      * The bastion host instance id.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**

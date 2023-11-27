@@ -65,10 +65,10 @@ public final class GetPolicyGroupsGroupAuthorizeAccessPolicyRule {
             return this;
         }
         public GetPolicyGroupsGroupAuthorizeAccessPolicyRule build() {
-            final var o = new GetPolicyGroupsGroupAuthorizeAccessPolicyRule();
-            o.cidrIp = cidrIp;
-            o.description = description;
-            return o;
+            final var _resultValue = new GetPolicyGroupsGroupAuthorizeAccessPolicyRule();
+            _resultValue.cidrIp = cidrIp;
+            _resultValue.description = description;
+            return _resultValue;
         }
     }
 }

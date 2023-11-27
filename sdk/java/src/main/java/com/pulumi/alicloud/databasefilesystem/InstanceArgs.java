@@ -22,29 +22,44 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * The type of the Database file system. Valid values: `standard`.
+     * The number of CPU cores and the upper limit of memory used by the database file storage instance.
      * 
      */
-    @Import(name="category")
-    private @Nullable Output<String> category;
+    @Import(name="advancedFeatures")
+    private @Nullable Output<String> advancedFeatures;
 
     /**
-     * @return The type of the Database file system. Valid values: `standard`.
+     * @return The number of CPU cores and the upper limit of memory used by the database file storage instance.
      * 
      */
-    public Optional<Output<String>> category() {
-        return Optional.ofNullable(this.category);
+    public Optional<Output<String>> advancedFeatures() {
+        return Optional.ofNullable(this.advancedFeatures);
     }
 
     /**
-     * Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+     * Category of database file system.
+     * 
+     */
+    @Import(name="category", required=true)
+    private Output<String> category;
+
+    /**
+     * @return Category of database file system.
+     * 
+     */
+    public Output<String> category() {
+        return this.category;
+    }
+
+    /**
+     * Whether to delete the original snapshot after creating DBFS using the snapshot.
      * 
      */
     @Import(name="deleteSnapshot")
     private @Nullable Output<Boolean> deleteSnapshot;
 
     /**
-     * @return Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+     * @return Whether to delete the original snapshot after creating DBFS using the snapshot.
      * 
      */
     public Optional<Output<Boolean>> deleteSnapshot() {
@@ -52,7 +67,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
+     * The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS. See `ecs_list` below.
      * 
      * @deprecated
      * Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
@@ -63,7 +78,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<InstanceEcsListArgs>> ecsLists;
 
     /**
-     * @return The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
+     * @return The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS. See `ecs_list` below.
      * 
      * @deprecated
      * Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
@@ -75,14 +90,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+     * Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
      * 
      */
     @Import(name="enableRaid")
     private @Nullable Output<Boolean> enableRaid;
 
     /**
-     * @return Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+     * @return Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
      * 
      */
     public Optional<Output<Boolean>> enableRaid() {
@@ -90,14 +105,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to encrypt the database file system. Valid values: `true` and `false`.
+     * Whether to encrypt DBFS.Valid values: true or false. Default value: false.
      * 
      */
     @Import(name="encryption")
     private @Nullable Output<Boolean> encryption;
 
     /**
-     * @return Whether to encrypt the database file system. Valid values: `true` and `false`.
+     * @return Whether to encrypt DBFS.Valid values: true or false. Default value: false.
      * 
      */
     public Optional<Output<Boolean>> encryption() {
@@ -105,29 +120,73 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the Database file system.
+     * Database file system name.
      * 
      */
-    @Import(name="instanceName", required=true)
-    private Output<String> instanceName;
+    @Import(name="fsName")
+    private @Nullable Output<String> fsName;
 
     /**
-     * @return The name of the Database file system.
+     * @return Database file system name.
      * 
      */
-    public Output<String> instanceName() {
-        return this.instanceName;
+    public Optional<Output<String>> fsName() {
+        return Optional.ofNullable(this.fsName);
     }
 
     /**
-     * The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+     * . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead. */
+    @Import(name="instanceName")
+    private @Nullable Output<String> instanceName;
+
+    /**
+     * @return . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
+     * 
+     */
+    @Deprecated /* Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead. */
+    public Optional<Output<String>> instanceName() {
+        return Optional.ofNullable(this.instanceName);
+    }
+
+    /**
+     * Instance type. Value range:
+     * - dbfs.small
+     * - dbfs.medium
+     * - dbfs.large (default)
+     * 
+     */
+    @Import(name="instanceType")
+    private @Nullable Output<String> instanceType;
+
+    /**
+     * @return Instance type. Value range:
+     * - dbfs.small
+     * - dbfs.medium
+     * - dbfs.large (default)
+     * 
+     */
+    public Optional<Output<String>> instanceType() {
+        return Optional.ofNullable(this.instanceType);
+    }
+
+    /**
+     * The ID of the KMS key used by DBFS.
      * 
      */
     @Import(name="kmsKeyId")
     private @Nullable Output<String> kmsKeyId;
 
     /**
-     * @return The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+     * @return The ID of the KMS key used by DBFS.
      * 
      */
     public Optional<Output<String>> kmsKeyId() {
@@ -135,14 +194,22 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+     * When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+     * - PL0: single disk maximum random read-write IOPS 10000
+     * - PL1: highest random read-write IOPS 50000 per disk (default)
+     * - PL2: single disk maximum random read-write IOPS 100000
+     * - PL3: single disk maximum random read-write IOPS 1 million.
      * 
      */
     @Import(name="performanceLevel")
     private @Nullable Output<String> performanceLevel;
 
     /**
-     * @return The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+     * @return When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+     * - PL0: single disk maximum random read-write IOPS 10000
+     * - PL1: highest random read-write IOPS 50000 per disk (default)
+     * - PL2: single disk maximum random read-write IOPS 100000
+     * - PL3: single disk maximum random read-write IOPS 1 million.
      * 
      */
     public Optional<Output<String>> performanceLevel() {
@@ -150,29 +217,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
+     * Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
      * 
      */
     @Import(name="raidStripeUnitNumber")
-    private @Nullable Output<String> raidStripeUnitNumber;
+    private @Nullable Output<Integer> raidStripeUnitNumber;
 
     /**
-     * @return The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
+     * @return Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
      * 
      */
-    public Optional<Output<String>> raidStripeUnitNumber() {
+    public Optional<Output<Integer>> raidStripeUnitNumber() {
         return Optional.ofNullable(this.raidStripeUnitNumber);
     }
 
     /**
-     * The size Of the Database file system. Unit: GiB.
+     * Size of database file system, unit GiB.
      * 
      */
     @Import(name="size", required=true)
     private Output<Integer> size;
 
     /**
-     * @return The size Of the Database file system. Unit: GiB.
+     * @return Size of database file system, unit GiB.
      * 
      */
     public Output<Integer> size() {
@@ -180,14 +247,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The snapshot id of the Database file system.
+     * The ID of the snapshot used to create the DBFS instance.
      * 
      */
     @Import(name="snapshotId")
     private @Nullable Output<String> snapshotId;
 
     /**
-     * @return The snapshot id of the Database file system.
+     * @return The ID of the snapshot used to create the DBFS instance.
      * 
      */
     public Optional<Output<String>> snapshotId() {
@@ -210,14 +277,35 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Zone ID of the Database file system.
+     * The usage scenario of DBFS. Value range:
+     * - MySQL 5.7
+     * - PostgreSQL
+     * - MongoDB.
+     * 
+     */
+    @Import(name="usedScene")
+    private @Nullable Output<String> usedScene;
+
+    /**
+     * @return The usage scenario of DBFS. Value range:
+     * - MySQL 5.7
+     * - PostgreSQL
+     * - MongoDB.
+     * 
+     */
+    public Optional<Output<String>> usedScene() {
+        return Optional.ofNullable(this.usedScene);
+    }
+
+    /**
+     * The ID of the zone to which the database file system belongs.
      * 
      */
     @Import(name="zoneId", required=true)
     private Output<String> zoneId;
 
     /**
-     * @return The Zone ID of the Database file system.
+     * @return The ID of the zone to which the database file system belongs.
      * 
      */
     public Output<String> zoneId() {
@@ -227,18 +315,22 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
+        this.advancedFeatures = $.advancedFeatures;
         this.category = $.category;
         this.deleteSnapshot = $.deleteSnapshot;
         this.ecsLists = $.ecsLists;
         this.enableRaid = $.enableRaid;
         this.encryption = $.encryption;
+        this.fsName = $.fsName;
         this.instanceName = $.instanceName;
+        this.instanceType = $.instanceType;
         this.kmsKeyId = $.kmsKeyId;
         this.performanceLevel = $.performanceLevel;
         this.raidStripeUnitNumber = $.raidStripeUnitNumber;
         this.size = $.size;
         this.snapshotId = $.snapshotId;
         this.tags = $.tags;
+        this.usedScene = $.usedScene;
         this.zoneId = $.zoneId;
     }
 
@@ -261,18 +353,39 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category The type of the Database file system. Valid values: `standard`.
+         * @param advancedFeatures The number of CPU cores and the upper limit of memory used by the database file storage instance.
          * 
          * @return builder
          * 
          */
-        public Builder category(@Nullable Output<String> category) {
+        public Builder advancedFeatures(@Nullable Output<String> advancedFeatures) {
+            $.advancedFeatures = advancedFeatures;
+            return this;
+        }
+
+        /**
+         * @param advancedFeatures The number of CPU cores and the upper limit of memory used by the database file storage instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedFeatures(String advancedFeatures) {
+            return advancedFeatures(Output.of(advancedFeatures));
+        }
+
+        /**
+         * @param category Category of database file system.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder category(Output<String> category) {
             $.category = category;
             return this;
         }
 
         /**
-         * @param category The type of the Database file system. Valid values: `standard`.
+         * @param category Category of database file system.
          * 
          * @return builder
          * 
@@ -282,7 +395,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteSnapshot Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+         * @param deleteSnapshot Whether to delete the original snapshot after creating DBFS using the snapshot.
          * 
          * @return builder
          * 
@@ -293,7 +406,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deleteSnapshot Whether to delete the original snapshot after the DBFS is created using the snapshot. Valid values : `true` anf `false`.
+         * @param deleteSnapshot Whether to delete the original snapshot after creating DBFS using the snapshot.
          * 
          * @return builder
          * 
@@ -303,7 +416,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ecsLists The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
+         * @param ecsLists The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS. See `ecs_list` below.
          * 
          * @return builder
          * 
@@ -318,7 +431,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ecsLists The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
+         * @param ecsLists The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS. See `ecs_list` below.
          * 
          * @return builder
          * 
@@ -332,7 +445,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ecsLists The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS.
+         * @param ecsLists The collection of ECS instances mounted to the Database file system. See `ecs_list` below.  **NOTE:** Field &#39;ecs_list&#39; has been deprecated from provider version 1.156.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_dbfs_instance_attachment&#39; to attach ECS and DBFS. See `ecs_list` below.
          * 
          * @return builder
          * 
@@ -346,7 +459,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableRaid Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+         * @param enableRaid Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
          * 
          * @return builder
          * 
@@ -357,7 +470,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableRaid Whether to create the Database file system in RAID way. Valid values : `true` anf `false`.
+         * @param enableRaid Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
          * 
          * @return builder
          * 
@@ -367,7 +480,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryption Whether to encrypt the database file system. Valid values: `true` and `false`.
+         * @param encryption Whether to encrypt DBFS.Valid values: true or false. Default value: false.
          * 
          * @return builder
          * 
@@ -378,7 +491,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryption Whether to encrypt the database file system. Valid values: `true` and `false`.
+         * @param encryption Whether to encrypt DBFS.Valid values: true or false. Default value: false.
          * 
          * @return builder
          * 
@@ -388,28 +501,84 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName The name of the Database file system.
+         * @param fsName Database file system name.
          * 
          * @return builder
          * 
          */
-        public Builder instanceName(Output<String> instanceName) {
+        public Builder fsName(@Nullable Output<String> fsName) {
+            $.fsName = fsName;
+            return this;
+        }
+
+        /**
+         * @param fsName Database file system name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder fsName(String fsName) {
+            return fsName(Output.of(fsName));
+        }
+
+        /**
+         * @param instanceName . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
+         * 
+         * @return builder
+         * 
+         * @deprecated
+         * Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
+         * 
+         */
+        @Deprecated /* Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead. */
+        public Builder instanceName(@Nullable Output<String> instanceName) {
             $.instanceName = instanceName;
             return this;
         }
 
         /**
-         * @param instanceName The name of the Database file system.
+         * @param instanceName . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead. */
         public Builder instanceName(String instanceName) {
             return instanceName(Output.of(instanceName));
         }
 
         /**
-         * @param kmsKeyId The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+         * @param instanceType Instance type. Value range:
+         * - dbfs.small
+         * - dbfs.medium
+         * - dbfs.large (default)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceType(@Nullable Output<String> instanceType) {
+            $.instanceType = instanceType;
+            return this;
+        }
+
+        /**
+         * @param instanceType Instance type. Value range:
+         * - dbfs.small
+         * - dbfs.medium
+         * - dbfs.large (default)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceType(String instanceType) {
+            return instanceType(Output.of(instanceType));
+        }
+
+        /**
+         * @param kmsKeyId The ID of the KMS key used by DBFS.
          * 
          * @return builder
          * 
@@ -420,7 +589,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param kmsKeyId The KMS key ID of the Database file system used. This parameter is valid When `encryption` parameter is set to `true`.
+         * @param kmsKeyId The ID of the KMS key used by DBFS.
          * 
          * @return builder
          * 
@@ -430,7 +599,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param performanceLevel The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+         * @param performanceLevel When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+         * - PL0: single disk maximum random read-write IOPS 10000
+         * - PL1: highest random read-write IOPS 50000 per disk (default)
+         * - PL2: single disk maximum random read-write IOPS 100000
+         * - PL3: single disk maximum random read-write IOPS 1 million.
          * 
          * @return builder
          * 
@@ -441,7 +614,11 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param performanceLevel The performance level of the Database file system. Valid values: `PL0`, `PL1`, `PL2`, `PL3`.
+         * @param performanceLevel When you create a DBFS instance, set the performance level of the DBFS instance. Value range:
+         * - PL0: single disk maximum random read-write IOPS 10000
+         * - PL1: highest random read-write IOPS 50000 per disk (default)
+         * - PL2: single disk maximum random read-write IOPS 100000
+         * - PL3: single disk maximum random read-write IOPS 1 million.
          * 
          * @return builder
          * 
@@ -451,28 +628,28 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param raidStripeUnitNumber The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
+         * @param raidStripeUnitNumber Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
          * 
          * @return builder
          * 
          */
-        public Builder raidStripeUnitNumber(@Nullable Output<String> raidStripeUnitNumber) {
+        public Builder raidStripeUnitNumber(@Nullable Output<Integer> raidStripeUnitNumber) {
             $.raidStripeUnitNumber = raidStripeUnitNumber;
             return this;
         }
 
         /**
-         * @param raidStripeUnitNumber The number of strip. This parameter is valid When `enable_raid` parameter is set to `true`.
+         * @param raidStripeUnitNumber Number of strips. Required when the EnableRaid parameter is true.Value range: Currently, only 8 stripes are supported.
          * 
          * @return builder
          * 
          */
-        public Builder raidStripeUnitNumber(String raidStripeUnitNumber) {
+        public Builder raidStripeUnitNumber(Integer raidStripeUnitNumber) {
             return raidStripeUnitNumber(Output.of(raidStripeUnitNumber));
         }
 
         /**
-         * @param size The size Of the Database file system. Unit: GiB.
+         * @param size Size of database file system, unit GiB.
          * 
          * @return builder
          * 
@@ -483,7 +660,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param size The size Of the Database file system. Unit: GiB.
+         * @param size Size of database file system, unit GiB.
          * 
          * @return builder
          * 
@@ -493,7 +670,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshotId The snapshot id of the Database file system.
+         * @param snapshotId The ID of the snapshot used to create the DBFS instance.
          * 
          * @return builder
          * 
@@ -504,7 +681,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshotId The snapshot id of the Database file system.
+         * @param snapshotId The ID of the snapshot used to create the DBFS instance.
          * 
          * @return builder
          * 
@@ -535,7 +712,34 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone ID of the Database file system.
+         * @param usedScene The usage scenario of DBFS. Value range:
+         * - MySQL 5.7
+         * - PostgreSQL
+         * - MongoDB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usedScene(@Nullable Output<String> usedScene) {
+            $.usedScene = usedScene;
+            return this;
+        }
+
+        /**
+         * @param usedScene The usage scenario of DBFS. Value range:
+         * - MySQL 5.7
+         * - PostgreSQL
+         * - MongoDB.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder usedScene(String usedScene) {
+            return usedScene(Output.of(usedScene));
+        }
+
+        /**
+         * @param zoneId The ID of the zone to which the database file system belongs.
          * 
          * @return builder
          * 
@@ -546,7 +750,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The Zone ID of the Database file system.
+         * @param zoneId The ID of the zone to which the database file system belongs.
          * 
          * @return builder
          * 
@@ -556,7 +760,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
+            $.category = Objects.requireNonNull($.category, "expected parameter 'category' to be non-null");
             $.size = Objects.requireNonNull($.size, "expected parameter 'size' to be non-null");
             $.zoneId = Objects.requireNonNull($.zoneId, "expected parameter 'zoneId' to be non-null");
             return $;

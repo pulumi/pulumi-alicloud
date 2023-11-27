@@ -137,7 +137,7 @@ public class ImageSharePermission extends com.pulumi.resources.CustomResource {
      * Alibaba Cloud Account ID. It is used to share images.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -151,7 +151,7 @@ public class ImageSharePermission extends com.pulumi.resources.CustomResource {
      * The source image ID.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     /**

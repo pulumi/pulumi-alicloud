@@ -83,7 +83,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * ID of the ONS Instance that owns the topics.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -97,7 +97,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * The type of the message. Read [Ons Topic Create](https://www.alibabacloud.com/help/doc-detail/29591.html) for further details.
      * 
      */
-    @Export(name="messageType", type=Integer.class, parameters={})
+    @Export(name="messageType", refs={Integer.class}, tree="[0]")
     private Output<Integer> messageType;
 
     /**
@@ -115,7 +115,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute perm has been deprecated and suggest removing it from your template. */
-    @Export(name="perm", type=Integer.class, parameters={})
+    @Export(name="perm", refs={Integer.class}, tree="[0]")
     private Output<Integer> perm;
 
     /**
@@ -129,7 +129,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * This attribute is a concise description of topic. The length cannot exceed 128.
      * 
      */
-    @Export(name="remark", type=String.class, parameters={})
+    @Export(name="remark", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> remark;
 
     /**
@@ -147,7 +147,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** At least one of `topic_name` and `topic` should be set.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -169,7 +169,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'topic' has been deprecated from version 1.97.0. Use 'topic_name' instead. */
-    @Export(name="topic", type=String.class, parameters={})
+    @Export(name="topic", refs={String.class}, tree="[0]")
     private Output<String> topic;
 
     /**
@@ -183,7 +183,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * Name of the topic. Two topics on a single instance cannot have the same name and the name cannot start with &#39;GID&#39; or &#39;CID&#39;. The length cannot exceed 64 characters.
      * 
      */
-    @Export(name="topicName", type=String.class, parameters={})
+    @Export(name="topicName", refs={String.class}, tree="[0]")
     private Output<String> topicName;
 
     /**

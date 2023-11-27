@@ -179,16 +179,16 @@ public final class GetStudioApplicationsApplication {
             return this;
         }
         public GetStudioApplicationsApplication build() {
-            final var o = new GetStudioApplicationsApplication();
-            o.applicationId = applicationId;
-            o.applicationName = applicationName;
-            o.createTime = createTime;
-            o.id = id;
-            o.imageUrl = imageUrl;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.topoUrl = topoUrl;
-            return o;
+            final var _resultValue = new GetStudioApplicationsApplication();
+            _resultValue.applicationId = applicationId;
+            _resultValue.applicationName = applicationName;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.imageUrl = imageUrl;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.topoUrl = topoUrl;
+            return _resultValue;
         }
     }
 }

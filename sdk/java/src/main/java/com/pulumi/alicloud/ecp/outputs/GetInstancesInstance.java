@@ -285,22 +285,22 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.description = description;
-            o.id = id;
-            o.imageId = imageId;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.instanceType = instanceType;
-            o.keyPairName = keyPairName;
-            o.paymentType = paymentType;
-            o.resolution = resolution;
-            o.securityGroupId = securityGroupId;
-            o.status = status;
-            o.vncUrl = vncUrl;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.imageId = imageId;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.instanceType = instanceType;
+            _resultValue.keyPairName = keyPairName;
+            _resultValue.paymentType = paymentType;
+            _resultValue.resolution = resolution;
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.status = status;
+            _resultValue.vncUrl = vncUrl;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

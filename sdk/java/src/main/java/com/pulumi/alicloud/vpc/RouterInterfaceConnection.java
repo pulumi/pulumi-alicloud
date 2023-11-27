@@ -124,7 +124,7 @@ public class RouterInterfaceConnection extends com.pulumi.resources.CustomResour
      * One side router interface ID.
      * 
      */
-    @Export(name="interfaceId", type=String.class, parameters={})
+    @Export(name="interfaceId", refs={String.class}, tree="[0]")
     private Output<String> interfaceId;
 
     /**
@@ -138,7 +138,7 @@ public class RouterInterfaceConnection extends com.pulumi.resources.CustomResour
      * Another side router interface ID. It must belong the specified &#34;opposite_interface_owner_id&#34; account.
      * 
      */
-    @Export(name="oppositeInterfaceId", type=String.class, parameters={})
+    @Export(name="oppositeInterfaceId", refs={String.class}, tree="[0]")
     private Output<String> oppositeInterfaceId;
 
     /**
@@ -152,7 +152,7 @@ public class RouterInterfaceConnection extends com.pulumi.resources.CustomResour
      * Another side router interface account ID. Log on to the Alibaba Cloud console, select User Info &gt; Account Management to check the account ID. Default to Provider account_id.
      * 
      */
-    @Export(name="oppositeInterfaceOwnerId", type=String.class, parameters={})
+    @Export(name="oppositeInterfaceOwnerId", refs={String.class}, tree="[0]")
     private Output<String> oppositeInterfaceOwnerId;
 
     /**
@@ -166,7 +166,7 @@ public class RouterInterfaceConnection extends com.pulumi.resources.CustomResour
      * Another side router ID. It must belong the specified &#34;opposite_interface_owner_id&#34; account. It is valid when field &#34;opposite_interface_owner_id&#34; is specified.
      * 
      */
-    @Export(name="oppositeRouterId", type=String.class, parameters={})
+    @Export(name="oppositeRouterId", refs={String.class}, tree="[0]")
     private Output<String> oppositeRouterId;
 
     /**
@@ -182,7 +182,7 @@ public class RouterInterfaceConnection extends com.pulumi.resources.CustomResour
      * &gt; **NOTE:** The value of &#34;opposite_interface_owner_id&#34; or &#34;account_id&#34; must be main account and not be sub account.
      * 
      */
-    @Export(name="oppositeRouterType", type=String.class, parameters={})
+    @Export(name="oppositeRouterType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oppositeRouterType;
 
     /**

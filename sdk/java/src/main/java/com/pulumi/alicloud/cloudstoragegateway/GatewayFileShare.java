@@ -38,7 +38,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * Whether to enable Windows ABE, the prime minister, need windowsAcl parameter is set to true in the entry into force of. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
      * 
      */
-    @Export(name="accessBasedEnumeration", type=Boolean.class, parameters={})
+    @Export(name="accessBasedEnumeration", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> accessBasedEnumeration;
 
     /**
@@ -52,7 +52,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The Max upload speed of the gateway file share. Unit: `MB/s`, 0 means unlimited. Value range: `0` ~ `1280`. Default value: `0`. **NOTE:** at the same time if you have to limit the maximum write speed, maximum upload speed is no less than the maximum write speed.
      * 
      */
-    @Export(name="backendLimit", type=Integer.class, parameters={})
+    @Export(name="backendLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> backendLimit;
 
     /**
@@ -66,7 +66,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The whether browsable of the gateway file share (that is, in the network neighborhood of whether you can find). The attribute is valid when the attribute `protocol` is `SMB`. Default value: `true`.
      * 
      */
-    @Export(name="browsable", type=Boolean.class, parameters={})
+    @Export(name="browsable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> browsable;
 
     /**
@@ -80,7 +80,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * Direct reading OSS of the gateway file share.
      * 
      */
-    @Export(name="bypassCacheRead", type=Boolean.class, parameters={})
+    @Export(name="bypassCacheRead", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> bypassCacheRead;
 
     /**
@@ -94,7 +94,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The set up gateway file share cache mode. Valid values: `Cache` or `Sync`. `Cache`: cached mode. `Sync`: replication mode are available. Default value: `Cache`.
      * 
      */
-    @Export(name="cacheMode", type=String.class, parameters={})
+    @Export(name="cacheMode", refs={String.class}, tree="[0]")
     private Output<String> cacheMode;
 
     /**
@@ -108,7 +108,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * File sharing Whether to enable DirectIO (direct I/O mode for data transmission). Default value: `false`.
      * 
      */
-    @Export(name="directIo", type=Boolean.class, parameters={})
+    @Export(name="directIo", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> directIo;
 
     /**
@@ -122,7 +122,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The maximum download speed of the gateway file share. Unit: `MB/s`. `0` means unlimited. Value range: `0` ~ `1280`. **NOTE:** only in copy mode and enable download file data can be set. only when the shared opens the reverse synchronization or acceded to by the speed synchronization Group when, this parameter will not take effect. Gateway version &gt;= 1.3.0 above support.
      * 
      */
-    @Export(name="downloadLimit", type=Integer.class, parameters={})
+    @Export(name="downloadLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> downloadLimit;
 
     /**
@@ -136,7 +136,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The whether to enable Upload optimization of the gateway file share, which is suitable for data pure backup migration scenarios. Default value: `false`. **NOTE:** Gateway version &gt;= 1.0.39 above support.
      * 
      */
-    @Export(name="fastReclaim", type=Boolean.class, parameters={})
+    @Export(name="fastReclaim", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> fastReclaim;
 
     /**
@@ -150,7 +150,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The maximum write speed of the gateway file share. Unit: `MB/s`, `0` means unlimited. Value range: `0` ~ `1280`. Default value: `0`.
      * 
      */
-    @Export(name="feLimit", type=Integer.class, parameters={})
+    @Export(name="feLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> feLimit;
 
     /**
@@ -164,7 +164,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The name of the file share. Length from `1` to `255` characters can contain lowercase letters, digits, (.), (_) Or (-), at the same time, must start with a lowercase letter.
      * 
      */
-    @Export(name="gatewayFileShareName", type=String.class, parameters={})
+    @Export(name="gatewayFileShareName", refs={String.class}, tree="[0]")
     private Output<String> gatewayFileShareName;
 
     /**
@@ -178,7 +178,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The ID of the gateway.
      * 
      */
-    @Export(name="gatewayId", type=String.class, parameters={})
+    @Export(name="gatewayId", refs={String.class}, tree="[0]")
     private Output<String> gatewayId;
 
     /**
@@ -192,7 +192,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The whether to ignore deleted of the gateway file share. After the opening of the Gateway side delete file or delete cloud (OSS) corresponding to the file. Default value: `false`. **NOTE:** `ignore_delete` and `remote_sync` cannot be enabled simultaneously. Gateway version &gt;= 1.0.40 above support.
      * 
      */
-    @Export(name="ignoreDelete", type=Boolean.class, parameters={})
+    @Export(name="ignoreDelete", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ignoreDelete;
 
     /**
@@ -206,7 +206,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The whether debris optimization of the gateway file share. Default value: `false`.
      * 
      */
-    @Export(name="inPlace", type=Boolean.class, parameters={})
+    @Export(name="inPlace", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> inPlace;
 
     /**
@@ -220,7 +220,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The ID of the file share.
      * 
      */
-    @Export(name="indexId", type=String.class, parameters={})
+    @Export(name="indexId", refs={String.class}, tree="[0]")
     private Output<String> indexId;
 
     /**
@@ -234,7 +234,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The synchronization delay, I.e. gateway local cache sync to Alibaba Cloud Object Storage Service (oss) of the delay time. Unit: `Seconds`. Value range: `5` ~ `120`. Default value: `5`. **NOTE:** Gateway version &gt;= 1.0.40 above support.
      * 
      */
-    @Export(name="lagPeriod", type=Integer.class, parameters={})
+    @Export(name="lagPeriod", refs={Integer.class}, tree="[0]")
     private Output<Integer> lagPeriod;
 
     /**
@@ -248,7 +248,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The cache disk inside the device name.
      * 
      */
-    @Export(name="localPath", type=String.class, parameters={})
+    @Export(name="localPath", refs={String.class}, tree="[0]")
     private Output<String> localPath;
 
     /**
@@ -262,7 +262,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The set up gateway file share NFS protocol, whether to enable NFS v4 optimization improve Mount Upload efficiency. Default value: `false`. **NOTE:** If it is enabled, NFS V3 cannot be mounted. The attribute is valid when the attribute `protocol` is `NFS`. Gateway version &gt;= 1.2.0 above support.
      * 
      */
-    @Export(name="nfsV4Optimization", type=Boolean.class, parameters={})
+    @Export(name="nfsV4Optimization", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> nfsV4Optimization;
 
     /**
@@ -276,7 +276,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The name of the OSS Bucket.
      * 
      */
-    @Export(name="ossBucketName", type=String.class, parameters={})
+    @Export(name="ossBucketName", refs={String.class}, tree="[0]")
     private Output<String> ossBucketName;
 
     /**
@@ -290,7 +290,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * Whether they are using SSL connect to OSS Bucket.
      * 
      */
-    @Export(name="ossBucketSsl", type=Boolean.class, parameters={})
+    @Export(name="ossBucketSsl", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ossBucketSsl;
 
     /**
@@ -304,7 +304,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The gateway file share corresponds to the Object Storage SERVICE (OSS), Bucket Endpoint. **NOTE:** distinguish between intranet and internet Endpoint. We recommend that if the OSS Bucket and the gateway is in the same Region is use the RDS intranet IP Endpoint: `oss-cn-hangzhou-internal.aliyuncs.com`.
      * 
      */
-    @Export(name="ossEndpoint", type=String.class, parameters={})
+    @Export(name="ossEndpoint", refs={String.class}, tree="[0]")
     private Output<String> ossEndpoint;
 
     /**
@@ -318,7 +318,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * In part mode, the directory path group JSON format.
      * 
      */
-    @Export(name="partialSyncPaths", type=String.class, parameters={})
+    @Export(name="partialSyncPaths", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> partialSyncPaths;
 
     /**
@@ -332,7 +332,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The subdirectory path under the object storage (OSS) bucket corresponding to the file share. If it is blank, it means the root directory of the bucket.
      * 
      */
-    @Export(name="pathPrefix", type=String.class, parameters={})
+    @Export(name="pathPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pathPrefix;
 
     /**
@@ -346,7 +346,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The reverse synchronization time intervals of the gateway file share. Value range: `15` ~ `36000`. **NOTE:** in copy mode + reverse synchronization is enabled Download file data, value range: `3600` ~ `36000`.
      * 
      */
-    @Export(name="pollingInterval", type=Integer.class, parameters={})
+    @Export(name="pollingInterval", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> pollingInterval;
 
     /**
@@ -360,7 +360,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * Share types. Valid values: `SMB`, `NFS`.
      * 
      */
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
@@ -374,7 +374,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * Whether to enable reverse synchronization of the gateway file share. Default value: `false`.
      * 
      */
-    @Export(name="remoteSync", type=Boolean.class, parameters={})
+    @Export(name="remoteSync", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> remoteSync;
 
     /**
@@ -388,7 +388,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * Copy mode, whether to download the file data. Default value: `false`. **NOTE:** only when the attribute `remote_sync` is `true` or acceded to by the speed synchronization group, this parameter will not take effect.
      * 
      */
-    @Export(name="remoteSyncDownload", type=Boolean.class, parameters={})
+    @Export(name="remoteSyncDownload", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> remoteSyncDownload;
 
     /**
@@ -402,7 +402,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * File sharing NFS read-only client list (IP address or IP address range). Use commas (,) to separate multiple clients.
      * 
      */
-    @Export(name="roClientList", type=String.class, parameters={})
+    @Export(name="roClientList", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roClientList;
 
     /**
@@ -416,7 +416,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The read-only client list. When Protocol for Server Message Block (SMB) to go back to.
      * 
      */
-    @Export(name="roUserList", type=String.class, parameters={})
+    @Export(name="roUserList", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roUserList;
 
     /**
@@ -430,7 +430,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * Read and write the client list. When Protocol NFS is returned when the status is.
      * 
      */
-    @Export(name="rwClientList", type=String.class, parameters={})
+    @Export(name="rwClientList", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rwClientList;
 
     /**
@@ -444,7 +444,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * Read-write user list. When Protocol for Server Message Block (SMB) to go back to.
      * 
      */
-    @Export(name="rwUserList", type=String.class, parameters={})
+    @Export(name="rwUserList", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> rwUserList;
 
     /**
@@ -458,7 +458,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The NFS protocol user mapping of the gateway file share. Valid values: `none`, `root_squash`, `all_squash`, `all_anonymous`. Default value: `none`. **NOTE:** The attribute is valid when the attribute `protocol` is `NFS`.
      * 
      */
-    @Export(name="squash", type=String.class, parameters={})
+    @Export(name="squash", refs={String.class}, tree="[0]")
     private Output<String> squash;
 
     /**
@@ -472,7 +472,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * Whether to support the archive transparent read.
      * 
      */
-    @Export(name="supportArchive", type=Boolean.class, parameters={})
+    @Export(name="supportArchive", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> supportArchive;
 
     /**
@@ -486,7 +486,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * The set up gateway file share whether to enable transmission acceleration needs corresponding OSS Bucket enabled transport acceleration. **NOTE:** Gateway version &gt;= 1.3.0 above support.
      * 
      */
-    @Export(name="transferAcceleration", type=Boolean.class, parameters={})
+    @Export(name="transferAcceleration", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> transferAcceleration;
 
     /**
@@ -500,7 +500,7 @@ public class GatewayFileShare extends com.pulumi.resources.CustomResource {
      * Whether to enable by Windows access list (requires AD domain) the permissions control. Default value: `false`. **NOTE:** The attribute is valid when the attribute `protocol` is `SMB`. Gateway version &gt;= 1.0.45 above support.
      * 
      */
-    @Export(name="windowsAcl", type=Boolean.class, parameters={})
+    @Export(name="windowsAcl", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> windowsAcl;
 
     /**

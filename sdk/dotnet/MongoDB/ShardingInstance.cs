@@ -204,7 +204,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+        /// Instance data backup retention days. **NOTE:** Available in 1.42.0+.
         /// </summary>
         [Output("retentionPeriod")]
         public Output<int> RetentionPeriod { get; private set; } = null!;
@@ -650,7 +650,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+        /// Instance data backup retention days. **NOTE:** Available in 1.42.0+.
         /// </summary>
         [Input("retentionPeriod")]
         public Input<int>? RetentionPeriod { get; set; }

@@ -84,11 +84,11 @@ public final class GetRulesRuleTarget {
             return this;
         }
         public GetRulesRuleTarget build() {
-            final var o = new GetRulesRuleTarget();
-            o.endpoint = endpoint;
-            o.targetId = targetId;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetRulesRuleTarget();
+            _resultValue.endpoint = endpoint;
+            _resultValue.targetId = targetId;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

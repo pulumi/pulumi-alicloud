@@ -92,7 +92,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The access point ID to which the VBR belongs.
      * 
      */
-    @Export(name="accessPointId", type=String.class, parameters={})
+    @Export(name="accessPointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessPointId;
 
     /**
@@ -106,7 +106,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * Whether to pay automatically, value:-**false** (default): automatic payment is not enabled. After generating an order, you need to complete the payment at the order center.-**true**: Enable automatic payment to automatically pay for orders.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
      * 
      */
-    @Export(name="autoPay", type=Boolean.class, parameters={})
+    @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
     /**
@@ -120,7 +120,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The bandwidth of the resource.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
@@ -134,7 +134,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The businessStatus of the resource. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
      * 
      */
-    @Export(name="businessStatus", type=String.class, parameters={})
+    @Export(name="businessStatus", refs={String.class}, tree="[0]")
     private Output<String> businessStatus;
 
     /**
@@ -148,7 +148,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The connected time of the resource.
      * 
      */
-    @Export(name="connectedTime", type=String.class, parameters={})
+    @Export(name="connectedTime", refs={String.class}, tree="[0]")
     private Output<String> connectedTime;
 
     /**
@@ -162,7 +162,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The creation time of the resource.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -176,7 +176,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The cross border of the resource.
      * 
      */
-    @Export(name="crossBorder", type=Boolean.class, parameters={})
+    @Export(name="crossBorder", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> crossBorder;
 
     /**
@@ -190,7 +190,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * Whether to delete the health check IP address configured on the router interface. Value:-**true**: deletes the health check IP address.-**false** (default): does not delete the health check IP address.
      * 
      */
-    @Export(name="deleteHealthCheckIp", type=Boolean.class, parameters={})
+    @Export(name="deleteHealthCheckIp", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteHealthCheckIp;
 
     /**
@@ -204,7 +204,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The description of the router interface. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -218,7 +218,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The end time of the resource.
      * 
      */
-    @Export(name="endTime", type=String.class, parameters={})
+    @Export(name="endTime", refs={String.class}, tree="[0]")
     private Output<String> endTime;
 
     /**
@@ -232,7 +232,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The has reservation data of the resource.
      * 
      */
-    @Export(name="hasReservationData", type=String.class, parameters={})
+    @Export(name="hasReservationData", refs={String.class}, tree="[0]")
     private Output<String> hasReservationData;
 
     /**
@@ -246,7 +246,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The health check rate. Unit: seconds. The recommended value is 2. This indicates the interval between successive probe messages sent during the specified health check.
      * 
      */
-    @Export(name="hcRate", type=Integer.class, parameters={})
+    @Export(name="hcRate", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> hcRate;
 
     /**
@@ -260,7 +260,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The health check thresholds. Unit: pcs. The recommended value is 8. This indicates the number of probe messages to be sent during the specified health check.
      * 
      */
-    @Export(name="hcThreshold", type=String.class, parameters={})
+    @Export(name="hcThreshold", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hcThreshold;
 
     /**
@@ -274,7 +274,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The health check source IP address, must be an unused IP within the local VPC.
      * 
      */
-    @Export(name="healthCheckSourceIp", type=String.class, parameters={})
+    @Export(name="healthCheckSourceIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckSourceIp;
 
     /**
@@ -288,7 +288,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The IP address for health screening purposes.
      * 
      */
-    @Export(name="healthCheckTargetIp", type=String.class, parameters={})
+    @Export(name="healthCheckTargetIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckTargetIp;
 
     /**
@@ -302,7 +302,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The Access point ID to which the other end belongs.
      * 
      */
-    @Export(name="oppositeAccessPointId", type=String.class, parameters={})
+    @Export(name="oppositeAccessPointId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oppositeAccessPointId;
 
     /**
@@ -316,7 +316,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The opposite bandwidth of the router on the other side.
      * 
      */
-    @Export(name="oppositeBandwidth", type=Integer.class, parameters={})
+    @Export(name="oppositeBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> oppositeBandwidth;
 
     /**
@@ -330,7 +330,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The opposite interface business status of the router on the other side. Valid Values: `Normal`, `FinancialLocked`, `SecurityLocked`.
      * 
      */
-    @Export(name="oppositeInterfaceBusinessStatus", type=String.class, parameters={})
+    @Export(name="oppositeInterfaceBusinessStatus", refs={String.class}, tree="[0]")
     private Output<String> oppositeInterfaceBusinessStatus;
 
     /**
@@ -344,7 +344,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The Interface ID of the router at the other end.
      * 
      */
-    @Export(name="oppositeInterfaceId", type=String.class, parameters={})
+    @Export(name="oppositeInterfaceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oppositeInterfaceId;
 
     /**
@@ -358,7 +358,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The AliCloud account ID of the owner of the router interface on the other end.
      * 
      */
-    @Export(name="oppositeInterfaceOwnerId", type=String.class, parameters={})
+    @Export(name="oppositeInterfaceOwnerId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oppositeInterfaceOwnerId;
 
     /**
@@ -372,7 +372,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The opposite interface spec of the router on the other side. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
      * 
      */
-    @Export(name="oppositeInterfaceSpec", type=String.class, parameters={})
+    @Export(name="oppositeInterfaceSpec", refs={String.class}, tree="[0]")
     private Output<String> oppositeInterfaceSpec;
 
     /**
@@ -386,7 +386,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The opposite interface status of the router on the other side. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
      * 
      */
-    @Export(name="oppositeInterfaceStatus", type=String.class, parameters={})
+    @Export(name="oppositeInterfaceStatus", refs={String.class}, tree="[0]")
     private Output<String> oppositeInterfaceStatus;
 
     /**
@@ -400,7 +400,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The geographical ID of the location of the receiving end of the connection.
      * 
      */
-    @Export(name="oppositeRegionId", type=String.class, parameters={})
+    @Export(name="oppositeRegionId", refs={String.class}, tree="[0]")
     private Output<String> oppositeRegionId;
 
     /**
@@ -414,7 +414,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The id of the router at the other end.
      * 
      */
-    @Export(name="oppositeRouterId", type=String.class, parameters={})
+    @Export(name="oppositeRouterId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> oppositeRouterId;
 
     /**
@@ -428,7 +428,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The opposite router type of the router on the other side. Valid Values: `VRouter`, `VBR`.
      * 
      */
-    @Export(name="oppositeRouterType", type=String.class, parameters={})
+    @Export(name="oppositeRouterType", refs={String.class}, tree="[0]")
     private Output<String> oppositeRouterType;
 
     /**
@@ -442,7 +442,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The opposite vpc instance id of the router on the other side.
      * 
      */
-    @Export(name="oppositeVpcInstanceId", type=String.class, parameters={})
+    @Export(name="oppositeVpcInstanceId", refs={String.class}, tree="[0]")
     private Output<String> oppositeVpcInstanceId;
 
     /**
@@ -456,7 +456,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The payment methods for router interfaces. Valid Values: `PayAsYouGo`, `Subscription`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentType;
 
     /**
@@ -470,7 +470,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * Purchase duration, value:-When you choose to pay on a monthly basis, the value range is **1 to 9 * *.-When you choose to pay per year, the value range is **1 to 3 * *.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -484,7 +484,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The billing cycle of the prepaid fee. Valid values:-**Month** (default): monthly payment.-**Year**: Pay per Year.&gt; **InstanceChargeType** is required when the value of the parameter is **PrePaid.
      * 
      */
-    @Export(name="pricingCycle", type=String.class, parameters={})
+    @Export(name="pricingCycle", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> pricingCycle;
 
     /**
@@ -498,7 +498,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The reservation active time of the resource.
      * 
      */
-    @Export(name="reservationActiveTime", type=String.class, parameters={})
+    @Export(name="reservationActiveTime", refs={String.class}, tree="[0]")
     private Output<String> reservationActiveTime;
 
     /**
@@ -512,7 +512,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The reservation bandwidth of the resource.
      * 
      */
-    @Export(name="reservationBandwidth", type=String.class, parameters={})
+    @Export(name="reservationBandwidth", refs={String.class}, tree="[0]")
     private Output<String> reservationBandwidth;
 
     /**
@@ -526,7 +526,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The reservation internet charge type of the resource.
      * 
      */
-    @Export(name="reservationInternetChargeType", type=String.class, parameters={})
+    @Export(name="reservationInternetChargeType", refs={String.class}, tree="[0]")
     private Output<String> reservationInternetChargeType;
 
     /**
@@ -540,7 +540,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The reservation order type of the resource.
      * 
      */
-    @Export(name="reservationOrderType", type=String.class, parameters={})
+    @Export(name="reservationOrderType", refs={String.class}, tree="[0]")
     private Output<String> reservationOrderType;
 
     /**
@@ -554,7 +554,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The role of the router interface. Valid Values: `InitiatingSide`, `AcceptingSide`.
      * 
      */
-    @Export(name="role", type=String.class, parameters={})
+    @Export(name="role", refs={String.class}, tree="[0]")
     private Output<String> role;
 
     /**
@@ -568,7 +568,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The router id associated with the router interface.
      * 
      */
-    @Export(name="routerId", type=String.class, parameters={})
+    @Export(name="routerId", refs={String.class}, tree="[0]")
     private Output<String> routerId;
 
     /**
@@ -582,7 +582,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The first ID of the resource.
      * 
      */
-    @Export(name="routerInterfaceId", type=String.class, parameters={})
+    @Export(name="routerInterfaceId", refs={String.class}, tree="[0]")
     private Output<String> routerInterfaceId;
 
     /**
@@ -596,7 +596,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The name of the resource.
      * 
      */
-    @Export(name="routerInterfaceName", type=String.class, parameters={})
+    @Export(name="routerInterfaceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> routerInterfaceName;
 
     /**
@@ -610,7 +610,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The type of router associated with the router interface. Valid Values: `VRouter`, `VBR`.
      * 
      */
-    @Export(name="routerType", type=String.class, parameters={})
+    @Export(name="routerType", refs={String.class}, tree="[0]")
     private Output<String> routerType;
 
     /**
@@ -624,7 +624,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The specification of the router interface. Valid Values: `Mini.2`, `Mini.5`, `Mini.5`, `Small.2`, `Small.5`, `Middle.1`, `Middle.2`, `Middle.5`, `Large.1`, `Large.2`, `Large.5`, `XLarge.1`, `Negative`.
      * 
      */
-    @Export(name="spec", type=String.class, parameters={})
+    @Export(name="spec", refs={String.class}, tree="[0]")
     private Output<String> spec;
 
     /**
@@ -638,7 +638,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid Values: `Idle`, `AcceptingConnecting`, `Connecting`, `Activating`, `Active`, `Modifying`, `Deactivating`, `Inactive`, `Deleting`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -652,7 +652,7 @@ public class RouterInterface extends com.pulumi.resources.CustomResource {
      * The vpc instance id of the resource.
      * 
      */
-    @Export(name="vpcInstanceId", type=String.class, parameters={})
+    @Export(name="vpcInstanceId", refs={String.class}, tree="[0]")
     private Output<String> vpcInstanceId;
 
     /**

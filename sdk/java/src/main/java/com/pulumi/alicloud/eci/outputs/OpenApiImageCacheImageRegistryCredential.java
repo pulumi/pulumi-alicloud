@@ -62,11 +62,11 @@ public final class OpenApiImageCacheImageRegistryCredential {
             return this;
         }
         public OpenApiImageCacheImageRegistryCredential build() {
-            final var o = new OpenApiImageCacheImageRegistryCredential();
-            o.password = password;
-            o.server = server;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new OpenApiImageCacheImageRegistryCredential();
+            _resultValue.password = password;
+            _resultValue.server = server;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

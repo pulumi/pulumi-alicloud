@@ -349,27 +349,27 @@ public final class GetNatGatewaysResult {
             return this;
         }
         public GetNatGatewaysResult build() {
-            final var o = new GetNatGatewaysResult();
-            o.dryRun = dryRun;
-            o.enableDetails = enableDetails;
-            o.gateways = gateways;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.natGatewayName = natGatewayName;
-            o.natType = natType;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.paymentType = paymentType;
-            o.resourceGroupId = resourceGroupId;
-            o.specification = specification;
-            o.status = status;
-            o.tags = tags;
-            o.totalCount = totalCount;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetNatGatewaysResult();
+            _resultValue.dryRun = dryRun;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.gateways = gateways;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.natGatewayName = natGatewayName;
+            _resultValue.natType = natType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.paymentType = paymentType;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.specification = specification;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.totalCount = totalCount;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

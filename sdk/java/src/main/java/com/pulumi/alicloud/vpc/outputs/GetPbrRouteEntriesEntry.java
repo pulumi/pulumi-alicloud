@@ -180,16 +180,16 @@ public final class GetPbrRouteEntriesEntry {
             return this;
         }
         public GetPbrRouteEntriesEntry build() {
-            final var o = new GetPbrRouteEntriesEntry();
-            o.createTime = createTime;
-            o.id = id;
-            o.nextHop = nextHop;
-            o.routeDest = routeDest;
-            o.routeSource = routeSource;
-            o.status = status;
-            o.vpnGatewayId = vpnGatewayId;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new GetPbrRouteEntriesEntry();
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.nextHop = nextHop;
+            _resultValue.routeDest = routeDest;
+            _resultValue.routeSource = routeSource;
+            _resultValue.status = status;
+            _resultValue.vpnGatewayId = vpnGatewayId;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

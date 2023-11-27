@@ -2586,12 +2586,11 @@ func (o GroupMetricRuleEscalationsWarnPtrOutput) Times() pulumi.IntPtrOutput {
 
 type GroupMetricRuleTarget struct {
 	// The Alibaba Cloud Resource Name (ARN) of the resource.
+	// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 	Arn *string `pulumi:"arn"`
 	// The ID of the resource for which alerts are triggered.
 	Id *string `pulumi:"id"`
 	// The parameters of the alert callback. The parameters are in the JSON format.
-	//
-	// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 	JsonParams *string `pulumi:"jsonParams"`
 	// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
 	Level *string `pulumi:"level"`
@@ -2610,12 +2609,11 @@ type GroupMetricRuleTargetInput interface {
 
 type GroupMetricRuleTargetArgs struct {
 	// The Alibaba Cloud Resource Name (ARN) of the resource.
+	// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 	Arn pulumi.StringPtrInput `pulumi:"arn"`
 	// The ID of the resource for which alerts are triggered.
 	Id pulumi.StringPtrInput `pulumi:"id"`
 	// The parameters of the alert callback. The parameters are in the JSON format.
-	//
-	// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 	JsonParams pulumi.StringPtrInput `pulumi:"jsonParams"`
 	// The level of the alert. Valid values: `Critical`, `Warn`, `Info`.
 	Level pulumi.StringPtrInput `pulumi:"level"`
@@ -2673,6 +2671,7 @@ func (o GroupMetricRuleTargetOutput) ToGroupMetricRuleTargetOutputWithContext(ct
 }
 
 // The Alibaba Cloud Resource Name (ARN) of the resource.
+// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 func (o GroupMetricRuleTargetOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupMetricRuleTarget) *string { return v.Arn }).(pulumi.StringPtrOutput)
 }
@@ -2683,8 +2682,6 @@ func (o GroupMetricRuleTargetOutput) Id() pulumi.StringPtrOutput {
 }
 
 // The parameters of the alert callback. The parameters are in the JSON format.
-//
-// > **NOTE:** Currently, the Alibaba Cloud Resource Name (ARN) of the resource. To use, please [submit an application](https://www.alibabacloud.com/help/en/cloudmonitor/latest/describemetricruletargets).
 func (o GroupMetricRuleTargetOutput) JsonParams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GroupMetricRuleTarget) *string { return v.JsonParams }).(pulumi.StringPtrOutput)
 }

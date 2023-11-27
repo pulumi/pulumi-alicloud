@@ -23,7 +23,7 @@ public class KubernetesAutoscaler extends com.pulumi.resources.CustomResource {
      * The id of kubernetes cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -37,7 +37,7 @@ public class KubernetesAutoscaler extends com.pulumi.resources.CustomResource {
      * The cool_down_duration option of cluster-autoscaler.
      * 
      */
-    @Export(name="coolDownDuration", type=String.class, parameters={})
+    @Export(name="coolDownDuration", refs={String.class}, tree="[0]")
     private Output<String> coolDownDuration;
 
     /**
@@ -51,7 +51,7 @@ public class KubernetesAutoscaler extends com.pulumi.resources.CustomResource {
      * The defer_scale_in_duration option of cluster-autoscaler.
      * 
      */
-    @Export(name="deferScaleInDuration", type=String.class, parameters={})
+    @Export(name="deferScaleInDuration", refs={String.class}, tree="[0]")
     private Output<String> deferScaleInDuration;
 
     /**
@@ -65,7 +65,7 @@ public class KubernetesAutoscaler extends com.pulumi.resources.CustomResource {
      * The list of the node pools. See `nodepools` below.
      * 
      */
-    @Export(name="nodepools", type=List.class, parameters={KubernetesAutoscalerNodepool.class})
+    @Export(name="nodepools", refs={List.class,KubernetesAutoscalerNodepool.class}, tree="[0,1]")
     private Output</* @Nullable */ List<KubernetesAutoscalerNodepool>> nodepools;
 
     /**
@@ -79,7 +79,7 @@ public class KubernetesAutoscaler extends com.pulumi.resources.CustomResource {
      * Enable autoscaler access to alibabacloud service by ecs ramrole token. default: false
      * 
      */
-    @Export(name="useEcsRamRoleToken", type=Boolean.class, parameters={})
+    @Export(name="useEcsRamRoleToken", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> useEcsRamRoleToken;
 
     /**
@@ -93,7 +93,7 @@ public class KubernetesAutoscaler extends com.pulumi.resources.CustomResource {
      * The utilization option of cluster-autoscaler.
      * 
      */
-    @Export(name="utilization", type=String.class, parameters={})
+    @Export(name="utilization", refs={String.class}, tree="[0]")
     private Output<String> utilization;
 
     /**

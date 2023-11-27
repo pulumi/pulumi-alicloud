@@ -23,15 +23,15 @@ public final class GroupMetricRuleArgs extends com.pulumi.resources.ResourceArgs
      * The abbreviation of the service name.
      * 
      */
-    @Import(name="category", required=true)
-    private Output<String> category;
+    @Import(name="category")
+    private @Nullable Output<String> category;
 
     /**
      * @return The abbreviation of the service name.
      * 
      */
-    public Output<String> category() {
-        return this.category;
+    public Optional<Output<String>> category() {
+        return Optional.ofNullable(this.category);
     }
 
     /**
@@ -80,14 +80,14 @@ public final class GroupMetricRuleArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * The subject of the alert notification email.                                         .
+     * The subject of the alert notification email.
      * 
      */
     @Import(name="emailSubject")
     private @Nullable Output<String> emailSubject;
 
     /**
-     * @return The subject of the alert notification email.                                         .
+     * @return The subject of the alert notification email.
      * 
      */
     public Optional<Output<String>> emailSubject() {
@@ -320,7 +320,7 @@ public final class GroupMetricRuleArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder category(Output<String> category) {
+        public Builder category(@Nullable Output<String> category) {
             $.category = category;
             return this;
         }
@@ -399,7 +399,7 @@ public final class GroupMetricRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param emailSubject The subject of the alert notification email.                                         .
+         * @param emailSubject The subject of the alert notification email.
          * 
          * @return builder
          * 
@@ -410,7 +410,7 @@ public final class GroupMetricRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param emailSubject The subject of the alert notification email.                                         .
+         * @param emailSubject The subject of the alert notification email.
          * 
          * @return builder
          * 
@@ -682,7 +682,6 @@ public final class GroupMetricRuleArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public GroupMetricRuleArgs build() {
-            $.category = Objects.requireNonNull($.category, "expected parameter 'category' to be non-null");
             $.escalations = Objects.requireNonNull($.escalations, "expected parameter 'escalations' to be non-null");
             $.groupId = Objects.requireNonNull($.groupId, "expected parameter 'groupId' to be non-null");
             $.groupMetricRuleName = Objects.requireNonNull($.groupMetricRuleName, "expected parameter 'groupMetricRuleName' to be non-null");

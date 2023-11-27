@@ -184,19 +184,19 @@ public final class GetAssetsResult {
             return this;
         }
         public GetAssetsResult build() {
-            final var o = new GetAssetsResult();
-            o.assets = assets;
-            o.criteria = criteria;
-            o.id = id;
-            o.ids = ids;
-            o.importance = importance;
-            o.logicalExp = logicalExp;
-            o.machineTypes = machineTypes;
-            o.noGroupTrace = noGroupTrace;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+            final var _resultValue = new GetAssetsResult();
+            _resultValue.assets = assets;
+            _resultValue.criteria = criteria;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.importance = importance;
+            _resultValue.logicalExp = logicalExp;
+            _resultValue.machineTypes = machineTypes;
+            _resultValue.noGroupTrace = noGroupTrace;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            return _resultValue;
         }
     }
 }

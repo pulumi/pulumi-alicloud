@@ -477,31 +477,31 @@ public final class GetNatGatewaysGateway {
             return this;
         }
         public GetNatGatewaysGateway build() {
-            final var o = new GetNatGatewaysGateway();
-            o.businessStatus = businessStatus;
-            o.deletionProtection = deletionProtection;
-            o.description = description;
-            o.ecsMetricEnabled = ecsMetricEnabled;
-            o.expiredTime = expiredTime;
-            o.forwardTableIds = forwardTableIds;
-            o.id = id;
-            o.internetChargeType = internetChargeType;
-            o.ipLists = ipLists;
-            o.name = name;
-            o.natGatewayId = natGatewayId;
-            o.natGatewayName = natGatewayName;
-            o.natType = natType;
-            o.networkType = networkType;
-            o.paymentType = paymentType;
-            o.resourceGroupId = resourceGroupId;
-            o.snatTableIds = snatTableIds;
-            o.spec = spec;
-            o.specification = specification;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetNatGatewaysGateway();
+            _resultValue.businessStatus = businessStatus;
+            _resultValue.deletionProtection = deletionProtection;
+            _resultValue.description = description;
+            _resultValue.ecsMetricEnabled = ecsMetricEnabled;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.forwardTableIds = forwardTableIds;
+            _resultValue.id = id;
+            _resultValue.internetChargeType = internetChargeType;
+            _resultValue.ipLists = ipLists;
+            _resultValue.name = name;
+            _resultValue.natGatewayId = natGatewayId;
+            _resultValue.natGatewayName = natGatewayName;
+            _resultValue.natType = natType;
+            _resultValue.networkType = networkType;
+            _resultValue.paymentType = paymentType;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.snatTableIds = snatTableIds;
+            _resultValue.spec = spec;
+            _resultValue.specification = specification;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

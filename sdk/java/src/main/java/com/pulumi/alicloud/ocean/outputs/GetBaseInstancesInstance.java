@@ -298,22 +298,22 @@ public final class GetBaseInstancesInstance {
             return zones(List.of(zones));
         }
         public GetBaseInstancesInstance build() {
-            final var o = new GetBaseInstancesInstance();
-            o.commodityCode = commodityCode;
-            o.cpu = cpu;
-            o.createTime = createTime;
-            o.diskSize = diskSize;
-            o.id = id;
-            o.instanceClass = instanceClass;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.nodeNum = nodeNum;
-            o.paymentType = paymentType;
-            o.resourceGroupId = resourceGroupId;
-            o.series = series;
-            o.status = status;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GetBaseInstancesInstance();
+            _resultValue.commodityCode = commodityCode;
+            _resultValue.cpu = cpu;
+            _resultValue.createTime = createTime;
+            _resultValue.diskSize = diskSize;
+            _resultValue.id = id;
+            _resultValue.instanceClass = instanceClass;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.nodeNum = nodeNum;
+            _resultValue.paymentType = paymentType;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.series = series;
+            _resultValue.status = status;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

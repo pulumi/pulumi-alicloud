@@ -125,15 +125,15 @@ public final class GetStoresResult {
             return stores(List.of(stores));
         }
         public GetStoresResult build() {
-            final var o = new GetStoresResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.project = project;
-            o.stores = stores;
-            return o;
+            final var _resultValue = new GetStoresResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.project = project;
+            _resultValue.stores = stores;
+            return _resultValue;
         }
     }
 }

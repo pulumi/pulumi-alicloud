@@ -79,7 +79,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether the required RAM authorization is configured.
      * 
      */
-    @Export(name="authed", type=Boolean.class, parameters={})
+    @Export(name="authed", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> authed;
 
     /**
@@ -93,7 +93,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The dataphin. Valid values: `yes`,`no`.
      * 
      */
-    @Export(name="dataphin", type=String.class, parameters={})
+    @Export(name="dataphin", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataphin;
 
     /**
@@ -107,7 +107,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The dataphin count. Valid values: 1 to 20.
      * 
      */
-    @Export(name="dataphinCount", type=String.class, parameters={})
+    @Export(name="dataphinCount", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataphinCount;
 
     /**
@@ -121,7 +121,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The number of instances.
      * 
      */
-    @Export(name="instanceNum", type=String.class, parameters={})
+    @Export(name="instanceNum", refs={String.class}, tree="[0]")
     private Output<String> instanceNum;
 
     /**
@@ -135,7 +135,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The logistics.
      * 
      */
-    @Export(name="logistics", type=String.class, parameters={})
+    @Export(name="logistics", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logistics;
 
     /**
@@ -149,7 +149,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The modify type. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute a update operation.
      * 
      */
-    @Export(name="modifyType", type=String.class, parameters={})
+    @Export(name="modifyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modifyType;
 
     /**
@@ -163,7 +163,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether the authorized MaxCompute (ODPS) assets.
      * 
      */
-    @Export(name="odpsSet", type=Boolean.class, parameters={})
+    @Export(name="odpsSet", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> odpsSet;
 
     /**
@@ -177,7 +177,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether the authorized oss assets.
      * 
      */
-    @Export(name="ossBucketSet", type=Boolean.class, parameters={})
+    @Export(name="ossBucketSet", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ossBucketSet;
 
     /**
@@ -191,7 +191,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The OSS storage capacity.
      * 
      */
-    @Export(name="ossSize", type=String.class, parameters={})
+    @Export(name="ossSize", refs={String.class}, tree="[0]")
     private Output<String> ossSize;
 
     /**
@@ -205,7 +205,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The payment type of the resource. Valid values: `Subscription`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -219,7 +219,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Prepaid period. Valid values: `1`, `2`, `3`, `6`,`12`,`24`.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output<Integer> period;
 
     /**
@@ -233,7 +233,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether the authorized rds assets.
      * 
      */
-    @Export(name="rdsSet", type=Boolean.class, parameters={})
+    @Export(name="rdsSet", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> rdsSet;
 
     /**
@@ -247,7 +247,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The remaining days of the protection period of the assets in the current login account.
      * 
      */
-    @Export(name="remainDays", type=String.class, parameters={})
+    @Export(name="remainDays", refs={String.class}, tree="[0]")
     private Output<String> remainDays;
 
     /**
@@ -261,7 +261,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Automatic renewal period. **NOTE:** The `renew_period` is required under the condition that renewal_status is `AutoRenewal`,
      * 
      */
-    @Export(name="renewPeriod", type=Integer.class, parameters={})
+    @Export(name="renewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> renewPeriod;
 
     /**
@@ -275,7 +275,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Automatic renewal status. Valid values: `AutoRenewal`,`ManualRenewal`. Default Value: `ManualRenewal`.
      * 
      */
-    @Export(name="renewalStatus", type=String.class, parameters={})
+    @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output<String> renewalStatus;
 
     /**
@@ -289,7 +289,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to use the database. Valid values:`yes`,`no`.
      * 
      */
-    @Export(name="sdCbool", type=String.class, parameters={})
+    @Export(name="sdCbool", refs={String.class}, tree="[0]")
     private Output<String> sdCbool;
 
     /**
@@ -303,7 +303,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The number of instances.
      * 
      */
-    @Export(name="sdc", type=String.class, parameters={})
+    @Export(name="sdc", refs={String.class}, tree="[0]")
     private Output<String> sdc;
 
     /**
@@ -317,7 +317,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The sddp version. Valid values: `version_audit`,`version_company`,`version_dlp`.
      * 
      */
-    @Export(name="sddpVersion", type=String.class, parameters={})
+    @Export(name="sddpVersion", refs={String.class}, tree="[0]")
     private Output<String> sddpVersion;
 
     /**
@@ -331,7 +331,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -345,7 +345,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to use OSS. Valid values: `yes`,`no`.
      * 
      */
-    @Export(name="udCbool", type=String.class, parameters={})
+    @Export(name="udCbool", refs={String.class}, tree="[0]")
     private Output<String> udCbool;
 
     /**
@@ -359,7 +359,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * OSS Size.
      * 
      */
-    @Export(name="udc", type=String.class, parameters={})
+    @Export(name="udc", refs={String.class}, tree="[0]")
     private Output<String> udc;
 
     /**

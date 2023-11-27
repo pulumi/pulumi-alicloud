@@ -78,7 +78,7 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
      * Anycast EIP instance name.
      * 
      */
-    @Export(name="anycastEipAddressName", type=String.class, parameters={})
+    @Export(name="anycastEipAddressName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> anycastEipAddressName;
 
     /**
@@ -92,7 +92,7 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
      * The peak bandwidth of the Anycast EIP instance, in Mbps.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
@@ -106,7 +106,7 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
      * Anycast EIP instance creation time.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -120,7 +120,7 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
      * Anycast EIP instance description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -134,7 +134,7 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
      * The billing method of Anycast EIP instance. &#34;PayByBandwidth&#34;: refers to the method of billing based on traffic.
      * 
      */
-    @Export(name="internetChargeType", type=String.class, parameters={})
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetChargeType;
 
     /**
@@ -148,7 +148,7 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
      * The payment model of Anycast EIP instance. &#34;PayAsYouGo&#34;: Refers to the post-paid mode.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentType;
 
     /**
@@ -162,7 +162,7 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
      * The ID of the resource group to which the instance belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -176,7 +176,7 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
      * Anycast EIP instance access area. &#34;international&#34;: Refers to areas outside of Mainland China.
      * 
      */
-    @Export(name="serviceLocation", type=String.class, parameters={})
+    @Export(name="serviceLocation", refs={String.class}, tree="[0]")
     private Output<String> serviceLocation;
 
     /**
@@ -190,7 +190,7 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -204,7 +204,7 @@ public class AnycastEipAddress extends com.pulumi.resources.CustomResource {
      * List of resource-bound tags.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

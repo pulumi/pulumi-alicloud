@@ -68,10 +68,10 @@ public final class ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration {
             return this;
         }
         public ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration build() {
-            final var o = new ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration();
-            o.enabled = enabled;
-            o.excludeNamespaces = excludeNamespaces;
-            return o;
+            final var _resultValue = new ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration();
+            _resultValue.enabled = enabled;
+            _resultValue.excludeNamespaces = excludeNamespaces;
+            return _resultValue;
         }
     }
 }

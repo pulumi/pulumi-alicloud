@@ -182,16 +182,16 @@ public final class GetExchangesExchange {
             return this;
         }
         public GetExchangesExchange build() {
-            final var o = new GetExchangesExchange();
-            o.attributes = attributes;
-            o.autoDeleteState = autoDeleteState;
-            o.createTime = createTime;
-            o.exchangeName = exchangeName;
-            o.exchangeType = exchangeType;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.virtualHostName = virtualHostName;
-            return o;
+            final var _resultValue = new GetExchangesExchange();
+            _resultValue.attributes = attributes;
+            _resultValue.autoDeleteState = autoDeleteState;
+            _resultValue.createTime = createTime;
+            _resultValue.exchangeName = exchangeName;
+            _resultValue.exchangeType = exchangeType;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.virtualHostName = virtualHostName;
+            return _resultValue;
         }
     }
 }

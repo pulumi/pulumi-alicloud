@@ -126,15 +126,15 @@ public final class GetRdsParameterGroupsResult {
             return this;
         }
         public GetRdsParameterGroupsResult build() {
-            final var o = new GetRdsParameterGroupsResult();
-            o.enableDetails = enableDetails;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetRdsParameterGroupsResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

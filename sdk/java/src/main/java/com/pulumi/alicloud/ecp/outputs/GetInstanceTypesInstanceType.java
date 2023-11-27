@@ -134,14 +134,14 @@ public final class GetInstanceTypesInstanceType {
             return this;
         }
         public GetInstanceTypesInstanceType build() {
-            final var o = new GetInstanceTypesInstanceType();
-            o.cpuCoreCount = cpuCoreCount;
-            o.defaultResolution = defaultResolution;
-            o.instanceType = instanceType;
-            o.instanceTypeFamily = instanceTypeFamily;
-            o.name = name;
-            o.nameEn = nameEn;
-            return o;
+            final var _resultValue = new GetInstanceTypesInstanceType();
+            _resultValue.cpuCoreCount = cpuCoreCount;
+            _resultValue.defaultResolution = defaultResolution;
+            _resultValue.instanceType = instanceType;
+            _resultValue.instanceTypeFamily = instanceTypeFamily;
+            _resultValue.name = name;
+            _resultValue.nameEn = nameEn;
+            return _resultValue;
         }
     }
 }

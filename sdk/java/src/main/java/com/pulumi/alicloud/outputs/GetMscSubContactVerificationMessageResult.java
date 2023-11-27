@@ -88,12 +88,12 @@ public final class GetMscSubContactVerificationMessageResult {
             return this;
         }
         public GetMscSubContactVerificationMessageResult build() {
-            final var o = new GetMscSubContactVerificationMessageResult();
-            o.contactId = contactId;
-            o.id = id;
-            o.status = status;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetMscSubContactVerificationMessageResult();
+            _resultValue.contactId = contactId;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

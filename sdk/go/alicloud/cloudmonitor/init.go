@@ -21,8 +21,12 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "alicloud:cloudmonitor/serviceGroupMonitoringAgentProcess:ServiceGroupMonitoringAgentProcess":
+		r = &ServiceGroupMonitoringAgentProcess{}
 	case "alicloud:cloudmonitor/serviceHybridDoubleWrite:ServiceHybridDoubleWrite":
 		r = &ServiceHybridDoubleWrite{}
+	case "alicloud:cloudmonitor/serviceMonitoringAgentProcess:ServiceMonitoringAgentProcess":
+		r = &ServiceMonitoringAgentProcess{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -38,7 +42,17 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"cloudmonitor/serviceGroupMonitoringAgentProcess",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"cloudmonitor/serviceHybridDoubleWrite",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"cloudmonitor/serviceMonitoringAgentProcess",
 		&module{version},
 	)
 }

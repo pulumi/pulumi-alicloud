@@ -312,23 +312,23 @@ public final class GetDirectoriesDirectoryTask {
             return this;
         }
         public GetDirectoriesDirectoryTask build() {
-            final var o = new GetDirectoriesDirectoryTask();
-            o.accessConfigurationId = accessConfigurationId;
-            o.accessConfigurationName = accessConfigurationName;
-            o.endTime = endTime;
-            o.failureReason = failureReason;
-            o.principalId = principalId;
-            o.principalName = principalName;
-            o.principalType = principalType;
-            o.startTime = startTime;
-            o.status = status;
-            o.targetId = targetId;
-            o.targetName = targetName;
-            o.targetPath = targetPath;
-            o.targetType = targetType;
-            o.taskId = taskId;
-            o.taskType = taskType;
-            return o;
+            final var _resultValue = new GetDirectoriesDirectoryTask();
+            _resultValue.accessConfigurationId = accessConfigurationId;
+            _resultValue.accessConfigurationName = accessConfigurationName;
+            _resultValue.endTime = endTime;
+            _resultValue.failureReason = failureReason;
+            _resultValue.principalId = principalId;
+            _resultValue.principalName = principalName;
+            _resultValue.principalType = principalType;
+            _resultValue.startTime = startTime;
+            _resultValue.status = status;
+            _resultValue.targetId = targetId;
+            _resultValue.targetName = targetName;
+            _resultValue.targetPath = targetPath;
+            _resultValue.targetType = targetType;
+            _resultValue.taskId = taskId;
+            _resultValue.taskType = taskType;
+            return _resultValue;
         }
     }
 }

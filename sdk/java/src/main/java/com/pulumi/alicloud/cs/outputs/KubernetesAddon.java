@@ -29,6 +29,11 @@ public final class KubernetesAddon {
      * 
      */
     private @Nullable String name;
+    /**
+     * @return The version of the component.
+     * 
+     */
+    private @Nullable String version;
 
     private KubernetesAddon() {}
     /**
@@ -54,6 +59,13 @@ public final class KubernetesAddon {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return The version of the component.
+     * 
+     */
+    public Optional<String> version() {
+        return Optional.ofNullable(this.version);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -67,12 +79,14 @@ public final class KubernetesAddon {
         private @Nullable String config;
         private @Nullable Boolean disabled;
         private @Nullable String name;
+        private @Nullable String version;
         public Builder() {}
         public Builder(KubernetesAddon defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
     	      this.disabled = defaults.disabled;
     	      this.name = defaults.name;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -90,12 +104,18 @@ public final class KubernetesAddon {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder version(@Nullable String version) {
+            this.version = version;
+            return this;
+        }
         public KubernetesAddon build() {
-            final var o = new KubernetesAddon();
-            o.config = config;
-            o.disabled = disabled;
-            o.name = name;
-            return o;
+            final var _resultValue = new KubernetesAddon();
+            _resultValue.config = config;
+            _resultValue.disabled = disabled;
+            _resultValue.name = name;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

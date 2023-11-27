@@ -84,11 +84,11 @@ public final class ContainerGroupImageRegistryCredential {
             return this;
         }
         public ContainerGroupImageRegistryCredential build() {
-            final var o = new ContainerGroupImageRegistryCredential();
-            o.password = password;
-            o.server = server;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new ContainerGroupImageRegistryCredential();
+            _resultValue.password = password;
+            _resultValue.server = server;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

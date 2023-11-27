@@ -179,16 +179,16 @@ public final class GetProjectsProject {
             return this;
         }
         public GetProjectsProject build() {
-            final var o = new GetProjectsProject();
-            o.description = description;
-            o.id = id;
-            o.lastModifyTime = lastModifyTime;
-            o.owner = owner;
-            o.policy = policy;
-            o.projectName = projectName;
-            o.region = region;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetProjectsProject();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.lastModifyTime = lastModifyTime;
+            _resultValue.owner = owner;
+            _resultValue.policy = policy;
+            _resultValue.projectName = projectName;
+            _resultValue.region = region;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

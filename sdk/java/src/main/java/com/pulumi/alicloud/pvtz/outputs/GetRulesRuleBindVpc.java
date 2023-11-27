@@ -103,12 +103,12 @@ public final class GetRulesRuleBindVpc {
             return this;
         }
         public GetRulesRuleBindVpc build() {
-            final var o = new GetRulesRuleBindVpc();
-            o.regionId = regionId;
-            o.regionName = regionName;
-            o.vpcId = vpcId;
-            o.vpcName = vpcName;
-            return o;
+            final var _resultValue = new GetRulesRuleBindVpc();
+            _resultValue.regionId = regionId;
+            _resultValue.regionName = regionName;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vpcName = vpcName;
+            return _resultValue;
         }
     }
 }

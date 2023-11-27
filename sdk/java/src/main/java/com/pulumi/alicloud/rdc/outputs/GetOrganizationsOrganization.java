@@ -84,11 +84,11 @@ public final class GetOrganizationsOrganization {
             return this;
         }
         public GetOrganizationsOrganization build() {
-            final var o = new GetOrganizationsOrganization();
-            o.id = id;
-            o.organizationId = organizationId;
-            o.organizationName = organizationName;
-            return o;
+            final var _resultValue = new GetOrganizationsOrganization();
+            _resultValue.id = id;
+            _resultValue.organizationId = organizationId;
+            _resultValue.organizationName = organizationName;
+            return _resultValue;
         }
     }
 }

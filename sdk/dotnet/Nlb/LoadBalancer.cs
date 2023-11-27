@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Nlb
         /// The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
         /// </summary>
         [Output("deletionProtectionReason")]
-        public Output<string?> DeletionProtectionReason { get; private set; } = null!;
+        public Output<string> DeletionProtectionReason { get; private set; } = null!;
 
         /// <summary>
         /// The domain name of the NLB instance.
@@ -178,7 +178,7 @@ namespace Pulumi.AliCloud.Nlb
         /// The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
         /// </summary>
         [Output("modificationProtectionReason")]
-        public Output<string?> ModificationProtectionReason { get; private set; } = null!;
+        public Output<string> ModificationProtectionReason { get; private set; } = null!;
 
         /// <summary>
         /// Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:

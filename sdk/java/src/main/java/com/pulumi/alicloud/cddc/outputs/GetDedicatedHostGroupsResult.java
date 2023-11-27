@@ -125,15 +125,15 @@ public final class GetDedicatedHostGroupsResult {
             return this;
         }
         public GetDedicatedHostGroupsResult build() {
-            final var o = new GetDedicatedHostGroupsResult();
-            o.engine = engine;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetDedicatedHostGroupsResult();
+            _resultValue.engine = engine;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

@@ -42,9 +42,9 @@ public final class GetBackupJobsJobOtsDetail {
             return tableNames(List.of(tableNames));
         }
         public GetBackupJobsJobOtsDetail build() {
-            final var o = new GetBackupJobsJobOtsDetail();
-            o.tableNames = tableNames;
-            return o;
+            final var _resultValue = new GetBackupJobsJobOtsDetail();
+            _resultValue.tableNames = tableNames;
+            return _resultValue;
         }
     }
 }

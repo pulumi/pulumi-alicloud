@@ -35,7 +35,7 @@ public class AccessConfigurationProvisioning extends com.pulumi.resources.Custom
      * The Access configuration ID.
      * 
      */
-    @Export(name="accessConfigurationId", type=String.class, parameters={})
+    @Export(name="accessConfigurationId", refs={String.class}, tree="[0]")
     private Output<String> accessConfigurationId;
 
     /**
@@ -49,7 +49,7 @@ public class AccessConfigurationProvisioning extends com.pulumi.resources.Custom
      * The ID of the Directory.
      * 
      */
-    @Export(name="directoryId", type=String.class, parameters={})
+    @Export(name="directoryId", refs={String.class}, tree="[0]")
     private Output<String> directoryId;
 
     /**
@@ -63,7 +63,7 @@ public class AccessConfigurationProvisioning extends com.pulumi.resources.Custom
      * The status of the resource. Valid values: `Provisioned`, `ReprovisionRequired` and `DeprovisionFailed`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -77,7 +77,7 @@ public class AccessConfigurationProvisioning extends com.pulumi.resources.Custom
      * The ID of the target to create the resource range.
      * 
      */
-    @Export(name="targetId", type=String.class, parameters={})
+    @Export(name="targetId", refs={String.class}, tree="[0]")
     private Output<String> targetId;
 
     /**
@@ -91,7 +91,7 @@ public class AccessConfigurationProvisioning extends com.pulumi.resources.Custom
      * The type of the resource range target to be accessed. Valid values: `RD-Account`.
      * 
      */
-    @Export(name="targetType", type=String.class, parameters={})
+    @Export(name="targetType", refs={String.class}, tree="[0]")
     private Output<String> targetType;
 
     /**

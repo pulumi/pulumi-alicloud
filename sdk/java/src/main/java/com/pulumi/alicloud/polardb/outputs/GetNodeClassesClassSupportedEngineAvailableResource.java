@@ -46,9 +46,9 @@ public final class GetNodeClassesClassSupportedEngineAvailableResource {
             return this;
         }
         public GetNodeClassesClassSupportedEngineAvailableResource build() {
-            final var o = new GetNodeClassesClassSupportedEngineAvailableResource();
-            o.dbNodeClass = dbNodeClass;
-            return o;
+            final var _resultValue = new GetNodeClassesClassSupportedEngineAvailableResource();
+            _resultValue.dbNodeClass = dbNodeClass;
+            return _resultValue;
         }
     }
 }

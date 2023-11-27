@@ -14,6 +14,8 @@ namespace Pulumi.AliCloud.DatabaseFilesystem.Inputs
     {
         /// <summary>
         /// The ID of the ECS instance.
+        /// 
+        /// The following arguments will be discarded. Please use new fields as soon as possible:
         /// </summary>
         [Input("ecsId")]
         public Input<string>? EcsId { get; set; }

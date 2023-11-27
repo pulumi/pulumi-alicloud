@@ -204,17 +204,17 @@ public final class GetServerBackupPlansPlan {
             return this;
         }
         public GetServerBackupPlansPlan build() {
-            final var o = new GetServerBackupPlansPlan();
-            o.createTime = createTime;
-            o.details = details;
-            o.disabled = disabled;
-            o.ecsServerBackupPlanId = ecsServerBackupPlanId;
-            o.ecsServerBackupPlanName = ecsServerBackupPlanName;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.retention = retention;
-            o.schedule = schedule;
-            return o;
+            final var _resultValue = new GetServerBackupPlansPlan();
+            _resultValue.createTime = createTime;
+            _resultValue.details = details;
+            _resultValue.disabled = disabled;
+            _resultValue.ecsServerBackupPlanId = ecsServerBackupPlanId;
+            _resultValue.ecsServerBackupPlanName = ecsServerBackupPlanName;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.retention = retention;
+            _resultValue.schedule = schedule;
+            return _resultValue;
         }
     }
 }

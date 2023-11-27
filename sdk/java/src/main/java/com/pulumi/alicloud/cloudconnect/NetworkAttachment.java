@@ -81,7 +81,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the CCN instance.
      * 
      */
-    @Export(name="ccnId", type=String.class, parameters={})
+    @Export(name="ccnId", refs={String.class}, tree="[0]")
     private Output<String> ccnId;
 
     /**
@@ -95,7 +95,7 @@ public class NetworkAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the Smart Access Gateway instance.
      * 
      */
-    @Export(name="sagId", type=String.class, parameters={})
+    @Export(name="sagId", refs={String.class}, tree="[0]")
     private Output<String> sagId;
 
     /**

@@ -49,10 +49,10 @@ public final class GetClustersClusterPostInstallScript {
             return this;
         }
         public GetClustersClusterPostInstallScript build() {
-            final var o = new GetClustersClusterPostInstallScript();
-            o.args = args;
-            o.url = url;
-            return o;
+            final var _resultValue = new GetClustersClusterPostInstallScript();
+            _resultValue.args = args;
+            _resultValue.url = url;
+            return _resultValue;
         }
     }
 }

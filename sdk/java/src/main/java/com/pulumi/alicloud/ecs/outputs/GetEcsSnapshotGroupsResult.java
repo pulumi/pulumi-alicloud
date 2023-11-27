@@ -160,18 +160,18 @@ public final class GetEcsSnapshotGroupsResult {
             return this;
         }
         public GetEcsSnapshotGroupsResult build() {
-            final var o = new GetEcsSnapshotGroupsResult();
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.snapshotGroupName = snapshotGroupName;
-            o.status = status;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetEcsSnapshotGroupsResult();
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.snapshotGroupName = snapshotGroupName;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

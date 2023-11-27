@@ -335,24 +335,24 @@ public final class GetSwitchesVswitch {
             return this;
         }
         public GetSwitchesVswitch build() {
-            final var o = new GetSwitchesVswitch();
-            o.availableIpAddressCount = availableIpAddressCount;
-            o.cidrBlock = cidrBlock;
-            o.creationTime = creationTime;
-            o.description = description;
-            o.id = id;
-            o.ipv6CidrBlock = ipv6CidrBlock;
-            o.isDefault = isDefault;
-            o.name = name;
-            o.resourceGroupId = resourceGroupId;
-            o.routeTableId = routeTableId;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.vswitchName = vswitchName;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetSwitchesVswitch();
+            _resultValue.availableIpAddressCount = availableIpAddressCount;
+            _resultValue.cidrBlock = cidrBlock;
+            _resultValue.creationTime = creationTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.ipv6CidrBlock = ipv6CidrBlock;
+            _resultValue.isDefault = isDefault;
+            _resultValue.name = name;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.routeTableId = routeTableId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.vswitchName = vswitchName;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

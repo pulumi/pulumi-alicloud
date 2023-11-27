@@ -224,21 +224,21 @@ public final class GetZonesResult {
             return zones(List.of(zones));
         }
         public GetZonesResult build() {
-            final var o = new GetZonesResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.keyword = keyword;
-            o.lang = lang;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.queryRegionId = queryRegionId;
-            o.queryVpcId = queryVpcId;
-            o.resourceGroupId = resourceGroupId;
-            o.searchMode = searchMode;
-            o.zones = zones;
-            return o;
+            final var _resultValue = new GetZonesResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.keyword = keyword;
+            _resultValue.lang = lang;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.queryRegionId = queryRegionId;
+            _resultValue.queryVpcId = queryVpcId;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.searchMode = searchMode;
+            _resultValue.zones = zones;
+            return _resultValue;
         }
     }
 }

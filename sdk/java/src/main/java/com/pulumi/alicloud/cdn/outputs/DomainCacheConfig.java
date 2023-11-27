@@ -85,13 +85,13 @@ public final class DomainCacheConfig {
             return this;
         }
         public DomainCacheConfig build() {
-            final var o = new DomainCacheConfig();
-            o.cacheContent = cacheContent;
-            o.cacheId = cacheId;
-            o.cacheType = cacheType;
-            o.ttl = ttl;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new DomainCacheConfig();
+            _resultValue.cacheContent = cacheContent;
+            _resultValue.cacheId = cacheId;
+            _resultValue.cacheType = cacheType;
+            _resultValue.ttl = ttl;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

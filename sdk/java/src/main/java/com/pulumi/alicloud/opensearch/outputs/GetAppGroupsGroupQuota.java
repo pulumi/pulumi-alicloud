@@ -98,11 +98,11 @@ public final class GetAppGroupsGroupQuota {
             return this;
         }
         public GetAppGroupsGroupQuota build() {
-            final var o = new GetAppGroupsGroupQuota();
-            o.computeResource = computeResource;
-            o.docSize = docSize;
-            o.spec = spec;
-            return o;
+            final var _resultValue = new GetAppGroupsGroupQuota();
+            _resultValue.computeResource = computeResource;
+            _resultValue.docSize = docSize;
+            _resultValue.spec = spec;
+            return _resultValue;
         }
     }
 }

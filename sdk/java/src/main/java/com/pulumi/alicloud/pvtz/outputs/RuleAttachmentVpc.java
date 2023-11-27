@@ -65,10 +65,10 @@ public final class RuleAttachmentVpc {
             return this;
         }
         public RuleAttachmentVpc build() {
-            final var o = new RuleAttachmentVpc();
-            o.regionId = regionId;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new RuleAttachmentVpc();
+            _resultValue.regionId = regionId;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

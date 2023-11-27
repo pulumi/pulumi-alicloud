@@ -77,7 +77,7 @@ public class FirewallVpcFirewallCen extends com.pulumi.resources.CustomResource 
      * The ID of the CEN instance.
      * 
      */
-    @Export(name="cenId", type=String.class, parameters={})
+    @Export(name="cenId", refs={String.class}, tree="[0]")
     private Output<String> cenId;
 
     /**
@@ -91,7 +91,7 @@ public class FirewallVpcFirewallCen extends com.pulumi.resources.CustomResource 
      * Intercommunication type, value: expressconnect: Express Channel cen: Cloud Enterprise Network
      * 
      */
-    @Export(name="connectType", type=String.class, parameters={})
+    @Export(name="connectType", refs={String.class}, tree="[0]")
     private Output<String> connectType;
 
     /**
@@ -105,7 +105,7 @@ public class FirewallVpcFirewallCen extends com.pulumi.resources.CustomResource 
      * The language type of the requested and received messages. Valid values:
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
@@ -119,7 +119,7 @@ public class FirewallVpcFirewallCen extends com.pulumi.resources.CustomResource 
      * The details of the VPC. See `local_vpc` below.
      * 
      */
-    @Export(name="localVpc", type=FirewallVpcFirewallCenLocalVpc.class, parameters={})
+    @Export(name="localVpc", refs={FirewallVpcFirewallCenLocalVpc.class}, tree="[0]")
     private Output<FirewallVpcFirewallCenLocalVpc> localVpc;
 
     /**
@@ -133,7 +133,7 @@ public class FirewallVpcFirewallCen extends com.pulumi.resources.CustomResource 
      * The UID of the member account (other Alibaba Cloud account) of the current Alibaba cloud account.
      * 
      */
-    @Export(name="memberUid", type=String.class, parameters={})
+    @Export(name="memberUid", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> memberUid;
 
     /**
@@ -147,7 +147,7 @@ public class FirewallVpcFirewallCen extends com.pulumi.resources.CustomResource 
      * Firewall switch status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -161,7 +161,7 @@ public class FirewallVpcFirewallCen extends com.pulumi.resources.CustomResource 
      * VPC firewall ID
      * 
      */
-    @Export(name="vpcFirewallId", type=String.class, parameters={})
+    @Export(name="vpcFirewallId", refs={String.class}, tree="[0]")
     private Output<String> vpcFirewallId;
 
     /**
@@ -175,7 +175,7 @@ public class FirewallVpcFirewallCen extends com.pulumi.resources.CustomResource 
      * The name of the VPC firewall instance.
      * 
      */
-    @Export(name="vpcFirewallName", type=String.class, parameters={})
+    @Export(name="vpcFirewallName", refs={String.class}, tree="[0]")
     private Output<String> vpcFirewallName;
 
     /**
@@ -189,7 +189,7 @@ public class FirewallVpcFirewallCen extends com.pulumi.resources.CustomResource 
      * The ID of the region to which the VPC is created.
      * 
      */
-    @Export(name="vpcRegion", type=String.class, parameters={})
+    @Export(name="vpcRegion", refs={String.class}, tree="[0]")
     private Output<String> vpcRegion;
 
     /**

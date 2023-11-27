@@ -142,14 +142,14 @@ public final class GetZnodesZnode {
             return this;
         }
         public GetZnodesZnode build() {
-            final var o = new GetZnodesZnode();
-            o.clusterId = clusterId;
-            o.data = data;
-            o.dir = dir;
-            o.id = id;
-            o.path = path;
-            o.znodeName = znodeName;
-            return o;
+            final var _resultValue = new GetZnodesZnode();
+            _resultValue.clusterId = clusterId;
+            _resultValue.data = data;
+            _resultValue.dir = dir;
+            _resultValue.id = id;
+            _resultValue.path = path;
+            _resultValue.znodeName = znodeName;
+            return _resultValue;
         }
     }
 }

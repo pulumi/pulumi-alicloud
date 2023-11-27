@@ -50,9 +50,9 @@ public final class ListenerDefaultActionForwardGroupConfig {
             return serverGroupTuples(List.of(serverGroupTuples));
         }
         public ListenerDefaultActionForwardGroupConfig build() {
-            final var o = new ListenerDefaultActionForwardGroupConfig();
-            o.serverGroupTuples = serverGroupTuples;
-            return o;
+            final var _resultValue = new ListenerDefaultActionForwardGroupConfig();
+            _resultValue.serverGroupTuples = serverGroupTuples;
+            return _resultValue;
         }
     }
 }

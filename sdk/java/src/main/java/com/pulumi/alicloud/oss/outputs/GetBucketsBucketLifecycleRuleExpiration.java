@@ -68,10 +68,10 @@ public final class GetBucketsBucketLifecycleRuleExpiration {
             return this;
         }
         public GetBucketsBucketLifecycleRuleExpiration build() {
-            final var o = new GetBucketsBucketLifecycleRuleExpiration();
-            o.date = date;
-            o.days = days;
-            return o;
+            final var _resultValue = new GetBucketsBucketLifecycleRuleExpiration();
+            _resultValue.date = date;
+            _resultValue.days = days;
+            return _resultValue;
         }
     }
 }

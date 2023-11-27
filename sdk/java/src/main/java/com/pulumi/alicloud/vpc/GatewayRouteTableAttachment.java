@@ -94,7 +94,7 @@ public class GatewayRouteTableAttachment extends com.pulumi.resources.CustomReso
      * The creation time of the resource.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -108,7 +108,7 @@ public class GatewayRouteTableAttachment extends com.pulumi.resources.CustomReso
      * Specifies whether to only precheck this request. Default value: `false`.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -122,7 +122,7 @@ public class GatewayRouteTableAttachment extends com.pulumi.resources.CustomReso
      * The ID of the IPv4 Gateway instance.
      * 
      */
-    @Export(name="ipv4GatewayId", type=String.class, parameters={})
+    @Export(name="ipv4GatewayId", refs={String.class}, tree="[0]")
     private Output<String> ipv4GatewayId;
 
     /**
@@ -136,7 +136,7 @@ public class GatewayRouteTableAttachment extends com.pulumi.resources.CustomReso
      * The ID of the Gateway route table to be bound.
      * 
      */
-    @Export(name="routeTableId", type=String.class, parameters={})
+    @Export(name="routeTableId", refs={String.class}, tree="[0]")
     private Output<String> routeTableId;
 
     /**
@@ -156,7 +156,7 @@ public class GatewayRouteTableAttachment extends com.pulumi.resources.CustomReso
      * - **Activating**: enabled.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

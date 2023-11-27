@@ -71,7 +71,7 @@ public class ConfigurationRecorder extends com.pulumi.resources.CustomResource {
      * Whether to use the enterprise version configuration audit. Valid values: `true` and `false`. Default value `false`. For enterprise accounts, We recommend you to use the resource alicloud_config_aggregator.
      * 
      */
-    @Export(name="enterpriseEdition", type=Boolean.class, parameters={})
+    @Export(name="enterpriseEdition", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enterpriseEdition;
 
     /**
@@ -85,7 +85,7 @@ public class ConfigurationRecorder extends com.pulumi.resources.CustomResource {
      * Enterprise version configuration audit enabled status. Values: `REGISTRABLE`: Not enabled, `BUILDING`: Building and `REGISTERED`: Enabled.
      * 
      */
-    @Export(name="organizationEnableStatus", type=String.class, parameters={})
+    @Export(name="organizationEnableStatus", refs={String.class}, tree="[0]")
     private Output<String> organizationEnableStatus;
 
     /**
@@ -99,7 +99,7 @@ public class ConfigurationRecorder extends com.pulumi.resources.CustomResource {
      * The ID of the Enterprise management account.
      * 
      */
-    @Export(name="organizationMasterId", type=Integer.class, parameters={})
+    @Export(name="organizationMasterId", refs={Integer.class}, tree="[0]")
     private Output<Integer> organizationMasterId;
 
     /**
@@ -115,7 +115,7 @@ public class ConfigurationRecorder extends com.pulumi.resources.CustomResource {
      * * If you use an enterprise account, the `resource_types` does not support updating.
      * 
      */
-    @Export(name="resourceTypes", type=List.class, parameters={String.class})
+    @Export(name="resourceTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> resourceTypes;
 
     /**
@@ -131,7 +131,7 @@ public class ConfigurationRecorder extends com.pulumi.resources.CustomResource {
      * Status of resource monitoring. Values: `REGISTRABLE`: Not registered, `BUILDING`: Under construction, `REGISTERED`: Registered and `REBUILDING`: Rebuilding.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

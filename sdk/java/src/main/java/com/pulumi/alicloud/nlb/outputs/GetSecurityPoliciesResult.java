@@ -163,18 +163,18 @@ public final class GetSecurityPoliciesResult {
             return this;
         }
         public GetSecurityPoliciesResult build() {
-            final var o = new GetSecurityPoliciesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            o.resourceGroupId = resourceGroupId;
-            o.securityPolicyNames = securityPolicyNames;
-            o.status = status;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetSecurityPoliciesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policies = policies;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.securityPolicyNames = securityPolicyNames;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

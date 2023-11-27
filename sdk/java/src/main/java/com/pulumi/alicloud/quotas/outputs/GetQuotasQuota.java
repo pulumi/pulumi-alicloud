@@ -280,21 +280,21 @@ public final class GetQuotasQuota {
             return this;
         }
         public GetQuotasQuota build() {
-            final var o = new GetQuotasQuota();
-            o.adjustable = adjustable;
-            o.applicableRanges = applicableRanges;
-            o.applicableType = applicableType;
-            o.consumable = consumable;
-            o.id = id;
-            o.quotaActionCode = quotaActionCode;
-            o.quotaDescription = quotaDescription;
-            o.quotaName = quotaName;
-            o.quotaType = quotaType;
-            o.quotaUnit = quotaUnit;
-            o.totalQuota = totalQuota;
-            o.totalUsage = totalUsage;
-            o.unadjustableDetail = unadjustableDetail;
-            return o;
+            final var _resultValue = new GetQuotasQuota();
+            _resultValue.adjustable = adjustable;
+            _resultValue.applicableRanges = applicableRanges;
+            _resultValue.applicableType = applicableType;
+            _resultValue.consumable = consumable;
+            _resultValue.id = id;
+            _resultValue.quotaActionCode = quotaActionCode;
+            _resultValue.quotaDescription = quotaDescription;
+            _resultValue.quotaName = quotaName;
+            _resultValue.quotaType = quotaType;
+            _resultValue.quotaUnit = quotaUnit;
+            _resultValue.totalQuota = totalQuota;
+            _resultValue.totalUsage = totalUsage;
+            _resultValue.unadjustableDetail = unadjustableDetail;
+            return _resultValue;
         }
     }
 }

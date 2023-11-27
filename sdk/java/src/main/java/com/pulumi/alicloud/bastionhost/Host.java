@@ -116,7 +116,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * Specify the new create a host of address types. Valid values: `Public`: the IP address of a Public network. `Private`: Private network address.
      * 
      */
-    @Export(name="activeAddressType", type=String.class, parameters={})
+    @Export(name="activeAddressType", refs={String.class}, tree="[0]")
     private Output<String> activeAddressType;
 
     /**
@@ -130,7 +130,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * Specify a host of notes, supports up to 500 characters.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -144,7 +144,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * The host ID.
      * 
      */
-    @Export(name="hostId", type=String.class, parameters={})
+    @Export(name="hostId", refs={String.class}, tree="[0]")
     private Output<String> hostId;
 
     /**
@@ -158,7 +158,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * Specify the new create a host name of the supports up to 128 characters.
      * 
      */
-    @Export(name="hostName", type=String.class, parameters={})
+    @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output<String> hostName;
 
     /**
@@ -172,7 +172,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * Specify the new create a host of the private network address, it is possible to use the domain name or IP ADDRESS. **NOTE:**  This parameter is required if the `active_address_type` parameter is set to `Private`.
      * 
      */
-    @Export(name="hostPrivateAddress", type=String.class, parameters={})
+    @Export(name="hostPrivateAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostPrivateAddress;
 
     /**
@@ -186,7 +186,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * Specify the new create a host of the IP address of a public network, it is possible to use the domain name or IP ADDRESS.
      * 
      */
-    @Export(name="hostPublicAddress", type=String.class, parameters={})
+    @Export(name="hostPublicAddress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> hostPublicAddress;
 
     /**
@@ -200,7 +200,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * Specify the new create a host where the Bastion host ID of.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -214,7 +214,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * The instance region id.
      * 
      */
-    @Export(name="instanceRegionId", type=String.class, parameters={})
+    @Export(name="instanceRegionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceRegionId;
 
     /**
@@ -228,7 +228,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * Specify the new create the host&#39;s operating system. Valid values: `Linux`,`Windows`.
      * 
      */
-    @Export(name="osType", type=String.class, parameters={})
+    @Export(name="osType", refs={String.class}, tree="[0]")
     private Output<String> osType;
 
     /**
@@ -242,7 +242,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * Specify the new create a host of source. Valid values:
      * 
      */
-    @Export(name="source", type=String.class, parameters={})
+    @Export(name="source", refs={String.class}, tree="[0]")
     private Output<String> source;
 
     /**
@@ -256,7 +256,7 @@ public class Host extends com.pulumi.resources.CustomResource {
      * Specify the newly created ECS instance ID or dedicated cluster host ID. **NOTE:** This parameter is required if the `source` parameter is set to `Ecs` or `Rds`.
      * 
      */
-    @Export(name="sourceInstanceId", type=String.class, parameters={})
+    @Export(name="sourceInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceInstanceId;
 
     /**

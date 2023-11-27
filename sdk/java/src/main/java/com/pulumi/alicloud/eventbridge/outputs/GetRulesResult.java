@@ -147,17 +147,17 @@ public final class GetRulesResult {
             return this;
         }
         public GetRulesResult build() {
-            final var o = new GetRulesResult();
-            o.eventBusName = eventBusName;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.ruleNamePrefix = ruleNamePrefix;
-            o.rules = rules;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetRulesResult();
+            _resultValue.eventBusName = eventBusName;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.ruleNamePrefix = ruleNamePrefix;
+            _resultValue.rules = rules;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

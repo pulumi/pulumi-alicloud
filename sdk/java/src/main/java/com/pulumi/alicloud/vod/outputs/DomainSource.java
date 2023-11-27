@@ -105,12 +105,12 @@ public final class DomainSource {
             return this;
         }
         public DomainSource build() {
-            final var o = new DomainSource();
-            o.sourceContent = sourceContent;
-            o.sourcePort = sourcePort;
-            o.sourcePriority = sourcePriority;
-            o.sourceType = sourceType;
-            return o;
+            final var _resultValue = new DomainSource();
+            _resultValue.sourceContent = sourceContent;
+            _resultValue.sourcePort = sourcePort;
+            _resultValue.sourcePriority = sourcePriority;
+            _resultValue.sourceType = sourceType;
+            return _resultValue;
         }
     }
 }

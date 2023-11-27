@@ -68,10 +68,10 @@ public final class ServiceMeshMeshConfigAudit {
             return this;
         }
         public ServiceMeshMeshConfigAudit build() {
-            final var o = new ServiceMeshMeshConfigAudit();
-            o.enabled = enabled;
-            o.project = project;
-            return o;
+            final var _resultValue = new ServiceMeshMeshConfigAudit();
+            _resultValue.enabled = enabled;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

@@ -162,15 +162,15 @@ public final class EcdPolicyGroupAuthorizeSecurityPolicyRule {
             return this;
         }
         public EcdPolicyGroupAuthorizeSecurityPolicyRule build() {
-            final var o = new EcdPolicyGroupAuthorizeSecurityPolicyRule();
-            o.cidrIp = cidrIp;
-            o.description = description;
-            o.ipProtocol = ipProtocol;
-            o.policy = policy;
-            o.portRange = portRange;
-            o.priority = priority;
-            o.type = type;
-            return o;
+            final var _resultValue = new EcdPolicyGroupAuthorizeSecurityPolicyRule();
+            _resultValue.cidrIp = cidrIp;
+            _resultValue.description = description;
+            _resultValue.ipProtocol = ipProtocol;
+            _resultValue.policy = policy;
+            _resultValue.portRange = portRange;
+            _resultValue.priority = priority;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

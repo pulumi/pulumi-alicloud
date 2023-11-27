@@ -83,7 +83,7 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
      * - The value of this parameter is empty by default.
      * 
      */
-    @Export(name="autoSnapshotPolicyName", type=String.class, parameters={})
+    @Export(name="autoSnapshotPolicyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> autoSnapshotPolicyName;
 
     /**
@@ -103,7 +103,7 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
      * - The format is  an JSON array of [&#34;1&#34;, &#34;2&#34;, … &#34;7&#34;]  and the time points are separated by commas (,).
      * 
      */
-    @Export(name="repeatWeekdays", type=List.class, parameters={String.class})
+    @Export(name="repeatWeekdays", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> repeatWeekdays;
 
     /**
@@ -120,7 +120,7 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
      * - `-1`: the default value. Auto snapshots are permanently retained. After the number of auto snapshots exceeds the upper limit, the earliest auto snapshot is automatically deleted.
      * 
      */
-    @Export(name="retentionDays", type=Integer.class, parameters={})
+    @Export(name="retentionDays", refs={Integer.class}, tree="[0]")
     private Output<Integer> retentionDays;
 
     /**
@@ -135,7 +135,7 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
      * The status of the automatic snapshot policy.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -151,7 +151,7 @@ public class AutoSnapshotPolicy extends com.pulumi.resources.CustomResource {
      * - The format is  an JSON array of [&#34;0&#34;, &#34;1&#34;, … &#34;23&#34;] and the time points are separated by commas (,).
      * 
      */
-    @Export(name="timePoints", type=List.class, parameters={String.class})
+    @Export(name="timePoints", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> timePoints;
 
     /**

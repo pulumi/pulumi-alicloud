@@ -71,7 +71,7 @@ public class Order extends com.pulumi.resources.CustomResource {
      * Service providers customize additional components.
      * 
      */
-    @Export(name="components", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="components", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> components;
 
     /**
@@ -85,7 +85,7 @@ public class Order extends com.pulumi.resources.CustomResource {
      * The coupon id of the market product.
      * 
      */
-    @Export(name="couponId", type=String.class, parameters={})
+    @Export(name="couponId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> couponId;
 
     /**
@@ -99,7 +99,7 @@ public class Order extends com.pulumi.resources.CustomResource {
      * The number of purchase cycles.
      * 
      */
-    @Export(name="duration", type=Integer.class, parameters={})
+    @Export(name="duration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> duration;
 
     /**
@@ -113,7 +113,7 @@ public class Order extends com.pulumi.resources.CustomResource {
      * The package version of the market product.
      * 
      */
-    @Export(name="packageVersion", type=String.class, parameters={})
+    @Export(name="packageVersion", refs={String.class}, tree="[0]")
     private Output<String> packageVersion;
 
     /**
@@ -127,7 +127,7 @@ public class Order extends com.pulumi.resources.CustomResource {
      * Valid values are `PrePaid`, `PostPaid`,System default to `PostPaid`.
      * 
      */
-    @Export(name="payType", type=String.class, parameters={})
+    @Export(name="payType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> payType;
 
     /**
@@ -141,7 +141,7 @@ public class Order extends com.pulumi.resources.CustomResource {
      * The purchase cycle of the product, valid values are `Day`, `Month` and `Year`.
      * 
      */
-    @Export(name="pricingCycle", type=String.class, parameters={})
+    @Export(name="pricingCycle", refs={String.class}, tree="[0]")
     private Output<String> pricingCycle;
 
     /**
@@ -155,7 +155,7 @@ public class Order extends com.pulumi.resources.CustomResource {
      * The product_code of market place product.
      * 
      */
-    @Export(name="productCode", type=String.class, parameters={})
+    @Export(name="productCode", refs={String.class}, tree="[0]")
     private Output<String> productCode;
 
     /**
@@ -169,7 +169,7 @@ public class Order extends com.pulumi.resources.CustomResource {
      * The quantity of the market product will be purchased.
      * 
      */
-    @Export(name="quantity", type=Integer.class, parameters={})
+    @Export(name="quantity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> quantity;
 
     /**

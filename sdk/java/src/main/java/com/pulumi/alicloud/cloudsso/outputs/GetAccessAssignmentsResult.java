@@ -144,17 +144,17 @@ public final class GetAccessAssignmentsResult {
             return this;
         }
         public GetAccessAssignmentsResult build() {
-            final var o = new GetAccessAssignmentsResult();
-            o.accessConfigurationId = accessConfigurationId;
-            o.assignments = assignments;
-            o.directoryId = directoryId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.principalType = principalType;
-            o.targetId = targetId;
-            o.targetType = targetType;
-            return o;
+            final var _resultValue = new GetAccessAssignmentsResult();
+            _resultValue.accessConfigurationId = accessConfigurationId;
+            _resultValue.assignments = assignments;
+            _resultValue.directoryId = directoryId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.principalType = principalType;
+            _resultValue.targetId = targetId;
+            _resultValue.targetType = targetType;
+            return _resultValue;
         }
     }
 }

@@ -37,7 +37,7 @@ public class RuleAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the rule.
      * 
      */
-    @Export(name="ruleId", type=String.class, parameters={})
+    @Export(name="ruleId", refs={String.class}, tree="[0]")
     private Output<String> ruleId;
 
     /**
@@ -51,7 +51,7 @@ public class RuleAttachment extends com.pulumi.resources.CustomResource {
      * The List of the VPC. See `vpcs` below.
      * 
      */
-    @Export(name="vpcs", type=List.class, parameters={RuleAttachmentVpc.class})
+    @Export(name="vpcs", refs={List.class,RuleAttachmentVpc.class}, tree="[0,1]")
     private Output<List<RuleAttachmentVpc>> vpcs;
 
     /**

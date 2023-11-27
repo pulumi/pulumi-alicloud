@@ -69,7 +69,7 @@ public class ResourceShare extends com.pulumi.resources.CustomResource {
      * The name of resource share.
      * 
      */
-    @Export(name="resourceShareName", type=String.class, parameters={})
+    @Export(name="resourceShareName", refs={String.class}, tree="[0]")
     private Output<String> resourceShareName;
 
     /**
@@ -83,7 +83,7 @@ public class ResourceShare extends com.pulumi.resources.CustomResource {
      * The owner of resource share.
      * 
      */
-    @Export(name="resourceShareOwner", type=String.class, parameters={})
+    @Export(name="resourceShareOwner", refs={String.class}, tree="[0]")
     private Output<String> resourceShareOwner;
 
     /**
@@ -97,7 +97,7 @@ public class ResourceShare extends com.pulumi.resources.CustomResource {
      * The status of resource share.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

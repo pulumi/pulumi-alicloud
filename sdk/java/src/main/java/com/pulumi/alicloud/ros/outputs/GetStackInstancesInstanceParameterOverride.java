@@ -65,10 +65,10 @@ public final class GetStackInstancesInstanceParameterOverride {
             return this;
         }
         public GetStackInstancesInstanceParameterOverride build() {
-            final var o = new GetStackInstancesInstanceParameterOverride();
-            o.parameterKey = parameterKey;
-            o.parameterValue = parameterValue;
-            return o;
+            final var _resultValue = new GetStackInstancesInstanceParameterOverride();
+            _resultValue.parameterKey = parameterKey;
+            _resultValue.parameterValue = parameterValue;
+            return _resultValue;
         }
     }
 }

@@ -232,7 +232,7 @@ public class ListenerAdditionalCertificateAttachment extends com.pulumi.resource
      * Certificate ID. Currently, only server certificates are supported.
      * 
      */
-    @Export(name="certificateId", type=String.class, parameters={})
+    @Export(name="certificateId", refs={String.class}, tree="[0]")
     private Output<String> certificateId;
 
     /**
@@ -246,7 +246,7 @@ public class ListenerAdditionalCertificateAttachment extends com.pulumi.resource
      * Whether to PreCheck only this request, value: - **true**: sends a check request and does not create a resource. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;. - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -260,7 +260,7 @@ public class ListenerAdditionalCertificateAttachment extends com.pulumi.resource
      * The ID of the tcpssl listener.
      * 
      */
-    @Export(name="listenerId", type=String.class, parameters={})
+    @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     /**
@@ -274,7 +274,7 @@ public class ListenerAdditionalCertificateAttachment extends com.pulumi.resource
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

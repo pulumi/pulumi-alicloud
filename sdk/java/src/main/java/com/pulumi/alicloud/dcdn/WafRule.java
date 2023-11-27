@@ -112,7 +112,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * Specifies the action of the rule. Valid values: `block`, `monitor`, `js`.
      * 
      */
-    @Export(name="action", type=String.class, parameters={})
+    @Export(name="action", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> action;
 
     /**
@@ -126,7 +126,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable rate limiting. Valid values: `on` and `off`. **NOTE:** This parameter is required when policy is of type `custom_acl`.
      * 
      */
-    @Export(name="ccStatus", type=String.class, parameters={})
+    @Export(name="ccStatus", refs={String.class}, tree="[0]")
     private Output<String> ccStatus;
 
     /**
@@ -140,7 +140,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * The blocked regions in the Chinese mainland, separated by commas (,).
      * 
      */
-    @Export(name="cnRegionList", type=String.class, parameters={})
+    @Export(name="cnRegionList", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cnRegionList;
 
     /**
@@ -154,7 +154,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * Conditions that trigger the rule. See `conditions` below. **NOTE:** This parameter is required when policy is of type `custom_acl` or `whitelist`.
      * 
      */
-    @Export(name="conditions", type=List.class, parameters={WafRuleCondition.class})
+    @Export(name="conditions", refs={List.class,WafRuleCondition.class}, tree="[0,1]")
     private Output</* @Nullable */ List<WafRuleCondition>> conditions;
 
     /**
@@ -168,7 +168,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * The type of protection policy. The following scenarios are supported:-waf_group:Web basic protection-custom_acl: Custom protection policy-whitelist: whitelist
      * 
      */
-    @Export(name="defenseScene", type=String.class, parameters={})
+    @Export(name="defenseScene", refs={String.class}, tree="[0]")
     private Output<String> defenseScene;
 
     /**
@@ -182,7 +182,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * The effective scope of the rate limiting blacklist. If you set ccStatus to on, you must configure this parameter. Valid values: `rule` (takes effect for the current rule) and `service` (takes effect globally).
      * 
      */
-    @Export(name="effect", type=String.class, parameters={})
+    @Export(name="effect", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> effect;
 
     /**
@@ -196,7 +196,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * Revised the time. The date format is based on ISO8601 notation and uses UTC +0 time in the format of yyyy-MM-ddTHH:mm:ssZ.
      * 
      */
-    @Export(name="gmtModified", type=String.class, parameters={})
+    @Export(name="gmtModified", refs={String.class}, tree="[0]")
     private Output<String> gmtModified;
 
     /**
@@ -210,7 +210,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * Blocked regions outside the Chinese mainland, separated by commas (,).
      * 
      */
-    @Export(name="otherRegionList", type=String.class, parameters={})
+    @Export(name="otherRegionList", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> otherRegionList;
 
     /**
@@ -224,7 +224,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * The protection policy ID.
      * 
      */
-    @Export(name="policyId", type=String.class, parameters={})
+    @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output<String> policyId;
 
     /**
@@ -238,7 +238,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * The rules of rate limiting. If you set `cc_status` to on, you must configure this parameter. See `rate_limit` below.
      * 
      */
-    @Export(name="rateLimit", type=WafRuleRateLimit.class, parameters={})
+    @Export(name="rateLimit", refs={WafRuleRateLimit.class}, tree="[0]")
     private Output</* @Nullable */ WafRuleRateLimit> rateLimit;
 
     /**
@@ -252,7 +252,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * The regular expression.e, when waf_group appears in tags, this value can be filled in, and only one list of six digits in string format can appear with regultypes.
      * 
      */
-    @Export(name="regularRules", type=List.class, parameters={String.class})
+    @Export(name="regularRules", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> regularRules;
 
     /**
@@ -266,7 +266,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * Regular rule type, when waf_group appears in tags, this value can be filled in, optional values:[&#34;sqli&#34;, &#34;xss&#34;, &#34;code_exec&#34;, &#34;crlf&#34;, &#34;lfileii&#34;, &#34;rfileii&#34;, &#34;webshell&#34;, &#34;vvip&#34;, &#34;other&#34;]
      * 
      */
-    @Export(name="regularTypes", type=List.class, parameters={String.class})
+    @Export(name="regularTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> regularTypes;
 
     /**
@@ -280,7 +280,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * Filter by IP address.
      * 
      */
-    @Export(name="remoteAddrs", type=List.class, parameters={String.class})
+    @Export(name="remoteAddrs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> remoteAddrs;
 
     /**
@@ -294,7 +294,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * The name of the protection rule. The name can be up to 64 characters in length and can contain letters, digits, and underscores (_). **NOTE:** This parameter cannot be modified when policy is of type `region_block`.
      * 
      */
-    @Export(name="ruleName", type=String.class, parameters={})
+    @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output<String> ruleName;
 
     /**
@@ -308,7 +308,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * The types of the protection policies.
      * 
      */
-    @Export(name="scenes", type=List.class, parameters={String.class})
+    @Export(name="scenes", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> scenes;
 
     /**
@@ -322,7 +322,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * The status of the waf rule. Valid values: `on` and `off`. Default value: on.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -336,7 +336,7 @@ public class WafRule extends com.pulumi.resources.CustomResource {
      * The id of the waf rule group. The default value is &#34;1012&#34;. Multiple rules are separated by commas.
      * 
      */
-    @Export(name="wafGroupIds", type=String.class, parameters={})
+    @Export(name="wafGroupIds", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> wafGroupIds;
 
     /**

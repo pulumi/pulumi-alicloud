@@ -570,36 +570,36 @@ public final class GetDedicatedHostGroupsGroup {
             return zoneIdLists(List.of(zoneIdLists));
         }
         public GetDedicatedHostGroupsGroup build() {
-            final var o = new GetDedicatedHostGroupsGroup();
-            o.allocationPolicy = allocationPolicy;
-            o.bastionInstanceId = bastionInstanceId;
-            o.cpuAllocateRation = cpuAllocateRation;
-            o.cpuAllocatedAmount = cpuAllocatedAmount;
-            o.cpuAllocationRatio = cpuAllocationRatio;
-            o.createTime = createTime;
-            o.dedicatedHostCountGroupByHostTypes = dedicatedHostCountGroupByHostTypes;
-            o.dedicatedHostGroupDesc = dedicatedHostGroupDesc;
-            o.dedicatedHostGroupId = dedicatedHostGroupId;
-            o.deployType = deployType;
-            o.diskAllocateRation = diskAllocateRation;
-            o.diskAllocatedAmount = diskAllocatedAmount;
-            o.diskAllocationRatio = diskAllocationRatio;
-            o.diskUsedAmount = diskUsedAmount;
-            o.diskUtility = diskUtility;
-            o.engine = engine;
-            o.hostNumber = hostNumber;
-            o.hostReplacePolicy = hostReplacePolicy;
-            o.id = id;
-            o.instanceNumber = instanceNumber;
-            o.memAllocateRation = memAllocateRation;
-            o.memAllocatedAmount = memAllocatedAmount;
-            o.memAllocationRatio = memAllocationRatio;
-            o.memUsedAmount = memUsedAmount;
-            o.memUtility = memUtility;
-            o.text = text;
-            o.vpcId = vpcId;
-            o.zoneIdLists = zoneIdLists;
-            return o;
+            final var _resultValue = new GetDedicatedHostGroupsGroup();
+            _resultValue.allocationPolicy = allocationPolicy;
+            _resultValue.bastionInstanceId = bastionInstanceId;
+            _resultValue.cpuAllocateRation = cpuAllocateRation;
+            _resultValue.cpuAllocatedAmount = cpuAllocatedAmount;
+            _resultValue.cpuAllocationRatio = cpuAllocationRatio;
+            _resultValue.createTime = createTime;
+            _resultValue.dedicatedHostCountGroupByHostTypes = dedicatedHostCountGroupByHostTypes;
+            _resultValue.dedicatedHostGroupDesc = dedicatedHostGroupDesc;
+            _resultValue.dedicatedHostGroupId = dedicatedHostGroupId;
+            _resultValue.deployType = deployType;
+            _resultValue.diskAllocateRation = diskAllocateRation;
+            _resultValue.diskAllocatedAmount = diskAllocatedAmount;
+            _resultValue.diskAllocationRatio = diskAllocationRatio;
+            _resultValue.diskUsedAmount = diskUsedAmount;
+            _resultValue.diskUtility = diskUtility;
+            _resultValue.engine = engine;
+            _resultValue.hostNumber = hostNumber;
+            _resultValue.hostReplacePolicy = hostReplacePolicy;
+            _resultValue.id = id;
+            _resultValue.instanceNumber = instanceNumber;
+            _resultValue.memAllocateRation = memAllocateRation;
+            _resultValue.memAllocatedAmount = memAllocatedAmount;
+            _resultValue.memAllocationRatio = memAllocationRatio;
+            _resultValue.memUsedAmount = memUsedAmount;
+            _resultValue.memUtility = memUtility;
+            _resultValue.text = text;
+            _resultValue.vpcId = vpcId;
+            _resultValue.zoneIdLists = zoneIdLists;
+            return _resultValue;
         }
     }
 }

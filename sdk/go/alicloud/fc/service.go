@@ -24,6 +24,7 @@ type Service struct {
 	Publish        pulumi.BoolPtrOutput          `pulumi:"publish"`
 	Role           pulumi.StringPtrOutput        `pulumi:"role"`
 	ServiceId      pulumi.StringOutput           `pulumi:"serviceId"`
+	Tags           pulumi.StringMapOutput        `pulumi:"tags"`
 	TracingConfig  ServiceTracingConfigPtrOutput `pulumi:"tracingConfig"`
 	Version        pulumi.StringOutput           `pulumi:"version"`
 	VpcConfig      ServiceVpcConfigPtrOutput     `pulumi:"vpcConfig"`
@@ -69,6 +70,7 @@ type serviceState struct {
 	Publish        *bool                 `pulumi:"publish"`
 	Role           *string               `pulumi:"role"`
 	ServiceId      *string               `pulumi:"serviceId"`
+	Tags           map[string]string     `pulumi:"tags"`
 	TracingConfig  *ServiceTracingConfig `pulumi:"tracingConfig"`
 	Version        *string               `pulumi:"version"`
 	VpcConfig      *ServiceVpcConfig     `pulumi:"vpcConfig"`
@@ -85,6 +87,7 @@ type ServiceState struct {
 	Publish        pulumi.BoolPtrInput
 	Role           pulumi.StringPtrInput
 	ServiceId      pulumi.StringPtrInput
+	Tags           pulumi.StringMapInput
 	TracingConfig  ServiceTracingConfigPtrInput
 	Version        pulumi.StringPtrInput
 	VpcConfig      ServiceVpcConfigPtrInput
@@ -103,6 +106,7 @@ type serviceArgs struct {
 	NasConfig      *ServiceNasConfig     `pulumi:"nasConfig"`
 	Publish        *bool                 `pulumi:"publish"`
 	Role           *string               `pulumi:"role"`
+	Tags           map[string]string     `pulumi:"tags"`
 	TracingConfig  *ServiceTracingConfig `pulumi:"tracingConfig"`
 	VpcConfig      *ServiceVpcConfig     `pulumi:"vpcConfig"`
 }
@@ -117,6 +121,7 @@ type ServiceArgs struct {
 	NasConfig      ServiceNasConfigPtrInput
 	Publish        pulumi.BoolPtrInput
 	Role           pulumi.StringPtrInput
+	Tags           pulumi.StringMapInput
 	TracingConfig  ServiceTracingConfigPtrInput
 	VpcConfig      ServiceVpcConfigPtrInput
 }
@@ -246,6 +251,10 @@ func (o ServiceOutput) Role() pulumi.StringPtrOutput {
 
 func (o ServiceOutput) ServiceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ServiceId }).(pulumi.StringOutput)
+}
+
+func (o ServiceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o ServiceOutput) TracingConfig() ServiceTracingConfigPtrOutput {

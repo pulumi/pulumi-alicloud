@@ -96,7 +96,7 @@ public class EcsDiskAttachment extends com.pulumi.resources.CustomResource {
      * Whether to mount as a system disk. Default to: `false`.
      * 
      */
-    @Export(name="bootable", type=Boolean.class, parameters={})
+    @Export(name="bootable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> bootable;
 
     /**
@@ -110,7 +110,7 @@ public class EcsDiskAttachment extends com.pulumi.resources.CustomResource {
      * Indicates whether the disk is released together with the instance. Default to: `false`.
      * 
      */
-    @Export(name="deleteWithInstance", type=Boolean.class, parameters={})
+    @Export(name="deleteWithInstance", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteWithInstance;
 
     /**
@@ -120,7 +120,7 @@ public class EcsDiskAttachment extends com.pulumi.resources.CustomResource {
     public Output<Optional<Boolean>> deleteWithInstance() {
         return Codegen.optional(this.deleteWithInstance);
     }
-    @Export(name="device", type=String.class, parameters={})
+    @Export(name="device", refs={String.class}, tree="[0]")
     private Output<String> device;
 
     public Output<String> device() {
@@ -130,7 +130,7 @@ public class EcsDiskAttachment extends com.pulumi.resources.CustomResource {
      * ID of the Disk to be attached.
      * 
      */
-    @Export(name="diskId", type=String.class, parameters={})
+    @Export(name="diskId", refs={String.class}, tree="[0]")
     private Output<String> diskId;
 
     /**
@@ -144,7 +144,7 @@ public class EcsDiskAttachment extends com.pulumi.resources.CustomResource {
      * ID of the Instance to attach to.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -158,7 +158,7 @@ public class EcsDiskAttachment extends com.pulumi.resources.CustomResource {
      * The name of key pair
      * 
      */
-    @Export(name="keyPairName", type=String.class, parameters={})
+    @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyPairName;
 
     /**
@@ -172,7 +172,7 @@ public class EcsDiskAttachment extends com.pulumi.resources.CustomResource {
      * When mounting the system disk, setting the user name and password of the instance is only effective for the administrator and root user names, and other user names are not effective.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**

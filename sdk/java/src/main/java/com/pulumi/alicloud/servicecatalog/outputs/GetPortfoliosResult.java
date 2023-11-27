@@ -205,20 +205,20 @@ public final class GetPortfoliosResult {
             return this;
         }
         public GetPortfoliosResult build() {
-            final var o = new GetPortfoliosResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.portfolios = portfolios;
-            o.productId = productId;
-            o.scope = scope;
-            o.sortBy = sortBy;
-            o.sortOrder = sortOrder;
-            return o;
+            final var _resultValue = new GetPortfoliosResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.portfolios = portfolios;
+            _resultValue.productId = productId;
+            _resultValue.scope = scope;
+            _resultValue.sortBy = sortBy;
+            _resultValue.sortOrder = sortOrder;
+            return _resultValue;
         }
     }
 }

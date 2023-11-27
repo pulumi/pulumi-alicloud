@@ -159,15 +159,15 @@ public final class GetKeyPairsPair {
             return this;
         }
         public GetKeyPairsPair build() {
-            final var o = new GetKeyPairsPair();
-            o.fingerPrint = fingerPrint;
-            o.id = id;
-            o.instances = instances;
-            o.keyName = keyName;
-            o.keyPairName = keyPairName;
-            o.resourceGroupId = resourceGroupId;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetKeyPairsPair();
+            _resultValue.fingerPrint = fingerPrint;
+            _resultValue.id = id;
+            _resultValue.instances = instances;
+            _resultValue.keyName = keyName;
+            _resultValue.keyPairName = keyPairName;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

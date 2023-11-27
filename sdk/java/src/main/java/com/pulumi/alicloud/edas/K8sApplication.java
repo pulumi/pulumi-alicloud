@@ -37,7 +37,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * The description of the application
      * 
      */
-    @Export(name="applicationDescriotion", type=String.class, parameters={})
+    @Export(name="applicationDescriotion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> applicationDescriotion;
 
     /**
@@ -51,7 +51,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * The name of the application you want to create. Must start with character,supports numbers, letters and dashes (-), supports up to 36 characters
      * 
      */
-    @Export(name="applicationName", type=String.class, parameters={})
+    @Export(name="applicationName", refs={String.class}, tree="[0]")
     private Output<String> applicationName;
 
     /**
@@ -65,7 +65,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * The ID of the alicloud container service kubernetes cluster that you want to import to. You can call the ListCluster operation to query.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -79,7 +79,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * The set command, if set, will replace the startup command in the mirror when the mirror is started.
      * 
      */
-    @Export(name="command", type=String.class, parameters={})
+    @Export(name="command", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> command;
 
     /**
@@ -93,7 +93,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * Used in combination with the command, the parameter of the command is a JsonArray string in the format: `[{&#34;argument&#34;:&#34;-c&#34;},{&#34;argument&#34;:&#34;test&#34;}]`. Among them, -c and test are two parameters that need to be set.
      * 
      */
-    @Export(name="commandArgs", type=List.class, parameters={String.class})
+    @Export(name="commandArgs", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> commandArgs;
 
     /**
@@ -107,7 +107,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * EDAS-Container version that the deployed package depends on. Image does not support this parameter.
      * 
      */
-    @Export(name="edasContainerVersion", type=String.class, parameters={})
+    @Export(name="edasContainerVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> edasContainerVersion;
 
     /**
@@ -121,7 +121,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * Deployment environment variables, the format must conform to the JSON object array, such as: `{&#34;name&#34;:&#34;x&#34;,&#34;value&#34;:&#34;y&#34;},{&#34;name&#34;:&#34;x2&#34;,&#34;value&#34;:&#34;y2&#34;}`, If you want to cancel the configuration, you need to set an empty JSON array &#34;&#34; to indicate no configuration.
      * 
      */
-    @Export(name="envs", type=Map.class, parameters={String.class, String.class})
+    @Export(name="envs", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output</* @Nullable */ Map<String,String>> envs;
 
     /**
@@ -135,7 +135,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * Mirror address. When the package_type is set to &#39;Image&#39;, this parameter item is required.
      * 
      */
-    @Export(name="imageUrl", type=String.class, parameters={})
+    @Export(name="imageUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageUrl;
 
     /**
@@ -154,7 +154,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'internet_slb_id' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
-    @Export(name="internetSlbId", type=String.class, parameters={})
+    @Export(name="internetSlbId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetSlbId;
 
     /**
@@ -173,7 +173,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'internet_slb_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
-    @Export(name="internetSlbPort", type=Integer.class, parameters={})
+    @Export(name="internetSlbPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> internetSlbPort;
 
     /**
@@ -191,7 +191,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'internet_slb_protocol' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
-    @Export(name="internetSlbProtocol", type=String.class, parameters={})
+    @Export(name="internetSlbProtocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> internetSlbProtocol;
 
     /**
@@ -210,7 +210,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'internet_target_port' has been deprecated, New Resource 'alicloud_edas_k8s_slb_attachment' replaces it */
-    @Export(name="internetTargetPort", type=Integer.class, parameters={})
+    @Export(name="internetTargetPort", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> internetTargetPort;
 
     /**
@@ -225,7 +225,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * The JDK version that the deployed package depends on. The optional parameter values are Open JDK 7 and Open JDK 8. Image does not support this parameter.
      * 
      */
-    @Export(name="jdk", type=String.class, parameters={})
+    @Export(name="jdk", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> jdk;
 
     /**
@@ -239,7 +239,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * The CPU quota of the application instance during application operation. Unit: Number of millcores, set to 0 means unlimited, similar to request_cpu.
      * 
      */
-    @Export(name="limitMCpu", type=Integer.class, parameters={})
+    @Export(name="limitMCpu", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> limitMCpu;
 
     /**
@@ -253,7 +253,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * The memory limit of the application instance during application operation, unit: M.
      * 
      */
-    @Export(name="limitMem", type=Integer.class, parameters={})
+    @Export(name="limitMem", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> limitMem;
 
     /**
@@ -267,7 +267,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * Container survival status monitoring, format such as: `{&#34;failureThreshold&#34;: 3,&#34;initialDelaySeconds&#34;: 5,&#34;successThreshold&#34;: 1,&#34;timeoutSeconds&#34;: 1,&#34;tcpSocket&#34;:{&#34;host&#34;:&#34;&#34;, &#34;port&#34;:8080} }`.
      * 
      */
-    @Export(name="liveness", type=String.class, parameters={})
+    @Export(name="liveness", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> liveness;
 
     /**
@@ -281,7 +281,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * The configuration of the host file mounted to the container. For example: `[{&#34;type&#34;:&#34;&#34;,&#34;nodePath&#34;:&#34;/localfiles&#34;,&#34;mountPath&#34;:&#34;/app/files&#34;},{&#34;type&#34;:&#34;Directory&#34;,&#34;nodePath&#34;:&#34;/mnt&#34;, &#34;mountPath&#34;:&#34;/app/storage&#34;}]`. Among them, nodePath is the host path; mountPath is the path in the container; type is the mount type.
      * 
      */
-    @Export(name="localVolume", type=String.class, parameters={})
+    @Export(name="localVolume", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> localVolume;
 
     /**
@@ -295,7 +295,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * The ID corresponding to the EDAS namespace, the non-default namespace must be filled in.
      * 
      */
-    @Export(name="logicalRegionId", type=String.class, parameters={})
+    @Export(name="logicalRegionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logicalRegionId;
 
     /**
@@ -309,7 +309,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * Mount configuration description, as a serialized JSON. For example: `[{&#34;nasPath&#34;: &#34;/k8s&#34;,&#34;mountPath&#34;: &#34;/mnt&#34;},{&#34;nasPath&#34;: &#34;/files&#34;,&#34;mountPath&#34;: &#34;/app/files&#34;}]`. Among them, nasPath refers to the file storage path; mountPath refers to the path mounted in the container.
      * 
      */
-    @Export(name="mountDescs", type=String.class, parameters={})
+    @Export(name="mountDescs", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mountDescs;
 
     /**
@@ -323,7 +323,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * The namespace of the K8s cluster, it will determine which K8s namespace your application is deployed in. The default is &#39;default&#39;.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespace;
 
     /**
@@ -337,7 +337,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * The ID of the mounted NAS must be in the same region as the cluster. It must have an available mount point creation quota, or its mount point must be on a switch in the VPC. If it is not filled in and the mountDescs field exists, a NAS will be automatically purchased and mounted on the switch in the VPC by default.
      * 
      */
-    @Export(name="nasId", type=String.class, parameters={})
+    @Export(name="nasId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nasId;
 
     /**
@@ -351,7 +351,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * Application package type. Optional parameter values include: FatJar, WAR and Image.
      * 
      */
-    @Export(name="packageType", type=String.class, parameters={})
+    @Export(name="packageType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> packageType;
 
     /**
@@ -365,7 +365,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * The url of the package to deploy.Applications deployed through FatJar or WAR packages need to configure it.
      * 
      */
-    @Export(name="packageUrl", type=String.class, parameters={})
+    @Export(name="packageUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> packageUrl;
 
     /**
@@ -379,7 +379,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * The version number of the deployment package. WAR and FatJar types are required. Please customize its meaning.
      * 
      */
-    @Export(name="packageVersion", type=String.class, parameters={})
+    @Export(name="packageVersion", refs={String.class}, tree="[0]")
     private Output<String> packageVersion;
 
     /**
@@ -393,7 +393,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * Execute script after startup
      * 
      */
-    @Export(name="postStart", type=String.class, parameters={})
+    @Export(name="postStart", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> postStart;
 
     /**
@@ -407,7 +407,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * Execute script before stopping
      * 
      */
-    @Export(name="preStop", type=String.class, parameters={})
+    @Export(name="preStop", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> preStop;
 
     /**
@@ -421,7 +421,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * Container service status check. If the check fails, the traffic passing through K8s Service will not be transferred to the container. The format is: `{&#34;failureThreshold&#34;: 3,&#34;initialDelaySeconds&#34;: 5,&#34;successThreshold&#34;: 1,&#34;timeoutSeconds&#34;: 1, &#34;httpGet&#34;: {&#34;path&#34;: &#34;/consumer&#34;,&#34;port&#34;: 8080,&#34;scheme&#34;: &#34;HTTP&#34;,&#34;httpHeaders&#34;: [{&#34;name&#34;: &#34;test&#34;,&#34;value&#34;: &#34;testvalue&#34;} ]}}`.
      * 
      */
-    @Export(name="readiness", type=String.class, parameters={})
+    @Export(name="readiness", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> readiness;
 
     /**
@@ -435,7 +435,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * Number of application instances.
      * 
      */
-    @Export(name="replicas", type=Integer.class, parameters={})
+    @Export(name="replicas", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> replicas;
 
     /**
@@ -449,7 +449,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * When the application is created, the CPU quota of the application instance, unit: number of millcores, similar to request_cpu
      * 
      */
-    @Export(name="requestsMCpu", type=Integer.class, parameters={})
+    @Export(name="requestsMCpu", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> requestsMCpu;
 
     /**
@@ -463,7 +463,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * When the application is created, the memory limit of the application instance, unit: M. When set to 0, it means unlimited.
      * 
      */
-    @Export(name="requestsMem", type=Integer.class, parameters={})
+    @Export(name="requestsMem", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> requestsMem;
 
     /**
@@ -477,7 +477,7 @@ public class K8sApplication extends com.pulumi.resources.CustomResource {
      * The Tomcat version that the deployment package depends on. Applicable to Spring Cloud and Dubbo applications deployed through WAR packages. Image does not support this parameter.
      * 
      */
-    @Export(name="webContainer", type=String.class, parameters={})
+    @Export(name="webContainer", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> webContainer;
 
     /**

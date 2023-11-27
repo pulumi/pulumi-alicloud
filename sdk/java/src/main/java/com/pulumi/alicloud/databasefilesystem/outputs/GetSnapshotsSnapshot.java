@@ -294,22 +294,22 @@ public final class GetSnapshotsSnapshot {
             return this;
         }
         public GetSnapshotsSnapshot build() {
-            final var o = new GetSnapshotsSnapshot();
-            o.category = category;
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.lastModifiedTime = lastModifiedTime;
-            o.progress = progress;
-            o.remainTime = remainTime;
-            o.retentionDays = retentionDays;
-            o.snapshotId = snapshotId;
-            o.snapshotName = snapshotName;
-            o.snapshotType = snapshotType;
-            o.sourceFsSize = sourceFsSize;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetSnapshotsSnapshot();
+            _resultValue.category = category;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.lastModifiedTime = lastModifiedTime;
+            _resultValue.progress = progress;
+            _resultValue.remainTime = remainTime;
+            _resultValue.retentionDays = retentionDays;
+            _resultValue.snapshotId = snapshotId;
+            _resultValue.snapshotName = snapshotName;
+            _resultValue.snapshotType = snapshotType;
+            _resultValue.sourceFsSize = sourceFsSize;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

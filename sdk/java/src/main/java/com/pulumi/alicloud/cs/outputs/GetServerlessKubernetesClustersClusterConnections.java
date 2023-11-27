@@ -84,11 +84,11 @@ public final class GetServerlessKubernetesClustersClusterConnections {
             return this;
         }
         public GetServerlessKubernetesClustersClusterConnections build() {
-            final var o = new GetServerlessKubernetesClustersClusterConnections();
-            o.apiServerInternet = apiServerInternet;
-            o.apiServerIntranet = apiServerIntranet;
-            o.masterPublicIp = masterPublicIp;
-            return o;
+            final var _resultValue = new GetServerlessKubernetesClustersClusterConnections();
+            _resultValue.apiServerInternet = apiServerInternet;
+            _resultValue.apiServerIntranet = apiServerIntranet;
+            _resultValue.masterPublicIp = masterPublicIp;
+            return _resultValue;
         }
     }
 }

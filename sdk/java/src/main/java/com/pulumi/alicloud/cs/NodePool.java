@@ -44,7 +44,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Enable Node payment auto-renew, default is `false`.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
@@ -58,7 +58,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Node payment auto-renew period, one of `1`, `2`, `3`,`6`, `12`.
      * 
      */
-    @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
@@ -72,7 +72,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Whether enable worker node to support cis security reinforcement, its valid value `true` or `false`. Default to `false` and apply to AliyunLinux series. See [CIS Reinforcement](https://help.aliyun.com/document_detail/223744.html).
      * 
      */
-    @Export(name="cisEnabled", type=Boolean.class, parameters={})
+    @Export(name="cisEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cisEnabled;
 
     /**
@@ -86,7 +86,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The id of kubernetes cluster.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -100,7 +100,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Kubelet cpu policy. For Kubernetes 1.12.6 and later, its valid value is either `static` or `none`. Default to `none` and modification is not supported.
      * 
      */
-    @Export(name="cpuPolicy", type=String.class, parameters={})
+    @Export(name="cpuPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cpuPolicy;
 
     /**
@@ -114,7 +114,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The data disk configurations of worker nodes, such as the disk type and disk size. See `data_disks` below.
      * 
      */
-    @Export(name="dataDisks", type=List.class, parameters={NodePoolDataDisk.class})
+    @Export(name="dataDisks", refs={List.class,NodePoolDataDisk.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NodePoolDataDisk>> dataDisks;
 
     /**
@@ -128,7 +128,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The deployment set of node pool. Specify the deploymentSet to ensure that the nodes in the node pool can be distributed on different physical machines.
      * 
      */
-    @Export(name="deploymentSetId", type=String.class, parameters={})
+    @Export(name="deploymentSetId", refs={String.class}, tree="[0]")
     private Output<String> deploymentSetId;
 
     /**
@@ -142,7 +142,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The desired size of nodes of the node pool. From version 1.158.0, `desired_size` is not required.
      * 
      */
-    @Export(name="desiredSize", type=Integer.class, parameters={})
+    @Export(name="desiredSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> desiredSize;
 
     /**
@@ -156,7 +156,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * After you select this check box, if data disks have been attached to the specified ECS instances and the file system of the last data disk is uninitialized, the system automatically formats the last data disk to ext4 and mounts the data disk to /var/lib/docker and /var/lib/kubelet. The original data on the disk will be cleared. Make sure that you back up data in advance. If no data disk is mounted on the ECS instance, no new data disk will be purchased. Default is `false`.
      * 
      */
-    @Export(name="formatDisk", type=Boolean.class, parameters={})
+    @Export(name="formatDisk", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> formatDisk;
 
     /**
@@ -170,7 +170,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Custom Image support. Must based on CentOS7 or AliyunLinux2.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     /**
@@ -184,7 +184,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The image type, instead of `platform`. This field cannot be modified. One of `AliyunLinux`, `AliyunLinux3`, `AliyunLinux3Arm64`, `AliyunLinuxUEFI`, `CentOS`, `Windows`,`WindowsCore`,`AliyunLinux Qboot`,`ContainerOS`. If you select `Windows` or `WindowsCore`, the `passord` is required.
      * 
      */
-    @Export(name="imageType", type=String.class, parameters={})
+    @Export(name="imageType", refs={String.class}, tree="[0]")
     private Output<String> imageType;
 
     /**
@@ -198,7 +198,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Install the cloud monitoring plug-in on the node, and you can view the monitoring information of the instance through the cloud monitoring console. Default is `true`.
      * 
      */
-    @Export(name="installCloudMonitor", type=Boolean.class, parameters={})
+    @Export(name="installCloudMonitor", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> installCloudMonitor;
 
     /**
@@ -212,7 +212,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Node payment type. Valid values: `PostPaid`, `PrePaid`, default is `PostPaid`. If value is `PrePaid`, the arguments `period`, `period_unit`, `auto_renew` and `auto_renew_period` are required.
      * 
      */
-    @Export(name="instanceChargeType", type=String.class, parameters={})
+    @Export(name="instanceChargeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceChargeType;
 
     /**
@@ -226,7 +226,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The instance type of worker node.
      * 
      */
-    @Export(name="instanceTypes", type=List.class, parameters={String.class})
+    @Export(name="instanceTypes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> instanceTypes;
 
     /**
@@ -240,7 +240,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The instance list. Add existing nodes under the same cluster VPC to the node pool.
      * 
      */
-    @Export(name="instances", type=List.class, parameters={String.class})
+    @Export(name="instances", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> instances;
 
     /**
@@ -254,7 +254,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The billing method for network usage. Valid values `PayByBandwidth` and `PayByTraffic`. Conflict with `eip_internet_charge_type`, EIP and public network IP can only choose one.
      * 
      */
-    @Export(name="internetChargeType", type=String.class, parameters={})
+    @Export(name="internetChargeType", refs={String.class}, tree="[0]")
     private Output<String> internetChargeType;
 
     /**
@@ -268,7 +268,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The maximum outbound bandwidth for the public network. Unit: Mbit/s. Valid values: 0 to 100.
      * 
      */
-    @Export(name="internetMaxBandwidthOut", type=Integer.class, parameters={})
+    @Export(name="internetMaxBandwidthOut", refs={Integer.class}, tree="[0]")
     private Output<Integer> internetMaxBandwidthOut;
 
     /**
@@ -282,7 +282,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Add an existing instance to the node pool, whether to keep the original instance name. It is recommended to set to `true`.
      * 
      */
-    @Export(name="keepInstanceName", type=Boolean.class, parameters={})
+    @Export(name="keepInstanceName", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> keepInstanceName;
 
     /**
@@ -296,7 +296,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The keypair of ssh login cluster node, you have to create it first. You have to specify one of `password` `key_name` `kms_encrypted_password` fields. Only `key_name` is supported in the management node pool.
      * 
      */
-    @Export(name="keyName", type=String.class, parameters={})
+    @Export(name="keyName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyName;
 
     /**
@@ -310,7 +310,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * An KMS encrypts password used to a cs kubernetes. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
      * 
      */
-    @Export(name="kmsEncryptedPassword", type=String.class, parameters={})
+    @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
@@ -324,7 +324,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * An KMS encryption context used to decrypt `kms_encrypted_password` before creating or updating a cs kubernetes with `kms_encrypted_password`. See [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm). It is valid when `kms_encrypted_password` is set.
      * 
      */
-    @Export(name="kmsEncryptionContext", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="kmsEncryptionContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> kmsEncryptionContext;
 
     /**
@@ -338,7 +338,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Kubelet configuration parameters for worker nodes. See `kubelet_configuration` below. More information in [Kubelet Configuration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/).
      * 
      */
-    @Export(name="kubeletConfiguration", type=NodePoolKubeletConfiguration.class, parameters={})
+    @Export(name="kubeletConfiguration", refs={NodePoolKubeletConfiguration.class}, tree="[0]")
     private Output</* @Nullable */ NodePoolKubeletConfiguration> kubeletConfiguration;
 
     /**
@@ -352,7 +352,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * A List of Kubernetes labels to assign to the nodes . Only labels that are applied with the ACK API are managed by this argument. Detailed below. More information in [Labels](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/). See `labels` below.
      * 
      */
-    @Export(name="labels", type=List.class, parameters={NodePoolLabel.class})
+    @Export(name="labels", refs={List.class,NodePoolLabel.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NodePoolLabel>> labels;
 
     /**
@@ -366,7 +366,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Managed node pool configuration. When using a managed node pool, the node key must use `key_name`. See `management` below.
      * 
      */
-    @Export(name="management", type=NodePoolManagement.class, parameters={})
+    @Export(name="management", refs={NodePoolManagement.class}, tree="[0]")
     private Output</* @Nullable */ NodePoolManagement> management;
 
     /**
@@ -380,7 +380,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The name of node pool.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -398,7 +398,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'node_count' has been deprecated from provider version 1.158.0. New field 'desired_size' instead. */
-    @Export(name="nodeCount", type=Integer.class, parameters={})
+    @Export(name="nodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> nodeCount;
 
     /**
@@ -412,7 +412,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Each node name consists of a prefix, its private network IP, and a suffix, the input format is `customized,&lt;prefix&gt;,ip,&lt;suffix&gt;`. For example &#34;customized,aliyun.com-,ip,-test&#34;, if the node private network IP address is 192.168.59.176, the prefix is aliyun.com-,and the suffix is -test, the node name will be aliyun.com-192.168.59.176-test.
      * 
      */
-    @Export(name="nodeNameMode", type=String.class, parameters={})
+    @Export(name="nodeNameMode", refs={String.class}, tree="[0]")
     private Output<String> nodeNameMode;
 
     /**
@@ -426,7 +426,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The password of ssh login cluster node. You have to specify one of `password` `key_name` `kms_encrypted_password` fields.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -440,7 +440,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Node payment period. Its valid value is one of {1, 2, 3, 6, 12, 24, 36, 48, 60}.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -454,7 +454,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Node payment period unit, valid value: `Month`. Default is `Month`.
      * 
      */
-    @Export(name="periodUnit", type=String.class, parameters={})
+    @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
@@ -472,7 +472,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'platform' has been deprecated from provider version 1.145.0. New field 'image_type' instead */
-    @Export(name="platform", type=String.class, parameters={})
+    @Export(name="platform", refs={String.class}, tree="[0]")
     private Output<String> platform;
 
     /**
@@ -486,7 +486,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * PolarDB id list, You can choose which PolarDB whitelist to add instances to.
      * 
      */
-    @Export(name="polardbIds", type=List.class, parameters={String.class})
+    @Export(name="polardbIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> polardbIds;
 
     /**
@@ -500,7 +500,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * RDS instance list, You can choose which RDS instances whitelist to add instances to.
      * 
      */
-    @Export(name="rdsInstances", type=List.class, parameters={String.class})
+    @Export(name="rdsInstances", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> rdsInstances;
 
     /**
@@ -514,7 +514,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -528,7 +528,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Rolling policy is used to specify the strategy when the node pool is rolling update. This field works when nodepool updating. See `rolling_policy` below.
      * 
      */
-    @Export(name="rollingPolicy", type=NodePoolRollingPolicy.class, parameters={})
+    @Export(name="rollingPolicy", refs={NodePoolRollingPolicy.class}, tree="[0]")
     private Output</* @Nullable */ NodePoolRollingPolicy> rollingPolicy;
 
     /**
@@ -546,7 +546,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'rollout_policy' has been deprecated from provider version 1.184.0. Please use new field 'rolling_policy' instead it to ensure the config takes effect */
-    @Export(name="rolloutPolicy", type=NodePoolRolloutPolicy.class, parameters={})
+    @Export(name="rolloutPolicy", refs={NodePoolRolloutPolicy.class}, tree="[0]")
     private Output</* @Nullable */ NodePoolRolloutPolicy> rolloutPolicy;
 
     /**
@@ -560,7 +560,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The runtime name of containers. If not set, the cluster runtime will be used as the node pool runtime. If you select another container runtime, see [Comparison of Docker, containerd, and Sandboxed-Container](https://www.alibabacloud.com/help/doc-detail/160313.htm).
      * 
      */
-    @Export(name="runtimeName", type=String.class, parameters={})
+    @Export(name="runtimeName", refs={String.class}, tree="[0]")
     private Output<String> runtimeName;
 
     /**
@@ -574,7 +574,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The runtime version of containers. If not set, the cluster runtime will be used as the node pool runtime.
      * 
      */
-    @Export(name="runtimeVersion", type=String.class, parameters={})
+    @Export(name="runtimeVersion", refs={String.class}, tree="[0]")
     private Output<String> runtimeVersion;
 
     /**
@@ -588,7 +588,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Auto scaling node pool configuration. See `scaling_config` below. With auto-scaling is enabled, the nodes in the node pool will be labeled with `k8s.aliyun.com=true` to prevent system pods such as coredns, metrics-servers from being scheduled to elastic nodes, and to prevent node shrinkage from causing business abnormalities.
      * 
      */
-    @Export(name="scalingConfig", type=NodePoolScalingConfig.class, parameters={})
+    @Export(name="scalingConfig", refs={NodePoolScalingConfig.class}, tree="[0]")
     private Output</* @Nullable */ NodePoolScalingConfig> scalingConfig;
 
     /**
@@ -602,7 +602,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The scaling group id.
      * 
      */
-    @Export(name="scalingGroupId", type=String.class, parameters={})
+    @Export(name="scalingGroupId", refs={String.class}, tree="[0]")
     private Output<String> scalingGroupId;
 
     /**
@@ -616,7 +616,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The scaling mode. Valid values: `release`, `recycle`, default is `release`. Standard mode(release): Create and release ECS instances based on requests.Swift mode(recycle): Create, stop, and restart ECS instances based on needs. New ECS instances are only created when no stopped ECS instance is avalible. This mode further accelerates the scaling process. Apart from ECS instances that use local storage, when an ECS instance is stopped, you are only chatged for storage space.
      * 
      */
-    @Export(name="scalingPolicy", type=String.class, parameters={})
+    @Export(name="scalingPolicy", refs={String.class}, tree="[0]")
     private Output<String> scalingPolicy;
 
     /**
@@ -634,7 +634,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'security_group_id' has been deprecated from provider version 1.145.0. New field 'security_group_ids' instead */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
@@ -648,7 +648,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Multiple security groups can be configured for a node pool. If both `security_group_ids` and `security_group_id` are configured, `security_group_ids` takes effect. This field cannot be modified.
      * 
      */
-    @Export(name="securityGroupIds", type=List.class, parameters={String.class})
+    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroupIds;
 
     /**
@@ -663,7 +663,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** It is forbidden to set both `cis_enabled` and `soc_enabled` to `true`at the same time.
      * 
      */
-    @Export(name="socEnabled", type=Boolean.class, parameters={})
+    @Export(name="socEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> socEnabled;
 
     /**
@@ -678,7 +678,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The maximum hourly price of the instance. This parameter takes effect only when `spot_strategy` is set to `SpotWithPriceLimit`. You could enable multiple spot instances by setting this field repeatedly. See `spot_price_limit` below.
      * 
      */
-    @Export(name="spotPriceLimits", type=List.class, parameters={NodePoolSpotPriceLimit.class})
+    @Export(name="spotPriceLimits", refs={List.class,NodePoolSpotPriceLimit.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NodePoolSpotPriceLimit>> spotPriceLimits;
 
     /**
@@ -692,7 +692,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The preemption policy for the pay-as-you-go instance. This parameter takes effect only when `instance_charge_type` is set to `PostPaid`. Valid value `SpotWithPriceLimit`,`SpotAsPriceGo` and `NoSpot`, default is `NoSpot`.
      * 
      */
-    @Export(name="spotStrategy", type=String.class, parameters={})
+    @Export(name="spotStrategy", refs={String.class}, tree="[0]")
     private Output<String> spotStrategy;
 
     /**
@@ -706,7 +706,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The system disk category of worker node. Its valid value are `cloud_ssd`, `cloud_efficiency` and `cloud_essd`. Default to `cloud_efficiency`.
      * 
      */
-    @Export(name="systemDiskCategory", type=String.class, parameters={})
+    @Export(name="systemDiskCategory", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskCategory;
 
     /**
@@ -720,7 +720,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The encryption Algorithm for Encrypting System Disk. It takes effect when system_disk_encrypted is true. Valid values `aes-256` and `sm4-128`.
      * 
      */
-    @Export(name="systemDiskEncryptAlgorithm", type=String.class, parameters={})
+    @Export(name="systemDiskEncryptAlgorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskEncryptAlgorithm;
 
     /**
@@ -734,7 +734,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Whether to enable system disk encryption.
      * 
      */
-    @Export(name="systemDiskEncrypted", type=Boolean.class, parameters={})
+    @Export(name="systemDiskEncrypted", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> systemDiskEncrypted;
 
     /**
@@ -748,7 +748,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The kms key id used to encrypt the system disk. It takes effect when system_disk_encrypted is true.
      * 
      */
-    @Export(name="systemDiskKmsKey", type=String.class, parameters={})
+    @Export(name="systemDiskKmsKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskKmsKey;
 
     /**
@@ -762,7 +762,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The performance of system disk, only valid for ESSD disk. You have to specify one of `PL0` `PL1` `PL2` `PL3` fields.
      * 
      */
-    @Export(name="systemDiskPerformanceLevel", type=String.class, parameters={})
+    @Export(name="systemDiskPerformanceLevel", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskPerformanceLevel;
 
     /**
@@ -776,7 +776,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The system disk category of worker node. Its valid value range [40~500] in GB. Default to `120`.
      * 
      */
-    @Export(name="systemDiskSize", type=Integer.class, parameters={})
+    @Export(name="systemDiskSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> systemDiskSize;
 
     /**
@@ -790,7 +790,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The system disk snapshot policy id.
      * 
      */
-    @Export(name="systemDiskSnapshotPolicyId", type=String.class, parameters={})
+    @Export(name="systemDiskSnapshotPolicyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> systemDiskSnapshotPolicyId;
 
     /**
@@ -804,7 +804,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * A Map of tags to assign to the resource. It will be applied for ECS instances finally. Detailed below.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -818,7 +818,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * A List of Kubernetes taints to assign to the nodes. Detailed below. More information in [Taints and Toleration](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/). See `taints` below.
      * 
      */
-    @Export(name="taints", type=List.class, parameters={NodePoolTaint.class})
+    @Export(name="taints", refs={List.class,NodePoolTaint.class}, tree="[0,1]")
     private Output</* @Nullable */ List<NodePoolTaint>> taints;
 
     /**
@@ -832,7 +832,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Set the newly added node as unschedulable. If you want to open the scheduling option, you can open it in the node list of the console. If you are using an auto-scaling node pool, the setting will not take effect. Default is `false`.
      * 
      */
-    @Export(name="unschedulable", type=Boolean.class, parameters={})
+    @Export(name="unschedulable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> unschedulable;
 
     /**
@@ -846,7 +846,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Windows instances support batch and PowerShell scripts. If your script file is larger than 1 KB, we recommend that you upload the script to Object Storage Service (OSS) and pull it through the internal endpoint of your OSS bucket.
      * 
      */
-    @Export(name="userData", type=String.class, parameters={})
+    @Export(name="userData", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userData;
 
     /**
@@ -860,7 +860,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The VPC of the nodes in the node pool.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -874,7 +874,7 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * The vswitches used by node pool workers.
      * 
      */
-    @Export(name="vswitchIds", type=List.class, parameters={String.class})
+    @Export(name="vswitchIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> vswitchIds;
 
     /**

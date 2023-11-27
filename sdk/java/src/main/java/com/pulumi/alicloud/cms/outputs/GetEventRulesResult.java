@@ -159,18 +159,18 @@ public final class GetEventRulesResult {
             return this;
         }
         public GetEventRulesResult build() {
-            final var o = new GetEventRulesResult();
-            o.id = id;
-            o.ids = ids;
-            o.namePrefix = namePrefix;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.rules = rules;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetEventRulesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.namePrefix = namePrefix;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.rules = rules;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

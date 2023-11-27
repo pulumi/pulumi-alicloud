@@ -128,14 +128,14 @@ public final class GetRegionsResult {
             return regions(List.of(regions));
         }
         public GetRegionsResult build() {
-            final var o = new GetRegionsResult();
-            o.current = current;
-            o.id = id;
-            o.ids = ids;
-            o.name = name;
-            o.outputFile = outputFile;
-            o.regions = regions;
-            return o;
+            final var _resultValue = new GetRegionsResult();
+            _resultValue.current = current;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.name = name;
+            _resultValue.outputFile = outputFile;
+            _resultValue.regions = regions;
+            return _resultValue;
         }
     }
 }

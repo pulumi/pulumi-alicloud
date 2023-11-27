@@ -34,6 +34,7 @@ from .resource_directory import *
 from .resource_group import *
 from .resource_share import *
 from .role import *
+from .saved_query import *
 from .service_linked_role import *
 from .shared_resource import *
 from .shared_target import *

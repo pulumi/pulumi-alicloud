@@ -152,7 +152,7 @@ public class ApplicationDeployment extends com.pulumi.resources.CustomResource {
      * The ID of the application that you want to deploy.
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -166,7 +166,7 @@ public class ApplicationDeployment extends com.pulumi.resources.CustomResource {
      * The ID of the instance group where the application is going to be deployed. Set this parameter to all if you want to deploy the application to all groups.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -180,7 +180,7 @@ public class ApplicationDeployment extends com.pulumi.resources.CustomResource {
      * Last package version deployed.
      * 
      */
-    @Export(name="lastPackageVersion", type=String.class, parameters={})
+    @Export(name="lastPackageVersion", refs={String.class}, tree="[0]")
     private Output<String> lastPackageVersion;
 
     /**
@@ -194,7 +194,7 @@ public class ApplicationDeployment extends com.pulumi.resources.CustomResource {
      * The version of the application that you want to deploy. It must be unique for every application. The length cannot exceed 64 characters. We recommended you to use a timestamp.
      * 
      */
-    @Export(name="packageVersion", type=String.class, parameters={})
+    @Export(name="packageVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> packageVersion;
 
     /**
@@ -208,7 +208,7 @@ public class ApplicationDeployment extends com.pulumi.resources.CustomResource {
      * The address to store the uploaded web application (WAR) package for application deployment. This parameter is required when the deployType parameter is set as url.
      * 
      */
-    @Export(name="warUrl", type=String.class, parameters={})
+    @Export(name="warUrl", refs={String.class}, tree="[0]")
     private Output<String> warUrl;
 
     /**

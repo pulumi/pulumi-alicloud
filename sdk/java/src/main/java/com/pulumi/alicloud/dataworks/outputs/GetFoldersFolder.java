@@ -95,12 +95,12 @@ public final class GetFoldersFolder {
             return this;
         }
         public GetFoldersFolder build() {
-            final var o = new GetFoldersFolder();
-            o.folderId = folderId;
-            o.folderPath = folderPath;
-            o.id = id;
-            o.projectId = projectId;
-            return o;
+            final var _resultValue = new GetFoldersFolder();
+            _resultValue.folderId = folderId;
+            _resultValue.folderPath = folderPath;
+            _resultValue.id = id;
+            _resultValue.projectId = projectId;
+            return _resultValue;
         }
     }
 }

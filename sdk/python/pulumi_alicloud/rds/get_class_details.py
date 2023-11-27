@@ -217,7 +217,7 @@ def get_class_details(class_code: Optional[str] = None,
     """
     This data source provides details of the Rds specifications of current Alibaba Cloud users.
 
-    For information on RDS class details and how to use it, please refer to [What is RDS class details](https://www.alibabacloud.com/help/zh/apsaradb-for-rds/latest/api-rds-2014-08-15-describeclassdetails).
+    For information on RDS class details and how to use it, please refer to [What is RDS class details](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeclassdetails).
 
     > **NOTE:** Available since v1.209.0+
 
@@ -286,7 +286,7 @@ def get_class_details_output(class_code: Optional[pulumi.Input[str]] = None,
     """
     This data source provides details of the Rds specifications of current Alibaba Cloud users.
 
-    For information on RDS class details and how to use it, please refer to [What is RDS class details](https://www.alibabacloud.com/help/zh/apsaradb-for-rds/latest/api-rds-2014-08-15-describeclassdetails).
+    For information on RDS class details and how to use it, please refer to [What is RDS class details](https://www.alibabacloud.com/help/en/rds/developer-reference/api-rds-2014-08-15-describeclassdetails).
 
     > **NOTE:** Available since v1.209.0+
 

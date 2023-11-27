@@ -108,12 +108,12 @@ public final class DbInstancePlanPlanConfig {
             return this;
         }
         public DbInstancePlanPlanConfig build() {
-            final var o = new DbInstancePlanPlanConfig();
-            o.pause = pause;
-            o.resume = resume;
-            o.scaleIn = scaleIn;
-            o.scaleOut = scaleOut;
-            return o;
+            final var _resultValue = new DbInstancePlanPlanConfig();
+            _resultValue.pause = pause;
+            _resultValue.resume = resume;
+            _resultValue.scaleIn = scaleIn;
+            _resultValue.scaleOut = scaleOut;
+            return _resultValue;
         }
     }
 }

@@ -255,19 +255,19 @@ public final class GetInstanceTypesInstanceType {
             return this;
         }
         public GetInstanceTypesInstanceType build() {
-            final var o = new GetInstanceTypesInstanceType();
-            o.availabilityZones = availabilityZones;
-            o.burstableInstance = burstableInstance;
-            o.cpuCoreCount = cpuCoreCount;
-            o.eniAmount = eniAmount;
-            o.family = family;
-            o.gpu = gpu;
-            o.id = id;
-            o.localStorage = localStorage;
-            o.memorySize = memorySize;
-            o.nvmeSupport = nvmeSupport;
-            o.price = price;
-            return o;
+            final var _resultValue = new GetInstanceTypesInstanceType();
+            _resultValue.availabilityZones = availabilityZones;
+            _resultValue.burstableInstance = burstableInstance;
+            _resultValue.cpuCoreCount = cpuCoreCount;
+            _resultValue.eniAmount = eniAmount;
+            _resultValue.family = family;
+            _resultValue.gpu = gpu;
+            _resultValue.id = id;
+            _resultValue.localStorage = localStorage;
+            _resultValue.memorySize = memorySize;
+            _resultValue.nvmeSupport = nvmeSupport;
+            _resultValue.price = price;
+            return _resultValue;
         }
     }
 }

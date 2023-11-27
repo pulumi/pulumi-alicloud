@@ -97,11 +97,11 @@ public final class SearchIndexSchema {
             return indexSorts(List.of(indexSorts));
         }
         public SearchIndexSchema build() {
-            final var o = new SearchIndexSchema();
-            o.fieldSchemas = fieldSchemas;
-            o.indexSettings = indexSettings;
-            o.indexSorts = indexSorts;
-            return o;
+            final var _resultValue = new SearchIndexSchema();
+            _resultValue.fieldSchemas = fieldSchemas;
+            _resultValue.indexSettings = indexSettings;
+            _resultValue.indexSorts = indexSorts;
+            return _resultValue;
         }
     }
 }

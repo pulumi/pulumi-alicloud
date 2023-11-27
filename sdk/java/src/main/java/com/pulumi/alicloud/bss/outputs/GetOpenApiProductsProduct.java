@@ -126,13 +126,13 @@ public final class GetOpenApiProductsProduct {
             return this;
         }
         public GetOpenApiProductsProduct build() {
-            final var o = new GetOpenApiProductsProduct();
-            o.id = id;
-            o.productCode = productCode;
-            o.productName = productName;
-            o.productType = productType;
-            o.subscriptionType = subscriptionType;
-            return o;
+            final var _resultValue = new GetOpenApiProductsProduct();
+            _resultValue.id = id;
+            _resultValue.productCode = productCode;
+            _resultValue.productName = productName;
+            _resultValue.productType = productType;
+            _resultValue.subscriptionType = subscriptionType;
+            return _resultValue;
         }
     }
 }

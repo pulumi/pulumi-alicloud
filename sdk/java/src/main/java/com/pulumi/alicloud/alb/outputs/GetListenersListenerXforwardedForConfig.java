@@ -275,21 +275,21 @@ public final class GetListenersListenerXforwardedForConfig {
             return this;
         }
         public GetListenersListenerXforwardedForConfig build() {
-            final var o = new GetListenersListenerXforwardedForConfig();
-            o.xforwardedforclientcertIssuerdnalias = xforwardedforclientcertIssuerdnalias;
-            o.xforwardedforclientcertIssuerdnenabled = xforwardedforclientcertIssuerdnenabled;
-            o.xforwardedforclientcertclientverifyalias = xforwardedforclientcertclientverifyalias;
-            o.xforwardedforclientcertclientverifyenabled = xforwardedforclientcertclientverifyenabled;
-            o.xforwardedforclientcertfingerprintalias = xforwardedforclientcertfingerprintalias;
-            o.xforwardedforclientcertfingerprintenabled = xforwardedforclientcertfingerprintenabled;
-            o.xforwardedforclientcertsubjectdnalias = xforwardedforclientcertsubjectdnalias;
-            o.xforwardedforclientcertsubjectdnenabled = xforwardedforclientcertsubjectdnenabled;
-            o.xforwardedforclientsrcportenabled = xforwardedforclientsrcportenabled;
-            o.xforwardedforenabled = xforwardedforenabled;
-            o.xforwardedforprotoenabled = xforwardedforprotoenabled;
-            o.xforwardedforslbidenabled = xforwardedforslbidenabled;
-            o.xforwardedforslbportenabled = xforwardedforslbportenabled;
-            return o;
+            final var _resultValue = new GetListenersListenerXforwardedForConfig();
+            _resultValue.xforwardedforclientcertIssuerdnalias = xforwardedforclientcertIssuerdnalias;
+            _resultValue.xforwardedforclientcertIssuerdnenabled = xforwardedforclientcertIssuerdnenabled;
+            _resultValue.xforwardedforclientcertclientverifyalias = xforwardedforclientcertclientverifyalias;
+            _resultValue.xforwardedforclientcertclientverifyenabled = xforwardedforclientcertclientverifyenabled;
+            _resultValue.xforwardedforclientcertfingerprintalias = xforwardedforclientcertfingerprintalias;
+            _resultValue.xforwardedforclientcertfingerprintenabled = xforwardedforclientcertfingerprintenabled;
+            _resultValue.xforwardedforclientcertsubjectdnalias = xforwardedforclientcertsubjectdnalias;
+            _resultValue.xforwardedforclientcertsubjectdnenabled = xforwardedforclientcertsubjectdnenabled;
+            _resultValue.xforwardedforclientsrcportenabled = xforwardedforclientsrcportenabled;
+            _resultValue.xforwardedforenabled = xforwardedforenabled;
+            _resultValue.xforwardedforprotoenabled = xforwardedforprotoenabled;
+            _resultValue.xforwardedforslbidenabled = xforwardedforslbidenabled;
+            _resultValue.xforwardedforslbportenabled = xforwardedforslbportenabled;
+            return _resultValue;
         }
     }
 }

@@ -51,9 +51,9 @@ public final class OtsBackupPlanOtsDetail {
             return tableNames(List.of(tableNames));
         }
         public OtsBackupPlanOtsDetail build() {
-            final var o = new OtsBackupPlanOtsDetail();
-            o.tableNames = tableNames;
-            return o;
+            final var _resultValue = new OtsBackupPlanOtsDetail();
+            _resultValue.tableNames = tableNames;
+            return _resultValue;
         }
     }
 }

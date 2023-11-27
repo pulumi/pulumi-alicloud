@@ -183,20 +183,20 @@ public final class GetSecretParametersResult {
             return this;
         }
         public GetSecretParametersResult build() {
-            final var o = new GetSecretParametersResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.parameters = parameters;
-            o.resourceGroupId = resourceGroupId;
-            o.secretParameterName = secretParameterName;
-            o.sortField = sortField;
-            o.sortOrder = sortOrder;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetSecretParametersResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.parameters = parameters;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.secretParameterName = secretParameterName;
+            _resultValue.sortField = sortField;
+            _resultValue.sortOrder = sortOrder;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

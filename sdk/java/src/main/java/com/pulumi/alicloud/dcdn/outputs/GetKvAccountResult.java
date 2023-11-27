@@ -65,10 +65,10 @@ public final class GetKvAccountResult {
             return this;
         }
         public GetKvAccountResult build() {
-            final var o = new GetKvAccountResult();
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetKvAccountResult();
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

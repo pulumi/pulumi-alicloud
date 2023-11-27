@@ -185,16 +185,16 @@ public final class GetRouteEntriesEntry {
             return this;
         }
         public GetRouteEntriesEntry build() {
-            final var o = new GetRouteEntriesEntry();
-            o.cidrBlock = cidrBlock;
-            o.conflicts = conflicts;
-            o.nextHopId = nextHopId;
-            o.nextHopType = nextHopType;
-            o.operationalMode = operationalMode;
-            o.publishStatus = publishStatus;
-            o.routeTableId = routeTableId;
-            o.routeType = routeType;
-            return o;
+            final var _resultValue = new GetRouteEntriesEntry();
+            _resultValue.cidrBlock = cidrBlock;
+            _resultValue.conflicts = conflicts;
+            _resultValue.nextHopId = nextHopId;
+            _resultValue.nextHopType = nextHopType;
+            _resultValue.operationalMode = operationalMode;
+            _resultValue.publishStatus = publishStatus;
+            _resultValue.routeTableId = routeTableId;
+            _resultValue.routeType = routeType;
+            return _resultValue;
         }
     }
 }

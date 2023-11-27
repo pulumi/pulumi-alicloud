@@ -94,7 +94,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The ID of Alicloud account.
      * 
      */
-    @Export(name="accountId", type=Integer.class, parameters={})
+    @Export(name="accountId", refs={Integer.class}, tree="[0]")
     private Output<Integer> accountId;
 
     /**
@@ -108,7 +108,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * compliance information.
      * 
      */
-    @Export(name="compliance", type=RuleCompliance.class, parameters={})
+    @Export(name="compliance", refs={RuleCompliance.class}, tree="[0]")
     private Output<RuleCompliance> compliance;
 
     /**
@@ -122,7 +122,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Compliance Package ID.
      * 
      */
-    @Export(name="compliancePackId", type=String.class, parameters={})
+    @Export(name="compliancePackId", refs={String.class}, tree="[0]")
     private Output<String> compliancePackId;
 
     /**
@@ -136,7 +136,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * config rule arn.
      * 
      */
-    @Export(name="configRuleArn", type=String.class, parameters={})
+    @Export(name="configRuleArn", refs={String.class}, tree="[0]")
     private Output<String> configRuleArn;
 
     /**
@@ -150,7 +150,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The ID of the rule.
      * 
      */
-    @Export(name="configRuleId", type=String.class, parameters={})
+    @Export(name="configRuleId", refs={String.class}, tree="[0]")
     private Output<String> configRuleId;
 
     /**
@@ -164,7 +164,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The trigger type of the rule. Valid values:  `ConfigurationItemChangeNotification`: The rule is triggered upon configuration changes. `ScheduledNotification`: The rule is triggered as scheduled.
      * 
      */
-    @Export(name="configRuleTriggerTypes", type=String.class, parameters={})
+    @Export(name="configRuleTriggerTypes", refs={String.class}, tree="[0]")
     private Output<String> configRuleTriggerTypes;
 
     /**
@@ -178,7 +178,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The timestamp when the rule was created.
      * 
      */
-    @Export(name="createTime", type=Integer.class, parameters={})
+    @Export(name="createTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> createTime;
 
     /**
@@ -192,7 +192,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The description of the rule.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -206,7 +206,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The event source of the rule.
      * 
      */
-    @Export(name="eventSource", type=String.class, parameters={})
+    @Export(name="eventSource", refs={String.class}, tree="[0]")
     private Output<String> eventSource;
 
     /**
@@ -220,7 +220,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The rule monitors excluded resource IDs, multiple of which are separated by commas, only applies to rules created based on managed rules, , custom rule this field is empty.
      * 
      */
-    @Export(name="excludeResourceIdsScope", type=String.class, parameters={})
+    @Export(name="excludeResourceIdsScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> excludeResourceIdsScope;
 
     /**
@@ -234,7 +234,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The settings of the input parameters for the rule.
      * 
      */
-    @Export(name="inputParameters", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="inputParameters", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> inputParameters;
 
     /**
@@ -248,7 +248,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The frequency of the compliance evaluations, it is required if the ConfigRuleTriggerTypes value is ScheduledNotification. Valid values:  `One_Hour`, `Three_Hours`, `Six_Hours`, `Twelve_Hours`, `TwentyFour_Hours`.
      * 
      */
-    @Export(name="maximumExecutionFrequency", type=String.class, parameters={})
+    @Export(name="maximumExecutionFrequency", refs={String.class}, tree="[0]")
     private Output<String> maximumExecutionFrequency;
 
     /**
@@ -262,7 +262,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The timestamp when the rule was last modified.
      * 
      */
-    @Export(name="modifiedTimestamp", type=Integer.class, parameters={})
+    @Export(name="modifiedTimestamp", refs={Integer.class}, tree="[0]")
     private Output<Integer> modifiedTimestamp;
 
     /**
@@ -276,7 +276,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The rule monitors region IDs, separated by commas, only applies to rules created based on managed rules.
      * 
      */
-    @Export(name="regionIdsScope", type=String.class, parameters={})
+    @Export(name="regionIdsScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> regionIdsScope;
 
     /**
@@ -290,7 +290,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The rule monitors resource group IDs, separated by commas, only applies to rules created based on managed rules.
      * 
      */
-    @Export(name="resourceGroupIdsScope", type=String.class, parameters={})
+    @Export(name="resourceGroupIdsScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupIdsScope;
 
     /**
@@ -304,7 +304,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The types of the resources to be evaluated against the rule.
      * 
      */
-    @Export(name="resourceTypesScopes", type=List.class, parameters={String.class})
+    @Export(name="resourceTypesScopes", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> resourceTypesScopes;
 
     /**
@@ -318,7 +318,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The risk level of the resources that are not compliant with the rule. Valid values:  `1`: critical `2`: warning `3`: info
      * 
      */
-    @Export(name="riskLevel", type=Integer.class, parameters={})
+    @Export(name="riskLevel", refs={Integer.class}, tree="[0]")
     private Output<Integer> riskLevel;
 
     /**
@@ -332,7 +332,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The name of the rule.
      * 
      */
-    @Export(name="ruleName", type=String.class, parameters={})
+    @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output<String> ruleName;
 
     /**
@@ -350,7 +350,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'scope_compliance_resource_types' has been deprecated from provider version 1.124.1. New field 'resource_types_scope' instead. */
-    @Export(name="scopeComplianceResourceTypes", type=String.class, parameters={})
+    @Export(name="scopeComplianceResourceTypes", refs={String.class}, tree="[0]")
     private Output<String> scopeComplianceResourceTypes;
 
     /**
@@ -368,7 +368,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'source_detail_message_type' has been deprecated from provider version 1.124.1. New field 'config_rule_trigger_types' instead. */
-    @Export(name="sourceDetailMessageType", type=String.class, parameters={})
+    @Export(name="sourceDetailMessageType", refs={String.class}, tree="[0]")
     private Output<String> sourceDetailMessageType;
 
     /**
@@ -382,7 +382,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The identifier of the rule.  For a managed rule, the value is the name of the managed rule. For a custom rule, the value is the ARN of the custom rule.
      * 
      */
-    @Export(name="sourceIdentifier", type=String.class, parameters={})
+    @Export(name="sourceIdentifier", refs={String.class}, tree="[0]")
     private Output<String> sourceIdentifier;
 
     /**
@@ -400,7 +400,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'source_maximum_execution_frequency' has been deprecated from provider version 1.124.1. New field 'maximum_execution_frequency' instead. */
-    @Export(name="sourceMaximumExecutionFrequency", type=String.class, parameters={})
+    @Export(name="sourceMaximumExecutionFrequency", refs={String.class}, tree="[0]")
     private Output<String> sourceMaximumExecutionFrequency;
 
     /**
@@ -414,7 +414,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Specifies whether you or Alibaba Cloud owns and manages the rule. Valid values:  `CUSTOM_FC`: The rule is a custom rule and you own the rule. `ALIYUN`: The rule is a managed rule and Alibaba Cloud owns the rule
      * 
      */
-    @Export(name="sourceOwner", type=String.class, parameters={})
+    @Export(name="sourceOwner", refs={String.class}, tree="[0]")
     private Output<String> sourceOwner;
 
     /**
@@ -428,7 +428,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The status of the rule. Valid values: ACTIVE: The rule is monitoring the configurations of target resources. DELETING_RESULTS: The compliance evaluation result returned by the rule is being deleted. EVALUATING: The rule is triggered and is evaluating whether the configurations of target resources are compliant. INACTIVE: The rule is disabled from monitoring the configurations of target resources.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -442,7 +442,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The rule monitors the tag key, only applies to rules created based on managed rules.
      * 
      */
-    @Export(name="tagKeyScope", type=String.class, parameters={})
+    @Export(name="tagKeyScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tagKeyScope;
 
     /**
@@ -458,7 +458,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
-    @Export(name="tagValueScope", type=String.class, parameters={})
+    @Export(name="tagValueScope", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tagValueScope;
 
     /**

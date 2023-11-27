@@ -82,7 +82,7 @@ public class BandwidthPackageAttachment extends com.pulumi.resources.CustomResou
      * The ID of the bandwidth package.
      * 
      */
-    @Export(name="bandwidthPackageId", type=String.class, parameters={})
+    @Export(name="bandwidthPackageId", refs={String.class}, tree="[0]")
     private Output<String> bandwidthPackageId;
 
     /**
@@ -96,7 +96,7 @@ public class BandwidthPackageAttachment extends com.pulumi.resources.CustomResou
      * The ID of the CEN.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**

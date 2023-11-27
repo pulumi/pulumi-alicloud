@@ -105,12 +105,12 @@ public final class GetCrossRegionsResult {
             return regions(List.of(regions));
         }
         public GetCrossRegionsResult build() {
-            final var o = new GetCrossRegionsResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.regions = regions;
-            return o;
+            final var _resultValue = new GetCrossRegionsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.regions = regions;
+            return _resultValue;
         }
     }
 }

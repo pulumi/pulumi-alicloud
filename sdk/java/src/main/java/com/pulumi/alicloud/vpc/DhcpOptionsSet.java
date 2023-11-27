@@ -84,7 +84,7 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'associate_vpcs' has been deprecated from provider version 1.211.0. Field 'associate_vpcs' has been deprecated from provider version 1.153.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_dhcp_options_set_attachment' to attach DhcpOptionsSet and Vpc. */
-    @Export(name="associateVpcs", type=List.class, parameters={DhcpOptionsSetAssociateVpc.class})
+    @Export(name="associateVpcs", refs={List.class,DhcpOptionsSetAssociateVpc.class}, tree="[0,1]")
     private Output<List<DhcpOptionsSetAssociateVpc>> associateVpcs;
 
     /**
@@ -98,7 +98,7 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
      * The description can be blank or contain 1 to 256 characters. It must start with a letter or Chinese character but cannot start with http:// or https://.
      * 
      */
-    @Export(name="dhcpOptionsSetDescription", type=String.class, parameters={})
+    @Export(name="dhcpOptionsSetDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dhcpOptionsSetDescription;
 
     /**
@@ -112,7 +112,7 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
      * The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
      * 
      */
-    @Export(name="dhcpOptionsSetName", type=String.class, parameters={})
+    @Export(name="dhcpOptionsSetName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dhcpOptionsSetName;
 
     /**
@@ -126,7 +126,7 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
      * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
      * 
      */
-    @Export(name="domainName", type=String.class, parameters={})
+    @Export(name="domainName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> domainName;
 
     /**
@@ -140,7 +140,7 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
      * The DNS server IP addresses. Up to four DNS server IP addresses can be specified. IP addresses must be separated with commas (,).Before you specify any DNS server IP address, all ECS instances in the associated VPC network use the IP addresses of the Alibaba Cloud DNS servers, which are 100.100.2.136 and 100.100.2.138.
      * 
      */
-    @Export(name="domainNameServers", type=String.class, parameters={})
+    @Export(name="domainNameServers", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> domainNameServers;
 
     /**
@@ -156,7 +156,7 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
      * - **false** (default): Sends a normal request and directly deletes the DHCP option set after checking.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -172,7 +172,7 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
      * The lease time of the IPv6 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
      * 
      */
-    @Export(name="ipv6LeaseTime", type=String.class, parameters={})
+    @Export(name="ipv6LeaseTime", refs={String.class}, tree="[0]")
     private Output<String> ipv6LeaseTime;
 
     /**
@@ -186,7 +186,7 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
      * The lease time of the IPv4 DHCP option set.When the lease time is set to hours: Unit: h. Value range: 24h ~ 1176h,87600h ~ 175200h. Default value: 87600h.When the lease time is set to day: Unit: d. Value range: 1d ~ 49d,3650d ~ 7300d. Default value: 3650d.
      * 
      */
-    @Export(name="leaseTime", type=String.class, parameters={})
+    @Export(name="leaseTime", refs={String.class}, tree="[0]")
     private Output<String> leaseTime;
 
     /**
@@ -200,7 +200,7 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
      * The ID of the account to which the DHCP options set belongs.
      * 
      */
-    @Export(name="ownerId", type=Integer.class, parameters={})
+    @Export(name="ownerId", refs={Integer.class}, tree="[0]")
     private Output<Integer> ownerId;
 
     /**
@@ -214,7 +214,7 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -228,7 +228,7 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -242,7 +242,7 @@ public class DhcpOptionsSet extends com.pulumi.resources.CustomResource {
      * Tags of the current resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

@@ -105,12 +105,12 @@ public final class KubernetesConnections {
             return this;
         }
         public KubernetesConnections build() {
-            final var o = new KubernetesConnections();
-            o.apiServerInternet = apiServerInternet;
-            o.apiServerIntranet = apiServerIntranet;
-            o.masterPublicIp = masterPublicIp;
-            o.serviceDomain = serviceDomain;
-            return o;
+            final var _resultValue = new KubernetesConnections();
+            _resultValue.apiServerInternet = apiServerInternet;
+            _resultValue.apiServerIntranet = apiServerIntranet;
+            _resultValue.masterPublicIp = masterPublicIp;
+            _resultValue.serviceDomain = serviceDomain;
+            return _resultValue;
         }
     }
 }

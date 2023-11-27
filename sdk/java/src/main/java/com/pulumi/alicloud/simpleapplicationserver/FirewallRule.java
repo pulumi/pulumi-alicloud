@@ -91,7 +91,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * The ID of the firewall rule.
      * 
      */
-    @Export(name="firewallRuleId", type=String.class, parameters={})
+    @Export(name="firewallRuleId", refs={String.class}, tree="[0]")
     private Output<String> firewallRuleId;
 
     /**
@@ -105,7 +105,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * Alibaba Cloud simple application server instance ID.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -119,7 +119,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * The port range. Valid values of port numbers: `1` to `65535`. Specify a port range in the format of `&lt;start port number&gt;/&lt;end port number&gt;`. Example: `1024/1055`, which indicates the port range of `1024` through `1055`.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
@@ -133,7 +133,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * The remarks of the firewall rule.
      * 
      */
-    @Export(name="remark", type=String.class, parameters={})
+    @Export(name="remark", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> remark;
 
     /**
@@ -147,7 +147,7 @@ public class FirewallRule extends com.pulumi.resources.CustomResource {
      * The transport layer protocol. Valid values: `Tcp`, `Udp`, `TcpAndUdp`.
      * 
      */
-    @Export(name="ruleProtocol", type=String.class, parameters={})
+    @Export(name="ruleProtocol", refs={String.class}, tree="[0]")
     private Output<String> ruleProtocol;
 
     /**

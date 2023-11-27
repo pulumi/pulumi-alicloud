@@ -23,6 +23,7 @@ __all__ = [
     'ImageImportDiskDeviceMappingArgs',
     'InstanceDataDiskArgs',
     'InstanceMaintenanceTimeArgs',
+    'InstanceNetworkInterfacesArgs',
     'LaunchTemplateDataDiskArgs',
     'LaunchTemplateNetworkInterfacesArgs',
     'LaunchTemplateSystemDiskArgs',
@@ -1235,6 +1236,29 @@ class InstanceMaintenanceTimeArgs:
     @start_time.setter
     def start_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "start_time", value)
+
+
+@pulumi.input_type
+class InstanceNetworkInterfacesArgs:
+    def __init__(__self__, *,
+                 network_interface_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] network_interface_id: The ID of the secondary ENI.
+        """
+        if network_interface_id is not None:
+            pulumi.set(__self__, "network_interface_id", network_interface_id)
+
+    @property
+    @pulumi.getter(name="networkInterfaceId")
+    def network_interface_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the secondary ENI.
+        """
+        return pulumi.get(self, "network_interface_id")
+
+    @network_interface_id.setter
+    def network_interface_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_interface_id", value)
 
 
 @pulumi.input_type

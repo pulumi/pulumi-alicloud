@@ -125,13 +125,13 @@ public final class ApiHttpVpcServiceConfig {
             return this;
         }
         public ApiHttpVpcServiceConfig build() {
-            final var o = new ApiHttpVpcServiceConfig();
-            o.aoneName = aoneName;
-            o.method = method;
-            o.name = name;
-            o.path = path;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new ApiHttpVpcServiceConfig();
+            _resultValue.aoneName = aoneName;
+            _resultValue.method = method;
+            _resultValue.name = name;
+            _resultValue.path = path;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

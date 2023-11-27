@@ -127,14 +127,14 @@ public final class GetDiskReplicaPairsResult {
             return this;
         }
         public GetDiskReplicaPairsResult build() {
-            final var o = new GetDiskReplicaPairsResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.pairs = pairs;
-            o.replicaGroupId = replicaGroupId;
-            o.site = site;
-            return o;
+            final var _resultValue = new GetDiskReplicaPairsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pairs = pairs;
+            _resultValue.replicaGroupId = replicaGroupId;
+            _resultValue.site = site;
+            return _resultValue;
         }
     }
 }

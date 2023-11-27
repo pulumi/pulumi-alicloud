@@ -238,19 +238,19 @@ public final class GetEcsImageComponentsComponent {
             return this;
         }
         public GetEcsImageComponentsComponent build() {
-            final var o = new GetEcsImageComponentsComponent();
-            o.componentType = componentType;
-            o.content = content;
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.imageComponentId = imageComponentId;
-            o.imageComponentName = imageComponentName;
-            o.owner = owner;
-            o.resourceGroupId = resourceGroupId;
-            o.systemType = systemType;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetEcsImageComponentsComponent();
+            _resultValue.componentType = componentType;
+            _resultValue.content = content;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.imageComponentId = imageComponentId;
+            _resultValue.imageComponentName = imageComponentName;
+            _resultValue.owner = owner;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.systemType = systemType;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

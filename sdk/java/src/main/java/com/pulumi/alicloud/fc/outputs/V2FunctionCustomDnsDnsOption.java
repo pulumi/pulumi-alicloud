@@ -67,10 +67,10 @@ public final class V2FunctionCustomDnsDnsOption {
             return this;
         }
         public V2FunctionCustomDnsDnsOption build() {
-            final var o = new V2FunctionCustomDnsDnsOption();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new V2FunctionCustomDnsDnsOption();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

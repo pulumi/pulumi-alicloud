@@ -48,9 +48,9 @@ public final class ApplicationLivenessV2TcpSocket {
             return this;
         }
         public ApplicationLivenessV2TcpSocket build() {
-            final var o = new ApplicationLivenessV2TcpSocket();
-            o.port = port;
-            return o;
+            final var _resultValue = new ApplicationLivenessV2TcpSocket();
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

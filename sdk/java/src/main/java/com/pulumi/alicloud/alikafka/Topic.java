@@ -109,7 +109,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * Whether the topic is compactTopic or not. Compact topic must be a localTopic.
      * 
      */
-    @Export(name="compactTopic", type=Boolean.class, parameters={})
+    @Export(name="compactTopic", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> compactTopic;
 
     /**
@@ -123,7 +123,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * InstanceId of your Kafka resource, the topic will create in this instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -137,7 +137,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * Whether the topic is localTopic or not.
      * 
      */
-    @Export(name="localTopic", type=Boolean.class, parameters={})
+    @Export(name="localTopic", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> localTopic;
 
     /**
@@ -151,7 +151,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * The number of partitions of the topic. The number should between 1 and 48.
      * 
      */
-    @Export(name="partitionNum", type=Integer.class, parameters={})
+    @Export(name="partitionNum", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> partitionNum;
 
     /**
@@ -165,7 +165,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * This attribute is a concise description of topic. The length cannot exceed 64.
      * 
      */
-    @Export(name="remark", type=String.class, parameters={})
+    @Export(name="remark", refs={String.class}, tree="[0]")
     private Output<String> remark;
 
     /**
@@ -179,7 +179,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -193,7 +193,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * Name of the topic. Two topics on a single instance cannot have the same name. The length cannot exceed 64 characters.
      * 
      */
-    @Export(name="topic", type=String.class, parameters={})
+    @Export(name="topic", refs={String.class}, tree="[0]")
     private Output<String> topic;
 
     /**

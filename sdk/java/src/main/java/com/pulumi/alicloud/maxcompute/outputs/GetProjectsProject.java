@@ -212,18 +212,18 @@ public final class GetProjectsProject {
             return this;
         }
         public GetProjectsProject build() {
-            final var o = new GetProjectsProject();
-            o.comment = comment;
-            o.defaultQuota = defaultQuota;
-            o.id = id;
-            o.ipWhiteList = ipWhiteList;
-            o.owner = owner;
-            o.projectName = projectName;
-            o.properties = properties;
-            o.securityProperties = securityProperties;
-            o.status = status;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetProjectsProject();
+            _resultValue.comment = comment;
+            _resultValue.defaultQuota = defaultQuota;
+            _resultValue.id = id;
+            _resultValue.ipWhiteList = ipWhiteList;
+            _resultValue.owner = owner;
+            _resultValue.projectName = projectName;
+            _resultValue.properties = properties;
+            _resultValue.securityProperties = securityProperties;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

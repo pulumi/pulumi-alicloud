@@ -76,7 +76,7 @@ public class DefaultPatchBaseline extends com.pulumi.resources.CustomResource {
      * The ID of the patch baseline.
      * 
      */
-    @Export(name="patchBaselineId", type=String.class, parameters={})
+    @Export(name="patchBaselineId", refs={String.class}, tree="[0]")
     private Output<String> patchBaselineId;
 
     /**
@@ -90,7 +90,7 @@ public class DefaultPatchBaseline extends com.pulumi.resources.CustomResource {
      * The name of the patch baseline.
      * 
      */
-    @Export(name="patchBaselineName", type=String.class, parameters={})
+    @Export(name="patchBaselineName", refs={String.class}, tree="[0]")
     private Output<String> patchBaselineName;
 
     /**

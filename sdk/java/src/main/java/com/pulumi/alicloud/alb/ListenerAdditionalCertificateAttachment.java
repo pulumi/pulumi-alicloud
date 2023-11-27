@@ -35,7 +35,7 @@ public class ListenerAdditionalCertificateAttachment extends com.pulumi.resource
      * The Certificate ID.
      * 
      */
-    @Export(name="certificateId", type=String.class, parameters={})
+    @Export(name="certificateId", refs={String.class}, tree="[0]")
     private Output<String> certificateId;
 
     /**
@@ -49,7 +49,7 @@ public class ListenerAdditionalCertificateAttachment extends com.pulumi.resource
      * The type of the certificate.
      * 
      */
-    @Export(name="certificateType", type=String.class, parameters={})
+    @Export(name="certificateType", refs={String.class}, tree="[0]")
     private Output<String> certificateType;
 
     /**
@@ -63,7 +63,7 @@ public class ListenerAdditionalCertificateAttachment extends com.pulumi.resource
      * The ID of the ALB listener.
      * 
      */
-    @Export(name="listenerId", type=String.class, parameters={})
+    @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     /**
@@ -77,7 +77,7 @@ public class ListenerAdditionalCertificateAttachment extends com.pulumi.resource
      * The status of the certificate.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

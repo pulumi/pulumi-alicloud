@@ -108,14 +108,14 @@ public final class GetModifyParameterLogsResult {
             return this;
         }
         public GetModifyParameterLogsResult build() {
-            final var o = new GetModifyParameterLogsResult();
-            o.dbInstanceId = dbInstanceId;
-            o.endTime = endTime;
-            o.id = id;
-            o.logs = logs;
-            o.outputFile = outputFile;
-            o.startTime = startTime;
-            return o;
+            final var _resultValue = new GetModifyParameterLogsResult();
+            _resultValue.dbInstanceId = dbInstanceId;
+            _resultValue.endTime = endTime;
+            _resultValue.id = id;
+            _resultValue.logs = logs;
+            _resultValue.outputFile = outputFile;
+            _resultValue.startTime = startTime;
+            return _resultValue;
         }
     }
 }

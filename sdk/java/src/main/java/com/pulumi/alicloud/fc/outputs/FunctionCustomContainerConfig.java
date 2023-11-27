@@ -86,11 +86,11 @@ public final class FunctionCustomContainerConfig {
             return this;
         }
         public FunctionCustomContainerConfig build() {
-            final var o = new FunctionCustomContainerConfig();
-            o.args = args;
-            o.command = command;
-            o.image = image;
-            return o;
+            final var _resultValue = new FunctionCustomContainerConfig();
+            _resultValue.args = args;
+            _resultValue.command = command;
+            _resultValue.image = image;
+            return _resultValue;
         }
     }
 }

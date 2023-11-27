@@ -12,9 +12,11 @@ namespace Pulumi.AliCloud.Vpc
     /// <summary>
     /// Provides a Vpc Vpc resource. A VPC instance creates a VPC. You can fully control your own VPC, such as selecting IP address ranges, configuring routing tables, and gateways. You can use Alibaba cloud resources such as cloud servers, apsaradb for RDS, and load balancer in your own VPC.
     /// 
+    /// &gt; **NOTE:** Available since v1.0.0.
+    /// 
     /// &gt; **NOTE:** This resource will auto build a router and a route table while it uses `alicloud.vpc.Network` to build a vpc resource.
     /// 
-    /// &gt; **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://help.aliyun.com/document_detail/100334.html).
+    /// &gt; **NOTE:** Currently, the IPv4 / IPv6 dual-stack VPC function is under public testing. Only the following regions support IPv4 / IPv6 dual-stack VPC: `cn-hangzhou`, `cn-shanghai`, `cn-shenzhen`, `cn-beijing`, `cn-huhehaote`, `cn-hongkong` and `ap-southeast-1`, and need to apply for public beta qualification. To use, please [submit an application](https://www.alibabacloud.com/help/en/vpc/getting-started/create-a-vpc-with-an-ipv6-cidr-block).
     /// 
     /// ## Module Support
     /// 
@@ -148,7 +150,7 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> RouterId { get; private set; } = null!;
 
         /// <summary>
-        /// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        /// (Deprecated since v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         /// </summary>
         [Output("routerTableId")]
         public Output<string> RouterTableId { get; private set; } = null!;
@@ -287,18 +289,6 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
-
-        /// <summary>
-        /// The route table ID of the router created by default on VPC creation.
-        /// </summary>
-        [Input("routeTableId")]
-        public Input<string>? RouteTableId { get; set; }
-
-        /// <summary>
-        /// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
-        /// </summary>
-        [Input("routerTableId")]
-        public Input<string>? RouterTableId { get; set; }
 
         [Input("secondaryCidrBlocks")]
         private InputList<string>? _secondaryCidrBlocks;
@@ -447,7 +437,7 @@ namespace Pulumi.AliCloud.Vpc
         public Input<string>? RouterId { get; set; }
 
         /// <summary>
-        /// Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+        /// (Deprecated since v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
         /// </summary>
         [Input("routerTableId")]
         public Input<string>? RouterTableId { get; set; }

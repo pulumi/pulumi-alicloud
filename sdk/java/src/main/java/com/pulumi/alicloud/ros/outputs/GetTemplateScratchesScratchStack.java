@@ -46,9 +46,9 @@ public final class GetTemplateScratchesScratchStack {
             return this;
         }
         public GetTemplateScratchesScratchStack build() {
-            final var o = new GetTemplateScratchesScratchStack();
-            o.stackId = stackId;
-            return o;
+            final var _resultValue = new GetTemplateScratchesScratchStack();
+            _resultValue.stackId = stackId;
+            return _resultValue;
         }
     }
 }

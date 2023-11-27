@@ -76,11 +76,11 @@ public final class GetRegionsRegion {
             return this;
         }
         public GetRegionsRegion build() {
-            final var o = new GetRegionsRegion();
-            o.id = id;
-            o.localName = localName;
-            o.regionId = regionId;
-            return o;
+            final var _resultValue = new GetRegionsRegion();
+            _resultValue.id = id;
+            _resultValue.localName = localName;
+            _resultValue.regionId = regionId;
+            return _resultValue;
         }
     }
 }

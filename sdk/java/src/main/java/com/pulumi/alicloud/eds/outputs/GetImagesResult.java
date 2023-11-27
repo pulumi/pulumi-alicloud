@@ -158,18 +158,18 @@ public final class GetImagesResult {
             return this;
         }
         public GetImagesResult build() {
-            final var o = new GetImagesResult();
-            o.desktopInstanceType = desktopInstanceType;
-            o.id = id;
-            o.ids = ids;
-            o.imageType = imageType;
-            o.images = images;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.osType = osType;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetImagesResult();
+            _resultValue.desktopInstanceType = desktopInstanceType;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.imageType = imageType;
+            _resultValue.images = images;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.osType = osType;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

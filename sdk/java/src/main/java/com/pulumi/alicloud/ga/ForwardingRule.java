@@ -192,7 +192,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * The ID of the Global Accelerator instance.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -206,7 +206,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * Forwarding Policy ID.
      * 
      */
-    @Export(name="forwardingRuleId", type=String.class, parameters={})
+    @Export(name="forwardingRuleId", refs={String.class}, tree="[0]")
     private Output<String> forwardingRuleId;
 
     /**
@@ -220,7 +220,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * Forwarding policy name. The length of the name is 2-128 English or Chinese characters. It must start with uppercase and lowercase letters or Chinese characters. It can contain numbers, half width period (.), underscores (_) And dash (-).
      * 
      */
-    @Export(name="forwardingRuleName", type=String.class, parameters={})
+    @Export(name="forwardingRuleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> forwardingRuleName;
 
     /**
@@ -234,7 +234,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * Forwarding Policy Status.
      * 
      */
-    @Export(name="forwardingRuleStatus", type=String.class, parameters={})
+    @Export(name="forwardingRuleStatus", refs={String.class}, tree="[0]")
     private Output<String> forwardingRuleStatus;
 
     /**
@@ -248,7 +248,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * The ID of the listener.
      * 
      */
-    @Export(name="listenerId", type=String.class, parameters={})
+    @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     /**
@@ -262,7 +262,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * Forwarding policy priority.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
@@ -276,7 +276,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * Forward action. See `rule_actions` below.
      * 
      */
-    @Export(name="ruleActions", type=List.class, parameters={ForwardingRuleRuleAction.class})
+    @Export(name="ruleActions", refs={List.class,ForwardingRuleRuleAction.class}, tree="[0,1]")
     private Output<List<ForwardingRuleRuleAction>> ruleActions;
 
     /**
@@ -290,7 +290,7 @@ public class ForwardingRule extends com.pulumi.resources.CustomResource {
      * Forwarding condition list. See `rule_conditions` below.
      * 
      */
-    @Export(name="ruleConditions", type=List.class, parameters={ForwardingRuleRuleCondition.class})
+    @Export(name="ruleConditions", refs={List.class,ForwardingRuleRuleCondition.class}, tree="[0,1]")
     private Output<List<ForwardingRuleRuleCondition>> ruleConditions;
 
     /**

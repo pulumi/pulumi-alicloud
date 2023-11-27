@@ -72,10 +72,10 @@ public final class GetTransitRouterAvailableResourcesResource {
             return slaveZones(List.of(slaveZones));
         }
         public GetTransitRouterAvailableResourcesResource build() {
-            final var o = new GetTransitRouterAvailableResourcesResource();
-            o.masterZones = masterZones;
-            o.slaveZones = slaveZones;
-            return o;
+            final var _resultValue = new GetTransitRouterAvailableResourcesResource();
+            _resultValue.masterZones = masterZones;
+            _resultValue.slaveZones = slaveZones;
+            return _resultValue;
         }
     }
 }

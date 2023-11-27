@@ -72,7 +72,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The email of the user email.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     /**
@@ -86,7 +86,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The Username. The custom setting is composed of lowercase letters, numbers and underscores, and the length is 3~24 characters.
      * 
      */
-    @Export(name="endUserId", type=String.class, parameters={})
+    @Export(name="endUserId", refs={String.class}, tree="[0]")
     private Output<String> endUserId;
 
     /**
@@ -100,7 +100,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The password of the user password.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -114,7 +114,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The phone of the mobile phone number.
      * 
      */
-    @Export(name="phone", type=String.class, parameters={})
+    @Export(name="phone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> phone;
 
     /**
@@ -128,7 +128,7 @@ public class User extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `Unlocked`, `Locked`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

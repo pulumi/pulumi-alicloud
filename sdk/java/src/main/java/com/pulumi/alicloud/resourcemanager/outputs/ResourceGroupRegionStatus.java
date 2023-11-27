@@ -67,10 +67,10 @@ public final class ResourceGroupRegionStatus {
             return this;
         }
         public ResourceGroupRegionStatus build() {
-            final var o = new ResourceGroupRegionStatus();
-            o.regionId = regionId;
-            o.status = status;
-            return o;
+            final var _resultValue = new ResourceGroupRegionStatus();
+            _resultValue.regionId = regionId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

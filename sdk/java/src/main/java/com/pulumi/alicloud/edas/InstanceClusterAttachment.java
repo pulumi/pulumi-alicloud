@@ -131,7 +131,7 @@ public class InstanceClusterAttachment extends com.pulumi.resources.CustomResour
      * The ID of the cluster that you want to create the application.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -145,7 +145,7 @@ public class InstanceClusterAttachment extends com.pulumi.resources.CustomResour
      * The cluster members map of the resource supplied above. The key is instance_id and the value is cluster_member_id.
      * 
      */
-    @Export(name="clusterMemberIds", type=Map.class, parameters={String.class, String.class})
+    @Export(name="clusterMemberIds", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> clusterMemberIds;
 
     /**
@@ -159,7 +159,7 @@ public class InstanceClusterAttachment extends com.pulumi.resources.CustomResour
      * The ecu map of the resource supplied above. The key is instance_id and the value is ecu_id.
      * 
      */
-    @Export(name="ecuMap", type=Map.class, parameters={String.class, String.class})
+    @Export(name="ecuMap", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> ecuMap;
 
     /**
@@ -173,7 +173,7 @@ public class InstanceClusterAttachment extends com.pulumi.resources.CustomResour
      * The ID of instance. Type: list.
      * 
      */
-    @Export(name="instanceIds", type=List.class, parameters={String.class})
+    @Export(name="instanceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> instanceIds;
 
     /**
@@ -187,7 +187,7 @@ public class InstanceClusterAttachment extends com.pulumi.resources.CustomResour
      * The status map of the resource supplied above. The key is instance_id and the values are 1(running) 0(converting) -1(failed) and -2(offline).
      * 
      */
-    @Export(name="statusMap", type=Map.class, parameters={String.class, Integer.class})
+    @Export(name="statusMap", refs={Map.class,String.class,Integer.class}, tree="[0,1,2]")
     private Output<Map<String,Integer>> statusMap;
 
     /**

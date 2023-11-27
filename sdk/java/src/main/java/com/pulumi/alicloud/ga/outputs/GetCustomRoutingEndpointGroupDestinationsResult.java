@@ -237,20 +237,20 @@ public final class GetCustomRoutingEndpointGroupDestinationsResult {
             return this;
         }
         public GetCustomRoutingEndpointGroupDestinationsResult build() {
-            final var o = new GetCustomRoutingEndpointGroupDestinationsResult();
-            o.acceleratorId = acceleratorId;
-            o.customRoutingEndpointGroupDestinations = customRoutingEndpointGroupDestinations;
-            o.endpointGroupId = endpointGroupId;
-            o.fromPort = fromPort;
-            o.id = id;
-            o.ids = ids;
-            o.listenerId = listenerId;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.protocols = protocols;
-            o.toPort = toPort;
-            return o;
+            final var _resultValue = new GetCustomRoutingEndpointGroupDestinationsResult();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.customRoutingEndpointGroupDestinations = customRoutingEndpointGroupDestinations;
+            _resultValue.endpointGroupId = endpointGroupId;
+            _resultValue.fromPort = fromPort;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.listenerId = listenerId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.protocols = protocols;
+            _resultValue.toPort = toPort;
+            return _resultValue;
         }
     }
 }

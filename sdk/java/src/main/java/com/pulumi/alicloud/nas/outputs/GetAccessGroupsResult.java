@@ -245,20 +245,20 @@ public final class GetAccessGroupsResult {
             return this;
         }
         public GetAccessGroupsResult build() {
-            final var o = new GetAccessGroupsResult();
-            o.accessGroupName = accessGroupName;
-            o.accessGroupType = accessGroupType;
-            o.description = description;
-            o.fileSystemType = fileSystemType;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.type = type;
-            o.useutcDateTime = useutcDateTime;
-            return o;
+            final var _resultValue = new GetAccessGroupsResult();
+            _resultValue.accessGroupName = accessGroupName;
+            _resultValue.accessGroupType = accessGroupType;
+            _resultValue.description = description;
+            _resultValue.fileSystemType = fileSystemType;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.type = type;
+            _resultValue.useutcDateTime = useutcDateTime;
+            return _resultValue;
         }
     }
 }

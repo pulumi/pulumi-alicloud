@@ -67,10 +67,10 @@ public final class HybridMonitorSlsTaskAttachLabel {
             return this;
         }
         public HybridMonitorSlsTaskAttachLabel build() {
-            final var o = new HybridMonitorSlsTaskAttachLabel();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new HybridMonitorSlsTaskAttachLabel();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

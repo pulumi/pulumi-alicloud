@@ -112,7 +112,7 @@ public class InstanceAllowedIpAttachment extends com.pulumi.resources.CustomReso
      * The allowed ip. It can be a CIDR block.
      * 
      */
-    @Export(name="allowedIp", type=String.class, parameters={})
+    @Export(name="allowedIp", refs={String.class}, tree="[0]")
     private Output<String> allowedIp;
 
     /**
@@ -126,7 +126,7 @@ public class InstanceAllowedIpAttachment extends com.pulumi.resources.CustomReso
      * The type of whitelist. Valid Value: `vpc`, `internet`. **NOTE:** From version 1.179.0, `allowed_type` can be set to `internet`.
      * 
      */
-    @Export(name="allowedType", type=String.class, parameters={})
+    @Export(name="allowedType", refs={String.class}, tree="[0]")
     private Output<String> allowedType;
 
     /**
@@ -140,7 +140,7 @@ public class InstanceAllowedIpAttachment extends com.pulumi.resources.CustomReso
      * The ID of the instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -156,7 +156,7 @@ public class InstanceAllowedIpAttachment extends com.pulumi.resources.CustomReso
      * - `9093/9093`: port range for an Internet whitelist.
      * 
      */
-    @Export(name="portRange", type=String.class, parameters={})
+    @Export(name="portRange", refs={String.class}, tree="[0]")
     private Output<String> portRange;
 
     /**

@@ -14,12 +14,16 @@ public final class InstanceEcsList {
     /**
      * @return The ID of the ECS instance.
      * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
+     * 
      */
     private @Nullable String ecsId;
 
     private InstanceEcsList() {}
     /**
      * @return The ID of the ECS instance.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<String> ecsId() {
@@ -48,9 +52,9 @@ public final class InstanceEcsList {
             return this;
         }
         public InstanceEcsList build() {
-            final var o = new InstanceEcsList();
-            o.ecsId = ecsId;
-            return o;
+            final var _resultValue = new InstanceEcsList();
+            _resultValue.ecsId = ecsId;
+            return _resultValue;
         }
     }
 }

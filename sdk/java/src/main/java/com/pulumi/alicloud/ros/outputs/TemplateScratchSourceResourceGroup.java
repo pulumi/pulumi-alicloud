@@ -70,10 +70,10 @@ public final class TemplateScratchSourceResourceGroup {
             return resourceTypeFilters(List.of(resourceTypeFilters));
         }
         public TemplateScratchSourceResourceGroup build() {
-            final var o = new TemplateScratchSourceResourceGroup();
-            o.resourceGroupId = resourceGroupId;
-            o.resourceTypeFilters = resourceTypeFilters;
-            return o;
+            final var _resultValue = new TemplateScratchSourceResourceGroup();
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.resourceTypeFilters = resourceTypeFilters;
+            return _resultValue;
         }
     }
 }

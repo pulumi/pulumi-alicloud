@@ -84,11 +84,11 @@ public final class GetProductsProduct {
             return this;
         }
         public GetProductsProduct build() {
-            final var o = new GetProductsProduct();
-            o.id = id;
-            o.productId = productId;
-            o.productName = productName;
-            return o;
+            final var _resultValue = new GetProductsProduct();
+            _resultValue.id = id;
+            _resultValue.productId = productId;
+            _resultValue.productName = productName;
+            return _resultValue;
         }
     }
 }

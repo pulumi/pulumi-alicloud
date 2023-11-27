@@ -122,15 +122,15 @@ public final class GetIpv6InternetBandwidthsResult {
             return this;
         }
         public GetIpv6InternetBandwidthsResult build() {
-            final var o = new GetIpv6InternetBandwidthsResult();
-            o.bandwidths = bandwidths;
-            o.id = id;
-            o.ids = ids;
-            o.ipv6AddressId = ipv6AddressId;
-            o.ipv6InternetBandwidthId = ipv6InternetBandwidthId;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetIpv6InternetBandwidthsResult();
+            _resultValue.bandwidths = bandwidths;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.ipv6AddressId = ipv6AddressId;
+            _resultValue.ipv6InternetBandwidthId = ipv6InternetBandwidthId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

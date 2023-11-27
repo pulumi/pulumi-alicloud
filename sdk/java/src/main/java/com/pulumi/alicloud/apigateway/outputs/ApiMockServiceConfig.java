@@ -67,10 +67,10 @@ public final class ApiMockServiceConfig {
             return this;
         }
         public ApiMockServiceConfig build() {
-            final var o = new ApiMockServiceConfig();
-            o.aoneName = aoneName;
-            o.result = result;
-            return o;
+            final var _resultValue = new ApiMockServiceConfig();
+            _resultValue.aoneName = aoneName;
+            _resultValue.result = result;
+            return _resultValue;
         }
     }
 }

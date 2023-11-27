@@ -122,13 +122,13 @@ public final class GetDdosBgpIpsIp {
             return this;
         }
         public GetDdosBgpIpsIp build() {
-            final var o = new GetDdosBgpIpsIp();
-            o.id = id;
-            o.instanceId = instanceId;
-            o.ip = ip;
-            o.product = product;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDdosBgpIpsIp();
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.ip = ip;
+            _resultValue.product = product;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

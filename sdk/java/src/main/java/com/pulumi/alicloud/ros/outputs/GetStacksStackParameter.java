@@ -65,10 +65,10 @@ public final class GetStacksStackParameter {
             return this;
         }
         public GetStacksStackParameter build() {
-            final var o = new GetStacksStackParameter();
-            o.parameterKey = parameterKey;
-            o.parameterValue = parameterValue;
-            return o;
+            final var _resultValue = new GetStacksStackParameter();
+            _resultValue.parameterKey = parameterKey;
+            _resultValue.parameterValue = parameterValue;
+            return _resultValue;
         }
     }
 }

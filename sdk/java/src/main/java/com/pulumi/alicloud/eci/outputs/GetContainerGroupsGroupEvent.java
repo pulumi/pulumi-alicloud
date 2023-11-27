@@ -161,15 +161,15 @@ public final class GetContainerGroupsGroupEvent {
             return this;
         }
         public GetContainerGroupsGroupEvent build() {
-            final var o = new GetContainerGroupsGroupEvent();
-            o.count = count;
-            o.firstTimestamp = firstTimestamp;
-            o.lastTimestamp = lastTimestamp;
-            o.message = message;
-            o.name = name;
-            o.reason = reason;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetContainerGroupsGroupEvent();
+            _resultValue.count = count;
+            _resultValue.firstTimestamp = firstTimestamp;
+            _resultValue.lastTimestamp = lastTimestamp;
+            _resultValue.message = message;
+            _resultValue.name = name;
+            _resultValue.reason = reason;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

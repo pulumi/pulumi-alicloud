@@ -167,15 +167,15 @@ public final class GetSecondaryIndexesIndex {
             return this;
         }
         public GetSecondaryIndexesIndex build() {
-            final var o = new GetSecondaryIndexesIndex();
-            o.definedColumns = definedColumns;
-            o.id = id;
-            o.indexName = indexName;
-            o.indexType = indexType;
-            o.instanceName = instanceName;
-            o.primaryKeys = primaryKeys;
-            o.tableName = tableName;
-            return o;
+            final var _resultValue = new GetSecondaryIndexesIndex();
+            _resultValue.definedColumns = definedColumns;
+            _resultValue.id = id;
+            _resultValue.indexName = indexName;
+            _resultValue.indexType = indexType;
+            _resultValue.instanceName = instanceName;
+            _resultValue.primaryKeys = primaryKeys;
+            _resultValue.tableName = tableName;
+            return _resultValue;
         }
     }
 }

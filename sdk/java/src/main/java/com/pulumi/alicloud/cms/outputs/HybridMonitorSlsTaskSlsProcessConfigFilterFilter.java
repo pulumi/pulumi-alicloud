@@ -86,11 +86,11 @@ public final class HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
             return this;
         }
         public HybridMonitorSlsTaskSlsProcessConfigFilterFilter build() {
-            final var o = new HybridMonitorSlsTaskSlsProcessConfigFilterFilter();
-            o.operator = operator;
-            o.slsKeyName = slsKeyName;
-            o.value = value;
-            return o;
+            final var _resultValue = new HybridMonitorSlsTaskSlsProcessConfigFilterFilter();
+            _resultValue.operator = operator;
+            _resultValue.slsKeyName = slsKeyName;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

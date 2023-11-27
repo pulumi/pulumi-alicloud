@@ -134,7 +134,7 @@ public class Attachment extends com.pulumi.resources.CustomResource {
      * The backend servers of the load balancer.
      * 
      */
-    @Export(name="backendServers", type=String.class, parameters={})
+    @Export(name="backendServers", refs={String.class}, tree="[0]")
     private Output<String> backendServers;
 
     /**
@@ -148,7 +148,7 @@ public class Attachment extends com.pulumi.resources.CustomResource {
      * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default to false.
      * 
      */
-    @Export(name="deleteProtectionValidation", type=Boolean.class, parameters={})
+    @Export(name="deleteProtectionValidation", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deleteProtectionValidation;
 
     /**
@@ -162,7 +162,7 @@ public class Attachment extends com.pulumi.resources.CustomResource {
      * A list of instance ids to added backend server in the SLB.
      * 
      */
-    @Export(name="instanceIds", type=List.class, parameters={String.class})
+    @Export(name="instanceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> instanceIds;
 
     /**
@@ -176,7 +176,7 @@ public class Attachment extends com.pulumi.resources.CustomResource {
      * ID of the load balancer.
      * 
      */
-    @Export(name="loadBalancerId", type=String.class, parameters={})
+    @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
@@ -190,7 +190,7 @@ public class Attachment extends com.pulumi.resources.CustomResource {
      * Type of the instances. Valid value ecs, eni. Default to ecs.
      * 
      */
-    @Export(name="serverType", type=String.class, parameters={})
+    @Export(name="serverType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverType;
 
     /**
@@ -204,7 +204,7 @@ public class Attachment extends com.pulumi.resources.CustomResource {
      * Weight of the instances. Valid value range: [0-100]. Default to 100.
      * 
      */
-    @Export(name="weight", type=Integer.class, parameters={})
+    @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> weight;
 
     /**

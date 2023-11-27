@@ -103,12 +103,12 @@ public final class GetDomainsDomainCertInfo {
             return this;
         }
         public GetDomainsDomainCertInfo build() {
-            final var o = new GetDomainsDomainCertInfo();
-            o.certName = certName;
-            o.certType = certType;
-            o.sslProtocol = sslProtocol;
-            o.sslPub = sslPub;
-            return o;
+            final var _resultValue = new GetDomainsDomainCertInfo();
+            _resultValue.certName = certName;
+            _resultValue.certType = certType;
+            _resultValue.sslProtocol = sslProtocol;
+            _resultValue.sslPub = sslPub;
+            return _resultValue;
         }
     }
 }

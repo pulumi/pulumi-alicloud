@@ -85,11 +85,11 @@ public final class GetHostsHostProtocol {
             return this;
         }
         public GetHostsHostProtocol build() {
-            final var o = new GetHostsHostProtocol();
-            o.hostFingerPrint = hostFingerPrint;
-            o.port = port;
-            o.protocolName = protocolName;
-            return o;
+            final var _resultValue = new GetHostsHostProtocol();
+            _resultValue.hostFingerPrint = hostFingerPrint;
+            _resultValue.port = port;
+            _resultValue.protocolName = protocolName;
+            return _resultValue;
         }
     }
 }

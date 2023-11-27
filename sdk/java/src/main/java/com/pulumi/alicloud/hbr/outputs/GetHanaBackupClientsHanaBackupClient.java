@@ -313,23 +313,23 @@ public final class GetHanaBackupClientsHanaBackupClient {
             return this;
         }
         public GetHanaBackupClientsHanaBackupClient build() {
-            final var o = new GetHanaBackupClientsHanaBackupClient();
-            o.alertSetting = alertSetting;
-            o.clientId = clientId;
-            o.clientName = clientName;
-            o.clientType = clientType;
-            o.clientVersion = clientVersion;
-            o.clusterId = clusterId;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.maxVersion = maxVersion;
-            o.networkType = networkType;
-            o.status = status;
-            o.statusMessage = statusMessage;
-            o.useHttps = useHttps;
-            o.vaultId = vaultId;
-            return o;
+            final var _resultValue = new GetHanaBackupClientsHanaBackupClient();
+            _resultValue.alertSetting = alertSetting;
+            _resultValue.clientId = clientId;
+            _resultValue.clientName = clientName;
+            _resultValue.clientType = clientType;
+            _resultValue.clientVersion = clientVersion;
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.maxVersion = maxVersion;
+            _resultValue.networkType = networkType;
+            _resultValue.status = status;
+            _resultValue.statusMessage = statusMessage;
+            _resultValue.useHttps = useHttps;
+            _resultValue.vaultId = vaultId;
+            return _resultValue;
         }
     }
 }

@@ -161,16 +161,16 @@ public final class GetAutoSnapShotPoliciesResult {
             return this;
         }
         public GetAutoSnapShotPoliciesResult build() {
-            final var o = new GetAutoSnapShotPoliciesResult();
-            o.autoSnapShotPolicies = autoSnapShotPolicies;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            return o;
+            final var _resultValue = new GetAutoSnapShotPoliciesResult();
+            _resultValue.autoSnapShotPolicies = autoSnapShotPolicies;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            return _resultValue;
         }
     }
 }

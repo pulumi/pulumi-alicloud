@@ -460,7 +460,7 @@ class _ShardingInstanceState:
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[str] protocol_type: The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
-        :param pulumi.Input[int] retention_period: Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+        :param pulumi.Input[int] retention_period: Instance data backup retention days. **NOTE:** Available in 1.42.0+.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         :param pulumi.Input[Sequence[pulumi.Input['ShardingInstanceShardListArgs']]] shard_lists: the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
@@ -724,7 +724,7 @@ class _ShardingInstanceState:
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> Optional[pulumi.Input[int]]:
         """
-        Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+        Instance data backup retention days. **NOTE:** Available in 1.42.0+.
         """
         return pulumi.get(self, "retention_period")
 
@@ -1195,7 +1195,7 @@ class ShardingInstance(pulumi.CustomResource):
         :param pulumi.Input[int] period: The duration that you will buy DB instance (in month). It is valid when instance_charge_type is `PrePaid`. Valid values: [1~9], 12, 24, 36. System default to 1.
         :param pulumi.Input[str] protocol_type: The type of the access protocol. Valid values: `mongodb` or `dynamodb`.
         :param pulumi.Input[str] resource_group_id: The ID of the Resource Group.
-        :param pulumi.Input[int] retention_period: Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+        :param pulumi.Input[int] retention_period: Instance data backup retention days. **NOTE:** Available in 1.42.0+.
         :param pulumi.Input[str] security_group_id: The Security Group ID of ECS.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_ip_lists: List of IP addresses allowed to access all databases of an instance. The list contains up to 1,000 IP addresses, separated by commas. Supported formats include 0.0.0.0/0, 10.23.12.24 (IP), and 10.23.12.24/24 (Classless Inter-Domain Routing (CIDR) mode. /24 represents the length of the prefix in an IP address. The range of the prefix length is [1,32]). System default to `["127.0.0.1"]`.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ShardingInstanceShardListArgs']]]] shard_lists: the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
@@ -1374,7 +1374,7 @@ class ShardingInstance(pulumi.CustomResource):
     @pulumi.getter(name="retentionPeriod")
     def retention_period(self) -> pulumi.Output[int]:
         """
-        Instance log backup retention days. **NOTE:** Available in 1.42.0+.
+        Instance data backup retention days. **NOTE:** Available in 1.42.0+.
         """
         return pulumi.get(self, "retention_period")
 

@@ -477,6 +477,8 @@ class SecurityGroupRule(pulumi.CustomResource):
 
         > **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
 
+        > **NOTE:** Available since v0.1.0.
+
         ## Example Usage
 
         Basic Usage
@@ -531,6 +533,8 @@ class SecurityGroupRule(pulumi.CustomResource):
         Represents a single `ingress` or `egress` group rule, which can be added to external Security Groups.
 
         > **NOTE:**  `nic_type` should set to `intranet` when security group type is `vpc` or specifying the `source_security_group_id`. In this situation it does not distinguish between intranet and internet, the rule is effective on them both.
+
+        > **NOTE:** Available since v0.1.0.
 
         ## Example Usage
 

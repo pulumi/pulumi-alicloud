@@ -72,7 +72,7 @@ public class AlertContact extends com.pulumi.resources.CustomResource {
      * The name of the alert contact.
      * 
      */
-    @Export(name="alertContactName", type=String.class, parameters={})
+    @Export(name="alertContactName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> alertContactName;
 
     /**
@@ -86,7 +86,7 @@ public class AlertContact extends com.pulumi.resources.CustomResource {
      * The webhook URL of the DingTalk chatbot. For more information about how to obtain the URL, see Configure a DingTalk chatbot to send alert notifications: https://www.alibabacloud.com/help/en/doc-detail/106247.htm. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
      * 
      */
-    @Export(name="dingRobotWebhookUrl", type=String.class, parameters={})
+    @Export(name="dingRobotWebhookUrl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dingRobotWebhookUrl;
 
     /**
@@ -100,7 +100,7 @@ public class AlertContact extends com.pulumi.resources.CustomResource {
      * The email address of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
      * 
      */
-    @Export(name="email", type=String.class, parameters={})
+    @Export(name="email", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> email;
 
     /**
@@ -114,7 +114,7 @@ public class AlertContact extends com.pulumi.resources.CustomResource {
      * The mobile number of the alert contact. You must specify at least one of the following parameters: PhoneNum, Email, and DingRobotWebhookUrl.
      * 
      */
-    @Export(name="phoneNum", type=String.class, parameters={})
+    @Export(name="phoneNum", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> phoneNum;
 
     /**
@@ -128,7 +128,7 @@ public class AlertContact extends com.pulumi.resources.CustomResource {
      * Specifies whether the alert contact receives system notifications. Valid values:  true: receives system notifications. false: does not receive system notifications.
      * 
      */
-    @Export(name="systemNoc", type=Boolean.class, parameters={})
+    @Export(name="systemNoc", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> systemNoc;
 
     /**

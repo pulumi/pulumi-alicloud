@@ -111,14 +111,14 @@ public final class GetVpcEndpointServiceUsersResult {
             return users(List.of(users));
         }
         public GetVpcEndpointServiceUsersResult build() {
-            final var o = new GetVpcEndpointServiceUsersResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.serviceId = serviceId;
-            o.userId = userId;
-            o.users = users;
-            return o;
+            final var _resultValue = new GetVpcEndpointServiceUsersResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.serviceId = serviceId;
+            _resultValue.userId = userId;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

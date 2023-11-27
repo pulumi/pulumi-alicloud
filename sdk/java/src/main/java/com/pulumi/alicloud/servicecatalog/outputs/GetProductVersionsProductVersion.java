@@ -218,18 +218,18 @@ public final class GetProductVersionsProductVersion {
             return this;
         }
         public GetProductVersionsProductVersion build() {
-            final var o = new GetProductVersionsProductVersion();
-            o.active = active;
-            o.createTime = createTime;
-            o.description = description;
-            o.guidance = guidance;
-            o.id = id;
-            o.productId = productId;
-            o.productVersionId = productVersionId;
-            o.productVersionName = productVersionName;
-            o.templateType = templateType;
-            o.templateUrl = templateUrl;
-            return o;
+            final var _resultValue = new GetProductVersionsProductVersion();
+            _resultValue.active = active;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.guidance = guidance;
+            _resultValue.id = id;
+            _resultValue.productId = productId;
+            _resultValue.productVersionId = productVersionId;
+            _resultValue.productVersionName = productVersionName;
+            _resultValue.templateType = templateType;
+            _resultValue.templateUrl = templateUrl;
+            return _resultValue;
         }
     }
 }

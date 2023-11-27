@@ -139,13 +139,13 @@ public final class GetPolicyDocumentStatement {
             return resources(List.of(resources));
         }
         public GetPolicyDocumentStatement build() {
-            final var o = new GetPolicyDocumentStatement();
-            o.actions = actions;
-            o.conditions = conditions;
-            o.effect = effect;
-            o.principals = principals;
-            o.resources = resources;
-            return o;
+            final var _resultValue = new GetPolicyDocumentStatement();
+            _resultValue.actions = actions;
+            _resultValue.conditions = conditions;
+            _resultValue.effect = effect;
+            _resultValue.principals = principals;
+            _resultValue.resources = resources;
+            return _resultValue;
         }
     }
 }

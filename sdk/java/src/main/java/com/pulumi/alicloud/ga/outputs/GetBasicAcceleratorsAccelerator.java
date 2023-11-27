@@ -303,22 +303,22 @@ public final class GetBasicAcceleratorsAccelerator {
             return this;
         }
         public GetBasicAcceleratorsAccelerator build() {
-            final var o = new GetBasicAcceleratorsAccelerator();
-            o.bandwidthBillingType = bandwidthBillingType;
-            o.basicAcceleratorId = basicAcceleratorId;
-            o.basicAcceleratorName = basicAcceleratorName;
-            o.basicBandwidthPackages = basicBandwidthPackages;
-            o.basicEndpointGroupId = basicEndpointGroupId;
-            o.basicIpSetId = basicIpSetId;
-            o.createTime = createTime;
-            o.crossDomainBandwidthPackages = crossDomainBandwidthPackages;
-            o.description = description;
-            o.expiredTime = expiredTime;
-            o.id = id;
-            o.instanceChargeType = instanceChargeType;
-            o.regionId = regionId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBasicAcceleratorsAccelerator();
+            _resultValue.bandwidthBillingType = bandwidthBillingType;
+            _resultValue.basicAcceleratorId = basicAcceleratorId;
+            _resultValue.basicAcceleratorName = basicAcceleratorName;
+            _resultValue.basicBandwidthPackages = basicBandwidthPackages;
+            _resultValue.basicEndpointGroupId = basicEndpointGroupId;
+            _resultValue.basicIpSetId = basicIpSetId;
+            _resultValue.createTime = createTime;
+            _resultValue.crossDomainBandwidthPackages = crossDomainBandwidthPackages;
+            _resultValue.description = description;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.id = id;
+            _resultValue.instanceChargeType = instanceChargeType;
+            _resultValue.regionId = regionId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

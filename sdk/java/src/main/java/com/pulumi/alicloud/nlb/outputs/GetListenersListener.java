@@ -435,29 +435,29 @@ public final class GetListenersListener {
             return this;
         }
         public GetListenersListener build() {
-            final var o = new GetListenersListener();
-            o.alpnEnabled = alpnEnabled;
-            o.alpnPolicy = alpnPolicy;
-            o.caCertificateIds = caCertificateIds;
-            o.caEnabled = caEnabled;
-            o.certificateIds = certificateIds;
-            o.cps = cps;
-            o.endPort = endPort;
-            o.id = id;
-            o.idleTimeout = idleTimeout;
-            o.listenerDescription = listenerDescription;
-            o.listenerId = listenerId;
-            o.listenerPort = listenerPort;
-            o.listenerProtocol = listenerProtocol;
-            o.loadBalancerId = loadBalancerId;
-            o.mss = mss;
-            o.proxyProtocolEnabled = proxyProtocolEnabled;
-            o.secSensorEnabled = secSensorEnabled;
-            o.securityPolicyId = securityPolicyId;
-            o.serverGroupId = serverGroupId;
-            o.startPort = startPort;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetListenersListener();
+            _resultValue.alpnEnabled = alpnEnabled;
+            _resultValue.alpnPolicy = alpnPolicy;
+            _resultValue.caCertificateIds = caCertificateIds;
+            _resultValue.caEnabled = caEnabled;
+            _resultValue.certificateIds = certificateIds;
+            _resultValue.cps = cps;
+            _resultValue.endPort = endPort;
+            _resultValue.id = id;
+            _resultValue.idleTimeout = idleTimeout;
+            _resultValue.listenerDescription = listenerDescription;
+            _resultValue.listenerId = listenerId;
+            _resultValue.listenerPort = listenerPort;
+            _resultValue.listenerProtocol = listenerProtocol;
+            _resultValue.loadBalancerId = loadBalancerId;
+            _resultValue.mss = mss;
+            _resultValue.proxyProtocolEnabled = proxyProtocolEnabled;
+            _resultValue.secSensorEnabled = secSensorEnabled;
+            _resultValue.securityPolicyId = securityPolicyId;
+            _resultValue.serverGroupId = serverGroupId;
+            _resultValue.startPort = startPort;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

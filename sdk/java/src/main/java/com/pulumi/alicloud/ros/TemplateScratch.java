@@ -88,7 +88,7 @@ public class TemplateScratch extends com.pulumi.resources.CustomResource {
      * The Description of the Template Scratch.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -102,7 +102,7 @@ public class TemplateScratch extends com.pulumi.resources.CustomResource {
      * The execution mode. Valid Values: `Async` or `Sync`.
      * 
      */
-    @Export(name="executionMode", type=String.class, parameters={})
+    @Export(name="executionMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> executionMode;
 
     /**
@@ -116,7 +116,7 @@ public class TemplateScratch extends com.pulumi.resources.CustomResource {
      * Logical ID generation strategy. Valid Values: `LongTypePrefixAndIndexSuffix`, `LongTypePrefixAndHashSuffix` and `ShortTypePrefixAndHashSuffix`.
      * 
      */
-    @Export(name="logicalIdStrategy", type=String.class, parameters={})
+    @Export(name="logicalIdStrategy", refs={String.class}, tree="[0]")
     private Output<String> logicalIdStrategy;
 
     /**
@@ -130,7 +130,7 @@ public class TemplateScratch extends com.pulumi.resources.CustomResource {
      * Priority parameter. See the following `Block preference_parameters`.
      * 
      */
-    @Export(name="preferenceParameters", type=List.class, parameters={TemplateScratchPreferenceParameter.class})
+    @Export(name="preferenceParameters", refs={List.class,TemplateScratchPreferenceParameter.class}, tree="[0,1]")
     private Output<List<TemplateScratchPreferenceParameter>> preferenceParameters;
 
     /**
@@ -144,7 +144,7 @@ public class TemplateScratch extends com.pulumi.resources.CustomResource {
      * Source resource grouping. See the following `Block source_resource_group`.
      * 
      */
-    @Export(name="sourceResourceGroup", type=TemplateScratchSourceResourceGroup.class, parameters={})
+    @Export(name="sourceResourceGroup", refs={TemplateScratchSourceResourceGroup.class}, tree="[0]")
     private Output</* @Nullable */ TemplateScratchSourceResourceGroup> sourceResourceGroup;
 
     /**
@@ -158,7 +158,7 @@ public class TemplateScratch extends com.pulumi.resources.CustomResource {
      * Source resource. See the following `Block source_resources`.
      * 
      */
-    @Export(name="sourceResources", type=List.class, parameters={TemplateScratchSourceResource.class})
+    @Export(name="sourceResources", refs={List.class,TemplateScratchSourceResource.class}, tree="[0,1]")
     private Output</* @Nullable */ List<TemplateScratchSourceResource>> sourceResources;
 
     /**
@@ -172,7 +172,7 @@ public class TemplateScratch extends com.pulumi.resources.CustomResource {
      * Source tag. See the following `Block source_tag`.
      * 
      */
-    @Export(name="sourceTag", type=TemplateScratchSourceTag.class, parameters={})
+    @Export(name="sourceTag", refs={TemplateScratchSourceTag.class}, tree="[0]")
     private Output</* @Nullable */ TemplateScratchSourceTag> sourceTag;
 
     /**
@@ -186,7 +186,7 @@ public class TemplateScratch extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -200,7 +200,7 @@ public class TemplateScratch extends com.pulumi.resources.CustomResource {
      * The type of the Template scan. Valid Values: `ResourceImport` or `ArchitectureReplication`.
      * 
      */
-    @Export(name="templateScratchType", type=String.class, parameters={})
+    @Export(name="templateScratchType", refs={String.class}, tree="[0]")
     private Output<String> templateScratchType;
 
     /**

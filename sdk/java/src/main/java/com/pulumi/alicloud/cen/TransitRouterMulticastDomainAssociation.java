@@ -127,7 +127,7 @@ public class TransitRouterMulticastDomainAssociation extends com.pulumi.resource
      * The status of the Transit Router Multicast Domain Association.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -141,7 +141,7 @@ public class TransitRouterMulticastDomainAssociation extends com.pulumi.resource
      * The ID of the VPC connection.
      * 
      */
-    @Export(name="transitRouterAttachmentId", type=String.class, parameters={})
+    @Export(name="transitRouterAttachmentId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterAttachmentId;
 
     /**
@@ -155,7 +155,7 @@ public class TransitRouterMulticastDomainAssociation extends com.pulumi.resource
      * The ID of the multicast domain.
      * 
      */
-    @Export(name="transitRouterMulticastDomainId", type=String.class, parameters={})
+    @Export(name="transitRouterMulticastDomainId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterMulticastDomainId;
 
     /**
@@ -169,7 +169,7 @@ public class TransitRouterMulticastDomainAssociation extends com.pulumi.resource
      * The ID of the vSwitch.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

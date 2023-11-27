@@ -182,16 +182,16 @@ public final class IpsecServerIkeConfig {
             return this;
         }
         public IpsecServerIkeConfig build() {
-            final var o = new IpsecServerIkeConfig();
-            o.ikeAuthAlg = ikeAuthAlg;
-            o.ikeEncAlg = ikeEncAlg;
-            o.ikeLifetime = ikeLifetime;
-            o.ikeMode = ikeMode;
-            o.ikePfs = ikePfs;
-            o.ikeVersion = ikeVersion;
-            o.localId = localId;
-            o.remoteId = remoteId;
-            return o;
+            final var _resultValue = new IpsecServerIkeConfig();
+            _resultValue.ikeAuthAlg = ikeAuthAlg;
+            _resultValue.ikeEncAlg = ikeEncAlg;
+            _resultValue.ikeLifetime = ikeLifetime;
+            _resultValue.ikeMode = ikeMode;
+            _resultValue.ikePfs = ikePfs;
+            _resultValue.ikeVersion = ikeVersion;
+            _resultValue.localId = localId;
+            _resultValue.remoteId = remoteId;
+            return _resultValue;
         }
     }
 }

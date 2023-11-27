@@ -105,12 +105,12 @@ public final class MetricRuleTemplateAlertTemplateEscalationsInfo {
             return this;
         }
         public MetricRuleTemplateAlertTemplateEscalationsInfo build() {
-            final var o = new MetricRuleTemplateAlertTemplateEscalationsInfo();
-            o.comparisonOperator = comparisonOperator;
-            o.statistics = statistics;
-            o.threshold = threshold;
-            o.times = times;
-            return o;
+            final var _resultValue = new MetricRuleTemplateAlertTemplateEscalationsInfo();
+            _resultValue.comparisonOperator = comparisonOperator;
+            _resultValue.statistics = statistics;
+            _resultValue.threshold = threshold;
+            _resultValue.times = times;
+            return _resultValue;
         }
     }
 }

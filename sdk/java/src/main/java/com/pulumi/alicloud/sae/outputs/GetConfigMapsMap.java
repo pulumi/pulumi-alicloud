@@ -160,15 +160,15 @@ public final class GetConfigMapsMap {
             return this;
         }
         public GetConfigMapsMap build() {
-            final var o = new GetConfigMapsMap();
-            o.configMapId = configMapId;
-            o.createTime = createTime;
-            o.data = data;
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.namespaceId = namespaceId;
-            return o;
+            final var _resultValue = new GetConfigMapsMap();
+            _resultValue.configMapId = configMapId;
+            _resultValue.createTime = createTime;
+            _resultValue.data = data;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.namespaceId = namespaceId;
+            return _resultValue;
         }
     }
 }

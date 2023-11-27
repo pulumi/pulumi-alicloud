@@ -279,21 +279,21 @@ public final class GetUsersUser {
             return this;
         }
         public GetUsersUser build() {
-            final var o = new GetUsersUser();
-            o.createTime = createTime;
-            o.description = description;
-            o.directoryId = directoryId;
-            o.displayName = displayName;
-            o.email = email;
-            o.firstName = firstName;
-            o.id = id;
-            o.lastName = lastName;
-            o.mfaDevices = mfaDevices;
-            o.provisionType = provisionType;
-            o.status = status;
-            o.userId = userId;
-            o.userName = userName;
-            return o;
+            final var _resultValue = new GetUsersUser();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.directoryId = directoryId;
+            _resultValue.displayName = displayName;
+            _resultValue.email = email;
+            _resultValue.firstName = firstName;
+            _resultValue.id = id;
+            _resultValue.lastName = lastName;
+            _resultValue.mfaDevices = mfaDevices;
+            _resultValue.provisionType = provisionType;
+            _resultValue.status = status;
+            _resultValue.userId = userId;
+            _resultValue.userName = userName;
+            return _resultValue;
         }
     }
 }

@@ -75,7 +75,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Sensitive Data Identification Rules for the Type of. Valid values:
      * 
      */
-    @Export(name="category", type=Integer.class, parameters={})
+    @Export(name="category", refs={Integer.class}, tree="[0]")
     private Output<Integer> category;
 
     /**
@@ -89,7 +89,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Sensitive Data Identification Rules the Content.
      * 
      */
-    @Export(name="content", type=String.class, parameters={})
+    @Export(name="content", refs={String.class}, tree="[0]")
     private Output<String> content;
 
     /**
@@ -103,7 +103,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The Content Classification.
      * 
      */
-    @Export(name="contentCategory", type=String.class, parameters={})
+    @Export(name="contentCategory", refs={String.class}, tree="[0]")
     private Output<String> contentCategory;
 
     /**
@@ -117,7 +117,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Sensitive Data Identification Rules of Type. Valid values:
      * 
      */
-    @Export(name="customType", type=Integer.class, parameters={})
+    @Export(name="customType", refs={Integer.class}, tree="[0]")
     private Output<Integer> customType;
 
     /**
@@ -131,7 +131,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Sensitive Data Identification a Description of the Rule Information.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -145,7 +145,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The Request and Receive the Language of the Message Type. Valid values:
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
@@ -159,7 +159,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
      * 
      */
-    @Export(name="productCode", type=String.class, parameters={})
+    @Export(name="productCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> productCode;
 
     /**
@@ -173,7 +173,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Product ID. Valid values:
      * 
      */
-    @Export(name="productId", type=String.class, parameters={})
+    @Export(name="productId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> productId;
 
     /**
@@ -187,7 +187,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Sensitive Data Identification Rules of Risk Level ID. Valid values:
      * 
      */
-    @Export(name="riskLevelId", type=String.class, parameters={})
+    @Export(name="riskLevelId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> riskLevelId;
 
     /**
@@ -201,7 +201,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Sensitive Data Identification Name of the Rule.
      * 
      */
-    @Export(name="ruleName", type=String.class, parameters={})
+    @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output<String> ruleName;
 
     /**
@@ -215,7 +215,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Rule Type.
      * 
      */
-    @Export(name="ruleType", type=Integer.class, parameters={})
+    @Export(name="ruleType", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ruleType;
 
     /**
@@ -229,7 +229,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Triggered the Alarm Conditions.
      * 
      */
-    @Export(name="statExpress", type=String.class, parameters={})
+    @Export(name="statExpress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> statExpress;
 
     /**
@@ -243,7 +243,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Sensitive Data Identification Rules Detection State of.
      * 
      */
-    @Export(name="status", type=Integer.class, parameters={})
+    @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output<Integer> status;
 
     /**
@@ -257,7 +257,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The Target of rule.
      * 
      */
-    @Export(name="target", type=String.class, parameters={})
+    @Export(name="target", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> target;
 
     /**
@@ -271,7 +271,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The Level of Risk. Valid values:
      * 
      */
-    @Export(name="warnLevel", type=Integer.class, parameters={})
+    @Export(name="warnLevel", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> warnLevel;
 
     /**

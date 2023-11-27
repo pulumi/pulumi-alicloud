@@ -127,13 +127,13 @@ public final class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacit
             return this;
         }
         public GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity build() {
-            final var o = new GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity();
-            o.availableMemory = availableMemory;
-            o.availableVcpus = availableVcpus;
-            o.localStorageCapacities = localStorageCapacities;
-            o.totalMemory = totalMemory;
-            o.totalVcpus = totalVcpus;
-            return o;
+            final var _resultValue = new GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity();
+            _resultValue.availableMemory = availableMemory;
+            _resultValue.availableVcpus = availableVcpus;
+            _resultValue.localStorageCapacities = localStorageCapacities;
+            _resultValue.totalMemory = totalMemory;
+            _resultValue.totalVcpus = totalVcpus;
+            return _resultValue;
         }
     }
 }

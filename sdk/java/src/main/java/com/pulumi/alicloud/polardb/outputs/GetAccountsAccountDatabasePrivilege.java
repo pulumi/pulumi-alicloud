@@ -65,10 +65,10 @@ public final class GetAccountsAccountDatabasePrivilege {
             return this;
         }
         public GetAccountsAccountDatabasePrivilege build() {
-            final var o = new GetAccountsAccountDatabasePrivilege();
-            o.accountPrivilege = accountPrivilege;
-            o.dbName = dbName;
-            return o;
+            final var _resultValue = new GetAccountsAccountDatabasePrivilege();
+            _resultValue.accountPrivilege = accountPrivilege;
+            _resultValue.dbName = dbName;
+            return _resultValue;
         }
     }
 }

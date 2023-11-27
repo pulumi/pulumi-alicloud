@@ -49,10 +49,10 @@ public final class GetDomainGroupsGroup {
             return this;
         }
         public GetDomainGroupsGroup build() {
-            final var o = new GetDomainGroupsGroup();
-            o.groupId = groupId;
-            o.groupName = groupName;
-            return o;
+            final var _resultValue = new GetDomainGroupsGroup();
+            _resultValue.groupId = groupId;
+            _resultValue.groupName = groupName;
+            return _resultValue;
         }
     }
 }

@@ -137,16 +137,16 @@ public final class GetBackupJobsResult {
             return this;
         }
         public GetBackupJobsResult build() {
-            final var o = new GetBackupJobsResult();
-            o.filters = filters;
-            o.id = id;
-            o.ids = ids;
-            o.jobs = jobs;
-            o.outputFile = outputFile;
-            o.sortDirection = sortDirection;
-            o.sourceType = sourceType;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBackupJobsResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.jobs = jobs;
+            _resultValue.outputFile = outputFile;
+            _resultValue.sortDirection = sortDirection;
+            _resultValue.sourceType = sourceType;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -7,7 +7,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
+import java.lang.Object;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +20,18 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
     public static final VpcEndpointServiceState Empty = new VpcEndpointServiceState();
 
     /**
-     * Whether to automatically accept terminal node connections.
+     * Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+     * - **true**
+     * - **false**.
      * 
      */
     @Import(name="autoAcceptConnection")
     private @Nullable Output<Boolean> autoAcceptConnection;
 
     /**
-     * @return Whether to automatically accept terminal node connections.
+     * @return Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+     * - **true**
+     * - **false**.
      * 
      */
     public Optional<Output<Boolean>> autoAcceptConnection() {
@@ -33,14 +39,14 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The connection bandwidth.
+     * The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
      * 
      */
     @Import(name="connectBandwidth")
     private @Nullable Output<Integer> connectBandwidth;
 
     /**
-     * @return The connection bandwidth.
+     * @return The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
      * 
      */
     public Optional<Output<Integer>> connectBandwidth() {
@@ -48,14 +54,33 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Whether to pre-check this request only. Default to: `false`
+     * The time when the endpoint service was created.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return The time when the endpoint service was created.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Specifies whether to perform only a dry run, without performing the actual request.
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     @Import(name="dryRun")
     private @Nullable Output<Boolean> dryRun;
 
     /**
-     * @return Whether to pre-check this request only. Default to: `false`
+     * @return Specifies whether to perform only a dry run, without performing the actual request.
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Optional<Output<Boolean>> dryRun() {
@@ -63,14 +88,18 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+     * The payer of the endpoint service. Valid values:
+     * - **Endpoint**: the service consumer.
+     * - **EndpointService**: the service provider.
      * 
      */
     @Import(name="payer")
     private @Nullable Output<String> payer;
 
     /**
-     * @return The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+     * @return The payer of the endpoint service. Valid values:
+     * - **Endpoint**: the service consumer.
+     * - **EndpointService**: the service provider.
      * 
      */
     public Optional<Output<String>> payer() {
@@ -78,14 +107,29 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The business status of Vpc Endpoint Service.
+     * The resource group ID.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The resource group ID.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The service state of the endpoint service.
      * 
      */
     @Import(name="serviceBusinessStatus")
     private @Nullable Output<String> serviceBusinessStatus;
 
     /**
-     * @return The business status of Vpc Endpoint Service.
+     * @return The service state of the endpoint service.
      * 
      */
     public Optional<Output<String>> serviceBusinessStatus() {
@@ -93,18 +137,14 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The description of the terminal node service.
-     * 
-     * &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+     * The description of the endpoint service.
      * 
      */
     @Import(name="serviceDescription")
     private @Nullable Output<String> serviceDescription;
 
     /**
-     * @return The description of the terminal node service.
-     * 
-     * &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+     * @return The description of the endpoint service.
      * 
      */
     public Optional<Output<String>> serviceDescription() {
@@ -112,14 +152,14 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * Service Domain.
+     * The domain name of the endpoint service.
      * 
      */
     @Import(name="serviceDomain")
     private @Nullable Output<String> serviceDomain;
 
     /**
-     * @return Service Domain.
+     * @return The domain name of the endpoint service.
      * 
      */
     public Optional<Output<String>> serviceDomain() {
@@ -127,18 +167,107 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
     }
 
     /**
-     * The status of Vpc Endpoint Service.
+     * Service resource type, value:
+     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+     * 
+     */
+    @Import(name="serviceResourceType")
+    private @Nullable Output<String> serviceResourceType;
+
+    /**
+     * @return Service resource type, value:
+     * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+     * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+     * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+     * 
+     */
+    public Optional<Output<String>> serviceResourceType() {
+        return Optional.ofNullable(this.serviceResourceType);
+    }
+
+    /**
+     * Specifies whether to enable IPv6 for the endpoint service. Valid values:
+     * - **true**
+     * - **false (default)**.
+     * 
+     */
+    @Import(name="serviceSupportIpv6")
+    private @Nullable Output<Boolean> serviceSupportIpv6;
+
+    /**
+     * @return Specifies whether to enable IPv6 for the endpoint service. Valid values:
+     * - **true**
+     * - **false (default)**.
+     * 
+     */
+    public Optional<Output<Boolean>> serviceSupportIpv6() {
+        return Optional.ofNullable(this.serviceSupportIpv6);
+    }
+
+    /**
+     * The state of the endpoint service.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of Vpc Endpoint Service.
+     * @return The state of the endpoint service.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * The list of tags.
+     * 
+     */
+    @Import(name="tags")
+    private @Nullable Output<Map<String,Object>> tags;
+
+    /**
+     * @return The list of tags.
+     * 
+     */
+    public Optional<Output<Map<String,Object>>> tags() {
+        return Optional.ofNullable(this.tags);
+    }
+
+    /**
+     * The name of the endpoint service.
+     * 
+     */
+    @Import(name="vpcEndpointServiceName")
+    private @Nullable Output<String> vpcEndpointServiceName;
+
+    /**
+     * @return The name of the endpoint service.
+     * 
+     */
+    public Optional<Output<String>> vpcEndpointServiceName() {
+        return Optional.ofNullable(this.vpcEndpointServiceName);
+    }
+
+    /**
+     * Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+     * - **true**
+     * - **false (default)**.
+     * 
+     */
+    @Import(name="zoneAffinityEnabled")
+    private @Nullable Output<Boolean> zoneAffinityEnabled;
+
+    /**
+     * @return Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+     * - **true**
+     * - **false (default)**.
+     * 
+     */
+    public Optional<Output<Boolean>> zoneAffinityEnabled() {
+        return Optional.ofNullable(this.zoneAffinityEnabled);
     }
 
     private VpcEndpointServiceState() {}
@@ -146,12 +275,19 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
     private VpcEndpointServiceState(VpcEndpointServiceState $) {
         this.autoAcceptConnection = $.autoAcceptConnection;
         this.connectBandwidth = $.connectBandwidth;
+        this.createTime = $.createTime;
         this.dryRun = $.dryRun;
         this.payer = $.payer;
+        this.resourceGroupId = $.resourceGroupId;
         this.serviceBusinessStatus = $.serviceBusinessStatus;
         this.serviceDescription = $.serviceDescription;
         this.serviceDomain = $.serviceDomain;
+        this.serviceResourceType = $.serviceResourceType;
+        this.serviceSupportIpv6 = $.serviceSupportIpv6;
         this.status = $.status;
+        this.tags = $.tags;
+        this.vpcEndpointServiceName = $.vpcEndpointServiceName;
+        this.zoneAffinityEnabled = $.zoneAffinityEnabled;
     }
 
     public static Builder builder() {
@@ -173,7 +309,9 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param autoAcceptConnection Whether to automatically accept terminal node connections.
+         * @param autoAcceptConnection Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+         * - **true**
+         * - **false**.
          * 
          * @return builder
          * 
@@ -184,7 +322,9 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param autoAcceptConnection Whether to automatically accept terminal node connections.
+         * @param autoAcceptConnection Indicates whether the endpoint service automatically accepts endpoint connection requests. Valid values:
+         * - **true**
+         * - **false**.
          * 
          * @return builder
          * 
@@ -194,7 +334,7 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param connectBandwidth The connection bandwidth.
+         * @param connectBandwidth The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
          * 
          * @return builder
          * 
@@ -205,7 +345,7 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param connectBandwidth The connection bandwidth.
+         * @param connectBandwidth The default bandwidth of the endpoint connection. Valid values: 100 to 10240. Unit: Mbit/s.
          * 
          * @return builder
          * 
@@ -215,7 +355,30 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dryRun Whether to pre-check this request only. Default to: `false`
+         * @param createTime The time when the endpoint service was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime The time when the endpoint service was created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request.
+         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -226,7 +389,9 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param dryRun Whether to pre-check this request only. Default to: `false`
+         * @param dryRun Specifies whether to perform only a dry run, without performing the actual request.
+         * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+         * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
          * 
          * @return builder
          * 
@@ -236,7 +401,9 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param payer The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+         * @param payer The payer of the endpoint service. Valid values:
+         * - **Endpoint**: the service consumer.
+         * - **EndpointService**: the service provider.
          * 
          * @return builder
          * 
@@ -247,7 +414,9 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param payer The payer type. Valid Value: `EndpointService`, `Endpoint`. Default to: `Endpoint`.
+         * @param payer The payer of the endpoint service. Valid values:
+         * - **Endpoint**: the service consumer.
+         * - **EndpointService**: the service provider.
          * 
          * @return builder
          * 
@@ -257,7 +426,28 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param serviceBusinessStatus The business status of Vpc Endpoint Service.
+         * @param resourceGroupId The resource group ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The resource group ID.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param serviceBusinessStatus The service state of the endpoint service.
          * 
          * @return builder
          * 
@@ -268,7 +458,7 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param serviceBusinessStatus The business status of Vpc Endpoint Service.
+         * @param serviceBusinessStatus The service state of the endpoint service.
          * 
          * @return builder
          * 
@@ -278,9 +468,7 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param serviceDescription The description of the terminal node service.
-         * 
-         * &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+         * @param serviceDescription The description of the endpoint service.
          * 
          * @return builder
          * 
@@ -291,9 +479,7 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param serviceDescription The description of the terminal node service.
-         * 
-         * &gt; **NOTE:** The `resources` only support load balancing instance with private network type and PrivateLink function.
+         * @param serviceDescription The description of the endpoint service.
          * 
          * @return builder
          * 
@@ -303,7 +489,7 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param serviceDomain Service Domain.
+         * @param serviceDomain The domain name of the endpoint service.
          * 
          * @return builder
          * 
@@ -314,7 +500,7 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param serviceDomain Service Domain.
+         * @param serviceDomain The domain name of the endpoint service.
          * 
          * @return builder
          * 
@@ -324,7 +510,59 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param status The status of Vpc Endpoint Service.
+         * @param serviceResourceType Service resource type, value:
+         * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+         * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+         * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceResourceType(@Nullable Output<String> serviceResourceType) {
+            $.serviceResourceType = serviceResourceType;
+            return this;
+        }
+
+        /**
+         * @param serviceResourceType Service resource type, value:
+         * - **slb**: indicates that the service resource type is Classic Load Balancer (CLB).
+         * - **alb**: indicates that the service resource type is Application Load Balancer (ALB).
+         * - **nlb**: indicates that the service resource type is Network Load Balancer (NLB).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceResourceType(String serviceResourceType) {
+            return serviceResourceType(Output.of(serviceResourceType));
+        }
+
+        /**
+         * @param serviceSupportIpv6 Specifies whether to enable IPv6 for the endpoint service. Valid values:
+         * - **true**
+         * - **false (default)**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceSupportIpv6(@Nullable Output<Boolean> serviceSupportIpv6) {
+            $.serviceSupportIpv6 = serviceSupportIpv6;
+            return this;
+        }
+
+        /**
+         * @param serviceSupportIpv6 Specifies whether to enable IPv6 for the endpoint service. Valid values:
+         * - **true**
+         * - **false (default)**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serviceSupportIpv6(Boolean serviceSupportIpv6) {
+            return serviceSupportIpv6(Output.of(serviceSupportIpv6));
+        }
+
+        /**
+         * @param status The state of the endpoint service.
          * 
          * @return builder
          * 
@@ -335,13 +573,80 @@ public final class VpcEndpointServiceState extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param status The status of Vpc Endpoint Service.
+         * @param status The state of the endpoint service.
          * 
          * @return builder
          * 
          */
         public Builder status(String status) {
             return status(Output.of(status));
+        }
+
+        /**
+         * @param tags The list of tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(@Nullable Output<Map<String,Object>> tags) {
+            $.tags = tags;
+            return this;
+        }
+
+        /**
+         * @param tags The list of tags.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tags(Map<String,Object> tags) {
+            return tags(Output.of(tags));
+        }
+
+        /**
+         * @param vpcEndpointServiceName The name of the endpoint service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcEndpointServiceName(@Nullable Output<String> vpcEndpointServiceName) {
+            $.vpcEndpointServiceName = vpcEndpointServiceName;
+            return this;
+        }
+
+        /**
+         * @param vpcEndpointServiceName The name of the endpoint service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vpcEndpointServiceName(String vpcEndpointServiceName) {
+            return vpcEndpointServiceName(Output.of(vpcEndpointServiceName));
+        }
+
+        /**
+         * @param zoneAffinityEnabled Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+         * - **true**
+         * - **false (default)**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneAffinityEnabled(@Nullable Output<Boolean> zoneAffinityEnabled) {
+            $.zoneAffinityEnabled = zoneAffinityEnabled;
+            return this;
+        }
+
+        /**
+         * @param zoneAffinityEnabled Specifies whether to first resolve the domain name of the nearest endpoint that is associated with the endpoint service. Valid values:
+         * - **true**
+         * - **false (default)**.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zoneAffinityEnabled(Boolean zoneAffinityEnabled) {
+            return zoneAffinityEnabled(Output.of(zoneAffinityEnabled));
         }
 
         public VpcEndpointServiceState build() {

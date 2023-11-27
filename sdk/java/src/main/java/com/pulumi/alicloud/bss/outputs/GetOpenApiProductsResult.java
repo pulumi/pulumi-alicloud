@@ -130,14 +130,14 @@ public final class GetOpenApiProductsResult {
             return products(List.of(products));
         }
         public GetOpenApiProductsResult build() {
-            final var o = new GetOpenApiProductsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.products = products;
-            return o;
+            final var _resultValue = new GetOpenApiProductsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.products = products;
+            return _resultValue;
         }
     }
 }

@@ -88,11 +88,11 @@ public final class InstanceIpWhitelist {
             return this;
         }
         public InstanceIpWhitelist build() {
-            final var o = new InstanceIpWhitelist();
-            o.ipGroupAttribute = ipGroupAttribute;
-            o.ipGroupName = ipGroupName;
-            o.securityIpList = securityIpList;
-            return o;
+            final var _resultValue = new InstanceIpWhitelist();
+            _resultValue.ipGroupAttribute = ipGroupAttribute;
+            _resultValue.ipGroupName = ipGroupName;
+            _resultValue.securityIpList = securityIpList;
+            return _resultValue;
         }
     }
 }

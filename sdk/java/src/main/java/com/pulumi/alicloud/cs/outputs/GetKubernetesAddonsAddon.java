@@ -123,13 +123,13 @@ public final class GetKubernetesAddonsAddon {
             return this;
         }
         public GetKubernetesAddonsAddon build() {
-            final var o = new GetKubernetesAddonsAddon();
-            o.currentConfig = currentConfig;
-            o.currentVersion = currentVersion;
-            o.name = name;
-            o.nextVersion = nextVersion;
-            o.required = required;
-            return o;
+            final var _resultValue = new GetKubernetesAddonsAddon();
+            _resultValue.currentConfig = currentConfig;
+            _resultValue.currentVersion = currentVersion;
+            _resultValue.name = name;
+            _resultValue.nextVersion = nextVersion;
+            _resultValue.required = required;
+            return _resultValue;
         }
     }
 }

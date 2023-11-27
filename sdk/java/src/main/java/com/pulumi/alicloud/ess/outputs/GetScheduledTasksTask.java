@@ -233,20 +233,20 @@ public final class GetScheduledTasksTask {
             return this;
         }
         public GetScheduledTasksTask build() {
-            final var o = new GetScheduledTasksTask();
-            o.description = description;
-            o.id = id;
-            o.launchExpirationTime = launchExpirationTime;
-            o.launchTime = launchTime;
-            o.maxValue = maxValue;
-            o.minValue = minValue;
-            o.name = name;
-            o.recurrenceEndTime = recurrenceEndTime;
-            o.recurrenceType = recurrenceType;
-            o.recurrenceValue = recurrenceValue;
-            o.scheduledAction = scheduledAction;
-            o.taskEnabled = taskEnabled;
-            return o;
+            final var _resultValue = new GetScheduledTasksTask();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.launchExpirationTime = launchExpirationTime;
+            _resultValue.launchTime = launchTime;
+            _resultValue.maxValue = maxValue;
+            _resultValue.minValue = minValue;
+            _resultValue.name = name;
+            _resultValue.recurrenceEndTime = recurrenceEndTime;
+            _resultValue.recurrenceType = recurrenceType;
+            _resultValue.recurrenceValue = recurrenceValue;
+            _resultValue.scheduledAction = scheduledAction;
+            _resultValue.taskEnabled = taskEnabled;
+            return _resultValue;
         }
     }
 }

@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.Cms
         /// The abbreviation of the service name.
         /// </summary>
         [Output("category")]
-        public Output<string> Category { get; private set; } = null!;
+        public Output<string?> Category { get; private set; } = null!;
 
         /// <summary>
         /// Alarm contact group.
@@ -116,7 +116,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string?> EffectiveInterval { get; private set; } = null!;
 
         /// <summary>
-        /// The subject of the alert notification email.                                         .
+        /// The subject of the alert notification email.
         /// </summary>
         [Output("emailSubject")]
         public Output<string> EmailSubject { get; private set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.AliCloud.Cms
         /// The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
         /// </summary>
         [Output("silenceTime")]
-        public Output<int?> SilenceTime { get; private set; } = null!;
+        public Output<int> SilenceTime { get; private set; } = null!;
 
         /// <summary>
         /// The status of Group Metric Rule.
@@ -248,8 +248,8 @@ namespace Pulumi.AliCloud.Cms
         /// <summary>
         /// The abbreviation of the service name.
         /// </summary>
-        [Input("category", required: true)]
-        public Input<string> Category { get; set; } = null!;
+        [Input("category")]
+        public Input<string>? Category { get; set; }
 
         /// <summary>
         /// Alarm contact group.
@@ -270,7 +270,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? EffectiveInterval { get; set; }
 
         /// <summary>
-        /// The subject of the alert notification email.                                         .
+        /// The subject of the alert notification email.
         /// </summary>
         [Input("emailSubject")]
         public Input<string>? EmailSubject { get; set; }
@@ -386,7 +386,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? EffectiveInterval { get; set; }
 
         /// <summary>
-        /// The subject of the alert notification email.                                         .
+        /// The subject of the alert notification email.
         /// </summary>
         [Input("emailSubject")]
         public Input<string>? EmailSubject { get; set; }

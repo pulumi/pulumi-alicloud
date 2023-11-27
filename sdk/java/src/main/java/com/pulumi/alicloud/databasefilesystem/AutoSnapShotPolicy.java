@@ -72,7 +72,7 @@ public class AutoSnapShotPolicy extends com.pulumi.resources.CustomResource {
      * The number of database file systems set by the automatic snapshot policy.
      * 
      */
-    @Export(name="appliedDbfsNumber", type=Integer.class, parameters={})
+    @Export(name="appliedDbfsNumber", refs={Integer.class}, tree="[0]")
     private Output<Integer> appliedDbfsNumber;
 
     /**
@@ -86,7 +86,7 @@ public class AutoSnapShotPolicy extends com.pulumi.resources.CustomResource {
      * The creation time of the resource
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -100,7 +100,7 @@ public class AutoSnapShotPolicy extends com.pulumi.resources.CustomResource {
      * Last modification time of automatic snapshot policy
      * 
      */
-    @Export(name="lastModified", type=String.class, parameters={})
+    @Export(name="lastModified", refs={String.class}, tree="[0]")
     private Output<String> lastModified;
 
     /**
@@ -114,7 +114,7 @@ public class AutoSnapShotPolicy extends com.pulumi.resources.CustomResource {
      * Automatic snapshot policy ID
      * 
      */
-    @Export(name="policyId", type=String.class, parameters={})
+    @Export(name="policyId", refs={String.class}, tree="[0]")
     private Output<String> policyId;
 
     /**
@@ -128,7 +128,7 @@ public class AutoSnapShotPolicy extends com.pulumi.resources.CustomResource {
      * Automatic snapshot policy name
      * 
      */
-    @Export(name="policyName", type=String.class, parameters={})
+    @Export(name="policyName", refs={String.class}, tree="[0]")
     private Output<String> policyName;
 
     /**
@@ -142,7 +142,7 @@ public class AutoSnapShotPolicy extends com.pulumi.resources.CustomResource {
      * A collection of automatic snapshots performed on several days of the week. Value range: 1~7, for example, `1` means Monday.
      * 
      */
-    @Export(name="repeatWeekdays", type=List.class, parameters={String.class})
+    @Export(name="repeatWeekdays", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> repeatWeekdays;
 
     /**
@@ -156,7 +156,7 @@ public class AutoSnapShotPolicy extends com.pulumi.resources.CustomResource {
      * Automatic snapshot retention days.
      * 
      */
-    @Export(name="retentionDays", type=Integer.class, parameters={})
+    @Export(name="retentionDays", refs={Integer.class}, tree="[0]")
     private Output<Integer> retentionDays;
 
     /**
@@ -170,7 +170,7 @@ public class AutoSnapShotPolicy extends com.pulumi.resources.CustomResource {
      * Automatic snapshot policy status
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -184,7 +184,7 @@ public class AutoSnapShotPolicy extends com.pulumi.resources.CustomResource {
      * Automatic snapshot policy status details
      * 
      */
-    @Export(name="statusDetail", type=String.class, parameters={})
+    @Export(name="statusDetail", refs={String.class}, tree="[0]")
     private Output<String> statusDetail;
 
     /**
@@ -198,7 +198,7 @@ public class AutoSnapShotPolicy extends com.pulumi.resources.CustomResource {
      * The set of times at which the snapshot is taken on the day the automatic snapshot is executed. Value range: `00` to `23`, representing 24 time points from 00:00 to 23:00, for example, `01` indicates 01:00.
      * 
      */
-    @Export(name="timePoints", type=List.class, parameters={String.class})
+    @Export(name="timePoints", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> timePoints;
 
     /**

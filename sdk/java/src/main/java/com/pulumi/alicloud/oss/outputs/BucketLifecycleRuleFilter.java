@@ -87,11 +87,11 @@ public final class BucketLifecycleRuleFilter {
             return this;
         }
         public BucketLifecycleRuleFilter build() {
-            final var o = new BucketLifecycleRuleFilter();
-            o.not = not;
-            o.objectSizeGreaterThan = objectSizeGreaterThan;
-            o.objectSizeLessThan = objectSizeLessThan;
-            return o;
+            final var _resultValue = new BucketLifecycleRuleFilter();
+            _resultValue.not = not;
+            _resultValue.objectSizeGreaterThan = objectSizeGreaterThan;
+            _resultValue.objectSizeLessThan = objectSizeLessThan;
+            return _resultValue;
         }
     }
 }

@@ -198,17 +198,17 @@ public final class GetGatewayVpnAttachmentsAttachmentIkeConfig {
             return this;
         }
         public GetGatewayVpnAttachmentsAttachmentIkeConfig build() {
-            final var o = new GetGatewayVpnAttachmentsAttachmentIkeConfig();
-            o.ikeAuthAlg = ikeAuthAlg;
-            o.ikeEncAlg = ikeEncAlg;
-            o.ikeLifetime = ikeLifetime;
-            o.ikeMode = ikeMode;
-            o.ikePfs = ikePfs;
-            o.ikeVersion = ikeVersion;
-            o.localId = localId;
-            o.psk = psk;
-            o.remoteId = remoteId;
-            return o;
+            final var _resultValue = new GetGatewayVpnAttachmentsAttachmentIkeConfig();
+            _resultValue.ikeAuthAlg = ikeAuthAlg;
+            _resultValue.ikeEncAlg = ikeEncAlg;
+            _resultValue.ikeLifetime = ikeLifetime;
+            _resultValue.ikeMode = ikeMode;
+            _resultValue.ikePfs = ikePfs;
+            _resultValue.ikeVersion = ikeVersion;
+            _resultValue.localId = localId;
+            _resultValue.psk = psk;
+            _resultValue.remoteId = remoteId;
+            return _resultValue;
         }
     }
 }

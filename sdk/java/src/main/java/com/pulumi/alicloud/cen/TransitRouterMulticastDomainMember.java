@@ -37,7 +37,7 @@ public class TransitRouterMulticastDomainMember extends com.pulumi.resources.Cus
      * Specifies whether only to precheck the request.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -51,7 +51,7 @@ public class TransitRouterMulticastDomainMember extends com.pulumi.resources.Cus
      * The IP address of the multicast group to which the multicast member belongs. If the multicast group you specified does not exist in the current multicast domain, the system will automatically create a new multicast group for you in the current multicast domain.
      * 
      */
-    @Export(name="groupIpAddress", type=String.class, parameters={})
+    @Export(name="groupIpAddress", refs={String.class}, tree="[0]")
     private Output<String> groupIpAddress;
 
     /**
@@ -65,7 +65,7 @@ public class TransitRouterMulticastDomainMember extends com.pulumi.resources.Cus
      * The ID of the ENI.
      * 
      */
-    @Export(name="networkInterfaceId", type=String.class, parameters={})
+    @Export(name="networkInterfaceId", refs={String.class}, tree="[0]")
     private Output<String> networkInterfaceId;
 
     /**
@@ -79,7 +79,7 @@ public class TransitRouterMulticastDomainMember extends com.pulumi.resources.Cus
      * The status of the resource
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -93,7 +93,7 @@ public class TransitRouterMulticastDomainMember extends com.pulumi.resources.Cus
      * The ID of the multicast domain to which the multicast member belongs.
      * 
      */
-    @Export(name="transitRouterMulticastDomainId", type=String.class, parameters={})
+    @Export(name="transitRouterMulticastDomainId", refs={String.class}, tree="[0]")
     private Output<String> transitRouterMulticastDomainId;
 
     /**
@@ -107,7 +107,7 @@ public class TransitRouterMulticastDomainMember extends com.pulumi.resources.Cus
      * The VPC to which the ENI of the multicast member belongs. This field is mandatory for VPCs owned by another accounts.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vpcId;
 
     /**

@@ -180,16 +180,16 @@ public final class GetControlPoliciesPolicy {
             return this;
         }
         public GetControlPoliciesPolicy build() {
-            final var o = new GetControlPoliciesPolicy();
-            o.attachmentCount = attachmentCount;
-            o.controlPolicyName = controlPolicyName;
-            o.description = description;
-            o.effectScope = effectScope;
-            o.id = id;
-            o.policyDocument = policyDocument;
-            o.policyId = policyId;
-            o.policyType = policyType;
-            return o;
+            final var _resultValue = new GetControlPoliciesPolicy();
+            _resultValue.attachmentCount = attachmentCount;
+            _resultValue.controlPolicyName = controlPolicyName;
+            _resultValue.description = description;
+            _resultValue.effectScope = effectScope;
+            _resultValue.id = id;
+            _resultValue.policyDocument = policyDocument;
+            _resultValue.policyId = policyId;
+            _resultValue.policyType = policyType;
+            return _resultValue;
         }
     }
 }

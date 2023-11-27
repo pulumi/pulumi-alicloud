@@ -165,15 +165,15 @@ public final class GetCommandsCommand {
             return this;
         }
         public GetCommandsCommand build() {
-            final var o = new GetCommandsCommand();
-            o.commandContent = commandContent;
-            o.commandType = commandType;
-            o.createTime = createTime;
-            o.id = id;
-            o.invokeDesktops = invokeDesktops;
-            o.invokeId = invokeId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetCommandsCommand();
+            _resultValue.commandContent = commandContent;
+            _resultValue.commandType = commandType;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.invokeDesktops = invokeDesktops;
+            _resultValue.invokeId = invokeId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

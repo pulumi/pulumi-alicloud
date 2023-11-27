@@ -161,16 +161,16 @@ public final class GetKubernetesClustersResult {
             return this;
         }
         public GetKubernetesClustersResult build() {
-            final var o = new GetKubernetesClustersResult();
-            o.clusters = clusters;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.kubeConfigFilePrefix = kubeConfigFilePrefix;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetKubernetesClustersResult();
+            _resultValue.clusters = clusters;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.kubeConfigFilePrefix = kubeConfigFilePrefix;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

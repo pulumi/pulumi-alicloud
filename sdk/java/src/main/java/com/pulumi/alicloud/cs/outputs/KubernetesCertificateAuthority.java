@@ -86,11 +86,11 @@ public final class KubernetesCertificateAuthority {
             return this;
         }
         public KubernetesCertificateAuthority build() {
-            final var o = new KubernetesCertificateAuthority();
-            o.clientCert = clientCert;
-            o.clientKey = clientKey;
-            o.clusterCert = clusterCert;
-            return o;
+            final var _resultValue = new KubernetesCertificateAuthority();
+            _resultValue.clientCert = clientCert;
+            _resultValue.clientKey = clientKey;
+            _resultValue.clusterCert = clusterCert;
+            return _resultValue;
         }
     }
 }

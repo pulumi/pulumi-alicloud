@@ -142,15 +142,15 @@ public final class GetSamlProvidersResult {
             return providers(List.of(providers));
         }
         public GetSamlProvidersResult build() {
-            final var o = new GetSamlProvidersResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.providers = providers;
-            return o;
+            final var _resultValue = new GetSamlProvidersResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.providers = providers;
+            return _resultValue;
         }
     }
 }

@@ -37,7 +37,7 @@ public class K8sSlbAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the EDAS k8s application to which you want to bind SLB instances.
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -51,7 +51,7 @@ public class K8sSlbAttachment extends com.pulumi.resources.CustomResource {
      * The configurations of SLB attachment, which is supported for multiple configurations. See `slb_configs` below.
      * 
      */
-    @Export(name="slbConfigs", type=List.class, parameters={K8sSlbAttachmentSlbConfig.class})
+    @Export(name="slbConfigs", refs={List.class,K8sSlbAttachmentSlbConfig.class}, tree="[0,1]")
     private Output<List<K8sSlbAttachmentSlbConfig>> slbConfigs;
 
     /**

@@ -171,19 +171,19 @@ public final class GetBackupPlansResult {
             return this;
         }
         public GetBackupPlansResult build() {
-            final var o = new GetBackupPlansResult();
-            o.backupPlanName = backupPlanName;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.plans = plans;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBackupPlansResult();
+            _resultValue.backupPlanName = backupPlanName;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.plans = plans;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

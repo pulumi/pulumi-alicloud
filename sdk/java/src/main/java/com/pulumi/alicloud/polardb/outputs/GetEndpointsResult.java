@@ -102,12 +102,12 @@ public final class GetEndpointsResult {
             return this;
         }
         public GetEndpointsResult build() {
-            final var o = new GetEndpointsResult();
-            o.dbClusterId = dbClusterId;
-            o.dbEndpointId = dbEndpointId;
-            o.endpoints = endpoints;
-            o.id = id;
-            return o;
+            final var _resultValue = new GetEndpointsResult();
+            _resultValue.dbClusterId = dbClusterId;
+            _resultValue.dbEndpointId = dbEndpointId;
+            _resultValue.endpoints = endpoints;
+            _resultValue.id = id;
+            return _resultValue;
         }
     }
 }

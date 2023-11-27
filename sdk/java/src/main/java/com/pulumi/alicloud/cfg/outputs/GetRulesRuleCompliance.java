@@ -66,10 +66,10 @@ public final class GetRulesRuleCompliance {
             return this;
         }
         public GetRulesRuleCompliance build() {
-            final var o = new GetRulesRuleCompliance();
-            o.complianceType = complianceType;
-            o.count = count;
-            return o;
+            final var _resultValue = new GetRulesRuleCompliance();
+            _resultValue.complianceType = complianceType;
+            _resultValue.count = count;
+            return _resultValue;
         }
     }
 }

@@ -73,7 +73,7 @@ public class Backend extends com.pulumi.resources.CustomResource {
      * The name of the Backend.
      * 
      */
-    @Export(name="backendName", type=String.class, parameters={})
+    @Export(name="backendName", refs={String.class}, tree="[0]")
     private Output<String> backendName;
 
     /**
@@ -87,7 +87,7 @@ public class Backend extends com.pulumi.resources.CustomResource {
      * The type of the Backend. Valid values: `HTTP`, `VPC`, `FC_EVENT`, `FC_HTTP`, `OSS`, `MOCK`.
      * 
      */
-    @Export(name="backendType", type=String.class, parameters={})
+    @Export(name="backendType", refs={String.class}, tree="[0]")
     private Output<String> backendType;
 
     /**
@@ -101,7 +101,7 @@ public class Backend extends com.pulumi.resources.CustomResource {
      * Whether to create an Event bus service association role.
      * 
      */
-    @Export(name="createEventBridgeServiceLinkedRole", type=Boolean.class, parameters={})
+    @Export(name="createEventBridgeServiceLinkedRole", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> createEventBridgeServiceLinkedRole;
 
     /**
@@ -115,7 +115,7 @@ public class Backend extends com.pulumi.resources.CustomResource {
      * The description of the Backend.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**

@@ -38,7 +38,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * the description of gateway.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -52,7 +52,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * the gateway class. the valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`
      * 
      */
-    @Export(name="gatewayClass", type=String.class, parameters={})
+    @Export(name="gatewayClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gatewayClass;
 
     /**
@@ -66,7 +66,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * the name of gateway.
      * 
      */
-    @Export(name="gatewayName", type=String.class, parameters={})
+    @Export(name="gatewayName", refs={String.class}, tree="[0]")
     private Output<String> gatewayName;
 
     /**
@@ -80,7 +80,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * gateway location. the valid values: `Cloud`, `On_Premise`.
      * 
      */
-    @Export(name="location", type=String.class, parameters={})
+    @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
@@ -94,7 +94,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The Payment type of gateway. The valid value: `PayAsYouGo`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentType;
 
     /**
@@ -108,7 +108,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The public network bandwidth of gateway. Valid values between `5` and `200`. Defaults to `5`.
      * 
      */
-    @Export(name="publicNetworkBandwidth", type=Integer.class, parameters={})
+    @Export(name="publicNetworkBandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> publicNetworkBandwidth;
 
     /**
@@ -122,7 +122,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The reason detail of gateway.
      * 
      */
-    @Export(name="reasonDetail", type=String.class, parameters={})
+    @Export(name="reasonDetail", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> reasonDetail;
 
     /**
@@ -136,7 +136,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The reason type when user deletes the gateway.
      * 
      */
-    @Export(name="reasonType", type=String.class, parameters={})
+    @Export(name="reasonType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> reasonType;
 
     /**
@@ -150,7 +150,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Whether to release the gateway due to expiration.
      * 
      */
-    @Export(name="releaseAfterExpiration", type=Boolean.class, parameters={})
+    @Export(name="releaseAfterExpiration", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> releaseAfterExpiration;
 
     /**
@@ -164,7 +164,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * gateway status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -178,7 +178,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * storage bundle id.
      * 
      */
-    @Export(name="storageBundleId", type=String.class, parameters={})
+    @Export(name="storageBundleId", refs={String.class}, tree="[0]")
     private Output<String> storageBundleId;
 
     /**
@@ -192,7 +192,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * gateway type. the valid values: `Type`, `Iscsi`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -206,7 +206,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * The vswitch id of gateway.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**

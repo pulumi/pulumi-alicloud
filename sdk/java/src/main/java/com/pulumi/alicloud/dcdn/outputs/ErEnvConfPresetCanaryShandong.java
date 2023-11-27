@@ -90,11 +90,11 @@ public final class ErEnvConfPresetCanaryShandong {
             return this;
         }
         public ErEnvConfPresetCanaryShandong build() {
-            final var o = new ErEnvConfPresetCanaryShandong();
-            o.allowedHosts = allowedHosts;
-            o.codeRev = codeRev;
-            o.specName = specName;
-            return o;
+            final var _resultValue = new ErEnvConfPresetCanaryShandong();
+            _resultValue.allowedHosts = allowedHosts;
+            _resultValue.codeRev = codeRev;
+            _resultValue.specName = specName;
+            return _resultValue;
         }
     }
 }

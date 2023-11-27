@@ -146,17 +146,17 @@ public final class GetDesktopTypesResult {
             return types(List.of(types));
         }
         public GetDesktopTypesResult build() {
-            final var o = new GetDesktopTypesResult();
-            o.cpuCount = cpuCount;
-            o.gpuCount = gpuCount;
-            o.id = id;
-            o.ids = ids;
-            o.instanceTypeFamily = instanceTypeFamily;
-            o.memorySize = memorySize;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.types = types;
-            return o;
+            final var _resultValue = new GetDesktopTypesResult();
+            _resultValue.cpuCount = cpuCount;
+            _resultValue.gpuCount = gpuCount;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceTypeFamily = instanceTypeFamily;
+            _resultValue.memorySize = memorySize;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.types = types;
+            return _resultValue;
         }
     }
 }

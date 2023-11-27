@@ -160,15 +160,15 @@ public final class GetPortfoliosPortfolio {
             return this;
         }
         public GetPortfoliosPortfolio build() {
-            final var o = new GetPortfoliosPortfolio();
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.portfolioArn = portfolioArn;
-            o.portfolioId = portfolioId;
-            o.portfolioName = portfolioName;
-            o.providerName = providerName;
-            return o;
+            final var _resultValue = new GetPortfoliosPortfolio();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.portfolioArn = portfolioArn;
+            _resultValue.portfolioId = portfolioId;
+            _resultValue.portfolioName = portfolioName;
+            _resultValue.providerName = providerName;
+            return _resultValue;
         }
     }
 }

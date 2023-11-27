@@ -84,7 +84,7 @@ public class BasicDefenseThreshold extends com.pulumi.resources.CustomResource {
      * Specifies the traffic scrubbing threshold. Unit: Mbit/s. The traffic scrubbing threshold cannot exceed the peak inbound or outbound Internet traffic, whichever is larger, of the asset.
      * 
      */
-    @Export(name="bps", type=Integer.class, parameters={})
+    @Export(name="bps", refs={Integer.class}, tree="[0]")
     private Output<Integer> bps;
 
     /**
@@ -98,7 +98,7 @@ public class BasicDefenseThreshold extends com.pulumi.resources.CustomResource {
      * The type of the threshold to query. Valid values: `defense`,`blackhole`.
      * 
      */
-    @Export(name="ddosType", type=String.class, parameters={})
+    @Export(name="ddosType", refs={String.class}, tree="[0]")
     private Output<String> ddosType;
 
     /**
@@ -112,7 +112,7 @@ public class BasicDefenseThreshold extends com.pulumi.resources.CustomResource {
      * The ID of the instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -126,7 +126,7 @@ public class BasicDefenseThreshold extends com.pulumi.resources.CustomResource {
      * The instance type of the public IP address asset. Value: `ecs`,`slb`,`eip`.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -140,7 +140,7 @@ public class BasicDefenseThreshold extends com.pulumi.resources.CustomResource {
      * The Internet IP address.
      * 
      */
-    @Export(name="internetIp", type=String.class, parameters={})
+    @Export(name="internetIp", refs={String.class}, tree="[0]")
     private Output<String> internetIp;
 
     /**
@@ -154,7 +154,7 @@ public class BasicDefenseThreshold extends com.pulumi.resources.CustomResource {
      * Whether it is the system default threshold. Value:
      * 
      */
-    @Export(name="isAuto", type=Boolean.class, parameters={})
+    @Export(name="isAuto", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isAuto;
 
     /**
@@ -168,7 +168,7 @@ public class BasicDefenseThreshold extends com.pulumi.resources.CustomResource {
      * The maximum traffic scrubbing threshold. Unit: Mbit/s.
      * 
      */
-    @Export(name="maxBps", type=Integer.class, parameters={})
+    @Export(name="maxBps", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxBps;
 
     /**
@@ -182,7 +182,7 @@ public class BasicDefenseThreshold extends com.pulumi.resources.CustomResource {
      * The maximum packet scrubbing threshold. Unit: pps.
      * 
      */
-    @Export(name="maxPps", type=Integer.class, parameters={})
+    @Export(name="maxPps", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxPps;
 
     /**
@@ -196,7 +196,7 @@ public class BasicDefenseThreshold extends com.pulumi.resources.CustomResource {
      * The current message number cleaning threshold. Unit: pps.
      * 
      */
-    @Export(name="pps", type=Integer.class, parameters={})
+    @Export(name="pps", refs={Integer.class}, tree="[0]")
     private Output<Integer> pps;
 
     /**

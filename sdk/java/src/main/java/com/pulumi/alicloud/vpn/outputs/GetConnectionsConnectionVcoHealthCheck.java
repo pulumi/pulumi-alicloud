@@ -144,14 +144,14 @@ public final class GetConnectionsConnectionVcoHealthCheck {
             return this;
         }
         public GetConnectionsConnectionVcoHealthCheck build() {
-            final var o = new GetConnectionsConnectionVcoHealthCheck();
-            o.dip = dip;
-            o.enable = enable;
-            o.interval = interval;
-            o.retry = retry;
-            o.sip = sip;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetConnectionsConnectionVcoHealthCheck();
+            _resultValue.dip = dip;
+            _resultValue.enable = enable;
+            _resultValue.interval = interval;
+            _resultValue.retry = retry;
+            _resultValue.sip = sip;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

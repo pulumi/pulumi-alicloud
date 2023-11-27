@@ -103,12 +103,12 @@ public final class GetSystemGroupsGroupStat {
             return this;
         }
         public GetSystemGroupsGroupStat build() {
-            final var o = new GetSystemGroupsGroupStat();
-            o.deviceNum = deviceNum;
-            o.iedNum = iedNum;
-            o.ipcNum = ipcNum;
-            o.platformNum = platformNum;
-            return o;
+            final var _resultValue = new GetSystemGroupsGroupStat();
+            _resultValue.deviceNum = deviceNum;
+            _resultValue.iedNum = iedNum;
+            _resultValue.ipcNum = ipcNum;
+            _resultValue.platformNum = platformNum;
+            return _resultValue;
         }
     }
 }

@@ -136,16 +136,16 @@ public final class GetAccountsResult {
             return this;
         }
         public GetAccountsResult build() {
-            final var o = new GetAccountsResult();
-            o.accounts = accounts;
-            o.dbClusterId = dbClusterId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAccountsResult();
+            _resultValue.accounts = accounts;
+            _resultValue.dbClusterId = dbClusterId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

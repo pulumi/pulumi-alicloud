@@ -98,7 +98,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * **Notes:** Currently `life_cycle` can not be modified and it will be supported in the next future.
      * 
      */
-    @Export(name="comment", type=String.class, parameters={})
+    @Export(name="comment", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comment;
 
     /**
@@ -114,7 +114,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * Create time of the datahub topic. It is a human-readable string rather than 64-bits UTC.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -128,7 +128,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * Last modify time of the datahub topic. It is the same as *create_time* at the beginning. It is also a human-readable string rather than 64-bits UTC.
      * 
      */
-    @Export(name="lastModifyTime", type=String.class, parameters={})
+    @Export(name="lastModifyTime", refs={String.class}, tree="[0]")
     private Output<String> lastModifyTime;
 
     /**
@@ -142,7 +142,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * How many days this topic lives. The permitted range of values is [1, 7]. The default value is 3.
      * 
      */
-    @Export(name="lifeCycle", type=Integer.class, parameters={})
+    @Export(name="lifeCycle", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> lifeCycle;
 
     /**
@@ -156,7 +156,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * The name of the datahub topic. Its length is limited to 1-128 and only characters such as letters, digits and &#39;_&#39; are allowed. It is case-insensitive.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -170,7 +170,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * The name of the datahub project that this topic belongs to. It is case-insensitive.
      * 
      */
-    @Export(name="projectName", type=String.class, parameters={})
+    @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
@@ -189,7 +189,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * - TIMESTAMP
      * 
      */
-    @Export(name="recordSchema", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="recordSchema", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> recordSchema;
 
     /**
@@ -208,7 +208,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * The type of this topic. Its value must be one of {BLOB, TUPLE}. For BLOB topic, data will be organized as binary and encoded by BASE64. For TUPLE topic, data has fixed schema. The default value is &#34;TUPLE&#34; with a schema {STRING}.
      * 
      */
-    @Export(name="recordType", type=String.class, parameters={})
+    @Export(name="recordType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> recordType;
 
     /**
@@ -222,7 +222,7 @@ public class Topic extends com.pulumi.resources.CustomResource {
      * The number of shards this topic contains. The permitted range of values is [1, 10]. The default value is 1.
      * 
      */
-    @Export(name="shardCount", type=Integer.class, parameters={})
+    @Export(name="shardCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> shardCount;
 
     /**

@@ -180,16 +180,16 @@ public final class GetAccessGroupsGroup {
             return this;
         }
         public GetAccessGroupsGroup build() {
-            final var o = new GetAccessGroupsGroup();
-            o.accessGroupId = accessGroupId;
-            o.accessGroupName = accessGroupName;
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.mountPointCount = mountPointCount;
-            o.networkType = networkType;
-            o.ruleCount = ruleCount;
-            return o;
+            final var _resultValue = new GetAccessGroupsGroup();
+            _resultValue.accessGroupId = accessGroupId;
+            _resultValue.accessGroupName = accessGroupName;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.mountPointCount = mountPointCount;
+            _resultValue.networkType = networkType;
+            _resultValue.ruleCount = ruleCount;
+            return _resultValue;
         }
     }
 }

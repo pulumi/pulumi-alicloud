@@ -134,7 +134,7 @@ public class LoadBalancerSecurityGroupAttachment extends com.pulumi.resources.Cu
      * Whether to PreCheck this request only. Value:-**true**: sends a check request and does not bind a security group to the instance. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.-**false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly performs the operation.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -148,7 +148,7 @@ public class LoadBalancerSecurityGroupAttachment extends com.pulumi.resources.Cu
      * The ID of the network-based server load balancer instance to be bound to the security group.
      * 
      */
-    @Export(name="loadBalancerId", type=String.class, parameters={})
+    @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
@@ -162,7 +162,7 @@ public class LoadBalancerSecurityGroupAttachment extends com.pulumi.resources.Cu
      * The ID of security groups.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**

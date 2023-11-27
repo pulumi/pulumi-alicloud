@@ -50,9 +50,9 @@ public final class GetDedicatedHostGroupsGroupZoneIdList {
             return zoneIdLists(List.of(zoneIdLists));
         }
         public GetDedicatedHostGroupsGroupZoneIdList build() {
-            final var o = new GetDedicatedHostGroupsGroupZoneIdList();
-            o.zoneIdLists = zoneIdLists;
-            return o;
+            final var _resultValue = new GetDedicatedHostGroupsGroupZoneIdList();
+            _resultValue.zoneIdLists = zoneIdLists;
+            return _resultValue;
         }
     }
 }

@@ -70,10 +70,10 @@ public final class GetBucketsBucketRefererConfig {
             return referers(List.of(referers));
         }
         public GetBucketsBucketRefererConfig build() {
-            final var o = new GetBucketsBucketRefererConfig();
-            o.allowEmpty = allowEmpty;
-            o.referers = referers;
-            return o;
+            final var _resultValue = new GetBucketsBucketRefererConfig();
+            _resultValue.allowEmpty = allowEmpty;
+            _resultValue.referers = referers;
+            return _resultValue;
         }
     }
 }

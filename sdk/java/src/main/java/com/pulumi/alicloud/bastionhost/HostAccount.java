@@ -127,7 +127,7 @@ public class HostAccount extends com.pulumi.resources.CustomResource {
      * Hosting account ID.
      * 
      */
-    @Export(name="hostAccountId", type=String.class, parameters={})
+    @Export(name="hostAccountId", refs={String.class}, tree="[0]")
     private Output<String> hostAccountId;
 
     /**
@@ -141,7 +141,7 @@ public class HostAccount extends com.pulumi.resources.CustomResource {
      * The name of the host account. The name can be up to 128 characters in length.
      * 
      */
-    @Export(name="hostAccountName", type=String.class, parameters={})
+    @Export(name="hostAccountName", refs={String.class}, tree="[0]")
     private Output<String> hostAccountName;
 
     /**
@@ -155,7 +155,7 @@ public class HostAccount extends com.pulumi.resources.CustomResource {
      * The ID of the host for which you want to create an account.
      * 
      */
-    @Export(name="hostId", type=String.class, parameters={})
+    @Export(name="hostId", refs={String.class}, tree="[0]")
     private Output<String> hostId;
 
     /**
@@ -169,7 +169,7 @@ public class HostAccount extends com.pulumi.resources.CustomResource {
      * The ID of the Bastionhost instance where you want to create an account for the host.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -183,7 +183,7 @@ public class HostAccount extends com.pulumi.resources.CustomResource {
      * The passphrase of the private key for the host account. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`.
      * 
      */
-    @Export(name="passPhrase", type=String.class, parameters={})
+    @Export(name="passPhrase", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> passPhrase;
 
     /**
@@ -197,7 +197,7 @@ public class HostAccount extends com.pulumi.resources.CustomResource {
      * The password of the host account.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -211,7 +211,7 @@ public class HostAccount extends com.pulumi.resources.CustomResource {
      * The private key of the host account. The value is a Base64-encoded string. **NOTE:** It is valid when the attribute `protocol_name` is `SSH`
      * 
      */
-    @Export(name="privateKey", type=String.class, parameters={})
+    @Export(name="privateKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privateKey;
 
     /**
@@ -225,7 +225,7 @@ public class HostAccount extends com.pulumi.resources.CustomResource {
      * The protocol used by the host account. Valid values: SSH,RDP
      * 
      */
-    @Export(name="protocolName", type=String.class, parameters={})
+    @Export(name="protocolName", refs={String.class}, tree="[0]")
     private Output<String> protocolName;
 
     /**

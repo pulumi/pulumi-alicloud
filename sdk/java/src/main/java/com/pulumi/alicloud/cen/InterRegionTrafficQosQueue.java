@@ -159,7 +159,7 @@ public class InterRegionTrafficQosQueue extends com.pulumi.resources.CustomResou
      * The DSCP value of the traffic packet to be matched in the current queue, ranging from 0 to 63.
      * 
      */
-    @Export(name="dscps", type=List.class, parameters={String.class})
+    @Export(name="dscps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dscps;
 
     /**
@@ -173,7 +173,7 @@ public class InterRegionTrafficQosQueue extends com.pulumi.resources.CustomResou
      * The description information of the traffic scheduling policy.
      * 
      */
-    @Export(name="interRegionTrafficQosQueueDescription", type=String.class, parameters={})
+    @Export(name="interRegionTrafficQosQueueDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> interRegionTrafficQosQueueDescription;
 
     /**
@@ -187,7 +187,7 @@ public class InterRegionTrafficQosQueue extends com.pulumi.resources.CustomResou
      * The name of the traffic scheduling policy.
      * 
      */
-    @Export(name="interRegionTrafficQosQueueName", type=String.class, parameters={})
+    @Export(name="interRegionTrafficQosQueueName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> interRegionTrafficQosQueueName;
 
     /**
@@ -201,7 +201,7 @@ public class InterRegionTrafficQosQueue extends com.pulumi.resources.CustomResou
      * The percentage of cross-region bandwidth that the current queue can use.
      * 
      */
-    @Export(name="remainBandwidthPercent", type=Integer.class, parameters={})
+    @Export(name="remainBandwidthPercent", refs={Integer.class}, tree="[0]")
     private Output<Integer> remainBandwidthPercent;
 
     /**
@@ -215,7 +215,7 @@ public class InterRegionTrafficQosQueue extends com.pulumi.resources.CustomResou
      * The status of the traffic scheduling policy. -**Creating**: The function is being created.-**Active**: available.-**Modifying**: is being modified.-**Deleting**: Deleted.-**Deleted**: Deleted.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -229,7 +229,7 @@ public class InterRegionTrafficQosQueue extends com.pulumi.resources.CustomResou
      * The ID of the traffic scheduling policy.
      * 
      */
-    @Export(name="trafficQosPolicyId", type=String.class, parameters={})
+    @Export(name="trafficQosPolicyId", refs={String.class}, tree="[0]")
     private Output<String> trafficQosPolicyId;
 
     /**

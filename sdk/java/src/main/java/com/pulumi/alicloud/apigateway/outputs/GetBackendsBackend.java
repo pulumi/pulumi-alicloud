@@ -152,15 +152,15 @@ public final class GetBackendsBackend {
             return this;
         }
         public GetBackendsBackend build() {
-            final var o = new GetBackendsBackend();
-            o.backendId = backendId;
-            o.backendName = backendName;
-            o.backendType = backendType;
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.modifiedTime = modifiedTime;
-            return o;
+            final var _resultValue = new GetBackendsBackend();
+            _resultValue.backendId = backendId;
+            _resultValue.backendName = backendName;
+            _resultValue.backendType = backendType;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.modifiedTime = modifiedTime;
+            return _resultValue;
         }
     }
 }

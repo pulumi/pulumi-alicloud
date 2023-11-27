@@ -179,16 +179,16 @@ public final class GetChartRepositoriesRepository {
             return this;
         }
         public GetChartRepositoriesRepository build() {
-            final var o = new GetChartRepositoriesRepository();
-            o.chartRepositoryId = chartRepositoryId;
-            o.createTime = createTime;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.repoName = repoName;
-            o.repoNamespaceName = repoNamespaceName;
-            o.repoType = repoType;
-            o.summary = summary;
-            return o;
+            final var _resultValue = new GetChartRepositoriesRepository();
+            _resultValue.chartRepositoryId = chartRepositoryId;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.repoName = repoName;
+            _resultValue.repoNamespaceName = repoNamespaceName;
+            _resultValue.repoType = repoType;
+            _resultValue.summary = summary;
+            return _resultValue;
         }
     }
 }

@@ -14,54 +14,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// <summary>
         /// This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.ServiceMesh.GetServiceMeshes.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.ServiceMesh.GetServiceMeshes.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-ServiceMesh",
-        ///     });
-        /// 
-        ///     var status = AliCloud.ServiceMesh.GetServiceMeshes.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         Status = "running",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["serviceMeshServiceMeshId1"] = ids.Apply(getServiceMeshesResult =&gt; getServiceMeshesResult.Meshes[0]?.Id),
-        ///         ["serviceMeshServiceMeshId2"] = nameRegex.Apply(getServiceMeshesResult =&gt; getServiceMeshesResult.Meshes[0]?.Id),
-        ///         ["serviceMeshServiceMeshId3"] = status.Apply(getServiceMeshesResult =&gt; getServiceMeshesResult.Meshes[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// </summary>
         public static Task<GetServiceMeshesResult> InvokeAsync(GetServiceMeshesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceMeshesResult>("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", args ?? new GetServiceMeshesArgs(), options.WithDefaults());
@@ -69,54 +22,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// <summary>
         /// This data source provides the Service Mesh Service Meshes of the current Alibaba Cloud user.
         /// 
-        /// &gt; **NOTE:** Available in v1.138.0+.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// Basic Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var ids = AliCloud.ServiceMesh.GetServiceMeshes.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///     });
-        /// 
-        ///     var nameRegex = AliCloud.ServiceMesh.GetServiceMeshes.Invoke(new()
-        ///     {
-        ///         NameRegex = "^my-ServiceMesh",
-        ///     });
-        /// 
-        ///     var status = AliCloud.ServiceMesh.GetServiceMeshes.Invoke(new()
-        ///     {
-        ///         Ids = new[]
-        ///         {
-        ///             "example_id",
-        ///         },
-        ///         Status = "running",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["serviceMeshServiceMeshId1"] = ids.Apply(getServiceMeshesResult =&gt; getServiceMeshesResult.Meshes[0]?.Id),
-        ///         ["serviceMeshServiceMeshId2"] = nameRegex.Apply(getServiceMeshesResult =&gt; getServiceMeshesResult.Meshes[0]?.Id),
-        ///         ["serviceMeshServiceMeshId3"] = status.Apply(getServiceMeshesResult =&gt; getServiceMeshesResult.Meshes[0]?.Id),
-        ///     };
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
+        /// &gt; **NOTE:** Available since v1.138.0.
         /// </summary>
         public static Output<GetServiceMeshesResult> Invoke(GetServiceMeshesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceMeshesResult>("alicloud:servicemesh/getServiceMeshes:getServiceMeshes", args ?? new GetServiceMeshesInvokeArgs(), options.WithDefaults());
@@ -125,6 +31,9 @@ namespace Pulumi.AliCloud.ServiceMesh
 
     public sealed class GetServiceMeshesArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Whether to query the detailed list of resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public bool? EnableDetails { get; set; }
 
@@ -166,6 +75,9 @@ namespace Pulumi.AliCloud.ServiceMesh
 
     public sealed class GetServiceMeshesInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// Whether to query the detailed list of resource attributes.
+        /// </summary>
         [Input("enableDetails")]
         public Input<bool>? EnableDetails { get; set; }
 

@@ -35,7 +35,7 @@ public class MountTarget extends com.pulumi.resources.CustomResource {
      * The name of the permission group that applies to the mount target.
      * 
      */
-    @Export(name="accessGroupName", type=String.class, parameters={})
+    @Export(name="accessGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessGroupName;
 
     /**
@@ -49,7 +49,7 @@ public class MountTarget extends com.pulumi.resources.CustomResource {
      * The ID of the file system.
      * 
      */
-    @Export(name="fileSystemId", type=String.class, parameters={})
+    @Export(name="fileSystemId", refs={String.class}, tree="[0]")
     private Output<String> fileSystemId;
 
     /**
@@ -63,7 +63,7 @@ public class MountTarget extends com.pulumi.resources.CustomResource {
      * The IPv4 domain name of the mount target. **NOTE:** Available since v1.161.0.
      * 
      */
-    @Export(name="mountTargetDomain", type=String.class, parameters={})
+    @Export(name="mountTargetDomain", refs={String.class}, tree="[0]")
     private Output<String> mountTargetDomain;
 
     /**
@@ -77,7 +77,7 @@ public class MountTarget extends com.pulumi.resources.CustomResource {
      * mount target network type. Valid values: `VPC`. The classic network&#39;s mount targets are not supported.
      * 
      */
-    @Export(name="networkType", type=String.class, parameters={})
+    @Export(name="networkType", refs={String.class}, tree="[0]")
     private Output<String> networkType;
 
     /**
@@ -91,7 +91,7 @@ public class MountTarget extends com.pulumi.resources.CustomResource {
      * The ID of security group.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityGroupId;
 
     /**
@@ -105,7 +105,7 @@ public class MountTarget extends com.pulumi.resources.CustomResource {
      * Whether the MountTarget is active. The status of the mount target. Valid values: `Active` and `Inactive`, Default value is `Active`. Before you mount a file system, make sure that the mount target is in the Active state.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -119,7 +119,7 @@ public class MountTarget extends com.pulumi.resources.CustomResource {
      * The ID of VPC.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -133,7 +133,7 @@ public class MountTarget extends com.pulumi.resources.CustomResource {
      * The ID of the VSwitch in the VPC where the mount target resides.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**

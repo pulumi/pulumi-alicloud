@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a Click House Backup Policy resource.
  * 
- * For information about Click House Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/en/clickhouse/latest/api-clickhouse-2019-11-11-createbackuppolicy).
+ * For information about Click House Backup Policy and how to use it, see [What is Backup Policy](https://www.alibabacloud.com/help/zh/clickhouse/latest/api-clickhouse-2019-11-11-createbackuppolicy).
  * 
  * &gt; **NOTE:** Available since v1.147.0.
  * 
@@ -117,7 +117,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Data backup days. Valid values: `7` to `730`.
      * 
      */
-    @Export(name="backupRetentionPeriod", type=Integer.class, parameters={})
+    @Export(name="backupRetentionPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> backupRetentionPeriod;
 
     /**
@@ -131,7 +131,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The id of the DBCluster.
      * 
      */
-    @Export(name="dbClusterId", type=String.class, parameters={})
+    @Export(name="dbClusterId", refs={String.class}, tree="[0]")
     private Output<String> dbClusterId;
 
     /**
@@ -145,7 +145,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * DBCluster Backup period. A list of DBCluster Backup period. Valid values: [&#34;Monday&#34;, &#34;Tuesday&#34;, &#34;Wednesday&#34;, &#34;Thursday&#34;, &#34;Friday&#34;, &#34;Saturday&#34;, &#34;Sunday&#34;].
      * 
      */
-    @Export(name="preferredBackupPeriods", type=List.class, parameters={String.class})
+    @Export(name="preferredBackupPeriods", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> preferredBackupPeriods;
 
     /**
@@ -159,7 +159,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * DBCluster backup time, in the format of `HH:mmZ-HH:mmZ`. Time setting interval is one hour. China time is 8 hours behind it.
      * 
      */
-    @Export(name="preferredBackupTime", type=String.class, parameters={})
+    @Export(name="preferredBackupTime", refs={String.class}, tree="[0]")
     private Output<String> preferredBackupTime;
 
     /**
@@ -173,7 +173,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

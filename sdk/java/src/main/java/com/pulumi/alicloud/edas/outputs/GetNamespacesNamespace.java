@@ -180,16 +180,16 @@ public final class GetNamespacesNamespace {
             return this;
         }
         public GetNamespacesNamespace build() {
-            final var o = new GetNamespacesNamespace();
-            o.belongRegion = belongRegion;
-            o.debugEnable = debugEnable;
-            o.description = description;
-            o.id = id;
-            o.namespaceId = namespaceId;
-            o.namespaceLogicalId = namespaceLogicalId;
-            o.namespaceName = namespaceName;
-            o.userId = userId;
-            return o;
+            final var _resultValue = new GetNamespacesNamespace();
+            _resultValue.belongRegion = belongRegion;
+            _resultValue.debugEnable = debugEnable;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.namespaceId = namespaceId;
+            _resultValue.namespaceLogicalId = namespaceLogicalId;
+            _resultValue.namespaceName = namespaceName;
+            _resultValue.userId = userId;
+            return _resultValue;
         }
     }
 }

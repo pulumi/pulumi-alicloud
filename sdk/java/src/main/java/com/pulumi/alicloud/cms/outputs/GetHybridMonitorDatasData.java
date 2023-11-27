@@ -93,11 +93,11 @@ public final class GetHybridMonitorDatasData {
             return values(List.of(values));
         }
         public GetHybridMonitorDatasData build() {
-            final var o = new GetHybridMonitorDatasData();
-            o.labels = labels;
-            o.metricName = metricName;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetHybridMonitorDatasData();
+            _resultValue.labels = labels;
+            _resultValue.metricName = metricName;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

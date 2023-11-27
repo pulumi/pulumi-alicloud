@@ -196,17 +196,17 @@ public final class GetEcsPrefixListsList {
             return this;
         }
         public GetEcsPrefixListsList build() {
-            final var o = new GetEcsPrefixListsList();
-            o.addressFamily = addressFamily;
-            o.associationCount = associationCount;
-            o.createTime = createTime;
-            o.description = description;
-            o.entries = entries;
-            o.id = id;
-            o.maxEntries = maxEntries;
-            o.prefixListId = prefixListId;
-            o.prefixListName = prefixListName;
-            return o;
+            final var _resultValue = new GetEcsPrefixListsList();
+            _resultValue.addressFamily = addressFamily;
+            _resultValue.associationCount = associationCount;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.entries = entries;
+            _resultValue.id = id;
+            _resultValue.maxEntries = maxEntries;
+            _resultValue.prefixListId = prefixListId;
+            _resultValue.prefixListName = prefixListName;
+            return _resultValue;
         }
     }
 }

@@ -158,16 +158,16 @@ public final class GetKeysResult {
             return this;
         }
         public GetKeysResult build() {
-            final var o = new GetKeysResult();
-            o.descriptionRegex = descriptionRegex;
-            o.enableDetails = enableDetails;
-            o.filters = filters;
-            o.id = id;
-            o.ids = ids;
-            o.keys = keys;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetKeysResult();
+            _resultValue.descriptionRegex = descriptionRegex;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.keys = keys;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

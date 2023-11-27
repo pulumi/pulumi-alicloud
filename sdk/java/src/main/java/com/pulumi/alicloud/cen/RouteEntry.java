@@ -157,7 +157,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * -&gt;**NOTE:** The &#34;alicloud.cen.InstanceAttachment&#34; resource should depend on the related &#34;alicloud.vpc.Switch&#34; resource.
      * 
      */
-    @Export(name="cidrBlock", type=String.class, parameters={})
+    @Export(name="cidrBlock", refs={String.class}, tree="[0]")
     private Output<String> cidrBlock;
 
     /**
@@ -175,7 +175,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * The ID of the CEN.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -189,7 +189,7 @@ public class RouteEntry extends com.pulumi.resources.CustomResource {
      * The route table of the attached VBR or VPC.
      * 
      */
-    @Export(name="routeTableId", type=String.class, parameters={})
+    @Export(name="routeTableId", refs={String.class}, tree="[0]")
     private Output<String> routeTableId;
 
     /**

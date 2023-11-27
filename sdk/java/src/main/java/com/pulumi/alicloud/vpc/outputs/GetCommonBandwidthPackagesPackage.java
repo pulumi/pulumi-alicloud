@@ -452,30 +452,30 @@ public final class GetCommonBandwidthPackagesPackage {
             return this;
         }
         public GetCommonBandwidthPackagesPackage build() {
-            final var o = new GetCommonBandwidthPackagesPackage();
-            o.bandwidth = bandwidth;
-            o.bandwidthPackageId = bandwidthPackageId;
-            o.bandwidthPackageName = bandwidthPackageName;
-            o.businessStatus = businessStatus;
-            o.deletionProtection = deletionProtection;
-            o.description = description;
-            o.expiredTime = expiredTime;
-            o.hasReservationData = hasReservationData;
-            o.id = id;
-            o.internetChargeType = internetChargeType;
-            o.isp = isp;
-            o.name = name;
-            o.paymentType = paymentType;
-            o.publicIpAddresses = publicIpAddresses;
-            o.ratio = ratio;
-            o.reservationActiveTime = reservationActiveTime;
-            o.reservationBandwidth = reservationBandwidth;
-            o.reservationInternetChargeType = reservationInternetChargeType;
-            o.reservationOrderType = reservationOrderType;
-            o.resourceGroupId = resourceGroupId;
-            o.serviceManaged = serviceManaged;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetCommonBandwidthPackagesPackage();
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.bandwidthPackageId = bandwidthPackageId;
+            _resultValue.bandwidthPackageName = bandwidthPackageName;
+            _resultValue.businessStatus = businessStatus;
+            _resultValue.deletionProtection = deletionProtection;
+            _resultValue.description = description;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.hasReservationData = hasReservationData;
+            _resultValue.id = id;
+            _resultValue.internetChargeType = internetChargeType;
+            _resultValue.isp = isp;
+            _resultValue.name = name;
+            _resultValue.paymentType = paymentType;
+            _resultValue.publicIpAddresses = publicIpAddresses;
+            _resultValue.ratio = ratio;
+            _resultValue.reservationActiveTime = reservationActiveTime;
+            _resultValue.reservationBandwidth = reservationBandwidth;
+            _resultValue.reservationInternetChargeType = reservationInternetChargeType;
+            _resultValue.reservationOrderType = reservationOrderType;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.serviceManaged = serviceManaged;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

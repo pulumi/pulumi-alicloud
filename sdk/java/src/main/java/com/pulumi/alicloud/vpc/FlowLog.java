@@ -39,7 +39,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * Data aggregation interval.
      * 
      */
-    @Export(name="aggregationInterval", type=String.class, parameters={})
+    @Export(name="aggregationInterval", refs={String.class}, tree="[0]")
     private Output<String> aggregationInterval;
 
     /**
@@ -53,7 +53,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * Business status.
      * 
      */
-    @Export(name="businessStatus", type=String.class, parameters={})
+    @Export(name="businessStatus", refs={String.class}, tree="[0]")
     private Output<String> businessStatus;
 
     /**
@@ -67,7 +67,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * Creation time.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -81,7 +81,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The Description of the VPC Flow Log.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -95,7 +95,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The flow log ID.
      * 
      */
-    @Export(name="flowLogId", type=String.class, parameters={})
+    @Export(name="flowLogId", refs={String.class}, tree="[0]")
     private Output<String> flowLogId;
 
     /**
@@ -109,7 +109,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The Name of the VPC Flow Log.
      * 
      */
-    @Export(name="flowLogName", type=String.class, parameters={})
+    @Export(name="flowLogName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> flowLogName;
 
     /**
@@ -123,7 +123,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The name of the logstore.
      * 
      */
-    @Export(name="logStoreName", type=String.class, parameters={})
+    @Export(name="logStoreName", refs={String.class}, tree="[0]")
     private Output<String> logStoreName;
 
     /**
@@ -137,7 +137,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The name of the project.
      * 
      */
-    @Export(name="projectName", type=String.class, parameters={})
+    @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
@@ -151,7 +151,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -165,7 +165,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The ID of the resource.
      * 
      */
-    @Export(name="resourceId", type=String.class, parameters={})
+    @Export(name="resourceId", refs={String.class}, tree="[0]")
     private Output<String> resourceId;
 
     /**
@@ -179,7 +179,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The resource type of the traffic captured by the flow log:-**NetworkInterface**: ENI.-**VSwitch**: All ENIs in the VSwitch.-**VPC**: All ENIs in the VPC.
      * 
      */
-    @Export(name="resourceType", type=String.class, parameters={})
+    @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output<String> resourceType;
 
     /**
@@ -193,7 +193,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The status of the VPC Flow Log. Valid values: **Active** and **Inactive**.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -207,7 +207,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The tag of the current instance resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -221,7 +221,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The collected flow path. Value:**all**: indicates full acquisition.**internetGateway**: indicates public network traffic collection.
      * 
      */
-    @Export(name="trafficPaths", type=List.class, parameters={String.class})
+    @Export(name="trafficPaths", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> trafficPaths;
 
     /**
@@ -235,7 +235,7 @@ public class FlowLog extends com.pulumi.resources.CustomResource {
      * The type of traffic collected. Valid values:**All**: All traffic.**Allow**: Access control allowedtraffic.**Drop**: Access control denied traffic.
      * 
      */
-    @Export(name="trafficType", type=String.class, parameters={})
+    @Export(name="trafficType", refs={String.class}, tree="[0]")
     private Output<String> trafficType;
 
     /**

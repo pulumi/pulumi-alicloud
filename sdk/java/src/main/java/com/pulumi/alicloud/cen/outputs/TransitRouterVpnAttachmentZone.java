@@ -46,9 +46,9 @@ public final class TransitRouterVpnAttachmentZone {
             return this;
         }
         public TransitRouterVpnAttachmentZone build() {
-            final var o = new TransitRouterVpnAttachmentZone();
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new TransitRouterVpnAttachmentZone();
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

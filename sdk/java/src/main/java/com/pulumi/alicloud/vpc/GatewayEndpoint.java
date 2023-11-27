@@ -91,7 +91,7 @@ public class GatewayEndpoint extends com.pulumi.resources.CustomResource {
      * The creation time of the gateway endpoint.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -105,7 +105,7 @@ public class GatewayEndpoint extends com.pulumi.resources.CustomResource {
      * The description of the gateway endpoint.
      * 
      */
-    @Export(name="gatewayEndpointDescrption", type=String.class, parameters={})
+    @Export(name="gatewayEndpointDescrption", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gatewayEndpointDescrption;
 
     /**
@@ -119,7 +119,7 @@ public class GatewayEndpoint extends com.pulumi.resources.CustomResource {
      * The name of the gateway endpoint.
      * 
      */
-    @Export(name="gatewayEndpointName", type=String.class, parameters={})
+    @Export(name="gatewayEndpointName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gatewayEndpointName;
 
     /**
@@ -133,7 +133,7 @@ public class GatewayEndpoint extends com.pulumi.resources.CustomResource {
      * Access control policies for cloud services. This parameter is required when the cloud service is oss. For details about the syntax and structure of access policies, see [syntax and structure of permission Policies](https://help.aliyun.com/document_detail/93739.html).
      * 
      */
-    @Export(name="policyDocument", type=String.class, parameters={})
+    @Export(name="policyDocument", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> policyDocument;
 
     /**
@@ -147,7 +147,7 @@ public class GatewayEndpoint extends com.pulumi.resources.CustomResource {
      * The ID of the resource group to which the instance belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -161,7 +161,7 @@ public class GatewayEndpoint extends com.pulumi.resources.CustomResource {
      * The name of endpoint service.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -175,7 +175,7 @@ public class GatewayEndpoint extends com.pulumi.resources.CustomResource {
      * The status of VPC gateway endpoint.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -189,7 +189,7 @@ public class GatewayEndpoint extends com.pulumi.resources.CustomResource {
      * The tags of the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -203,7 +203,7 @@ public class GatewayEndpoint extends com.pulumi.resources.CustomResource {
      * The ID of the VPC.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

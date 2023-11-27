@@ -248,18 +248,18 @@ public final class BucketLifecycleRule {
             return transitions(List.of(transitions));
         }
         public BucketLifecycleRule build() {
-            final var o = new BucketLifecycleRule();
-            o.abortMultipartUploads = abortMultipartUploads;
-            o.enabled = enabled;
-            o.expirations = expirations;
-            o.filter = filter;
-            o.id = id;
-            o.noncurrentVersionExpirations = noncurrentVersionExpirations;
-            o.noncurrentVersionTransitions = noncurrentVersionTransitions;
-            o.prefix = prefix;
-            o.tags = tags;
-            o.transitions = transitions;
-            return o;
+            final var _resultValue = new BucketLifecycleRule();
+            _resultValue.abortMultipartUploads = abortMultipartUploads;
+            _resultValue.enabled = enabled;
+            _resultValue.expirations = expirations;
+            _resultValue.filter = filter;
+            _resultValue.id = id;
+            _resultValue.noncurrentVersionExpirations = noncurrentVersionExpirations;
+            _resultValue.noncurrentVersionTransitions = noncurrentVersionTransitions;
+            _resultValue.prefix = prefix;
+            _resultValue.tags = tags;
+            _resultValue.transitions = transitions;
+            return _resultValue;
         }
     }
 }

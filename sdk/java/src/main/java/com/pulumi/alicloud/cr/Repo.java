@@ -81,7 +81,7 @@ public class Repo extends com.pulumi.resources.CustomResource {
      * The repository specific information. MarkDown format is supported, and the length limit is 2000.
      * 
      */
-    @Export(name="detail", type=String.class, parameters={})
+    @Export(name="detail", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> detail;
 
     /**
@@ -95,7 +95,7 @@ public class Repo extends com.pulumi.resources.CustomResource {
      * The repository domain list.
      * 
      */
-    @Export(name="domainList", type=RepoDomainList.class, parameters={})
+    @Export(name="domainList", refs={RepoDomainList.class}, tree="[0]")
     private Output<RepoDomainList> domainList;
 
     /**
@@ -109,7 +109,7 @@ public class Repo extends com.pulumi.resources.CustomResource {
      * Name of container registry repository.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -123,7 +123,7 @@ public class Repo extends com.pulumi.resources.CustomResource {
      * Name of container registry namespace where repository is located.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output<String> namespace;
 
     /**
@@ -137,7 +137,7 @@ public class Repo extends com.pulumi.resources.CustomResource {
      * `PUBLIC` or `PRIVATE`, repo&#39;s visibility.
      * 
      */
-    @Export(name="repoType", type=String.class, parameters={})
+    @Export(name="repoType", refs={String.class}, tree="[0]")
     private Output<String> repoType;
 
     /**
@@ -151,7 +151,7 @@ public class Repo extends com.pulumi.resources.CustomResource {
      * The repository general information. It can contain 1 to 80 characters.
      * 
      */
-    @Export(name="summary", type=String.class, parameters={})
+    @Export(name="summary", refs={String.class}, tree="[0]")
     private Output<String> summary;
 
     /**

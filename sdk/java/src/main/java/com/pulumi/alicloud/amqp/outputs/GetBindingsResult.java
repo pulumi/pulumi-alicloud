@@ -111,14 +111,14 @@ public final class GetBindingsResult {
             return this;
         }
         public GetBindingsResult build() {
-            final var o = new GetBindingsResult();
-            o.bindings = bindings;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.outputFile = outputFile;
-            o.virtualHostName = virtualHostName;
-            return o;
+            final var _resultValue = new GetBindingsResult();
+            _resultValue.bindings = bindings;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.virtualHostName = virtualHostName;
+            return _resultValue;
         }
     }
 }

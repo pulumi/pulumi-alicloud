@@ -256,20 +256,20 @@ public final class GetPatchBaselinesBaseline {
             return this;
         }
         public GetPatchBaselinesBaseline build() {
-            final var o = new GetPatchBaselinesBaseline();
-            o.approvalRules = approvalRules;
-            o.createTime = createTime;
-            o.createdBy = createdBy;
-            o.description = description;
-            o.id = id;
-            o.isDefault = isDefault;
-            o.operationSystem = operationSystem;
-            o.patchBaselineId = patchBaselineId;
-            o.patchBaselineName = patchBaselineName;
-            o.shareType = shareType;
-            o.updatedBy = updatedBy;
-            o.updatedDate = updatedDate;
-            return o;
+            final var _resultValue = new GetPatchBaselinesBaseline();
+            _resultValue.approvalRules = approvalRules;
+            _resultValue.createTime = createTime;
+            _resultValue.createdBy = createdBy;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.isDefault = isDefault;
+            _resultValue.operationSystem = operationSystem;
+            _resultValue.patchBaselineId = patchBaselineId;
+            _resultValue.patchBaselineName = patchBaselineName;
+            _resultValue.shareType = shareType;
+            _resultValue.updatedBy = updatedBy;
+            _resultValue.updatedDate = updatedDate;
+            return _resultValue;
         }
     }
 }

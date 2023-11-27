@@ -118,7 +118,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The auto pay.
      * 
      */
-    @Export(name="autoPay", type=Boolean.class, parameters={})
+    @Export(name="autoPay", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoPay;
 
     /**
@@ -132,7 +132,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The auto renew.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
@@ -147,7 +147,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * start with `http://` and `https`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -162,7 +162,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The eip bandwidth.
      * 
      */
-    @Export(name="eipBandwidth", type=Integer.class, parameters={})
+    @Export(name="eipBandwidth", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> eipBandwidth;
 
     /**
@@ -176,7 +176,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The force.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -190,7 +190,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The ID Of The Image.
      * 
      */
-    @Export(name="imageId", type=String.class, parameters={})
+    @Export(name="imageId", refs={String.class}, tree="[0]")
     private Output<String> imageId;
 
     /**
@@ -207,7 +207,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * the instance.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> instanceName;
 
     /**
@@ -224,7 +224,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance Type.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -238,7 +238,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The name of the key pair of the mobile phone instance.
      * 
      */
-    @Export(name="keyPairName", type=String.class, parameters={})
+    @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keyPairName;
 
     /**
@@ -252,7 +252,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The payment type.Valid values: `PayAsYouGo`,`Subscription`
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> paymentType;
 
     /**
@@ -267,7 +267,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * is valid when `period_unit` is &#39;Month&#39;. Valid value: `1`, `2`, `3`, `5`
      * 
      */
-    @Export(name="period", type=String.class, parameters={})
+    @Export(name="period", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> period;
 
     /**
@@ -283,7 +283,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * to `Month`.
      * 
      */
-    @Export(name="periodUnit", type=String.class, parameters={})
+    @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
@@ -298,7 +298,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The selected resolution for the cloud mobile phone instance.
      * 
      */
-    @Export(name="resolution", type=String.class, parameters={})
+    @Export(name="resolution", refs={String.class}, tree="[0]")
     private Output<String> resolution;
 
     /**
@@ -313,7 +313,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * ECS instance.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
@@ -328,7 +328,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Instance status. Valid values: `Running`, `Stopped`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -343,7 +343,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * contain only uppercase, lowercase English letters and Arabic numerals.
      * 
      */
-    @Export(name="vncPassword", type=String.class, parameters={})
+    @Export(name="vncPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vncPassword;
 
     /**
@@ -358,7 +358,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The vswitch id.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

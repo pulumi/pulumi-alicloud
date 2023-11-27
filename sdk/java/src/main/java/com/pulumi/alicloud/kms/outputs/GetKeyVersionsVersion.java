@@ -122,13 +122,13 @@ public final class GetKeyVersionsVersion {
             return this;
         }
         public GetKeyVersionsVersion build() {
-            final var o = new GetKeyVersionsVersion();
-            o.createTime = createTime;
-            o.creationDate = creationDate;
-            o.id = id;
-            o.keyId = keyId;
-            o.keyVersionId = keyVersionId;
-            return o;
+            final var _resultValue = new GetKeyVersionsVersion();
+            _resultValue.createTime = createTime;
+            _resultValue.creationDate = creationDate;
+            _resultValue.id = id;
+            _resultValue.keyId = keyId;
+            _resultValue.keyVersionId = keyVersionId;
+            return _resultValue;
         }
     }
 }

@@ -101,25 +101,31 @@ export class VpcEndpointZone extends pulumi.CustomResource {
     }
 
     /**
-     * The dry run.
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
-     * The ID of the Vpc Endpoint.
+     * The endpoint ID.
      */
     public readonly endpointId!: pulumi.Output<string>;
     /**
-     * Status.
+     * The IP address of the endpoint ENI.
+     */
+    public readonly eniIp!: pulumi.Output<string>;
+    /**
+     * The state of the zone.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The VSwitch id.
+     * The ID of the vSwitch in the zone. .
      */
     public readonly vswitchId!: pulumi.Output<string>;
     /**
-     * The Zone Id.
+     * The zone ID.
      */
-    public readonly zoneId!: pulumi.Output<string>;
+    public readonly zoneId!: pulumi.Output<string | undefined>;
 
     /**
      * Create a VpcEndpointZone resource with the given unique name, arguments, and options.
@@ -136,6 +142,7 @@ export class VpcEndpointZone extends pulumi.CustomResource {
             const state = argsOrState as VpcEndpointZoneState | undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["endpointId"] = state ? state.endpointId : undefined;
+            resourceInputs["eniIp"] = state ? state.eniIp : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["vswitchId"] = state ? state.vswitchId : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
@@ -149,6 +156,7 @@ export class VpcEndpointZone extends pulumi.CustomResource {
             }
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["endpointId"] = args ? args.endpointId : undefined;
+            resourceInputs["eniIp"] = args ? args.eniIp : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
             resourceInputs["status"] = undefined /*out*/;
@@ -163,23 +171,29 @@ export class VpcEndpointZone extends pulumi.CustomResource {
  */
 export interface VpcEndpointZoneState {
     /**
-     * The dry run.
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The ID of the Vpc Endpoint.
+     * The endpoint ID.
      */
     endpointId?: pulumi.Input<string>;
     /**
-     * Status.
+     * The IP address of the endpoint ENI.
+     */
+    eniIp?: pulumi.Input<string>;
+    /**
+     * The state of the zone.
      */
     status?: pulumi.Input<string>;
     /**
-     * The VSwitch id.
+     * The ID of the vSwitch in the zone. .
      */
     vswitchId?: pulumi.Input<string>;
     /**
-     * The Zone Id.
+     * The zone ID.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -189,19 +203,25 @@ export interface VpcEndpointZoneState {
  */
 export interface VpcEndpointZoneArgs {
     /**
-     * The dry run.
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * The ID of the Vpc Endpoint.
+     * The endpoint ID.
      */
     endpointId: pulumi.Input<string>;
     /**
-     * The VSwitch id.
+     * The IP address of the endpoint ENI.
+     */
+    eniIp?: pulumi.Input<string>;
+    /**
+     * The ID of the vSwitch in the zone. .
      */
     vswitchId: pulumi.Input<string>;
     /**
-     * The Zone Id.
+     * The zone ID.
      */
     zoneId?: pulumi.Input<string>;
 }

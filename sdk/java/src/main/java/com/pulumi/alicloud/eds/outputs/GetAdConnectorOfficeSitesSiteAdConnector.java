@@ -103,12 +103,12 @@ public final class GetAdConnectorOfficeSitesSiteAdConnector {
             return this;
         }
         public GetAdConnectorOfficeSitesSiteAdConnector build() {
-            final var o = new GetAdConnectorOfficeSitesSiteAdConnector();
-            o.adConnectorAddress = adConnectorAddress;
-            o.connectorStatus = connectorStatus;
-            o.networkInterfaceId = networkInterfaceId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetAdConnectorOfficeSitesSiteAdConnector();
+            _resultValue.adConnectorAddress = adConnectorAddress;
+            _resultValue.connectorStatus = connectorStatus;
+            _resultValue.networkInterfaceId = networkInterfaceId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

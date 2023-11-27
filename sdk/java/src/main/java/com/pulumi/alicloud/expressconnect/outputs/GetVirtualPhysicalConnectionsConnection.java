@@ -572,36 +572,36 @@ public final class GetVirtualPhysicalConnectionsConnection {
             return this;
         }
         public GetVirtualPhysicalConnectionsConnection build() {
-            final var o = new GetVirtualPhysicalConnectionsConnection();
-            o.accessPointId = accessPointId;
-            o.adLocation = adLocation;
-            o.bandwidth = bandwidth;
-            o.businessStatus = businessStatus;
-            o.circuitCode = circuitCode;
-            o.createTime = createTime;
-            o.description = description;
-            o.enabledTime = enabledTime;
-            o.endTime = endTime;
-            o.expectSpec = expectSpec;
-            o.id = id;
-            o.lineOperator = lineOperator;
-            o.loaStatus = loaStatus;
-            o.orderMode = orderMode;
-            o.parentPhysicalConnectionAliUid = parentPhysicalConnectionAliUid;
-            o.parentPhysicalConnectionId = parentPhysicalConnectionId;
-            o.peerLocation = peerLocation;
-            o.portNumber = portNumber;
-            o.portType = portType;
-            o.redundantPhysicalConnectionId = redundantPhysicalConnectionId;
-            o.resourceGroupId = resourceGroupId;
-            o.spec = spec;
-            o.status = status;
-            o.virtualPhysicalConnectionId = virtualPhysicalConnectionId;
-            o.virtualPhysicalConnectionName = virtualPhysicalConnectionName;
-            o.virtualPhysicalConnectionStatus = virtualPhysicalConnectionStatus;
-            o.vlanId = vlanId;
-            o.vpconnAliUid = vpconnAliUid;
-            return o;
+            final var _resultValue = new GetVirtualPhysicalConnectionsConnection();
+            _resultValue.accessPointId = accessPointId;
+            _resultValue.adLocation = adLocation;
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.businessStatus = businessStatus;
+            _resultValue.circuitCode = circuitCode;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.enabledTime = enabledTime;
+            _resultValue.endTime = endTime;
+            _resultValue.expectSpec = expectSpec;
+            _resultValue.id = id;
+            _resultValue.lineOperator = lineOperator;
+            _resultValue.loaStatus = loaStatus;
+            _resultValue.orderMode = orderMode;
+            _resultValue.parentPhysicalConnectionAliUid = parentPhysicalConnectionAliUid;
+            _resultValue.parentPhysicalConnectionId = parentPhysicalConnectionId;
+            _resultValue.peerLocation = peerLocation;
+            _resultValue.portNumber = portNumber;
+            _resultValue.portType = portType;
+            _resultValue.redundantPhysicalConnectionId = redundantPhysicalConnectionId;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.spec = spec;
+            _resultValue.status = status;
+            _resultValue.virtualPhysicalConnectionId = virtualPhysicalConnectionId;
+            _resultValue.virtualPhysicalConnectionName = virtualPhysicalConnectionName;
+            _resultValue.virtualPhysicalConnectionStatus = virtualPhysicalConnectionStatus;
+            _resultValue.vlanId = vlanId;
+            _resultValue.vpconnAliUid = vpconnAliUid;
+            return _resultValue;
         }
     }
 }

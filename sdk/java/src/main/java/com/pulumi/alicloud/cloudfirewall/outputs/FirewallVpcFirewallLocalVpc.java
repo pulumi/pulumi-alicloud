@@ -167,15 +167,15 @@ public final class FirewallVpcFirewallLocalVpc {
             return this;
         }
         public FirewallVpcFirewallLocalVpc build() {
-            final var o = new FirewallVpcFirewallLocalVpc();
-            o.eniId = eniId;
-            o.eniPrivateIpAddress = eniPrivateIpAddress;
-            o.localVpcCidrTableLists = localVpcCidrTableLists;
-            o.regionNo = regionNo;
-            o.routerInterfaceId = routerInterfaceId;
-            o.vpcId = vpcId;
-            o.vpcName = vpcName;
-            return o;
+            final var _resultValue = new FirewallVpcFirewallLocalVpc();
+            _resultValue.eniId = eniId;
+            _resultValue.eniPrivateIpAddress = eniPrivateIpAddress;
+            _resultValue.localVpcCidrTableLists = localVpcCidrTableLists;
+            _resultValue.regionNo = regionNo;
+            _resultValue.routerInterfaceId = routerInterfaceId;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vpcName = vpcName;
+            return _resultValue;
         }
     }
 }

@@ -127,14 +127,14 @@ public final class GetSaslUsersResult {
             return users(List.of(users));
         }
         public GetSaslUsersResult build() {
-            final var o = new GetSaslUsersResult();
-            o.id = id;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.users = users;
-            return o;
+            final var _resultValue = new GetSaslUsersResult();
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.users = users;
+            return _resultValue;
         }
     }
 }

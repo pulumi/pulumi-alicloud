@@ -168,16 +168,16 @@ public final class GetCertificatesCertificate {
             return sans(List.of(sans));
         }
         public GetCertificatesCertificate build() {
-            final var o = new GetCertificatesCertificate();
-            o.certificateId = certificateId;
-            o.certificateName = certificateName;
-            o.commonName = commonName;
-            o.domain = domain;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.isUsing = isUsing;
-            o.sans = sans;
-            return o;
+            final var _resultValue = new GetCertificatesCertificate();
+            _resultValue.certificateId = certificateId;
+            _resultValue.certificateName = certificateName;
+            _resultValue.commonName = commonName;
+            _resultValue.domain = domain;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.isUsing = isUsing;
+            _resultValue.sans = sans;
+            return _resultValue;
         }
     }
 }

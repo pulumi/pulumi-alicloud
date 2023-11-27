@@ -78,10 +78,10 @@ public final class ChainChainConfig {
             return routers(List.of(routers));
         }
         public ChainChainConfig build() {
-            final var o = new ChainChainConfig();
-            o.nodes = nodes;
-            o.routers = routers;
-            return o;
+            final var _resultValue = new ChainChainConfig();
+            _resultValue.nodes = nodes;
+            _resultValue.routers = routers;
+            return _resultValue;
         }
     }
 }

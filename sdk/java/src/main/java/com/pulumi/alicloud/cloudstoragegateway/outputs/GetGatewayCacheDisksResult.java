@@ -112,14 +112,14 @@ public final class GetGatewayCacheDisksResult {
             return this;
         }
         public GetGatewayCacheDisksResult build() {
-            final var o = new GetGatewayCacheDisksResult();
-            o.disks = disks;
-            o.gatewayId = gatewayId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetGatewayCacheDisksResult();
+            _resultValue.disks = disks;
+            _resultValue.gatewayId = gatewayId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

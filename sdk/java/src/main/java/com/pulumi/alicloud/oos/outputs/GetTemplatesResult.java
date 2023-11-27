@@ -262,25 +262,25 @@ public final class GetTemplatesResult {
             return templates(List.of(templates));
         }
         public GetTemplatesResult build() {
-            final var o = new GetTemplatesResult();
-            o.category = category;
-            o.createdBy = createdBy;
-            o.createdDate = createdDate;
-            o.createdDateAfter = createdDateAfter;
-            o.hasTrigger = hasTrigger;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.shareType = shareType;
-            o.sortField = sortField;
-            o.sortOrder = sortOrder;
-            o.tags = tags;
-            o.templateFormat = templateFormat;
-            o.templateType = templateType;
-            o.templates = templates;
-            return o;
+            final var _resultValue = new GetTemplatesResult();
+            _resultValue.category = category;
+            _resultValue.createdBy = createdBy;
+            _resultValue.createdDate = createdDate;
+            _resultValue.createdDateAfter = createdDateAfter;
+            _resultValue.hasTrigger = hasTrigger;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.shareType = shareType;
+            _resultValue.sortField = sortField;
+            _resultValue.sortOrder = sortOrder;
+            _resultValue.tags = tags;
+            _resultValue.templateFormat = templateFormat;
+            _resultValue.templateType = templateType;
+            _resultValue.templates = templates;
+            return _resultValue;
         }
     }
 }

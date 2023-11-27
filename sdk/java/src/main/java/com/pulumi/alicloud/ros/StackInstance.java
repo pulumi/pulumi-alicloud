@@ -101,7 +101,7 @@ public class StackInstance extends com.pulumi.resources.CustomResource {
      * The operation description.
      * 
      */
-    @Export(name="operationDescription", type=String.class, parameters={})
+    @Export(name="operationDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> operationDescription;
 
     /**
@@ -115,7 +115,7 @@ public class StackInstance extends com.pulumi.resources.CustomResource {
      * The operation preferences. The operation settings. The following fields are supported:
      * 
      */
-    @Export(name="operationPreferences", type=String.class, parameters={})
+    @Export(name="operationPreferences", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> operationPreferences;
 
     /**
@@ -129,7 +129,7 @@ public class StackInstance extends com.pulumi.resources.CustomResource {
      * ParameterOverrides. See the following `Block parameter_overrides`.
      * 
      */
-    @Export(name="parameterOverrides", type=List.class, parameters={StackInstanceParameterOverride.class})
+    @Export(name="parameterOverrides", refs={List.class,StackInstanceParameterOverride.class}, tree="[0,1]")
     private Output</* @Nullable */ List<StackInstanceParameterOverride>> parameterOverrides;
 
     /**
@@ -143,7 +143,7 @@ public class StackInstance extends com.pulumi.resources.CustomResource {
      * Specifies whether to retain the stack corresponding to the stack instance.Default value `false`. **NOTE:** When `retain_stacks` is `true`, the stack is retained. If the stack is retained, the corresponding stack is not deleted when the stack instance is deleted from the stack group.
      * 
      */
-    @Export(name="retainStacks", type=Boolean.class, parameters={})
+    @Export(name="retainStacks", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> retainStacks;
 
     /**
@@ -157,7 +157,7 @@ public class StackInstance extends com.pulumi.resources.CustomResource {
      * The name of the stack group.
      * 
      */
-    @Export(name="stackGroupName", type=String.class, parameters={})
+    @Export(name="stackGroupName", refs={String.class}, tree="[0]")
     private Output<String> stackGroupName;
 
     /**
@@ -171,7 +171,7 @@ public class StackInstance extends com.pulumi.resources.CustomResource {
      * The account to which the stack instance belongs.
      * 
      */
-    @Export(name="stackInstanceAccountId", type=String.class, parameters={})
+    @Export(name="stackInstanceAccountId", refs={String.class}, tree="[0]")
     private Output<String> stackInstanceAccountId;
 
     /**
@@ -185,7 +185,7 @@ public class StackInstance extends com.pulumi.resources.CustomResource {
      * The region of the stack instance.
      * 
      */
-    @Export(name="stackInstanceRegionId", type=String.class, parameters={})
+    @Export(name="stackInstanceRegionId", refs={String.class}, tree="[0]")
     private Output<String> stackInstanceRegionId;
 
     /**
@@ -199,7 +199,7 @@ public class StackInstance extends com.pulumi.resources.CustomResource {
      * The status of the stack instance. Valid values: `CURRENT` or `OUTDATED`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -213,7 +213,7 @@ public class StackInstance extends com.pulumi.resources.CustomResource {
      * The timeout period that is specified for the stack creation request. Default value: `60`. Unit: `minutes`.
      * 
      */
-    @Export(name="timeoutInMinutes", type=String.class, parameters={})
+    @Export(name="timeoutInMinutes", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timeoutInMinutes;
 
     /**

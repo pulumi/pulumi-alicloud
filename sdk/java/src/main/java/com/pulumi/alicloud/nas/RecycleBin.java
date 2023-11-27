@@ -85,7 +85,7 @@ public class RecycleBin extends com.pulumi.resources.CustomResource {
      * The ID of the file system for which you want to enable the recycle bin feature.
      * 
      */
-    @Export(name="fileSystemId", type=String.class, parameters={})
+    @Export(name="fileSystemId", refs={String.class}, tree="[0]")
     private Output<String> fileSystemId;
 
     /**
@@ -99,7 +99,7 @@ public class RecycleBin extends com.pulumi.resources.CustomResource {
      * The period for which the files in the recycle bin are retained. Unit: days. Valid values: `1` to `180`.
      * 
      */
-    @Export(name="reservedDays", type=Integer.class, parameters={})
+    @Export(name="reservedDays", refs={Integer.class}, tree="[0]")
     private Output<Integer> reservedDays;
 
     /**
@@ -113,7 +113,7 @@ public class RecycleBin extends com.pulumi.resources.CustomResource {
      * The status of the recycle bin.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

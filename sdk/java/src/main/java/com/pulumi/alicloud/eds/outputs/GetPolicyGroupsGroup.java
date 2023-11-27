@@ -474,31 +474,31 @@ public final class GetPolicyGroupsGroup {
             return this;
         }
         public GetPolicyGroupsGroup build() {
-            final var o = new GetPolicyGroupsGroup();
-            o.authorizeAccessPolicyRules = authorizeAccessPolicyRules;
-            o.authorizeSecurityPolicyRules = authorizeSecurityPolicyRules;
-            o.cameraRedirect = cameraRedirect;
-            o.clipboard = clipboard;
-            o.domainList = domainList;
-            o.edsCount = edsCount;
-            o.htmlAccess = htmlAccess;
-            o.htmlFileTransfer = htmlFileTransfer;
-            o.id = id;
-            o.localDrive = localDrive;
-            o.policyGroupId = policyGroupId;
-            o.policyGroupName = policyGroupName;
-            o.policyGroupType = policyGroupType;
-            o.recording = recording;
-            o.recordingEndTime = recordingEndTime;
-            o.recordingFps = recordingFps;
-            o.recordingStartTime = recordingStartTime;
-            o.status = status;
-            o.usbRedirect = usbRedirect;
-            o.visualQuality = visualQuality;
-            o.watermark = watermark;
-            o.watermarkTransparency = watermarkTransparency;
-            o.watermarkType = watermarkType;
-            return o;
+            final var _resultValue = new GetPolicyGroupsGroup();
+            _resultValue.authorizeAccessPolicyRules = authorizeAccessPolicyRules;
+            _resultValue.authorizeSecurityPolicyRules = authorizeSecurityPolicyRules;
+            _resultValue.cameraRedirect = cameraRedirect;
+            _resultValue.clipboard = clipboard;
+            _resultValue.domainList = domainList;
+            _resultValue.edsCount = edsCount;
+            _resultValue.htmlAccess = htmlAccess;
+            _resultValue.htmlFileTransfer = htmlFileTransfer;
+            _resultValue.id = id;
+            _resultValue.localDrive = localDrive;
+            _resultValue.policyGroupId = policyGroupId;
+            _resultValue.policyGroupName = policyGroupName;
+            _resultValue.policyGroupType = policyGroupType;
+            _resultValue.recording = recording;
+            _resultValue.recordingEndTime = recordingEndTime;
+            _resultValue.recordingFps = recordingFps;
+            _resultValue.recordingStartTime = recordingStartTime;
+            _resultValue.status = status;
+            _resultValue.usbRedirect = usbRedirect;
+            _resultValue.visualQuality = visualQuality;
+            _resultValue.watermark = watermark;
+            _resultValue.watermarkTransparency = watermarkTransparency;
+            _resultValue.watermarkType = watermarkType;
+            return _resultValue;
         }
     }
 }

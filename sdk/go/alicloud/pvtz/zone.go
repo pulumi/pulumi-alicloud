@@ -28,7 +28,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := pvtz.NewZone(ctx, "foo", &pvtz.ZoneArgs{
-//				ZoneName: pulumi.String("foo.test.com"),
+//				ZoneName: pulumi.String("foo.example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -69,12 +69,14 @@ type Zone struct {
 	// The remark of the Private Zone.
 	Remark pulumi.StringPtrOutput `pulumi:"remark"`
 	// The Id of resource group which the Private Zone belongs.
-	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
+	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
 	SyncStatus pulumi.StringPtrOutput `pulumi:"syncStatus"`
+	// The tags of the Private Zone.
+	Tags pulumi.MapOutput `pulumi:"tags"`
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrOutput `pulumi:"userClientIp"`
-	// The user information of the host synchronization task. The details see Block `userInfo`.
+	// The user information of the host synchronization task. See `userInfo` below.
 	UserInfos ZoneUserInfoArrayOutput `pulumi:"userInfos"`
 	// The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
 	ZoneName pulumi.StringOutput `pulumi:"zoneName"`
@@ -131,9 +133,11 @@ type zoneState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
 	SyncStatus *string `pulumi:"syncStatus"`
+	// The tags of the Private Zone.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
-	// The user information of the host synchronization task. The details see Block `userInfo`.
+	// The user information of the host synchronization task. See `userInfo` below.
 	UserInfos []ZoneUserInfo `pulumi:"userInfos"`
 	// The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
 	ZoneName *string `pulumi:"zoneName"`
@@ -161,9 +165,11 @@ type ZoneState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
 	SyncStatus pulumi.StringPtrInput
+	// The tags of the Private Zone.
+	Tags pulumi.MapInput
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput
-	// The user information of the host synchronization task. The details see Block `userInfo`.
+	// The user information of the host synchronization task. See `userInfo` below.
 	UserInfos ZoneUserInfoArrayInput
 	// The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
 	ZoneName pulumi.StringPtrInput
@@ -191,9 +197,11 @@ type zoneArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
 	SyncStatus *string `pulumi:"syncStatus"`
+	// The tags of the Private Zone.
+	Tags map[string]interface{} `pulumi:"tags"`
 	// The IP address of the client.
 	UserClientIp *string `pulumi:"userClientIp"`
-	// The user information of the host synchronization task. The details see Block `userInfo`.
+	// The user information of the host synchronization task. See `userInfo` below.
 	UserInfos []ZoneUserInfo `pulumi:"userInfos"`
 	// The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
 	ZoneName *string `pulumi:"zoneName"`
@@ -218,9 +226,11 @@ type ZoneArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
 	SyncStatus pulumi.StringPtrInput
+	// The tags of the Private Zone.
+	Tags pulumi.MapInput
 	// The IP address of the client.
 	UserClientIp pulumi.StringPtrInput
-	// The user information of the host synchronization task. The details see Block `userInfo`.
+	// The user information of the host synchronization task. See `userInfo` below.
 	UserInfos ZoneUserInfoArrayInput
 	// The zoneName of the Private Zone. The `zoneName` is required when the value of the `name`  is Empty.
 	ZoneName pulumi.StringPtrInput
@@ -349,8 +359,8 @@ func (o ZoneOutput) Remark() pulumi.StringPtrOutput {
 }
 
 // The Id of resource group which the Private Zone belongs.
-func (o ZoneOutput) ResourceGroupId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.ResourceGroupId }).(pulumi.StringPtrOutput)
+func (o ZoneOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // The status of the host synchronization task. Valid values:  `ON`,`OFF`. **NOTE:** You can update the `syncStatus` to enable/disable the host synchronization task.
@@ -358,12 +368,17 @@ func (o ZoneOutput) SyncStatus() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.SyncStatus }).(pulumi.StringPtrOutput)
 }
 
+// The tags of the Private Zone.
+func (o ZoneOutput) Tags() pulumi.MapOutput {
+	return o.ApplyT(func(v *Zone) pulumi.MapOutput { return v.Tags }).(pulumi.MapOutput)
+}
+
 // The IP address of the client.
 func (o ZoneOutput) UserClientIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringPtrOutput { return v.UserClientIp }).(pulumi.StringPtrOutput)
 }
 
-// The user information of the host synchronization task. The details see Block `userInfo`.
+// The user information of the host synchronization task. See `userInfo` below.
 func (o ZoneOutput) UserInfos() ZoneUserInfoArrayOutput {
 	return o.ApplyT(func(v *Zone) ZoneUserInfoArrayOutput { return v.UserInfos }).(ZoneUserInfoArrayOutput)
 }

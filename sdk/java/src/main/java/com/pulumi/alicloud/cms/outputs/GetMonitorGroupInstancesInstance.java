@@ -42,9 +42,9 @@ public final class GetMonitorGroupInstancesInstance {
             return instances(List.of(instances));
         }
         public GetMonitorGroupInstancesInstance build() {
-            final var o = new GetMonitorGroupInstancesInstance();
-            o.instances = instances;
-            return o;
+            final var _resultValue = new GetMonitorGroupInstancesInstance();
+            _resultValue.instances = instances;
+            return _resultValue;
         }
     }
 }

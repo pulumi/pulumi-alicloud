@@ -46,9 +46,9 @@ public final class GetListenersListenerCertificate {
             return this;
         }
         public GetListenersListenerCertificate build() {
-            final var o = new GetListenersListenerCertificate();
-            o.certificateId = certificateId;
-            return o;
+            final var _resultValue = new GetListenersListenerCertificate();
+            _resultValue.certificateId = certificateId;
+            return _resultValue;
         }
     }
 }

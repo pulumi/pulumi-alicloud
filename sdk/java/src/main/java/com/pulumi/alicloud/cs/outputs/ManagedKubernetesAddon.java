@@ -20,7 +20,7 @@ public final class ManagedKubernetesAddon {
     /**
      * @return It specifies whether to disable automatic installation.
      * 
-     * It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+     * It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
      * 
      * You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
      * 
@@ -39,6 +39,11 @@ public final class ManagedKubernetesAddon {
      * 
      */
     private @Nullable String name;
+    /**
+     * @return It specifies the version of the component.
+     * 
+     */
+    private @Nullable String version;
 
     private ManagedKubernetesAddon() {}
     /**
@@ -51,7 +56,7 @@ public final class ManagedKubernetesAddon {
     /**
      * @return It specifies whether to disable automatic installation.
      * 
-     * It is a new field since 1.75.0. You can specific network plugin,log component,ingress component and so on.
+     * It is a new field since 1.75.0. You can specific network plugin, log component,ingress component and so on.
      * 
      * You can get more information about addons on ACK web console. When you create a ACK cluster. You can get openapi-spec before creating the cluster on submission page.
      * 
@@ -74,6 +79,13 @@ public final class ManagedKubernetesAddon {
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
+    /**
+     * @return It specifies the version of the component.
+     * 
+     */
+    public Optional<String> version() {
+        return Optional.ofNullable(this.version);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -87,12 +99,14 @@ public final class ManagedKubernetesAddon {
         private @Nullable String config;
         private @Nullable Boolean disabled;
         private @Nullable String name;
+        private @Nullable String version;
         public Builder() {}
         public Builder(ManagedKubernetesAddon defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.config = defaults.config;
     	      this.disabled = defaults.disabled;
     	      this.name = defaults.name;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -110,12 +124,18 @@ public final class ManagedKubernetesAddon {
             this.name = name;
             return this;
         }
+        @CustomType.Setter
+        public Builder version(@Nullable String version) {
+            this.version = version;
+            return this;
+        }
         public ManagedKubernetesAddon build() {
-            final var o = new ManagedKubernetesAddon();
-            o.config = config;
-            o.disabled = disabled;
-            o.name = name;
-            return o;
+            final var _resultValue = new ManagedKubernetesAddon();
+            _resultValue.config = config;
+            _resultValue.disabled = disabled;
+            _resultValue.name = name;
+            _resultValue.version = version;
+            return _resultValue;
         }
     }
 }

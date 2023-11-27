@@ -124,13 +124,13 @@ public final class GetKeyVersionsResult {
             return versions(List.of(versions));
         }
         public GetKeyVersionsResult build() {
-            final var o = new GetKeyVersionsResult();
-            o.id = id;
-            o.ids = ids;
-            o.keyId = keyId;
-            o.outputFile = outputFile;
-            o.versions = versions;
-            return o;
+            final var _resultValue = new GetKeyVersionsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.keyId = keyId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.versions = versions;
+            return _resultValue;
         }
     }
 }

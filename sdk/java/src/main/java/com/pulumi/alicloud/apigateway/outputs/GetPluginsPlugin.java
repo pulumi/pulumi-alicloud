@@ -200,17 +200,17 @@ public final class GetPluginsPlugin {
             return this;
         }
         public GetPluginsPlugin build() {
-            final var o = new GetPluginsPlugin();
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.modifiedTime = modifiedTime;
-            o.pluginData = pluginData;
-            o.pluginId = pluginId;
-            o.pluginName = pluginName;
-            o.pluginType = pluginType;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetPluginsPlugin();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.modifiedTime = modifiedTime;
+            _resultValue.pluginData = pluginData;
+            _resultValue.pluginId = pluginId;
+            _resultValue.pluginName = pluginName;
+            _resultValue.pluginType = pluginType;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

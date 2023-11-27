@@ -255,20 +255,20 @@ public final class GetAccountsAccount {
             return this;
         }
         public GetAccountsAccount build() {
-            final var o = new GetAccountsAccount();
-            o.accountId = accountId;
-            o.accountName = accountName;
-            o.displayName = displayName;
-            o.folderId = folderId;
-            o.id = id;
-            o.joinMethod = joinMethod;
-            o.joinTime = joinTime;
-            o.modifyTime = modifyTime;
-            o.payerAccountId = payerAccountId;
-            o.resourceDirectoryId = resourceDirectoryId;
-            o.status = status;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetAccountsAccount();
+            _resultValue.accountId = accountId;
+            _resultValue.accountName = accountName;
+            _resultValue.displayName = displayName;
+            _resultValue.folderId = folderId;
+            _resultValue.id = id;
+            _resultValue.joinMethod = joinMethod;
+            _resultValue.joinTime = joinTime;
+            _resultValue.modifyTime = modifyTime;
+            _resultValue.payerAccountId = payerAccountId;
+            _resultValue.resourceDirectoryId = resourceDirectoryId;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

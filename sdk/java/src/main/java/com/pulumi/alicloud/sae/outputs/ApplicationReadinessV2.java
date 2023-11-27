@@ -146,14 +146,14 @@ public final class ApplicationReadinessV2 {
             return this;
         }
         public ApplicationReadinessV2 build() {
-            final var o = new ApplicationReadinessV2();
-            o.exec = exec;
-            o.httpGet = httpGet;
-            o.initialDelaySeconds = initialDelaySeconds;
-            o.periodSeconds = periodSeconds;
-            o.tcpSocket = tcpSocket;
-            o.timeoutSeconds = timeoutSeconds;
-            return o;
+            final var _resultValue = new ApplicationReadinessV2();
+            _resultValue.exec = exec;
+            _resultValue.httpGet = httpGet;
+            _resultValue.initialDelaySeconds = initialDelaySeconds;
+            _resultValue.periodSeconds = periodSeconds;
+            _resultValue.tcpSocket = tcpSocket;
+            _resultValue.timeoutSeconds = timeoutSeconds;
+            return _resultValue;
         }
     }
 }

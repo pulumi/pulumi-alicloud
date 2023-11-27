@@ -41,13 +41,13 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:ecs/snapshotPolicy:SnapshotPolicy")
 public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
-    @Export(name="copiedSnapshotsRetentionDays", type=Integer.class, parameters={})
+    @Export(name="copiedSnapshotsRetentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> copiedSnapshotsRetentionDays;
 
     public Output<Optional<Integer>> copiedSnapshotsRetentionDays() {
         return Codegen.optional(this.copiedSnapshotsRetentionDays);
     }
-    @Export(name="enableCrossRegionCopy", type=Boolean.class, parameters={})
+    @Export(name="enableCrossRegionCopy", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableCrossRegionCopy;
 
     public Output<Optional<Boolean>> enableCrossRegionCopy() {
@@ -57,7 +57,7 @@ public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
      * The snapshot policy name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -73,7 +73,7 @@ public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
      * - The format is  an JSON array of [&#34;1&#34;, &#34;2&#34;, … &#34;7&#34;]  and the time points are separated by commas (,).
      * 
      */
-    @Export(name="repeatWeekdays", type=List.class, parameters={String.class})
+    @Export(name="repeatWeekdays", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> repeatWeekdays;
 
     /**
@@ -93,7 +93,7 @@ public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
      * Default value: -1.
      * 
      */
-    @Export(name="retentionDays", type=Integer.class, parameters={})
+    @Export(name="retentionDays", refs={Integer.class}, tree="[0]")
     private Output<Integer> retentionDays;
 
     /**
@@ -107,19 +107,19 @@ public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
     public Output<Integer> retentionDays() {
         return this.retentionDays;
     }
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     public Output<String> status() {
         return this.status;
     }
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
-    @Export(name="targetCopyRegions", type=List.class, parameters={String.class})
+    @Export(name="targetCopyRegions", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> targetCopyRegions;
 
     public Output<Optional<List<String>>> targetCopyRegions() {
@@ -131,7 +131,7 @@ public class SnapshotPolicy extends com.pulumi.resources.CustomResource {
      * - The format is  an JSON array of [&#34;0&#34;, &#34;1&#34;, … &#34;23&#34;] and the time points are separated by commas (,).
      * 
      */
-    @Export(name="timePoints", type=List.class, parameters={String.class})
+    @Export(name="timePoints", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> timePoints;
 
     /**

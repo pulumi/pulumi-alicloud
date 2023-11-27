@@ -114,7 +114,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * The name of the oss bucket.
      * 
      */
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     /**
@@ -128,7 +128,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * How often is it delivered every interval.
      * 
      */
-    @Export(name="bufferInterval", type=Integer.class, parameters={})
+    @Export(name="bufferInterval", refs={Integer.class}, tree="[0]")
     private Output<Integer> bufferInterval;
 
     /**
@@ -142,7 +142,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * Automatically control the creation interval of delivery tasks and set the upper limit of an OSS object size (calculated in uncompressed), unit: `MB`.
      * 
      */
-    @Export(name="bufferSize", type=Integer.class, parameters={})
+    @Export(name="bufferSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> bufferSize;
 
     /**
@@ -156,7 +156,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * OSS data storage compression method, support: `none`, `snappy`, `zstd`, `gzip`. Among them, none means that the original data is not compressed, and snappy means that the data is compressed using the snappy algorithm, which can reduce the storage space usage of the `OSS Bucket`.
      * 
      */
-    @Export(name="compressType", type=String.class, parameters={})
+    @Export(name="compressType", refs={String.class}, tree="[0]")
     private Output<String> compressType;
 
     /**
@@ -170,7 +170,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * Configure columns when `content_type` is `parquet` or `orc`.
      * 
      */
-    @Export(name="configColumns", type=List.class, parameters={OssExportConfigColumn.class})
+    @Export(name="configColumns", refs={List.class,OssExportConfigColumn.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OssExportConfigColumn>> configColumns;
 
     /**
@@ -185,7 +185,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * **According to the different format, please select the following parameters**
      * 
      */
-    @Export(name="contentType", type=String.class, parameters={})
+    @Export(name="contentType", refs={String.class}, tree="[0]")
     private Output<String> contentType;
 
     /**
@@ -200,7 +200,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * Field configuration in csv content_type.
      * 
      */
-    @Export(name="csvConfigColumns", type=List.class, parameters={String.class})
+    @Export(name="csvConfigColumns", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> csvConfigColumns;
 
     /**
@@ -214,7 +214,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * Separator configuration in csv content_type.
      * 
      */
-    @Export(name="csvConfigDelimiter", type=String.class, parameters={})
+    @Export(name="csvConfigDelimiter", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> csvConfigDelimiter;
 
     /**
@@ -228,7 +228,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * escape in csv content_type.
      * 
      */
-    @Export(name="csvConfigEscape", type=String.class, parameters={})
+    @Export(name="csvConfigEscape", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> csvConfigEscape;
 
     /**
@@ -242,7 +242,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * Indicates whether to write the field name to the CSV file, the default value is `false`.
      * 
      */
-    @Export(name="csvConfigHeader", type=Boolean.class, parameters={})
+    @Export(name="csvConfigHeader", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> csvConfigHeader;
 
     /**
@@ -256,7 +256,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * lineFeed in csv content_type.
      * 
      */
-    @Export(name="csvConfigLinefeed", type=String.class, parameters={})
+    @Export(name="csvConfigLinefeed", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> csvConfigLinefeed;
 
     /**
@@ -270,7 +270,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * Invalid field content in csv content_type.
      * 
      */
-    @Export(name="csvConfigNull", type=String.class, parameters={})
+    @Export(name="csvConfigNull", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> csvConfigNull;
 
     /**
@@ -284,7 +284,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * Escape character in csv content_type.
      * 
      */
-    @Export(name="csvConfigQuote", type=String.class, parameters={})
+    @Export(name="csvConfigQuote", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> csvConfigQuote;
 
     /**
@@ -298,7 +298,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * The display name for oss export.
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> displayName;
 
     /**
@@ -312,7 +312,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * Delivery configuration name, it can only contain lowercase letters, numbers, dashes `-` and underscores `_`. It must start and end with lowercase letters or numbers, and the name must be 2 to 128 characters long.
      * 
      */
-    @Export(name="exportName", type=String.class, parameters={})
+    @Export(name="exportName", refs={String.class}, tree="[0]")
     private Output<String> exportName;
 
     /**
@@ -326,7 +326,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * The log from when to export to oss.
      * 
      */
-    @Export(name="fromTime", type=Integer.class, parameters={})
+    @Export(name="fromTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> fromTime;
 
     /**
@@ -340,7 +340,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * Whether to deliver the label when `content_type` = `json`.
      * 
      */
-    @Export(name="jsonEnableTag", type=Boolean.class, parameters={})
+    @Export(name="jsonEnableTag", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> jsonEnableTag;
 
     /**
@@ -354,7 +354,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * Used for logstore reading, the role should have log read policy, such as `acs:ram::13234:role/logrole`, if `log_read_role_arn` is not set, `role_arn` is used to read logstore.
      * 
      */
-    @Export(name="logReadRoleArn", type=String.class, parameters={})
+    @Export(name="logReadRoleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logReadRoleArn;
 
     /**
@@ -368,7 +368,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * The name of the log logstore.
      * 
      */
-    @Export(name="logstoreName", type=String.class, parameters={})
+    @Export(name="logstoreName", refs={String.class}, tree="[0]")
     private Output<String> logstoreName;
 
     /**
@@ -382,7 +382,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * The OSS Bucket directory is dynamically generated according to the creation time of the export task, it cannot start with a forward slash `/`, the default value is `%Y/%m/%d/%H/%M`.
      * 
      */
-    @Export(name="pathFormat", type=String.class, parameters={})
+    @Export(name="pathFormat", refs={String.class}, tree="[0]")
     private Output<String> pathFormat;
 
     /**
@@ -396,7 +396,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * The data synchronized from Log Service to OSS will be stored in this directory of Bucket.
      * 
      */
-    @Export(name="prefix", type=String.class, parameters={})
+    @Export(name="prefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> prefix;
 
     /**
@@ -410,7 +410,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * The name of the log project. It is the only in one Alicloud account.
      * 
      */
-    @Export(name="projectName", type=String.class, parameters={})
+    @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
@@ -424,7 +424,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * Used to write to oss bucket, the OSS Bucket owner creates the role mark which has the oss bucket write policy, such as `acs:ram::13234:role/logrole`.
      * 
      */
-    @Export(name="roleArn", type=String.class, parameters={})
+    @Export(name="roleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roleArn;
 
     /**
@@ -438,7 +438,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * The suffix for the objects in which the shipped data is stored.
      * 
      */
-    @Export(name="suffix", type=String.class, parameters={})
+    @Export(name="suffix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> suffix;
 
     /**
@@ -452,7 +452,7 @@ public class OssExport extends com.pulumi.resources.CustomResource {
      * This time zone that is used to format the time, `+0800` e.g.
      * 
      */
-    @Export(name="timeZone", type=String.class, parameters={})
+    @Export(name="timeZone", refs={String.class}, tree="[0]")
     private Output<String> timeZone;
 
     /**

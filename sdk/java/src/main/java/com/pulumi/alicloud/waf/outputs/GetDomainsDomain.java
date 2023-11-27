@@ -406,27 +406,27 @@ public final class GetDomainsDomain {
             return this;
         }
         public GetDomainsDomain build() {
-            final var o = new GetDomainsDomain();
-            o.clusterType = clusterType;
-            o.cname = cname;
-            o.connectionTime = connectionTime;
-            o.domain = domain;
-            o.domainName = domainName;
-            o.http2Ports = http2Ports;
-            o.httpPorts = httpPorts;
-            o.httpToUserIp = httpToUserIp;
-            o.httpsPorts = httpsPorts;
-            o.httpsRedirect = httpsRedirect;
-            o.id = id;
-            o.isAccessProduct = isAccessProduct;
-            o.loadBalancing = loadBalancing;
-            o.logHeaders = logHeaders;
-            o.readTime = readTime;
-            o.resourceGroupId = resourceGroupId;
-            o.sourceIps = sourceIps;
-            o.version = version;
-            o.writeTime = writeTime;
-            return o;
+            final var _resultValue = new GetDomainsDomain();
+            _resultValue.clusterType = clusterType;
+            _resultValue.cname = cname;
+            _resultValue.connectionTime = connectionTime;
+            _resultValue.domain = domain;
+            _resultValue.domainName = domainName;
+            _resultValue.http2Ports = http2Ports;
+            _resultValue.httpPorts = httpPorts;
+            _resultValue.httpToUserIp = httpToUserIp;
+            _resultValue.httpsPorts = httpsPorts;
+            _resultValue.httpsRedirect = httpsRedirect;
+            _resultValue.id = id;
+            _resultValue.isAccessProduct = isAccessProduct;
+            _resultValue.loadBalancing = loadBalancing;
+            _resultValue.logHeaders = logHeaders;
+            _resultValue.readTime = readTime;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.sourceIps = sourceIps;
+            _resultValue.version = version;
+            _resultValue.writeTime = writeTime;
+            return _resultValue;
         }
     }
 }

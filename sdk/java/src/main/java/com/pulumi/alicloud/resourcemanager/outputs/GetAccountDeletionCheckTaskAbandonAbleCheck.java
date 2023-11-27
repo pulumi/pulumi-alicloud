@@ -84,11 +84,11 @@ public final class GetAccountDeletionCheckTaskAbandonAbleCheck {
             return this;
         }
         public GetAccountDeletionCheckTaskAbandonAbleCheck build() {
-            final var o = new GetAccountDeletionCheckTaskAbandonAbleCheck();
-            o.checkId = checkId;
-            o.checkName = checkName;
-            o.description = description;
-            return o;
+            final var _resultValue = new GetAccountDeletionCheckTaskAbandonAbleCheck();
+            _resultValue.checkId = checkId;
+            _resultValue.checkName = checkName;
+            _resultValue.description = description;
+            return _resultValue;
         }
     }
 }

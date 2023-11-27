@@ -379,26 +379,26 @@ public final class GetBucketsBucket {
             return this;
         }
         public GetBucketsBucket build() {
-            final var o = new GetBucketsBucket();
-            o.acl = acl;
-            o.corsRules = corsRules;
-            o.creationDate = creationDate;
-            o.extranetEndpoint = extranetEndpoint;
-            o.intranetEndpoint = intranetEndpoint;
-            o.lifecycleRules = lifecycleRules;
-            o.location = location;
-            o.logging = logging;
-            o.name = name;
-            o.owner = owner;
-            o.policy = policy;
-            o.redundancyType = redundancyType;
-            o.refererConfig = refererConfig;
-            o.serverSideEncryptionRule = serverSideEncryptionRule;
-            o.storageClass = storageClass;
-            o.tags = tags;
-            o.versioning = versioning;
-            o.website = website;
-            return o;
+            final var _resultValue = new GetBucketsBucket();
+            _resultValue.acl = acl;
+            _resultValue.corsRules = corsRules;
+            _resultValue.creationDate = creationDate;
+            _resultValue.extranetEndpoint = extranetEndpoint;
+            _resultValue.intranetEndpoint = intranetEndpoint;
+            _resultValue.lifecycleRules = lifecycleRules;
+            _resultValue.location = location;
+            _resultValue.logging = logging;
+            _resultValue.name = name;
+            _resultValue.owner = owner;
+            _resultValue.policy = policy;
+            _resultValue.redundancyType = redundancyType;
+            _resultValue.refererConfig = refererConfig;
+            _resultValue.serverSideEncryptionRule = serverSideEncryptionRule;
+            _resultValue.storageClass = storageClass;
+            _resultValue.tags = tags;
+            _resultValue.versioning = versioning;
+            _resultValue.website = website;
+            return _resultValue;
         }
     }
 }

@@ -181,16 +181,16 @@ public final class GetChildInstanceRouteEntryToAttachmentsResult {
             return this;
         }
         public GetChildInstanceRouteEntryToAttachmentsResult build() {
-            final var o = new GetChildInstanceRouteEntryToAttachmentsResult();
-            o.attachments = attachments;
-            o.cenId = cenId;
-            o.childInstanceRouteTableId = childInstanceRouteTableId;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.serviceType = serviceType;
-            o.transitRouterAttachmentId = transitRouterAttachmentId;
-            return o;
+            final var _resultValue = new GetChildInstanceRouteEntryToAttachmentsResult();
+            _resultValue.attachments = attachments;
+            _resultValue.cenId = cenId;
+            _resultValue.childInstanceRouteTableId = childInstanceRouteTableId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.serviceType = serviceType;
+            _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
+            return _resultValue;
         }
     }
 }

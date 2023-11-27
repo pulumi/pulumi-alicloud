@@ -35,7 +35,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
      * 
      */
-    @Export(name="allocationStatus", type=String.class, parameters={})
+    @Export(name="allocationStatus", refs={String.class}, tree="[0]")
     private Output<String> allocationStatus;
 
     /**
@@ -49,7 +49,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable the auto-renewal feature.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
@@ -63,7 +63,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The ID of the dedicated cluster.
      * 
      */
-    @Export(name="dedicatedHostGroupId", type=String.class, parameters={})
+    @Export(name="dedicatedHostGroupId", refs={String.class}, tree="[0]")
     private Output<String> dedicatedHostGroupId;
 
     /**
@@ -77,7 +77,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The ID of the host.
      * 
      */
-    @Export(name="dedicatedHostId", type=String.class, parameters={})
+    @Export(name="dedicatedHostId", refs={String.class}, tree="[0]")
     private Output<String> dedicatedHostId;
 
     /**
@@ -91,7 +91,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The instance type of the host. For more information about the supported instance types of hosts, see [Host specification details](https://www.alibabacloud.com/help/doc-detail/206343.htm).
      * 
      */
-    @Export(name="hostClass", type=String.class, parameters={})
+    @Export(name="hostClass", refs={String.class}, tree="[0]")
     private Output<String> hostClass;
 
     /**
@@ -105,7 +105,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The name of the host. The name must be `1` to `64` characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
-    @Export(name="hostName", type=String.class, parameters={})
+    @Export(name="hostName", refs={String.class}, tree="[0]")
     private Output<String> hostName;
 
     /**
@@ -119,7 +119,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * Host Image Category. Valid values: `WindowsWithMssqlEntAlwaysonLicense`, `WindowsWithMssqlStdLicense`, `WindowsWithMssqlEntLicense`, `WindowsWithMssqlWebLicense`, `AliLinux`.
      * 
      */
-    @Export(name="imageCategory", type=String.class, parameters={})
+    @Export(name="imageCategory", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageCategory;
 
     /**
@@ -133,7 +133,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * Host password. **NOTE:** The creation of a host password is supported only when the database type is `Tair-PMem`.
      * 
      */
-    @Export(name="osPassword", type=String.class, parameters={})
+    @Export(name="osPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> osPassword;
 
     /**
@@ -147,7 +147,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The payment type of the resource. Valid values: `Subscription`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -161,7 +161,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The unit of the subscription duration. Valid values: `Year`, `Month`, `Week`.
      * 
      */
-    @Export(name="period", type=String.class, parameters={})
+    @Export(name="period", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> period;
 
     /**
@@ -175,7 +175,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The state of the host. Valid values: `0:` The host is being created. `1`: The host is running. `2`: The host is faulty. `3`: The host is ready for deactivation. `4`: The host is being maintained. `5`: The host is deactivated. `6`: The host is restarting. `7`: The host is locked.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -189,7 +189,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -206,7 +206,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * * If the Period parameter is set to `Week`, the value of the UsedTime parameter ranges from `1`, `2` and `3`.
      * 
      */
-    @Export(name="usedTime", type=Integer.class, parameters={})
+    @Export(name="usedTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> usedTime;
 
     /**
@@ -223,7 +223,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The ID of the vSwitch to which the host is connected.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
@@ -237,7 +237,7 @@ public class DedicatedHost extends com.pulumi.resources.CustomResource {
      * The ID of the zone.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

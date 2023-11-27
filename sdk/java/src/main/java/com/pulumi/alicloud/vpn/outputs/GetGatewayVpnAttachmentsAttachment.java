@@ -349,24 +349,24 @@ public final class GetGatewayVpnAttachmentsAttachment {
             return this;
         }
         public GetGatewayVpnAttachmentsAttachment build() {
-            final var o = new GetGatewayVpnAttachmentsAttachment();
-            o.bgpConfigs = bgpConfigs;
-            o.connectionStatus = connectionStatus;
-            o.createTime = createTime;
-            o.customerGatewayId = customerGatewayId;
-            o.effectImmediately = effectImmediately;
-            o.healthCheckConfigs = healthCheckConfigs;
-            o.id = id;
-            o.ikeConfigs = ikeConfigs;
-            o.internetIp = internetIp;
-            o.ipsecConfigs = ipsecConfigs;
-            o.localSubnet = localSubnet;
-            o.networkType = networkType;
-            o.remoteSubnet = remoteSubnet;
-            o.status = status;
-            o.vpnAttachmentName = vpnAttachmentName;
-            o.vpnConnectionId = vpnConnectionId;
-            return o;
+            final var _resultValue = new GetGatewayVpnAttachmentsAttachment();
+            _resultValue.bgpConfigs = bgpConfigs;
+            _resultValue.connectionStatus = connectionStatus;
+            _resultValue.createTime = createTime;
+            _resultValue.customerGatewayId = customerGatewayId;
+            _resultValue.effectImmediately = effectImmediately;
+            _resultValue.healthCheckConfigs = healthCheckConfigs;
+            _resultValue.id = id;
+            _resultValue.ikeConfigs = ikeConfigs;
+            _resultValue.internetIp = internetIp;
+            _resultValue.ipsecConfigs = ipsecConfigs;
+            _resultValue.localSubnet = localSubnet;
+            _resultValue.networkType = networkType;
+            _resultValue.remoteSubnet = remoteSubnet;
+            _resultValue.status = status;
+            _resultValue.vpnAttachmentName = vpnAttachmentName;
+            _resultValue.vpnConnectionId = vpnConnectionId;
+            return _resultValue;
         }
     }
 }

@@ -65,10 +65,10 @@ public final class GetPrometheusAlertRulesRuleLabel {
             return this;
         }
         public GetPrometheusAlertRulesRuleLabel build() {
-            final var o = new GetPrometheusAlertRulesRuleLabel();
-            o.name = name;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetPrometheusAlertRulesRuleLabel();
+            _resultValue.name = name;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

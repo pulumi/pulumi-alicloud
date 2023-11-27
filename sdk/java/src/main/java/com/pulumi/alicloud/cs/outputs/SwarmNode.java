@@ -84,13 +84,13 @@ public final class SwarmNode {
             return this;
         }
         public SwarmNode build() {
-            final var o = new SwarmNode();
-            o.eip = eip;
-            o.id = id;
-            o.name = name;
-            o.privateIp = privateIp;
-            o.status = status;
-            return o;
+            final var _resultValue = new SwarmNode();
+            _resultValue.eip = eip;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.privateIp = privateIp;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

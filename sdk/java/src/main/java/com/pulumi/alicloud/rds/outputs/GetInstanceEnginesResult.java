@@ -207,19 +207,19 @@ public final class GetInstanceEnginesResult {
             return this;
         }
         public GetInstanceEnginesResult build() {
-            final var o = new GetInstanceEnginesResult();
-            o.category = category;
-            o.dbInstanceStorageType = dbInstanceStorageType;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.id = id;
-            o.ids = ids;
-            o.instanceChargeType = instanceChargeType;
-            o.instanceEngines = instanceEngines;
-            o.multiZone = multiZone;
-            o.outputFile = outputFile;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstanceEnginesResult();
+            _resultValue.category = category;
+            _resultValue.dbInstanceStorageType = dbInstanceStorageType;
+            _resultValue.engine = engine;
+            _resultValue.engineVersion = engineVersion;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceChargeType = instanceChargeType;
+            _resultValue.instanceEngines = instanceEngines;
+            _resultValue.multiZone = multiZone;
+            _resultValue.outputFile = outputFile;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

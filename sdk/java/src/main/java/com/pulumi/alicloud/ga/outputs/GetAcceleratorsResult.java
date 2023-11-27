@@ -125,15 +125,15 @@ public final class GetAcceleratorsResult {
             return this;
         }
         public GetAcceleratorsResult build() {
-            final var o = new GetAcceleratorsResult();
-            o.accelerators = accelerators;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAcceleratorsResult();
+            _resultValue.accelerators = accelerators;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

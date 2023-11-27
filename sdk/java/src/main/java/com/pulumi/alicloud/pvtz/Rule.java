@@ -38,7 +38,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The ID of the Endpoint.
      * 
      */
-    @Export(name="endpointId", type=String.class, parameters={})
+    @Export(name="endpointId", refs={String.class}, tree="[0]")
     private Output<String> endpointId;
 
     /**
@@ -52,7 +52,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * Forwarding target. See `forward_ips` below.
      * 
      */
-    @Export(name="forwardIps", type=List.class, parameters={RuleForwardIp.class})
+    @Export(name="forwardIps", refs={List.class,RuleForwardIp.class}, tree="[0,1]")
     private Output<List<RuleForwardIp>> forwardIps;
 
     /**
@@ -66,7 +66,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The name of the resource.
      * 
      */
-    @Export(name="ruleName", type=String.class, parameters={})
+    @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output<String> ruleName;
 
     /**
@@ -80,7 +80,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The type of the rule. Valid values: `OUTBOUND`.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
@@ -94,7 +94,7 @@ public class Rule extends com.pulumi.resources.CustomResource {
      * The name of the forwarding zone.
      * 
      */
-    @Export(name="zoneName", type=String.class, parameters={})
+    @Export(name="zoneName", refs={String.class}, tree="[0]")
     private Output<String> zoneName;
 
     /**

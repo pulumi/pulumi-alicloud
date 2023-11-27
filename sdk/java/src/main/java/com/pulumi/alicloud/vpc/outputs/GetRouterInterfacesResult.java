@@ -271,21 +271,21 @@ public final class GetRouterInterfacesResult {
             return this;
         }
         public GetRouterInterfacesResult build() {
-            final var o = new GetRouterInterfacesResult();
-            o.id = id;
-            o.ids = ids;
-            o.interfaces = interfaces;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.oppositeInterfaceId = oppositeInterfaceId;
-            o.oppositeInterfaceOwnerId = oppositeInterfaceOwnerId;
-            o.outputFile = outputFile;
-            o.role = role;
-            o.routerId = routerId;
-            o.routerType = routerType;
-            o.specification = specification;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetRouterInterfacesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.interfaces = interfaces;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.oppositeInterfaceId = oppositeInterfaceId;
+            _resultValue.oppositeInterfaceOwnerId = oppositeInterfaceOwnerId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.role = role;
+            _resultValue.routerId = routerId;
+            _resultValue.routerType = routerType;
+            _resultValue.specification = specification;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

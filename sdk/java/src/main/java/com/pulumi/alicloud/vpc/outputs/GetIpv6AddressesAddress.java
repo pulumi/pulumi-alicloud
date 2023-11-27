@@ -255,20 +255,20 @@ public final class GetIpv6AddressesAddress {
             return this;
         }
         public GetIpv6AddressesAddress build() {
-            final var o = new GetIpv6AddressesAddress();
-            o.associatedInstanceId = associatedInstanceId;
-            o.associatedInstanceType = associatedInstanceType;
-            o.createTime = createTime;
-            o.id = id;
-            o.ipv6Address = ipv6Address;
-            o.ipv6AddressId = ipv6AddressId;
-            o.ipv6AddressName = ipv6AddressName;
-            o.ipv6GatewayId = ipv6GatewayId;
-            o.networkType = networkType;
-            o.status = status;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetIpv6AddressesAddress();
+            _resultValue.associatedInstanceId = associatedInstanceId;
+            _resultValue.associatedInstanceType = associatedInstanceType;
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.ipv6Address = ipv6Address;
+            _resultValue.ipv6AddressId = ipv6AddressId;
+            _resultValue.ipv6AddressName = ipv6AddressName;
+            _resultValue.ipv6GatewayId = ipv6GatewayId;
+            _resultValue.networkType = networkType;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

@@ -85,11 +85,11 @@ public final class GetHoneypotPresetsPresetMeta {
             return this;
         }
         public GetHoneypotPresetsPresetMeta build() {
-            final var o = new GetHoneypotPresetsPresetMeta();
-            o.burp = burp;
-            o.portraitOption = portraitOption;
-            o.trojanGit = trojanGit;
-            return o;
+            final var _resultValue = new GetHoneypotPresetsPresetMeta();
+            _resultValue.burp = burp;
+            _resultValue.portraitOption = portraitOption;
+            _resultValue.trojanGit = trojanGit;
+            return _resultValue;
         }
     }
 }

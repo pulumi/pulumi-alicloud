@@ -85,11 +85,11 @@ public final class GetNamespacesNamespace {
             return this;
         }
         public GetNamespacesNamespace build() {
-            final var o = new GetNamespacesNamespace();
-            o.autoCreate = autoCreate;
-            o.defaultVisibility = defaultVisibility;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetNamespacesNamespace();
+            _resultValue.autoCreate = autoCreate;
+            _resultValue.defaultVisibility = defaultVisibility;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

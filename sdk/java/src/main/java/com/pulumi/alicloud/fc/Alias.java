@@ -85,7 +85,7 @@ public class Alias extends com.pulumi.resources.CustomResource {
      * Name for the alias you are creating.
      * 
      */
-    @Export(name="aliasName", type=String.class, parameters={})
+    @Export(name="aliasName", refs={String.class}, tree="[0]")
     private Output<String> aliasName;
 
     /**
@@ -99,7 +99,7 @@ public class Alias extends com.pulumi.resources.CustomResource {
      * Description of the alias.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -113,7 +113,7 @@ public class Alias extends com.pulumi.resources.CustomResource {
      * The Function Compute alias&#39; route configuration settings. See `routing_config` below.
      * 
      */
-    @Export(name="routingConfig", type=AliasRoutingConfig.class, parameters={})
+    @Export(name="routingConfig", refs={AliasRoutingConfig.class}, tree="[0]")
     private Output</* @Nullable */ AliasRoutingConfig> routingConfig;
 
     /**
@@ -127,7 +127,7 @@ public class Alias extends com.pulumi.resources.CustomResource {
      * The Function Compute service name.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**
@@ -141,7 +141,7 @@ public class Alias extends com.pulumi.resources.CustomResource {
      * The Function Compute service version for which you are creating the alias. Pattern: (LATEST|[0-9]+).
      * 
      */
-    @Export(name="serviceVersion", type=String.class, parameters={})
+    @Export(name="serviceVersion", refs={String.class}, tree="[0]")
     private Output<String> serviceVersion;
 
     /**

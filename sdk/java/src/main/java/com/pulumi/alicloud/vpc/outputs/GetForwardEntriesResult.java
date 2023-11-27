@@ -282,22 +282,22 @@ public final class GetForwardEntriesResult {
             return this;
         }
         public GetForwardEntriesResult build() {
-            final var o = new GetForwardEntriesResult();
-            o.entries = entries;
-            o.externalIp = externalIp;
-            o.externalPort = externalPort;
-            o.forwardEntryName = forwardEntryName;
-            o.forwardTableId = forwardTableId;
-            o.id = id;
-            o.ids = ids;
-            o.internalIp = internalIp;
-            o.internalPort = internalPort;
-            o.ipProtocol = ipProtocol;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetForwardEntriesResult();
+            _resultValue.entries = entries;
+            _resultValue.externalIp = externalIp;
+            _resultValue.externalPort = externalPort;
+            _resultValue.forwardEntryName = forwardEntryName;
+            _resultValue.forwardTableId = forwardTableId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.internalIp = internalIp;
+            _resultValue.internalPort = internalPort;
+            _resultValue.ipProtocol = ipProtocol;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

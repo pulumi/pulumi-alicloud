@@ -169,16 +169,16 @@ public final class GetReposResult {
             return repos(List.of(repos));
         }
         public GetReposResult build() {
-            final var o = new GetReposResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.namespace = namespace;
-            o.outputFile = outputFile;
-            o.repos = repos;
-            return o;
+            final var _resultValue = new GetReposResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.namespace = namespace;
+            _resultValue.outputFile = outputFile;
+            _resultValue.repos = repos;
+            return _resultValue;
         }
     }
 }

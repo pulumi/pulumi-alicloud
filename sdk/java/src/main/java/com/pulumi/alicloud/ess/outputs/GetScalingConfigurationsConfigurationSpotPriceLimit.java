@@ -66,10 +66,10 @@ public final class GetScalingConfigurationsConfigurationSpotPriceLimit {
             return this;
         }
         public GetScalingConfigurationsConfigurationSpotPriceLimit build() {
-            final var o = new GetScalingConfigurationsConfigurationSpotPriceLimit();
-            o.instanceType = instanceType;
-            o.priceLimit = priceLimit;
-            return o;
+            final var _resultValue = new GetScalingConfigurationsConfigurationSpotPriceLimit();
+            _resultValue.instanceType = instanceType;
+            _resultValue.priceLimit = priceLimit;
+            return _resultValue;
         }
     }
 }

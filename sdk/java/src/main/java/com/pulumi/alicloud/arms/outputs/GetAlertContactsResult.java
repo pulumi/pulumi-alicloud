@@ -147,17 +147,17 @@ public final class GetAlertContactsResult {
             return this;
         }
         public GetAlertContactsResult build() {
-            final var o = new GetAlertContactsResult();
-            o.alertContactName = alertContactName;
-            o.contacts = contacts;
-            o.email = email;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.phoneNum = phoneNum;
-            return o;
+            final var _resultValue = new GetAlertContactsResult();
+            _resultValue.alertContactName = alertContactName;
+            _resultValue.contacts = contacts;
+            _resultValue.email = email;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.phoneNum = phoneNum;
+            return _resultValue;
         }
     }
 }

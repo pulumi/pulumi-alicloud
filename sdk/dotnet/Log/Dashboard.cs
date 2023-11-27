@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Log
     /// The dashboard is a real-time data analysis platform provided by the log service. You can display frequently used query and analysis statements in the form of charts and save statistical charts to the dashboard.
     /// [Refer to details](https://www.alibabacloud.com/help/doc-detail/102530.htm).
     /// 
-    /// &gt; **NOTE:** Available in 1.86.0, parameter "action" in char_list is supported since 1.164.0+.
+    /// &gt; **NOTE:** Available since v1.86.0.
     /// 
     /// ## Example Usage
     /// 
@@ -52,7 +52,11 @@ namespace Pulumi.AliCloud.Log
     ///     {
     ///         ProjectName = exampleProject.Name,
     ///         DashboardName = "terraform-example",
-    ///         Attribute = "{\"type\":\"grid\"}",
+    ///         DisplayName = "terraform-example",
+    ///         Attribute = @"  {
+    ///     ""type"":""grid""
+    ///   }
+    /// ",
     ///         CharList = @"  [
     ///     {
     ///       ""action"": {},
@@ -88,10 +92,10 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// ## Import
     /// 
-    /// Log Dashboard can be imported using the id or name, e.g.
+    /// Log Dashboard can be imported using the id, e.g.
     /// 
     /// ```sh
-    ///  $ pulumi import alicloud:log/dashboard:Dashboard example tf-project:tf-logstore:tf-dashboard
+    ///  $ pulumi import alicloud:log/dashboard:Dashboard example &lt;project_name&gt;:&lt;dashboard_name&gt;
     /// ```
     /// </summary>
     [AliCloudResourceType("alicloud:log/dashboard:Dashboard")]
@@ -105,6 +109,7 @@ namespace Pulumi.AliCloud.Log
 
         /// <summary>
         /// Configuration of charts in the dashboard.
+        /// **Note:** From version 1.164.0, `char_list` can set parameter "action".
         /// </summary>
         [Output("charList")]
         public Output<string> CharList { get; private set; } = null!;
@@ -181,6 +186,7 @@ namespace Pulumi.AliCloud.Log
 
         /// <summary>
         /// Configuration of charts in the dashboard.
+        /// **Note:** From version 1.164.0, `char_list` can set parameter "action".
         /// </summary>
         [Input("charList", required: true)]
         public Input<string> CharList { get; set; } = null!;
@@ -219,6 +225,7 @@ namespace Pulumi.AliCloud.Log
 
         /// <summary>
         /// Configuration of charts in the dashboard.
+        /// **Note:** From version 1.164.0, `char_list` can set parameter "action".
         /// </summary>
         [Input("charList")]
         public Input<string>? CharList { get; set; }

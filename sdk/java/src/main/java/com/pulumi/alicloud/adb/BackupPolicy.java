@@ -30,7 +30,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * Cluster backup retention days, Fixed for 7 days, not modified.
      * 
      */
-    @Export(name="backupRetentionPeriod", type=String.class, parameters={})
+    @Export(name="backupRetentionPeriod", refs={String.class}, tree="[0]")
     private Output<String> backupRetentionPeriod;
 
     /**
@@ -44,7 +44,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * The Id of cluster that can run database.
      * 
      */
-    @Export(name="dbClusterId", type=String.class, parameters={})
+    @Export(name="dbClusterId", refs={String.class}, tree="[0]")
     private Output<String> dbClusterId;
 
     /**
@@ -58,7 +58,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * ADB Cluster backup period. Valid values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday].
      * 
      */
-    @Export(name="preferredBackupPeriods", type=List.class, parameters={String.class})
+    @Export(name="preferredBackupPeriods", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> preferredBackupPeriods;
 
     /**
@@ -72,7 +72,7 @@ public class BackupPolicy extends com.pulumi.resources.CustomResource {
      * ADB Cluster backup time, in the format of HH:mmZ- HH:mmZ. Time setting interval is one hour. China time is 8 hours behind it.
      * 
      */
-    @Export(name="preferredBackupTime", type=String.class, parameters={})
+    @Export(name="preferredBackupTime", refs={String.class}, tree="[0]")
     private Output<String> preferredBackupTime;
 
     /**

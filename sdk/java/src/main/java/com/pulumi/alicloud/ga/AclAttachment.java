@@ -123,7 +123,7 @@ public class AclAttachment extends com.pulumi.resources.CustomResource {
      * The ID of an ACL.
      * 
      */
-    @Export(name="aclId", type=String.class, parameters={})
+    @Export(name="aclId", refs={String.class}, tree="[0]")
     private Output<String> aclId;
 
     /**
@@ -137,7 +137,7 @@ public class AclAttachment extends com.pulumi.resources.CustomResource {
      * The type of the ACL. Valid values:
      * 
      */
-    @Export(name="aclType", type=String.class, parameters={})
+    @Export(name="aclType", refs={String.class}, tree="[0]")
     private Output<String> aclType;
 
     /**
@@ -151,7 +151,7 @@ public class AclAttachment extends com.pulumi.resources.CustomResource {
      * The dry run.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -165,7 +165,7 @@ public class AclAttachment extends com.pulumi.resources.CustomResource {
      * The ID of the listener.
      * 
      */
-    @Export(name="listenerId", type=String.class, parameters={})
+    @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     /**
@@ -179,7 +179,7 @@ public class AclAttachment extends com.pulumi.resources.CustomResource {
      * The status of the Acl Attachment.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

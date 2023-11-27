@@ -68,10 +68,10 @@ public final class RuleCompliance {
             return this;
         }
         public RuleCompliance build() {
-            final var o = new RuleCompliance();
-            o.complianceType = complianceType;
-            o.count = count;
-            return o;
+            final var _resultValue = new RuleCompliance();
+            _resultValue.complianceType = complianceType;
+            _resultValue.count = count;
+            return _resultValue;
         }
     }
 }

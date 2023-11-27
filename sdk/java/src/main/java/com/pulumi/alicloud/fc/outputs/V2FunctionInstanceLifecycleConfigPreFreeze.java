@@ -68,10 +68,10 @@ public final class V2FunctionInstanceLifecycleConfigPreFreeze {
             return this;
         }
         public V2FunctionInstanceLifecycleConfigPreFreeze build() {
-            final var o = new V2FunctionInstanceLifecycleConfigPreFreeze();
-            o.handler = handler;
-            o.timeout = timeout;
-            return o;
+            final var _resultValue = new V2FunctionInstanceLifecycleConfigPreFreeze();
+            _resultValue.handler = handler;
+            _resultValue.timeout = timeout;
+            return _resultValue;
         }
     }
 }

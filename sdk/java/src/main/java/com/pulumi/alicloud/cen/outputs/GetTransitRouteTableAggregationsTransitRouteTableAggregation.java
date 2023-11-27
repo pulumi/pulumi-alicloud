@@ -179,16 +179,16 @@ public final class GetTransitRouteTableAggregationsTransitRouteTableAggregation 
             return this;
         }
         public GetTransitRouteTableAggregationsTransitRouteTableAggregation build() {
-            final var o = new GetTransitRouteTableAggregationsTransitRouteTableAggregation();
-            o.id = id;
-            o.routeType = routeType;
-            o.status = status;
-            o.transitRouteTableAggregationCidr = transitRouteTableAggregationCidr;
-            o.transitRouteTableAggregationDescription = transitRouteTableAggregationDescription;
-            o.transitRouteTableAggregationName = transitRouteTableAggregationName;
-            o.transitRouteTableAggregationScope = transitRouteTableAggregationScope;
-            o.transitRouteTableId = transitRouteTableId;
-            return o;
+            final var _resultValue = new GetTransitRouteTableAggregationsTransitRouteTableAggregation();
+            _resultValue.id = id;
+            _resultValue.routeType = routeType;
+            _resultValue.status = status;
+            _resultValue.transitRouteTableAggregationCidr = transitRouteTableAggregationCidr;
+            _resultValue.transitRouteTableAggregationDescription = transitRouteTableAggregationDescription;
+            _resultValue.transitRouteTableAggregationName = transitRouteTableAggregationName;
+            _resultValue.transitRouteTableAggregationScope = transitRouteTableAggregationScope;
+            _resultValue.transitRouteTableId = transitRouteTableId;
+            return _resultValue;
         }
     }
 }

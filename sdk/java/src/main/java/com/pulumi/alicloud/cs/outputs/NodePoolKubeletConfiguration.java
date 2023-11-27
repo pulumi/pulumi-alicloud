@@ -278,21 +278,21 @@ public final class NodePoolKubeletConfiguration {
             return this;
         }
         public NodePoolKubeletConfiguration build() {
-            final var o = new NodePoolKubeletConfiguration();
-            o.cpuManagerPolicy = cpuManagerPolicy;
-            o.eventBurst = eventBurst;
-            o.eventRecordQps = eventRecordQps;
-            o.evictionHard = evictionHard;
-            o.evictionSoft = evictionSoft;
-            o.evictionSoftGracePeriod = evictionSoftGracePeriod;
-            o.kubeApiBurst = kubeApiBurst;
-            o.kubeApiQps = kubeApiQps;
-            o.kubeReserved = kubeReserved;
-            o.registryBurst = registryBurst;
-            o.registryPullQps = registryPullQps;
-            o.serializeImagePulls = serializeImagePulls;
-            o.systemReserved = systemReserved;
-            return o;
+            final var _resultValue = new NodePoolKubeletConfiguration();
+            _resultValue.cpuManagerPolicy = cpuManagerPolicy;
+            _resultValue.eventBurst = eventBurst;
+            _resultValue.eventRecordQps = eventRecordQps;
+            _resultValue.evictionHard = evictionHard;
+            _resultValue.evictionSoft = evictionSoft;
+            _resultValue.evictionSoftGracePeriod = evictionSoftGracePeriod;
+            _resultValue.kubeApiBurst = kubeApiBurst;
+            _resultValue.kubeApiQps = kubeApiQps;
+            _resultValue.kubeReserved = kubeReserved;
+            _resultValue.registryBurst = registryBurst;
+            _resultValue.registryPullQps = registryPullQps;
+            _resultValue.serializeImagePulls = serializeImagePulls;
+            _resultValue.systemReserved = systemReserved;
+            return _resultValue;
         }
     }
 }

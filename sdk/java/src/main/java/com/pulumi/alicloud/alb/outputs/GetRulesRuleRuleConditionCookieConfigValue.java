@@ -65,10 +65,10 @@ public final class GetRulesRuleRuleConditionCookieConfigValue {
             return this;
         }
         public GetRulesRuleRuleConditionCookieConfigValue build() {
-            final var o = new GetRulesRuleRuleConditionCookieConfigValue();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetRulesRuleRuleConditionCookieConfigValue();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

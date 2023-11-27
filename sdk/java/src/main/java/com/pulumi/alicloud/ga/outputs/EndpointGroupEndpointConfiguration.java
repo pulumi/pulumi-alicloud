@@ -128,13 +128,13 @@ public final class EndpointGroupEndpointConfiguration {
             return this;
         }
         public EndpointGroupEndpointConfiguration build() {
-            final var o = new EndpointGroupEndpointConfiguration();
-            o.enableClientipPreservation = enableClientipPreservation;
-            o.enableProxyProtocol = enableProxyProtocol;
-            o.endpoint = endpoint;
-            o.type = type;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new EndpointGroupEndpointConfiguration();
+            _resultValue.enableClientipPreservation = enableClientipPreservation;
+            _resultValue.enableProxyProtocol = enableProxyProtocol;
+            _resultValue.endpoint = endpoint;
+            _resultValue.type = type;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

@@ -280,21 +280,21 @@ public final class GetRouteTablesTable {
             return vswitchIds(List.of(vswitchIds));
         }
         public GetRouteTablesTable build() {
-            final var o = new GetRouteTablesTable();
-            o.description = description;
-            o.id = id;
-            o.name = name;
-            o.resourceGroupId = resourceGroupId;
-            o.routeTableId = routeTableId;
-            o.routeTableName = routeTableName;
-            o.routeTableType = routeTableType;
-            o.routerId = routerId;
-            o.routerType = routerType;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vswitchIds = vswitchIds;
-            return o;
+            final var _resultValue = new GetRouteTablesTable();
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.routeTableId = routeTableId;
+            _resultValue.routeTableName = routeTableName;
+            _resultValue.routeTableType = routeTableType;
+            _resultValue.routerId = routerId;
+            _resultValue.routerType = routerType;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchIds = vswitchIds;
+            return _resultValue;
         }
     }
 }

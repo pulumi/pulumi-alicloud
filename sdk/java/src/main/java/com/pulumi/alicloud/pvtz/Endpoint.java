@@ -37,7 +37,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * The name of the resource.
      * 
      */
-    @Export(name="endpointName", type=String.class, parameters={})
+    @Export(name="endpointName", refs={String.class}, tree="[0]")
     private Output<String> endpointName;
 
     /**
@@ -51,7 +51,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * The Ip Configs. See `ip_configs` below. **NOTE:** In order to ensure high availability, add at least 2 and up to 6.
      * 
      */
-    @Export(name="ipConfigs", type=List.class, parameters={EndpointIpConfig.class})
+    @Export(name="ipConfigs", refs={List.class,EndpointIpConfig.class}, tree="[0,1]")
     private Output<List<EndpointIpConfig>> ipConfigs;
 
     /**
@@ -65,7 +65,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * The ID of the Security Group.
      * 
      */
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     /**
@@ -79,7 +79,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `CHANGE_FAILED`, `CHANGE_INIT`, `EXCEPTION`, `FAILED`, `INIT`, `SUCCESS`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -93,7 +93,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * The VPC ID.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -107,7 +107,7 @@ public class Endpoint extends com.pulumi.resources.CustomResource {
      * The Region of the VPC.
      * 
      */
-    @Export(name="vpcRegionId", type=String.class, parameters={})
+    @Export(name="vpcRegionId", refs={String.class}, tree="[0]")
     private Output<String> vpcRegionId;
 
     /**

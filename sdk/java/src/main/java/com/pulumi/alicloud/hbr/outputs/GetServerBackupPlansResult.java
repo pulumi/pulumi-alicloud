@@ -104,13 +104,13 @@ public final class GetServerBackupPlansResult {
             return plans(List.of(plans));
         }
         public GetServerBackupPlansResult build() {
-            final var o = new GetServerBackupPlansResult();
-            o.filters = filters;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.plans = plans;
-            return o;
+            final var _resultValue = new GetServerBackupPlansResult();
+            _resultValue.filters = filters;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.plans = plans;
+            return _resultValue;
         }
     }
 }

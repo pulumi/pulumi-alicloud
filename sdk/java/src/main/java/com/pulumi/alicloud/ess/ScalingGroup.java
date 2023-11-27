@@ -156,7 +156,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * - The specified RDS instance’s whitelist must have room for more IP addresses.
      * 
      */
-    @Export(name="dbInstanceIds", type=List.class, parameters={String.class})
+    @Export(name="dbInstanceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> dbInstanceIds;
 
     /**
@@ -172,7 +172,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * Default cool-down time (in seconds) of the scaling group. Value range: [0, 86400]. The default value is 300s.
      * 
      */
-    @Export(name="defaultCooldown", type=Integer.class, parameters={})
+    @Export(name="defaultCooldown", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> defaultCooldown;
 
     /**
@@ -186,7 +186,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * Expected number of ECS instances in the scaling group. Value range: [min_size, max_size].
      * 
      */
-    @Export(name="desiredCapacity", type=Integer.class, parameters={})
+    @Export(name="desiredCapacity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> desiredCapacity;
 
     /**
@@ -200,7 +200,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * Specifies whether the scaling group deletion protection is enabled. `true` or `false`, Default value: `false`.
      * 
      */
-    @Export(name="groupDeletionProtection", type=Boolean.class, parameters={})
+    @Export(name="groupDeletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> groupDeletionProtection;
 
     /**
@@ -214,7 +214,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * Resource type within scaling group. Optional values: ECS, ECI. Default to ECS.
      * 
      */
-    @Export(name="groupType", type=String.class, parameters={})
+    @Export(name="groupType", refs={String.class}, tree="[0]")
     private Output<String> groupType;
 
     /**
@@ -228,7 +228,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * Resource type within scaling group. Optional values: ECS, NONE. Default to ECS.
      * 
      */
-    @Export(name="healthCheckType", type=String.class, parameters={})
+    @Export(name="healthCheckType", refs={String.class}, tree="[0]")
     private Output<String> healthCheckType;
 
     /**
@@ -242,7 +242,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * Instance launch template ID, scaling group obtains launch configuration from instance launch template, see [Launch Template](https://www.alibabacloud.com/help/doc-detail/73916.html). Creating scaling group from launch template enable group automatically.
      * 
      */
-    @Export(name="launchTemplateId", type=String.class, parameters={})
+    @Export(name="launchTemplateId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> launchTemplateId;
 
     /**
@@ -256,7 +256,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * The version number of the launch template. Valid values are the version number, `Latest`, or `Default`, Default value: `Default`.
      * 
      */
-    @Export(name="launchTemplateVersion", type=String.class, parameters={})
+    @Export(name="launchTemplateVersion", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> launchTemplateVersion;
 
     /**
@@ -275,7 +275,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * - The default weight of an ECS instance attached to the Server Load Balancer instance is 50.
      * 
      */
-    @Export(name="loadbalancerIds", type=List.class, parameters={String.class})
+    @Export(name="loadbalancerIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> loadbalancerIds;
 
     /**
@@ -295,7 +295,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * **NOTE:** From version 1.204.1, `max_size` can be set to `2000`.
      * 
      */
-    @Export(name="maxSize", type=Integer.class, parameters={})
+    @Export(name="maxSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> maxSize;
 
     /**
@@ -311,7 +311,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * **NOTE:** From version 1.204.1, `min_size` can be set to `2000`.
      * 
      */
-    @Export(name="minSize", type=Integer.class, parameters={})
+    @Export(name="minSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> minSize;
 
     /**
@@ -326,7 +326,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * Multi-AZ scaling group ECS instance expansion and contraction strategy. PRIORITY, BALANCE or COST_OPTIMIZED(Available in 1.54.0+).
      * 
      */
-    @Export(name="multiAzPolicy", type=String.class, parameters={})
+    @Export(name="multiAzPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> multiAzPolicy;
 
     /**
@@ -340,7 +340,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * The minimum amount of the Auto Scaling group&#39;s capacity that must be fulfilled by On-Demand Instances. This base portion is provisioned first as your group scales.
      * 
      */
-    @Export(name="onDemandBaseCapacity", type=Integer.class, parameters={})
+    @Export(name="onDemandBaseCapacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> onDemandBaseCapacity;
 
     /**
@@ -354,7 +354,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * Controls the percentages of On-Demand Instances and Spot Instances for your additional capacity beyond OnDemandBaseCapacity.
      * 
      */
-    @Export(name="onDemandPercentageAboveBaseCapacity", type=Integer.class, parameters={})
+    @Export(name="onDemandPercentageAboveBaseCapacity", refs={Integer.class}, tree="[0]")
     private Output<Integer> onDemandPercentageAboveBaseCapacity;
 
     /**
@@ -374,7 +374,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** `on_demand_base_capacity`,`on_demand_percentage_above_base_capacity`,`spot_instance_pools`,`spot_instance_remedy` are valid only if `multi_az_policy` is &#39;COST_OPTIMIZED&#39;.
      * 
      */
-    @Export(name="protectedInstances", type=List.class, parameters={String.class})
+    @Export(name="protectedInstances", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> protectedInstances;
 
     /**
@@ -398,7 +398,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * - Default values: Default value of RemovalPolicy.1: OldestScalingConfiguration. Default value of RemovalPolicy.2: OldestInstance.
      * 
      */
-    @Export(name="removalPolicies", type=List.class, parameters={String.class})
+    @Export(name="removalPolicies", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> removalPolicies;
 
     /**
@@ -416,7 +416,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * Name shown for the scaling group, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain numbers, underscores `_`, hyphens `-`, and decimal points `.`. If this parameter is not specified, the default value is ScalingGroupId.
      * 
      */
-    @Export(name="scalingGroupName", type=String.class, parameters={})
+    @Export(name="scalingGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scalingGroupName;
 
     /**
@@ -430,7 +430,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * The number of Spot pools to use to allocate your Spot capacity. The Spot pools is composed of instance types of lowest price.
      * 
      */
-    @Export(name="spotInstancePools", type=Integer.class, parameters={})
+    @Export(name="spotInstancePools", refs={Integer.class}, tree="[0]")
     private Output<Integer> spotInstancePools;
 
     /**
@@ -444,7 +444,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * Whether to replace spot instances with newly created spot/onDemand instance when receive a spot recycling message.
      * 
      */
-    @Export(name="spotInstanceRemedy", type=Boolean.class, parameters={})
+    @Export(name="spotInstanceRemedy", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> spotInstanceRemedy;
 
     /**
@@ -460,7 +460,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -480,7 +480,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'vswitch_id' has been deprecated from provider version 1.7.1, and new field 'vswitch_ids' can replace it. */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
@@ -494,7 +494,7 @@ public class ScalingGroup extends com.pulumi.resources.CustomResource {
      * List of virtual switch IDs in which the ecs instances to be launched.
      * 
      */
-    @Export(name="vswitchIds", type=List.class, parameters={String.class})
+    @Export(name="vswitchIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> vswitchIds;
 
     /**

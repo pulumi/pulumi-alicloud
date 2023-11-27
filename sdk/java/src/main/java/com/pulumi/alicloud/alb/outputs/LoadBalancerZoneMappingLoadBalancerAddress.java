@@ -105,12 +105,12 @@ public final class LoadBalancerZoneMappingLoadBalancerAddress {
             return this;
         }
         public LoadBalancerZoneMappingLoadBalancerAddress build() {
-            final var o = new LoadBalancerZoneMappingLoadBalancerAddress();
-            o.address = address;
-            o.allocationId = allocationId;
-            o.eipType = eipType;
-            o.ipv6Address = ipv6Address;
-            return o;
+            final var _resultValue = new LoadBalancerZoneMappingLoadBalancerAddress();
+            _resultValue.address = address;
+            _resultValue.allocationId = allocationId;
+            _resultValue.eipType = eipType;
+            _resultValue.ipv6Address = ipv6Address;
+            return _resultValue;
         }
     }
 }

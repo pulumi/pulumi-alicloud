@@ -225,18 +225,18 @@ public final class ServerBackupPlanDetail {
             return this;
         }
         public ServerBackupPlanDetail build() {
-            final var o = new ServerBackupPlanDetail();
-            o.appConsistent = appConsistent;
-            o.destinationRegionId = destinationRegionId;
-            o.destinationRetention = destinationRetention;
-            o.diskIdLists = diskIdLists;
-            o.doCopy = doCopy;
-            o.enableFsFreeze = enableFsFreeze;
-            o.postScriptPath = postScriptPath;
-            o.preScriptPath = preScriptPath;
-            o.snapshotGroup = snapshotGroup;
-            o.timeoutInSeconds = timeoutInSeconds;
-            return o;
+            final var _resultValue = new ServerBackupPlanDetail();
+            _resultValue.appConsistent = appConsistent;
+            _resultValue.destinationRegionId = destinationRegionId;
+            _resultValue.destinationRetention = destinationRetention;
+            _resultValue.diskIdLists = diskIdLists;
+            _resultValue.doCopy = doCopy;
+            _resultValue.enableFsFreeze = enableFsFreeze;
+            _resultValue.postScriptPath = postScriptPath;
+            _resultValue.preScriptPath = preScriptPath;
+            _resultValue.snapshotGroup = snapshotGroup;
+            _resultValue.timeoutInSeconds = timeoutInSeconds;
+            return _resultValue;
         }
     }
 }

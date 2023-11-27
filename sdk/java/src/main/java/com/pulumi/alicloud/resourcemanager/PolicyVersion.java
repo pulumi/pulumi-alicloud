@@ -102,7 +102,7 @@ public class PolicyVersion extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'is_default_version' has been deprecated from provider version 1.90.0 */
-    @Export(name="isDefaultVersion", type=Boolean.class, parameters={})
+    @Export(name="isDefaultVersion", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> isDefaultVersion;
 
     /**
@@ -116,7 +116,7 @@ public class PolicyVersion extends com.pulumi.resources.CustomResource {
      * The content of the policy. The content must be 1 to 2,048 characters in length.
      * 
      */
-    @Export(name="policyDocument", type=String.class, parameters={})
+    @Export(name="policyDocument", refs={String.class}, tree="[0]")
     private Output<String> policyDocument;
 
     /**
@@ -130,7 +130,7 @@ public class PolicyVersion extends com.pulumi.resources.CustomResource {
      * The name of the policy. Name must be 1 to 128 characters in length and can contain letters, digits, and hyphens (-).
      * 
      */
-    @Export(name="policyName", type=String.class, parameters={})
+    @Export(name="policyName", refs={String.class}, tree="[0]")
     private Output<String> policyName;
 
     /**

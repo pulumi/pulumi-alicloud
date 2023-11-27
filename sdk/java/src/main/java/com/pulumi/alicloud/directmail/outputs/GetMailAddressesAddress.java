@@ -274,21 +274,21 @@ public final class GetMailAddressesAddress {
             return this;
         }
         public GetMailAddressesAddress build() {
-            final var o = new GetMailAddressesAddress();
-            o.accountName = accountName;
-            o.createTime = createTime;
-            o.dailyCount = dailyCount;
-            o.dailyReqCount = dailyReqCount;
-            o.domainStatus = domainStatus;
-            o.id = id;
-            o.mailAddressId = mailAddressId;
-            o.monthCount = monthCount;
-            o.monthReqCount = monthReqCount;
-            o.replyAddress = replyAddress;
-            o.replyStatus = replyStatus;
-            o.sendtype = sendtype;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetMailAddressesAddress();
+            _resultValue.accountName = accountName;
+            _resultValue.createTime = createTime;
+            _resultValue.dailyCount = dailyCount;
+            _resultValue.dailyReqCount = dailyReqCount;
+            _resultValue.domainStatus = domainStatus;
+            _resultValue.id = id;
+            _resultValue.mailAddressId = mailAddressId;
+            _resultValue.monthCount = monthCount;
+            _resultValue.monthReqCount = monthReqCount;
+            _resultValue.replyAddress = replyAddress;
+            _resultValue.replyStatus = replyStatus;
+            _resultValue.sendtype = sendtype;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

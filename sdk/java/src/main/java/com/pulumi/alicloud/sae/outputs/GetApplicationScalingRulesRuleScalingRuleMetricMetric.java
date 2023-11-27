@@ -66,10 +66,10 @@ public final class GetApplicationScalingRulesRuleScalingRuleMetricMetric {
             return this;
         }
         public GetApplicationScalingRulesRuleScalingRuleMetricMetric build() {
-            final var o = new GetApplicationScalingRulesRuleScalingRuleMetricMetric();
-            o.metricTargetAverageUtilization = metricTargetAverageUtilization;
-            o.metricType = metricType;
-            return o;
+            final var _resultValue = new GetApplicationScalingRulesRuleScalingRuleMetricMetric();
+            _resultValue.metricTargetAverageUtilization = metricTargetAverageUtilization;
+            _resultValue.metricType = metricType;
+            return _resultValue;
         }
     }
 }

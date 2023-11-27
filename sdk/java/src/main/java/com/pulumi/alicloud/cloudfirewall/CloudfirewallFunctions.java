@@ -371,7 +371,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -412,7 +412,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -453,7 +453,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 
@@ -494,7 +494,7 @@ public final class CloudfirewallFunctions {
     /**
      * This data source provides the Cloud Firewall Control Policies of the current Alibaba Cloud user.
      * 
-     * &gt; **NOTE:** Available in v1.129.0+.
+     * &gt; **NOTE:** Available since v1.129.0.
      * 
      * ## Example Usage
      * 

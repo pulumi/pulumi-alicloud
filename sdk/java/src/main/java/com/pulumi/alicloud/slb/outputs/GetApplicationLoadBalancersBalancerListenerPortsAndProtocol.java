@@ -123,13 +123,13 @@ public final class GetApplicationLoadBalancersBalancerListenerPortsAndProtocol {
             return this;
         }
         public GetApplicationLoadBalancersBalancerListenerPortsAndProtocol build() {
-            final var o = new GetApplicationLoadBalancersBalancerListenerPortsAndProtocol();
-            o.description = description;
-            o.forwardPort = forwardPort;
-            o.listenerForward = listenerForward;
-            o.listenerPort = listenerPort;
-            o.listenerProtocol = listenerProtocol;
-            return o;
+            final var _resultValue = new GetApplicationLoadBalancersBalancerListenerPortsAndProtocol();
+            _resultValue.description = description;
+            _resultValue.forwardPort = forwardPort;
+            _resultValue.listenerForward = listenerForward;
+            _resultValue.listenerPort = listenerPort;
+            _resultValue.listenerProtocol = listenerProtocol;
+            return _resultValue;
         }
     }
 }

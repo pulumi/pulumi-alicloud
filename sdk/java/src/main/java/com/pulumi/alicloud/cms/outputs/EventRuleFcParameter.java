@@ -124,13 +124,13 @@ public final class EventRuleFcParameter {
             return this;
         }
         public EventRuleFcParameter build() {
-            final var o = new EventRuleFcParameter();
-            o.arn = arn;
-            o.fcParametersId = fcParametersId;
-            o.functionName = functionName;
-            o.region = region;
-            o.serviceName = serviceName;
-            return o;
+            final var _resultValue = new EventRuleFcParameter();
+            _resultValue.arn = arn;
+            _resultValue.fcParametersId = fcParametersId;
+            _resultValue.functionName = functionName;
+            _resultValue.region = region;
+            _resultValue.serviceName = serviceName;
+            return _resultValue;
         }
     }
 }

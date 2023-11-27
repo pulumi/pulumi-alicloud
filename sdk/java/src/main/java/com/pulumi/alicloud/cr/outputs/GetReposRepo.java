@@ -147,14 +147,14 @@ public final class GetReposRepo {
             return tags(List.of(tags));
         }
         public GetReposRepo build() {
-            final var o = new GetReposRepo();
-            o.domainList = domainList;
-            o.name = name;
-            o.namespace = namespace;
-            o.repoType = repoType;
-            o.summary = summary;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetReposRepo();
+            _resultValue.domainList = domainList;
+            _resultValue.name = name;
+            _resultValue.namespace = namespace;
+            _resultValue.repoType = repoType;
+            _resultValue.summary = summary;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

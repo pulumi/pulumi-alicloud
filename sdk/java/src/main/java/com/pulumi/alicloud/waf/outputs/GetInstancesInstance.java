@@ -172,16 +172,16 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.endDate = endDate;
-            o.id = id;
-            o.inDebt = inDebt;
-            o.instanceId = instanceId;
-            o.remainDay = remainDay;
-            o.status = status;
-            o.subscriptionType = subscriptionType;
-            o.trial = trial;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.endDate = endDate;
+            _resultValue.id = id;
+            _resultValue.inDebt = inDebt;
+            _resultValue.instanceId = instanceId;
+            _resultValue.remainDay = remainDay;
+            _resultValue.status = status;
+            _resultValue.subscriptionType = subscriptionType;
+            _resultValue.trial = trial;
+            return _resultValue;
         }
     }
 }

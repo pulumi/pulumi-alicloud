@@ -97,7 +97,7 @@ public class VswitchCidrReservation extends com.pulumi.resources.CustomResource 
      * Reserved network segment CIdrBlock.
      * 
      */
-    @Export(name="cidrReservationCidr", type=String.class, parameters={})
+    @Export(name="cidrReservationCidr", refs={String.class}, tree="[0]")
     private Output<String> cidrReservationCidr;
 
     /**
@@ -111,7 +111,7 @@ public class VswitchCidrReservation extends com.pulumi.resources.CustomResource 
      * The description of the reserved CIDR block.
      * 
      */
-    @Export(name="cidrReservationDescription", type=String.class, parameters={})
+    @Export(name="cidrReservationDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cidrReservationDescription;
 
     /**
@@ -125,7 +125,7 @@ public class VswitchCidrReservation extends com.pulumi.resources.CustomResource 
      * Reserved segment mask.
      * 
      */
-    @Export(name="cidrReservationMask", type=String.class, parameters={})
+    @Export(name="cidrReservationMask", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cidrReservationMask;
 
     /**
@@ -139,7 +139,7 @@ public class VswitchCidrReservation extends com.pulumi.resources.CustomResource 
      * Reserved CIDR Block Type.Valid values: `Prefix`. Default value: Prefix.
      * 
      */
-    @Export(name="cidrReservationType", type=String.class, parameters={})
+    @Export(name="cidrReservationType", refs={String.class}, tree="[0]")
     private Output<String> cidrReservationType;
 
     /**
@@ -153,7 +153,7 @@ public class VswitchCidrReservation extends com.pulumi.resources.CustomResource 
      * The creation time of the resource.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -167,7 +167,7 @@ public class VswitchCidrReservation extends com.pulumi.resources.CustomResource 
      * Reserved ip version of network segment, valid values: `IPv4`, `IPv6`, default IPv4.
      * 
      */
-    @Export(name="ipVersion", type=String.class, parameters={})
+    @Export(name="ipVersion", refs={String.class}, tree="[0]")
     private Output<String> ipVersion;
 
     /**
@@ -181,7 +181,7 @@ public class VswitchCidrReservation extends com.pulumi.resources.CustomResource 
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -195,7 +195,7 @@ public class VswitchCidrReservation extends com.pulumi.resources.CustomResource 
      * The id of the vpc instance to which the reserved CIDR block belongs.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -209,7 +209,7 @@ public class VswitchCidrReservation extends com.pulumi.resources.CustomResource 
      * The resource attribute field of the resource ID.
      * 
      */
-    @Export(name="vswitchCidrReservationId", type=String.class, parameters={})
+    @Export(name="vswitchCidrReservationId", refs={String.class}, tree="[0]")
     private Output<String> vswitchCidrReservationId;
 
     /**
@@ -223,7 +223,7 @@ public class VswitchCidrReservation extends com.pulumi.resources.CustomResource 
      * The name of the resource.
      * 
      */
-    @Export(name="vswitchCidrReservationName", type=String.class, parameters={})
+    @Export(name="vswitchCidrReservationName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchCidrReservationName;
 
     /**
@@ -237,7 +237,7 @@ public class VswitchCidrReservation extends com.pulumi.resources.CustomResource 
      * The Id of the switch instance.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

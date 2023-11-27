@@ -148,17 +148,17 @@ public final class GetTlsCipherPoliciesResult {
             return this;
         }
         public GetTlsCipherPoliciesResult build() {
-            final var o = new GetTlsCipherPoliciesResult();
-            o.id = id;
-            o.ids = ids;
-            o.includeListener = includeListener;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.policies = policies;
-            o.status = status;
-            o.tlsCipherPolicyName = tlsCipherPolicyName;
-            return o;
+            final var _resultValue = new GetTlsCipherPoliciesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.includeListener = includeListener;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.policies = policies;
+            _resultValue.status = status;
+            _resultValue.tlsCipherPolicyName = tlsCipherPolicyName;
+            return _resultValue;
         }
     }
 }

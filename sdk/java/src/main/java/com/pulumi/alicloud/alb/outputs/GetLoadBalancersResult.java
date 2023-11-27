@@ -267,26 +267,26 @@ public final class GetLoadBalancersResult {
             return this;
         }
         public GetLoadBalancersResult build() {
-            final var o = new GetLoadBalancersResult();
-            o.addressType = addressType;
-            o.balancers = balancers;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
-            o.loadBalancerBussinessStatus = loadBalancerBussinessStatus;
-            o.loadBalancerIds = loadBalancerIds;
-            o.loadBalancerName = loadBalancerName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.vpcIds = vpcIds;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetLoadBalancersResult();
+            _resultValue.addressType = addressType;
+            _resultValue.balancers = balancers;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
+            _resultValue.loadBalancerBussinessStatus = loadBalancerBussinessStatus;
+            _resultValue.loadBalancerIds = loadBalancerIds;
+            _resultValue.loadBalancerName = loadBalancerName;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vpcIds = vpcIds;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

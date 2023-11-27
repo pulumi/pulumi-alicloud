@@ -136,16 +136,16 @@ public final class GetQueuesResult {
             return this;
         }
         public GetQueuesResult build() {
-            final var o = new GetQueuesResult();
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.queues = queues;
-            o.virtualHostName = virtualHostName;
-            return o;
+            final var _resultValue = new GetQueuesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.queues = queues;
+            _resultValue.virtualHostName = virtualHostName;
+            return _resultValue;
         }
     }
 }

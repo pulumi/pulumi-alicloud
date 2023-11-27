@@ -253,21 +253,21 @@ public final class GetVpcFirewallCensResult {
             return this;
         }
         public GetVpcFirewallCensResult build() {
-            final var o = new GetVpcFirewallCensResult();
-            o.cenId = cenId;
-            o.cens = cens;
-            o.id = id;
-            o.ids = ids;
-            o.lang = lang;
-            o.memberUid = memberUid;
-            o.networkInstanceId = networkInstanceId;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.status = status;
-            o.vpcFirewallId = vpcFirewallId;
-            o.vpcFirewallName = vpcFirewallName;
-            return o;
+            final var _resultValue = new GetVpcFirewallCensResult();
+            _resultValue.cenId = cenId;
+            _resultValue.cens = cens;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.lang = lang;
+            _resultValue.memberUid = memberUid;
+            _resultValue.networkInstanceId = networkInstanceId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.status = status;
+            _resultValue.vpcFirewallId = vpcFirewallId;
+            _resultValue.vpcFirewallName = vpcFirewallName;
+            return _resultValue;
         }
     }
 }

@@ -201,7 +201,7 @@ class GetDdosBgpInstancesInstanceResult(dict):
         :param str ip_type: The instance's IP version.
         :param str name: The instance's remark.
         :param int normal_bandwidth: Normal defend bandwidth of the instance. The unit is Gbps.
-        :param str region: A region of instance.
+        :param str region: The instance's region.
         :param str type: The instance's type.
         """
         pulumi.set(__self__, "bandwidth", bandwidth)
@@ -274,7 +274,7 @@ class GetDdosBgpInstancesInstanceResult(dict):
     @pulumi.getter
     def region(self) -> str:
         """
-        A region of instance.
+        The instance's region.
         """
         return pulumi.get(self, "region")
 

@@ -298,23 +298,23 @@ public final class GetClassDetailsResult {
             return this;
         }
         public GetClassDetailsResult build() {
-            final var o = new GetClassDetailsResult();
-            o.category = category;
-            o.classCode = classCode;
-            o.classGroup = classGroup;
-            o.commodityCode = commodityCode;
-            o.cpu = cpu;
-            o.dbInstanceStorageType = dbInstanceStorageType;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.id = id;
-            o.instructionSetArch = instructionSetArch;
-            o.maxConnections = maxConnections;
-            o.maxIombps = maxIombps;
-            o.maxIops = maxIops;
-            o.memoryClass = memoryClass;
-            o.referencePrice = referencePrice;
-            return o;
+            final var _resultValue = new GetClassDetailsResult();
+            _resultValue.category = category;
+            _resultValue.classCode = classCode;
+            _resultValue.classGroup = classGroup;
+            _resultValue.commodityCode = commodityCode;
+            _resultValue.cpu = cpu;
+            _resultValue.dbInstanceStorageType = dbInstanceStorageType;
+            _resultValue.engine = engine;
+            _resultValue.engineVersion = engineVersion;
+            _resultValue.id = id;
+            _resultValue.instructionSetArch = instructionSetArch;
+            _resultValue.maxConnections = maxConnections;
+            _resultValue.maxIombps = maxIombps;
+            _resultValue.maxIops = maxIops;
+            _resultValue.memoryClass = memoryClass;
+            _resultValue.referencePrice = referencePrice;
+            return _resultValue;
         }
     }
 }

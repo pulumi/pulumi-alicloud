@@ -67,10 +67,10 @@ public final class LoadBalancerModificationProtectionConfig {
             return this;
         }
         public LoadBalancerModificationProtectionConfig build() {
-            final var o = new LoadBalancerModificationProtectionConfig();
-            o.reason = reason;
-            o.status = status;
-            return o;
+            final var _resultValue = new LoadBalancerModificationProtectionConfig();
+            _resultValue.reason = reason;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

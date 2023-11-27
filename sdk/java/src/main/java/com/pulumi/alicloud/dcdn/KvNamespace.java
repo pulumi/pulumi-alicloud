@@ -70,7 +70,7 @@ public class KvNamespace extends com.pulumi.resources.CustomResource {
      * Namespace description information
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -84,7 +84,7 @@ public class KvNamespace extends com.pulumi.resources.CustomResource {
      * Namespace name. The name can contain letters, digits, hyphens (-), and underscores (_).
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output<String> namespace;
 
     /**
@@ -98,7 +98,7 @@ public class KvNamespace extends com.pulumi.resources.CustomResource {
      * The status of the resource
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

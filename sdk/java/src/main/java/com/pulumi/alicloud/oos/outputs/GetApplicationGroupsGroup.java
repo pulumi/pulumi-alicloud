@@ -217,18 +217,18 @@ public final class GetApplicationGroupsGroup {
             return this;
         }
         public GetApplicationGroupsGroup build() {
-            final var o = new GetApplicationGroupsGroup();
-            o.applicationGroupName = applicationGroupName;
-            o.applicationName = applicationName;
-            o.cmsGroupId = cmsGroupId;
-            o.createTime = createTime;
-            o.deployRegionId = deployRegionId;
-            o.description = description;
-            o.id = id;
-            o.importTagKey = importTagKey;
-            o.importTagValue = importTagValue;
-            o.updateTime = updateTime;
-            return o;
+            final var _resultValue = new GetApplicationGroupsGroup();
+            _resultValue.applicationGroupName = applicationGroupName;
+            _resultValue.applicationName = applicationName;
+            _resultValue.cmsGroupId = cmsGroupId;
+            _resultValue.createTime = createTime;
+            _resultValue.deployRegionId = deployRegionId;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.importTagKey = importTagKey;
+            _resultValue.importTagValue = importTagValue;
+            _resultValue.updateTime = updateTime;
+            return _resultValue;
         }
     }
 }

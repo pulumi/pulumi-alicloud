@@ -141,14 +141,14 @@ public final class GetResourceDirectoriesDirectory {
             return this;
         }
         public GetResourceDirectoriesDirectory build() {
-            final var o = new GetResourceDirectoriesDirectory();
-            o.id = id;
-            o.masterAccountId = masterAccountId;
-            o.masterAccountName = masterAccountName;
-            o.resourceDirectoryId = resourceDirectoryId;
-            o.rootFolderId = rootFolderId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetResourceDirectoriesDirectory();
+            _resultValue.id = id;
+            _resultValue.masterAccountId = masterAccountId;
+            _resultValue.masterAccountName = masterAccountName;
+            _resultValue.resourceDirectoryId = resourceDirectoryId;
+            _resultValue.rootFolderId = rootFolderId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

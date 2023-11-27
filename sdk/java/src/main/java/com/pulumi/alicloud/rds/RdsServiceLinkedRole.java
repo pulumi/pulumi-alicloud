@@ -67,7 +67,7 @@ public class RdsServiceLinkedRole extends com.pulumi.resources.CustomResource {
      * The Alibaba Cloud Resource Name (ARN) of the role.
      * 
      */
-    @Export(name="arn", type=String.class, parameters={})
+    @Export(name="arn", refs={String.class}, tree="[0]")
     private Output<String> arn;
 
     /**
@@ -81,7 +81,7 @@ public class RdsServiceLinkedRole extends com.pulumi.resources.CustomResource {
      * The ID of the role.
      * 
      */
-    @Export(name="roleId", type=String.class, parameters={})
+    @Export(name="roleId", refs={String.class}, tree="[0]")
     private Output<String> roleId;
 
     /**
@@ -95,7 +95,7 @@ public class RdsServiceLinkedRole extends com.pulumi.resources.CustomResource {
      * The name of the role.
      * 
      */
-    @Export(name="roleName", type=String.class, parameters={})
+    @Export(name="roleName", refs={String.class}, tree="[0]")
     private Output<String> roleName;
 
     /**
@@ -109,7 +109,7 @@ public class RdsServiceLinkedRole extends com.pulumi.resources.CustomResource {
      * The product name for SLR. RDS can automatically create the following service-linked roles: `AliyunServiceRoleForRdsPgsqlOnEcs`, `AliyunServiceRoleForRDSProxyOnEcs`.
      * 
      */
-    @Export(name="serviceName", type=String.class, parameters={})
+    @Export(name="serviceName", refs={String.class}, tree="[0]")
     private Output<String> serviceName;
 
     /**

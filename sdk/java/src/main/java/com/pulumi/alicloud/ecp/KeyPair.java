@@ -68,7 +68,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
      * The Key Name.
      * 
      */
-    @Export(name="keyPairName", type=String.class, parameters={})
+    @Export(name="keyPairName", refs={String.class}, tree="[0]")
     private Output<String> keyPairName;
 
     /**
@@ -82,7 +82,7 @@ public class KeyPair extends com.pulumi.resources.CustomResource {
      * The public key body.
      * 
      */
-    @Export(name="publicKeyBody", type=String.class, parameters={})
+    @Export(name="publicKeyBody", refs={String.class}, tree="[0]")
     private Output<String> publicKeyBody;
 
     /**

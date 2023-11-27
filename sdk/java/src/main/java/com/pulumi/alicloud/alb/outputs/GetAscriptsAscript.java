@@ -226,19 +226,19 @@ public final class GetAscriptsAscript {
             return this;
         }
         public GetAscriptsAscript build() {
-            final var o = new GetAscriptsAscript();
-            o.ascriptId = ascriptId;
-            o.ascriptName = ascriptName;
-            o.enabled = enabled;
-            o.extAttributeEnabled = extAttributeEnabled;
-            o.extAttributes = extAttributes;
-            o.id = id;
-            o.listenerId = listenerId;
-            o.loadBalancerId = loadBalancerId;
-            o.position = position;
-            o.scriptContent = scriptContent;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAscriptsAscript();
+            _resultValue.ascriptId = ascriptId;
+            _resultValue.ascriptName = ascriptName;
+            _resultValue.enabled = enabled;
+            _resultValue.extAttributeEnabled = extAttributeEnabled;
+            _resultValue.extAttributes = extAttributes;
+            _resultValue.id = id;
+            _resultValue.listenerId = listenerId;
+            _resultValue.loadBalancerId = loadBalancerId;
+            _resultValue.position = position;
+            _resultValue.scriptContent = scriptContent;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

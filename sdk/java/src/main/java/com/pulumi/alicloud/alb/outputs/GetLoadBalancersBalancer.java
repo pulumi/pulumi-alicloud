@@ -467,29 +467,29 @@ public final class GetLoadBalancersBalancer {
             return zoneMappings(List.of(zoneMappings));
         }
         public GetLoadBalancersBalancer build() {
-            final var o = new GetLoadBalancersBalancer();
-            o.accessLogConfigs = accessLogConfigs;
-            o.addressAllocatedMode = addressAllocatedMode;
-            o.addressType = addressType;
-            o.bandwidthPackageId = bandwidthPackageId;
-            o.createTime = createTime;
-            o.deletionProtectionConfigs = deletionProtectionConfigs;
-            o.dnsName = dnsName;
-            o.id = id;
-            o.loadBalancerBillingConfigs = loadBalancerBillingConfigs;
-            o.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
-            o.loadBalancerBussinessStatus = loadBalancerBussinessStatus;
-            o.loadBalancerEdition = loadBalancerEdition;
-            o.loadBalancerId = loadBalancerId;
-            o.loadBalancerName = loadBalancerName;
-            o.loadBalancerOperationLocks = loadBalancerOperationLocks;
-            o.modificationProtectionConfigs = modificationProtectionConfigs;
-            o.resourceGroupId = resourceGroupId;
-            o.status = status;
-            o.tags = tags;
-            o.vpcId = vpcId;
-            o.zoneMappings = zoneMappings;
-            return o;
+            final var _resultValue = new GetLoadBalancersBalancer();
+            _resultValue.accessLogConfigs = accessLogConfigs;
+            _resultValue.addressAllocatedMode = addressAllocatedMode;
+            _resultValue.addressType = addressType;
+            _resultValue.bandwidthPackageId = bandwidthPackageId;
+            _resultValue.createTime = createTime;
+            _resultValue.deletionProtectionConfigs = deletionProtectionConfigs;
+            _resultValue.dnsName = dnsName;
+            _resultValue.id = id;
+            _resultValue.loadBalancerBillingConfigs = loadBalancerBillingConfigs;
+            _resultValue.loadBalancerBusinessStatus = loadBalancerBusinessStatus;
+            _resultValue.loadBalancerBussinessStatus = loadBalancerBussinessStatus;
+            _resultValue.loadBalancerEdition = loadBalancerEdition;
+            _resultValue.loadBalancerId = loadBalancerId;
+            _resultValue.loadBalancerName = loadBalancerName;
+            _resultValue.loadBalancerOperationLocks = loadBalancerOperationLocks;
+            _resultValue.modificationProtectionConfigs = modificationProtectionConfigs;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.vpcId = vpcId;
+            _resultValue.zoneMappings = zoneMappings;
+            return _resultValue;
         }
     }
 }

@@ -320,20 +320,20 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.clusterType = clusterType;
-            o.createTime = createTime;
-            o.description = description;
-            o.entityQuota = entityQuota;
-            o.id = id;
-            o.name = name;
-            o.network = network;
-            o.readCapacity = readCapacity;
-            o.status = status;
-            o.tags = tags;
-            o.userId = userId;
-            o.writeCapacity = writeCapacity;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.clusterType = clusterType;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.entityQuota = entityQuota;
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.network = network;
+            _resultValue.readCapacity = readCapacity;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.userId = userId;
+            _resultValue.writeCapacity = writeCapacity;
+            return _resultValue;
         }
     }
 }

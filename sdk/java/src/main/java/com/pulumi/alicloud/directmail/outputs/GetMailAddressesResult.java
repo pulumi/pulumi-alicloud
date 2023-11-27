@@ -122,15 +122,15 @@ public final class GetMailAddressesResult {
             return this;
         }
         public GetMailAddressesResult build() {
-            final var o = new GetMailAddressesResult();
-            o.addresses = addresses;
-            o.id = id;
-            o.ids = ids;
-            o.keyWord = keyWord;
-            o.outputFile = outputFile;
-            o.sendtype = sendtype;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetMailAddressesResult();
+            _resultValue.addresses = addresses;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.keyWord = keyWord;
+            _resultValue.outputFile = outputFile;
+            _resultValue.sendtype = sendtype;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

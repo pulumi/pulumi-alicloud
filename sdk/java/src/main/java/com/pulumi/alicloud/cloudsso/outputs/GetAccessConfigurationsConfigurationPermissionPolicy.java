@@ -103,12 +103,12 @@ public final class GetAccessConfigurationsConfigurationPermissionPolicy {
             return this;
         }
         public GetAccessConfigurationsConfigurationPermissionPolicy build() {
-            final var o = new GetAccessConfigurationsConfigurationPermissionPolicy();
-            o.addTime = addTime;
-            o.permissionPolicyDocument = permissionPolicyDocument;
-            o.permissionPolicyName = permissionPolicyName;
-            o.permissionPolicyType = permissionPolicyType;
-            return o;
+            final var _resultValue = new GetAccessConfigurationsConfigurationPermissionPolicy();
+            _resultValue.addTime = addTime;
+            _resultValue.permissionPolicyDocument = permissionPolicyDocument;
+            _resultValue.permissionPolicyName = permissionPolicyName;
+            _resultValue.permissionPolicyType = permissionPolicyType;
+            return _resultValue;
         }
     }
 }

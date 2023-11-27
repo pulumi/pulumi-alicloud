@@ -90,11 +90,11 @@ public final class ErEnvConfPresetCanaryJiangsu {
             return this;
         }
         public ErEnvConfPresetCanaryJiangsu build() {
-            final var o = new ErEnvConfPresetCanaryJiangsu();
-            o.allowedHosts = allowedHosts;
-            o.codeRev = codeRev;
-            o.specName = specName;
-            return o;
+            final var _resultValue = new ErEnvConfPresetCanaryJiangsu();
+            _resultValue.allowedHosts = allowedHosts;
+            _resultValue.codeRev = codeRev;
+            _resultValue.specName = specName;
+            return _resultValue;
         }
     }
 }

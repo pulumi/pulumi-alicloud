@@ -236,19 +236,19 @@ public final class GetIpv6GatewaysGateway {
             return this;
         }
         public GetIpv6GatewaysGateway build() {
-            final var o = new GetIpv6GatewaysGateway();
-            o.businessStatus = businessStatus;
-            o.createTime = createTime;
-            o.description = description;
-            o.expiredTime = expiredTime;
-            o.id = id;
-            o.instanceChargeType = instanceChargeType;
-            o.ipv6GatewayId = ipv6GatewayId;
-            o.ipv6GatewayName = ipv6GatewayName;
-            o.spec = spec;
-            o.status = status;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetIpv6GatewaysGateway();
+            _resultValue.businessStatus = businessStatus;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.id = id;
+            _resultValue.instanceChargeType = instanceChargeType;
+            _resultValue.ipv6GatewayId = ipv6GatewayId;
+            _resultValue.ipv6GatewayName = ipv6GatewayName;
+            _resultValue.spec = spec;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

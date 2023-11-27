@@ -82,7 +82,7 @@ public class NasFileSystem extends com.pulumi.resources.CustomResource {
      * The description of nas file system.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -96,7 +96,7 @@ public class NasFileSystem extends com.pulumi.resources.CustomResource {
      * The filesystem id of nas file system.
      * 
      */
-    @Export(name="fileSystemId", type=String.class, parameters={})
+    @Export(name="fileSystemId", refs={String.class}, tree="[0]")
     private Output<String> fileSystemId;
 
     /**
@@ -110,7 +110,7 @@ public class NasFileSystem extends com.pulumi.resources.CustomResource {
      * The domain of mount target.
      * 
      */
-    @Export(name="mountTargetDomain", type=String.class, parameters={})
+    @Export(name="mountTargetDomain", refs={String.class}, tree="[0]")
     private Output<String> mountTargetDomain;
 
     /**
@@ -124,7 +124,7 @@ public class NasFileSystem extends com.pulumi.resources.CustomResource {
      * The name of nas file system.
      * 
      */
-    @Export(name="nasFileSystemName", type=String.class, parameters={})
+    @Export(name="nasFileSystemName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> nasFileSystemName;
 
     /**
@@ -138,7 +138,7 @@ public class NasFileSystem extends com.pulumi.resources.CustomResource {
      * The ID of office site.
      * 
      */
-    @Export(name="officeSiteId", type=String.class, parameters={})
+    @Export(name="officeSiteId", refs={String.class}, tree="[0]")
     private Output<String> officeSiteId;
 
     /**
@@ -152,7 +152,7 @@ public class NasFileSystem extends com.pulumi.resources.CustomResource {
      * The mount point is in an inactive state, reset the mount point of the NAS file system. Default to `false`.
      * 
      */
-    @Export(name="reset", type=Boolean.class, parameters={})
+    @Export(name="reset", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> reset;
 
     /**
@@ -166,7 +166,7 @@ public class NasFileSystem extends com.pulumi.resources.CustomResource {
      * The status of nas file system. Valid values: `Pending`, `Running`, `Stopped`,`Deleting`, `Deleted`, `Invalid`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

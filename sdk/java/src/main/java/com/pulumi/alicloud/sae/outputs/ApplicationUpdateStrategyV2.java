@@ -68,10 +68,10 @@ public final class ApplicationUpdateStrategyV2 {
             return this;
         }
         public ApplicationUpdateStrategyV2 build() {
-            final var o = new ApplicationUpdateStrategyV2();
-            o.batchUpdate = batchUpdate;
-            o.type = type;
-            return o;
+            final var _resultValue = new ApplicationUpdateStrategyV2();
+            _resultValue.batchUpdate = batchUpdate;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

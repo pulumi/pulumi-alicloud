@@ -50,9 +50,9 @@ public final class BucketReplicationEncryptionConfiguration {
             return this;
         }
         public BucketReplicationEncryptionConfiguration build() {
-            final var o = new BucketReplicationEncryptionConfiguration();
-            o.replicaKmsKeyId = replicaKmsKeyId;
-            return o;
+            final var _resultValue = new BucketReplicationEncryptionConfiguration();
+            _resultValue.replicaKmsKeyId = replicaKmsKeyId;
+            return _resultValue;
         }
     }
 }

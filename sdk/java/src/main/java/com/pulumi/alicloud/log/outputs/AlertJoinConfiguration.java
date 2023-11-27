@@ -65,10 +65,10 @@ public final class AlertJoinConfiguration {
             return this;
         }
         public AlertJoinConfiguration build() {
-            final var o = new AlertJoinConfiguration();
-            o.condition = condition;
-            o.type = type;
-            return o;
+            final var _resultValue = new AlertJoinConfiguration();
+            _resultValue.condition = condition;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

@@ -125,13 +125,13 @@ public final class GreyTagRouteDubboRuleItem {
             return this;
         }
         public GreyTagRouteDubboRuleItem build() {
-            final var o = new GreyTagRouteDubboRuleItem();
-            o.cond = cond;
-            o.expr = expr;
-            o.index = index;
-            o.operator = operator;
-            o.value = value;
-            return o;
+            final var _resultValue = new GreyTagRouteDubboRuleItem();
+            _resultValue.cond = cond;
+            _resultValue.expr = expr;
+            _resultValue.index = index;
+            _resultValue.operator = operator;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

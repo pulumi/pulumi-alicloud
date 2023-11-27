@@ -218,18 +218,18 @@ public final class GetUsersUser {
             return this;
         }
         public GetUsersUser build() {
-            final var o = new GetUsersUser();
-            o.accountId = accountId;
-            o.accountName = accountName;
-            o.adminUser = adminUser;
-            o.authAdminUser = authAdminUser;
-            o.email = email;
-            o.id = id;
-            o.nickName = nickName;
-            o.phone = phone;
-            o.userId = userId;
-            o.userType = userType;
-            return o;
+            final var _resultValue = new GetUsersUser();
+            _resultValue.accountId = accountId;
+            _resultValue.accountName = accountName;
+            _resultValue.adminUser = adminUser;
+            _resultValue.authAdminUser = authAdminUser;
+            _resultValue.email = email;
+            _resultValue.id = id;
+            _resultValue.nickName = nickName;
+            _resultValue.phone = phone;
+            _resultValue.userId = userId;
+            _resultValue.userType = userType;
+            return _resultValue;
         }
     }
 }

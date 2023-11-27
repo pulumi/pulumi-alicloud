@@ -112,7 +112,7 @@ public class CustomRoutingEndpointGroup extends com.pulumi.resources.CustomResou
      * The ID of the GA instance.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -126,7 +126,7 @@ public class CustomRoutingEndpointGroup extends com.pulumi.resources.CustomResou
      * The name of the endpoint group.
      * 
      */
-    @Export(name="customRoutingEndpointGroupName", type=String.class, parameters={})
+    @Export(name="customRoutingEndpointGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customRoutingEndpointGroupName;
 
     /**
@@ -140,7 +140,7 @@ public class CustomRoutingEndpointGroup extends com.pulumi.resources.CustomResou
      * The description of the endpoint group.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -154,7 +154,7 @@ public class CustomRoutingEndpointGroup extends com.pulumi.resources.CustomResou
      * The ID of the region in which to create the endpoint group.
      * 
      */
-    @Export(name="endpointGroupRegion", type=String.class, parameters={})
+    @Export(name="endpointGroupRegion", refs={String.class}, tree="[0]")
     private Output<String> endpointGroupRegion;
 
     /**
@@ -168,7 +168,7 @@ public class CustomRoutingEndpointGroup extends com.pulumi.resources.CustomResou
      * The ID of the custom routing listener.
      * 
      */
-    @Export(name="listenerId", type=String.class, parameters={})
+    @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     /**
@@ -182,7 +182,7 @@ public class CustomRoutingEndpointGroup extends com.pulumi.resources.CustomResou
      * The status of the Custom Routing Endpoint Group.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

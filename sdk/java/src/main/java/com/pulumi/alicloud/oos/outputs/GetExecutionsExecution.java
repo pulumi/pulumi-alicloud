@@ -427,29 +427,29 @@ public final class GetExecutionsExecution {
             return this;
         }
         public GetExecutionsExecution build() {
-            final var o = new GetExecutionsExecution();
-            o.category = category;
-            o.counters = counters;
-            o.createDate = createDate;
-            o.endDate = endDate;
-            o.executedBy = executedBy;
-            o.executionId = executionId;
-            o.id = id;
-            o.isParent = isParent;
-            o.mode = mode;
-            o.outputs = outputs;
-            o.parameters = parameters;
-            o.parentExecutionId = parentExecutionId;
-            o.ramRole = ramRole;
-            o.startDate = startDate;
-            o.status = status;
-            o.statusMessage = statusMessage;
-            o.statusReason = statusReason;
-            o.templateId = templateId;
-            o.templateName = templateName;
-            o.templateVersion = templateVersion;
-            o.updateDate = updateDate;
-            return o;
+            final var _resultValue = new GetExecutionsExecution();
+            _resultValue.category = category;
+            _resultValue.counters = counters;
+            _resultValue.createDate = createDate;
+            _resultValue.endDate = endDate;
+            _resultValue.executedBy = executedBy;
+            _resultValue.executionId = executionId;
+            _resultValue.id = id;
+            _resultValue.isParent = isParent;
+            _resultValue.mode = mode;
+            _resultValue.outputs = outputs;
+            _resultValue.parameters = parameters;
+            _resultValue.parentExecutionId = parentExecutionId;
+            _resultValue.ramRole = ramRole;
+            _resultValue.startDate = startDate;
+            _resultValue.status = status;
+            _resultValue.statusMessage = statusMessage;
+            _resultValue.statusReason = statusReason;
+            _resultValue.templateId = templateId;
+            _resultValue.templateName = templateName;
+            _resultValue.templateVersion = templateVersion;
+            _resultValue.updateDate = updateDate;
+            return _resultValue;
         }
     }
 }

@@ -174,7 +174,7 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
      * The operations that can be synchronized to the destination bucket. You can set action to one or more of the following operation types. Valid values: `ALL`(contains PUT, DELETE, and ABORT), `PUT`, `DELETE` and `ABORT`. Defaults to `ALL`.
      * 
      */
-    @Export(name="action", type=String.class, parameters={})
+    @Export(name="action", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> action;
 
     /**
@@ -188,7 +188,7 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
      * The name of the bucket.
      * 
      */
-    @Export(name="bucket", type=String.class, parameters={})
+    @Export(name="bucket", refs={String.class}, tree="[0]")
     private Output<String> bucket;
 
     /**
@@ -202,7 +202,7 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
      * Specifies the destination for the rule(See the following block `destination`).
      * 
      */
-    @Export(name="destination", type=BucketReplicationDestination.class, parameters={})
+    @Export(name="destination", refs={BucketReplicationDestination.class}, tree="[0]")
     private Output<BucketReplicationDestination> destination;
 
     /**
@@ -216,7 +216,7 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
      * Specifies the encryption configuration for the objects replicated to the destination bucket(See the following block `encryption_configuration`).
      * 
      */
-    @Export(name="encryptionConfiguration", type=BucketReplicationEncryptionConfiguration.class, parameters={})
+    @Export(name="encryptionConfiguration", refs={BucketReplicationEncryptionConfiguration.class}, tree="[0]")
     private Output</* @Nullable */ BucketReplicationEncryptionConfiguration> encryptionConfiguration;
 
     /**
@@ -230,7 +230,7 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
      * Specifies whether to replicate historical data from the source bucket to the destination bucket before data replication is enabled. Can be `enabled` or `disabled`. Defaults to `enabled`.
      * 
      */
-    @Export(name="historicalObjectReplication", type=String.class, parameters={})
+    @Export(name="historicalObjectReplication", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> historicalObjectReplication;
 
     /**
@@ -244,7 +244,7 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
      * The prefixes used to specify the object to replicate. Only objects that match the prefix are replicated to the destination bucket(See the following block `prefix_set`).
      * 
      */
-    @Export(name="prefixSet", type=BucketReplicationPrefixSet.class, parameters={})
+    @Export(name="prefixSet", refs={BucketReplicationPrefixSet.class}, tree="[0]")
     private Output</* @Nullable */ BucketReplicationPrefixSet> prefixSet;
 
     /**
@@ -258,7 +258,7 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
      * Retrieves the progress of the data replication task. This status is returned only when the data replication task is in the doing state.
      * 
      */
-    @Export(name="progress", type=BucketReplicationProgress.class, parameters={})
+    @Export(name="progress", refs={BucketReplicationProgress.class}, tree="[0]")
     private Output<BucketReplicationProgress> progress;
 
     /**
@@ -272,7 +272,7 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
      * The ID of the data replication rule.
      * 
      */
-    @Export(name="ruleId", type=String.class, parameters={})
+    @Export(name="ruleId", refs={String.class}, tree="[0]")
     private Output<String> ruleId;
 
     /**
@@ -286,7 +286,7 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
      * Specifies other conditions used to filter the source objects to replicate(See the following block `source_selection_criteria`).
      * 
      */
-    @Export(name="sourceSelectionCriteria", type=BucketReplicationSourceSelectionCriteria.class, parameters={})
+    @Export(name="sourceSelectionCriteria", refs={BucketReplicationSourceSelectionCriteria.class}, tree="[0]")
     private Output</* @Nullable */ BucketReplicationSourceSelectionCriteria> sourceSelectionCriteria;
 
     /**
@@ -300,7 +300,7 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
      * Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -314,7 +314,7 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
      * Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
      * 
      */
-    @Export(name="syncRole", type=String.class, parameters={})
+    @Export(name="syncRole", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> syncRole;
 
     /**

@@ -161,15 +161,15 @@ public final class GetAccessGroupsGroup {
             return this;
         }
         public GetAccessGroupsGroup build() {
-            final var o = new GetAccessGroupsGroup();
-            o.accessGroupName = accessGroupName;
-            o.accessGroupType = accessGroupType;
-            o.description = description;
-            o.id = id;
-            o.mountTargetCount = mountTargetCount;
-            o.ruleCount = ruleCount;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetAccessGroupsGroup();
+            _resultValue.accessGroupName = accessGroupName;
+            _resultValue.accessGroupType = accessGroupType;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.mountTargetCount = mountTargetCount;
+            _resultValue.ruleCount = ruleCount;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

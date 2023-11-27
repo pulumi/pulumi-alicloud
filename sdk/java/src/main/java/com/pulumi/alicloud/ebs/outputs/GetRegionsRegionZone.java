@@ -46,9 +46,9 @@ public final class GetRegionsRegionZone {
             return this;
         }
         public GetRegionsRegionZone build() {
-            final var o = new GetRegionsRegionZone();
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetRegionsRegionZone();
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

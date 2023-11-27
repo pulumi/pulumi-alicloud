@@ -67,10 +67,10 @@ public final class TemplateQuotaDimension {
             return this;
         }
         public TemplateQuotaDimension build() {
-            final var o = new TemplateQuotaDimension();
-            o.key = key;
-            o.value = value;
-            return o;
+            final var _resultValue = new TemplateQuotaDimension();
+            _resultValue.key = key;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

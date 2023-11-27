@@ -215,7 +215,7 @@ public class ZoneAttachment extends com.pulumi.resources.CustomResource {
      * The language of code.
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
@@ -229,7 +229,7 @@ public class ZoneAttachment extends com.pulumi.resources.CustomResource {
      * The user custom IP address.
      * 
      */
-    @Export(name="userClientIp", type=String.class, parameters={})
+    @Export(name="userClientIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userClientIp;
 
     /**
@@ -243,7 +243,7 @@ public class ZoneAttachment extends com.pulumi.resources.CustomResource {
      * The id List of the VPC with the same region, for example:[&#34;vpc-1&#34;,&#34;vpc-2&#34;].
      * 
      */
-    @Export(name="vpcIds", type=List.class, parameters={String.class})
+    @Export(name="vpcIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> vpcIds;
 
     /**
@@ -257,7 +257,7 @@ public class ZoneAttachment extends com.pulumi.resources.CustomResource {
      * See `vpcs` below.Recommend to use `vpcs`.
      * 
      */
-    @Export(name="vpcs", type=List.class, parameters={ZoneAttachmentVpc.class})
+    @Export(name="vpcs", refs={List.class,ZoneAttachmentVpc.class}, tree="[0,1]")
     private Output<List<ZoneAttachmentVpc>> vpcs;
 
     /**
@@ -271,7 +271,7 @@ public class ZoneAttachment extends com.pulumi.resources.CustomResource {
      * The name of the Private Zone Record.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

@@ -92,11 +92,11 @@ public final class ForwardingRuleRuleCondition {
             return this;
         }
         public ForwardingRuleRuleCondition build() {
-            final var o = new ForwardingRuleRuleCondition();
-            o.hostConfigs = hostConfigs;
-            o.pathConfig = pathConfig;
-            o.ruleConditionType = ruleConditionType;
-            return o;
+            final var _resultValue = new ForwardingRuleRuleCondition();
+            _resultValue.hostConfigs = hostConfigs;
+            _resultValue.pathConfig = pathConfig;
+            _resultValue.ruleConditionType = ruleConditionType;
+            return _resultValue;
         }
     }
 }

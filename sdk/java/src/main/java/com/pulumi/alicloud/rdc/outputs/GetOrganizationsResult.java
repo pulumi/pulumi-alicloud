@@ -125,15 +125,15 @@ public final class GetOrganizationsResult {
             return this;
         }
         public GetOrganizationsResult build() {
-            final var o = new GetOrganizationsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.organizations = organizations;
-            o.outputFile = outputFile;
-            o.realPk = realPk;
-            return o;
+            final var _resultValue = new GetOrganizationsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.organizations = organizations;
+            _resultValue.outputFile = outputFile;
+            _resultValue.realPk = realPk;
+            return _resultValue;
         }
     }
 }

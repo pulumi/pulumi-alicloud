@@ -137,16 +137,16 @@ public final class GetPrefixListsResult {
             return this;
         }
         public GetPrefixListsResult build() {
-            final var o = new GetPrefixListsResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.lists = lists;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.prefixListName = prefixListName;
-            return o;
+            final var _resultValue = new GetPrefixListsResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.lists = lists;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.prefixListName = prefixListName;
+            return _resultValue;
         }
     }
 }

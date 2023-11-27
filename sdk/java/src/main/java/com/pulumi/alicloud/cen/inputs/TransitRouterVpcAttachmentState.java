@@ -66,14 +66,14 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The payment type of the resource. Valid values: `PayAsYouGo`.
+     * The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return The payment type of the resource. Valid values: `PayAsYouGo`.
+     * @return The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -81,14 +81,14 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
+     * The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
      * 
      */
     @Import(name="resourceType")
     private @Nullable Output<String> resourceType;
 
     /**
-     * @return The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
+     * @return The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
      * 
      */
     public Optional<Output<String>> resourceType() {
@@ -96,47 +96,47 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * Whether to enabled route table association. The system default value is `true`. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+     * Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
      * 
      * @deprecated
-     * Field &#39;route_table_association_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_association&#39; instead.
+     * Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.
      * 
      */
-    @Deprecated /* Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead. */
+    @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead. */
     @Import(name="routeTableAssociationEnabled")
     private @Nullable Output<Boolean> routeTableAssociationEnabled;
 
     /**
-     * @return Whether to enabled route table association. The system default value is `true`. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+     * @return Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
      * 
      * @deprecated
-     * Field &#39;route_table_association_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_association&#39; instead.
+     * Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.
      * 
      */
-    @Deprecated /* Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead. */
+    @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead. */
     public Optional<Output<Boolean>> routeTableAssociationEnabled() {
         return Optional.ofNullable(this.routeTableAssociationEnabled);
     }
 
     /**
-     * Whether to enabled route table propagation. The system default value is `true`. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+     * Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
      * 
      * @deprecated
-     * Field &#39;route_table_propagation_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_propagation&#39; instead.
+     * Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.
      * 
      */
-    @Deprecated /* Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead. */
+    @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead. */
     @Import(name="routeTablePropagationEnabled")
     private @Nullable Output<Boolean> routeTablePropagationEnabled;
 
     /**
-     * @return Whether to enabled route table propagation. The system default value is `true`. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+     * @return Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
      * 
      * @deprecated
-     * Field &#39;route_table_propagation_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_propagation&#39; instead.
+     * Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.
      * 
      */
-    @Deprecated /* Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead. */
+    @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead. */
     public Optional<Output<Boolean>> routeTablePropagationEnabled() {
         return Optional.ofNullable(this.routeTablePropagationEnabled);
     }
@@ -187,14 +187,14 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The ID of transit router attachment.
+     * The ID of the Transit Router Attachment.
      * 
      */
     @Import(name="transitRouterAttachmentId")
     private @Nullable Output<String> transitRouterAttachmentId;
 
     /**
-     * @return The ID of transit router attachment.
+     * @return The ID of the Transit Router Attachment.
      * 
      */
     public Optional<Output<String>> transitRouterAttachmentId() {
@@ -262,16 +262,16 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
     }
 
     /**
-     * The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
-     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+     * The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
      * 
      */
     @Import(name="zoneMappings")
     private @Nullable Output<List<TransitRouterVpcAttachmentZoneMappingArgs>> zoneMappings;
 
     /**
-     * @return The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
-     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+     * @return The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+     * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
      * 
      */
     public Optional<Output<List<TransitRouterVpcAttachmentZoneMappingArgs>>> zoneMappings() {
@@ -381,7 +381,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`.
+         * @param paymentType The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -392,7 +392,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param paymentType The payment type of the resource. Valid values: `PayAsYouGo`.
+         * @param paymentType The payment type of the resource. Default value: `PayAsYouGo`. Valid values: `PayAsYouGo`.
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param resourceType The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
+         * @param resourceType The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
          * 
          * @return builder
          * 
@@ -413,7 +413,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param resourceType The resource type of transit router vpc attachment. Valid value `VPC`. Default value is `VPC`.
+         * @param resourceType The resource type of the transit router vpc attachment. Default value: `VPC`. Valid values: `VPC`.
          * 
          * @return builder
          * 
@@ -423,59 +423,59 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param routeTableAssociationEnabled Whether to enabled route table association. The system default value is `true`. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+         * @param routeTableAssociationEnabled Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;route_table_association_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_association&#39; instead.
+         * Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.
          * 
          */
-        @Deprecated /* Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead. */
+        @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead. */
         public Builder routeTableAssociationEnabled(@Nullable Output<Boolean> routeTableAssociationEnabled) {
             $.routeTableAssociationEnabled = routeTableAssociationEnabled;
             return this;
         }
 
         /**
-         * @param routeTableAssociationEnabled Whether to enabled route table association. The system default value is `true`. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
+         * @param routeTableAssociationEnabled Whether to enabled route table association. **NOTE:** &#34;Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTableAssociation` instead, how to use alicloud_cen_transit_router_route_table_association.&#34;
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;route_table_association_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_association&#39; instead.
+         * Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead.
          * 
          */
-        @Deprecated /* Field 'route_table_association_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_association' instead. */
+        @Deprecated /* Field `route_table_association_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_association` instead. */
         public Builder routeTableAssociationEnabled(Boolean routeTableAssociationEnabled) {
             return routeTableAssociationEnabled(Output.of(routeTableAssociationEnabled));
         }
 
         /**
-         * @param routeTablePropagationEnabled Whether to enabled route table propagation. The system default value is `true`. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+         * @param routeTablePropagationEnabled Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;route_table_propagation_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_propagation&#39; instead.
+         * Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.
          * 
          */
-        @Deprecated /* Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead. */
+        @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead. */
         public Builder routeTablePropagationEnabled(@Nullable Output<Boolean> routeTablePropagationEnabled) {
             $.routeTablePropagationEnabled = routeTablePropagationEnabled;
             return this;
         }
 
         /**
-         * @param routeTablePropagationEnabled Whether to enabled route table propagation. The system default value is `true`. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
+         * @param routeTablePropagationEnabled Whether to enabled route table propagation. **NOTE:** &#34;Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud.cen.TransitRouterRouteTablePropagation` instead, how to use alicloud_cen_transit_router_route_table_propagation.&#34;
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;route_table_propagation_enabled&#39; has been deprecated from provider version 1.192.0. Please use the resource &#39;alicloud_cen_transit_router_route_table_propagation&#39; instead.
+         * Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead.
          * 
          */
-        @Deprecated /* Field 'route_table_propagation_enabled' has been deprecated from provider version 1.192.0. Please use the resource 'alicloud_cen_transit_router_route_table_propagation' instead. */
+        @Deprecated /* Field `route_table_propagation_enabled` has been deprecated from provider version 1.192.0. Please use the resource `alicloud_cen_transit_router_route_table_propagation` instead. */
         public Builder routeTablePropagationEnabled(Boolean routeTablePropagationEnabled) {
             return routeTablePropagationEnabled(Output.of(routeTablePropagationEnabled));
         }
@@ -544,7 +544,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentId The ID of transit router attachment.
+         * @param transitRouterAttachmentId The ID of the Transit Router Attachment.
          * 
          * @return builder
          * 
@@ -555,7 +555,7 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param transitRouterAttachmentId The ID of transit router attachment.
+         * @param transitRouterAttachmentId The ID of the Transit Router Attachment.
          * 
          * @return builder
          * 
@@ -649,8 +649,8 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneMappings The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
-         * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+         * @param zoneMappings The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+         * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
          * 
          * @return builder
          * 
@@ -661,8 +661,8 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneMappings The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
-         * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+         * @param zoneMappings The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+         * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
          * 
          * @return builder
          * 
@@ -672,8 +672,8 @@ public final class TransitRouterVpcAttachmentState extends com.pulumi.resources.
         }
 
         /**
-         * @param zoneMappings The list of zone mapping of the VPC. **NOTE:** From version 1.184.0, `zone_mappings` can be modified. See `zone_mappings` below.
-         * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://help.aliyun.com/document_detail/261356.html)
+         * @param zoneMappings The list of zone mapping of the VPC. See `zone_mappings` below. **NOTE:** From version 1.184.0, `zone_mappings` can be modified.
+         * &gt; **NOTE:** The Zone of CEN has MasterZone and SlaveZone, first zone_id of zone_mapping need be MasterZone. We have a API to describeZones[API](https://www.alibabacloud.com/help/en/cen/developer-reference/api-cbn-2017-09-12-listtransitrouteravailableresource)
          * 
          * @return builder
          * 

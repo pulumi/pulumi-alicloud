@@ -36,7 +36,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable the no-activity suspension feature. Default value: false. Valid values are `true`, `false`. This parameter is valid only for serverless clusters.
      * 
      */
-    @Export(name="allowShutDown", type=String.class, parameters={})
+    @Export(name="allowShutDown", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> allowShutDown;
 
     /**
@@ -50,7 +50,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Auto-renewal period of an cluster, in the unit of the month. It is valid when pay_type is `PrePaid`. Valid value:1, 2, 3, 6, 12, 24, 36, Default to 1.
      * 
      */
-    @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
@@ -64,7 +64,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The retention policy for the backup sets when you delete the cluster.  Valid values are `ALL`, `LATEST`, `NONE`. Value options can refer to the latest docs [DeleteDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/deletedbcluster-1)
      * 
      */
-    @Export(name="backupRetentionPolicyOnClusterDeletion", type=String.class, parameters={})
+    @Export(name="backupRetentionPolicyOnClusterDeletion", refs={String.class}, tree="[0]")
     private Output<String> backupRetentionPolicyOnClusterDeletion;
 
     /**
@@ -79,7 +79,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** If CreationOption is set to CloneFromRDS, the value of this parameter must be LATEST.
      * 
      */
-    @Export(name="cloneDataPoint", type=String.class, parameters={})
+    @Export(name="cloneDataPoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cloneDataPoint;
 
     /**
@@ -94,7 +94,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable or disable SQL data collector. Valid values are `Enable`, `Disabled`.
      * 
      */
-    @Export(name="collectorStatus", type=String.class, parameters={})
+    @Export(name="collectorStatus", refs={String.class}, tree="[0]")
     private Output<String> collectorStatus;
 
     /**
@@ -108,7 +108,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * (Available since 1.81.0) PolarDB cluster connection string.
      * 
      */
-    @Export(name="connectionString", type=String.class, parameters={})
+    @Export(name="connectionString", refs={String.class}, tree="[0]")
     private Output<String> connectionString;
 
     /**
@@ -122,7 +122,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * (Available since 1.204.1) PolarDB cluster creation time.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -137,7 +137,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** You can set this parameter to Basic only when DBType is set to MySQL and DBVersion is set to 5.6, 5.7, or 8.0. You can set this parameter to Archive only when DBType is set to MySQL and DBVersion is set to 8.0. From version 1.188.0, `creation_category` can be set to `NormalMultimaster`. From version 1.203.0, `creation_category` can be set to `SENormal`.
      * 
      */
-    @Export(name="creationCategory", type=String.class, parameters={})
+    @Export(name="creationCategory", refs={String.class}, tree="[0]")
     private Output<String> creationCategory;
 
     /**
@@ -153,7 +153,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The default value is Normal. If DBType is set to MySQL and DBVersion is set to 5.6 or 5.7, this parameter can be set to CloneFromRDS or MigrationFromRDS. If DBType is set to MySQL and DBVersion is set to 8.0, this parameter can be set to CreateGdnStandby.
      * 
      */
-    @Export(name="creationOption", type=String.class, parameters={})
+    @Export(name="creationOption", refs={String.class}, tree="[0]")
     private Output<String> creationOption;
 
     /**
@@ -168,7 +168,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * db_cluster_ip_array defines how users can send requests to your API. See `db_cluster_ip_array` below.
      * 
      */
-    @Export(name="dbClusterIpArrays", type=List.class, parameters={ClusterDbClusterIpArray.class})
+    @Export(name="dbClusterIpArrays", refs={List.class,ClusterDbClusterIpArray.class}, tree="[0,1]")
     private Output<List<ClusterDbClusterIpArray>> dbClusterIpArrays;
 
     /**
@@ -184,7 +184,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * From version 1.204.0, If you need to create a Serverless cluster, `db_node_class` can be set to `polar.mysql.sl.small`.
      * 
      */
-    @Export(name="dbNodeClass", type=String.class, parameters={})
+    @Export(name="dbNodeClass", refs={String.class}, tree="[0]")
     private Output<String> dbNodeClass;
 
     /**
@@ -201,7 +201,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** To avoid adding or removing multiple read-only nodes by mistake, the system allows you to add or remove one read-only node at a time.
      * 
      */
-    @Export(name="dbNodeCount", type=Integer.class, parameters={})
+    @Export(name="dbNodeCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> dbNodeCount;
 
     /**
@@ -216,7 +216,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The ID of the node or node subscript. Node subscript values: 1 to 15.
      * 
      */
-    @Export(name="dbNodeId", type=String.class, parameters={})
+    @Export(name="dbNodeId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dbNodeId;
 
     /**
@@ -230,7 +230,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The number of Standard Edition nodes. Default value: `1`. Valid values are `1`, `2`.
      * 
      */
-    @Export(name="dbNodeNum", type=Integer.class, parameters={})
+    @Export(name="dbNodeNum", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> dbNodeNum;
 
     /**
@@ -244,7 +244,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Database type. Value options: MySQL, Oracle, PostgreSQL.
      * 
      */
-    @Export(name="dbType", type=String.class, parameters={})
+    @Export(name="dbType", refs={String.class}, tree="[0]")
     private Output<String> dbType;
 
     /**
@@ -258,7 +258,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Database version. Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `DBVersion`.
      * 
      */
-    @Export(name="dbVersion", type=String.class, parameters={})
+    @Export(name="dbVersion", refs={String.class}, tree="[0]")
     private Output<String> dbVersion;
 
     /**
@@ -273,7 +273,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      * 
      */
-    @Export(name="defaultTimeZone", type=String.class, parameters={})
+    @Export(name="defaultTimeZone", refs={String.class}, tree="[0]")
     private Output<String> defaultTimeZone;
 
     /**
@@ -289,7 +289,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:**  Cannot modify after created when `pay_type` is `Prepaid` .`deletion_lock` the cluster protection lock can be turned on or off when `pay_type` is `Postpaid`.
      * 
      */
-    @Export(name="deletionLock", type=Integer.class, parameters={})
+    @Export(name="deletionLock", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> deletionLock;
 
     /**
@@ -304,7 +304,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The description of cluster.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -319,7 +319,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** `encrypt_new_tables` Polardb MySQL 8.0 cluster, after TDE and Automatic Encryption are enabled, all newly created tables are automatically encrypted in the cluster.
      * 
      */
-    @Export(name="encryptNewTables", type=String.class, parameters={})
+    @Export(name="encryptNewTables", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptNewTables;
 
     /**
@@ -334,7 +334,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The ID of the custom key. `encryption_key` cannot be modified after TDE is opened.
      * 
      */
-    @Export(name="encryptionKey", type=String.class, parameters={})
+    @Export(name="encryptionKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptionKey;
 
     /**
@@ -348,7 +348,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Immediate or scheduled kernel version upgrade. Valid values are `true`, `false`. True means immediate execution, False means scheduled execution.
      * 
      */
-    @Export(name="fromTimeService", type=String.class, parameters={})
+    @Export(name="fromTimeService", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> fromTimeService;
 
     /**
@@ -363,7 +363,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter is required if CreationOption is set to CreateGdnStandby.
      * 
      */
-    @Export(name="gdnId", type=String.class, parameters={})
+    @Export(name="gdnId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> gdnId;
 
     /**
@@ -378,7 +378,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Indicates whether the hot standby feature is enabled. Valid values are `ON`, `OFF`. Only MySQL supports.
      * 
      */
-    @Export(name="hotReplicaMode", type=String.class, parameters={})
+    @Export(name="hotReplicaMode", refs={String.class}, tree="[0]")
     private Output<String> hotReplicaMode;
 
     /**
@@ -392,7 +392,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Whether to enable the hot standby cluster. Valid values are `ON`, `OFF`. Only MySQL supports.
      * 
      */
-    @Export(name="hotStandbyCluster", type=String.class, parameters={})
+    @Export(name="hotStandbyCluster", refs={String.class}, tree="[0]")
     private Output<String> hotStandbyCluster;
 
     /**
@@ -408,7 +408,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * **NOTE:**  The single node, the single node version of the history library, and the cluster version of the history library do not support column save indexes.
      * 
      */
-    @Export(name="imciSwitch", type=String.class, parameters={})
+    @Export(name="imciSwitch", refs={String.class}, tree="[0]")
     private Output<String> imciSwitch;
 
     /**
@@ -425,7 +425,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter is valid only MySQL Engine supports.
      * 
      */
-    @Export(name="loosePolarLogBin", type=String.class, parameters={})
+    @Export(name="loosePolarLogBin", refs={String.class}, tree="[0]")
     private Output<String> loosePolarLogBin;
 
     /**
@@ -441,7 +441,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter is valid only when the DBType parameter is set to MySQL.
      * 
      */
-    @Export(name="lowerCaseTableNames", type=Integer.class, parameters={})
+    @Export(name="lowerCaseTableNames", refs={Integer.class}, tree="[0]")
     private Output<Integer> lowerCaseTableNames;
 
     /**
@@ -456,7 +456,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Maintainable time period format of the instance: HH:MMZ-HH:MMZ (UTC time)
      * 
      */
-    @Export(name="maintainTime", type=String.class, parameters={})
+    @Export(name="maintainTime", refs={String.class}, tree="[0]")
     private Output<String> maintainTime;
 
     /**
@@ -470,7 +470,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Use as `db_node_class` change class, define upgrade or downgrade. Valid values are `Upgrade`, `Downgrade`, Default to `Upgrade`.
      * 
      */
-    @Export(name="modifyType", type=String.class, parameters={})
+    @Export(name="modifyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modifyType;
 
     /**
@@ -485,7 +485,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** You can call the [DescribeParameterGroups](https://www.alibabacloud.com/help/en/polardb/latest/describeparametergroups) operation to query the details of all parameter templates of a specified region, such as the ID of a parameter template.
      * 
      */
-    @Export(name="parameterGroupId", type=String.class, parameters={})
+    @Export(name="parameterGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parameterGroupId;
 
     /**
@@ -500,7 +500,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Set of parameters needs to be set after DB cluster was launched. Available parameters can refer to the latest docs [View database parameter templates](https://www.alibabacloud.com/help/en/polardb/latest/modifydbclusterparameters) .See `parameters` below.
      * 
      */
-    @Export(name="parameters", type=List.class, parameters={ClusterParameter.class})
+    @Export(name="parameters", refs={List.class,ClusterParameter.class}, tree="[0,1]")
     private Output<List<ClusterParameter>> parameters;
 
     /**
@@ -514,7 +514,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Valid values are `PrePaid`, `PostPaid`, Default to `PostPaid`.
      * 
      */
-    @Export(name="payType", type=String.class, parameters={})
+    @Export(name="payType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> payType;
 
     /**
@@ -529,7 +529,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The attribute `period` is only used to create Subscription instance or modify the PayAsYouGo instance to Subscription. Once effect, it will not be modified that means running `pulumi up` will not effect the resource.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -545,7 +545,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The latest time must be 30 minutes or more later than the start time. If PlannedStartTime is set but this parameter is not specified, the latest time to execute the target task defaults to the start time+30 minutes. For example, when the PlannedStartTime is set to 2021-01-14T09:00:00Z and this parameter is left blank, the target task will start executing at the latest on 2021-01-14T09:30:00Z.
      * 
      */
-    @Export(name="plannedEndTime", type=String.class, parameters={})
+    @Export(name="plannedEndTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> plannedEndTime;
 
     /**
@@ -561,7 +561,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** The starting time range is any time point within the next 24 hours. For example, the current time is 2021-01-14T09:00:00Z, and the allowed start time range for filling in here is 2021-01-14T09:00:00Z~2021-01-15T09:00:00Z. If this parameter is left blank, the kernel version upgrade task will be executed immediately by default.
      * 
      */
-    @Export(name="plannedStartTime", type=String.class, parameters={})
+    @Export(name="plannedStartTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> plannedStartTime;
 
     /**
@@ -576,7 +576,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * (Available since 1.196.0) PolarDB cluster connection port.
      * 
      */
-    @Export(name="port", type=String.class, parameters={})
+    @Export(name="port", refs={String.class}, tree="[0]")
     private Output<String> port;
 
     /**
@@ -591,7 +591,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter is valid only for standard clusters.
      * 
      */
-    @Export(name="proxyClass", type=String.class, parameters={})
+    @Export(name="proxyClass", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proxyClass;
 
     /**
@@ -607,7 +607,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** This parameter is valid only for standard clusters.
      * 
      */
-    @Export(name="proxyType", type=String.class, parameters={})
+    @Export(name="proxyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proxyType;
 
     /**
@@ -622,7 +622,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Valid values are `AutoRenewal`, `Normal`, `NotRenewal`, Default to `NotRenewal`.
      * 
      */
-    @Export(name="renewalStatus", type=String.class, parameters={})
+    @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> renewalStatus;
 
     /**
@@ -636,7 +636,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The ID of resource group which the PolarDB cluster belongs. If not specified, then it belongs to the default resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -650,7 +650,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The Alibaba Cloud Resource Name (ARN) of the RAM role. A RAM role is a virtual identity that you can create within your Alibaba Cloud account. For more information see [RAM role overview](https://www.alibabacloud.com/help/en/resource-access-management/latest/ram-role-overview).
      * 
      */
-    @Export(name="roleArn", type=String.class, parameters={})
+    @Export(name="roleArn", refs={String.class}, tree="[0]")
     private Output<String> roleArn;
 
     /**
@@ -664,7 +664,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
      * 
      */
-    @Export(name="scaleApRoNumMax", type=Integer.class, parameters={})
+    @Export(name="scaleApRoNumMax", refs={Integer.class}, tree="[0]")
     private Output<Integer> scaleApRoNumMax;
 
     /**
@@ -678,7 +678,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Number of Read-only Columnar Nodes. Valid values: 0 to 7. This parameter is valid only for serverless clusters. This parameter is required when there are column nodes that support steady-state serverless.
      * 
      */
-    @Export(name="scaleApRoNumMin", type=Integer.class, parameters={})
+    @Export(name="scaleApRoNumMin", refs={Integer.class}, tree="[0]")
     private Output<Integer> scaleApRoNumMin;
 
     /**
@@ -692,7 +692,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The maximum number of PCUs per node for scaling. Valid values: 1 PCU to 32 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
-    @Export(name="scaleMax", type=Integer.class, parameters={})
+    @Export(name="scaleMax", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> scaleMax;
 
     /**
@@ -706,7 +706,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The minimum number of PCUs per node for scaling. Valid values: 1 PCU to 31 PCUs. It is valid when serverless_type is `AgileServerless`. Valid values: 1 PCU to 8 PCUs.It is valid when serverless_type is `SteadyServerless`.· This parameter is valid only for serverless clusters.
      * 
      */
-    @Export(name="scaleMin", type=Integer.class, parameters={})
+    @Export(name="scaleMin", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> scaleMin;
 
     /**
@@ -720,7 +720,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The maximum number of read-only nodes for scaling. Valid values: 0 to 15. It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7. It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
-    @Export(name="scaleRoNumMax", type=Integer.class, parameters={})
+    @Export(name="scaleRoNumMax", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> scaleRoNumMax;
 
     /**
@@ -734,7 +734,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The minimum number of read-only nodes for scaling. Valid values: 0 to 15 . It is valid when serverless_type is `AgileServerless`. Valid values: 0 to 7 .It is valid when serverless_type is `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
-    @Export(name="scaleRoNumMin", type=Integer.class, parameters={})
+    @Export(name="scaleRoNumMin", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> scaleRoNumMin;
 
     /**
@@ -748,7 +748,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The detection period for No-activity Suspension. Valid values: 300 to 86,4005. Unit: seconds. The detection duration must be a multiple of 300 seconds. This parameter is valid only for serverless clusters.
      * 
      */
-    @Export(name="secondsUntilAutoPause", type=Integer.class, parameters={})
+    @Export(name="secondsUntilAutoPause", refs={Integer.class}, tree="[0]")
     private Output<Integer> secondsUntilAutoPause;
 
     /**
@@ -763,7 +763,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Because of data backup and migration, change DB cluster type and storage would cost 15~20 minutes. Please make full preparation before changing them.
      * 
      */
-    @Export(name="securityGroupIds", type=List.class, parameters={String.class})
+    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroupIds;
 
     /**
@@ -779,7 +779,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Its value is same as `db_cluster_ip_array` sub-element `security_ips` value and its db_cluster_ip_array_name is &#34;default&#34;.
      * 
      */
-    @Export(name="securityIps", type=List.class, parameters={String.class})
+    @Export(name="securityIps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityIps;
 
     /**
@@ -795,7 +795,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** When serverless_steady_switch is `ON` and serverless_type is `SteadyServerless`, parameters `scale_min`, `scale_max`, `scale_ro_num_min` and `scale_ro_num_max` are all required.
      * 
      */
-    @Export(name="serverlessSteadySwitch", type=String.class, parameters={})
+    @Export(name="serverlessSteadySwitch", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverlessSteadySwitch;
 
     /**
@@ -810,7 +810,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The type of the serverless cluster. Valid values `AgileServerless`, `SteadyServerless`. This parameter is valid only for serverless clusters.
      * 
      */
-    @Export(name="serverlessType", type=String.class, parameters={})
+    @Export(name="serverlessType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serverlessType;
 
     /**
@@ -824,7 +824,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The ID of the source RDS instance or the ID of the source PolarDB cluster. This parameter is required only when CreationOption is set to MigrationFromRDS, CloneFromRDS, or CloneFromPolarDB.Value options can refer to the latest docs [CreateDBCluster](https://www.alibabacloud.com/help/en/polardb/latest/createdbcluster-1) `SourceResourceId`.
      * 
      */
-    @Export(name="sourceResourceId", type=String.class, parameters={})
+    @Export(name="sourceResourceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> sourceResourceId;
 
     /**
@@ -838,7 +838,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * (Available since 1.204.1) PolarDB cluster status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -852,7 +852,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The billing method of the storage. Valid values `Postpaid`, `Prepaid`.
      * 
      */
-    @Export(name="storagePayType", type=String.class, parameters={})
+    @Export(name="storagePayType", refs={String.class}, tree="[0]")
     private Output<String> storagePayType;
 
     /**
@@ -868,7 +868,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * **NOTE:**  Valid values for PolarDB for MySQL Enterprise Edition: 50 to 100000.It is valid when pay_type is `PrePaid`.
      * 
      */
-    @Export(name="storageSpace", type=Integer.class, parameters={})
+    @Export(name="storageSpace", refs={Integer.class}, tree="[0]")
     private Output<Integer> storageSpace;
 
     /**
@@ -885,7 +885,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** Serverless cluster does not support this parameter.
      * 
      */
-    @Export(name="storageType", type=String.class, parameters={})
+    @Export(name="storageType", refs={String.class}, tree="[0]")
     private Output<String> storageType;
 
     /**
@@ -900,7 +900,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The category of the cluster. Valid values are `Exclusive`, `General`. Only MySQL supports.
      * 
      */
-    @Export(name="subCategory", type=String.class, parameters={})
+    @Export(name="subCategory", refs={String.class}, tree="[0]")
     private Output<String> subCategory;
 
     /**
@@ -916,7 +916,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -934,7 +934,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * **NOTE:** You cannot enable TDE for the secondary clusters in a GDN. Used to view user KMS activation status.
      * 
      */
-    @Export(name="tdeRegion", type=String.class, parameters={})
+    @Export(name="tdeRegion", refs={String.class}, tree="[0]")
     private Output<String> tdeRegion;
 
     /**
@@ -951,7 +951,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** `tde_status` Cannot modify after created when `db_type` is `PostgreSQL` or `Oracle`.`tde_status` only support modification from `Disabled` to `Enabled` when `db_type` is `MySQL`.
      * 
      */
-    @Export(name="tdeStatus", type=String.class, parameters={})
+    @Export(name="tdeStatus", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> tdeStatus;
 
     /**
@@ -966,7 +966,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Version upgrade type. Valid values are PROXY, DB, ALL. PROXY means upgrading the proxy version, DB means upgrading the db version, ALL means upgrading both db and proxy versions simultaneously.
      * 
      */
-    @Export(name="upgradeType", type=String.class, parameters={})
+    @Export(name="upgradeType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> upgradeType;
 
     /**
@@ -980,7 +980,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The id of the VPC.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -995,7 +995,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:** If vswitch_id is not specified, system will get a vswitch belongs to the user automatically.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> vswitchId;
 
     /**
@@ -1010,7 +1010,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * The Zone to launch the DB cluster. it supports multiple zone.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

@@ -74,7 +74,7 @@ public class AntiBruteForceRule extends com.pulumi.resources.CustomResource {
      * The ID of the defense rule.
      * 
      */
-    @Export(name="antiBruteForceRuleId", type=String.class, parameters={})
+    @Export(name="antiBruteForceRuleId", refs={String.class}, tree="[0]")
     private Output<String> antiBruteForceRuleId;
 
     /**
@@ -88,7 +88,7 @@ public class AntiBruteForceRule extends com.pulumi.resources.CustomResource {
      * The name of the defense rule.
      * 
      */
-    @Export(name="antiBruteForceRuleName", type=String.class, parameters={})
+    @Export(name="antiBruteForceRuleName", refs={String.class}, tree="[0]")
     private Output<String> antiBruteForceRuleName;
 
     /**
@@ -102,7 +102,7 @@ public class AntiBruteForceRule extends com.pulumi.resources.CustomResource {
      * Specifies whether to set the defense rule as the default rule.
      * 
      */
-    @Export(name="defaultRule", type=Boolean.class, parameters={})
+    @Export(name="defaultRule", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> defaultRule;
 
     /**
@@ -116,7 +116,7 @@ public class AntiBruteForceRule extends com.pulumi.resources.CustomResource {
      * The threshold for the number of failed user logins when the brute-force defense rule takes effect.
      * 
      */
-    @Export(name="failCount", type=Integer.class, parameters={})
+    @Export(name="failCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> failCount;
 
     /**
@@ -130,7 +130,7 @@ public class AntiBruteForceRule extends com.pulumi.resources.CustomResource {
      * The period of time during which logons from an account are not allowed. Unit: minutes.
      * 
      */
-    @Export(name="forbiddenTime", type=Integer.class, parameters={})
+    @Export(name="forbiddenTime", refs={Integer.class}, tree="[0]")
     private Output<Integer> forbiddenTime;
 
     /**
@@ -144,7 +144,7 @@ public class AntiBruteForceRule extends com.pulumi.resources.CustomResource {
      * The period of time during which logon failures from an account are measured. Unit: minutes. If Span is set to 10, the defense rule takes effect when the logon failures measured within 10 minutes reaches the specified threshold. The IP address of attackers cannot be used to log on to the server in the specified period of time.
      * 
      */
-    @Export(name="span", type=Integer.class, parameters={})
+    @Export(name="span", refs={Integer.class}, tree="[0]")
     private Output<Integer> span;
 
     /**
@@ -158,7 +158,7 @@ public class AntiBruteForceRule extends com.pulumi.resources.CustomResource {
      * An array consisting of the UUIDs of servers to which the defense rule is applied.**The binding status must be Enterprise Edition.**
      * 
      */
-    @Export(name="uuidLists", type=List.class, parameters={String.class})
+    @Export(name="uuidLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> uuidLists;
 
     /**

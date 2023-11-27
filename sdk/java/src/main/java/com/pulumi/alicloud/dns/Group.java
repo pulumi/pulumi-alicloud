@@ -52,7 +52,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Name of the domain group.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**

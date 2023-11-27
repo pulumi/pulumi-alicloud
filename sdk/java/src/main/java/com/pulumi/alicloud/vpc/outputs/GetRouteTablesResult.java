@@ -299,24 +299,24 @@ public final class GetRouteTablesResult {
             return this;
         }
         public GetRouteTablesResult build() {
-            final var o = new GetRouteTablesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.resourceGroupId = resourceGroupId;
-            o.routeTableName = routeTableName;
-            o.routerId = routerId;
-            o.routerType = routerType;
-            o.status = status;
-            o.tables = tables;
-            o.tags = tags;
-            o.totalCount = totalCount;
-            o.vpcId = vpcId;
-            return o;
+            final var _resultValue = new GetRouteTablesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.routeTableName = routeTableName;
+            _resultValue.routerId = routerId;
+            _resultValue.routerType = routerType;
+            _resultValue.status = status;
+            _resultValue.tables = tables;
+            _resultValue.tags = tags;
+            _resultValue.totalCount = totalCount;
+            _resultValue.vpcId = vpcId;
+            return _resultValue;
         }
     }
 }

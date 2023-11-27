@@ -190,16 +190,16 @@ public final class TrafficMirrorFilterEgressRule {
             return this;
         }
         public TrafficMirrorFilterEgressRule build() {
-            final var o = new TrafficMirrorFilterEgressRule();
-            o.action = action;
-            o.destinationCidrBlock = destinationCidrBlock;
-            o.destinationPortRange = destinationPortRange;
-            o.priority = priority;
-            o.protocol = protocol;
-            o.sourceCidrBlock = sourceCidrBlock;
-            o.sourcePortRange = sourcePortRange;
-            o.trafficMirrorFilterRuleStatus = trafficMirrorFilterRuleStatus;
-            return o;
+            final var _resultValue = new TrafficMirrorFilterEgressRule();
+            _resultValue.action = action;
+            _resultValue.destinationCidrBlock = destinationCidrBlock;
+            _resultValue.destinationPortRange = destinationPortRange;
+            _resultValue.priority = priority;
+            _resultValue.protocol = protocol;
+            _resultValue.sourceCidrBlock = sourceCidrBlock;
+            _resultValue.sourcePortRange = sourcePortRange;
+            _resultValue.trafficMirrorFilterRuleStatus = trafficMirrorFilterRuleStatus;
+            return _resultValue;
         }
     }
 }

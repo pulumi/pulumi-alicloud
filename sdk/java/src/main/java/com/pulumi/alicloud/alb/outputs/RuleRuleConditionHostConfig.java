@@ -51,9 +51,9 @@ public final class RuleRuleConditionHostConfig {
             return values(List.of(values));
         }
         public RuleRuleConditionHostConfig build() {
-            final var o = new RuleRuleConditionHostConfig();
-            o.values = values;
-            return o;
+            final var _resultValue = new RuleRuleConditionHostConfig();
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

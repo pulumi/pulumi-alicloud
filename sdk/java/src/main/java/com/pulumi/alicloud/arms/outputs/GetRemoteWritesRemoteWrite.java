@@ -103,12 +103,12 @@ public final class GetRemoteWritesRemoteWrite {
             return this;
         }
         public GetRemoteWritesRemoteWrite build() {
-            final var o = new GetRemoteWritesRemoteWrite();
-            o.clusterId = clusterId;
-            o.id = id;
-            o.remoteWriteName = remoteWriteName;
-            o.remoteWriteYaml = remoteWriteYaml;
-            return o;
+            final var _resultValue = new GetRemoteWritesRemoteWrite();
+            _resultValue.clusterId = clusterId;
+            _resultValue.id = id;
+            _resultValue.remoteWriteName = remoteWriteName;
+            _resultValue.remoteWriteYaml = remoteWriteYaml;
+            return _resultValue;
         }
     }
 }

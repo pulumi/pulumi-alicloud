@@ -155,7 +155,7 @@ public class LoadBalancerIntranet extends com.pulumi.resources.CustomResource {
      * The target application ID that needs to be bound to the SLB.
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -169,7 +169,7 @@ public class LoadBalancerIntranet extends com.pulumi.resources.CustomResource {
      * Use designated private network SLBs that have been purchased to support non-shared instances.
      * 
      */
-    @Export(name="intranetIp", type=String.class, parameters={})
+    @Export(name="intranetIp", refs={String.class}, tree="[0]")
     private Output<String> intranetIp;
 
     /**
@@ -183,7 +183,7 @@ public class LoadBalancerIntranet extends com.pulumi.resources.CustomResource {
      * The intranet SLB ID.
      * 
      */
-    @Export(name="intranetSlbId", type=String.class, parameters={})
+    @Export(name="intranetSlbId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> intranetSlbId;
 
     /**
@@ -197,7 +197,7 @@ public class LoadBalancerIntranet extends com.pulumi.resources.CustomResource {
      * The bound private network SLB. See `intranet` below.
      * 
      */
-    @Export(name="intranets", type=List.class, parameters={LoadBalancerIntranetIntranet.class})
+    @Export(name="intranets", refs={List.class,LoadBalancerIntranetIntranet.class}, tree="[0,1]")
     private Output<List<LoadBalancerIntranetIntranet>> intranets;
 
     /**

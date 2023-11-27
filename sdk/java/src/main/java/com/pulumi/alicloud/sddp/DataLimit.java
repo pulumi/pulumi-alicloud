@@ -37,7 +37,7 @@ public class DataLimit extends com.pulumi.resources.CustomResource {
      * Whether to enable the log auditing feature. Valid values: `0`, `1`.
      * 
      */
-    @Export(name="auditStatus", type=Integer.class, parameters={})
+    @Export(name="auditStatus", refs={Integer.class}, tree="[0]")
     private Output<Integer> auditStatus;
 
     /**
@@ -51,7 +51,7 @@ public class DataLimit extends com.pulumi.resources.CustomResource {
      * The type of the database. Valid values: `MySQL`, `SQLServer`.
      * 
      */
-    @Export(name="engineType", type=String.class, parameters={})
+    @Export(name="engineType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> engineType;
 
     /**
@@ -65,7 +65,7 @@ public class DataLimit extends com.pulumi.resources.CustomResource {
      * The lang.
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
@@ -79,7 +79,7 @@ public class DataLimit extends com.pulumi.resources.CustomResource {
      * The retention period of raw logs after you enable the log auditing feature. Unit: day. Valid values: `180`, `30`, `365`, `90`. **NOTE:** The`log_store_day` is valid when the `audit_status` is `1`.
      * 
      */
-    @Export(name="logStoreDay", type=Integer.class, parameters={})
+    @Export(name="logStoreDay", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> logStoreDay;
 
     /**
@@ -93,7 +93,7 @@ public class DataLimit extends com.pulumi.resources.CustomResource {
      * The ID of the data asset.
      * 
      */
-    @Export(name="parentId", type=String.class, parameters={})
+    @Export(name="parentId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> parentId;
 
     /**
@@ -107,7 +107,7 @@ public class DataLimit extends com.pulumi.resources.CustomResource {
      * The password that is used to connect to the database.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> password;
 
     /**
@@ -121,7 +121,7 @@ public class DataLimit extends com.pulumi.resources.CustomResource {
      * The port that is used to connect to the database.
      * 
      */
-    @Export(name="port", type=Integer.class, parameters={})
+    @Export(name="port", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> port;
 
     /**
@@ -135,7 +135,7 @@ public class DataLimit extends com.pulumi.resources.CustomResource {
      * The type of the service to which the data asset belongs. Valid values: `MaxCompute`, `OSS`, `RDS`.
      * 
      */
-    @Export(name="resourceType", type=String.class, parameters={})
+    @Export(name="resourceType", refs={String.class}, tree="[0]")
     private Output<String> resourceType;
 
     /**
@@ -149,7 +149,7 @@ public class DataLimit extends com.pulumi.resources.CustomResource {
      * The region ID of the data asset.
      * 
      */
-    @Export(name="serviceRegionId", type=String.class, parameters={})
+    @Export(name="serviceRegionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceRegionId;
 
     /**
@@ -163,7 +163,7 @@ public class DataLimit extends com.pulumi.resources.CustomResource {
      * The name of the service to which the data asset belongs.
      * 
      */
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userName;
 
     /**

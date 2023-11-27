@@ -85,11 +85,11 @@ public final class K8sSlbAttachmentSlbConfigPortMappingServicePort {
             return this;
         }
         public K8sSlbAttachmentSlbConfigPortMappingServicePort build() {
-            final var o = new K8sSlbAttachmentSlbConfigPortMappingServicePort();
-            o.port = port;
-            o.protocol = protocol;
-            o.targetPort = targetPort;
-            return o;
+            final var _resultValue = new K8sSlbAttachmentSlbConfigPortMappingServicePort();
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            _resultValue.targetPort = targetPort;
+            return _resultValue;
         }
     }
 }

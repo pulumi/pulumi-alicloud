@@ -486,32 +486,32 @@ public final class GetAggregateConfigRulesRule {
             return this;
         }
         public GetAggregateConfigRulesRule build() {
-            final var o = new GetAggregateConfigRulesRule();
-            o.accountId = accountId;
-            o.aggregateConfigRuleName = aggregateConfigRuleName;
-            o.aggregatorId = aggregatorId;
-            o.compliancePackId = compliancePackId;
-            o.compliances = compliances;
-            o.configRuleArn = configRuleArn;
-            o.configRuleId = configRuleId;
-            o.configRuleTriggerTypes = configRuleTriggerTypes;
-            o.description = description;
-            o.eventSource = eventSource;
-            o.excludeResourceIdsScope = excludeResourceIdsScope;
-            o.id = id;
-            o.inputParameters = inputParameters;
-            o.maximumExecutionFrequency = maximumExecutionFrequency;
-            o.modifiedTimestamp = modifiedTimestamp;
-            o.regionIdsScope = regionIdsScope;
-            o.resourceGroupIdsScope = resourceGroupIdsScope;
-            o.resourceTypesScopes = resourceTypesScopes;
-            o.riskLevel = riskLevel;
-            o.sourceIdentifier = sourceIdentifier;
-            o.sourceOwner = sourceOwner;
-            o.status = status;
-            o.tagKeyScope = tagKeyScope;
-            o.tagValueScope = tagValueScope;
-            return o;
+            final var _resultValue = new GetAggregateConfigRulesRule();
+            _resultValue.accountId = accountId;
+            _resultValue.aggregateConfigRuleName = aggregateConfigRuleName;
+            _resultValue.aggregatorId = aggregatorId;
+            _resultValue.compliancePackId = compliancePackId;
+            _resultValue.compliances = compliances;
+            _resultValue.configRuleArn = configRuleArn;
+            _resultValue.configRuleId = configRuleId;
+            _resultValue.configRuleTriggerTypes = configRuleTriggerTypes;
+            _resultValue.description = description;
+            _resultValue.eventSource = eventSource;
+            _resultValue.excludeResourceIdsScope = excludeResourceIdsScope;
+            _resultValue.id = id;
+            _resultValue.inputParameters = inputParameters;
+            _resultValue.maximumExecutionFrequency = maximumExecutionFrequency;
+            _resultValue.modifiedTimestamp = modifiedTimestamp;
+            _resultValue.regionIdsScope = regionIdsScope;
+            _resultValue.resourceGroupIdsScope = resourceGroupIdsScope;
+            _resultValue.resourceTypesScopes = resourceTypesScopes;
+            _resultValue.riskLevel = riskLevel;
+            _resultValue.sourceIdentifier = sourceIdentifier;
+            _resultValue.sourceOwner = sourceOwner;
+            _resultValue.status = status;
+            _resultValue.tagKeyScope = tagKeyScope;
+            _resultValue.tagValueScope = tagValueScope;
+            return _resultValue;
         }
     }
 }

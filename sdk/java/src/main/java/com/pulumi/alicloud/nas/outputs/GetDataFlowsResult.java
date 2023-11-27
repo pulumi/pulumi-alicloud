@@ -111,14 +111,14 @@ public final class GetDataFlowsResult {
             return this;
         }
         public GetDataFlowsResult build() {
-            final var o = new GetDataFlowsResult();
-            o.fileSystemId = fileSystemId;
-            o.flows = flows;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDataFlowsResult();
+            _resultValue.fileSystemId = fileSystemId;
+            _resultValue.flows = flows;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

@@ -71,7 +71,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * The ID of the Alibaba Cloud account to which the resource group belongs.
      * 
      */
-    @Export(name="accountId", type=String.class, parameters={})
+    @Export(name="accountId", refs={String.class}, tree="[0]")
     private Output<String> accountId;
 
     /**
@@ -85,7 +85,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * The display name of the resource group. The name must be 1 to 30 characters in length and can contain letters, digits, periods (.), at signs (@), and hyphens (-).
      * 
      */
-    @Export(name="displayName", type=String.class, parameters={})
+    @Export(name="displayName", refs={String.class}, tree="[0]")
     private Output<String> displayName;
 
     /**
@@ -103,7 +103,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from version 1.114.0. Use 'resource_group_name' instead. */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -117,7 +117,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * The status of the resource group in all regions. See `region_statuses` below.
      * 
      */
-    @Export(name="regionStatuses", type=List.class, parameters={ResourceGroupRegionStatus.class})
+    @Export(name="regionStatuses", refs={List.class,ResourceGroupRegionStatus.class}, tree="[0,1]")
     private Output<List<ResourceGroupRegionStatus>> regionStatuses;
 
     /**
@@ -131,7 +131,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * The unique identifier of the resource group.The identifier must be 3 to 12 characters in length and can contain letters, digits, periods (.), hyphens (-), and underscores (_). The identifier must start with a letter.
      * 
      */
-    @Export(name="resourceGroupName", type=String.class, parameters={})
+    @Export(name="resourceGroupName", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupName;
 
     /**
@@ -145,7 +145,7 @@ public class ResourceGroup extends com.pulumi.resources.CustomResource {
      * The status of the regional resource group.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

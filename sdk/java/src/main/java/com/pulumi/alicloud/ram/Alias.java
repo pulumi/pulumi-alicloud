@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="alicloud:ram/alias:Alias")
 public class Alias extends com.pulumi.resources.CustomResource {
-    @Export(name="accountAlias", type=String.class, parameters={})
+    @Export(name="accountAlias", refs={String.class}, tree="[0]")
     private Output<String> accountAlias;
 
     public Output<String> accountAlias() {

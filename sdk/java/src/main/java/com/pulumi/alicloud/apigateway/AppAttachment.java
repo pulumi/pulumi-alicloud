@@ -107,7 +107,7 @@ public class AppAttachment extends com.pulumi.resources.CustomResource {
      * The api_id that app apply to access.
      * 
      */
-    @Export(name="apiId", type=String.class, parameters={})
+    @Export(name="apiId", refs={String.class}, tree="[0]")
     private Output<String> apiId;
 
     /**
@@ -121,7 +121,7 @@ public class AppAttachment extends com.pulumi.resources.CustomResource {
      * The app that apply to the authorization.
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -135,7 +135,7 @@ public class AppAttachment extends com.pulumi.resources.CustomResource {
      * The group that the api belongs to.
      * 
      */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -149,7 +149,7 @@ public class AppAttachment extends com.pulumi.resources.CustomResource {
      * Stage that the app apply to access.
      * 
      */
-    @Export(name="stageName", type=String.class, parameters={})
+    @Export(name="stageName", refs={String.class}, tree="[0]")
     private Output<String> stageName;
 
     /**

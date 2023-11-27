@@ -106,12 +106,12 @@ public final class ManagedKubernetesRrsaMetadata {
             return this;
         }
         public ManagedKubernetesRrsaMetadata build() {
-            final var o = new ManagedKubernetesRrsaMetadata();
-            o.enabled = enabled;
-            o.ramOidcProviderArn = ramOidcProviderArn;
-            o.ramOidcProviderName = ramOidcProviderName;
-            o.rrsaOidcIssuerUrl = rrsaOidcIssuerUrl;
-            return o;
+            final var _resultValue = new ManagedKubernetesRrsaMetadata();
+            _resultValue.enabled = enabled;
+            _resultValue.ramOidcProviderArn = ramOidcProviderArn;
+            _resultValue.ramOidcProviderName = ramOidcProviderName;
+            _resultValue.rrsaOidcIssuerUrl = rrsaOidcIssuerUrl;
+            return _resultValue;
         }
     }
 }

@@ -145,17 +145,17 @@ public final class GetStackInstancesResult {
             return this;
         }
         public GetStackInstancesResult build() {
-            final var o = new GetStackInstancesResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.instances = instances;
-            o.outputFile = outputFile;
-            o.stackGroupName = stackGroupName;
-            o.stackInstanceAccountId = stackInstanceAccountId;
-            o.stackInstanceRegionId = stackInstanceRegionId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetStackInstancesResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instances = instances;
+            _resultValue.outputFile = outputFile;
+            _resultValue.stackGroupName = stackGroupName;
+            _resultValue.stackInstanceAccountId = stackInstanceAccountId;
+            _resultValue.stackInstanceRegionId = stackInstanceRegionId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

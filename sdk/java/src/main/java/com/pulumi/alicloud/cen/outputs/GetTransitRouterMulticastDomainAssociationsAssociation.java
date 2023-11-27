@@ -180,16 +180,16 @@ public final class GetTransitRouterMulticastDomainAssociationsAssociation {
             return this;
         }
         public GetTransitRouterMulticastDomainAssociationsAssociation build() {
-            final var o = new GetTransitRouterMulticastDomainAssociationsAssociation();
-            o.id = id;
-            o.resourceId = resourceId;
-            o.resourceOwnerId = resourceOwnerId;
-            o.resourceType = resourceType;
-            o.status = status;
-            o.transitRouterAttachmentId = transitRouterAttachmentId;
-            o.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetTransitRouterMulticastDomainAssociationsAssociation();
+            _resultValue.id = id;
+            _resultValue.resourceId = resourceId;
+            _resultValue.resourceOwnerId = resourceOwnerId;
+            _resultValue.resourceType = resourceType;
+            _resultValue.status = status;
+            _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
+            _resultValue.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

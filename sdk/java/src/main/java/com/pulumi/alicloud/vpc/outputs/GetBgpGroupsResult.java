@@ -136,16 +136,16 @@ public final class GetBgpGroupsResult {
             return this;
         }
         public GetBgpGroupsResult build() {
-            final var o = new GetBgpGroupsResult();
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.routerId = routerId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBgpGroupsResult();
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.routerId = routerId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

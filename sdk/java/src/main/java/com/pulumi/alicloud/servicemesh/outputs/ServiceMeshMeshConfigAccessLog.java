@@ -68,10 +68,10 @@ public final class ServiceMeshMeshConfigAccessLog {
             return this;
         }
         public ServiceMeshMeshConfigAccessLog build() {
-            final var o = new ServiceMeshMeshConfigAccessLog();
-            o.enabled = enabled;
-            o.project = project;
-            return o;
+            final var _resultValue = new ServiceMeshMeshConfigAccessLog();
+            _resultValue.enabled = enabled;
+            _resultValue.project = project;
+            return _resultValue;
         }
     }
 }

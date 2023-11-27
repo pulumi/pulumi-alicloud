@@ -183,20 +183,20 @@ public final class GetStacksResult {
             return this;
         }
         public GetStacksResult build() {
-            final var o = new GetStacksResult();
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.parentStackId = parentStackId;
-            o.showNestedStack = showNestedStack;
-            o.stackName = stackName;
-            o.stacks = stacks;
-            o.status = status;
-            o.tags = tags;
-            return o;
+            final var _resultValue = new GetStacksResult();
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.parentStackId = parentStackId;
+            _resultValue.showNestedStack = showNestedStack;
+            _resultValue.stackName = stackName;
+            _resultValue.stacks = stacks;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            return _resultValue;
         }
     }
 }

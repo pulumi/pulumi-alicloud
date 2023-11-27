@@ -151,15 +151,15 @@ public final class GetSaslAclsResult {
             return this;
         }
         public GetSaslAclsResult build() {
-            final var o = new GetSaslAclsResult();
-            o.aclResourceName = aclResourceName;
-            o.aclResourceType = aclResourceType;
-            o.acls = acls;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.outputFile = outputFile;
-            o.username = username;
-            return o;
+            final var _resultValue = new GetSaslAclsResult();
+            _resultValue.aclResourceName = aclResourceName;
+            _resultValue.aclResourceType = aclResourceType;
+            _resultValue.acls = acls;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.username = username;
+            return _resultValue;
         }
     }
 }

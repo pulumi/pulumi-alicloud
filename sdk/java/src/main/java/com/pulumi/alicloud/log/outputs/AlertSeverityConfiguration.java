@@ -67,10 +67,10 @@ public final class AlertSeverityConfiguration {
             return this;
         }
         public AlertSeverityConfiguration build() {
-            final var o = new AlertSeverityConfiguration();
-            o.evalCondition = evalCondition;
-            o.severity = severity;
-            return o;
+            final var _resultValue = new AlertSeverityConfiguration();
+            _resultValue.evalCondition = evalCondition;
+            _resultValue.severity = severity;
+            return _resultValue;
         }
     }
 }

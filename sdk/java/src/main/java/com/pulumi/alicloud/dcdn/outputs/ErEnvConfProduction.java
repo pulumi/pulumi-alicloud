@@ -90,11 +90,11 @@ public final class ErEnvConfProduction {
             return this;
         }
         public ErEnvConfProduction build() {
-            final var o = new ErEnvConfProduction();
-            o.allowedHosts = allowedHosts;
-            o.codeRev = codeRev;
-            o.specName = specName;
-            return o;
+            final var _resultValue = new ErEnvConfProduction();
+            _resultValue.allowedHosts = allowedHosts;
+            _resultValue.codeRev = codeRev;
+            _resultValue.specName = specName;
+            return _resultValue;
         }
     }
 }

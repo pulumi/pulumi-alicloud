@@ -369,26 +369,26 @@ public final class GetKeysKey {
             return this;
         }
         public GetKeysKey build() {
-            final var o = new GetKeysKey();
-            o.arn = arn;
-            o.automaticRotation = automaticRotation;
-            o.creationDate = creationDate;
-            o.creator = creator;
-            o.deleteDate = deleteDate;
-            o.description = description;
-            o.id = id;
-            o.keyId = keyId;
-            o.keySpec = keySpec;
-            o.keyUsage = keyUsage;
-            o.lastRotationDate = lastRotationDate;
-            o.materialExpireTime = materialExpireTime;
-            o.nextRotationDate = nextRotationDate;
-            o.origin = origin;
-            o.primaryKeyVersion = primaryKeyVersion;
-            o.protectionLevel = protectionLevel;
-            o.rotationInterval = rotationInterval;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetKeysKey();
+            _resultValue.arn = arn;
+            _resultValue.automaticRotation = automaticRotation;
+            _resultValue.creationDate = creationDate;
+            _resultValue.creator = creator;
+            _resultValue.deleteDate = deleteDate;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.keyId = keyId;
+            _resultValue.keySpec = keySpec;
+            _resultValue.keyUsage = keyUsage;
+            _resultValue.lastRotationDate = lastRotationDate;
+            _resultValue.materialExpireTime = materialExpireTime;
+            _resultValue.nextRotationDate = nextRotationDate;
+            _resultValue.origin = origin;
+            _resultValue.primaryKeyVersion = primaryKeyVersion;
+            _resultValue.protectionLevel = protectionLevel;
+            _resultValue.rotationInterval = rotationInterval;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

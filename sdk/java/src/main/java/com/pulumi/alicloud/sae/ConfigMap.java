@@ -98,7 +98,7 @@ public class ConfigMap extends com.pulumi.resources.CustomResource {
      * ConfigMap instance data.
      * 
      */
-    @Export(name="data", type=String.class, parameters={})
+    @Export(name="data", refs={String.class}, tree="[0]")
     private Output<String> data;
 
     /**
@@ -112,7 +112,7 @@ public class ConfigMap extends com.pulumi.resources.CustomResource {
      * The Description of ConfigMap.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -126,7 +126,7 @@ public class ConfigMap extends com.pulumi.resources.CustomResource {
      * ConfigMap instance name.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -140,7 +140,7 @@ public class ConfigMap extends com.pulumi.resources.CustomResource {
      * The NamespaceId of ConfigMap.It can contain 2 to 32 lowercase characters.The value is in format `{RegionId}:{namespace}`
      * 
      */
-    @Export(name="namespaceId", type=String.class, parameters={})
+    @Export(name="namespaceId", refs={String.class}, tree="[0]")
     private Output<String> namespaceId;
 
     /**

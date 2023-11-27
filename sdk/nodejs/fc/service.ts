@@ -44,6 +44,7 @@ export class Service extends pulumi.CustomResource {
     public readonly publish!: pulumi.Output<boolean | undefined>;
     public readonly role!: pulumi.Output<string | undefined>;
     public /*out*/ readonly serviceId!: pulumi.Output<string>;
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
     public readonly tracingConfig!: pulumi.Output<outputs.fc.ServiceTracingConfig | undefined>;
     public /*out*/ readonly version!: pulumi.Output<string>;
     public readonly vpcConfig!: pulumi.Output<outputs.fc.ServiceVpcConfig | undefined>;
@@ -71,6 +72,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["publish"] = state ? state.publish : undefined;
             resourceInputs["role"] = state ? state.role : undefined;
             resourceInputs["serviceId"] = state ? state.serviceId : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tracingConfig"] = state ? state.tracingConfig : undefined;
             resourceInputs["version"] = state ? state.version : undefined;
             resourceInputs["vpcConfig"] = state ? state.vpcConfig : undefined;
@@ -84,6 +86,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["nasConfig"] = args ? args.nasConfig : undefined;
             resourceInputs["publish"] = args ? args.publish : undefined;
             resourceInputs["role"] = args ? args.role : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tracingConfig"] = args ? args.tracingConfig : undefined;
             resourceInputs["vpcConfig"] = args ? args.vpcConfig : undefined;
             resourceInputs["lastModified"] = undefined /*out*/;
@@ -106,6 +109,7 @@ export interface ServiceState {
     publish?: pulumi.Input<boolean>;
     role?: pulumi.Input<string>;
     serviceId?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     tracingConfig?: pulumi.Input<inputs.fc.ServiceTracingConfig>;
     version?: pulumi.Input<string>;
     vpcConfig?: pulumi.Input<inputs.fc.ServiceVpcConfig>;
@@ -123,6 +127,7 @@ export interface ServiceArgs {
     nasConfig?: pulumi.Input<inputs.fc.ServiceNasConfig>;
     publish?: pulumi.Input<boolean>;
     role?: pulumi.Input<string>;
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     tracingConfig?: pulumi.Input<inputs.fc.ServiceTracingConfig>;
     vpcConfig?: pulumi.Input<inputs.fc.ServiceVpcConfig>;
 }

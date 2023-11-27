@@ -217,18 +217,18 @@ public final class GetVpcFlowLogsLog {
             return this;
         }
         public GetVpcFlowLogsLog build() {
-            final var o = new GetVpcFlowLogsLog();
-            o.description = description;
-            o.flowLogId = flowLogId;
-            o.flowLogName = flowLogName;
-            o.id = id;
-            o.logStoreName = logStoreName;
-            o.projectName = projectName;
-            o.resourceId = resourceId;
-            o.resourceType = resourceType;
-            o.status = status;
-            o.trafficType = trafficType;
-            return o;
+            final var _resultValue = new GetVpcFlowLogsLog();
+            _resultValue.description = description;
+            _resultValue.flowLogId = flowLogId;
+            _resultValue.flowLogName = flowLogName;
+            _resultValue.id = id;
+            _resultValue.logStoreName = logStoreName;
+            _resultValue.projectName = projectName;
+            _resultValue.resourceId = resourceId;
+            _resultValue.resourceType = resourceType;
+            _resultValue.status = status;
+            _resultValue.trafficType = trafficType;
+            return _resultValue;
         }
     }
 }

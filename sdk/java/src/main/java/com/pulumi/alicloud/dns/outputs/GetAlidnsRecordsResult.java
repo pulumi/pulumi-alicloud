@@ -303,27 +303,27 @@ public final class GetAlidnsRecordsResult {
             return this;
         }
         public GetAlidnsRecordsResult build() {
-            final var o = new GetAlidnsRecordsResult();
-            o.direction = direction;
-            o.domainName = domainName;
-            o.groupId = groupId;
-            o.id = id;
-            o.ids = ids;
-            o.keyWord = keyWord;
-            o.lang = lang;
-            o.line = line;
-            o.orderBy = orderBy;
-            o.outputFile = outputFile;
-            o.records = records;
-            o.rrKeyWord = rrKeyWord;
-            o.rrRegex = rrRegex;
-            o.searchMode = searchMode;
-            o.status = status;
-            o.type = type;
-            o.typeKeyWord = typeKeyWord;
-            o.valueKeyWord = valueKeyWord;
-            o.valueRegex = valueRegex;
-            return o;
+            final var _resultValue = new GetAlidnsRecordsResult();
+            _resultValue.direction = direction;
+            _resultValue.domainName = domainName;
+            _resultValue.groupId = groupId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.keyWord = keyWord;
+            _resultValue.lang = lang;
+            _resultValue.line = line;
+            _resultValue.orderBy = orderBy;
+            _resultValue.outputFile = outputFile;
+            _resultValue.records = records;
+            _resultValue.rrKeyWord = rrKeyWord;
+            _resultValue.rrRegex = rrRegex;
+            _resultValue.searchMode = searchMode;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            _resultValue.typeKeyWord = typeKeyWord;
+            _resultValue.valueKeyWord = valueKeyWord;
+            _resultValue.valueRegex = valueRegex;
+            return _resultValue;
         }
     }
 }

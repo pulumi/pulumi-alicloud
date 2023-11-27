@@ -70,10 +70,10 @@ public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableList {
             return this;
         }
         public FirewallVpcFirewallPeerVpcPeerVpcCidrTableList build() {
-            final var o = new FirewallVpcFirewallPeerVpcPeerVpcCidrTableList();
-            o.peerRouteEntryLists = peerRouteEntryLists;
-            o.peerRouteTableId = peerRouteTableId;
-            return o;
+            final var _resultValue = new FirewallVpcFirewallPeerVpcPeerVpcCidrTableList();
+            _resultValue.peerRouteEntryLists = peerRouteEntryLists;
+            _resultValue.peerRouteTableId = peerRouteTableId;
+            return _resultValue;
         }
     }
 }

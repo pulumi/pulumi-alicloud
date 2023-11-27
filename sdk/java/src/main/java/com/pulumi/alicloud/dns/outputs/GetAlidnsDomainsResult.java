@@ -313,26 +313,26 @@ public final class GetAlidnsDomainsResult {
             return this;
         }
         public GetAlidnsDomainsResult build() {
-            final var o = new GetAlidnsDomainsResult();
-            o.aliDomain = aliDomain;
-            o.domainNameRegex = domainNameRegex;
-            o.domains = domains;
-            o.enableDetails = enableDetails;
-            o.groupId = groupId;
-            o.groupNameRegex = groupNameRegex;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.keyWord = keyWord;
-            o.lang = lang;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.resourceGroupId = resourceGroupId;
-            o.searchMode = searchMode;
-            o.starmark = starmark;
-            o.tags = tags;
-            o.versionCode = versionCode;
-            return o;
+            final var _resultValue = new GetAlidnsDomainsResult();
+            _resultValue.aliDomain = aliDomain;
+            _resultValue.domainNameRegex = domainNameRegex;
+            _resultValue.domains = domains;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.groupId = groupId;
+            _resultValue.groupNameRegex = groupNameRegex;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.keyWord = keyWord;
+            _resultValue.lang = lang;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.searchMode = searchMode;
+            _resultValue.starmark = starmark;
+            _resultValue.tags = tags;
+            _resultValue.versionCode = versionCode;
+            return _resultValue;
         }
     }
 }

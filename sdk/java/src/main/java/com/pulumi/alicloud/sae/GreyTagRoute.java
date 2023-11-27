@@ -161,7 +161,7 @@ public class GreyTagRoute extends com.pulumi.resources.CustomResource {
      * The ID  of the SAE Application.
      * 
      */
-    @Export(name="appId", type=String.class, parameters={})
+    @Export(name="appId", refs={String.class}, tree="[0]")
     private Output<String> appId;
 
     /**
@@ -175,7 +175,7 @@ public class GreyTagRoute extends com.pulumi.resources.CustomResource {
      * The description of GreyTagRoute.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -189,7 +189,7 @@ public class GreyTagRoute extends com.pulumi.resources.CustomResource {
      * The grayscale rule created for Dubbo Application. See `dubbo_rules` below.
      * 
      */
-    @Export(name="dubboRules", type=List.class, parameters={GreyTagRouteDubboRule.class})
+    @Export(name="dubboRules", refs={List.class,GreyTagRouteDubboRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GreyTagRouteDubboRule>> dubboRules;
 
     /**
@@ -203,7 +203,7 @@ public class GreyTagRoute extends com.pulumi.resources.CustomResource {
      * The name of GreyTagRoute.
      * 
      */
-    @Export(name="greyTagRouteName", type=String.class, parameters={})
+    @Export(name="greyTagRouteName", refs={String.class}, tree="[0]")
     private Output<String> greyTagRouteName;
 
     /**
@@ -217,7 +217,7 @@ public class GreyTagRoute extends com.pulumi.resources.CustomResource {
      * The grayscale rule created for SpringCloud Application. See `sc_rules` below.
      * 
      */
-    @Export(name="scRules", type=List.class, parameters={GreyTagRouteScRule.class})
+    @Export(name="scRules", refs={List.class,GreyTagRouteScRule.class}, tree="[0,1]")
     private Output</* @Nullable */ List<GreyTagRouteScRule>> scRules;
 
     /**

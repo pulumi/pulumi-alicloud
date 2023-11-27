@@ -159,15 +159,15 @@ public final class GetRouteEntriesResult {
             return this;
         }
         public GetRouteEntriesResult build() {
-            final var o = new GetRouteEntriesResult();
-            o.cidrBlock = cidrBlock;
-            o.entries = entries;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.outputFile = outputFile;
-            o.routeTableId = routeTableId;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetRouteEntriesResult();
+            _resultValue.cidrBlock = cidrBlock;
+            _resultValue.entries = entries;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.outputFile = outputFile;
+            _resultValue.routeTableId = routeTableId;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

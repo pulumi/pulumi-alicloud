@@ -87,7 +87,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable the SAE built-in registry. If you do not use the built-in registry, you can set `enable_micro_registration` to `false` to accelerate the creation of the namespace. Default value: `true`. Valid values:
      * 
      */
-    @Export(name="enableMicroRegistration", type=Boolean.class, parameters={})
+    @Export(name="enableMicroRegistration", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableMicroRegistration;
 
     /**
@@ -101,7 +101,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The Description of Namespace.
      * 
      */
-    @Export(name="namespaceDescription", type=String.class, parameters={})
+    @Export(name="namespaceDescription", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> namespaceDescription;
 
     /**
@@ -115,7 +115,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The ID of the Namespace. It can contain 2 to 32 lowercase characters. The value is in format `{RegionId}:{namespace}`.
      * 
      */
-    @Export(name="namespaceId", type=String.class, parameters={})
+    @Export(name="namespaceId", refs={String.class}, tree="[0]")
     private Output<String> namespaceId;
 
     /**
@@ -129,7 +129,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The Name of Namespace.
      * 
      */
-    @Export(name="namespaceName", type=String.class, parameters={})
+    @Export(name="namespaceName", refs={String.class}, tree="[0]")
     private Output<String> namespaceName;
 
     /**
@@ -143,7 +143,7 @@ public class Namespace extends com.pulumi.resources.CustomResource {
      * The short ID of the Namespace. You do not need to specify a region ID. The value of `namespace_short_id` can be up to 20 characters in length and can contain only lowercase letters and digits.
      * 
      */
-    @Export(name="namespaceShortId", type=String.class, parameters={})
+    @Export(name="namespaceShortId", refs={String.class}, tree="[0]")
     private Output<String> namespaceShortId;
 
     /**

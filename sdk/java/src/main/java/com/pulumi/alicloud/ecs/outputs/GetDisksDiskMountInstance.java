@@ -76,11 +76,11 @@ public final class GetDisksDiskMountInstance {
             return this;
         }
         public GetDisksDiskMountInstance build() {
-            final var o = new GetDisksDiskMountInstance();
-            o.attachedTime = attachedTime;
-            o.device = device;
-            o.instanceId = instanceId;
-            return o;
+            final var _resultValue = new GetDisksDiskMountInstance();
+            _resultValue.attachedTime = attachedTime;
+            _resultValue.device = device;
+            _resultValue.instanceId = instanceId;
+            return _resultValue;
         }
     }
 }

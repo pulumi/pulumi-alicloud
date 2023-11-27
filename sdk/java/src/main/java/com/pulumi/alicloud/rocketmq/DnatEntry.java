@@ -78,7 +78,7 @@ public class DnatEntry extends com.pulumi.resources.CustomResource {
      * The external public IP address.when &#34;type&#34; is &#34;Internet&#34;,automatically identify the external ip.
      * 
      */
-    @Export(name="externalIp", type=String.class, parameters={})
+    @Export(name="externalIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> externalIp;
 
     /**
@@ -92,7 +92,7 @@ public class DnatEntry extends com.pulumi.resources.CustomResource {
      * The public port.Value range: 1 to 65535 or &#34;any&#34;.
      * 
      */
-    @Export(name="externalPort", type=String.class, parameters={})
+    @Export(name="externalPort", refs={String.class}, tree="[0]")
     private Output<String> externalPort;
 
     /**
@@ -106,7 +106,7 @@ public class DnatEntry extends com.pulumi.resources.CustomResource {
      * The destination private IP address.
      * 
      */
-    @Export(name="internalIp", type=String.class, parameters={})
+    @Export(name="internalIp", refs={String.class}, tree="[0]")
     private Output<String> internalIp;
 
     /**
@@ -120,7 +120,7 @@ public class DnatEntry extends com.pulumi.resources.CustomResource {
      * The destination private port.Value range: 1 to 65535 or &#34;any&#34;.
      * 
      */
-    @Export(name="internalPort", type=String.class, parameters={})
+    @Export(name="internalPort", refs={String.class}, tree="[0]")
     private Output<String> internalPort;
 
     /**
@@ -134,7 +134,7 @@ public class DnatEntry extends com.pulumi.resources.CustomResource {
      * The protocol type. Valid values: TCP: Forwards packets of the TCP protocol. UDP: Forwards packets of the UDP protocol. Any: Forwards packets of all protocols.
      * 
      */
-    @Export(name="ipProtocol", type=String.class, parameters={})
+    @Export(name="ipProtocol", refs={String.class}, tree="[0]")
     private Output<String> ipProtocol;
 
     /**
@@ -148,7 +148,7 @@ public class DnatEntry extends com.pulumi.resources.CustomResource {
      * The ID of the SAG instance.
      * 
      */
-    @Export(name="sagId", type=String.class, parameters={})
+    @Export(name="sagId", refs={String.class}, tree="[0]")
     private Output<String> sagId;
 
     /**
@@ -162,7 +162,7 @@ public class DnatEntry extends com.pulumi.resources.CustomResource {
      * The DNAT type. Valid values: Intranet: DNAT of private IP addresses. Internet: DNAT of public IP addresses
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

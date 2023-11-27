@@ -95,7 +95,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * - false (default): no automatic renewal.
      * 
      */
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> autoRenew;
 
     /**
@@ -114,7 +114,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * - PeriodUnit is Month, AutoRenewPeriod is {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;6&#34;, &#34;12&#34;}.
      * 
      */
-    @Export(name="autoRenewPeriod", type=Integer.class, parameters={})
+    @Export(name="autoRenewPeriod", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> autoRenewPeriod;
 
     /**
@@ -134,7 +134,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * &gt; **NOTE:**   The default value is delete_all.
      * 
      */
-    @Export(name="backupRetainMode", type=String.class, parameters={})
+    @Export(name="backupRetainMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupRetainMode;
 
     /**
@@ -152,7 +152,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * The product code of the OceanBase cluster._oceanbasepre_public_cn: Domestic station cloud database package Year-to-month package._oceanbasepost_public_cn: The domestic station cloud database is paid by the hour._obpre_public_intl: International Station Cloud Database Package Monthly Package.
      * 
      */
-    @Export(name="commodityCode", type=String.class, parameters={})
+    @Export(name="commodityCode", refs={String.class}, tree="[0]")
     private Output<String> commodityCode;
 
     /**
@@ -166,7 +166,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * The number of CPU cores of the cluster.
      * 
      */
-    @Export(name="cpu", type=Integer.class, parameters={})
+    @Export(name="cpu", refs={Integer.class}, tree="[0]")
     private Output<Integer> cpu;
 
     /**
@@ -180,7 +180,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * The creation time of the resource.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -200,7 +200,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      *   The default value of each package is its minimum value.
      * 
      */
-    @Export(name="diskSize", type=Integer.class, parameters={})
+    @Export(name="diskSize", refs={Integer.class}, tree="[0]")
     private Output<Integer> diskSize;
 
     /**
@@ -223,7 +223,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * - cloud_essd_pl0: cloud disk ESSD pl0. The default value is cloud_essd_pl1.
      * 
      */
-    @Export(name="diskType", type=String.class, parameters={})
+    @Export(name="diskType", refs={String.class}, tree="[0]")
     private Output<String> diskType;
 
     /**
@@ -245,7 +245,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * - 62C400GB:62 cores 400GB.
      * 
      */
-    @Export(name="instanceClass", type=String.class, parameters={})
+    @Export(name="instanceClass", refs={String.class}, tree="[0]")
     private Output<String> instanceClass;
 
     /**
@@ -264,7 +264,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * OceanBase cluster name.The length is 1 to 20 English or Chinese characters.If this parameter is not specified, the default value is the InstanceId of the cluster.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -278,7 +278,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * The number of nodes in the cluster. If the deployment mode is n-n-n, the number of nodes is n * 3.
      * 
      */
-    @Export(name="nodeNum", type=String.class, parameters={})
+    @Export(name="nodeNum", refs={String.class}, tree="[0]")
     private Output<String> nodeNum;
 
     /**
@@ -292,7 +292,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * The OceanBase Server version number.
      * 
      */
-    @Export(name="obVersion", type=String.class, parameters={})
+    @Export(name="obVersion", refs={String.class}, tree="[0]")
     private Output<String> obVersion;
 
     /**
@@ -308,7 +308,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * - PayAsYouGo (default): Pay-as-you-go (default hourly billing).
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -324,7 +324,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * The duration of the resource purchase. The unit is specified by the PeriodUnit. The parameter InstanceChargeType takes effect only when the value is PrePaid and is required. Once the DedicatedHostId is specified, the value cannot exceed the subscription duration of the dedicated host. When PeriodUnit = Week, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;}. When PeriodUnit = Month, Period values: {&#34;1&#34;, &#34;2&#34;, &#34;3&#34;, &#34;4&#34;, &#34;5&#34;, &#34;6&#34;, &#34;7&#34;, &#34;8&#34;, &#34;9&#34;, &#34;12&#34;, &#34;24&#34;, &#34;36&#34;, &#34;48&#34;, &#34;60&#34;}.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -338,7 +338,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * The duration of the purchase of resources.Package year and Month value range: Month.Default value: Month of the package, which is billed by volume. The default period is Hour.
      * 
      */
-    @Export(name="periodUnit", type=String.class, parameters={})
+    @Export(name="periodUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> periodUnit;
 
     /**
@@ -352,7 +352,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * The ID of the enterprise resource group to which the instance resides.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -366,7 +366,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * Series of OceanBase cluster instances-normal (default): Standard cluster version (cloud disk)-normal_SSD: Standard cluster version (local disk)-history: history Library cluster version.
      * 
      */
-    @Export(name="series", type=String.class, parameters={})
+    @Export(name="series", refs={String.class}, tree="[0]")
     private Output<String> series;
 
     /**
@@ -380,7 +380,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -394,7 +394,7 @@ public class BaseInstance extends com.pulumi.resources.CustomResource {
      * Information about the zone where the cluster is deployed.
      * 
      */
-    @Export(name="zones", type=List.class, parameters={String.class})
+    @Export(name="zones", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> zones;
 
     /**

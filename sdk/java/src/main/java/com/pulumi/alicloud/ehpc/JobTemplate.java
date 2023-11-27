@@ -71,7 +71,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * Queue Jobs, Is of the Form: 1-10:2.
      * 
      */
-    @Export(name="arrayRequest", type=String.class, parameters={})
+    @Export(name="arrayRequest", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> arrayRequest;
 
     /**
@@ -85,7 +85,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * Job Maximum Run Time.
      * 
      */
-    @Export(name="clockTime", type=String.class, parameters={})
+    @Export(name="clockTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clockTime;
 
     /**
@@ -99,7 +99,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * Job Commands.
      * 
      */
-    @Export(name="commandLine", type=String.class, parameters={})
+    @Export(name="commandLine", refs={String.class}, tree="[0]")
     private Output<String> commandLine;
 
     /**
@@ -113,7 +113,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * A Single Compute Node Using the GPU Number.Possible Values: 1~20000.
      * 
      */
-    @Export(name="gpu", type=Integer.class, parameters={})
+    @Export(name="gpu", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> gpu;
 
     /**
@@ -127,7 +127,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * A Job Template Name.
      * 
      */
-    @Export(name="jobTemplateName", type=String.class, parameters={})
+    @Export(name="jobTemplateName", refs={String.class}, tree="[0]")
     private Output<String> jobTemplateName;
 
     /**
@@ -141,7 +141,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * A Single Compute Node Maximum Memory.
      * 
      */
-    @Export(name="mem", type=String.class, parameters={})
+    @Export(name="mem", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> mem;
 
     /**
@@ -155,7 +155,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * Submit a Task Is Required for Computing the Number of Data Nodes to Be. Possible Values: 1~5000 .
      * 
      */
-    @Export(name="node", type=Integer.class, parameters={})
+    @Export(name="node", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> node;
 
     /**
@@ -169,7 +169,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * Job Commands the Directory.
      * 
      */
-    @Export(name="packagePath", type=String.class, parameters={})
+    @Export(name="packagePath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> packagePath;
 
     /**
@@ -183,7 +183,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * The Job Priority.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
@@ -197,7 +197,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * The Job Queue.
      * 
      */
-    @Export(name="queue", type=String.class, parameters={})
+    @Export(name="queue", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> queue;
 
     /**
@@ -211,7 +211,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * If the Job Is Support for the Re-Run.
      * 
      */
-    @Export(name="reRunable", type=Boolean.class, parameters={})
+    @Export(name="reRunable", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reRunable;
 
     /**
@@ -225,7 +225,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * The name of the user who performed the job.
      * 
      */
-    @Export(name="runasUser", type=String.class, parameters={})
+    @Export(name="runasUser", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> runasUser;
 
     /**
@@ -239,7 +239,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * Error Output Path.
      * 
      */
-    @Export(name="stderrRedirectPath", type=String.class, parameters={})
+    @Export(name="stderrRedirectPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stderrRedirectPath;
 
     /**
@@ -253,7 +253,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * Standard Output Path and.
      * 
      */
-    @Export(name="stdoutRedirectPath", type=String.class, parameters={})
+    @Export(name="stdoutRedirectPath", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> stdoutRedirectPath;
 
     /**
@@ -267,7 +267,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * A Single Compute Node Required Number of Tasks. Possible Values: 1~20000 .
      * 
      */
-    @Export(name="task", type=Integer.class, parameters={})
+    @Export(name="task", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> task;
 
     /**
@@ -281,7 +281,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * A Single Task and the Number of Required Threads.
      * 
      */
-    @Export(name="thread", type=Integer.class, parameters={})
+    @Export(name="thread", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> thread;
 
     /**
@@ -295,7 +295,7 @@ public class JobTemplate extends com.pulumi.resources.CustomResource {
      * The Job of the Environment Variable.
      * 
      */
-    @Export(name="variables", type=String.class, parameters={})
+    @Export(name="variables", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> variables;
 
     /**

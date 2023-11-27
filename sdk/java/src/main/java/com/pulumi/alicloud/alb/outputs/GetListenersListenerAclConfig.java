@@ -70,10 +70,10 @@ public final class GetListenersListenerAclConfig {
             return this;
         }
         public GetListenersListenerAclConfig build() {
-            final var o = new GetListenersListenerAclConfig();
-            o.aclRelations = aclRelations;
-            o.aclType = aclType;
-            return o;
+            final var _resultValue = new GetListenersListenerAclConfig();
+            _resultValue.aclRelations = aclRelations;
+            _resultValue.aclType = aclType;
+            return _resultValue;
         }
     }
 }

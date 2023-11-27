@@ -146,14 +146,14 @@ public final class GetDatabasesDatabase {
             return this;
         }
         public GetDatabasesDatabase build() {
-            final var o = new GetDatabasesDatabase();
-            o.accounts = accounts;
-            o.characterSetName = characterSetName;
-            o.dbDescription = dbDescription;
-            o.dbName = dbName;
-            o.dbStatus = dbStatus;
-            o.engine = engine;
-            return o;
+            final var _resultValue = new GetDatabasesDatabase();
+            _resultValue.accounts = accounts;
+            _resultValue.characterSetName = characterSetName;
+            _resultValue.dbDescription = dbDescription;
+            _resultValue.dbName = dbName;
+            _resultValue.dbStatus = dbStatus;
+            _resultValue.engine = engine;
+            return _resultValue;
         }
     }
 }

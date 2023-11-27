@@ -109,7 +109,7 @@ public class IpsecServer extends com.pulumi.resources.CustomResource {
      * The client CIDR block. It refers to the CIDR block that is allocated to the virtual interface of the client.
      * 
      */
-    @Export(name="clientIpPool", type=String.class, parameters={})
+    @Export(name="clientIpPool", refs={String.class}, tree="[0]")
     private Output<String> clientIpPool;
 
     /**
@@ -123,7 +123,7 @@ public class IpsecServer extends com.pulumi.resources.CustomResource {
      * The dry run.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -137,7 +137,7 @@ public class IpsecServer extends com.pulumi.resources.CustomResource {
      * Specifies whether you want the configuration to immediately take effect.
      * 
      */
-    @Export(name="effectImmediately", type=Boolean.class, parameters={})
+    @Export(name="effectImmediately", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> effectImmediately;
 
     /**
@@ -151,7 +151,7 @@ public class IpsecServer extends com.pulumi.resources.CustomResource {
      * The configuration of Phase 1 negotiations. See the following `Block ike_config`.
      * 
      */
-    @Export(name="ikeConfigs", type=List.class, parameters={IpsecServerIkeConfig.class})
+    @Export(name="ikeConfigs", refs={List.class,IpsecServerIkeConfig.class}, tree="[0,1]")
     private Output<List<IpsecServerIkeConfig>> ikeConfigs;
 
     /**
@@ -165,7 +165,7 @@ public class IpsecServer extends com.pulumi.resources.CustomResource {
      * The configuration of Phase 2 negotiations. See the following `Block ipsec_config`.
      * 
      */
-    @Export(name="ipsecConfigs", type=List.class, parameters={IpsecServerIpsecConfig.class})
+    @Export(name="ipsecConfigs", refs={List.class,IpsecServerIpsecConfig.class}, tree="[0,1]")
     private Output<List<IpsecServerIpsecConfig>> ipsecConfigs;
 
     /**
@@ -179,7 +179,7 @@ public class IpsecServer extends com.pulumi.resources.CustomResource {
      * The name of the IPsec server. The name must be `2` to `128` characters in length, and can contain digits, hyphens (-), and underscores (_). It must start with a letter.
      * 
      */
-    @Export(name="ipsecServerName", type=String.class, parameters={})
+    @Export(name="ipsecServerName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ipsecServerName;
 
     /**
@@ -193,7 +193,7 @@ public class IpsecServer extends com.pulumi.resources.CustomResource {
      * The local CIDR block. It refers to the CIDR block of the virtual private cloud (VPC) that is used to connect with the client. Separate multiple CIDR blocks with commas (,). Example: `192.168.1.0/24,192.168.2.0/24`.
      * 
      */
-    @Export(name="localSubnet", type=String.class, parameters={})
+    @Export(name="localSubnet", refs={String.class}, tree="[0]")
     private Output<String> localSubnet;
 
     /**
@@ -207,7 +207,7 @@ public class IpsecServer extends com.pulumi.resources.CustomResource {
      * The pre-shared key. The pre-shared key is used to authenticate the VPN gateway and the client. By default, the system generates a random string that is 16 bits in length. You can also specify the pre-shared key. It can contain at most 100 characters.
      * 
      */
-    @Export(name="psk", type=String.class, parameters={})
+    @Export(name="psk", refs={String.class}, tree="[0]")
     private Output<String> psk;
 
     /**
@@ -221,7 +221,7 @@ public class IpsecServer extends com.pulumi.resources.CustomResource {
      * Whether to enable the pre-shared key authentication method. The value is only `true`, which indicates that the pre-shared key authentication method is enabled.
      * 
      */
-    @Export(name="pskEnabled", type=Boolean.class, parameters={})
+    @Export(name="pskEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> pskEnabled;
 
     /**
@@ -235,7 +235,7 @@ public class IpsecServer extends com.pulumi.resources.CustomResource {
      * The ID of the VPN gateway.
      * 
      */
-    @Export(name="vpnGatewayId", type=String.class, parameters={})
+    @Export(name="vpnGatewayId", refs={String.class}, tree="[0]")
     private Output<String> vpnGatewayId;
 
     /**

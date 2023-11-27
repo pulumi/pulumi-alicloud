@@ -147,17 +147,17 @@ public final class GetTransitRouterVpnAttachmentsResult {
             return this;
         }
         public GetTransitRouterVpnAttachmentsResult build() {
-            final var o = new GetTransitRouterVpnAttachmentsResult();
-            o.attachments = attachments;
-            o.cenId = cenId;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.transitRouterId = transitRouterId;
-            return o;
+            final var _resultValue = new GetTransitRouterVpnAttachmentsResult();
+            _resultValue.attachments = attachments;
+            _resultValue.cenId = cenId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.transitRouterId = transitRouterId;
+            return _resultValue;
         }
     }
 }

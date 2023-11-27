@@ -82,7 +82,7 @@ public class ChartNamespace extends com.pulumi.resources.CustomResource {
      * Specifies whether to automatically create repositories in the namespace. Valid values:
      * 
      */
-    @Export(name="autoCreateRepo", type=Boolean.class, parameters={})
+    @Export(name="autoCreateRepo", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoCreateRepo;
 
     /**
@@ -96,7 +96,7 @@ public class ChartNamespace extends com.pulumi.resources.CustomResource {
      * DefaultRepoType. Valid values: `PRIVATE`, `PUBLIC`.
      * 
      */
-    @Export(name="defaultRepoType", type=String.class, parameters={})
+    @Export(name="defaultRepoType", refs={String.class}, tree="[0]")
     private Output<String> defaultRepoType;
 
     /**
@@ -110,7 +110,7 @@ public class ChartNamespace extends com.pulumi.resources.CustomResource {
      * The ID of the Container Registry instance.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -124,7 +124,7 @@ public class ChartNamespace extends com.pulumi.resources.CustomResource {
      * The name of the namespace that you want to create.
      * 
      */
-    @Export(name="namespaceName", type=String.class, parameters={})
+    @Export(name="namespaceName", refs={String.class}, tree="[0]")
     private Output<String> namespaceName;
 
     /**

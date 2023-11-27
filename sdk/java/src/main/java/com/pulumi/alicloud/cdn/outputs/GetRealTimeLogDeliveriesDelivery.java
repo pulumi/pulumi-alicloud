@@ -141,14 +141,14 @@ public final class GetRealTimeLogDeliveriesDelivery {
             return this;
         }
         public GetRealTimeLogDeliveriesDelivery build() {
-            final var o = new GetRealTimeLogDeliveriesDelivery();
-            o.domain = domain;
-            o.id = id;
-            o.logstore = logstore;
-            o.project = project;
-            o.slsRegion = slsRegion;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetRealTimeLogDeliveriesDelivery();
+            _resultValue.domain = domain;
+            _resultValue.id = id;
+            _resultValue.logstore = logstore;
+            _resultValue.project = project;
+            _resultValue.slsRegion = slsRegion;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

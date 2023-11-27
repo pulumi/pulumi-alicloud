@@ -105,12 +105,12 @@ public final class NestServiceInstanceOperationMetadata {
             return this;
         }
         public NestServiceInstanceOperationMetadata build() {
-            final var o = new NestServiceInstanceOperationMetadata();
-            o.operatedServiceInstanceId = operatedServiceInstanceId;
-            o.operationEndTime = operationEndTime;
-            o.operationStartTime = operationStartTime;
-            o.resources = resources;
-            return o;
+            final var _resultValue = new NestServiceInstanceOperationMetadata();
+            _resultValue.operatedServiceInstanceId = operatedServiceInstanceId;
+            _resultValue.operationEndTime = operationEndTime;
+            _resultValue.operationStartTime = operationStartTime;
+            _resultValue.resources = resources;
+            return _resultValue;
         }
     }
 }

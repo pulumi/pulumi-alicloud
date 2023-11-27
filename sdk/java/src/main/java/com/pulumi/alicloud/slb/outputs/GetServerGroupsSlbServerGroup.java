@@ -89,11 +89,11 @@ public final class GetServerGroupsSlbServerGroup {
             return servers(List.of(servers));
         }
         public GetServerGroupsSlbServerGroup build() {
-            final var o = new GetServerGroupsSlbServerGroup();
-            o.id = id;
-            o.name = name;
-            o.servers = servers;
-            return o;
+            final var _resultValue = new GetServerGroupsSlbServerGroup();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.servers = servers;
+            return _resultValue;
         }
     }
 }

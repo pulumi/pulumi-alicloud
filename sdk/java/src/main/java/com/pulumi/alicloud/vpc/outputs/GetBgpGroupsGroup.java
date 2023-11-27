@@ -276,21 +276,21 @@ public final class GetBgpGroupsGroup {
             return this;
         }
         public GetBgpGroupsGroup build() {
-            final var o = new GetBgpGroupsGroup();
-            o.authKey = authKey;
-            o.bgpGroupName = bgpGroupName;
-            o.description = description;
-            o.hold = hold;
-            o.id = id;
-            o.ipVersion = ipVersion;
-            o.isFakeAsn = isFakeAsn;
-            o.keepalive = keepalive;
-            o.localAsn = localAsn;
-            o.peerAsn = peerAsn;
-            o.routeLimit = routeLimit;
-            o.routerId = routerId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBgpGroupsGroup();
+            _resultValue.authKey = authKey;
+            _resultValue.bgpGroupName = bgpGroupName;
+            _resultValue.description = description;
+            _resultValue.hold = hold;
+            _resultValue.id = id;
+            _resultValue.ipVersion = ipVersion;
+            _resultValue.isFakeAsn = isFakeAsn;
+            _resultValue.keepalive = keepalive;
+            _resultValue.localAsn = localAsn;
+            _resultValue.peerAsn = peerAsn;
+            _resultValue.routeLimit = routeLimit;
+            _resultValue.routerId = routerId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

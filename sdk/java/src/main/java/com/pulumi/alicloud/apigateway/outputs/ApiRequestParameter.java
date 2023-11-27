@@ -181,16 +181,16 @@ public final class ApiRequestParameter {
             return this;
         }
         public ApiRequestParameter build() {
-            final var o = new ApiRequestParameter();
-            o.defaultValue = defaultValue;
-            o.description = description;
-            o.in = in;
-            o.inService = inService;
-            o.name = name;
-            o.nameService = nameService;
-            o.required = required;
-            o.type = type;
-            return o;
+            final var _resultValue = new ApiRequestParameter();
+            _resultValue.defaultValue = defaultValue;
+            _resultValue.description = description;
+            _resultValue.in = in;
+            _resultValue.inService = inService;
+            _resultValue.name = name;
+            _resultValue.nameService = nameService;
+            _resultValue.required = required;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

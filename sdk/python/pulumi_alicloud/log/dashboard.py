@@ -22,6 +22,7 @@ class DashboardArgs:
         """
         The set of arguments for constructing a Dashboard resource.
         :param pulumi.Input[str] char_list: Configuration of charts in the dashboard.
+               **Note:** From version 1.164.0, `char_list` can set parameter "action".
         :param pulumi.Input[str] dashboard_name: The name of the Log Dashboard.
         :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account.
         :param pulumi.Input[str] attribute: Dashboard attribute.
@@ -40,6 +41,7 @@ class DashboardArgs:
     def char_list(self) -> pulumi.Input[str]:
         """
         Configuration of charts in the dashboard.
+        **Note:** From version 1.164.0, `char_list` can set parameter "action".
         """
         return pulumi.get(self, "char_list")
 
@@ -108,6 +110,7 @@ class _DashboardState:
         Input properties used for looking up and filtering Dashboard resources.
         :param pulumi.Input[str] attribute: Dashboard attribute.
         :param pulumi.Input[str] char_list: Configuration of charts in the dashboard.
+               **Note:** From version 1.164.0, `char_list` can set parameter "action".
         :param pulumi.Input[str] dashboard_name: The name of the Log Dashboard.
         :param pulumi.Input[str] display_name: Dashboard alias.
         :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account.
@@ -140,6 +143,7 @@ class _DashboardState:
     def char_list(self) -> Optional[pulumi.Input[str]]:
         """
         Configuration of charts in the dashboard.
+        **Note:** From version 1.164.0, `char_list` can set parameter "action".
         """
         return pulumi.get(self, "char_list")
 
@@ -199,7 +203,7 @@ class Dashboard(pulumi.CustomResource):
         The dashboard is a real-time data analysis platform provided by the log service. You can display frequently used query and analysis statements in the form of charts and save statistical charts to the dashboard.
         [Refer to details](https://www.alibabacloud.com/help/doc-detail/102530.htm).
 
-        > **NOTE:** Available in 1.86.0, parameter "action" in char_list is supported since 1.164.0+.
+        > **NOTE:** Available since v1.86.0.
 
         ## Example Usage
 
@@ -223,7 +227,11 @@ class Dashboard(pulumi.CustomResource):
         example_dashboard = alicloud.log.Dashboard("exampleDashboard",
             project_name=example_project.name,
             dashboard_name="terraform-example",
-            attribute="{\\"type\\":\\"grid\\"}",
+            display_name="terraform-example",
+            attribute=\"\"\"  {
+            "type":"grid"
+          }
+        \"\"\",
             char_list=\"\"\"  [
             {
               "action": {},
@@ -256,16 +264,17 @@ class Dashboard(pulumi.CustomResource):
 
         ## Import
 
-        Log Dashboard can be imported using the id or name, e.g.
+        Log Dashboard can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/dashboard:Dashboard example tf-project:tf-logstore:tf-dashboard
+         $ pulumi import alicloud:log/dashboard:Dashboard example <project_name>:<dashboard_name>
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attribute: Dashboard attribute.
         :param pulumi.Input[str] char_list: Configuration of charts in the dashboard.
+               **Note:** From version 1.164.0, `char_list` can set parameter "action".
         :param pulumi.Input[str] dashboard_name: The name of the Log Dashboard.
         :param pulumi.Input[str] display_name: Dashboard alias.
         :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account.
@@ -280,7 +289,7 @@ class Dashboard(pulumi.CustomResource):
         The dashboard is a real-time data analysis platform provided by the log service. You can display frequently used query and analysis statements in the form of charts and save statistical charts to the dashboard.
         [Refer to details](https://www.alibabacloud.com/help/doc-detail/102530.htm).
 
-        > **NOTE:** Available in 1.86.0, parameter "action" in char_list is supported since 1.164.0+.
+        > **NOTE:** Available since v1.86.0.
 
         ## Example Usage
 
@@ -304,7 +313,11 @@ class Dashboard(pulumi.CustomResource):
         example_dashboard = alicloud.log.Dashboard("exampleDashboard",
             project_name=example_project.name,
             dashboard_name="terraform-example",
-            attribute="{\\"type\\":\\"grid\\"}",
+            display_name="terraform-example",
+            attribute=\"\"\"  {
+            "type":"grid"
+          }
+        \"\"\",
             char_list=\"\"\"  [
             {
               "action": {},
@@ -337,10 +350,10 @@ class Dashboard(pulumi.CustomResource):
 
         ## Import
 
-        Log Dashboard can be imported using the id or name, e.g.
+        Log Dashboard can be imported using the id, e.g.
 
         ```sh
-         $ pulumi import alicloud:log/dashboard:Dashboard example tf-project:tf-logstore:tf-dashboard
+         $ pulumi import alicloud:log/dashboard:Dashboard example <project_name>:<dashboard_name>
         ```
 
         :param str resource_name: The name of the resource.
@@ -407,6 +420,7 @@ class Dashboard(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attribute: Dashboard attribute.
         :param pulumi.Input[str] char_list: Configuration of charts in the dashboard.
+               **Note:** From version 1.164.0, `char_list` can set parameter "action".
         :param pulumi.Input[str] dashboard_name: The name of the Log Dashboard.
         :param pulumi.Input[str] display_name: Dashboard alias.
         :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account.
@@ -435,6 +449,7 @@ class Dashboard(pulumi.CustomResource):
     def char_list(self) -> pulumi.Output[str]:
         """
         Configuration of charts in the dashboard.
+        **Note:** From version 1.164.0, `char_list` can set parameter "action".
         """
         return pulumi.get(self, "char_list")
 

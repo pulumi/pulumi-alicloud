@@ -122,13 +122,13 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.createTime = createTime;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.paymentType = paymentType;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.createTime = createTime;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.paymentType = paymentType;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

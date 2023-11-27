@@ -105,14 +105,14 @@ type GroupMetricRule struct {
 	pulumi.CustomResourceState
 
 	// The abbreviation of the service name.
-	Category pulumi.StringOutput `pulumi:"category"`
+	Category pulumi.StringPtrOutput `pulumi:"category"`
 	// Alarm contact group.
 	ContactGroups pulumi.StringOutput `pulumi:"contactGroups"`
 	// The dimensions that specify the resources to be associated with the alert rule.
 	Dimensions pulumi.StringOutput `pulumi:"dimensions"`
 	// The time period during which the alert rule is effective.
 	EffectiveInterval pulumi.StringPtrOutput `pulumi:"effectiveInterval"`
-	// The subject of the alert notification email.                                         .
+	// The subject of the alert notification email.
 	EmailSubject pulumi.StringOutput `pulumi:"emailSubject"`
 	// Alarm level. See `escalations` below.
 	Escalations GroupMetricRuleEscalationsOutput `pulumi:"escalations"`
@@ -133,7 +133,7 @@ type GroupMetricRule struct {
 	// The ID of the alert rule.
 	RuleId pulumi.StringOutput `pulumi:"ruleId"`
 	// The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
-	SilenceTime pulumi.IntPtrOutput `pulumi:"silenceTime"`
+	SilenceTime pulumi.IntOutput `pulumi:"silenceTime"`
 	// The status of Group Metric Rule.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The information about the resource for which alerts are triggered. See `targets` below.
@@ -149,9 +149,6 @@ func NewGroupMetricRule(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.Category == nil {
-		return nil, errors.New("invalid value for required argument 'Category'")
-	}
 	if args.Escalations == nil {
 		return nil, errors.New("invalid value for required argument 'Escalations'")
 	}
@@ -201,7 +198,7 @@ type groupMetricRuleState struct {
 	Dimensions *string `pulumi:"dimensions"`
 	// The time period during which the alert rule is effective.
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
-	// The subject of the alert notification email.                                         .
+	// The subject of the alert notification email.
 	EmailSubject *string `pulumi:"emailSubject"`
 	// Alarm level. See `escalations` below.
 	Escalations *GroupMetricRuleEscalations `pulumi:"escalations"`
@@ -240,7 +237,7 @@ type GroupMetricRuleState struct {
 	Dimensions pulumi.StringPtrInput
 	// The time period during which the alert rule is effective.
 	EffectiveInterval pulumi.StringPtrInput
-	// The subject of the alert notification email.                                         .
+	// The subject of the alert notification email.
 	EmailSubject pulumi.StringPtrInput
 	// Alarm level. See `escalations` below.
 	Escalations GroupMetricRuleEscalationsPtrInput
@@ -276,14 +273,14 @@ func (GroupMetricRuleState) ElementType() reflect.Type {
 
 type groupMetricRuleArgs struct {
 	// The abbreviation of the service name.
-	Category string `pulumi:"category"`
+	Category *string `pulumi:"category"`
 	// Alarm contact group.
 	ContactGroups *string `pulumi:"contactGroups"`
 	// The dimensions that specify the resources to be associated with the alert rule.
 	Dimensions *string `pulumi:"dimensions"`
 	// The time period during which the alert rule is effective.
 	EffectiveInterval *string `pulumi:"effectiveInterval"`
-	// The subject of the alert notification email.                                         .
+	// The subject of the alert notification email.
 	EmailSubject *string `pulumi:"emailSubject"`
 	// Alarm level. See `escalations` below.
 	Escalations GroupMetricRuleEscalations `pulumi:"escalations"`
@@ -314,14 +311,14 @@ type groupMetricRuleArgs struct {
 // The set of arguments for constructing a GroupMetricRule resource.
 type GroupMetricRuleArgs struct {
 	// The abbreviation of the service name.
-	Category pulumi.StringInput
+	Category pulumi.StringPtrInput
 	// Alarm contact group.
 	ContactGroups pulumi.StringPtrInput
 	// The dimensions that specify the resources to be associated with the alert rule.
 	Dimensions pulumi.StringPtrInput
 	// The time period during which the alert rule is effective.
 	EffectiveInterval pulumi.StringPtrInput
-	// The subject of the alert notification email.                                         .
+	// The subject of the alert notification email.
 	EmailSubject pulumi.StringPtrInput
 	// Alarm level. See `escalations` below.
 	Escalations GroupMetricRuleEscalationsInput
@@ -437,8 +434,8 @@ func (o GroupMetricRuleOutput) ToGroupMetricRuleOutputWithContext(ctx context.Co
 }
 
 // The abbreviation of the service name.
-func (o GroupMetricRuleOutput) Category() pulumi.StringOutput {
-	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringOutput { return v.Category }).(pulumi.StringOutput)
+func (o GroupMetricRuleOutput) Category() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringPtrOutput { return v.Category }).(pulumi.StringPtrOutput)
 }
 
 // Alarm contact group.
@@ -456,7 +453,7 @@ func (o GroupMetricRuleOutput) EffectiveInterval() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringPtrOutput { return v.EffectiveInterval }).(pulumi.StringPtrOutput)
 }
 
-// The subject of the alert notification email.                                         .
+// The subject of the alert notification email.
 func (o GroupMetricRuleOutput) EmailSubject() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupMetricRule) pulumi.StringOutput { return v.EmailSubject }).(pulumi.StringOutput)
 }
@@ -507,8 +504,8 @@ func (o GroupMetricRuleOutput) RuleId() pulumi.StringOutput {
 }
 
 // The mute period during which new alerts are not reported even if the alert trigger conditions are met. Unit: seconds. Default value: `86400`, which is equivalent to one day.
-func (o GroupMetricRuleOutput) SilenceTime() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *GroupMetricRule) pulumi.IntPtrOutput { return v.SilenceTime }).(pulumi.IntPtrOutput)
+func (o GroupMetricRuleOutput) SilenceTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *GroupMetricRule) pulumi.IntOutput { return v.SilenceTime }).(pulumi.IntOutput)
 }
 
 // The status of Group Metric Rule.

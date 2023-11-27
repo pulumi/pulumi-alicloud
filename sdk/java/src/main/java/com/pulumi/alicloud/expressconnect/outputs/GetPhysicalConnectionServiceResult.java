@@ -78,11 +78,11 @@ public final class GetPhysicalConnectionServiceResult {
             return this;
         }
         public GetPhysicalConnectionServiceResult build() {
-            final var o = new GetPhysicalConnectionServiceResult();
-            o.enable = enable;
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetPhysicalConnectionServiceResult();
+            _resultValue.enable = enable;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

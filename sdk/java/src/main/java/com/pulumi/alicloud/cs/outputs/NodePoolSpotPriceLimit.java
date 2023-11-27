@@ -67,10 +67,10 @@ public final class NodePoolSpotPriceLimit {
             return this;
         }
         public NodePoolSpotPriceLimit build() {
-            final var o = new NodePoolSpotPriceLimit();
-            o.instanceType = instanceType;
-            o.priceLimit = priceLimit;
-            return o;
+            final var _resultValue = new NodePoolSpotPriceLimit();
+            _resultValue.instanceType = instanceType;
+            _resultValue.priceLimit = priceLimit;
+            return _resultValue;
         }
     }
 }

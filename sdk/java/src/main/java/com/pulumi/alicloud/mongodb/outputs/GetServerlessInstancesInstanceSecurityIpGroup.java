@@ -84,11 +84,11 @@ public final class GetServerlessInstancesInstanceSecurityIpGroup {
             return this;
         }
         public GetServerlessInstancesInstanceSecurityIpGroup build() {
-            final var o = new GetServerlessInstancesInstanceSecurityIpGroup();
-            o.securityIpGroupAttribute = securityIpGroupAttribute;
-            o.securityIpGroupName = securityIpGroupName;
-            o.securityIpList = securityIpList;
-            return o;
+            final var _resultValue = new GetServerlessInstancesInstanceSecurityIpGroup();
+            _resultValue.securityIpGroupAttribute = securityIpGroupAttribute;
+            _resultValue.securityIpGroupName = securityIpGroupName;
+            _resultValue.securityIpList = securityIpList;
+            return _resultValue;
         }
     }
 }

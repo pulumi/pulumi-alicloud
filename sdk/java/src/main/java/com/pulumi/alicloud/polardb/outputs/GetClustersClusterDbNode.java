@@ -199,17 +199,17 @@ public final class GetClustersClusterDbNode {
             return this;
         }
         public GetClustersClusterDbNode build() {
-            final var o = new GetClustersClusterDbNode();
-            o.createTime = createTime;
-            o.dbNodeClass = dbNodeClass;
-            o.dbNodeId = dbNodeId;
-            o.dbNodeRole = dbNodeRole;
-            o.dbNodeStatus = dbNodeStatus;
-            o.maxConnections = maxConnections;
-            o.maxIops = maxIops;
-            o.regionId = regionId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetClustersClusterDbNode();
+            _resultValue.createTime = createTime;
+            _resultValue.dbNodeClass = dbNodeClass;
+            _resultValue.dbNodeId = dbNodeId;
+            _resultValue.dbNodeRole = dbNodeRole;
+            _resultValue.dbNodeStatus = dbNodeStatus;
+            _resultValue.maxConnections = maxConnections;
+            _resultValue.maxIops = maxIops;
+            _resultValue.regionId = regionId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

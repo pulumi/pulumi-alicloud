@@ -221,19 +221,19 @@ public final class GetTrailsTrail {
             return this;
         }
         public GetTrailsTrail build() {
-            final var o = new GetTrailsTrail();
-            o.eventRw = eventRw;
-            o.id = id;
-            o.isOrganizationTrail = isOrganizationTrail;
-            o.ossBucketName = ossBucketName;
-            o.ossKeyPrefix = ossKeyPrefix;
-            o.ossWriteRoleArn = ossWriteRoleArn;
-            o.slsProjectArn = slsProjectArn;
-            o.slsWriteRoleArn = slsWriteRoleArn;
-            o.status = status;
-            o.trailName = trailName;
-            o.trailRegion = trailRegion;
-            return o;
+            final var _resultValue = new GetTrailsTrail();
+            _resultValue.eventRw = eventRw;
+            _resultValue.id = id;
+            _resultValue.isOrganizationTrail = isOrganizationTrail;
+            _resultValue.ossBucketName = ossBucketName;
+            _resultValue.ossKeyPrefix = ossKeyPrefix;
+            _resultValue.ossWriteRoleArn = ossWriteRoleArn;
+            _resultValue.slsProjectArn = slsProjectArn;
+            _resultValue.slsWriteRoleArn = slsWriteRoleArn;
+            _resultValue.status = status;
+            _resultValue.trailName = trailName;
+            _resultValue.trailRegion = trailRegion;
+            return _resultValue;
         }
     }
 }

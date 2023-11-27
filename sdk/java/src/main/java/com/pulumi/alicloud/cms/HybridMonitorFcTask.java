@@ -100,7 +100,7 @@ public class HybridMonitorFcTask extends com.pulumi.resources.CustomResource {
      * The ID of the monitoring task.
      * 
      */
-    @Export(name="hybridMonitorFcTaskId", type=String.class, parameters={})
+    @Export(name="hybridMonitorFcTaskId", refs={String.class}, tree="[0]")
     private Output<String> hybridMonitorFcTaskId;
 
     /**
@@ -114,7 +114,7 @@ public class HybridMonitorFcTask extends com.pulumi.resources.CustomResource {
      * the namespace of the Alibaba Cloud service.
      * 
      */
-    @Export(name="namespace", type=String.class, parameters={})
+    @Export(name="namespace", refs={String.class}, tree="[0]")
     private Output<String> namespace;
 
     /**
@@ -128,7 +128,7 @@ public class HybridMonitorFcTask extends com.pulumi.resources.CustomResource {
      * The ID of the member account. If you call API operations by using a management account, you can connect the Alibaba Cloud services that are activated for a member account in Resource Directory to Hybrid Cloud Monitoring. You can use Resource Directory to monitor Alibaba Cloud services across enterprise accounts.
      * 
      */
-    @Export(name="targetUserId", type=String.class, parameters={})
+    @Export(name="targetUserId", refs={String.class}, tree="[0]")
     private Output<String> targetUserId;
 
     /**
@@ -142,7 +142,7 @@ public class HybridMonitorFcTask extends com.pulumi.resources.CustomResource {
      * The configuration file of the Alibaba Cloud service that you want to monitor by using Hybrid Cloud Monitoring.
      * 
      */
-    @Export(name="yarmConfig", type=String.class, parameters={})
+    @Export(name="yarmConfig", refs={String.class}, tree="[0]")
     private Output<String> yarmConfig;
 
     /**

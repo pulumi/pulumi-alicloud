@@ -143,14 +143,14 @@ public final class GetScalingConfigurationsConfigurationDataDisk {
             return this;
         }
         public GetScalingConfigurationsConfigurationDataDisk build() {
-            final var o = new GetScalingConfigurationsConfigurationDataDisk();
-            o.category = category;
-            o.deleteWithInstance = deleteWithInstance;
-            o.device = device;
-            o.performanceLevel = performanceLevel;
-            o.size = size;
-            o.snapshotId = snapshotId;
-            return o;
+            final var _resultValue = new GetScalingConfigurationsConfigurationDataDisk();
+            _resultValue.category = category;
+            _resultValue.deleteWithInstance = deleteWithInstance;
+            _resultValue.device = device;
+            _resultValue.performanceLevel = performanceLevel;
+            _resultValue.size = size;
+            _resultValue.snapshotId = snapshotId;
+            return _resultValue;
         }
     }
 }

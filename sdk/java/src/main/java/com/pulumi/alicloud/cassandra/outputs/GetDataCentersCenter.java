@@ -324,24 +324,24 @@ public final class GetDataCentersCenter {
             return this;
         }
         public GetDataCentersCenter build() {
-            final var o = new GetDataCentersCenter();
-            o.clusterId = clusterId;
-            o.commodityInstance = commodityInstance;
-            o.createdTime = createdTime;
-            o.dataCenterId = dataCenterId;
-            o.dataCenterName = dataCenterName;
-            o.diskSize = diskSize;
-            o.diskType = diskType;
-            o.expireTime = expireTime;
-            o.instanceType = instanceType;
-            o.lockMode = lockMode;
-            o.nodeCount = nodeCount;
-            o.payType = payType;
-            o.status = status;
-            o.vpcId = vpcId;
-            o.vswitchId = vswitchId;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetDataCentersCenter();
+            _resultValue.clusterId = clusterId;
+            _resultValue.commodityInstance = commodityInstance;
+            _resultValue.createdTime = createdTime;
+            _resultValue.dataCenterId = dataCenterId;
+            _resultValue.dataCenterName = dataCenterName;
+            _resultValue.diskSize = diskSize;
+            _resultValue.diskType = diskType;
+            _resultValue.expireTime = expireTime;
+            _resultValue.instanceType = instanceType;
+            _resultValue.lockMode = lockMode;
+            _resultValue.nodeCount = nodeCount;
+            _resultValue.payType = payType;
+            _resultValue.status = status;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

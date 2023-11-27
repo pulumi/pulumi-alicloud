@@ -146,14 +146,14 @@ public final class GetDynamicTagGroupsGroup {
             return this;
         }
         public GetDynamicTagGroupsGroup build() {
-            final var o = new GetDynamicTagGroupsGroup();
-            o.dynamicTagRuleId = dynamicTagRuleId;
-            o.id = id;
-            o.matchExpressFilterRelation = matchExpressFilterRelation;
-            o.matchExpresses = matchExpresses;
-            o.status = status;
-            o.tagKey = tagKey;
-            return o;
+            final var _resultValue = new GetDynamicTagGroupsGroup();
+            _resultValue.dynamicTagRuleId = dynamicTagRuleId;
+            _resultValue.id = id;
+            _resultValue.matchExpressFilterRelation = matchExpressFilterRelation;
+            _resultValue.matchExpresses = matchExpresses;
+            _resultValue.status = status;
+            _resultValue.tagKey = tagKey;
+            return _resultValue;
         }
     }
 }

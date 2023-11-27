@@ -62,11 +62,11 @@ public final class DomainCertificateConfig {
             return this;
         }
         public DomainCertificateConfig build() {
-            final var o = new DomainCertificateConfig();
-            o.privateKey = privateKey;
-            o.serverCertificate = serverCertificate;
-            o.serverCertificateStatus = serverCertificateStatus;
-            return o;
+            final var _resultValue = new DomainCertificateConfig();
+            _resultValue.privateKey = privateKey;
+            _resultValue.serverCertificate = serverCertificate;
+            _resultValue.serverCertificateStatus = serverCertificateStatus;
+            return _resultValue;
         }
     }
 }

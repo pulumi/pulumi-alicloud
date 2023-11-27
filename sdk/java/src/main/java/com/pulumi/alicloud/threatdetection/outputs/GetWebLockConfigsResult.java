@@ -172,18 +172,18 @@ public final class GetWebLockConfigsResult {
             return this;
         }
         public GetWebLockConfigsResult build() {
-            final var o = new GetWebLockConfigsResult();
-            o.configs = configs;
-            o.id = id;
-            o.ids = ids;
-            o.lang = lang;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.remark = remark;
-            o.sourceIp = sourceIp;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetWebLockConfigsResult();
+            _resultValue.configs = configs;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.lang = lang;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.remark = remark;
+            _resultValue.sourceIp = sourceIp;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

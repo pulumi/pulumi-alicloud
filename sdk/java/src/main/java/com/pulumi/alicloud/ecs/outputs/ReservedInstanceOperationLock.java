@@ -48,9 +48,9 @@ public final class ReservedInstanceOperationLock {
             return this;
         }
         public ReservedInstanceOperationLock build() {
-            final var o = new ReservedInstanceOperationLock();
-            o.lockReason = lockReason;
-            return o;
+            final var _resultValue = new ReservedInstanceOperationLock();
+            _resultValue.lockReason = lockReason;
+            return _resultValue;
         }
     }
 }

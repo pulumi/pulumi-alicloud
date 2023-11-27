@@ -86,7 +86,7 @@ public class DedicatedHostGroup extends com.pulumi.resources.CustomResource {
      * AThe policy that is used to allocate resources in the dedicated cluster. Valid values:`Evenly`,`Intensively`
      * 
      */
-    @Export(name="allocationPolicy", type=String.class, parameters={})
+    @Export(name="allocationPolicy", refs={String.class}, tree="[0]")
     private Output<String> allocationPolicy;
 
     /**
@@ -100,7 +100,7 @@ public class DedicatedHostGroup extends com.pulumi.resources.CustomResource {
      * The CPU overcommitment ratio of the dedicated cluster.Valid values: 100 to 300. Default value: 200.
      * 
      */
-    @Export(name="cpuAllocationRatio", type=Integer.class, parameters={})
+    @Export(name="cpuAllocationRatio", refs={Integer.class}, tree="[0]")
     private Output<Integer> cpuAllocationRatio;
 
     /**
@@ -114,7 +114,7 @@ public class DedicatedHostGroup extends com.pulumi.resources.CustomResource {
      * The name of the dedicated cluster. The name must be 1 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). It must start with a letter.
      * 
      */
-    @Export(name="dedicatedHostGroupDesc", type=String.class, parameters={})
+    @Export(name="dedicatedHostGroupDesc", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dedicatedHostGroupDesc;
 
     /**
@@ -128,7 +128,7 @@ public class DedicatedHostGroup extends com.pulumi.resources.CustomResource {
      * The Disk Allocation Ratio of the Dedicated Host Group. **NOTE:** When `engine = SQLServer`, this attribute does not support to set.
      * 
      */
-    @Export(name="diskAllocationRatio", type=Integer.class, parameters={})
+    @Export(name="diskAllocationRatio", refs={Integer.class}, tree="[0]")
     private Output<Integer> diskAllocationRatio;
 
     /**
@@ -142,7 +142,7 @@ public class DedicatedHostGroup extends com.pulumi.resources.CustomResource {
      * Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`, `alisql`, `tair`, `mssql`. **NOTE:** Since v1.210.0., the `engine = SQLServer` was deprecated.
      * 
      */
-    @Export(name="engine", type=String.class, parameters={})
+    @Export(name="engine", refs={String.class}, tree="[0]")
     private Output<String> engine;
 
     /**
@@ -156,7 +156,7 @@ public class DedicatedHostGroup extends com.pulumi.resources.CustomResource {
      * The policy based on which the system handles host failures. Valid values:`Auto`,`Manual`
      * 
      */
-    @Export(name="hostReplacePolicy", type=String.class, parameters={})
+    @Export(name="hostReplacePolicy", refs={String.class}, tree="[0]")
     private Output<String> hostReplacePolicy;
 
     /**
@@ -170,7 +170,7 @@ public class DedicatedHostGroup extends com.pulumi.resources.CustomResource {
      * The Memory Allocation Ratio of the Dedicated Host Group.
      * 
      */
-    @Export(name="memAllocationRatio", type=Integer.class, parameters={})
+    @Export(name="memAllocationRatio", refs={Integer.class}, tree="[0]")
     private Output<Integer> memAllocationRatio;
 
     /**
@@ -185,7 +185,7 @@ public class DedicatedHostGroup extends com.pulumi.resources.CustomResource {
      * **NOTE:** The `open_permission` should be `true` when `engine = &#34;SQLServer&#34;`
      * 
      */
-    @Export(name="openPermission", type=Boolean.class, parameters={})
+    @Export(name="openPermission", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> openPermission;
 
     /**
@@ -200,7 +200,7 @@ public class DedicatedHostGroup extends com.pulumi.resources.CustomResource {
      * The virtual private cloud (VPC) ID of the dedicated cluster.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

@@ -67,10 +67,10 @@ public final class EdgeKubernetesLogConfig {
             return this;
         }
         public EdgeKubernetesLogConfig build() {
-            final var o = new EdgeKubernetesLogConfig();
-            o.project = project;
-            o.type = type;
-            return o;
+            final var _resultValue = new EdgeKubernetesLogConfig();
+            _resultValue.project = project;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

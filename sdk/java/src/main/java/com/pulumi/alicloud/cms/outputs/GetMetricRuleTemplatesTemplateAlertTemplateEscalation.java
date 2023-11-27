@@ -96,11 +96,11 @@ public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
             return warns(List.of(warns));
         }
         public GetMetricRuleTemplatesTemplateAlertTemplateEscalation build() {
-            final var o = new GetMetricRuleTemplatesTemplateAlertTemplateEscalation();
-            o.criticals = criticals;
-            o.infos = infos;
-            o.warns = warns;
-            return o;
+            final var _resultValue = new GetMetricRuleTemplatesTemplateAlertTemplateEscalation();
+            _resultValue.criticals = criticals;
+            _resultValue.infos = infos;
+            _resultValue.warns = warns;
+            return _resultValue;
         }
     }
 }

@@ -32,7 +32,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The instance name.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -46,7 +46,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The Instance Type. Valid values: `professional`, `enterprise`, `vip`.
      * 
      */
-    @Export(name="instanceType", type=String.class, parameters={})
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
     private Output<String> instanceType;
 
     /**
@@ -60,7 +60,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The logistic information This parameter is not required when you create a ApsaraMQ for RabbitMQ instance. You do not need to specify this parameter.
      * 
      */
-    @Export(name="logistics", type=String.class, parameters={})
+    @Export(name="logistics", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> logistics;
 
     /**
@@ -74,7 +74,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The max eip tps. It is valid when `support_eip` is true. The valid value is [128, 45000] with the step size 128.
      * 
      */
-    @Export(name="maxEipTps", type=String.class, parameters={})
+    @Export(name="maxEipTps", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> maxEipTps;
 
     /**
@@ -88,7 +88,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The peak TPS traffic. The smallest valid value is 1000 and the largest value is 100,000.
      * 
      */
-    @Export(name="maxTps", type=String.class, parameters={})
+    @Export(name="maxTps", refs={String.class}, tree="[0]")
     private Output<String> maxTps;
 
     /**
@@ -102,7 +102,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The modify type. Valid values: `Downgrade`, `Upgrade`. It is required when updating other attributes.
      * 
      */
-    @Export(name="modifyType", type=String.class, parameters={})
+    @Export(name="modifyType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> modifyType;
 
     /**
@@ -116,7 +116,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The payment type. Valid values: `Subscription`.
      * 
      */
-    @Export(name="paymentType", type=String.class, parameters={})
+    @Export(name="paymentType", refs={String.class}, tree="[0]")
     private Output<String> paymentType;
 
     /**
@@ -130,7 +130,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The period. Valid values: `1`, `12`, `2`, `24`, `3`, `6`.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -144,7 +144,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The queue capacity. The smallest value is 50 and the step size 5.
      * 
      */
-    @Export(name="queueCapacity", type=String.class, parameters={})
+    @Export(name="queueCapacity", refs={String.class}, tree="[0]")
     private Output<String> queueCapacity;
 
     /**
@@ -158,7 +158,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * RenewalDuration. Valid values: `1`, `12`, `2`, `3`, `6`.
      * 
      */
-    @Export(name="renewalDuration", type=Integer.class, parameters={})
+    @Export(name="renewalDuration", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> renewalDuration;
 
     /**
@@ -172,7 +172,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
      * 
      */
-    @Export(name="renewalDurationUnit", type=String.class, parameters={})
+    @Export(name="renewalDurationUnit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> renewalDurationUnit;
 
     /**
@@ -186,7 +186,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to renew an instance automatically or not. Default to &#34;ManualRenewal&#34;.
      * 
      */
-    @Export(name="renewalStatus", type=String.class, parameters={})
+    @Export(name="renewalStatus", refs={String.class}, tree="[0]")
     private Output<String> renewalStatus;
 
     /**
@@ -200,7 +200,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -214,7 +214,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * The storage size. It is valid when `instance_type` is vip.
      * 
      */
-    @Export(name="storageSize", type=String.class, parameters={})
+    @Export(name="storageSize", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> storageSize;
 
     /**
@@ -228,7 +228,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * Whether to support EIP.
      * 
      */
-    @Export(name="supportEip", type=Boolean.class, parameters={})
+    @Export(name="supportEip", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> supportEip;
 
     /**

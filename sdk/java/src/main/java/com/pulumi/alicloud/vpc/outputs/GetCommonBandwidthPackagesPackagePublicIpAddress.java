@@ -60,11 +60,11 @@ public final class GetCommonBandwidthPackagesPackagePublicIpAddress {
             return this;
         }
         public GetCommonBandwidthPackagesPackagePublicIpAddress build() {
-            final var o = new GetCommonBandwidthPackagesPackagePublicIpAddress();
-            o.allocationId = allocationId;
-            o.bandwidthPackageIpRelationStatus = bandwidthPackageIpRelationStatus;
-            o.ipAddress = ipAddress;
-            return o;
+            final var _resultValue = new GetCommonBandwidthPackagesPackagePublicIpAddress();
+            _resultValue.allocationId = allocationId;
+            _resultValue.bandwidthPackageIpRelationStatus = bandwidthPackageIpRelationStatus;
+            _resultValue.ipAddress = ipAddress;
+            return _resultValue;
         }
     }
 }

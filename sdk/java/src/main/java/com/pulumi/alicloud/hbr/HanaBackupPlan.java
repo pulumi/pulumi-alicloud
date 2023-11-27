@@ -103,7 +103,7 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
      * The backup prefix.
      * 
      */
-    @Export(name="backupPrefix", type=String.class, parameters={})
+    @Export(name="backupPrefix", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> backupPrefix;
 
     /**
@@ -117,7 +117,7 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
      * The backup type. Valid values:
      * 
      */
-    @Export(name="backupType", type=String.class, parameters={})
+    @Export(name="backupType", refs={String.class}, tree="[0]")
     private Output<String> backupType;
 
     /**
@@ -131,7 +131,7 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
      * The ID of the SAP HANA instance.
      * 
      */
-    @Export(name="clusterId", type=String.class, parameters={})
+    @Export(name="clusterId", refs={String.class}, tree="[0]")
     private Output<String> clusterId;
 
     /**
@@ -145,7 +145,7 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
      * The name of the database.
      * 
      */
-    @Export(name="databaseName", type=String.class, parameters={})
+    @Export(name="databaseName", refs={String.class}, tree="[0]")
     private Output<String> databaseName;
 
     /**
@@ -159,7 +159,7 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
      * The id of the plan.
      * 
      */
-    @Export(name="planId", type=String.class, parameters={})
+    @Export(name="planId", refs={String.class}, tree="[0]")
     private Output<String> planId;
 
     /**
@@ -173,7 +173,7 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
      * The name of the backup plan.
      * 
      */
-    @Export(name="planName", type=String.class, parameters={})
+    @Export(name="planName", refs={String.class}, tree="[0]")
     private Output<String> planName;
 
     /**
@@ -187,7 +187,7 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
      * The resource attribute field that represents the resource group ID.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -201,7 +201,7 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
      * The backup policy. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is completed. For example, I|1631685600|P1D specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.
      * 
      */
-    @Export(name="schedule", type=String.class, parameters={})
+    @Export(name="schedule", refs={String.class}, tree="[0]")
     private Output<String> schedule;
 
     /**
@@ -215,7 +215,7 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
      * The status of the resource. Valid values: `Enabled`, `Disabled`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -229,7 +229,7 @@ public class HanaBackupPlan extends com.pulumi.resources.CustomResource {
      * The ID of the backup vault.
      * 
      */
-    @Export(name="vaultId", type=String.class, parameters={})
+    @Export(name="vaultId", refs={String.class}, tree="[0]")
     private Output<String> vaultId;
 
     /**

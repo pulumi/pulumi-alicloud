@@ -207,17 +207,17 @@ public final class GetAddressBooksBook {
             return this;
         }
         public GetAddressBooksBook build() {
-            final var o = new GetAddressBooksBook();
-            o.addressLists = addressLists;
-            o.autoAddTagEcs = autoAddTagEcs;
-            o.description = description;
-            o.ecsTags = ecsTags;
-            o.groupName = groupName;
-            o.groupType = groupType;
-            o.groupUuid = groupUuid;
-            o.id = id;
-            o.tagRelation = tagRelation;
-            return o;
+            final var _resultValue = new GetAddressBooksBook();
+            _resultValue.addressLists = addressLists;
+            _resultValue.autoAddTagEcs = autoAddTagEcs;
+            _resultValue.description = description;
+            _resultValue.ecsTags = ecsTags;
+            _resultValue.groupName = groupName;
+            _resultValue.groupType = groupType;
+            _resultValue.groupUuid = groupUuid;
+            _resultValue.id = id;
+            _resultValue.tagRelation = tagRelation;
+            return _resultValue;
         }
     }
 }

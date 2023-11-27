@@ -222,18 +222,18 @@ public final class GetTransitRouterVpcAttachmentsAttachment {
             return zoneMappings(List.of(zoneMappings));
         }
         public GetTransitRouterVpcAttachmentsAttachment build() {
-            final var o = new GetTransitRouterVpcAttachmentsAttachment();
-            o.id = id;
-            o.paymentType = paymentType;
-            o.resourceType = resourceType;
-            o.status = status;
-            o.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
-            o.transitRouterAttachmentId = transitRouterAttachmentId;
-            o.transitRouterAttachmentName = transitRouterAttachmentName;
-            o.vpcId = vpcId;
-            o.vpcOwnerId = vpcOwnerId;
-            o.zoneMappings = zoneMappings;
-            return o;
+            final var _resultValue = new GetTransitRouterVpcAttachmentsAttachment();
+            _resultValue.id = id;
+            _resultValue.paymentType = paymentType;
+            _resultValue.resourceType = resourceType;
+            _resultValue.status = status;
+            _resultValue.transitRouterAttachmentDescription = transitRouterAttachmentDescription;
+            _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
+            _resultValue.transitRouterAttachmentName = transitRouterAttachmentName;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vpcOwnerId = vpcOwnerId;
+            _resultValue.zoneMappings = zoneMappings;
+            return _resultValue;
         }
     }
 }

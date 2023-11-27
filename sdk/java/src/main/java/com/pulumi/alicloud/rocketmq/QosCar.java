@@ -85,7 +85,7 @@ public class QosCar extends com.pulumi.resources.CustomResource {
      * The description of the QoS speed limiting rule.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -99,7 +99,7 @@ public class QosCar extends com.pulumi.resources.CustomResource {
      * The speed limiting method. Valid values: Absolute, Percent.
      * 
      */
-    @Export(name="limitType", type=String.class, parameters={})
+    @Export(name="limitType", refs={String.class}, tree="[0]")
     private Output<String> limitType;
 
     /**
@@ -113,7 +113,7 @@ public class QosCar extends com.pulumi.resources.CustomResource {
      * The maximum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType is Absolute.
      * 
      */
-    @Export(name="maxBandwidthAbs", type=Integer.class, parameters={})
+    @Export(name="maxBandwidthAbs", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxBandwidthAbs;
 
     /**
@@ -127,7 +127,7 @@ public class QosCar extends com.pulumi.resources.CustomResource {
      * The maximum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated Smart Access Gateway (SAG) instance.This parameter is required when the value of the LimitType parameter is Percent.
      * 
      */
-    @Export(name="maxBandwidthPercent", type=Integer.class, parameters={})
+    @Export(name="maxBandwidthPercent", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxBandwidthPercent;
 
     /**
@@ -141,7 +141,7 @@ public class QosCar extends com.pulumi.resources.CustomResource {
      * The minimum bandwidth allowed for the stream specified in the quintuple rule. This parameter is required when the value of the LimitType parameter is Absolute.
      * 
      */
-    @Export(name="minBandwidthAbs", type=Integer.class, parameters={})
+    @Export(name="minBandwidthAbs", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minBandwidthAbs;
 
     /**
@@ -155,7 +155,7 @@ public class QosCar extends com.pulumi.resources.CustomResource {
      * The minimum bandwidth percentage allowed for the stream specified in the quintuple rule. It is based on the maximum upstream bandwidth you set for the associated SAG instance.This parameter is required when the value of the LimitType parameter is Percent.
      * 
      */
-    @Export(name="minBandwidthPercent", type=Integer.class, parameters={})
+    @Export(name="minBandwidthPercent", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minBandwidthPercent;
 
     /**
@@ -169,7 +169,7 @@ public class QosCar extends com.pulumi.resources.CustomResource {
      * The name of the QoS speed limiting rule..
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -183,7 +183,7 @@ public class QosCar extends com.pulumi.resources.CustomResource {
      * The bandwidth type when the speed is limited based on percentage. Valid values: CcnBandwidth, InternetUpBandwidth.The default value is InternetUpBandwidth.
      * 
      */
-    @Export(name="percentSourceType", type=String.class, parameters={})
+    @Export(name="percentSourceType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> percentSourceType;
 
     /**
@@ -197,7 +197,7 @@ public class QosCar extends com.pulumi.resources.CustomResource {
      * The priority of the specified stream.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
@@ -211,7 +211,7 @@ public class QosCar extends com.pulumi.resources.CustomResource {
      * The instance ID of the QoS.
      * 
      */
-    @Export(name="qosId", type=String.class, parameters={})
+    @Export(name="qosId", refs={String.class}, tree="[0]")
     private Output<String> qosId;
 
     /**

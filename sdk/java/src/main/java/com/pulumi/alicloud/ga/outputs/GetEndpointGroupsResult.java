@@ -158,18 +158,18 @@ public final class GetEndpointGroupsResult {
             return this;
         }
         public GetEndpointGroupsResult build() {
-            final var o = new GetEndpointGroupsResult();
-            o.acceleratorId = acceleratorId;
-            o.endpointGroupType = endpointGroupType;
-            o.groups = groups;
-            o.id = id;
-            o.ids = ids;
-            o.listenerId = listenerId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetEndpointGroupsResult();
+            _resultValue.acceleratorId = acceleratorId;
+            _resultValue.endpointGroupType = endpointGroupType;
+            _resultValue.groups = groups;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.listenerId = listenerId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

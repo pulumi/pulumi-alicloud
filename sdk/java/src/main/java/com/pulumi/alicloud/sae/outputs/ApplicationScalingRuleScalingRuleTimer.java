@@ -110,12 +110,12 @@ public final class ApplicationScalingRuleScalingRuleTimer {
             return schedules(List.of(schedules));
         }
         public ApplicationScalingRuleScalingRuleTimer build() {
-            final var o = new ApplicationScalingRuleScalingRuleTimer();
-            o.beginDate = beginDate;
-            o.endDate = endDate;
-            o.period = period;
-            o.schedules = schedules;
-            return o;
+            final var _resultValue = new ApplicationScalingRuleScalingRuleTimer();
+            _resultValue.beginDate = beginDate;
+            _resultValue.endDate = endDate;
+            _resultValue.period = period;
+            _resultValue.schedules = schedules;
+            return _resultValue;
         }
     }
 }

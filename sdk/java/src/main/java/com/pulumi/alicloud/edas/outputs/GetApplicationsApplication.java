@@ -36,7 +36,7 @@ public final class GetApplicationsApplication {
      */
     private String clusterId;
     /**
-     * @return The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+     * @return The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
      * 
      */
     private Integer clusterType;
@@ -83,7 +83,7 @@ public final class GetApplicationsApplication {
         return this.clusterId;
     }
     /**
-     * @return The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+     * @return The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
      * 
      */
     public Integer clusterType() {
@@ -161,15 +161,15 @@ public final class GetApplicationsApplication {
             return this;
         }
         public GetApplicationsApplication build() {
-            final var o = new GetApplicationsApplication();
-            o.appId = appId;
-            o.appName = appName;
-            o.applicationType = applicationType;
-            o.buildPackageId = buildPackageId;
-            o.clusterId = clusterId;
-            o.clusterType = clusterType;
-            o.regionId = regionId;
-            return o;
+            final var _resultValue = new GetApplicationsApplication();
+            _resultValue.appId = appId;
+            _resultValue.appName = appName;
+            _resultValue.applicationType = applicationType;
+            _resultValue.buildPackageId = buildPackageId;
+            _resultValue.clusterId = clusterId;
+            _resultValue.clusterType = clusterType;
+            _resultValue.regionId = regionId;
+            return _resultValue;
         }
     }
 }

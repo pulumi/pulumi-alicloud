@@ -143,14 +143,14 @@ public final class ClusterBootstrapAction {
             return this;
         }
         public ClusterBootstrapAction build() {
-            final var o = new ClusterBootstrapAction();
-            o.arg = arg;
-            o.executionFailStrategy = executionFailStrategy;
-            o.executionMoment = executionMoment;
-            o.executionTarget = executionTarget;
-            o.name = name;
-            o.path = path;
-            return o;
+            final var _resultValue = new ClusterBootstrapAction();
+            _resultValue.arg = arg;
+            _resultValue.executionFailStrategy = executionFailStrategy;
+            _resultValue.executionMoment = executionMoment;
+            _resultValue.executionTarget = executionTarget;
+            _resultValue.name = name;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

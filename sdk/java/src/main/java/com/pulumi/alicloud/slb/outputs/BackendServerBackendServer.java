@@ -74,12 +74,12 @@ public final class BackendServerBackendServer {
             return this;
         }
         public BackendServerBackendServer build() {
-            final var o = new BackendServerBackendServer();
-            o.serverId = serverId;
-            o.serverIp = serverIp;
-            o.type = type;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new BackendServerBackendServer();
+            _resultValue.serverId = serverId;
+            _resultValue.serverIp = serverIp;
+            _resultValue.type = type;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

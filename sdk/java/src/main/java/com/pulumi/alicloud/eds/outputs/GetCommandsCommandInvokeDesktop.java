@@ -237,19 +237,19 @@ public final class GetCommandsCommandInvokeDesktop {
             return this;
         }
         public GetCommandsCommandInvokeDesktop build() {
-            final var o = new GetCommandsCommandInvokeDesktop();
-            o.desktopId = desktopId;
-            o.dropped = dropped;
-            o.errorCode = errorCode;
-            o.errorInfo = errorInfo;
-            o.exitCode = exitCode;
-            o.finishTime = finishTime;
-            o.invocationStatus = invocationStatus;
-            o.output = output;
-            o.repeats = repeats;
-            o.startTime = startTime;
-            o.stopTime = stopTime;
-            return o;
+            final var _resultValue = new GetCommandsCommandInvokeDesktop();
+            _resultValue.desktopId = desktopId;
+            _resultValue.dropped = dropped;
+            _resultValue.errorCode = errorCode;
+            _resultValue.errorInfo = errorInfo;
+            _resultValue.exitCode = exitCode;
+            _resultValue.finishTime = finishTime;
+            _resultValue.invocationStatus = invocationStatus;
+            _resultValue.output = output;
+            _resultValue.repeats = repeats;
+            _resultValue.startTime = startTime;
+            _resultValue.stopTime = stopTime;
+            return _resultValue;
         }
     }
 }

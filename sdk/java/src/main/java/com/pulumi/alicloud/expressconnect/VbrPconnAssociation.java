@@ -112,7 +112,7 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
      * The circuit code provided by the operator for the physical connection.
      * 
      */
-    @Export(name="circuitCode", type=String.class, parameters={})
+    @Export(name="circuitCode", refs={String.class}, tree="[0]")
     private Output<String> circuitCode;
 
     /**
@@ -128,7 +128,7 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
      * - **false** (default): Off.
      * 
      */
-    @Export(name="enableIpv6", type=Boolean.class, parameters={})
+    @Export(name="enableIpv6", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableIpv6;
 
     /**
@@ -144,7 +144,7 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
      * The Alibaba cloud IP address of the VBR instance.
      * 
      */
-    @Export(name="localGatewayIp", type=String.class, parameters={})
+    @Export(name="localGatewayIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> localGatewayIp;
 
     /**
@@ -158,7 +158,7 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
      * The IPv6 address on the Alibaba Cloud side of the VBR instance.
      * 
      */
-    @Export(name="localIpv6GatewayIp", type=String.class, parameters={})
+    @Export(name="localIpv6GatewayIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> localIpv6GatewayIp;
 
     /**
@@ -172,7 +172,7 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
      * The client IP address of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
      * 
      */
-    @Export(name="peerGatewayIp", type=String.class, parameters={})
+    @Export(name="peerGatewayIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peerGatewayIp;
 
     /**
@@ -186,7 +186,7 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
      * The IPv6 address of the client side of the VBR instance. This attribute only allows the VBR owner to specify or modify. **NOTE:** Required when creating a VBR instance for the physical connection owner.
      * 
      */
-    @Export(name="peerIpv6GatewayIp", type=String.class, parameters={})
+    @Export(name="peerIpv6GatewayIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peerIpv6GatewayIp;
 
     /**
@@ -200,7 +200,7 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
      * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.Two IPv6 addresses must be in the same subnet.
      * 
      */
-    @Export(name="peeringIpv6SubnetMask", type=String.class, parameters={})
+    @Export(name="peeringIpv6SubnetMask", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peeringIpv6SubnetMask;
 
     /**
@@ -214,7 +214,7 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
      * The subnet mask of the Alibaba Cloud side and the client side of the VBR instance.The two IP addresses must be in the same subnet.
      * 
      */
-    @Export(name="peeringSubnetMask", type=String.class, parameters={})
+    @Export(name="peeringSubnetMask", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peeringSubnetMask;
 
     /**
@@ -228,7 +228,7 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
      * The ID of the leased line instance.
      * 
      */
-    @Export(name="physicalConnectionId", type=String.class, parameters={})
+    @Export(name="physicalConnectionId", refs={String.class}, tree="[0]")
     private Output<String> physicalConnectionId;
 
     /**
@@ -242,7 +242,7 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -256,7 +256,7 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
      * The ID of the VBR instance.
      * 
      */
-    @Export(name="vbrId", type=String.class, parameters={})
+    @Export(name="vbrId", refs={String.class}, tree="[0]")
     private Output<String> vbrId;
 
     /**
@@ -270,7 +270,7 @@ public class VbrPconnAssociation extends com.pulumi.resources.CustomResource {
      * VLAN ID of the VBR. Valid values: **0 to 2999**. **NOTE:** only the owner of the physical connection can specify this parameter. The VLAN ID of two VBRs under the same physical connection cannot be the same.
      * 
      */
-    @Export(name="vlanId", type=Integer.class, parameters={})
+    @Export(name="vlanId", refs={Integer.class}, tree="[0]")
     private Output<Integer> vlanId;
 
     /**

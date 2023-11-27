@@ -146,7 +146,7 @@ public class BandwidthLimit extends com.pulumi.resources.CustomResource {
      * -&gt;**NOTE:** The &#34;alicloud_cen_bandwidthlimit&#34; resource depends on the related &#34;alicloud.cen.BandwidthPackageAttachment&#34; resource and &#34;alicloud.cen.InstanceAttachment&#34; resource.
      * 
      */
-    @Export(name="bandwidthLimit", type=Integer.class, parameters={})
+    @Export(name="bandwidthLimit", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidthLimit;
 
     /**
@@ -162,7 +162,7 @@ public class BandwidthLimit extends com.pulumi.resources.CustomResource {
      * The ID of the CEN.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -176,7 +176,7 @@ public class BandwidthLimit extends com.pulumi.resources.CustomResource {
      * List of the two regions to interconnect. Must be two different regions.
      * 
      */
-    @Export(name="regionIds", type=List.class, parameters={String.class})
+    @Export(name="regionIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> regionIds;
 
     /**

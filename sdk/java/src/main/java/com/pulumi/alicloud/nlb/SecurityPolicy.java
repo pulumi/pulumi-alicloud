@@ -92,7 +92,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      * - TLS 1.3 supports the following cipher suites: `TLS_AES_128_GCM_SHA256`, `TLS_AES_256_GCM_SHA384`, `TLS_CHACHA20_POLY1305_SHA256`, `TLS_AES_128_CCM_SHA256`, `TLS_AES_128_CCM_8_SHA256`
      * 
      */
-    @Export(name="ciphers", type=List.class, parameters={String.class})
+    @Export(name="ciphers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ciphers;
 
     /**
@@ -109,7 +109,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -123,7 +123,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      * The name of the security policy. The name must be 1 to 200 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
      * 
      */
-    @Export(name="securityPolicyName", type=String.class, parameters={})
+    @Export(name="securityPolicyName", refs={String.class}, tree="[0]")
     private Output<String> securityPolicyName;
 
     /**
@@ -137,7 +137,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -151,7 +151,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -165,7 +165,7 @@ public class SecurityPolicy extends com.pulumi.resources.CustomResource {
      * The supported versions of the Transport Layer Security (TLS) protocol. Valid values: `TLSv1.0`, `TLSv1.1`, `TLSv1.2`, and `TLSv1.3`. You can specify at most four TLS versions.
      * 
      */
-    @Export(name="tlsVersions", type=List.class, parameters={String.class})
+    @Export(name="tlsVersions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> tlsVersions;
 
     /**

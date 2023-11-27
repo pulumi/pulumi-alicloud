@@ -67,7 +67,7 @@ public class ServiceLinkedRole extends com.pulumi.resources.CustomResource {
      * Target related: `AliyunServiceRoleForEventBridgeConnectVPC`, `AliyunServiceRoleForEventBridgeSendToFC`, `AliyunServiceRoleForEventBridgeSendToSMS`, `AliyunServiceRoleForEventBridgeSendToDirectMail`, `AliyunServiceRoleForEventBridgeSendToRabbitMQ`, `AliyunServiceRoleForEventBridgeSendToRocketMQ`
      * 
      */
-    @Export(name="productName", type=String.class, parameters={})
+    @Export(name="productName", refs={String.class}, tree="[0]")
     private Output<String> productName;
 
     /**

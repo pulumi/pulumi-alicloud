@@ -218,18 +218,18 @@ public final class GetEcsStorageCapacityUnitsUnit {
             return this;
         }
         public GetEcsStorageCapacityUnitsUnit build() {
-            final var o = new GetEcsStorageCapacityUnitsUnit();
-            o.allocationStatus = allocationStatus;
-            o.capacity = capacity;
-            o.createTime = createTime;
-            o.description = description;
-            o.expiredTime = expiredTime;
-            o.id = id;
-            o.startTime = startTime;
-            o.status = status;
-            o.storageCapacityUnitId = storageCapacityUnitId;
-            o.storageCapacityUnitName = storageCapacityUnitName;
-            return o;
+            final var _resultValue = new GetEcsStorageCapacityUnitsUnit();
+            _resultValue.allocationStatus = allocationStatus;
+            _resultValue.capacity = capacity;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.expiredTime = expiredTime;
+            _resultValue.id = id;
+            _resultValue.startTime = startTime;
+            _resultValue.status = status;
+            _resultValue.storageCapacityUnitId = storageCapacityUnitId;
+            _resultValue.storageCapacityUnitName = storageCapacityUnitName;
+            return _resultValue;
         }
     }
 }

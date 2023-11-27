@@ -68,10 +68,10 @@ public final class RuleRuleActionForwardGroupConfigServerGroupTuple {
             return this;
         }
         public RuleRuleActionForwardGroupConfigServerGroupTuple build() {
-            final var o = new RuleRuleActionForwardGroupConfigServerGroupTuple();
-            o.serverGroupId = serverGroupId;
-            o.weight = weight;
-            return o;
+            final var _resultValue = new RuleRuleActionForwardGroupConfigServerGroupTuple();
+            _resultValue.serverGroupId = serverGroupId;
+            _resultValue.weight = weight;
+            return _resultValue;
         }
     }
 }

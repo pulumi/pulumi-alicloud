@@ -51,10 +51,10 @@ public final class AclEntryList {
             return this;
         }
         public AclEntryList build() {
-            final var o = new AclEntryList();
-            o.comment = comment;
-            o.entry = entry;
-            return o;
+            final var _resultValue = new AclEntryList();
+            _resultValue.comment = comment;
+            _resultValue.entry = entry;
+            return _resultValue;
         }
     }
 }

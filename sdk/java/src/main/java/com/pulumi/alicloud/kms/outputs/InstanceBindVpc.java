@@ -106,12 +106,12 @@ public final class InstanceBindVpc {
             return this;
         }
         public InstanceBindVpc build() {
-            final var o = new InstanceBindVpc();
-            o.regionId = regionId;
-            o.vpcId = vpcId;
-            o.vpcOwnerId = vpcOwnerId;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new InstanceBindVpc();
+            _resultValue.regionId = regionId;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vpcOwnerId = vpcOwnerId;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

@@ -68,7 +68,7 @@ public class EcsSessionManagerStatus extends com.pulumi.resources.CustomResource
      * The name of the resource. Valid values: `sessionManagerStatus`.
      * 
      */
-    @Export(name="sessionManagerStatusName", type=String.class, parameters={})
+    @Export(name="sessionManagerStatusName", refs={String.class}, tree="[0]")
     private Output<String> sessionManagerStatusName;
 
     /**
@@ -82,7 +82,7 @@ public class EcsSessionManagerStatus extends com.pulumi.resources.CustomResource
      * The status of the resource. Valid values: `Disabled`, `Enabled`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

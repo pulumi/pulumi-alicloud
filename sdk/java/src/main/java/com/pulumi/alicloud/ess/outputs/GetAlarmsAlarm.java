@@ -339,24 +339,24 @@ public final class GetAlarmsAlarm {
             return this;
         }
         public GetAlarmsAlarm build() {
-            final var o = new GetAlarmsAlarm();
-            o.alarmActions = alarmActions;
-            o.cloudMonitorGroupId = cloudMonitorGroupId;
-            o.comparisonOperator = comparisonOperator;
-            o.description = description;
-            o.dimensions = dimensions;
-            o.enable = enable;
-            o.evaluationCount = evaluationCount;
-            o.id = id;
-            o.metricName = metricName;
-            o.metricType = metricType;
-            o.name = name;
-            o.period = period;
-            o.scalingGroupId = scalingGroupId;
-            o.state = state;
-            o.statistics = statistics;
-            o.threshold = threshold;
-            return o;
+            final var _resultValue = new GetAlarmsAlarm();
+            _resultValue.alarmActions = alarmActions;
+            _resultValue.cloudMonitorGroupId = cloudMonitorGroupId;
+            _resultValue.comparisonOperator = comparisonOperator;
+            _resultValue.description = description;
+            _resultValue.dimensions = dimensions;
+            _resultValue.enable = enable;
+            _resultValue.evaluationCount = evaluationCount;
+            _resultValue.id = id;
+            _resultValue.metricName = metricName;
+            _resultValue.metricType = metricType;
+            _resultValue.name = name;
+            _resultValue.period = period;
+            _resultValue.scalingGroupId = scalingGroupId;
+            _resultValue.state = state;
+            _resultValue.statistics = statistics;
+            _resultValue.threshold = threshold;
+            return _resultValue;
         }
     }
 }

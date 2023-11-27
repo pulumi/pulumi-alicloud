@@ -9,7 +9,7 @@ import * as utilities from "../utilities";
 /**
  * This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.183.0+ .
+ * > **NOTE:** Available in v1.183.0+ .
  *
  * ## Example Usage
  *
@@ -17,10 +17,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const instanceDdosBgpInstances = alicloud.ddos.getDdosBgpInstances({
- *     nameRegex: "^ddosbgp",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const instanceDdosBgpInstance = new alicloud.ddos.DdosBgpInstance("instanceDdosBgpInstance", {
+ *     baseBandwidth: 20,
+ *     bandwidth: -1,
+ *     ipCount: 100,
+ *     ipType: "IPv4",
+ *     normalBandwidth: 100,
+ *     type: "Enterprise",
  * });
- * export const instance = alicloud_ddosbgp_instances.instance.map(__item => __item.id);
+ * const instanceDdosBgpInstances = alicloud.ddos.getDdosBgpInstances({
+ *     nameRegex: "ddosbgp",
+ * });
+ * export const instance = [instanceDdosBgpInstances].map(__item => __item.id);
  * ```
  */
 export function getDdosBgpInstances(args?: GetDdosBgpInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosBgpInstancesResult> {
@@ -78,7 +88,7 @@ export interface GetDdosBgpInstancesResult {
 /**
  * This data source provides a list of Anti-DDoS Advanced instances in an Alibaba Cloud account according to the specified filters.
  *
- * > **NOTE:** Available in 1.183.0+ .
+ * > **NOTE:** Available in v1.183.0+ .
  *
  * ## Example Usage
  *
@@ -86,10 +96,20 @@ export interface GetDdosBgpInstancesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const instanceDdosBgpInstances = alicloud.ddos.getDdosBgpInstances({
- *     nameRegex: "^ddosbgp",
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const instanceDdosBgpInstance = new alicloud.ddos.DdosBgpInstance("instanceDdosBgpInstance", {
+ *     baseBandwidth: 20,
+ *     bandwidth: -1,
+ *     ipCount: 100,
+ *     ipType: "IPv4",
+ *     normalBandwidth: 100,
+ *     type: "Enterprise",
  * });
- * export const instance = alicloud_ddosbgp_instances.instance.map(__item => __item.id);
+ * const instanceDdosBgpInstances = alicloud.ddos.getDdosBgpInstances({
+ *     nameRegex: "ddosbgp",
+ * });
+ * export const instance = [instanceDdosBgpInstances].map(__item => __item.id);
  * ```
  */
 export function getDdosBgpInstancesOutput(args?: GetDdosBgpInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosBgpInstancesResult> {

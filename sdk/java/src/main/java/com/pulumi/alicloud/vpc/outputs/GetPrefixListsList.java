@@ -204,17 +204,17 @@ public final class GetPrefixListsList {
             return this;
         }
         public GetPrefixListsList build() {
-            final var o = new GetPrefixListsList();
-            o.createTime = createTime;
-            o.entrys = entrys;
-            o.id = id;
-            o.ipVersion = ipVersion;
-            o.maxEntries = maxEntries;
-            o.prefixListDescription = prefixListDescription;
-            o.prefixListId = prefixListId;
-            o.prefixListName = prefixListName;
-            o.shareType = shareType;
-            return o;
+            final var _resultValue = new GetPrefixListsList();
+            _resultValue.createTime = createTime;
+            _resultValue.entrys = entrys;
+            _resultValue.id = id;
+            _resultValue.ipVersion = ipVersion;
+            _resultValue.maxEntries = maxEntries;
+            _resultValue.prefixListDescription = prefixListDescription;
+            _resultValue.prefixListId = prefixListId;
+            _resultValue.prefixListName = prefixListName;
+            _resultValue.shareType = shareType;
+            return _resultValue;
         }
     }
 }

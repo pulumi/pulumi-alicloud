@@ -83,7 +83,7 @@ public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
      * The creation time of the resource.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -97,7 +97,7 @@ public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
      * Description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -111,7 +111,7 @@ public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
      * Whether there is a free IP address.
      * 
      */
-    @Export(name="ipAddressRemaining", type=Boolean.class, parameters={})
+    @Export(name="ipAddressRemaining", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> ipAddressRemaining;
 
     /**
@@ -125,7 +125,7 @@ public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
      * The Internet service provider. Valid values: `BGP`, `BGP_PRO`, `ChinaTelecom`, `ChinaUnicom`, `ChinaMobile`, `ChinaTelecom_L2`, `ChinaUnicom_L2`, `ChinaMobile_L2`, `BGP_FinanceCloud`. Default Value: `BGP`.
      * 
      */
-    @Export(name="isp", type=String.class, parameters={})
+    @Export(name="isp", refs={String.class}, tree="[0]")
     private Output<String> isp;
 
     /**
@@ -135,7 +135,7 @@ public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
     public Output<String> isp() {
         return this.isp;
     }
-    @Export(name="publicIpAddressPoolId", type=String.class, parameters={})
+    @Export(name="publicIpAddressPoolId", refs={String.class}, tree="[0]")
     private Output<String> publicIpAddressPoolId;
 
     public Output<String> publicIpAddressPoolId() {
@@ -145,7 +145,7 @@ public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
      * The name of the VPC Public IP address pool.
      * 
      */
-    @Export(name="publicIpAddressPoolName", type=String.class, parameters={})
+    @Export(name="publicIpAddressPoolName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> publicIpAddressPoolName;
 
     /**
@@ -159,7 +159,7 @@ public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
      * The resource group ID of the VPC Public IP address pool.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -173,7 +173,7 @@ public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
      * The status of the VPC Public IP address pool.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -187,7 +187,7 @@ public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
      * The tags of PrefixList.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -201,7 +201,7 @@ public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
      * The total number of public IP address pools.
      * 
      */
-    @Export(name="totalIpNum", type=Integer.class, parameters={})
+    @Export(name="totalIpNum", refs={Integer.class}, tree="[0]")
     private Output<Integer> totalIpNum;
 
     /**
@@ -215,7 +215,7 @@ public class PublicIpAddressPool extends com.pulumi.resources.CustomResource {
      * The number of used IP addresses in the public IP address pool.
      * 
      */
-    @Export(name="usedIpNum", type=Integer.class, parameters={})
+    @Export(name="usedIpNum", refs={Integer.class}, tree="[0]")
     private Output<Integer> usedIpNum;
 
     /**

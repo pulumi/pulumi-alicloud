@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.Edas.Outputs
         /// </summary>
         public readonly string ClusterId;
         /// <summary>
-        /// The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernates cluster.
+        /// The type of the cluster that you want to create. Valid values: 1: Swarm cluster. 2: ECS cluster. 3: Kubernetes cluster.
         /// </summary>
         public readonly int ClusterType;
         /// <summary>

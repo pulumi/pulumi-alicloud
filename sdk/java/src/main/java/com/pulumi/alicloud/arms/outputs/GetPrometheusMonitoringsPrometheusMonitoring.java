@@ -141,14 +141,14 @@ public final class GetPrometheusMonitoringsPrometheusMonitoring {
             return this;
         }
         public GetPrometheusMonitoringsPrometheusMonitoring build() {
-            final var o = new GetPrometheusMonitoringsPrometheusMonitoring();
-            o.clusterId = clusterId;
-            o.configYaml = configYaml;
-            o.id = id;
-            o.monitoringName = monitoringName;
-            o.status = status;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetPrometheusMonitoringsPrometheusMonitoring();
+            _resultValue.clusterId = clusterId;
+            _resultValue.configYaml = configYaml;
+            _resultValue.id = id;
+            _resultValue.monitoringName = monitoringName;
+            _resultValue.status = status;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

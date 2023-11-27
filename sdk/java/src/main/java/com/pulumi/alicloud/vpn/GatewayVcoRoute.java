@@ -160,7 +160,7 @@ public class GatewayVcoRoute extends com.pulumi.resources.CustomResource {
      * The next hop of the destination route.
      * 
      */
-    @Export(name="nextHop", type=String.class, parameters={})
+    @Export(name="nextHop", refs={String.class}, tree="[0]")
     private Output<String> nextHop;
 
     /**
@@ -174,7 +174,7 @@ public class GatewayVcoRoute extends com.pulumi.resources.CustomResource {
      * The destination network segment of the destination route.
      * 
      */
-    @Export(name="routeDest", type=String.class, parameters={})
+    @Export(name="routeDest", refs={String.class}, tree="[0]")
     private Output<String> routeDest;
 
     /**
@@ -188,7 +188,7 @@ public class GatewayVcoRoute extends com.pulumi.resources.CustomResource {
      * The status of the vpn route entry.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -202,7 +202,7 @@ public class GatewayVcoRoute extends com.pulumi.resources.CustomResource {
      * The id of the vpn attachment.
      * 
      */
-    @Export(name="vpnConnectionId", type=String.class, parameters={})
+    @Export(name="vpnConnectionId", refs={String.class}, tree="[0]")
     private Output<String> vpnConnectionId;
 
     /**
@@ -216,7 +216,7 @@ public class GatewayVcoRoute extends com.pulumi.resources.CustomResource {
      * The weight value of the destination route. Valid values: `0`, `100`.
      * 
      */
-    @Export(name="weight", type=Integer.class, parameters={})
+    @Export(name="weight", refs={Integer.class}, tree="[0]")
     private Output<Integer> weight;
 
     /**

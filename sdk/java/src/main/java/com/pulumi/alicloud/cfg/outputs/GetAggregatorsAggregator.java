@@ -184,16 +184,16 @@ public final class GetAggregatorsAggregator {
             return this;
         }
         public GetAggregatorsAggregator build() {
-            final var o = new GetAggregatorsAggregator();
-            o.accountId = accountId;
-            o.aggregatorAccounts = aggregatorAccounts;
-            o.aggregatorId = aggregatorId;
-            o.aggregatorName = aggregatorName;
-            o.aggregatorType = aggregatorType;
-            o.description = description;
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAggregatorsAggregator();
+            _resultValue.accountId = accountId;
+            _resultValue.aggregatorAccounts = aggregatorAccounts;
+            _resultValue.aggregatorId = aggregatorId;
+            _resultValue.aggregatorName = aggregatorName;
+            _resultValue.aggregatorType = aggregatorType;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

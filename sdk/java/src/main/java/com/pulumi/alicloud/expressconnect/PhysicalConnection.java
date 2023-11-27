@@ -86,7 +86,7 @@ public class PhysicalConnection extends com.pulumi.resources.CustomResource {
      * The Physical Leased Line Access Point ID.
      * 
      */
-    @Export(name="accessPointId", type=String.class, parameters={})
+    @Export(name="accessPointId", refs={String.class}, tree="[0]")
     private Output<String> accessPointId;
 
     /**
@@ -100,7 +100,7 @@ public class PhysicalConnection extends com.pulumi.resources.CustomResource {
      * On the Bandwidth of the ECC Service and Physical Connection.
      * 
      */
-    @Export(name="bandwidth", type=String.class, parameters={})
+    @Export(name="bandwidth", refs={String.class}, tree="[0]")
     private Output<String> bandwidth;
 
     /**
@@ -114,7 +114,7 @@ public class PhysicalConnection extends com.pulumi.resources.CustomResource {
      * Operators for Physical Connection Circuit Provided Coding.
      * 
      */
-    @Export(name="circuitCode", type=String.class, parameters={})
+    @Export(name="circuitCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> circuitCode;
 
     /**
@@ -128,7 +128,7 @@ public class PhysicalConnection extends com.pulumi.resources.CustomResource {
      * The Physical Connection to Which the Description.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -148,7 +148,7 @@ public class PhysicalConnection extends com.pulumi.resources.CustomResource {
      * * Other: Other Overseas.
      * 
      */
-    @Export(name="lineOperator", type=String.class, parameters={})
+    @Export(name="lineOperator", refs={String.class}, tree="[0]")
     private Output<String> lineOperator;
 
     /**
@@ -168,7 +168,7 @@ public class PhysicalConnection extends com.pulumi.resources.CustomResource {
      * and an on-Premises Data Center Location.
      * 
      */
-    @Export(name="peerLocation", type=String.class, parameters={})
+    @Export(name="peerLocation", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> peerLocation;
 
     /**
@@ -182,7 +182,7 @@ public class PhysicalConnection extends com.pulumi.resources.CustomResource {
      * on Behalf of the Resource Name of the Resources-Attribute Field.
      * 
      */
-    @Export(name="physicalConnectionName", type=String.class, parameters={})
+    @Export(name="physicalConnectionName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> physicalConnectionName;
 
     /**
@@ -205,7 +205,7 @@ public class PhysicalConnection extends com.pulumi.resources.CustomResource {
      * **NOTE:** From in v1.185.0+, The `40GBase-LR` and `100GBase-LR` is valid. and Set these values based on the water levels of background ports. For details about the water levels, contact the business manager.
      * 
      */
-    @Export(name="portType", type=String.class, parameters={})
+    @Export(name="portType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> portType;
 
     /**
@@ -228,7 +228,7 @@ public class PhysicalConnection extends com.pulumi.resources.CustomResource {
      * Redundant Physical Connection to Which the ID.
      * 
      */
-    @Export(name="redundantPhysicalConnectionId", type=String.class, parameters={})
+    @Export(name="redundantPhysicalConnectionId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> redundantPhysicalConnectionId;
 
     /**
@@ -242,7 +242,7 @@ public class PhysicalConnection extends com.pulumi.resources.CustomResource {
      * Resources on Behalf of a State of the Resource Attribute Field. Valid values: `Canceled`, `Enabled`, `Terminated`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -256,7 +256,7 @@ public class PhysicalConnection extends com.pulumi.resources.CustomResource {
      * Physical Private Line of Type. Default Value: VPC.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**

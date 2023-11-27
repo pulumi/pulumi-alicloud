@@ -161,16 +161,16 @@ public final class GetAggregatorsResult {
             return this;
         }
         public GetAggregatorsResult build() {
-            final var o = new GetAggregatorsResult();
-            o.aggregators = aggregators;
-            o.enableDetails = enableDetails;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAggregatorsResult();
+            _resultValue.aggregators = aggregators;
+            _resultValue.enableDetails = enableDetails;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

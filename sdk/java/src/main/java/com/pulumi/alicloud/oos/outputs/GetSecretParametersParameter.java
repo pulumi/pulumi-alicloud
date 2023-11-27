@@ -315,23 +315,23 @@ public final class GetSecretParametersParameter {
             return this;
         }
         public GetSecretParametersParameter build() {
-            final var o = new GetSecretParametersParameter();
-            o.constraints = constraints;
-            o.createTime = createTime;
-            o.createdBy = createdBy;
-            o.description = description;
-            o.id = id;
-            o.keyId = keyId;
-            o.parameterVersion = parameterVersion;
-            o.resourceGroupId = resourceGroupId;
-            o.secretParameterId = secretParameterId;
-            o.secretParameterName = secretParameterName;
-            o.shareType = shareType;
-            o.tags = tags;
-            o.type = type;
-            o.updatedBy = updatedBy;
-            o.updatedDate = updatedDate;
-            return o;
+            final var _resultValue = new GetSecretParametersParameter();
+            _resultValue.constraints = constraints;
+            _resultValue.createTime = createTime;
+            _resultValue.createdBy = createdBy;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.keyId = keyId;
+            _resultValue.parameterVersion = parameterVersion;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.secretParameterId = secretParameterId;
+            _resultValue.secretParameterName = secretParameterName;
+            _resultValue.shareType = shareType;
+            _resultValue.tags = tags;
+            _resultValue.type = type;
+            _resultValue.updatedBy = updatedBy;
+            _resultValue.updatedDate = updatedDate;
+            return _resultValue;
         }
     }
 }

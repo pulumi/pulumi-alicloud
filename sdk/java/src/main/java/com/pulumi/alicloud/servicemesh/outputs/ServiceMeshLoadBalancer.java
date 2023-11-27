@@ -106,12 +106,12 @@ public final class ServiceMeshLoadBalancer {
             return this;
         }
         public ServiceMeshLoadBalancer build() {
-            final var o = new ServiceMeshLoadBalancer();
-            o.apiServerLoadbalancerId = apiServerLoadbalancerId;
-            o.apiServerPublicEip = apiServerPublicEip;
-            o.pilotPublicEip = pilotPublicEip;
-            o.pilotPublicLoadbalancerId = pilotPublicLoadbalancerId;
-            return o;
+            final var _resultValue = new ServiceMeshLoadBalancer();
+            _resultValue.apiServerLoadbalancerId = apiServerLoadbalancerId;
+            _resultValue.apiServerPublicEip = apiServerPublicEip;
+            _resultValue.pilotPublicEip = pilotPublicEip;
+            _resultValue.pilotPublicLoadbalancerId = pilotPublicLoadbalancerId;
+            return _resultValue;
         }
     }
 }

@@ -124,13 +124,13 @@ public final class GreyTagRouteScRuleItem {
             return this;
         }
         public GreyTagRouteScRuleItem build() {
-            final var o = new GreyTagRouteScRuleItem();
-            o.cond = cond;
-            o.name = name;
-            o.operator = operator;
-            o.type = type;
-            o.value = value;
-            return o;
+            final var _resultValue = new GreyTagRouteScRuleItem();
+            _resultValue.cond = cond;
+            _resultValue.name = name;
+            _resultValue.operator = operator;
+            _resultValue.type = type;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

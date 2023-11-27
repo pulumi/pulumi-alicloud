@@ -116,7 +116,7 @@ public class Binding extends com.pulumi.resources.CustomResource {
      * **NOTE:** This Parameter Applies Only to Headers Exchange Other Types of Exchange Is Invalid. Other Types of Exchange Here Can Either Be an Arbitrary Value.
      * 
      */
-    @Export(name="argument", type=String.class, parameters={})
+    @Export(name="argument", refs={String.class}, tree="[0]")
     private Output<String> argument;
 
     /**
@@ -139,7 +139,7 @@ public class Binding extends com.pulumi.resources.CustomResource {
      *   The binding key must be 1 to 255 characters in length.
      * 
      */
-    @Export(name="bindingKey", type=String.class, parameters={})
+    @Export(name="bindingKey", refs={String.class}, tree="[0]")
     private Output<String> bindingKey;
 
     /**
@@ -158,7 +158,7 @@ public class Binding extends com.pulumi.resources.CustomResource {
      * The Target Binding Types. Valid values: `EXCHANGE`, `QUEUE`.
      * 
      */
-    @Export(name="bindingType", type=String.class, parameters={})
+    @Export(name="bindingType", refs={String.class}, tree="[0]")
     private Output<String> bindingType;
 
     /**
@@ -172,7 +172,7 @@ public class Binding extends com.pulumi.resources.CustomResource {
      * The Target Queue Or Exchange of the Name.
      * 
      */
-    @Export(name="destinationName", type=String.class, parameters={})
+    @Export(name="destinationName", refs={String.class}, tree="[0]")
     private Output<String> destinationName;
 
     /**
@@ -186,7 +186,7 @@ public class Binding extends com.pulumi.resources.CustomResource {
      * Instance Id.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -200,7 +200,7 @@ public class Binding extends com.pulumi.resources.CustomResource {
      * The Source Exchange Name.
      * 
      */
-    @Export(name="sourceExchange", type=String.class, parameters={})
+    @Export(name="sourceExchange", refs={String.class}, tree="[0]")
     private Output<String> sourceExchange;
 
     /**
@@ -214,7 +214,7 @@ public class Binding extends com.pulumi.resources.CustomResource {
      * Virtualhost Name.
      * 
      */
-    @Export(name="virtualHostName", type=String.class, parameters={})
+    @Export(name="virtualHostName", refs={String.class}, tree="[0]")
     private Output<String> virtualHostName;
 
     /**

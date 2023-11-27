@@ -138,14 +138,14 @@ public final class GetAntiBruteForceRulesResult {
             return rules(List.of(rules));
         }
         public GetAntiBruteForceRulesResult build() {
-            final var o = new GetAntiBruteForceRulesResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.rules = rules;
-            return o;
+            final var _resultValue = new GetAntiBruteForceRulesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.rules = rules;
+            return _resultValue;
         }
     }
 }

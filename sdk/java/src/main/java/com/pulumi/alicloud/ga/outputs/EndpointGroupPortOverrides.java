@@ -67,10 +67,10 @@ public final class EndpointGroupPortOverrides {
             return this;
         }
         public EndpointGroupPortOverrides build() {
-            final var o = new EndpointGroupPortOverrides();
-            o.endpointPort = endpointPort;
-            o.listenerPort = listenerPort;
-            return o;
+            final var _resultValue = new EndpointGroupPortOverrides();
+            _resultValue.endpointPort = endpointPort;
+            _resultValue.listenerPort = listenerPort;
+            return _resultValue;
         }
     }
 }

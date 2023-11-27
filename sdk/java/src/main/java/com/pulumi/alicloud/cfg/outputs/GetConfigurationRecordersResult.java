@@ -83,11 +83,11 @@ public final class GetConfigurationRecordersResult {
             return recorders(List.of(recorders));
         }
         public GetConfigurationRecordersResult build() {
-            final var o = new GetConfigurationRecordersResult();
-            o.id = id;
-            o.outputFile = outputFile;
-            o.recorders = recorders;
-            return o;
+            final var _resultValue = new GetConfigurationRecordersResult();
+            _resultValue.id = id;
+            _resultValue.outputFile = outputFile;
+            _resultValue.recorders = recorders;
+            return _resultValue;
         }
     }
 }

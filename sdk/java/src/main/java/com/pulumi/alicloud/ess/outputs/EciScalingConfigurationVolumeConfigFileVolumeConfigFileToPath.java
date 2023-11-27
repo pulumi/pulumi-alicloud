@@ -67,10 +67,10 @@ public final class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath
             return this;
         }
         public EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath build() {
-            final var o = new EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath();
-            o.content = content;
-            o.path = path;
-            return o;
+            final var _resultValue = new EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath();
+            _resultValue.content = content;
+            _resultValue.path = path;
+            return _resultValue;
         }
     }
 }

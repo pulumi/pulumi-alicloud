@@ -119,7 +119,7 @@ public class BasicEndpointGroup extends com.pulumi.resources.CustomResource {
      * The ID of the basic GA instance.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -133,7 +133,7 @@ public class BasicEndpointGroup extends com.pulumi.resources.CustomResource {
      * The name of the endpoint group. The `basic_endpoint_group_name` must be 2 to 128 characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
-    @Export(name="basicEndpointGroupName", type=String.class, parameters={})
+    @Export(name="basicEndpointGroupName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> basicEndpointGroupName;
 
     /**
@@ -147,7 +147,7 @@ public class BasicEndpointGroup extends com.pulumi.resources.CustomResource {
      * The description of the endpoint group. The `description` cannot exceed 256 characters in length and cannot contain http:// or https://.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -161,7 +161,7 @@ public class BasicEndpointGroup extends com.pulumi.resources.CustomResource {
      * The address of the endpoint.
      * 
      */
-    @Export(name="endpointAddress", type=String.class, parameters={})
+    @Export(name="endpointAddress", refs={String.class}, tree="[0]")
     private Output<String> endpointAddress;
 
     /**
@@ -175,7 +175,7 @@ public class BasicEndpointGroup extends com.pulumi.resources.CustomResource {
      * The ID of the region where you want to create the endpoint group.
      * 
      */
-    @Export(name="endpointGroupRegion", type=String.class, parameters={})
+    @Export(name="endpointGroupRegion", refs={String.class}, tree="[0]")
     private Output<String> endpointGroupRegion;
 
     /**
@@ -189,7 +189,7 @@ public class BasicEndpointGroup extends com.pulumi.resources.CustomResource {
      * The sub address of the endpoint.
      * 
      */
-    @Export(name="endpointSubAddress", type=String.class, parameters={})
+    @Export(name="endpointSubAddress", refs={String.class}, tree="[0]")
     private Output<String> endpointSubAddress;
 
     /**
@@ -203,7 +203,7 @@ public class BasicEndpointGroup extends com.pulumi.resources.CustomResource {
      * The type of the endpoint. Valid values: `ENI`, `SLB` and `ECS`.
      * 
      */
-    @Export(name="endpointType", type=String.class, parameters={})
+    @Export(name="endpointType", refs={String.class}, tree="[0]")
     private Output<String> endpointType;
 
     /**
@@ -217,7 +217,7 @@ public class BasicEndpointGroup extends com.pulumi.resources.CustomResource {
      * The status of the Basic Endpoint Group.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

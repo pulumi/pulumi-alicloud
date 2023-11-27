@@ -50,9 +50,9 @@ public final class GetRulesRuleRuleConditionQueryStringConfig {
             return values(List.of(values));
         }
         public GetRulesRuleRuleConditionQueryStringConfig build() {
-            final var o = new GetRulesRuleRuleConditionQueryStringConfig();
-            o.values = values;
-            return o;
+            final var _resultValue = new GetRulesRuleRuleConditionQueryStringConfig();
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

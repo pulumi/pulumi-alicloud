@@ -160,15 +160,15 @@ public final class GetVpcEndpointZonesZone {
             return this;
         }
         public GetVpcEndpointZonesZone build() {
-            final var o = new GetVpcEndpointZonesZone();
-            o.eniId = eniId;
-            o.eniIp = eniIp;
-            o.id = id;
-            o.status = status;
-            o.vswitchId = vswitchId;
-            o.zoneDomain = zoneDomain;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetVpcEndpointZonesZone();
+            _resultValue.eniId = eniId;
+            _resultValue.eniIp = eniIp;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            _resultValue.vswitchId = vswitchId;
+            _resultValue.zoneDomain = zoneDomain;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

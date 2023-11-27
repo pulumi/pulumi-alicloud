@@ -225,19 +225,19 @@ public final class GetFlowlogsResult {
             return this;
         }
         public GetFlowlogsResult build() {
-            final var o = new GetFlowlogsResult();
-            o.cenId = cenId;
-            o.description = description;
-            o.flowlogs = flowlogs;
-            o.id = id;
-            o.ids = ids;
-            o.logStoreName = logStoreName;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.projectName = projectName;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetFlowlogsResult();
+            _resultValue.cenId = cenId;
+            _resultValue.description = description;
+            _resultValue.flowlogs = flowlogs;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.logStoreName = logStoreName;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.projectName = projectName;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

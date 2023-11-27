@@ -88,11 +88,11 @@ public final class MetricRuleTemplateAlertTemplateEscalations {
             return this;
         }
         public MetricRuleTemplateAlertTemplateEscalations build() {
-            final var o = new MetricRuleTemplateAlertTemplateEscalations();
-            o.critical = critical;
-            o.info = info;
-            o.warn = warn;
-            return o;
+            final var _resultValue = new MetricRuleTemplateAlertTemplateEscalations();
+            _resultValue.critical = critical;
+            _resultValue.info = info;
+            _resultValue.warn = warn;
+            return _resultValue;
         }
     }
 }

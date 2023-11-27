@@ -158,18 +158,18 @@ public final class GetHostAccountsResult {
             return this;
         }
         public GetHostAccountsResult build() {
-            final var o = new GetHostAccountsResult();
-            o.accounts = accounts;
-            o.hostAccountName = hostAccountName;
-            o.hostId = hostId;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.protocolName = protocolName;
-            return o;
+            final var _resultValue = new GetHostAccountsResult();
+            _resultValue.accounts = accounts;
+            _resultValue.hostAccountName = hostAccountName;
+            _resultValue.hostId = hostId;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.protocolName = protocolName;
+            return _resultValue;
         }
     }
 }

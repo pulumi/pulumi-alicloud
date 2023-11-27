@@ -173,21 +173,21 @@ public final class GetInstancesInstance {
             return this;
         }
         public GetInstancesInstance build() {
-            final var o = new GetInstancesInstance();
-            o.createdAt = createdAt;
-            o.dataNodeAmount = dataNodeAmount;
-            o.dataNodeDiskSize = dataNodeDiskSize;
-            o.dataNodeDiskType = dataNodeDiskType;
-            o.dataNodeSpec = dataNodeSpec;
-            o.description = description;
-            o.id = id;
-            o.instanceChargeType = instanceChargeType;
-            o.status = status;
-            o.tags = tags;
-            o.updatedAt = updatedAt;
-            o.version = version;
-            o.vswitchId = vswitchId;
-            return o;
+            final var _resultValue = new GetInstancesInstance();
+            _resultValue.createdAt = createdAt;
+            _resultValue.dataNodeAmount = dataNodeAmount;
+            _resultValue.dataNodeDiskSize = dataNodeDiskSize;
+            _resultValue.dataNodeDiskType = dataNodeDiskType;
+            _resultValue.dataNodeSpec = dataNodeSpec;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.instanceChargeType = instanceChargeType;
+            _resultValue.status = status;
+            _resultValue.tags = tags;
+            _resultValue.updatedAt = updatedAt;
+            _resultValue.version = version;
+            _resultValue.vswitchId = vswitchId;
+            return _resultValue;
         }
     }
 }

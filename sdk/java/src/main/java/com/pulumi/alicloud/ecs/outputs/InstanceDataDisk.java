@@ -250,19 +250,19 @@ public final class InstanceDataDisk {
             return this;
         }
         public InstanceDataDisk build() {
-            final var o = new InstanceDataDisk();
-            o.autoSnapshotPolicyId = autoSnapshotPolicyId;
-            o.category = category;
-            o.deleteWithInstance = deleteWithInstance;
-            o.description = description;
-            o.device = device;
-            o.encrypted = encrypted;
-            o.kmsKeyId = kmsKeyId;
-            o.name = name;
-            o.performanceLevel = performanceLevel;
-            o.size = size;
-            o.snapshotId = snapshotId;
-            return o;
+            final var _resultValue = new InstanceDataDisk();
+            _resultValue.autoSnapshotPolicyId = autoSnapshotPolicyId;
+            _resultValue.category = category;
+            _resultValue.deleteWithInstance = deleteWithInstance;
+            _resultValue.description = description;
+            _resultValue.device = device;
+            _resultValue.encrypted = encrypted;
+            _resultValue.kmsKeyId = kmsKeyId;
+            _resultValue.name = name;
+            _resultValue.performanceLevel = performanceLevel;
+            _resultValue.size = size;
+            _resultValue.snapshotId = snapshotId;
+            return _resultValue;
         }
     }
 }

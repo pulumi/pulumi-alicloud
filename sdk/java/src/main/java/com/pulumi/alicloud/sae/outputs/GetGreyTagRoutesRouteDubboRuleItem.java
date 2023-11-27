@@ -123,13 +123,13 @@ public final class GetGreyTagRoutesRouteDubboRuleItem {
             return this;
         }
         public GetGreyTagRoutesRouteDubboRuleItem build() {
-            final var o = new GetGreyTagRoutesRouteDubboRuleItem();
-            o.cond = cond;
-            o.expr = expr;
-            o.index = index;
-            o.operator = operator;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetGreyTagRoutesRouteDubboRuleItem();
+            _resultValue.cond = cond;
+            _resultValue.expr = expr;
+            _resultValue.index = index;
+            _resultValue.operator = operator;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

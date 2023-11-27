@@ -105,12 +105,12 @@ public final class ConnectionNetworkParameters {
             return this;
         }
         public ConnectionNetworkParameters build() {
-            final var o = new ConnectionNetworkParameters();
-            o.networkType = networkType;
-            o.securityGroupId = securityGroupId;
-            o.vpcId = vpcId;
-            o.vswitcheId = vswitcheId;
-            return o;
+            final var _resultValue = new ConnectionNetworkParameters();
+            _resultValue.networkType = networkType;
+            _resultValue.securityGroupId = securityGroupId;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vswitcheId = vswitcheId;
+            return _resultValue;
         }
     }
 }

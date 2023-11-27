@@ -85,11 +85,11 @@ public final class GetInstanceTypesType {
             return this;
         }
         public GetInstanceTypesType build() {
-            final var o = new GetInstanceTypesType();
-            o.id = id;
-            o.localStorageCapacity = localStorageCapacity;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstanceTypesType();
+            _resultValue.id = id;
+            _resultValue.localStorageCapacity = localStorageCapacity;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

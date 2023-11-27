@@ -86,7 +86,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'group_id' has been deprecated from version 1.98.0. Use 'group_name' instead. */
-    @Export(name="groupId", type=String.class, parameters={})
+    @Export(name="groupId", refs={String.class}, tree="[0]")
     private Output<String> groupId;
 
     /**
@@ -100,7 +100,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Name of the group. Two groups on a single instance cannot have the same name. A `group_name` starts with &#34;GID_&#34; or &#34;GID-&#34;, and contains letters, numbers, hyphens (-), and underscores (_).
      * 
      */
-    @Export(name="groupName", type=String.class, parameters={})
+    @Export(name="groupName", refs={String.class}, tree="[0]")
     private Output<String> groupName;
 
     /**
@@ -114,7 +114,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * Specify the protocol applicable to the created Group ID. Valid values: `tcp`, `http`. Default to `tcp`.
      * 
      */
-    @Export(name="groupType", type=String.class, parameters={})
+    @Export(name="groupType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> groupType;
 
     /**
@@ -128,7 +128,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * ID of the ONS Instance that owns the groups.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -142,7 +142,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * This attribute is used to set the message reading enabled or disabled. It can only be set after the group is used by the client.
      * 
      */
-    @Export(name="readEnable", type=Boolean.class, parameters={})
+    @Export(name="readEnable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> readEnable;
 
     /**
@@ -156,7 +156,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * This attribute is a concise description of group. The length cannot exceed 256.
      * 
      */
-    @Export(name="remark", type=String.class, parameters={})
+    @Export(name="remark", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> remark;
 
     /**
@@ -172,7 +172,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;. It can be a null string.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**

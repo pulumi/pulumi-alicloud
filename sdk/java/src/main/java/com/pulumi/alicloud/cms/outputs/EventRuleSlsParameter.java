@@ -124,13 +124,13 @@ public final class EventRuleSlsParameter {
             return this;
         }
         public EventRuleSlsParameter build() {
-            final var o = new EventRuleSlsParameter();
-            o.arn = arn;
-            o.logStore = logStore;
-            o.project = project;
-            o.region = region;
-            o.slsParametersId = slsParametersId;
-            return o;
+            final var _resultValue = new EventRuleSlsParameter();
+            _resultValue.arn = arn;
+            _resultValue.logStore = logStore;
+            _resultValue.project = project;
+            _resultValue.region = region;
+            _resultValue.slsParametersId = slsParametersId;
+            return _resultValue;
         }
     }
 }

@@ -22,9 +22,13 @@ public final class GetControlPoliciesPolicy {
      * 
      */
     private String aclUuid;
+    /**
+     * @return The application ID in the access control policy.
+     * 
+     */
     private String applicationId;
     /**
-     * @return The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+     * @return The type of the application that the access control policy supports.
      * 
      */
     private String applicationName;
@@ -34,18 +38,22 @@ public final class GetControlPoliciesPolicy {
      */
     private String description;
     /**
-     * @return The destination port defined in the access control policy.
+     * @return The destination port in the access control policy.
      * 
      */
     private String destPort;
     /**
-     * @return The destination port address book defined in the access control policy.
+     * @return The name of the destination port address book in the access control policy.
      * 
      */
     private String destPortGroup;
+    /**
+     * @return The ports in the destination port address book.
+     * 
+     */
     private List<String> destPortGroupPorts;
     /**
-     * @return The destination port type defined in the access control policy. Valid values: `group`, `port`.
+     * @return The type of the destination port in the access control policy.
      * 
      */
     private String destPortType;
@@ -54,46 +62,78 @@ public final class GetControlPoliciesPolicy {
      * 
      */
     private String destination;
+    /**
+     * @return The CIDR blocks in the destination address book.
+     * 
+     */
     private List<String> destinationGroupCidrs;
+    /**
+     * @return The type of the destination address book in the access control policy.
+     * 
+     */
     private String destinationGroupType;
     /**
-     * @return The destination address type defined in the access control policy.Valid values: If `direction` is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+     * @return The type of the destination address in the access control policy.
      * 
      */
     private String destinationType;
     /**
-     * @return The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+     * @return The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      * 
      */
     private String direction;
+    /**
+     * @return The DNS resolution result.
+     * 
+     */
     private String dnsResult;
+    /**
+     * @return The timestamp of the DNS resolution result.
+     * 
+     */
     private String dnsResultTime;
+    /**
+     * @return The number of hits for the access control policy.
+     * 
+     */
     private String hitTimes;
     /**
-     * @return The ID of the Control Policy.
+     * @return The ID of the Control Policy. It formats as `&lt;acl_uuid&gt;:&lt;direction&gt;`.
      * 
      */
     private String id;
+    /**
+     * @return The priority of the access control policy.
+     * 
+     */
     private Integer order;
     /**
-     * @return The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+     * @return The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
      * 
      */
     private String proto;
     /**
-     * @return Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+     * @return Indicates whether the access control policy is enabled.
      * 
      */
     private Boolean release;
     /**
-     * @return The source address defined in the access control policy.
+     * @return The source address in the access control policy.
      * 
      */
     private String source;
+    /**
+     * @return The CIDR blocks in the source address book.
+     * 
+     */
     private List<String> sourceGroupCidrs;
+    /**
+     * @return The type of the source address book in the access control policy.
+     * 
+     */
     private String sourceGroupType;
     /**
-     * @return The type of the source address book defined in the access control policy. Valid values: If `direction` is to `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+     * @return The type of the source address in the access control policy.
      * 
      */
     private String sourceType;
@@ -113,11 +153,15 @@ public final class GetControlPoliciesPolicy {
     public String aclUuid() {
         return this.aclUuid;
     }
+    /**
+     * @return The application ID in the access control policy.
+     * 
+     */
     public String applicationId() {
         return this.applicationId;
     }
     /**
-     * @return The application type that the access control policy supports.If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, `ANY`, `HTTP`, `HTTPS`, `MQTT`, `Memcache`, `MongoDB`, `MySQL`, `RDP`, `Redis`, `SMTP`, `SMTPS`, `SSH`, `SSL`, `VNC`.
+     * @return The type of the application that the access control policy supports.
      * 
      */
     public String applicationName() {
@@ -131,24 +175,28 @@ public final class GetControlPoliciesPolicy {
         return this.description;
     }
     /**
-     * @return The destination port defined in the access control policy.
+     * @return The destination port in the access control policy.
      * 
      */
     public String destPort() {
         return this.destPort;
     }
     /**
-     * @return The destination port address book defined in the access control policy.
+     * @return The name of the destination port address book in the access control policy.
      * 
      */
     public String destPortGroup() {
         return this.destPortGroup;
     }
+    /**
+     * @return The ports in the destination port address book.
+     * 
+     */
     public List<String> destPortGroupPorts() {
         return this.destPortGroupPorts;
     }
     /**
-     * @return The destination port type defined in the access control policy. Valid values: `group`, `port`.
+     * @return The type of the destination port in the access control policy.
      * 
      */
     public String destPortType() {
@@ -161,74 +209,106 @@ public final class GetControlPoliciesPolicy {
     public String destination() {
         return this.destination;
     }
+    /**
+     * @return The CIDR blocks in the destination address book.
+     * 
+     */
     public List<String> destinationGroupCidrs() {
         return this.destinationGroupCidrs;
     }
+    /**
+     * @return The type of the destination address book in the access control policy.
+     * 
+     */
     public String destinationGroupType() {
         return this.destinationGroupType;
     }
     /**
-     * @return The destination address type defined in the access control policy.Valid values: If `direction` is `in`, the valid values are `net`, `group`. If `direction` is `out`, the valid values are `net`, `group`, `domain`, `location`.
+     * @return The type of the destination address in the access control policy.
      * 
      */
     public String destinationType() {
         return this.destinationType;
     }
     /**
-     * @return The direction of traffic to which the access control policy applies. Valid values: `in`, `out`.
+     * @return The direction of the traffic to which the access control policy applies. Valid values: `in`, `out`.
      * 
      */
     public String direction() {
         return this.direction;
     }
+    /**
+     * @return The DNS resolution result.
+     * 
+     */
     public String dnsResult() {
         return this.dnsResult;
     }
+    /**
+     * @return The timestamp of the DNS resolution result.
+     * 
+     */
     public String dnsResultTime() {
         return this.dnsResultTime;
     }
+    /**
+     * @return The number of hits for the access control policy.
+     * 
+     */
     public String hitTimes() {
         return this.hitTimes;
     }
     /**
-     * @return The ID of the Control Policy.
+     * @return The ID of the Control Policy. It formats as `&lt;acl_uuid&gt;:&lt;direction&gt;`.
      * 
      */
     public String id() {
         return this.id;
     }
+    /**
+     * @return The priority of the access control policy.
+     * 
+     */
     public Integer order() {
         return this.order;
     }
     /**
-     * @return The protocol type of traffic to which the access control policy applies. Valid values: If `direction` is `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
+     * @return The type of the protocol in the access control policy. Valid values: If `direction` is  `in`, the valid value is `ANY`. If `direction` is `out`, the valid values are `ANY`, `TCP`, `UDP`, `ICMP`.
      * 
      */
     public String proto() {
         return this.proto;
     }
     /**
-     * @return Specifies whether the access control policy is enabled. By default, an access control policy is enabled after it is created. Valid values: `true`, `false`.
+     * @return Indicates whether the access control policy is enabled.
      * 
      */
     public Boolean release() {
         return this.release;
     }
     /**
-     * @return The source address defined in the access control policy.
+     * @return The source address in the access control policy.
      * 
      */
     public String source() {
         return this.source;
     }
+    /**
+     * @return The CIDR blocks in the source address book.
+     * 
+     */
     public List<String> sourceGroupCidrs() {
         return this.sourceGroupCidrs;
     }
+    /**
+     * @return The type of the source address book in the access control policy.
+     * 
+     */
     public String sourceGroupType() {
         return this.sourceGroupType;
     }
     /**
-     * @return The type of the source address book defined in the access control policy. Valid values: If `direction` is to `in`, the valid values are `net`, `group`, `location`. If `direction` is `out`, the valid values are `net`, `group`.
+     * @return The type of the source address in the access control policy.
      * 
      */
     public String sourceType() {
@@ -434,33 +514,33 @@ public final class GetControlPoliciesPolicy {
             return this;
         }
         public GetControlPoliciesPolicy build() {
-            final var o = new GetControlPoliciesPolicy();
-            o.aclAction = aclAction;
-            o.aclUuid = aclUuid;
-            o.applicationId = applicationId;
-            o.applicationName = applicationName;
-            o.description = description;
-            o.destPort = destPort;
-            o.destPortGroup = destPortGroup;
-            o.destPortGroupPorts = destPortGroupPorts;
-            o.destPortType = destPortType;
-            o.destination = destination;
-            o.destinationGroupCidrs = destinationGroupCidrs;
-            o.destinationGroupType = destinationGroupType;
-            o.destinationType = destinationType;
-            o.direction = direction;
-            o.dnsResult = dnsResult;
-            o.dnsResultTime = dnsResultTime;
-            o.hitTimes = hitTimes;
-            o.id = id;
-            o.order = order;
-            o.proto = proto;
-            o.release = release;
-            o.source = source;
-            o.sourceGroupCidrs = sourceGroupCidrs;
-            o.sourceGroupType = sourceGroupType;
-            o.sourceType = sourceType;
-            return o;
+            final var _resultValue = new GetControlPoliciesPolicy();
+            _resultValue.aclAction = aclAction;
+            _resultValue.aclUuid = aclUuid;
+            _resultValue.applicationId = applicationId;
+            _resultValue.applicationName = applicationName;
+            _resultValue.description = description;
+            _resultValue.destPort = destPort;
+            _resultValue.destPortGroup = destPortGroup;
+            _resultValue.destPortGroupPorts = destPortGroupPorts;
+            _resultValue.destPortType = destPortType;
+            _resultValue.destination = destination;
+            _resultValue.destinationGroupCidrs = destinationGroupCidrs;
+            _resultValue.destinationGroupType = destinationGroupType;
+            _resultValue.destinationType = destinationType;
+            _resultValue.direction = direction;
+            _resultValue.dnsResult = dnsResult;
+            _resultValue.dnsResultTime = dnsResultTime;
+            _resultValue.hitTimes = hitTimes;
+            _resultValue.id = id;
+            _resultValue.order = order;
+            _resultValue.proto = proto;
+            _resultValue.release = release;
+            _resultValue.source = source;
+            _resultValue.sourceGroupCidrs = sourceGroupCidrs;
+            _resultValue.sourceGroupType = sourceGroupType;
+            _resultValue.sourceType = sourceType;
+            return _resultValue;
         }
     }
 }

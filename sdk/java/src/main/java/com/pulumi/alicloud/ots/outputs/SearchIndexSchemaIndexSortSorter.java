@@ -105,12 +105,12 @@ public final class SearchIndexSchemaIndexSortSorter {
             return this;
         }
         public SearchIndexSchemaIndexSortSorter build() {
-            final var o = new SearchIndexSchemaIndexSortSorter();
-            o.fieldName = fieldName;
-            o.mode = mode;
-            o.order = order;
-            o.sorterType = sorterType;
-            return o;
+            final var _resultValue = new SearchIndexSchemaIndexSortSorter();
+            _resultValue.fieldName = fieldName;
+            _resultValue.mode = mode;
+            _resultValue.order = order;
+            _resultValue.sorterType = sorterType;
+            return _resultValue;
         }
     }
 }

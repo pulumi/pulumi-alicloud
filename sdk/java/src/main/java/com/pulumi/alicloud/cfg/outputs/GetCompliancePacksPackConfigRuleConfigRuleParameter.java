@@ -85,11 +85,11 @@ public final class GetCompliancePacksPackConfigRuleConfigRuleParameter {
             return this;
         }
         public GetCompliancePacksPackConfigRuleConfigRuleParameter build() {
-            final var o = new GetCompliancePacksPackConfigRuleConfigRuleParameter();
-            o.parameterName = parameterName;
-            o.parameterValue = parameterValue;
-            o.required = required;
-            return o;
+            final var _resultValue = new GetCompliancePacksPackConfigRuleConfigRuleParameter();
+            _resultValue.parameterName = parameterName;
+            _resultValue.parameterValue = parameterValue;
+            _resultValue.required = required;
+            return _resultValue;
         }
     }
 }

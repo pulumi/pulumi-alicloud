@@ -222,18 +222,18 @@ public final class GetZoneRecordsRecord {
             return this;
         }
         public GetZoneRecordsRecord build() {
-            final var o = new GetZoneRecordsRecord();
-            o.id = id;
-            o.priority = priority;
-            o.recordId = recordId;
-            o.remark = remark;
-            o.resourceRecord = resourceRecord;
-            o.rr = rr;
-            o.status = status;
-            o.ttl = ttl;
-            o.type = type;
-            o.value = value;
-            return o;
+            final var _resultValue = new GetZoneRecordsRecord();
+            _resultValue.id = id;
+            _resultValue.priority = priority;
+            _resultValue.recordId = recordId;
+            _resultValue.remark = remark;
+            _resultValue.resourceRecord = resourceRecord;
+            _resultValue.rr = rr;
+            _resultValue.status = status;
+            _resultValue.ttl = ttl;
+            _resultValue.type = type;
+            _resultValue.value = value;
+            return _resultValue;
         }
     }
 }

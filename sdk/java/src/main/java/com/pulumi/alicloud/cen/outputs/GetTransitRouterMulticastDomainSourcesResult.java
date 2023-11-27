@@ -116,13 +116,13 @@ public final class GetTransitRouterMulticastDomainSourcesResult {
             return this;
         }
         public GetTransitRouterMulticastDomainSourcesResult build() {
-            final var o = new GetTransitRouterMulticastDomainSourcesResult();
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.sources = sources;
-            o.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
-            return o;
+            final var _resultValue = new GetTransitRouterMulticastDomainSourcesResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.sources = sources;
+            _resultValue.transitRouterMulticastDomainId = transitRouterMulticastDomainId;
+            return _resultValue;
         }
     }
 }

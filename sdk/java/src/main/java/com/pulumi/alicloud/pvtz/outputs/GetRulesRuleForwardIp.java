@@ -50,10 +50,10 @@ public final class GetRulesRuleForwardIp {
             return this;
         }
         public GetRulesRuleForwardIp build() {
-            final var o = new GetRulesRuleForwardIp();
-            o.ip = ip;
-            o.port = port;
-            return o;
+            final var _resultValue = new GetRulesRuleForwardIp();
+            _resultValue.ip = ip;
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

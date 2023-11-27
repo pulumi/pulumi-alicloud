@@ -105,12 +105,12 @@ public final class GetServerGroupsGroupStickySessionConfig {
             return this;
         }
         public GetServerGroupsGroupStickySessionConfig build() {
-            final var o = new GetServerGroupsGroupStickySessionConfig();
-            o.cookie = cookie;
-            o.cookieTimeout = cookieTimeout;
-            o.stickySessionEnabled = stickySessionEnabled;
-            o.stickySessionType = stickySessionType;
-            return o;
+            final var _resultValue = new GetServerGroupsGroupStickySessionConfig();
+            _resultValue.cookie = cookie;
+            _resultValue.cookieTimeout = cookieTimeout;
+            _resultValue.stickySessionEnabled = stickySessionEnabled;
+            _resultValue.stickySessionType = stickySessionType;
+            return _resultValue;
         }
     }
 }

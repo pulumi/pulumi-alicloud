@@ -138,14 +138,14 @@ public final class GetCustomDomainsResult {
             return this;
         }
         public GetCustomDomainsResult build() {
-            final var o = new GetCustomDomainsResult();
-            o.domains = domains;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            return o;
+            final var _resultValue = new GetCustomDomainsResult();
+            _resultValue.domains = domains;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            return _resultValue;
         }
     }
 }

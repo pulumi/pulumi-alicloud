@@ -127,7 +127,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * - DualStack: dual stack
      * 
      */
-    @Export(name="addressIpVersion", type=String.class, parameters={})
+    @Export(name="addressIpVersion", refs={String.class}, tree="[0]")
     private Output<String> addressIpVersion;
 
     /**
@@ -145,7 +145,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * - Intranet: The NLB instance uses a private IP address. The domain name of the NLB instance is resolved to the private IP address. Therefore, the NLB instance can be accessed over the virtual private cloud (VPC) where the NLB instance is deployed.
      * 
      */
-    @Export(name="addressType", type=String.class, parameters={})
+    @Export(name="addressType", refs={String.class}, tree="[0]")
     private Output<String> addressType;
 
     /**
@@ -161,7 +161,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The ID of the EIP bandwidth plan that is associated with the NLB instance if the NLB instance uses a public IP address.
      * 
      */
-    @Export(name="bandwidthPackageId", type=String.class, parameters={})
+    @Export(name="bandwidthPackageId", refs={String.class}, tree="[0]")
     private Output<String> bandwidthPackageId;
 
     /**
@@ -175,7 +175,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The time when the resource was created. The time is displayed in UTC in `yyyy-MM-ddTHH:mm:ssZ` format.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -189,7 +189,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable cross-zone load balancing for the NLB instance.
      * 
      */
-    @Export(name="crossZoneEnabled", type=Boolean.class, parameters={})
+    @Export(name="crossZoneEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> crossZoneEnabled;
 
     /**
@@ -203,7 +203,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable deletion protection. Default value: `false`. Valid values:
      * 
      */
-    @Export(name="deletionProtectionEnabled", type=Boolean.class, parameters={})
+    @Export(name="deletionProtectionEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> deletionProtectionEnabled;
 
     /**
@@ -217,21 +217,21 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
      * 
      */
-    @Export(name="deletionProtectionReason", type=String.class, parameters={})
-    private Output</* @Nullable */ String> deletionProtectionReason;
+    @Export(name="deletionProtectionReason", refs={String.class}, tree="[0]")
+    private Output<String> deletionProtectionReason;
 
     /**
      * @return The reason why the deletion protection feature is enabled or disabled. The `deletion_protection_reason` takes effect only when `deletion_protection_enabled` is set to `true`.
      * 
      */
-    public Output<Optional<String>> deletionProtectionReason() {
-        return Codegen.optional(this.deletionProtectionReason);
+    public Output<String> deletionProtectionReason() {
+        return this.deletionProtectionReason;
     }
     /**
      * The domain name of the NLB instance.
      * 
      */
-    @Export(name="dnsName", type=String.class, parameters={})
+    @Export(name="dnsName", refs={String.class}, tree="[0]")
     private Output<String> dnsName;
 
     /**
@@ -245,7 +245,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The type of IPv6 address used by the NLB instance.
      * 
      */
-    @Export(name="ipv6AddressType", type=String.class, parameters={})
+    @Export(name="ipv6AddressType", refs={String.class}, tree="[0]")
     private Output<String> ipv6AddressType;
 
     /**
@@ -259,7 +259,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The business status of the NLB instance.
      * 
      */
-    @Export(name="loadBalancerBusinessStatus", type=String.class, parameters={})
+    @Export(name="loadBalancerBusinessStatus", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerBusinessStatus;
 
     /**
@@ -273,7 +273,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The name of the NLB instance. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
-    @Export(name="loadBalancerName", type=String.class, parameters={})
+    @Export(name="loadBalancerName", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerName;
 
     /**
@@ -287,7 +287,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The type of the instance. Set the value to `Network`, which specifies an NLB instance.
      * 
      */
-    @Export(name="loadBalancerType", type=String.class, parameters={})
+    @Export(name="loadBalancerType", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerType;
 
     /**
@@ -301,21 +301,21 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
      * 
      */
-    @Export(name="modificationProtectionReason", type=String.class, parameters={})
-    private Output</* @Nullable */ String> modificationProtectionReason;
+    @Export(name="modificationProtectionReason", refs={String.class}, tree="[0]")
+    private Output<String> modificationProtectionReason;
 
     /**
      * @return The reason why the configuration read-only mode is enabled. The `modification_protection_reason` takes effect only when `modification_protection_status` is set to `ConsoleProtection`.
      * 
      */
-    public Output<Optional<String>> modificationProtectionReason() {
-        return Codegen.optional(this.modificationProtectionReason);
+    public Output<String> modificationProtectionReason() {
+        return this.modificationProtectionReason;
     }
     /**
      * Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
      * 
      */
-    @Export(name="modificationProtectionStatus", type=String.class, parameters={})
+    @Export(name="modificationProtectionStatus", refs={String.class}, tree="[0]")
     private Output<String> modificationProtectionStatus;
 
     /**
@@ -329,7 +329,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The ID of the resource group.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -343,7 +343,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The status of the NLB instance.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -357,7 +357,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -371,7 +371,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * The ID of the VPC where the NLB instance is deployed.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**
@@ -385,7 +385,7 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
      * Available Area Configuration List. You must add at least two zones. You can add a maximum of 10 zones. See `zone_mappings` below.
      * 
      */
-    @Export(name="zoneMappings", type=List.class, parameters={LoadBalancerZoneMapping.class})
+    @Export(name="zoneMappings", refs={List.class,LoadBalancerZoneMapping.class}, tree="[0,1]")
     private Output<List<LoadBalancerZoneMapping>> zoneMappings;
 
     /**

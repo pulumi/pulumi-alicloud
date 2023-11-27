@@ -71,10 +71,10 @@ public final class EciScalingConfigurationHostAlias {
             return this;
         }
         public EciScalingConfigurationHostAlias build() {
-            final var o = new EciScalingConfigurationHostAlias();
-            o.hostnames = hostnames;
-            o.ip = ip;
-            return o;
+            final var _resultValue = new EciScalingConfigurationHostAlias();
+            _resultValue.hostnames = hostnames;
+            _resultValue.ip = ip;
+            return _resultValue;
         }
     }
 }

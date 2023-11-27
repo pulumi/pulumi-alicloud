@@ -132,74 +132,92 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:privatelink/vpcEndpointZone:VpcEndpointZone")
 public class VpcEndpointZone extends com.pulumi.resources.CustomResource {
     /**
-     * The dry run.
+     * Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return The dry run.
+     * @return Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+     * - **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+     * - **false (default)**: performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
         return Codegen.optional(this.dryRun);
     }
     /**
-     * The ID of the Vpc Endpoint.
+     * The endpoint ID.
      * 
      */
-    @Export(name="endpointId", type=String.class, parameters={})
+    @Export(name="endpointId", refs={String.class}, tree="[0]")
     private Output<String> endpointId;
 
     /**
-     * @return The ID of the Vpc Endpoint.
+     * @return The endpoint ID.
      * 
      */
     public Output<String> endpointId() {
         return this.endpointId;
     }
     /**
-     * Status.
+     * The IP address of the endpoint ENI.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="eniIp", refs={String.class}, tree="[0]")
+    private Output<String> eniIp;
+
+    /**
+     * @return The IP address of the endpoint ENI.
+     * 
+     */
+    public Output<String> eniIp() {
+        return this.eniIp;
+    }
+    /**
+     * The state of the zone.
+     * 
+     */
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Status.
+     * @return The state of the zone.
      * 
      */
     public Output<String> status() {
         return this.status;
     }
     /**
-     * The VSwitch id.
+     * The ID of the vSwitch in the zone. .
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**
-     * @return The VSwitch id.
+     * @return The ID of the vSwitch in the zone. .
      * 
      */
     public Output<String> vswitchId() {
         return this.vswitchId;
     }
     /**
-     * The Zone Id.
+     * The zone ID.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
-    private Output<String> zoneId;
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> zoneId;
 
     /**
-     * @return The Zone Id.
+     * @return The zone ID.
      * 
      */
-    public Output<String> zoneId() {
-        return this.zoneId;
+    public Output<Optional<String>> zoneId() {
+        return Codegen.optional(this.zoneId);
     }
 
     /**

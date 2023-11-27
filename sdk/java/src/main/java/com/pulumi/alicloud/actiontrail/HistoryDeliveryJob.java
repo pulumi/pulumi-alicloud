@@ -97,7 +97,7 @@ public class HistoryDeliveryJob extends com.pulumi.resources.CustomResource {
      * The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
      * 
      */
-    @Export(name="status", type=Integer.class, parameters={})
+    @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output<Integer> status;
 
     /**
@@ -111,7 +111,7 @@ public class HistoryDeliveryJob extends com.pulumi.resources.CustomResource {
      * The name of the trail for which you want to create a historical event delivery task.
      * 
      */
-    @Export(name="trailName", type=String.class, parameters={})
+    @Export(name="trailName", refs={String.class}, tree="[0]")
     private Output<String> trailName;
 
     /**

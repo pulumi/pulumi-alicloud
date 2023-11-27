@@ -18,6 +18,21 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     public static final ProjectState Empty = new ProjectState();
 
     /**
+     * CreateTime.
+     * 
+     */
+    @Import(name="createTime")
+    private @Nullable Output<String> createTime;
+
+    /**
+     * @return CreateTime.
+     * 
+     */
+    public Optional<Output<String>> createTime() {
+        return Optional.ofNullable(this.createTime);
+    }
+
+    /**
      * Description of the log project.
      * 
      */
@@ -33,16 +48,24 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the log project. It is the only in one Alicloud account.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.212.0. New field &#39;project_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.212.0. New field &#39;project_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the log project. It is the only in one Alicloud account.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.212.0. New field &#39;project_name&#39; instead.
+     * 
+     * @deprecated
+     * Field &#39;name&#39; has been deprecated since provider version 1.212.0. New field &#39;project_name&#39; instead.
      * 
      */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -63,18 +86,63 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Log project tags.
-     * - Key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
-     * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
+     * The name of the log project. It is the only in one Alicloud account.
+     * 
+     */
+    @Import(name="projectName")
+    private @Nullable Output<String> projectName;
+
+    /**
+     * @return The name of the log project. It is the only in one Alicloud account.
+     * 
+     */
+    public Optional<Output<String>> projectName() {
+        return Optional.ofNullable(this.projectName);
+    }
+
+    /**
+     * The ID of the resource group.
+     * 
+     */
+    @Import(name="resourceGroupId")
+    private @Nullable Output<String> resourceGroupId;
+
+    /**
+     * @return The ID of the resource group.
+     * 
+     */
+    public Optional<Output<String>> resourceGroupId() {
+        return Optional.ofNullable(this.resourceGroupId);
+    }
+
+    /**
+     * The status of the resource.
+     * 
+     */
+    @Import(name="status")
+    private @Nullable Output<String> status;
+
+    /**
+     * @return The status of the resource.
+     * 
+     */
+    public Optional<Output<String>> status() {
+        return Optional.ofNullable(this.status);
+    }
+
+    /**
+     * Tag.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return Log project tags.
-     * - Key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
-     * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
+     * @return Tag.
+     * 
+     * The following arguments will be discarded. Please use new fields as soon as possible:
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -84,9 +152,13 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     private ProjectState() {}
 
     private ProjectState(ProjectState $) {
+        this.createTime = $.createTime;
         this.description = $.description;
         this.name = $.name;
         this.policy = $.policy;
+        this.projectName = $.projectName;
+        this.resourceGroupId = $.resourceGroupId;
+        this.status = $.status;
         this.tags = $.tags;
     }
 
@@ -106,6 +178,27 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ProjectState defaults) {
             $ = new ProjectState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param createTime CreateTime.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(@Nullable Output<String> createTime) {
+            $.createTime = createTime;
+            return this;
+        }
+
+        /**
+         * @param createTime CreateTime.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createTime(String createTime) {
+            return createTime(Output.of(createTime));
         }
 
         /**
@@ -130,22 +223,30 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the log project. It is the only in one Alicloud account.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.212.0. New field &#39;project_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated since provider version 1.212.0. New field &#39;project_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name The name of the log project. It is the only in one Alicloud account.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.212.0. New field &#39;project_name&#39; instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * Field &#39;name&#39; has been deprecated since provider version 1.212.0. New field &#39;project_name&#39; instead.
+         * 
          */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -172,9 +273,72 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Log project tags.
-         * - Key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
-         * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
+         * @param projectName The name of the log project. It is the only in one Alicloud account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectName(@Nullable Output<String> projectName) {
+            $.projectName = projectName;
+            return this;
+        }
+
+        /**
+         * @param projectName The name of the log project. It is the only in one Alicloud account.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder projectName(String projectName) {
+            return projectName(Output.of(projectName));
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(@Nullable Output<String> resourceGroupId) {
+            $.resourceGroupId = resourceGroupId;
+            return this;
+        }
+
+        /**
+         * @param resourceGroupId The ID of the resource group.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceGroupId(String resourceGroupId) {
+            return resourceGroupId(Output.of(resourceGroupId));
+        }
+
+        /**
+         * @param status The status of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(@Nullable Output<String> status) {
+            $.status = status;
+            return this;
+        }
+
+        /**
+         * @param status The status of the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder status(String status) {
+            return status(Output.of(status));
+        }
+
+        /**
+         * @param tags Tag.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 
@@ -185,9 +349,9 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param tags Log project tags.
-         * - Key: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
-         * - Value: It can be up to 128 characters in length. It cannot begin with &#34;aliyun&#34;, &#34;acs:&#34;, &#34;http://&#34;, or &#34;https://&#34;.
+         * @param tags Tag.
+         * 
+         * The following arguments will be discarded. Please use new fields as soon as possible:
          * 
          * @return builder
          * 

@@ -130,7 +130,7 @@ public class ShardingNetworkPrivateAddress extends com.pulumi.resources.CustomRe
      * - The permissions of this account are fixed to read-only.
      * 
      */
-    @Export(name="accountName", type=String.class, parameters={})
+    @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountName;
 
     /**
@@ -149,7 +149,7 @@ public class ShardingNetworkPrivateAddress extends com.pulumi.resources.CustomRe
      * - The password must be 8 to 32 characters in length.
      * 
      */
-    @Export(name="accountPassword", type=String.class, parameters={})
+    @Export(name="accountPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accountPassword;
 
     /**
@@ -165,7 +165,7 @@ public class ShardingNetworkPrivateAddress extends com.pulumi.resources.CustomRe
      * The db instance id.
      * 
      */
-    @Export(name="dbInstanceId", type=String.class, parameters={})
+    @Export(name="dbInstanceId", refs={String.class}, tree="[0]")
     private Output<String> dbInstanceId;
 
     /**
@@ -179,7 +179,7 @@ public class ShardingNetworkPrivateAddress extends com.pulumi.resources.CustomRe
      * The endpoint of the instance.
      * 
      */
-    @Export(name="networkAddresses", type=List.class, parameters={ShardingNetworkPrivateAddressNetworkAddress.class})
+    @Export(name="networkAddresses", refs={List.class,ShardingNetworkPrivateAddressNetworkAddress.class}, tree="[0,1]")
     private Output<List<ShardingNetworkPrivateAddressNetworkAddress>> networkAddresses;
 
     /**
@@ -193,7 +193,7 @@ public class ShardingNetworkPrivateAddress extends com.pulumi.resources.CustomRe
      * The ID of the Shard node or the ConfigServer node.
      * 
      */
-    @Export(name="nodeId", type=String.class, parameters={})
+    @Export(name="nodeId", refs={String.class}, tree="[0]")
     private Output<String> nodeId;
 
     /**
@@ -207,7 +207,7 @@ public class ShardingNetworkPrivateAddress extends com.pulumi.resources.CustomRe
      * The zone ID of the instance.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

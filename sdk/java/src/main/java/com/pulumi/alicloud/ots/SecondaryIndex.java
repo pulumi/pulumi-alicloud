@@ -40,7 +40,7 @@ public class SecondaryIndex extends com.pulumi.resources.CustomResource {
      * A list of defined column for index, referenced from Table&#39;s primary keys or predefined columns.
      * 
      */
-    @Export(name="definedColumns", type=List.class, parameters={String.class})
+    @Export(name="definedColumns", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> definedColumns;
 
     /**
@@ -54,7 +54,7 @@ public class SecondaryIndex extends com.pulumi.resources.CustomResource {
      * whether the index contains data that already exists in the data table. When include_base_data is set to true, it means that stock data is included.
      * 
      */
-    @Export(name="includeBaseData", type=Boolean.class, parameters={})
+    @Export(name="includeBaseData", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> includeBaseData;
 
     /**
@@ -68,7 +68,7 @@ public class SecondaryIndex extends com.pulumi.resources.CustomResource {
      * The index name of the OTS Table. If changed, a new index would be created.
      * 
      */
-    @Export(name="indexName", type=String.class, parameters={})
+    @Export(name="indexName", refs={String.class}, tree="[0]")
     private Output<String> indexName;
 
     /**
@@ -82,7 +82,7 @@ public class SecondaryIndex extends com.pulumi.resources.CustomResource {
      * The index type of the OTS Table. If changed, a new index would be created, only `Global` or `Local` is allowed.
      * 
      */
-    @Export(name="indexType", type=String.class, parameters={})
+    @Export(name="indexType", refs={String.class}, tree="[0]")
     private Output<String> indexType;
 
     /**
@@ -96,7 +96,7 @@ public class SecondaryIndex extends com.pulumi.resources.CustomResource {
      * The name of the OTS instance in which table will located.
      * 
      */
-    @Export(name="instanceName", type=String.class, parameters={})
+    @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
     /**
@@ -110,7 +110,7 @@ public class SecondaryIndex extends com.pulumi.resources.CustomResource {
      * A list of primary keys for index, referenced from Table&#39;s primary keys or predefined columns.
      * 
      */
-    @Export(name="primaryKeys", type=List.class, parameters={String.class})
+    @Export(name="primaryKeys", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> primaryKeys;
 
     /**
@@ -124,7 +124,7 @@ public class SecondaryIndex extends com.pulumi.resources.CustomResource {
      * The name of the OTS table. If changed, a new table would be created.
      * 
      */
-    @Export(name="tableName", type=String.class, parameters={})
+    @Export(name="tableName", refs={String.class}, tree="[0]")
     private Output<String> tableName;
 
     /**

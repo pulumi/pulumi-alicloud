@@ -19,73 +19,73 @@ import javax.annotation.Nullable;
 
 @ResourceType(type="alicloud:eci/openApiImageCache:OpenApiImageCache")
 public class OpenApiImageCache extends com.pulumi.resources.CustomResource {
-    @Export(name="containerGroupId", type=String.class, parameters={})
+    @Export(name="containerGroupId", refs={String.class}, tree="[0]")
     private Output<String> containerGroupId;
 
     public Output<String> containerGroupId() {
         return this.containerGroupId;
     }
-    @Export(name="eipInstanceId", type=String.class, parameters={})
+    @Export(name="eipInstanceId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> eipInstanceId;
 
     public Output<Optional<String>> eipInstanceId() {
         return Codegen.optional(this.eipInstanceId);
     }
-    @Export(name="imageCacheName", type=String.class, parameters={})
+    @Export(name="imageCacheName", refs={String.class}, tree="[0]")
     private Output<String> imageCacheName;
 
     public Output<String> imageCacheName() {
         return this.imageCacheName;
     }
-    @Export(name="imageCacheSize", type=Integer.class, parameters={})
+    @Export(name="imageCacheSize", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> imageCacheSize;
 
     public Output<Optional<Integer>> imageCacheSize() {
         return Codegen.optional(this.imageCacheSize);
     }
-    @Export(name="imageRegistryCredentials", type=List.class, parameters={OpenApiImageCacheImageRegistryCredential.class})
+    @Export(name="imageRegistryCredentials", refs={List.class,OpenApiImageCacheImageRegistryCredential.class}, tree="[0,1]")
     private Output</* @Nullable */ List<OpenApiImageCacheImageRegistryCredential>> imageRegistryCredentials;
 
     public Output<Optional<List<OpenApiImageCacheImageRegistryCredential>>> imageRegistryCredentials() {
         return Codegen.optional(this.imageRegistryCredentials);
     }
-    @Export(name="images", type=List.class, parameters={String.class})
+    @Export(name="images", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> images;
 
     public Output<List<String>> images() {
         return this.images;
     }
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     public Output<Optional<String>> resourceGroupId() {
         return Codegen.optional(this.resourceGroupId);
     }
-    @Export(name="retentionDays", type=Integer.class, parameters={})
+    @Export(name="retentionDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> retentionDays;
 
     public Output<Optional<Integer>> retentionDays() {
         return Codegen.optional(this.retentionDays);
     }
-    @Export(name="securityGroupId", type=String.class, parameters={})
+    @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
     public Output<String> securityGroupId() {
         return this.securityGroupId;
     }
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     public Output<String> status() {
         return this.status;
     }
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     public Output<String> vswitchId() {
         return this.vswitchId;
     }
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> zoneId;
 
     public Output<Optional<String>> zoneId() {

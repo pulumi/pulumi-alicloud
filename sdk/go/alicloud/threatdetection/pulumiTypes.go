@@ -429,6 +429,170 @@ func (o HoneypotProbeHoneypotBindListBindPortListArrayOutput) Index(i pulumi.Int
 	}).(HoneypotProbeHoneypotBindListBindPortListOutput)
 }
 
+type SasTrailServiceTrail struct {
+	// Service tracking on status. The value is:
+	// - **on:** Open
+	// - **off:** off.
+	Config *string `pulumi:"config"`
+	// The timestamp of the last service update. Unit: milliseconds.
+	UpdateTime *int `pulumi:"updateTime"`
+}
+
+// SasTrailServiceTrailInput is an input type that accepts SasTrailServiceTrailArgs and SasTrailServiceTrailOutput values.
+// You can construct a concrete instance of `SasTrailServiceTrailInput` via:
+//
+//	SasTrailServiceTrailArgs{...}
+type SasTrailServiceTrailInput interface {
+	pulumi.Input
+
+	ToSasTrailServiceTrailOutput() SasTrailServiceTrailOutput
+	ToSasTrailServiceTrailOutputWithContext(context.Context) SasTrailServiceTrailOutput
+}
+
+type SasTrailServiceTrailArgs struct {
+	// Service tracking on status. The value is:
+	// - **on:** Open
+	// - **off:** off.
+	Config pulumi.StringPtrInput `pulumi:"config"`
+	// The timestamp of the last service update. Unit: milliseconds.
+	UpdateTime pulumi.IntPtrInput `pulumi:"updateTime"`
+}
+
+func (SasTrailServiceTrailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SasTrailServiceTrail)(nil)).Elem()
+}
+
+func (i SasTrailServiceTrailArgs) ToSasTrailServiceTrailOutput() SasTrailServiceTrailOutput {
+	return i.ToSasTrailServiceTrailOutputWithContext(context.Background())
+}
+
+func (i SasTrailServiceTrailArgs) ToSasTrailServiceTrailOutputWithContext(ctx context.Context) SasTrailServiceTrailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SasTrailServiceTrailOutput)
+}
+
+func (i SasTrailServiceTrailArgs) ToSasTrailServiceTrailPtrOutput() SasTrailServiceTrailPtrOutput {
+	return i.ToSasTrailServiceTrailPtrOutputWithContext(context.Background())
+}
+
+func (i SasTrailServiceTrailArgs) ToSasTrailServiceTrailPtrOutputWithContext(ctx context.Context) SasTrailServiceTrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SasTrailServiceTrailOutput).ToSasTrailServiceTrailPtrOutputWithContext(ctx)
+}
+
+// SasTrailServiceTrailPtrInput is an input type that accepts SasTrailServiceTrailArgs, SasTrailServiceTrailPtr and SasTrailServiceTrailPtrOutput values.
+// You can construct a concrete instance of `SasTrailServiceTrailPtrInput` via:
+//
+//	        SasTrailServiceTrailArgs{...}
+//
+//	or:
+//
+//	        nil
+type SasTrailServiceTrailPtrInput interface {
+	pulumi.Input
+
+	ToSasTrailServiceTrailPtrOutput() SasTrailServiceTrailPtrOutput
+	ToSasTrailServiceTrailPtrOutputWithContext(context.Context) SasTrailServiceTrailPtrOutput
+}
+
+type sasTrailServiceTrailPtrType SasTrailServiceTrailArgs
+
+func SasTrailServiceTrailPtr(v *SasTrailServiceTrailArgs) SasTrailServiceTrailPtrInput {
+	return (*sasTrailServiceTrailPtrType)(v)
+}
+
+func (*sasTrailServiceTrailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SasTrailServiceTrail)(nil)).Elem()
+}
+
+func (i *sasTrailServiceTrailPtrType) ToSasTrailServiceTrailPtrOutput() SasTrailServiceTrailPtrOutput {
+	return i.ToSasTrailServiceTrailPtrOutputWithContext(context.Background())
+}
+
+func (i *sasTrailServiceTrailPtrType) ToSasTrailServiceTrailPtrOutputWithContext(ctx context.Context) SasTrailServiceTrailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SasTrailServiceTrailPtrOutput)
+}
+
+type SasTrailServiceTrailOutput struct{ *pulumi.OutputState }
+
+func (SasTrailServiceTrailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SasTrailServiceTrail)(nil)).Elem()
+}
+
+func (o SasTrailServiceTrailOutput) ToSasTrailServiceTrailOutput() SasTrailServiceTrailOutput {
+	return o
+}
+
+func (o SasTrailServiceTrailOutput) ToSasTrailServiceTrailOutputWithContext(ctx context.Context) SasTrailServiceTrailOutput {
+	return o
+}
+
+func (o SasTrailServiceTrailOutput) ToSasTrailServiceTrailPtrOutput() SasTrailServiceTrailPtrOutput {
+	return o.ToSasTrailServiceTrailPtrOutputWithContext(context.Background())
+}
+
+func (o SasTrailServiceTrailOutput) ToSasTrailServiceTrailPtrOutputWithContext(ctx context.Context) SasTrailServiceTrailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SasTrailServiceTrail) *SasTrailServiceTrail {
+		return &v
+	}).(SasTrailServiceTrailPtrOutput)
+}
+
+// Service tracking on status. The value is:
+// - **on:** Open
+// - **off:** off.
+func (o SasTrailServiceTrailOutput) Config() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SasTrailServiceTrail) *string { return v.Config }).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of the last service update. Unit: milliseconds.
+func (o SasTrailServiceTrailOutput) UpdateTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SasTrailServiceTrail) *int { return v.UpdateTime }).(pulumi.IntPtrOutput)
+}
+
+type SasTrailServiceTrailPtrOutput struct{ *pulumi.OutputState }
+
+func (SasTrailServiceTrailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SasTrailServiceTrail)(nil)).Elem()
+}
+
+func (o SasTrailServiceTrailPtrOutput) ToSasTrailServiceTrailPtrOutput() SasTrailServiceTrailPtrOutput {
+	return o
+}
+
+func (o SasTrailServiceTrailPtrOutput) ToSasTrailServiceTrailPtrOutputWithContext(ctx context.Context) SasTrailServiceTrailPtrOutput {
+	return o
+}
+
+func (o SasTrailServiceTrailPtrOutput) Elem() SasTrailServiceTrailOutput {
+	return o.ApplyT(func(v *SasTrailServiceTrail) SasTrailServiceTrail {
+		if v != nil {
+			return *v
+		}
+		var ret SasTrailServiceTrail
+		return ret
+	}).(SasTrailServiceTrailOutput)
+}
+
+// Service tracking on status. The value is:
+// - **on:** Open
+// - **off:** off.
+func (o SasTrailServiceTrailPtrOutput) Config() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SasTrailServiceTrail) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Config
+	}).(pulumi.StringPtrOutput)
+}
+
+// The timestamp of the last service update. Unit: milliseconds.
+func (o SasTrailServiceTrailPtrOutput) UpdateTime() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *SasTrailServiceTrail) *int {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTime
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetAntiBruteForceRulesRule struct {
 	// The ID of the defense rule.
 	AntiBruteForceRuleId string `pulumi:"antiBruteForceRuleId"`
@@ -2688,6 +2852,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HoneypotProbeHoneypotBindListArrayInput)(nil)).Elem(), HoneypotProbeHoneypotBindListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HoneypotProbeHoneypotBindListBindPortListInput)(nil)).Elem(), HoneypotProbeHoneypotBindListBindPortListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HoneypotProbeHoneypotBindListBindPortListArrayInput)(nil)).Elem(), HoneypotProbeHoneypotBindListBindPortListArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SasTrailServiceTrailInput)(nil)).Elem(), SasTrailServiceTrailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SasTrailServiceTrailPtrInput)(nil)).Elem(), SasTrailServiceTrailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAntiBruteForceRulesRuleInput)(nil)).Elem(), GetAntiBruteForceRulesRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAntiBruteForceRulesRuleArrayInput)(nil)).Elem(), GetAntiBruteForceRulesRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetAssetsAssetInput)(nil)).Elem(), GetAssetsAssetArgs{})
@@ -2724,6 +2890,8 @@ func init() {
 	pulumi.RegisterOutputType(HoneypotProbeHoneypotBindListArrayOutput{})
 	pulumi.RegisterOutputType(HoneypotProbeHoneypotBindListBindPortListOutput{})
 	pulumi.RegisterOutputType(HoneypotProbeHoneypotBindListBindPortListArrayOutput{})
+	pulumi.RegisterOutputType(SasTrailServiceTrailOutput{})
+	pulumi.RegisterOutputType(SasTrailServiceTrailPtrOutput{})
 	pulumi.RegisterOutputType(GetAntiBruteForceRulesRuleOutput{})
 	pulumi.RegisterOutputType(GetAntiBruteForceRulesRuleArrayOutput{})
 	pulumi.RegisterOutputType(GetAssetsAssetOutput{})

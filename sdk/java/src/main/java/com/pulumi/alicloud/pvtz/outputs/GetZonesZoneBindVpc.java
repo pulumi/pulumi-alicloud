@@ -95,12 +95,12 @@ public final class GetZonesZoneBindVpc {
             return this;
         }
         public GetZonesZoneBindVpc build() {
-            final var o = new GetZonesZoneBindVpc();
-            o.regionId = regionId;
-            o.regionName = regionName;
-            o.vpcId = vpcId;
-            o.vpcName = vpcName;
-            return o;
+            final var _resultValue = new GetZonesZoneBindVpc();
+            _resultValue.regionId = regionId;
+            _resultValue.regionName = regionName;
+            _resultValue.vpcId = vpcId;
+            _resultValue.vpcName = vpcName;
+            return _resultValue;
         }
     }
 }

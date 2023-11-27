@@ -265,20 +265,20 @@ public final class GetMonitorGroupsGroup {
             return this;
         }
         public GetMonitorGroupsGroup build() {
-            final var o = new GetMonitorGroupsGroup();
-            o.bindUrl = bindUrl;
-            o.contactGroups = contactGroups;
-            o.dynamicTagRuleId = dynamicTagRuleId;
-            o.gmtCreate = gmtCreate;
-            o.gmtModified = gmtModified;
-            o.groupId = groupId;
-            o.id = id;
-            o.monitorGroupName = monitorGroupName;
-            o.serviceId = serviceId;
-            o.tags = tags;
-            o.templateIds = templateIds;
-            o.type = type;
-            return o;
+            final var _resultValue = new GetMonitorGroupsGroup();
+            _resultValue.bindUrl = bindUrl;
+            _resultValue.contactGroups = contactGroups;
+            _resultValue.dynamicTagRuleId = dynamicTagRuleId;
+            _resultValue.gmtCreate = gmtCreate;
+            _resultValue.gmtModified = gmtModified;
+            _resultValue.groupId = groupId;
+            _resultValue.id = id;
+            _resultValue.monitorGroupName = monitorGroupName;
+            _resultValue.serviceId = serviceId;
+            _resultValue.tags = tags;
+            _resultValue.templateIds = templateIds;
+            _resultValue.type = type;
+            return _resultValue;
         }
     }
 }

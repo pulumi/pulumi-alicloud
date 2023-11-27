@@ -359,25 +359,25 @@ public final class GetGtmInstancesInstance {
             return this;
         }
         public GetGtmInstancesInstance build() {
-            final var o = new GetGtmInstancesInstance();
-            o.alertConfigs = alertConfigs;
-            o.alertGroups = alertGroups;
-            o.cnameType = cnameType;
-            o.createTime = createTime;
-            o.expireTime = expireTime;
-            o.id = id;
-            o.instanceId = instanceId;
-            o.instanceName = instanceName;
-            o.packageEdition = packageEdition;
-            o.paymentType = paymentType;
-            o.publicCnameMode = publicCnameMode;
-            o.publicRr = publicRr;
-            o.publicUserDomainName = publicUserDomainName;
-            o.publicZoneName = publicZoneName;
-            o.resourceGroupId = resourceGroupId;
-            o.strategyMode = strategyMode;
-            o.ttl = ttl;
-            return o;
+            final var _resultValue = new GetGtmInstancesInstance();
+            _resultValue.alertConfigs = alertConfigs;
+            _resultValue.alertGroups = alertGroups;
+            _resultValue.cnameType = cnameType;
+            _resultValue.createTime = createTime;
+            _resultValue.expireTime = expireTime;
+            _resultValue.id = id;
+            _resultValue.instanceId = instanceId;
+            _resultValue.instanceName = instanceName;
+            _resultValue.packageEdition = packageEdition;
+            _resultValue.paymentType = paymentType;
+            _resultValue.publicCnameMode = publicCnameMode;
+            _resultValue.publicRr = publicRr;
+            _resultValue.publicUserDomainName = publicUserDomainName;
+            _resultValue.publicZoneName = publicZoneName;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.strategyMode = strategyMode;
+            _resultValue.ttl = ttl;
+            return _resultValue;
         }
     }
 }

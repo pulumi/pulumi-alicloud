@@ -515,34 +515,34 @@ public final class GetGatewayBlockVolumesVolume {
             return this;
         }
         public GetGatewayBlockVolumesVolume build() {
-            final var o = new GetGatewayBlockVolumesVolume();
-            o.address = address;
-            o.cacheMode = cacheMode;
-            o.chapEnabled = chapEnabled;
-            o.chapInUser = chapInUser;
-            o.chunkSize = chunkSize;
-            o.diskId = diskId;
-            o.diskType = diskType;
-            o.enabled = enabled;
-            o.gatewayBlockVolumeName = gatewayBlockVolumeName;
-            o.gatewayId = gatewayId;
-            o.id = id;
-            o.indexId = indexId;
-            o.localPath = localPath;
-            o.lunId = lunId;
-            o.ossBucketName = ossBucketName;
-            o.ossBucketSsl = ossBucketSsl;
-            o.ossEndpoint = ossEndpoint;
-            o.port = port;
-            o.protocol = protocol;
-            o.size = size;
-            o.state = state;
-            o.status = status;
-            o.target = target;
-            o.totalDownload = totalDownload;
-            o.totalUpload = totalUpload;
-            o.volumeState = volumeState;
-            return o;
+            final var _resultValue = new GetGatewayBlockVolumesVolume();
+            _resultValue.address = address;
+            _resultValue.cacheMode = cacheMode;
+            _resultValue.chapEnabled = chapEnabled;
+            _resultValue.chapInUser = chapInUser;
+            _resultValue.chunkSize = chunkSize;
+            _resultValue.diskId = diskId;
+            _resultValue.diskType = diskType;
+            _resultValue.enabled = enabled;
+            _resultValue.gatewayBlockVolumeName = gatewayBlockVolumeName;
+            _resultValue.gatewayId = gatewayId;
+            _resultValue.id = id;
+            _resultValue.indexId = indexId;
+            _resultValue.localPath = localPath;
+            _resultValue.lunId = lunId;
+            _resultValue.ossBucketName = ossBucketName;
+            _resultValue.ossBucketSsl = ossBucketSsl;
+            _resultValue.ossEndpoint = ossEndpoint;
+            _resultValue.port = port;
+            _resultValue.protocol = protocol;
+            _resultValue.size = size;
+            _resultValue.state = state;
+            _resultValue.status = status;
+            _resultValue.target = target;
+            _resultValue.totalDownload = totalDownload;
+            _resultValue.totalUpload = totalUpload;
+            _resultValue.volumeState = volumeState;
+            return _resultValue;
         }
     }
 }

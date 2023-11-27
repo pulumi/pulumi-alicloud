@@ -113,7 +113,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * The protocol version. Valid values: `Ipv4` (default), `DualStack`.
      * 
      */
-    @Export(name="addressIpVersion", type=String.class, parameters={})
+    @Export(name="addressIpVersion", refs={String.class}, tree="[0]")
     private Output<String> addressIpVersion;
 
     /**
@@ -127,7 +127,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable connection draining.
      * 
      */
-    @Export(name="connectionDrain", type=Boolean.class, parameters={})
+    @Export(name="connectionDrain", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> connectionDrain;
 
     /**
@@ -141,7 +141,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * The timeout period of connection draining. Unit: seconds. Valid values: 10 to 900.
      * 
      */
-    @Export(name="connectionDrainTimeout", type=Integer.class, parameters={})
+    @Export(name="connectionDrainTimeout", refs={Integer.class}, tree="[0]")
     private Output<Integer> connectionDrainTimeout;
 
     /**
@@ -155,7 +155,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * HealthCheck. See `health_check` below.
      * 
      */
-    @Export(name="healthCheck", type=ServerGroupHealthCheck.class, parameters={})
+    @Export(name="healthCheck", refs={ServerGroupHealthCheck.class}, tree="[0]")
     private Output<ServerGroupHealthCheck> healthCheck;
 
     /**
@@ -169,7 +169,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * Indicates whether client address retention is enabled.
      * 
      */
-    @Export(name="preserveClientIpEnabled", type=Boolean.class, parameters={})
+    @Export(name="preserveClientIpEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> preserveClientIpEnabled;
 
     /**
@@ -183,7 +183,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
      * 
      */
-    @Export(name="protocol", type=String.class, parameters={})
+    @Export(name="protocol", refs={String.class}, tree="[0]")
     private Output<String> protocol;
 
     /**
@@ -197,7 +197,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * The ID of the resource group to which the security group belongs.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
     /**
@@ -211,7 +211,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * The routing algorithm. Valid values:
      * 
      */
-    @Export(name="scheduler", type=String.class, parameters={})
+    @Export(name="scheduler", refs={String.class}, tree="[0]")
     private Output<String> scheduler;
 
     /**
@@ -225,7 +225,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      * 
      */
-    @Export(name="serverGroupName", type=String.class, parameters={})
+    @Export(name="serverGroupName", refs={String.class}, tree="[0]")
     private Output<String> serverGroupName;
 
     /**
@@ -239,7 +239,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * The type of the server group. Valid values:
      * 
      */
-    @Export(name="serverGroupType", type=String.class, parameters={})
+    @Export(name="serverGroupType", refs={String.class}, tree="[0]")
     private Output<String> serverGroupType;
 
     /**
@@ -253,7 +253,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * The status of the resource.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -267,7 +267,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -281,7 +281,7 @@ public class ServerGroup extends com.pulumi.resources.CustomResource {
      * The id of the vpc.
      * 
      */
-    @Export(name="vpcId", type=String.class, parameters={})
+    @Export(name="vpcId", refs={String.class}, tree="[0]")
     private Output<String> vpcId;
 
     /**

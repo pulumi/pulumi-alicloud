@@ -175,7 +175,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The list of actions to execute when this alarm transition into an ALARM state. Each action is specified as ess scaling rule ari.
      * 
      */
-    @Export(name="alarmActions", type=List.class, parameters={String.class})
+    @Export(name="alarmActions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> alarmActions;
 
     /**
@@ -189,7 +189,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * Defines the application group id defined by CMS which is assigned when you upload custom metric to CMS, only available for custom metirc.
      * 
      */
-    @Export(name="cloudMonitorGroupId", type=Integer.class, parameters={})
+    @Export(name="cloudMonitorGroupId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> cloudMonitorGroupId;
 
     /**
@@ -203,7 +203,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The arithmetic operation to use when comparing the specified Statistic and Threshold. The specified Statistic value is used as the first operand. Supported value: &gt;=, &lt;=, &gt;, &lt;. Defaults to &gt;=.
      * 
      */
-    @Export(name="comparisonOperator", type=String.class, parameters={})
+    @Export(name="comparisonOperator", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> comparisonOperator;
 
     /**
@@ -217,7 +217,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The description for the alarm.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -231,7 +231,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The dimension map for the alarm&#39;s associated metric. For all metrics, you can not set the dimension key as &#34;scaling_group&#34; or &#34;userId&#34;, which is set by default, the second dimension for metric, such as &#34;device&#34; for &#34;PackagesNetIn&#34;, need to be set by users. See `dimensions` below.
      * 
      */
-    @Export(name="dimensions", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="dimensions", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output<Map<String,Object>> dimensions;
 
     /**
@@ -245,7 +245,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * Whether to enable specific ess alarm. Default to true.
      * 
      */
-    @Export(name="enable", type=Boolean.class, parameters={})
+    @Export(name="enable", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enable;
 
     /**
@@ -259,7 +259,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The number of times that needs to satisfies comparison condition before transition into ALARM state. Defaults to 3.
      * 
      */
-    @Export(name="evaluationCount", type=Integer.class, parameters={})
+    @Export(name="evaluationCount", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> evaluationCount;
 
     /**
@@ -273,7 +273,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The name for the alarm&#39;s associated metric. See `dimensions` below for details.
      * 
      */
-    @Export(name="metricName", type=String.class, parameters={})
+    @Export(name="metricName", refs={String.class}, tree="[0]")
     private Output<String> metricName;
 
     /**
@@ -287,7 +287,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The type for the alarm&#39;s associated metric. Supported value: system, custom. &#34;system&#34; means the metric data is collected by Aliyun Cloud Monitor Service(CMS), &#34;custom&#34; means the metric data is upload to CMS by users. Defaults to system.
      * 
      */
-    @Export(name="metricType", type=String.class, parameters={})
+    @Export(name="metricType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> metricType;
 
     /**
@@ -301,7 +301,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The name for ess alarm.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -315,7 +315,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The period in seconds over which the specified statistic is applied. Supported value: 60, 120, 300, 900. Defaults to 300.
      * 
      */
-    @Export(name="period", type=Integer.class, parameters={})
+    @Export(name="period", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> period;
 
     /**
@@ -329,7 +329,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The scaling group associated with this alarm, the &#39;ForceNew&#39; attribute is available in 1.56.0+.
      * 
      */
-    @Export(name="scalingGroupId", type=String.class, parameters={})
+    @Export(name="scalingGroupId", refs={String.class}, tree="[0]")
     private Output<String> scalingGroupId;
 
     /**
@@ -346,7 +346,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * - INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
      * 
      */
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
@@ -363,7 +363,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The statistic to apply to the alarm&#39;s associated metric. Supported value: Average, Minimum, Maximum. Defaults to Average.
      * 
      */
-    @Export(name="statistics", type=String.class, parameters={})
+    @Export(name="statistics", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> statistics;
 
     /**
@@ -377,7 +377,7 @@ public class Alarm extends com.pulumi.resources.CustomResource {
      * The value against which the specified statistics is compared.
      * 
      */
-    @Export(name="threshold", type=String.class, parameters={})
+    @Export(name="threshold", refs={String.class}, tree="[0]")
     private Output<String> threshold;
 
     /**

@@ -185,7 +185,7 @@ public class Attachment extends com.pulumi.resources.CustomResource {
      * - The attached ECS instances supports Subscription and Pay-As-You-Go payment methods.
      * 
      */
-    @Export(name="force", type=Boolean.class, parameters={})
+    @Export(name="force", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> force;
 
     /**
@@ -209,7 +209,7 @@ public class Attachment extends com.pulumi.resources.CustomResource {
      * ID of the ECS instance to be attached to the scaling group. You can input up to 20 IDs.
      * 
      */
-    @Export(name="instanceIds", type=List.class, parameters={String.class})
+    @Export(name="instanceIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> instanceIds;
 
     /**
@@ -223,7 +223,7 @@ public class Attachment extends com.pulumi.resources.CustomResource {
      * ID of the scaling group of a scaling configuration.
      * 
      */
-    @Export(name="scalingGroupId", type=String.class, parameters={})
+    @Export(name="scalingGroupId", refs={String.class}, tree="[0]")
     private Output<String> scalingGroupId;
 
     /**

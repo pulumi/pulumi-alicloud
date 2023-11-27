@@ -65,10 +65,10 @@ public final class GetStackGroupsGroupParameter {
             return this;
         }
         public GetStackGroupsGroupParameter build() {
-            final var o = new GetStackGroupsGroupParameter();
-            o.parameterKey = parameterKey;
-            o.parameterValue = parameterValue;
-            return o;
+            final var _resultValue = new GetStackGroupsGroupParameter();
+            _resultValue.parameterKey = parameterKey;
+            _resultValue.parameterValue = parameterValue;
+            return _resultValue;
         }
     }
 }

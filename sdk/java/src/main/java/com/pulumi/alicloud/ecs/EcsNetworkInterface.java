@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * 
  * For information about ECS Network Interface and how to use it, see [What is Network Interface](https://www.alibabacloud.com/help/en/doc-detail/58504.htm).
  * 
- * &gt; **NOTE:** Available in v1.123.1+.
+ * &gt; **NOTE:** Available since v1.123.1.
  * 
  * &gt; **NOTE** Only one of `private_ip_addresses` or `secondary_private_ip_address_count` can be specified when assign private IPs.
  * 
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAcc&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
  *             .cidrBlock(&#34;192.168.0.0/24&#34;)
@@ -119,7 +119,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -130,10 +130,38 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+     * 
+     */
+    @Export(name="ipv4PrefixCount", refs={Integer.class}, tree="[0]")
+    private Output<Integer> ipv4PrefixCount;
+
+    /**
+     * @return The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
+     * 
+     */
+    public Output<Integer> ipv4PrefixCount() {
+        return this.ipv4PrefixCount;
+    }
+    /**
+     * A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+     * 
+     */
+    @Export(name="ipv4Prefixes", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> ipv4Prefixes;
+
+    /**
+     * @return A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
+     * 
+     */
+    public Output<List<String>> ipv4Prefixes() {
+        return this.ipv4Prefixes;
+    }
+    /**
      * The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
      * 
      */
-    @Export(name="ipv6AddressCount", type=Integer.class, parameters={})
+    @Export(name="ipv6AddressCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> ipv6AddressCount;
 
     /**
@@ -147,7 +175,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
      * 
      */
-    @Export(name="ipv6Addresses", type=List.class, parameters={String.class})
+    @Export(name="ipv6Addresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ipv6Addresses;
 
     /**
@@ -161,7 +189,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * The MAC address of the ENI.
      * 
      */
-    @Export(name="mac", type=String.class, parameters={})
+    @Export(name="mac", refs={String.class}, tree="[0]")
     private Output<String> mac;
 
     /**
@@ -179,7 +207,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -193,7 +221,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
      * 
      */
-    @Export(name="networkInterfaceName", type=String.class, parameters={})
+    @Export(name="networkInterfaceName", refs={String.class}, tree="[0]")
     private Output<String> networkInterfaceName;
 
     /**
@@ -207,7 +235,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
      * 
      */
-    @Export(name="primaryIpAddress", type=String.class, parameters={})
+    @Export(name="primaryIpAddress", refs={String.class}, tree="[0]")
     private Output<String> primaryIpAddress;
 
     /**
@@ -225,7 +253,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead */
-    @Export(name="privateIp", type=String.class, parameters={})
+    @Export(name="privateIp", refs={String.class}, tree="[0]")
     private Output<String> privateIp;
 
     /**
@@ -239,7 +267,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * Specifies secondary private IP address N of the ENI. This IP address must be an available IP address within the CIDR block of the VSwitch to which the ENI belongs.
      * 
      */
-    @Export(name="privateIpAddresses", type=List.class, parameters={String.class})
+    @Export(name="privateIpAddresses", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> privateIpAddresses;
 
     /**
@@ -257,7 +285,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'private_ips' has been deprecated from provider version 1.123.1. New field 'private_ip_addresses' instead */
-    @Export(name="privateIps", type=List.class, parameters={String.class})
+    @Export(name="privateIps", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> privateIps;
 
     /**
@@ -275,7 +303,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'private_ips_count' has been deprecated from provider version 1.123.1. New field 'secondary_private_ip_address_count' instead */
-    @Export(name="privateIpsCount", type=Integer.class, parameters={})
+    @Export(name="privateIpsCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> privateIpsCount;
 
     /**
@@ -289,7 +317,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * The queue number of the ENI.
      * 
      */
-    @Export(name="queueNumber", type=Integer.class, parameters={})
+    @Export(name="queueNumber", refs={Integer.class}, tree="[0]")
     private Output<Integer> queueNumber;
 
     /**
@@ -303,7 +331,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * The resource group id.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -317,7 +345,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * The number of private IP addresses that can be automatically created by ECS.
      * 
      */
-    @Export(name="secondaryPrivateIpAddressCount", type=Integer.class, parameters={})
+    @Export(name="secondaryPrivateIpAddressCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> secondaryPrivateIpAddressCount;
 
     /**
@@ -331,7 +359,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * The ID of security group N. The security groups and the ENI must belong to the same VPC. The valid values of N are based on the maximum number of security groups to which an ENI can be added.
      * 
      */
-    @Export(name="securityGroupIds", type=List.class, parameters={String.class})
+    @Export(name="securityGroupIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroupIds;
 
     /**
@@ -349,7 +377,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'security_groups' has been deprecated from provider version 1.123.1. New field 'security_group_ids' instead */
-    @Export(name="securityGroups", type=List.class, parameters={String.class})
+    @Export(name="securityGroups", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> securityGroups;
 
     /**
@@ -363,7 +391,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * The status of the ENI.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -377,7 +405,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * A mapping of tags to assign to the resource.
      * 
      */
-    @Export(name="tags", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
     /**
@@ -391,7 +419,7 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      * The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
      * 
      */
-    @Export(name="vswitchId", type=String.class, parameters={})
+    @Export(name="vswitchId", refs={String.class}, tree="[0]")
     private Output<String> vswitchId;
 
     /**

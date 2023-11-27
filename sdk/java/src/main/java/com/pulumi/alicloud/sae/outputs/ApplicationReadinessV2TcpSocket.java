@@ -48,9 +48,9 @@ public final class ApplicationReadinessV2TcpSocket {
             return this;
         }
         public ApplicationReadinessV2TcpSocket build() {
-            final var o = new ApplicationReadinessV2TcpSocket();
-            o.port = port;
-            return o;
+            final var _resultValue = new ApplicationReadinessV2TcpSocket();
+            _resultValue.port = port;
+            return _resultValue;
         }
     }
 }

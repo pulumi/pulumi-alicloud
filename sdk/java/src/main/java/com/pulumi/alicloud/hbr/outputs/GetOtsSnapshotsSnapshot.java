@@ -426,29 +426,29 @@ public final class GetOtsSnapshotsSnapshot {
             return this;
         }
         public GetOtsSnapshotsSnapshot build() {
-            final var o = new GetOtsSnapshotsSnapshot();
-            o.actualBytes = actualBytes;
-            o.backupType = backupType;
-            o.bytesTotal = bytesTotal;
-            o.completeTime = completeTime;
-            o.createTime = createTime;
-            o.createdTime = createdTime;
-            o.id = id;
-            o.instanceName = instanceName;
-            o.jobId = jobId;
-            o.parentSnapshotHash = parentSnapshotHash;
-            o.rangeEnd = rangeEnd;
-            o.rangeStart = rangeStart;
-            o.retention = retention;
-            o.snapshotHash = snapshotHash;
-            o.snapshotId = snapshotId;
-            o.sourceType = sourceType;
-            o.startTime = startTime;
-            o.status = status;
-            o.tableName = tableName;
-            o.updatedTime = updatedTime;
-            o.vaultId = vaultId;
-            return o;
+            final var _resultValue = new GetOtsSnapshotsSnapshot();
+            _resultValue.actualBytes = actualBytes;
+            _resultValue.backupType = backupType;
+            _resultValue.bytesTotal = bytesTotal;
+            _resultValue.completeTime = completeTime;
+            _resultValue.createTime = createTime;
+            _resultValue.createdTime = createdTime;
+            _resultValue.id = id;
+            _resultValue.instanceName = instanceName;
+            _resultValue.jobId = jobId;
+            _resultValue.parentSnapshotHash = parentSnapshotHash;
+            _resultValue.rangeEnd = rangeEnd;
+            _resultValue.rangeStart = rangeStart;
+            _resultValue.retention = retention;
+            _resultValue.snapshotHash = snapshotHash;
+            _resultValue.snapshotId = snapshotId;
+            _resultValue.sourceType = sourceType;
+            _resultValue.startTime = startTime;
+            _resultValue.status = status;
+            _resultValue.tableName = tableName;
+            _resultValue.updatedTime = updatedTime;
+            _resultValue.vaultId = vaultId;
+            return _resultValue;
         }
     }
 }

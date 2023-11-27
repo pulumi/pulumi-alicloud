@@ -69,10 +69,10 @@ public final class GetContainerGroupsGroupHostAlias {
             return this;
         }
         public GetContainerGroupsGroupHostAlias build() {
-            final var o = new GetContainerGroupsGroupHostAlias();
-            o.hostnames = hostnames;
-            o.ip = ip;
-            return o;
+            final var _resultValue = new GetContainerGroupsGroupHostAlias();
+            _resultValue.hostnames = hostnames;
+            _resultValue.ip = ip;
+            return _resultValue;
         }
     }
 }

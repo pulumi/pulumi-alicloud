@@ -106,7 +106,7 @@ public class Fileset extends com.pulumi.resources.CustomResource {
      * The description of the Fileset. It must be `2` to `128` characters in length and must start with a letter or Chinese, but cannot start with `https://` or `https://`.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -120,7 +120,7 @@ public class Fileset extends com.pulumi.resources.CustomResource {
      * The dry run.
      * 
      */
-    @Export(name="dryRun", type=Boolean.class, parameters={})
+    @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
@@ -134,7 +134,7 @@ public class Fileset extends com.pulumi.resources.CustomResource {
      * The ID of the file system.
      * 
      */
-    @Export(name="fileSystemId", type=String.class, parameters={})
+    @Export(name="fileSystemId", refs={String.class}, tree="[0]")
     private Output<String> fileSystemId;
 
     /**
@@ -148,7 +148,7 @@ public class Fileset extends com.pulumi.resources.CustomResource {
      * The path of the fileset.
      * 
      */
-    @Export(name="fileSystemPath", type=String.class, parameters={})
+    @Export(name="fileSystemPath", refs={String.class}, tree="[0]")
     private Output<String> fileSystemPath;
 
     /**
@@ -162,7 +162,7 @@ public class Fileset extends com.pulumi.resources.CustomResource {
      * The first ID of the resource.
      * 
      */
-    @Export(name="filesetId", type=String.class, parameters={})
+    @Export(name="filesetId", refs={String.class}, tree="[0]")
     private Output<String> filesetId;
 
     /**
@@ -176,7 +176,7 @@ public class Fileset extends com.pulumi.resources.CustomResource {
      * The status of the fileset.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

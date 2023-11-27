@@ -126,7 +126,7 @@ public class AccountPrivilege extends com.pulumi.resources.CustomResource {
      * A specified account name.
      * 
      */
-    @Export(name="accountName", type=String.class, parameters={})
+    @Export(name="accountName", refs={String.class}, tree="[0]")
     private Output<String> accountName;
 
     /**
@@ -140,7 +140,7 @@ public class AccountPrivilege extends com.pulumi.resources.CustomResource {
      * List of specified database name.
      * 
      */
-    @Export(name="dbNames", type=List.class, parameters={String.class})
+    @Export(name="dbNames", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> dbNames;
 
     /**
@@ -154,7 +154,7 @@ public class AccountPrivilege extends com.pulumi.resources.CustomResource {
      * The Id of instance in which account belongs.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -174,7 +174,7 @@ public class AccountPrivilege extends com.pulumi.resources.CustomResource {
      *   Default to &#34;ReadOnly&#34;.
      * 
      */
-    @Export(name="privilege", type=String.class, parameters={})
+    @Export(name="privilege", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privilege;
 
     /**

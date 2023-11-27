@@ -42,9 +42,9 @@ public final class GetForwardingRulesForwardingRuleRuleConditionHostConfig {
             return values(List.of(values));
         }
         public GetForwardingRulesForwardingRuleRuleConditionHostConfig build() {
-            final var o = new GetForwardingRulesForwardingRuleRuleConditionHostConfig();
-            o.values = values;
-            return o;
+            final var _resultValue = new GetForwardingRulesForwardingRuleRuleConditionHostConfig();
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

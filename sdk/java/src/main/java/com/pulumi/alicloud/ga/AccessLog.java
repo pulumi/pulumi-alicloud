@@ -151,7 +151,7 @@ public class AccessLog extends com.pulumi.resources.CustomResource {
      * The ID of the global acceleration instance.
      * 
      */
-    @Export(name="acceleratorId", type=String.class, parameters={})
+    @Export(name="acceleratorId", refs={String.class}, tree="[0]")
     private Output<String> acceleratorId;
 
     /**
@@ -165,7 +165,7 @@ public class AccessLog extends com.pulumi.resources.CustomResource {
      * The ID of the endpoint group instance.
      * 
      */
-    @Export(name="endpointGroupId", type=String.class, parameters={})
+    @Export(name="endpointGroupId", refs={String.class}, tree="[0]")
     private Output<String> endpointGroupId;
 
     /**
@@ -179,7 +179,7 @@ public class AccessLog extends com.pulumi.resources.CustomResource {
      * The ID of the listener.
      * 
      */
-    @Export(name="listenerId", type=String.class, parameters={})
+    @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     /**
@@ -193,7 +193,7 @@ public class AccessLog extends com.pulumi.resources.CustomResource {
      * The name of the Log Store.
      * 
      */
-    @Export(name="slsLogStoreName", type=String.class, parameters={})
+    @Export(name="slsLogStoreName", refs={String.class}, tree="[0]")
     private Output<String> slsLogStoreName;
 
     /**
@@ -207,7 +207,7 @@ public class AccessLog extends com.pulumi.resources.CustomResource {
      * The name of the Log Service project.
      * 
      */
-    @Export(name="slsProjectName", type=String.class, parameters={})
+    @Export(name="slsProjectName", refs={String.class}, tree="[0]")
     private Output<String> slsProjectName;
 
     /**
@@ -221,7 +221,7 @@ public class AccessLog extends com.pulumi.resources.CustomResource {
      * The region ID of the Log Service project.
      * 
      */
-    @Export(name="slsRegionId", type=String.class, parameters={})
+    @Export(name="slsRegionId", refs={String.class}, tree="[0]")
     private Output<String> slsRegionId;
 
     /**
@@ -235,7 +235,7 @@ public class AccessLog extends com.pulumi.resources.CustomResource {
      * Whether access log is enabled.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

@@ -199,17 +199,17 @@ public final class GetEndUserProductsEndUserProduct {
             return this;
         }
         public GetEndUserProductsEndUserProduct build() {
-            final var o = new GetEndUserProductsEndUserProduct();
-            o.createTime = createTime;
-            o.description = description;
-            o.hasDefaultLaunchOption = hasDefaultLaunchOption;
-            o.id = id;
-            o.productArn = productArn;
-            o.productId = productId;
-            o.productName = productName;
-            o.productType = productType;
-            o.providerName = providerName;
-            return o;
+            final var _resultValue = new GetEndUserProductsEndUserProduct();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.hasDefaultLaunchOption = hasDefaultLaunchOption;
+            _resultValue.id = id;
+            _resultValue.productArn = productArn;
+            _resultValue.productId = productId;
+            _resultValue.productName = productName;
+            _resultValue.productType = productType;
+            _resultValue.providerName = providerName;
+            return _resultValue;
         }
     }
 }

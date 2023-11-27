@@ -135,7 +135,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The configurations of the BGP routing protocol. See the following `Block bgp_config`.
      * 
      */
-    @Export(name="bgpConfig", type=ConnectionBgpConfig.class, parameters={})
+    @Export(name="bgpConfig", refs={ConnectionBgpConfig.class}, tree="[0]")
     private Output<ConnectionBgpConfig> bgpConfig;
 
     /**
@@ -149,7 +149,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The ID of the customer gateway.
      * 
      */
-    @Export(name="customerGatewayId", type=String.class, parameters={})
+    @Export(name="customerGatewayId", refs={String.class}, tree="[0]")
     private Output<String> customerGatewayId;
 
     /**
@@ -163,7 +163,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Whether to delete a successfully negotiated IPsec tunnel and initiate a negotiation again. Valid value:true,false.
      * 
      */
-    @Export(name="effectImmediately", type=Boolean.class, parameters={})
+    @Export(name="effectImmediately", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> effectImmediately;
 
     /**
@@ -177,7 +177,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable the dead peer detection (DPD) feature. Valid values: `true`(default), `false`.
      * 
      */
-    @Export(name="enableDpd", type=Boolean.class, parameters={})
+    @Export(name="enableDpd", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableDpd;
 
     /**
@@ -191,7 +191,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable NAT traversal. Valid values: `true`(default), `false`.
      * 
      */
-    @Export(name="enableNatTraversal", type=Boolean.class, parameters={})
+    @Export(name="enableNatTraversal", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableNatTraversal;
 
     /**
@@ -205,7 +205,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The health check configurations. See the following `Block health_check_config`.
      * 
      */
-    @Export(name="healthCheckConfig", type=ConnectionHealthCheckConfig.class, parameters={})
+    @Export(name="healthCheckConfig", refs={ConnectionHealthCheckConfig.class}, tree="[0]")
     private Output<ConnectionHealthCheckConfig> healthCheckConfig;
 
     /**
@@ -219,7 +219,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The configurations of phase-one negotiation. See the following `Block ike_config`.
      * 
      */
-    @Export(name="ikeConfig", type=ConnectionIkeConfig.class, parameters={})
+    @Export(name="ikeConfig", refs={ConnectionIkeConfig.class}, tree="[0]")
     private Output<ConnectionIkeConfig> ikeConfig;
 
     /**
@@ -233,7 +233,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The configurations of phase-two negotiation. See the following `Block ipsec_config`.
      * 
      */
-    @Export(name="ipsecConfig", type=ConnectionIpsecConfig.class, parameters={})
+    @Export(name="ipsecConfig", refs={ConnectionIpsecConfig.class}, tree="[0]")
     private Output<ConnectionIpsecConfig> ipsecConfig;
 
     /**
@@ -247,7 +247,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The CIDR block of the VPC to be connected with the local data center. This parameter is used for phase-two negotiation.
      * 
      */
-    @Export(name="localSubnets", type=List.class, parameters={String.class})
+    @Export(name="localSubnets", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> localSubnets;
 
     /**
@@ -261,7 +261,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The name of the IPsec connection.
      * 
      */
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
@@ -275,7 +275,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The CIDR block of the local data center. This parameter is used for phase-two negotiation.
      * 
      */
-    @Export(name="remoteSubnets", type=List.class, parameters={String.class})
+    @Export(name="remoteSubnets", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> remoteSubnets;
 
     /**
@@ -289,7 +289,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The status of VPN connection.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -303,7 +303,7 @@ public class Connection extends com.pulumi.resources.CustomResource {
      * The ID of the VPN gateway.
      * 
      */
-    @Export(name="vpnGatewayId", type=String.class, parameters={})
+    @Export(name="vpnGatewayId", refs={String.class}, tree="[0]")
     private Output<String> vpnGatewayId;
 
     /**

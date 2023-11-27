@@ -160,15 +160,15 @@ public final class GetInterRegionTrafficQosPoliciesPolicy {
             return this;
         }
         public GetInterRegionTrafficQosPoliciesPolicy build() {
-            final var o = new GetInterRegionTrafficQosPoliciesPolicy();
-            o.id = id;
-            o.interRegionTrafficQosPolicyDescription = interRegionTrafficQosPolicyDescription;
-            o.interRegionTrafficQosPolicyId = interRegionTrafficQosPolicyId;
-            o.interRegionTrafficQosPolicyName = interRegionTrafficQosPolicyName;
-            o.status = status;
-            o.transitRouterAttachmentId = transitRouterAttachmentId;
-            o.transitRouterId = transitRouterId;
-            return o;
+            final var _resultValue = new GetInterRegionTrafficQosPoliciesPolicy();
+            _resultValue.id = id;
+            _resultValue.interRegionTrafficQosPolicyDescription = interRegionTrafficQosPolicyDescription;
+            _resultValue.interRegionTrafficQosPolicyId = interRegionTrafficQosPolicyId;
+            _resultValue.interRegionTrafficQosPolicyName = interRegionTrafficQosPolicyName;
+            _resultValue.status = status;
+            _resultValue.transitRouterAttachmentId = transitRouterAttachmentId;
+            _resultValue.transitRouterId = transitRouterId;
+            return _resultValue;
         }
     }
 }

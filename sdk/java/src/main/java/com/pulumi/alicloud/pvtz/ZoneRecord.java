@@ -70,7 +70,7 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      * User language.
      * 
      */
-    @Export(name="lang", type=String.class, parameters={})
+    @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
@@ -84,7 +84,7 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      * The priority of the Private Zone Record. At present, only can &#34;MX&#34; record support it. Valid values: [1-99]. Default to 1.
      * 
      */
-    @Export(name="priority", type=Integer.class, parameters={})
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> priority;
 
     /**
@@ -98,7 +98,7 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      * The Private Zone Record ID.
      * 
      */
-    @Export(name="recordId", type=String.class, parameters={})
+    @Export(name="recordId", refs={String.class}, tree="[0]")
     private Output<String> recordId;
 
     /**
@@ -112,7 +112,7 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      * The remark of the Private Zone Record.
      * 
      */
-    @Export(name="remark", type=String.class, parameters={})
+    @Export(name="remark", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> remark;
 
     /**
@@ -130,7 +130,7 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Field 'resource_record' has been deprecated from version 1.109.0. Use 'rr' instead. */
-    @Export(name="resourceRecord", type=String.class, parameters={})
+    @Export(name="resourceRecord", refs={String.class}, tree="[0]")
     private Output<String> resourceRecord;
 
     /**
@@ -144,7 +144,7 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      * The rr of the Private Zone Record.
      * 
      */
-    @Export(name="rr", type=String.class, parameters={})
+    @Export(name="rr", refs={String.class}, tree="[0]")
     private Output<String> rr;
 
     /**
@@ -160,7 +160,7 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      * - DISABLE: pause parsing.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> status;
 
     /**
@@ -176,7 +176,7 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      * The ttl of the Private Zone Record. Default to `60`.
      * 
      */
-    @Export(name="ttl", type=Integer.class, parameters={})
+    @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ttl;
 
     /**
@@ -190,7 +190,7 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      * The type of the Private Zone Record. Valid values: A, CNAME, TXT, MX, PTR, SRV.
      * 
      */
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
@@ -200,7 +200,7 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
     public Output<String> type() {
         return this.type;
     }
-    @Export(name="userClientIp", type=String.class, parameters={})
+    @Export(name="userClientIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userClientIp;
 
     public Output<Optional<String>> userClientIp() {
@@ -210,7 +210,7 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      * The value of the Private Zone Record.
      * 
      */
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**
@@ -224,7 +224,7 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      * The name of the Private Zone Record.
      * 
      */
-    @Export(name="zoneId", type=String.class, parameters={})
+    @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**

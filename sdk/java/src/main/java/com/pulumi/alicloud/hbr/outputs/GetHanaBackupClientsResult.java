@@ -196,18 +196,18 @@ public final class GetHanaBackupClientsResult {
             return this;
         }
         public GetHanaBackupClientsResult build() {
-            final var o = new GetHanaBackupClientsResult();
-            o.clientId = clientId;
-            o.clusterId = clusterId;
-            o.hanaBackupClients = hanaBackupClients;
-            o.id = id;
-            o.ids = ids;
-            o.outputFile = outputFile;
-            o.pageNumber = pageNumber;
-            o.pageSize = pageSize;
-            o.status = status;
-            o.vaultId = vaultId;
-            return o;
+            final var _resultValue = new GetHanaBackupClientsResult();
+            _resultValue.clientId = clientId;
+            _resultValue.clusterId = clusterId;
+            _resultValue.hanaBackupClients = hanaBackupClients;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.outputFile = outputFile;
+            _resultValue.pageNumber = pageNumber;
+            _resultValue.pageSize = pageSize;
+            _resultValue.status = status;
+            _resultValue.vaultId = vaultId;
+            return _resultValue;
         }
     }
 }

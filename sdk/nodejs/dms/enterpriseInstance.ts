@@ -77,7 +77,7 @@ import * as utilities from "../utilities";
  * });
  * const defaultEnterpriseInstance = new alicloud.dms.EnterpriseInstance("defaultEnterpriseInstance", {
  *     tid: defaultUserTenants.then(defaultUserTenants => defaultUserTenants.ids?.[0]),
- *     instanceType: "MySQL",
+ *     instanceType: "mysql",
  *     instanceSource: "RDS",
  *     networkType: "VPC",
  *     envType: "dev",
@@ -87,7 +87,8 @@ import * as utilities from "../utilities";
  *     databasePassword: defaultAccount.accountPassword,
  *     instanceName: name,
  *     dbaUid: current.then(current => current.id),
- *     safeRule: "自由操作",
+ *     safeRule: "904496",
+ *     useDsql: 1,
  *     queryTimeout: 60,
  *     exportTimeout: 600,
  *     ecsRegion: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),

@@ -16,9 +16,11 @@ import javax.annotation.Nullable;
 /**
  * Provides a Cloudauth Face Config resource.
  * 
- * For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://www.alibabacloud.com/help/en/document_detail/99173.html).
+ * For information about Cloudauth Face Config and how to use it, see [What is Face Config](https://help.aliyun.com/zh/id-verification/cloudauth/product-overview/end-of-integration-announcement-on-id-verification).
  * 
  * &gt; **NOTE:** Available since v1.137.0.
+ * 
+ * &gt; **NOTE:** In order to provide you with more perfect product capabilities, the real person certification service has stopped access, it is recommended that you use the upgraded version of the [real person certification financial real person certification service](https://help.aliyun.com/zh/id-verification/product-overview/what-is-id-verification-for-financial-services). Users that have access to real person authentication are not affected.
  * 
  * ## Import
  * 
@@ -35,7 +37,7 @@ public class FaceConfig extends com.pulumi.resources.CustomResource {
      * Scene name.
      * 
      */
-    @Export(name="bizName", type=String.class, parameters={})
+    @Export(name="bizName", refs={String.class}, tree="[0]")
     private Output<String> bizName;
 
     /**
@@ -49,7 +51,7 @@ public class FaceConfig extends com.pulumi.resources.CustomResource {
      * Scene type. **NOTE:** The biz_type cannot exceed 32 characters and can only use English letters, numbers and dashes (-).
      * 
      */
-    @Export(name="bizType", type=String.class, parameters={})
+    @Export(name="bizType", refs={String.class}, tree="[0]")
     private Output<String> bizType;
 
     /**
@@ -63,7 +65,7 @@ public class FaceConfig extends com.pulumi.resources.CustomResource {
      * Last Modified Date.
      * 
      */
-    @Export(name="gmtModified", type=String.class, parameters={})
+    @Export(name="gmtModified", refs={String.class}, tree="[0]")
     private Output<String> gmtModified;
 
     /**

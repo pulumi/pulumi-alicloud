@@ -41,7 +41,7 @@ public class ResourceDirectory extends com.pulumi.resources.CustomResource {
      * The ID of the master account.
      * 
      */
-    @Export(name="masterAccountId", type=String.class, parameters={})
+    @Export(name="masterAccountId", refs={String.class}, tree="[0]")
     private Output<String> masterAccountId;
 
     /**
@@ -55,7 +55,7 @@ public class ResourceDirectory extends com.pulumi.resources.CustomResource {
      * The name of the master account.
      * 
      */
-    @Export(name="masterAccountName", type=String.class, parameters={})
+    @Export(name="masterAccountName", refs={String.class}, tree="[0]")
     private Output<String> masterAccountName;
 
     /**
@@ -69,7 +69,7 @@ public class ResourceDirectory extends com.pulumi.resources.CustomResource {
      * Specifies whether to enable the member deletion feature. Valid values:`Enabled` and `Disabled`.
      * 
      */
-    @Export(name="memberDeletionStatus", type=String.class, parameters={})
+    @Export(name="memberDeletionStatus", refs={String.class}, tree="[0]")
     private Output<String> memberDeletionStatus;
 
     /**
@@ -83,7 +83,7 @@ public class ResourceDirectory extends com.pulumi.resources.CustomResource {
      * The ID of the root folder.
      * 
      */
-    @Export(name="rootFolderId", type=String.class, parameters={})
+    @Export(name="rootFolderId", refs={String.class}, tree="[0]")
     private Output<String> rootFolderId;
 
     /**
@@ -97,7 +97,7 @@ public class ResourceDirectory extends com.pulumi.resources.CustomResource {
      * The status of control policy. Valid values:`Enabled` and `Disabled`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

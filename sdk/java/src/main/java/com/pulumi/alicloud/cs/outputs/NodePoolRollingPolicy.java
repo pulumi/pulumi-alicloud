@@ -48,9 +48,9 @@ public final class NodePoolRollingPolicy {
             return this;
         }
         public NodePoolRollingPolicy build() {
-            final var o = new NodePoolRollingPolicy();
-            o.maxParallelism = maxParallelism;
-            return o;
+            final var _resultValue = new NodePoolRollingPolicy();
+            _resultValue.maxParallelism = maxParallelism;
+            return _resultValue;
         }
     }
 }

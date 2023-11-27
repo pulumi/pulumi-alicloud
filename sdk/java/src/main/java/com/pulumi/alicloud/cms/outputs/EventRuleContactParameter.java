@@ -86,11 +86,11 @@ public final class EventRuleContactParameter {
             return this;
         }
         public EventRuleContactParameter build() {
-            final var o = new EventRuleContactParameter();
-            o.contactGroupName = contactGroupName;
-            o.contactParametersId = contactParametersId;
-            o.level = level;
-            return o;
+            final var _resultValue = new EventRuleContactParameter();
+            _resultValue.contactGroupName = contactGroupName;
+            _resultValue.contactParametersId = contactParametersId;
+            _resultValue.level = level;
+            return _resultValue;
         }
     }
 }

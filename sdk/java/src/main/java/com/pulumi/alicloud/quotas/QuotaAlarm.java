@@ -82,7 +82,7 @@ public class QuotaAlarm extends com.pulumi.resources.CustomResource {
      * The creation time of the resource.
      * 
      */
-    @Export(name="createTime", type=String.class, parameters={})
+    @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
@@ -96,7 +96,7 @@ public class QuotaAlarm extends com.pulumi.resources.CustomResource {
      * The Product Code.
      * 
      */
-    @Export(name="productCode", type=String.class, parameters={})
+    @Export(name="productCode", refs={String.class}, tree="[0]")
     private Output<String> productCode;
 
     /**
@@ -110,7 +110,7 @@ public class QuotaAlarm extends com.pulumi.resources.CustomResource {
      * The Quota Action Code.
      * 
      */
-    @Export(name="quotaActionCode", type=String.class, parameters={})
+    @Export(name="quotaActionCode", refs={String.class}, tree="[0]")
     private Output<String> quotaActionCode;
 
     /**
@@ -124,7 +124,7 @@ public class QuotaAlarm extends com.pulumi.resources.CustomResource {
      * The name of Quota Alarm.
      * 
      */
-    @Export(name="quotaAlarmName", type=String.class, parameters={})
+    @Export(name="quotaAlarmName", refs={String.class}, tree="[0]")
     private Output<String> quotaAlarmName;
 
     /**
@@ -138,7 +138,7 @@ public class QuotaAlarm extends com.pulumi.resources.CustomResource {
      * The Quota Dimensions. See `quota_dimensions` below.
      * 
      */
-    @Export(name="quotaDimensions", type=List.class, parameters={QuotaAlarmQuotaDimension.class})
+    @Export(name="quotaDimensions", refs={List.class,QuotaAlarmQuotaDimension.class}, tree="[0,1]")
     private Output</* @Nullable */ List<QuotaAlarmQuotaDimension>> quotaDimensions;
 
     /**
@@ -152,7 +152,7 @@ public class QuotaAlarm extends com.pulumi.resources.CustomResource {
      * The threshold of Quota Alarm.
      * 
      */
-    @Export(name="threshold", type=Double.class, parameters={})
+    @Export(name="threshold", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> threshold;
 
     /**
@@ -166,7 +166,7 @@ public class QuotaAlarm extends com.pulumi.resources.CustomResource {
      * The threshold percent of Quota Alarm.
      * 
      */
-    @Export(name="thresholdPercent", type=Double.class, parameters={})
+    @Export(name="thresholdPercent", refs={Double.class}, tree="[0]")
     private Output</* @Nullable */ Double> thresholdPercent;
 
     /**
@@ -182,7 +182,7 @@ public class QuotaAlarm extends com.pulumi.resources.CustomResource {
      * - usable: alarm for the remaining available quota.
      * 
      */
-    @Export(name="thresholdType", type=String.class, parameters={})
+    @Export(name="thresholdType", refs={String.class}, tree="[0]")
     private Output<String> thresholdType;
 
     /**
@@ -198,7 +198,7 @@ public class QuotaAlarm extends com.pulumi.resources.CustomResource {
      * The WebHook of Quota Alarm.
      * 
      */
-    @Export(name="webHook", type=String.class, parameters={})
+    @Export(name="webHook", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> webHook;
 
     /**

@@ -106,12 +106,12 @@ public final class StoreShard {
             return this;
         }
         public StoreShard build() {
-            final var o = new StoreShard();
-            o.beginKey = beginKey;
-            o.endKey = endKey;
-            o.id = id;
-            o.status = status;
-            return o;
+            final var _resultValue = new StoreShard();
+            _resultValue.beginKey = beginKey;
+            _resultValue.endKey = endKey;
+            _resultValue.id = id;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

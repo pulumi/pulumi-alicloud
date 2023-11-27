@@ -88,7 +88,7 @@ public class SchedulerRule extends com.pulumi.resources.CustomResource {
      * The cname is the traffic scheduler corresponding to rules.
      * 
      */
-    @Export(name="cname", type=String.class, parameters={})
+    @Export(name="cname", refs={String.class}, tree="[0]")
     private Output<String> cname;
 
     /**
@@ -102,7 +102,7 @@ public class SchedulerRule extends com.pulumi.resources.CustomResource {
      * The scheduling rule for the Global Accelerator instance that interacts with Anti-DDoS Pro or Anti-DDoS Premium.
      * 
      */
-    @Export(name="param", type=String.class, parameters={})
+    @Export(name="param", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> param;
 
     /**
@@ -116,7 +116,7 @@ public class SchedulerRule extends com.pulumi.resources.CustomResource {
      * The ID of the resource group to which the anti-DDoS pro instance belongs in resource management. By default, no value is specified, indicating that the domains in the default resource group are listed.
      * 
      */
-    @Export(name="resourceGroupId", type=String.class, parameters={})
+    @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> resourceGroupId;
 
     /**
@@ -130,7 +130,7 @@ public class SchedulerRule extends com.pulumi.resources.CustomResource {
      * The name of the rule.
      * 
      */
-    @Export(name="ruleName", type=String.class, parameters={})
+    @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output<String> ruleName;
 
     /**
@@ -147,7 +147,7 @@ public class SchedulerRule extends com.pulumi.resources.CustomResource {
      * `6`: Cloud product interaction.
      * 
      */
-    @Export(name="ruleType", type=Integer.class, parameters={})
+    @Export(name="ruleType", refs={Integer.class}, tree="[0]")
     private Output<Integer> ruleType;
 
     /**
@@ -164,7 +164,7 @@ public class SchedulerRule extends com.pulumi.resources.CustomResource {
      * The information about the scheduling rules. See `rules` below.
      * 
      */
-    @Export(name="rules", type=List.class, parameters={SchedulerRuleRule.class})
+    @Export(name="rules", refs={List.class,SchedulerRuleRule.class}, tree="[0,1]")
     private Output<List<SchedulerRuleRule>> rules;
 
     /**

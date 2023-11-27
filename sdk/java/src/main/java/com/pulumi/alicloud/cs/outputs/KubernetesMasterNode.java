@@ -12,38 +12,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class KubernetesMasterNode {
     /**
-     * @return The id of a node.
+     * @return ID of the node.
      * 
      */
     private @Nullable String id;
     /**
-     * @return The name of a node.
+     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
      * 
      */
     private @Nullable String name;
     /**
-     * @return The private ip of a node.
+     * @return The private IP address of node.
      * 
      */
     private @Nullable String privateIp;
 
     private KubernetesMasterNode() {}
     /**
-     * @return The id of a node.
+     * @return ID of the node.
      * 
      */
     public Optional<String> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return The name of a node.
+     * @return The kubernetes cluster&#39;s name. It is unique in one Alicloud account.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
     /**
-     * @return The private ip of a node.
+     * @return The private IP address of node.
      * 
      */
     public Optional<String> privateIp() {
@@ -86,11 +86,11 @@ public final class KubernetesMasterNode {
             return this;
         }
         public KubernetesMasterNode build() {
-            final var o = new KubernetesMasterNode();
-            o.id = id;
-            o.name = name;
-            o.privateIp = privateIp;
-            return o;
+            final var _resultValue = new KubernetesMasterNode();
+            _resultValue.id = id;
+            _resultValue.name = name;
+            _resultValue.privateIp = privateIp;
+            return _resultValue;
         }
     }
 }

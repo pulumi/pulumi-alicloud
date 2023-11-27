@@ -160,15 +160,15 @@ public final class GetGroupsGroup {
             return this;
         }
         public GetGroupsGroup build() {
-            final var o = new GetGroupsGroup();
-            o.createTime = createTime;
-            o.description = description;
-            o.directoryId = directoryId;
-            o.groupId = groupId;
-            o.groupName = groupName;
-            o.id = id;
-            o.provisionType = provisionType;
-            return o;
+            final var _resultValue = new GetGroupsGroup();
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.directoryId = directoryId;
+            _resultValue.groupId = groupId;
+            _resultValue.groupName = groupName;
+            _resultValue.id = id;
+            _resultValue.provisionType = provisionType;
+            return _resultValue;
         }
     }
 }

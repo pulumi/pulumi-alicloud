@@ -86,11 +86,11 @@ public final class InstanceUiProxyConnAddr {
             return this;
         }
         public InstanceUiProxyConnAddr build() {
-            final var o = new InstanceUiProxyConnAddr();
-            o.connAddr = connAddr;
-            o.connAddrPort = connAddrPort;
-            o.netType = netType;
-            return o;
+            final var _resultValue = new InstanceUiProxyConnAddr();
+            _resultValue.connAddr = connAddr;
+            _resultValue.connAddrPort = connAddrPort;
+            _resultValue.netType = netType;
+            return _resultValue;
         }
     }
 }

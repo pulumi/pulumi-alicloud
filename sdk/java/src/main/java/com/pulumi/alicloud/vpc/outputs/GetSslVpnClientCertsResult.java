@@ -157,15 +157,15 @@ public final class GetSslVpnClientCertsResult {
             return this;
         }
         public GetSslVpnClientCertsResult build() {
-            final var o = new GetSslVpnClientCertsResult();
-            o.certs = certs;
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.sslVpnServerId = sslVpnServerId;
-            return o;
+            final var _resultValue = new GetSslVpnClientCertsResult();
+            _resultValue.certs = certs;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.sslVpnServerId = sslVpnServerId;
+            return _resultValue;
         }
     }
 }

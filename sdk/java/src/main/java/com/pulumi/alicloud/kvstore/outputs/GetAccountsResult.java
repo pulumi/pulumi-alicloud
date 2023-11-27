@@ -147,17 +147,17 @@ public final class GetAccountsResult {
             return this;
         }
         public GetAccountsResult build() {
-            final var o = new GetAccountsResult();
-            o.accountName = accountName;
-            o.accounts = accounts;
-            o.id = id;
-            o.ids = ids;
-            o.instanceId = instanceId;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetAccountsResult();
+            _resultValue.accountName = accountName;
+            _resultValue.accounts = accounts;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceId = instanceId;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

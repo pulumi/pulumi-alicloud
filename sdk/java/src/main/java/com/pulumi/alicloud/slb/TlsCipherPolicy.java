@@ -72,7 +72,7 @@ public class TlsCipherPolicy extends com.pulumi.resources.CustomResource {
      * The encryption algorithms supported. It depends on the value of `tls_versions`.
      * 
      */
-    @Export(name="ciphers", type=List.class, parameters={String.class})
+    @Export(name="ciphers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> ciphers;
 
     /**
@@ -86,7 +86,7 @@ public class TlsCipherPolicy extends com.pulumi.resources.CustomResource {
      * TLS policy instance state.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
@@ -100,7 +100,7 @@ public class TlsCipherPolicy extends com.pulumi.resources.CustomResource {
      * TLS policy name. Length is from 2 to 128, or in both the English and Chinese characters must be with an uppercase/lowercase letter or a Chinese character and the beginning, may contain numbers, in dot `.`, underscore `_` or dash `-`.
      * 
      */
-    @Export(name="tlsCipherPolicyName", type=String.class, parameters={})
+    @Export(name="tlsCipherPolicyName", refs={String.class}, tree="[0]")
     private Output<String> tlsCipherPolicyName;
 
     /**
@@ -114,7 +114,7 @@ public class TlsCipherPolicy extends com.pulumi.resources.CustomResource {
      * The version of TLS protocol. You can find the corresponding value description in the document center [What is Tls Cipher Policy](https://www.alibabacloud.com/help/doc-detail/196714.htm).
      * 
      */
-    @Export(name="tlsVersions", type=List.class, parameters={String.class})
+    @Export(name="tlsVersions", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> tlsVersions;
 
     /**

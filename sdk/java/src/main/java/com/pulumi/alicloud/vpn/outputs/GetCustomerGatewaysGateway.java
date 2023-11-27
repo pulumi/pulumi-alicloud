@@ -142,14 +142,14 @@ public final class GetCustomerGatewaysGateway {
             return this;
         }
         public GetCustomerGatewaysGateway build() {
-            final var o = new GetCustomerGatewaysGateway();
-            o.asn = asn;
-            o.createTime = createTime;
-            o.description = description;
-            o.id = id;
-            o.ipAddress = ipAddress;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetCustomerGatewaysGateway();
+            _resultValue.asn = asn;
+            _resultValue.createTime = createTime;
+            _resultValue.description = description;
+            _resultValue.id = id;
+            _resultValue.ipAddress = ipAddress;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

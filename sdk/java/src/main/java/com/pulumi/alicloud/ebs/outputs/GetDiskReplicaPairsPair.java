@@ -285,22 +285,22 @@ public final class GetDiskReplicaPairsPair {
             return this;
         }
         public GetDiskReplicaPairsPair build() {
-            final var o = new GetDiskReplicaPairsPair();
-            o.bandwidth = bandwidth;
-            o.description = description;
-            o.destinationDiskId = destinationDiskId;
-            o.destinationRegionId = destinationRegionId;
-            o.destinationZoneId = destinationZoneId;
-            o.diskId = diskId;
-            o.id = id;
-            o.pairName = pairName;
-            o.paymentType = paymentType;
-            o.replicaPairId = replicaPairId;
-            o.resourceGroupId = resourceGroupId;
-            o.rpo = rpo;
-            o.sourceZoneId = sourceZoneId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetDiskReplicaPairsPair();
+            _resultValue.bandwidth = bandwidth;
+            _resultValue.description = description;
+            _resultValue.destinationDiskId = destinationDiskId;
+            _resultValue.destinationRegionId = destinationRegionId;
+            _resultValue.destinationZoneId = destinationZoneId;
+            _resultValue.diskId = diskId;
+            _resultValue.id = id;
+            _resultValue.pairName = pairName;
+            _resultValue.paymentType = paymentType;
+            _resultValue.replicaPairId = replicaPairId;
+            _resultValue.resourceGroupId = resourceGroupId;
+            _resultValue.rpo = rpo;
+            _resultValue.sourceZoneId = sourceZoneId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

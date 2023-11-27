@@ -42,6 +42,7 @@ from .get_custom_routing_endpoint_traffic_policies import *
 from .get_custom_routing_endpoints import *
 from .get_custom_routing_port_mappings import *
 from .get_domains import *
+from .get_endpoint_group_ip_address_cidr_blocks import *
 from .get_endpoint_groups import *
 from .get_forwarding_rules import *
 from .get_ip_sets import *

@@ -163,15 +163,15 @@ public final class ProjectSecurityProperties {
             return this;
         }
         public ProjectSecurityProperties build() {
-            final var o = new ProjectSecurityProperties();
-            o.enableDownloadPrivilege = enableDownloadPrivilege;
-            o.labelSecurity = labelSecurity;
-            o.objectCreatorHasAccessPermission = objectCreatorHasAccessPermission;
-            o.objectCreatorHasGrantPermission = objectCreatorHasGrantPermission;
-            o.projectProtection = projectProtection;
-            o.usingAcl = usingAcl;
-            o.usingPolicy = usingPolicy;
-            return o;
+            final var _resultValue = new ProjectSecurityProperties();
+            _resultValue.enableDownloadPrivilege = enableDownloadPrivilege;
+            _resultValue.labelSecurity = labelSecurity;
+            _resultValue.objectCreatorHasAccessPermission = objectCreatorHasAccessPermission;
+            _resultValue.objectCreatorHasGrantPermission = objectCreatorHasGrantPermission;
+            _resultValue.projectProtection = projectProtection;
+            _resultValue.usingAcl = usingAcl;
+            _resultValue.usingPolicy = usingPolicy;
+            return _resultValue;
         }
     }
 }

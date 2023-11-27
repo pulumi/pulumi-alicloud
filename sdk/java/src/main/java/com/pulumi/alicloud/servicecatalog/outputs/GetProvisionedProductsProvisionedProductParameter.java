@@ -49,10 +49,10 @@ public final class GetProvisionedProductsProvisionedProductParameter {
             return this;
         }
         public GetProvisionedProductsProvisionedProductParameter build() {
-            final var o = new GetProvisionedProductsProvisionedProductParameter();
-            o.parameterKey = parameterKey;
-            o.parameterValue = parameterValue;
-            return o;
+            final var _resultValue = new GetProvisionedProductsProvisionedProductParameter();
+            _resultValue.parameterKey = parameterKey;
+            _resultValue.parameterValue = parameterValue;
+            return _resultValue;
         }
     }
 }

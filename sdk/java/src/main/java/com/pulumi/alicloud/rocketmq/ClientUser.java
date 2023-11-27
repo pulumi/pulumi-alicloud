@@ -81,7 +81,7 @@ public class ClientUser extends com.pulumi.resources.CustomResource {
      * The SAG APP bandwidth that the user can use. Unit: Kbit/s. Maximum value: 2000 Kbit/s.
      * 
      */
-    @Export(name="bandwidth", type=Integer.class, parameters={})
+    @Export(name="bandwidth", refs={Integer.class}, tree="[0]")
     private Output<Integer> bandwidth;
 
     /**
@@ -95,7 +95,7 @@ public class ClientUser extends com.pulumi.resources.CustomResource {
      * The IP address of the SAG APP. If you specify this parameter, the current account always uses the specified IP address.Note The IP address must be in the private CIDR block of the SAG client.If you do not specify this parameter, the system automatically allocates an IP address from the private CIDR block of the SAG client. In this case, each re-connection uses a different IP address.
      * 
      */
-    @Export(name="clientIp", type=String.class, parameters={})
+    @Export(name="clientIp", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientIp;
 
     /**
@@ -109,7 +109,7 @@ public class ClientUser extends com.pulumi.resources.CustomResource {
      * The password of the KMS Encryption.
      * 
      */
-    @Export(name="kmsEncryptedPassword", type=String.class, parameters={})
+    @Export(name="kmsEncryptedPassword", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kmsEncryptedPassword;
 
     /**
@@ -123,7 +123,7 @@ public class ClientUser extends com.pulumi.resources.CustomResource {
      * The context of the KMS Encryption.
      * 
      */
-    @Export(name="kmsEncryptionContext", type=Map.class, parameters={String.class, Object.class})
+    @Export(name="kmsEncryptionContext", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> kmsEncryptionContext;
 
     /**
@@ -137,7 +137,7 @@ public class ClientUser extends com.pulumi.resources.CustomResource {
      * The password used to log on to the SAG APP.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
      * 
      */
-    @Export(name="password", type=String.class, parameters={})
+    @Export(name="password", refs={String.class}, tree="[0]")
     private Output<String> password;
 
     /**
@@ -151,7 +151,7 @@ public class ClientUser extends com.pulumi.resources.CustomResource {
      * The ID of the SAG instance created for the SAG APP.
      * 
      */
-    @Export(name="sagId", type=String.class, parameters={})
+    @Export(name="sagId", refs={String.class}, tree="[0]")
     private Output<String> sagId;
 
     /**
@@ -165,7 +165,7 @@ public class ClientUser extends com.pulumi.resources.CustomResource {
      * The email address of the user. The administrator uses this address to send the account information for logging on to the APP to the user.
      * 
      */
-    @Export(name="userMail", type=String.class, parameters={})
+    @Export(name="userMail", refs={String.class}, tree="[0]")
     private Output<String> userMail;
 
     /**
@@ -179,7 +179,7 @@ public class ClientUser extends com.pulumi.resources.CustomResource {
      * The user name. User names in the same SAG APP must be unique.Both the user name and the password must be specified. If you specify the user name, the password must be specified, too.
      * 
      */
-    @Export(name="userName", type=String.class, parameters={})
+    @Export(name="userName", refs={String.class}, tree="[0]")
     private Output<String> userName;
 
     /**

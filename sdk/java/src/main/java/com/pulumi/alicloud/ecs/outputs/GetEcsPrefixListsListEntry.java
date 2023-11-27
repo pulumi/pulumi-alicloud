@@ -57,10 +57,10 @@ public final class GetEcsPrefixListsListEntry {
             return this;
         }
         public GetEcsPrefixListsListEntry build() {
-            final var o = new GetEcsPrefixListsListEntry();
-            o.cidr = cidr;
-            o.description = description;
-            return o;
+            final var _resultValue = new GetEcsPrefixListsListEntry();
+            _resultValue.cidr = cidr;
+            _resultValue.description = description;
+            return _resultValue;
         }
     }
 }

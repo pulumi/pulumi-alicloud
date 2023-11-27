@@ -121,7 +121,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The description of the image.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
@@ -135,7 +135,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The desktop id of the desktop.
      * 
      */
-    @Export(name="desktopId", type=String.class, parameters={})
+    @Export(name="desktopId", refs={String.class}, tree="[0]")
     private Output<String> desktopId;
 
     /**
@@ -149,7 +149,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The name of the image.
      * 
      */
-    @Export(name="imageName", type=String.class, parameters={})
+    @Export(name="imageName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> imageName;
 
     /**
@@ -163,7 +163,7 @@ public class Image extends com.pulumi.resources.CustomResource {
      * The status of the image. Valid values: `Creating`, `Available`, `CreateFailed`.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

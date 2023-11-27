@@ -238,24 +238,24 @@ public final class GetInstanceClassesResult {
             return this;
         }
         public GetInstanceClassesResult build() {
-            final var o = new GetInstanceClassesResult();
-            o.category = category;
-            o.commodityCode = commodityCode;
-            o.dbInstanceClass = dbInstanceClass;
-            o.dbInstanceId = dbInstanceId;
-            o.dbInstanceStorageType = dbInstanceStorageType;
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.id = id;
-            o.ids = ids;
-            o.instanceChargeType = instanceChargeType;
-            o.instanceClasses = instanceClasses;
-            o.multiZone = multiZone;
-            o.outputFile = outputFile;
-            o.sortedBy = sortedBy;
-            o.storageType = storageType;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstanceClassesResult();
+            _resultValue.category = category;
+            _resultValue.commodityCode = commodityCode;
+            _resultValue.dbInstanceClass = dbInstanceClass;
+            _resultValue.dbInstanceId = dbInstanceId;
+            _resultValue.dbInstanceStorageType = dbInstanceStorageType;
+            _resultValue.engine = engine;
+            _resultValue.engineVersion = engineVersion;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceChargeType = instanceChargeType;
+            _resultValue.instanceClasses = instanceClasses;
+            _resultValue.multiZone = multiZone;
+            _resultValue.outputFile = outputFile;
+            _resultValue.sortedBy = sortedBy;
+            _resultValue.storageType = storageType;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

@@ -390,27 +390,27 @@ public final class GetBgpPeersPeer {
             return this;
         }
         public GetBgpPeersPeer build() {
-            final var o = new GetBgpPeersPeer();
-            o.authKey = authKey;
-            o.bfdMultiHop = bfdMultiHop;
-            o.bgpGroupId = bgpGroupId;
-            o.bgpPeerId = bgpPeerId;
-            o.bgpPeerName = bgpPeerName;
-            o.bgpStatus = bgpStatus;
-            o.description = description;
-            o.enableBfd = enableBfd;
-            o.hold = hold;
-            o.id = id;
-            o.ipVersion = ipVersion;
-            o.isFake = isFake;
-            o.keepalive = keepalive;
-            o.localAsn = localAsn;
-            o.peerAsn = peerAsn;
-            o.peerIpAddress = peerIpAddress;
-            o.routeLimit = routeLimit;
-            o.routerId = routerId;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetBgpPeersPeer();
+            _resultValue.authKey = authKey;
+            _resultValue.bfdMultiHop = bfdMultiHop;
+            _resultValue.bgpGroupId = bgpGroupId;
+            _resultValue.bgpPeerId = bgpPeerId;
+            _resultValue.bgpPeerName = bgpPeerName;
+            _resultValue.bgpStatus = bgpStatus;
+            _resultValue.description = description;
+            _resultValue.enableBfd = enableBfd;
+            _resultValue.hold = hold;
+            _resultValue.id = id;
+            _resultValue.ipVersion = ipVersion;
+            _resultValue.isFake = isFake;
+            _resultValue.keepalive = keepalive;
+            _resultValue.localAsn = localAsn;
+            _resultValue.peerAsn = peerAsn;
+            _resultValue.peerIpAddress = peerIpAddress;
+            _resultValue.routeLimit = routeLimit;
+            _resultValue.routerId = routerId;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

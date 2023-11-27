@@ -293,22 +293,22 @@ public final class GetBucketObjectsObject {
             return this;
         }
         public GetBucketObjectsObject build() {
-            final var o = new GetBucketObjectsObject();
-            o.acl = acl;
-            o.cacheControl = cacheControl;
-            o.contentDisposition = contentDisposition;
-            o.contentEncoding = contentEncoding;
-            o.contentLength = contentLength;
-            o.contentMd5 = contentMd5;
-            o.contentType = contentType;
-            o.etag = etag;
-            o.expires = expires;
-            o.key = key;
-            o.lastModificationTime = lastModificationTime;
-            o.serverSideEncryption = serverSideEncryption;
-            o.sseKmsKeyId = sseKmsKeyId;
-            o.storageClass = storageClass;
-            return o;
+            final var _resultValue = new GetBucketObjectsObject();
+            _resultValue.acl = acl;
+            _resultValue.cacheControl = cacheControl;
+            _resultValue.contentDisposition = contentDisposition;
+            _resultValue.contentEncoding = contentEncoding;
+            _resultValue.contentLength = contentLength;
+            _resultValue.contentMd5 = contentMd5;
+            _resultValue.contentType = contentType;
+            _resultValue.etag = etag;
+            _resultValue.expires = expires;
+            _resultValue.key = key;
+            _resultValue.lastModificationTime = lastModificationTime;
+            _resultValue.serverSideEncryption = serverSideEncryption;
+            _resultValue.sseKmsKeyId = sseKmsKeyId;
+            _resultValue.storageClass = storageClass;
+            return _resultValue;
         }
     }
 }

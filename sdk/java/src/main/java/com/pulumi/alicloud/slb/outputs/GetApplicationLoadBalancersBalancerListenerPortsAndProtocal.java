@@ -66,10 +66,10 @@ public final class GetApplicationLoadBalancersBalancerListenerPortsAndProtocal {
             return this;
         }
         public GetApplicationLoadBalancersBalancerListenerPortsAndProtocal build() {
-            final var o = new GetApplicationLoadBalancersBalancerListenerPortsAndProtocal();
-            o.listenerPort = listenerPort;
-            o.listenerProtocal = listenerProtocal;
-            return o;
+            final var _resultValue = new GetApplicationLoadBalancersBalancerListenerPortsAndProtocal();
+            _resultValue.listenerPort = listenerPort;
+            _resultValue.listenerProtocal = listenerProtocal;
+            return _resultValue;
         }
     }
 }

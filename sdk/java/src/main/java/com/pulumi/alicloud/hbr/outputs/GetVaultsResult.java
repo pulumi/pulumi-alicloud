@@ -136,16 +136,16 @@ public final class GetVaultsResult {
             return vaults(List.of(vaults));
         }
         public GetVaultsResult build() {
-            final var o = new GetVaultsResult();
-            o.id = id;
-            o.ids = ids;
-            o.nameRegex = nameRegex;
-            o.names = names;
-            o.outputFile = outputFile;
-            o.status = status;
-            o.vaultType = vaultType;
-            o.vaults = vaults;
-            return o;
+            final var _resultValue = new GetVaultsResult();
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.nameRegex = nameRegex;
+            _resultValue.names = names;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            _resultValue.vaultType = vaultType;
+            _resultValue.vaults = vaults;
+            return _resultValue;
         }
     }
 }

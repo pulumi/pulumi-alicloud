@@ -72,10 +72,10 @@ public final class DomainResourceProxyType {
             return this;
         }
         public DomainResourceProxyType build() {
-            final var o = new DomainResourceProxyType();
-            o.proxyPorts = proxyPorts;
-            o.proxyType = proxyType;
-            return o;
+            final var _resultValue = new DomainResourceProxyType();
+            _resultValue.proxyPorts = proxyPorts;
+            _resultValue.proxyType = proxyType;
+            return _resultValue;
         }
     }
 }

@@ -75,7 +75,7 @@ public class AppTemplate extends com.pulumi.resources.CustomResource {
      * The name of the resource.
      * 
      */
-    @Export(name="appTemplateName", type=String.class, parameters={})
+    @Export(name="appTemplateName", refs={String.class}, tree="[0]")
     private Output<String> appTemplateName;
 
     /**
@@ -89,7 +89,7 @@ public class AppTemplate extends com.pulumi.resources.CustomResource {
      * List of components. Its element valid values: [&#34;component.live&#34;,&#34;component.liveRecord&#34;,&#34;component.liveBeauty&#34;,&#34;component.rtc&#34;,&#34;component.rtcRecord&#34;,&#34;component.im&#34;,&#34;component.whiteboard&#34;,&#34;component.liveSecurity&#34;,&#34;component.chatSecurity&#34;].
      * 
      */
-    @Export(name="componentLists", type=List.class, parameters={String.class})
+    @Export(name="componentLists", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> componentLists;
 
     /**
@@ -103,7 +103,7 @@ public class AppTemplate extends com.pulumi.resources.CustomResource {
      * Configuration list. It have several default configs after the resource is created. See the following `Block config_list`.
      * 
      */
-    @Export(name="configLists", type=List.class, parameters={AppTemplateConfigList.class})
+    @Export(name="configLists", refs={List.class,AppTemplateConfigList.class}, tree="[0,1]")
     private Output<List<AppTemplateConfigList>> configLists;
 
     /**
@@ -119,7 +119,7 @@ public class AppTemplate extends com.pulumi.resources.CustomResource {
      * * standardRoom: Model Room.
      * 
      */
-    @Export(name="integrationMode", type=String.class, parameters={})
+    @Export(name="integrationMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> integrationMode;
 
     /**
@@ -135,7 +135,7 @@ public class AppTemplate extends com.pulumi.resources.CustomResource {
      * Application Template scenario. Valid values: [&#34;business&#34;, &#34;classroom&#34;].
      * 
      */
-    @Export(name="scene", type=String.class, parameters={})
+    @Export(name="scene", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scene;
 
     /**
@@ -149,7 +149,7 @@ public class AppTemplate extends com.pulumi.resources.CustomResource {
      * Application template usage status.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

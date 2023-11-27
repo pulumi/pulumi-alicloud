@@ -43,7 +43,7 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      * Description of the scheduled task, which is 2-200 characters (English or Chinese) long.
      * 
      */
-    @Export(name="description", type=String.class, parameters={})
+    @Export(name="description", refs={String.class}, tree="[0]")
     private Output<String> description;
 
     /**
@@ -57,7 +57,7 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      * The expected number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group. **NOTE:** You must specify the `DesiredCapacity` parameter when you create the scaling group.
      * 
      */
-    @Export(name="desiredCapacity", type=Integer.class, parameters={})
+    @Export(name="desiredCapacity", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> desiredCapacity;
 
     /**
@@ -71,7 +71,7 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      * The time period during which a failed scheduled task is retried. Unit: seconds. Valid values: 0 to 21600. Default value: 600
      * 
      */
-    @Export(name="launchExpirationTime", type=Integer.class, parameters={})
+    @Export(name="launchExpirationTime", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> launchExpirationTime;
 
     /**
@@ -88,7 +88,7 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      * Otherwise, the task is only executed once at the date and time specified by LaunchTime.
      * 
      */
-    @Export(name="launchTime", type=String.class, parameters={})
+    @Export(name="launchTime", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> launchTime;
 
     /**
@@ -105,7 +105,7 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      * The maximum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
      * 
      */
-    @Export(name="maxValue", type=Integer.class, parameters={})
+    @Export(name="maxValue", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> maxValue;
 
     /**
@@ -119,7 +119,7 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      * The minimum number of instances in a scaling group when the scaling method of the scheduled task is to specify the number of instances in a scaling group.
      * 
      */
-    @Export(name="minValue", type=Integer.class, parameters={})
+    @Export(name="minValue", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> minValue;
 
     /**
@@ -134,7 +134,7 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      * The time must be in UTC. You cannot enter a time point later than 365 days from the date of scheduled task creation. **NOTE:** You must specify `RecurrenceType`, `RecurrenceValue`, and `RecurrenceEndTime` at the same time.
      * 
      */
-    @Export(name="recurrenceEndTime", type=String.class, parameters={})
+    @Export(name="recurrenceEndTime", refs={String.class}, tree="[0]")
     private Output<String> recurrenceEndTime;
 
     /**
@@ -153,7 +153,7 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      * - Cron: (Available in 1.60.0+) The scheduled task is executed based on the specified cron expression.
      * 
      */
-    @Export(name="recurrenceType", type=String.class, parameters={})
+    @Export(name="recurrenceType", refs={String.class}, tree="[0]")
     private Output<String> recurrenceType;
 
     /**
@@ -175,7 +175,7 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      * - Cron: You can enter a cron expression which is written in UTC and consists of five fields: minute, hour, day of month (date), month, and day of week. The expression can contain wildcard characters including commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), and the L and W letters.
      * 
      */
-    @Export(name="recurrenceValue", type=String.class, parameters={})
+    @Export(name="recurrenceValue", refs={String.class}, tree="[0]")
     private Output<String> recurrenceValue;
 
     /**
@@ -193,7 +193,7 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      * The ID of the scaling group where the number of instances is modified when the scheduled task is triggered. After the `ScalingGroupId` parameter is specified, the scaling method of the scheduled task is to specify the number of instances in a scaling group. You must specify at least one of the following parameters: `MinValue`, `MaxValue`, and `DesiredCapacity`. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
      * 
      */
-    @Export(name="scalingGroupId", type=String.class, parameters={})
+    @Export(name="scalingGroupId", refs={String.class}, tree="[0]")
     private Output<String> scalingGroupId;
 
     /**
@@ -207,7 +207,7 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      * The operation to be performed when a scheduled task is triggered. Enter the unique identifier of a scaling rule. **NOTE:** You cannot specify `scheduled_action` and `scaling_group_id` at the same time.
      * 
      */
-    @Export(name="scheduledAction", type=String.class, parameters={})
+    @Export(name="scheduledAction", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scheduledAction;
 
     /**
@@ -221,7 +221,7 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      * Display name of the scheduled task, which must be 2-40 characters (English or Chinese) long.
      * 
      */
-    @Export(name="scheduledTaskName", type=String.class, parameters={})
+    @Export(name="scheduledTaskName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scheduledTaskName;
 
     /**
@@ -235,7 +235,7 @@ public class ScheduledTask extends com.pulumi.resources.CustomResource {
      * Specifies whether to start the scheduled task. Default to true.
      * 
      */
-    @Export(name="taskEnabled", type=Boolean.class, parameters={})
+    @Export(name="taskEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> taskEnabled;
 
     /**

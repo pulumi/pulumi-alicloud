@@ -94,11 +94,11 @@ public final class GetBackupJobsFilter {
             return values(List.of(values));
         }
         public GetBackupJobsFilter build() {
-            final var o = new GetBackupJobsFilter();
-            o.key = key;
-            o.operator = operator;
-            o.values = values;
-            return o;
+            final var _resultValue = new GetBackupJobsFilter();
+            _resultValue.key = key;
+            _resultValue.operator = operator;
+            _resultValue.values = values;
+            return _resultValue;
         }
     }
 }

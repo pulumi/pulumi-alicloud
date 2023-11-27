@@ -84,11 +84,11 @@ public final class GetInstanceEnginesInstanceEngine {
             return this;
         }
         public GetInstanceEnginesInstanceEngine build() {
-            final var o = new GetInstanceEnginesInstanceEngine();
-            o.engine = engine;
-            o.engineVersion = engineVersion;
-            o.zoneId = zoneId;
-            return o;
+            final var _resultValue = new GetInstanceEnginesInstanceEngine();
+            _resultValue.engine = engine;
+            _resultValue.engineVersion = engineVersion;
+            _resultValue.zoneId = zoneId;
+            return _resultValue;
         }
     }
 }

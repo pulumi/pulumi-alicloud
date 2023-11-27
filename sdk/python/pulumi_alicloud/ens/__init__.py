@@ -5,8 +5,15 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .disk import *
+from .eip import *
 from .get_key_pairs import *
 from .instance import *
 from .key_pair import *
+from .load_balancer import *
+from .network import *
+from .security_group import *
+from .snapshot import *
+from .vswitch import *
 from ._inputs import *
 from . import outputs

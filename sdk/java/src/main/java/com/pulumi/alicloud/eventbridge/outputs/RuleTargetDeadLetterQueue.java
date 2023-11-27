@@ -48,9 +48,9 @@ public final class RuleTargetDeadLetterQueue {
             return this;
         }
         public RuleTargetDeadLetterQueue build() {
-            final var o = new RuleTargetDeadLetterQueue();
-            o.arn = arn;
-            return o;
+            final var _resultValue = new RuleTargetDeadLetterQueue();
+            _resultValue.arn = arn;
+            return _resultValue;
         }
     }
 }

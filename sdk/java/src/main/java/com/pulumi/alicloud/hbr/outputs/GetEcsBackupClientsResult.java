@@ -114,14 +114,14 @@ public final class GetEcsBackupClientsResult {
             return this;
         }
         public GetEcsBackupClientsResult build() {
-            final var o = new GetEcsBackupClientsResult();
-            o.clients = clients;
-            o.id = id;
-            o.ids = ids;
-            o.instanceIds = instanceIds;
-            o.outputFile = outputFile;
-            o.status = status;
-            return o;
+            final var _resultValue = new GetEcsBackupClientsResult();
+            _resultValue.clients = clients;
+            _resultValue.id = id;
+            _resultValue.ids = ids;
+            _resultValue.instanceIds = instanceIds;
+            _resultValue.outputFile = outputFile;
+            _resultValue.status = status;
+            return _resultValue;
         }
     }
 }

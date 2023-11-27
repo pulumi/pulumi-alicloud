@@ -103,12 +103,12 @@ public final class GetUsersUser {
             return this;
         }
         public GetUsersUser build() {
-            final var o = new GetUsersUser();
-            o.createDate = createDate;
-            o.id = id;
-            o.lastLoginDate = lastLoginDate;
-            o.name = name;
-            return o;
+            final var _resultValue = new GetUsersUser();
+            _resultValue.createDate = createDate;
+            _resultValue.id = id;
+            _resultValue.lastLoginDate = lastLoginDate;
+            _resultValue.name = name;
+            return _resultValue;
         }
     }
 }

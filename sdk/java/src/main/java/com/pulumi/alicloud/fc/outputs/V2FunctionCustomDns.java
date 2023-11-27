@@ -96,11 +96,11 @@ public final class V2FunctionCustomDns {
             return searches(List.of(searches));
         }
         public V2FunctionCustomDns build() {
-            final var o = new V2FunctionCustomDns();
-            o.dnsOptions = dnsOptions;
-            o.nameServers = nameServers;
-            o.searches = searches;
-            return o;
+            final var _resultValue = new V2FunctionCustomDns();
+            _resultValue.dnsOptions = dnsOptions;
+            _resultValue.nameServers = nameServers;
+            _resultValue.searches = searches;
+            return _resultValue;
         }
     }
 }

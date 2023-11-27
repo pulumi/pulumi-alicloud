@@ -38,7 +38,7 @@ public class AScript extends com.pulumi.resources.CustomResource {
      * The name of AScript.
      * 
      */
-    @Export(name="ascriptName", type=String.class, parameters={})
+    @Export(name="ascriptName", refs={String.class}, tree="[0]")
     private Output<String> ascriptName;
 
     /**
@@ -52,7 +52,7 @@ public class AScript extends com.pulumi.resources.CustomResource {
      * Whether scripts are enabled.
      * 
      */
-    @Export(name="enabled", type=Boolean.class, parameters={})
+    @Export(name="enabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enabled;
 
     /**
@@ -66,7 +66,7 @@ public class AScript extends com.pulumi.resources.CustomResource {
      * Whether extension parameters are enabled.
      * 
      */
-    @Export(name="extAttributeEnabled", type=Boolean.class, parameters={})
+    @Export(name="extAttributeEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> extAttributeEnabled;
 
     /**
@@ -80,7 +80,7 @@ public class AScript extends com.pulumi.resources.CustomResource {
      * Extended attribute list. See `ext_attributes` below for details.
      * 
      */
-    @Export(name="extAttributes", type=List.class, parameters={AScriptExtAttribute.class})
+    @Export(name="extAttributes", refs={List.class,AScriptExtAttribute.class}, tree="[0,1]")
     private Output<List<AScriptExtAttribute>> extAttributes;
 
     /**
@@ -94,7 +94,7 @@ public class AScript extends com.pulumi.resources.CustomResource {
      * Listener ID of script attribution
      * 
      */
-    @Export(name="listenerId", type=String.class, parameters={})
+    @Export(name="listenerId", refs={String.class}, tree="[0]")
     private Output<String> listenerId;
 
     /**
@@ -108,7 +108,7 @@ public class AScript extends com.pulumi.resources.CustomResource {
      * The ID of load balancer instance.
      * 
      */
-    @Export(name="loadBalancerId", type=String.class, parameters={})
+    @Export(name="loadBalancerId", refs={String.class}, tree="[0]")
     private Output<String> loadBalancerId;
 
     /**
@@ -122,7 +122,7 @@ public class AScript extends com.pulumi.resources.CustomResource {
      * Execution location of AScript.
      * 
      */
-    @Export(name="position", type=String.class, parameters={})
+    @Export(name="position", refs={String.class}, tree="[0]")
     private Output<String> position;
 
     /**
@@ -136,7 +136,7 @@ public class AScript extends com.pulumi.resources.CustomResource {
      * The content of AScript.
      * 
      */
-    @Export(name="scriptContent", type=String.class, parameters={})
+    @Export(name="scriptContent", refs={String.class}, tree="[0]")
     private Output<String> scriptContent;
 
     /**
@@ -150,7 +150,7 @@ public class AScript extends com.pulumi.resources.CustomResource {
      * The status of AScript.
      * 
      */
-    @Export(name="status", type=String.class, parameters={})
+    @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**

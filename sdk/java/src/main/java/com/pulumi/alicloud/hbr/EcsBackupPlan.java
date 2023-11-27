@@ -163,7 +163,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * Backup type. Valid values: `COMPLETE`.
      * 
      */
-    @Export(name="backupType", type=String.class, parameters={})
+    @Export(name="backupType", refs={String.class}, tree="[0]")
     private Output<String> backupType;
 
     /**
@@ -177,7 +177,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * The role name created in the original account RAM backup by the cross account managed by the current account.
      * 
      */
-    @Export(name="crossAccountRoleName", type=String.class, parameters={})
+    @Export(name="crossAccountRoleName", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> crossAccountRoleName;
 
     /**
@@ -191,7 +191,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * The type of the cross account backup. Valid values: `SELF_ACCOUNT`, `CROSS_ACCOUNT`.
      * 
      */
-    @Export(name="crossAccountType", type=String.class, parameters={})
+    @Export(name="crossAccountType", refs={String.class}, tree="[0]")
     private Output<String> crossAccountType;
 
     /**
@@ -205,7 +205,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * The original account ID of the cross account backup managed by the current account.
      * 
      */
-    @Export(name="crossAccountUserId", type=Integer.class, parameters={})
+    @Export(name="crossAccountUserId", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> crossAccountUserId;
 
     /**
@@ -219,7 +219,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * The detail of the backup plan.
      * 
      */
-    @Export(name="detail", type=String.class, parameters={})
+    @Export(name="detail", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> detail;
 
     /**
@@ -233,7 +233,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * Whether to disable the backup task. Valid values: `true`, `false`.
      * 
      */
-    @Export(name="disabled", type=Boolean.class, parameters={})
+    @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> disabled;
 
     /**
@@ -247,7 +247,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * The name of the backup plan. 1~64 characters, the backup plan name of each data source type in a single warehouse required to be unique.
      * 
      */
-    @Export(name="ecsBackupPlanName", type=String.class, parameters={})
+    @Export(name="ecsBackupPlanName", refs={String.class}, tree="[0]")
     private Output<String> ecsBackupPlanName;
 
     /**
@@ -261,7 +261,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * Exclude path. String of Json list, up to 255 characters. e.g. `&#34;[\&#34;/home/work\&#34;]&#34;`
      * 
      */
-    @Export(name="exclude", type=String.class, parameters={})
+    @Export(name="exclude", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> exclude;
 
     /**
@@ -275,7 +275,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * Include path. String of Json list, up to 255 characters. e.g. `&#34;[\&#34;/var\&#34;]&#34;`
      * 
      */
-    @Export(name="include", type=String.class, parameters={})
+    @Export(name="include", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> include;
 
     /**
@@ -289,7 +289,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * The ID of ECS instance. The ecs backup client must have been installed on the host.
      * 
      */
-    @Export(name="instanceId", type=String.class, parameters={})
+    @Export(name="instanceId", refs={String.class}, tree="[0]")
     private Output<String> instanceId;
 
     /**
@@ -303,7 +303,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * Windows operating system with application consistency using VSS, e.g: `{\&#34;UseVSS\&#34;:false}`.
      * 
      */
-    @Export(name="options", type=String.class, parameters={})
+    @Export(name="options", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> options;
 
     /**
@@ -317,7 +317,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * List of backup path. e.g. `[&#34;/home&#34;, &#34;/var&#34;]`. **Note** If `path` is empty, it means that all directories will be backed up.
      * 
      */
-    @Export(name="paths", type=List.class, parameters={String.class})
+    @Export(name="paths", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> paths;
 
     /**
@@ -331,7 +331,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * Backup retention days, the minimum is 1.
      * 
      */
-    @Export(name="retention", type=String.class, parameters={})
+    @Export(name="retention", refs={String.class}, tree="[0]")
     private Output<String> retention;
 
     /**
@@ -345,7 +345,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
      * 
      */
-    @Export(name="schedule", type=String.class, parameters={})
+    @Export(name="schedule", refs={String.class}, tree="[0]")
     private Output<String> schedule;
 
     /**
@@ -359,7 +359,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * Flow control. The format is: `{start}|{end}|{bandwidth}`. Use `|` to separate multiple flow control configurations, multiple flow control configurations not allowed to have overlapping times.
      * 
      */
-    @Export(name="speedLimit", type=String.class, parameters={})
+    @Export(name="speedLimit", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> speedLimit;
 
     /**
@@ -377,7 +377,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * 
      */
     @Deprecated /* Attribute update_paths has been deprecated in v1.139.0+ and you do not need to set it anymore. */
-    @Export(name="updatePaths", type=Boolean.class, parameters={})
+    @Export(name="updatePaths", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> updatePaths;
 
     /**
@@ -391,7 +391,7 @@ public class EcsBackupPlan extends com.pulumi.resources.CustomResource {
      * The ID of Backup vault.
      * 
      */
-    @Export(name="vaultId", type=String.class, parameters={})
+    @Export(name="vaultId", refs={String.class}, tree="[0]")
     private Output<String> vaultId;
 
     /**

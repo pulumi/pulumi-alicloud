@@ -84,11 +84,11 @@ public final class GetProductProductSkusImage {
             return this;
         }
         public GetProductProductSkusImage build() {
-            final var o = new GetProductProductSkusImage();
-            o.imageId = imageId;
-            o.imageName = imageName;
-            o.regionId = regionId;
-            return o;
+            final var _resultValue = new GetProductProductSkusImage();
+            _resultValue.imageId = imageId;
+            _resultValue.imageName = imageName;
+            _resultValue.regionId = regionId;
+            return _resultValue;
         }
     }
 }
