@@ -16,6 +16,7 @@ makeTemplate: bridged
 plugins:
   - name: random 
     version: "4.3.1"
+javaGenVersion: "v0.9.8"
 team: ecosystem
 license:
   ignore:
